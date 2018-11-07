@@ -1,0 +1,37 @@
+{
+  "name": "@draftbit/jigsaw",
+  "version": "1.0.0",
+  "description": "Jigsaw component library for Draftbit",
+  "main": "src/index.js",
+  "repository": "git@github.com:draftbit/jigsaw-component-library.git",
+  "author": "Draftbit",
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "precommit": "echo yarn lint && yarn flow && yarn test",
+    "flow": "flow",
+    "lint": "eslint src",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "babel-preset-react-native": "^4.0.1",
+    "flow-bin": "^0.85.0",
+    "jest": "^23.6.0",
+    "react-test-renderer": "^16.6.0"
+  },
+  "dependencies": {
+    "@callstack/react-theme-provider": "^1.0.6",
+    "@expo/react-native-action-sheet": "^1.1.2",
+    "@expo/vector-icons": "^8.0.0",
+    "color": "^3.1.0",
+    "create-react-context": "^0.2.3",
+    "react-lifecycles-compat": "^3.0.4"
+  }
+}

@@ -27,11 +27,12 @@
     "react-test-renderer": "^16.6.0"
   },
   "dependencies": {
-    "@callstack/react-theme-provider": "^1.0.6",
+    "@callstack/react-theme-provider": "^1.0.7",
     "@expo/react-native-action-sheet": "^1.1.2",
     "@expo/vector-icons": "^8.0.0",
-    "color": "^3.1.0",
+    "color": "^2.0.1",
     "create-react-context": "^0.2.3",
-    "react-lifecycles-compat": "^3.0.4"
+    "react-lifecycles-compat": "^3.0.4",
+    "react-native-platform-touchable": "^1.1.1"
   }
 }

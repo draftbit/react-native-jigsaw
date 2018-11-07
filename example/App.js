@@ -1,21 +1,24 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { Provider, DefaultTheme } from "@draftbit/ui";
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      <Provider theme={DefaultTheme}>
+        <View style={styles.container}>
+          <Text>Replace me with a component</Text>
+        </View>
+      </Provider>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 40,
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: "#fff",
+    justifyContent: "center"
+  }
 });

@@ -23,14 +23,13 @@
                 curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
                 tar -xz -C /tmp -f /tmp/docker-$VER.tgz
                 mv /tmp/docker/* /usr/bin
-              yarn global add exp
               cd example && yarn
               for user in "draftbit" "peterpme" "donald" "bluerssen"; do
                 echo $user;
                 set +x;
                 eval EXPO_PASS='$'EXPO_${user}_PASSWORD
-                exp login -u $user -p $EXPO_PASS --non-interactive
-                exp publish --release-channel "${CIRCLE_SHA1}";
+                npx expo-cli login -u $user -p $EXPO_PASS --non-interactive
+                npx expo-cli publish --release-channel "${CIRCLE_SHA1}";
               done;
         - save_cache:
             key: v3-jigsaw-component-library-{{ .Branch }}-{{ checksum "package.json" }}

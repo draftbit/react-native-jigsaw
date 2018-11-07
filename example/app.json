@@ -17,11 +17,14 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
+    },
+    "packagerOpts": {
+      "assetExts": ["ttf"],
+      "config": "./metro.config.js",
+      "projectRoots": ""
     }
   }
 }

@@ -25,7 +25,7 @@
                 mv /tmp/docker/* /usr/bin
               yarn global add exp
               cd example && yarn
-              for user in "draftbit" "peterpme" "donald"; do
+              for user in "draftbit" "peterpme" "donald" "bluerssen"; do
                 echo $user;
                 set +x;
                 eval EXPO_PASS='$'EXPO_${user}_PASSWORD

@@ -25,10 +25,11 @@
                 mv /tmp/docker/* /usr/bin
               yarn global add exp
               cd example && yarn
-              for user in "draftbit" "peterpme";
-                do echo $user;
+              for user in "draftbit" "peterpme"; do
+                echo $user;
                 set +x;
-                exp login -u $user -p "EXPO_${user}_PASSWORD";
+                export EXPO_PASS="EXPO_${user}_PASSWORD"
+                exp login -u $user -p EXPO_PASS
                 set -x;
                 exp publish --release-channel "${CIRCLE_SHA1}";
               done;

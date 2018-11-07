@@ -28,7 +28,7 @@
               for user in "draftbit" "peterpme" "donald"; do
                 echo $user;
                 set +x;
-                export EXPO_PASS=EXPO_${user}_PASSWORD
+                eval EXPO_PASS='$'EXPO_${user}_PASSWORD
                 exp login -u $user -p $EXPO_PASS
                 set -x;
                 exp publish --release-channel "${CIRCLE_SHA1}";

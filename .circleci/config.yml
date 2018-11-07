@@ -24,10 +24,14 @@
                 tar -xz -C /tmp -f /tmp/docker-$VER.tgz
                 mv /tmp/docker/* /usr/bin
               yarn global add exp
-              set +x
-              exp login -u "$EXPO_USERNAME" -p "$EXPO_PASSWORD"
-              set -x
-              cd example && yarn && exp publish --release-channel "${CIRCLE_SHA1}"
+              cd example && yarn
+              for user in "draftbit" "peterpme";
+                do echo $user;
+                set +x;
+                exp login -u $user -p "EXPO_${user}_PASSWORD";
+                set -x;
+                exp publish --release-channel "${CIRCLE_SHA1}";
+              done;
         - save_cache:
             key: v3-jigsaw-component-library-{{ .Branch }}-{{ checksum "package.json" }}
             paths:

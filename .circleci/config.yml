@@ -29,8 +29,7 @@
                 echo $user;
                 set +x;
                 eval EXPO_PASS='$'EXPO_${user}_PASSWORD
-                exp login -u $user -p $EXPO_PASS
-                set -x;
+                exp login -u $user -p $EXPO_PASS --non-interactive
                 exp publish --release-channel "${CIRCLE_SHA1}";
               done;
         - save_cache:

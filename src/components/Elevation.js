@@ -12,7 +12,7 @@ type Props = {
   theme: Theme
 };
 
-class Surface extends React.Component<Props> {
+class Elevation extends React.Component<Props> {
   render() {
     const { style, theme, ...rest } = this.props;
     const flattenedStyles = StyleSheet.flatten(style) || {};
@@ -31,4 +31,4 @@ class Surface extends React.Component<Props> {
   }
 }
 
-export default withTheme(Surface);
+export default withTheme(Elevation);

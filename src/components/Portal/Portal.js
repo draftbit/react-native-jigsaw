@@ -26,7 +26,7 @@ type Props = {
  * ## Usage
  * ```js
  * import * as React from 'react';
- * import { Portal, Text } from 'react-native-paper';
+ * import { Portal, Text } from '@draftbit/ui';
  *
  * export default class MyComponent extends React.Component {
  *   render() {

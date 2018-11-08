@@ -33,7 +33,7 @@ export const PortalContext: Context<PortalMethods> = createReactContext(
  * ```js
  * import * as React from 'react';
  * import { Text } from 'react-native';
- * import { Portal } from 'react-native-paper';
+ * import { Portal } from '@draftbit/ui';
  *
  * export default class MyComponent extends React.Component {
  *   render() {

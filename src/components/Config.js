@@ -28,5 +28,7 @@ export default {
   cardImageSize: 200,
   cardImageUrl:
     "https://res.cloudinary.com/altos/image/upload/w_200,f_auto,c_scale/draftbit/components/Image.png",
-  squareImageUrl: buildImageUrl({ width: 100 }, "Avatar")
+  squareImageUrl: buildImageUrl({ width: 100 }, "Avatar"),
+  rowImageSize: 24,
+  rowIconSize: 24
 };

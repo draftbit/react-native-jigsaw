@@ -17,22 +17,14 @@ import type { IconSource } from "./Icon";
 
 type Props = {
   /**
-   * Mode of the button. You can change the mode to adjust the styling to give it desired emphasis.
+   * Type of the button. You can change the type to adjust the styling to give it desired emphasis.
    * - `text` - flat button without background or outline (low emphasis)
-   * - `outlined` - button with an outline (medium emphasis)
-   * - `contained` - button with a background color (high emphasis)
+   * - `outline` - button with an outline (medium emphasis)
+   * - `solid` - button with a background color (high emphasis)
    */
-  mode?: "text" | "outlined" | "contained",
+  type?: "text" | "outline" | "solid",
   /**
-   * Whether the color is a dark color. A dark button will render light text and vice-versa. Only applicable for `contained` mode.
-   */
-  dark?: boolean,
-  /**
-   * Use a compact look, useful for `text` buttons in a row.
-   */
-  compact?: boolean,
-  /**
-   * Custom text color for flat button, or background color for contained button.
+   * Custom text color for flat button, or background color for solid button.
    */
   color?: string,
   /**
@@ -62,18 +54,50 @@ type Props = {
   theme: Theme
 };
 
+/**
+ * A button is component that the user can press to trigger an action.
+ *
+ * <div class="screenshots">
+ *   <figure>
+ *     <img src="screenshots/button-1.png" />
+ *     <figcaption>Text button</figcaption>
+ *   </figure>
+ *   <figure>
+ *     <img src="screenshots/button-2.png" />
+ *     <figcaption>Outlined button</figcaption>
+ *   </figure>
+ *   <figure>
+ *     <img src="screenshots/button-3.png" />
+ *     <figcaption>Contained button</figcaption>
+ *   </figure>
+ * </div>
+ *
+ * ## Usage
+ * ```js
+ * import * as React from 'react';
+ * import { Button } from '@draftbit/ui';
+ *
+ * const MyComponent = () => (
+ *   <Button icon="add-a-photo" type="solid" onPress={() => console.log('Pressed')}>
+ *     Press me
+ *   </Button>
+ * );
+ *
+ * export default MyComponent;
+ * ```
+ */
+
 class Button extends React.Component<Props> {
   static defaultProps = {
-    mode: "contained",
+    elevation: 0,
+    type: "solid",
     children: "Button Text"
   };
 
   render() {
     const {
       disabled,
-      compact,
-      mode,
-      dark,
+      type,
       loading,
       icon,
       color: colorOverride,
@@ -83,18 +107,20 @@ class Button extends React.Component<Props> {
       theme,
       ...rest
     } = this.props;
+
     const {
       colors,
       disabledOpacity,
       borderRadius,
       spacing,
-      typography
+      typography,
+      elevation
     } = theme;
 
     let backgroundColor, borderColor, textColor, borderWidth;
     const buttonColor = colorOverride || colors.primary;
 
-    if (mode === "contained") {
+    if (type === "solid") {
       backgroundColor = buttonColor;
 
       if (disabled) {
@@ -126,7 +152,7 @@ class Button extends React.Component<Props> {
       }
     }
 
-    if (mode === "outlined") {
+    if (type === "outline") {
       if (disabled) {
         borderColor = color(buttonColor)
           .alpha(disabledOpacity)
@@ -142,12 +168,28 @@ class Button extends React.Component<Props> {
     }
 
     const buttonStyle = {
+      ...elevation[this.props.elevation],
       backgroundColor,
       borderColor,
       borderWidth,
-      borderRadius: borderRadius.button
+      borderRadius: borderRadius.button,
     };
-    const textStyle = { color: textColor, marginVertical: spacing.large };
+
+    const textStyle = {
+      textAlign: "center",
+      color: textColor,
+      marginVertical: spacing.large,
+      marginHorizontal: spacing.large,
+    };
+
+    const iconStyle = [
+      styles.icon,
+      {
+        marginLeft: spacing.large,
+        marginRight: -8,
+        width: 24
+      }
+    ]
 
     return (
       <Touchable
@@ -156,11 +198,11 @@ class Button extends React.Component<Props> {
         accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
         accessibilityComponentType="button"
         disabled={disabled}
-        style={[styles.button, compact && styles.compact, buttonStyle, style]}
+        style={[styles.button, buttonStyle, style]}
       >
         <View style={styles.content}>
           {icon && loading !== true ? (
-            <View style={styles.icon}>
+            <View style={iconStyle}>
               <Icon name={icon} size={24} color={textColor} />
             </View>
           ) : null}
@@ -168,14 +210,13 @@ class Button extends React.Component<Props> {
             <ActivityIndicator
               size="small"
               color={textColor}
-              style={styles.icon}
+              style={iconStyle}
             />
           ) : null}
           <Text
             numberOfLines={1}
             style={[
               styles.label,
-              compact && styles.compactLabel,
               textStyle,
               typography.button
             ]}
@@ -193,9 +234,6 @@ const styles = StyleSheet.create({
     minWidth: 64,
     borderStyle: "solid"
   },
-  compact: {
-    minWidth: "auto"
-  },
   content: {
     flexDirection: "row",
     alignItems: "center",
@@ -203,16 +241,6 @@ const styles = StyleSheet.create({
   },
   icon: {
     width: 24,
-    marginLeft: 12,
-    marginRight: -8
-  },
-  label: {
-    textAlign: "center",
-    letterSpacing: 1,
-    marginHorizontal: 16
-  },
-  compactLabel: {
-    marginHorizontal: 8
   }
 });
 

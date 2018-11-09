@@ -5,6 +5,7 @@ import { StyleSheet, View, Text, ScrollView } from "react-native";
 import {
   RowHeadlineImageIcon,
   RowSingleLineHeadlineImageCaption,
+  RowBodyIcon,
   Divider,
   withTheme
 } from "@draftbit/ui";
@@ -131,6 +132,33 @@ class RowExample extends React.Component<Props> {
           title="Headline that is quite long so that it won't fit on a single line"
           caption="Subtitle"
           image="https://via.placeholder.com/24"
+        />
+        <Divider style={{ marginBottom: spacing.large }} />
+        <Text style={{ marginHorizontal: spacing.large }}>
+          RowSingleLineBodyIcon
+        </Text>
+        <RowBodyIcon title="Headline" icon="check" />
+        <Divider style={{ marginBottom: spacing.large }} />
+        <Text style={{ marginHorizontal: spacing.large }}>
+          RowSingleLineBodyIcon with long title
+        </Text>
+        <RowBodyIcon
+          title="Headline that is quite long so that it won't fit on a single line"
+          icon="check"
+        />
+        <Divider style={{ marginBottom: spacing.large }} />
+        <Text style={{ marginHorizontal: spacing.large }}>
+          RowDoubleLineBodyIcon
+        </Text>
+        <RowBodyIcon title="Headline" subtitle="Subtitle" icon="check" />
+        <Divider style={{ marginBottom: spacing.large }} />
+        <Text style={{ marginHorizontal: spacing.large }}>
+          RowDoubleLineBodyIcon with long title and subtitle
+        </Text>
+        <RowBodyIcon
+          title="Headline that is quite long so that it won't fit on a single line"
+          subtitle="Subtitle that is quite long so that it won't fit on a single line"
+          icon="check"
         />
       </ScrollView>
     );

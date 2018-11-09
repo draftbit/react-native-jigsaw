@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, View, Text } from "react-native";
 import Touchable from "./Touchable";
-import Card from "./Card";
+import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
 import type { Theme } from "./types";
 import Config from "./Config";
@@ -58,7 +58,7 @@ class BlockImage extends React.PureComponent<BlockImageProps> {
     return (
       <Touchable style={style} onPress={onPress}>
         <View>
-          <Card style={{ elevation, borderRadius: borderRadius.global }}>
+          <Elevation style={{ elevation, borderRadius: borderRadius.global }}>
             <Image
               style={{
                 borderRadius: borderRadius.global,
@@ -67,7 +67,7 @@ class BlockImage extends React.PureComponent<BlockImageProps> {
               source={typeof image === "string" ? { uri: image } : image}
               resizeMode="cover"
             />
-          </Card>
+          </Elevation>
           {label ? (
             <View
               style={{

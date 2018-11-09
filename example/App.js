@@ -4,6 +4,7 @@ import { StatusBar, View, Text } from "react-native";
 import { Provider, DefaultTheme, Touchable, Icon } from "@draftbit/ui";
 import { createDrawerNavigator, createStackNavigator } from "react-navigation";
 import ButtonExample from "./src/ButtonExample";
+import CardBlockExample from "./src/CardBlockExample";
 import TextFieldExample from "./src/TextFieldExample";
 
 const Drawer = createDrawerNavigator({
@@ -13,6 +14,7 @@ const Drawer = createDrawerNavigator({
     </Text>
   ),
   Button: ButtonExample,
+  CardBlock: CardBlockExample,
   TextField: TextFieldExample
 });
 

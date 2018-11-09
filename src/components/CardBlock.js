@@ -1,12 +1,12 @@
 import React from "react";
 import { Image, View, Text } from "react-native";
-import Touchable from "./Touchable";
+import Card from "./Card";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
 import type { Theme } from "./types";
 import Config from "./Config";
 
-export type BlockImageProps = {
+export type CardBlockProps = {
   image: string | { uri: string },
   label?: string,
   leftDescription?: string,
@@ -14,17 +14,14 @@ export type BlockImageProps = {
   labelCentered?: boolean,
   aspectRatio?: number,
   elevation: number,
+  numColumns: 1 | 2 | 3,
   theme: Theme,
   style: any,
   onPress: () => void
 };
 
-class BlockImage extends React.PureComponent<BlockImageProps> {
+class CardBlock extends React.PureComponent<CardBlockProps> {
   static defaultProps = {
-    image: Config.cardImageUrl,
-    label: "Beautiful West Coast Villa",
-    leftDescription: "San Diego",
-    rightDescription: "$100",
     aspectRatio: 3 / 2,
     elevation: 2
   };
@@ -38,16 +35,25 @@ class BlockImage extends React.PureComponent<BlockImageProps> {
       labelCentered,
       aspectRatio,
       elevation,
+      numColumns,
       theme: { colors, borderRadius, typography, spacing },
       style,
       onPress
     } = this.props;
 
-    let labelJustification;
+    let labelJustification, titleStyle;
     if (labelCentered && !leftDescription && !rightDescription) {
       labelJustification = "center";
     } else {
       labelJustification = "space-between";
+    }
+
+    if (numColumns === 1) {
+      titleStyle = typography.button;
+    } else if (numColumns === 2) {
+      titleStyle = typography.headline6;
+    } else {
+      titleStyle = typography.headline5;
     }
 
     const rightDescriptionStyles = [
@@ -56,7 +62,7 @@ class BlockImage extends React.PureComponent<BlockImageProps> {
     ];
 
     return (
-      <Touchable style={style} onPress={onPress}>
+      <Card style={style} onPress={onPress} numColumns={numColumns}>
         <View>
           <Elevation style={{ elevation, borderRadius: borderRadius.global }}>
             <Image
@@ -74,12 +80,12 @@ class BlockImage extends React.PureComponent<BlockImageProps> {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: labelJustification,
-                marginTop: spacing.large
+                marginTop: numColumns === 3 ? spacing.large : spacing.medium
               }}
             >
               <Text
                 numberOfLines={1}
-                style={[typography.headline6, { color: colors.strong }]}
+                style={[titleStyle, { color: colors.strong }]}
               >
                 {label}
               </Text>
@@ -94,7 +100,7 @@ class BlockImage extends React.PureComponent<BlockImageProps> {
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
-                marginTop: spacing.text
+                marginTop: numColumns === 3 ? spacing.text : spacing.text / 2
               }}
             >
               <Text
@@ -111,9 +117,9 @@ class BlockImage extends React.PureComponent<BlockImageProps> {
             </View>
           ) : null}
         </View>
-      </Touchable>
+      </Card>
     );
   }
 }
 
-export default withTheme(BlockImage);
+export default withTheme(CardBlock);

@@ -4,6 +4,7 @@ import * as React from "react";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
 import {
   RowHeadlineImageIcon,
+  RowHeadlineImageCaption,
   RowSingleLineHeadlineImageCaption,
   RowBodyIcon,
   Divider,
@@ -119,21 +120,71 @@ class RowExample extends React.Component<Props> {
         <Text style={{ marginHorizontal: spacing.large }}>
           RowSingleLineHeadlineImageCaption
         </Text>
-        <RowSingleLineHeadlineImageCaption
+        <RowHeadlineImageCaption
           title="Headline"
-          caption="Subtitle"
+          caption="Caption"
           image="https://via.placeholder.com/24"
         />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
           RowSingleLineHeadlineImageCaption with long title
         </Text>
-        <RowSingleLineHeadlineImageCaption
+        <RowHeadlineImageCaption
           title="Headline that is quite long so that it won't fit on a single line"
-          caption="Subtitle"
+          caption="Caption"
           image="https://via.placeholder.com/24"
         />
         <Divider style={{ marginBottom: spacing.large }} />
+        <Text style={{ marginHorizontal: spacing.large }}>
+          RowSingleLineHeadlineCaption
+        </Text>
+        <RowHeadlineImageCaption title="Headline" caption="Caption" />
+        <Divider style={{ marginBottom: spacing.large }} />
+        <Text style={{ marginHorizontal: spacing.large }}>
+          RowSingleLineHeadlineCaption with long title
+        </Text>
+        <RowHeadlineImageCaption
+          title="Headline that is quite long so that it won't fit on a single line"
+          caption="Caption"
+        />
+        <Divider style={{ marginBottom: spacing.large }} />
+        <Text style={{ marginHorizontal: spacing.large }}>
+          RowDoubleLineHeadlineImageCaption
+        </Text>
+        <RowHeadlineImageCaption
+          title="Headline"
+          subtitle="Subtitle"
+          caption="Caption"
+          image="https://via.placeholder.com/48"
+        />
+        <Divider style={{ marginBottom: spacing.large }} />
+        <Text style={{ marginHorizontal: spacing.large }}>
+          RowDoubleLineHeadlineImageCaption with long title
+        </Text>
+        <RowHeadlineImageCaption
+          title="Headline that is quite long so that it won't fit on a single line"
+          subtitle="Subtitle that is quite long so that it won't fit on a single line"
+          caption="Caption"
+          image="https://via.placeholder.com/48"
+        />
+        <Divider style={{ marginBottom: spacing.large }} />
+        <Text style={{ marginHorizontal: spacing.large }}>
+          RowDoubleLineHeadlineCaption
+        </Text>
+        <RowHeadlineImageCaption
+          title="Headline"
+          subtitle="Subtitle"
+          caption="Caption"
+        />
+        <Divider style={{ marginBottom: spacing.large }} />
+        <Text style={{ marginHorizontal: spacing.large }}>
+          RowDoubleLineHeadlineCaption with long title
+        </Text>
+        <RowHeadlineImageCaption
+          title="Headline that is quite long so that it won't fit on a single line"
+          subtitle="Subtitle that is quite long so that it won't fit on a single line"
+          caption="Caption"
+        />
         <Text style={{ marginHorizontal: spacing.large }}>
           RowSingleLineBodyIcon
         </Text>
@@ -168,7 +219,7 @@ class RowExample extends React.Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 16
+    paddingVertical: 24
   }
 });
 

@@ -16,6 +16,6 @@ export {
   default as RowHeadlineImageIcon
 } from "./components/RowHeadlineImageIcon";
 export {
-  default as RowSingleLineHeadlineImageCaption
-} from "./components/RowSingleLineHeadlineImageCaption";
+  default as RowHeadlineImageCaption
+} from "./components/RowHeadlineImageCaption";
 export { default as TextField } from "./components/TextField";

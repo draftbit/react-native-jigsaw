@@ -8,16 +8,18 @@ import Row from "./Row";
 
 type Props = {
   title: string,
+  subtitle?: string,
   caption: string,
   image: string | { uri: string },
   style?: any,
   theme: Theme
 };
 
-class RowSingleLineHeadlineImageCaption extends React.Component<Props> {
+class RowHeadlineImageCaption extends React.Component<Props> {
   render() {
     const {
       title,
+      subtitle,
       caption,
       image,
       style,
@@ -26,9 +28,12 @@ class RowSingleLineHeadlineImageCaption extends React.Component<Props> {
 
     return (
       <Row
-        title={title}
         titleTypeStyle={typography.headline6}
         titleColor={colors.strong}
+        subtitleTypeStyle={typography.body2}
+        subtitleColor={colors.medium}
+        title={title}
+        subtitle={subtitle}
         image={image}
         right={() => (
           <Text
@@ -47,4 +52,4 @@ class RowSingleLineHeadlineImageCaption extends React.Component<Props> {
   }
 }
 
-export default withTheme(RowSingleLineHeadlineImageCaption);
+export default withTheme(RowHeadlineImageCaption);

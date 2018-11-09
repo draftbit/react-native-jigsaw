@@ -1,7 +1,7 @@
 /* @flow */
 
 import * as React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Image } from "react-native";
 import { withTheme } from "../core/theming";
 import type { Theme } from "../types";
 import Row from "./Row";
@@ -61,7 +61,5 @@ class RowHeadlineImageIcon extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({});
 
 export default withTheme(RowHeadlineImageIcon);

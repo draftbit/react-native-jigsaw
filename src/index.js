@@ -11,6 +11,7 @@ export { default as Button } from "./components/Button";
 export { default as CardBlock } from "./components/CardBlock";
 export { default as Divider } from "./components/Divider";
 export { default as Icon } from "./components/Icon";
+export { default as RowBodyIcon } from "./components/RowBodyIcon";
 export {
   default as RowHeadlineImageIcon
 } from "./components/RowHeadlineImageIcon";

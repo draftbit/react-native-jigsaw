@@ -27,7 +27,9 @@ class RowExample extends React.Component<Props> {
 
     return (
       <ScrollView style={[styles.container, { backgroundColor: background }]}>
-        <Text style={{ marginHorizontal: spacing.large }}>
+        <Text
+          style={{ marginHorizontal: spacing.large, marginTop: spacing.large }}
+        >
           RowSingleLineHeadlineImageIcon
         </Text>
         <RowHeadlineImageIcon
@@ -218,8 +220,7 @@ class RowExample extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingVertical: 24
+    flex: 1
   }
 });
 

@@ -1,11 +1,10 @@
 /* @flow */
 
 import * as React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { Text } from "react-native";
 import { withTheme } from "../core/theming";
 import type { Theme } from "../types";
 import Row from "./Row";
-import Config from "./Config";
 
 type Props = {
   title: string,
@@ -27,23 +26,18 @@ class RowSingleLineHeadlineImageCaption extends React.Component<Props> {
 
     return (
       <Row
-        left={() => (
-          <View style={styles.leftContainer}>
-            <Image
-              source={typeof image === "string" ? { uri: image } : image}
-              style={{
-                marginRight: spacing.medium,
-                width: Config.rowImageSize,
-                height: Config.rowImageSize
-              }}
-            />
-            <Text style={{ ...typography.headline6, color: colors.strong }}>
-              {title}
-            </Text>
-          </View>
-        )}
+        title={title}
+        titleTypeStyle={typography.headline6}
+        titleColor={colors.strong}
+        image={image}
         right={() => (
-          <Text style={{ ...typography.caption, color: colors.strong }}>
+          <Text
+            style={{
+              ...typography.caption,
+              color: colors.strong,
+              marginLeft: spacing.large
+            }}
+          >
             {caption}
           </Text>
         )}
@@ -52,11 +46,5 @@ class RowSingleLineHeadlineImageCaption extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  leftContainer: {
-    flexDirection: "row"
-  }
-});
 
 export default withTheme(RowSingleLineHeadlineImageCaption);

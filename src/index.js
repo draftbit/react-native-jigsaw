@@ -12,6 +12,9 @@ export { default as CardBlock } from "./components/CardBlock";
 export { default as Divider } from "./components/Divider";
 export { default as Icon } from "./components/Icon";
 export {
+  default as RowHeadlineImageIcon
+} from "./components/RowHeadlineImageIcon";
+export {
   default as RowSingleLineHeadlineImageCaption
 } from "./components/RowSingleLineHeadlineImageCaption";
 export { default as TextField } from "./components/TextField";

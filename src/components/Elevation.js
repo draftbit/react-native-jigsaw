@@ -4,7 +4,7 @@ import * as React from "react";
 import { Animated, StyleSheet } from "react-native";
 import shadow from "../styles/shadow";
 import { withTheme } from "../core/theming";
-import type { Theme } from "./types";
+import type { Theme } from "../types";
 
 type Props = {
   children: React.Node,

@@ -6,6 +6,7 @@ import { createDrawerNavigator, createStackNavigator } from "react-navigation";
 import ButtonExample from "./src/ButtonExample";
 import CardBlockExample from "./src/CardBlockExample";
 import TextFieldExample from "./src/TextFieldExample";
+import ControllerExample from './src/ControllerExample'
 
 const Drawer = createDrawerNavigator({
   Home: () => (
@@ -15,7 +16,8 @@ const Drawer = createDrawerNavigator({
   ),
   Button: ButtonExample,
   CardBlock: CardBlockExample,
-  TextField: TextFieldExample
+  TextField: TextFieldExample,
+  Controller: ControllerExample,
 });
 
 const App = createStackNavigator(

@@ -15,3 +15,4 @@ export {
   default as RowSingleLineHeadlineImageCaption
 } from "./components/RowSingleLineHeadlineImageCaption";
 export { default as TextField } from "./components/TextField";
+export { default as Switch } from './components/Switch'

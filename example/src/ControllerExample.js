@@ -6,7 +6,7 @@ import { Button, withTheme, Switch  } from '@draftbit/ui';
 import type { Theme } from '@draftbit/ui/types';
 
 class ControllerExample extends React.Component {
-  static title = "Button";
+  static title = "Switch";
 
   state = {
     elevation: 2,

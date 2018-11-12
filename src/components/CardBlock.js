@@ -3,7 +3,7 @@ import { Image, View, Text } from "react-native";
 import Card from "./Card";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
-import type { Theme } from "./types";
+import type { Theme } from "../types";
 import Config from "./Config";
 
 export type CardBlockProps = {

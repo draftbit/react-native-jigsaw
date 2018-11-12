@@ -32,6 +32,8 @@ export default {
   cardOneThirdWidth: "33.3%",
   cardTwoThirdsWidth: "66.6%",
   cardFullWidth: "100%",
-  rowImageSize: 24,
-  rowIconSize: 24
+  rowSingleLineImageSize: 24,
+  rowMultiLineImageSize: 48,
+  rowSingleLineIconSize: 24,
+  rowMultiLineIconSize: 16
 };

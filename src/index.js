@@ -9,6 +9,7 @@ export { default as Touchable } from "./components/Touchable";
 
 export { default as Button } from "./components/Button";
 export { default as CardBlock } from "./components/CardBlock";
+export { default as CardInline } from "./components/CardInline";
 export { default as Divider } from "./components/Divider";
 export { default as Icon } from "./components/Icon";
 export { default as ProgressBar } from "./components/ProgressBar/ProgressBar";

@@ -8,10 +8,10 @@ import Config from "./Config";
 
 export type CardBlockProps = {
   image: string | { uri: string },
-  label?: string,
+  title?: string,
   leftDescription?: string,
   rightDescription?: string,
-  labelCentered?: boolean,
+  titleCentered?: boolean,
   aspectRatio?: number,
   elevation: number,
   numColumns: 1 | 2 | 3,
@@ -29,10 +29,10 @@ class CardBlock extends React.PureComponent<CardBlockProps> {
   render() {
     const {
       image,
-      label,
+      title,
       leftDescription,
       rightDescription,
-      labelCentered,
+      titleCentered,
       aspectRatio,
       elevation,
       numColumns,
@@ -41,11 +41,11 @@ class CardBlock extends React.PureComponent<CardBlockProps> {
       onPress
     } = this.props;
 
-    let labelJustification, titleStyle;
-    if (labelCentered && !leftDescription && !rightDescription) {
-      labelJustification = "center";
+    let titleJustification, titleStyle;
+    if (titleCentered && !leftDescription && !rightDescription) {
+      titleJustification = "center";
     } else {
-      labelJustification = "space-between";
+      titleJustification = "space-between";
     }
 
     if (numColumns === 1) {
@@ -74,12 +74,12 @@ class CardBlock extends React.PureComponent<CardBlockProps> {
               resizeMode="cover"
             />
           </Elevation>
-          {label ? (
+          {title ? (
             <View
               style={{
                 flexDirection: "row",
                 alignItems: "center",
-                justifyContent: labelJustification,
+                justifyContent: titleJustification,
                 marginTop: numColumns === 3 ? spacing.large : spacing.medium
               }}
             >
@@ -87,7 +87,7 @@ class CardBlock extends React.PureComponent<CardBlockProps> {
                 numberOfLines={1}
                 style={[titleStyle, { color: colors.strong }]}
               >
-                {label}
+                {title}
               </Text>
               {!leftDescription && rightDescription ? (
                 <Text style={rightDescriptionStyles}>{rightDescription}</Text>

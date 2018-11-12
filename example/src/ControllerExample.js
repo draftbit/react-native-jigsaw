@@ -1,8 +1,8 @@
 /* @flow */
 
 import * as React from 'react';
-import { View, ScrollView, StyleSheet, Text } from 'react-native';
-import { Button, withTheme, Switch  } from '@draftbit/ui';
+import { View, ScrollView, StyleSheet, Text, Platform } from 'react-native';
+import { Button, withTheme, Switch, CheckboxIOS, CheckboxAndroid  } from '@draftbit/ui';
 import type { Theme } from '@draftbit/ui/types';
 
 class ControllerExample extends React.Component {
@@ -12,6 +12,7 @@ class ControllerExample extends React.Component {
     elevation: 2,
     disabled: false,
     value: false,
+
   }
 
   toggle = () => {
@@ -35,6 +36,12 @@ class ControllerExample extends React.Component {
         </View>
         <View style={styles.row}>
           <Switch style={buttonStyle} onValueChange={this.toggle} disabled={disabled} value={value}/>
+        </View>
+        <View style={styles.row}>
+          { Platform.OS == 'ios' ? <CheckboxIOS status={value ? 'checked' : 'unchecked'}
+            disabled={disabled} onPress={this.toggle} /> :
+            <CheckboxAndroid status={ value ? 'checked' : 'unchecked'} onPress={this.toggle} disabled={disabled} />
+          }
         </View>
       </ScrollView>
     )

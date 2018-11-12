@@ -21,3 +21,5 @@ export {
 } from "./components/RowHeadlineImageCaption";
 export { default as TextField } from "./components/TextField";
 export { default as Switch } from './components/Switch'
+export { default as CheckboxIOS } from './components/CheckboxIOS'
+export { default as CheckboxAndroid } from './components/CheckboxAndroid'

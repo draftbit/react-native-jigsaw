@@ -38,23 +38,12 @@ class CheckboxIOS extends React.Component<Props> {
     const { status, disabled, onPress, theme, ...rest } = this.props;
     const checked = status === 'checked';
     const indeterminate = status === 'indeterminate';
-
     const checkedColor = this.props.color || theme.colors.primary;
-
-    let rippleColor;
-
-    if (disabled) {
-      rippleColor = color(checkedColor)
-    } else {
-      rippleColor = color(checkedColor)
-    }
-
     const icon = indeterminate ? 'remove' : 'done';
 
     return (
       <Touchable
         {...rest}
-        rippleColor={rippleColor}
         onPress={onPress}
         borderless={false}
         disabled={disabled}
@@ -63,10 +52,10 @@ class CheckboxIOS extends React.Component<Props> {
         accessibilityRole="button"
         accessibilityStates={disabled ? ['disabled'] : undefined}
         accessibilityLiveRegion="polite"
-        style={ checked ? { borderRadius: 2, backgroundColor: `${checkedColor}`, opacity: (disabled) ? 0.5 : 1} :
-         { borderRadius: 2, backgroundColor: `${theme.colors.surface}`, borderColor: `${theme.colors.light}`, borderWidth: 2, opacity: (disabled) ? 0.5 : 1 }}
-      >
-        <View style={{ opacity: (indeterminate || disabled) ? 0.5 : 1 }}>
+        style={ checked ?
+          { borderRadius: 2, minWidth: 25, minHeight: 25, backgroundColor: `${checkedColor}`, opacity: (disabled) ? `${theme.disabledOpacity}` : 1}
+          : { borderRadius: 2, minWidth: 25, minHeight: 25, backgroundColor: `${theme.colors.surface}`, borderColor: `${theme.colors.light}`, borderWidth: 2, opacity: (disabled) ? `${theme.disabledOpacity}` : 1 }}>
+        <View style={{ opacity: (indeterminate || disabled) ? `${theme.disabledOpacity}` : 1 }}>
           <Icon
             allowFontScaling={false}
             source={icon}

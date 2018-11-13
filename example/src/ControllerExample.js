@@ -1,12 +1,12 @@
 /* @flow */
 
 import * as React from 'react';
-import { View, ScrollView, StyleSheet, Text, Platform } from 'react-native';
-import { Button, withTheme, Switch, CheckboxIOS, CheckboxAndroid  } from '@draftbit/ui';
+import { View, ScrollView, StyleSheet  } from 'react-native';
+import { Button, withTheme, Switch, Checkbox } from '@draftbit/ui';
 import type { Theme } from '@draftbit/ui/types';
 
 class ControllerExample extends React.Component {
-  static title = "Switch";
+  static title = "Controller";
 
   state = {
     elevation: 2,
@@ -24,24 +24,19 @@ class ControllerExample extends React.Component {
   }
 
   render() {
-    const { elevation, value, disabled } = this.state
+    const { value, disabled } = this.state
     const { colors} = this.props.theme
-    const buttonStyle = [styles.button]
-
 
     return (
       <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
         <View style={styles.row}>
-          <Button onPress={this.disable} type="text">{disabled ? 'Click to enabled' : 'Click to disable'}</Button>
+          <Button onPress={this.disable} type="text">{disabled ? 'Enable' : 'Disable'}</Button>
         </View>
         <View style={styles.row}>
-          <Switch style={buttonStyle} onValueChange={this.toggle} disabled={disabled} value={value}/>
+          <Switch onValueChange={this.toggle} disabled={disabled} value={value}/>
         </View>
         <View style={styles.row}>
-          { Platform.OS == 'ios' ? <CheckboxIOS status={value ? 'checked' : 'unchecked'}
-            disabled={disabled} onPress={this.toggle} /> :
-            <CheckboxAndroid status={ value ? 'checked' : 'unchecked'} onPress={this.toggle} disabled={disabled} />
-          }
+          <Checkbox status={value ? 'checked': 'unchecked'} disabled={disabled}  onPress={this.toggle}/>
         </View>
       </ScrollView>
     )
@@ -52,11 +47,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  button: {
-    margin: 4,
-  },
   row: {
-    alignItems: 'center'
+    alignItems: 'center',
+    margin: 4, 
   }
 });
 

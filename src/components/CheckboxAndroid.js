@@ -69,22 +69,9 @@ class CheckboxAndroid extends React.Component<Props, State> {
     const checked = status === 'checked';
     const indeterminate = status === 'indeterminate';
     const checkedColor = this.props.color || theme.colors.primary;
-    const uncheckedColor =
-      this.props.uncheckedColor ||
-      color(theme.colors.text)
-        .alpha(theme.dark ? 0.7 : 0.54)
-        .rgb()
-        .string();
+    const checkboxColor = checked ? checkedColor : theme.colors.light;
+    const rippleColor = checkedColor
 
-    let rippleColor, checkboxColor;
-
-    if (disabled) {
-      rippleColor = color(checkboxColor)
-      checkboxColor = checkboxColor;
-    } else {
-      rippleColor = color(checkedColor)
-      checkboxColor = checked ? checkedColor : uncheckedColor;
-    }
 
     const borderWidth = this.state.scaleAnim.interpolate({
       inputRange: [0.8, 1],
@@ -100,7 +87,7 @@ class CheckboxAndroid extends React.Component<Props, State> {
     return (
       <Touchable
         {...rest}
-        borderless
+        borderless={true}
         rippleColor={rippleColor}
         onPress={onPress}
         disabled={disabled}
@@ -109,8 +96,7 @@ class CheckboxAndroid extends React.Component<Props, State> {
         accessibilityRole="button"
         accessibilityStates={disabled ? ['disabled'] : undefined}
         accessibilityLiveRegion="polite"
-        style={styles.container}
-      >
+        style={{ borderRadius: 18, width: 36, height: 36, padding: 6, opacity: (disabled) ? 0.5 : 1 }}>
         <Animated.View style={{ transform: [{ scale: this.state.scaleAnim }] }}>
           <Icon
             allowFontScaling={false}
@@ -119,13 +105,10 @@ class CheckboxAndroid extends React.Component<Props, State> {
             color={checkboxColor}
           />
           <View style={[StyleSheet.absoluteFill, styles.fillContainer]}>
-            <Animated.View
-              style={[
-                styles.fill,
-                { borderColor: checkboxColor },
-                { borderWidth },
-              ]}
-            />
+            <Animated.View style={[ styles.fill,
+            { borderColor: checkboxColor },
+            { borderWidth },
+            ]}/>
           </View>
         </Animated.View>
       </Touchable>

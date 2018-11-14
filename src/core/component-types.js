@@ -13,7 +13,8 @@ export const FORM_TYPES = {
   style: "style",
   function: "function",
   array: "array",
-  flatArray: "flatArray"
+  flatArray: "flatArray",
+  aspectRatio: "aspectRatio"
 };
 
 export const COMPONENT_TYPES = {

@@ -22,8 +22,9 @@ export type CardBlockProps = {
 
 class CardBlock extends React.PureComponent<CardBlockProps> {
   static defaultProps = {
-    aspectRatio: 3 / 2,
-    elevation: 2
+    aspectRatio: 1.5,
+    elevation: 2,
+    numColumns: 3
   };
 
   render() {

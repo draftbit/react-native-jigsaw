@@ -10,6 +10,7 @@ export { default as Touchable } from "./components/Touchable";
 export { default as Button } from "./components/Button";
 export { default as FAB } from "./components/FAB/FAB";
 export { default as CardBlock } from "./components/CardBlock";
+export { default as CardContainer } from "./components/CardContainer";
 export { default as CardInline } from "./components/CardInline";
 export { default as Divider } from "./components/Divider";
 export { default as Icon } from "./components/Icon";

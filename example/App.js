@@ -5,6 +5,7 @@ import { Provider, DefaultTheme, Touchable, Icon } from "@draftbit/ui";
 import { createDrawerNavigator, createStackNavigator } from "react-navigation";
 import ButtonExample from "./src/ButtonExample";
 import CardBlockExample from "./src/CardBlockExample";
+import CardContainerExample from "./src/CardContainerExample";
 import CardInlineExample from "./src/CardInlineExample";
 import ProgressBarExample from "./src/ProgressBarExample";
 import RowExample from "./src/RowExample";
@@ -20,6 +21,7 @@ const Drawer = createDrawerNavigator({
   Button: ButtonExample,
   TextField: TextFieldExample,
   CardBlock: CardBlockExample,
+  CardContainer: CardContainerExample,
   CardInline: CardInlineExample,
   ProgressBar: ProgressBarExample,
   Row: RowExample,

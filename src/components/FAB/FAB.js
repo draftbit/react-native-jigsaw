@@ -307,7 +307,6 @@ export const SEED_DATA = [
   {
     name: "FAB Mini",
     tab: "FAB",
-    category: "FAB",
     category: COMPONENT_TYPES.FAB,
     description: "A round, mini FAB",
     props: {

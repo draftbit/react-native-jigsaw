@@ -1,16 +1,16 @@
 /* @flow */
 
-import * as React from 'react';
-import { Text as NativeText, I18nManager } from 'react-native';
-import { withTheme } from '../core/theming';
-import type { Theme } from '../types';
+import * as React from "react";
+import { Text as NativeText, I18nManager } from "react-native";
+import { withTheme } from "../core/theming";
+import type { Theme } from "../types";
 
 type Props = React.ElementConfig<typeof NativeText> & {
   style?: any,
   /**
    * @optional
    */
-  theme: Theme,
+  theme: Theme
 };
 
 /**
@@ -30,7 +30,7 @@ class Text extends React.Component<Props> {
 
   render() {
     const { style, theme, ...rest } = this.props;
-    const writingDirection = I18nManager.isRTL ? 'rtl' : 'ltr';
+    const writingDirection = I18nManager.isRTL ? "rtl" : "ltr";
 
     return (
       <NativeText
@@ -40,10 +40,10 @@ class Text extends React.Component<Props> {
         }}
         style={[
           {
-            textAlign: 'left',
-            writingDirection,
+            textAlign: "left",
+            writingDirection
           },
-          style,
+          style
         ]}
       />
     );

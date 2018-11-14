@@ -11,26 +11,29 @@ import HeaderExample from "./src/HeaderExample";
 import ProgressBarExample from "./src/ProgressBarExample";
 import RowExample from "./src/RowExample";
 import TextFieldExample from "./src/TextFieldExample";
-import FABExample from './src/FABExample'
+import FABExample from "./src/FABExample";
 
-const Drawer = createDrawerNavigator({
-  Home: () => (
-    <Text style={{ alignSelf: "center", marginTop: 30 }}>
-      Select an example from the drawer
-    </Text>
-  ),
-  Button: ButtonExample,
-  TextField: TextFieldExample,
-  CardBlock: CardBlockExample,
-  CardContainer: CardContainerExample,
-  CardInline: CardInlineExample,
-  Header: HeaderExample,
-  ProgressBar: ProgressBarExample,
-  Row: RowExample,
-  FAB: FABExample
-}, {
-  initialRouteName: "Home"
-});
+const Drawer = createDrawerNavigator(
+  {
+    Home: () => (
+      <Text style={{ alignSelf: "center", marginTop: 30 }}>
+        Select an example from the drawer
+      </Text>
+    ),
+    Button: ButtonExample,
+    TextField: TextFieldExample,
+    CardBlock: CardBlockExample,
+    CardContainer: CardContainerExample,
+    CardInline: CardInlineExample,
+    Header: HeaderExample,
+    ProgressBar: ProgressBarExample,
+    Row: RowExample,
+    FAB: FABExample
+  },
+  {
+    initialRouteName: "Home"
+  }
+);
 
 const App = createStackNavigator(
   { Root: { screen: Drawer } },

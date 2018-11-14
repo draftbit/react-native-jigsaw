@@ -1,10 +1,10 @@
 /* @flow */
 
-import * as React from 'react';
-import { Animated, StyleSheet, View } from 'react-native';
-import { polyfill } from 'react-lifecycles-compat';
-import Icon, { isValidIcon, isEqualIcon } from './Icon';
-import type { IconSource } from './Icon';
+import * as React from "react";
+import { Animated, StyleSheet, View } from "react-native";
+import { polyfill } from "react-lifecycles-compat";
+import Icon, { isValidIcon, isEqualIcon } from "./Icon";
+import type { IconSource } from "./Icon";
 
 type Props = {|
   /**
@@ -18,13 +18,13 @@ type Props = {|
   /**
    * Size of the icon.
    */
-  size: number,
+  size: number
 |};
 
 type State = {
   currentIcon: IconSource,
   previousIcon: ?IconSource,
-  fade: Animated.Value,
+  fade: Animated.Value
 };
 
 class CrossFadeIcon extends React.Component<Props, State> {
@@ -35,14 +35,14 @@ class CrossFadeIcon extends React.Component<Props, State> {
 
     return {
       currentIcon: nextProps.source,
-      previousIcon: nextState.currentIcon,
+      previousIcon: nextState.currentIcon
     };
   }
 
   state = {
     currentIcon: this.props.source,
     previousIcon: null,
-    fade: new Animated.Value(1),
+    fade: new Animated.Value(1)
   };
 
   componentDidUpdate(prevProps: Props, prevState: State) {
@@ -59,7 +59,7 @@ class CrossFadeIcon extends React.Component<Props, State> {
 
     Animated.timing(this.state.fade, {
       duration: 200,
-      toValue: 0,
+      toValue: 0
     }).start();
   }
 
@@ -69,21 +69,21 @@ class CrossFadeIcon extends React.Component<Props, State> {
     const opacityNext = this.state.previousIcon
       ? this.state.fade.interpolate({
           inputRange: [0, 1],
-          outputRange: [1, 0],
+          outputRange: [1, 0]
         })
       : 1;
 
     const rotatePrev = this.state.fade.interpolate({
       inputRange: [0, 1],
-      outputRange: ['-90deg', '0deg'],
+      outputRange: ["-90deg", "0deg"]
     });
 
     const rotateNext = this.state.previousIcon
       ? this.state.fade.interpolate({
           inputRange: [0, 1],
-          outputRange: ['0deg', '-180deg'],
+          outputRange: ["0deg", "-180deg"]
         })
-      : '0deg';
+      : "0deg";
 
     return (
       <View
@@ -91,8 +91,8 @@ class CrossFadeIcon extends React.Component<Props, State> {
           styles.content,
           {
             height: size,
-            width: size,
-          },
+            width: size
+          }
         ]}
       >
         {this.state.previousIcon ? (
@@ -101,8 +101,8 @@ class CrossFadeIcon extends React.Component<Props, State> {
               styles.icon,
               {
                 opacity: opacityPrev,
-                transform: [{ rotate: rotatePrev }],
-              },
+                transform: [{ rotate: rotatePrev }]
+              }
             ]}
           >
             <Icon source={this.state.previousIcon} size={size} color={color} />
@@ -113,8 +113,8 @@ class CrossFadeIcon extends React.Component<Props, State> {
             styles.icon,
             {
               opacity: opacityNext,
-              transform: [{ rotate: rotateNext }],
-            },
+              transform: [{ rotate: rotateNext }]
+            }
           ]}
         >
           <Icon source={this.state.currentIcon} size={size} color={color} />
@@ -130,14 +130,14 @@ export default CrossFadeIcon;
 
 const styles = StyleSheet.create({
   content: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center"
   },
   icon: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
     right: 0,
-    bottom: 0,
-  },
+    bottom: 0
+  }
 });

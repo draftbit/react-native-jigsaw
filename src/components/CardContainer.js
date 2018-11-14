@@ -5,7 +5,11 @@ import Card from "./Card";
 import Elevation from "./Elevation";
 import Icon from "./Icon";
 import { withTheme } from "../core/theming";
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
+import {
+  FORM_TYPES,
+  COMPONENT_TYPES,
+  ELEVATION_TYPE
+} from "../core/component-types";
 import Config from "./Config";
 import type { Theme } from "../types";
 
@@ -217,17 +221,7 @@ export const SEED_DATA = [
         value: false,
         editable: true
       },
-      elevation: {
-        label: "Elevation",
-        description: "Elevation of the card. A number 0-3.",
-        type: FORM_TYPES.number,
-        value: 2,
-        min: 0,
-        max: 3,
-        step: 1,
-        precision: 0,
-        editable: true
-      },
+      elevation: ELEVATION_TYPE,
       numColumns: {
         type: FORM_TYPES.number,
         value: 2,
@@ -298,17 +292,7 @@ export const SEED_DATA = [
         value: false,
         editable: true
       },
-      elevation: {
-        label: "Elevation",
-        description: "Elevation of the card. A number 0-3.",
-        type: FORM_TYPES.number,
-        value: 2,
-        min: 0,
-        max: 3,
-        step: 1,
-        precision: 0,
-        editable: true
-      },
+      elevation: ELEVATION_TYPE,
       numColumns: {
         type: FORM_TYPES.number,
         value: 3,

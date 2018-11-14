@@ -3,6 +3,11 @@ import { Image, View, Text } from "react-native";
 import Card from "./Card";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  ELEVATION_TYPE
+} from "../core/component-types";
 import type { Theme } from "../types";
 import Config from "./Config";
 
@@ -124,3 +129,219 @@ class CardBlock extends React.PureComponent<CardBlockProps> {
 }
 
 export default withTheme(CardBlock);
+
+export const SEED_DATA = [
+  {
+    name: "Small Block Card",
+    tag: "CardBlock1Col",
+    description:
+      "An elevated card with a title and description, that takes up one third of its container.",
+    category: COMPONENT_TYPES.card,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096668/draftbit/library/jigsaw-1.0/reps/Card_Block_1col.png",
+    supports_list_render: true,
+    props: {
+      image: {
+        label: "Image",
+        description: "Image",
+        type: FORM_TYPES.remoteImage,
+        value: null,
+        editable: true
+      },
+      title: {
+        label: "Title",
+        description: "Text to display",
+        type: FORM_TYPES.string,
+        value: "Beautiful West Coast Villa",
+        editable: true
+      },
+      leftDescription: {
+        label: "Left description",
+        description: "Text to display on the left",
+        type: FORM_TYPES.string,
+        value: "San Diego",
+        editable: true
+      },
+      rightDescription: {
+        label: "Right description",
+        description: "Text to display on the right",
+        type: FORM_TYPES.string,
+        value: "$100",
+        editable: true
+      },
+      icon: {
+        label: "Icon",
+        description: "Icon to display on the top right",
+        type: FORM_TYPES.icon,
+        value: "cloud",
+        editable: true
+      },
+      aspectRatio: {
+        label: "Aspect ratio",
+        description: "Aspect ratio of the image",
+        type: FORM_TYPES.aspectRatio,
+        value: 1.5,
+        editable: true
+      },
+      titleCentered: {
+        label: "Title centered",
+        description: "Whether to center the title",
+        type: FORM_TYPES.boolean,
+        value: false,
+        editable: true
+      },
+      elevation: ELEVATION_TYPE,
+      numColumns: {
+        type: FORM_TYPES.number,
+        value: 1,
+        editable: false
+      }
+    },
+    layout: {
+      width: 109,
+      height: 109
+    }
+  },
+  {
+    name: "Medium Block Card",
+    tag: "CardBlock2Col",
+    description:
+      "An elevated card with a title and description, that takes up one half of its container.",
+    category: COMPONENT_TYPES.card,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096684/draftbit/library/jigsaw-1.0/reps/Card_Block_2col.png",
+    supports_list_render: true,
+    props: {
+      image: {
+        label: "Image",
+        description: "Image",
+        type: FORM_TYPES.remoteImage,
+        value: null,
+        editable: true
+      },
+      title: {
+        label: "Title",
+        description: "Text to display",
+        type: FORM_TYPES.string,
+        value: "Beautiful West Coast Villa",
+        editable: true
+      },
+      leftDescription: {
+        label: "Left description",
+        description: "Text to display on the left",
+        type: FORM_TYPES.string,
+        value: "San Diego",
+        editable: true
+      },
+      rightDescription: {
+        label: "Right description",
+        description: "Text to display on the right",
+        type: FORM_TYPES.string,
+        value: "$100",
+        editable: true
+      },
+      icon: {
+        label: "Icon",
+        description: "Icon to display on the top right",
+        type: FORM_TYPES.icon,
+        value: "cloud",
+        editable: true
+      },
+      aspectRatio: {
+        label: "Aspect ratio",
+        description: "Aspect ratio of the image",
+        type: FORM_TYPES.aspectRatio,
+        value: 1.5,
+        editable: true
+      },
+      titleCentered: {
+        label: "Title centered",
+        description: "Whether to center the title",
+        type: FORM_TYPES.boolean,
+        value: false,
+        editable: true
+      },
+      elevation: ELEVATION_TYPE,
+      numColumns: {
+        type: FORM_TYPES.number,
+        value: 2,
+        editable: false
+      }
+    },
+    layout: {
+      width: 167,
+      height: 172
+    }
+  },
+  {
+    name: "Large Block Card",
+    tag: "CardBlock3Col",
+    description:
+      "An elevated card with a title and description, that takes up the full width its container.",
+    category: COMPONENT_TYPES.card,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096692/draftbit/library/jigsaw-1.0/reps/Card_Block_3col.png",
+    supports_list_render: true,
+    props: {
+      image: {
+        label: "Image",
+        description: "Image",
+        type: FORM_TYPES.remoteImage,
+        value: null,
+        editable: true
+      },
+      title: {
+        label: "Title",
+        description: "Text to display",
+        type: FORM_TYPES.string,
+        value: "Beautiful West Coast Villa",
+        editable: true
+      },
+      leftDescription: {
+        label: "Left description",
+        description: "Text to display on the left",
+        type: FORM_TYPES.string,
+        value: "San Diego",
+        editable: true
+      },
+      rightDescription: {
+        label: "Right description",
+        description: "Text to display on the right",
+        type: FORM_TYPES.string,
+        value: "$100",
+        editable: true
+      },
+      icon: {
+        label: "Icon",
+        description: "Icon to display on the top right",
+        type: FORM_TYPES.icon,
+        value: "cloud",
+        editable: true
+      },
+      aspectRatio: {
+        label: "Aspect ratio",
+        description: "Aspect ratio of the image",
+        type: FORM_TYPES.aspectRatio,
+        value: 1.5,
+        editable: true
+      },
+      titleCentered: {
+        label: "Title centered",
+        description: "Whether to center the title",
+        type: FORM_TYPES.boolean,
+        value: false,
+        editable: true
+      },
+      elevation: ELEVATION_TYPE,
+      numColumns: {
+        type: FORM_TYPES.number,
+        value: 3,
+        editable: false
+      }
+    },
+    layout: {
+      width: 343,
+      height: 296
+    }
+  }
+];

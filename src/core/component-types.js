@@ -32,3 +32,15 @@ export const COMPONENT_TYPES = {
   FAB: "FAB",
   row: "row"
 };
+
+export const ELEVATION_TYPE = {
+  label: "Elevation",
+  description: "Elevation of the component. A number 0-3.",
+  type: FORM_TYPES.number,
+  value: 2,
+  min: 0,
+  max: 3,
+  step: 1,
+  precision: 0,
+  editable: true
+};

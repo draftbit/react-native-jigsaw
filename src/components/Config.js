@@ -29,11 +29,15 @@ export default {
   cardImageUrl:
     "https://res.cloudinary.com/altos/image/upload/w_200,f_auto,c_scale/draftbit/components/Image.png",
   squareImageUrl: buildImageUrl({ width: 100 }, "Avatar"),
+  FABSize: 40,
+  FABBorderRadius: 20,
+  FABFixedHeight: 64,
   cardOneThirdWidth: "33.3%",
   cardTwoThirdsWidth: "66.6%",
   cardFullWidth: "100%",
   rowSingleLineImageSize: 24,
   rowMultiLineImageSize: 48,
   rowSingleLineIconSize: 24,
-  rowMultiLineIconSize: 16
+  rowMultiLineIconSize: 16,
+  buttonIconSize: 24
 };

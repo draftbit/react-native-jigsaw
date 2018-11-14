@@ -1,50 +1,47 @@
 /* @flow */
 
 import * as React from "react";
-import {
-  ActivityIndicator,
-  Animated,
-  View,
-  Text,
-  StyleSheet
-} from "react-native";
+import { ActivityIndicator, Animated, View, StyleSheet } from "react-native";
 import color from "color";
-import Config from "./Config";
-import Icon from "./Icon";
-import Touchable from "./Touchable";
-import { withTheme } from "../core/theming";
-import type { Theme } from "../types";
-import type { IconSource } from "./Icon";
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
+import Config from "../Config";
+import Icon from "../Icon";
+import Text from "../Text";
+import Touchable from "../Touchable";
+import { withTheme } from "../../core/theming";
+import type { Theme } from "../../types";
+import type { IconSource } from "../Icon";
+import { FORM_TYPES, COMPONENT_TYPES } from "../../core/component-types";
 
-type Props = {
+type Props = $RemoveChildren<typeof Elevation> & {|
   /**
-   * Type of the button. You can change the type to adjust the styling to give it desired emphasis.
-   * - `text` - flat button without background or outline (low emphasis)
-   * - `outline` - button with an outline (medium emphasis)
-   * - `solid` - button with a background color (high emphasis)
+   * Icon to display for the `FAB`.
    */
-  type?: "text" | "outline" | "solid",
+  icon: IconSource,
   /**
-   * Custom text color for flat button, or background color for solid button.
+   * Optional label for extended `FAB`.
    */
-  color?: string,
+  label?: string,
   /**
-   * Whether to show a loading indicator.
+   * Accessibility label for the FAB. This is read by the screen reader when the user taps the FAB.
+   * Uses `label` by default if specified.
    */
-  loading?: boolean,
+  accessibilityLabel?: string,
   /**
-   * Icon to display for the `Button`.
+   *  Type of the FAB.
+   *  - `standard` - a standard size FAB with no label and an icon (default)
+   *  - `outline` - an outlined version of a standard FAB
+   *  - `extended` - an extended FAB with room for a label
+   *  - `fixed` - an extended, full screen, fixed to the bottom button with a label
    */
-  icon?: IconSource,
+  type?: "standard" | "outline" | "extended" | "fixed",
   /**
-   * Whether the button is disabled. A disabled button is greyed out and `onPress` is not called on touch.
+   * Whether `FAB` is disabled. A disabled button is greyed out and `onPress` is not called on touch.
    */
   disabled?: boolean,
   /**
-   * Label text of the button.
+   * Whether `FAB` is loading. A loading button is greyed out and `onPress` is not called on touch.
    */
-  children: React.Node,
+  loading?: boolean,
   /**
    * Function to execute on press.
    */
@@ -54,42 +51,44 @@ type Props = {
    * @optional
    */
   theme: Theme
-};
+|};
 
 /**
- * A button is component that the user can press to trigger an action.
+ * A floating action button represents the primary action in an application.
  *
  * <div class="screenshots">
- *   <figure>
- *     <img src="screenshots/button-1.png" />
- *     <figcaption>Text button</figcaption>
- *   </figure>
- *   <figure>
- *     <img src="screenshots/button-2.png" />
- *     <figcaption>Outlined button</figcaption>
- *   </figure>
- *   <figure>
- *     <img src="screenshots/button-3.png" />
- *     <figcaption>Contained button</figcaption>
- *   </figure>
+ *   <img src="screenshots/fab-1.png" />
+ *   <img src="screenshots/fab-2.png" />
  * </div>
  *
  * ## Usage
  * ```js
  * import * as React from 'react';
- * import { Button } from '@draftbit/ui';
+ * import { StyleSheet } from 'react-native';
+ * import { FAB } from '@draftbit/ui';
  *
  * const MyComponent = () => (
- *   <Button icon="add-a-photo" type="solid" onPress={() => console.log('Pressed')}>
- *     Press me
- *   </Button>
+ *   <FAB
+ *     style={styles.fab}
+ *     type="outline"
+ *     icon="add"
+ *     onPress={() => console.log('Pressed')}
+ *   />
  * );
+ *
+ * const styles = StyleSheet.create({
+ *   fab: {
+ *     position: 'absolute',
+ *     margin: 16,
+ *     right: 0,
+ *     bottom: 0,
+ *   },
+ * })
  *
  * export default MyComponent;
  * ```
  */
-
-class Button extends React.Component<Props> {
+class FAB extends React.Component<Props> {
   static defaultProps = {
     elevation: 0,
     type: "solid"
@@ -102,7 +101,7 @@ class Button extends React.Component<Props> {
       loading,
       icon,
       color: colorOverride,
-      children,
+      label,
       onPress,
       style,
       theme,
@@ -121,7 +120,7 @@ class Button extends React.Component<Props> {
     let backgroundColor, borderColor, textColor, borderWidth;
     const buttonColor = colorOverride || colors.primary;
 
-    if (type === "solid") {
+    if (type === "standard" || type === "extended" || type === "fixed") {
       backgroundColor = buttonColor;
 
       if (disabled) {
@@ -165,24 +164,54 @@ class Button extends React.Component<Props> {
       backgroundColor,
       borderColor,
       borderWidth,
-      borderRadius: borderRadius.button
+      borderRadius: borderRadius.button,
+      alignItems: "center",
+      justifyContent: "center"
     };
+
+    const buttonStyles = [styles.button, buttonStyle, style];
+
+    const contentStyle = [styles.content];
 
     const textStyle = {
       textAlign: "center",
-      color: textColor,
-      marginVertical: spacing.large,
-      marginHorizontal: spacing.large
+      color: textColor
     };
 
     const iconStyle = [
       styles.icon,
       {
-        marginLeft: spacing.large,
-        marginRight: -8,
         width: Config.buttonIconSize
       }
     ];
+
+    if (type === "standard" || type === "outline") {
+      buttonStyle.width = Config.FABSize;
+      buttonStyle.height = Config.FABSize;
+      buttonStyle.borderRadius = Config.FABBorderRadius;
+
+      contentStyle.push({
+        width: Config.FABSize,
+        height: Config.FABSize
+      });
+    }
+
+    if (type === "extended" || type === "fixed") {
+      iconStyle.push({
+        marginLeft: spacing.large,
+        marginRight: -8
+      });
+
+      textStyle.margin = spacing.large;
+    }
+
+    if (type === "fixed") {
+      buttonStyles.push({
+        height: Config.FABFixedHeight,
+        alignSelf: "stretch"
+      });
+      buttonStyles.push(styles.fixed);
+    }
 
     return (
       <Touchable
@@ -191,7 +220,7 @@ class Button extends React.Component<Props> {
         accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
         accessibilityComponentType="button"
         disabled={disabled || loading}
-        style={[styles.button, buttonStyle, style]}
+        style={buttonStyles}
       >
         <View style={styles.content}>
           {icon && loading !== true ? (
@@ -210,12 +239,14 @@ class Button extends React.Component<Props> {
               style={iconStyle}
             />
           ) : null}
-          <Text
-            numberOfLines={1}
-            style={[styles.label, textStyle, typography.button]}
-          >
-            {children}
-          </Text>
+          {label ? (
+            <Text
+              numberOfLines={1}
+              style={[styles.label, textStyle, typography.button]}
+            >
+              {label}
+            </Text>
+          ) : null}
         </View>
       </Touchable>
     );
@@ -224,7 +255,6 @@ class Button extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   button: {
-    minWidth: 64,
     borderStyle: "solid"
   },
   content: {
@@ -234,10 +264,17 @@ const styles = StyleSheet.create({
   },
   icon: {
     width: Config.buttonIconSize
+  },
+  fixed: {
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: 64,
+    borderRadius: 0
   }
 });
 
-export default withTheme(Button);
+export default withTheme(FAB);
 
 const BUTTON_PROPS = {
   icon: {
@@ -268,9 +305,31 @@ const BUTTON_PROPS = {
 
 export const SEED_DATA = [
   {
-    name: "Button Outline",
-    tag: "Button",
-    category: COMPONENT_TYPES.button,
+    name: "FAB Mini",
+    tab: "FAB",
+    category: "FAB",
+    category: COMPONENT_TYPES.FAB,
+    description: "A round, mini FAB",
+    props: {
+      ...BUTTON_PROPS,
+      type: {
+        label: "Type",
+        description: "Button type",
+        editable: false,
+        required: true,
+        type: FORM_TYPES.icon,
+        value: "standard"
+      }
+    },
+    layout: {
+      width: 80,
+      height: 80
+    }
+  },
+  {
+    name: "FAB Outline",
+    tab: "FAB",
+    category: COMPONENT_TYPES.FAB,
     props: {
       ...BUTTON_PROPS,
       type: {
@@ -283,14 +342,14 @@ export const SEED_DATA = [
       }
     },
     layout: {
-      width: 343,
-      height: 48
+      width: 80,
+      height: 80
     }
   },
   {
-    name: "Button Solid",
-    tag: "Button",
-    category: COMPONENT_TYPES.button,
+    name: "FAB Extended",
+    tab: "FAB",
+    category: COMPONENT_TYPES.FAB,
     props: {
       ...BUTTON_PROPS,
       type: {
@@ -299,18 +358,18 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         type: FORM_TYPES.string,
-        value: "text"
+        value: "extended"
       }
     },
     layout: {
-      width: 343,
+      width: 281,
       height: 48
     }
   },
   {
-    name: "Button Text",
-    tag: "Button",
-    category: COMPONENT_TYPES.button,
+    name: "FAB Fixed",
+    tab: "FAB",
+    category: COMPONENT_TYPES.FAB,
     props: {
       ...BUTTON_PROPS,
       type: {
@@ -319,12 +378,12 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         type: FORM_TYPES.string,
-        value: "solid"
+        value: "fixed"
       }
     },
     layout: {
-      width: 343,
-      height: 48
+      width: 375,
+      height: 64
     }
   }
 ];

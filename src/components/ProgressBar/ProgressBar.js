@@ -3,6 +3,7 @@
 import * as React from "react";
 import ProgressBarComponent from "./ProgressBarComponent";
 import { withTheme } from "../../core/theming";
+import { COMPONENT_TYPES, FORM_TYPES } from "../../core/component-types";
 import type { Theme } from "../../types";
 
 type Props = {|
@@ -52,3 +53,32 @@ class ProgressBar extends React.Component<Props> {
 }
 
 export default withTheme(ProgressBar);
+
+export const SEED_DATA = [
+  {
+    name: "Progress Bar",
+    tag: "ProgressBar",
+    description: "A horizontal bar used to show completed progress",
+    category: COMPONENT_TYPES.primitive,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096686/draftbit/library/jigsaw-1.0/reps/Status_Progress.png",
+    supports_list_render: false,
+    props: {
+      progress: {
+        label: "Progress",
+        description: "The amount of progress to display. A number 0-1.",
+        type: FORM_TYPES.number,
+        value: 0.5,
+        min: 0,
+        max: 1,
+        step: 0.01,
+        precision: 2,
+        editable: true
+      }
+    },
+    layout: {
+      width: 343,
+      height: 2
+    }
+  }
+];

@@ -1,5 +1,4 @@
 /* @flow */
-
 import * as React from 'react';
 import { Animated, View, StyleSheet } from 'react-native';
 import color from 'color';
@@ -68,8 +67,9 @@ class CheckboxAndroid extends React.Component<Props, State> {
     const { status, disabled, onPress, theme, ...rest } = this.props;
     const checked = status === 'checked';
     const indeterminate = status === 'indeterminate';
+    const uncheckedColor = theme.colors.light
     const checkedColor = this.props.color || theme.colors.primary;
-    const checkboxColor = checked ? checkedColor : theme.colors.light;
+    const checkboxColor = checked ? checkedColor : uncheckedColor
     const rippleColor = checkedColor
 
 
@@ -83,7 +83,6 @@ class CheckboxAndroid extends React.Component<Props, State> {
       : checked
         ? 'check-box'
         : 'check-box-outline-blank';
-
     return (
       <Touchable
         {...rest}

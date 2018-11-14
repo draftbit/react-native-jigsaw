@@ -9,6 +9,7 @@ import CardInlineExample from "./src/CardInlineExample";
 import ProgressBarExample from "./src/ProgressBarExample";
 import RowExample from "./src/RowExample";
 import TextFieldExample from "./src/TextFieldExample";
+import FABExample from './src/FABExample'
 
 const Drawer = createDrawerNavigator({
   Home: () => (
@@ -17,11 +18,14 @@ const Drawer = createDrawerNavigator({
     </Text>
   ),
   Button: ButtonExample,
+  TextField: TextFieldExample,
   CardBlock: CardBlockExample,
   CardInline: CardInlineExample,
   ProgressBar: ProgressBarExample,
   Row: RowExample,
-  TextField: TextFieldExample
+  FAB: FABExample
+}, {
+  initialRouteName: "Home"
 });
 
 const App = createStackNavigator(

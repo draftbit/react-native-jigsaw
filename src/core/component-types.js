@@ -29,5 +29,6 @@ export const COMPONENT_TYPES = {
   image: "image",
   primitive: "primitive",
   navigation: "navigation",
-  FAB: "FAB"
+  FAB: "FAB",
+  row: "row"
 };

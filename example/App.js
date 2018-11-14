@@ -7,6 +7,7 @@ import ButtonExample from "./src/ButtonExample";
 import CardBlockExample from "./src/CardBlockExample";
 import CardContainerExample from "./src/CardContainerExample";
 import CardInlineExample from "./src/CardInlineExample";
+import HeaderExample from "./src/HeaderExample";
 import ProgressBarExample from "./src/ProgressBarExample";
 import RowExample from "./src/RowExample";
 import TextFieldExample from "./src/TextFieldExample";
@@ -23,6 +24,7 @@ const Drawer = createDrawerNavigator({
   CardBlock: CardBlockExample,
   CardContainer: CardContainerExample,
   CardInline: CardInlineExample,
+  Header: HeaderExample,
   ProgressBar: ProgressBarExample,
   Row: RowExample,
   FAB: FABExample

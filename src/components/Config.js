@@ -42,5 +42,6 @@ export default {
   rowMultiLineImageSize: 48,
   rowSingleLineIconSize: 24,
   rowMultiLineIconSize: 16,
+  headerIconSize: 24,
   buttonIconSize: 24
 };

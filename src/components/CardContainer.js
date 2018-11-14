@@ -159,7 +159,7 @@ export default withTheme(CardContainer);
 
 export const SEED_DATA = [
   {
-    name: "Medium contained card",
+    name: "Medium Contained Card",
     tag: "CardContainer2Col",
     description:
       "An elevated card with a title and description, that takes up two thirds of its container.",
@@ -240,7 +240,7 @@ export const SEED_DATA = [
     }
   },
   {
-    name: "Large contained card",
+    name: "Large Contained Card",
     tag: "CardContainer3Col",
     description:
       "An elevated card with a title and description, that takes up its full container.",

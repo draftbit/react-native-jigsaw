@@ -95,12 +95,12 @@ class CheckboxAndroid extends React.Component<Props, State> {
         accessibilityRole="button"
         accessibilityStates={disabled ? ['disabled'] : undefined}
         accessibilityLiveRegion="polite"
-        style={{ borderRadius: 18, width: 36, height: 36, padding: 6, opacity: (disabled) ? 0.5 : 1 }}>
+        style={{ borderRadius: 18, width: 30, height: 30, opacity: (disabled) ? 0.5 : 1 }}>
         <Animated.View style={{ transform: [{ scale: this.state.scaleAnim }] }}>
           <Icon
             allowFontScaling={false}
             source={icon}
-            size={24}
+            size={29}
             color={checkboxColor}
           />
           <View style={[StyleSheet.absoluteFill, styles.fillContainer]}>
@@ -117,18 +117,17 @@ class CheckboxAndroid extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 18,
-    width: 36,
-    height: 36,
-    padding: 6,
+    borderRadius: 0,
+    width: 30,
+    height: 30,
   },
   fillContainer: {
     alignItems: 'center',
     justifyContent: 'center',
   },
   fill: {
-    height: 14,
-    width: 14,
+    height: 30,
+    width: 30,
   },
 });
 

@@ -38,6 +38,7 @@ export default {
   cardOneThirdWidth: "33.3%",
   cardHalfWidth: "50%",
   cardFullWidth: "100%",
+  cardContainerShortImageAspectRatio: 1,
   rowSingleLineImageSize: 24,
   rowMultiLineImageSize: 48,
   rowSingleLineIconSize: 24,

@@ -5,6 +5,7 @@ import { Provider, DefaultTheme, Touchable, Icon } from "@draftbit/ui";
 import { createDrawerNavigator, createStackNavigator } from "react-navigation";
 import ButtonExample from "./src/ButtonExample";
 import CardBlockExample from "./src/CardBlockExample";
+import CardContainerShortImageExample from "./src/CardContainerShortImageExample";
 import CardContainerExample from "./src/CardContainerExample";
 import CardContainerRatingExample from "./src/CardContainerRatingExample";
 import CardInlineExample from "./src/CardInlineExample";
@@ -22,17 +23,16 @@ const Drawer = createDrawerNavigator(
         Select an example from the drawer
       </Text>
     ),
+    Avatar: AvatarExample,
     Button: ButtonExample,
     TextField: TextFieldExample,
     CardBlock: CardBlockExample,
+    CardContainerShortImage: CardContainerShortImageExample,
     CardContainer: CardContainerExample,
-    CardContainerRating: CardContainerRatingExample,
     CardInline: CardInlineExample,
-    Header: HeaderExample,
     ProgressBar: ProgressBarExample,
     Row: RowExample,
-    FAB: FABExample,
-    Avatar: AvatarExample
+    FAB: FABExample
   },
   {
     initialRouteName: "Home"

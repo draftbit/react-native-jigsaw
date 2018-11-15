@@ -6,6 +6,7 @@ import { createDrawerNavigator, createStackNavigator } from "react-navigation";
 import ButtonExample from "./src/ButtonExample";
 import CardBlockExample from "./src/CardBlockExample";
 import CardContainerExample from "./src/CardContainerExample";
+import CardContainerRatingExample from "./src/CardContainerRatingExample";
 import CardInlineExample from "./src/CardInlineExample";
 import HeaderExample from "./src/HeaderExample";
 import ProgressBarExample from "./src/ProgressBarExample";
@@ -25,6 +26,7 @@ const Drawer = createDrawerNavigator(
     TextField: TextFieldExample,
     CardBlock: CardBlockExample,
     CardContainer: CardContainerExample,
+    CardContainerRating: CardContainerRatingExample,
     CardInline: CardInlineExample,
     Header: HeaderExample,
     ProgressBar: ProgressBarExample,

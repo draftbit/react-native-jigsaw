@@ -13,6 +13,9 @@ export { default as Button } from "./components/Button";
 export { default as IconButton } from "./components/IconButton";
 export { default as FAB } from "./components/FAB/FAB";
 export { default as CardBlock } from "./components/CardBlock";
+export {
+  default as CardContainerShortImage
+} from "./components/CardContainerShortImage";
 export { default as CardContainer } from "./components/CardContainer";
 export {
   default as CardContainerRating

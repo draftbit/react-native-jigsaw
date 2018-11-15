@@ -36,12 +36,13 @@ export default {
   FABBorderRadius: 20,
   FABFixedHeight: 64,
   cardOneThirdWidth: "33.3%",
-  cardTwoThirdsWidth: "66.6%",
+  cardHalfWidth: "50%",
   cardFullWidth: "100%",
   rowSingleLineImageSize: 24,
   rowMultiLineImageSize: 48,
   rowSingleLineIconSize: 24,
   rowMultiLineIconSize: 16,
+  ratingStarSize: 16,
   headerIconSize: 24,
   buttonIconSize: 24
 };

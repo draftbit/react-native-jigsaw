@@ -4,25 +4,22 @@ import color from "color";
 import Card from "./Card";
 import Elevation from "./Elevation";
 import Icon from "./Icon";
+import StarRating from "./StarRating";
 import { withTheme } from "../core/theming";
-import {
-  FORM_TYPES,
-  COMPONENT_TYPES,
-  ELEVATION_TYPE
-} from "../core/component-types";
+import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
 import Config from "./Config";
 import type { Theme } from "../types";
 
 const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
 const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
 
-export type CardContainerProps = {
+export type CardContainerRatingProps = {
   image: string | { uri: string },
   title?: string,
   leftDescription?: string,
   rightDescription?: string,
-  textCentered?: boolean,
   icon?: string,
+  rating: number,
   aspectRatio?: number,
   elevation: number,
   numColumns: 2 | 3,
@@ -31,7 +28,7 @@ export type CardContainerProps = {
   onPress: () => void
 };
 
-class CardContainer extends React.PureComponent<CardContainerProps> {
+class CardContainerRating extends React.PureComponent<CardContainerRatingProps> {
   static defaultProps = {
     aspectRatio: 1.5,
     elevation: 2,
@@ -44,8 +41,8 @@ class CardContainer extends React.PureComponent<CardContainerProps> {
       title,
       leftDescription,
       rightDescription,
-      textCentered,
       icon,
+      rating,
       aspectRatio,
       elevation,
       numColumns,
@@ -54,19 +51,15 @@ class CardContainer extends React.PureComponent<CardContainerProps> {
       onPress
     } = this.props;
 
-    let textJustification, titleStyle;
-    if (textCentered && !rightDescription) {
-      textJustification = "center";
-    } else {
-      textJustification = "space-between";
-    }
-
+    let titleStyle, rightDescriptionStyle;
     switch (numColumns) {
       case 2:
         titleStyle = typography.headline6;
+        rightDescriptionStyle = typography.body2;
         break;
       case 3:
         titleStyle = typography.headline5;
+        rightDescriptionStyle = typography.caption;
         break;
     }
 
@@ -90,7 +83,7 @@ class CardContainer extends React.PureComponent<CardContainerProps> {
                   style={{
                     flexDirection: "row",
                     alignItems: "center",
-                    justifyContent: textJustification
+                    justifyContent: "space-between"
                   }}
                 >
                   <Text
@@ -102,31 +95,42 @@ class CardContainer extends React.PureComponent<CardContainerProps> {
                 </View>
               ) : null}
               {leftDescription ? (
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: textJustification,
-                    alignItems: "center",
-                    marginTop:
-                      numColumns === 3 ? spacing.text : spacing.text / 2
-                  }}
+                <Text
+                  numberOfLines={1}
+                  style={[
+                    typography.body2,
+                    {
+                      color: colors.medium,
+                      marginTop:
+                        numColumns === 3 ? spacing.text : spacing.text / 2
+                    }
+                  ]}
                 >
-                  <Text
-                    numberOfLines={1}
-                    style={[typography.body2, { color: colors.medium }]}
-                  >
-                    {leftDescription}
-                  </Text>
-                  {rightDescription ? (
-                    <Text
-                      numberOfLines={1}
-                      style={[typography.subtitle2, { color: colors.light }]}
-                    >
-                      {rightDescription}
-                    </Text>
-                  ) : null}
-                </View>
+                  {leftDescription}
+                </Text>
               ) : null}
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginTop: numColumns === 3 ? spacing.large : spacing.medium
+                }}
+              >
+                <StarRating rating={rating} />
+                <Text
+                  style={[
+                    rightDescriptionStyle,
+                    {
+                      color: colors.medium,
+                      marginLeft: spacing.small
+                    }
+                  ]}
+                  numberOfLines={1}
+                >
+                  {rightDescription}
+                </Text>
+              </View>
             </View>
             {icon && (
               <Elevation
@@ -159,17 +163,17 @@ class CardContainer extends React.PureComponent<CardContainerProps> {
   }
 }
 
-export default withTheme(CardContainer);
+export default withTheme(CardContainerRating);
 
 export const SEED_DATA = [
   {
-    name: "Medium Contained Card",
-    tag: "CardContainer2Col",
+    name: "Medium rating card",
+    tag: "CardContainerRating2Col",
     description:
       "An elevated card with a title and description, that takes up half of its container.",
     category: COMPONENT_TYPES.card,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096650/draftbit/library/jigsaw-1.0/reps/Card_Inline_2col.png",
+      "https://res.cloudinary.com/altos/image/upload/v1541096709/draftbit/library/jigsaw-1.0/reps/Card_ContainerRating_2col.png",
     supports_list_render: true,
     props: {
       image: {
@@ -214,14 +218,27 @@ export const SEED_DATA = [
         value: 1.5,
         editable: true
       },
-      textCentered: {
-        label: "Text centered",
-        description: "Whether to center the text",
-        type: FORM_TYPES.boolean,
-        value: false,
+      rating: {
+        label: "Rating",
+        description: "Number of stars to show. A number 0-5.",
+        type: FORM_TYPES.number,
+        min: 0,
+        max: 5,
+        step: 1,
+        precision: 0,
         editable: true
       },
-      elevation: ELEVATION_TYPE,
+      elevation: {
+        label: "Elevation",
+        description: "Elevation of the card. A number 0-3.",
+        type: FORM_TYPES.number,
+        value: 2,
+        min: 0,
+        max: 3,
+        step: 1,
+        precision: 0,
+        editable: true
+      },
       numColumns: {
         type: FORM_TYPES.number,
         value: 2,
@@ -229,18 +246,18 @@ export const SEED_DATA = [
       }
     },
     layout: {
-      width: 375,
-      height: 296
+      width: 169,
+      height: 215
     }
   },
   {
-    name: "Large Contained Card",
-    tag: "CardContainer3Col",
+    name: "Large rating card",
+    tag: "CardContainerRating3Col",
     description:
       "An elevated card with a title and description, that takes up its full container.",
     category: COMPONENT_TYPES.card,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096706/draftbit/library/jigsaw-1.0/reps/Card_Container_3col.png",
+      "https://res.cloudinary.com/altos/image/upload/v1541096711/draftbit/library/jigsaw-1.0/reps/Card_ContainerRating_3col.png",
     supports_list_render: true,
     props: {
       image: {
@@ -285,14 +302,27 @@ export const SEED_DATA = [
         value: 1.5,
         editable: true
       },
-      textCentered: {
-        label: "Text centered",
-        description: "Whether to center the text",
-        type: FORM_TYPES.boolean,
-        value: false,
+      rating: {
+        label: "Rating",
+        description: "Number of stars to show. A number 0-5.",
+        type: FORM_TYPES.number,
+        min: 0,
+        max: 5,
+        step: 1,
+        precision: 0,
         editable: true
       },
-      elevation: ELEVATION_TYPE,
+      elevation: {
+        label: "Elevation",
+        description: "Elevation of the card. A number 0-3.",
+        type: FORM_TYPES.number,
+        value: 2,
+        min: 0,
+        max: 3,
+        step: 1,
+        precision: 0,
+        editable: true
+      },
       numColumns: {
         type: FORM_TYPES.number,
         value: 3,
@@ -300,8 +330,8 @@ export const SEED_DATA = [
       }
     },
     layout: {
-      width: 375,
-      height: 296
+      width: 345,
+      height: 348
     }
   }
 ];

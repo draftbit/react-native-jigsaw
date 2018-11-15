@@ -14,6 +14,9 @@ export { default as IconButton } from "./components/IconButton";
 export { default as FAB } from "./components/FAB/FAB";
 export { default as CardBlock } from "./components/CardBlock";
 export { default as CardContainer } from "./components/CardContainer";
+export {
+  default as CardContainerRating
+} from "./components/CardContainerRating";
 export { default as CardInline } from "./components/CardInline";
 export { default as Divider } from "./components/Divider";
 export { default as HeaderLarge } from "./components/HeaderLarge";

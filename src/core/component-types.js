@@ -30,6 +30,7 @@ export const COMPONENT_TYPES = {
   primitive: "primitive",
   navigation: "navigation",
   FAB: "FAB",
+  formControl: "formControl",
   row: "row"
 };
 

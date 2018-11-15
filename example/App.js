@@ -12,6 +12,7 @@ import ProgressBarExample from "./src/ProgressBarExample";
 import RowExample from "./src/RowExample";
 import TextFieldExample from "./src/TextFieldExample";
 import FABExample from "./src/FABExample";
+import AvatarExample from "./src/AvatarExample";
 
 const Drawer = createDrawerNavigator(
   {
@@ -28,7 +29,8 @@ const Drawer = createDrawerNavigator(
     Header: HeaderExample,
     ProgressBar: ProgressBarExample,
     Row: RowExample,
-    FAB: FABExample
+    FAB: FABExample,
+    Avatar: AvatarExample
   },
   {
     initialRouteName: "Home"

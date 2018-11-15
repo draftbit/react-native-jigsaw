@@ -7,6 +7,8 @@ export { default as DefaultTheme } from "./styles/DefaultTheme";
 
 export { default as Touchable } from "./components/Touchable";
 
+export { default as Avatar } from "./components/Avatar";
+export { default as AvatarEdit } from "./components/AvatarEdit";
 export { default as Button } from "./components/Button";
 export { default as IconButton } from "./components/IconButton";
 export { default as FAB } from "./components/FAB/FAB";

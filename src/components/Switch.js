@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Switch as NativeSwitch, Platform } from 'react-native';
 import { withTheme } from '../core/theming';
 import type { Theme } from '../types';
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 type Props = {
   /**
@@ -56,5 +57,36 @@ class Switch extends React.Component<Props> {
     );
   }
 }
+
+export const SEED_DATA = {
+  name: "Switch",
+  tag: "Switch",
+  category: COMPONENT_TYPES.button,
+  props: {
+    disabled: {
+      label: "Disable",
+      description: "Boolean to handle disabling the switch",
+      required: false,
+      editable: true,
+      value: false,
+      type: FORM_TYPES.boolean,
+    },
+    value: {
+      label: "Switch onPress handler",
+      description: "Value of the switch, true means 'on', false means 'off'",
+      editable: true,
+      required: true,
+      value: true,
+      type: FORM_TYPES.boolean,
+    },
+    color: {
+      label: "Switch color",
+      description: "Custom color for switch",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.string,
+    }
+  },
+};
 
 export default withTheme(Switch);

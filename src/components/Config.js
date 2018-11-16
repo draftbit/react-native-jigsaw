@@ -28,12 +28,22 @@ export default {
   cardImageSize: 200,
   cardImageUrl:
     "https://res.cloudinary.com/altos/image/upload/w_200,f_auto,c_scale/draftbit/components/Image.png",
+  cardIconSize: 16,
+  cardIconBackgroundOpacity: 0.24,
+  cardIconElevation: 1,
   squareImageUrl: buildImageUrl({ width: 100 }, "Avatar"),
+  FABSize: 40,
+  FABBorderRadius: 20,
+  FABFixedHeight: 64,
   cardOneThirdWidth: "33.3%",
-  cardTwoThirdsWidth: "66.6%",
+  cardHalfWidth: "50%",
   cardFullWidth: "100%",
+  cardContainerShortImageAspectRatio: 1,
   rowSingleLineImageSize: 24,
   rowMultiLineImageSize: 48,
   rowSingleLineIconSize: 24,
-  rowMultiLineIconSize: 16
+  rowMultiLineIconSize: 16,
+  ratingStarSize: 16,
+  headerIconSize: 24,
+  buttonIconSize: 24
 };

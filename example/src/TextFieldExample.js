@@ -42,7 +42,9 @@ class TextFieldExample extends React.Component<Props, State> {
     textWithLeftInsetIcon: "",
     outlinedTextWithLeftInsetIcon: "",
     textWithRightIcon: "",
-    outlinedTextWithRightIcon: ""
+    outlinedTextWithRightIcon: "",
+    textareaText: "",
+    outlinedTextareaText: ""
   };
 
   _isUsernameValid = () => /^[a-zA-Z]*$/.test(this.state.name);
@@ -67,20 +69,20 @@ class TextFieldExample extends React.Component<Props, State> {
         >
           <TextField
             style={styles.inputContainerStyle}
-            label="Flat input"
+            label="Underline input"
             value={this.state.text}
             onChangeText={text => this.setState({ text })}
           />
           <TextField
-            mode="outlined"
+            type="solid"
             style={styles.inputContainerStyle}
-            label="Outlined input"
+            label="Solid input"
             value={this.state.outlinedText}
             onChangeText={outlinedText => this.setState({ outlinedText })}
           />
           <TextField
             style={styles.inputContainerStyle}
-            label="Flat input with placeholder"
+            label="Underline input with placeholder"
             placeholder="Type something"
             value={this.state.textWithPlaceholder}
             onChangeText={textWithPlaceholder =>
@@ -88,9 +90,9 @@ class TextFieldExample extends React.Component<Props, State> {
             }
           />
           <TextField
-            mode="outlined"
+            type="solid"
             style={styles.inputContainerStyle}
-            label="Outlined input with placeholder"
+            label="Solid input with placeholder"
             placeholder="Type something"
             value={this.state.outlinedTextWithPlaceholder}
             onChangeText={outlinedTextWithPlaceholder =>
@@ -98,7 +100,7 @@ class TextFieldExample extends React.Component<Props, State> {
             }
           />
           <TextField
-            label="Flat input with assistive text"
+            label="Underline input with assistive text"
             placeholder="Enter username, only letters"
             value={this.state.name}
             error={!this._isUsernameValid()}
@@ -107,8 +109,8 @@ class TextFieldExample extends React.Component<Props, State> {
             style={styles.inputContainerStyle}
           />
           <TextField
-            mode="outlined"
-            label="Outlined input with assistive text"
+            type="solid"
+            label="Solid input with assistive text"
             placeholder="Enter username, only letters"
             value={this.state.outlinedName}
             error={!this._isUsernameValid()}
@@ -118,7 +120,7 @@ class TextFieldExample extends React.Component<Props, State> {
           />
           <TextField
             style={styles.inputContainerStyle}
-            label="Flat input with left outset icon"
+            label="Underline input with left outset icon"
             leftIconName="add"
             leftIconMode="outset"
             placeholder="Type something"
@@ -128,9 +130,9 @@ class TextFieldExample extends React.Component<Props, State> {
             }
           />
           <TextField
-            mode="outlined"
+            type="solid"
             style={styles.inputContainerStyle}
-            label="Outlined input with left outset icon"
+            label="Solid input with left outset icon"
             leftIconName="add"
             leftIconMode="outset"
             placeholder="Type something"
@@ -141,7 +143,7 @@ class TextFieldExample extends React.Component<Props, State> {
           />
           <TextField
             style={styles.inputContainerStyle}
-            label="Flat input with left inset icon"
+            label="Underline input with left inset icon"
             leftIconName="add"
             leftIconMode="inset"
             placeholder="Type something"
@@ -151,9 +153,9 @@ class TextFieldExample extends React.Component<Props, State> {
             }
           />
           <TextField
-            mode="outlined"
+            type="solid"
             style={styles.inputContainerStyle}
-            label="Outlined input with left inset icon"
+            label="Solid input with left inset icon"
             leftIconName="add"
             leftIconMode="inset"
             placeholder="Type something"
@@ -164,7 +166,7 @@ class TextFieldExample extends React.Component<Props, State> {
           />
           <TextField
             style={styles.inputContainerStyle}
-            label="Flat input with right icon"
+            label="Underline input with right icon"
             rightIconName="add"
             placeholder="Type something"
             value={this.state.textWithRightIcon}
@@ -173,9 +175,9 @@ class TextFieldExample extends React.Component<Props, State> {
             }
           />
           <TextField
-            mode="outlined"
+            type="solid"
             style={styles.inputContainerStyle}
-            label="Outlined input with right icon"
+            label="Solid input with right icon"
             rightIconName="add"
             placeholder="Type something"
             value={this.state.outlinedTextWithRightIcon}
@@ -185,14 +187,31 @@ class TextFieldExample extends React.Component<Props, State> {
           />
           <TextField
             style={styles.inputContainerStyle}
-            label="Disabled flat input"
+            label="Disabled underline input"
             disabled
           />
           <TextField
-            mode="outlined"
+            type="solid"
             style={styles.inputContainerStyle}
-            label="Disabled outlined input"
+            label="Disabled solid input"
             disabled
+          />
+          <TextField
+            style={styles.inputContainerStyle}
+            label="Underline textarea"
+            value={this.state.textareaText}
+            onChangeText={textareaText => this.setState({ textareaText })}
+            multiline
+          />
+          <TextField
+            type="solid"
+            style={styles.inputContainerStyle}
+            label="Solid textarea"
+            value={this.state.outlinedTextareaText}
+            onChangeText={outlinedTextareaText =>
+              this.setState({ outlinedTextareaText })
+            }
+            multiline
           />
         </ScrollView>
       </KeyboardAvoidingView>

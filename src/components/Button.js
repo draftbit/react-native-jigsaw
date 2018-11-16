@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
 
 export default withTheme(Button);
 
-const BUTTON_PROPS = {
+const SEED_DATA_PROPS = {
   icon: {
     label: "Icon Name",
     description: "Name of the icon",
@@ -272,7 +272,7 @@ export const SEED_DATA = [
     tag: "Button",
     category: COMPONENT_TYPES.button,
     props: {
-      ...BUTTON_PROPS,
+      ...SEED_DATA_PROPS,
       type: {
         label: "Type",
         description: "Button type",
@@ -292,7 +292,7 @@ export const SEED_DATA = [
     tag: "Button",
     category: COMPONENT_TYPES.button,
     props: {
-      ...BUTTON_PROPS,
+      ...SEED_DATA_PROPS,
       type: {
         label: "Type",
         description: "Button type",
@@ -312,7 +312,7 @@ export const SEED_DATA = [
     tag: "Button",
     category: COMPONENT_TYPES.button,
     props: {
-      ...BUTTON_PROPS,
+      ...SEED_DATA_PROPS,
       type: {
         label: "Type",
         description: "Button type",

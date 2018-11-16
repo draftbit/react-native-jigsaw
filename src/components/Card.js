@@ -24,7 +24,7 @@ class Card extends React.Component<Props> {
     if (numColumns === 1) {
       cardStyle = { width: Config.cardOneThirdWidth };
     } else if (numColumns === 2) {
-      cardStyle = { width: Config.cardTwoThirdsWidth };
+      cardStyle = { width: Config.cardHalfWidth };
     } else {
       cardStyle = { width: Config.cardFullWidth };
     }

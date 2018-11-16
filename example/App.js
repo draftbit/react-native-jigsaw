@@ -5,24 +5,42 @@ import { Provider, DefaultTheme, Touchable, Icon } from "@draftbit/ui";
 import { createDrawerNavigator, createStackNavigator } from "react-navigation";
 import ButtonExample from "./src/ButtonExample";
 import CardBlockExample from "./src/CardBlockExample";
+import CardContainerShortImageExample from "./src/CardContainerShortImageExample";
+import CardContainerExample from "./src/CardContainerExample";
+import CardContainerRatingExample from "./src/CardContainerRatingExample";
+import CardInlineExample from "./src/CardInlineExample";
+import HeaderExample from "./src/HeaderExample";
 import ProgressBarExample from "./src/ProgressBarExample";
 import RowExample from "./src/RowExample";
 import TextFieldExample from "./src/TextFieldExample";
+import FABExample from "./src/FABExample";
+import AvatarExample from "./src/AvatarExample";
 import ControllerExample from './src/ControllerExample'
 
-const Drawer = createDrawerNavigator({
-  Home: () => (
-    <Text style={{ alignSelf: "center", marginTop: 30 }}>
-      Select an example from the drawer
-    </Text>
-  ),
-  Button: ButtonExample,
-  CardBlock: CardBlockExample,
-  ProgressBar: ProgressBarExample,
-  Row: RowExample,
-  TextField: TextFieldExample,
-  Controllers: ControllerExample,
-});
+
+const Drawer = createDrawerNavigator(
+  {
+    Home: () => (
+      <Text style={{ alignSelf: "center", marginTop: 30 }}>
+        Select an example from the drawer
+      </Text>
+    ),
+    Avatar: AvatarExample,
+    Button: ButtonExample,
+    TextField: TextFieldExample,
+    CardBlock: CardBlockExample,
+    CardContainerShortImage: CardContainerShortImageExample,
+    CardContainer: CardContainerExample,
+    CardInline: CardInlineExample,
+    ProgressBar: ProgressBarExample,
+    Row: RowExample,
+    FAB: FABExample,
+    Controllers: ControllerExample,
+  },
+  {
+    initialRouteName: "Home"
+  }
+);
 
 const App = createStackNavigator(
   { Root: { screen: Drawer } },

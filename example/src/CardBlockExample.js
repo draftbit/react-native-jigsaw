@@ -25,7 +25,7 @@ class CardBlockExample extends React.Component<Props> {
         <Text style={styles.title}>CardBlock1Col</Text>
         <CardBlock
           image={CARD_IMAGE_URL}
-          label="Beautiful West Coast Villa"
+          title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           rightDescription="$100"
           numColumns={1}
@@ -34,7 +34,7 @@ class CardBlockExample extends React.Component<Props> {
         <Text style={styles.title}>CardBlock2Col</Text>
         <CardBlock
           image={CARD_IMAGE_URL}
-          label="Beautiful West Coast Villa"
+          title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           rightDescription="$100"
           numColumns={2}
@@ -43,7 +43,7 @@ class CardBlockExample extends React.Component<Props> {
         <Text style={styles.title}>CardBlock3Col</Text>
         <CardBlock
           image={CARD_IMAGE_URL}
-          label="Beautiful West Coast Villa"
+          title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           rightDescription="$100"
           style={styles.cardBlockStyle}
@@ -51,7 +51,7 @@ class CardBlockExample extends React.Component<Props> {
         <Text style={styles.title}>CardBlock1Col, 1x1 aspect ratio</Text>
         <CardBlock
           image={CARD_IMAGE_URL}
-          label="Beautiful West Coast Villa"
+          title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           rightDescription="$100"
           numColumns={1}
@@ -61,7 +61,7 @@ class CardBlockExample extends React.Component<Props> {
         <Text style={styles.title}>CardBlock2Col, 1x1 aspect ratio</Text>
         <CardBlock
           image={CARD_IMAGE_URL}
-          label="Beautiful West Coast Villa"
+          title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           rightDescription="$100"
           numColumns={2}
@@ -71,7 +71,7 @@ class CardBlockExample extends React.Component<Props> {
         <Text style={styles.title}>CardBlock3Col, 1x1 aspect ratio</Text>
         <CardBlock
           image={CARD_IMAGE_URL}
-          label="Beautiful West Coast Villa"
+          title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           rightDescription="$100"
           aspectRatio={1}
@@ -80,15 +80,15 @@ class CardBlockExample extends React.Component<Props> {
         <Text style={styles.title}>CardBlock1Col, centered title</Text>
         <CardBlock
           image={CARD_IMAGE_URL}
-          label="Hello"
-          labelCentered
+          title="Hello"
+          titleCentered
           numColumns={1}
           style={styles.cardBlockStyle}
         />
         <Text style={styles.title}>CardBlock2Col, no right description</Text>
         <CardBlock
           image={CARD_IMAGE_URL}
-          label="Beautiful West Coast Villa"
+          title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           numColumns={2}
           style={styles.cardBlockStyle}
@@ -96,7 +96,7 @@ class CardBlockExample extends React.Component<Props> {
         <Text style={styles.title}>CardBlock3Col, no left description</Text>
         <CardBlock
           image={CARD_IMAGE_URL}
-          label="Beautiful West Coast Villa"
+          title="Beautiful West Coast Villa"
           rightDescription="$100"
           style={styles.cardBlockStyle}
         />

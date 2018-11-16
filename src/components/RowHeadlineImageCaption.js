@@ -3,8 +3,9 @@
 import * as React from "react";
 import { Text } from "react-native";
 import { withTheme } from "../core/theming";
-import type { Theme } from "../types";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import Row from "./Row";
+import type { Theme } from "../types";
 
 type Props = {
   title: string,
@@ -53,3 +54,154 @@ class RowHeadlineImageCaption extends React.Component<Props> {
 }
 
 export default withTheme(RowHeadlineImageCaption);
+
+export const SEED_DATA = [
+  {
+    name: "Row Single Line Headline Caption",
+    tag: "RowHeadlineImageCaption",
+    description:
+      "A row with left aligned headline text and right aligned caption text",
+    category: COMPONENT_TYPES.row,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096669/draftbit/library/jigsaw-1.0/reps/Row_SingleLine_HeadlineCaption.png",
+    supports_list_render: true,
+    props: {
+      title: {
+        label: "Title",
+        description: "Headline text to display",
+        type: FORM_TYPES.string,
+        value: "Beautiful West Coast Villa",
+        editable: true
+      },
+      caption: {
+        label: "Caption",
+        description: "Caption text to display",
+        type: FORM_TYPES.string,
+        value: "$100",
+        editable: true
+      }
+    },
+    layout: {
+      width: 343,
+      height: 57
+    }
+  },
+  {
+    name: "Row Single Line Headline Image Caption",
+    tag: "RowHeadlineImageCaption",
+    description:
+      "A row with left aligned image and headline text and right aligned caption text",
+    category: COMPONENT_TYPES.row,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096679/draftbit/library/jigsaw-1.0/reps/Row_SingleLine_HeadlineImageCaption.png",
+    supports_list_render: true,
+    props: {
+      title: {
+        label: "Title",
+        description: "Headline text to display",
+        type: FORM_TYPES.string,
+        value: "Beautiful West Coast Villa",
+        editable: true
+      },
+      caption: {
+        label: "Caption",
+        description: "Caption text to display",
+        type: FORM_TYPES.string,
+        value: "$100",
+        editable: true
+      },
+      image: {
+        label: "Image",
+        description: "Image to display",
+        type: FORM_TYPES.remoteImage,
+        value: null,
+        editable: true
+      }
+    },
+    layout: {
+      width: 343,
+      height: 57
+    }
+  },
+  {
+    name: "Row Double Line Headline Caption",
+    tag: "RowHeadlineImageCaption",
+    description:
+      "A row with left aligned headline text and subtitle text and right aligned caption text",
+    category: COMPONENT_TYPES.row,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096661/draftbit/library/jigsaw-1.0/reps/Row_DoubleLine_HeadlineCaption.png",
+    supports_list_render: true,
+    props: {
+      title: {
+        label: "Title",
+        description: "Headline text to display",
+        type: FORM_TYPES.string,
+        value: "Beautiful West Coast Villa",
+        editable: true
+      },
+      subtitle: {
+        label: "Subtitle",
+        description: "Subtitle text to display",
+        type: FORM_TYPES.string,
+        value: "San Diego",
+        editable: true
+      },
+      caption: {
+        label: "Caption",
+        description: "Caption text to display",
+        type: FORM_TYPES.string,
+        value: "$100",
+        editable: true
+      }
+    },
+    layout: {
+      width: 343,
+      height: 83
+    }
+  },
+  {
+    name: "Row Double Line Headline Image Caption",
+    tag: "RowHeadlineImageCaption",
+    description:
+      "A row with left aligned image, headline text, and subtitle text, and right aligned caption text",
+    category: COMPONENT_TYPES.row,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096661/draftbit/library/jigsaw-1.0/reps/Row_DoubleLine_HeadlineCaption.png",
+    supports_list_render: true,
+    props: {
+      title: {
+        label: "Title",
+        description: "Headline text to display",
+        type: FORM_TYPES.string,
+        value: "Beautiful West Coast Villa",
+        editable: true
+      },
+      subtitle: {
+        label: "Subtitle",
+        description: "Subtitle text to display",
+        type: FORM_TYPES.string,
+        value: "San Diego",
+        editable: true
+      },
+      caption: {
+        label: "Caption",
+        description: "Caption text to display",
+        type: FORM_TYPES.string,
+        value: "$100",
+        editable: true
+      },
+      image: {
+        label: "Image",
+        description: "Image to display",
+        type: FORM_TYPES.remoteImage,
+        value: null,
+        editable: true
+      }
+    },
+    layout: {
+      width: 343,
+      height: 83
+    }
+  }
+];

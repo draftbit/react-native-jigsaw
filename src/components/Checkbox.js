@@ -6,6 +6,7 @@ import CheckboxAndroid from './CheckboxAndroid';
 import CheckboxIOS from './CheckboxIOS';
 import { withTheme } from '../core/theming';
 import type { Theme } from '../types';
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 type Props = {|
   /**
@@ -50,5 +51,40 @@ class Checkbox extends React.Component<Props> {
     );
   }
 }
+
+export const SEED_DATA = {
+  name: "Checkbox",
+  tag: "Checkbox",
+  category: COMPONENT_TYPES.button,
+  props: {
+    status: {
+      label: "Check status",
+      description: "Status of checkbox",
+      required: true,
+      editable: false,
+      value: 'checked',
+      type: FORM_TYPES.string,
+      options: ['checked', 'unchecked', 'indeterminate']
+    },
+    disabled: {
+      label: "Checkbox",
+      description: "Whether checkbox is disabled",
+      editable: true,
+      required: false,
+      value: false,
+      type: FORM_TYPES.boolean,
+      options: COMPONENT_TYPES.boolean,
+    },
+    color: {
+      label: "Checkbox color",
+      description: "Custom color for Checkbox",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.string,
+      options: COMPONENT_TYPES.string,
+    }
+  },
+};
+
 
 export default withTheme(Checkbox);

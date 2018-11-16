@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { polyfill } from "react-lifecycles-compat";
 import { withTheme } from "../core/theming";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import type { Theme } from "../types";
 import Icon from "./Icon";
 
@@ -35,13 +36,13 @@ type RenderProps = {
 
 type Props = {
   /**
-   * Mode of the TextField.
-   * - `flat` - flat input with an underline.
-   * - `outlined` - input with an outline.
+   * Type of the TextField.
+   * - `underline` - input with an underline.
+   * - `solid` - input with an outline.
    *
-   * In `outlined` mode, the background color of the label is derived from `colors.background` in theme or the `backgroundColor` style.
+   * In `solid` type, the background color of the label is derived from `colors.background` in theme or the `backgroundColor` style.
    */
-  mode?: "flat" | "outlined",
+  type?: "underline" | "solid",
   /**
    * If true, user won't be able to interact with the component.
    */
@@ -129,7 +130,7 @@ type State = {
 
 class TextField extends React.Component<Props, State> {
   static defaultProps = {
-    mode: "flat",
+    type: "underline",
     disabled: false,
     error: false,
     multiline: false,
@@ -276,7 +277,7 @@ class TextField extends React.Component<Props, State> {
 
   render() {
     const {
-      mode,
+      type,
       disabled,
       label,
       error,
@@ -341,9 +342,7 @@ class TextField extends React.Component<Props, State> {
       color: inputTextColor,
       paddingLeft:
         leftIconName && leftIconMode === "inset"
-          ? ICON_SIZE +
-            spacing.medium +
-            (mode === "outlined" ? spacing.large : 0)
+          ? ICON_SIZE + spacing.medium + (type === "solid" ? spacing.large : 0)
           : 0,
       paddingRight: rightIconName
         ? ICON_SIZE + spacing.large + spacing.text
@@ -356,7 +355,7 @@ class TextField extends React.Component<Props, State> {
     }
 
     let assistiveTextLeftMargin;
-    if (mode === "flat") {
+    if (type === "underline") {
       containerStyle = {
         borderTopLeftRadius: borderRadius.global,
         borderTopRightRadius: borderRadius.global,
@@ -411,16 +410,15 @@ class TextField extends React.Component<Props, State> {
 
     const leftIconStyle = {
       position: "absolute",
-      marginTop:
-        mode === "outlined" ? MINIMIZED_LABEL_FONT_SIZE + spacing.text : 0
+      marginTop: type === "solid" ? MINIMIZED_LABEL_FONT_SIZE + spacing.text : 0
     };
 
     const labelStyle = {
       ...typography.subtitle1,
-      top: mode === "outlined" ? spacing.large : 0,
+      top: type === "solid" ? spacing.large : 0,
       left:
         leftIconName && leftIconMode === "inset"
-          ? ICON_SIZE + (mode === "outlined" ? spacing.large : spacing.medium)
+          ? ICON_SIZE + (type === "solid" ? spacing.large : spacing.medium)
           : 0,
       transform: [
         {
@@ -428,7 +426,7 @@ class TextField extends React.Component<Props, State> {
           translateY: this.state.labeled.interpolate({
             inputRange: [0, 1],
             outputRange: [
-              mode === "outlined"
+              type === "solid"
                 ? OUTLINE_MINIMIZED_LABEL_Y_OFFSET
                 : MINIMIZED_LABEL_Y_OFFSET,
               0
@@ -465,8 +463,8 @@ class TextField extends React.Component<Props, State> {
           <Icon {...leftIconProps} style={leftIconStyle} />
         ) : null}
         <View style={containerStyle}>
-          {mode === "flat" ? (
-            // When mode === 'flat', render an underline
+          {type === "underline" ? (
+            // When type === 'flat', render an underline
             <Animated.View
               style={[
                 styles.underline,
@@ -474,8 +472,8 @@ class TextField extends React.Component<Props, State> {
                   backgroundColor: error
                     ? colors.error
                     : this.state.focused
-                      ? activeColor
-                      : underlineColor,
+                    ? activeColor
+                    : underlineColor,
                   // Underlines is thinner when input is not focused
                   transform: [{ scaleY: this.state.focused ? 1 : 0.5 }]
                 }
@@ -512,9 +510,7 @@ class TextField extends React.Component<Props, State> {
                 }
                 style={[
                   styles.placeholder,
-                  mode === "outlined"
-                    ? { paddingHorizontal: spacing.medium }
-                    : {},
+                  type === "solid" ? { paddingHorizontal: spacing.medium } : {},
                   labelStyle,
                   {
                     color: colors.light,
@@ -531,9 +527,7 @@ class TextField extends React.Component<Props, State> {
               <AnimatedText
                 style={[
                   styles.placeholder,
-                  mode === "outlined"
-                    ? { paddingHorizontal: spacing.medium }
-                    : {},
+                  type === "solid" ? { paddingHorizontal: spacing.medium } : {},
                   labelStyle,
                   {
                     color: placeholderColor,
@@ -552,7 +546,7 @@ class TextField extends React.Component<Props, State> {
               {...leftIconProps}
               style={{
                 ...leftIconStyle,
-                marginLeft: mode === "outlined" ? spacing.large : 0
+                marginLeft: type === "solid" ? spacing.large : 0
               }}
             />
           ) : null}
@@ -585,9 +579,7 @@ class TextField extends React.Component<Props, State> {
               position: "absolute",
               right: spacing.large,
               marginTop:
-                mode === "outlined"
-                  ? MINIMIZED_LABEL_FONT_SIZE + spacing.text
-                  : 0
+                type === "solid" ? MINIMIZED_LABEL_FONT_SIZE + spacing.text : 0
             }}
           />
         ) : null}
@@ -635,3 +627,181 @@ const styles = StyleSheet.create({
     textAlign: I18nManager.isRTL ? "right" : "left"
   }
 });
+
+const TEXT_FIELD_PROPS = {
+  label: {
+    label: "Label",
+    description: "The label to be displayed on the text field",
+    type: FORM_TYPES.string,
+    value: "First Name",
+    editable: true,
+    required: true
+  },
+  placeholder: {
+    label: "Placeholder",
+    description: "The placeholder text of the input",
+    type: FORM_TYPES.string,
+    value: null,
+    editable: true,
+    required: false
+  },
+  assistiveText: {
+    label: "Assistive text",
+    description: "Helper text to display below the input",
+    type: FORM_TYPES.string,
+    value: null,
+    editable: true,
+    required: false
+  },
+  value: {
+    label: "Value",
+    description: "The value of the text input",
+    type: FORM_TYPES.string,
+    value: null,
+    editable: true,
+    required: false
+  },
+  onChangeText: {
+    label: "Input onChange function",
+    description: "Function to call as input is changed",
+    editable: true,
+    type: FORM_TYPES.function,
+    value: "{this.onChangeText}"
+  },
+  disabled: {
+    label: "Disabled",
+    description:
+      "Whether the input should be disabled. Will prevent input and show a greyed out state.",
+    type: FORM_TYPES.boolean,
+    value: false,
+    editable: true
+  },
+  error: {
+    label: "Error",
+    description: "Whether the input should display the error state",
+    type: FORM_TYPES.boolean,
+    value: false,
+    editable: true
+  },
+  leftIconName: {
+    label: "Left icon name",
+    description: "The icon to display on the left",
+    type: FORM_TYPES.icon,
+    value: null,
+    editable: true
+  },
+  leftIconMode: {
+    label: "Left icon mode",
+    description:
+      "The mode of the icon to display on the left. 'inset' or 'outset'.",
+    type: FORM_TYPES.flatArray,
+    value: null,
+    options: ["inset", "outset"],
+    editable: true,
+    required: false
+  },
+  rightIconName: {
+    label: "Right icon name",
+    description: "The icon to display on the right",
+    type: FORM_TYPES.icon,
+    value: null,
+    editable: true
+  }
+};
+
+export const SEED_DATA = [
+  {
+    name: "Text Field - Solid",
+    tag: "TextField",
+    description: "A text input with a solid border",
+    category: COMPONENT_TYPES.formControl,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541457206/draftbit/library/jigsaw-1.0/reps/Textfield.png",
+    supports_list_render: false,
+    props: {
+      ...TEXT_FIELD_PROPS,
+      type: {
+        type: FORM_TYPES.string,
+        value: "solid",
+        editable: false
+      }
+    },
+    layout: {
+      width: 345,
+      height: 82
+    }
+  },
+  {
+    name: "Text Field - Underline",
+    tag: "TextField",
+    description: "A text input with an underline",
+    category: COMPONENT_TYPES.formControl,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541457206/draftbit/library/jigsaw-1.0/reps/Textfield.png",
+    supports_list_render: false,
+    props: {
+      ...TEXT_FIELD_PROPS,
+      type: {
+        type: FORM_TYPES.string,
+        value: "underline",
+        editable: false
+      }
+    },
+    layout: {
+      width: 345,
+      height: 82
+    }
+  },
+  {
+    name: "Text Area - Solid",
+    tag: "TextField",
+    description: "A text area with a solid border",
+    category: COMPONENT_TYPES.formControl,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541457205/draftbit/library/jigsaw-1.0/reps/TextArea.png",
+    supports_list_render: false,
+    props: {
+      ...TEXT_FIELD_PROPS,
+      type: {
+        type: FORM_TYPES.string,
+        value: "solid",
+        editable: false
+      },
+      multiline: {
+        type: FORM_TYPES.boolean,
+        value: true,
+        editable: false
+      }
+    },
+    layout: {
+      width: 345,
+      height: 140
+    }
+  },
+  {
+    name: "Text Area - Underline",
+    tag: "TextField",
+    description: "A text area with an underline",
+    category: COMPONENT_TYPES.formControl,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541457205/draftbit/library/jigsaw-1.0/reps/TextArea.png",
+    supports_list_render: false,
+    props: {
+      ...TEXT_FIELD_PROPS,
+      type: {
+        type: FORM_TYPES.string,
+        value: "underline",
+        editable: false
+      },
+      multiline: {
+        type: FORM_TYPES.boolean,
+        value: true,
+        editable: false
+      }
+    },
+    layout: {
+      width: 345,
+      height: 140
+    }
+  }
+];

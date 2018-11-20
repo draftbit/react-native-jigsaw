@@ -15,6 +15,7 @@ import RowExample from "./src/RowExample";
 import TextFieldExample from "./src/TextFieldExample";
 import FABExample from "./src/FABExample";
 import AvatarExample from "./src/AvatarExample";
+import StepperExample from "./src/StepperExample";
 
 const Drawer = createDrawerNavigator(
   {
@@ -25,14 +26,15 @@ const Drawer = createDrawerNavigator(
     ),
     Avatar: AvatarExample,
     Button: ButtonExample,
-    TextField: TextFieldExample,
+    FAB: FABExample,
     CardBlock: CardBlockExample,
     CardContainerShortImage: CardContainerShortImageExample,
     CardContainer: CardContainerExample,
     CardInline: CardInlineExample,
     ProgressBar: ProgressBarExample,
     Row: RowExample,
-    FAB: FABExample
+    Stepper: StepperExample,
+    TextField: TextFieldExample
   },
   {
     initialRouteName: "Home"

@@ -34,4 +34,5 @@ export {
 export {
   default as RowHeadlineImageCaption
 } from "./components/RowHeadlineImageCaption";
+export { default as Stepper } from "./components/Stepper";
 export { default as TextField } from "./components/TextField";

@@ -17,6 +17,7 @@ import RowExample from "./src/RowExample";
 import TextFieldExample from "./src/TextFieldExample";
 import FABExample from "./src/FABExample";
 import AvatarExample from "./src/AvatarExample";
+import SliderExample from "./src/SliderExample";
 import StepperExample from "./src/StepperExample";
 
 const Drawer = createDrawerNavigator(
@@ -38,6 +39,7 @@ const Drawer = createDrawerNavigator(
     Header: HeaderExample,
     ProgressBar: ProgressBarExample,
     Row: RowExample,
+    Slider: SliderExample,
     Stepper: StepperExample,
     TextField: TextFieldExample
   },

@@ -49,7 +49,7 @@ export const SEED_DATA = [
     tag: "HeaderOverline",
     description:
       "A small header with an optional touchable right aligned text and icon.",
-    category: COMPONENT_TYPES.card,
+    category: COMPONENT_TYPES.text,
     preview_image_url:
       "https://res.cloudinary.com/altos/image/upload/v1541096685/draftbit/library/jigsaw-1.0/reps/Header_OverlineIconText.png",
     supports_list_render: false,

@@ -21,6 +21,7 @@ export {
   default as CardContainerRating
 } from "./components/CardContainerRating";
 export { default as CardInline } from "./components/CardInline";
+export { default as Carousel } from "./components/Carousel";
 export { default as Divider } from "./components/Divider";
 export { default as FieldSearchBarFull } from "./components/FieldSearchBarFull";
 export { default as HeaderLarge } from "./components/HeaderLarge";

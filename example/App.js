@@ -9,6 +9,7 @@ import CardContainerShortImageExample from "./src/CardContainerShortImageExample
 import CardContainerExample from "./src/CardContainerExample";
 import CardContainerRatingExample from "./src/CardContainerRatingExample";
 import CardInlineExample from "./src/CardInlineExample";
+import CarouselExample from "./src/CarouselExample";
 import FieldSearchBarFullExample from "./src/FieldSearchBarFullExample";
 import HeaderExample from "./src/HeaderExample";
 import ProgressBarExample from "./src/ProgressBarExample";
@@ -27,6 +28,7 @@ const Drawer = createDrawerNavigator(
     ),
     Avatar: AvatarExample,
     Button: ButtonExample,
+    Carousel: CarouselExample,
     CardBlock: CardBlockExample,
     CardContainerShortImage: CardContainerShortImageExample,
     CardContainer: CardContainerExample,

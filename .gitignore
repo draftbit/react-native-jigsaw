@@ -66,3 +66,7 @@ __ts-tests__/
 # Release
 #
 CHANGELOG.md
+
+# Component migration script
+completed.json
+errors.json

@@ -248,13 +248,13 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.icon,
     value: "add"
   },
-  label: {
+  children: {
     label: "Label",
     description: "Button label",
     required: true,
     editable: true,
     type: FORM_TYPES.string,
-    value: "GET STARTED"
+    value: "Get Started"
   },
   color: {
     label: "Color Override",
@@ -262,6 +262,22 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
     type: FORM_TYPES.color,
+    value: null
+  },
+  disabled: {
+    label: "Disabled",
+    description: "Whether the button should be disabled",
+    editable: true,
+    required: false,
+    type: FORM_TYPES.boolean,
+    value: null
+  },
+  loading: {
+    label: "Loading",
+    description: "Whether to show a loading indicator",
+    editable: true,
+    required: false,
+    type: FORM_TYPES.boolean,
     value: null
   }
 };
@@ -271,6 +287,8 @@ export const SEED_DATA = [
     name: "Button Outline",
     tag: "Button",
     category: COMPONENT_TYPES.button,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096647/draftbit/library/jigsaw-1.0/reps/Button_Outline.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -291,6 +309,8 @@ export const SEED_DATA = [
     name: "Button Solid",
     tag: "Button",
     category: COMPONENT_TYPES.button,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096647/draftbit/library/jigsaw-1.0/reps/Button_Solid.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -311,6 +331,8 @@ export const SEED_DATA = [
     name: "Button Text",
     tag: "Button",
     category: COMPONENT_TYPES.button,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096647/draftbit/library/jigsaw-1.0/reps/Button_Text.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {

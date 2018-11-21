@@ -1,12 +1,12 @@
 {
   "name": "@draftbit/ui",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Jigsaw component library for Draftbit",
   "main": "src/index.js",
   "repository": "git@github.com:draftbit/jigsaw-component-library.git",
   "author": "Draftbit",
   "license": "ISC",
-  "private": true,
+  "private": false,
   "scripts": {
     "precommit": "echo yarn lint && yarn flow && yarn test",
     "flow": "flow",
@@ -32,6 +32,8 @@
     "@expo/vector-icons": "^8.0.0",
     "color": "^2.0.1",
     "create-react-context": "^0.2.3",
+    "glob": "^7.1.3",
+    "node-fetch": "^2.3.0",
     "react-lifecycles-compat": "^3.0.4",
     "react-native-platform-touchable": "^1.1.1"
   }

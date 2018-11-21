@@ -133,7 +133,7 @@ export default withTheme(CardBlock);
 export const SEED_DATA = [
   {
     name: "Small Block Card",
-    tag: "CardBlock1Col",
+    tag: "CardBlock",
     description:
       "An elevated card with a title and description, that takes up one third of its container.",
     category: COMPONENT_TYPES.card,
@@ -204,7 +204,7 @@ export const SEED_DATA = [
   },
   {
     name: "Medium Block Card",
-    tag: "CardBlock2Col",
+    tag: "CardBlock",
     description:
       "An elevated card with a title and description, that takes up one half of its container.",
     category: COMPONENT_TYPES.card,
@@ -275,7 +275,7 @@ export const SEED_DATA = [
   },
   {
     name: "Large Block Card",
-    tag: "CardBlock3Col",
+    tag: "CardBlock",
     description:
       "An elevated card with a title and description, that takes up the full width its container.",
     category: COMPONENT_TYPES.card,

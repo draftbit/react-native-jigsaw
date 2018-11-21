@@ -112,7 +112,7 @@ export default withTheme(CardInline);
 export const SEED_DATA = [
   {
     name: "Small Inline Card",
-    tag: "CardInline1Col",
+    tag: "CardInline",
     description:
       "An elevated card with image and a centered line of text overlayed, that takes up a third of its container.",
     category: COMPONENT_TYPES.card,
@@ -162,7 +162,7 @@ export const SEED_DATA = [
   },
   {
     name: "Medium Inline Card",
-    tag: "CardInline2Col",
+    tag: "CardInline",
     description:
       "An elevated card with image and a title and description overlayed, that takes up half of its container.",
     category: COMPONENT_TYPES.card,
@@ -219,7 +219,7 @@ export const SEED_DATA = [
   },
   {
     name: "Large Inline Card",
-    tag: "CardInline3Col",
+    tag: "CardInline",
     description:
       "An elevated card with image and a title and description overlayed, that takes up the full width of its container.",
     category: COMPONENT_TYPES.card,

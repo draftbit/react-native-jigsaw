@@ -7,12 +7,12 @@ let MaterialIcons;
 
 try {
   // Optionally require vector-icons
-  MaterialIcons = require("react-native-vector-icons/MaterialIcons").default;
+  MaterialIcons = require("@expo/vector-icons/MaterialIcons").default;
 } catch (e) {
   MaterialIcons = ({ name, color, size, style, ...rest }) => {
     // eslint-disable-next-line no-console
     console.warn(
-      `Tried to use the icon '${name}' in a component from '@draftbit/ui', but 'react-native-vector-icons' is not installed. To remove this warning, install 'react-native-vector-icons' or use another method to specify icon.`
+      `Tried to use the icon '${name}' in a component from '@draftbit/ui', but '@expo/vector-icons' is not installed. To remove this warning, install '@expo/vector-icons' or use another method to specify icon.`
     );
 
     return (

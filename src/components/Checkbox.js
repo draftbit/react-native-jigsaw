@@ -63,7 +63,7 @@ export const SEED_DATA = {
       required: true,
       editable: false,
       value: 'checked',
-      type: FORM_TYPES.string,
+      type: FORM_TYPES.flatArray,
       options: ['checked', 'unchecked', 'indeterminate']
     },
     disabled: {
@@ -73,15 +73,13 @@ export const SEED_DATA = {
       required: false,
       value: false,
       type: FORM_TYPES.boolean,
-      options: COMPONENT_TYPES.boolean,
     },
     color: {
       label: "Checkbox color",
       description: "Custom color for Checkbox",
       editable: true,
       required: false,
-      type: FORM_TYPES.string,
-      options: COMPONENT_TYPES.string,
+      type: FORM_TYPES.color,
     }
   },
 };

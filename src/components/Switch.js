@@ -61,7 +61,7 @@ class Switch extends React.Component<Props> {
 export const SEED_DATA = {
   name: "Switch",
   tag: "Switch",
-  category: COMPONENT_TYPES.button,
+  category: COMPONENT_TYPES.primitive,
   props: {
     disabled: {
       label: "Disable",
@@ -76,15 +76,16 @@ export const SEED_DATA = {
       description: "Value of the switch, true means 'on', false means 'off'",
       editable: true,
       required: true,
-      value: true,
-      type: FORM_TYPES.boolean,
+      value: "{this.onPress}",
+      type: FORM_TYPES.function,
     },
     color: {
       label: "Switch color",
       description: "Custom color for switch",
       editable: true,
+      value: null,
       required: false,
-      type: FORM_TYPES.string,
+      type: FORM_TYPES.color,
     }
   },
 };

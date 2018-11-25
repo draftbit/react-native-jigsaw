@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import color from 'color';
-import Icon from './CheckboxIcon';
+import Icon from './Icon';
 import Touchable from "./Touchable";
 import { withTheme } from '../core/theming';
 import type { Theme, $RemoveChildren } from '../types';
@@ -58,7 +58,7 @@ class CheckboxIOS extends React.Component<Props> {
         <View style={{ opacity: (indeterminate || disabled) ? `${theme.disabledOpacity}` : 1 }}>
           <Icon
             allowFontScaling={false}
-            source={icon}
+            name={icon}
             size={29}
             color={theme.colors.surface}
           />

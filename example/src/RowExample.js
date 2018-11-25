@@ -215,6 +215,9 @@ class RowExample extends React.Component<Props> {
           subtitle="Subtitle that is quite long so that it won't fit on a single line"
           icon="check"
         />
+        <Text style={{ marginHorizontal: spacing.large }}>
+          RowBodyCheckbox with title and subtitle
+        </Text>
         <RowBodyCheckbox
           title="Headline"
           subtitle="subtitle"
@@ -222,12 +225,15 @@ class RowExample extends React.Component<Props> {
         />
         <Divider style={{ marginBottom: spacing.large }} />
           <Text style={{ marginHorizontal: spacing.large }}>
-          RowBodyCheckbox with title only (below)
+          RowBodyCheckbox with title only
           </Text>
         <RowBodyCheckbox
           title="Headline"
           status="checked" 
         />
+        <Text style={{ marginHorizontal: spacing.large }}>
+          RowBodySwitch with title and subtitle
+        </Text>
         <RowBodySwitch
           title="Headline"
           subtitle="subtitle"
@@ -235,7 +241,7 @@ class RowExample extends React.Component<Props> {
         />
         <Divider style={{ marginBottom: spacing.large }} />
           <Text style={{ marginHorizontal: spacing.large }}>
-          RowBodySwitch with title only (below)
+          RowBodySwitch with title only
           </Text>
         <RowBodySwitch
           title="Headline"

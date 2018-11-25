@@ -53,13 +53,13 @@ class CheckboxIOS extends React.Component<Props> {
         accessibilityStates={disabled ? ['disabled'] : undefined}
         accessibilityLiveRegion="polite"
         style={ checked ?
-          { borderRadius: 2, width: 30, height: 30, backgroundColor: `${checkedColor}`, opacity: (disabled) ? `${theme.disabledOpacity}` : 1}
-          : { borderRadius: 2, width: 30, height: 30, backgroundColor: `${theme.colors.surface}`, borderColor: `${theme.colors.light}`, borderWidth: 2, opacity: (disabled) ? `${theme.disabledOpacity}` : 1 }}>
+          { borderRadius: 2, width: 25, height: 25, backgroundColor: `${checkedColor}`, opacity: (disabled) ? `${theme.disabledOpacity}` : 1}
+          : { borderRadius: 2, width: 25, height: 25, backgroundColor: `${theme.colors.surface}`, borderColor: `${theme.colors.light}`, borderWidth: 2, opacity: (disabled) ? `${theme.disabledOpacity}` : 1 }}>
         <View style={{ opacity: (indeterminate || disabled) ? `${theme.disabledOpacity}` : 1 }}>
           <Icon
             allowFontScaling={false}
             name={icon}
-            size={29}
+            size={24}
             color={theme.colors.surface}
           />
         </View>

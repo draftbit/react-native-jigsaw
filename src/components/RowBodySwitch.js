@@ -1,12 +1,10 @@
 /* @flow */
 
 import * as React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
 import { withTheme } from "../core/theming";
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import Row from "./Row";
 import Switch from "./Switch";
-import Config from "./Config";
 import type { Theme } from "../types";
 
 type Props = {
@@ -71,18 +69,18 @@ export const SEED_DATA = [
         editable: true
       },
       value: {
-        label: "status of switch controller",
+        label: "Status of switch controller",
         description: "boolean status if switch is toggled true or false",
         editable: true,
         value: true,
         type: FORM_TYPES.boolean,
       },
       onValueChange: {
-        label: "Switch controller onPress handler",
-        description: "Value of the switch, true means 'on', false means 'off'",
+        label: "Switch onPress handler",
+        description: "function to change value of the switch",
         editable: true,
         required: true,
-        value: "{this.onPress}",
+        value: "{this.onValueChange}",
         type: FORM_TYPES.function,
       },
       color: {
@@ -122,18 +120,18 @@ export const SEED_DATA = [
         editable: true,
       },
       value: {
-        label: "status of switch controller",
+        label: "Status of switch controller",
         description: "boolean status if switch is toggled true or false",
         editable: true,
         value: true,
         type: FORM_TYPES.boolean,
       },
       onValueChange: {
-        label: "Switch controller onPress handler",
-        description: "Value of the switch, true means 'on', false means 'off'",
+        label: "Switch onPress handler",
+        description: "function to change value of the switch",
         editable: true,
         required: true,
-        value: "{this.onPress}",
+        value: "{this.onValueChange}",
         type: FORM_TYPES.function,
       },
       color: {

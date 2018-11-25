@@ -8,7 +8,9 @@ import {
   RowSingleLineHeadlineImageCaption,
   RowBodyIcon,
   Divider,
-  withTheme
+  withTheme,
+  RowBodyCheckbox,
+  RowBodySwitch,
 } from "@draftbit/ui";
 import type { Theme } from "@draftbit/ui/types";
 
@@ -212,6 +214,38 @@ class RowExample extends React.Component<Props> {
           title="Headline that is quite long so that it won't fit on a single line"
           subtitle="Subtitle that is quite long so that it won't fit on a single line"
           icon="check"
+        />
+        <Text style={{ marginHorizontal: spacing.large }}>
+          RowBodyCheckbox with title and subtitle
+        </Text>
+        <RowBodyCheckbox
+          title="Headline"
+          subtitle="subtitle"
+          status="checked"
+        />
+        <Divider style={{ marginBottom: spacing.large }} />
+          <Text style={{ marginHorizontal: spacing.large }}>
+          RowBodyCheckbox with title only
+          </Text>
+        <RowBodyCheckbox
+          title="Headline"
+          status="checked" 
+        />
+        <Text style={{ marginHorizontal: spacing.large }}>
+          RowBodySwitch with title and subtitle
+        </Text>
+        <RowBodySwitch
+          title="Headline"
+          subtitle="subtitle"
+          value={true}
+        />
+        <Divider style={{ marginBottom: spacing.large }} />
+          <Text style={{ marginHorizontal: spacing.large }}>
+          RowBodySwitch with title only
+          </Text>
+        <RowBodySwitch
+          title="Headline"
+          value={true}
         />
       </ScrollView>
     );

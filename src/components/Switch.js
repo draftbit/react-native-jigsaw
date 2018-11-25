@@ -62,6 +62,8 @@ export const SEED_DATA = {
   name: "Switch",
   tag: "Switch",
   category: COMPONENT_TYPES.primitive,
+  preview_image_url:
+    "https://res.cloudinary.com/altos/image/upload/v1541096671/draftbit/library/jigsaw-1.0/reps/Control_Toggle.png",
   props: {
     disabled: {
       label: "Disable",
@@ -87,6 +89,10 @@ export const SEED_DATA = {
       required: false,
       type: FORM_TYPES.color,
     }
+  },
+  layout: {
+    width: 36,
+    height: 22
   },
 };
 

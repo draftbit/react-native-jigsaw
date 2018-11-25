@@ -56,6 +56,8 @@ export const SEED_DATA = {
   name: "Checkbox",
   tag: "Checkbox",
   category: COMPONENT_TYPES.button,
+  preview_image_url:
+    "https://res.cloudinary.com/altos/image/upload/v1541096653/draftbit/library/jigsaw-1.0/reps/Control_Checkbox.png",
   props: {
     status: {
       label: "Check status",
@@ -81,6 +83,10 @@ export const SEED_DATA = {
       required: false,
       type: FORM_TYPES.color,
     }
+  },
+  layout: {
+    width: 24,
+    height: 24
   },
 };
 

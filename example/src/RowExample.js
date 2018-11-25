@@ -222,7 +222,7 @@ class RowExample extends React.Component<Props> {
         />
         <Divider style={{ marginBottom: spacing.large }} />
           <Text style={{ marginHorizontal: spacing.large }}>
-            RowDoubleLineBodyIcon with long title and subtitle
+          RowBodyCheckbox with title only (below)
           </Text>
         <RowBodyCheckbox
           title="Headline"
@@ -235,7 +235,7 @@ class RowExample extends React.Component<Props> {
         />
         <Divider style={{ marginBottom: spacing.large }} />
           <Text style={{ marginHorizontal: spacing.large }}>
-            RowDoubleLineBodyIcon with long title and subtitle
+          RowBodySwitch with title only (below)
           </Text>
         <RowBodySwitch
           title="Headline"

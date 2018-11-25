@@ -82,7 +82,14 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.color,
-    }
+    },
+    onPress: {
+      label: "OnPress handler",
+      description: "function that handles checking or unchecking",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.function,
+    },
   },
   layout: {
     width: 24,

@@ -90,10 +90,10 @@ export const SEED_DATA = {
     },
     onValueChange: {
       label: "Switch onPress handler",
-      description: "Value of the switch, true means 'on', false means 'off'",
+      description: "function to change value of the switch",
       editable: true,
       required: true,
-      value: "{this.onPress}",
+      value: "{this.onValueChange}",
       type: FORM_TYPES.function,
     },
   },

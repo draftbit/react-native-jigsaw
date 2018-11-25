@@ -74,12 +74,11 @@ export const SEED_DATA = {
       type: FORM_TYPES.boolean,
     },
     value: {
-      label: "Switch onPress handler",
-      description: "Value of the switch, true means 'on', false means 'off'",
+      label: "status of switch controller",
+      description: "boolean status if switch is toggled true or false",
       editable: true,
-      required: true,
-      value: "{this.onPress}",
-      type: FORM_TYPES.function,
+      value: true,
+      type: FORM_TYPES.boolean,
     },
     color: {
       label: "Switch color",
@@ -88,7 +87,15 @@ export const SEED_DATA = {
       value: null,
       required: false,
       type: FORM_TYPES.color,
-    }
+    },
+    onValueChange: {
+      label: "Switch onPress handler",
+      description: "function to change value of the switch",
+      editable: true,
+      required: true,
+      value: "{this.onValueChange}",
+      type: FORM_TYPES.function,
+    },
   },
   layout: {
     width: 36,

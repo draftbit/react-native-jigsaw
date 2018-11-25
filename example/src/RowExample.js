@@ -10,6 +10,7 @@ import {
   Divider,
   withTheme,
   RowBodyCheckbox,
+  RowBodySwitch,
 } from "@draftbit/ui";
 import type { Theme } from "@draftbit/ui/types";
 
@@ -225,7 +226,20 @@ class RowExample extends React.Component<Props> {
           </Text>
         <RowBodyCheckbox
           title="Headline"
-          status="checked"
+          status="checked" 
+        />
+        <RowBodySwitch
+          title="Headline"
+          subtitle="subtitle"
+          value={true}
+        />
+        <Divider style={{ marginBottom: spacing.large }} />
+          <Text style={{ marginHorizontal: spacing.large }}>
+            RowDoubleLineBodyIcon with long title and subtitle
+          </Text>
+        <RowBodySwitch
+          title="Headline"
+          value={true}
         />
       </ScrollView>
     );

@@ -44,3 +44,4 @@ export { default as TextField } from "./components/TextField";
 export { default as Switch } from './components/Switch'
 export { default as Checkbox } from './components/Checkbox'
 export { default as RowBodyCheckbox } from "./components/RowBodyCheckbox";
+export { default as RowBodySwitch } from "./components/RowBodySwitch";

@@ -168,7 +168,7 @@ export default withTheme(CardContainerRating);
 export const SEED_DATA = [
   {
     name: "Medium rating card",
-    tag: "CardContainerRating2Col",
+    tag: "CardContainerRating",
     description:
       "An elevated card with a title and description, that takes up half of its container.",
     category: COMPONENT_TYPES.card,
@@ -252,7 +252,7 @@ export const SEED_DATA = [
   },
   {
     name: "Large rating card",
-    tag: "CardContainerRating3Col",
+    tag: "CardContainerRating",
     description:
       "An elevated card with a title and description, that takes up its full container.",
     category: COMPONENT_TYPES.card,

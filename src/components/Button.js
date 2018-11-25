@@ -12,6 +12,7 @@ import color from "color";
 import Config from "./Config";
 import Icon from "./Icon";
 import Touchable from "./Touchable";
+import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
 import type { Theme } from "../types";
 import type { IconSource } from "./Icon";
@@ -104,6 +105,7 @@ class Button extends React.Component<Props> {
       color: colorOverride,
       children,
       onPress,
+      elevation,
       style,
       theme,
       ...rest
@@ -114,8 +116,7 @@ class Button extends React.Component<Props> {
       disabledOpacity,
       borderRadius,
       spacing,
-      typography,
-      elevation
+      typography
     } = theme;
 
     let backgroundColor, borderColor, textColor, borderWidth;
@@ -161,7 +162,6 @@ class Button extends React.Component<Props> {
     }
 
     const buttonStyle = {
-      ...elevation[this.props.elevation],
       backgroundColor,
       borderColor,
       borderWidth,
@@ -185,39 +185,41 @@ class Button extends React.Component<Props> {
     ];
 
     return (
-      <Touchable
-        {...rest}
-        onPress={onPress}
-        accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
-        accessibilityComponentType="button"
-        disabled={disabled || loading}
-        style={[styles.button, buttonStyle, style]}
-      >
-        <View style={styles.content}>
-          {icon && loading !== true ? (
-            <View style={iconStyle}>
-              <Icon
-                name={icon}
-                size={Config.buttonIconSize}
+      <Elevation style={{ elevation }}>
+        <Touchable
+          {...rest}
+          onPress={onPress}
+          accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
+          accessibilityComponentType="button"
+          disabled={disabled || loading}
+          style={[styles.button, buttonStyle, style]}
+        >
+          <View style={styles.content}>
+            {icon && loading !== true ? (
+              <View style={iconStyle}>
+                <Icon
+                  name={icon}
+                  size={Config.buttonIconSize}
+                  color={textColor}
+                />
+              </View>
+            ) : null}
+            {loading ? (
+              <ActivityIndicator
+                size="small"
                 color={textColor}
+                style={iconStyle}
               />
-            </View>
-          ) : null}
-          {loading ? (
-            <ActivityIndicator
-              size="small"
-              color={textColor}
-              style={iconStyle}
-            />
-          ) : null}
-          <Text
-            numberOfLines={1}
-            style={[styles.label, textStyle, typography.button]}
-          >
-            {children}
-          </Text>
-        </View>
-      </Touchable>
+            ) : null}
+            <Text
+              numberOfLines={1}
+              style={[styles.label, textStyle, typography.button]}
+            >
+              {children}
+            </Text>
+          </View>
+        </Touchable>
+      </Elevation>
     );
   }
 }
@@ -239,7 +241,7 @@ const styles = StyleSheet.create({
 
 export default withTheme(Button);
 
-const BUTTON_PROPS = {
+const SEED_DATA_PROPS = {
   icon: {
     label: "Icon Name",
     description: "Name of the icon",
@@ -248,13 +250,13 @@ const BUTTON_PROPS = {
     type: FORM_TYPES.icon,
     value: "add"
   },
-  label: {
+  children: {
     label: "Label",
     description: "Button label",
     required: true,
     editable: true,
     type: FORM_TYPES.string,
-    value: "GET STARTED"
+    value: "Get Started"
   },
   color: {
     label: "Color Override",
@@ -262,6 +264,22 @@ const BUTTON_PROPS = {
     editable: true,
     required: false,
     type: FORM_TYPES.color,
+    value: null
+  },
+  disabled: {
+    label: "Disabled",
+    description: "Whether the button should be disabled",
+    editable: true,
+    required: false,
+    type: FORM_TYPES.boolean,
+    value: null
+  },
+  loading: {
+    label: "Loading",
+    description: "Whether to show a loading indicator",
+    editable: true,
+    required: false,
+    type: FORM_TYPES.boolean,
     value: null
   }
 };
@@ -271,8 +289,10 @@ export const SEED_DATA = [
     name: "Button Outline",
     tag: "Button",
     category: COMPONENT_TYPES.button,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096647/draftbit/library/jigsaw-1.0/reps/Button_Outline.png",
     props: {
-      ...BUTTON_PROPS,
+      ...SEED_DATA_PROPS,
       type: {
         label: "Type",
         description: "Button type",
@@ -291,8 +311,10 @@ export const SEED_DATA = [
     name: "Button Solid",
     tag: "Button",
     category: COMPONENT_TYPES.button,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096647/draftbit/library/jigsaw-1.0/reps/Button_Solid.png",
     props: {
-      ...BUTTON_PROPS,
+      ...SEED_DATA_PROPS,
       type: {
         label: "Type",
         description: "Button type",
@@ -311,8 +333,10 @@ export const SEED_DATA = [
     name: "Button Text",
     tag: "Button",
     category: COMPONENT_TYPES.button,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096647/draftbit/library/jigsaw-1.0/reps/Button_Text.png",
     props: {
-      ...BUTTON_PROPS,
+      ...SEED_DATA_PROPS,
       type: {
         label: "Type",
         description: "Button type",

@@ -45,5 +45,9 @@ export default {
   rowMultiLineIconSize: 16,
   ratingStarSize: 16,
   headerIconSize: 24,
-  buttonIconSize: 24
+  buttonIconSize: 24,
+  swiperInactiveDotSize: 6,
+  swiperActiveDotSize: 10,
+  fieldSearchBarFullIconSize: 24,
+  stepperButtonSize: 40
 };

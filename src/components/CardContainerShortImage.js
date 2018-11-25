@@ -106,7 +106,7 @@ export default withTheme(CardContainerShortImage);
 export const SEED_DATA = [
   {
     name: "CardContainerShortLeftImage",
-    tag: "CardContainerShortLeftImage",
+    tag: "CardContainerShortImage",
     description:
       "An elevated card with a left aligned image and a title and subtitle",
     category: COMPONENT_TYPES.card,
@@ -167,7 +167,7 @@ export const SEED_DATA = [
   },
   {
     name: "CardContainerShortRightImage",
-    tag: "CardContainerShortRightImage",
+    tag: "CardContainerShortRImage",
     description:
       "An elevated card with a right aligned image and a title and subtitle",
     category: COMPONENT_TYPES.card,

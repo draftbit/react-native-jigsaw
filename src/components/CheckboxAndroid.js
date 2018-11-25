@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Animated, View, StyleSheet } from 'react-native';
 import color from 'color';
-import Icon from './CheckboxIcon';
+import Icon from './Icon';
 import Touchable from "./Touchable";
 import { withTheme } from '../core/theming';
 import type { Theme, $RemoveChildren } from '../types';
@@ -99,7 +99,7 @@ class CheckboxAndroid extends React.Component<Props, State> {
         <Animated.View style={{ transform: [{ scale: this.state.scaleAnim }] }}>
           <Icon
             allowFontScaling={false}
-            source={icon}
+            name={icon}
             size={29}
             color={checkboxColor}
           />

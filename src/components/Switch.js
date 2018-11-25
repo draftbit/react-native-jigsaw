@@ -52,7 +52,7 @@ class Switch extends React.Component<Props> {
         trackColor={{false: null, true: checkedColor }}
         thumbColor={thumbColor}
         onValueChange={disabled ? undefined : onValueChange}
-        style={{ opacity: (disabled && Platform.OS !== 'ios') ? theme.disbledOpacity : 1 }}
+        style={{ opacity: (disabled && Platform.OS !== 'ios') ? 0.5 : 1 }}
       />
     );
   }

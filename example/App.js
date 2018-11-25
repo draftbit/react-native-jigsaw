@@ -9,6 +9,8 @@ import CardContainerShortImageExample from "./src/CardContainerShortImageExample
 import CardContainerExample from "./src/CardContainerExample";
 import CardContainerRatingExample from "./src/CardContainerRatingExample";
 import CardInlineExample from "./src/CardInlineExample";
+import CarouselExample from "./src/CarouselExample";
+import FieldSearchBarFullExample from "./src/FieldSearchBarFullExample";
 import HeaderExample from "./src/HeaderExample";
 import ProgressBarExample from "./src/ProgressBarExample";
 import RowExample from "./src/RowExample";
@@ -16,7 +18,8 @@ import TextFieldExample from "./src/TextFieldExample";
 import FABExample from "./src/FABExample";
 import AvatarExample from "./src/AvatarExample";
 import ControllerExample from './src/ControllerExample'
-
+import SliderExample from "./src/SliderExample";
+import StepperExample from "./src/StepperExample";
 
 const Drawer = createDrawerNavigator(
   {
@@ -27,15 +30,21 @@ const Drawer = createDrawerNavigator(
     ),
     Avatar: AvatarExample,
     Button: ButtonExample,
-    TextField: TextFieldExample,
+    Carousel: CarouselExample,
     CardBlock: CardBlockExample,
     CardContainerShortImage: CardContainerShortImageExample,
     CardContainer: CardContainerExample,
     CardInline: CardInlineExample,
+    FAB: FABExample,
+    FieldSearchBarFull: FieldSearchBarFullExample,
+    Header: HeaderExample,
     ProgressBar: ProgressBarExample,
     Row: RowExample,
     FAB: FABExample,
     Controllers: ControllerExample,
+    Slider: SliderExample,
+    Stepper: StepperExample,
+    TextField: TextFieldExample
   },
   {
     initialRouteName: "Home"

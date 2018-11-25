@@ -14,7 +14,10 @@ module.exports = {
   resolver: {
     blacklistRE: blacklist([
       glob(`${path.resolve(__dirname, "..")}/node_modules/*`),
-      glob(`${path.resolve(__dirname, "..")}/docs/node_modules/*`)
+      glob(
+        `${path.resolve(__dirname, "..")}/example/node_modules/node-fetch/*`
+      ),
+      glob(`${path.resolve(__dirname, "..")}/example/node_modules/glob/*`)
     ]),
 
     providesModuleNodeModules: [

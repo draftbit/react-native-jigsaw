@@ -7,6 +7,7 @@ import Config from "../Config";
 import Icon from "../Icon";
 import Text from "../Text";
 import Touchable from "../Touchable";
+import Elevation from "../Elevation";
 import { withTheme } from "../../core/theming";
 import type { Theme } from "../../types";
 import type { IconSource } from "../Icon";
@@ -103,6 +104,7 @@ class FAB extends React.Component<Props> {
       color: colorOverride,
       label,
       onPress,
+      elevation,
       style,
       theme,
       ...rest
@@ -113,8 +115,7 @@ class FAB extends React.Component<Props> {
       disabledOpacity,
       borderRadius,
       spacing,
-      typography,
-      elevation
+      typography
     } = theme;
 
     let backgroundColor, borderColor, textColor, borderWidth;
@@ -160,7 +161,6 @@ class FAB extends React.Component<Props> {
     }
 
     const buttonStyle = {
-      ...elevation[this.props.elevation],
       backgroundColor,
       borderColor,
       borderWidth,
@@ -214,41 +214,43 @@ class FAB extends React.Component<Props> {
     }
 
     return (
-      <Touchable
-        {...rest}
-        onPress={onPress}
-        accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
-        accessibilityComponentType="button"
-        disabled={disabled || loading}
-        style={buttonStyles}
-      >
-        <View style={styles.content}>
-          {icon && loading !== true ? (
-            <View style={iconStyle}>
-              <Icon
-                name={icon}
-                size={Config.buttonIconSize}
+      <Elevation style={{ elevation }}>
+        <Touchable
+          {...rest}
+          onPress={onPress}
+          accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
+          accessibilityComponentType="button"
+          disabled={disabled || loading}
+          style={buttonStyles}
+        >
+          <View style={styles.content}>
+            {icon && loading !== true ? (
+              <View style={iconStyle}>
+                <Icon
+                  name={icon}
+                  size={Config.buttonIconSize}
+                  color={textColor}
+                />
+              </View>
+            ) : null}
+            {loading ? (
+              <ActivityIndicator
+                size="small"
                 color={textColor}
+                style={iconStyle}
               />
-            </View>
-          ) : null}
-          {loading ? (
-            <ActivityIndicator
-              size="small"
-              color={textColor}
-              style={iconStyle}
-            />
-          ) : null}
-          {label ? (
-            <Text
-              numberOfLines={1}
-              style={[styles.label, textStyle, typography.button]}
-            >
-              {label}
-            </Text>
-          ) : null}
-        </View>
-      </Touchable>
+            ) : null}
+            {label ? (
+              <Text
+                numberOfLines={1}
+                style={[styles.label, textStyle, typography.button]}
+              >
+                {label}
+              </Text>
+            ) : null}
+          </View>
+        </Touchable>
+      </Elevation>
     );
   }
 }

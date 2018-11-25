@@ -19,16 +19,11 @@ export const FORM_TYPES = {
 
 export const COMPONENT_TYPES = {
   card: "card",
-  listItem: "list_item",
   carousel: "carousel",
-  grid: "grid",
   text: "text",
-  icon: "icon",
-  list: "list",
   button: "button",
   image: "image",
   primitive: "primitive",
-  navigation: "navigation",
   FAB: "FAB",
   formControl: "formControl",
   row: "row"

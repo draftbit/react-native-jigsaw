@@ -628,7 +628,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const TEXT_FIELD_PROPS = {
+const SEED_DATA_PROPS = {
   label: {
     label: "Label",
     description: "The label to be displayed on the text field",
@@ -673,14 +673,14 @@ const TEXT_FIELD_PROPS = {
     description:
       "Whether the input should be disabled. Will prevent input and show a greyed out state.",
     type: FORM_TYPES.boolean,
-    value: false,
+    value: null,
     editable: true
   },
   error: {
     label: "Error",
     description: "Whether the input should display the error state",
     type: FORM_TYPES.boolean,
-    value: false,
+    value: null,
     editable: true
   },
   leftIconName: {
@@ -719,7 +719,7 @@ export const SEED_DATA = [
       "https://res.cloudinary.com/altos/image/upload/v1541457206/draftbit/library/jigsaw-1.0/reps/Textfield.png",
     supports_list_render: false,
     props: {
-      ...TEXT_FIELD_PROPS,
+      ...SEED_DATA_PROPS,
       type: {
         type: FORM_TYPES.string,
         value: "solid",
@@ -740,7 +740,7 @@ export const SEED_DATA = [
       "https://res.cloudinary.com/altos/image/upload/v1541457206/draftbit/library/jigsaw-1.0/reps/Textfield.png",
     supports_list_render: false,
     props: {
-      ...TEXT_FIELD_PROPS,
+      ...SEED_DATA_PROPS,
       type: {
         type: FORM_TYPES.string,
         value: "underline",
@@ -761,7 +761,7 @@ export const SEED_DATA = [
       "https://res.cloudinary.com/altos/image/upload/v1541457205/draftbit/library/jigsaw-1.0/reps/TextArea.png",
     supports_list_render: false,
     props: {
-      ...TEXT_FIELD_PROPS,
+      ...SEED_DATA_PROPS,
       type: {
         type: FORM_TYPES.string,
         value: "solid",
@@ -787,7 +787,7 @@ export const SEED_DATA = [
       "https://res.cloudinary.com/altos/image/upload/v1541457205/draftbit/library/jigsaw-1.0/reps/TextArea.png",
     supports_list_render: false,
     props: {
-      ...TEXT_FIELD_PROPS,
+      ...SEED_DATA_PROPS,
       type: {
         type: FORM_TYPES.string,
         value: "underline",

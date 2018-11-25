@@ -1,7 +1,5 @@
 /* @flow */
-
 import * as React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
 import { withTheme } from "../core/theming";
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import Row from "./Row";
@@ -87,7 +85,15 @@ export const SEED_DATA = [
         editable: true,
         required: false,
         type: FORM_TYPES.color,
-      }
+      },
+      onPress: {
+        label: "OnPress handler",
+        description: "function that handles checking or unchecking",
+        editable: true,
+        required: false,
+        value: "{this.onPress}",
+        type: FORM_TYPES.function,
+      },
     },
     layout: {
       width: 375,
@@ -132,7 +138,15 @@ export const SEED_DATA = [
         editable: true,
         required: false,
         type: FORM_TYPES.color,
-      }
+      },
+      onPress: {
+        label: "OnPress handler",
+        description: "function that handles checking or unchecking",
+        editable: true,
+        required: false,
+        value: "{this.onPress}",
+        type: FORM_TYPES.function,
+      },
     },
     layout: {
       width: 375,

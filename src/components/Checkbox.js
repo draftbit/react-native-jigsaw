@@ -60,7 +60,7 @@ export const SEED_DATA = {
     "https://res.cloudinary.com/altos/image/upload/v1541096653/draftbit/library/jigsaw-1.0/reps/Control_Checkbox.png",
   props: {
     status: {
-      label: "Check status",
+      label: "Checkbox status",
       description: "Status of checkbox",
       required: true,
       editable: false,
@@ -69,7 +69,7 @@ export const SEED_DATA = {
       options: ['checked', 'unchecked', 'indeterminate']
     },
     disabled: {
-      label: "Checkbox",
+      label: "Disable checkbox",
       description: "Whether checkbox is disabled",
       editable: true,
       required: false,
@@ -88,6 +88,7 @@ export const SEED_DATA = {
       description: "function that handles checking or unchecking",
       editable: true,
       required: false,
+      value: "{this.onPress}",
       type: FORM_TYPES.function,
     },
   },

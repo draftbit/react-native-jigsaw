@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { Image, Text, View, StyleSheet } from "react-native";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 let MaterialIcons;
 
@@ -91,3 +92,47 @@ const styles = StyleSheet.create({
     overflow: "hidden"
   }
 });
+
+export const SEED_DATA = {
+  name: "Icon",
+  tag: "Icon",
+  description: "An icon",
+  category: COMPONENT_TYPES.image,
+  preview_image_url:
+    "https://res.cloudinary.com/altos/image/upload/v1541096699/draftbit/library/jigsaw-1.0/reps/Icon.png",
+  supports_list_render: false,
+  props: {
+    name: {
+      label: "Name",
+      description: "Name of the icon",
+      type: FORM_TYPES.icon,
+      value: "cloud",
+      editable: true,
+      required: true
+    },
+    color: {
+      label: "Color",
+      description: "Color of the icon",
+      type: FORM_TYPES.color,
+      value: "#000000",
+      editable: true,
+      required: true
+    },
+    size: {
+      label: "Size",
+      description: "Width and height of the icon",
+      type: FORM_TYPES.number,
+      value: 24,
+      min: 1,
+      max: 200,
+      step: 1,
+      precision: 0,
+      editable: true,
+      required: true
+    }
+  },
+  layout: {
+    width: 24,
+    height: 24
+  }
+};

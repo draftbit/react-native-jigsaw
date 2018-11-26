@@ -134,7 +134,6 @@ class TextField extends React.Component<Props, State> {
     disabled: false,
     error: false,
     multiline: false,
-    editable: true,
     render: props => <NativeTextInput {...props} />
   };
 
@@ -244,13 +243,17 @@ class TextField extends React.Component<Props, State> {
   };
 
   _handleChangeText = (value: string) => {
-    if (!this.props.editable) {
+    if (this.props.disabled) {
       return;
     }
 
     this.setState({ value });
     this.props.onChangeText && this.props.onChangeText(value);
   };
+
+  toggleFocus() {
+    this.setState(prevState => ({ focused: !prevState.focused }));
+  }
 
   /**
    * @internal
@@ -359,7 +362,8 @@ class TextField extends React.Component<Props, State> {
       containerStyle = {
         borderTopLeftRadius: borderRadius.global,
         borderTopRightRadius: borderRadius.global,
-        paddingBottom: spacing.medium
+        paddingBottom: spacing.medium,
+        marginTop: spacing.large
       };
 
       if (leftIconName && leftIconMode === "outset") {

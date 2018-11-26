@@ -10,14 +10,16 @@ import CardContainerExample from "./src/CardContainerExample";
 import CardContainerRatingExample from "./src/CardContainerRatingExample";
 import CardInlineExample from "./src/CardInlineExample";
 import CarouselExample from "./src/CarouselExample";
+import DatePickerExample from "./src/DatePickerExample";
 import FieldSearchBarFullExample from "./src/FieldSearchBarFullExample";
 import HeaderExample from "./src/HeaderExample";
+import PickerExample from "./src/PickerExample";
 import ProgressBarExample from "./src/ProgressBarExample";
 import RowExample from "./src/RowExample";
 import TextFieldExample from "./src/TextFieldExample";
 import FABExample from "./src/FABExample";
 import AvatarExample from "./src/AvatarExample";
-import ControllerExample from './src/ControllerExample'
+import ControllerExample from "./src/ControllerExample";
 import SliderExample from "./src/SliderExample";
 import StepperExample from "./src/StepperExample";
 
@@ -35,13 +37,14 @@ const Drawer = createDrawerNavigator(
     CardContainerShortImage: CardContainerShortImageExample,
     CardContainer: CardContainerExample,
     CardInline: CardInlineExample,
+    Controllers: ControllerExample,
+    DatePicker: DatePickerExample,
     FAB: FABExample,
     FieldSearchBarFull: FieldSearchBarFullExample,
     Header: HeaderExample,
+    Picker: PickerExample,
     ProgressBar: ProgressBarExample,
     Row: RowExample,
-    FAB: FABExample,
-    Controllers: ControllerExample,
     Slider: SliderExample,
     Stepper: StepperExample,
     TextField: TextFieldExample

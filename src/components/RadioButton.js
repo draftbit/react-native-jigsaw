@@ -55,6 +55,8 @@ class RadioButton extends React.Component<Props> {
   }
 }
 
+export default withTheme(RadioButton);
+
 export const SEED_DATA = {
   name: "Radio Button",
   tag: "RadioButton",
@@ -92,5 +94,3 @@ export const SEED_DATA = {
     height: 24
   }
 };
-
-export default withTheme(RadioButton);

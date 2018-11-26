@@ -58,6 +58,8 @@ class Switch extends React.Component<Props> {
   }
 }
 
+export default withTheme(Switch);
+
 export const SEED_DATA = {
   name: "Switch",
   tag: "Switch",
@@ -102,5 +104,3 @@ export const SEED_DATA = {
     height: 22
   },
 };
-
-export default withTheme(Switch);

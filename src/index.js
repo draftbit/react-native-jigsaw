@@ -31,6 +31,7 @@ export { default as HeaderLarge } from "./components/HeaderLarge";
 export { default as HeaderMedium } from "./components/HeaderMedium";
 export { default as HeaderOverline } from "./components/HeaderOverline";
 export { default as Icon } from "./components/Icon";
+export { default as MapSimple } from "./components/MapSimple";
 export { default as Picker } from "./components/Picker/Picker";
 export { default as ProgressBar } from "./components/ProgressBar/ProgressBar";
 export { default as RowBodyIcon } from "./components/RowBodyIcon";

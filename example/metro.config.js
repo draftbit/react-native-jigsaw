@@ -23,6 +23,7 @@ module.exports = {
     providesModuleNodeModules: [
       "react-native",
       "react",
+      "expo",
       "@expo/vector-icons",
       "@babel/runtime",
       ...dependencies

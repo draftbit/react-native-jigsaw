@@ -17,6 +17,7 @@
     "preset": "react-native"
   },
   "peerDependencies": {
+    "expo": "*",
     "react": "*",
     "react-native": "*"
   },

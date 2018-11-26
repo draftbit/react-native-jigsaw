@@ -71,7 +71,8 @@ class Picker extends React.Component<Props> {
     type: "underline",
     mode: "date",
     disabled: false,
-    error: false
+    error: false,
+    date: new Date()
   };
 
   state = {
@@ -233,7 +234,7 @@ const SEED_DATA_PROPS = {
   date: {
     label: "Selected date",
     description: "The selected date of the picker",
-    type: FORM_TYPES.string,
+    type: FORM_TYPES.date,
     value: null,
     editable: true,
     required: false

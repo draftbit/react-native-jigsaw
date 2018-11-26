@@ -14,7 +14,8 @@ export const FORM_TYPES = {
   function: "function",
   array: "array",
   flatArray: "flatArray",
-  aspectRatio: "aspectRatio"
+  aspectRatio: "aspectRatio",
+  date: "date"
 };
 
 export const COMPONENT_TYPES = {

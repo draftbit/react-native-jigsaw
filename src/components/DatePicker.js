@@ -72,7 +72,8 @@ class Picker extends React.Component<Props> {
     mode: "date",
     disabled: false,
     error: false,
-    date: new Date()
+    date: new Date(),
+    onDateChange: () => {}
   };
 
   state = {

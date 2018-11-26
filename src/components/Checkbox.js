@@ -52,6 +52,8 @@ class Checkbox extends React.Component<Props> {
   }
 }
 
+export default withTheme(Checkbox);
+
 export const SEED_DATA = {
   name: "Checkbox",
   tag: "Checkbox",
@@ -97,6 +99,3 @@ export const SEED_DATA = {
     height: 24
   },
 };
-
-
-export default withTheme(Checkbox);

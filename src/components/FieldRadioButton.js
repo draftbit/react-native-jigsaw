@@ -77,6 +77,8 @@ class FieldRadioButton extends React.Component<Props> {
   }
 }
 
+export default withTheme(FieldRadioButton);
+
 export const SEED_DATA = {
   name: "Radio Button",
   tag: "RadioButton",
@@ -122,5 +124,3 @@ export const SEED_DATA = {
     height: 59
   }
 };
-
-export default withTheme(FieldRadioButton);

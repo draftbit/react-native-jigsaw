@@ -99,3 +99,137 @@ class Picker extends React.Component<Props> {
 }
 
 export default withTheme(Picker);
+
+const SEED_DATA_PROPS = {
+  label: {
+    label: "Label",
+    description: "The label to be displayed on the picker",
+    type: FORM_TYPES.string,
+    value: "Make",
+    editable: true,
+    required: true
+  },
+  placeholder: {
+    label: "Placeholder",
+    description: "The placeholder text of the picker",
+    type: FORM_TYPES.string,
+    value: null,
+    editable: true,
+    required: false
+  },
+  assistiveText: {
+    label: "Assistive text",
+    description: "Helper text to display below the picker",
+    type: FORM_TYPES.string,
+    value: null,
+    editable: true,
+    required: false
+  },
+  selectedValue: {
+    label: "Selected value",
+    description: "The selected value of the picker",
+    type: FORM_TYPES.string,
+    value: null,
+    editable: true,
+    required: false
+  },
+  onValueChange: {
+    label: "Picker onValueChange function",
+    description: "Function to call as picker value is changed",
+    editable: true,
+    type: FORM_TYPES.function,
+    value: "{this.onValueChange}"
+  },
+  options: {
+    label: "Options",
+    description:
+      "Array of picker options. An array of objects containing a label and value.",
+    editable: true,
+    type: FORM_TYPES.array,
+    value: null
+  },
+  disabled: {
+    label: "Disabled",
+    description:
+      "Whether the picker should be disabled. Will prevent selection and show a greyed out state.",
+    type: FORM_TYPES.boolean,
+    value: false,
+    editable: true
+  },
+  error: {
+    label: "Error",
+    description: "Whether the picker should display the error state",
+    type: FORM_TYPES.boolean,
+    value: false,
+    editable: true
+  },
+  leftIconName: {
+    label: "Left icon name",
+    description: "The icon to display on the left",
+    type: FORM_TYPES.icon,
+    value: null,
+    editable: true
+  },
+  leftIconMode: {
+    label: "Left icon mode",
+    description:
+      "The mode of the icon to display on the left. 'inset' or 'outset'.",
+    type: FORM_TYPES.flatArray,
+    value: null,
+    options: ["inset", "outset"],
+    editable: true,
+    required: false
+  },
+  rightIconName: {
+    label: "Right icon name",
+    description: "The icon to display on the right",
+    type: FORM_TYPES.icon,
+    value: null,
+    editable: true
+  }
+};
+
+export const SEED_DATA = [
+  {
+    name: "Picker - Solid",
+    tag: "Picker",
+    description: "A picker with a solid border",
+    category: COMPONENT_TYPES.formControl,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541457206/draftbit/library/jigsaw-1.0/reps/Picker.png",
+    supports_list_render: false,
+    props: {
+      ...SEED_DATA_PROPS,
+      type: {
+        type: FORM_TYPES.string,
+        value: "solid",
+        editable: false
+      }
+    },
+    layout: {
+      width: 345,
+      height: 82
+    }
+  },
+  {
+    name: "Picker - Underline",
+    tag: "Picker",
+    description: "A picker with an underline",
+    category: COMPONENT_TYPES.formControl,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541457206/draftbit/library/jigsaw-1.0/reps/Picker.png",
+    supports_list_render: false,
+    props: {
+      ...SEED_DATA_PROPS,
+      type: {
+        type: FORM_TYPES.string,
+        value: "underline",
+        editable: false
+      }
+    },
+    layout: {
+      width: 345,
+      height: 82
+    }
+  }
+];

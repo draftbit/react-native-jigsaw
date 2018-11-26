@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
 
 export default withTheme(FAB);
 
-const BUTTON_PROPS = {
+const SEED_DATA_PROPS = {
   icon: {
     label: "Icon Name",
     description: "Name of the icon",
@@ -312,7 +312,7 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.FAB,
     description: "A round, mini FAB",
     props: {
-      ...BUTTON_PROPS,
+      ...SEED_DATA_PROPS,
       type: {
         label: "Type",
         description: "Button type",
@@ -332,7 +332,7 @@ export const SEED_DATA = [
     tab: "FAB",
     category: COMPONENT_TYPES.FAB,
     props: {
-      ...BUTTON_PROPS,
+      ...SEED_DATA_PROPS,
       type: {
         label: "Type",
         description: "Button type",
@@ -352,7 +352,7 @@ export const SEED_DATA = [
     tab: "FAB",
     category: COMPONENT_TYPES.FAB,
     props: {
-      ...BUTTON_PROPS,
+      ...SEED_DATA_PROPS,
       type: {
         label: "Type",
         description: "Button type",
@@ -372,7 +372,7 @@ export const SEED_DATA = [
     tab: "FAB",
     category: COMPONENT_TYPES.FAB,
     props: {
-      ...BUTTON_PROPS,
+      ...SEED_DATA_PROPS,
       type: {
         label: "Type",
         description: "Button type",

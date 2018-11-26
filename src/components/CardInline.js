@@ -156,8 +156,8 @@ export const SEED_DATA = [
       }
     },
     layout: {
-      width: 375,
-      height: 296
+      width: 109,
+      height: 109
     }
   },
   {
@@ -213,8 +213,8 @@ export const SEED_DATA = [
       }
     },
     layout: {
-      width: 375,
-      height: 296
+      width: 167,
+      height: 167
     }
   },
   {
@@ -270,8 +270,8 @@ export const SEED_DATA = [
       }
     },
     layout: {
-      width: 375,
-      height: 296
+      width: 343,
+      height: 343
     }
   }
 ];

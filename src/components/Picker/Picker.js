@@ -63,6 +63,7 @@ class Picker extends React.Component<Props> {
       { value: "Dodge", label: "Dodge" }
     ],
     type: "underline",
+    onValueChange: () => {},
     disabled: false,
     error: false
   };

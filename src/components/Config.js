@@ -49,5 +49,6 @@ export default {
   swiperInactiveDotSize: 6,
   swiperActiveDotSize: 10,
   fieldSearchBarFullIconSize: 24,
-  stepperButtonSize: 40
+  stepperButtonSize: 40,
+  radioButtonSize: 24
 };

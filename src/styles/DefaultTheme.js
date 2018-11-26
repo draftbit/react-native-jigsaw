@@ -2,7 +2,7 @@ const colors = {
   primary: "rgba(90, 69, 255, 100)",
   secondary: "rgba(59, 201, 234, 100)",
   surface: "rgba(255, 255, 255, 100)",
-  background: "rgba(251, 252, 253,100)",
+  background: "rgba(251, 252, 253, 100)",
   error: "rgba(255, 69, 100, 100)",
   divider: "rgba(234, 237, 242, 100)",
   strong: "rgba(18, 20, 44, 100)",

@@ -26,7 +26,8 @@ export const COMPONENT_TYPES = {
   primitive: "primitive",
   FAB: "FAB",
   formControl: "formControl",
-  row: "row"
+  row: "row",
+  map: "map"
 };
 
 export const ELEVATION_TYPE = {

@@ -13,6 +13,7 @@ import CarouselExample from "./src/CarouselExample";
 import DatePickerExample from "./src/DatePickerExample";
 import FieldSearchBarFullExample from "./src/FieldSearchBarFullExample";
 import HeaderExample from "./src/HeaderExample";
+import MapExample from "./src/MapExample";
 import PickerExample from "./src/PickerExample";
 import ProgressBarExample from "./src/ProgressBarExample";
 import RowExample from "./src/RowExample";
@@ -42,6 +43,7 @@ const Drawer = createDrawerNavigator(
     FAB: FABExample,
     FieldSearchBarFull: FieldSearchBarFullExample,
     Header: HeaderExample,
+    Map: MapExample,
     Picker: PickerExample,
     ProgressBar: ProgressBarExample,
     Row: RowExample,

@@ -26,7 +26,7 @@ class RowBodyCheckbox extends React.Component<Props> {
       status,
       onPress,
       color,
-      theme: { colors, typography, spacing }
+      theme: { colors, typography }
     } = this.props;
 
     return (

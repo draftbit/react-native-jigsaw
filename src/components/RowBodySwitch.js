@@ -66,23 +66,23 @@ export const SEED_DATA = [
         editable: true
       },
       value: {
-        label: "Status of switch controller",
+        label: "Status",
         description: "boolean status if switch is toggled true or false",
         editable: true,
         value: true,
         type: FORM_TYPES.boolean
       },
       onValueChange: {
-        label: "Switch onPress handler",
-        description: "function to change value of the switch",
+        label: "onValueChange handler",
+        description: "Function to change value of the switch",
         editable: true,
         required: true,
         value: "{this.onValueChange}",
         type: FORM_TYPES.function
       },
       color: {
-        label: "Checkbox color",
-        description: "Custom color for Checkbox",
+        label: "Color",
+        description: "Custom color for switch",
         editable: true,
         required: false,
         type: FORM_TYPES.color

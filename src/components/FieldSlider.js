@@ -83,7 +83,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.string,
-      value: null
+      value: "Title"
     },
     minimumLabel: {
       label: "Minimum label",
@@ -91,15 +91,15 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.string,
-      value: null
+      value: "0"
     },
     maximumLabel: {
-      label: "Title",
+      label: "Maximum label",
       description: "Label to show below right side of slider",
       editable: true,
       required: false,
       type: FORM_TYPES.string,
-      value: null
+      value: "10"
     },
     disabled: {
       label: "Disabled",
@@ -143,7 +143,7 @@ export const SEED_DATA = {
       max: 100,
       step: 0.01,
       precision: 2,
-      value: null
+      value: 1
     },
     onValueChange: {
       label: "Slider onValueChange function",

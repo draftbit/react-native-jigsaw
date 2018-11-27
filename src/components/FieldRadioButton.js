@@ -80,8 +80,8 @@ class FieldRadioButton extends React.Component<Props> {
 export default withTheme(FieldRadioButton);
 
 export const SEED_DATA = {
-  name: "Radio Button",
-  tag: "RadioButton",
+  name: "Field Radio Button",
+  tag: "FieldRadioButton",
   category: COMPONENT_TYPES.button,
   preview_image_url:
     "https://res.cloudinary.com/altos/image/upload/v1541096663/draftbit/library/jigsaw-1.0/reps/Field_Radio.png",

@@ -41,7 +41,7 @@ class RowBodyCheckbox extends React.Component<Props> {
           <Checkbox
             status={status}
             size={Config.rowSingleLineIconSize}
-            color={color || colors.light}
+            color={color}
             onPress={onPress}
           />
         )}

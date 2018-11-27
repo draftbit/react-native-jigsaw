@@ -54,7 +54,7 @@ class SliderExample extends React.Component<Props> {
         <FieldSlider
           title="Title"
           minimumLabel="0"
-          maximumLabel="10000"
+          maximumLabel="10"
           value={fieldSliderValue}
           onValueChange={fieldSliderValue => {
             this.setState({ fieldSliderValue });

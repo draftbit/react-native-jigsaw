@@ -38,11 +38,7 @@ class RowBodySwitch extends React.Component<Props> {
         title={title}
         subtitle={subtitle}
         right={() => (
-          <Switch
-            value={value}
-            color={color || colors.light}
-            onValueChange={onValueChange}
-          />
+          <Switch value={value} color={color} onValueChange={onValueChange} />
         )}
         style={style}
       />

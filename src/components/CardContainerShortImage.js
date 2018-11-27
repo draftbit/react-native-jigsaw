@@ -167,7 +167,7 @@ export const SEED_DATA = [
   },
   {
     name: "CardContainerShortRightImage",
-    tag: "CardContainerShortRImage",
+    tag: "CardContainerShortImage",
     description:
       "An elevated card with a right aligned image and a title and subtitle",
     category: COMPONENT_TYPES.card,

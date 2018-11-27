@@ -12,9 +12,9 @@ type Props = {
   subtitle?: string,
   style?: any,
   theme: Theme,
-  status: 'checked' | 'unchecked' | 'indeterminate',
+  status: "checked" | "unchecked" | "indeterminate",
   color?: string,
-  onPress?: () => mixed,
+  onPress?: () => mixed
 };
 
 class RowBodyCheckbox extends React.Component<Props> {
@@ -57,8 +57,10 @@ export const SEED_DATA = [
   {
     name: "Row Single Line Body Checkbox",
     tag: "RowBodyCheckbox",
-    description: "A row with left aligned body text and a right aligned checkbox",
-    preview_image_url: "https://res.cloudinary.com/altos/image/upload/v1541096707/draftbit/library/jigsaw-1.0/reps/Row_SingleLine_BodyCheckbox.png",
+    description:
+      "A row with left aligned body text and a right aligned checkbox",
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096707/draftbit/library/jigsaw-1.0/reps/Row_SingleLine_BodyCheckbox.png",
     category: COMPONENT_TYPES.row,
     supports_list_render: true,
     props: {
@@ -73,17 +75,17 @@ export const SEED_DATA = [
         label: "Check status",
         description: "Status of checkbox",
         required: true,
-        editable: false,
-        value: 'checked',
+        editable: true,
+        value: "checked",
         type: FORM_TYPES.flatArray,
-        options: ['checked', 'unchecked', 'indeterminate']
+        options: ["checked", "unchecked", "indeterminate"]
       },
       color: {
         label: "Checkbox color",
         description: "Custom color for Checkbox",
         editable: true,
         required: false,
-        type: FORM_TYPES.color,
+        type: FORM_TYPES.color
       },
       onPress: {
         label: "OnPress handler",
@@ -91,13 +93,13 @@ export const SEED_DATA = [
         editable: true,
         required: false,
         value: "{this.onPress}",
-        type: FORM_TYPES.function,
-      },
+        type: FORM_TYPES.function
+      }
     },
     layout: {
       width: 375,
       height: 59
-    },
+    }
   },
   {
     name: "Row Double Line Body Checkbox",
@@ -105,7 +107,8 @@ export const SEED_DATA = [
     description:
       "A row with left aligned body text and subtitle text and a right aligned checkbox",
     category: COMPONENT_TYPES.row,
-    preview_image_url:"https://res.cloudinary.com/altos/image/upload/v1541096705/draftbit/library/jigsaw-1.0/reps/Row_DoubleLine_BodyCheckbox.png",
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096705/draftbit/library/jigsaw-1.0/reps/Row_DoubleLine_BodyCheckbox.png",
     supports_list_render: true,
     props: {
       title: {
@@ -123,29 +126,29 @@ export const SEED_DATA = [
         editable: true
       },
       status: {
-        label: "Check status",
+        label: "Status",
         description: "Status of checkbox",
         required: true,
-        editable: false,
-        value: 'checked',
+        editable: true,
+        value: "checked",
         type: FORM_TYPES.flatArray,
-        options: ['checked', 'unchecked', 'indeterminate']
+        options: ["checked", "unchecked", "indeterminate"]
       },
       color: {
-        label: "Checkbox color",
+        label: "Color",
         description: "Custom color for Checkbox",
         editable: true,
         required: false,
-        type: FORM_TYPES.color,
+        type: FORM_TYPES.color
       },
       onPress: {
-        label: "OnPress handler",
+        label: "onPress handler",
         description: "function that handles checking or unchecking",
         editable: true,
         required: false,
         value: "{this.onPress}",
-        type: FORM_TYPES.function,
-      },
+        type: FORM_TYPES.function
+      }
     },
     layout: {
       width: 375,

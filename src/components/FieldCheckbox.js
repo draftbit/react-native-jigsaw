@@ -8,15 +8,14 @@ import Checkbox from "./Checkbox";
 import type { Theme } from "../types";
 import color from "color";
 
-
 type Props = {|
   title: string,
   style?: any,
   theme: Theme,
-  status: 'checked' | 'unchecked' | 'indeterminate',
+  status: "checked" | "unchecked" | "indeterminate",
   disabled?: boolean,
   color?: string,
-  onPress?: () => mixed,
+  onPress?: () => mixed
 |};
 
 class FieldCheckbox extends React.Component<Props> {
@@ -37,7 +36,7 @@ class FieldCheckbox extends React.Component<Props> {
       theme: { colors, typography, spacing, disabledOpacity }
     } = this.props;
 
-    let titleColor = status === 'checked' ? colors.medium : colors.light;
+    let titleColor = status === "checked" ? colors.medium : colors.light;
 
     if (disabled) {
       titleColor = color(titleColor)
@@ -48,17 +47,24 @@ class FieldCheckbox extends React.Component<Props> {
 
     return (
       <Touchable onPress={this.onPress} disabled={disabled}>
-        <View style={[styles.container,  { padding: spacing.large }]}>
+        <View style={[styles.container, { padding: spacing.large }]}>
           <Checkbox
             status={status}
-            color={ status === 'checked' ? checkboxColor || colors.medium : checkboxColor || colors.light}
+            color={
+              status === "checked"
+                ? checkboxColor || colors.medium
+                : checkboxColor || colors.light
+            }
             disabled={disabled}
             onPress={onPress}
           />
           <View>
-            <Text style={[, { color: titleColor }, typography.body1,
-            { marginLeft: spacing.medium }, 
-            ]}>
+            <Text
+              style={[
+                typography.body1,
+                { marginLeft: spacing.medium, color: titleColor }
+              ]}
+            >
               {title}
             </Text>
           </View>
@@ -68,22 +74,23 @@ class FieldCheckbox extends React.Component<Props> {
   }
 }
 
-export default withTheme(FieldCheckbox);
-
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center"
-  },
+  }
 });
+
+export default withTheme(FieldCheckbox);
 
 export const SEED_DATA = [
   {
     name: "Field Single Line Body Checkbox",
     tag: "FieldCheckbox",
     description: "A row with left aligned checkbox and body",
-    preview_image_url: "",
-    category: COMPONENT_TYPES.row,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096663/draftbit/library/jigsaw-1.0/reps/Field_Checkbox.png",
+    category: COMPONENT_TYPES.formControl,
     supports_list_render: true,
     props: {
       title: {
@@ -94,41 +101,41 @@ export const SEED_DATA = [
         editable: true
       },
       status: {
-        label: "Checkbox status",
+        label: "Status",
         description: "Status of checkbox",
         required: true,
-        editable: false,
-        value: 'checked',
+        editable: true,
+        value: "checked",
         type: FORM_TYPES.flatArray,
-        options: ['checked', 'unchecked', 'indeterminate']
+        options: ["checked", "unchecked", "indeterminate"]
       },
       color: {
-        label: "Checkbox color",
+        label: "Color",
         description: "Custom color for the checkbox",
         editable: true,
         required: false,
-        type: FORM_TYPES.color,
+        type: FORM_TYPES.color
       },
       onPress: {
-        label: "OnPress handler",
-        description: "function that handles checking or unchecking",
+        label: "onPress handler",
+        description: "Function that handles checking or unchecking",
         editable: true,
         required: false,
         value: "{this.onPress}",
-        type: FORM_TYPES.function,
+        type: FORM_TYPES.function
       },
       disabled: {
-        label: "Disable checkbox",
+        label: "Disabled",
         description: "Whether checkbox and headline is disabled",
         editable: true,
         required: false,
         value: false,
-        type: FORM_TYPES.boolean,
-      },
+        type: FORM_TYPES.boolean
+      }
     },
     layout: {
-      width: 375,
+      width: 343,
       height: 59
-    },
-  },
+    }
+  }
 ];

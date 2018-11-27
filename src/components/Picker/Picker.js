@@ -114,7 +114,7 @@ const SEED_DATA_PROPS = {
     label: "Placeholder",
     description: "The placeholder text of the picker",
     type: FORM_TYPES.string,
-    value: null,
+    value: "Select a make...",
     editable: true,
     required: false
   },
@@ -176,10 +176,10 @@ const SEED_DATA_PROPS = {
     description:
       "The mode of the icon to display on the left. 'inset' or 'outset'.",
     type: FORM_TYPES.flatArray,
-    value: null,
+    value: "inset",
     options: ["inset", "outset"],
     editable: true,
-    required: false
+    required: true
   },
   rightIconName: {
     label: "Right icon name",

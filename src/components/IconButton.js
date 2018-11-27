@@ -140,6 +140,8 @@ export const SEED_DATA = {
   name: "Icon Button",
   tag: "IconButton",
   category: COMPONENT_TYPES.button,
+  preview_image_url:
+    "https://res.cloudinary.com/altos/image/upload/v1541098038/draftbit/library/jigsaw-1.0/reps/Button_Icon.png",
   props: {
     icon: {
       label: "Icon Name",
@@ -160,7 +162,7 @@ export const SEED_DATA = {
     }
   },
   layout: {
-    width: 48,
-    height: 48
+    width: 24,
+    height: 24
   }
 };

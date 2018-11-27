@@ -50,13 +50,9 @@ class FieldCheckbox extends React.Component<Props> {
         <View style={[styles.container, { padding: spacing.large }]}>
           <Checkbox
             status={status}
-            color={
-              status === "checked"
-                ? checkboxColor || colors.medium
-                : checkboxColor || colors.light
-            }
             disabled={disabled}
             onPress={onPress}
+            color={checkboxColor}
           />
           <View>
             <Text
@@ -85,7 +81,7 @@ export default withTheme(FieldCheckbox);
 
 export const SEED_DATA = [
   {
-    name: "Field Single Line Body Checkbox",
+    name: "Field Checkbox",
     tag: "FieldCheckbox",
     description: "A row with left aligned checkbox and body",
     preview_image_url:

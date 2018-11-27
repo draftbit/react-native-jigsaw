@@ -9,7 +9,7 @@ import {
   Checkbox,
   RadioButton,
   FieldRadioButton,
-  FieldCheckbox,
+  FieldCheckbox
 } from "@draftbit/ui";
 import type { Theme } from "@draftbit/ui/types";
 

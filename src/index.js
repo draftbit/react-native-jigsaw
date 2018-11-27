@@ -50,3 +50,4 @@ export { default as Checkbox } from "./components/Checkbox";
 export { default as RadioButton } from "./components/RadioButton";
 export { default as RowBodyCheckbox } from "./components/RowBodyCheckbox";
 export { default as RowBodySwitch } from "./components/RowBodySwitch";
+export { default as FieldCheckbox } from "./components/FieldCheckbox";

@@ -8,7 +8,8 @@ import {
   Switch,
   Checkbox,
   RadioButton,
-  FieldRadioButton
+  FieldRadioButton,
+  FieldCheckbox,
 } from "@draftbit/ui";
 import type { Theme } from "@draftbit/ui/types";
 
@@ -69,6 +70,15 @@ class ControllerExample extends React.Component {
             selected={value}
             disabled={disabled}
             onPress={this.toggle}
+          />
+        </View>
+        <View style={styles.row}>
+          <FieldCheckbox
+            title="Title"
+            status={value ? "checked" : "unchecked"}
+            disabled={disabled}
+            onPress={this.toggle}
+            color={colors.primary}
           />
         </View>
       </ScrollView>

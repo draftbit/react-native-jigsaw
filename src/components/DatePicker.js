@@ -36,10 +36,6 @@ type Props = {
    */
   label?: string,
   /**
-   * Placeholder for the input.
-   */
-  placeholder?: string,
-  /**
    * Whether to style the Picker with error style.
    */
   error?: boolean,
@@ -134,7 +130,6 @@ class Picker extends React.Component<Props> {
       style,
       theme,
       options,
-      placeholder,
       date,
       onDateChange,
       disabled,
@@ -152,7 +147,6 @@ class Picker extends React.Component<Props> {
             <TextField
               {...props}
               value={this.formatDate(date)}
-              placeholder={placeholder}
               ref={this.textField}
               disabled={disabled}
             />
@@ -212,17 +206,9 @@ const SEED_DATA_PROPS = {
     label: "Label",
     description: "The label to be displayed on the picker",
     type: FORM_TYPES.string,
-    value: "Make",
+    value: "Date",
     editable: true,
     required: true
-  },
-  placeholder: {
-    label: "Placeholder",
-    description: "The placeholder text of the picker",
-    type: FORM_TYPES.string,
-    value: null,
-    editable: true,
-    required: false
   },
   assistiveText: {
     label: "Assistive text",
@@ -282,10 +268,10 @@ const SEED_DATA_PROPS = {
     description:
       "The mode of the icon to display on the left. 'inset' or 'outset'.",
     type: FORM_TYPES.flatArray,
-    value: null,
+    value: "inset",
     options: ["inset", "outset"],
     editable: true,
-    required: false
+    required: true
   },
   rightIconName: {
     label: "Right icon name",

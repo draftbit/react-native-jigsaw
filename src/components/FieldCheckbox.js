@@ -47,23 +47,21 @@ class FieldCheckbox extends React.Component<Props> {
 
     return (
       <Touchable onPress={this.onPress} disabled={disabled}>
-        <View style={[styles.container, { padding: spacing.large }]}>
+        <View style={styles.container}>
           <Checkbox
             status={status}
             disabled={disabled}
             onPress={onPress}
             color={checkboxColor}
           />
-          <View>
-            <Text
-              style={[
-                typography.body1,
-                { marginLeft: spacing.medium, color: titleColor }
-              ]}
-            >
-              {title}
-            </Text>
-          </View>
+          <Text
+            style={[
+              typography.body1,
+              { marginLeft: spacing.medium, color: titleColor }
+            ]}
+          >
+            {title}
+          </Text>
         </View>
       </Touchable>
     );

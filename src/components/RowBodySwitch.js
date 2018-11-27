@@ -14,7 +14,7 @@ type Props = {
   theme: Theme,
   value?: boolean,
   color?: string,
-  onValueChange?: Function,
+  onValueChange?: Function
 };
 
 class RowBodySwitch extends React.Component<Props> {
@@ -57,7 +57,8 @@ export const SEED_DATA = [
     name: "Row Single Line Body Switch",
     tag: "RowBodySwitch",
     description: "A row with left aligned body text and a right aligned switch",
-    preview_image_url: "https://res.cloudinary.com/altos/image/upload/v1541096679/draftbit/library/jigsaw-1.0/reps/Row_SingleLine_BodyToggle.png",
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096679/draftbit/library/jigsaw-1.0/reps/Row_SingleLine_BodyToggle.png",
     category: COMPONENT_TYPES.row,
     supports_list_render: true,
     props: {
@@ -73,7 +74,7 @@ export const SEED_DATA = [
         description: "boolean status if switch is toggled true or false",
         editable: true,
         value: true,
-        type: FORM_TYPES.boolean,
+        type: FORM_TYPES.boolean
       },
       onValueChange: {
         label: "Switch onPress handler",
@@ -81,20 +82,20 @@ export const SEED_DATA = [
         editable: true,
         required: true,
         value: "{this.onValueChange}",
-        type: FORM_TYPES.function,
+        type: FORM_TYPES.function
       },
       color: {
         label: "Checkbox color",
         description: "Custom color for Checkbox",
         editable: true,
         required: false,
-        type: FORM_TYPES.color,
+        type: FORM_TYPES.color
       }
     },
     layout: {
       width: 375,
       height: 59
-    },
+    }
   },
   {
     name: "Row Double Line Body Switch",
@@ -102,7 +103,8 @@ export const SEED_DATA = [
     description:
       "A row with left aligned body text and subtitle text and a right aligned switch",
     category: COMPONENT_TYPES.row,
-    preview_image_url: "https://res.cloudinary.com/altos/image/upload/v1541096697/draftbit/library/jigsaw-1.0/reps/Row_DoubleLine_Body_Toggle.png",
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/v1541096697/draftbit/library/jigsaw-1.0/reps/Row_DoubleLine_Body_Toggle.png",
     supports_list_render: true,
     props: {
       title: {
@@ -117,29 +119,29 @@ export const SEED_DATA = [
         description: "Subtitle text to display",
         type: FORM_TYPES.string,
         value: "San Diego",
-        editable: true,
+        editable: true
       },
       value: {
-        label: "Status of switch controller",
-        description: "boolean status if switch is toggled true or false",
+        label: "Value",
+        description: "Boolean status if switch is toggled true or false",
         editable: true,
         value: true,
-        type: FORM_TYPES.boolean,
+        type: FORM_TYPES.boolean
       },
       onValueChange: {
-        label: "Switch onPress handler",
-        description: "function to change value of the switch",
+        label: "onValueChange handler",
+        description: "Function to change value of the switch",
         editable: true,
         required: true,
         value: "{this.onValueChange}",
-        type: FORM_TYPES.function,
+        type: FORM_TYPES.function
       },
       color: {
-        label: "Checkbox color",
-        description: "Custom color for Checkbox",
+        label: "Color",
+        description: "Custom color for switch",
         editable: true,
         required: false,
-        type: FORM_TYPES.color,
+        type: FORM_TYPES.color
       }
     },
     layout: {

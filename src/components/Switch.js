@@ -1,8 +1,8 @@
 /* @flow */
-import * as React from 'react';
-import { Switch as NativeSwitch, Platform } from 'react-native';
-import { withTheme } from '../core/theming';
-import type { Theme } from '../types';
+import * as React from "react";
+import { Switch as NativeSwitch, Platform } from "react-native";
+import { withTheme } from "../core/theming";
+import type { Theme } from "../types";
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 type Props = {
@@ -26,7 +26,7 @@ type Props = {
   /**
    * @optional
    */
-  theme: Theme,
+  theme: Theme
 };
 
 class Switch extends React.Component<Props> {
@@ -39,20 +39,22 @@ class Switch extends React.Component<Props> {
       theme,
       ...props
     } = this.props;
-    let thumbColor = undefined
-    let checkedColor = color || theme.colors.primary
-    if (Platform.OS !== 'ios') {
-      thumbColor = theme.colors.surface
+    let thumbColor = undefined;
+    let checkedColor = color || theme.colors.primary;
+    if (Platform.OS !== "ios") {
+      thumbColor = theme.colors.surface;
     }
     return (
       <NativeSwitch
         {...props}
         value={value}
         disabled={disabled}
-        trackColor={{false: null, true: checkedColor }}
+        trackColor={{ false: null, true: checkedColor }}
         thumbColor={thumbColor}
         onValueChange={disabled ? undefined : onValueChange}
-        style={{ opacity: (disabled && Platform.OS !== 'ios') ? theme.disabledOpacity : 1 }}
+        style={{
+          opacity: disabled && Platform.OS !== "ios" ? theme.disabledOpacity : 1
+        }}
       />
     );
   }
@@ -63,44 +65,44 @@ export default withTheme(Switch);
 export const SEED_DATA = {
   name: "Switch",
   tag: "Switch",
-  category: COMPONENT_TYPES.primitive,
+  category: COMPONENT_TYPES.formControl,
   preview_image_url:
     "https://res.cloudinary.com/altos/image/upload/v1541096671/draftbit/library/jigsaw-1.0/reps/Control_Toggle.png",
   props: {
     disabled: {
-      label: "Disable",
+      label: "Disabled",
       description: "Boolean to handle disabling the switch",
       required: false,
       editable: true,
       value: false,
-      type: FORM_TYPES.boolean,
+      type: FORM_TYPES.boolean
     },
     value: {
-      label: "status of switch controller",
-      description: "boolean status if switch is toggled true or false",
+      label: "Value",
+      description: "Boolean status if switch is toggled true or false",
       editable: true,
       value: true,
-      type: FORM_TYPES.boolean,
+      type: FORM_TYPES.boolean
     },
     color: {
-      label: "Switch color",
+      label: "Color",
       description: "Custom color for switch",
       editable: true,
       value: null,
       required: false,
-      type: FORM_TYPES.color,
+      type: FORM_TYPES.color
     },
     onValueChange: {
-      label: "Switch onPress handler",
-      description: "function to change value of the switch",
+      label: "onValueChange handler",
+      description: "Function to change value of the switch",
       editable: true,
       required: true,
       value: "{this.onValueChange}",
-      type: FORM_TYPES.function,
-    },
+      type: FORM_TYPES.function
+    }
   },
   layout: {
     width: 36,
     height: 22
-  },
+  }
 };

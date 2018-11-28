@@ -414,7 +414,10 @@ class TextField extends React.Component<Props, State> {
 
     const leftIconStyle = {
       position: "absolute",
-      marginTop: type === "solid" ? MINIMIZED_LABEL_FONT_SIZE + spacing.text : 0
+      marginTop:
+        type === "solid"
+          ? MINIMIZED_LABEL_FONT_SIZE + spacing.text
+          : spacing.large
     };
 
     const labelStyle = {
@@ -583,7 +586,9 @@ class TextField extends React.Component<Props, State> {
               position: "absolute",
               right: spacing.large,
               marginTop:
-                type === "solid" ? MINIMIZED_LABEL_FONT_SIZE + spacing.text : 0
+                type === "solid"
+                  ? MINIMIZED_LABEL_FONT_SIZE + spacing.text
+                  : spacing.large
             }}
           />
         ) : null}

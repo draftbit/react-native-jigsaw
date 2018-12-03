@@ -417,7 +417,9 @@ class TextField extends React.Component<Props, State> {
       marginTop:
         type === "solid"
           ? MINIMIZED_LABEL_FONT_SIZE + spacing.text
-          : spacing.large
+          : leftIconMode === "outset"
+          ? spacing.large
+          : 0
     };
 
     const labelStyle = {

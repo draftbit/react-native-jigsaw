@@ -41,7 +41,7 @@ export const SEED_DATA = [
   {
     name: "Divider",
     tag: "Divider",
-    category: COMPONENT_TYPES.row,
+    category: COMPONENT_TYPES.primitive,
     description: "A horizontal line used to divide content",
     preview_image_url:
       "https://res.cloudinary.com/altos/image/upload/v1541096673/draftbit/library/jigsaw-1.0/reps/Divider.png",

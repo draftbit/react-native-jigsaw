@@ -9,9 +9,6 @@ type Props = {
   theme: Theme
 };
 
-const CARD_IMAGE_URL =
-  "https://res.cloudinary.com/altos/image/upload/w_200,f_auto,c_scale/draftbit/components/Image.png";
-
 class CardContainerRatingExample extends React.Component<Props> {
   render() {
     const {
@@ -32,7 +29,6 @@ class CardContainerRatingExample extends React.Component<Props> {
           CardContainerRating2Col
         </Text>
         <CardContainerRating
-          image={CARD_IMAGE_URL}
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           rating={4}
@@ -45,7 +41,6 @@ class CardContainerRatingExample extends React.Component<Props> {
           CardContainerRating3Col
         </Text>
         <CardContainerRating
-          image={CARD_IMAGE_URL}
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           rating={4}
@@ -57,7 +52,6 @@ class CardContainerRatingExample extends React.Component<Props> {
           CardContainerRating2Col with centered text
         </Text>
         <CardContainerRating
-          image={CARD_IMAGE_URL}
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           textCentered
@@ -68,7 +62,6 @@ class CardContainerRatingExample extends React.Component<Props> {
           CardContainerRating2Col, 1x1 aspect ratio
         </Text>
         <CardContainerRating
-          image={CARD_IMAGE_URL}
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           rating={4}
@@ -81,7 +74,6 @@ class CardContainerRatingExample extends React.Component<Props> {
           CardContainerRating3Col, 1x1 aspect ratio
         </Text>
         <CardContainerRating
-          image={CARD_IMAGE_URL}
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           rating={4}
@@ -93,7 +85,6 @@ class CardContainerRatingExample extends React.Component<Props> {
           CardContainerRating2Col, no right description
         </Text>
         <CardContainerRating
-          image={CARD_IMAGE_URL}
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           numColumns={2}

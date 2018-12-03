@@ -74,7 +74,7 @@ export const SEED_DATA = {
     "A component used to set a value in a range, along with a title and label text",
   category: COMPONENT_TYPES.formControl,
   preview_image_url:
-    "https://res.cloudinary.com/altos/image/upload/v1541096666/draftbit/library/jigsaw-1.0/reps/Control_Slider.png",
+    "https://res.cloudinary.com/altos/image/upload/v1541096675/draftbit/library/jigsaw-1.0/reps/Field_Slider.png",
   supports_list_render: false,
   props: {
     title: {

@@ -10,7 +10,7 @@ import {
   Divider,
   withTheme,
   RowBodyCheckbox,
-  RowBodySwitch,
+  RowBodySwitch
 } from "@draftbit/ui";
 import type { Theme } from "@draftbit/ui/types";
 
@@ -34,18 +34,13 @@ class RowExample extends React.Component<Props> {
         >
           RowSingleLineHeadlineImageIcon
         </Text>
-        <RowHeadlineImageIcon
-          title="Headline"
-          image="https://via.placeholder.com/24"
-          icon="check"
-        />
+        <RowHeadlineImageIcon title="Headline" icon="check" />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
           RowSingleLineHeadlineImageIcon with long title
         </Text>
         <RowHeadlineImageIcon
           title="Headline that is quite long so that it won't fit on a single line"
-          image="https://via.placeholder.com/24"
           icon="check"
         />
         <Divider style={{ marginBottom: spacing.large }} />
@@ -68,7 +63,6 @@ class RowExample extends React.Component<Props> {
         <RowHeadlineImageIcon
           title="Headline"
           subtitle="Subtitle"
-          image="https://via.placeholder.com/48"
           icon="check"
         />
         <Divider style={{ marginBottom: spacing.large }} />
@@ -78,7 +72,6 @@ class RowExample extends React.Component<Props> {
         <RowHeadlineImageIcon
           title="Headline that is quite long so that it won't fit on a single line"
           subtitle="Subtitle that is quite long so that it won't fit on a single line"
-          image="https://via.placeholder.com/48"
           icon="check"
         />
         <Divider style={{ marginBottom: spacing.large }} />
@@ -89,7 +82,6 @@ class RowExample extends React.Component<Props> {
           title="Headline that is quite long so that it won't fit on a single line"
           subtitle="Subtitle that is quite long so that it won't fit on a single line"
           multilineSubtitle
-          image="https://via.placeholder.com/48"
           icon="check"
         />
         <Divider style={{ marginBottom: spacing.large }} />
@@ -124,11 +116,7 @@ class RowExample extends React.Component<Props> {
         <Text style={{ marginHorizontal: spacing.large }}>
           RowSingleLineHeadlineImageCaption
         </Text>
-        <RowHeadlineImageCaption
-          title="Headline"
-          caption="Caption"
-          image="https://via.placeholder.com/24"
-        />
+        <RowHeadlineImageCaption title="Headline" caption="Caption" />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
           RowSingleLineHeadlineImageCaption with long title
@@ -136,7 +124,6 @@ class RowExample extends React.Component<Props> {
         <RowHeadlineImageCaption
           title="Headline that is quite long so that it won't fit on a single line"
           caption="Caption"
-          image="https://via.placeholder.com/24"
         />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
@@ -159,7 +146,6 @@ class RowExample extends React.Component<Props> {
           title="Headline"
           subtitle="Subtitle"
           caption="Caption"
-          image="https://via.placeholder.com/48"
         />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
@@ -169,7 +155,6 @@ class RowExample extends React.Component<Props> {
           title="Headline that is quite long so that it won't fit on a single line"
           subtitle="Subtitle that is quite long so that it won't fit on a single line"
           caption="Caption"
-          image="https://via.placeholder.com/48"
         />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
@@ -224,29 +209,19 @@ class RowExample extends React.Component<Props> {
           status="checked"
         />
         <Divider style={{ marginBottom: spacing.large }} />
-          <Text style={{ marginHorizontal: spacing.large }}>
+        <Text style={{ marginHorizontal: spacing.large }}>
           RowBodyCheckbox with title only
-          </Text>
-        <RowBodyCheckbox
-          title="Headline"
-          status="checked" 
-        />
+        </Text>
+        <RowBodyCheckbox title="Headline" status="checked" />
         <Text style={{ marginHorizontal: spacing.large }}>
           RowBodySwitch with title and subtitle
         </Text>
-        <RowBodySwitch
-          title="Headline"
-          subtitle="subtitle"
-          value={true}
-        />
+        <RowBodySwitch title="Headline" subtitle="subtitle" value={true} />
         <Divider style={{ marginBottom: spacing.large }} />
-          <Text style={{ marginHorizontal: spacing.large }}>
+        <Text style={{ marginHorizontal: spacing.large }}>
           RowBodySwitch with title only
-          </Text>
-        <RowBodySwitch
-          title="Headline"
-          value={true}
-        />
+        </Text>
+        <RowBodySwitch title="Headline" value={true} />
       </ScrollView>
     );
   }

@@ -21,6 +21,7 @@ export type CardContainerShortImageProps = {
 
 class CardContainerShortImage extends React.PureComponent<CardContainerShortImageProps> {
   static defaultProps = {
+    image: Config.squareImageUrl,
     elevation: 2,
     aspectRatio: 1,
     mode: "left"

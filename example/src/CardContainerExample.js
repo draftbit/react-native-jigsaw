@@ -9,9 +9,6 @@ type Props = {
   theme: Theme
 };
 
-const CARD_IMAGE_URL =
-  "https://res.cloudinary.com/altos/image/upload/w_200,f_auto,c_scale/draftbit/components/Image.png";
-
 class CardContainerExample extends React.Component<Props> {
   render() {
     const {
@@ -30,7 +27,6 @@ class CardContainerExample extends React.Component<Props> {
       >
         <Text style={{ marginBottom: spacing.medium }}>CardContainer2Col</Text>
         <CardContainer
-          image={CARD_IMAGE_URL}
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           rightDescription="$100"
@@ -40,7 +36,6 @@ class CardContainerExample extends React.Component<Props> {
         />
         <Text style={{ marginBottom: spacing.medium }}>CardContainer3Col</Text>
         <CardContainer
-          image={CARD_IMAGE_URL}
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           rightDescription="$100"
@@ -51,7 +46,6 @@ class CardContainerExample extends React.Component<Props> {
           CardContainer2Col with centered text
         </Text>
         <CardContainer
-          image={CARD_IMAGE_URL}
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           textCentered
@@ -62,7 +56,6 @@ class CardContainerExample extends React.Component<Props> {
           CardContainer2Col, 1x1 aspect ratio
         </Text>
         <CardContainer
-          image={CARD_IMAGE_URL}
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           rightDescription="$100"
@@ -74,7 +67,6 @@ class CardContainerExample extends React.Component<Props> {
           CardContainer3Col, 1x1 aspect ratio
         </Text>
         <CardContainer
-          image={CARD_IMAGE_URL}
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           rightDescription="$100"
@@ -85,7 +77,6 @@ class CardContainerExample extends React.Component<Props> {
           CardContainer2Col, no right description
         </Text>
         <CardContainer
-          image={CARD_IMAGE_URL}
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           numColumns={2}

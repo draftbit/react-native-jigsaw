@@ -15,7 +15,7 @@ export type CardInlineProps = {
   image: string | { uri: string },
   title?: string,
   description?: string,
-  titleCentered?: boolean,
+  textCentered?: boolean,
   aspectRatio?: number,
   elevation: number,
   numColumns: 1 | 2 | 3,
@@ -26,6 +26,7 @@ export type CardInlineProps = {
 
 class CardInline extends React.PureComponent<CardInlineProps> {
   static defaultProps = {
+    image: Config.cardImageUrl,
     aspectRatio: 1.5,
     elevation: 2,
     numColumns: 3
@@ -36,7 +37,7 @@ class CardInline extends React.PureComponent<CardInlineProps> {
       image,
       title,
       description,
-      titleCentered,
+      textCentered,
       aspectRatio,
       elevation,
       numColumns,
@@ -75,7 +76,7 @@ class CardInline extends React.PureComponent<CardInlineProps> {
           <View
             style={{
               position: "absolute",
-              alignItems: titleCentered ? "center" : "flex-start",
+              alignItems: textCentered ? "center" : "flex-start",
               bottom: numColumns === 1 ? spacing.medium : spacing.large,
               left: spacing.large,
               right: spacing.large
@@ -109,6 +110,31 @@ class CardInline extends React.PureComponent<CardInlineProps> {
 
 export default withTheme(CardInline);
 
+const SEED_DATA_PROPS = {
+  image: {
+    label: "Image",
+    description: "Image",
+    type: FORM_TYPES.remoteImage,
+    value: null,
+    editable: true
+  },
+  title: {
+    label: "Title",
+    description: "Text to display",
+    type: FORM_TYPES.string,
+    value: "Beautiful West Coast Villa",
+    editable: true
+  },
+  textCentered: {
+    label: "Text centered",
+    description: "Whether to center the text",
+    type: FORM_TYPES.boolean,
+    value: false,
+    editable: true
+  },
+  elevation: ELEVATION_TYPE
+};
+
 export const SEED_DATA = [
   {
     name: "Small Inline Card",
@@ -120,20 +146,7 @@ export const SEED_DATA = [
       "https://res.cloudinary.com/altos/image/upload/v1541096714/draftbit/library/jigsaw-1.0/reps/Card_Inline_1col.png",
     supports_list_render: true,
     props: {
-      image: {
-        label: "Image",
-        description: "Image",
-        type: FORM_TYPES.remoteImage,
-        value: null,
-        editable: true
-      },
-      title: {
-        label: "Title",
-        description: "Text to display",
-        type: FORM_TYPES.string,
-        value: "Beautiful West Coast Villa",
-        editable: true
-      },
+      ...SEED_DATA_PROPS,
       aspectRatio: {
         label: "Aspect ratio",
         description: "Aspect ratio of the image",
@@ -141,14 +154,6 @@ export const SEED_DATA = [
         value: 1,
         editable: true
       },
-      titleCentered: {
-        label: "Title centered",
-        description: "Whether to center the text.",
-        type: FORM_TYPES.boolean,
-        value: true,
-        editable: true
-      },
-      elevation: ELEVATION_TYPE,
       numColumns: {
         type: FORM_TYPES.number,
         value: 1,
@@ -170,20 +175,7 @@ export const SEED_DATA = [
       "https://res.cloudinary.com/altos/image/upload/v1541096650/draftbit/library/jigsaw-1.0/reps/Card_Inline_2col.png",
     supports_list_render: true,
     props: {
-      image: {
-        label: "Image",
-        description: "Image",
-        type: FORM_TYPES.remoteImage,
-        value: null,
-        editable: true
-      },
-      title: {
-        label: "Title",
-        description: "Text to display",
-        type: FORM_TYPES.string,
-        value: "Beautiful West Coast Villa",
-        editable: true
-      },
+      ...SEED_DATA_PROPS,
       description: {
         label: "Left description",
         description: "Text to display on the left",
@@ -195,17 +187,9 @@ export const SEED_DATA = [
         label: "Aspect ratio",
         description: "Aspect ratio of the image",
         type: FORM_TYPES.aspectRatio,
-        value: 3 / 2,
+        value: 1.5,
         editable: true
       },
-      titleCentered: {
-        label: "Title centered",
-        description: "Whether to center the text.",
-        type: FORM_TYPES.boolean,
-        value: false,
-        editable: true
-      },
-      elevation: ELEVATION_TYPE,
       numColumns: {
         type: FORM_TYPES.number,
         value: 2,
@@ -227,20 +211,7 @@ export const SEED_DATA = [
       "https://res.cloudinary.com/altos/image/upload/v1541096652/draftbit/library/jigsaw-1.0/reps/Card_Inline_3col.png",
     supports_list_render: true,
     props: {
-      image: {
-        label: "Image",
-        description: "Image",
-        type: FORM_TYPES.remoteImage,
-        value: null,
-        editable: true
-      },
-      title: {
-        label: "Title",
-        description: "Text to display",
-        type: FORM_TYPES.string,
-        value: "Beautiful West Coast Villa",
-        editable: true
-      },
+      ...SEED_DATA_PROPS,
       description: {
         label: "Left description",
         description: "Text to display on the left",
@@ -252,17 +223,9 @@ export const SEED_DATA = [
         label: "Aspect ratio",
         description: "Aspect ratio of the image",
         type: FORM_TYPES.aspectRatio,
-        value: 3 / 2,
+        value: 1.5,
         editable: true
       },
-      titleCentered: {
-        label: "Title centered",
-        description: "Whether to center the text.",
-        type: FORM_TYPES.boolean,
-        value: false,
-        editable: true
-      },
-      elevation: ELEVATION_TYPE,
       numColumns: {
         type: FORM_TYPES.number,
         value: 3,

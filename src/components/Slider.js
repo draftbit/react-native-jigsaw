@@ -35,7 +35,7 @@ export const SEED_DATA = {
   name: "Slider",
   tag: "Slider",
   description: "A component used to set a value in a range",
-  category: COMPONENT_TYPES.primitive,
+  category: COMPONENT_TYPES.formControl,
   preview_image_url:
     "https://res.cloudinary.com/altos/image/upload/v1541096666/draftbit/library/jigsaw-1.0/reps/Control_Slider.png",
   supports_list_render: false,

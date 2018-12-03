@@ -5,6 +5,7 @@ import { Text } from "react-native";
 import { withTheme } from "../core/theming";
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import Row from "./Row";
+import Config from "./Config";
 import type { Theme } from "../types";
 
 type Props = {
@@ -17,6 +18,10 @@ type Props = {
 };
 
 class RowHeadlineImageCaption extends React.Component<Props> {
+  static defaultProps = {
+    image: Config.squareImageUrl
+  };
+
   render() {
     const {
       title,

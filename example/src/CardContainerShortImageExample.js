@@ -9,9 +9,6 @@ type Props = {
   theme: Theme
 };
 
-const CARD_IMAGE_URL =
-  "https://res.cloudinary.com/altos/image/upload/w_200,f_auto,c_scale/draftbit/components/Image.png";
-
 class CardContainerShortImageExample extends React.Component<Props> {
   render() {
     const {
@@ -32,7 +29,6 @@ class CardContainerShortImageExample extends React.Component<Props> {
           CardContainerShortLeftImage
         </Text>
         <CardContainerShortImage
-          image={CARD_IMAGE_URL}
           title="Beautiful West Coast Villa"
           subtitle="San Diego"
           mode="left"
@@ -42,7 +38,6 @@ class CardContainerShortImageExample extends React.Component<Props> {
           CardContainerShortLeftImage with long title and subtitle
         </Text>
         <CardContainerShortImage
-          image={CARD_IMAGE_URL}
           title="Title that is quite long so that it won't fit on a single line"
           subtitle="Subtitle that is quite long so that it won't fit on a single line"
           mode="left"
@@ -52,7 +47,6 @@ class CardContainerShortImageExample extends React.Component<Props> {
           CardContainerShortRightImage
         </Text>
         <CardContainerShortImage
-          image={CARD_IMAGE_URL}
           title="Beautiful West Coast Villa"
           subtitle="San Diego"
           mode="right"
@@ -62,7 +56,6 @@ class CardContainerShortImageExample extends React.Component<Props> {
           CardContainerShortRightImage with long title and subtitle
         </Text>
         <CardContainerShortImage
-          image={CARD_IMAGE_URL}
           title="Title that is quite long so that it won't fit on a single line"
           subtitle="Subtitle that is quite long so that it won't fit on a single line"
           mode="right"

@@ -16,6 +16,10 @@ type Props = {
 };
 
 class HeaderOverline extends React.Component<Props> {
+  static defaultProps = {
+    onPress: () => {}
+  };
+
   render() {
     const {
       title,

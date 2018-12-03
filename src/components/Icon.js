@@ -97,7 +97,7 @@ export const SEED_DATA = {
   name: "Icon",
   tag: "Icon",
   description: "An icon",
-  category: COMPONENT_TYPES.image,
+  category: COMPONENT_TYPES.primitive,
   preview_image_url:
     "https://res.cloudinary.com/altos/image/upload/v1541096699/draftbit/library/jigsaw-1.0/reps/Icon.png",
   supports_list_render: false,

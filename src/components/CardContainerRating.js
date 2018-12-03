@@ -6,7 +6,11 @@ import Elevation from "./Elevation";
 import Icon from "./Icon";
 import StarRating from "./StarRating";
 import { withTheme } from "../core/theming";
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
+import {
+  FORM_TYPES,
+  COMPONENT_TYPES,
+  ELEVATION_TYPE
+} from "../core/component-types";
 import Config from "./Config";
 import type { Theme } from "../types";
 
@@ -30,6 +34,7 @@ export type CardContainerRatingProps = {
 
 class CardContainerRating extends React.PureComponent<CardContainerRatingProps> {
   static defaultProps = {
+    image: Config.cardImageUrl,
     aspectRatio: 1.5,
     elevation: 2,
     numColumns: 3
@@ -165,6 +170,62 @@ class CardContainerRating extends React.PureComponent<CardContainerRatingProps> 
 
 export default withTheme(CardContainerRating);
 
+const SEED_DATA_PROPS = {
+  image: {
+    label: "Image",
+    description: "Image",
+    type: FORM_TYPES.remoteImage,
+    value: null,
+    editable: true
+  },
+  title: {
+    label: "Title",
+    description: "Text to display",
+    type: FORM_TYPES.string,
+    value: "Beautiful West Coast Villa",
+    editable: true
+  },
+  leftDescription: {
+    label: "Left description",
+    description: "Text to display on the left",
+    type: FORM_TYPES.string,
+    value: "San Diego",
+    editable: true
+  },
+  rightDescription: {
+    label: "Right description",
+    description: "Text to display on the right",
+    type: FORM_TYPES.string,
+    value: "$100",
+    editable: true
+  },
+  icon: {
+    label: "Icon",
+    description: "Icon to display on the top right",
+    type: FORM_TYPES.icon,
+    value: "cloud",
+    editable: true
+  },
+  aspectRatio: {
+    label: "Aspect ratio",
+    description: "Aspect ratio of the image",
+    type: FORM_TYPES.aspectRatio,
+    value: 1.5,
+    editable: true
+  },
+  rating: {
+    label: "Rating",
+    description: "Number of stars to show. A number 0-5.",
+    type: FORM_TYPES.number,
+    min: 0,
+    max: 5,
+    step: 1,
+    precision: 0,
+    editable: true
+  },
+  elevation: ELEVATION_TYPE
+};
+
 export const SEED_DATA = [
   {
     name: "Medium rating card",
@@ -176,69 +237,7 @@ export const SEED_DATA = [
       "https://res.cloudinary.com/altos/image/upload/v1541096709/draftbit/library/jigsaw-1.0/reps/Card_ContainerRating_2col.png",
     supports_list_render: true,
     props: {
-      image: {
-        label: "Image",
-        description: "Image",
-        type: FORM_TYPES.remoteImage,
-        value: null,
-        editable: true
-      },
-      title: {
-        label: "Title",
-        description: "Text to display",
-        type: FORM_TYPES.string,
-        value: "Beautiful West Coast Villa",
-        editable: true
-      },
-      leftDescription: {
-        label: "Left description",
-        description: "Text to display on the left",
-        type: FORM_TYPES.string,
-        value: "San Diego",
-        editable: true
-      },
-      rightDescription: {
-        label: "Right description",
-        description: "Text to display on the right",
-        type: FORM_TYPES.string,
-        value: "$100",
-        editable: true
-      },
-      icon: {
-        label: "Icon",
-        description: "Icon to display on the top right",
-        type: FORM_TYPES.icon,
-        value: "cloud",
-        editable: true
-      },
-      aspectRatio: {
-        label: "Aspect ratio",
-        description: "Aspect ratio of the image",
-        type: FORM_TYPES.aspectRatio,
-        value: 1.5,
-        editable: true
-      },
-      rating: {
-        label: "Rating",
-        description: "Number of stars to show. A number 0-5.",
-        type: FORM_TYPES.number,
-        min: 0,
-        max: 5,
-        step: 1,
-        precision: 0,
-        editable: true
-      },
-      elevation: {
-        label: "Elevation",
-        description: "Elevation of the card. A number 0-3.",
-        type: FORM_TYPES.number,
-        value: 2,
-        min: 0,
-        max: 3,
-        step: 1,
-        precision: 0,
-        editable: true
-      },
+      ...SEED_DATA_PROPS,
       numColumns: {
         type: FORM_TYPES.number,
         value: 2,
@@ -260,69 +259,6 @@ export const SEED_DATA = [
       "https://res.cloudinary.com/altos/image/upload/v1541096711/draftbit/library/jigsaw-1.0/reps/Card_ContainerRating_3col.png",
     supports_list_render: true,
     props: {
-      image: {
-        label: "Image",
-        description: "Image",
-        type: FORM_TYPES.remoteImage,
-        value: null,
-        editable: true
-      },
-      title: {
-        label: "Title",
-        description: "Text to display",
-        type: FORM_TYPES.string,
-        value: "Beautiful West Coast Villa",
-        editable: true
-      },
-      leftDescription: {
-        label: "Left description",
-        description: "Text to display on the left",
-        type: FORM_TYPES.string,
-        value: "San Diego",
-        editable: true
-      },
-      rightDescription: {
-        label: "Right description",
-        description: "Text to display on the right",
-        type: FORM_TYPES.string,
-        value: "$100",
-        editable: true
-      },
-      icon: {
-        label: "Icon",
-        description: "Icon to display on the top right",
-        type: FORM_TYPES.icon,
-        value: "cloud",
-        editable: true
-      },
-      aspectRatio: {
-        label: "Aspect ratio",
-        description: "Aspect ratio of the image",
-        type: FORM_TYPES.aspectRatio,
-        value: 1.5,
-        editable: true
-      },
-      rating: {
-        label: "Rating",
-        description: "Number of stars to show. A number 0-5.",
-        type: FORM_TYPES.number,
-        min: 0,
-        max: 5,
-        step: 1,
-        precision: 0,
-        editable: true
-      },
-      elevation: {
-        label: "Elevation",
-        description: "Elevation of the card. A number 0-3.",
-        type: FORM_TYPES.number,
-        value: 2,
-        min: 0,
-        max: 3,
-        step: 1,
-        precision: 0,
-        editable: true
-      },
       numColumns: {
         type: FORM_TYPES.number,
         value: 3,

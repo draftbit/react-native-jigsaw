@@ -321,7 +321,7 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         type: FORM_TYPES.string,
-        value: "text"
+        value: "solid"
       }
     },
     layout: {
@@ -343,7 +343,7 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         type: FORM_TYPES.string,
-        value: "solid"
+        value: "text"
       }
     },
     layout: {

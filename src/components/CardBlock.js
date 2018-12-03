@@ -27,6 +27,7 @@ export type CardBlockProps = {
 
 class CardBlock extends React.PureComponent<CardBlockProps> {
   static defaultProps = {
+    image: Config.cardImageUrl,
     aspectRatio: 1.5,
     elevation: 2,
     numColumns: 3
@@ -130,6 +131,52 @@ class CardBlock extends React.PureComponent<CardBlockProps> {
 
 export default withTheme(CardBlock);
 
+const SEED_DATA_PROPS = {
+  image: {
+    label: "Image",
+    description: "Image",
+    type: FORM_TYPES.remoteImage,
+    value: null,
+    editable: true
+  },
+  title: {
+    label: "Title",
+    description: "Text to display",
+    type: FORM_TYPES.string,
+    value: "Beautiful West Coast Villa",
+    editable: true
+  },
+  leftDescription: {
+    label: "Left description",
+    description: "Text to display on the left",
+    type: FORM_TYPES.string,
+    value: "San Diego",
+    editable: true
+  },
+  rightDescription: {
+    label: "Right description",
+    description: "Text to display on the right",
+    type: FORM_TYPES.string,
+    value: "$100",
+    editable: true
+  },
+  aspectRatio: {
+    label: "Aspect ratio",
+    description: "Aspect ratio of the image",
+    type: FORM_TYPES.aspectRatio,
+    value: 1.5,
+    editable: true
+  },
+  titleCentered: {
+    label: "Title centered",
+    description: "Whether to center the title",
+    type: FORM_TYPES.boolean,
+    value: false,
+    editable: true
+  },
+  elevation: ELEVATION_TYPE
+};
+
 export const SEED_DATA = [
   {
     name: "Small Block Card",
@@ -141,56 +188,7 @@ export const SEED_DATA = [
       "https://res.cloudinary.com/altos/image/upload/v1541096668/draftbit/library/jigsaw-1.0/reps/Card_Block_1col.png",
     supports_list_render: true,
     props: {
-      image: {
-        label: "Image",
-        description: "Image",
-        type: FORM_TYPES.remoteImage,
-        value: null,
-        editable: true
-      },
-      title: {
-        label: "Title",
-        description: "Text to display",
-        type: FORM_TYPES.string,
-        value: "Beautiful West Coast Villa",
-        editable: true
-      },
-      leftDescription: {
-        label: "Left description",
-        description: "Text to display on the left",
-        type: FORM_TYPES.string,
-        value: "San Diego",
-        editable: true
-      },
-      rightDescription: {
-        label: "Right description",
-        description: "Text to display on the right",
-        type: FORM_TYPES.string,
-        value: "$100",
-        editable: true
-      },
-      icon: {
-        label: "Icon",
-        description: "Icon to display on the top right",
-        type: FORM_TYPES.icon,
-        value: "cloud",
-        editable: true
-      },
-      aspectRatio: {
-        label: "Aspect ratio",
-        description: "Aspect ratio of the image",
-        type: FORM_TYPES.aspectRatio,
-        value: 1.5,
-        editable: true
-      },
-      titleCentered: {
-        label: "Title centered",
-        description: "Whether to center the title",
-        type: FORM_TYPES.boolean,
-        value: false,
-        editable: true
-      },
-      elevation: ELEVATION_TYPE,
+      ...SEED_DATA_PROPS,
       numColumns: {
         type: FORM_TYPES.number,
         value: 1,
@@ -212,34 +210,7 @@ export const SEED_DATA = [
       "https://res.cloudinary.com/altos/image/upload/v1541096684/draftbit/library/jigsaw-1.0/reps/Card_Block_2col.png",
     supports_list_render: true,
     props: {
-      image: {
-        label: "Image",
-        description: "Image",
-        type: FORM_TYPES.remoteImage,
-        value: null,
-        editable: true
-      },
-      title: {
-        label: "Title",
-        description: "Text to display",
-        type: FORM_TYPES.string,
-        value: "Beautiful West Coast Villa",
-        editable: true
-      },
-      leftDescription: {
-        label: "Left description",
-        description: "Text to display on the left",
-        type: FORM_TYPES.string,
-        value: "San Diego",
-        editable: true
-      },
-      rightDescription: {
-        label: "Right description",
-        description: "Text to display on the right",
-        type: FORM_TYPES.string,
-        value: "$100",
-        editable: true
-      },
+      ...SEED_DATA_PROPS,
       icon: {
         label: "Icon",
         description: "Icon to display on the top right",
@@ -247,21 +218,6 @@ export const SEED_DATA = [
         value: "cloud",
         editable: true
       },
-      aspectRatio: {
-        label: "Aspect ratio",
-        description: "Aspect ratio of the image",
-        type: FORM_TYPES.aspectRatio,
-        value: 1.5,
-        editable: true
-      },
-      titleCentered: {
-        label: "Title centered",
-        description: "Whether to center the title",
-        type: FORM_TYPES.boolean,
-        value: false,
-        editable: true
-      },
-      elevation: ELEVATION_TYPE,
       numColumns: {
         type: FORM_TYPES.number,
         value: 2,
@@ -283,34 +239,7 @@ export const SEED_DATA = [
       "https://res.cloudinary.com/altos/image/upload/v1541096692/draftbit/library/jigsaw-1.0/reps/Card_Block_3col.png",
     supports_list_render: true,
     props: {
-      image: {
-        label: "Image",
-        description: "Image",
-        type: FORM_TYPES.remoteImage,
-        value: null,
-        editable: true
-      },
-      title: {
-        label: "Title",
-        description: "Text to display",
-        type: FORM_TYPES.string,
-        value: "Beautiful West Coast Villa",
-        editable: true
-      },
-      leftDescription: {
-        label: "Left description",
-        description: "Text to display on the left",
-        type: FORM_TYPES.string,
-        value: "San Diego",
-        editable: true
-      },
-      rightDescription: {
-        label: "Right description",
-        description: "Text to display on the right",
-        type: FORM_TYPES.string,
-        value: "$100",
-        editable: true
-      },
+      ...SEED_DATA_PROPS,
       icon: {
         label: "Icon",
         description: "Icon to display on the top right",
@@ -318,21 +247,6 @@ export const SEED_DATA = [
         value: "cloud",
         editable: true
       },
-      aspectRatio: {
-        label: "Aspect ratio",
-        description: "Aspect ratio of the image",
-        type: FORM_TYPES.aspectRatio,
-        value: 1.5,
-        editable: true
-      },
-      titleCentered: {
-        label: "Title centered",
-        description: "Whether to center the title",
-        type: FORM_TYPES.boolean,
-        value: false,
-        editable: true
-      },
-      elevation: ELEVATION_TYPE,
       numColumns: {
         type: FORM_TYPES.number,
         value: 3,

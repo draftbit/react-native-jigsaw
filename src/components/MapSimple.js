@@ -40,37 +40,35 @@ class MapSimple extends React.PureComponent<MapSimpleProps> {
     } = this.props;
 
     return (
-      <View style={{ flex: 1 }}>
-        <MapView
-          initialRegion={{
-            latitude: initialLatitude,
-            longitude: initialLongitude,
-            latitudeDelta: initialLatitudeDelta,
-            longitudeDelta: initialLongitudeDelta
-          }}
-          style={[
-            {
-              borderRadius: borderRadius.global,
-              width: "100%",
-              aspectRatio
-            },
-            style
-          ]}
-        >
-          {markers.map((m, i) => (
-            <MapView.Marker
-              coordinate={{
-                latitude: m.latitude,
-                longitude: m.longitude
-              }}
-              title={m.title}
-              description={m.description}
-              pinColor={colors.primary}
-              key={i}
-            />
-          ))}
-        </MapView>
-      </View>
+      <MapView
+        initialRegion={{
+          latitude: initialLatitude,
+          longitude: initialLongitude,
+          latitudeDelta: initialLatitudeDelta,
+          longitudeDelta: initialLongitudeDelta
+        }}
+        style={[
+          {
+            borderRadius: borderRadius.global,
+            width: "100%",
+            aspectRatio
+          },
+          style
+        ]}
+      >
+        {markers.map((m, i) => (
+          <MapView.Marker
+            coordinate={{
+              latitude: m.latitude,
+              longitude: m.longitude
+            }}
+            title={m.title}
+            description={m.description}
+            pinColor={colors.primary}
+            key={i}
+          />
+        ))}
+      </MapView>
     );
   }
 }

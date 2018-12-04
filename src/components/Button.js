@@ -185,7 +185,7 @@ class Button extends React.Component<Props> {
     ];
 
     return (
-      <Elevation style={{ elevation }}>
+      <Elevation style={{ elevation, alignSelf: "stretch" }}>
         <Touchable
           {...rest}
           onPress={onPress}

@@ -10,7 +10,7 @@ export const SEED_DATA = {
   type: COMPONENT_TYPES.primitive,
   supports_list_render: false,
   preview_image_url:
-    "https://res.cloudinary.com/altos/image/upload/v1543956594/draftbit/Jigsaw/Image.svg",
+    "https://res.cloudinary.com/altos/image/upload/v1543957160/draftbit/Jigsaw/Image.svg",
   layout: {
     width: 200,
     height: 200

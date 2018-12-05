@@ -21,7 +21,7 @@ export const FORM_TYPES = {
 export const COMPONENT_TYPES = {
   card: "card",
   carousel: "carousel",
-  text: "text",
+  listHeader: "listHeader",
   button: "button",
   image: "image",
   primitive: "primitive",

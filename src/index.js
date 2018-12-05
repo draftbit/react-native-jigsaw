@@ -53,3 +53,4 @@ export { default as Stepper } from "./components/Stepper";
 export { default as Switch } from "./components/Switch";
 export { default as Text } from "./components/Text";
 export { default as TextField } from "./components/TextField";
+export { default as View } from "./components/View";

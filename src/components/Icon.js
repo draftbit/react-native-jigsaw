@@ -114,7 +114,7 @@ export const SEED_DATA = {
       label: "Color",
       description: "Color of the icon",
       type: FORM_TYPES.color,
-      value: "#000000",
+      value: "strong",
       editable: true,
       required: true
     },

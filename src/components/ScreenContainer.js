@@ -3,10 +3,6 @@ import { SafeAreaView, StyleSheet, ScrollView, View } from "react-native";
 import { withTheme } from "../core/theming";
 
 class ScreenContainer extends React.Component {
-  static defaultProps = {
-    useThemeGutterSpacing: true
-  };
-
   renderScrollableSafeAreaView(themeStyles) {
     const { children, style } = this.props;
     return (
@@ -74,16 +70,11 @@ class ScreenContainer extends React.Component {
       theme,
       hasSafeArea,
       scrollable,
-      useThemeGutterSpacing
     } = this.props;
 
     const themeStyles = {
       backgroundColor: theme.colors.background
     };
-
-    if (useThemeGutterSpacing) {
-      themeStyles.paddingHorizontal = theme.spacing.gutters;
-    }
 
     if (scrollable && hasSafeArea) {
       return this.renderScrollableSafeAreaView(themeStyles);

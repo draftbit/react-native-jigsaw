@@ -23,6 +23,16 @@ export const SEED_DATA = {
       required: true,
       type: FORM_TYPES.localImage,
       value: null
+    },
+    resizeMode: {
+      label: "Resize Mode",
+      description:
+        "Determines how to resize the image when the frame doesn't match the raw image dimensions",
+      editable: true,
+      required: false,
+      value: null,
+      type: FORM_TYPES.flatArray,
+      options: ["cover", "contain", "stretch", "repeat", "center"]
     }
   }
 };

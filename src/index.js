@@ -41,6 +41,7 @@ export { default as RadioButton } from "./components/RadioButton";
 export { default as RowBodyCheckbox } from "./components/RowBodyCheckbox";
 export { default as RowBodyIcon } from "./components/RowBodyIcon";
 export { default as RowBodySwitch } from "./components/RowBodySwitch";
+export { default as RowContainer } from "./components/RowContainer";
 export {
   default as RowHeadlineImageCaption
 } from "./components/RowHeadlineImageCaption";

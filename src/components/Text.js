@@ -102,7 +102,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.color,
-      value: "#000000"
+      value: null
     },
     textDecorationStyle: {
       label: "Text Decoration Style",
@@ -118,7 +118,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.color,
-      value: "#000000"
+      value: "strong"
     }
   }
 };

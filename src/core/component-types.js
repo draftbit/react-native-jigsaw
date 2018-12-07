@@ -26,6 +26,7 @@ export const COMPONENT_TYPES = {
   image: "image",
   primitive: "primitive",
   FAB: "FAB",
+  field: "field",
   formControl: "formControl",
   row: "row",
   map: "map"

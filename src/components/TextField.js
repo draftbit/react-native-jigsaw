@@ -725,7 +725,7 @@ export const SEED_DATA = [
     name: "Text Field - Solid",
     tag: "TextField",
     description: "A text input with a solid border",
-    category: COMPONENT_TYPES.formControl,
+    category: COMPONENT_TYPES.field,
     preview_image_url:
       "https://res.cloudinary.com/altos/image/upload/v1541457206/draftbit/library/jigsaw-1.0/reps/Textfield.png",
     supports_list_render: false,
@@ -746,7 +746,7 @@ export const SEED_DATA = [
     name: "Text Field - Underline",
     tag: "TextField",
     description: "A text input with an underline",
-    category: COMPONENT_TYPES.formControl,
+    category: COMPONENT_TYPES.field,
     preview_image_url:
       "https://res.cloudinary.com/altos/image/upload/v1541457206/draftbit/library/jigsaw-1.0/reps/Textfield.png",
     supports_list_render: false,
@@ -767,7 +767,7 @@ export const SEED_DATA = [
     name: "Text Area - Solid",
     tag: "TextField",
     description: "A text area with a solid border",
-    category: COMPONENT_TYPES.formControl,
+    category: COMPONENT_TYPES.field,
     preview_image_url:
       "https://res.cloudinary.com/altos/image/upload/v1541457205/draftbit/library/jigsaw-1.0/reps/TextArea.png",
     supports_list_render: false,
@@ -793,7 +793,7 @@ export const SEED_DATA = [
     name: "Text Area - Underline",
     tag: "TextField",
     description: "A text area with an underline",
-    category: COMPONENT_TYPES.formControl,
+    category: COMPONENT_TYPES.field,
     preview_image_url:
       "https://res.cloudinary.com/altos/image/upload/v1541457205/draftbit/library/jigsaw-1.0/reps/TextArea.png",
     supports_list_render: false,

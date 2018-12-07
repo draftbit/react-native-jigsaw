@@ -60,7 +60,7 @@ export default withTheme(RadioButton);
 export const SEED_DATA = {
   name: "Radio Button",
   tag: "RadioButton",
-  category: COMPONENT_TYPES.button,
+  category: COMPONENT_TYPES.formControl,
   preview_image_url:
     "https://res.cloudinary.com/altos/image/upload/v1541096655/draftbit/library/jigsaw-1.0/reps/Control_Radio.png",
   props: {

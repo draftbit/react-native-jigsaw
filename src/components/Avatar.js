@@ -3,7 +3,7 @@ import * as React from "react";
 import { Image } from "react-native";
 import Config from "./Config";
 import type { IconSource } from "./Icon";
-import { FORM_TYPES } from "../core/component-types";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 export type AvatarProps = {
   /**

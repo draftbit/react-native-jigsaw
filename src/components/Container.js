@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { withTheme } from "../core/theming";
 import { COMPONENT_TYPES } from "../core/component-types";
 
-class RowContainer extends React.Component {
+class Container extends React.Component {
   render() {
     const {
       theme: { spacing },
@@ -19,11 +19,11 @@ class RowContainer extends React.Component {
   }
 }
 
-export default withTheme(RowContainer);
+export default withTheme(Container);
 
 export const SEED_DATA = {
   name: "Row Container",
-  tag: "RowContainer",
+  tag: "Container",
   description: "A container component with gutter padding",
   type: COMPONENT_TYPES.primitive,
   supports_list_render: false,

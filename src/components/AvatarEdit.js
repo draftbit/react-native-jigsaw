@@ -7,7 +7,7 @@ import Avatar from "./Avatar";
 import { withTheme } from "../core/theming";
 import type { Theme } from "../types";
 import type { IconSource } from "./Icon";
-import { FORM_TYPES } from "../core/component-types";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 export type AvatarEditProps = {
   /**
@@ -79,6 +79,9 @@ export const SEED_DATA = {
   name: "Avatar Edit",
   tag: "AvatarEdit",
   description: "An avatar with an edit icon in the top right",
+  category: COMPONENT_TYPES.button,
+  preview_image_url:
+    "https://res.cloudinary.com/altos/image/upload/v1538751224/draftbit/Jigsaw/AvatarEdit.png",
   props: {
     size: {
       label: "Size",
@@ -102,7 +105,7 @@ export const SEED_DATA = {
     }
   },
   layout: {
-    width: 134,
-    height: 134
+    width: 64,
+    height: 64
   }
 };

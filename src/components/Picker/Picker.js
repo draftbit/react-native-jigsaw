@@ -195,7 +195,7 @@ export const SEED_DATA = [
     name: "Picker - Solid",
     tag: "Picker",
     description: "A picker with a solid border",
-    category: COMPONENT_TYPES.formControl,
+    category: COMPONENT_TYPES.field,
     preview_image_url:
       "https://res.cloudinary.com/altos/image/upload/v1541457206/draftbit/library/jigsaw-1.0/reps/Picker.png",
     supports_list_render: false,
@@ -216,7 +216,7 @@ export const SEED_DATA = [
     name: "Picker - Underline",
     tag: "Picker",
     description: "A picker with an underline",
-    category: COMPONENT_TYPES.formControl,
+    category: COMPONENT_TYPES.field,
     preview_image_url:
       "https://res.cloudinary.com/altos/image/upload/v1541457206/draftbit/library/jigsaw-1.0/reps/Picker.png",
     supports_list_render: false,

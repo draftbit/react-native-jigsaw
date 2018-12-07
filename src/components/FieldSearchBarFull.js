@@ -104,7 +104,7 @@ export const SEED_DATA = [
     name: "Search Bar",
     tag: "FieldSearchBarFull",
     description: "A search bar with accompanying search icon and clear button.",
-    category: COMPONENT_TYPES.formControl,
+    category: COMPONENT_TYPES.field,
     preview_image_url:
       "https://res.cloudinary.com/altos/image/upload/v1541096665/draftbit/library/jigsaw-1.0/reps/Field_SearchBar_Full.png",
     supports_list_render: false,

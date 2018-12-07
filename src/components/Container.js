@@ -22,7 +22,7 @@ class Container extends React.Component {
 export default withTheme(Container);
 
 export const SEED_DATA = {
-  name: "Row Container",
+  name: "Container",
   tag: "Container",
   description: "A container component with gutter padding",
   type: COMPONENT_TYPES.primitive,

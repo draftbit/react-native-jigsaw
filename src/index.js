@@ -23,6 +23,7 @@ export {
 export { default as CardInline } from "./components/CardInline";
 export { default as Carousel } from "./components/Carousel";
 export { default as Checkbox } from "./components/Checkbox";
+export { default as Container } from "./components/Container";
 export { default as DatePicker } from "./components/DatePicker";
 export { default as Divider } from "./components/Divider";
 export { default as FieldCheckbox } from "./components/FieldCheckbox";
@@ -41,7 +42,6 @@ export { default as RadioButton } from "./components/RadioButton";
 export { default as RowBodyCheckbox } from "./components/RowBodyCheckbox";
 export { default as RowBodyIcon } from "./components/RowBodyIcon";
 export { default as RowBodySwitch } from "./components/RowBodySwitch";
-export { default as RowContainer } from "./components/RowContainer";
 export {
   default as RowHeadlineImageCaption
 } from "./components/RowHeadlineImageCaption";

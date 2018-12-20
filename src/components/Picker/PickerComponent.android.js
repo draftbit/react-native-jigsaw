@@ -1,7 +1,7 @@
 /* @flow */
 
 import * as React from "react";
-import { View, Picker as NativePicker } from "react-native";
+import { View, Picker as NativePicker, StyleSheet } from "react-native";
 import { withTheme } from "../../core/theming";
 import type { Theme } from "../../types";
 import TextField from "../TextField";
@@ -37,7 +37,11 @@ class Picker extends React.Component<Props> {
     } = this.props;
 
     return (
-      <Touchable disabled={disabled} onPress={this.toggleFocus} style={style}>
+      <Touchable
+        disabled={disabled}
+        onPress={this.toggleFocus}
+        style={[styles.container, style]}
+      >
         <View>
           <NativePicker
             enabled={!disabled}
@@ -74,5 +78,11 @@ class Picker extends React.Component<Props> {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    alignSelf: "stretch"
+  }
+});
 
 export default withTheme(Picker);

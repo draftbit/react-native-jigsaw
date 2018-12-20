@@ -11,7 +11,7 @@ export { default as Avatar } from "./components/Avatar";
 export { default as AvatarEdit } from "./components/AvatarEdit";
 export { default as Button } from "./components/Button";
 export { default as IconButton } from "./components/IconButton";
-export { default as FAB } from "./components/FAB/FAB";
+export { default as FAB } from "./components/FAB";
 export { default as CardBlock } from "./components/CardBlock";
 export {
   default as CardContainerShortImage

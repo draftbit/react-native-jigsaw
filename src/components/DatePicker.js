@@ -141,7 +141,7 @@ class Picker extends React.Component<Props> {
     const { pickerVisible } = this.state;
 
     return (
-      <View style={style}>
+      <View style={[styles.container, style]}>
         <Touchable disabled={disabled} onPress={this.toggleVisibility}>
           <View pointerEvents="none">
             <TextField
@@ -185,6 +185,9 @@ class Picker extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    alignSelf: "stretch"
+  },
   picker: {
     position: "absolute",
     bottom: 0,

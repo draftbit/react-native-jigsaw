@@ -1,6 +1,7 @@
 /* @flow */
 
 import * as React from "react";
+import { StyleSheet } from "react-native";
 import ProgressBarComponent from "./ProgressBarComponent";
 import { withTheme } from "../../core/theming";
 import { COMPONENT_TYPES, FORM_TYPES } from "../../core/component-types";
@@ -45,12 +46,16 @@ class ProgressBar extends React.Component<Props> {
       <ProgressBarComponent
         progress={progress}
         progressTintColor={colors.primary}
-        style={style}
+        style={[styles.container, style]}
         trackTintColor={colors.divider}
       />
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: { alignSelf: "stretch" }
+});
 
 export default withTheme(ProgressBar);
 

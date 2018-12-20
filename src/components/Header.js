@@ -39,7 +39,7 @@ class Header extends React.Component<Props> {
     } = this.props;
 
     return (
-      <View style={style}>
+      <View style={[styles.container, style]}>
         <View style={styles.topContainer}>
           <Text
             style={[
@@ -87,6 +87,9 @@ class Header extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    alignSelf: "stretch"
+  },
   topContainer: {
     flexDirection: "row",
     justifyContent: "space-between",

@@ -467,7 +467,7 @@ class TextField extends React.Component<Props, State> {
     };
 
     return (
-      <View style={style}>
+      <View style={[styles.container, style]}>
         {leftIconName && leftIconMode === "outset" ? (
           <Icon {...leftIconProps} style={leftIconStyle} />
         ) : null}
@@ -619,6 +619,9 @@ polyfill(TextField);
 export default withTheme(TextField);
 
 const styles = StyleSheet.create({
+  container: {
+    alignSelf: "stretch"
+  },
   placeholder: {
     position: "absolute",
     left: 0

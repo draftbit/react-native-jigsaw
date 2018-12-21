@@ -3,15 +3,15 @@
 import * as React from "react";
 import { ActivityIndicator, Animated, View, StyleSheet } from "react-native";
 import color from "color";
-import Config from "../Config";
-import Icon from "../Icon";
-import Text from "../Text";
-import Touchable from "../Touchable";
-import Elevation from "../Elevation";
-import { withTheme } from "../../core/theming";
-import type { Theme } from "../../types";
-import type { IconSource } from "../Icon";
-import { FORM_TYPES, COMPONENT_TYPES } from "../../core/component-types";
+import Config from "./Config";
+import Icon from "./Icon";
+import Text from "./Text";
+import Touchable from "./Touchable";
+import Elevation from "./Elevation";
+import { withTheme } from "../core/theming";
+import type { Theme } from "../types";
+import type { IconSource } from "./Icon";
+import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
 
 type Props = $RemoveChildren<typeof Elevation> & {|
   /**

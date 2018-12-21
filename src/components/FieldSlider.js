@@ -39,7 +39,7 @@ class FieldSlider extends React.Component {
     const labelStyle = [typography.caption, { color: colors.light }];
 
     return (
-      <View>
+      <View style={[styles.container, style]}>
         {title && (
           <Text style={[typography.body1, { marginBottom: spacing.text / 2 }]}>
             {title}
@@ -61,6 +61,9 @@ class FieldSlider extends React.Component {
 export default withTheme(FieldSlider);
 
 const styles = StyleSheet.create({
+  container: {
+    alignSelf: "stretch"
+  },
   bottomContainer: {
     flexDirection: "row",
     justifyContent: "space-between"

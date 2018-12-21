@@ -54,7 +54,10 @@ class Carousel extends React.PureComponent<CarouselProps> {
     const { width } = this.state;
 
     return (
-      <View style={[style, { aspectRatio }]} onLayout={this.onPageLayout}>
+      <View
+        style={[styles.container, style, { aspectRatio }]}
+        onLayout={this.onPageLayout}
+      >
         <ScrollView
           onScroll={this.handleScroll}
           horizontal
@@ -112,6 +115,9 @@ class Carousel extends React.PureComponent<CarouselProps> {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    alignSelf: "stretch"
+  },
   slidingPanel: {
     alignItems: "center",
     justifyContent: "center"

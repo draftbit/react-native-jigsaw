@@ -25,7 +25,13 @@ class Slider extends React.Component {
     const { style, theme, ...props } = this.props;
     const { colors } = theme;
 
-    return <NativeSlider minimumTrackTintColor={colors.primary} {...props} />;
+    return (
+      <NativeSlider
+        minimumTrackTintColor={colors.primary}
+        {...props}
+        style={[{ alignSelf: "stretch" }, style]}
+      />
+    );
   }
 }
 

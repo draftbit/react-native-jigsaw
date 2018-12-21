@@ -159,6 +159,14 @@ export const SEED_DATA = {
       type: FORM_TYPES.flatArray,
       value: 32,
       options: [16, 24, 32]
+    },
+    color: {
+      label: "Color",
+      description: "Color of the icon",
+      type: FORM_TYPES.color,
+      value: "strong",
+      editable: true,
+      required: true
     }
   },
   layout: {

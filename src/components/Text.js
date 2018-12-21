@@ -51,6 +51,8 @@ class Text extends React.Component<Props> {
   }
 }
 
+export default withTheme(Text);
+
 export const SEED_DATA = {
   name: "Text",
   tag: "Text",

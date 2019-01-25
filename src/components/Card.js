@@ -4,7 +4,6 @@ import React from "react";
 import { View, Dimensions } from "react-native";
 import { withTheme } from "../core/theming";
 import Touchable from "./Touchable";
-import Config from "./Config";
 import type { Theme } from "../types";
 
 const { width } = Dimensions.get("window");

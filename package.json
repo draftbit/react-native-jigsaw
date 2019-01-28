@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "description": "Jigsaw component library for Draftbit",
   "main": "src/index.js",
   "repository": "git@github.com:draftbit/jigsaw-component-library.git",

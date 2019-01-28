@@ -29,7 +29,7 @@ async function main() {
     } catch (error) {
       const name = file.split("jigsaw-component-library/")[1];
       ERROR_FILES.push({ file, error: error.message });
-      console.log("ERROR", name, error.message);
+      console.log("WARNING", name, error.message);
     }
   }
 

@@ -1,3 +1,7 @@
+import { Dimensions } from "react-native";
+
+const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
+
 const getFilters = (options = {}) => {
   const { width, height } = options;
   const filters = ["c_scale", "q_auto", "dpr_auto"];
@@ -18,6 +22,8 @@ const buildImageUrl = (options, name) => {
 };
 
 export default {
+  windowWidth,
+  windowHeight,
   avatarImageUrl: buildImageUrl(
     {
       width: 60

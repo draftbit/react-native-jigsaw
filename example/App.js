@@ -10,6 +10,8 @@ import CardContainerExample from "./src/CardContainerExample";
 import CardContainerRatingExample from "./src/CardContainerRatingExample";
 import CardInlineExample from "./src/CardInlineExample";
 import CarouselExample from "./src/CarouselExample";
+import ContainerExample from "./src/ContainerExample";
+import ControllerExample from "./src/ControllerExample";
 import DatePickerExample from "./src/DatePickerExample";
 import FieldSearchBarFullExample from "./src/FieldSearchBarFullExample";
 import HeaderExample from "./src/HeaderExample";
@@ -20,7 +22,6 @@ import RowExample from "./src/RowExample";
 import TextFieldExample from "./src/TextFieldExample";
 import FABExample from "./src/FABExample";
 import AvatarExample from "./src/AvatarExample";
-import ControllerExample from "./src/ControllerExample";
 import SliderExample from "./src/SliderExample";
 import StepperExample from "./src/StepperExample";
 
@@ -38,6 +39,7 @@ const Drawer = createDrawerNavigator(
     CardContainerShortImage: CardContainerShortImageExample,
     CardContainer: CardContainerExample,
     CardInline: CardInlineExample,
+    Container: ContainerExample,
     Controllers: ControllerExample,
     DatePicker: DatePickerExample,
     FAB: FABExample,

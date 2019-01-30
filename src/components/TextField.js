@@ -720,6 +720,29 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.icon,
     value: null,
     editable: true
+  },
+  keyboardType: {
+    label: "Keyboard type",
+    description: "Determines which keyboard to open",
+    type: FORM_TYPES.flatArray,
+    value: null,
+    options: [
+      "default",
+      "number-pad",
+      "decimal-pad",
+      "numeric",
+      "email-address",
+      "phone-pad",
+      "ascii-capable",
+      "numbers-and-punctuation",
+      "url",
+      "name-phone-pad",
+      "twitter",
+      "web-search",
+      "visible-password"
+    ],
+    editable: true,
+    required: false
   }
 };
 
@@ -738,6 +761,14 @@ export const SEED_DATA = [
         type: FORM_TYPES.string,
         value: "solid",
         editable: false
+      },
+      secureTextEntry: {
+        label: "Secure text entry",
+        description: "If true, the text input is obfuscated",
+        type: FORM_TYPES.boolean,
+        value: null,
+        editable: true,
+        required: false
       }
     },
     layout: {
@@ -759,6 +790,14 @@ export const SEED_DATA = [
         type: FORM_TYPES.string,
         value: "underline",
         editable: false
+      },
+      secureTextEntry: {
+        label: "Secure text entry",
+        description: "If true, the text input is obfuscated",
+        type: FORM_TYPES.boolean,
+        value: null,
+        editable: true,
+        required: false
       }
     },
     layout: {

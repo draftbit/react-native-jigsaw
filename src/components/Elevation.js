@@ -21,11 +21,7 @@ class Elevation extends React.Component<Props> {
     return (
       <Animated.View
         {...rest}
-        style={[
-          { backgroundColor: theme.colors.surface },
-          elevation && shadow(elevation, theme),
-          style
-        ]}
+        style={[elevation && shadow(elevation, theme), style]}
       />
     );
   }

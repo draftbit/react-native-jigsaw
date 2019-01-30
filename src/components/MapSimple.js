@@ -81,7 +81,7 @@ export const SEED_DATA = {
   description: "A map, with optional markers",
   category: COMPONENT_TYPES.map,
   preview_image_url:
-    "https://res.cloudinary.com/altos/image/upload/v1541096681/draftbit/library/jigsaw-1.0/reps/Map_Simple.png",
+    "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Map_Simple.png",
   supports_list_render: false,
   props: {
     initialLatitude: {

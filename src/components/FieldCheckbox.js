@@ -83,7 +83,7 @@ export const SEED_DATA = [
     tag: "FieldCheckbox",
     description: "A row with left aligned checkbox and body",
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096663/draftbit/library/jigsaw-1.0/reps/Field_Checkbox.png",
+      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Field_Checkbox.png",
     category: COMPONENT_TYPES.field,
     supports_list_render: true,
     props: {

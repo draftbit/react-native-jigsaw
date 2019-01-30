@@ -224,7 +224,7 @@ export const SEED_DATA = [
       "An elevated card with a title and description, that takes up half of its container.",
     category: COMPONENT_TYPES.card,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096650/draftbit/library/jigsaw-1.0/reps/Card_Inline_2col.png",
+      "{CLOUDINARY_URL}/Card_Inline_2col.png",
     supports_list_render: true,
     props: {
       ...SEED_DATA_PROPS,
@@ -246,7 +246,7 @@ export const SEED_DATA = [
       "An elevated card with a title and description, that takes up its full container.",
     category: COMPONENT_TYPES.card,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096706/draftbit/library/jigsaw-1.0/reps/Card_Container_3col.png",
+      "{CLOUDINARY_URL}/Card_Container_3col.png",
     supports_list_render: true,
     props: {
       ...SEED_DATA_PROPS,

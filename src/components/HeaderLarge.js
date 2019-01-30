@@ -54,7 +54,7 @@ export const SEED_DATA = [
       "A large header with an optional touchable right aligned text and icon.",
     category: COMPONENT_TYPES.header,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096658/draftbit/library/jigsaw-1.0/reps/Header_HeadlineLargeIconText.png",
+      "{CLOUDINARY_URL}/Header_HeadlineLargeIconText.png",
     supports_list_render: false,
     props: {
       title: {

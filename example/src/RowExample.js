@@ -14,6 +14,9 @@ import {
 } from "@draftbit/ui";
 import type { Theme } from "@draftbit/ui/types";
 
+const IMAGE_URL =
+  "https://res.cloudinary.com/altos/image/upload/c_scale,q_auto,dpr_auto,w_100/Avatar.png";
+
 type Props = {
   theme: Theme
 };
@@ -34,7 +37,7 @@ class RowExample extends React.Component<Props> {
         >
           RowSingleLineHeadlineImageIcon
         </Text>
-        <RowHeadlineImageIcon title="Headline" icon="check" />
+        <RowHeadlineImageIcon title="Headline" icon="check" image={IMAGE_URL} />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
           RowSingleLineHeadlineImageIcon with long title
@@ -42,6 +45,7 @@ class RowExample extends React.Component<Props> {
         <RowHeadlineImageIcon
           title="Headline that is quite long so that it won't fit on a single line"
           icon="check"
+          image={IMAGE_URL}
         />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
@@ -64,6 +68,7 @@ class RowExample extends React.Component<Props> {
           title="Headline"
           subtitle="Subtitle"
           icon="check"
+          image={IMAGE_URL}
         />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
@@ -73,6 +78,7 @@ class RowExample extends React.Component<Props> {
           title="Headline that is quite long so that it won't fit on a single line"
           subtitle="Subtitle that is quite long so that it won't fit on a single line"
           icon="check"
+          image={IMAGE_URL}
         />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
@@ -83,6 +89,7 @@ class RowExample extends React.Component<Props> {
           subtitle="Subtitle that is quite long so that it won't fit on a single line"
           multilineSubtitle
           icon="check"
+          image={IMAGE_URL}
         />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
@@ -116,7 +123,11 @@ class RowExample extends React.Component<Props> {
         <Text style={{ marginHorizontal: spacing.large }}>
           RowSingleLineHeadlineImageCaption
         </Text>
-        <RowHeadlineImageCaption title="Headline" caption="Caption" />
+        <RowHeadlineImageCaption
+          title="Headline"
+          caption="Caption"
+          image={IMAGE_URL}
+        />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
           RowSingleLineHeadlineImageCaption with long title
@@ -124,6 +135,7 @@ class RowExample extends React.Component<Props> {
         <RowHeadlineImageCaption
           title="Headline that is quite long so that it won't fit on a single line"
           caption="Caption"
+          image={IMAGE_URL}
         />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
@@ -146,6 +158,7 @@ class RowExample extends React.Component<Props> {
           title="Headline"
           subtitle="Subtitle"
           caption="Caption"
+          image={IMAGE_URL}
         />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
@@ -155,6 +168,7 @@ class RowExample extends React.Component<Props> {
           title="Headline that is quite long so that it won't fit on a single line"
           subtitle="Subtitle that is quite long so that it won't fit on a single line"
           caption="Caption"
+          image={IMAGE_URL}
         />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>

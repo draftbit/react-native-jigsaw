@@ -66,7 +66,7 @@ export const SEED_DATA = [
     description: "A horizontal bar used to show completed progress",
     category: COMPONENT_TYPES.formControl,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096686/draftbit/library/jigsaw-1.0/reps/Status_Progress.png",
+      "{CLOUDINARY_URL}/Status_Progress.png",
     supports_list_render: false,
     props: {
       progress: {

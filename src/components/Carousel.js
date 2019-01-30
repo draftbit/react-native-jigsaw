@@ -158,7 +158,7 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.carousel,
     description: "A horizontal scrolling carousel of images",
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096650/draftbit/library/jigsaw-1.0/reps/Carousel.png",
+      "{CLOUDINARY_URL}/Carousel.png",
     supports_list_render: false,
     props: {
       images: {

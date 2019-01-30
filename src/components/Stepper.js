@@ -75,7 +75,7 @@ export const SEED_DATA = [
     description: "A component used to control the quantity of something",
     category: COMPONENT_TYPES.field,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096671/draftbit/library/jigsaw-1.0/reps/Control_Stepper.png",
+      "{CLOUDINARY_URL}/Control_Stepper.png",
     supports_list_render: false,
     props: {
       value: {

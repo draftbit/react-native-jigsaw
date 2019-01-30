@@ -290,7 +290,7 @@ export const SEED_DATA = [
     tag: "Button",
     category: COMPONENT_TYPES.button,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096647/draftbit/library/jigsaw-1.0/reps/Button_Outline.png",
+      "{CLOUDINARY_URL}/Button_Outline.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -312,7 +312,7 @@ export const SEED_DATA = [
     tag: "Button",
     category: COMPONENT_TYPES.button,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096647/draftbit/library/jigsaw-1.0/reps/Button_Solid.png",
+      "{CLOUDINARY_URL}/Button_Solid.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -334,7 +334,7 @@ export const SEED_DATA = [
     tag: "Button",
     category: COMPONENT_TYPES.button,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096647/draftbit/library/jigsaw-1.0/reps/Button_Text.png",
+      "{CLOUDINARY_URL}/Button_Text.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {

@@ -1,6 +1,6 @@
-import { View } from "react-native";
+import { FlatList } from "react-native";
 import { COMPONENT_TYPES } from "../core/component-types";
-export default View;
+export default FlatList;
 
 export const SEED_DATA = {
   name: "List",
@@ -30,6 +30,18 @@ export const SEED_DATA = {
       required: true,
       type: FORM_TYPES.boolean,
       value: false
+    },
+    numColumns: {
+      label: "Number of columns",
+      description: "Number of columns (vertical list only)",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.number,
+      min: 1,
+      max: 6,
+      step: 1,
+      precision: 0,
+      value: null
     },
     numberComponents: {
       label: "Number of components",

@@ -20,10 +20,6 @@ type Props = {
 };
 
 class RowHeadlineImageIcon extends React.Component<Props> {
-  static defaultProps = {
-    image: Config.squareImageUrl
-  };
-
   render() {
     const {
       title,

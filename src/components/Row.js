@@ -21,10 +21,6 @@ type Props = {
 };
 
 class Row extends React.Component<Props> {
-  static defaultProps = {
-    image: Config.squareImageUrl
-  };
-
   render() {
     const {
       titleTypeStyle,

@@ -54,7 +54,7 @@ export const SEED_DATA = [
       "A medium header with an optional touchable right aligned text and icon.",
     category: COMPONENT_TYPES.header,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Header_HeadlineMediumIconText.png",
+      "{CLOUDINARY_URL}/Header_HeadlineMediumIconText.png",
     supports_list_render: false,
     props: {
       title: {

@@ -259,6 +259,7 @@ export const SEED_DATA = [
       "https://res.cloudinary.com/altos/image/upload/v1541096711/draftbit/library/jigsaw-1.0/reps/Card_ContainerRating_3col.png",
     supports_list_render: true,
     props: {
+      ...SEED_DATA_PROPS,
       numColumns: {
         type: FORM_TYPES.number,
         value: 3,

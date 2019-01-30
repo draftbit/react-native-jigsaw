@@ -38,7 +38,7 @@ export const SEED_DATA = {
       required: false,
       type: FORM_TYPES.number,
       min: 1,
-      max: 6,
+      max: 4,
       step: 1,
       precision: 0,
       value: null

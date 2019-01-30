@@ -141,7 +141,7 @@ export const SEED_DATA = {
   tag: "IconButton",
   category: COMPONENT_TYPES.button,
   preview_image_url:
-    "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Button_Icon.png",
+    "{CLOUDINARY_URL}/Button_Icon.png",
   props: {
     icon: {
       label: "Icon Name",

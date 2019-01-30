@@ -84,7 +84,7 @@ export const SEED_DATA = {
   tag: "FieldRadioButton",
   category: COMPONENT_TYPES.field,
   preview_image_url:
-    "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Field_Radio.png",
+    "{CLOUDINARY_URL}/Field_Radio.png",
   props: {
     title: {
       label: "Title",

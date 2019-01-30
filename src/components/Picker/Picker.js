@@ -197,7 +197,7 @@ export const SEED_DATA = [
     description: "A picker with a solid border",
     category: COMPONENT_TYPES.field,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Picker.png",
+      "{CLOUDINARY_URL}/Picker.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,
@@ -218,7 +218,7 @@ export const SEED_DATA = [
     description: "A picker with an underline",
     category: COMPONENT_TYPES.field,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Picker.png",
+      "{CLOUDINARY_URL}/Picker.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,

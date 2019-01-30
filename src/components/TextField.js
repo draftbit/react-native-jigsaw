@@ -753,7 +753,7 @@ export const SEED_DATA = [
     description: "A text input with a solid border",
     category: COMPONENT_TYPES.field,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Textfield.png",
+      "{CLOUDINARY_URL}/Textfield.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,
@@ -783,7 +783,7 @@ export const SEED_DATA = [
     description: "A text input with an underline",
     category: COMPONENT_TYPES.field,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Textfield.png",
+      "{CLOUDINARY_URL}/Textfield.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,
@@ -813,7 +813,7 @@ export const SEED_DATA = [
     description: "A text area with a solid border",
     category: COMPONENT_TYPES.field,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/TextArea.png",
+      "{CLOUDINARY_URL}/TextArea.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,
@@ -839,7 +839,7 @@ export const SEED_DATA = [
     description: "A text area with an underline",
     category: COMPONENT_TYPES.field,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/TextArea.png",
+      "{CLOUDINARY_URL}/TextArea.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,

@@ -312,7 +312,7 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.FAB,
     description: "A round, mini FAB",
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Button_FABMini.png",
+      "{CLOUDINARY_URL}/Button_FABMini.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -334,7 +334,7 @@ export const SEED_DATA = [
     tag: "FAB",
     category: COMPONENT_TYPES.FAB,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Button_FABMini.png",
+      "{CLOUDINARY_URL}/Button_FABMini.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -356,7 +356,7 @@ export const SEED_DATA = [
     tag: "FAB",
     category: COMPONENT_TYPES.FAB,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Button_FABExtended.png",
+      "{CLOUDINARY_URL}/Button_FABExtended.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -378,7 +378,7 @@ export const SEED_DATA = [
     tag: "FAB",
     category: COMPONENT_TYPES.FAB,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Button_FABFixed.png",
+      "{CLOUDINARY_URL}/Button_FABFixed.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {

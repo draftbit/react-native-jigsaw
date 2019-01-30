@@ -60,7 +60,7 @@ export const SEED_DATA = [
     description:
       "A row with left aligned body text and a right aligned checkbox",
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Row_SingleLine_BodyCheckbox.png",
+      "{CLOUDINARY_URL}/Row_SingleLine_BodyCheckbox.png",
     category: COMPONENT_TYPES.row,
     supports_list_render: true,
     props: {
@@ -108,7 +108,7 @@ export const SEED_DATA = [
       "A row with left aligned body text and subtitle text and a right aligned checkbox",
     category: COMPONENT_TYPES.row,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Row_DoubleLine_BodyCheckbox.png",
+      "{CLOUDINARY_URL}/Row_DoubleLine_BodyCheckbox.png",
     supports_list_render: true,
     props: {
       title: {

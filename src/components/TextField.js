@@ -763,8 +763,9 @@ export const SEED_DATA = [
         editable: false
       },
       secureTextEntry: {
-        label: "Secure text entry",
-        description: "If true, the text input is obfuscated",
+        label: "Password field",
+        description:
+          "If true, this turns the field into a password field, hiding the text",
         type: FORM_TYPES.boolean,
         value: null,
         editable: true,
@@ -792,8 +793,9 @@ export const SEED_DATA = [
         editable: false
       },
       secureTextEntry: {
-        label: "Secure text entry",
-        description: "If true, the text input is obfuscated",
+        label: "Password field",
+        description:
+          "If true, this turns the field into a password field, hiding the text",
         type: FORM_TYPES.boolean,
         value: null,
         editable: true,

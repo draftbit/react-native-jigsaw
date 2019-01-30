@@ -54,7 +54,7 @@ export const SEED_DATA = [
     tag: "RowBodySwitch",
     description: "A row with left aligned body text and a right aligned switch",
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096679/draftbit/library/jigsaw-1.0/reps/Row_SingleLine_BodyToggle.png",
+      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Row_SingleLine_BodyToggle.png",
     category: COMPONENT_TYPES.row,
     supports_list_render: true,
     props: {
@@ -100,7 +100,7 @@ export const SEED_DATA = [
       "A row with left aligned body text and subtitle text and a right aligned switch",
     category: COMPONENT_TYPES.row,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096697/draftbit/library/jigsaw-1.0/reps/Row_DoubleLine_Body_Toggle.png",
+      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Row_DoubleLine_Body_Toggle.png",
     supports_list_render: true,
     props: {
       title: {

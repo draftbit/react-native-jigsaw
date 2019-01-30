@@ -62,7 +62,7 @@ export const SEED_DATA = {
   tag: "RadioButton",
   category: COMPONENT_TYPES.formControl,
   preview_image_url:
-    "https://res.cloudinary.com/altos/image/upload/v1541096655/draftbit/library/jigsaw-1.0/reps/Control_Radio.png",
+    "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Control_Radio.png",
   props: {
     selected: {
       label: "Selected",

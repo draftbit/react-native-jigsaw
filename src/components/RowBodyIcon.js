@@ -58,7 +58,7 @@ export const SEED_DATA = [
     description: "A row with left aligned body text and a right aligned icon",
     category: COMPONENT_TYPES.row,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096677/draftbit/library/jigsaw-1.0/reps/Row_SingleLine_BodyIcon.png",
+      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Row_SingleLine_BodyIcon.png",
     supports_list_render: true,
     props: {
       title: {
@@ -88,7 +88,7 @@ export const SEED_DATA = [
       "A row with left aligned body text and subtitle text and a right aligned icon",
     category: COMPONENT_TYPES.row,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096652/draftbit/library/jigsaw-1.0/reps/Row_DoubleLine_BodyIcon.png",
+      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Row_DoubleLine_BodyIcon.png",
     supports_list_render: true,
     props: {
       title: {

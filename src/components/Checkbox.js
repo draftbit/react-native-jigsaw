@@ -58,7 +58,7 @@ export const SEED_DATA = {
   tag: "Checkbox",
   category: COMPONENT_TYPES.formControl,
   preview_image_url:
-    "https://res.cloudinary.com/altos/image/upload/v1541096653/draftbit/library/jigsaw-1.0/reps/Control_Checkbox.png",
+    "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Control_Checkbox.png",
   props: {
     status: {
       label: "Status",

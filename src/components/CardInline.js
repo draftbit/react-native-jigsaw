@@ -143,7 +143,7 @@ export const SEED_DATA = [
       "An elevated card with image and a centered line of text overlayed, that takes up a third of its container.",
     category: COMPONENT_TYPES.card,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096714/draftbit/library/jigsaw-1.0/reps/Card_Inline_1col.png",
+      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Card_Inline_1col.png",
     supports_list_render: true,
     props: {
       ...SEED_DATA_PROPS,
@@ -172,7 +172,7 @@ export const SEED_DATA = [
       "An elevated card with image and a title and description overlayed, that takes up half of its container.",
     category: COMPONENT_TYPES.card,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096650/draftbit/library/jigsaw-1.0/reps/Card_Inline_2col.png",
+      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Card_Inline_2col.png",
     supports_list_render: true,
     props: {
       ...SEED_DATA_PROPS,
@@ -208,7 +208,7 @@ export const SEED_DATA = [
       "An elevated card with image and a title and description overlayed, that takes up the full width of its container.",
     category: COMPONENT_TYPES.card,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096652/draftbit/library/jigsaw-1.0/reps/Card_Inline_3col.png",
+      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Card_Inline_3col.png",
     supports_list_render: true,
     props: {
       ...SEED_DATA_PROPS,

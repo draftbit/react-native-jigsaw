@@ -112,7 +112,7 @@ export const SEED_DATA = [
       "An elevated card with a left aligned image and a title and subtitle",
     category: COMPONENT_TYPES.card,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096710/draftbit/library/jigsaw-1.0/reps/Card_ContainerShortLeftImage.png",
+      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Card_ContainerShortLeftImage.png",
     supports_list_render: true,
     props: {
       image: {
@@ -173,7 +173,7 @@ export const SEED_DATA = [
       "An elevated card with a right aligned image and a title and subtitle",
     category: COMPONENT_TYPES.card,
     preview_image_url:
-      "https://res.cloudinary.com/altos/image/upload/v1541096716/draftbit/library/jigsaw-1.0/reps/Card_ContainerShortRightImage.png",
+      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps/Card_ContainerShortRightImage.png",
     supports_list_render: true,
     props: {
       image: {

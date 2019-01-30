@@ -137,7 +137,7 @@ class CardContainerRating extends React.PureComponent<CardContainerRatingProps> 
                 </Text>
               </View>
             </View>
-            {icon && (
+            {icon ? (
               <Elevation
                 style={{
                   elevation: Config.cardIconElevation,
@@ -160,7 +160,7 @@ class CardContainerRating extends React.PureComponent<CardContainerRatingProps> 
                   color={colors.surface}
                 />
               </Elevation>
-            )}
+            ) : null}
           </View>
         </Elevation>
       </Card>

@@ -77,7 +77,8 @@ class CardContainer extends React.PureComponent<CardContainerProps> {
           <View
             style={{
               borderRadius: borderRadius.global,
-              overflow: "hidden"
+              overflow: "hidden",
+              backgroundColor: colors.surface
             }}
           >
             <Image

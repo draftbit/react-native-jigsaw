@@ -80,7 +80,7 @@ export const SEED_DATA = {
     backgroundImage: {
       label: "Background image",
       description: "Background image to apply to the container",
-      type: FORM_TYPES.localImage,
+      type: FORM_TYPES.remoteImage,
       value: null,
       editable: true,
       required: false

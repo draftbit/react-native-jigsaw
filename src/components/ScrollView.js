@@ -1,5 +1,5 @@
 import { ScrollView } from "react-native";
-import { COMPONENT_TYPES } from "../core/component-types";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 export default ScrollView;
 
 export const SEED_DATA = {
@@ -12,5 +12,14 @@ export const SEED_DATA = {
     width: 375,
     height: 100
   },
-  props: {}
+  props: {
+    horizontal: {
+      label: "Horizontal",
+      description: "Render scrollview horizontally",
+      editable: true,
+      required: true,
+      type: FORM_TYPES.boolean,
+      value: false
+    }
+  }
 };

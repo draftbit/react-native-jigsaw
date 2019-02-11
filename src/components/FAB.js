@@ -169,7 +169,7 @@ class FAB extends React.Component<Props> {
       justifyContent: "center"
     };
 
-    const buttonStyles = [styles.button, buttonStyle, style];
+    const buttonStyles = [styles.button, buttonStyle];
 
     const contentStyle = [styles.content];
 
@@ -214,7 +214,7 @@ class FAB extends React.Component<Props> {
     }
 
     return (
-      <Elevation style={{ elevation }}>
+      <Elevation style={{ elevation }} style={style}>
         <Touchable
           {...rest}
           onPress={onPress}

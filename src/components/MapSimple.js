@@ -3,7 +3,11 @@ import { View, Text } from "react-native";
 import { MapView } from "expo";
 import { withTheme } from "../core/theming";
 import type { Theme } from "../types";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  BORDER_RADIUS_MODE
+} from "../core/component-types";
 
 export type MapSimpleProps = {
   aspectRatio?: number,
@@ -80,8 +84,7 @@ export const SEED_DATA = {
   tag: "MapSimple",
   description: "A map, with optional markers",
   category: COMPONENT_TYPES.map,
-  preview_image_url:
-    "{CLOUDINARY_URL}/Map_Simple.png",
+  preview_image_url: "{CLOUDINARY_URL}/Map_Simple.png",
   supports_list_render: false,
   props: {
     initialLatitude: {
@@ -152,7 +155,8 @@ export const SEED_DATA = {
       value: null,
       required: false,
       editable: true
-    }
+    },
+    borderRadiusMode: BORDER_RADIUS_MODE
   },
   layout: {
     width: 345,

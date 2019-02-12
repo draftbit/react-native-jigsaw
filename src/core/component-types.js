@@ -49,7 +49,7 @@ export const ELEVATION_TYPE = {
 export const BORDER_RADIUS_MODE = {
   label: "Border radius",
   description:
-    "Border radius of the element - either None, Global (using theme global border radius), or Round (100%)",
+    "Border radius of the element - either None, Global (using theme global border radius), or Round (must specify a width and height on component)",
   type: FORM_TYPES.borderRadiusMode,
   value: null,
   editable: true,

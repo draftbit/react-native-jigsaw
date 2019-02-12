@@ -1,5 +1,9 @@
 import { Image } from "react-native";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  BORDER_RADIUS_MODE
+} from "../core/component-types";
 
 export default Image;
 
@@ -33,6 +37,7 @@ export const SEED_DATA = {
       value: null,
       type: FORM_TYPES.flatArray,
       options: ["cover", "contain", "stretch", "repeat", "center"]
-    }
+    },
+    borderRadiusMode: BORDER_RADIUS_MODE
   }
 };

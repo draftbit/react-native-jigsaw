@@ -16,7 +16,8 @@ export const FORM_TYPES = {
   flatArray: "flatArray",
   aspectRatio: "aspectRatio",
   date: "date",
-  component: "component"
+  component: "component",
+  borderRadiusMode: "borderRadiusMode"
 };
 
 export const COMPONENT_TYPES = {
@@ -43,4 +44,14 @@ export const ELEVATION_TYPE = {
   step: 1,
   precision: 0,
   editable: true
+};
+
+export const BORDER_RADIUS_MODE = {
+  label: "Border radius",
+  description:
+    "Border radius of the element - either None, Global (using theme global border radius), or Round (100%)",
+  type: FORM_TYPES.borderRadiusMode,
+  value: null,
+  editable: true,
+  required: true
 };

@@ -1,7 +1,11 @@
 import * as React from "react";
 import { View, Image } from "react-native";
 import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  BORDER_RADIUS_MODE
+} from "../core/component-types";
 
 class Container extends React.Component {
   render() {
@@ -94,6 +98,7 @@ export const SEED_DATA = {
       value: null,
       type: FORM_TYPES.flatArray,
       options: ["cover", "contain", "stretch", "repeat", "center"]
-    }
+    },
+    borderRadiusMode: BORDER_RADIUS_MODE
   }
 };

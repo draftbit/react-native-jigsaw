@@ -4,8 +4,10 @@ import { withTheme } from "../core/theming";
 import {
   COMPONENT_TYPES,
   FORM_TYPES,
-  BORDER_RADIUS_MODE
+  BORDER_RADIUS_MODE,
+  ELEVATION_TYPE
 } from "../core/component-types";
+import Elevation from "./Elevation";
 
 class Container extends React.Component {
   render() {
@@ -15,6 +17,7 @@ class Container extends React.Component {
       backgroundColor,
       backgroundImage,
       backgroundImageResizeMode,
+      elevation,
       style,
       children
     } = this.props;
@@ -24,8 +27,14 @@ class Container extends React.Component {
       backgroundColor
     };
 
+    const Wrap = elevation ? Elevation : View;
+
+    if (elevation) {
+      containerStyle.elevation = elevation;
+    }
+
     return (
-      <View style={[containerStyle, style]}>
+      <Wrap style={[containerStyle, style]}>
         <React.Fragment>
           {backgroundImage ? (
             <Image
@@ -46,7 +55,7 @@ class Container extends React.Component {
           ) : null}
           {children}
         </React.Fragment>
-      </View>
+      </Wrap>
     );
   }
 }
@@ -96,6 +105,7 @@ export const SEED_DATA = {
       type: FORM_TYPES.flatArray,
       options: ["cover", "contain", "stretch", "repeat", "center"]
     },
-    borderRadiusMode: BORDER_RADIUS_MODE
+    borderRadiusMode: BORDER_RADIUS_MODE,
+    elevation: ELEVATION_TYPE
   }
 };

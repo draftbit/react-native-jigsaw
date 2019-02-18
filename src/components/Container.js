@@ -24,7 +24,8 @@ class Container extends React.Component {
 
     const containerStyle = {
       paddingHorizontal: useThemeGutterPadding ? spacing.gutters : 0,
-      backgroundColor
+      backgroundColor,
+      width: "100%"
     };
 
     const Wrap = elevation ? Elevation : View;
@@ -68,7 +69,9 @@ export const SEED_DATA = {
   description: "A container component with gutter padding",
   type: COMPONENT_TYPES.primitive,
   supports_list_render: false,
-  layout: {},
+  layout: {
+    width: "100%"
+  },
   props: {
     useThemeGutterPadding: {
       label: "Use gutter padding",

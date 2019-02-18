@@ -322,6 +322,14 @@ export const SEED_DATA = [
         required: true,
         type: FORM_TYPES.icon,
         value: "standard"
+      },
+      label: {
+        label: "Label",
+        description: "Button label",
+        required: false,
+        editable: false,
+        type: FORM_TYPES.string,
+        value: null,
       }
     },
     layout: {
@@ -344,6 +352,14 @@ export const SEED_DATA = [
         required: true,
         type: FORM_TYPES.string,
         value: "outline"
+      },
+      label: {
+        label: "Label",
+        description: "Button label",
+        required: false,
+        editable: false,
+        type: FORM_TYPES.string,
+        value: null,
       }
     },
     layout: {

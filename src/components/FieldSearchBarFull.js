@@ -43,7 +43,7 @@ class FieldSearchBarFull extends React.Component<Props> {
   };
 
   onSubmit = () => {
-    this.props.onSubmit(this.state.value);
+    this.props.onSubmit && this.props.onSubmit(this.state.value);
   };
 
   render() {

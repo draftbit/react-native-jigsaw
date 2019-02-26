@@ -203,7 +203,7 @@ const SEED_DATA_PROPS = {
     label: "Icon",
     description: "Icon to display on the top right",
     type: FORM_TYPES.icon,
-    value: "cloud",
+    value: "MaterialIcons/cloud",
     editable: true
   },
   aspectRatio: {

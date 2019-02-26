@@ -72,7 +72,7 @@ export const SEED_DATA = [
         label: "Icon",
         description: "Icon to display",
         type: FORM_TYPES.icon,
-        value: "favorite",
+        value: "MaterialIcons/favorite",
         editable: true
       }
     },
@@ -109,7 +109,7 @@ export const SEED_DATA = [
         label: "Icon",
         description: "Icon to display",
         type: FORM_TYPES.icon,
-        value: "favorite",
+        value: "MaterialIcons/favorite",
         editable: true
       }
     },

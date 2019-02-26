@@ -38,7 +38,7 @@ class CheckboxIOS extends React.Component<Props> {
     const { status, disabled, onPress, theme, ...rest } = this.props;
     const indeterminate = status === "indeterminate";
     const checkedColor = this.props.color || theme.colors.primary;
-    const icon = indeterminate ? "remove" : "done";
+    const icon = indeterminate ? "MaterialIcons/remove" : "MaterialIcons/done";
 
     return (
       <Touchable

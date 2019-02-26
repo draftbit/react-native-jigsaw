@@ -215,7 +215,7 @@ export const SEED_DATA = [
         label: "Icon",
         description: "Icon to display on the top right",
         type: FORM_TYPES.icon,
-        value: "cloud",
+        value: "MaterialIcons/cloud",
         editable: true
       },
       numColumns: {
@@ -244,7 +244,7 @@ export const SEED_DATA = [
         label: "Icon",
         description: "Icon to display on the top right",
         type: FORM_TYPES.icon,
-        value: "cloud",
+        value: "MaterialIcons/cloud",
         editable: true
       },
       numColumns: {

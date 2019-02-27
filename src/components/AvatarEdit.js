@@ -62,7 +62,7 @@ class AvatarEdit extends React.PureComponent<AvatarEditProps> {
             }}
           >
             <Icon
-              name="edit"
+              name="MaterialIcons/edit"
               color={colorStyles.editIconColor}
               size={size * (3 / 16)}
             />

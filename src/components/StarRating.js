@@ -40,7 +40,7 @@ class StarRating extends React.PureComponent<Props> {
         {[...Array(maxStars)].map((s, i) => (
           <Icon
             key={i}
-            name={ratingRounded - i === 0.5 ? "star-half" : "star"}
+            name={ratingRounded - i === 0.5 ? "MaterialIcons/star-half" : "MaterialIcons/star"}
             size={Config.ratingStarSize}
             color={ratingRounded > i ? colors.primary : colors.divider}
           />

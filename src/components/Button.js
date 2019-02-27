@@ -248,7 +248,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: true,
     type: FORM_TYPES.icon,
-    value: "add"
+    value: "MaterialIcons/add"
   },
   children: {
     label: "Label",

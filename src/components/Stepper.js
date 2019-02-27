@@ -36,7 +36,7 @@ class Stepper extends React.Component<Props> {
     return (
       <View style={[{ flexDirection: "row" }, style]}>
         <IconButton
-          icon="remove"
+          icon="MaterialIcons/remove"
           onPress={this.handleMinus}
           size={Config.stepperButtonSize}
           color={colors.strong}
@@ -56,7 +56,7 @@ class Stepper extends React.Component<Props> {
           {value}
         </Text>
         <IconButton
-          icon="add"
+          icon="MaterialIcons/add"
           onPress={onPlus}
           size={Config.stepperButtonSize}
           color={colors.strong}

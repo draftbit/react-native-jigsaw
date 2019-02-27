@@ -4,13 +4,13 @@ import * as React from "react";
 import { Image, Text, View, StyleSheet } from "react-native";
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
-let MaterialIcons;
+let VectorIcons;
 
 try {
   // Optionally require vector-icons
-  MaterialIcons = require("@expo/vector-icons/MaterialIcons").default;
+  VectorIcons = require("@expo/vector-icons");
 } catch (e) {
-  MaterialIcons = ({ name, color, size, style, ...rest }) => {
+  VectorIcons = ({ name, color, size, style, ...rest }) => {
     // eslint-disable-next-line no-console
     console.warn(
       `Tried to use the icon '${name}' in a component from '@draftbit/ui', but '@expo/vector-icons' is not installed. To remove this warning, install '@expo/vector-icons' or use another method to specify icon.`
@@ -34,9 +34,16 @@ export type Props = {
 };
 
 const Icon = ({ name, color, size, style, ...rest }: Props) => {
+  let iconSet = "MaterialIcons";
+  if (name.indexOf("/") !== -1) {
+    [iconSet, name] = name.split("/");
+  }
+
   if (typeof name === "string") {
+    const IconSet = VectorIcons[iconSet];
+
     return (
-      <MaterialIcons
+      <IconSet
         {...rest}
         name={name}
         color={color}

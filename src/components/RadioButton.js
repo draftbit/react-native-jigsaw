@@ -45,7 +45,7 @@ class RadioButton extends React.Component<Props> {
 
     return (
       <IconButton
-        icon={selected ? "radio-button-checked" : "radio-button-unchecked"}
+        icon={selected ? "MaterialIcons/radio-button-checked" : "MaterialIcons/radio-button-unchecked"}
         color={selected ? colors.primary : colors.light}
         disabled={disabled}
         size={Config.radioButtonSize}

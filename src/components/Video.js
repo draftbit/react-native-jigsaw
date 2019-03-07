@@ -71,7 +71,7 @@ export const SEED_DATA = {
       type: FORM_TYPES.boolean
     },
     isLooping: {
-      label: "Looping",
+      label: "Allow Looping",
       description: "Allows the video to loop",
       editable: true,
       required: true,
@@ -85,9 +85,9 @@ export const SEED_DATA = {
       required: false,
       value: "",
       type: FORM_TYPES.localImage
-    }, //?
+    },
     usePoster: {
-      label: "Thumbnail",
+      label: "Use Thumbnail",
       description: "Thumbnail for the video",
       editable: true,
       required: false,

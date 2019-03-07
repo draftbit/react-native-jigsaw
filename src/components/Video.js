@@ -18,31 +18,21 @@ export const SEED_DATA = {
       value: "",
       type: FORM_TYPES.sourceUrl
     },
-    rate: {
-      label: "Playback Rate",
-      description:
-        "The playback rate of the media. This value must be between 0.0 and 32.0 (Default: 1)",
-      editable: true,
-      required: true,
-      value: 1,
-      type: FORM_TYPES.number
-    },
-    volume: {
-      label: "Volume",
-      description:
-        "The volume of the audio for this media. This value must be between 0.0 (silence) and 1.0 (maximum volume). (Default: .5)",
-      editable: true,
-      required: false,
-      value: 0.5,
-      type: FORM_TYPES.number
-    },
-    isMuted: {
-      label: "Mute",
-      description: "To mute the audio of the video.",
+    usePoster: {
+      label: "Use Thumbnail",
+      description: "Thumbnail for the video",
       editable: true,
       required: false,
       value: false,
       type: FORM_TYPES.boolean
+    },
+    posterSource: {
+      label: "Thumbnail Source",
+      description: "Thumbnail Source",
+      editable: true,
+      required: false,
+      value: "",
+      type: FORM_TYPES.localImage
     },
     resizeMode: {
       label: "Resize Mode",
@@ -54,6 +44,48 @@ export const SEED_DATA = {
       options: ["stretch", "contain", "cover"],
       type: FORM_TYPES.flatArray
     },
+    positionMillis: {
+      label: "Starting Point",
+      description: "Set a certian starting point of the video",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.number,
+      value: 0,
+      min: 0,
+      precision: 0.01
+    },
+    rate: {
+      label: "Playback Rate",
+      description:
+        "The playback rate of the media. This value must be between 0.0 and 32.0 (Default: 1)",
+      editable: true,
+      required: true,
+      type: FORM_TYPES.number,
+      min: 0,
+      max: 32,
+      precision: 0.25,
+      value: 1
+    },
+    volume: {
+      label: "Volume",
+      description:
+        "The volume of the audio for this media. This value must be between 0.0 (silence) and 1.0 (maximum volume). (Default: .5)",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.number,
+      min: 0,
+      max: 1,
+      precision: 0,
+      value: 1
+    },
+    isMuted: {
+      label: "Mute",
+      description: "To mute the audio of the video.",
+      editable: true,
+      required: false,
+      value: false,
+      type: FORM_TYPES.boolean
+    },
     useNativeControls: {
       label: "Use Native Controls",
       description: "Allow users to have the option to pause or play the video",
@@ -64,7 +96,7 @@ export const SEED_DATA = {
     },
     shouldPlay: {
       label: "Play on Load",
-      description: "Allows the video play on load",
+      description: "Allows the video play on loading",
       editable: true,
       required: false,
       value: true,
@@ -77,30 +109,6 @@ export const SEED_DATA = {
       required: true,
       value: false,
       type: FORM_TYPES.boolean
-    },
-    posterSource: {
-      label: "Thumbnail Source",
-      description: "Thumbnail Source",
-      editable: true,
-      required: false,
-      value: "",
-      type: FORM_TYPES.localImage
-    },
-    usePoster: {
-      label: "Use Thumbnail",
-      description: "Thumbnail for the video",
-      editable: true,
-      required: false,
-      value: false,
-      type: FORM_TYPES.boolean
-    },
-    positionMillis: {
-      label: "Starting Point",
-      description: "Set a certian starting point of the video",
-      editable: true,
-      required: false,
-      value: 0,
-      type: FORM_TYPES.number
     }
   }
 };

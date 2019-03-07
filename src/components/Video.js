@@ -52,7 +52,8 @@ export const SEED_DATA = {
       type: FORM_TYPES.number,
       value: 0,
       min: 0,
-      precision: 0.01
+      step: 0.01,
+      precision: 2
     },
     rate: {
       label: "Playback Rate",
@@ -63,7 +64,8 @@ export const SEED_DATA = {
       type: FORM_TYPES.number,
       min: 0,
       max: 32,
-      precision: 0.25,
+      step: 0.25,
+      precision: 2,
       value: 1
     },
     volume: {
@@ -75,7 +77,8 @@ export const SEED_DATA = {
       type: FORM_TYPES.number,
       min: 0,
       max: 1,
-      precision: 0,
+      step: 0.1,
+      precision: 1,
       value: 1
     },
     isMuted: {

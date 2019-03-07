@@ -109,6 +109,9 @@ export const SEED_DATA = {
       options: ["cover", "contain", "stretch", "repeat", "center"]
     },
     borderRadiusMode: BORDER_RADIUS_MODE,
-    elevation: ELEVATION_TYPE
+    elevation: {
+      ...ELEVATION_TYPE,
+      value: 0
+    }
   }
 };

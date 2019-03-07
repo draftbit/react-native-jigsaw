@@ -1,4 +1,8 @@
 export const FORM_TYPES = {
+  multiselect: 'multiselect',
+  position: 'position',
+  sourceUrl: "sourceUrl",
+  url: "url",
   string: "string",
   boolean: "boolean",
   number: "number",

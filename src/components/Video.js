@@ -15,7 +15,7 @@ export const SEED_DATA = {
       description: "The URL the video should load",
       editable: true,
       required: true,
-      value: null,
+      value: "",
       type: FORM_TYPES.sourceUrl
     },
     rate: {
@@ -79,6 +79,7 @@ export const SEED_DATA = {
       type: FORM_TYPES.boolean
     },
     posterSource: {
+      label: "Thumbnail Source",
       description: "Thumbnail Source",
       editable: true,
       required: false,
@@ -86,7 +87,7 @@ export const SEED_DATA = {
       type: FORM_TYPES.localImage
     }, //?
     usePoster: {
-      lable: "Thumbnail",
+      label: "Thumbnail",
       description: "Thumbnail for the video",
       editable: true,
       required: false,
@@ -94,7 +95,7 @@ export const SEED_DATA = {
       type: FORM_TYPES.boolean
     },
     positionMillis: {
-      lablel: "Starting Point",
+      label: "Starting Point",
       description: "Set a certian starting point of the video",
       editable: true,
       required: false,

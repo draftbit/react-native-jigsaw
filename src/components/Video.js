@@ -19,7 +19,7 @@ export const SEED_DATA = {
       type: FORM_TYPES.sourceUrl
     },
     rate: {
-      label: "Rate",
+      label: "Playback Rate",
       description:
         "The playback rate of the media. This value must be between 0.0 and 32.0 (Default: 1)",
       editable: true,
@@ -37,7 +37,7 @@ export const SEED_DATA = {
       type: FORM_TYPES.number
     },
     isMuted: {
-      label: "Is Muted",
+      label: "Mute",
       description: "To mute the audio of the video.",
       editable: true,
       required: false,

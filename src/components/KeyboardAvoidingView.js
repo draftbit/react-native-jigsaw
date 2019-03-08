@@ -12,8 +12,8 @@ export const SEED_DATA = {
   layout: {},
   props: {
     enabled: {
-      label: "Enable avoiding",
-      description: "Enable the avoiding state",
+      label: "Enable",
+      description: "Enable the keyboard avoiding view",
       editable: true,
       required: true,
       value: true,
@@ -22,7 +22,7 @@ export const SEED_DATA = {
     behavior: {
       label: "Resizing Behavior",
       description:
-        "How the avoiding happens, try all of them and see what works best (Default: padding) ",
+        "The behavior for how the keyboard resizing interacts with the rest of the screen. (Default: padding).",
       editable: true,
       required: true,
       value: "padding",

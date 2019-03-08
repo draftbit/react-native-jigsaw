@@ -59,3 +59,13 @@ export const BORDER_RADIUS_MODE = {
   editable: true,
   required: true
 };
+
+export const STATE_VARIABLE_NAME {
+  label: "State variable name",
+  description:
+    "The name of the variable to use in the screen state for this component's value",
+  type: FORM_TYPES.string,
+  value: null,
+  editable: true,
+  required: false
+}

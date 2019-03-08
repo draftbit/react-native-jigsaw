@@ -11,7 +11,11 @@ import {
 } from "react-native";
 import { polyfill } from "react-lifecycles-compat";
 import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  STATE_VARIABLE_NAME
+} from "../core/component-types";
 import type { Theme } from "../types";
 import Icon from "./Icon";
 
@@ -729,15 +733,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false
   },
-  stateVariableName: {
-    label: "State variable name",
-    description:
-      "The name of the variable to use in the screen state for this input's value",
-    type: FORM_TYPES.string,
-    value: null,
-    editable: true,
-    required: false
-  }
+  ...STATE_VARIABLE_NAME
 };
 
 export const SEED_DATA = [
@@ -746,8 +742,7 @@ export const SEED_DATA = [
     tag: "TextField",
     description: "A text input with a solid border",
     category: COMPONENT_TYPES.field,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Textfield.png",
+    preview_image_url: "{CLOUDINARY_URL}/Textfield.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,
@@ -776,8 +771,7 @@ export const SEED_DATA = [
     tag: "TextField",
     description: "A text input with an underline",
     category: COMPONENT_TYPES.field,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Textfield.png",
+    preview_image_url: "{CLOUDINARY_URL}/Textfield.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,
@@ -806,8 +800,7 @@ export const SEED_DATA = [
     tag: "TextField",
     description: "A text area with a solid border",
     category: COMPONENT_TYPES.field,
-    preview_image_url:
-      "{CLOUDINARY_URL}/TextArea.png",
+    preview_image_url: "{CLOUDINARY_URL}/TextArea.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,
@@ -832,8 +825,7 @@ export const SEED_DATA = [
     tag: "TextField",
     description: "A text area with an underline",
     category: COMPONENT_TYPES.field,
-    preview_image_url:
-      "{CLOUDINARY_URL}/TextArea.png",
+    preview_image_url: "{CLOUDINARY_URL}/TextArea.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,

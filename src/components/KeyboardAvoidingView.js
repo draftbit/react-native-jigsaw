@@ -5,7 +5,7 @@ export default KeyboardAvoidingView;
 
 export const SEED_DATA = {
   name: "KeyboardAvoidingView",
-  tag: "KeyboardAvodidingView",
+  tag: "KeyboardAvoidingView",
   description: "View that moves out of the way of the virtual keyboard. ",
   type: COMPONENT_TYPES.primitive,
   supports_list_render: false,
@@ -18,6 +18,16 @@ export const SEED_DATA = {
       required: true,
       value: true,
       type: FORM_TYPES.boolean
+    },
+    behavior: {
+      label: "Resizing Behavior",
+      description:
+        "How the avoiding happens, try all of them and see what works best (Default: padding) ",
+      editable: true,
+      required: true,
+      value: "padding",
+      options: ["padding", "position", "height"],
+      type: FORM_TYPES.flatArray
     },
     keyboardVerticalOffset: {
       label: "Keyboard Vertical Offset",

@@ -23,7 +23,7 @@ const ICON_SIZE = 24;
 
 type RenderProps = {
   ref: any => void,
-  onChangeText: string => void,
+  onChange: string => void,
   placeholder: ?string,
   editable?: boolean,
   selectionColor: string,
@@ -62,7 +62,7 @@ type Props = {
   /**
    * Callback that is called when the text input's text changes. Changed text is passed as an argument to the callback handler.
    */
-  onChangeText?: Function,
+  onChange?: Function,
   /**
    * Whether the input can have multiple lines.
    */
@@ -248,7 +248,7 @@ class TextField extends React.Component<Props, State> {
     }
 
     this.setState({ value });
-    this.props.onChangeText && this.props.onChangeText(value);
+    this.props.onChange && this.props.onChange(value);
   };
 
   toggleFocus() {
@@ -565,7 +565,7 @@ class TextField extends React.Component<Props, State> {
             ref: c => {
               this._root = c;
             },
-            onChangeText: this._handleChangeText,
+            onChange: this._handleChangeText,
             placeholder: label
               ? this.state.placeholder
               : this.props.placeholder,
@@ -667,21 +667,6 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false
   },
-  value: {
-    label: "Value",
-    description: "The value of the text input",
-    type: FORM_TYPES.string,
-    value: null,
-    editable: true,
-    required: false
-  },
-  onChangeText: {
-    label: "Input onChange function",
-    description: "Function to call as input is changed",
-    editable: true,
-    type: FORM_TYPES.function,
-    value: "{this.onChangeText}"
-  },
   disabled: {
     label: "Disabled",
     description:
@@ -741,6 +726,15 @@ const SEED_DATA_PROPS = {
       "web-search",
       "visible-password"
     ],
+    editable: true,
+    required: false
+  },
+  stateVariableName: {
+    label: "State variable name",
+    description:
+      "The name of the variable to use in the screen state for this input's value",
+    type: FORM_TYPES.string,
+    value: null,
     editable: true,
     required: false
   }

@@ -1,7 +1,8 @@
 import React from "react";
 import Touchable from "react-native-platform-touchable";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
-export default class extends React.Component {
+export default class extends Touchable {
   render() {
     const {
       children,

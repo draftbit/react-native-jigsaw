@@ -11,59 +11,67 @@ export const SEED_DATA = {
   supports_list_render: false,
   layout: {},
   props: {
-    autoCapitalize: {
-      label: "Auto Capitalize",
+    placeholder: {
+      label: "Placeholder Text",
       description:
-        "Can automatically capitalize sentences, words, and characters (Default: none).",
-      editable: true,
-      required: true,
-      value: "none",
-      options: ["none", "sentences", "words", "characters"],
-      type: FORM_TYPES.flatArray
-    },
-    autoComplete: {
-      label: "Auto Capitalize",
-      description: "Android Only, suggests hints to auto fill the input",
+        "The text that is shown on load and when no value is available.",
       editable: true,
       required: false,
-      value: "off",
-      options: [
-        "off",
-        "username",
-        "password",
-        "email",
-        "name",
-        "tel",
-        "street-address",
-        "postal-code",
-        "cc-number",
-        "cc-csc",
-        "cc-exp",
-        "cc-exp-month",
-        "cc-exp-year"
-      ],
-      type: FORM_TYPES.flatArray
+      value: "",
+      type: FORM_TYPES.string
     },
-    autoCorrect: {
-      label: "Auto Correct",
-      description: "Enables auto correction",
+    placeholderTextColor: {
+      label: "Placeholder Text Color",
+      description: "The color of the placeholder text.",
       editable: true,
       required: false,
-      value: false,
-      type: FORM_TYPES.boolean
+      value: null,
+      type: FORM_TYPES.color
     },
-    autoFocus: {
-      label: "Auto Focus",
-      description: "Highlights the field on load in and brings up the keyboard",
+    style: {
+      color: {
+        label: "Text Color",
+        description: "Color of the characters entered.",
+        editable: true,
+        required: null,
+        value: null,
+        type: FORM_TYPES.color
+      },
+      fontSize: {
+        label: "Font Size",
+        description: "Size of the characters entered.",
+        editable: true,
+        required: true,
+        value: null,
+        min: 0,
+        step: 1,
+        precision: 1,
+        type: FORM_TYPES.number
+      },
+      backgroundColor: {
+        label: "Background Color",
+        description: "Background Color Of Input.",
+        editable: true,
+        required: null,
+        value: null,
+        type: FORM_TYPES.color
+      }
+    },
+    maxLength: {
+      label: "Max Length",
+      description: "Limits the input to a set number of characters.",
       editable: true,
       required: false,
-      value: false,
-      type: FORM_TYPES.boolean
+      value: 140,
+      min: 0,
+      step: 1,
+      precision: 1,
+      type: FORM_TYPES.number
     },
-    caretHidden: {
-      label: "Hide Caret",
+    multiline: {
+      label: "Multiple Lines",
       description:
-        "Hides the caret(the line small line underneath each showing where you're editing/typing",
+        "Allows multiple lines of input, useful for situations where the user may be typing in a lot of data.",
       editable: true,
       required: false,
       value: false,
@@ -76,16 +84,8 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       options: ["never", "while-editing", "unless-editing", "always"],
-      value: "never"
-    },
-    defaultValue: {
-      label: "Default Value",
-      description:
-        "The value that of the text-input intially, not a placeholder but the value that the textInput is taking in.",
-      editable: true,
-      required: false,
-      value: "",
-      type: FORM_TYPES.string
+      value: "never",
+      type: FORM_TYPES.flatArray
     },
     keyboardType: {
       label: "Keyboard Type",
@@ -110,33 +110,72 @@ export const SEED_DATA = {
       ],
       type: FORM_TYPES.flatArray
     },
-    maxLength: {
-      label: "Max Length",
-      description: "Limits the input to a set number of characters.",
-      editable: true,
-      required: false,
-      value: 140,
-      min: 0,
-      step: 1,
-      precision: 1,
-      type: FORM_TYPES.number
-    },
-    placeholder: {
-      label: "Placeholder Text",
+    defaultValue: {
+      label: "Default Value",
       description:
-        "The text that is shown on load and when no value is available.",
+        "The value that of the text-input intially, not a placeholder but the value that the textInput is taking in.",
       editable: true,
       required: false,
       value: "",
       type: FORM_TYPES.string
     },
-    placeholderTextColor: {
-      label: "Placeholder Text Color",
-      description: "The color of the placeholder text.",
+    autoCapitalize: {
+      label: "Auto Capitalize",
+      description:
+        "Can automatically capitalize sentences, words, and characters (Default: none).",
+      editable: true,
+      required: true,
+      value: "none",
+      options: ["none", "sentences", "words", "characters"],
+      type: FORM_TYPES.flatArray
+    },
+    autoCorrect: {
+      label: "Auto Correct",
+      description: "Enables auto correction",
       editable: true,
       required: false,
-      value: null,
-      type: FORM_TYPES.color
+      value: false,
+      type: FORM_TYPES.boolean
+    },
+    autoComplete: {
+      label: "Auto Capitalize",
+      description: "Android Only, suggests hints to auto fill the input",
+      editable: true,
+      required: false,
+      value: "off",
+      options: [
+        "off",
+        "username",
+        "password",
+        "email",
+        "name",
+        "tel",
+        "street-address",
+        "postal-code",
+        "cc-number",
+        "cc-csc",
+        "cc-exp",
+        "cc-exp-month",
+        "cc-exp-year"
+      ],
+      type: FORM_TYPES.flatArray
+    },
+    autoFocus: {
+      label: "Auto Focus",
+      description: "Highlights the field on load in and brings up the keyboard",
+      editable: true,
+      required: false,
+      value: false,
+      type: FORM_TYPES.boolean
+    },
+    caretHidden: {
+      label: "Hide Caret",
+      description:
+        "Hides the caret(the line small line underneath each showing where you're editing/typing",
+      editable: true,
+      required: false,
+      value: false,
+      type: FORM_TYPES.boolean
     },
     secureTextEntry: {
       label: "Secure Text Entry",
@@ -156,7 +195,7 @@ export const SEED_DATA = {
       type: FORM_TYPES.color
     },
     underlineColorAndroid: {
-      lablel: "Underline color",
+      label: "Underline color",
       description:
         "Android Only, the color of the underline(the line undearneath the text when finished typing.",
       editable: true,

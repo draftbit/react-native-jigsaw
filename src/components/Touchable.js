@@ -7,7 +7,11 @@ export default class extends Touchable {
   render() {
     const { children, ...props } = this.props;
 
-    return <Touchable {...props}>{children || <View />}</Touchable>;
+    return (
+      <Touchable {...props}>
+        <View>{children}</View>
+      </Touchable>
+    );
   }
 }
 

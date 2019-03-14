@@ -6,6 +6,9 @@ export const SEED_DATA = {
   name: "Video",
   tag: "Video",
   description: "Given a URL, display a video",
+  doc_link: "https://docs.expo.io/versions/latest/sdk/video/",
+  code_link:
+    "https://github.com/expo/expo/blob/master/packages/expo-av/src/Video.tsx",
   type: COMPONENT_TYPES.primitive,
   supports_list_render: false,
   layout: {},
@@ -31,7 +34,7 @@ export const SEED_DATA = {
       description: "Thumbnail Source",
       editable: true,
       required: false,
-      value: "",
+      value: null,
       type: FORM_TYPES.localImage
     },
     resizeMode: {

@@ -61,8 +61,7 @@ export const SEED_DATA = {
     },
     backfaceVisibility: {
       label: "Backface Visibility",
-      description:
-        "When animating a card, show the back face of it",
+      description: "When animating a card, show the back face of it",
       editable: false,
       required: false,
       value: null,
@@ -80,8 +79,7 @@ export const SEED_DATA = {
     },
     backgroundColor: {
       label: "Background Color",
-      description:
-        "If no image is chosen render a colored background.,
+      description: "If no image is chosen render a colored background.",
       editable: true,
       required: false,
       value: null,

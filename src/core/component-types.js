@@ -22,7 +22,8 @@ export const FORM_TYPES = {
   date: "date",
   component: "component",
   borderRadiusMode: "borderRadiusMode",
-  fieldName: "fieldName"
+  fieldName: "fieldName",
+  position: "position"
 };
 
 export const COMPONENT_TYPES = {

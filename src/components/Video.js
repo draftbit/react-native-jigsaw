@@ -34,7 +34,7 @@ export const SEED_DATA = {
       description: "Thumbnail Source",
       editable: true,
       required: false,
-      value: "",
+      value: null,
       type: FORM_TYPES.localImage
     },
     resizeMode: {

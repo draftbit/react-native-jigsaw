@@ -6,7 +6,7 @@ import { withTheme } from "../core/theming";
 import {
   COMPONENT_TYPES,
   FORM_TYPES,
-  STATE_VARIABLE_NAME
+  FIELD_NAME
 } from "../core/component-types";
 import Icon from "./Icon";
 import Config from "./Config";
@@ -137,7 +137,7 @@ export const SEED_DATA = [
         value: "{this.onSubmit}",
         editable: true
       },
-      ...STATE_VARIABLE_NAME
+      ...FIELD_NAME
     },
     layout: {
       width: 375,

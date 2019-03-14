@@ -14,7 +14,7 @@ import { withTheme } from "../core/theming";
 import {
   COMPONENT_TYPES,
   FORM_TYPES,
-  STATE_VARIABLE_NAME
+  FIELD_NAME
 } from "../core/component-types";
 import type { Theme } from "../types";
 import Icon from "./Icon";
@@ -733,7 +733,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false
   },
-  ...STATE_VARIABLE_NAME
+  ...FIELD_NAME
 };
 
 export const SEED_DATA = [

@@ -1,30 +1,13 @@
 import React from "react";
+import { View } from "react-native";
 import Touchable from "react-native-platform-touchable";
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 export default class extends Touchable {
   render() {
-    const {
-      children,
-      hitSlopTop,
-      hitSlopLeft,
-      hitSlopRight,
-      hitSlopBottom,
-      ...props
-    } = this.props;
+    const { children, ...props } = this.props;
 
-    const hitSlop = {
-      top: hitSlopTop,
-      left: hitSlopLeft,
-      right: hitSlopRight,
-      bottom: hitSlopBottom
-    };
-
-    return (
-      <Touchable hitSlop={hitSlop} {...props}>
-        {children}
-      </Touchable>
-    );
+    return <Touchable {...props}>{children || <View />}</Touchable>;
   }
 }
 
@@ -45,57 +28,14 @@ export const SEED_DATA = {
       value: "{this.onPress}",
       type: FORM_TYPES.function
     },
-    hitSlopTop: {
-      label: "Hit Slop - Top",
+    hitSlop: {
+      label: "Hit Slop",
       description:
         "Makes the Touchable easier to press by expanding the touchable area a specified number of points, without having to change the layout of the Touchable (e.g. by adding padding)",
       editable: true,
       required: false,
-      type: FORM_TYPES.number,
-      value: null,
-      min: 0,
-      max: 20,
-      step: 1,
-      precision: 0
-    },
-    hitSlopLeft: {
-      label: "Hit Slop - Left",
-      description:
-        "Makes the Touchable easier to press by expanding the touchable area a specified number of points, without having to change the layout of the Touchable (e.g. by adding padding)",
-      editable: true,
-      required: false,
-      type: FORM_TYPES.number,
-      value: null,
-      min: 0,
-      max: 20,
-      step: 1,
-      precision: 0
-    },
-    hitSlopRight: {
-      label: "Hit Slop - Right",
-      description:
-        "Makes the Touchable easier to press by expanding the touchable area a specified number of points, without having to change the layout of the Touchable (e.g. by adding padding)",
-      editable: true,
-      required: false,
-      type: FORM_TYPES.number,
-      value: null,
-      min: 0,
-      max: 20,
-      step: 1,
-      precision: 0
-    },
-    hitSlopBottom: {
-      label: "Hit Slop - Bottom",
-      description:
-        "Makes the Touchable easier to press by expanding the touchable area a specified number of points, without having to change the layout of the Touchable (e.g. by adding padding)",
-      editable: true,
-      required: false,
-      type: FORM_TYPES.number,
-      value: null,
-      min: 0,
-      max: 20,
-      step: 1,
-      precision: 0
+      type: FORM_TYPES.position,
+      value: null
     }
   }
 };

@@ -1,6 +1,6 @@
 export const FORM_TYPES = {
-  multiselect: 'multiselect',
-  position: 'position',
+  multiselect: "multiselect",
+  position: "position",
   sourceUrl: "sourceUrl",
   url: "url",
   string: "string",
@@ -21,7 +21,8 @@ export const FORM_TYPES = {
   aspectRatio: "aspectRatio",
   date: "date",
   component: "component",
-  borderRadiusMode: "borderRadiusMode"
+  borderRadiusMode: "borderRadiusMode",
+  fieldName: "fieldName"
 };
 
 export const COMPONENT_TYPES = {
@@ -58,4 +59,14 @@ export const BORDER_RADIUS_MODE = {
   value: null,
   editable: true,
   required: true
+};
+
+export const FIELD_NAME = {
+  label: "Field name",
+  description:
+    "The name of the field within the screen that will store this component's value",
+  type: FORM_TYPES.fieldName,
+  value: null,
+  editable: true,
+  required: false
 };

@@ -7,7 +7,7 @@ import type { Theme } from "../../types";
 import {
   COMPONENT_TYPES,
   FORM_TYPES,
-  STATE_VARIABLE_NAME
+  FIELD_NAME
 } from "../../core/component-types";
 
 type Props = {
@@ -178,7 +178,7 @@ const SEED_DATA_PROPS = {
     value: null,
     editable: true
   },
-  ...STATE_VARIABLE_NAME
+  ...FIELD_NAME
 };
 
 export const SEED_DATA = [

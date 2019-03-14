@@ -137,7 +137,7 @@ export const SEED_DATA = [
         value: "{this.onSubmit}",
         editable: true
       },
-      ...FIELD_NAME
+      fieldName: FIELD_NAME
     },
     layout: {
       width: 375,

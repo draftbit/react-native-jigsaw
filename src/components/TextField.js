@@ -733,7 +733,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false
   },
-  ...FIELD_NAME
+  fieldName: FIELD_NAME
 };
 
 export const SEED_DATA = [

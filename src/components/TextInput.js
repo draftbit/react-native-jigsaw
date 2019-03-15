@@ -17,7 +17,7 @@ export const SEED_DATA = {
         "The text that is shown on load and when no value is available.",
       editable: true,
       required: false,
-      value: "",
+      value: "Placeholder Text",
       type: FORM_TYPES.string
     },
     placeholderTextColor: {
@@ -27,35 +27,6 @@ export const SEED_DATA = {
       required: false,
       value: null,
       type: FORM_TYPES.color
-    },
-    style: {
-      color: {
-        label: "Text Color",
-        description: "Color of the characters entered.",
-        editable: true,
-        required: null,
-        value: null,
-        type: FORM_TYPES.color
-      },
-      fontSize: {
-        label: "Font Size",
-        description: "Size of the characters entered.",
-        editable: true,
-        required: true,
-        value: null,
-        min: 0,
-        step: 1,
-        precision: 1,
-        type: FORM_TYPES.number
-      },
-      backgroundColor: {
-        label: "Background Color",
-        description: "Background Color Of Input.",
-        editable: true,
-        required: null,
-        value: null,
-        type: FORM_TYPES.color
-      }
     },
     maxLength: {
       label: "Max Length",
@@ -138,7 +109,7 @@ export const SEED_DATA = {
       type: FORM_TYPES.boolean
     },
     autoComplete: {
-      label: "Auto Capitalize",
+      label: "Auto Complete",
       description: "Android Only, suggests hints to auto fill the input",
       editable: true,
       required: false,

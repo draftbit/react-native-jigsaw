@@ -16,8 +16,8 @@ export const SEED_DATA = {
   preview_image_url:
     "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/Image.png",
   layout: {
-    width: 200,
-    height: 200
+    width: "100%",
+    height: 250
   },
   props: {
     source: {

@@ -11,8 +11,8 @@ export const SEED_DATA = {
   preview_image_url:
     "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/List.svg",
   layout: {
-    width: 375,
-    height: 375
+    width: "100%",
+    height: "100%"
   },
   props: {
     component: {

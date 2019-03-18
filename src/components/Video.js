@@ -43,7 +43,7 @@ export const SEED_DATA = {
         "How the video should be scaled for display. (Default: stretch) ",
       editable: true,
       required: true,
-      value: "stretch",
+      value: "contain",
       options: ["stretch", "contain", "cover"],
       type: FORM_TYPES.flatArray
     },

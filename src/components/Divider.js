@@ -48,7 +48,7 @@ export const SEED_DATA = [
     supports_list_render: false,
     props: {},
     layout: {
-      width: 343,
+      width: "100%",
       height: 1
     }
   }

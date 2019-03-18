@@ -9,7 +9,10 @@ export const SEED_DATA = {
   code_link: 'https://github.com/expo/expo/blob/master/packages/expo/src/effects/BlurView.d.ts',
   type: COMPONENT_TYPES.primitive,
   supports_list_render: false,
-  layout: {},
+  layout: {
+    width: "100%",
+    height: "100%"
+  },
   props: {
     tint: {
       label: "Tint",

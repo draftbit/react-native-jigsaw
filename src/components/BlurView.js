@@ -1,15 +1,12 @@
 import { BlurView } from "expo";
-import {
-  COMPONENT_TYPES,
-  FORM_TYPES,
-  BORDER_RADIUS_MODE
-} from "../core/component-types";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 export default BlurView;
 
 export const SEED_DATA = {
   name: "Blur View",
   tag: "BlurView",
-  description: "Renders a blur view on iOS and a semi-transparent view on Android. Useful for navigation bars, tab bars, modals.",
+  doc_link: 'https://docs.expo.io/versions/latest/sdk/blur-view/',
+  code_link: 'https://github.com/expo/expo/blob/master/packages/expo/src/effects/BlurView.d.ts',
   type: COMPONENT_TYPES.primitive,
   supports_list_render: false,
   layout: {},
@@ -19,13 +16,14 @@ export const SEED_DATA = {
       description: "The tint of the blur view",
       editable: true,
       required: true,
-      value: 'default',
+      value: "default",
       type: FORM_TYPES.flatArray,
-      options: ['default', 'light', 'dark']
+      options: ["default", "light", "dark"]
     },
     intensity: {
       label: "Intensity",
-      description: "A number from 1 to 100 that controls the intensity of the blur effect",
+      description:
+        "A number from 1 to 100 that controls the intensity of the blur effect",
       editable: true,
       required: true,
       value: 50,

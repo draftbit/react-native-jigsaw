@@ -4,7 +4,11 @@ import * as React from "react";
 import { withTheme } from "../../core/theming";
 import PickerComponent from "./PickerComponent";
 import type { Theme } from "../../types";
-import { COMPONENT_TYPES, FORM_TYPES } from "../../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  FIELD_NAME
+} from "../../core/component-types";
 
 type Props = {
   /**
@@ -48,8 +52,8 @@ type Props = {
    */
   rightIconName?: string,
   options: Array<{ label: string, value: string }>,
-  selectedValue: string,
-  onValueChange: (itemValue: string, itemIndex: number) => void,
+  value: string,
+  onChange: (itemValue: string, itemIndex: number) => void,
   style?: any,
   theme: Theme
 };
@@ -63,7 +67,6 @@ class Picker extends React.Component<Props> {
       { value: "Dodge", label: "Dodge" }
     ],
     type: "underline",
-    onValueChange: () => {},
     disabled: false,
     error: false
   };
@@ -73,17 +76,17 @@ class Picker extends React.Component<Props> {
   };
 
   onValueChange = (itemValue, itemIndex) => {
-    const { placeholder, onValueChange } = this.props;
+    const { placeholder, onChange } = this.props;
 
     if (placeholder && itemIndex === 0) {
       return;
     }
 
-    onValueChange(itemValue, itemIndex);
+    onChange && onChange(itemValue, itemIndex);
   };
 
   render() {
-    const { placeholder, options } = this.props;
+    const { placeholder, options, value, ...props } = this.props;
 
     const pickerOptions = placeholder
       ? [{ value: placeholder, label: placeholder }, ...options]
@@ -91,7 +94,9 @@ class Picker extends React.Component<Props> {
 
     return (
       <PickerComponent
-        {...this.props}
+        {...props}
+        selectedValue={value}
+        placeholder={placeholder}
         options={pickerOptions}
         onValueChange={this.onValueChange}
       />
@@ -125,21 +130,6 @@ const SEED_DATA_PROPS = {
     value: null,
     editable: true,
     required: false
-  },
-  selectedValue: {
-    label: "Selected value",
-    description: "The selected value of the picker",
-    type: FORM_TYPES.string,
-    value: null,
-    editable: true,
-    required: false
-  },
-  onValueChange: {
-    label: "Picker onValueChange function",
-    description: "Function to call as picker value is changed",
-    editable: true,
-    type: FORM_TYPES.function,
-    value: "{this.onValueChange}"
   },
   options: {
     label: "Options",
@@ -187,7 +177,8 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.icon,
     value: null,
     editable: true
-  }
+  },
+  fieldName: FIELD_NAME
 };
 
 export const SEED_DATA = [
@@ -196,8 +187,7 @@ export const SEED_DATA = [
     tag: "Picker",
     description: "A picker with a solid border",
     category: COMPONENT_TYPES.field,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Picker.png",
+    preview_image_url: "{CLOUDINARY_URL}/Picker.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,
@@ -217,8 +207,7 @@ export const SEED_DATA = [
     tag: "Picker",
     description: "A picker with an underline",
     category: COMPONENT_TYPES.field,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Picker.png",
+    preview_image_url: "{CLOUDINARY_URL}/Picker.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,

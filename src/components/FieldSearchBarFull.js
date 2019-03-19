@@ -3,7 +3,11 @@
 import * as React from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  FIELD_NAME
+} from "../core/component-types";
 import Icon from "./Icon";
 import Config from "./Config";
 import type { Theme } from "../types";
@@ -18,8 +22,7 @@ type Props = {
 
 class FieldSearchBarFull extends React.Component<Props> {
   state = {
-    focused: false,
-    value: ""
+    focused: false
   };
 
   static defaultProps = {
@@ -35,7 +38,7 @@ class FieldSearchBarFull extends React.Component<Props> {
   };
 
   onChange = value => {
-    this.setState({ value });
+    this.props.onChange && this.props.onChange(value);
   };
 
   onFocus = () => {
@@ -43,7 +46,7 @@ class FieldSearchBarFull extends React.Component<Props> {
   };
 
   onSubmit = () => {
-    this.props.onSubmit && this.props.onSubmit(this.state.value);
+    this.props.onSubmit && this.props.onSubmit();
   };
 
   render() {
@@ -52,10 +55,12 @@ class FieldSearchBarFull extends React.Component<Props> {
       placeholder,
       onSubmit,
       style,
-      theme: { colors, spacing, typography }
+      theme: { colors, spacing, typography },
+      onChange,
+      value
     } = this.props;
 
-    const { focused, value } = this.state;
+    const { focused } = this.state;
 
     const { lineHeight, ...typeStyle } = typography.body2;
 
@@ -72,7 +77,7 @@ class FieldSearchBarFull extends React.Component<Props> {
           value={value}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
-          onChangeText={this.onChange}
+          onChange={onChange}
           onSubmitEditing={this.onSubmit}
           placeholderTextColor={colors.light}
           style={[
@@ -105,8 +110,7 @@ export const SEED_DATA = [
     tag: "FieldSearchBarFull",
     description: "A search bar with accompanying search icon and clear button.",
     category: COMPONENT_TYPES.field,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Field_SearchBar_Full.png",
+    preview_image_url: "{CLOUDINARY_URL}/Field_SearchBar_Full.png",
     supports_list_render: false,
     props: {
       icon: {
@@ -132,7 +136,8 @@ export const SEED_DATA = [
         type: FORM_TYPES.function,
         value: "{this.onSubmit}",
         editable: true
-      }
+      },
+      fieldName: FIELD_NAME
     },
     layout: {
       width: 375,

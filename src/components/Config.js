@@ -37,6 +37,8 @@ export default {
   cardIconSize: 16,
   cardIconBackgroundOpacity: 0.24,
   cardIconElevation: 1,
+  placeholderImageURL:
+    "https://res.cloudinary.com/altos/image/upload/v1552677596/draftbit/Jigsaw/image-placeholder_1.png",
   squareImageUrl: buildImageUrl({ width: 100 }, "Avatar"),
   FABSize: 40,
   FABBorderRadius: 20,

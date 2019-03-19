@@ -11,7 +11,11 @@ import {
 } from "react-native";
 import { polyfill } from "react-lifecycles-compat";
 import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  FIELD_NAME
+} from "../core/component-types";
 import type { Theme } from "../types";
 import Icon from "./Icon";
 
@@ -23,7 +27,7 @@ const ICON_SIZE = 24;
 
 type RenderProps = {
   ref: any => void,
-  onChangeText: string => void,
+  onChange: string => void,
   placeholder: ?string,
   editable?: boolean,
   selectionColor: string,
@@ -62,7 +66,7 @@ type Props = {
   /**
    * Callback that is called when the text input's text changes. Changed text is passed as an argument to the callback handler.
    */
-  onChangeText?: Function,
+  onChange?: Function,
   /**
    * Whether the input can have multiple lines.
    */
@@ -248,7 +252,7 @@ class TextField extends React.Component<Props, State> {
     }
 
     this.setState({ value });
-    this.props.onChangeText && this.props.onChangeText(value);
+    this.props.onChange && this.props.onChange(value);
   };
 
   toggleFocus() {
@@ -565,7 +569,7 @@ class TextField extends React.Component<Props, State> {
             ref: c => {
               this._root = c;
             },
-            onChangeText: this._handleChangeText,
+            onChange: this._handleChangeText,
             placeholder: label
               ? this.state.placeholder
               : this.props.placeholder,
@@ -667,21 +671,6 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false
   },
-  value: {
-    label: "Value",
-    description: "The value of the text input",
-    type: FORM_TYPES.string,
-    value: null,
-    editable: true,
-    required: false
-  },
-  onChangeText: {
-    label: "Input onChange function",
-    description: "Function to call as input is changed",
-    editable: true,
-    type: FORM_TYPES.function,
-    value: "{this.onChangeText}"
-  },
   disabled: {
     label: "Disabled",
     description:
@@ -743,7 +732,8 @@ const SEED_DATA_PROPS = {
     ],
     editable: true,
     required: false
-  }
+  },
+  fieldName: FIELD_NAME
 };
 
 export const SEED_DATA = [
@@ -752,8 +742,7 @@ export const SEED_DATA = [
     tag: "TextField",
     description: "A text input with a solid border",
     category: COMPONENT_TYPES.field,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Textfield.png",
+    preview_image_url: "{CLOUDINARY_URL}/Textfield.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,
@@ -782,8 +771,7 @@ export const SEED_DATA = [
     tag: "TextField",
     description: "A text input with an underline",
     category: COMPONENT_TYPES.field,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Textfield.png",
+    preview_image_url: "{CLOUDINARY_URL}/Textfield.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,
@@ -812,8 +800,7 @@ export const SEED_DATA = [
     tag: "TextField",
     description: "A text area with a solid border",
     category: COMPONENT_TYPES.field,
-    preview_image_url:
-      "{CLOUDINARY_URL}/TextArea.png",
+    preview_image_url: "{CLOUDINARY_URL}/TextArea.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,
@@ -838,8 +825,7 @@ export const SEED_DATA = [
     tag: "TextField",
     description: "A text area with an underline",
     category: COMPONENT_TYPES.field,
-    preview_image_url:
-      "{CLOUDINARY_URL}/TextArea.png",
+    preview_image_url: "{CLOUDINARY_URL}/TextArea.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,

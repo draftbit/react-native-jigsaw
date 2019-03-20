@@ -9,7 +9,10 @@ export const SEED_DATA = {
   description: "An input field that allows users to type in data.",
   type: COMPONENT_TYPES.primitive,
   supports_list_render: false,
-  layout: {},
+  layout: {
+    width: "100%",
+    height: 40
+  },
   props: {
     allowFontScaling: {
       label: "Allow Font Scaling",

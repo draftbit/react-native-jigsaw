@@ -21,11 +21,10 @@ import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
 type Props = {
   /**
    * Type of the button. You can change the type to adjust the styling to give it desired emphasis.
-   * - `text` - flat button without background or outline (low emphasis)
    * - `outline` - button with an outline (medium emphasis)
    * - `solid` - button with a background color (high emphasis)
    */
-  type?: "text" | "outline" | "solid",
+  type?: "outline" | "solid",
   /**
    * Custom text color for flat button, or background color for solid button.
    */
@@ -289,8 +288,7 @@ export const SEED_DATA = [
     name: "Button Outline",
     tag: "Button",
     category: COMPONENT_TYPES.button,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Button_Outline.png",
+    preview_image_url: "{CLOUDINARY_URL}/Button_Outline.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -311,8 +309,7 @@ export const SEED_DATA = [
     name: "Button Solid",
     tag: "Button",
     category: COMPONENT_TYPES.button,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Button_Solid.png",
+    preview_image_url: "{CLOUDINARY_URL}/Button_Solid.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -322,28 +319,6 @@ export const SEED_DATA = [
         required: true,
         type: FORM_TYPES.string,
         value: "solid"
-      }
-    },
-    layout: {
-      width: "100%",
-      height: 48
-    }
-  },
-  {
-    name: "Button Text",
-    tag: "Button",
-    category: COMPONENT_TYPES.button,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Button_Text.png",
-    props: {
-      ...SEED_DATA_PROPS,
-      type: {
-        label: "Type",
-        description: "Button type",
-        editable: false,
-        required: true,
-        type: FORM_TYPES.string,
-        value: "text"
       }
     },
     layout: {

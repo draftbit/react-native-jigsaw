@@ -3,7 +3,7 @@ import * as React from "react";
 import { Switch as NativeSwitch, Platform } from "react-native";
 import { withTheme } from "../core/theming";
 import type { Theme } from "../types";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types";
 
 type Props = {
   /**
@@ -31,14 +31,7 @@ type Props = {
 
 class Switch extends React.Component<Props> {
   render() {
-    const {
-      value,
-      disabled,
-      onValueChange,
-      color,
-      theme,
-      ...props
-    } = this.props;
+    const { value, disabled, onValueChange, color, theme, ...props } = this.props;
     let thumbColor = undefined;
     let checkedColor = color || theme.colors.primary;
     if (Platform.OS !== "ios") {
@@ -66,8 +59,7 @@ export const SEED_DATA = {
   name: "Switch",
   tag: "Switch",
   category: COMPONENT_TYPES.formControl,
-  preview_image_url:
-    "{CLOUDINARY_URL}/Control_Toggle.png",
+  preview_image_url: "{CLOUDINARY_URL}/Control_Toggle.png",
   props: {
     disabled: {
       label: "Disabled",
@@ -75,13 +67,6 @@ export const SEED_DATA = {
       required: false,
       editable: true,
       value: false,
-      type: FORM_TYPES.boolean
-    },
-    value: {
-      label: "Value",
-      description: "Boolean status if switch is toggled true or false",
-      editable: true,
-      value: true,
       type: FORM_TYPES.boolean
     },
     color: {
@@ -92,13 +77,10 @@ export const SEED_DATA = {
       required: false,
       type: FORM_TYPES.color
     },
-    onValueChange: {
-      label: "onValueChange handler",
-      description: "Function to change value of the switch",
-      editable: true,
-      required: true,
-      value: "{this.onValueChange}",
-      type: FORM_TYPES.function
+    fieldName: {
+      ...FIELD_NAME,
+      value: "switchValue",
+      handlerPropName: "onValueChange"
     }
   },
   layout: {

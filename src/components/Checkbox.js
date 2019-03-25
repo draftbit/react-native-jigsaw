@@ -6,7 +6,7 @@ import CheckboxAndroid from "./CheckboxAndroid";
 import CheckboxIOS from "./CheckboxIOS";
 import { withTheme } from "../core/theming";
 import type { Theme } from "../types";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types";
 
 type Props = {|
   /**
@@ -43,11 +43,7 @@ class Checkbox extends React.Component<Props> {
   static IOS = CheckboxIOS;
 
   render() {
-    return Platform.OS === "ios" ? (
-      <CheckboxIOS {...this.props} />
-    ) : (
-      <CheckboxAndroid {...this.props} />
-    );
+    return Platform.OS === "ios" ? <CheckboxIOS {...this.props} /> : <CheckboxAndroid {...this.props} />;
   }
 }
 
@@ -57,18 +53,8 @@ export const SEED_DATA = {
   name: "Checkbox",
   tag: "Checkbox",
   category: COMPONENT_TYPES.formControl,
-  preview_image_url:
-    "{CLOUDINARY_URL}/Control_Checkbox.png",
+  preview_image_url: "{CLOUDINARY_URL}/Control_Checkbox.png",
   props: {
-    status: {
-      label: "Status",
-      description: "Status of checkbox",
-      required: true,
-      editable: true,
-      value: "checked",
-      type: FORM_TYPES.flatArray,
-      options: ["checked", "unchecked", "indeterminate"]
-    },
     disabled: {
       label: "Disabled",
       description: "Whether checkbox is disabled",
@@ -84,13 +70,11 @@ export const SEED_DATA = {
       required: false,
       type: FORM_TYPES.color
     },
-    onPress: {
-      label: "onPress handler",
-      description: "Function that handles checking or unchecking",
-      editable: true,
-      required: false,
-      value: "{this.onPress}",
-      type: FORM_TYPES.function
+    fieldName: {
+      ...FIELD_NAME,
+      value: "checkboxValue",
+      valuePropName: "status",
+      handlerPropName: "onPress"
     }
   },
   layout: {

@@ -65,7 +65,7 @@ class Row extends React.Component<Props> {
             >
               {title}
             </Text>
-            {subtitle && (
+            {subtitle ? (
               <Text
                 style={[
                   subtitleTypeStyle,
@@ -78,7 +78,7 @@ class Row extends React.Component<Props> {
               >
                 {subtitle}
               </Text>
-            )}
+            ) : null}
           </View>
         </View>
         {right && right()}

@@ -4,7 +4,7 @@ import * as React from "react";
 import { Slider as NativeSlider } from "react-native";
 import { withTheme } from "../core/theming";
 import type { Theme } from "../types";
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
+import { FORM_TYPES, COMPONENT_TYPES, FIELD_NAME } from "../core/component-types";
 
 type Props = {
   disabled?: boolean,

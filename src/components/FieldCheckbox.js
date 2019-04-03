@@ -1,7 +1,7 @@
 /* @flow */
 import * as React from "react";
 import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types";
 import { StyleSheet, View, Text } from "react-native";
 import Touchable from "./Touchable";
 import Checkbox from "./Checkbox";
@@ -48,20 +48,8 @@ class FieldCheckbox extends React.Component<Props> {
     return (
       <Touchable onPress={this.onPress} disabled={disabled}>
         <View style={styles.container}>
-          <Checkbox
-            status={status}
-            disabled={disabled}
-            onPress={onPress}
-            color={checkboxColor}
-          />
-          <Text
-            style={[
-              typography.body1,
-              { marginLeft: spacing.medium, color: titleColor }
-            ]}
-          >
-            {title}
-          </Text>
+          <Checkbox status={status} disabled={disabled} onPress={onPress} color={checkboxColor} />
+          <Text style={[typography.body1, { marginLeft: spacing.medium, color: titleColor }]}>{title}</Text>
         </View>
       </Touchable>
     );
@@ -82,8 +70,7 @@ export const SEED_DATA = [
     name: "Field Checkbox",
     tag: "FieldCheckbox",
     description: "A row with left aligned checkbox and body",
-    preview_image_url:
-      "{CLOUDINARY_URL}/Field_Checkbox.png",
+    preview_image_url: "{CLOUDINARY_URL}/Field_Checkbox.png",
     category: COMPONENT_TYPES.field,
     supports_list_render: true,
     props: {
@@ -94,29 +81,12 @@ export const SEED_DATA = [
         value: "Beautiful West Coast Villa",
         editable: true
       },
-      status: {
-        label: "Status",
-        description: "Status of checkbox",
-        required: true,
-        editable: true,
-        value: "checked",
-        type: FORM_TYPES.flatArray,
-        options: ["checked", "unchecked", "indeterminate"]
-      },
       color: {
         label: "Color",
         description: "Custom color for the checkbox",
         editable: true,
         required: false,
         type: FORM_TYPES.color
-      },
-      onPress: {
-        label: "onPress handler",
-        description: "Function that handles checking or unchecking",
-        editable: true,
-        required: false,
-        value: "{this.onPress}",
-        type: FORM_TYPES.function
       },
       disabled: {
         label: "Disabled",
@@ -125,6 +95,12 @@ export const SEED_DATA = [
         required: false,
         value: false,
         type: FORM_TYPES.boolean
+      },
+      fieldName: {
+        ...FIELD_NAME,
+        value: "checkboxValue",
+        valuePropName: "status",
+        handlerPropName: "onPress"
       }
     },
     layout: {

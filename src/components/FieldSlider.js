@@ -5,7 +5,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { withTheme } from "../core/theming";
 import type { Theme } from "../types";
 import Slider from "./Slider";
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
+import { FORM_TYPES, COMPONENT_TYPES, FIELD_NAME } from "../core/component-types";
 
 type Props = {
   title?: string,
@@ -26,32 +26,19 @@ type Props = {
 
 class FieldSlider extends React.Component {
   render() {
-    const {
-      title,
-      minimumLabel,
-      maximumLabel,
-      style,
-      theme,
-      ...props
-    } = this.props;
+    const { title, minimumLabel, maximumLabel, style, theme, ...props } = this.props;
     const { colors, typography, spacing } = theme;
 
     const labelStyle = [typography.caption, { color: colors.light }];
 
     return (
       <View style={[styles.container, style]}>
-        {title && (
-          <Text style={[typography.body1, { marginBottom: spacing.text / 2 }]}>
-            {title}
-          </Text>
-        )}
+        {title && <Text style={[typography.body1, { marginBottom: spacing.text / 2 }]}>{title}</Text>}
         <Slider {...props} />
         <View style={[styles.bottomContainer, { marginTop: spacing.text }]}>
           <Text style={[labelStyle, { flex: 1 }]}>{minimumLabel}</Text>
           <Text style={labelStyle}>{this.props.value}</Text>
-          <Text style={[labelStyle, { flex: 1, textAlign: "right" }]}>
-            {maximumLabel}
-          </Text>
+          <Text style={[labelStyle, { flex: 1, textAlign: "right" }]}>{maximumLabel}</Text>
         </View>
       </View>
     );
@@ -73,11 +60,9 @@ const styles = StyleSheet.create({
 export const SEED_DATA = {
   name: "Slider Field",
   tag: "FieldSlider",
-  description:
-    "A component used to set a value in a range, along with a title and label text",
+  description: "A component used to set a value in a range, along with a title and label text",
   category: COMPONENT_TYPES.field,
-  preview_image_url:
-    "{CLOUDINARY_URL}/Field_Slider.png",
+  preview_image_url: "{CLOUDINARY_URL}/Field_Slider.png",
   supports_list_render: false,
   props: {
     title: {
@@ -148,23 +133,10 @@ export const SEED_DATA = {
       precision: 2,
       value: 1
     },
-    onValueChange: {
-      label: "Slider onValueChange function",
-      description: "Function to run when slider is moved",
-      editable: true,
-      type: FORM_TYPES.function,
-      value: "{this.onValueChange}"
-    },
-    value: {
-      label: "Value",
-      description: "Slider value",
-      editable: true,
-      type: FORM_TYPES.number,
-      min: -1000000,
-      max: 1000000,
-      step: 0.01,
-      precision: 2,
-      value: 5
+    fieldName: {
+      ...FIELD_NAME,
+      value: "sliderValue",
+      handlerPropName: "onValueChange"
     }
   },
   layout: {

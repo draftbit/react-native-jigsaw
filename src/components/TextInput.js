@@ -123,7 +123,7 @@ export const SEED_DATA = {
       type: FORM_TYPES.string
     },
     editable: {
-      label: "Editable or Disabled",
+      label: "Editable",
       description: "If false, the text is not editable",
       editable: true,
       required: false,

@@ -1,5 +1,9 @@
 import { TextInput } from "react-native";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  FIELD_NAME
+} from "../core/component-types";
 
 export default TextInput;
 
@@ -20,7 +24,7 @@ export const SEED_DATA = {
         "Whether fonts should scale to respect Text Size in the user's accessibility settings. (Default: true)",
       editable: true,
       required: false,
-      value: true,
+      value: null,
       type: FORM_TYPES.boolean
     },
     autoCapitalize: {
@@ -29,7 +33,7 @@ export const SEED_DATA = {
         "Can automatically capitalize sentences, words, and characters (Default: none).",
       editable: true,
       required: false,
-      value: "none",
+      value: null,
       options: ["none", "sentences", "words", "characters"],
       type: FORM_TYPES.flatArray
     },
@@ -39,7 +43,7 @@ export const SEED_DATA = {
         "(Android Only) Suggests hints to autocomplete from the system",
       editable: true,
       required: false,
-      value: "off",
+      value: null,
       options: [
         "off",
         "username",
@@ -62,7 +66,7 @@ export const SEED_DATA = {
       description: "Enables auto correction",
       editable: true,
       required: false,
-      value: true,
+      value: null,
       type: FORM_TYPES.boolean
     },
     autoFocus: {
@@ -70,7 +74,7 @@ export const SEED_DATA = {
       description: "Focuses the input on load in and brings up the keyboard",
       editable: true,
       required: false,
-      value: false,
+      value: null,
       type: FORM_TYPES.boolean
     },
     caretHidden: {
@@ -79,7 +83,7 @@ export const SEED_DATA = {
         "Hides the caret(the line small line underneath each showing where you're editing/typing",
       editable: true,
       required: false,
-      value: false,
+      value: null,
       type: FORM_TYPES.boolean
     },
     clearButtonMode: {
@@ -89,7 +93,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       options: ["never", "while-editing", "unless-editing", "always"],
-      value: "never",
+      value: null,
       type: FORM_TYPES.flatArray
     },
     clearTextOnFocus: {
@@ -98,7 +102,7 @@ export const SEED_DATA = {
         "If true, clears the text field automatically when its focused.",
       editable: true,
       required: false,
-      value: false,
+      value: null,
       type: FORM_TYPES.boolean
     },
     contextMenuHidden: {
@@ -106,7 +110,7 @@ export const SEED_DATA = {
       description: "Hides the system context menu (Default: false)",
       editable: true,
       required: false,
-      value: false,
+      value: null,
       type: FORM_TYPES.boolean
     },
     defaultValue: {
@@ -115,7 +119,7 @@ export const SEED_DATA = {
         "The value that of the text-input initially, not a placeholder but the value that the textInput is taking in.",
       editable: true,
       required: false,
-      value: "",
+      value: null,
       type: FORM_TYPES.string
     },
     editable: {
@@ -123,7 +127,7 @@ export const SEED_DATA = {
       description: "If false, the text is not editable",
       editable: true,
       required: false,
-      value: true,
+      value: null,
       type: FORM_TYPES.boolean
     },
     enablesReturnKeyAutomatically: {
@@ -132,7 +136,7 @@ export const SEED_DATA = {
         "If true, the keyboard disables the return key when there is no text and automatically enables it when there is (Default: false)",
       editable: true,
       required: false,
-      value: false,
+      value: null,
       type: FORM_TYPES.boolean
     },
     keyboardAppearance: {
@@ -140,7 +144,7 @@ export const SEED_DATA = {
       description: "Determines color of the keyboard on iOS",
       editable: true,
       required: false,
-      value: "default",
+      value: null,
       options: ["default", "light", "dark"],
       type: FORM_TYPES.flatArray
     },
@@ -149,7 +153,7 @@ export const SEED_DATA = {
       description: "Determines what keyboard is given to the user.",
       editable: true,
       required: false,
-      value: "default",
+      value: null,
       options: [
         "default",
         "email-address",
@@ -184,7 +188,7 @@ export const SEED_DATA = {
         "Allows multiple lines of input, useful for situations where the user may be typing in a lot of data.",
       editable: true,
       required: false,
-      value: false,
+      value: null,
       type: FORM_TYPES.boolean
     },
     numberOfLines: {
@@ -229,7 +233,7 @@ export const SEED_DATA = {
       description: "Determines how the return key should look like",
       editable: true,
       required: false,
-      value: "default",
+      value: null,
       options: [
         "done",
         "go",
@@ -253,7 +257,7 @@ export const SEED_DATA = {
         "If false, scrolling of the input will be disabled. Only works when Multiple Lines is true",
       editable: true,
       required: false,
-      value: true,
+      value: null,
       type: FORM_TYPES.boolean
     },
     secureTextEntry: {
@@ -262,7 +266,7 @@ export const SEED_DATA = {
         "Hides the characters with a *, useful for passwords and other sensitive information.",
       editable: true,
       required: false,
-      value: false,
+      value: null,
       type: FORM_TYPES.boolean
     },
     selectionColor: {
@@ -279,7 +283,7 @@ export const SEED_DATA = {
         "If true, all the text will automatically be selected on focus",
       editable: true,
       required: false,
-      value: false,
+      value: null,
       type: FORM_TYPES.boolean
     },
     spellcheck: {
@@ -297,7 +301,7 @@ export const SEED_DATA = {
         "Give the keyboard and system about what it should do with the input. For example, if its an address, autofill from address book",
       editable: true,
       required: false,
-      value: "none",
+      value: null,
       options: [
         "none",
         "URL",
@@ -334,7 +338,7 @@ export const SEED_DATA = {
         "(Android Only) Set the text break strategy. (Default: simple)",
       editable: true,
       required: false,
-      value: "simple",
+      value: null,
       options: ["simple", "highQuality", "balanced"],
       type: FORM_TYPES.flatArray
     },
@@ -346,6 +350,10 @@ export const SEED_DATA = {
       required: false,
       value: null,
       type: FORM_TYPES.color
+    },
+    fieldName: {
+      ...FIELD_NAME,
+      handlerPropName: "onChangeText"
     }
   }
 };

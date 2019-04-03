@@ -70,7 +70,8 @@ export const SEED_DATA = {
   type: COMPONENT_TYPES.primitive,
   supports_list_render: false,
   layout: {
-    width: "100%"
+    width: "100%",
+    height: "100%"
   },
   props: {
     useThemeGutterPadding: {

@@ -8,7 +8,10 @@ export const SEED_DATA = {
   description: "A basic ScrollView component",
   type: COMPONENT_TYPES.primitive,
   supports_list_render: false,
-  layout: {},
+  layout: {
+    width: "100%",
+    height: "100%"
+  },
   props: {
     horizontal: {
       label: "Horizontal",

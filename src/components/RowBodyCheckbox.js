@@ -1,7 +1,7 @@
 /* @flow */
 import * as React from "react";
 import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types";
 import Row from "./Row";
 import Checkbox from "./Checkbox";
 import Config from "./Config";
@@ -37,14 +37,7 @@ class RowBodyCheckbox extends React.Component<Props> {
         subtitleColor={colors.light}
         title={title}
         subtitle={subtitle}
-        right={() => (
-          <Checkbox
-            status={status}
-            size={Config.rowSingleLineIconSize}
-            color={color}
-            onPress={onPress}
-          />
-        )}
+        right={() => <Checkbox status={status} size={Config.rowSingleLineIconSize} color={color} onPress={onPress} />}
         style={style}
       />
     );
@@ -57,10 +50,8 @@ export const SEED_DATA = [
   {
     name: "Row Single Line Body Checkbox",
     tag: "RowBodyCheckbox",
-    description:
-      "A row with left aligned body text and a right aligned checkbox",
-    preview_image_url:
-      "{CLOUDINARY_URL}/Row_SingleLine_BodyCheckbox.png",
+    description: "A row with left aligned body text and a right aligned checkbox",
+    preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_BodyCheckbox.png",
     category: COMPONENT_TYPES.row,
     supports_list_render: true,
     props: {
@@ -71,15 +62,6 @@ export const SEED_DATA = [
         value: "Beautiful West Coast Villa",
         editable: true
       },
-      status: {
-        label: "Check status",
-        description: "Status of checkbox",
-        required: true,
-        editable: true,
-        value: "checked",
-        type: FORM_TYPES.flatArray,
-        options: ["checked", "unchecked", "indeterminate"]
-      },
       color: {
         label: "Checkbox color",
         description: "Custom color for Checkbox",
@@ -87,13 +69,11 @@ export const SEED_DATA = [
         required: false,
         type: FORM_TYPES.color
       },
-      onPress: {
-        label: "OnPress handler",
-        description: "function that handles checking or unchecking",
-        editable: true,
-        required: false,
-        value: "{this.onPress}",
-        type: FORM_TYPES.function
+      fieldName: {
+        ...FIELD_NAME,
+        value: "checkboxValue",
+        valuePropName: "status",
+        handlerPropName: "onPress"
       }
     },
     layout: {
@@ -104,11 +84,9 @@ export const SEED_DATA = [
   {
     name: "Row Double Line Body Checkbox",
     tag: "RowBodyCheckbox",
-    description:
-      "A row with left aligned body text and subtitle text and a right aligned checkbox",
+    description: "A row with left aligned body text and subtitle text and a right aligned checkbox",
     category: COMPONENT_TYPES.row,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Row_DoubleLine_BodyCheckbox.png",
+    preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_BodyCheckbox.png",
     supports_list_render: true,
     props: {
       title: {
@@ -125,15 +103,6 @@ export const SEED_DATA = [
         value: "San Diego",
         editable: true
       },
-      status: {
-        label: "Status",
-        description: "Status of checkbox",
-        required: true,
-        editable: true,
-        value: "checked",
-        type: FORM_TYPES.flatArray,
-        options: ["checked", "unchecked", "indeterminate"]
-      },
       color: {
         label: "Color",
         description: "Custom color for Checkbox",
@@ -141,13 +110,11 @@ export const SEED_DATA = [
         required: false,
         type: FORM_TYPES.color
       },
-      onPress: {
-        label: "onPress handler",
-        description: "function that handles checking or unchecking",
-        editable: true,
-        required: false,
-        value: "{this.onPress}",
-        type: FORM_TYPES.function
+      fieldName: {
+        ...FIELD_NAME,
+        value: "checkboxValue",
+        valuePropName: "status",
+        handlerPropName: "onPress"
       }
     },
     layout: {

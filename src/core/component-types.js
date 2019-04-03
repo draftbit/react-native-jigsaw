@@ -64,10 +64,11 @@ export const BORDER_RADIUS_MODE = {
 
 export const FIELD_NAME = {
   label: "Field name",
-  description:
-    "The name of the field within the screen that will store this component's value",
+  description: "The name of the field within the screen that will store this component's value",
   type: FORM_TYPES.fieldName,
   value: null,
+  valuePropName: "value",
+  handlerPropName: "onChange",
   editable: true,
   required: false
 };

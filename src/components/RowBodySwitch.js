@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types";
 import Row from "./Row";
 import Switch from "./Switch";
 import type { Theme } from "../types";
@@ -37,9 +37,7 @@ class RowBodySwitch extends React.Component<Props> {
         subtitleColor={colors.light}
         title={title}
         subtitle={subtitle}
-        right={() => (
-          <Switch value={value} color={color} onValueChange={onValueChange} />
-        )}
+        right={() => <Switch value={value} color={color} onValueChange={onValueChange} />}
         style={style}
       />
     );
@@ -53,8 +51,7 @@ export const SEED_DATA = [
     name: "Row Single Line Body Switch",
     tag: "RowBodySwitch",
     description: "A row with left aligned body text and a right aligned switch",
-    preview_image_url:
-      "{CLOUDINARY_URL}/Row_SingleLine_BodyToggle.png",
+    preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_BodyToggle.png",
     category: COMPONENT_TYPES.row,
     supports_list_render: true,
     props: {
@@ -65,27 +62,17 @@ export const SEED_DATA = [
         value: "Beautiful West Coast Villa",
         editable: true
       },
-      value: {
-        label: "Status",
-        description: "boolean status if switch is toggled true or false",
-        editable: true,
-        value: true,
-        type: FORM_TYPES.boolean
-      },
-      onValueChange: {
-        label: "onValueChange handler",
-        description: "Function to change value of the switch",
-        editable: true,
-        required: true,
-        value: "{this.onValueChange}",
-        type: FORM_TYPES.function
-      },
       color: {
         label: "Color",
         description: "Custom color for switch",
         editable: true,
         required: false,
         type: FORM_TYPES.color
+      },
+      fieldName: {
+        ...FIELD_NAME,
+        value: "switchValue",
+        handlerPropName: "onValueChange"
       }
     },
     layout: {
@@ -96,11 +83,9 @@ export const SEED_DATA = [
   {
     name: "Row Double Line Body Switch",
     tag: "RowBodySwitch",
-    description:
-      "A row with left aligned body text and subtitle text and a right aligned switch",
+    description: "A row with left aligned body text and subtitle text and a right aligned switch",
     category: COMPONENT_TYPES.row,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Row_DoubleLine_Body_Toggle.png",
+    preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_Body_Toggle.png",
     supports_list_render: true,
     props: {
       title: {
@@ -117,27 +102,17 @@ export const SEED_DATA = [
         value: "San Diego",
         editable: true
       },
-      value: {
-        label: "Value",
-        description: "Boolean status if switch is toggled true or false",
-        editable: true,
-        value: true,
-        type: FORM_TYPES.boolean
-      },
-      onValueChange: {
-        label: "onValueChange handler",
-        description: "Function to change value of the switch",
-        editable: true,
-        required: true,
-        value: "{this.onValueChange}",
-        type: FORM_TYPES.function
-      },
       color: {
         label: "Color",
         description: "Custom color for switch",
         editable: true,
         required: false,
         type: FORM_TYPES.color
+      },
+      fieldName: {
+        ...FIELD_NAME,
+        value: "switchValue",
+        handlerPropName: "onValueChange"
       }
     },
     layout: {

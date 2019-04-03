@@ -18,22 +18,18 @@ class Divider extends React.Component<Props> {
   render() {
     const {
       style,
+      color,
+      height,
       theme: { colors }
     } = this.props;
 
     return (
       <View
-        style={[{ backgroundColor: colors.divider }, styles.divider, style]}
+        style={[{ backgroundColor: color || colors.divider }, style, { height: height || StyleSheet.hairlineWidth }]}
       />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  divider: {
-    height: StyleSheet.hairlineWidth
-  }
-});
 
 export default withTheme(Divider);
 
@@ -43,12 +39,30 @@ export const SEED_DATA = [
     tag: "Divider",
     category: COMPONENT_TYPES.primitive,
     description: "A horizontal line used to divide content",
-    preview_image_url:
-      "{CLOUDINARY_URL}/Divider.png",
+    preview_image_url: "{CLOUDINARY_URL}/Divider.png",
     supports_list_render: false,
-    props: {},
+    props: {
+      color: {
+        label: "Color",
+        editable: true,
+        required: false,
+        value: "divider",
+        type: FORM_TYPES.color
+      },
+      height: {
+        label: "Height",
+        description: "The height (thickness) of the divider. If not provided, defaults to StyleSheet.hairlineWidth.",
+        editable: true,
+        required: false,
+        type: FORM_TYPES.number,
+        min: 1,
+        max: 50,
+        step: 1,
+        precision: 0
+      }
+    },
     layout: {
-      width: 343,
+      width: "100%",
       height: 1
     }
   }

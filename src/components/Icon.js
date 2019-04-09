@@ -34,6 +34,8 @@ export type Props = {
 };
 
 const Icon = ({ name, color, size, style, ...rest }: Props) => {
+  if (!name) return null;
+
   let iconSet = "MaterialIcons";
   if (name.indexOf("/") !== -1) {
     [iconSet, name] = name.split("/");

@@ -339,7 +339,7 @@ class TextField extends React.Component<Props, State> {
       activeColor = error ? colors.error : colors.primary;
       placeholderColor = borderColor = colors.light;
       underlineColor = colors.light;
-      backgroundColor = colors.surface;
+      backgroundColor = colors.background;
     }
 
     const { lineHeight, ...subtitle1 } = typography.subtitle1;

@@ -5,14 +5,12 @@ export default BlurView;
 export const SEED_DATA = {
   name: "Blur View",
   tag: "BlurView",
-  doc_link: 'https://docs.expo.io/versions/latest/sdk/blur-view/',
-  code_link: 'https://github.com/expo/expo/blob/master/packages/expo/src/effects/BlurView.d.ts',
+  doc_link: "https://docs.expo.io/versions/latest/sdk/blur-view/",
+  code_link:
+    "https://github.com/expo/expo/blob/master/packages/expo/src/effects/BlurView.d.ts",
   type: COMPONENT_TYPES.primitive,
   supports_list_render: false,
-  layout: {
-    width: "100%",
-    height: "100%"
-  },
+  layout: {},
   props: {
     tint: {
       label: "Tint",

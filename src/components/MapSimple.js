@@ -86,10 +86,7 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.map,
   preview_image_url: "{CLOUDINARY_URL}/Map_Simple.png",
   supports_list_render: false,
-  layout: {
-    width: "100%",
-    height: "100%"
-  },
+  layout: {},
   props: {
     initialLatitude: {
       label: "Initial latitude",

@@ -9,10 +9,7 @@ export const SEED_DATA = {
   description: "View that moves out of the way of the virtual keyboard. ",
   type: COMPONENT_TYPES.primitive,
   supports_list_render: false,
-  layout: {
-    width: "100%",
-    height: "100%"
-  },
+  layout: {},
   props: {
     enabled: {
       label: "Enable",

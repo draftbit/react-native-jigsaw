@@ -22,10 +22,7 @@ export const SEED_DATA = {
     "Provides a way to capture tapping gestures, and displays feedback when a gesture is recognized",
   type: COMPONENT_TYPES.primitive,
   supports_list_render: false,
-  layout: {
-    width: "100%",
-    height: "100%"
-  },
+  layout: {},
   props: {
     onPress: {
       label: "onPress handler",

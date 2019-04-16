@@ -157,8 +157,7 @@ export const SEED_DATA = [
     tag: "Carousel",
     category: COMPONENT_TYPES.carousel,
     description: "A horizontal scrolling carousel of images",
-    preview_image_url:
-      "{CLOUDINARY_URL}/Carousel.png",
+    preview_image_url: "{CLOUDINARY_URL}/Carousel.png",
     supports_list_render: false,
     layout: {
       width: "100%",
@@ -167,9 +166,9 @@ export const SEED_DATA = [
     props: {
       images: {
         label: "Images",
-        description: "Array of image urls",
+        description: "A series of images to display in the carousel",
         editable: true,
-        type: FORM_TYPES.array,
+        type: FORM_TYPES.localImageArray,
         value: null
       },
       swiperPalette: {

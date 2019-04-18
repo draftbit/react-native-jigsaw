@@ -25,12 +25,10 @@ export const SEED_DATA = {
   layout: {},
   props: {
     onPress: {
-      label: "onPress handler",
-      description: "Function to be called when Touchable is pressed",
+      label: "Action",
+      description: "Action to execute when touchable pressed",
       editable: true,
-      required: false,
-      value: "{this.onPress}",
-      type: FORM_TYPES.function
+      type: FORM_TYPES.action
     },
     hitSlop: {
       label: "Hit Slop",

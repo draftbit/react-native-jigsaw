@@ -53,8 +53,7 @@ export const SEED_DATA = [
     description:
       "A medium header with an optional touchable right aligned text and icon.",
     category: COMPONENT_TYPES.header,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Header_HeadlineMediumIconText.png",
+    preview_image_url: "{CLOUDINARY_URL}/Header_HeadlineMediumIconText.png",
     supports_list_render: false,
     props: {
       title: {
@@ -79,11 +78,10 @@ export const SEED_DATA = [
         editable: true
       },
       onPress: {
-        label: "Button OnPress Function",
-        description: "Function to run when button pressed",
+        label: "Action",
+        description: "Action to execute when button pressed",
         editable: true,
-        type: FORM_TYPES.function,
-        value: "{this.onPress}"
+        type: FORM_TYPES.action
       }
     },
     layout: {

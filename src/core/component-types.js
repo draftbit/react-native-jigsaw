@@ -24,7 +24,8 @@ export const FORM_TYPES = {
   component: "component",
   borderRadiusMode: "borderRadiusMode",
   fieldName: "fieldName",
-  position: "position"
+  position: "position",
+  action: "action"
 };
 
 export const COMPONENT_TYPES = {

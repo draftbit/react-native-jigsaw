@@ -130,12 +130,10 @@ export const SEED_DATA = [
         required: false
       },
       onSubmit: {
-        label: "Input onSubmit function",
-        description:
-          "Function executed when the search is executed. The value of the input is passed as an argument.",
-        type: FORM_TYPES.function,
-        value: "{this.onSubmit}",
-        editable: true
+        label: "Submit action",
+        description: "Action to execute on submission",
+        editable: true,
+        type: FORM_TYPES.action
       },
       fieldName: FIELD_NAME
     },

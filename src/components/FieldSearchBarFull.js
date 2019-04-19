@@ -133,7 +133,8 @@ export const SEED_DATA = [
         label: "Submit action",
         description: "Action to execute on submission",
         editable: true,
-        type: FORM_TYPES.action
+        type: FORM_TYPES.action,
+        value: null
       },
       fieldName: FIELD_NAME
     },

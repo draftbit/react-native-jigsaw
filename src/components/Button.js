@@ -285,7 +285,8 @@ const SEED_DATA_PROPS = {
     label: "Action",
     description: "Action to execute when button pressed",
     editable: true,
-    type: FORM_TYPES.action
+    type: FORM_TYPES.action,
+    value: null
   }
 };
 

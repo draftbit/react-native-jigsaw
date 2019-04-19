@@ -82,7 +82,8 @@ export const SEED_DATA = [
         label: "Action",
         description: "Action to execute when button pressed",
         editable: true,
-        type: FORM_TYPES.action
+        type: FORM_TYPES.action,
+        value: null
       }
     },
     layout: {

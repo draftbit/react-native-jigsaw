@@ -28,7 +28,8 @@ export const SEED_DATA = {
       label: "Action",
       description: "Action to execute when touchable pressed",
       editable: true,
-      type: FORM_TYPES.action
+      type: FORM_TYPES.action,
+      value: null
     },
     hitSlop: {
       label: "Hit Slop",

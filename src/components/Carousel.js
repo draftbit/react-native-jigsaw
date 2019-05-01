@@ -19,13 +19,13 @@ class Carousel extends React.PureComponent<CarouselProps> {
 
   static defaultProps = {
     images: [
-      Config.cardImageUrl,
-      Config.cardImageUrl,
-      Config.cardImageUrl,
-      Config.cardImageUrl,
-      Config.cardImageUrl,
-      Config.cardImageUrl,
-      Config.cardImageUrl
+      Config.placeholderImageURL,
+      Config.placeholderImageURL,
+      Config.placeholderImageURL,
+      Config.placeholderImageURL,
+      Config.placeholderImageURL,
+      Config.placeholderImageURL,
+      Config.placeholderImageURL
     ],
     aspectRatio: 1.25,
     swiperPalette: "background"

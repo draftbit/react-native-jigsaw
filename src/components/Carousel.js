@@ -8,8 +8,8 @@ import Config from "./Config";
 
 export type CarouselProps = {
   images: Array<string | { uri: string }>,
-  swiperPalette: "surface" | "background",
-  aspectRatio: number,
+  resizeMode: "cover" | "contain" | "stretch" | "repeat" | "center",
+  dotColor: string,
   theme: Theme,
   style: any
 };
@@ -27,8 +27,8 @@ class Carousel extends React.PureComponent<CarouselProps> {
       Config.placeholderImageURL,
       Config.placeholderImageURL
     ],
-    aspectRatio: 1.25,
-    swiperPalette: "background"
+    resizeMode: "cover",
+    style: { height: 250 }
   };
 
   constructor(props) {
@@ -49,15 +49,12 @@ class Carousel extends React.PureComponent<CarouselProps> {
   };
 
   render() {
-    const { images, aspectRatio, swiperPalette, theme, style } = this.props;
+    const { images, resizeMode, dotColor, theme, style } = this.props;
     const { colors, spacing } = theme;
     const { width } = this.state;
 
     return (
-      <View
-        style={[styles.container, style, { aspectRatio }]}
-        onLayout={this.onPageLayout}
-      >
+      <View style={[styles.container, style]} onLayout={this.onPageLayout}>
         <ScrollView
           onScroll={this.handleScroll}
           horizontal
@@ -68,8 +65,8 @@ class Carousel extends React.PureComponent<CarouselProps> {
             <View style={[styles.slidingPanel, { width }]} key={index}>
               <Image
                 source={typeof image === "string" ? { uri: image } : image}
-                resizeMode="cover"
-                style={{ width, aspectRatio }}
+                resizeMode={resizeMode}
+                style={{ width, flex: 1 }}
               />
             </View>
           ))}
@@ -78,29 +75,16 @@ class Carousel extends React.PureComponent<CarouselProps> {
           <View style={styles.swipeNav}>
             {[...Array(images.length)].map((_, i) => {
               const calculatedIndex = this.state.scrollOffset / width;
-              const activeDot =
-                calculatedIndex >= i - 0.5 && calculatedIndex < i + 0.5;
-
-              let backgroundColor;
-              if (swiperPalette === "surface") {
-                if (activeDot) {
-                  backgroundColor = colors.strong;
-                } else {
-                  backgroundColor = colors.light;
-                }
-              } else {
-                if (activeDot) {
-                  backgroundColor = colors.background;
-                } else {
-                  backgroundColor = colors.surface;
-                }
-              }
+              const activeDot = calculatedIndex >= i - 0.5 && calculatedIndex < i + 0.5;
 
               return (
                 <Elevation
                   key={i}
                   style={[
-                    { backgroundColor, marginHorizontal: spacing.small / 2 },
+                    {
+                      backgroundColor: dotColor || colors.strong,
+                      marginHorizontal: spacing.small / 2
+                    },
                     styles.dot,
                     activeDot ? styles.activeDot : null
                   ]}
@@ -136,6 +120,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   dot: {
+    opacity: 0.5,
     width: Config.swiperInactiveDotSize,
     height: Config.swiperInactiveDotSize,
     borderRadius: Config.swiperInactiveDotSize
@@ -171,22 +156,23 @@ export const SEED_DATA = [
         type: FORM_TYPES.localImageArray,
         value: null
       },
-      swiperPalette: {
-        label: "Swiper palette",
-        description: "The palette type to use for the swiper",
+      resizeMode: {
+        label: "Resize Mode",
+        description:
+          "Determines how to resize the images when the frame doesn't match the raw image dimensions",
         editable: true,
+        required: false,
+        value: "cover",
         type: FORM_TYPES.flatArray,
-        value: "background",
-        options: ["background", "surface"],
-        required: true
+        options: ["cover", "contain", "stretch", "repeat", "center"]
       },
-      aspectRatio: {
-        label: "Aspect ratio",
-        description: "Aspect ratio of the carousel",
-        type: FORM_TYPES.aspectRatio,
-        value: 1.25,
+      dotColor: {
+        label: "Dot Color",
+        description: "Color of the carousel's dots",
         editable: true,
-        required: true
+        required: false,
+        value: "strong",
+        type: FORM_TYPES.color
       }
     }
   }

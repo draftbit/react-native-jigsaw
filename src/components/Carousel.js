@@ -60,6 +60,7 @@ class Carousel extends React.PureComponent<CarouselProps> {
           horizontal
           pagingEnabled
           showsHorizontalScrollIndicator={false}
+          scrollEventThrottle={16}
         >
           {images.map((image, index) => (
             <View style={[styles.slidingPanel, { width }]} key={index}>

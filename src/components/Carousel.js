@@ -8,6 +8,8 @@ import Config from "./Config";
 
 export type CarouselProps = {
   images: Array<string | { uri: string }>,
+  swiperPalette: "surface" | "background",
+  aspectRatio: number,
   resizeMode: "cover" | "contain" | "stretch" | "repeat" | "center",
   dotColor: string,
   theme: Theme,
@@ -49,12 +51,12 @@ class Carousel extends React.PureComponent<CarouselProps> {
   };
 
   render() {
-    const { images, resizeMode, dotColor, theme, style } = this.props;
+    const { images, aspectRatio, swiperPalette, resizeMode, dotColor, theme, style } = this.props;
     const { colors, spacing } = theme;
     const { width } = this.state;
 
     return (
-      <View style={[styles.container, style]} onLayout={this.onPageLayout}>
+      <View style={[styles.container, { aspectRatio }, style]} onLayout={this.onPageLayout}>
         <ScrollView
           onScroll={this.handleScroll}
           horizontal
@@ -62,15 +64,25 @@ class Carousel extends React.PureComponent<CarouselProps> {
           showsHorizontalScrollIndicator={false}
           scrollEventThrottle={16}
         >
-          {images.map((image, index) => (
-            <View style={[styles.slidingPanel, { width }]} key={index}>
-              <Image
-                source={typeof image === "string" ? { uri: image } : image}
-                resizeMode={resizeMode}
-                style={{ width, flex: 1 }}
-              />
-            </View>
-          ))}
+          {images.map((image, index) => {
+            const imageStyle = { width };
+
+            if (aspectRatio) {
+              imageStyle.aspectRatio = aspectRatio;
+            } else {
+              imageStyle.flex = 1;
+            }
+
+            return (
+              <View style={[styles.slidingPanel, { width }]} key={index}>
+                <Image
+                  source={typeof image === "string" ? { uri: image } : image}
+                  resizeMode={resizeMode}
+                  style={{ width, flex: 1, aspectRatio }}
+                />
+              </View>
+            );
+          })}
         </ScrollView>
         <View style={[styles.swipeNavWrapper, { bottom: spacing.large }]}>
           <View style={styles.swipeNav}>
@@ -78,12 +90,31 @@ class Carousel extends React.PureComponent<CarouselProps> {
               const calculatedIndex = this.state.scrollOffset / width;
               const activeDot = calculatedIndex >= i - 0.5 && calculatedIndex < i + 0.5;
 
+              let backgroundColor;
+              if (dotColor) {
+                backgroundColor = dotColor;
+              } else {
+                if (swiperPalette === "surface") {
+                  if (activeDot) {
+                    backgroundColor = colors.strong;
+                  } else {
+                    backgroundColor = colors.light;
+                  }
+                } else {
+                  if (activeDot) {
+                    backgroundColor = colors.background;
+                  } else {
+                    backgroundColor = colors.surface;
+                  }
+                }
+              }
+
               return (
                 <Elevation
                   key={i}
                   style={[
                     {
-                      backgroundColor: dotColor || colors.strong,
+                      backgroundColor,
                       marginHorizontal: spacing.small / 2
                     },
                     styles.dot,
@@ -171,7 +202,7 @@ export const SEED_DATA = [
         label: "Dot Color",
         description: "Color of the carousel's dots",
         editable: true,
-        required: false,
+        required: true,
         value: "strong",
         type: FORM_TYPES.color
       }

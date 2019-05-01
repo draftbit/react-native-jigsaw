@@ -9,14 +9,6 @@ type Props = {
   theme: Theme
 };
 
-const IMAGES = [
-  "https://res.cloudinary.com/altos/image/upload/w_200,f_auto,c_scale/draftbit/components/Image.png",
-  "https://res.cloudinary.com/altos/image/upload/w_200,f_auto,c_scale/draftbit/components/Image.png",
-  "https://res.cloudinary.com/altos/image/upload/w_200,f_auto,c_scale/draftbit/components/Image.png",
-  "https://res.cloudinary.com/altos/image/upload/w_200,f_auto,c_scale/draftbit/components/Image.png",
-  "https://res.cloudinary.com/altos/image/upload/w_200,f_auto,c_scale/draftbit/components/Image.png"
-];
-
 class CarouselExample extends React.Component<Props> {
   render() {
     const {
@@ -27,14 +19,9 @@ class CarouselExample extends React.Component<Props> {
     } = this.props;
 
     return (
-      <View
-        style={[
-          styles.container,
-          { backgroundColor: background, paddingHorizontal: 20 }
-        ]}
-      >
+      <View style={[styles.container, { backgroundColor: background }]}>
         <Text style={{ padding: spacing.large }}>Carousel</Text>
-        <Carousel images={IMAGES} />
+        <Carousel />
       </View>
     );
   }

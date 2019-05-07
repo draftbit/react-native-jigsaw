@@ -3,7 +3,7 @@
 import * as React from "react";
 import { View, Image, Text } from "react-native";
 import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types";
 import IconButton from "./IconButton";
 import Config from "./Config";
 import type { Theme } from "../types";
@@ -17,12 +17,22 @@ type Props = {
 };
 
 class Stepper extends React.Component<Props> {
+  static defaultProps = {
+    value: 0
+  };
+
   handleMinus = () => {
     const { value, onMinus } = this.props;
 
     if (value > 0) {
-      onMinus();
+      onMinus(value - 1);
     }
+  };
+
+  handlePlus = () => {
+    const { value, onPlus } = this.props;
+
+    onPlus(value + 1);
   };
 
   render() {
@@ -57,7 +67,7 @@ class Stepper extends React.Component<Props> {
         </Text>
         <IconButton
           icon="MaterialIcons/add"
-          onPress={onPlus}
+          onPress={this.handlePlus}
           size={Config.stepperButtonSize}
           color={colors.strong}
         />
@@ -74,34 +84,12 @@ export const SEED_DATA = [
     tag: "Stepper",
     description: "A component used to control the quantity of something",
     category: COMPONENT_TYPES.field,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Control_Stepper.png",
+    preview_image_url: "{CLOUDINARY_URL}/Control_Stepper.png",
     supports_list_render: false,
     props: {
-      value: {
-        label: "Value",
-        description: "Current value of stepper",
-        type: FORM_TYPES.number,
-        value: 0,
-        min: 0,
-        max: 999,
-        step: 1,
-        precision: 0,
-        editable: true
-      },
-      onMinus: {
-        label: "Stepper onMinus Function",
-        description: "Function to run when minus button pressed",
-        editable: true,
-        type: FORM_TYPES.function,
-        value: "{this.onMinus}"
-      },
-      onPlus: {
-        label: "Stepper onPlus Function",
-        description: "Function to run when minus button pressed",
-        editable: true,
-        type: FORM_TYPES.function,
-        value: "{this.onPlus}"
+      fieldName: {
+        ...FIELD_NAME,
+        value: "stepperValue"
       }
     },
     layout: {

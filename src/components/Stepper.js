@@ -10,8 +10,7 @@ import type { Theme } from "../types";
 
 type Props = {
   value: number,
-  onPlus: () => void,
-  onMinus: () => void,
+  onChange: number => void,
   style?: any,
   theme: Theme
 };
@@ -22,23 +21,22 @@ class Stepper extends React.Component<Props> {
   };
 
   handleMinus = () => {
-    const { value, onMinus } = this.props;
+    const { value, onChange } = this.props;
 
     if (value > 0) {
-      onMinus(value - 1);
+      onChange(value - 1);
     }
   };
 
   handlePlus = () => {
-    const { value, onPlus } = this.props;
+    const { value, onChange } = this.props;
 
-    onPlus(value + 1);
+    onChange(value + 1);
   };
 
   render() {
     const {
       value,
-      onPlus,
       theme: { colors, spacing, typography },
       style
     } = this.props;

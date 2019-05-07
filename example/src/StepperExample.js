@@ -14,12 +14,8 @@ class StepperExample extends React.Component<Props> {
     value: 0
   };
 
-  onMinus = () => {
-    this.setState(prevState => ({ value: prevState.value - 1 }));
-  };
-
-  onPlus = () => {
-    this.setState(prevState => ({ value: prevState.value + 1 }));
+  onChange = value => {
+    this.setState({ value });
   };
 
   render() {
@@ -34,17 +30,9 @@ class StepperExample extends React.Component<Props> {
 
     return (
       <ScrollView
-        style={[
-          styles.container,
-          { backgroundColor: background, padding: spacing.large }
-        ]}
+        style={[styles.container, { backgroundColor: background, padding: spacing.large }]}
       >
-        <Stepper
-          value={value}
-          onMinus={this.onMinus}
-          onPlus={this.onPlus}
-          style={styles.stepper}
-        />
+        <Stepper value={value} onChange={this.onChange} style={styles.stepper} />
       </ScrollView>
     );
   }

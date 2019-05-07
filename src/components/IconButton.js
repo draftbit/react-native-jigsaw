@@ -167,6 +167,13 @@ export const SEED_DATA = {
       value: "strong",
       editable: true,
       required: true
+    },
+    onPress: {
+      label: "Action",
+      description: "Action to execute when icon button pressed",
+      editable: true,
+      type: FORM_TYPES.action,
+      value: null
     }
   },
   layout: {

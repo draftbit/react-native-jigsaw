@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@callstack/react-theme-provider": "^1.0.7",
-    "@expo/vector-icons": "^6.3.1",
+    "@expo/vector-icons": "^10.0.1",
     "color": "^2.0.1",
     "create-react-context": "^0.2.3",
     "react-lifecycles-compat": "^3.0.4",

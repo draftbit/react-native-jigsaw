@@ -12,6 +12,7 @@ export const SEED_DATA = {
   tag: "TextInput",
   description: "An input field that allows users to type in data.",
   type: COMPONENT_TYPES.primitive,
+  preview_image_url: "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/TextInput.png"
   supports_list_render: false,
   layout: {
     width: "100%",

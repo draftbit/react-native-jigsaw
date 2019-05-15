@@ -25,7 +25,8 @@ export const FORM_TYPES = {
   borderRadiusMode: "borderRadiusMode",
   fieldName: "fieldName",
   position: "position",
-  action: "action"
+  action: "action",
+  query: "query"
 };
 
 export const COMPONENT_TYPES = {
@@ -39,7 +40,8 @@ export const COMPONENT_TYPES = {
   field: "field",
   formControl: "formControl",
   row: "row",
-  map: "map"
+  map: "map",
+  data: "data"
 };
 
 export const ELEVATION_TYPE = {

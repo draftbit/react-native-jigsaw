@@ -80,6 +80,14 @@ export const SEED_DATA = {
       editable: true,
       required: true
     },
+    borderColor: {
+      label: "Border Color",
+      description: "Border Color of the container",
+      type: FORM_TYPES.color,
+      value: null,
+      editable: true,
+      required: false
+    },
     backgroundColor: {
       label: "Background color",
       description: "Background color to apply to the container",

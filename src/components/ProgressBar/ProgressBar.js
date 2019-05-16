@@ -79,24 +79,6 @@ export const SEED_DATA = [
         step: 0.01,
         precision: 2,
         editable: true
-      },
-      styleAttr: {
-        label: "Android Only: Progress Bar Style",
-        description:"Allows styling of the progress bar on android. Default is Normal",
-        type: FORM_TYPES.flatArray,
-        value: "Normal",
-        options: ["Horizontal", "Normal", "Small", "Large", "Inverse", "SmallInverse", "LargeInverse"],
-        editable: true,
-        required: false
-      },
-      progressViewStyle: {
-        label: "iOS Only: Progress View Style",
-        description:"Allows styling of the progress bar on android. Default is Normal",
-        type: FORM_TYPES.flatArray,
-        value: "default",
-        options: ["default", "bar"],
-        editable: true,
-        required: false
       }
     },
     layout: {

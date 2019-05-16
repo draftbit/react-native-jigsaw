@@ -37,18 +37,6 @@ export const SEED_DATA = {
       type: FORM_TYPES.flatArray,
       options: ["cover", "contain", "stretch", "repeat", "center"]
     },
-    opacity: {
-      label: "Opacity",
-      description: "Changes the opacity",
-      editable: true,
-      required: false,
-      value: 100,
-      type: FORM_TYPES.number,
-      min: 0,
-      max: 100,
-      step: 1,
-      precision: 0
-    },
     overflow: {
       label: "Overflow",
       description:
@@ -68,27 +56,9 @@ export const SEED_DATA = {
       type: FORM_TYPES.flatArray,
       options: ["visible", "hidden"]
     },
-    tintColor: {
-      label: "Tint Color",
-      description:
-        "Changes the color of all the non transparent pixels to this color",
-      editable: true,
-      required: false,
-      value: null,
-      type: FORM_TYPES.color
-    },
     backgroundColor: {
       label: "Background Color",
       description: "If no image is chosen render a colored background.",
-      editable: true,
-      required: false,
-      value: null,
-      type: FORM_TYPES.color
-    },
-    overlayColor: {
-      label: "Overlay Color",
-      description:
-        "When an image has rounded corners, an overlay color will fill the remaining space with a solid color",
       editable: true,
       required: false,
       value: null,

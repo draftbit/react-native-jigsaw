@@ -1,5 +1,5 @@
 import * as React from "react";
-import { SafeAreaView, StyleSheet, ScrollView, View } from "react-native";
+import { SafeAreaView, StyleSheet, ScrollView, View, Platform } from "react-native";
 import { withTheme } from "../core/theming";
 import { Constants } from 'expo';
 

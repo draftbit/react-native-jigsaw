@@ -1,6 +1,7 @@
 import * as React from "react";
 import { SafeAreaView, StyleSheet, ScrollView, View } from "react-native";
 import { withTheme } from "../core/theming";
+import { Constants } from 'expo';
 
 class ScreenContainer extends React.Component {
   renderScrollableSafeAreaView(themeStyles) {
@@ -9,7 +10,7 @@ class ScreenContainer extends React.Component {
       <SafeAreaView
         style={[
           styles.container,
-          { backgroundColor: themeStyles.backgroundColor }
+          { backgroundColor: themeStyles.backgroundColor, paddingTop: (Platform.OS === "android" ? Constants.statusBarHeight : 0 ) }
         ]}
       >
         <ScrollView
@@ -33,7 +34,7 @@ class ScreenContainer extends React.Component {
       <SafeAreaView
         style={[
           styles.container,
-          { backgroundColor: themeStyles.backgroundColor }
+          { backgroundColor: themeStyles.backgroundColor, paddingTop: (Platform.OS === "android" ? Constants.statusBarHeight : 0 ) }
         ]}
       >
         <View style={[styles.container, themeStyles, style]}>{children}</View>

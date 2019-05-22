@@ -59,6 +59,9 @@ class ContainerExample extends React.Component {
         >
           <Text>Container with background image and resize mode contain</Text>
         </Container>
+        <Container style={{ paddingVertical: theme.spacing.large, borderColor:"#39ff14",borderWidth:1 }}>
+          <Text>Container with borderColor</Text>
+        </Container>
       </ScreenContainer>
     );
   }

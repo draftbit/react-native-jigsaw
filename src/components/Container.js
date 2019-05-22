@@ -14,6 +14,8 @@ class Container extends React.Component {
     const {
       theme: { spacing },
       useThemeGutterPadding,
+      borderColor,
+      borderWidth,
       backgroundColor,
       backgroundImage,
       backgroundImageResizeMode,
@@ -25,6 +27,8 @@ class Container extends React.Component {
     const containerStyle = {
       paddingHorizontal: useThemeGutterPadding ? spacing.gutters : 0,
       backgroundColor,
+      borderColor: borderColor,
+      borderWidth: borderWidth,
       width: "100%"
     };
 
@@ -87,6 +91,17 @@ export const SEED_DATA = {
       value: null,
       editable: true,
       required: false
+    },
+    borderWidth: {
+      label: "Border Width",
+      description: "Border width of the container(Required if color is selected)",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.number,
+      min: 1,
+      max: 20,
+      step: 1,
+      precision: 0
     },
     backgroundColor: {
       label: "Background color",

@@ -1,13 +1,13 @@
 /* @flow */
 
-import * as React from "react";
-import { View, Image } from "react-native";
-import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-import type { Theme } from "../types";
-import Row from "./Row";
-import Icon from "./Icon";
-import Config from "./Config";
+import * as React from "react"
+import { View, Image } from "react-native"
+import { withTheme } from "../core/theming"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import type { Theme } from "../types"
+import Row from "./Row"
+import Icon from "./Icon"
+import Config from "./Config"
 
 type Props = {
   title: string,
@@ -17,7 +17,7 @@ type Props = {
   icon: string,
   style?: any,
   theme: Theme
-};
+}
 
 class RowHeadlineImageIcon extends React.Component<Props> {
   render() {
@@ -29,7 +29,7 @@ class RowHeadlineImageIcon extends React.Component<Props> {
       icon,
       style,
       theme: { colors, typography, spacing }
-    } = this.props;
+    } = this.props
 
     return (
       <Row
@@ -44,11 +44,7 @@ class RowHeadlineImageIcon extends React.Component<Props> {
         right={() => (
           <Icon
             name={icon}
-            size={
-              multilineSubtitle
-                ? Config.rowMultiLineIconSize
-                : Config.rowSingleLineIconSize
-            }
+            size={multilineSubtitle ? Config.rowMultiLineIconSize : Config.rowSingleLineIconSize}
             color={colors.light}
             style={{
               marginLeft: spacing.large,
@@ -59,21 +55,19 @@ class RowHeadlineImageIcon extends React.Component<Props> {
         )}
         style={style}
       />
-    );
+    )
   }
 }
 
-export default withTheme(RowHeadlineImageIcon);
+export default withTheme(RowHeadlineImageIcon)
 
 export const SEED_DATA = [
   {
     name: "Row Single Line Headline Icon",
     tag: "RowHeadlineImageIcon",
-    description:
-      "A row with left aligned headline text and a right aligned icon",
+    description: "A row with left aligned headline text and a right aligned icon",
     category: COMPONENT_TYPES.row,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Row_SingleLine_HeadlineIcon.png",
+    preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_HeadlineIcon.png",
     supports_list_render: true,
     props: {
       title: {
@@ -99,11 +93,9 @@ export const SEED_DATA = [
   {
     name: "Row Single Line Headline Icon Image",
     tag: "RowHeadlineImageIcon",
-    description:
-      "A row with left aligned image and headline text and a right aligned icon",
+    description: "A row with left aligned image and headline text and a right aligned icon",
     category: COMPONENT_TYPES.row,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Row_SingleLine_HeadlineIconImage.png",
+    preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_HeadlineIconImage.png",
     supports_list_render: true,
     props: {
       title: {
@@ -136,11 +128,9 @@ export const SEED_DATA = [
   {
     name: "Row Double Line Headline Icon",
     tag: "RowHeadlineImageIcon",
-    description:
-      "A row with left aligned headline text and subtitle text and a right aligned icon",
+    description: "A row with left aligned headline text and subtitle text and a right aligned icon",
     category: COMPONENT_TYPES.row,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Row_DoubleLine_HeadlineIcon.png",
+    preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_HeadlineIcon.png",
     supports_list_render: true,
     props: {
       title: {
@@ -173,11 +163,9 @@ export const SEED_DATA = [
   {
     name: "Row Double Line Headline Image Icon",
     tag: "RowHeadlineImageIcon",
-    description:
-      "A row with left aligned headline text and subtitle text and a right aligned icon",
+    description: "A row with left aligned headline text and subtitle text and a right aligned icon",
     category: COMPONENT_TYPES.row,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Row_DoubleLine_HeadlineImageIcon.png",
+    preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_HeadlineImageIcon.png",
     supports_list_render: true,
     props: {
       title: {
@@ -220,8 +208,7 @@ export const SEED_DATA = [
     description:
       "A row with left aligned headline text and multiline subtitle text and a right aligned icon",
     category: COMPONENT_TYPES.row,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Row_Multiline_HeadlineIcon.png",
+    preview_image_url: "{CLOUDINARY_URL}/Row_Multiline_HeadlineIcon.png",
     supports_list_render: true,
     props: {
       title: {
@@ -263,8 +250,7 @@ export const SEED_DATA = [
     description:
       "A row with left aligned image, headline text, and multiline subtitle text, and a right aligned icon",
     category: COMPONENT_TYPES.row,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Row_Multiline_HeadlineImageIcon.png",
+    preview_image_url: "{CLOUDINARY_URL}/Row_Multiline_HeadlineImageIcon.png",
     supports_list_render: true,
     props: {
       title: {
@@ -307,4 +293,4 @@ export const SEED_DATA = [
       height: 105
     }
   }
-];
+]

@@ -1,14 +1,13 @@
-import { Video } from "expo";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-export default Video;
+import { Video } from "expo"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+export default Video
 
 export const SEED_DATA = {
   name: "Video",
   tag: "Video",
   description: "Given a URL, display a video",
   doc_link: "https://docs.expo.io/versions/latest/sdk/video/",
-  code_link:
-    "https://github.com/expo/expo/blob/master/packages/expo-av/src/Video.tsx",
+  code_link: "https://github.com/expo/expo/blob/master/packages/expo-av/src/Video.tsx",
   type: COMPONENT_TYPES.primitive,
   supports_list_render: false,
   layout: {},
@@ -39,8 +38,7 @@ export const SEED_DATA = {
     },
     resizeMode: {
       label: "Resize Mode",
-      description:
-        "How the video should be scaled for display. (Default: stretch) ",
+      description: "How the video should be scaled for display. (Default: stretch) ",
       editable: true,
       required: true,
       value: "contain",
@@ -117,4 +115,4 @@ export const SEED_DATA = {
       type: FORM_TYPES.boolean
     }
   }
-};
+}

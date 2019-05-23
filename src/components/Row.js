@@ -1,10 +1,10 @@
 /* @flow */
 
-import * as React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
-import { withTheme } from "../core/theming";
-import Config from "./Config";
-import type { Theme, Color, TypeStyle } from "../types";
+import * as React from "react"
+import { View, Text, Image, StyleSheet } from "react-native"
+import { withTheme } from "../core/theming"
+import Config from "./Config"
+import type { Theme, Color, TypeStyle } from "../types"
 
 type Props = {
   titleTypeStyle: TypeStyle,
@@ -18,7 +18,7 @@ type Props = {
   right: Function,
   theme: Theme,
   style?: any
-};
+}
 
 class Row extends React.Component<Props> {
   render() {
@@ -34,7 +34,7 @@ class Row extends React.Component<Props> {
       right,
       style,
       theme: { spacing }
-    } = this.props;
+    } = this.props
 
     return (
       <View style={[styles.container, { padding: spacing.large }, style]}>
@@ -44,12 +44,8 @@ class Row extends React.Component<Props> {
               source={typeof image === "string" ? { uri: image } : image}
               style={{
                 marginRight: spacing.medium,
-                width: subtitle
-                  ? Config.rowMultiLineImageSize
-                  : Config.rowSingleLineImageSize,
-                height: subtitle
-                  ? Config.rowMultiLineImageSize
-                  : Config.rowSingleLineImageSize
+                width: subtitle ? Config.rowMultiLineImageSize : Config.rowSingleLineImageSize,
+                height: subtitle ? Config.rowMultiLineImageSize : Config.rowSingleLineImageSize
               }}
             />
           )}
@@ -61,8 +57,7 @@ class Row extends React.Component<Props> {
                   color: titleColor
                 }
               ]}
-              numberOfLines={1}
-            >
+              numberOfLines={1}>
               {title}
             </Text>
             {subtitle ? (
@@ -74,8 +69,7 @@ class Row extends React.Component<Props> {
                     marginTop: spacing.text
                   }
                 ]}
-                numberOfLines={multilineSubtitle ? undefined : 1}
-              >
+                numberOfLines={multilineSubtitle ? undefined : 1}>
                 {subtitle}
               </Text>
             ) : null}
@@ -83,7 +77,7 @@ class Row extends React.Component<Props> {
         </View>
         {right && right()}
       </View>
-    );
+    )
   }
 }
 
@@ -101,6 +95,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center"
   }
-});
+})
 
-export default withTheme(Row);
+export default withTheme(Row)

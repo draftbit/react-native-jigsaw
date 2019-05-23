@@ -1,11 +1,11 @@
-import React from "react";
-import { Image, View, Text } from "react-native";
-import Card from "./Card";
-import Elevation from "./Elevation";
-import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-import type { Theme } from "../types";
-import Config from "./Config";
+import React from "react"
+import { Image, View, Text } from "react-native"
+import Card from "./Card"
+import Elevation from "./Elevation"
+import { withTheme } from "../core/theming"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import type { Theme } from "../types"
+import Config from "./Config"
 
 export type CardContainerShortImageProps = {
   image: string | { uri: string },
@@ -17,7 +17,7 @@ export type CardContainerShortImageProps = {
   theme: Theme,
   style: any,
   onPress: () => void
-};
+}
 
 class CardContainerShortImage extends React.PureComponent<CardContainerShortImageProps> {
   static defaultProps = {
@@ -25,7 +25,7 @@ class CardContainerShortImage extends React.PureComponent<CardContainerShortImag
     elevation: 2,
     aspectRatio: 1,
     mode: "left"
-  };
+  }
 
   render() {
     const {
@@ -38,7 +38,7 @@ class CardContainerShortImage extends React.PureComponent<CardContainerShortImag
       theme: { colors, borderRadius, typography, spacing },
       style,
       onPress
-    } = this.props;
+    } = this.props
 
     return (
       <Card style={style} onPress={onPress}>
@@ -46,16 +46,14 @@ class CardContainerShortImage extends React.PureComponent<CardContainerShortImag
           style={{
             elevation,
             borderRadius: borderRadius.global
-          }}
-        >
+          }}>
           <View
             style={{
               overflow: "hidden",
               flexDirection: "row",
               justifyContent: mode === "right" ? "space-between" : "flex-start",
               borderRadius: borderRadius.global
-            }}
-          >
+            }}>
             {mode === "left" && (
               <Image
                 style={{ aspectRatio }}
@@ -68,22 +66,14 @@ class CardContainerShortImage extends React.PureComponent<CardContainerShortImag
                 padding: spacing.large,
                 backgroundColor: colors.surface,
                 flex: 1
-              }}
-            >
-              <Text
-                numberOfLines={1}
-                style={[typography.headline5, { color: colors.strong }]}
-              >
+              }}>
+              <Text numberOfLines={1} style={[typography.headline5, { color: colors.strong }]}>
                 {title}
               </Text>
               {subtitle ? (
                 <Text
                   numberOfLines={1}
-                  style={[
-                    typography.body2,
-                    { color: colors.medium, marginTop: spacing.text }
-                  ]}
-                >
+                  style={[typography.body2, { color: colors.medium, marginTop: spacing.text }]}>
                   {subtitle}
                 </Text>
               ) : null}
@@ -98,21 +88,19 @@ class CardContainerShortImage extends React.PureComponent<CardContainerShortImag
           </View>
         </Elevation>
       </Card>
-    );
+    )
   }
 }
 
-export default withTheme(CardContainerShortImage);
+export default withTheme(CardContainerShortImage)
 
 export const SEED_DATA = [
   {
     name: "CardContainerShortLeftImage",
     tag: "CardContainerShortImage",
-    description:
-      "An elevated card with a left aligned image and a title and subtitle",
+    description: "An elevated card with a left aligned image and a title and subtitle",
     category: COMPONENT_TYPES.card,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Card_ContainerShortLeftImage.png",
+    preview_image_url: "{CLOUDINARY_URL}/Card_ContainerShortLeftImage.png",
     supports_list_render: true,
     props: {
       image: {
@@ -169,11 +157,9 @@ export const SEED_DATA = [
   {
     name: "CardContainerShortRightImage",
     tag: "CardContainerShortImage",
-    description:
-      "An elevated card with a right aligned image and a title and subtitle",
+    description: "An elevated card with a right aligned image and a title and subtitle",
     category: COMPONENT_TYPES.card,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Card_ContainerShortRightImage.png",
+    preview_image_url: "{CLOUDINARY_URL}/Card_ContainerShortRightImage.png",
     supports_list_render: true,
     props: {
       image: {
@@ -219,4 +205,4 @@ export const SEED_DATA = [
       height: 84
     }
   }
-];
+]

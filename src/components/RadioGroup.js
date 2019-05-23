@@ -40,7 +40,7 @@ class RadioGroup extends React.Component {
           borderRadius: spacing ? 0 : borderRadius,
           overflow: "hidden"
         }}>
-        {options.map(option => {
+        {options.map((option, index) => {
           const selected = option.label == this.state.selected
           return (
             <Touchable onPress={() => this.onPress(option.label)}>
@@ -52,8 +52,8 @@ class RadioGroup extends React.Component {
                   backgroundColor: selected ? activeColor : inactiveColor,
                   height: style.height,
                   width: optionWidth,
-                  borderLeftWidth: borderColor ? 0.5 : 0,
-                  borderRightWidth: borderColor ? 0.5 : 0,
+                  borderLeftWidth: borderColor && index !== 0 ? 0.5 : 0,
+                  borderRightWidth: borderColor && index !== options.length - 1 ? 0.5 : 0,
                   borderColor,
                   borderRadius: spacing ? borderRadius : 0,
                   marginLeft: horizontalMargin,

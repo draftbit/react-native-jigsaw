@@ -29,6 +29,9 @@ class RadioGroup extends React.Component {
     } = this.props;
 
     const optionWidth = style.width/options.length
+    const horizontalMargin = direction === "horizontal" ? marginBetween/2 : 0
+    const verticalMargin = direction === "vertical" ? marginBetween/2 : 0
+    
     return (
       <View
         style={{
@@ -40,9 +43,6 @@ class RadioGroup extends React.Component {
       >
         {options.map(option => {
           const selected = option.label == this.state.selected
-          const horizontalMargin = direction === "horizontal" ? marginBetween/2 : 0
-          const verticalMargin = direction === "vertical" ? marginBetween/2 : 0
-
           return (
             <Touchable onPress={() => this.onPress(option.label)}>
               <View

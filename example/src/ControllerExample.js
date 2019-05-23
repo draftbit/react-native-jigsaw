@@ -1,7 +1,7 @@
 /* @flow */
 
-import * as React from "react";
-import { View, ScrollView, StyleSheet } from "react-native";
+import * as React from "react"
+import { View, ScrollView, StyleSheet } from "react-native"
 import {
   Button,
   withTheme,
@@ -10,45 +10,39 @@ import {
   RadioButton,
   FieldRadioButton,
   FieldCheckbox
-} from "@draftbit/ui";
-import type { Theme } from "@draftbit/ui/types";
+} from "@draftbit/ui"
+import type { Theme } from "@draftbit/ui/types"
 
 class ControllerExample extends React.Component {
-  static title = "Controller";
+  static title = "Controller"
 
   state = {
     elevation: 2,
     disabled: false,
     value: false
-  };
+  }
 
   toggle = () => {
-    this.setState({ value: !this.state.value });
-  };
+    this.setState({ value: !this.state.value })
+  }
 
   disable = () => {
-    this.setState({ disabled: !this.state.disabled });
-  };
+    this.setState({ disabled: !this.state.disabled })
+  }
 
   render() {
-    const { value, disabled } = this.state;
-    const { colors } = this.props.theme;
+    const { value, disabled } = this.state
+    const { colors } = this.props.theme
 
     return (
-      <ScrollView
-        style={[styles.container, { backgroundColor: colors.background }]}
-      >
+      <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
         <View style={styles.row}>
           <Button onPress={this.disable} type="text">
             {disabled ? "Enable" : "Disable"}
           </Button>
         </View>
         <View style={styles.row}>
-          <Switch
-            onValueChange={this.toggle}
-            disabled={disabled}
-            value={value}
-          />
+          <Switch onValueChange={this.toggle} disabled={disabled} value={value} />
         </View>
         <View style={styles.row}>
           <Checkbox
@@ -58,11 +52,7 @@ class ControllerExample extends React.Component {
           />
         </View>
         <View style={styles.row}>
-          <RadioButton
-            selected={value}
-            disabled={disabled}
-            onPress={this.toggle}
-          />
+          <RadioButton selected={value} disabled={disabled} onPress={this.toggle} />
         </View>
         <View style={styles.row}>
           <FieldRadioButton
@@ -82,7 +72,7 @@ class ControllerExample extends React.Component {
           />
         </View>
       </ScrollView>
-    );
+    )
   }
 }
 
@@ -94,6 +84,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 4
   }
-});
+})
 
-export default withTheme(ControllerExample);
+export default withTheme(ControllerExample)

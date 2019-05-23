@@ -36,6 +36,7 @@
     "color": "^2.0.1",
     "create-react-context": "^0.2.3",
     "react-lifecycles-compat": "^3.0.4",
-    "react-native-platform-touchable": "^1.1.1"
+    "react-native-platform-touchable": "^1.1.1",
+    "react-native-progress": "^3.6.0"
   }
 }

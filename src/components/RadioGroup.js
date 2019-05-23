@@ -41,7 +41,9 @@ class RadioGroup extends React.Component {
       >
         {options.map(option => {
           const selected = option.label == this.state.selected
-          const margin = marginBetween/2
+          const horizontalMargin = direction === "horizontal" ? marginBetween/2 : 0
+          const verticalMargin = direction === "vertical" ? marginBetween/2 : 0
+
           return (
             <Touchable onPress={() => this.onPress(option.label)}>
               <View
@@ -53,10 +55,10 @@ class RadioGroup extends React.Component {
                   height: style.height,
                   width: optionWidth,
                   borderRadius: (marginBetween ?  borderRadius : 0),
-                  marginLeft: (direction === "horizontal" ? margin : 0 ),
-                  marginRight: (direction === "horizontal" ? margin : 0 ),
-                  marginTop: (direction === "vertical" ? margin : 0 ),
-                  marginBottom: (direction === "vertical" ? margin : 0 )
+                  marginLeft: horizontalMargin,
+                  marginRight: horizontalMargin,
+                  marginTop: verticalMargin ,
+                  marginBottom: verticalMargin
                 }}
               >
                 {option.icon ? <Icon name={option.icon} size={iconSize} color={contentColor}/> : null }

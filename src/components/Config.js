@@ -1,4 +1,5 @@
-import { Dimensions } from "react-native"
+import { Dimensions, Platform } from "react-native"
+import { Constants } from "expo"
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get("window")
 
@@ -51,5 +52,6 @@ export default {
   swiperActiveDotSize: 10,
   fieldSearchBarFullIconSize: 24,
   stepperButtonSize: 40,
-  radioButtonSize: 24
+  radioButtonSize: 24,
+  topSafeAreaViewHeight: Platform.OS === "android" ? Constants.statusBarHeight : 0
 }

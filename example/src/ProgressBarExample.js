@@ -1,9 +1,9 @@
 /* @flow */
 
-import * as React from "react";
-import { StyleSheet, ScrollView } from "react-native";
-import { ProgressBar, withTheme, ProgressCircle } from "@draftbit/ui";
-import type { Theme } from "@draftbit/ui/types";
+import * as React from "react"
+import { StyleSheet, ScrollView } from "react-native"
+import { ProgressBar, withTheme, ProgressCircle } from "@draftbit/ui"
+import type { Theme } from "@draftbit/ui/types"
 
 type Props = {
   theme: Theme

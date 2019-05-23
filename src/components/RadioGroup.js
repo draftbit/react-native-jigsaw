@@ -24,6 +24,7 @@ class RadioGroup extends React.Component {
       contentColor,
       borderRadius,
       spacing,
+      borderColor,
       theme: { colors }
     } = this.props
 
@@ -51,6 +52,9 @@ class RadioGroup extends React.Component {
                   backgroundColor: selected ? activeColor : inactiveColor,
                   height: style.height,
                   width: optionWidth,
+                  borderLeftWidth: borderColor ? 0.5 : 0,
+                  borderRightWidth: borderColor ? 0.5 : 0,
+                  borderColor,
                   borderRadius: spacing ? borderRadius : 0,
                   marginLeft: horizontalMargin,
                   marginRight: horizontalMargin,
@@ -108,6 +112,14 @@ export const SEED_DATA = {
     contentColor: {
       label: "Content Color",
       description: "Color of the content(Icon and Label)",
+      editable: true,
+      value: null,
+      required: true,
+      type: FORM_TYPES.color
+    },
+    borderColor: {
+      label: "Border Color",
+      description: "Border color of the option",
       editable: true,
       value: null,
       required: true,

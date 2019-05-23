@@ -1,6 +1,5 @@
 import * as React from "react";
 import { withTheme } from "../core/theming";
-import type { Theme } from "../types";
 import { View, Text } from "react-native";
 import Icon  from "./Icon.js"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";

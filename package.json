@@ -12,7 +12,7 @@
     "flow": "flow",
     "lint": "eslint src",
     "test": "jest",
-    "pretty": "prettier --config ./package.json --write 'src/**/*.{js,css,json}'"
+    "pretty": "prettier --config ./package.json --write '{example,src}/**/*.{js,css,json}'"
   },
   "jest": {
     "preset": "react-native"

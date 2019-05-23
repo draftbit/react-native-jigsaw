@@ -70,13 +70,41 @@ class ButtonExample extends React.Component {
           </Button>
         </View>
         <View style={styles.column}>
-          <RadioGroup style={{width: 400, height: 40 }} direction={"horizontal"} defaultSelection={"ne"} options={[{label:"Je", icon:"add"},{label:"ne"},{label:"sais"},{label:"quoi"}]}  borderRadius={10} activeColor={"#DCDCDC"} inactiveColor={"#5a45ff"} iconSize={10} contentColor={"#ffffff"}/>
+          <RadioGroup
+            style={{width: 400, height: 40 }}
+            direction={"horizontal"}
+            defaultSelection={"ne"} options={[{label:"Je", icon:"add"},{label:"ne"},{label:"sais"},{label:"quoi"}]}
+            borderRadius={10}
+            activeColor={"#DCDCDC"}
+            inactiveColor={"#5a45ff"}
+            iconSize={10}
+            contentColor={"#ffffff"}/>
         </View>
         <View style={styles.column}>
-          <RadioGroup style={{width: 200, height: 50 }} direction={"vertical"} defaultSelection={"ne"} options={[{label:"Je", icon:"add"},{label:"ne"},{label:"sais"},{label:"quoi"}]} marginBetween={10} borderRadius={100} activeColor={"#DCDCDC"} inactiveColor={"#5a45ff"} iconSize={10} contentColor={"#ffffff"}/>
+          <RadioGroup
+            style={{width: 200, height: 50 }}
+            direction={"vertical"}
+            defaultSelection={"ne"}
+            options={[{label:"Je", icon:"add"},{label:"ne"},{label:"sais"},{label:"quoi"}]}
+            marginBetween={10}
+            borderRadius={100}
+            activeColor={"#DCDCDC"}
+            inactiveColor={"#5a45ff"}
+            iconSize={10}
+            contentColor={"#ffffff"}/>
         </View>
         <View style={styles.column}>
-          <RadioGroup style={{width: 300, height: 40 }} direction={"horizontal"} defaultSelection={"ne"} options={[{label:"Je", icon:"add"},{label:"ne"},{label:"sais"},{label:"quoi"}]} marginBetween={10} borderRadius={10} activeColor={"#DCDCDC"} inactiveColor={"#5a45ff"} iconSize={10} contentColor={"#ffffff"}/>
+          <RadioGroup
+            style={{width: 300, height: 40 }}
+            direction={"horizontal"}
+            defaultSelection={"ne"}
+            options={[{label:"Je", icon:"add"},{label:"ne"},{label:"sais"},{label:"quoi"}]}
+            marginBetween={10}
+            borderRadius={10}
+            activeColor={"#DCDCDC"}
+            inactiveColor={"#5a45ff"}
+            iconSize={10}
+            contentColor={"#ffffff"}/>
         </View>
       </ScrollView>
     );

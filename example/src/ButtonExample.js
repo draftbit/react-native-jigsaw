@@ -83,6 +83,7 @@ class ButtonExample extends React.Component {
             inactiveColor="#5a45ff"
             iconSize={10}
             contentColor="#ffffff"
+            borderColor="#000000"
           />
         </View>
         <View style={styles.column}>
@@ -96,7 +97,7 @@ class ButtonExample extends React.Component {
               { label: "sais" },
               { label: "quoi" }
             ]}
-            marginBetween={10}
+            spacing={10}
             borderRadius={100}
             activeColor="#DCDCDC"
             inactiveColor="#5a45ff"
@@ -115,7 +116,7 @@ class ButtonExample extends React.Component {
               { label: "sais" },
               { label: "quoi" }
             ]}
-            marginBetween={10}
+            spacing={10}
             borderRadius={10}
             activeColor="#DCDCDC"
             inactiveColor="#5a45ff"

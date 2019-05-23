@@ -1,13 +1,13 @@
 /* @flow */
 
-import * as React from "react";
-import { StyleSheet, View, Text, ScrollView } from "react-native";
-import { CardContainerRating, withTheme } from "@draftbit/ui";
-import type { Theme } from "@draftbit/ui/types";
+import * as React from "react"
+import { StyleSheet, View, Text, ScrollView } from "react-native"
+import { CardContainerRating, withTheme } from "@draftbit/ui"
+import type { Theme } from "@draftbit/ui/types"
 
 type Props = {
   theme: Theme
-};
+}
 
 class CardContainerRatingExample extends React.Component<Props> {
   render() {
@@ -16,18 +16,12 @@ class CardContainerRatingExample extends React.Component<Props> {
         colors: { background },
         spacing
       }
-    } = this.props;
+    } = this.props
 
     return (
       <ScrollView
-        style={[
-          styles.container,
-          { padding: spacing.large, backgroundColor: background }
-        ]}
-      >
-        <Text style={{ marginBottom: spacing.medium }}>
-          CardContainerRating2Col
-        </Text>
+        style={[styles.container, { padding: spacing.large, backgroundColor: background }]}>
+        <Text style={{ marginBottom: spacing.medium }}>CardContainerRating2Col</Text>
         <CardContainerRating
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
@@ -37,9 +31,7 @@ class CardContainerRatingExample extends React.Component<Props> {
           icon="star"
           style={{ marginBottom: spacing.large }}
         />
-        <Text style={{ marginBottom: spacing.medium }}>
-          CardContainerRating3Col
-        </Text>
+        <Text style={{ marginBottom: spacing.medium }}>CardContainerRating3Col</Text>
         <CardContainerRating
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
@@ -91,7 +83,7 @@ class CardContainerRatingExample extends React.Component<Props> {
           style={{ marginBottom: spacing.large }}
         />
       </ScrollView>
-    );
+    )
   }
 }
 
@@ -99,6 +91,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   }
-});
+})
 
-export default withTheme(CardContainerRatingExample);
+export default withTheme(CardContainerRatingExample)

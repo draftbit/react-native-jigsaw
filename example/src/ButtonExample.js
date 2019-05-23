@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { View, ScrollView, StyleSheet, Image } from "react-native";
-import { Button, IconButton, withTheme } from "@draftbit/ui";
+import { Button, IconButton, withTheme, RadioGroup } from "@draftbit/ui";
 import type { Theme } from "@draftbit/ui/types";
 
 class ButtonExample extends React.Component {
@@ -68,6 +68,15 @@ class ButtonExample extends React.Component {
           <Button style={buttonStyle} type="text" disabled>
             Text Disabled
           </Button>
+        </View>
+        <View style={styles.column}>
+          <RadioGroup style={{width: 400, height: 40 }} direction={"horizontal"} defaultSelection={"ne"} options={[{label:"Je", icon:"add"},{label:"ne"},{label:"sais"},{label:"quoi"}]}  borderRadius={10} activeColor={"#DCDCDC"} inactiveColor={"#cc9280"} iconSize={10} contentColor={"#ffffff"}/>
+        </View>
+        <View style={styles.column}>
+          <RadioGroup style={{width: 200, height: 50 }} direction={"vertical"} defaultSelection={"ne"} options={[{label:"Je", icon:"add"},{label:"ne"},{label:"sais"},{label:"quoi"}]} marginBetween={10} borderRadius={100} activeColor={"#DCDCDC"} inactiveColor={"#cc9280"} iconSize={10} contentColor={"#ffffff"}/>
+        </View>
+        <View style={styles.column}>
+          <RadioGroup style={{width: 300, height: 40 }} direction={"horizontal"} defaultSelection={"ne"} options={[{label:"Je", icon:"add"},{label:"ne"},{label:"sais"},{label:"quoi"}]} marginBetween={10} borderRadius={10} activeColor={"#DCDCDC"} inactiveColor={"#cc9280"} iconSize={10} contentColor={"#ffffff"}/>
         </View>
       </ScrollView>
     );

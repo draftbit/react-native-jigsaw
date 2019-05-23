@@ -49,7 +49,6 @@ class MapSimple extends React.PureComponent<MapSimpleProps> {
         }}
         style={[
           {
-            borderRadius: borderRadius.global,
             width: "100%",
             aspectRatio
           },

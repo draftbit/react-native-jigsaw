@@ -73,12 +73,14 @@ class ButtonExample extends React.Component {
           <RadioGroup
             style={{width: 400, height: 40 }}
             direction={"horizontal"}
-            defaultSelection={"ne"} options={[{label:"Je", icon:"add"},{label:"ne"},{label:"sais"},{label:"quoi"}]}
+            defaultSelection={"ne"}
+            options={[{label:"Je", icon:"add"},{label:"ne"},{label:"sais"},{label:"quoi"}]}
             borderRadius={10}
             activeColor={"#DCDCDC"}
             inactiveColor={"#5a45ff"}
             iconSize={10}
-            contentColor={"#ffffff"}/>
+            contentColor={"#ffffff"}
+          />
         </View>
         <View style={styles.column}>
           <RadioGroup
@@ -91,7 +93,8 @@ class ButtonExample extends React.Component {
             activeColor={"#DCDCDC"}
             inactiveColor={"#5a45ff"}
             iconSize={10}
-            contentColor={"#ffffff"}/>
+            contentColor={"#ffffff"}
+          />
         </View>
         <View style={styles.column}>
           <RadioGroup
@@ -104,7 +107,8 @@ class ButtonExample extends React.Component {
             activeColor={"#DCDCDC"}
             inactiveColor={"#5a45ff"}
             iconSize={10}
-            contentColor={"#ffffff"}/>
+            contentColor={"#ffffff"}
+          />
         </View>
       </ScrollView>
     );

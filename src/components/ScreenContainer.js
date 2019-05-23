@@ -7,7 +7,7 @@ import {
   Platform
 } from "react-native";
 import { withTheme } from "../core/theming";
-import { Constants } from "expo";
+import Config from "./Config";
 
 class ScreenContainer extends React.Component {
   renderScrollableSafeAreaView(themeStyles) {
@@ -18,8 +18,7 @@ class ScreenContainer extends React.Component {
           styles.container,
           {
             backgroundColor: themeStyles.backgroundColor,
-            paddingTop:
-              Platform.OS === "android" ? Constants.statusBarHeight : 0
+            paddingTop: Config.topSafeAreaViewHeight
           }
         ]}
       >
@@ -46,8 +45,7 @@ class ScreenContainer extends React.Component {
           styles.container,
           {
             backgroundColor: themeStyles.backgroundColor,
-            paddingTop:
-              Platform.OS === "android" ? Constants.statusBarHeight : 0
+            paddingTop: Config.topSafeAreaViewHeight
           }
         ]}
       >

@@ -113,8 +113,8 @@ export const SEED_DATA = {
       type: FORM_TYPES.color
     },
     labelStyle: {
-      label: "Style",
-      description: "Text Style",
+      label: "Label Style",
+      description: "Font and weight of the Label",
       editable: true,
       required: false,
       type: FORM_TYPES.typeStyle,

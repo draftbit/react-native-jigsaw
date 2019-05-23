@@ -1,20 +1,16 @@
-import React from "react";
-import { Image, View, Text } from "react-native";
-import color from "color";
-import Card from "./Card";
-import Elevation from "./Elevation";
-import Icon from "./Icon";
-import { withTheme } from "../core/theming";
-import {
-  FORM_TYPES,
-  COMPONENT_TYPES,
-  ELEVATION_TYPE
-} from "../core/component-types";
-import Config from "./Config";
-import type { Theme } from "../types";
+import React from "react"
+import { Image, View, Text } from "react-native"
+import color from "color"
+import Card from "./Card"
+import Elevation from "./Elevation"
+import Icon from "./Icon"
+import { withTheme } from "../core/theming"
+import { FORM_TYPES, COMPONENT_TYPES, ELEVATION_TYPE } from "../core/component-types"
+import Config from "./Config"
+import type { Theme } from "../types"
 
-const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
-const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
+const ICON_CONTAINER_SIZE = Config.cardIconSize * 2
+const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1
 
 export type CardContainerProps = {
   image: string | { uri: string },
@@ -29,7 +25,7 @@ export type CardContainerProps = {
   theme: Theme,
   style: any,
   onPress: () => void
-};
+}
 
 class CardContainer extends React.PureComponent<CardContainerProps> {
   static defaultProps = {
@@ -37,7 +33,7 @@ class CardContainer extends React.PureComponent<CardContainerProps> {
     aspectRatio: 1.5,
     elevation: 2,
     numColumns: 3
-  };
+  }
 
   render() {
     const {
@@ -53,22 +49,22 @@ class CardContainer extends React.PureComponent<CardContainerProps> {
       theme: { colors, borderRadius, typography, spacing },
       style,
       onPress
-    } = this.props;
+    } = this.props
 
-    let textJustification, titleStyle;
+    let textJustification, titleStyle
     if (textCentered && !rightDescription) {
-      textJustification = "center";
+      textJustification = "center"
     } else {
-      textJustification = "space-between";
+      textJustification = "space-between"
     }
 
     switch (numColumns) {
       case 2:
-        titleStyle = typography.headline6;
-        break;
+        titleStyle = typography.headline6
+        break
       case 3:
-        titleStyle = typography.headline5;
-        break;
+        titleStyle = typography.headline5
+        break
     }
 
     return (
@@ -79,8 +75,7 @@ class CardContainer extends React.PureComponent<CardContainerProps> {
               borderRadius: borderRadius.global,
               overflow: "hidden",
               backgroundColor: colors.surface
-            }}
-          >
+            }}>
             <Image
               style={{ aspectRatio }}
               source={typeof image === "string" ? { uri: image } : image}
@@ -93,12 +88,8 @@ class CardContainer extends React.PureComponent<CardContainerProps> {
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: textJustification
-                  }}
-                >
-                  <Text
-                    numberOfLines={1}
-                    style={[titleStyle, { color: colors.strong }]}
-                  >
+                  }}>
+                  <Text numberOfLines={1} style={[titleStyle, { color: colors.strong }]}>
                     {title}
                   </Text>
                 </View>
@@ -109,21 +100,13 @@ class CardContainer extends React.PureComponent<CardContainerProps> {
                     flexDirection: "row",
                     justifyContent: textJustification,
                     alignItems: "center",
-                    marginTop:
-                      numColumns === 3 ? spacing.text : spacing.text / 2
-                  }}
-                >
-                  <Text
-                    numberOfLines={1}
-                    style={[typography.body2, { color: colors.medium }]}
-                  >
+                    marginTop: numColumns === 3 ? spacing.text : spacing.text / 2
+                  }}>
+                  <Text numberOfLines={1} style={[typography.body2, { color: colors.medium }]}>
                     {leftDescription}
                   </Text>
                   {rightDescription ? (
-                    <Text
-                      numberOfLines={1}
-                      style={[typography.subtitle2, { color: colors.light }]}
-                    >
+                    <Text numberOfLines={1} style={[typography.subtitle2, { color: colors.light }]}>
                       {rightDescription}
                     </Text>
                   ) : null}
@@ -145,23 +128,18 @@ class CardContainer extends React.PureComponent<CardContainerProps> {
                     .alpha(Config.cardIconBackgroundOpacity)
                     .rgb()
                     .string()
-                }}
-              >
-                <Icon
-                  name={icon}
-                  size={Config.cardIconSize}
-                  color={colors.surface}
-                />
+                }}>
+                <Icon name={icon} size={Config.cardIconSize} color={colors.surface} />
               </Elevation>
             ) : null}
           </View>
         </Elevation>
       </Card>
-    );
+    )
   }
 }
 
-export default withTheme(CardContainer);
+export default withTheme(CardContainer)
 
 const SEED_DATA_PROPS = {
   image: {
@@ -214,7 +192,7 @@ const SEED_DATA_PROPS = {
     editable: true
   },
   elevation: ELEVATION_TYPE
-};
+}
 
 export const SEED_DATA = [
   {
@@ -223,8 +201,7 @@ export const SEED_DATA = [
     description:
       "An elevated card with a title and description, that takes up half of its container.",
     category: COMPONENT_TYPES.card,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Card_Inline_2col.png",
+    preview_image_url: "{CLOUDINARY_URL}/Card_Inline_2col.png",
     supports_list_render: true,
     props: {
       ...SEED_DATA_PROPS,
@@ -242,11 +219,9 @@ export const SEED_DATA = [
   {
     name: "Large Contained Card",
     tag: "CardContainer",
-    description:
-      "An elevated card with a title and description, that takes up its full container.",
+    description: "An elevated card with a title and description, that takes up its full container.",
     category: COMPONENT_TYPES.card,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Card_Container_3col.png",
+    preview_image_url: "{CLOUDINARY_URL}/Card_Container_3col.png",
     supports_list_render: true,
     props: {
       ...SEED_DATA_PROPS,
@@ -261,4 +236,4 @@ export const SEED_DATA = [
       height: 314
     }
   }
-];
+]

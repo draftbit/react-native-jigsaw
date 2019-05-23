@@ -11,7 +11,8 @@
     "precommit": "echo yarn lint && yarn flow && yarn test",
     "flow": "flow",
     "lint": "eslint src",
-    "test": "jest"
+    "test": "jest",
+    "pretty": "prettier --config ./package.json --write 'src/**/*.{js,css,json}'"
   },
   "jest": {
     "preset": "react-native"
@@ -37,5 +38,15 @@
     "create-react-context": "^0.2.3",
     "react-lifecycles-compat": "^3.0.4",
     "react-native-platform-touchable": "^1.1.1"
+  },
+  "prettier": {
+    "bracketSpacing": true,
+    "singleQuote": false,
+    "semi": false,
+    "useTabs": false,
+    "printWidth": 100,
+    "arrowParens": "avoid",
+    "trailingComma": "none",
+    "jsxBracketSameLine": true
   }
 }

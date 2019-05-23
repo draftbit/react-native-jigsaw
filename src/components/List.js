@@ -1,6 +1,6 @@
-import { FlatList } from "react-native";
-import { COMPONENT_TYPES } from "../core/component-types";
-export default FlatList;
+import { FlatList } from "react-native"
+import { COMPONENT_TYPES } from "../core/component-types"
+export default FlatList
 
 export const SEED_DATA = {
   name: "List",
@@ -8,8 +8,7 @@ export const SEED_DATA = {
   description: "A basic List component",
   type: COMPONENT_TYPES.primitive,
   supports_list_render: false,
-  preview_image_url:
-    "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/List.svg",
+  preview_image_url: "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/List.svg",
   layout: {
     width: 375,
     height: 375
@@ -56,4 +55,4 @@ export const SEED_DATA = {
       value: 3
     }
   }
-};
+}

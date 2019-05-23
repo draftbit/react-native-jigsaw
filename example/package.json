@@ -11,6 +11,7 @@
   "dependencies": {
     "@callstack/react-theme-provider": "^1.0.7",
     "expo": "^31.0.2",
+    "prettier": "1.17.0",
     "react": "16.5.0",
     "react-lifecycles-compat": "^3.0.4",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
@@ -22,4 +23,3 @@
     "babel-preset-expo": "^5.0.0",
     "glob-to-regexp": "^0.4.0"
   }
-}

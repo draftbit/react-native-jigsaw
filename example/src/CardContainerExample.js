@@ -1,13 +1,13 @@
 /* @flow */
 
-import * as React from "react";
-import { StyleSheet, View, Text, ScrollView } from "react-native";
-import { CardContainer, withTheme } from "@draftbit/ui";
-import type { Theme } from "@draftbit/ui/types";
+import * as React from "react"
+import { StyleSheet, View, Text, ScrollView } from "react-native"
+import { CardContainer, withTheme } from "@draftbit/ui"
+import type { Theme } from "@draftbit/ui/types"
 
 type Props = {
   theme: Theme
-};
+}
 
 class CardContainerExample extends React.Component<Props> {
   render() {
@@ -16,15 +16,11 @@ class CardContainerExample extends React.Component<Props> {
         colors: { background },
         spacing
       }
-    } = this.props;
+    } = this.props
 
     return (
       <ScrollView
-        style={[
-          styles.container,
-          { padding: spacing.large, backgroundColor: background }
-        ]}
-      >
+        style={[styles.container, { padding: spacing.large, backgroundColor: background }]}>
         <Text style={{ marginBottom: spacing.medium }}>CardContainer2Col</Text>
         <CardContainer
           title="Beautiful West Coast Villa"
@@ -42,9 +38,7 @@ class CardContainerExample extends React.Component<Props> {
           icon="cloud"
           style={{ marginBottom: spacing.large }}
         />
-        <Text style={{ marginBottom: spacing.medium }}>
-          CardContainer2Col with centered text
-        </Text>
+        <Text style={{ marginBottom: spacing.medium }}>CardContainer2Col with centered text</Text>
         <CardContainer
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
@@ -52,9 +46,7 @@ class CardContainerExample extends React.Component<Props> {
           numColumns={2}
           style={{ marginBottom: spacing.large }}
         />
-        <Text style={{ marginBottom: spacing.medium }}>
-          CardContainer2Col, 1x1 aspect ratio
-        </Text>
+        <Text style={{ marginBottom: spacing.medium }}>CardContainer2Col, 1x1 aspect ratio</Text>
         <CardContainer
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
@@ -63,9 +55,7 @@ class CardContainerExample extends React.Component<Props> {
           aspectRatio={1}
           style={{ marginBottom: spacing.large }}
         />
-        <Text style={{ marginBottom: spacing.medium }}>
-          CardContainer3Col, 1x1 aspect ratio
-        </Text>
+        <Text style={{ marginBottom: spacing.medium }}>CardContainer3Col, 1x1 aspect ratio</Text>
         <CardContainer
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
@@ -83,7 +73,7 @@ class CardContainerExample extends React.Component<Props> {
           style={{ marginBottom: spacing.large }}
         />
       </ScrollView>
-    );
+    )
   }
 }
 
@@ -91,6 +81,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   }
-});
+})
 
-export default withTheme(CardContainerExample);
+export default withTheme(CardContainerExample)

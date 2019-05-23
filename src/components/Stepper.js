@@ -1,45 +1,45 @@
 /* @flow */
 
-import * as React from "react";
-import { View, Image, Text } from "react-native";
-import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types";
-import IconButton from "./IconButton";
-import Config from "./Config";
-import type { Theme } from "../types";
+import * as React from "react"
+import { View, Image, Text } from "react-native"
+import { withTheme } from "../core/theming"
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
+import IconButton from "./IconButton"
+import Config from "./Config"
+import type { Theme } from "../types"
 
 type Props = {
   value: number,
   onChange: number => void,
   style?: any,
   theme: Theme
-};
+}
 
 class Stepper extends React.Component<Props> {
   static defaultProps = {
     value: 0
-  };
+  }
 
   handleMinus = () => {
-    const { value, onChange } = this.props;
+    const { value, onChange } = this.props
 
     if (value > 0) {
-      onChange(value - 1);
+      onChange(value - 1)
     }
-  };
+  }
 
   handlePlus = () => {
-    const { value, onChange } = this.props;
+    const { value, onChange } = this.props
 
-    onChange(value + 1);
-  };
+    onChange(value + 1)
+  }
 
   render() {
     const {
       value,
       theme: { colors, spacing, typography },
       style
-    } = this.props;
+    } = this.props
 
     return (
       <View style={[{ flexDirection: "row" }, style]}>
@@ -59,8 +59,7 @@ class Stepper extends React.Component<Props> {
               color: colors.medium,
               marginHorizontal: spacing.medium
             }
-          ]}
-        >
+          ]}>
           {value}
         </Text>
         <IconButton
@@ -70,11 +69,11 @@ class Stepper extends React.Component<Props> {
           color={colors.strong}
         />
       </View>
-    );
+    )
   }
 }
 
-export default withTheme(Stepper);
+export default withTheme(Stepper)
 
 export const SEED_DATA = [
   {
@@ -95,4 +94,4 @@ export const SEED_DATA = [
       height: 42
     }
   }
-];
+]

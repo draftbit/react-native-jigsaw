@@ -1,7 +1,7 @@
-import * as React from "react";
-import * as Progress from "react-native-progress";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-import { withTheme } from "../../core/theming";
+import * as React from "react"
+import * as Progress from "react-native-progress"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import { withTheme } from "../core/theming"
 
 const ProgressBar = ({
   progress,
@@ -26,10 +26,10 @@ const ProgressBar = ({
       animationType={animationType}
       style
     />
-  );
-};
+  )
+}
 
-export default withTheme(ProgressBar);
+export default withTheme(ProgressBar)
 
 export const SEED_DATA = [
   {
@@ -102,8 +102,7 @@ export const SEED_DATA = [
       },
       animationType: {
         label: "Animation Type",
-        description:
-          "The type of animation that occurs when the bar is filled(Default is Spring)",
+        description: "The type of animation that occurs when the bar is filled(Default is Spring)",
         type: FORM_TYPES.flatArray,
         value: "spring",
         options: ["decay", "timing", "spring"],
@@ -116,4 +115,4 @@ export const SEED_DATA = [
       height: 2
     }
   }
-];
+]

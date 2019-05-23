@@ -23,10 +23,8 @@ class RadioGroup extends React.Component {
       inactiveColor,
       labelStyle,
       iconSize,
-      elevation,
       contentColor,
       borderRadius,
-      borderColor,
       marginBetween,
       theme: { colors }
     } = this.props;

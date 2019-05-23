@@ -1,13 +1,13 @@
-import * as React from "react";
-import { View, Image } from "react-native";
-import { withTheme } from "../core/theming";
+import * as React from "react"
+import { View, Image } from "react-native"
+import { withTheme } from "../core/theming"
 import {
   COMPONENT_TYPES,
   FORM_TYPES,
   BORDER_RADIUS_MODE,
   ELEVATION_TYPE
-} from "../core/component-types";
-import Elevation from "./Elevation";
+} from "../core/component-types"
+import Elevation from "./Elevation"
 
 class Container extends React.Component {
   render() {
@@ -22,7 +22,7 @@ class Container extends React.Component {
       elevation,
       style,
       children
-    } = this.props;
+    } = this.props
 
     const containerStyle = {
       paddingHorizontal: useThemeGutterPadding ? spacing.gutters : 0,
@@ -30,12 +30,12 @@ class Container extends React.Component {
       borderColor,
       borderWidth,
       width: "100%"
-    };
+    }
 
-    const Wrap = elevation ? Elevation : View;
+    const Wrap = elevation ? Elevation : View
 
     if (elevation) {
-      containerStyle.elevation = elevation;
+      containerStyle.elevation = elevation
     }
 
     return (
@@ -44,9 +44,7 @@ class Container extends React.Component {
           {backgroundImage ? (
             <Image
               source={
-                typeof backgroundImage === "string"
-                  ? { uri: backgroundImage }
-                  : backgroundImage
+                typeof backgroundImage === "string" ? { uri: backgroundImage } : backgroundImage
               }
               resizeMode={backgroundImageResizeMode}
               style={{
@@ -61,11 +59,11 @@ class Container extends React.Component {
           {children}
         </React.Fragment>
       </Wrap>
-    );
+    )
   }
 }
 
-export default withTheme(Container);
+export default withTheme(Container)
 
 export const SEED_DATA = {
   name: "Container",
@@ -77,8 +75,7 @@ export const SEED_DATA = {
   props: {
     useThemeGutterPadding: {
       label: "Use gutter padding",
-      description:
-        "When true, uses the theme gutter spacing as the container's horizontal padding",
+      description: "When true, uses the theme gutter spacing as the container's horizontal padding",
       type: FORM_TYPES.boolean,
       value: true,
       editable: true,
@@ -94,8 +91,7 @@ export const SEED_DATA = {
     },
     borderWidth: {
       label: "Border Width",
-      description:
-        "Border width of the container(Required if color is selected)",
+      description: "Border width of the container(Required if color is selected)",
       editable: true,
       required: false,
       type: FORM_TYPES.number,
@@ -136,4 +132,4 @@ export const SEED_DATA = {
       value: 0
     }
   }
-};
+}

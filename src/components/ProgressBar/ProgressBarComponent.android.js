@@ -1,12 +1,9 @@
 /* @flow */
 
-import * as React from "react";
-import { ProgressBarAndroid } from "react-native";
+import * as React from "react"
+import { ProgressBarAndroid } from "react-native"
 
-export default function BaseProgressBarAndroid({
-  progressTintColor,
-  ...rest
-}: *) {
+export default function BaseProgressBarAndroid({ progressTintColor, ...rest }: *) {
   return (
     <ProgressBarAndroid
       {...rest}
@@ -14,5 +11,5 @@ export default function BaseProgressBarAndroid({
       indeterminate={false}
       color={progressTintColor}
     />
-  );
+  )
 }

@@ -1,6 +1,6 @@
 /* @flow */
 
-import * as React from "react";
+import * as React from "react"
 import {
   View,
   Animated,
@@ -8,22 +8,18 @@ import {
   StyleSheet,
   Text,
   I18nManager
-} from "react-native";
-import { polyfill } from "react-lifecycles-compat";
-import { withTheme } from "../core/theming";
-import {
-  COMPONENT_TYPES,
-  FORM_TYPES,
-  FIELD_NAME
-} from "../core/component-types";
-import type { Theme } from "../types";
-import Icon from "./Icon";
+} from "react-native"
+import { polyfill } from "react-lifecycles-compat"
+import { withTheme } from "../core/theming"
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
+import type { Theme } from "../types"
+import Icon from "./Icon"
 
-const AnimatedText = Animated.createAnimatedComponent(Text);
+const AnimatedText = Animated.createAnimatedComponent(Text)
 
-const FOCUS_ANIMATION_DURATION = 150;
-const BLUR_ANIMATION_DURATION = 180;
-const ICON_SIZE = 24;
+const FOCUS_ANIMATION_DURATION = 150
+const BLUR_ANIMATION_DURATION = 180
+const ICON_SIZE = 24
 
 type RenderProps = {
   ref: any => void,
@@ -36,7 +32,7 @@ type RenderProps = {
   multiline?: boolean,
   numberOfLines?: number,
   value?: string
-};
+}
 
 type Props = {
   /**
@@ -119,7 +115,7 @@ type Props = {
    * @optional
    */
   theme: Theme
-};
+}
 
 type State = {
   labeled: Animated.Value,
@@ -130,7 +126,7 @@ type State = {
     measured: boolean,
     width: number
   }
-};
+}
 
 class TextField extends React.Component<Props, State> {
   static defaultProps = {
@@ -139,15 +135,12 @@ class TextField extends React.Component<Props, State> {
     error: false,
     multiline: false,
     render: props => <NativeTextInput {...props} />
-  };
+  }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     return {
-      value:
-        typeof nextProps.value !== "undefined"
-          ? nextProps.value
-          : prevState.value
-    };
+      value: typeof nextProps.value !== "undefined" ? nextProps.value : prevState.value
+    }
   }
 
   state = {
@@ -159,43 +152,37 @@ class TextField extends React.Component<Props, State> {
       measured: false,
       width: 0
     }
-  };
+  }
 
   componentDidUpdate(prevProps, prevState) {
-    if (
-      prevState.focused !== this.state.focused ||
-      prevState.value !== this.state.value
-    ) {
+    if (prevState.focused !== this.state.focused || prevState.value !== this.state.value) {
       // The label should be minimized if the text input is focused, or has text
       // In minimized mode, the label moves up and becomes small
       if (this.state.value || this.state.focused || this.props.error) {
-        this._minmizeLabel();
+        this._minmizeLabel()
       } else {
-        this._restoreLabel();
+        this._restoreLabel()
       }
     }
 
-    if (
-      prevState.focused !== this.state.focused ||
-      prevProps.label !== this.props.label
-    ) {
+    if (prevState.focused !== this.state.focused || prevProps.label !== this.props.label) {
       // Show placeholder text only if the input is focused, or has error, or there's no label
       // We don't show placeholder if there's a label because the label acts as placeholder
       // When focused, the label moves up, so we can show a placeholder
       if (this.state.focused || this.props.error || !this.props.label) {
-        this._showPlaceholder();
+        this._showPlaceholder()
       } else {
-        this._hidePlaceholder();
+        this._hidePlaceholder()
       }
     }
   }
 
   componentWillUnmount() {
-    clearTimeout(this._timer);
+    clearTimeout(this._timer)
   }
 
   _showPlaceholder = () => {
-    clearTimeout(this._timer);
+    clearTimeout(this._timer)
 
     // Set the placeholder in a delay to offset the label animation
     // If we show it immediately, they'll overlap and look ugly
@@ -205,81 +192,81 @@ class TextField extends React.Component<Props, State> {
           placeholder: this.props.placeholder
         }),
       50
-    );
-  };
+    )
+  }
 
   _hidePlaceholder = () =>
     this.setState({
       placeholder: ""
-    });
+    })
 
-  _timer: TimeoutID;
-  _root: ?NativeTextInput;
+  _timer: TimeoutID
+  _root: ?NativeTextInput
 
   _restoreLabel = () =>
     Animated.timing(this.state.labeled, {
       toValue: 1,
       duration: FOCUS_ANIMATION_DURATION,
       useNativeDriver: true
-    }).start();
+    }).start()
 
   _minmizeLabel = () =>
     Animated.timing(this.state.labeled, {
       toValue: 0,
       duration: BLUR_ANIMATION_DURATION,
       useNativeDriver: true
-    }).start();
+    }).start()
 
   _handleFocus = (...args) => {
     if (this.props.disabled) {
-      return;
+      return
     }
 
-    this.setState({ focused: true });
-  };
+    this.setState({ focused: true })
+  }
 
   _handleBlur = (...args) => {
     if (this.props.disabled) {
-      return;
+      return
     }
 
-    this.setState({ focused: false });
-  };
+    this.setState({ focused: false })
+  }
 
   _handleChangeText = (value: string) => {
     if (this.props.disabled) {
-      return;
+      return
     }
 
-    this.setState({ value });
-    this.props.onChange && this.props.onChange(value);
-  };
+    this.setState({ value })
+    this.props.onChange && this.props.onChange(value)
+  }
 
   toggleFocus() {
-    this.setState(prevState => ({ focused: !prevState.focused }));
+    this.setState(prevState => ({ focused: !prevState.focused }))
   }
 
   /**
    * @internal
    */
   setNativeProps(...args) {
-    return this._root && this._root.setNativeProps(...args);
+    return this._root && this._root.setNativeProps(...args)
   }
 
   isFocused() {
-    return this._root && this._root.isFocused();
+    return this._root && this._root.isFocused()
   }
 
   clear() {
-    return this._root && this._root.clear();
+    return this._root && this._root.clear()
   }
 
   focus() {
-    return this._root && this._root.focus();
+    return this._root && this._root.focus()
   }
 
   blur() {
-    return this._root && this._root.blur();
+    return this._root && this._root.blur()
   }
 
   render() {
@@ -297,27 +284,16 @@ class TextField extends React.Component<Props, State> {
       theme,
       render,
       ...rest
-    } = this.props;
+    } = this.props
 
-    const {
-      colors,
-      typography,
-      spacing,
-      borderRadius,
-      disabledOpacity
-    } = theme;
+    const { colors, typography, spacing, borderRadius, disabledOpacity } = theme
 
-    const MINIMIZED_LABEL_Y_OFFSET = -(
-      typography.caption.lineHeight + spacing.text
-    );
-    const OUTLINE_MINIMIZED_LABEL_Y_OFFSET = -(
-      spacing.large * 0.5 +
-      spacing.text
-    );
-    const MAXIMIZED_LABEL_FONT_SIZE = typography.subtitle1.fontSize;
-    const MINIMIZED_LABEL_FONT_SIZE = typography.caption.fontSize;
+    const MINIMIZED_LABEL_Y_OFFSET = -(typography.caption.lineHeight + spacing.text)
+    const OUTLINE_MINIMIZED_LABEL_Y_OFFSET = -(spacing.large * 0.5 + spacing.text)
+    const MAXIMIZED_LABEL_FONT_SIZE = typography.subtitle1.fontSize
+    const MINIMIZED_LABEL_FONT_SIZE = typography.caption.fontSize
 
-    const hasActiveOutline = this.state.focused || error;
+    const hasActiveOutline = this.state.focused || error
 
     let inputTextColor,
       activeColor,
@@ -326,23 +302,23 @@ class TextField extends React.Component<Props, State> {
       placeholderColor,
       containerStyle,
       backgroundColor,
-      inputStyle;
+      inputStyle
 
-    inputTextColor = colors.strong;
+    inputTextColor = colors.strong
     if (disabled) {
-      activeColor = colors.light;
-      placeholderColor = colors.light;
-      borderColor = "transparent";
-      underlineColor = "transparent";
-      backgroundColor = colors.divider;
+      activeColor = colors.light
+      placeholderColor = colors.light
+      borderColor = "transparent"
+      underlineColor = "transparent"
+      backgroundColor = colors.divider
     } else {
-      activeColor = error ? colors.error : colors.primary;
-      placeholderColor = borderColor = colors.light;
-      underlineColor = colors.light;
-      backgroundColor = colors.background;
+      activeColor = error ? colors.error : colors.primary
+      placeholderColor = borderColor = colors.light
+      underlineColor = colors.light
+      backgroundColor = colors.background
     }
 
-    const { lineHeight, ...subtitle1 } = typography.subtitle1;
+    const { lineHeight, ...subtitle1 } = typography.subtitle1
 
     inputStyle = {
       paddingVertical: 0,
@@ -351,29 +327,27 @@ class TextField extends React.Component<Props, State> {
         leftIconName && leftIconMode === "inset"
           ? ICON_SIZE + spacing.medium + (type === "solid" ? spacing.large : 0)
           : 0,
-      paddingRight: rightIconName
-        ? ICON_SIZE + spacing.large + spacing.text
-        : spacing.medium,
+      paddingRight: rightIconName ? ICON_SIZE + spacing.large + spacing.text : spacing.medium,
       ...subtitle1
-    };
-
-    if (!multiline) {
-      inputStyle.height = lineHeight;
     }
 
-    let assistiveTextLeftMargin;
+    if (!multiline) {
+      inputStyle.height = lineHeight
+    }
+
+    let assistiveTextLeftMargin
     if (type === "underline") {
       containerStyle = {
         borderTopLeftRadius: borderRadius.global,
         borderTopRightRadius: borderRadius.global,
         paddingBottom: spacing.medium,
         marginTop: spacing.large
-      };
+      }
 
       if (leftIconName && leftIconMode === "outset") {
-        assistiveTextLeftMargin = ICON_SIZE + spacing.small;
+        assistiveTextLeftMargin = ICON_SIZE + spacing.small
       } else {
-        assistiveTextLeftMargin = 0;
+        assistiveTextLeftMargin = 0
       }
     } else {
       containerStyle = {
@@ -384,37 +358,37 @@ class TextField extends React.Component<Props, State> {
         paddingBottom: this.state.labeled ? spacing.large * 0.5 : spacing.large,
         opacity: disabled ? disabledOpacity : 1,
         backgroundColor
-      };
-
-      if (leftIconName && leftIconMode === "inset") {
-        assistiveTextLeftMargin = spacing.large + spacing.text;
-      } else if (leftIconName && leftIconMode === "outset") {
-        assistiveTextLeftMargin = ICON_SIZE + spacing.small + spacing.medium;
-      } else {
-        assistiveTextLeftMargin = spacing.medium;
       }
 
-      inputStyle.paddingHorizontal = spacing.medium;
+      if (leftIconName && leftIconMode === "inset") {
+        assistiveTextLeftMargin = spacing.large + spacing.text
+      } else if (leftIconName && leftIconMode === "outset") {
+        assistiveTextLeftMargin = ICON_SIZE + spacing.small + spacing.medium
+      } else {
+        assistiveTextLeftMargin = spacing.medium
+      }
+
+      inputStyle.paddingHorizontal = spacing.medium
     }
 
     if (leftIconName && leftIconMode === "outset") {
-      containerStyle.marginLeft = ICON_SIZE + spacing.small;
+      containerStyle.marginLeft = ICON_SIZE + spacing.small
     }
 
-    let leftIconColor;
+    let leftIconColor
     if (error) {
-      leftIconColor = colors.error;
+      leftIconColor = colors.error
     } else if (this.state.focused) {
-      leftIconColor = colors.primary;
+      leftIconColor = colors.primary
     } else {
-      leftIconColor = colors.light;
+      leftIconColor = colors.light
     }
 
     const leftIconProps = {
       size: 24,
       color: leftIconColor,
       name: leftIconName
-    };
+    }
 
     const leftIconStyle = {
       position: "absolute",
@@ -424,7 +398,7 @@ class TextField extends React.Component<Props, State> {
           : leftIconMode === "outset"
           ? spacing.large
           : 0
-    };
+    }
 
     const labelStyle = {
       ...typography.subtitle1,
@@ -439,9 +413,7 @@ class TextField extends React.Component<Props, State> {
           translateY: this.state.labeled.interpolate({
             inputRange: [0, 1],
             outputRange: [
-              type === "solid"
-                ? OUTLINE_MINIMIZED_LABEL_Y_OFFSET
-                : MINIMIZED_LABEL_Y_OFFSET,
+              type === "solid" ? OUTLINE_MINIMIZED_LABEL_Y_OFFSET : MINIMIZED_LABEL_Y_OFFSET,
               0
             ]
           })
@@ -450,10 +422,7 @@ class TextField extends React.Component<Props, State> {
           // Make label smaller
           scale: this.state.labeled.interpolate({
             inputRange: [0, 1],
-            outputRange: [
-              MINIMIZED_LABEL_FONT_SIZE / MAXIMIZED_LABEL_FONT_SIZE,
-              1
-            ]
+            outputRange: [MINIMIZED_LABEL_FONT_SIZE / MAXIMIZED_LABEL_FONT_SIZE, 1]
           })
         },
         {
@@ -468,7 +437,7 @@ class TextField extends React.Component<Props, State> {
           })
         }
       ]
-    };
+    }
 
     return (
       <View style={[styles.container, style]}>
@@ -510,8 +479,7 @@ class TextField extends React.Component<Props, State> {
                         : 0
                       : 1
                 }
-              ]}
-            >
+              ]}>
               <AnimatedText
                 onLayout={e =>
                   this.setState({
@@ -533,8 +501,7 @@ class TextField extends React.Component<Props, State> {
                     })
                   }
                 ]}
-                numberOfLines={1}
-              >
+                numberOfLines={1}>
                 {label}
               </AnimatedText>
               <AnimatedText
@@ -547,8 +514,7 @@ class TextField extends React.Component<Props, State> {
                     opacity: hasActiveOutline ? this.state.labeled : 1
                   }
                 ]}
-                numberOfLines={1}
-              >
+                numberOfLines={1}>
                 {label}
               </AnimatedText>
             </View>
@@ -567,12 +533,10 @@ class TextField extends React.Component<Props, State> {
           {render({
             ...rest,
             ref: c => {
-              this._root = c;
+              this._root = c
             },
             onChange: this._handleChangeText,
-            placeholder: label
-              ? this.state.placeholder
-              : this.props.placeholder,
+            placeholder: label ? this.state.placeholder : this.props.placeholder,
             placeholderTextColor: placeholderColor,
             editable: !disabled,
             selectionColor: activeColor,
@@ -591,10 +555,7 @@ class TextField extends React.Component<Props, State> {
             style={{
               position: "absolute",
               right: spacing.large,
-              marginTop:
-                type === "solid"
-                  ? MINIMIZED_LABEL_FONT_SIZE + spacing.text
-                  : spacing.large
+              marginTop: type === "solid" ? MINIMIZED_LABEL_FONT_SIZE + spacing.text : spacing.large
             }}
           />
         ) : null}
@@ -608,19 +569,18 @@ class TextField extends React.Component<Props, State> {
                 marginTop: spacing.small,
                 marginLeft: assistiveTextLeftMargin
               }
-            ]}
-          >
+            ]}>
             {assistiveText}
           </Text>
         ) : null}
       </View>
-    );
+    )
   }
 }
 
-polyfill(TextField);
+polyfill(TextField)
 
-export default withTheme(TextField);
+export default withTheme(TextField)
 
 const styles = StyleSheet.create({
   container: {
@@ -644,7 +604,7 @@ const styles = StyleSheet.create({
     margin: 0,
     textAlign: I18nManager.isRTL ? "right" : "left"
   }
-});
+})
 
 const SEED_DATA_PROPS = {
   label: {
@@ -695,8 +655,7 @@ const SEED_DATA_PROPS = {
   },
   leftIconMode: {
     label: "Left icon mode",
-    description:
-      "The mode of the icon to display on the left. 'inset' or 'outset'.",
+    description: "The mode of the icon to display on the left. 'inset' or 'outset'.",
     type: FORM_TYPES.flatArray,
     value: "inset",
     options: ["inset", "outset"],
@@ -734,7 +693,7 @@ const SEED_DATA_PROPS = {
     required: false
   },
   fieldName: FIELD_NAME
-};
+}
 
 export const SEED_DATA = [
   {
@@ -753,8 +712,7 @@ export const SEED_DATA = [
       },
       secureTextEntry: {
         label: "Password field",
-        description:
-          "If true, this turns the field into a password field, hiding the text",
+        description: "If true, this turns the field into a password field, hiding the text",
         type: FORM_TYPES.boolean,
         value: null,
         editable: true,
@@ -782,8 +740,7 @@ export const SEED_DATA = [
       },
       secureTextEntry: {
         label: "Password field",
-        description:
-          "If true, this turns the field into a password field, hiding the text",
+        description: "If true, this turns the field into a password field, hiding the text",
         type: FORM_TYPES.boolean,
         value: null,
         editable: true,
@@ -845,4 +802,4 @@ export const SEED_DATA = [
       height: 140
     }
   }
-];
+]

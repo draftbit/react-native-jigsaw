@@ -1,12 +1,12 @@
 /* @flow */
-import * as React from "react";
-import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types";
-import { StyleSheet, View, Text } from "react-native";
-import Touchable from "./Touchable";
-import Checkbox from "./Checkbox";
-import type { Theme } from "../types";
-import color from "color";
+import * as React from "react"
+import { withTheme } from "../core/theming"
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
+import { StyleSheet, View, Text } from "react-native"
+import Touchable from "./Touchable"
+import Checkbox from "./Checkbox"
+import type { Theme } from "../types"
+import color from "color"
 
 type Props = {|
   title: string,
@@ -16,15 +16,15 @@ type Props = {|
   disabled?: boolean,
   color?: string,
   onPress?: () => mixed
-|};
+|}
 
 class FieldCheckbox extends React.Component<Props> {
   onPress = () => {
-    const { onPress } = this.props;
+    const { onPress } = this.props
     if (onPress) {
-      onPress();
+      onPress()
     }
-  };
+  }
 
   render() {
     const {
@@ -34,25 +34,27 @@ class FieldCheckbox extends React.Component<Props> {
       color: checkboxColor,
       disabled,
       theme: { colors, typography, spacing, disabledOpacity }
-    } = this.props;
+    } = this.props
 
-    let titleColor = status === "checked" ? colors.medium : colors.light;
+    let titleColor = status === "checked" ? colors.medium : colors.light
 
     if (disabled) {
       titleColor = color(titleColor)
         .alpha(disabledOpacity)
         .rgb()
-        .string();
+        .string()
     }
 
     return (
       <Touchable onPress={this.onPress} disabled={disabled}>
         <View style={styles.container}>
           <Checkbox status={status} disabled={disabled} onPress={onPress} color={checkboxColor} />
-          <Text style={[typography.body1, { marginLeft: spacing.medium, color: titleColor }]}>{title}</Text>
+          <Text style={[typography.body1, { marginLeft: spacing.medium, color: titleColor }]}>
+            {title}
+          </Text>
         </View>
       </Touchable>
-    );
+    )
   }
 }
 
@@ -61,9 +63,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center"
   }
-});
+})
 
-export default withTheme(FieldCheckbox);
+export default withTheme(FieldCheckbox)
 
 export const SEED_DATA = [
   {
@@ -108,4 +110,4 @@ export const SEED_DATA = [
       height: 59
     }
   }
-];
+]

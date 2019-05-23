@@ -27,7 +27,7 @@ export const FORM_TYPES = {
   position: "position",
   action: "action",
   query: "query"
-};
+}
 
 export const COMPONENT_TYPES = {
   card: "card",
@@ -42,7 +42,7 @@ export const COMPONENT_TYPES = {
   row: "row",
   map: "map",
   data: "data"
-};
+}
 
 export const ELEVATION_TYPE = {
   label: "Elevation",
@@ -54,7 +54,7 @@ export const ELEVATION_TYPE = {
   step: 1,
   precision: 0,
   editable: true
-};
+}
 
 export const BORDER_RADIUS_MODE = {
   label: "Border radius",
@@ -64,16 +64,15 @@ export const BORDER_RADIUS_MODE = {
   value: null,
   editable: true,
   required: true
-};
+}
 
 export const FIELD_NAME = {
   label: "Field name",
-  description:
-    "The name of the field within the screen that will store this component's value",
+  description: "The name of the field within the screen that will store this component's value",
   type: FORM_TYPES.fieldName,
   value: null,
   valuePropName: "value",
   handlerPropName: "onChange",
   editable: true,
   required: false
-};
+}

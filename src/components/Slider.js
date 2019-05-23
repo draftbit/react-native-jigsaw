@@ -1,10 +1,10 @@
 /* @flow */
 
-import * as React from "react";
-import { Slider as NativeSlider } from "react-native";
-import { withTheme } from "../core/theming";
-import type { Theme } from "../types";
-import { FORM_TYPES, COMPONENT_TYPES, FIELD_NAME } from "../core/component-types";
+import * as React from "react"
+import { Slider as NativeSlider } from "react-native"
+import { withTheme } from "../core/theming"
+import type { Theme } from "../types"
+import { FORM_TYPES, COMPONENT_TYPES, FIELD_NAME } from "../core/component-types"
 
 type Props = {
   disabled?: boolean,
@@ -18,18 +18,24 @@ type Props = {
    * @optional
    */
   theme: Theme
-};
+}
 
 class Slider extends React.Component {
   render() {
-    const { style, theme, ...props } = this.props;
-    const { colors } = theme;
+    const { style, theme, ...props } = this.props
+    const { colors } = theme
 
-    return <NativeSlider minimumTrackTintColor={colors.primary} {...props} style={[{ alignSelf: "stretch" }, style]} />;
+    return (
+      <NativeSlider
+        minimumTrackTintColor={colors.primary}
+        {...props}
+        style={[{ alignSelf: "stretch" }, style]}
+      />
+    )
   }
 }
 
-export default withTheme(Slider);
+export default withTheme(Slider)
 
 export const SEED_DATA = {
   name: "Slider",
@@ -93,4 +99,4 @@ export const SEED_DATA = {
     width: 375,
     height: 24
   }
-};
+}

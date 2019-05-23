@@ -1,13 +1,13 @@
 /* @flow */
 
-import * as React from "react";
-import { StyleSheet, View, Text, ScrollView } from "react-native";
-import { CardBlock, withTheme } from "@draftbit/ui";
-import type { Theme } from "@draftbit/ui/types";
+import * as React from "react"
+import { StyleSheet, View, Text, ScrollView } from "react-native"
+import { CardBlock, withTheme } from "@draftbit/ui"
+import type { Theme } from "@draftbit/ui/types"
 
 type Props = {
   theme: Theme
-};
+}
 
 class CardBlockExample extends React.Component<Props> {
   render() {
@@ -15,7 +15,7 @@ class CardBlockExample extends React.Component<Props> {
       theme: {
         colors: { background }
       }
-    } = this.props;
+    } = this.props
 
     return (
       <ScrollView style={[styles.container, { backgroundColor: background }]}>
@@ -69,12 +69,7 @@ class CardBlockExample extends React.Component<Props> {
           style={styles.cardBlockStyle}
         />
         <Text style={styles.title}>CardBlock1Col, centered title</Text>
-        <CardBlock
-          title="Hello"
-          titleCentered
-          numColumns={1}
-          style={styles.cardBlockStyle}
-        />
+        <CardBlock title="Hello" titleCentered numColumns={1} style={styles.cardBlockStyle} />
         <Text style={styles.title}>CardBlock2Col, no right description</Text>
         <CardBlock
           title="Beautiful West Coast Villa"
@@ -89,7 +84,7 @@ class CardBlockExample extends React.Component<Props> {
           style={styles.cardBlockStyle}
         />
       </ScrollView>
-    );
+    )
   }
 }
 
@@ -104,6 +99,6 @@ const styles = StyleSheet.create({
   cardBlockStyle: {
     marginBottom: 24
   }
-});
+})
 
-export default withTheme(CardBlockExample);
+export default withTheme(CardBlockExample)

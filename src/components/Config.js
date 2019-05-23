@@ -1,25 +1,22 @@
-import { Dimensions } from "react-native";
+import { Dimensions, Platform } from "react-native"
+import { Constants } from "expo"
 
-const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
+const { width: windowWidth, height: windowHeight } = Dimensions.get("window")
 
 const getFilters = (options = {}) => {
-  const { width, height } = options;
-  const filters = ["c_scale", "q_auto", "dpr_auto"];
+  const { width, height } = options
+  const filters = ["c_scale", "q_auto", "dpr_auto"]
 
-  if (width) filters.push(`w_${width}`);
-  if (height) filters.push(`h_${height}`);
+  if (width) filters.push(`w_${width}`)
+  if (height) filters.push(`h_${height}`)
 
-  return filters.join(",");
-};
+  return filters.join(",")
+}
 
 const buildImageUrl = (options, name) => {
-  const filters = getFilters(options);
-  return [
-    "https://res.cloudinary.com/altos/image/upload",
-    filters,
-    `${name}.png`
-  ].join("/");
-};
+  const filters = getFilters(options)
+  return ["https://res.cloudinary.com/altos/image/upload", filters, `${name}.png`].join("/")
+}
 
 export default {
   windowWidth,
@@ -55,5 +52,6 @@ export default {
   swiperActiveDotSize: 10,
   fieldSearchBarFullIconSize: 24,
   stepperButtonSize: 40,
-  radioButtonSize: 24
-};
+  radioButtonSize: 24,
+  topSafeAreaViewHeight: Platform.OS === "android" ? Constants.statusBarHeight : 0
+}

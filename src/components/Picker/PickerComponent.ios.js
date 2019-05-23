@@ -1,34 +1,28 @@
 /* @flow */
 
-import * as React from "react";
-import {
-  View,
-  SafeAreaView,
-  Text,
-  StyleSheet,
-  Picker as NativePicker
-} from "react-native";
-import { withTheme } from "../../core/theming";
-import type { Theme } from "../../types";
-import Portal from "../Portal/Portal";
-import Button from "../Button";
-import TextField from "../TextField";
-import Touchable from "../Touchable";
+import * as React from "react"
+import { View, SafeAreaView, Text, StyleSheet, Picker as NativePicker } from "react-native"
+import { withTheme } from "../../core/theming"
+import type { Theme } from "../../types"
+import Portal from "../Portal/Portal"
+import Button from "../Button"
+import TextField from "../TextField"
+import Touchable from "../Touchable"
 
 class Picker extends React.Component<Props> {
   state = {
     pickerVisible: false
-  };
+  }
 
   constructor(props) {
-    super(props);
-    this.textField = React.createRef();
+    super(props)
+    this.textField = React.createRef()
   }
 
   toggleVisibility = () => {
-    this.setState(prevState => ({ pickerVisible: !prevState.pickerVisible }));
-    this.textField.current.toggleFocus();
-  };
+    this.setState(prevState => ({ pickerVisible: !prevState.pickerVisible }))
+    this.textField.current.toggleFocus()
+  }
 
   render() {
     const {
@@ -40,10 +34,10 @@ class Picker extends React.Component<Props> {
       onValueChange,
       disabled,
       ...props
-    } = this.props;
-    const { colors } = theme;
+    } = this.props
+    const { colors } = theme
 
-    const { pickerVisible } = this.state;
+    const { pickerVisible } = this.state
 
     return (
       <View style={[styles.container, style]}>
@@ -61,23 +55,12 @@ class Picker extends React.Component<Props> {
           <Portal>
             <View style={[styles.picker, { backgroundColor: colors.divider }]}>
               <SafeAreaView style={styles.pickerContainer}>
-                <Button
-                  type="text"
-                  onPress={this.toggleVisibility}
-                  style={styles.closeButton}
-                >
+                <Button type="text" onPress={this.toggleVisibility} style={styles.closeButton}>
                   Close
                 </Button>
-                <NativePicker
-                  selectedValue={selectedValue}
-                  onValueChange={onValueChange}
-                >
+                <NativePicker selectedValue={selectedValue} onValueChange={onValueChange}>
                   {options.map(o => (
-                    <NativePicker.Item
-                      label={o.label}
-                      value={o.value}
-                      key={o.value}
-                    />
+                    <NativePicker.Item label={o.label} value={o.value} key={o.value} />
                   ))}
                 </NativePicker>
               </SafeAreaView>
@@ -85,7 +68,7 @@ class Picker extends React.Component<Props> {
           </Portal>
         )}
       </View>
-    );
+    )
   }
 }
 
@@ -105,6 +88,6 @@ const styles = StyleSheet.create({
   closeButton: {
     alignSelf: "flex-end"
   }
-});
+})
 
-export default withTheme(Picker);
+export default withTheme(Picker)

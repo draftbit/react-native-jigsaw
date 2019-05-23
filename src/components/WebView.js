@@ -1,6 +1,6 @@
-import { WebView } from "react-native";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-export default WebView;
+import { WebView } from "react-native"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+export default WebView
 
 export const SEED_DATA = {
   name: "Web View",
@@ -15,8 +15,7 @@ export const SEED_DATA = {
   props: {
     source: {
       label: "Website url",
-      description:
-        "The Website URL the Web View should load (https://www.draftbit.com)",
+      description: "The Website URL the Web View should load (https://www.draftbit.com)",
       editable: true,
       required: true,
       value: "https://www.draftbit.com",
@@ -60,8 +59,7 @@ export const SEED_DATA = {
     },
     scrollEnabled: {
       label: "Scrollable",
-      description:
-        "Whether scrolling is enabled inside the website. (Default: true)",
+      description: "Whether scrolling is enabled inside the website. (Default: true)",
       editable: true,
       required: false,
       value: true,
@@ -88,15 +86,8 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: ["phoneNumber"],
-      options: [
-        "phoneNumber",
-        "link",
-        "address",
-        "calendarEvent",
-        "none",
-        "all"
-      ],
+      options: ["phoneNumber", "link", "address", "calendarEvent", "none", "all"],
       type: FORM_TYPES.multiselect
     }
   }
-};
+}

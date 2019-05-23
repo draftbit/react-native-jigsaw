@@ -1,17 +1,17 @@
 /* @flow */
 
-import * as React from "react";
-import { ActivityIndicator, Animated, View, StyleSheet } from "react-native";
-import color from "color";
-import Config from "./Config";
-import Icon from "./Icon";
-import Text from "./Text";
-import Touchable from "./Touchable";
-import Elevation from "./Elevation";
-import { withTheme } from "../core/theming";
-import type { Theme } from "../types";
-import type { IconSource } from "./Icon";
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
+import * as React from "react"
+import { ActivityIndicator, Animated, View, StyleSheet } from "react-native"
+import color from "color"
+import Config from "./Config"
+import Icon from "./Icon"
+import Text from "./Text"
+import Touchable from "./Touchable"
+import Elevation from "./Elevation"
+import { withTheme } from "../core/theming"
+import type { Theme } from "../types"
+import type { IconSource } from "./Icon"
+import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types"
 
 type Props = $RemoveChildren<typeof Elevation> & {|
   /**
@@ -52,7 +52,7 @@ type Props = $RemoveChildren<typeof Elevation> & {|
    * @optional
    */
   theme: Theme
-|};
+|}
 
 /**
  * A floating action button represents the primary action in an application.
@@ -93,7 +93,7 @@ class FAB extends React.Component<Props> {
   static defaultProps = {
     elevation: 0,
     type: "solid"
-  };
+  }
 
   render() {
     const {
@@ -108,40 +108,34 @@ class FAB extends React.Component<Props> {
       style,
       theme,
       ...rest
-    } = this.props;
+    } = this.props
 
-    const {
-      colors,
-      disabledOpacity,
-      borderRadius,
-      spacing,
-      typography
-    } = theme;
+    const { colors, disabledOpacity, borderRadius, spacing, typography } = theme
 
-    let backgroundColor, borderColor, textColor, borderWidth;
-    const buttonColor = colorOverride || colors.primary;
+    let backgroundColor, borderColor, textColor, borderWidth
+    const buttonColor = colorOverride || colors.primary
 
     if (type === "standard" || type === "extended" || type === "fixed") {
-      backgroundColor = buttonColor;
+      backgroundColor = buttonColor
 
       if (disabled) {
         textColor = color(colors.surface)
           .alpha(disabledOpacity)
           .rgb()
-          .string();
+          .string()
       } else {
-        textColor = colors.surface;
+        textColor = colors.surface
       }
     } else {
-      backgroundColor = "transparent";
+      backgroundColor = "transparent"
 
       if (disabled) {
         textColor = color(buttonColor)
           .alpha(disabledOpacity)
           .rgb()
-          .string();
+          .string()
       } else {
-        textColor = buttonColor;
+        textColor = buttonColor
       }
     }
 
@@ -150,14 +144,14 @@ class FAB extends React.Component<Props> {
         borderColor = color(buttonColor)
           .alpha(disabledOpacity)
           .rgb()
-          .string();
+          .string()
       } else {
-        borderColor = buttonColor;
+        borderColor = buttonColor
       }
-      borderWidth = StyleSheet.hairlineWidth;
+      borderWidth = StyleSheet.hairlineWidth
     } else {
-      borderColor = "transparent";
-      borderWidth = 0;
+      borderColor = "transparent"
+      borderWidth = 0
     }
 
     const buttonStyle = {
@@ -167,50 +161,50 @@ class FAB extends React.Component<Props> {
       borderRadius: borderRadius.button,
       alignItems: "center",
       justifyContent: "center"
-    };
+    }
 
-    const buttonStyles = [styles.button, buttonStyle];
+    const buttonStyles = [styles.button, buttonStyle]
 
-    const contentStyle = [styles.content];
+    const contentStyle = [styles.content]
 
     const textStyle = {
       textAlign: "center",
       color: textColor
-    };
+    }
 
     const iconStyle = [
       styles.icon,
       {
         width: Config.buttonIconSize
       }
-    ];
+    ]
 
     if (type === "standard" || type === "outline") {
-      buttonStyle.width = Config.FABSize;
-      buttonStyle.height = Config.FABSize;
-      buttonStyle.borderRadius = Config.FABBorderRadius;
+      buttonStyle.width = Config.FABSize
+      buttonStyle.height = Config.FABSize
+      buttonStyle.borderRadius = Config.FABBorderRadius
 
       contentStyle.push({
         width: Config.FABSize,
         height: Config.FABSize
-      });
+      })
     }
 
     if (type === "extended" || type === "fixed") {
       iconStyle.push({
         marginLeft: spacing.large,
         marginRight: -8
-      });
+      })
 
-      textStyle.margin = spacing.large;
+      textStyle.margin = spacing.large
     }
 
     if (type === "fixed") {
       buttonStyles.push({
         height: Config.FABFixedHeight,
         alignSelf: "stretch"
-      });
-      buttonStyles.push(styles.fixed);
+      })
+      buttonStyles.push(styles.fixed)
     }
 
     return (
@@ -221,37 +215,25 @@ class FAB extends React.Component<Props> {
           accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
           accessibilityComponentType="button"
           disabled={disabled || loading}
-          style={buttonStyles}
-        >
+          style={buttonStyles}>
           <View style={styles.content}>
             {icon && loading !== true ? (
               <View style={iconStyle}>
-                <Icon
-                  name={icon}
-                  size={Config.buttonIconSize}
-                  color={textColor}
-                />
+                <Icon name={icon} size={Config.buttonIconSize} color={textColor} />
               </View>
             ) : null}
             {loading ? (
-              <ActivityIndicator
-                size="small"
-                color={textColor}
-                style={iconStyle}
-              />
+              <ActivityIndicator size="small" color={textColor} style={iconStyle} />
             ) : null}
             {label ? (
-              <Text
-                numberOfLines={1}
-                style={[styles.label, textStyle, typography.button]}
-              >
+              <Text numberOfLines={1} style={[styles.label, textStyle, typography.button]}>
                 {label}
               </Text>
             ) : null}
           </View>
         </Touchable>
       </Elevation>
-    );
+    )
   }
 }
 
@@ -274,9 +256,9 @@ const styles = StyleSheet.create({
     height: 64,
     borderRadius: 0
   }
-});
+})
 
-export default withTheme(FAB);
+export default withTheme(FAB)
 
 const SEED_DATA_PROPS = {
   icon: {
@@ -303,7 +285,7 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.color,
     value: null
   }
-};
+}
 
 export const SEED_DATA = [
   {
@@ -311,8 +293,7 @@ export const SEED_DATA = [
     tag: "FAB",
     category: COMPONENT_TYPES.FAB,
     description: "A round, mini FAB",
-    preview_image_url:
-      "{CLOUDINARY_URL}/Button_FABMini.png",
+    preview_image_url: "{CLOUDINARY_URL}/Button_FABMini.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -329,7 +310,7 @@ export const SEED_DATA = [
         required: false,
         editable: false,
         type: FORM_TYPES.string,
-        value: null,
+        value: null
       }
     },
     layout: {
@@ -341,8 +322,7 @@ export const SEED_DATA = [
     name: "FAB Outline",
     tag: "FAB",
     category: COMPONENT_TYPES.FAB,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Button_FABMini.png",
+    preview_image_url: "{CLOUDINARY_URL}/Button_FABMini.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -359,7 +339,7 @@ export const SEED_DATA = [
         required: false,
         editable: false,
         type: FORM_TYPES.string,
-        value: null,
+        value: null
       }
     },
     layout: {
@@ -371,8 +351,7 @@ export const SEED_DATA = [
     name: "FAB Extended",
     tag: "FAB",
     category: COMPONENT_TYPES.FAB,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Button_FABExtended.png",
+    preview_image_url: "{CLOUDINARY_URL}/Button_FABExtended.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -393,8 +372,7 @@ export const SEED_DATA = [
     name: "FAB Fixed",
     tag: "FAB",
     category: COMPONENT_TYPES.FAB,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Button_FABFixed.png",
+    preview_image_url: "{CLOUDINARY_URL}/Button_FABFixed.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -411,4 +389,4 @@ export const SEED_DATA = [
       height: 64
     }
   }
-];
+]

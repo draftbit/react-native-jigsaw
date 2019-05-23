@@ -1,15 +1,11 @@
-import React from "react";
-import { Image, View, Text } from "react-native";
-import Card from "./Card";
-import Elevation from "./Elevation";
-import { withTheme } from "../core/theming";
-import {
-  COMPONENT_TYPES,
-  FORM_TYPES,
-  ELEVATION_TYPE
-} from "../core/component-types";
-import type { Theme } from "../types";
-import Config from "./Config";
+import React from "react"
+import { Image, View, Text } from "react-native"
+import Card from "./Card"
+import Elevation from "./Elevation"
+import { withTheme } from "../core/theming"
+import { COMPONENT_TYPES, FORM_TYPES, ELEVATION_TYPE } from "../core/component-types"
+import type { Theme } from "../types"
+import Config from "./Config"
 
 export type CardBlockProps = {
   image: string | { uri: string },
@@ -23,7 +19,7 @@ export type CardBlockProps = {
   theme: Theme,
   style: any,
   onPress: () => void
-};
+}
 
 class CardBlock extends React.PureComponent<CardBlockProps> {
   static defaultProps = {
@@ -31,7 +27,7 @@ class CardBlock extends React.PureComponent<CardBlockProps> {
     aspectRatio: 1.5,
     elevation: 2,
     numColumns: 3
-  };
+  }
 
   render() {
     const {
@@ -46,27 +42,24 @@ class CardBlock extends React.PureComponent<CardBlockProps> {
       theme: { colors, borderRadius, typography, spacing },
       style,
       onPress
-    } = this.props;
+    } = this.props
 
-    let titleJustification, titleStyle;
+    let titleJustification, titleStyle
     if (titleCentered && !leftDescription && !rightDescription) {
-      titleJustification = "center";
+      titleJustification = "center"
     } else {
-      titleJustification = "space-between";
+      titleJustification = "space-between"
     }
 
     if (numColumns === 1) {
-      titleStyle = typography.button;
+      titleStyle = typography.button
     } else if (numColumns === 2) {
-      titleStyle = typography.headline6;
+      titleStyle = typography.headline6
     } else {
-      titleStyle = typography.headline5;
+      titleStyle = typography.headline5
     }
 
-    const rightDescriptionStyles = [
-      typography.subtitle2,
-      { color: colors.light }
-    ];
+    const rightDescriptionStyles = [typography.subtitle2, { color: colors.light }]
 
     return (
       <Card style={style} onPress={onPress} numColumns={numColumns}>
@@ -88,12 +81,8 @@ class CardBlock extends React.PureComponent<CardBlockProps> {
                 alignItems: "center",
                 justifyContent: titleJustification,
                 marginTop: numColumns === 3 ? spacing.large : spacing.medium
-              }}
-            >
-              <Text
-                numberOfLines={1}
-                style={[titleStyle, { color: colors.strong }]}
-              >
+              }}>
+              <Text numberOfLines={1} style={[titleStyle, { color: colors.strong }]}>
                 {title}
               </Text>
               {!leftDescription && rightDescription ? (
@@ -108,12 +97,8 @@ class CardBlock extends React.PureComponent<CardBlockProps> {
                 justifyContent: "space-between",
                 alignItems: "center",
                 marginTop: numColumns === 3 ? spacing.text : spacing.text / 2
-              }}
-            >
-              <Text
-                numberOfLines={1}
-                style={[typography.body2, { color: colors.medium }]}
-              >
+              }}>
+              <Text numberOfLines={1} style={[typography.body2, { color: colors.medium }]}>
                 {leftDescription}
               </Text>
               {rightDescription ? (
@@ -125,11 +110,11 @@ class CardBlock extends React.PureComponent<CardBlockProps> {
           ) : null}
         </View>
       </Card>
-    );
+    )
   }
 }
 
-export default withTheme(CardBlock);
+export default withTheme(CardBlock)
 
 const SEED_DATA_PROPS = {
   image: {
@@ -175,7 +160,7 @@ const SEED_DATA_PROPS = {
     editable: true
   },
   elevation: ELEVATION_TYPE
-};
+}
 
 export const SEED_DATA = [
   {
@@ -184,8 +169,7 @@ export const SEED_DATA = [
     description:
       "An elevated card with a title and description, that takes up one third of its container.",
     category: COMPONENT_TYPES.card,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Card_Block_1col.png",
+    preview_image_url: "{CLOUDINARY_URL}/Card_Block_1col.png",
     supports_list_render: true,
     props: {
       ...SEED_DATA_PROPS,
@@ -206,8 +190,7 @@ export const SEED_DATA = [
     description:
       "An elevated card with a title and description, that takes up one half of its container.",
     category: COMPONENT_TYPES.card,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Card_Block_2col.png",
+    preview_image_url: "{CLOUDINARY_URL}/Card_Block_2col.png",
     supports_list_render: true,
     props: {
       ...SEED_DATA_PROPS,
@@ -235,8 +218,7 @@ export const SEED_DATA = [
     description:
       "An elevated card with a title and description, that takes up the full width its container.",
     category: COMPONENT_TYPES.card,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Card_Block_3col.png",
+    preview_image_url: "{CLOUDINARY_URL}/Card_Block_3col.png",
     supports_list_render: true,
     props: {
       ...SEED_DATA_PROPS,
@@ -258,4 +240,4 @@ export const SEED_DATA = [
       height: 296
     }
   }
-];
+]

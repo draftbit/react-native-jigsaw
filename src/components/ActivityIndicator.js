@@ -1,13 +1,12 @@
-import { ActivityIndicator } from "react-native";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-export default ActivityIndicator;
+import { ActivityIndicator } from "react-native"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+export default ActivityIndicator
 
 const ActivityIndicator = {
   name: "Activity Indicator",
   tag: "ActivityIndicator",
   description: "Displays a circular loading indicator.",
-  doc_link:
-    "https://docs.expo.io/versions/latest/react-native/activityindicator/",
+  doc_link: "https://docs.expo.io/versions/latest/react-native/activityindicator/",
   code_link:
     "https://github.com/expo/expo/blob/master/ios/versioned-react-native/ABI32_0_0/Libraries/Components/ActivityIndicator/ActivityIndicator.js",
   type: "primitive",
@@ -33,8 +32,7 @@ const ActivityIndicator = {
     },
     hidesWhenStopped: {
       label: "Hide When Stopped",
-      description:
-        "Whether the indicator should hide when not animating (Default: true)",
+      description: "Whether the indicator should hide when not animating (Default: true)",
       type: FORM_TYPES.boolean,
       editable: true,
       required: false,
@@ -49,4 +47,4 @@ const ActivityIndicator = {
       value: null
     }
   }
-};
+}

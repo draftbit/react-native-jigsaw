@@ -7,7 +7,7 @@ import type { Theme } from "@draftbit/ui/types";
 
 type Props = {
   theme: Theme
-};
+}
 
 class ProgressBarExample extends React.Component<Props> {
   render() {
@@ -16,7 +16,7 @@ class ProgressBarExample extends React.Component<Props> {
         colors: { background },
         spacing
       }
-    } = this.props;
+    } = this.props
 
     return (
       <ScrollView style={[styles.container, { backgroundColor: background }]}>
@@ -43,7 +43,7 @@ class ProgressBarExample extends React.Component<Props> {
           direction="counter-clockwise"
         />
       </ScrollView>
-    );
+    )
   }
 }
 
@@ -55,6 +55,6 @@ const styles = StyleSheet.create({
   progressBar: {
     marginVertical: 50
   }
-});
+})
 
-export default withTheme(ProgressBarExample);
+export default withTheme(ProgressBarExample)

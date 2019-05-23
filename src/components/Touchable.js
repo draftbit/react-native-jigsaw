@@ -1,17 +1,17 @@
-import React from "react";
-import { View } from "react-native";
-import Touchable from "react-native-platform-touchable";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import React from "react"
+import { View } from "react-native"
+import Touchable from "react-native-platform-touchable"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 
 export default class extends Touchable {
   render() {
-    const { children, ...props } = this.props;
+    const { children, ...props } = this.props
 
     return (
       <Touchable {...props}>
         <View>{children}</View>
       </Touchable>
-    );
+    )
   }
 }
 
@@ -41,4 +41,4 @@ export const SEED_DATA = {
       value: null
     }
   }
-};
+}

@@ -1,10 +1,10 @@
 /* @flow */
 
-import * as React from "react";
-import { Text as NativeText, I18nManager } from "react-native";
-import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-import type { Theme } from "../types";
+import * as React from "react"
+import { Text as NativeText, I18nManager } from "react-native"
+import { withTheme } from "../core/theming"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import type { Theme } from "../types"
 
 type Props = React.ElementConfig<typeof NativeText> & {
   style?: any,
@@ -12,7 +12,7 @@ type Props = React.ElementConfig<typeof NativeText> & {
    * @optional
    */
   theme: Theme
-};
+}
 
 /**
  * Text component which follows styles from the theme.
@@ -20,24 +20,24 @@ type Props = React.ElementConfig<typeof NativeText> & {
  * @extends Text props https://facebook.github.io/react-native/docs/text.html#props
  */
 class Text extends React.Component<Props> {
-  _root: ?NativeText;
+  _root: ?NativeText
 
   /**
    * @internal
    */
   setNativeProps(...args) {
-    return this._root && this._root.setNativeProps(...args);
+    return this._root && this._root.setNativeProps(...args)
   }
 
   render() {
-    const { style, theme, ...rest } = this.props;
-    const writingDirection = I18nManager.isRTL ? "rtl" : "ltr";
+    const { style, theme, ...rest } = this.props
+    const writingDirection = I18nManager.isRTL ? "rtl" : "ltr"
 
     return (
       <NativeText
         {...rest}
         ref={c => {
-          this._root = c;
+          this._root = c
         }}
         style={[
           {
@@ -47,11 +47,11 @@ class Text extends React.Component<Props> {
           style
         ]}
       />
-    );
+    )
   }
 }
 
-export default withTheme(Text);
+export default withTheme(Text)
 
 export const SEED_DATA = {
   name: "Text",
@@ -59,8 +59,7 @@ export const SEED_DATA = {
   description: "A basic Text component",
   type: COMPONENT_TYPES.primitive,
   supports_list_render: false,
-  preview_image_url:
-    "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/Text.svg",
+  preview_image_url: "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/Text.svg",
   layout: {
     width: "100%"
   },
@@ -122,4 +121,4 @@ export const SEED_DATA = {
       value: "strong"
     }
   }
-};
+}

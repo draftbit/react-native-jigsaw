@@ -1,13 +1,13 @@
 /* @flow */
 
-import * as React from "react";
-import { StyleSheet, View, Text, ScrollView } from "react-native";
-import { CardContainerShortImage, withTheme } from "@draftbit/ui";
-import type { Theme } from "@draftbit/ui/types";
+import * as React from "react"
+import { StyleSheet, View, Text, ScrollView } from "react-native"
+import { CardContainerShortImage, withTheme } from "@draftbit/ui"
+import type { Theme } from "@draftbit/ui/types"
 
 type Props = {
   theme: Theme
-};
+}
 
 class CardContainerShortImageExample extends React.Component<Props> {
   render() {
@@ -16,18 +16,12 @@ class CardContainerShortImageExample extends React.Component<Props> {
         colors: { background },
         spacing
       }
-    } = this.props;
+    } = this.props
 
     return (
       <ScrollView
-        style={[
-          styles.container,
-          { backgroundColor: background, padding: spacing.large }
-        ]}
-      >
-        <Text style={{ marginBottom: spacing.medium }}>
-          CardContainerShortLeftImage
-        </Text>
+        style={[styles.container, { backgroundColor: background, padding: spacing.large }]}>
+        <Text style={{ marginBottom: spacing.medium }}>CardContainerShortLeftImage</Text>
         <CardContainerShortImage
           title="Beautiful West Coast Villa"
           subtitle="San Diego"
@@ -43,9 +37,7 @@ class CardContainerShortImageExample extends React.Component<Props> {
           mode="left"
           style={{ marginBottom: spacing.large }}
         />
-        <Text style={{ marginBottom: spacing.medium }}>
-          CardContainerShortRightImage
-        </Text>
+        <Text style={{ marginBottom: spacing.medium }}>CardContainerShortRightImage</Text>
         <CardContainerShortImage
           title="Beautiful West Coast Villa"
           subtitle="San Diego"
@@ -62,7 +54,7 @@ class CardContainerShortImageExample extends React.Component<Props> {
           style={{ marginBottom: spacing.large }}
         />
       </ScrollView>
-    );
+    )
   }
 }
 
@@ -70,6 +62,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   }
-});
+})
 
-export default withTheme(CardContainerShortImageExample);
+export default withTheme(CardContainerShortImageExample)

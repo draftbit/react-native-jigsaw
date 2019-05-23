@@ -1,15 +1,15 @@
 /* @flow */
 
-import * as React from "react";
-import { View, ScrollView, StyleSheet, Text } from "react-native";
-import { Picker, Divider, withTheme } from "@draftbit/ui";
-import type { Theme } from "@draftbit/ui/types";
+import * as React from "react"
+import { View, ScrollView, StyleSheet, Text } from "react-native"
+import { Picker, Divider, withTheme } from "@draftbit/ui"
+import type { Theme } from "@draftbit/ui/types"
 
 class PickerExample extends React.Component {
-  state = {};
+  state = {}
 
   render() {
-    const { colors, spacing } = this.props.theme;
+    const { colors, spacing } = this.props.theme
 
     return (
       <ScrollView
@@ -19,12 +19,9 @@ class PickerExample extends React.Component {
             backgroundColor: colors.background,
             paddingHorizontal: spacing.large
           }
-        ]}
-      >
+        ]}>
         <View>
-          <Text style={{ marginVertical: spacing.large }}>
-            Picker - Underline
-          </Text>
+          <Text style={{ marginVertical: spacing.large }}>Picker - Underline</Text>
           <Picker
             label="Make"
             placeholder="Select a make..."
@@ -35,13 +32,9 @@ class PickerExample extends React.Component {
               { value: "Dodge", label: "Dodge" }
             ]}
             selectedValue={this.state.underlinePickerMake}
-            onValueChange={underlinePickerMake =>
-              this.setState({ underlinePickerMake })
-            }
+            onValueChange={underlinePickerMake => this.setState({ underlinePickerMake })}
           />
-          <Text style={{ marginVertical: spacing.large }}>
-            Picker - Underline (Disabled)
-          </Text>
+          <Text style={{ marginVertical: spacing.large }}>Picker - Underline (Disabled)</Text>
           <Picker
             label="Make"
             placeholder="Select a make..."
@@ -57,9 +50,7 @@ class PickerExample extends React.Component {
             }
             disabled
           />
-          <Text style={{ marginVertical: spacing.large }}>
-            Picker - Underline (Error)
-          </Text>
+          <Text style={{ marginVertical: spacing.large }}>Picker - Underline (Error)</Text>
           <Picker
             label="Make"
             placeholder="Select a make..."
@@ -70,9 +61,7 @@ class PickerExample extends React.Component {
               { value: "Dodge", label: "Dodge" }
             ]}
             selectedValue={this.state.underlineErrorPickerMake}
-            onValueChange={underlineErrorPickerMake =>
-              this.setState({ underlineErrorPickerMake })
-            }
+            onValueChange={underlineErrorPickerMake => this.setState({ underlineErrorPickerMake })}
             error
           />
           <Text style={{ marginVertical: spacing.large }}>Picker - Solid</Text>
@@ -87,13 +76,9 @@ class PickerExample extends React.Component {
               { value: "Dodge", label: "Dodge" }
             ]}
             selectedValue={this.state.solidPickerMake}
-            onValueChange={solidPickerMake =>
-              this.setState({ solidPickerMake })
-            }
+            onValueChange={solidPickerMake => this.setState({ solidPickerMake })}
           />
-          <Text style={{ marginVertical: spacing.large }}>
-            Picker - Solid (Disabled)
-          </Text>
+          <Text style={{ marginVertical: spacing.large }}>Picker - Solid (Disabled)</Text>
           <Picker
             label="Make"
             placeholder="Select a make..."
@@ -105,14 +90,10 @@ class PickerExample extends React.Component {
               { value: "Dodge", label: "Dodge" }
             ]}
             selectedValue={this.state.solidDisabledPickerMake}
-            onValueChange={solidDisabledPickerMake =>
-              this.setState({ solidDisabledPickerMake })
-            }
+            onValueChange={solidDisabledPickerMake => this.setState({ solidDisabledPickerMake })}
             disabled
           />
-          <Text style={{ marginVertical: spacing.large }}>
-            Picker - Solid (Error)
-          </Text>
+          <Text style={{ marginVertical: spacing.large }}>Picker - Solid (Error)</Text>
           <Picker
             label="Make"
             placeholder="Select a make..."
@@ -124,14 +105,12 @@ class PickerExample extends React.Component {
               { value: "Dodge", label: "Dodge" }
             ]}
             selectedValue={this.state.solidErrorPickerMake}
-            onValueChange={solidErrorPickerMake =>
-              this.setState({ solidErrorPickerMake })
-            }
+            onValueChange={solidErrorPickerMake => this.setState({ solidErrorPickerMake })}
             error
           />
         </View>
       </ScrollView>
-    );
+    )
   }
 }
 
@@ -139,6 +118,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   }
-});
+})
 
-export default withTheme(PickerExample);
+export default withTheme(PickerExample)

@@ -1,11 +1,11 @@
 /* @flow */
 
-import * as React from "react";
-import { Text } from "react-native";
-import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-import Row from "./Row";
-import type { Theme } from "../types";
+import * as React from "react"
+import { Text } from "react-native"
+import { withTheme } from "../core/theming"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import Row from "./Row"
+import type { Theme } from "../types"
 
 type Props = {
   title: string,
@@ -14,7 +14,7 @@ type Props = {
   image: string | { uri: string },
   style?: any,
   theme: Theme
-};
+}
 
 class RowHeadlineImageCaption extends React.Component<Props> {
   render() {
@@ -25,7 +25,7 @@ class RowHeadlineImageCaption extends React.Component<Props> {
       image,
       style,
       theme: { colors, typography, spacing }
-    } = this.props;
+    } = this.props
 
     return (
       <Row
@@ -42,28 +42,25 @@ class RowHeadlineImageCaption extends React.Component<Props> {
               ...typography.caption,
               color: colors.strong,
               marginLeft: spacing.large
-            }}
-          >
+            }}>
             {caption}
           </Text>
         )}
         style={style}
       />
-    );
+    )
   }
 }
 
-export default withTheme(RowHeadlineImageCaption);
+export default withTheme(RowHeadlineImageCaption)
 
 export const SEED_DATA = [
   {
     name: "Row Single Line Headline Caption",
     tag: "RowHeadlineImageCaption",
-    description:
-      "A row with left aligned headline text and right aligned caption text",
+    description: "A row with left aligned headline text and right aligned caption text",
     category: COMPONENT_TYPES.row,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Row_SingleLine_HeadlineCaption.png",
+    preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_HeadlineCaption.png",
     supports_list_render: true,
     props: {
       title: {
@@ -89,11 +86,9 @@ export const SEED_DATA = [
   {
     name: "Row Single Line Headline Image Caption",
     tag: "RowHeadlineImageCaption",
-    description:
-      "A row with left aligned image and headline text and right aligned caption text",
+    description: "A row with left aligned image and headline text and right aligned caption text",
     category: COMPONENT_TYPES.row,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Row_SingleLine_HeadlineImageCaption.png",
+    preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_HeadlineImageCaption.png",
     supports_list_render: true,
     props: {
       title: {
@@ -129,8 +124,7 @@ export const SEED_DATA = [
     description:
       "A row with left aligned headline text and subtitle text and right aligned caption text",
     category: COMPONENT_TYPES.row,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Row_DoubleLine_HeadlineCaption.png",
+    preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_HeadlineCaption.png",
     supports_list_render: true,
     props: {
       title: {
@@ -166,8 +160,7 @@ export const SEED_DATA = [
     description:
       "A row with left aligned image, headline text, and subtitle text, and right aligned caption text",
     category: COMPONENT_TYPES.row,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Row_DoubleLine_HeadlineCaption.png",
+    preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_HeadlineCaption.png",
     supports_list_render: true,
     props: {
       title: {
@@ -204,4 +197,4 @@ export const SEED_DATA = [
       height: 83
     }
   }
-];
+]

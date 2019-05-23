@@ -1,17 +1,16 @@
-import * as React from "react";
-import { withTheme } from "../core/theming";
-import { View, Text } from "react-native";
-import Icon  from "./Icon.js"
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-import Touchable from "./Touchable";
+import * as React from "react"
+import { withTheme } from "../core/theming"
+import { View, Text } from "react-native"
+import Icon from "./Icon.js"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import Touchable from "./Touchable"
 
 class RadioGroup extends React.Component {
-
   state = { selected: this.props.defaultSelection }
 
-  onPress = (label) => {
-    this.setState({selected: label})
-  };
+  onPress = label => {
+    this.setState({ selected: label })
+  }
 
   render() {
     const {
@@ -24,54 +23,56 @@ class RadioGroup extends React.Component {
       iconSize,
       contentColor,
       borderRadius,
-      marginBetween,
+      spacing,
       theme: { colors }
-    } = this.props;
+    } = this.props
 
-    const optionWidth = style.width/options.length
-    const horizontalMargin = direction === "horizontal" ? marginBetween/2 : 0
-    const verticalMargin = direction === "vertical" ? marginBetween/2 : 0
-    
+    const optionWidth = style.width / options.length
+    const horizontalMargin = direction === "horizontal" ? spacing / 2 : 0
+    const verticalMargin = direction === "vertical" ? spacing / 2 : 0
+
     return (
       <View
         style={{
-          flexDirection: (direction === "vertical" ? "column" : "row"),
+          flexDirection: direction === "vertical" ? "column" : "row",
           alignItems: "center",
-          borderRadius: (marginBetween ?  0 : borderRadius),
+          borderRadius: spacing ? 0 : borderRadius,
           overflow: "hidden"
-        }}
-      >
+        }}>
         {options.map(option => {
           const selected = option.label == this.state.selected
           return (
             <Touchable onPress={() => this.onPress(option.label)}>
               <View
                 style={{
-                  flexDirection: 'row',
+                  flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "center",
-                  backgroundColor: (selected ? activeColor : inactiveColor),
+                  backgroundColor: selected ? activeColor : inactiveColor,
                   height: style.height,
                   width: optionWidth,
-                  borderRadius: (marginBetween ?  borderRadius : 0),
+                  borderRadius: spacing ? borderRadius : 0,
                   marginLeft: horizontalMargin,
                   marginRight: horizontalMargin,
-                  marginTop: verticalMargin ,
+                  marginTop: verticalMargin,
                   marginBottom: verticalMargin
-                }}
-              >
-                {option.icon ? <Icon name={option.icon} size={iconSize} color={contentColor}/> : null }
-                {option.label ? <Text style={[labelStyle, {color: contentColor}]}>{option.label}</Text> : null }
+                }}>
+                {option.icon ? (
+                  <Icon name={option.icon} size={iconSize} color={contentColor} />
+                ) : null}
+                {option.label ? (
+                  <Text style={[labelStyle, { color: contentColor }]}>{option.label}</Text>
+                ) : null}
               </View>
             </Touchable>
-          );
+          )
         })}
       </View>
-    );
+    )
   }
 }
 
-export default withTheme(RadioGroup);
+export default withTheme(RadioGroup)
 
 export const SEED_DATA = {
   name: "Radio Group",
@@ -83,25 +84,25 @@ export const SEED_DATA = {
       label: "Horizontal/Vertical",
       description: "Whether the buttons should be Horizontal or Vertical",
       editable: true,
-      required: false,
+      required: true,
       type: FORM_TYPES.flatArray,
       value: "horizontal",
-      options: ["horizontal", "vertical"],
+      options: ["horizontal", "vertical"]
     },
     activeColor: {
       label: "Active Color",
       description: "Color of the button when it's selected",
       editable: true,
       value: null,
-      required: false,
+      required: true,
       type: FORM_TYPES.color
     },
-    inActivecolor: {
+    inactivecolor: {
       label: "Inactive Color",
       description: "Color of the button when it's selected not selected",
       editable: true,
       value: null,
-      required: false,
+      required: true,
       type: FORM_TYPES.color
     },
     contentColor: {
@@ -109,27 +110,28 @@ export const SEED_DATA = {
       description: "Color of the content(Icon and Label)",
       editable: true,
       value: null,
-      required: false,
+      required: true,
       type: FORM_TYPES.color
     },
     labelStyle: {
       label: "Label Style",
       description: "Font and weight of the Label",
       editable: true,
-      required: false,
+      required: true,
       type: FORM_TYPES.typeStyle,
       value: null
     },
-    marginBetween: {
-      label: "Margin Between",
-      description: "The margin Between each option",
+    spacing: {
+      label: "Spacing",
+      description: "The spacing between each option",
       type: FORM_TYPES.number,
       value: 0,
       min: 0,
       max: 20,
       step: 1,
       precision: 1,
-      editable: true
+      editable: true,
+      required: false
     },
     borderRadius: {
       label: "Border Radius",
@@ -140,7 +142,8 @@ export const SEED_DATA = {
       max: 100,
       step: 1,
       precision: 1,
-      editable: true
+      editable: true,
+      required: false
     },
     iconSize: {
       label: "Icon Size",
@@ -151,11 +154,12 @@ export const SEED_DATA = {
       max: 50,
       step: 1,
       precision: 1,
-      editable: true
+      editable: true,
+      required: false
     }
   },
   layout: {
     width: 200,
     height: 40
   }
-};
+}

@@ -1,27 +1,25 @@
 /* @flow */
 
-import * as React from "react";
-import { View, ScrollView, StyleSheet, Image } from "react-native";
-import { Button, IconButton, withTheme, RadioGroup } from "@draftbit/ui";
-import type { Theme } from "@draftbit/ui/types";
+import * as React from "react"
+import { View, ScrollView, StyleSheet, Image } from "react-native"
+import { Button, IconButton, withTheme, RadioGroup } from "@draftbit/ui"
+import type { Theme } from "@draftbit/ui/types"
 
 class ButtonExample extends React.Component {
-  static title = "Button";
+  static title = "Button"
 
   state = {
     elevation: 2
-  };
+  }
 
   render() {
-    const { elevation } = this.state;
-    const { colors } = this.props.theme;
+    const { elevation } = this.state
+    const { colors } = this.props.theme
 
-    const buttonStyle = [styles.button];
+    const buttonStyle = [styles.button]
 
     return (
-      <ScrollView
-        style={[styles.container, { backgroundColor: colors.background }]}
-      >
+      <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
         <View style={styles.column}>
           <IconButton style={buttonStyle} size={16} icon="brightness-5" />
           <IconButton style={buttonStyle} size={24} icon="brightness-6" />
@@ -71,47 +69,62 @@ class ButtonExample extends React.Component {
         </View>
         <View style={styles.column}>
           <RadioGroup
-            style={{width: 400, height: 40 }}
+            style={{ width: 400, height: 40 }}
             direction={"horizontal"}
             defaultSelection={"ne"}
-            options={[{label:"Je", icon:"add"},{label:"ne"},{label:"sais"},{label:"quoi"}]}
+            options={[
+              { label: "Je", icon: "add" },
+              { label: "ne" },
+              { label: "sais" },
+              { label: "quoi" }
+            ]}
             borderRadius={10}
-            activeColor={"#DCDCDC"}
-            inactiveColor={"#5a45ff"}
+            activeColor="#DCDCDC"
+            inactiveColor="#5a45ff"
             iconSize={10}
-            contentColor={"#ffffff"}
+            contentColor="#ffffff"
           />
         </View>
         <View style={styles.column}>
           <RadioGroup
-            style={{width: 200, height: 50 }}
-            direction={"vertical"}
-            defaultSelection={"ne"}
-            options={[{label:"Je", icon:"add"},{label:"ne"},{label:"sais"},{label:"quoi"}]}
+            style={{ width: 200, height: 50 }}
+            direction="vertical"
+            defaultSelection="ne"
+            options={[
+              { label: "Je", icon: "add" },
+              { label: "ne" },
+              { label: "sais" },
+              { label: "quoi" }
+            ]}
             marginBetween={10}
             borderRadius={100}
-            activeColor={"#DCDCDC"}
-            inactiveColor={"#5a45ff"}
+            activeColor="#DCDCDC"
+            inactiveColor="#5a45ff"
             iconSize={10}
-            contentColor={"#ffffff"}
+            contentColor="#ffffff"
           />
         </View>
         <View style={styles.column}>
           <RadioGroup
-            style={{width: 300, height: 40 }}
-            direction={"horizontal"}
-            defaultSelection={"ne"}
-            options={[{label:"Je", icon:"add"},{label:"ne"},{label:"sais"},{label:"quoi"}]}
+            style={{ width: 300, height: 40 }}
+            direction="horizontal"
+            defaultSelection="ne"
+            options={[
+              { label: "Je", icon: "add" },
+              { label: "ne" },
+              { label: "sais" },
+              { label: "quoi" }
+            ]}
             marginBetween={10}
             borderRadius={10}
-            activeColor={"#DCDCDC"}
-            inactiveColor={"#5a45ff"}
+            activeColor="#DCDCDC"
+            inactiveColor="#5a45ff"
             iconSize={10}
-            contentColor={"#ffffff"}
+            contentColor="#ffffff"
           />
         </View>
       </ScrollView>
-    );
+    )
   }
 }
 
@@ -130,6 +143,6 @@ const styles = StyleSheet.create({
   row: {
     alignItems: "center"
   }
-});
+})
 
-export default withTheme(ButtonExample);
+export default withTheme(ButtonExample)

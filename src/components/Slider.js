@@ -1,65 +1,55 @@
-/* @flow */
-
 import * as React from "react"
-import Slider from "react-native-slider"
+import { default as ReactNativeSlider } from "react-native-slider"
 import { withTheme } from "../core/theming"
-import type { Theme } from "../types"
 import { FORM_TYPES, COMPONENT_TYPES, FIELD_NAME } from "../core/component-types"
 
-type Props = {
-  disabled?: boolean,
-  maximumValue?: number,
-  minimumValue?: number,
-  step?: number,
-  onValueChange: () => void,
-  value: number,
-  style?: any,
-  /**
-   * @optional
-   */
-  theme: Theme
-}
-
-class Slider extends React.Component {
-  render() {
-    const {
-      style,
-      value,
-      minimumTrackTintColor,
-      maximumTrackTintColor,
-      thumbTintColor,
-      minimumValue,
-      maximumValue,
-      thumbTouchSize,
-      step,
-      disabled,
-      onValueChange,
-      theme,
-      trackStyle,
-      thumbStyle,
-      thumbSize,
-      ...props
-    } = this.props
-    const { colors } = theme
-    const calcThumbHeightSize = style.height * .40
-    const calcThumbWidthSize = style.width * .10
-    return (
-      <Slider
-        disabled={disabled}
-        value={value}
-        minimumTrackTintColor={colors.primary}
-        maximumTrackTintColor={maximumTrackTintColor}
-        thumbTintColor={thumbTintColor}
-        thumbTouchSize={{ width: thumbTouchSize, height: thumbTouchSize }}
-        onValueChange={onValueChange}
-        trackStyle={trackStyle === 'rounded' ? {borderRadius: '20%', width:style.width, height: style.height } : { width:style.width, height: style.height } }
-        thumbStyle={thumbStyle === 'rounded' ? { borderRadius: '20%', width:thumbSize ? thumbSize : calcThumbWidthSize, height: thumbSize ?  thumbSize : calcThumbHeightSize } : {borderRadius: '20%', width:thumbSize, height: thumbSize}}
-        step={step}
-        {...props}
-        style={style}
-      />
-    )
-  }
+const Slider = ({
+  style,
+  value,
+  minimumTrackTintColor,
+  maximumTrackTintColor,
+  thumbTintColor,
+  minimumValue,
+  maximumValue,
+  thumbTouchSize,
+  step,
+  disabled,
+  onValueChange,
+  theme,
+  trackBorderRadius,
+  thumbBorderRadius,
+  thumbStyle,
+  thumbSize,
+  ...props
+}) => {
+  const calcThumbHeightSize = style.height * 0.4
+  const calcThumbWidthSize = style.width * 0.1
+  return (
+    <ReactNativeSlider
+      disabled={disabled}
+      value={value}
+      minimumValue={0}
+      maximumValue={10}
+      minimumTrackTintColor={minimumTrackTintColor}
+      maximumTrackTintColor={maximumTrackTintColor}
+      thumbTintColor={thumbTintColor}
+      thumbTouchSize={{ width: thumbTouchSize, height: thumbTouchSize }}
+      onValueChange={onValueChange}
+      trackStyle={{
+        borderRadius: trackBorderRadius ? trackBorderRadius : 0,
+        width: style.width,
+        height: style.height
+      }}
+      thumbStyle={{
+        borderRadius: thumbBorderRadius ? thumbBorderRadius : 0,
+        width: thumbSize ? thumbSize : calcThumbWidthSize,
+        height: thumbSize ? thumbSize : calcThumbHeightSize
+      }}
+      style={style}
+      step={step}
+      {...props}
+    />
+  )
 }
 
 export default withTheme(Slider)
@@ -91,7 +81,7 @@ export const SEED_DATA = {
       step: 1,
       precision: 0,
       value: 10
-    }
+    },
     maximumValue: {
       label: "Maximum value",
       description: "The maximum value of the slider",
@@ -176,23 +166,29 @@ export const SEED_DATA = {
       type: FORM_TYPES.action,
       value: null
     },
-    trackStyle: {
-      label: "Track Style",
-      description: "If the track should be rounded or square",
-      type: FORM_TYPES.flatArray,
-      value: "rounded",
-      options: ["rounded", "square"],
+    trackBorderRadius: {
+      label: "Track Border Radius",
+      description: "The border radius for the track ",
       editable: true,
-      required: true
+      required: false,
+      type: FORM_TYPES.number,
+      min: 0,
+      max: 1000,
+      step: 1,
+      precision: 0,
+      value: 10
     },
-    thumbStyle: {
-      label: "Thumb Style",
-      description: "If the thumb should be rounded or square",
-      type: FORM_TYPES.flatArray,
-      value: "rounded",
-      options: ["rounded", "square"],
+    thumbBorderRadius: {
+      label: "Thumb Border Radius",
+      description: "The border radius for the thumb",
       editable: true,
-      required: true
+      required: false,
+      type: FORM_TYPES.number,
+      min: 0,
+      max: 1000,
+      step: 1,
+      precision: 0,
+      value: 10
     },
     thumbSize: {
       label: "Thumb Size",
@@ -205,8 +201,7 @@ export const SEED_DATA = {
       step: 0.01,
       precision: 2,
       value: null
-    },
-
+    }
   },
   layout: {
     width: 375,

@@ -30,6 +30,13 @@ class SliderExample extends React.Component<Props> {
         ]}>
         <Text style={{ marginVertical: spacing.large }}>Slider</Text>
         <Slider
+          style={{ width: 300, height: 30 }}
+          minimumTrackTintColor="#5a45ff"
+          maximumTrackTintColor="#A663CC"
+          thumbTintColor="#B9FAF8"
+          thumbBorderRadius={20}
+          trackBorderRadius={20}
+          thumbSize={20}
           value={sliderValue}
           onValueChange={sliderValue => {
             this.setState({ sliderValue })
@@ -40,14 +47,19 @@ class SliderExample extends React.Component<Props> {
         />
         <Text style={{ marginVertical: spacing.large }}>Slider (Disabled)</Text>
         <Slider
-          value={disabledSliderValue}
-          onValueChange={disabledSliderValue => {
-            this.setState({ disabledSliderValue })
+          disabled={true}
+          style={{ width: 300, height: 30 }}
+          minimumTrackTintColor="#5a45ff"
+          maximumTrackTintColor="#A663CC"
+          thumbTintColor="#B9FAF8"
+          thumbSize={20}
+          value={sliderValue}
+          onValueChange={sliderValue => {
+            this.setState({ sliderValue })
           }}
           minimumValue={0}
           maximumValue={10}
           step={1}
-          disabled
         />
         <Text style={{ marginVertical: spacing.large }}>FieldSlider</Text>
         <FieldSlider
@@ -57,6 +69,17 @@ class SliderExample extends React.Component<Props> {
           value={fieldSliderValue}
           onValueChange={fieldSliderValue => {
             this.setState({ fieldSliderValue })
+          }}
+          style={{ width: 300, height: 30 }}
+          minimumTrackTintColor="#5a45ff"
+          maximumTrackTintColor="#A663CC"
+          thumbTintColor="#B9FAF8"
+          thumbBorderRadius={10}
+          trackBorderRadius={10}
+          thumbSize={20}
+          value={sliderValue}
+          onValueChange={sliderValue => {
+            this.setState({ sliderValue })
           }}
           minimumValue={0}
           maximumValue={10}

@@ -1,7 +1,7 @@
 /* @flow */
 
 import * as React from "react"
-import { Slider as NativeSlider } from "react-native"
+import Slider from "react-native-slider"
 import { withTheme } from "../core/theming"
 import type { Theme } from "../types"
 import { FORM_TYPES, COMPONENT_TYPES, FIELD_NAME } from "../core/component-types"
@@ -22,14 +22,35 @@ type Props = {
 
 class Slider extends React.Component {
   render() {
-    const { style, theme, ...props } = this.props
+    const {
+      style, //
+      value,
+      minimumTrackTintColor, //
+      maximumTrackTintColor, //
+      thumbTintColor, //
+      minimumValue, //
+      maximumValue, //
+      thumbTouchSize, //
+      step, //
+      disabled, //
+      onValueChange, //
+      theme,
+      ...props
+    } = this.props
     const { colors } = theme
 
     return (
-      <NativeSlider
+      <Slider
+        disabled={disabled}
+        value={value}
         minimumTrackTintColor={colors.primary}
+        maximumTrackTintColor={maximumTrackTintColor}
+        thumbTintColor={thumbTintColor}
+        thumbTouchSize={{ width: thumbTouchSize, height: thumbTouchSize }}
+        onValueChange={onValueChange}
+        step={step}
         {...props}
-        style={[{ alignSelf: "stretch" }, style]}
+        style={style}
       />
     )
   }
@@ -93,6 +114,49 @@ export const SEED_DATA = {
       ...FIELD_NAME,
       value: "sliderValue",
       handlerPropName: "onValueChange"
+    },
+    maximumTrackTintColor: {
+      label: "Maximum Color",
+      description: "Color of the track from the right of the thumb",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.color,
+      value: null
+    },
+    minimumTrackTintColor: {
+      label: "Minimum Color",
+      description: "Color of the track from the left of the thumb",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.color,
+      value: null
+    },
+    thumbTintColor: {
+      label: "Thumb Tint Color",
+      description: "Color of the thumb",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.color,
+      value: null
+    },
+    thumbTouchSize: {
+      label: "Hit Slop",
+      description: "The size of the hit slop",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.number,
+      min: 0,
+      max: 100,
+      step: 0.01,
+      precision: 2,
+      value: null
+    },
+    onValueChange: {
+      label: "Action",
+      description: "Action to execute when button pressed",
+      editable: true,
+      type: FORM_TYPES.action,
+      value: null
     }
   },
   layout: {

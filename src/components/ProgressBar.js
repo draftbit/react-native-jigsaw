@@ -49,24 +49,25 @@ export const SEED_DATA = [
         max: 1,
         step: 0.01,
         precision: 2,
-        editable: true
+        editable: true,
+        required: true
       },
       color: {
         label: "Progress Color",
         description: "Custom color for the progress shown",
-        editable: true,
+        type: FORM_TYPES.color,
         value: null,
-        required: true,
-        type: FORM_TYPES.color
+        editable: true,
+        required: true
       },
       unfilledColor: {
         label: "Unfilled Color",
         description:
           "The color of the unfilled portion of the progress bar(eg. if at 50% then this is the color of the other 50%)",
-        editable: true,
+        type: FORM_TYPES.color,
         value: null,
-        required: true,
-        type: FORM_TYPES.color
+        editable: true,
+        required: true
       },
       borderRadius: {
         label: "Border Radius",
@@ -95,10 +96,10 @@ export const SEED_DATA = [
       borderColor: {
         label: "Border Color",
         description: "Custom color for border of the entire bar",
-        editable: true,
+        type: FORM_TYPES.color,
         value: null,
-        required: true,
-        type: FORM_TYPES.color
+        editable: true,
+        required: true
       },
       animationType: {
         label: "Animation Type",

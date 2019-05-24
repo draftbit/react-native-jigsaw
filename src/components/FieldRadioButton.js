@@ -29,6 +29,10 @@ type Props = {|
   /**
    * @optional
    */
+  color?: string,
+  /**
+   * Color of the radio button
+   */
   theme: Theme
 |}
 
@@ -46,6 +50,7 @@ class FieldRadioButton extends React.Component<Props> {
       title,
       selected,
       disabled,
+      color,
       onPress,
       theme: { colors, typography, spacing, disabledOpacity }
     } = this.props
@@ -62,7 +67,7 @@ class FieldRadioButton extends React.Component<Props> {
     return (
       <Touchable onPress={this.onPress} disabled={disabled}>
         <View style={{ flexDirection: "row" }}>
-          <RadioButton selected={selected} disabled={disabled} />
+          <RadioButton color={color} selected={selected} disabled={disabled} />
           <Text style={[typography.body1, { color: titleColor, marginLeft: spacing.medium }]}>
             {title}
           </Text>
@@ -95,6 +100,14 @@ export const SEED_DATA = {
       editable: true,
       value: true,
       type: FORM_TYPES.boolean
+    },
+    color: {
+      label: "Color",
+      description: "Color for the button",
+      required: false,
+      editable: true,
+      value: null,
+      type: FORM_TYPES.color
     },
     disabled: {
       label: "Disabled",

@@ -15,6 +15,7 @@
     "react-lifecycles-compat": "^3.0.4",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
     "react-native-platform-touchable": "^1.1.1",
+    "react-native-progress": "^3.6.0",
     "react-navigation": "^2.18.2"
   },
   "devDependencies": {

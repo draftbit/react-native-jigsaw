@@ -6,7 +6,6 @@ export { default as Provider } from "./core/Provider"
 export { default as DefaultTheme } from "./styles/DefaultTheme"
 
 export { default as Touchable } from "./components/Touchable"
-
 export { default as Avatar } from "./components/Avatar"
 export { default as AvatarEdit } from "./components/AvatarEdit"
 export { default as Button } from "./components/Button"
@@ -47,3 +46,4 @@ export { default as Switch } from "./components/Switch"
 export { default as Text } from "./components/Text"
 export { default as TextField } from "./components/TextField"
 export { default as View } from "./components/View"
+export { default as NewProgressBar } from "./components/ProgressBar"

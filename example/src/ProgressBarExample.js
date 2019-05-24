@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { StyleSheet, ScrollView } from "react-native"
-import { ProgressBar, withTheme, ProgressCircle } from "@draftbit/ui"
+import { ProgressBar, withTheme, NewProgressBar, ProgressCircle } from "@draftbit/ui"
 import type { Theme } from "@draftbit/ui/types"
 
 type Props = {
@@ -25,6 +25,13 @@ class ProgressBarExample extends React.Component<Props> {
         <ProgressBar progress={0.5} style={styles.progressBar} />
         <ProgressBar progress={0.75} style={styles.progressBar} />
         <ProgressBar progress={1} style={styles.progressBar} />
+        <NewProgressBar
+          progress={0.5}
+          style={{ width: 380, height: 10 }}
+          borderRadius={20}
+          color="#5a45ff"
+          unfilledColor="#000000"
+        />
         <ProgressCircle
           size={300}
           progress={0.75}

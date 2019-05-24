@@ -23,22 +23,26 @@ type Props = {
 class Slider extends React.Component {
   render() {
     const {
-      style, //
+      style,
       value,
-      minimumTrackTintColor, //
-      maximumTrackTintColor, //
-      thumbTintColor, //
-      minimumValue, //
-      maximumValue, //
-      thumbTouchSize, //
-      step, //
-      disabled, //
-      onValueChange, //
+      minimumTrackTintColor,
+      maximumTrackTintColor,
+      thumbTintColor,
+      minimumValue,
+      maximumValue,
+      thumbTouchSize,
+      step,
+      disabled,
+      onValueChange,
       theme,
+      trackStyle,
+      thumbStyle,
+      thumbSize,
       ...props
     } = this.props
     const { colors } = theme
-
+    const calcThumbHeightSize = style.height * .40
+    const calcThumbWidthSize = style.width * .10
     return (
       <Slider
         disabled={disabled}
@@ -48,6 +52,8 @@ class Slider extends React.Component {
         thumbTintColor={thumbTintColor}
         thumbTouchSize={{ width: thumbTouchSize, height: thumbTouchSize }}
         onValueChange={onValueChange}
+        trackStyle={trackStyle === 'rounded' ? {borderRadius: '20%', width:style.width, height: style.height } : { width:style.width, height: style.height } }
+        thumbStyle={thumbStyle === 'rounded' ? { borderRadius: '20%', width:thumbSize ? thumbSize : calcThumbWidthSize, height: thumbSize ?  thumbSize : calcThumbHeightSize } : {borderRadius: '20%', width:thumbSize, height: thumbSize}}
         step={step}
         {...props}
         style={style}
@@ -74,6 +80,18 @@ export const SEED_DATA = {
       type: FORM_TYPES.boolean,
       value: null
     },
+    value: {
+      label: "Default value",
+      description: "The value where the thumb will render on load",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.number,
+      min: 0,
+      max: 1000000,
+      step: 1,
+      precision: 0,
+      value: 10
+    }
     maximumValue: {
       label: "Maximum value",
       description: "The maximum value of the slider",
@@ -157,7 +175,38 @@ export const SEED_DATA = {
       editable: true,
       type: FORM_TYPES.action,
       value: null
-    }
+    },
+    trackStyle: {
+      label: "Track Style",
+      description: "If the track should be rounded or square",
+      type: FORM_TYPES.flatArray,
+      value: "rounded",
+      options: ["rounded", "square"],
+      editable: true,
+      required: true
+    },
+    thumbStyle: {
+      label: "Thumb Style",
+      description: "If the thumb should be rounded or square",
+      type: FORM_TYPES.flatArray,
+      value: "rounded",
+      options: ["rounded", "square"],
+      editable: true,
+      required: true
+    },
+    thumbSize: {
+      label: "Thumb Size",
+      description: "Size of the thumb",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.number,
+      min: 0,
+      max: 100,
+      step: 0.01,
+      precision: 2,
+      value: null
+    },
+
   },
   layout: {
     width: 375,

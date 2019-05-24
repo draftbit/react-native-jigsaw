@@ -64,7 +64,7 @@ export const SEED_DATA = [
         label: "Color",
         description: "Color for the progress shown",
         editable: true,
-        value: null,
+        value: "primary",
         required: true,
         type: FORM_TYPES.color
       },

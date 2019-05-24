@@ -37,13 +37,14 @@ class SliderExample extends React.Component<Props> {
           thumbBorderRadius={20}
           trackBorderRadius={20}
           thumbSize={20}
+          thumbTouchSize={20}
           value={sliderValue}
           onValueChange={sliderValue => {
             this.setState({ sliderValue })
           }}
           minimumValue={0}
           maximumValue={10}
-          step={1}
+          step={0.02}
         />
         <Text style={{ marginVertical: spacing.large }}>Slider (Disabled)</Text>
         <Slider
@@ -53,13 +54,13 @@ class SliderExample extends React.Component<Props> {
           maximumTrackTintColor="#A663CC"
           thumbTintColor="#B9FAF8"
           thumbSize={20}
-          value={sliderValue}
+          value={disabledSliderValue}
           onValueChange={sliderValue => {
             this.setState({ sliderValue })
           }}
           minimumValue={0}
           maximumValue={10}
-          step={1}
+          step={0.02}
         />
         <Text style={{ marginVertical: spacing.large }}>FieldSlider</Text>
         <FieldSlider
@@ -77,6 +78,7 @@ class SliderExample extends React.Component<Props> {
           thumbBorderRadius={10}
           trackBorderRadius={10}
           thumbSize={20}
+          thumbTouchSize={20}
           value={sliderValue}
           onValueChange={sliderValue => {
             this.setState({ sliderValue })

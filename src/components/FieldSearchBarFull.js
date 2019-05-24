@@ -1,16 +1,12 @@
 /* @flow */
 
-import * as React from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
-import { withTheme } from "../core/theming";
-import {
-  COMPONENT_TYPES,
-  FORM_TYPES,
-  FIELD_NAME
-} from "../core/component-types";
-import Icon from "./Icon";
-import Config from "./Config";
-import type { Theme } from "../types";
+import * as React from "react"
+import { View, Text, TextInput, StyleSheet } from "react-native"
+import { withTheme } from "../core/theming"
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
+import Icon from "./Icon"
+import Config from "./Config"
+import type { Theme } from "../types"
 
 type Props = {
   icon: string,
@@ -18,36 +14,36 @@ type Props = {
   onSubmit: (text: string) => void,
   theme: Theme,
   style?: any
-};
+}
 
 class FieldSearchBarFull extends React.Component<Props> {
   state = {
     focused: false
-  };
+  }
 
   static defaultProps = {
     icon: "search"
-  };
+  }
 
   clearText = () => {
-    this.setState({ value: "" });
-  };
+    this.setState({ value: "" })
+  }
 
   onBlur = () => {
-    this.setState({ focused: false });
-  };
+    this.setState({ focused: false })
+  }
 
   onChange = value => {
-    this.props.onChange && this.props.onChange(value);
-  };
+    this.props.onChange && this.props.onChange(value)
+  }
 
   onFocus = () => {
-    this.setState({ focused: true });
-  };
+    this.setState({ focused: true })
+  }
 
   onSubmit = () => {
-    this.props.onSubmit && this.props.onSubmit();
-  };
+    this.props.onSubmit && this.props.onSubmit()
+  }
 
   render() {
     const {
@@ -58,11 +54,11 @@ class FieldSearchBarFull extends React.Component<Props> {
       theme: { colors, spacing, typography },
       onChange,
       value
-    } = this.props;
+    } = this.props
 
-    const { focused } = this.state;
+    const { focused } = this.state
 
-    const { lineHeight, ...typeStyle } = typography.body2;
+    const { lineHeight, ...typeStyle } = typography.body2
 
     return (
       <View style={[{ padding: spacing.large }, styles.container, style]}>
@@ -91,7 +87,7 @@ class FieldSearchBarFull extends React.Component<Props> {
           ]}
         />
       </View>
-    );
+    )
   }
 }
 
@@ -100,9 +96,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center"
   }
-});
+})
 
-export default withTheme(FieldSearchBarFull);
+export default withTheme(FieldSearchBarFull)
 
 export const SEED_DATA = [
   {
@@ -143,4 +139,4 @@ export const SEED_DATA = [
       height: 56
     }
   }
-];
+]

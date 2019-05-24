@@ -1,11 +1,7 @@
-import { TextInput } from "react-native";
-import {
-  COMPONENT_TYPES,
-  FORM_TYPES,
-  FIELD_NAME
-} from "../core/component-types";
+import { TextInput } from "react-native"
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
 
-export default TextInput;
+export default TextInput
 
 export const SEED_DATA = {
   name: "TextInput",
@@ -46,8 +42,7 @@ export const SEED_DATA = {
     },
     autoCapitalize: {
       label: "Auto Capitalize",
-      description:
-        "Can automatically capitalize sentences, words, and characters (Default: none).",
+      description: "Can automatically capitalize sentences, words, and characters (Default: none).",
       editable: true,
       required: false,
       value: null,
@@ -56,8 +51,7 @@ export const SEED_DATA = {
     },
     autoComplete: {
       label: "Auto Complete",
-      description:
-        "(Android Only) Suggests hints to autocomplete from the system",
+      description: "(Android Only) Suggests hints to autocomplete from the system",
       editable: true,
       required: false,
       value: null,
@@ -105,8 +99,7 @@ export const SEED_DATA = {
     },
     clearButtonMode: {
       label: "Clear Button Mode",
-      description:
-        "Enables a button within the textInput to clear the data entered",
+      description: "Enables a button within the textInput to clear the data entered",
       editable: true,
       required: false,
       options: ["never", "while-editing", "unless-editing", "always"],
@@ -115,8 +108,7 @@ export const SEED_DATA = {
     },
     clearTextOnFocus: {
       label: "Clear Text on Focus",
-      description:
-        "If true, clears the text field automatically when its focused.",
+      description: "If true, clears the text field automatically when its focused.",
       editable: true,
       required: false,
       value: null,
@@ -210,8 +202,7 @@ export const SEED_DATA = {
     },
     numberOfLines: {
       label: "Number of Lines",
-      description:
-        "Sets the number of lines for the input (Multiple Lines needs to be true)",
+      description: "Sets the number of lines for the input (Multiple Lines needs to be true)",
       editable: true,
       required: false,
       value: null,
@@ -296,8 +287,7 @@ export const SEED_DATA = {
     },
     selectTextOnFocus: {
       label: "Select Text on Focus",
-      description:
-        "If true, all the text will automatically be selected on focus",
+      description: "If true, all the text will automatically be selected on focus",
       editable: true,
       required: false,
       value: null,
@@ -351,8 +341,7 @@ export const SEED_DATA = {
     },
     textBreakStrategy: {
       label: "Text Break Strategy",
-      description:
-        "(Android Only) Set the text break strategy. (Default: simple)",
+      description: "(Android Only) Set the text break strategy. (Default: simple)",
       editable: true,
       required: false,
       value: null,
@@ -373,4 +362,4 @@ export const SEED_DATA = {
       handlerPropName: "onChangeText"
     }
   }
-};
+}

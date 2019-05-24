@@ -11,7 +11,7 @@ const colors = {
   strongInverse: "rgba(255, 255, 255, 100)",
   mediumInverse: "rgba(255, 255, 255, 87)",
   lightInverse: "rgba(255, 255, 255, 68)"
-};
+}
 
 export default {
   colors,
@@ -158,4 +158,4 @@ export default {
       borderOpacity: 0
     }
   }
-};
+}

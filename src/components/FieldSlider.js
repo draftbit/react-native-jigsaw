@@ -1,11 +1,11 @@
 /* @flow */
 
-import * as React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { withTheme } from "../core/theming";
-import type { Theme } from "../types";
-import Slider from "./Slider";
-import { FORM_TYPES, COMPONENT_TYPES, FIELD_NAME } from "../core/component-types";
+import * as React from "react"
+import { View, Text, StyleSheet } from "react-native"
+import { withTheme } from "../core/theming"
+import type { Theme } from "../types"
+import Slider from "./Slider"
+import { FORM_TYPES, COMPONENT_TYPES, FIELD_NAME } from "../core/component-types"
 
 type Props = {
   title?: string,
@@ -22,18 +22,20 @@ type Props = {
    * @optional
    */
   theme: Theme
-};
+}
 
 class FieldSlider extends React.Component {
   render() {
-    const { title, minimumLabel, maximumLabel, style, theme, ...props } = this.props;
-    const { colors, typography, spacing } = theme;
+    const { title, minimumLabel, maximumLabel, style, theme, ...props } = this.props
+    const { colors, typography, spacing } = theme
 
-    const labelStyle = [typography.caption, { color: colors.light }];
+    const labelStyle = [typography.caption, { color: colors.light }]
 
     return (
       <View style={[styles.container, style]}>
-        {title && <Text style={[typography.body1, { marginBottom: spacing.text / 2 }]}>{title}</Text>}
+        {title && (
+          <Text style={[typography.body1, { marginBottom: spacing.text / 2 }]}>{title}</Text>
+        )}
         <Slider {...props} />
         <View style={[styles.bottomContainer, { marginTop: spacing.text }]}>
           <Text style={[labelStyle, { flex: 1 }]}>{minimumLabel}</Text>
@@ -41,11 +43,11 @@ class FieldSlider extends React.Component {
           <Text style={[labelStyle, { flex: 1, textAlign: "right" }]}>{maximumLabel}</Text>
         </View>
       </View>
-    );
+    )
   }
 }
 
-export default withTheme(FieldSlider);
+export default withTheme(FieldSlider)
 
 const styles = StyleSheet.create({
   container: {
@@ -55,7 +57,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between"
   }
-});
+})
 
 export const SEED_DATA = {
   name: "Slider Field",
@@ -143,4 +145,4 @@ export const SEED_DATA = {
     width: 343,
     height: 72
   }
-};
+}

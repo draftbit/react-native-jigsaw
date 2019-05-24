@@ -1,6 +1,6 @@
-import { ScrollView } from "react-native";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-export default ScrollView;
+import { ScrollView } from "react-native"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+export default ScrollView
 
 export const SEED_DATA = {
   name: "ScrollView",
@@ -22,4 +22,4 @@ export const SEED_DATA = {
       value: false
     }
   }
-};
+}

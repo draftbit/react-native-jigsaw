@@ -1,7 +1,7 @@
-import * as React from "react";
-import * as Progress from "react-native-progress";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-import { withTheme } from "../core/theming";
+import * as React from "react"
+import * as Progress from "react-native-progress"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import { withTheme } from "../core/theming"
 
 const ProgressCircle = ({
   progress,
@@ -34,10 +34,10 @@ const ProgressCircle = ({
       textStyle={textStyle}
       thickness={thickness}
     />
-  );
-};
+  )
+}
 
-export default withTheme(ProgressCircle);
+export default withTheme(ProgressCircle)
 
 export const SEED_DATA = [
   {
@@ -57,11 +57,12 @@ export const SEED_DATA = [
         max: 1,
         step: 0.01,
         precision: 2,
-        editable: true
+        editable: true,
+        required: true
       },
       color: {
-        label: "Progress Color",
-        description: "Custom color for the progress shown",
+        label: "Color",
+        description: "Color for the progress shown",
         editable: true,
         value: null,
         required: true,
@@ -88,7 +89,7 @@ export const SEED_DATA = [
         label: "Size",
         description: "The size of the circle",
         type: FORM_TYPES.number,
-        value: 10,
+        value: 100,
         min: 0,
         max: 300,
         step: 1,
@@ -144,8 +145,8 @@ export const SEED_DATA = [
       }
     },
     layout: {
-      width: 343,
-      height: 2
+      width: 300,
+      height: 300
     }
   }
-];
+]

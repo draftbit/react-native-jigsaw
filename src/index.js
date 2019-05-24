@@ -6,7 +6,6 @@ export { default as Provider } from "./core/Provider"
 export { default as DefaultTheme } from "./styles/DefaultTheme"
 
 export { default as Touchable } from "./components/Touchable"
-
 export { default as Avatar } from "./components/Avatar"
 export { default as AvatarEdit } from "./components/AvatarEdit"
 export { default as Button } from "./components/Button"

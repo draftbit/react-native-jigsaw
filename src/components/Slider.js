@@ -70,18 +70,6 @@ export const SEED_DATA = {
       type: FORM_TYPES.boolean,
       value: null
     },
-    value: {
-      label: "Default value",
-      description: "The value where the thumb will render on load",
-      editable: true,
-      required: false,
-      type: FORM_TYPES.number,
-      min: 0,
-      max: 1000000,
-      step: 1,
-      precision: 0,
-      value: 10
-    },
     maximumValue: {
       label: "Maximum value",
       description: "The maximum value of the slider",
@@ -157,13 +145,6 @@ export const SEED_DATA = {
       max: 100,
       step: 0.01,
       precision: 2,
-      value: null
-    },
-    onValueChange: {
-      label: "Action",
-      description: "Action to execute when button pressed",
-      editable: true,
-      type: FORM_TYPES.action,
       value: null
     },
     trackBorderRadius: {

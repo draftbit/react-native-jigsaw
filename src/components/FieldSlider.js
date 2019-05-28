@@ -36,7 +36,7 @@ class FieldSlider extends React.Component {
         {title && (
           <Text style={[typography.body1, { marginBottom: spacing.text / 2 }]}>{title}</Text>
         )}
-        <Slider style={style} {...props} />
+        <Slider style={{width:style.width, height: style.height}} {...props} />
         <View style={[styles.bottomContainer, { marginTop: spacing.text }]}>
           <Text style={[labelStyle, { flex: 1 }]}>{minimumLabel}</Text>
           <Text style={labelStyle}>{this.props.value}</Text>
@@ -98,18 +98,6 @@ export const SEED_DATA = {
       required: false,
       type: FORM_TYPES.boolean,
       value: null
-    },
-    value: {
-      label: "Default value",
-      description: "The value where the thumb will render on load",
-      editable: true,
-      required: false,
-      type: FORM_TYPES.number,
-      min: 0,
-      max: 1000000,
-      step: 1,
-      precision: 0,
-      value: 10
     },
     maximumValue: {
       label: "Maximum value",
@@ -186,13 +174,6 @@ export const SEED_DATA = {
       max: 100,
       step: 0.01,
       precision: 2,
-      value: null
-    },
-    onValueChange: {
-      label: "Action",
-      description: "Action to execute when button pressed",
-      editable: true,
-      type: FORM_TYPES.action,
       value: null
     },
     trackBorderRadius: {

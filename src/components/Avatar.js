@@ -1,9 +1,9 @@
 // @flow
-import * as React from "react";
-import { Image } from "react-native";
-import Config from "./Config";
-import type { IconSource } from "./Icon";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import * as React from "react"
+import { Image } from "react-native"
+import Config from "./Config"
+import type { IconSource } from "./Icon"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 
 export type AvatarProps = {
   /**
@@ -15,17 +15,17 @@ export type AvatarProps = {
    */
   size: number,
   style?: any
-};
+}
 
 export default class Avatar extends React.PureComponent<AvatarProps> {
   static defaultProps = {
     image: Config.avatarImageUrl,
     size: Config.avatarImageSize
-  };
+  }
 
   render() {
-    const { image, size, style } = this.props;
-    const borderRadius = size / 2;
+    const { image, size, style } = this.props
+    const borderRadius = size / 2
 
     return (
       <Image
@@ -33,7 +33,7 @@ export default class Avatar extends React.PureComponent<AvatarProps> {
         source={typeof image === "string" ? { uri: image } : image}
         resizeMode="cover"
       />
-    );
+    )
   }
 }
 
@@ -66,4 +66,4 @@ export const SEED_DATA = {
     width: 80,
     height: 80
   }
-};
+}

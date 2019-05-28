@@ -1,18 +1,18 @@
 /* @flow */
 
-import * as React from "react";
-import { View, ScrollView, StyleSheet, Text } from "react-native";
-import { DatePicker, Divider, withTheme } from "@draftbit/ui";
-import type { Theme } from "@draftbit/ui/types";
+import * as React from "react"
+import { View, ScrollView, StyleSheet, Text } from "react-native"
+import { DatePicker, Divider, withTheme } from "@draftbit/ui"
+import type { Theme } from "@draftbit/ui/types"
 
 class DatePickerExample extends React.Component {
   state = {
     underlinePickerDate: new Date(),
     solidPickerDate: new Date()
-  };
+  }
 
   render() {
-    const { colors, spacing } = this.props.theme;
+    const { colors, spacing } = this.props.theme
 
     return (
       <ScrollView
@@ -22,47 +22,32 @@ class DatePickerExample extends React.Component {
             backgroundColor: colors.background,
             paddingHorizontal: spacing.large
           }
-        ]}
-      >
+        ]}>
         <View>
-          <Text style={{ marginVertical: spacing.large }}>
-            Date Picker - Underline
-          </Text>
+          <Text style={{ marginVertical: spacing.large }}>Date Picker - Underline</Text>
           <DatePicker
             label="Date"
             placeholder="Select a date..."
             date={this.state.underlinePickerDate}
-            onDateChange={underlinePickerDate =>
-              this.setState({ underlinePickerDate })
-            }
+            onDateChange={underlinePickerDate => this.setState({ underlinePickerDate })}
           />
-          <Text style={{ marginVertical: spacing.large }}>
-            Date Picker - Underline (Error)
-          </Text>
+          <Text style={{ marginVertical: spacing.large }}>Date Picker - Underline (Error)</Text>
           <DatePicker
             label="Date"
             placeholder="Select a date..."
             date={this.state.underlinePickerDate}
             error
-            onDateChange={underlinePickerDate =>
-              this.setState({ underlinePickerDate })
-            }
+            onDateChange={underlinePickerDate => this.setState({ underlinePickerDate })}
           />
-          <Text style={{ marginVertical: spacing.large }}>
-            Date Picker - Underline (Disabled)
-          </Text>
+          <Text style={{ marginVertical: spacing.large }}>Date Picker - Underline (Disabled)</Text>
           <DatePicker
             label="Date"
             placeholder="Select a date..."
             date={this.state.underlinePickerDate}
             disabled
-            onDateChange={underlinePickerDate =>
-              this.setState({ underlinePickerDate })
-            }
+            onDateChange={underlinePickerDate => this.setState({ underlinePickerDate })}
           />
-          <Text style={{ marginVertical: spacing.large }}>
-            Date Picker - Solid
-          </Text>
+          <Text style={{ marginVertical: spacing.large }}>Date Picker - Solid</Text>
           <DatePicker
             label="Date"
             placeholder="Select a date..."
@@ -70,9 +55,7 @@ class DatePickerExample extends React.Component {
             date={this.state.solidPickerDate}
             onDateChange={solidPickerDate => this.setState({ solidPickerDate })}
           />
-          <Text style={{ marginVertical: spacing.large }}>
-            Date Picker - Solid (Error)
-          </Text>
+          <Text style={{ marginVertical: spacing.large }}>Date Picker - Solid (Error)</Text>
           <DatePicker
             label="Date"
             placeholder="Select a date..."
@@ -81,9 +64,7 @@ class DatePickerExample extends React.Component {
             error
             onDateChange={solidPickerDate => this.setState({ solidPickerDate })}
           />
-          <Text style={{ marginVertical: spacing.large }}>
-            Date Picker - Solid (Disabled)
-          </Text>
+          <Text style={{ marginVertical: spacing.large }}>Date Picker - Solid (Disabled)</Text>
           <DatePicker
             label="Date"
             placeholder="Select a date..."
@@ -94,7 +75,7 @@ class DatePickerExample extends React.Component {
           />
         </View>
       </ScrollView>
-    );
+    )
   }
 }
 
@@ -102,6 +83,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   }
-});
+})
 
-export default withTheme(DatePickerExample);
+export default withTheme(DatePickerExample)

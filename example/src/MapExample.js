@@ -1,13 +1,13 @@
 /* @flow */
 
-import * as React from "react";
-import { View, StyleSheet } from "react-native";
-import { MapSimple, withTheme } from "@draftbit/ui";
-import type { Theme } from "@draftbit/ui/types";
+import * as React from "react"
+import { View, StyleSheet } from "react-native"
+import { MapSimple, withTheme } from "@draftbit/ui"
+import type { Theme } from "@draftbit/ui/types"
 
 class MapExample extends React.Component {
   render() {
-    const { colors, spacing } = this.props.theme;
+    const { colors, spacing } = this.props.theme
 
     return (
       <View
@@ -17,8 +17,7 @@ class MapExample extends React.Component {
             backgroundColor: colors.background,
             padding: spacing.large
           }
-        ]}
-      >
+        ]}>
         <MapSimple
           initialLatitude={37.402184}
           initialLongitude={-122.121264}
@@ -34,7 +33,7 @@ class MapExample extends React.Component {
           ]}
         />
       </View>
-    );
+    )
   }
 }
 
@@ -42,6 +41,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   }
-});
+})
 
-export default withTheme(MapExample);
+export default withTheme(MapExample)

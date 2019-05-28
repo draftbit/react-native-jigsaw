@@ -1,11 +1,11 @@
 // /* eslint-disable import/no-commonjs */
 
-const path = require("path");
-const glob = require("glob-to-regexp");
-const blacklist = require("metro-config/src/defaults/blacklist");
-const pak = require("../package.json");
+const path = require("path")
+const glob = require("glob-to-regexp")
+const blacklist = require("metro-config/src/defaults/blacklist")
+const pak = require("../package.json")
 
-const dependencies = Object.keys(pak.dependencies);
+const dependencies = Object.keys(pak.dependencies)
 
 module.exports = {
   projectRoot: __dirname,
@@ -14,9 +14,7 @@ module.exports = {
   resolver: {
     blacklistRE: blacklist([
       glob(`${path.resolve(__dirname, "..")}/node_modules/*`),
-      glob(
-        `${path.resolve(__dirname, "..")}/example/node_modules/node-fetch/*`
-      ),
+      glob(`${path.resolve(__dirname, "..")}/example/node_modules/node-fetch/*`),
       glob(`${path.resolve(__dirname, "..")}/example/node_modules/glob/*`)
     ]),
 
@@ -29,4 +27,4 @@ module.exports = {
       ...dependencies
     ]
   }
-};
+}

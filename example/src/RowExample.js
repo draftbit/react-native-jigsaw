@@ -1,7 +1,7 @@
 /* @flow */
 
-import * as React from "react";
-import { StyleSheet, View, Text, ScrollView } from "react-native";
+import * as React from "react"
+import { StyleSheet, View, Text, ScrollView } from "react-native"
 import {
   RowHeadlineImageIcon,
   RowHeadlineImageCaption,
@@ -11,15 +11,15 @@ import {
   withTheme,
   RowBodyCheckbox,
   RowBodySwitch
-} from "@draftbit/ui";
-import type { Theme } from "@draftbit/ui/types";
+} from "@draftbit/ui"
+import type { Theme } from "@draftbit/ui/types"
 
 const IMAGE_URL =
-  "https://res.cloudinary.com/altos/image/upload/c_scale,q_auto,dpr_auto,w_100/Avatar.png";
+  "https://res.cloudinary.com/altos/image/upload/c_scale,q_auto,dpr_auto,w_100/Avatar.png"
 
 type Props = {
   theme: Theme
-};
+}
 
 class RowExample extends React.Component<Props> {
   render() {
@@ -28,13 +28,11 @@ class RowExample extends React.Component<Props> {
         colors: { background },
         spacing
       }
-    } = this.props;
+    } = this.props
 
     return (
       <ScrollView style={[styles.container, { backgroundColor: background }]}>
-        <Text
-          style={{ marginHorizontal: spacing.large, marginTop: spacing.large }}
-        >
+        <Text style={{ marginHorizontal: spacing.large, marginTop: spacing.large }}>
           RowSingleLineHeadlineImageIcon
         </Text>
         <RowHeadlineImageIcon title="Headline" icon="check" image={IMAGE_URL} />
@@ -48,9 +46,7 @@ class RowExample extends React.Component<Props> {
           image={IMAGE_URL}
         />
         <Divider style={{ marginBottom: spacing.large }} />
-        <Text style={{ marginHorizontal: spacing.large }}>
-          RowSingleLineHeadlineIcon
-        </Text>
+        <Text style={{ marginHorizontal: spacing.large }}>RowSingleLineHeadlineIcon</Text>
         <RowHeadlineImageIcon title="Headline" icon="check" />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
@@ -61,15 +57,8 @@ class RowExample extends React.Component<Props> {
           icon="check"
         />
         <Divider style={{ marginBottom: spacing.large }} />
-        <Text style={{ marginHorizontal: spacing.large }}>
-          RowDoubleLineHeadlineImageIcon
-        </Text>
-        <RowHeadlineImageIcon
-          title="Headline"
-          subtitle="Subtitle"
-          icon="check"
-          image={IMAGE_URL}
-        />
+        <Text style={{ marginHorizontal: spacing.large }}>RowDoubleLineHeadlineImageIcon</Text>
+        <RowHeadlineImageIcon title="Headline" subtitle="Subtitle" icon="check" image={IMAGE_URL} />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
           RowDoubleLineHeadlineImageIcon with long title and subtitle
@@ -92,14 +81,8 @@ class RowExample extends React.Component<Props> {
           image={IMAGE_URL}
         />
         <Divider style={{ marginBottom: spacing.large }} />
-        <Text style={{ marginHorizontal: spacing.large }}>
-          RowDoubleLineHeadlineIcon
-        </Text>
-        <RowHeadlineImageIcon
-          title="Headline"
-          subtitle="Subtitle"
-          icon="check"
-        />
+        <Text style={{ marginHorizontal: spacing.large }}>RowDoubleLineHeadlineIcon</Text>
+        <RowHeadlineImageIcon title="Headline" subtitle="Subtitle" icon="check" />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
           RowDoubleLineHeadlineIcon with long title
@@ -120,14 +103,8 @@ class RowExample extends React.Component<Props> {
           icon="check"
         />
         <Divider style={{ marginBottom: spacing.large }} />
-        <Text style={{ marginHorizontal: spacing.large }}>
-          RowSingleLineHeadlineImageCaption
-        </Text>
-        <RowHeadlineImageCaption
-          title="Headline"
-          caption="Caption"
-          image={IMAGE_URL}
-        />
+        <Text style={{ marginHorizontal: spacing.large }}>RowSingleLineHeadlineImageCaption</Text>
+        <RowHeadlineImageCaption title="Headline" caption="Caption" image={IMAGE_URL} />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
           RowSingleLineHeadlineImageCaption with long title
@@ -138,9 +115,7 @@ class RowExample extends React.Component<Props> {
           image={IMAGE_URL}
         />
         <Divider style={{ marginBottom: spacing.large }} />
-        <Text style={{ marginHorizontal: spacing.large }}>
-          RowSingleLineHeadlineCaption
-        </Text>
+        <Text style={{ marginHorizontal: spacing.large }}>RowSingleLineHeadlineCaption</Text>
         <RowHeadlineImageCaption title="Headline" caption="Caption" />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
@@ -151,9 +126,7 @@ class RowExample extends React.Component<Props> {
           caption="Caption"
         />
         <Divider style={{ marginBottom: spacing.large }} />
-        <Text style={{ marginHorizontal: spacing.large }}>
-          RowDoubleLineHeadlineImageCaption
-        </Text>
+        <Text style={{ marginHorizontal: spacing.large }}>RowDoubleLineHeadlineImageCaption</Text>
         <RowHeadlineImageCaption
           title="Headline"
           subtitle="Subtitle"
@@ -171,14 +144,8 @@ class RowExample extends React.Component<Props> {
           image={IMAGE_URL}
         />
         <Divider style={{ marginBottom: spacing.large }} />
-        <Text style={{ marginHorizontal: spacing.large }}>
-          RowDoubleLineHeadlineCaption
-        </Text>
-        <RowHeadlineImageCaption
-          title="Headline"
-          subtitle="Subtitle"
-          caption="Caption"
-        />
+        <Text style={{ marginHorizontal: spacing.large }}>RowDoubleLineHeadlineCaption</Text>
+        <RowHeadlineImageCaption title="Headline" subtitle="Subtitle" caption="Caption" />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
           RowDoubleLineHeadlineCaption with long title
@@ -188,9 +155,7 @@ class RowExample extends React.Component<Props> {
           subtitle="Subtitle that is quite long so that it won't fit on a single line"
           caption="Caption"
         />
-        <Text style={{ marginHorizontal: spacing.large }}>
-          RowSingleLineBodyIcon
-        </Text>
+        <Text style={{ marginHorizontal: spacing.large }}>RowSingleLineBodyIcon</Text>
         <RowBodyIcon title="Headline" icon="check" />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
@@ -201,9 +166,7 @@ class RowExample extends React.Component<Props> {
           icon="check"
         />
         <Divider style={{ marginBottom: spacing.large }} />
-        <Text style={{ marginHorizontal: spacing.large }}>
-          RowDoubleLineBodyIcon
-        </Text>
+        <Text style={{ marginHorizontal: spacing.large }}>RowDoubleLineBodyIcon</Text>
         <RowBodyIcon title="Headline" subtitle="Subtitle" icon="check" />
         <Divider style={{ marginBottom: spacing.large }} />
         <Text style={{ marginHorizontal: spacing.large }}>
@@ -217,27 +180,19 @@ class RowExample extends React.Component<Props> {
         <Text style={{ marginHorizontal: spacing.large }}>
           RowBodyCheckbox with title and subtitle
         </Text>
-        <RowBodyCheckbox
-          title="Headline"
-          subtitle="subtitle"
-          status="checked"
-        />
+        <RowBodyCheckbox title="Headline" subtitle="subtitle" status="checked" />
         <Divider style={{ marginBottom: spacing.large }} />
-        <Text style={{ marginHorizontal: spacing.large }}>
-          RowBodyCheckbox with title only
-        </Text>
+        <Text style={{ marginHorizontal: spacing.large }}>RowBodyCheckbox with title only</Text>
         <RowBodyCheckbox title="Headline" status="checked" />
         <Text style={{ marginHorizontal: spacing.large }}>
           RowBodySwitch with title and subtitle
         </Text>
         <RowBodySwitch title="Headline" subtitle="subtitle" value={true} />
         <Divider style={{ marginBottom: spacing.large }} />
-        <Text style={{ marginHorizontal: spacing.large }}>
-          RowBodySwitch with title only
-        </Text>
+        <Text style={{ marginHorizontal: spacing.large }}>RowBodySwitch with title only</Text>
         <RowBodySwitch title="Headline" value={true} />
       </ScrollView>
-    );
+    )
   }
 }
 
@@ -245,6 +200,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   }
-});
+})
 
-export default withTheme(RowExample);
+export default withTheme(RowExample)

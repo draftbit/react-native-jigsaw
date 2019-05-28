@@ -40,7 +40,7 @@ class RadioButton extends React.Component<Props> {
       selected,
       disabled,
       color,
-      disabledColor
+      unselectedColor,
       onPress,
       theme: { colors }
     } = this.props
@@ -50,7 +50,7 @@ class RadioButton extends React.Component<Props> {
         icon={
           selected ? "MaterialIcons/radio-button-checked" : "MaterialIcons/radio-button-unchecked"
         }
-        color={disabled ? disabledColor : color}
+        color={selected ? color : unselectedColor}
         disabled={disabled}
         size={Config.radioButtonSize}
         onPress={this.onPress}
@@ -83,9 +83,9 @@ export const SEED_DATA = {
       value: "primary",
       type: FORM_TYPES.color
     },
-    disabledColor: {
-      label: "Disabled Color",
-      description: "Disabled Color for the button",
+    unselectedColor: {
+      label: "Unselected Color",
+      description: "Unselected Color for the button",
       required: false,
       editable: true,
       value: "secondary",

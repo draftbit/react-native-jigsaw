@@ -1,4 +1,4 @@
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 
 export const SEED_DATA = {
   name: "Query",
@@ -13,8 +13,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       type: FORM_TYPES.query,
-      description:
-        "A GraphQL-enabled query that lets you fetch data from your database",
+      description: "A GraphQL-enabled query that lets you fetch data from your database",
       value: ""
     },
     loading: {
@@ -34,4 +33,4 @@ export const SEED_DATA = {
       value: null
     }
   }
-};
+}

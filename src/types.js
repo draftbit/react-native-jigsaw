@@ -1,6 +1,6 @@
 /* @flow */
 
-export type Color = string;
+export type Color = string
 
 export type Colors = {|
   primary: Color,
@@ -15,7 +15,7 @@ export type Colors = {|
   strongInverse: Color,
   mediumInverse: Color,
   lightInverse: Color
-|};
+|}
 
 export type TypeStyle = {|
   fontFamily: string,
@@ -23,7 +23,7 @@ export type TypeStyle = {|
   fontSize: number,
   lineHeight: number,
   letterSpacing: number
-|};
+|}
 
 export type Typography = {|
   headline1: TypeStyle,
@@ -39,7 +39,7 @@ export type Typography = {|
   button: TypeStyle,
   caption: TypeStyle,
   overline: TypeStyle
-|};
+|}
 
 export type Spacing = {|
   gutters: number,
@@ -47,12 +47,12 @@ export type Spacing = {|
   small: number,
   medium: number,
   large: number
-|};
+|}
 
 export type BorderRadius = {|
   global: number,
   button: number
-|};
+|}
 
 export type Elevation = {|
   shadowColor: Color,
@@ -62,7 +62,7 @@ export type Elevation = {|
   borderWidth: number,
   borderColor: Color,
   borderOpacity: number
-|};
+|}
 
 export type Theme = {|
   disabledOpacity: number,
@@ -71,7 +71,7 @@ export type Theme = {|
   spacing: Spacing,
   borderRadius: BorderRadius,
   elevation: {| 0: Elevation, 1: Elevation, 2: Elevation, 3: Elevation |}
-|};
+|}
 
 export type ThemeShape = $Shape<{
   ...Theme,
@@ -80,4 +80,4 @@ export type ThemeShape = $Shape<{
   spacing: $Shape<$PropertyType<Theme, "spacing">>,
   borderRadius: $Shape<$PropertyType<Theme, "borderRadius">>,
   elevation: $Shape<$PropertyType<Theme, "elevation">>
-}>;
+}>

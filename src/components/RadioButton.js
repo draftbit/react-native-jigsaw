@@ -79,7 +79,7 @@ export const SEED_DATA = {
       description: "Color for the button",
       required: false,
       editable: true,
-      value: null,
+      value: "primary",
       type: FORM_TYPES.color
     },
     disabled: {

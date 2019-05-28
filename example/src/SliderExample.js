@@ -32,8 +32,8 @@ class SliderExample extends React.Component<Props> {
         <Slider
           style={{ width: 300, height: 30 }}
           minimumTrackTintColor="#5a45ff"
-          maximumTrackTintColor="#A663CC"
-          thumbTintColor="#B9FAF8"
+          maximumTrackTintColor="#536070"
+          thumbTintColor="#3BC9EA"
           thumbBorderRadius={20}
           trackBorderRadius={20}
           thumbSize={20}
@@ -51,8 +51,8 @@ class SliderExample extends React.Component<Props> {
           disabled={true}
           style={{ width: 300, height: 30 }}
           minimumTrackTintColor="#5a45ff"
-          maximumTrackTintColor="#A663CC"
-          thumbTintColor="#B9FAF8"
+          maximumTrackTintColor="#536070"
+          thumbTintColor="#3BC9EA"
           thumbSize={20}
           value={disabledSliderValue}
           onValueChange={sliderValue => {
@@ -73,8 +73,8 @@ class SliderExample extends React.Component<Props> {
           }}
           style={{ width: 300, height: 30 }}
           minimumTrackTintColor="#5a45ff"
-          maximumTrackTintColor="#A663CC"
-          thumbTintColor="#B9FAF8"
+          maximumTrackTintColor="#536070"
+          thumbTintColor="#3BC9EA"
           thumbBorderRadius={10}
           trackBorderRadius={10}
           thumbSize={20}

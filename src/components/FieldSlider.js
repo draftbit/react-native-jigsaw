@@ -36,7 +36,7 @@ class FieldSlider extends React.Component {
         {title && (
           <Text style={[typography.body1, { marginBottom: spacing.text / 2 }]}>{title}</Text>
         )}
-        <Slider {...props} />
+        <Slider style={{ width: style.width, height: style.height }} {...props} />
         <View style={[styles.bottomContainer, { marginTop: spacing.text }]}>
           <Text style={[labelStyle, { flex: 1 }]}>{minimumLabel}</Text>
           <Text style={labelStyle}>{this.props.value}</Text>
@@ -139,6 +139,78 @@ export const SEED_DATA = {
       ...FIELD_NAME,
       value: "sliderValue",
       handlerPropName: "onValueChange"
+    },
+    maximumTrackTintColor: {
+      label: "Maximum Color",
+      description: "Color of the track from the right of the thumb",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.color,
+      value: null
+    },
+    minimumTrackTintColor: {
+      label: "Minimum Color",
+      description: "Color of the track from the left of the thumb",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.color,
+      value: null
+    },
+    thumbTintColor: {
+      label: "Thumb Tint Color",
+      description: "Color of the thumb",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.color,
+      value: null
+    },
+    thumbTouchSize: {
+      label: "Hit Slop",
+      description: "The size of the hit slop",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.number,
+      min: 0,
+      max: 40,
+      step: 1,
+      precision: 2,
+      value: null
+    },
+    trackBorderRadius: {
+      label: "Track Border Radius",
+      description: "The border radius for the track ",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.number,
+      min: 0,
+      max: 50,
+      step: 1,
+      precision: 0,
+      value: 10
+    },
+    thumbBorderRadius: {
+      label: "Thumb Border Radius",
+      description: "The border radius for the thumb",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.number,
+      min: 0,
+      max: 50,
+      step: 1,
+      precision: 0,
+      value: 10
+    },
+    thumbSize: {
+      label: "Thumb Size",
+      description: "Size of the thumb",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.number,
+      min: 0,
+      max: 100,
+      step: 1,
+      precision: 2,
+      value: null
     }
   },
   layout: {

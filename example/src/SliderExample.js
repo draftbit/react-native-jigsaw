@@ -30,24 +30,37 @@ class SliderExample extends React.Component<Props> {
         ]}>
         <Text style={{ marginVertical: spacing.large }}>Slider</Text>
         <Slider
+          style={{ width: 300, height: 30 }}
+          minimumTrackTintColor="#5a45ff"
+          maximumTrackTintColor="#536070"
+          thumbTintColor="#3BC9EA"
+          thumbBorderRadius={20}
+          trackBorderRadius={20}
+          thumbSize={20}
+          thumbTouchSize={20}
           value={sliderValue}
           onValueChange={sliderValue => {
             this.setState({ sliderValue })
           }}
           minimumValue={0}
           maximumValue={10}
-          step={1}
+          step={0.02}
         />
         <Text style={{ marginVertical: spacing.large }}>Slider (Disabled)</Text>
         <Slider
+          disabled={true}
+          style={{ width: 300, height: 30 }}
+          minimumTrackTintColor="#5a45ff"
+          maximumTrackTintColor="#536070"
+          thumbTintColor="#3BC9EA"
+          thumbSize={20}
           value={disabledSliderValue}
-          onValueChange={disabledSliderValue => {
-            this.setState({ disabledSliderValue })
+          onValueChange={sliderValue => {
+            this.setState({ sliderValue })
           }}
           minimumValue={0}
           maximumValue={10}
-          step={1}
-          disabled
+          step={0.02}
         />
         <Text style={{ marginVertical: spacing.large }}>FieldSlider</Text>
         <FieldSlider
@@ -57,6 +70,18 @@ class SliderExample extends React.Component<Props> {
           value={fieldSliderValue}
           onValueChange={fieldSliderValue => {
             this.setState({ fieldSliderValue })
+          }}
+          style={{ width: 300, height: 30 }}
+          minimumTrackTintColor="#5a45ff"
+          maximumTrackTintColor="#536070"
+          thumbTintColor="#3BC9EA"
+          thumbBorderRadius={10}
+          trackBorderRadius={10}
+          thumbSize={20}
+          thumbTouchSize={20}
+          value={sliderValue}
+          onValueChange={sliderValue => {
+            this.setState({ sliderValue })
           }}
           minimumValue={0}
           maximumValue={10}

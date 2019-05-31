@@ -52,7 +52,7 @@ class ControllerExample extends React.Component {
           />
         </View>
         <View style={styles.row}>
-          <RadioButton selected={value} disabled={disabled} onPress={this.toggle} />
+          <RadioButton color="#5a45ff" selected={value} disabled={disabled} onPress={this.toggle} />
         </View>
         <View style={styles.row}>
           <FieldRadioButton

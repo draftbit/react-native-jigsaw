@@ -1,11 +1,11 @@
 /* @flow */
-import * as React from "react";
-import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types";
-import Row from "./Row";
-import Checkbox from "./Checkbox";
-import Config from "./Config";
-import type { Theme } from "../types";
+import * as React from "react"
+import { withTheme } from "../core/theming"
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
+import Row from "./Row"
+import Checkbox from "./Checkbox"
+import Config from "./Config"
+import type { Theme } from "../types"
 
 type Props = {
   title: string,
@@ -15,7 +15,7 @@ type Props = {
   status: "checked" | "unchecked" | "indeterminate",
   color?: string,
   onPress?: () => mixed
-};
+}
 
 class RowBodyCheckbox extends React.Component<Props> {
   render() {
@@ -27,7 +27,7 @@ class RowBodyCheckbox extends React.Component<Props> {
       onPress,
       color,
       theme: { colors, typography }
-    } = this.props;
+    } = this.props
 
     return (
       <Row
@@ -37,14 +37,21 @@ class RowBodyCheckbox extends React.Component<Props> {
         subtitleColor={colors.light}
         title={title}
         subtitle={subtitle}
-        right={() => <Checkbox status={status} size={Config.rowSingleLineIconSize} color={color} onPress={onPress} />}
+        right={() => (
+          <Checkbox
+            status={status}
+            size={Config.rowSingleLineIconSize}
+            color={color}
+            onPress={onPress}
+          />
+        )}
         style={style}
       />
-    );
+    )
   }
 }
 
-export default withTheme(RowBodyCheckbox);
+export default withTheme(RowBodyCheckbox)
 
 export const SEED_DATA = [
   {
@@ -122,4 +129,4 @@ export const SEED_DATA = [
       height: 81
     }
   }
-];
+]

@@ -1,11 +1,11 @@
 /* @flow */
 
-import * as React from "react";
-import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types";
-import Row from "./Row";
-import Switch from "./Switch";
-import type { Theme } from "../types";
+import * as React from "react"
+import { withTheme } from "../core/theming"
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
+import Row from "./Row"
+import Switch from "./Switch"
+import type { Theme } from "../types"
 
 type Props = {
   title: string,
@@ -15,7 +15,7 @@ type Props = {
   value?: boolean,
   color?: string,
   onValueChange?: Function
-};
+}
 
 class RowBodySwitch extends React.Component<Props> {
   render() {
@@ -27,7 +27,7 @@ class RowBodySwitch extends React.Component<Props> {
       onValueChange,
       color,
       theme: { colors, typography, spacing }
-    } = this.props;
+    } = this.props
 
     return (
       <Row
@@ -40,11 +40,11 @@ class RowBodySwitch extends React.Component<Props> {
         right={() => <Switch value={value} color={color} onValueChange={onValueChange} />}
         style={style}
       />
-    );
+    )
   }
 }
 
-export default withTheme(RowBodySwitch);
+export default withTheme(RowBodySwitch)
 
 export const SEED_DATA = [
   {
@@ -120,4 +120,4 @@ export const SEED_DATA = [
       height: 81
     }
   }
-];
+]

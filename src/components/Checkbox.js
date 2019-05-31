@@ -1,12 +1,12 @@
 /* @flow */
 
-import * as React from "react";
-import { Platform } from "react-native";
-import CheckboxAndroid from "./CheckboxAndroid";
-import CheckboxIOS from "./CheckboxIOS";
-import { withTheme } from "../core/theming";
-import type { Theme } from "../types";
-import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types";
+import * as React from "react"
+import { Platform } from "react-native"
+import CheckboxAndroid from "./CheckboxAndroid"
+import CheckboxIOS from "./CheckboxIOS"
+import { withTheme } from "../core/theming"
+import type { Theme } from "../types"
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
 
 type Props = {|
   /**
@@ -33,21 +33,25 @@ type Props = {|
    * @optional
    */
   theme: Theme
-|};
+|}
 
 class Checkbox extends React.Component<Props> {
   // @component ./CheckboxAndroid.js
-  static Android = CheckboxAndroid;
+  static Android = CheckboxAndroid
 
   // @component ./CheckboxIOS.js
-  static IOS = CheckboxIOS;
+  static IOS = CheckboxIOS
 
   render() {
-    return Platform.OS === "ios" ? <CheckboxIOS {...this.props} /> : <CheckboxAndroid {...this.props} />;
+    return Platform.OS === "ios" ? (
+      <CheckboxIOS {...this.props} />
+    ) : (
+      <CheckboxAndroid {...this.props} />
+    )
   }
 }
 
-export default withTheme(Checkbox);
+export default withTheme(Checkbox)
 
 export const SEED_DATA = {
   name: "Checkbox",
@@ -81,4 +85,4 @@ export const SEED_DATA = {
     width: 24,
     height: 24
   }
-};
+}

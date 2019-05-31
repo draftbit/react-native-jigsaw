@@ -1,10 +1,10 @@
-/* @flow */
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-const QUERY_COMPONENT = {
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+
+export const SEED_DATA = {
   name: "Query",
   tag: "Query",
   description: "GraphQL-connected Query component",
-  category: COMPONENT_TYPES.data,
+  type: COMPONENT_TYPES.primitive,
   supports_list_render: false,
   layout: {},
   props: {
@@ -13,8 +13,8 @@ const QUERY_COMPONENT = {
       editable: true,
       required: true,
       type: FORM_TYPES.query,
-      description: "A GraphQL-enabled query that lets you fetch data from your database"
-      value: "",
+      description: "A GraphQL-enabled query that lets you fetch data from your database",
+      value: ""
     },
     loading: {
       label: "Loading Component",

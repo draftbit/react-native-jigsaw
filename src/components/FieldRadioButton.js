@@ -1,13 +1,13 @@
 /* @flow */
 
-import * as React from "react";
-import { View, Text } from "react-native";
-import color from "color";
-import { withTheme } from "../core/theming";
-import Touchable from "./Touchable";
-import RadioButton from "./RadioButton";
-import type { Theme } from "../types";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import * as React from "react"
+import { View, Text } from "react-native"
+import color from "color"
+import { withTheme } from "../core/theming"
+import Touchable from "./Touchable"
+import RadioButton from "./RadioButton"
+import type { Theme } from "../types"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 
 type Props = {|
   /**
@@ -29,62 +29,61 @@ type Props = {|
   /**
    * @optional
    */
+  color?: string,
+  /**
+   * Color of the radio button
+   */
   theme: Theme
-|};
+|}
 
 class FieldRadioButton extends React.Component<Props> {
   onPress = () => {
-    const { onPress } = this.props;
+    const { onPress } = this.props
 
     if (onPress) {
-      onPress();
+      onPress()
     }
-  };
+  }
 
   render() {
     const {
       title,
       selected,
       disabled,
+      color,
       onPress,
       theme: { colors, typography, spacing, disabledOpacity }
-    } = this.props;
+    } = this.props
 
-    let titleColor = selected ? colors.medium : colors.light;
+    let titleColor = selected ? colors.medium : colors.light
 
     if (disabled) {
       titleColor = color(titleColor)
         .alpha(disabledOpacity)
         .rgb()
-        .string();
+        .string()
     }
 
     return (
       <Touchable onPress={this.onPress} disabled={disabled}>
         <View style={{ flexDirection: "row" }}>
-          <RadioButton selected={selected} disabled={disabled} />
-          <Text
-            style={[
-              typography.body1,
-              { color: titleColor, marginLeft: spacing.medium }
-            ]}
-          >
+          <RadioButton color={color} selected={selected} disabled={disabled} />
+          <Text style={[typography.body1, { color: titleColor, marginLeft: spacing.medium }]}>
             {title}
           </Text>
         </View>
       </Touchable>
-    );
+    )
   }
 }
 
-export default withTheme(FieldRadioButton);
+export default withTheme(FieldRadioButton)
 
 export const SEED_DATA = {
   name: "Field Radio Button",
   tag: "FieldRadioButton",
   category: COMPONENT_TYPES.field,
-  preview_image_url:
-    "{CLOUDINARY_URL}/Field_Radio.png",
+  preview_image_url: "{CLOUDINARY_URL}/Field_Radio.png",
   props: {
     title: {
       label: "Title",
@@ -101,6 +100,14 @@ export const SEED_DATA = {
       editable: true,
       value: true,
       type: FORM_TYPES.boolean
+    },
+    color: {
+      label: "Color",
+      description: "Color for the button",
+      required: false,
+      editable: true,
+      value: "primary",
+      type: FORM_TYPES.color
     },
     disabled: {
       label: "Disabled",
@@ -123,4 +130,4 @@ export const SEED_DATA = {
     width: 343,
     height: 59
   }
-};
+}

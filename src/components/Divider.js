@@ -1,10 +1,10 @@
 /* @flow */
 
-import * as React from "react";
-import { StyleSheet, View } from "react-native";
-import { withTheme } from "../core/theming";
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
-import type { Theme } from "../types";
+import * as React from "react"
+import { StyleSheet, View } from "react-native"
+import { withTheme } from "../core/theming"
+import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types"
+import type { Theme } from "../types"
 
 type Props = {
   style?: any,
@@ -12,7 +12,7 @@ type Props = {
    * @optional
    */
   theme: Theme
-};
+}
 
 class Divider extends React.Component<Props> {
   render() {
@@ -21,17 +21,21 @@ class Divider extends React.Component<Props> {
       color,
       height,
       theme: { colors }
-    } = this.props;
+    } = this.props
 
     return (
       <View
-        style={[{ backgroundColor: color || colors.divider }, style, { height: height || StyleSheet.hairlineWidth }]}
+        style={[
+          { backgroundColor: color || colors.divider },
+          style,
+          { height: height || StyleSheet.hairlineWidth }
+        ]}
       />
-    );
+    )
   }
 }
 
-export default withTheme(Divider);
+export default withTheme(Divider)
 
 export const SEED_DATA = [
   {
@@ -51,7 +55,8 @@ export const SEED_DATA = [
       },
       height: {
         label: "Height",
-        description: "The height (thickness) of the divider. If not provided, defaults to StyleSheet.hairlineWidth.",
+        description:
+          "The height (thickness) of the divider. If not provided, defaults to StyleSheet.hairlineWidth.",
         editable: true,
         required: false,
         type: FORM_TYPES.number,
@@ -66,4 +71,4 @@ export const SEED_DATA = [
       height: 1
     }
   }
-];
+]

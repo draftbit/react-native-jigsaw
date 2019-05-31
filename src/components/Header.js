@@ -1,13 +1,13 @@
 /* @flow */
 
-import * as React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { withTheme } from "../core/theming";
-import Divider from "./Divider";
-import Icon from "./Icon";
-import Touchable from "./Touchable";
-import Config from "./Config";
-import type { Theme, Color, TypeStyle } from "../types";
+import * as React from "react"
+import { View, Text, StyleSheet } from "react-native"
+import { withTheme } from "../core/theming"
+import Divider from "./Divider"
+import Icon from "./Icon"
+import Touchable from "./Touchable"
+import Config from "./Config"
+import type { Theme, Color, TypeStyle } from "../types"
 
 type Props = {
   titleTypeStyle: TypeStyle,
@@ -18,12 +18,12 @@ type Props = {
   onPress: () => void,
   theme: Theme,
   style?: any
-};
+}
 
 class Header extends React.Component<Props> {
   static defaultProps = {
     icon: "chevron-right"
-  };
+  }
 
   render() {
     const {
@@ -36,7 +36,7 @@ class Header extends React.Component<Props> {
       onPress,
       style,
       theme: { colors, spacing, typography }
-    } = this.props;
+    } = this.props
 
     return (
       <View style={[styles.container, style]}>
@@ -49,15 +49,13 @@ class Header extends React.Component<Props> {
                 flex: 1
               }
             ]}
-            numberOfLines={1}
-          >
+            numberOfLines={1}>
             {title}
           </Text>
           {onPress && (
             <Touchable
               style={{ alignSelf: "center", marginLeft: spacing.medium }}
-              onPress={onPress}
-            >
+              onPress={onPress}>
               <View style={styles.buttonContainer}>
                 <Text
                   style={[
@@ -67,22 +65,17 @@ class Header extends React.Component<Props> {
                       marginRight: spacing.small
                     }
                   ]}
-                  numberOfLines={1}
-                >
+                  numberOfLines={1}>
                   {buttonText}
                 </Text>
-                <Icon
-                  name={icon}
-                  size={Config.headerIconSize}
-                  color={colors.light}
-                />
+                <Icon name={icon} size={Config.headerIconSize} color={colors.light} />
               </View>
             </Touchable>
           )}
         </View>
         <Divider style={{ marginTop: dividerTopMargin || spacing.large }} />
       </View>
-    );
+    )
   }
 }
 
@@ -100,6 +93,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   }
-});
+})
 
-export default withTheme(Header);
+export default withTheme(Header)

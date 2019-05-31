@@ -1,10 +1,10 @@
 /* @flow */
 
-import * as React from "react";
-import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-import Header from "./Header";
-import type { Theme, Color, TypeStyle } from "../types";
+import * as React from "react"
+import { withTheme } from "../core/theming"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import Header from "./Header"
+import type { Theme, Color, TypeStyle } from "../types"
 
 type Props = {
   title: string,
@@ -13,12 +13,12 @@ type Props = {
   onPress: () => void,
   theme: Theme,
   style?: any
-};
+}
 
 class HeaderMedium extends React.Component<Props> {
   static defaultProps = {
     onPress: () => {}
-  };
+  }
 
   render() {
     const {
@@ -28,7 +28,7 @@ class HeaderMedium extends React.Component<Props> {
       onPress,
       style,
       theme: { colors, typography }
-    } = this.props;
+    } = this.props
 
     return (
       <Header
@@ -40,18 +40,17 @@ class HeaderMedium extends React.Component<Props> {
         onPress={onPress}
         style={style}
       />
-    );
+    )
   }
 }
 
-export default withTheme(HeaderMedium);
+export default withTheme(HeaderMedium)
 
 export const SEED_DATA = [
   {
     name: "Header Medium",
     tag: "HeaderMedium",
-    description:
-      "A medium header with an optional touchable right aligned text and icon.",
+    description: "A medium header with an optional touchable right aligned text and icon.",
     category: COMPONENT_TYPES.header,
     preview_image_url: "{CLOUDINARY_URL}/Header_HeadlineMediumIconText.png",
     supports_list_render: false,
@@ -90,4 +89,4 @@ export const SEED_DATA = [
       height: 41
     }
   }
-];
+]

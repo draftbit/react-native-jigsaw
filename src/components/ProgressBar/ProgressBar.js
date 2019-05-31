@@ -1,11 +1,11 @@
 /* @flow */
 
-import * as React from "react";
-import { StyleSheet } from "react-native";
-import ProgressBarComponent from "./ProgressBarComponent";
-import { withTheme } from "../../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../../core/component-types";
-import type { Theme } from "../../types";
+import * as React from "react"
+import { StyleSheet } from "react-native"
+import ProgressBarComponent from "./ProgressBarComponent"
+import { withTheme } from "../../core/theming"
+import { COMPONENT_TYPES, FORM_TYPES } from "../../core/component-types"
+import type { Theme } from "../../types"
 
 type Props = {|
   /**
@@ -17,7 +17,7 @@ type Props = {|
    * @optional
    */
   theme: Theme
-|};
+|}
 
 /**
  * Progress bar is an indicator used to present progress of some activity in the app.
@@ -40,7 +40,7 @@ class ProgressBar extends React.Component<Props> {
       progress,
       style,
       theme: { colors }
-    } = this.props;
+    } = this.props
 
     return (
       <ProgressBarComponent
@@ -49,15 +49,15 @@ class ProgressBar extends React.Component<Props> {
         style={[styles.container, style]}
         trackTintColor={colors.divider}
       />
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: { alignSelf: "stretch" }
-});
+})
 
-export default withTheme(ProgressBar);
+export default withTheme(ProgressBar)
 
 export const SEED_DATA = [
   {
@@ -65,8 +65,7 @@ export const SEED_DATA = [
     tag: "ProgressBar",
     description: "A horizontal bar used to show completed progress",
     category: COMPONENT_TYPES.formControl,
-    preview_image_url:
-      "{CLOUDINARY_URL}/Status_Progress.png",
+    preview_image_url: "{CLOUDINARY_URL}/Status_Progress.png",
     supports_list_render: false,
     props: {
       progress: {
@@ -86,4 +85,4 @@ export const SEED_DATA = [
       height: 2
     }
   }
-];
+]

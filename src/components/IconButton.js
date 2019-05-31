@@ -1,15 +1,15 @@
 /* @flow */
 
-import * as React from "react";
-import { View, StyleSheet, ActivityIndicator } from "react-native";
-import color from "color";
+import * as React from "react"
+import { View, StyleSheet, ActivityIndicator } from "react-native"
+import color from "color"
 
-import Touchable from "./Touchable";
-import Icon from "./Icon";
-import { withTheme } from "../core/theming";
-import type { IconSource } from "./Icon";
-import type { Theme, $RemoveChildren } from "../types";
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
+import Touchable from "./Touchable"
+import Icon from "./Icon"
+import { withTheme } from "../core/theming"
+import type { IconSource } from "./Icon"
+import type { Theme, $RemoveChildren } from "../types"
+import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types"
 
 type Props = $RemoveChildren<typeof Touchable> & {|
   /**
@@ -45,7 +45,7 @@ type Props = $RemoveChildren<typeof Touchable> & {|
    * @optional
    */
   theme: Theme
-|};
+|}
 
 /**
  * An icon button is a button which displays only an icon without a label.
@@ -90,11 +90,11 @@ const IconButton = ({
   style,
   ...rest
 }: Props) => {
-  const iconColor = customColor || theme.colors.text;
+  const iconColor = customColor || theme.colors.text
   const rippleColor = color(iconColor)
     .alpha(theme.disabledOpacity)
     .rgb()
-    .string();
+    .string()
 
   return (
     <Touchable
@@ -115,33 +115,29 @@ const IconButton = ({
       accessibilityRole="button"
       accessibilityStates={disabled ? ["disabled"] : undefined}
       hitSlop={{ top: 6, left: 6, bottom: 6, right: 6 }}
-      {...rest}
-    >
+      {...rest}>
       <View>
-        {icon && loading !== true ? (
-          <Icon name={icon} size={size} color={iconColor} />
-        ) : null}
+        {icon && loading !== true ? <Icon name={icon} size={size} color={iconColor} /> : null}
         {loading ? <ActivityIndicator size="small" color={iconColor} /> : null}
       </View>
     </Touchable>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center"
   }
-});
+})
 
-export default withTheme(IconButton);
+export default withTheme(IconButton)
 
 export const SEED_DATA = {
   name: "Icon Button",
   tag: "IconButton",
   category: COMPONENT_TYPES.button,
-  preview_image_url:
-    "{CLOUDINARY_URL}/Button_Icon.png",
+  preview_image_url: "{CLOUDINARY_URL}/Button_Icon.png",
   props: {
     icon: {
       label: "Icon Name",
@@ -180,4 +176,4 @@ export const SEED_DATA = {
     width: 24,
     height: 24
   }
-};
+}

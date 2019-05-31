@@ -22,14 +22,15 @@ const Slider = ({
   thumbSize,
   ...props
 }) => {
-  const calcThumbHeightSize = style.height * 0.4
-  const calcThumbWidthSize = style.width * 0.1
+  const thumbHeightSize = style.height * 0.4
+  const thumbWidthSize = style.width * 0.1
   return (
     <ReactNativeSlider
+      {...props}
       disabled={disabled}
       value={value}
-      minimumValue={0}
-      maximumValue={10}
+      minimumValue={minimumValue}
+      maximumValue={maximumValue}
       minimumTrackTintColor={minimumTrackTintColor}
       maximumTrackTintColor={maximumTrackTintColor}
       thumbTintColor={thumbTintColor}
@@ -42,12 +43,11 @@ const Slider = ({
       }}
       thumbStyle={{
         borderRadius: thumbBorderRadius ? thumbBorderRadius : 0,
-        width: thumbSize ? thumbSize : calcThumbWidthSize,
-        height: thumbSize ? thumbSize : calcThumbHeightSize
+        width: thumbSize ? thumbSize : thumbWidthSize,
+        height: thumbSize ? thumbSize : thumbHeightSize
       }}
       style={style}
       step={step}
-      {...props}
     />
   )
 }
@@ -143,7 +143,7 @@ export const SEED_DATA = {
       type: FORM_TYPES.number,
       min: 0,
       max: 100,
-      step: 0.01,
+      step: 1,
       precision: 2,
       value: null
     },
@@ -154,7 +154,7 @@ export const SEED_DATA = {
       required: false,
       type: FORM_TYPES.number,
       min: 0,
-      max: 1000,
+      max: 50,
       step: 1,
       precision: 0,
       value: 10
@@ -166,7 +166,7 @@ export const SEED_DATA = {
       required: false,
       type: FORM_TYPES.number,
       min: 0,
-      max: 1000,
+      max: 50,
       step: 1,
       precision: 0,
       value: 10
@@ -179,7 +179,7 @@ export const SEED_DATA = {
       type: FORM_TYPES.number,
       min: 0,
       max: 100,
-      step: 0.01,
+      step: 1,
       precision: 2,
       value: null
     }

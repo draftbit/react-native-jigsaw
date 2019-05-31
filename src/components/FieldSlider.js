@@ -36,7 +36,7 @@ class FieldSlider extends React.Component {
         {title && (
           <Text style={[typography.body1, { marginBottom: spacing.text / 2 }]}>{title}</Text>
         )}
-        <Slider style={{width:style.width, height: style.height}} {...props} />
+        <Slider style={{ width: style.width, height: style.height }} {...props} />
         <View style={[styles.bottomContainer, { marginTop: spacing.text }]}>
           <Text style={[labelStyle, { flex: 1 }]}>{minimumLabel}</Text>
           <Text style={labelStyle}>{this.props.value}</Text>
@@ -171,8 +171,8 @@ export const SEED_DATA = {
       required: false,
       type: FORM_TYPES.number,
       min: 0,
-      max: 100,
-      step: 0.01,
+      max: 40,
+      step: 1,
       precision: 2,
       value: null
     },
@@ -183,7 +183,7 @@ export const SEED_DATA = {
       required: false,
       type: FORM_TYPES.number,
       min: 0,
-      max: 1000,
+      max: 50,
       step: 1,
       precision: 0,
       value: 10
@@ -195,7 +195,7 @@ export const SEED_DATA = {
       required: false,
       type: FORM_TYPES.number,
       min: 0,
-      max: 1000,
+      max: 50,
       step: 1,
       precision: 0,
       value: 10
@@ -208,7 +208,7 @@ export const SEED_DATA = {
       type: FORM_TYPES.number,
       min: 0,
       max: 100,
-      step: 0.01,
+      step: 1,
       precision: 2,
       value: null
     }

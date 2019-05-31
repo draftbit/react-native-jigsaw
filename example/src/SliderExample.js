@@ -52,7 +52,9 @@ class SliderExample extends React.Component<Props> {
           style={{ width: 300, height: 30 }}
           minimumTrackTintColor="#5a45ff"
           maximumTrackTintColor="#536070"
-          thumbTintColor="#3BC9EA"
+          thumbTintColor="#00FF00"
+          disabledThumbTintColor="#000000"
+          thumbBorderRadius={20}
           thumbSize={20}
           value={disabledSliderValue}
           onValueChange={sliderValue => {

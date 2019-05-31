@@ -9,6 +9,7 @@ const Slider = ({
   minimumTrackTintColor,
   maximumTrackTintColor,
   thumbTintColor,
+  disabledThumbTintColor,
   minimumValue,
   maximumValue,
   thumbTouchSize,
@@ -33,7 +34,7 @@ const Slider = ({
       maximumValue={maximumValue}
       minimumTrackTintColor={minimumTrackTintColor}
       maximumTrackTintColor={maximumTrackTintColor}
-      thumbTintColor={thumbTintColor}
+      thumbTintColor={(disabled && disabledThumbTintColor) ? disabledThumbTintColor: thumbTintColor}
       thumbTouchSize={{ width: thumbTouchSize, height: thumbTouchSize }}
       onValueChange={onValueChange}
       trackStyle={{
@@ -130,6 +131,14 @@ export const SEED_DATA = {
     thumbTintColor: {
       label: "Thumb Tint Color",
       description: "Color of the thumb",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.color,
+      value: null
+    },
+    disabledThumbTintColor: {
+      label: "Disabled Thumb Tint Color",
+      description: "Color of the thumb when the slider is disabled",
       editable: true,
       required: false,
       type: FORM_TYPES.color,

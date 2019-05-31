@@ -1,13 +1,9 @@
-import React from "react";
-import { View, Text } from "react-native";
-import { MapView } from "expo";
-import { withTheme } from "../core/theming";
-import type { Theme } from "../types";
-import {
-  COMPONENT_TYPES,
-  FORM_TYPES,
-  BORDER_RADIUS_MODE
-} from "../core/component-types";
+import React from "react"
+import { View, Text } from "react-native"
+import { MapView } from "expo"
+import { withTheme } from "../core/theming"
+import type { Theme } from "../types"
+import { COMPONENT_TYPES, FORM_TYPES, BORDER_RADIUS_MODE } from "../core/component-types"
 
 export type MapSimpleProps = {
   aspectRatio?: number,
@@ -23,13 +19,13 @@ export type MapSimpleProps = {
   }>,
   style: any,
   theme: Theme
-};
+}
 
 class MapSimple extends React.PureComponent<MapSimpleProps> {
   static defaultProps = {
     aspectRatio: 1,
     markers: []
-  };
+  }
 
   render() {
     const {
@@ -41,7 +37,7 @@ class MapSimple extends React.PureComponent<MapSimpleProps> {
       markers,
       style,
       theme: { borderRadius, colors }
-    } = this.props;
+    } = this.props
 
     return (
       <MapView
@@ -53,13 +49,11 @@ class MapSimple extends React.PureComponent<MapSimpleProps> {
         }}
         style={[
           {
-            borderRadius: borderRadius.global,
             width: "100%",
             aspectRatio
           },
           style
-        ]}
-      >
+        ]}>
         {markers.map((m, i) => (
           <MapView.Marker
             coordinate={{
@@ -73,11 +67,11 @@ class MapSimple extends React.PureComponent<MapSimpleProps> {
           />
         ))}
       </MapView>
-    );
+    )
   }
 }
 
-export default withTheme(MapSimple);
+export default withTheme(MapSimple)
 
 export const SEED_DATA = {
   name: "Map",
@@ -90,8 +84,7 @@ export const SEED_DATA = {
   props: {
     initialLatitude: {
       label: "Initial latitude",
-      description:
-        "The latitude of the location to center the map on initially",
+      description: "The latitude of the location to center the map on initially",
       type: FORM_TYPES.number,
       min: -90,
       max: 90,
@@ -103,8 +96,7 @@ export const SEED_DATA = {
     },
     initialLongitude: {
       label: "Initial longitude",
-      description:
-        "The longitude of the location to center the map on initially",
+      description: "The longitude of the location to center the map on initially",
       type: FORM_TYPES.number,
       min: -180,
       max: 180,
@@ -116,8 +108,7 @@ export const SEED_DATA = {
     },
     initialLatitudeDelta: {
       label: "Initial latitude delta",
-      description:
-        "The amount of latitude to display on the map initially (the horizontal zoom)",
+      description: "The amount of latitude to display on the map initially (the horizontal zoom)",
       type: FORM_TYPES.number,
       min: 0.0001,
       max: 100,
@@ -129,8 +120,7 @@ export const SEED_DATA = {
     },
     initialLongitudeDelta: {
       label: "Initial longitude delta",
-      description:
-        "The amount of longitude to display on the map initially (the vertical zoom)",
+      description: "The amount of longitude to display on the map initially (the vertical zoom)",
       type: FORM_TYPES.number,
       min: 0.0001,
       max: 100,
@@ -163,4 +153,4 @@ export const SEED_DATA = {
     width: 345,
     height: 302
   }
-};
+}

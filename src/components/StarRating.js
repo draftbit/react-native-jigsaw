@@ -1,10 +1,10 @@
 // @flow
-import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import type { Theme } from "../types";
-import Icon from "./Icon";
-import Config from "./Config";
-import { withTheme } from "../core/theming";
+import * as React from "react"
+import { Text, View, StyleSheet } from "react-native"
+import type { Theme } from "../types"
+import Icon from "./Icon"
+import Config from "./Config"
+import { withTheme } from "../core/theming"
 
 type Props = {
   /**
@@ -21,19 +21,19 @@ type Props = {
   numberOfRatings?: ?number,
   theme: Theme,
   style?: any
-};
+}
 
 class StarRating extends React.PureComponent<Props> {
   static defaultProps = {
     maxStars: 5,
     rating: 0
-  };
+  }
 
   render() {
-    const { maxStars, rating, theme, style } = this.props;
-    const { colors } = theme;
+    const { maxStars, rating, theme, style } = this.props
+    const { colors } = theme
 
-    const ratingRounded = Math.round(rating * 2) / 2;
+    const ratingRounded = Math.round(rating * 2) / 2
 
     return (
       <View style={[styles.containerStyle, style]}>
@@ -46,7 +46,7 @@ class StarRating extends React.PureComponent<Props> {
           />
         ))}
       </View>
-    );
+    )
   }
 }
 
@@ -55,6 +55,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center"
   }
-});
+})
 
-export default withTheme(StarRating);
+export default withTheme(StarRating)

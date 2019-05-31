@@ -1,14 +1,10 @@
 /* @flow */
 
-import * as React from "react";
-import { withTheme } from "../../core/theming";
-import PickerComponent from "./PickerComponent";
-import type { Theme } from "../../types";
-import {
-  COMPONENT_TYPES,
-  FORM_TYPES,
-  FIELD_NAME
-} from "../../core/component-types";
+import * as React from "react"
+import { withTheme } from "../../core/theming"
+import PickerComponent from "./PickerComponent"
+import type { Theme } from "../../types"
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../../core/component-types"
 
 type Props = {
   /**
@@ -56,7 +52,7 @@ type Props = {
   onChange: (itemValue: string, itemIndex: number) => void,
   style?: any,
   theme: Theme
-};
+}
 
 class Picker extends React.Component<Props> {
   static defaultProps = {
@@ -69,28 +65,28 @@ class Picker extends React.Component<Props> {
     type: "underline",
     disabled: false,
     error: false
-  };
+  }
 
   state = {
     pickerVisible: false
-  };
+  }
 
   onValueChange = (itemValue, itemIndex) => {
-    const { placeholder, onChange } = this.props;
+    const { placeholder, onChange } = this.props
 
     if (placeholder && itemIndex === 0) {
-      return;
+      return
     }
 
-    onChange && onChange(itemValue, itemIndex);
-  };
+    onChange && onChange(itemValue, itemIndex)
+  }
 
   render() {
-    const { placeholder, options, value, ...props } = this.props;
+    const { placeholder, options, value, ...props } = this.props
 
     const pickerOptions = placeholder
       ? [{ value: placeholder, label: placeholder }, ...options]
-      : options;
+      : options
 
     return (
       <PickerComponent
@@ -100,11 +96,11 @@ class Picker extends React.Component<Props> {
         options={pickerOptions}
         onValueChange={this.onValueChange}
       />
-    );
+    )
   }
 }
 
-export default withTheme(Picker);
+export default withTheme(Picker)
 
 const SEED_DATA_PROPS = {
   label: {
@@ -133,8 +129,7 @@ const SEED_DATA_PROPS = {
   },
   options: {
     label: "Options",
-    description:
-      "Array of picker options. An array of objects containing a label and value.",
+    description: "Array of picker options. An array of objects containing a label and value.",
     editable: true,
     type: FORM_TYPES.array,
     value: null
@@ -163,8 +158,7 @@ const SEED_DATA_PROPS = {
   },
   leftIconMode: {
     label: "Left icon mode",
-    description:
-      "The mode of the icon to display on the left. 'inset' or 'outset'.",
+    description: "The mode of the icon to display on the left. 'inset' or 'outset'.",
     type: FORM_TYPES.flatArray,
     value: "inset",
     options: ["inset", "outset"],
@@ -179,7 +173,7 @@ const SEED_DATA_PROPS = {
     editable: true
   },
   fieldName: FIELD_NAME
-};
+}
 
 export const SEED_DATA = [
   {
@@ -222,4 +216,4 @@ export const SEED_DATA = [
       height: 82
     }
   }
-];
+]

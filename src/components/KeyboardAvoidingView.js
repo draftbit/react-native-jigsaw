@@ -1,7 +1,7 @@
-import { KeyboardAvoidingView } from "react-native";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { KeyboardAvoidingView } from "react-native"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 
-export default KeyboardAvoidingView;
+export default KeyboardAvoidingView
 
 export const SEED_DATA = {
   name: "KeyboardAvoidingView",
@@ -31,12 +31,11 @@ export const SEED_DATA = {
     },
     keyboardVerticalOffset: {
       label: "Keyboard Vertical Offset",
-      description:
-        "The distance between the bottom of the view and the keyboard",
+      description: "The distance between the bottom of the view and the keyboard",
       editable: true,
       required: false,
       value: 0,
       type: FORM_TYPES.number
     }
   }
-};
+}

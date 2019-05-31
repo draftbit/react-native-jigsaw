@@ -1,22 +1,16 @@
 /* @flow */
 
-import * as React from "react";
-import {
-  ActivityIndicator,
-  Animated,
-  View,
-  Text,
-  StyleSheet
-} from "react-native";
-import color from "color";
-import Config from "./Config";
-import Icon from "./Icon";
-import Touchable from "./Touchable";
-import Elevation from "./Elevation";
-import { withTheme } from "../core/theming";
-import type { Theme } from "../types";
-import type { IconSource } from "./Icon";
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
+import * as React from "react"
+import { ActivityIndicator, Animated, View, Text, StyleSheet } from "react-native"
+import color from "color"
+import Config from "./Config"
+import Icon from "./Icon"
+import Touchable from "./Touchable"
+import Elevation from "./Elevation"
+import { withTheme } from "../core/theming"
+import type { Theme } from "../types"
+import type { IconSource } from "./Icon"
+import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types"
 
 type Props = {
   /**
@@ -54,7 +48,7 @@ type Props = {
    * @optional
    */
   theme: Theme
-};
+}
 
 /**
  * A button is component that the user can press to trigger an action.
@@ -93,7 +87,7 @@ class Button extends React.Component<Props> {
   static defaultProps = {
     elevation: 0,
     type: "solid"
-  };
+  }
 
   render() {
     const {
@@ -108,40 +102,34 @@ class Button extends React.Component<Props> {
       style,
       theme,
       ...rest
-    } = this.props;
+    } = this.props
 
-    const {
-      colors,
-      disabledOpacity,
-      borderRadius,
-      spacing,
-      typography
-    } = theme;
+    const { colors, disabledOpacity, borderRadius, spacing, typography } = theme
 
-    let backgroundColor, borderColor, textColor, borderWidth;
-    const buttonColor = colorOverride || colors.primary;
+    let backgroundColor, borderColor, textColor, borderWidth
+    const buttonColor = colorOverride || colors.primary
 
     if (type === "solid") {
-      backgroundColor = buttonColor;
+      backgroundColor = buttonColor
 
       if (disabled) {
         textColor = color(colors.surface)
           .alpha(disabledOpacity)
           .rgb()
-          .string();
+          .string()
       } else {
-        textColor = colors.surface;
+        textColor = colors.surface
       }
     } else {
-      backgroundColor = "transparent";
+      backgroundColor = "transparent"
 
       if (disabled) {
         textColor = color(buttonColor)
           .alpha(disabledOpacity)
           .rgb()
-          .string();
+          .string()
       } else {
-        textColor = buttonColor;
+        textColor = buttonColor
       }
     }
 
@@ -150,14 +138,14 @@ class Button extends React.Component<Props> {
         borderColor = color(buttonColor)
           .alpha(disabledOpacity)
           .rgb()
-          .string();
+          .string()
       } else {
-        borderColor = buttonColor;
+        borderColor = buttonColor
       }
-      borderWidth = StyleSheet.hairlineWidth;
+      borderWidth = StyleSheet.hairlineWidth
     } else {
-      borderColor = "transparent";
-      borderWidth = 0;
+      borderColor = "transparent"
+      borderWidth = 0
     }
 
     const buttonStyle = {
@@ -165,14 +153,14 @@ class Button extends React.Component<Props> {
       borderColor,
       borderWidth,
       borderRadius: borderRadius.button
-    };
+    }
 
     const textStyle = {
       textAlign: "center",
       color: textColor,
       marginVertical: spacing.large,
       marginHorizontal: spacing.large
-    };
+    }
 
     const iconStyle = [
       styles.icon,
@@ -181,7 +169,7 @@ class Button extends React.Component<Props> {
         marginRight: -8,
         width: Config.buttonIconSize
       }
-    ];
+    ]
 
     return (
       <Elevation style={{ elevation, alignSelf: "stretch" }}>
@@ -191,35 +179,23 @@ class Button extends React.Component<Props> {
           accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
           accessibilityComponentType="button"
           disabled={disabled || loading}
-          style={[styles.button, buttonStyle, style]}
-        >
+          style={[styles.button, buttonStyle, style]}>
           <View style={styles.content}>
             {icon && loading !== true ? (
               <View style={iconStyle}>
-                <Icon
-                  name={icon}
-                  size={Config.buttonIconSize}
-                  color={textColor}
-                />
+                <Icon name={icon} size={Config.buttonIconSize} color={textColor} />
               </View>
             ) : null}
             {loading ? (
-              <ActivityIndicator
-                size="small"
-                color={textColor}
-                style={iconStyle}
-              />
+              <ActivityIndicator size="small" color={textColor} style={iconStyle} />
             ) : null}
-            <Text
-              numberOfLines={1}
-              style={[styles.label, textStyle, typography.button]}
-            >
+            <Text numberOfLines={1} style={[styles.label, textStyle, typography.button]}>
               {children}
             </Text>
           </View>
         </Touchable>
       </Elevation>
-    );
+    )
   }
 }
 
@@ -236,9 +212,9 @@ const styles = StyleSheet.create({
   icon: {
     width: Config.buttonIconSize
   }
-});
+})
 
-export default withTheme(Button);
+export default withTheme(Button)
 
 const SEED_DATA_PROPS = {
   icon: {
@@ -288,7 +264,7 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.action,
     value: null
   }
-};
+}
 
 export const SEED_DATA = [
   {
@@ -333,4 +309,4 @@ export const SEED_DATA = [
       height: 48
     }
   }
-];
+]

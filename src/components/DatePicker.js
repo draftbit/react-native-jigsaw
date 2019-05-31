@@ -1,6 +1,6 @@
 /* @flow */
 
-import * as React from "react";
+import * as React from "react"
 import {
   View,
   SafeAreaView,
@@ -9,14 +9,14 @@ import {
   Platform,
   DatePickerIOS,
   DatePickerAndroid
-} from "react-native";
-import { withTheme } from "../core/theming";
-import type { Theme } from "../types";
-import Portal from "./Portal/Portal";
-import Button from "./Button";
-import TextField from "./TextField";
-import Touchable from "./Touchable";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+} from "react-native"
+import { withTheme } from "../core/theming"
+import type { Theme } from "../types"
+import Portal from "./Portal/Portal"
+import Button from "./Button"
+import TextField from "./TextField"
+import Touchable from "./Touchable"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 
 type Props = {
   /**
@@ -60,7 +60,7 @@ type Props = {
   onDateChange: (date: Date) => void,
   style?: any,
   theme: Theme
-};
+}
 
 class Picker extends React.Component<Props> {
   static defaultProps = {
@@ -70,19 +70,19 @@ class Picker extends React.Component<Props> {
     error: false,
     date: new Date(),
     onDateChange: () => {}
-  };
+  }
 
   state = {
     pickerVisible: false
-  };
+  }
 
   constructor(props) {
-    super(props);
-    this.textField = React.createRef();
+    super(props)
+    this.textField = React.createRef()
   }
 
   formatDate = () => {
-    const { date } = this.props;
+    const { date } = this.props
     const months = [
       "January",
       "February",
@@ -96,49 +96,38 @@ class Picker extends React.Component<Props> {
       "October",
       "November",
       "December"
-    ];
+    ]
 
-    return `${
-      months[date.getMonth()]
-    } ${date.getDate()}, ${date.getFullYear()}`;
-  };
+    return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
+  }
 
   toggleVisibility = async () => {
-    const { date, onDateChange } = this.props;
+    const { date, onDateChange } = this.props
 
     if (Platform.OS === "ios") {
-      this.setState(prevState => ({ pickerVisible: !prevState.pickerVisible }));
+      this.setState(prevState => ({ pickerVisible: !prevState.pickerVisible }))
     } else {
       try {
         const { action, year, month, day } = await DatePickerAndroid.open({
           date
-        });
+        })
 
         if (action !== DatePickerAndroid.dismissedAction) {
-          onDateChange(new Date(year, month, day));
+          onDateChange(new Date(year, month, day))
         }
       } catch ({ code, message }) {
-        console.warn("Cannot open date picker", message);
+        console.warn("Cannot open date picker", message)
       }
     }
 
-    this.textField.current.toggleFocus();
-  };
+    this.textField.current.toggleFocus()
+  }
 
   render() {
-    const {
-      style,
-      theme,
-      options,
-      date,
-      onDateChange,
-      disabled,
-      mode,
-      ...props
-    } = this.props;
-    const { colors, spacing } = theme;
+    const { style, theme, options, date, onDateChange, disabled, mode, ...props } = this.props
+    const { colors, spacing } = theme
 
-    const { pickerVisible } = this.state;
+    const { pickerVisible } = this.state
 
     return (
       <View style={[styles.container, style]}>
@@ -160,27 +149,18 @@ class Picker extends React.Component<Props> {
                 {
                   backgroundColor: colors.divider
                 }
-              ]}
-            >
+              ]}>
               <SafeAreaView style={styles.pickerContainer}>
-                <Button
-                  type="text"
-                  onPress={this.toggleVisibility}
-                  style={styles.closeButton}
-                >
+                <Button type="text" onPress={this.toggleVisibility} style={styles.closeButton}>
                   Close
                 </Button>
-                <DatePickerIOS
-                  date={date}
-                  onDateChange={onDateChange}
-                  mode={mode}
-                />
+                <DatePickerIOS date={date} onDateChange={onDateChange} mode={mode} />
               </SafeAreaView>
             </View>
           </Portal>
         )}
       </View>
-    );
+    )
   }
 }
 
@@ -200,9 +180,9 @@ const styles = StyleSheet.create({
   closeButton: {
     alignSelf: "flex-end"
   }
-});
+})
 
-export default withTheme(Picker);
+export default withTheme(Picker)
 
 const SEED_DATA_PROPS = {
   label: {
@@ -238,8 +218,7 @@ const SEED_DATA_PROPS = {
   },
   options: {
     label: "Options",
-    description:
-      "Array of picker options. An array of objects containing a label and value.",
+    description: "Array of picker options. An array of objects containing a label and value.",
     editable: true,
     type: FORM_TYPES.array,
     value: null
@@ -268,8 +247,7 @@ const SEED_DATA_PROPS = {
   },
   leftIconMode: {
     label: "Left icon mode",
-    description:
-      "The mode of the icon to display on the left. 'inset' or 'outset'.",
+    description: "The mode of the icon to display on the left. 'inset' or 'outset'.",
     type: FORM_TYPES.flatArray,
     value: "inset",
     options: ["inset", "outset"],
@@ -283,7 +261,7 @@ const SEED_DATA_PROPS = {
     value: null,
     editable: true
   }
-};
+}
 
 export const SEED_DATA = [
   {
@@ -291,8 +269,7 @@ export const SEED_DATA = [
     tag: "DatePicker",
     description: "A date picker with a solid border",
     category: COMPONENT_TYPES.field,
-    preview_image_url:
-      "{CLOUDINARY_URL}/DatePicker.png",
+    preview_image_url: "{CLOUDINARY_URL}/DatePicker.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,
@@ -312,8 +289,7 @@ export const SEED_DATA = [
     tag: "DatePicker",
     description: "A date picker with an underline",
     category: COMPONENT_TYPES.field,
-    preview_image_url:
-      "{CLOUDINARY_URL}/DatePicker.png",
+    preview_image_url: "{CLOUDINARY_URL}/DatePicker.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,
@@ -328,4 +304,4 @@ export const SEED_DATA = [
       height: 82
     }
   }
-];
+]

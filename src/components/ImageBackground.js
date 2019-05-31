@@ -1,13 +1,12 @@
-import { ImageBackground } from "react-native";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { ImageBackground } from "react-native"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 
-export default ImageBackground;
+export default ImageBackground
 
 export const SEED_DATA = {
   name: "Image Background",
   tag: "ImageBackground",
-  doc_link:
-    "https://docs.expo.io/versions/v32.0.0/react-native/imagebackground/",
+  doc_link: "https://docs.expo.io/versions/v32.0.0/react-native/imagebackground/",
   code_link:
     "https://github.com/facebook/react-native/blob/master/Libraries/Image/ImageBackground.js",
   description:
@@ -39,8 +38,7 @@ export const SEED_DATA = {
     },
     overflow: {
       label: "Overflow",
-      description:
-        "If the image goes outside of its container, show or hide it",
+      description: "If the image goes outside of its container, show or hide it",
       editable: true,
       required: false,
       value: null,
@@ -65,4 +63,4 @@ export const SEED_DATA = {
       type: FORM_TYPES.color
     }
   }
-};
+}

@@ -28,7 +28,7 @@ const Slider = ({
     <ReactNativeSlider
       {...props}
       disabled={disabled}
-      value={value}
+      value={disabled ? 0 : value}
       minimumValue={minimumValue}
       maximumValue={maximumValue}
       minimumTrackTintColor={minimumTrackTintColor}
@@ -46,7 +46,7 @@ const Slider = ({
         width: thumbSize ? thumbSize : thumbWidthSize,
         height: thumbSize ? thumbSize : thumbHeightSize
       }}
-      style={style}
+      style={disabled ? [{...style}, {opacity:0.60}] :style}
       step={step}
     />
   )

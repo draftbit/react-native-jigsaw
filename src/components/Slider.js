@@ -9,6 +9,7 @@ const Slider = ({
   minimumTrackTintColor,
   maximumTrackTintColor,
   thumbTintColor,
+  disabledThumbTintColor,
   minimumValue,
   maximumValue,
   thumbTouchSize,
@@ -28,12 +29,12 @@ const Slider = ({
     <ReactNativeSlider
       {...props}
       disabled={disabled}
-      value={value}
+      value={disabled ? 0 : value}
       minimumValue={minimumValue}
       maximumValue={maximumValue}
       minimumTrackTintColor={minimumTrackTintColor}
       maximumTrackTintColor={maximumTrackTintColor}
-      thumbTintColor={thumbTintColor}
+      thumbTintColor={(disabled && disabledThumbTintColor) ? disabledThumbTintColor: thumbTintColor}
       thumbTouchSize={{ width: thumbTouchSize, height: thumbTouchSize }}
       onValueChange={onValueChange}
       trackStyle={{
@@ -46,7 +47,7 @@ const Slider = ({
         width: thumbSize ? thumbSize : thumbWidthSize,
         height: thumbSize ? thumbSize : thumbHeightSize
       }}
-      style={style}
+      style={disabled ? [{...style}, {opacity:0.60}] :style}
       step={step}
     />
   )
@@ -130,6 +131,14 @@ export const SEED_DATA = {
     thumbTintColor: {
       label: "Thumb Tint Color",
       description: "Color of the thumb",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.color,
+      value: null
+    },
+    disabledThumbTintColor: {
+      label: "Disabled Thumb Tint Color",
+      description: "Color of the thumb when the slider is disabled",
       editable: true,
       required: false,
       type: FORM_TYPES.color,

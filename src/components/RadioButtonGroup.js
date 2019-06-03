@@ -5,7 +5,7 @@ import Icon from "./Icon.js"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 import Touchable from "./Touchable"
 
-class RadioGroup extends React.Component {
+class RadioButtonGroup extends React.Component {
   state = { selected: this.props.defaultSelection }
 
   onPress = label => {
@@ -76,14 +76,22 @@ class RadioGroup extends React.Component {
   }
 }
 
-export default withTheme(RadioGroup)
+export default withTheme(RadioButtonGroup)
 
 export const SEED_DATA = {
-  name: "Radio Group",
-  tag: "RadioGroup",
+  name: "Radio Button Group",
+  tag: "RadioButtonGroup",
   category: COMPONENT_TYPES.formControl,
   preview_image_url: "{CLOUDINARY_URL}/Control_Radio.png",
   props: {
+    options: {
+      label: "Options",
+      description: "Options for the button group.",
+      editable: true,
+      required: true,
+      type: FORM_TYPES.arrayInput,
+      value: null,
+    },
     direction: {
       label: "Horizontal/Vertical",
       description: "Whether the buttons should be Horizontal or Vertical",

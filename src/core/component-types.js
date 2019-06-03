@@ -26,7 +26,8 @@ export const FORM_TYPES = {
   fieldName: "fieldName",
   position: "position",
   action: "action",
-  query: "query"
+  query: "query",
+  arrayInput: "arrayInput"
 }
 
 export const COMPONENT_TYPES = {

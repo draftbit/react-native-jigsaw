@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { View, ScrollView, StyleSheet, Image } from "react-native"
-import { Button, IconButton, withTheme } from "@draftbit/ui"
+import { Button, IconButton, withTheme, RadioButtonGroup } from "@draftbit/ui"
 import type { Theme } from "@draftbit/ui/types"
 
 class ButtonExample extends React.Component {
@@ -66,6 +66,63 @@ class ButtonExample extends React.Component {
           <Button style={buttonStyle} type="text" disabled>
             Text Disabled
           </Button>
+        </View>
+        <View style={styles.column}>
+          <RadioButtonGroup
+            style={{ width: 400, height: 40 }}
+            direction={"horizontal"}
+            defaultSelection={"ne"}
+            options={[
+              { label: "First", icon: "add" },
+              { label: "Second" },
+              { label: "Third" },
+              { label: "Fourth" }
+            ]}
+            borderRadius={10}
+            activeColor="#DCDCDC"
+            inactiveColor="#5a45ff"
+            iconSize={10}
+            contentColor="#ffffff"
+            borderColor="#000000"
+          />
+        </View>
+        <View style={styles.column}>
+          <RadioButtonGroup
+            style={{ width: 200, height: 50 }}
+            direction="vertical"
+            defaultSelection="ne"
+            options={[
+              { label: "First", icon: "add" },
+              { label: "Second" },
+              { label: "Third" },
+              { label: "Fourth" }
+            ]}
+            spacing={10}
+            borderRadius={100}
+            activeColor="#DCDCDC"
+            inactiveColor="#5a45ff"
+            iconSize={10}
+            contentColor="#ffffff"
+          />
+        </View>
+        <View style={styles.column}>
+          <RadioButtonGroup
+            style={{ width: 300, height: 40 }}
+            direction="horizontal"
+            defaultSelection="ne"
+            options={[
+              { label: "First", icon: "add" },
+              { label: "Second" },
+              { label: "Third" },
+              { label: "Fourth" }
+            ]}
+            spacing={10}
+            borderRadius={10}
+            activeColor="#DCDCDC"
+            inactiveColor="#5a45ff"
+            iconSize={10}
+            contentColor="#ffffff"
+          />
         </View>
       </ScrollView>
     )

@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { View, ScrollView, StyleSheet, Image } from "react-native"
-import { Button, IconButton, withTheme, RadioGroup } from "@draftbit/ui"
+import { Button, IconButton, withTheme, RadioButtonGroup } from "@draftbit/ui"
 import type { Theme } from "@draftbit/ui/types"
 
 class ButtonExample extends React.Component {
@@ -87,7 +87,7 @@ class ButtonExample extends React.Component {
           />
         </View>
         <View style={styles.column}>
-          <RadioGroup
+          <RadioButtonGroup
             style={{ width: 200, height: 50 }}
             direction="vertical"
             defaultSelection="ne"
@@ -106,7 +106,7 @@ class ButtonExample extends React.Component {
           />
         </View>
         <View style={styles.column}>
-          <RadioGroup
+          <RadioButtonGroup
             style={{ width: 300, height: 40 }}
             direction="horizontal"
             defaultSelection="ne"

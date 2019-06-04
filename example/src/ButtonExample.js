@@ -68,7 +68,7 @@ class ButtonExample extends React.Component {
           </Button>
         </View>
         <View style={styles.column}>
-          <RadioGroup
+          <RadioButtonGroup
             style={{ width: 400, height: 40 }}
             direction={"horizontal"}
             defaultSelection={"ne"}

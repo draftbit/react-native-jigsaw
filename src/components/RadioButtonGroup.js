@@ -8,7 +8,7 @@ import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 import Touchable from "./Touchable"
 
 type Props = {
-  style: style,
+  style: object,
   direction: string,
   options: Array<{ id: number, icon: string, label: string }>,
   activeColor: string,

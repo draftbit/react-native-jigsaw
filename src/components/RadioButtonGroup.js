@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { withTheme } from "../core/theming"
-import { View, Text } from "react-native"
+import { View, Text, StyleSheet } from "react-native"
 import Icon from "./Icon.js"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 import Touchable from "./Touchable"
@@ -69,8 +69,9 @@ class RadioButtonGroup extends React.Component<Props> {
                   backgroundColor: selected ? activeColor : inactiveColor,
                   height: style.height,
                   width: optionWidth,
-                  borderLeftWidth: borderColor && index !== 0 ? 0.5 : 0,
-                  borderRightWidth: borderColor && index !== options.length - 1 ? 0.5 : 0,
+                  borderLeftWidth: borderColor && index !== 0 ? StyleSheet.hairlineWidth : 0,
+                  borderRightWidth:
+                    borderColor && index !== options.length - 1 ? StyleSheet.hairlineWidth : 0,
                   borderColor,
                   borderRadius: optionSpacing ? borderRadius : 0,
                   marginLeft: marginHorizontal,
@@ -162,7 +163,7 @@ export const SEED_DATA = {
       label: "Option Spacing",
       description: "The spacing between each option",
       type: FORM_TYPES.number,
-      value: 0,
+      value: StyleSheet.hairlineWidth,
       min: 0,
       max: 20,
       step: 1,

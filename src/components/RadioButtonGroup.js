@@ -10,14 +10,14 @@ import Touchable from "./Touchable"
 type Props = {
   style: style,
   direction: string,
-  options: bjects,
+  options: array<objects>,
   activeColor: string,
   inactiveColor: string,
-  labelStyle: objects,
+  labelStyle: object,
   iconSize: number,
   contentColor: string,
   borderRadius: number,
-  spacing: number,
+  optionSpacing: number,
   borderColor: string,
   theme: theme
 }
@@ -25,8 +25,8 @@ type Props = {
 class RadioButtonGroup extends React.Component <Props> {
   state = { selected: this.props.defaultSelection }
 
-  onPress = label => {
-    this.setState({ selected: label })
+  onPress = selected => {
+    this.setState({ selected })
   }
 
   render() {
@@ -40,21 +40,21 @@ class RadioButtonGroup extends React.Component <Props> {
       iconSize,
       contentColor,
       borderRadius,
-      spacing,
+      optionSpacing,
       borderColor,
       theme: { colors }
     } = this.props
 
     const optionWidth = style.width / options.length
-    const horizontalMargin = direction === "horizontal" ? spacing / 2 : 0
-    const verticalMargin = direction === "vertical" ? spacing / 2 : 0
+    const marginHorizontal = direction === "horizontal" ? optionSpacing/ 2 : 0
+    const marginVertical = direction === "vertical" ? optionSpacing / 2 : 0
 
     return (
       <View
         style={{
           flexDirection: direction === "vertical" ? "column" : "row",
           alignItems: "center",
-          borderRadius: spacing ? 0 : borderRadius,
+          borderRadius: optionSpacing ? 0 : borderRadius,
           overflow: "hidden"
         }}>
         {options.map((option, index) => {
@@ -68,15 +68,15 @@ class RadioButtonGroup extends React.Component <Props> {
                   justifyContent: "center",
                   backgroundColor: selected ? activeColor : inactiveColor,
                   height: style.height,
-                  width: optionWidth,
+                  width: optionWidth || StyleSheet.hairlineWidth,
                   borderLeftWidth: borderColor && index !== 0 ? 0.5 : 0,
                   borderRightWidth: borderColor && index !== options.length - 1 ? 0.5 : 0,
                   borderColor,
-                  borderRadius: spacing ? borderRadius : 0,
-                  marginLeft: horizontalMargin,
-                  marginRight: horizontalMargin,
-                  marginTop: verticalMargin,
-                  marginBottom: verticalMargin
+                  borderRadius: optionSpacing ? borderRadius : 0,
+                  marginLeft: marginHorizontal,
+                  marginRight: marginHorizontal,
+                  marginTop: marginVertical,
+                  marginBottom: marginVertical
                 }}>
                 {option.icon ? (
                   <Icon name={option.icon} size={iconSize} color={contentColor} />
@@ -158,8 +158,8 @@ export const SEED_DATA = {
       editable: true,
       required: true
     },
-    spacing: {
-      label: "Spacing",
+    optionSpacing: {
+      label: "Option Spacing",
       description: "The spacing between each option",
       type: FORM_TYPES.number,
       value: 0,
@@ -174,7 +174,7 @@ export const SEED_DATA = {
       label: "Border Radius",
       description: "The border radius for the container or options",
       type: FORM_TYPES.number,
-      value: 0,
+      value: StyleSheet.hairlineWidth,
       min: 0,
       max: 100,
       step: 1,

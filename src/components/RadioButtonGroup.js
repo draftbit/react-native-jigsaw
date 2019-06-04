@@ -10,7 +10,7 @@ import Touchable from "./Touchable"
 type Props = {
   style: style,
   direction: string,
-  options: array<objects>,
+  options: Array<{ id: number, icon: string, label: string }>,
   activeColor: string,
   inactiveColor: string,
   labelStyle: object,
@@ -22,7 +22,7 @@ type Props = {
   theme: theme
 }
 
-class RadioButtonGroup extends React.Component <Props> {
+class RadioButtonGroup extends React.Component<Props> {
   state = { selected: this.props.defaultSelection }
 
   onPress = selected => {
@@ -46,7 +46,7 @@ class RadioButtonGroup extends React.Component <Props> {
     } = this.props
 
     const optionWidth = style.width / options.length
-    const marginHorizontal = direction === "horizontal" ? optionSpacing/ 2 : 0
+    const marginHorizontal = direction === "horizontal" ? optionSpacing / 2 : 0
     const marginVertical = direction === "vertical" ? optionSpacing / 2 : 0
 
     return (
@@ -68,7 +68,7 @@ class RadioButtonGroup extends React.Component <Props> {
                   justifyContent: "center",
                   backgroundColor: selected ? activeColor : inactiveColor,
                   height: style.height,
-                  width: optionWidth || StyleSheet.hairlineWidth,
+                  width: optionWidth,
                   borderLeftWidth: borderColor && index !== 0 ? 0.5 : 0,
                   borderRightWidth: borderColor && index !== options.length - 1 ? 0.5 : 0,
                   borderColor,
@@ -105,7 +105,7 @@ export const SEED_DATA = {
       label: "Options",
       description: "Options for the button group.",
       type: FORM_TYPES.arrayInput,
-      value: null,
+      value: [],
       editable: true,
       required: true
     },
@@ -174,7 +174,7 @@ export const SEED_DATA = {
       label: "Border Radius",
       description: "The border radius for the container or options",
       type: FORM_TYPES.number,
-      value: StyleSheet.hairlineWidth,
+      value: 0,
       min: 0,
       max: 100,
       step: 1,

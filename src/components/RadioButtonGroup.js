@@ -87,59 +87,59 @@ export const SEED_DATA = {
     options: {
       label: "Options",
       description: "Options for the button group.",
-      editable: true,
-      required: true,
       type: FORM_TYPES.arrayInput,
       value: null,
+      editable: true,
+      required: true
     },
     direction: {
       label: "Horizontal/Vertical",
       description: "Whether the buttons should be Horizontal or Vertical",
-      editable: true,
-      required: true,
       type: FORM_TYPES.flatArray,
       value: "horizontal",
-      options: ["horizontal", "vertical"]
+      options: ["horizontal", "vertical"],
+      editable: true,
+      required: true
     },
     activeColor: {
       label: "Active Color",
       description: "Color of the button when it's selected",
-      editable: true,
       value: null,
-      required: true,
-      type: FORM_TYPES.color
+      type: FORM_TYPES.color,
+      editable: true,
+      required: true
     },
     inactivecolor: {
       label: "Inactive Color",
       description: "Color of the button when it's selected not selected",
-      editable: true,
       value: null,
-      required: true,
-      type: FORM_TYPES.color
+      type: FORM_TYPES.color,
+      editable: true,
+      required: true
     },
     contentColor: {
       label: "Content Color",
       description: "Color of the content(Icon and Label)",
-      editable: true,
       value: null,
-      required: true,
-      type: FORM_TYPES.color
+      type: FORM_TYPES.color,
+      editable: true,
+      required: true
     },
     borderColor: {
       label: "Border Color",
       description: "Border color of the option",
-      editable: true,
       value: null,
-      required: true,
-      type: FORM_TYPES.color
+      type: FORM_TYPES.color,
+      editable: true,
+      required: true
     },
     labelStyle: {
       label: "Label Style",
       description: "Font and weight of the Label",
-      editable: true,
-      required: true,
       type: FORM_TYPES.typeStyle,
-      value: null
+      value: null,
+      editable: true,
+      required: true
     },
     spacing: {
       label: "Spacing",

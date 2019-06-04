@@ -73,10 +73,10 @@ class ButtonExample extends React.Component {
             direction={"horizontal"}
             defaultSelection={"ne"}
             options={[
-              { label: "Je", icon: "add" },
-              { label: "ne" },
-              { label: "sais" },
-              { label: "quoi" }
+              { label: "First", icon: "add" },
+              { label: "Second" },
+              { label: "Third" },
+              { label: "Fourth" }
             ]}
             borderRadius={10}
             activeColor="#DCDCDC"
@@ -92,10 +92,10 @@ class ButtonExample extends React.Component {
             direction="vertical"
             defaultSelection="ne"
             options={[
-              { label: "Je", icon: "add" },
-              { label: "ne" },
-              { label: "sais" },
-              { label: "quoi" }
+              { label: "First", icon: "add" },
+              { label: "Second" },
+              { label: "Third" },
+              { label: "Fourth" }
             ]}
             spacing={10}
             borderRadius={100}
@@ -111,10 +111,10 @@ class ButtonExample extends React.Component {
             direction="horizontal"
             defaultSelection="ne"
             options={[
-              { label: "Je", icon: "add" },
-              { label: "ne" },
-              { label: "sais" },
-              { label: "quoi" }
+              { label: "First", icon: "add" },
+              { label: "Second" },
+              { label: "Third" },
+              { label: "Fourth" }
             ]}
             spacing={10}
             borderRadius={10}

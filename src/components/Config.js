@@ -1,7 +1,23 @@
 import { Dimensions, Platform } from "react-native"
 import { Constants } from "expo"
 
-const { width: windowWidth, height: windowHeight } = Dimensions.get("window")
+const getWindowDimensions = () => {
+  switch (Platform.OS) {
+    case "web":
+      return {
+        windowWidth: 375,
+        windowHeight: 812
+      }
+    default:
+      const { width: windowWidth, height: windowHeight } = Dimensions.get("window")
+      return {
+        windowWidth,
+        windowHeight
+      }
+  }
+}
+
+const { windowWidth, windowHeight } = getWindowDimensions()
 
 const getFilters = (options = {}) => {
   const { width, height } = options

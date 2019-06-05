@@ -34,7 +34,7 @@ const Slider = ({
       maximumValue={maximumValue}
       minimumTrackTintColor={minimumTrackTintColor}
       maximumTrackTintColor={maximumTrackTintColor}
-      thumbTintColor={(disabled && disabledThumbTintColor) ? disabledThumbTintColor: thumbTintColor}
+      thumbTintColor={disabled && disabledThumbTintColor ? disabledThumbTintColor : thumbTintColor}
       thumbTouchSize={{ width: thumbTouchSize, height: thumbTouchSize }}
       onValueChange={onValueChange}
       trackStyle={{
@@ -47,7 +47,7 @@ const Slider = ({
         width: thumbSize ? thumbSize : thumbWidthSize,
         height: thumbSize ? thumbSize : thumbHeightSize
       }}
-      style={disabled ? [{...style}, {opacity:0.60}] :style}
+      style={disabled ? [{ ...style }, { opacity: 0.6 }] : style}
       step={step}
     />
   )

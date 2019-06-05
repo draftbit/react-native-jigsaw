@@ -1,10 +1,10 @@
 import * as React from "react"
 import {} from "react-native"
 import { withTheme } from "../core/theming"
-import StepperIndicator from "react-native-step-indicator"
-import { COMPONENT_TYPES, FIELD_NAME, FORM_TYPES } from "../core/component-types"
+import StepIndicator from "react-native-step-indicator"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 
-const StepIndicator = ({
+const ProgressIndicator = ({
   numberOfSteps,
   currentStep,
   currentStepStrokeWidth,
@@ -22,7 +22,7 @@ const StepIndicator = ({
   const currentPosition = currentStep - 1
 
   return (
-    <StepperIndicator
+    <StepIndicator
       stepCount={numberOfSteps}
       currentPosition={currentPosition}
       customStyles={{
@@ -51,11 +51,11 @@ const StepIndicator = ({
   )
 }
 
-export default withTheme(StepIndicator)
+export default withTheme(ProgressIndicator)
 
 export const SEED_DATA = {
-  name: "Step Indicator",
-  tag: "StepIndicator",
+  name: "Progress Indicator",
+  tag: "ProgressIndicator",
   description: "A component used to show current Step in a process",
   category: COMPONENT_TYPES.formControl,
   preview_image_url: "{CLOUDINARY_URL}/Control_Slider.png",

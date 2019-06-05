@@ -18,9 +18,9 @@ const ProgressIndicator = ({
   stepNumberUnfinishedColor,
   unfinishedColor,
   finishedColor
+  theme
 }) => {
   const currentPosition = currentStep - 1
-
   return (
     <StepIndicator
       stepCount={numberOfSteps}
@@ -45,7 +45,8 @@ const ProgressIndicator = ({
         stepIndicatorLabelCurrentColor: stepIndicatorLabelCurrentColor
           ? stepIndicatorLabelCurrentColor
           : stepNumberFinishedColor,
-        stepIndicatorLabelFontSize
+        stepIndicatorLabelFontSize,
+        labelFontFamily: theme.typography.default
       }}
     />
   )

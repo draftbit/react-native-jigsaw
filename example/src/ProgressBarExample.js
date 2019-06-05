@@ -1,34 +1,9 @@
 /* @flow */
 
 import * as React from "react"
-import { StyleSheet, ScrollView } from "react-native"
-import { ProgressBar, withTheme, NewProgressBar, ProgressCircle, PageIndicator } from "@draftbit/ui"
+import { StyleSheet, ScrollView, View } from "react-native"
+import { ProgressBar, withTheme, NewProgressBar, ProgressCircle, StepIndicator } from "@draftbit/ui"
 import type { Theme } from "@draftbit/ui/types"
-import StepIndicator from "react-native-step-indicator"
-
-// const customStyles = {
-//   stepIndicatorSize: 25,
-//   currentStepIndicatorSize: 30,
-//   separatorStrokeWidth: 2,
-//   currentStepStrokeWidth: 30,
-//   stepStrokeCurrentColor: "#00fe3b",
-//   stepStrokeWidth: 5,
-//   stepStrokeFinishedColor: "#fe7013",
-//   stepStrokeUnFinishedColor: "#aaaaaa",
-//   separatorFinishedColor: "#714dfe",
-//   separatorUnFinishedColor: "#aaaaaa",
-//   stepIndicatorFinishedColor: "#fe7013",
-//   stepIndicatorUnFinishedColor: "#ffffff",
-//   stepIndicatorCurrentColor: "#ffffff",
-//   stepIndicatorLabelFontSize: 13,
-//   currentStepIndicatorLabelFontSize: 13,
-//   stepIndicatorLabelCurrentColor: "#fe7013",
-//   stepIndicatorLabelFinishedColor: "#ffffff",
-//   stepIndicatorLabelUnFinishedColor: "#aaaaaa",
-//   labelColor: "#999999",
-//   labelSize: 13,
-//   currentStepLabelColor: "#fe7013"
-// }
 
 type Props = {
   theme: Theme
@@ -45,15 +20,19 @@ class ProgressBarExample extends React.Component<Props> {
 
     return (
       <ScrollView style={[styles.container, { backgroundColor: background }]}>
-        <PageIndicator
-          stepCount={5}
-          stepPosition={4}
-          currentStepStrokeWidth={2}
-          stepStrokeCurrentColor={"#4638fe"}
-          stepIndicatorSize={30}
-          unfinishedColor={"#6972fe"}
-          finishedColor={"#4638fe"}
-        />
+        <View style={{ backgroundColor: "#f5f5f5" }}>
+          <StepIndicator
+            numberOfSteps={6}
+            currentStep={3}
+            currentStepStrokeWidth={0}
+            stepIndicatorSize={25}
+            stepIndicatorLabelFontSize={13}
+            stepNumberFinishedColor={"#000000"}
+            stepNumberUnfinishedColor={"#ffffff"}
+            unfinishedColor={"#714dfe"}
+            finishedColor={"#ffffff"}
+          />
+        </View>
         <ProgressBar progress={0} style={styles.progressBar} />
         <ProgressBar progress={0.25} style={styles.progressBar} />
         <ProgressBar progress={0.5} style={styles.progressBar} />

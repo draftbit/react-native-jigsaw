@@ -17,7 +17,7 @@ const ProgressIndicator = ({
   stepNumberFinishedColor,
   stepNumberUnfinishedColor,
   unfinishedColor,
-  finishedColor
+  finishedColor,
   theme
 }) => {
   const currentPosition = currentStep - 1

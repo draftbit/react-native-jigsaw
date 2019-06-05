@@ -2,18 +2,17 @@ import { Dimensions, Platform } from "react-native"
 import { Constants } from "expo"
 
 const getWindowDimensions = () => {
-  switch (Platform.OS) {
-    case "web":
-      return {
-        windowWidth: 375,
-        windowHeight: 812
-      }
-    default:
-      const { width: windowWidth, height: windowHeight } = Dimensions.get("window")
-      return {
-        windowWidth,
-        windowHeight
-      }
+  if (Platform.OS === "web") {
+    return {
+      windowWidth: 375,
+      windowHeight: 812
+    }
+  }
+
+  const { width: windowWidth, height: windowHeight } = Dimensions.get("window")
+  return {
+    windowWidth,
+    windowHeight
   }
 }
 

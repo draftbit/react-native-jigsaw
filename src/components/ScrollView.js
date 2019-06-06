@@ -6,7 +6,7 @@ export const SEED_DATA = {
   name: "ScrollView",
   tag: "ScrollView",
   description: "A basic ScrollView component",
-  type: COMPONENT_TYPES.primitive,
+  type: COMPONENT_TYPES.container,
   supports_list_render: false,
   layout: {
     width: "100%",

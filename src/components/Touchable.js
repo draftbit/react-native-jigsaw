@@ -20,7 +20,7 @@ export const SEED_DATA = {
   tag: "Touchable",
   description:
     "Provides a way to capture tapping gestures, and displays feedback when a gesture is recognized",
-  type: COMPONENT_TYPES.primitive,
+  type: COMPONENT_TYPES.input,
   supports_list_render: false,
   layout: {},
   props: {

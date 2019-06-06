@@ -57,7 +57,7 @@ export const SEED_DATA = {
   name: "Text",
   tag: "Text",
   description: "A basic Text component",
-  type: COMPONENT_TYPES.primitive,
+  type: COMPONENT_TYPES.content,
   supports_list_render: false,
   preview_image_url: "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/Text.svg",
   layout: {

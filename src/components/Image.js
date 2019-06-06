@@ -25,7 +25,7 @@ export const SEED_DATA = {
   name: "Image",
   tag: "Image",
   description: "A basic Image Component",
-  type: COMPONENT_TYPES.primitive,
+  type: COMPONENT_TYPES.content,
   supports_list_render: false,
   preview_image_url: "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/Image.png",
   layout: {

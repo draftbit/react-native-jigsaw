@@ -32,7 +32,6 @@ export const FORM_TYPES = {
 
 export const COMPONENT_TYPES = {
   card: "card",
-  carousel: "carousel",
   header: "header",
   button: "button",
   image: "image",
@@ -41,8 +40,11 @@ export const COMPONENT_TYPES = {
   field: "field",
   formControl: "formControl",
   row: "row",
-  map: "map",
-  data: "data"
+  data: "data",
+  content: "content",
+  input: "input",
+  container: "container",
+  layout: "layout"
 }
 
 export const ELEVATION_TYPE = {

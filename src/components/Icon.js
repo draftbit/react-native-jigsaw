@@ -96,7 +96,7 @@ export const SEED_DATA = {
   name: "Icon",
   tag: "Icon",
   description: "An icon",
-  category: COMPONENT_TYPES.primitive,
+  category: COMPONENT_TYPES.content,
   preview_image_url: "{CLOUDINARY_URL}/Icon.png",
   supports_list_render: false,
   props: {

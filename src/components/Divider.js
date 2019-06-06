@@ -41,7 +41,7 @@ export const SEED_DATA = [
   {
     name: "Divider",
     tag: "Divider",
-    category: COMPONENT_TYPES.primitive,
+    category: COMPONENT_TYPES.layout,
     description: "A horizontal line used to divide content",
     preview_image_url: "{CLOUDINARY_URL}/Divider.png",
     supports_list_render: false,

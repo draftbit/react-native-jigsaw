@@ -77,7 +77,7 @@ export const SEED_DATA = {
   name: "Map",
   tag: "MapSimple",
   description: "A map, with optional markers",
-  category: COMPONENT_TYPES.map,
+  category: COMPONENT_TYPES.content,
   preview_image_url: "{CLOUDINARY_URL}/Map_Simple.png",
   supports_list_render: false,
   layout: {},

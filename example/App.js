@@ -18,6 +18,7 @@ import HeaderExample from "./src/HeaderExample"
 import MapExample from "./src/MapExample"
 import PickerExample from "./src/PickerExample"
 import ProgressBarExample from "./src/ProgressBarExample"
+import ProgressIndicatorExample from "./src/ProgressIndicatorExample.js"
 import RowExample from "./src/RowExample"
 import TextFieldExample from "./src/TextFieldExample"
 import FABExample from "./src/FABExample"
@@ -46,6 +47,7 @@ const Drawer = createDrawerNavigator(
     Map: MapExample,
     Picker: PickerExample,
     ProgressBar: ProgressBarExample,
+    ProgressIndicator: ProgressIndicatorExample,
     Row: RowExample,
     Slider: SliderExample,
     Stepper: StepperExample,

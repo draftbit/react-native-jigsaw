@@ -1,7 +1,6 @@
 import * as React from "react"
-import {} from "react-native"
-import { withTheme } from "../core/theming"
 import StepIndicator from "react-native-step-indicator"
+import { withTheme } from "../core/theming"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 
 const ProgressIndicator = ({

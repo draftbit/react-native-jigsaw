@@ -56,7 +56,7 @@ export default withTheme(Checkbox)
 export const SEED_DATA = {
   name: "Checkbox",
   tag: "Checkbox",
-  category: COMPONENT_TYPES.formControl,
+  category: COMPONENT_TYPES.input,
   preview_image_url: "{CLOUDINARY_URL}/Control_Checkbox.png",
   props: {
     disabled: {

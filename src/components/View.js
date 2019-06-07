@@ -6,7 +6,7 @@ export const SEED_DATA = {
   name: "View",
   tag: "View",
   description: "A basic View component",
-  type: COMPONENT_TYPES.primitive,
+  type: COMPONENT_TYPES.container,
   supports_list_render: false,
   layout: {},
   props: {}

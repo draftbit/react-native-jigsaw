@@ -6,7 +6,7 @@ export const SEED_DATA = {
   name: "List",
   tag: "FlatList",
   description: "A basic List component",
-  type: COMPONENT_TYPES.primitive,
+  type: COMPONENT_TYPES.content,
   supports_list_render: false,
   preview_image_url: "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/List.svg",
   layout: {

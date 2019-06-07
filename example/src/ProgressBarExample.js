@@ -1,8 +1,14 @@
 /* @flow */
 
 import * as React from "react"
-import { StyleSheet, ScrollView } from "react-native"
-import { ProgressBar, withTheme, NewProgressBar, ProgressCircle } from "@draftbit/ui"
+import { StyleSheet, ScrollView, View } from "react-native"
+import {
+  ProgressBar,
+  withTheme,
+  NewProgressBar,
+  ProgressCircle,
+  ProgressIndicator
+} from "@draftbit/ui"
 import type { Theme } from "@draftbit/ui/types"
 
 type Props = {

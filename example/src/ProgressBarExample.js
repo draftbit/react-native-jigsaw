@@ -26,19 +26,6 @@ class ProgressBarExample extends React.Component<Props> {
 
     return (
       <ScrollView style={[styles.container, { backgroundColor: background }]}>
-        <View style={{ backgroundColor: "#f5f5f5" }}>
-          <ProgressIndicator
-            numberOfSteps={6}
-            currentStep={3}
-            currentStepStrokeWidth={0}
-            stepIndicatorSize={25}
-            stepIndicatorLabelFontSize={13}
-            stepNumberFinishedColor={"#000000"}
-            stepNumberUnfinishedColor={"#ffffff"}
-            unfinishedColor={"#714dfe"}
-            finishedColor={"#ffffff"}
-          />
-        </View>
         <ProgressBar progress={0} style={styles.progressBar} />
         <ProgressBar progress={0.25} style={styles.progressBar} />
         <ProgressBar progress={0.5} style={styles.progressBar} />

@@ -163,7 +163,7 @@ export const SEED_DATA = {
       label: "Option Spacing",
       description: "The spacing between each option",
       type: FORM_TYPES.number,
-      value: StyleSheet.hairlineWidth,
+      value: 1,
       min: 0,
       max: 20,
       step: 1,

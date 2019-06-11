@@ -127,7 +127,7 @@ export const SEED_DATA = {
       editable: true,
       required: true
     },
-    inactivecolor: {
+    inactiveColor: {
       label: "Inactive Color",
       description: "Color of the button when it's selected not selected",
       value: null,

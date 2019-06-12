@@ -5,7 +5,7 @@ import AspectRatio from "./AspectRatio"
 export default function UnsupportedView({ tag, style }) {
   const { aspectRatio, ...extraStyles } = StyleSheet.flatten(style)
   const [layout, setLayout] = useState({})
-
+  const message = `${tag} isn't supported in Web Preview, yet. Please use Live Preview on your phone to see it in action!`
   if (aspectRatio && extraStyles.position !== "absolute") {
     return (
       <AspectRatio
@@ -19,10 +19,7 @@ export default function UnsupportedView({ tag, style }) {
           imageStyle={styles.image}
           source={require("../assets/bg.png")}
           resizeMode="repeat">
-          <Text style={styles.text}>
-            {tag} isn't supported in Web Preview, yet. Please use Live Preview on your phone to it
-            in action!
-          </Text>
+          <Text style={styles.text}>{message}</Text>
         </ImageBackground>
       </AspectRatio>
     )
@@ -33,10 +30,7 @@ export default function UnsupportedView({ tag, style }) {
       style={[extraStyles, styles.container]}
       source={require("../assets/bg.png")}
       resizeMode="repeat">
-      <Text style={styles.text}>
-        {tag} isn't supported in Web Preview, yet. Please use Live Preview on your phone to it in
-        action!
-      </Text>
+      <Text style={styles.text}>{message}</Text>
     </ImageBackground>
   )
 }

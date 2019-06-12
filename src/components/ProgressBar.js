@@ -1,26 +1,21 @@
 import * as React from "react"
 import { Platform } from "react-native"
+import * as Progress from "react-native-progress"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 import { withTheme } from "../core/theming"
 
-const Bar = Platform.select({
-  web: require("@draftbit/react-native-progress/dist/Bar.js").default,
-  ios: require("@draftbit/react-native-progress/src/Bar.js").default,
-  android: require("@draftbit/react-native-progress/src/Bar.js").default
-})
-
 const ProgressBar = ({
   progress,
-  style,
   borderRadius,
   animationType,
   color,
   unfilledColor,
   borderColor,
-  borderWidth
+  borderWidth,
+  style
 }) => {
   return (
-    <Bar
+    <Progress.Bar
       progress={progress}
       color={color}
       unfilledColor={unfilledColor}

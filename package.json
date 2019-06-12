@@ -48,12 +48,12 @@
   },
   "dependencies": {
     "@callstack/react-theme-provider": "^3.0.0",
-    "@draftbit/react-native-progress": "3.6.2",
     "@expo/vector-icons": "^10.0.2",
     "color": "^3.1.2",
     "create-react-context": "^0.3.0",
     "react-lifecycles-compat": "^3.0.4",
     "react-native-platform-touchable": "^1.1.1",
+    "react-native-progress": "^3.6.0",
     "react-native-slider": "^0.11.0",
     "react-native-step-indicator": "^0.0.11"
   },

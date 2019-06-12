@@ -836,13 +836,6 @@
     hoist-non-react-statics "^2.5.0"
     prop-types "^15.6.0"
 
-"@draftbit/react-native-progress@^3.6.2":
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/@draftbit/react-native-progress/-/react-native-progress-3.6.2.tgz#2cb8a38045d054bd7eb03988b955ca899d27a83c"
-  integrity sha512-/zYbPRl09oMxO7oc8TkKVNnMuVkLVT3rYGDaqKsYAcbCi8/DZR7XS9kJbP6RhzLSqOSEe6A35pyvjJI6oOSjZA==
-  dependencies:
-    prop-types "^15.7.2"
-
 "@expo/vector-icons@^10.0.1":
   version "10.0.2"
   resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-10.0.2.tgz#63223bd4a97bb1943dc8ea947fc10b29cbf84e4e"
@@ -4607,6 +4600,13 @@ react-native-platform-touchable@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-native-platform-touchable/-/react-native-platform-touchable-1.1.1.tgz#fde4acc65eea585d28b164d0c3716a42129a68e4"
   integrity sha1-/eSsxl7qWF0osWTQw3FqQhKaaOQ=
+
+react-native-progress@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-progress/-/react-native-progress-3.6.0.tgz#feaf37491f91bb421207fd761e20cb7258a2a3a6"
+  integrity sha512-zzTe595xaaskyfR5OzaGrU4O0R+YkgdEw+EspgGD7wh8Hu0fs6ue3xLW+HEbTjOCn62pCRivwi3NxbpWNBCC7Q==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-native-reanimated@1.0.1:
   version "1.0.1"

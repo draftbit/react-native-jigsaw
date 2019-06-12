@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Platform } from "react-native"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 import { withTheme } from "../core/theming"
 

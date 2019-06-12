@@ -4,9 +4,9 @@ import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 import { withTheme } from "../core/theming"
 
 const Bar = Platform.select({
-  web: () => require("@draftbit/react-native-progress/dist/Bar"),
-  ios: () => require("@draftbit/react-native-progress/src/Bar.js"),
-  android: () => require("@draftbit/react-native-progress/src/Bar.js")
+  web: require("@draftbit/react-native-progress/dist/Bar.js").default,
+  ios: require("@draftbit/react-native-progress/src/Bar.js").default,
+  android: require("@draftbit/react-native-progress/src/Bar.js").default
 })
 
 const ProgressBar = ({

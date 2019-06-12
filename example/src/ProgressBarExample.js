@@ -20,30 +20,36 @@ class ProgressBarExample extends React.Component<Props> {
 
     return (
       <ScrollView style={[styles.container, { backgroundColor: background }]}>
-        <ProgressBar
-          progress={0.5}
-          style={{ width: 380, height: 10 }}
-          borderRadius={20}
-          color="#5a45ff"
-          unfilledColor="#000000"
-        />
-        <ProgressCircle
-          size={300}
-          progress={0.75}
-          color="#5a45ff"
-          unfilledColor="#000000"
-          showsText={true}
-          direction="clockwise"
-          thickness={10}
-        />
-        <ProgressCircle
-          size={300}
-          progress={0.5}
-          color="#5a45ff"
-          unfilledColor="#000000"
-          showsText={false}
-          direction="counter-clockwise"
-        />
+        <View style={{ marginBottom: 40 }}>
+          <ProgressBar
+            progress={0.5}
+            style={{ width: 250, height: 5 }}
+            borderRadius={10}
+            color="#5a45ff"
+            unfilledColor="#000000"
+          />
+        </View>
+        <View style={{ marginBottom: 40 }}>
+          <ProgressCircle
+            size={100}
+            progress={0.8}
+            color="#5a45ff"
+            unfilledColor="#000000"
+            showsText={true}
+            direction="clockwise"
+            thickness={10}
+          />
+        </View>
+        <View style={{ marginBottom: 40 }}>
+          <ProgressCircle
+            size={100}
+            progress={0.5}
+            color="#5a45ff"
+            unfilledColor="#000000"
+            showsText={false}
+            direction="counter-clockwise"
+          />
+        </View>
       </ScrollView>
     )
   }

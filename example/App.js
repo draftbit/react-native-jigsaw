@@ -1,8 +1,7 @@
 import React from "react"
-import { KeepAwake } from "expo"
 import { StatusBar, View, Text } from "react-native"
 import { Provider, DefaultTheme, Touchable, Icon } from "@draftbit/ui"
-import { createDrawerNavigator, createStackNavigator } from "react-navigation"
+import { createAppContainer, createDrawerNavigator, createStackNavigator } from "react-navigation"
 import ButtonExample from "./src/ButtonExample"
 import CardBlockExample from "./src/CardBlockExample"
 import CardContainerShortImageExample from "./src/CardContainerShortImageExample"
@@ -58,11 +57,11 @@ const Drawer = createDrawerNavigator(
   }
 )
 
-const App = createStackNavigator(
+const AppNavigator = createStackNavigator(
   { Root: { screen: Drawer } },
   {
     navigationOptions: ({ navigation }) => ({
-      headerTitle: "Examples",
+      title: "Examples",
       headerLeft: (
         <Touchable onPress={navigation.toggleDrawer} style={{ paddingLeft: 12 }}>
           <Icon size={24} name="menu" />
@@ -71,6 +70,8 @@ const App = createStackNavigator(
     })
   }
 )
+
+const App = createAppContainer(AppNavigator)
 
 export default class Example extends React.Component<{}, State> {
   async componentDidMount() {
@@ -81,7 +82,6 @@ export default class Example extends React.Component<{}, State> {
     return (
       <Provider theme={DefaultTheme}>
         <App />
-        <KeepAwake />
       </Provider>
     )
   }

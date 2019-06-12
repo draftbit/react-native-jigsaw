@@ -4,7 +4,7 @@
     "description": "JigsawPlayground",
     "slug": "jigsaw-playground",
     "privacy": "unlisted",
-    "sdkVersion": "31.0.0",
+    "sdkVersion": "33.0.0",
     "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "portrait",

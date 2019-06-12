@@ -20,9 +20,9 @@
     "preset": "react-native"
   },
   "peerDependencies": {
-    "expo": ">=26.0.0",
-    "react": ">=16.3.0",
-    "react-native": ">=0.54.2"
+    "expo": ">=33.0.0",
+    "react": "16.8.3",
+    "react-native": ">=0.59.8"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -39,7 +39,7 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "babel-preset-react-native": "^4.0.1",
     "del-cli": "^2.0.0",
-    "flow-bin": "^0.100.0",
+    "flow-bin": "^0.101.0",
     "glob": "^7.1.4",
     "jest": "^24.8.0",
     "node-fetch": "^2.6.0",
@@ -48,12 +48,12 @@
   },
   "dependencies": {
     "@callstack/react-theme-provider": "^3.0.0",
+    "@draftbit/react-native-progress": "3.6.2",
     "@expo/vector-icons": "^10.0.2",
     "color": "^3.1.2",
     "create-react-context": "^0.3.0",
     "react-lifecycles-compat": "^3.0.4",
     "react-native-platform-touchable": "^1.1.1",
-    "@draftbit/react-native-progress": "^3.6.1",
     "react-native-slider": "^0.11.0",
     "react-native-step-indicator": "^0.0.11"
   },

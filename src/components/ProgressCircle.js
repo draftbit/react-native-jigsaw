@@ -1,7 +1,12 @@
 import * as React from "react"
-import * as Progress from "react-native-progress"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 import { withTheme } from "../core/theming"
+
+const Circle = Platform.select({
+  web: () => require("@draftbit/react-native-progress/dist/Circle"),
+  ios: () => require("@draftbit/react-native-progress/src/Circle.js"),
+  android: () => require("@draftbit/react-native-progress/src/Circle.js")
+})
 
 const ProgressCircle = ({
   progress,
@@ -19,7 +24,7 @@ const ProgressCircle = ({
   thickness
 }) => {
   return (
-    <Progress.Circle
+    <Circle
       progress={progress}
       color={color}
       unfilledColor={unfilledColor}

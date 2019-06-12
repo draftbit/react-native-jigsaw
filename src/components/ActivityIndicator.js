@@ -2,7 +2,7 @@ import { ActivityIndicator } from "react-native"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 export default ActivityIndicator
 
-const ActivityIndicator = {
+const SEED_DATA = {
   name: "Activity Indicator",
   tag: "ActivityIndicator",
   description: "Displays a circular loading indicator.",

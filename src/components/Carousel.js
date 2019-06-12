@@ -1,5 +1,6 @@
 import React from "react"
-import { ScrollView, Image, View, StyleSheet } from "react-native"
+import { ScrollView, View, StyleSheet } from "react-native"
+import Image from "./Image"
 import Elevation from "./Elevation"
 import { withTheme } from "../core/theming"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"

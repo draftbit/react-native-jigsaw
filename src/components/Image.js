@@ -1,8 +1,8 @@
 // @flow
 import React from "react"
 import { Image as NativeImage } from "react-native"
-import { COMPONENT_TYPES, FORM_TYPES, BORDER_RADIUS_MODE } from "../core/component-types"
 import Config from "./Config"
+import { COMPONENT_TYPES, FORM_TYPES, BORDER_RADIUS_MODE } from "../core/component-types"
 
 export type Props = {
   source: string,

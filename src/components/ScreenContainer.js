@@ -91,7 +91,13 @@ class ScreenContainer extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    ...Platform.select({
+      web: {
+        width: 375,
+        height: 812
+      }
+    })
   }
 })
 

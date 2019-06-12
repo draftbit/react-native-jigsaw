@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "2.15.0",
+  "version": "2.16.0",
   "description": "Jigsaw component library for Draftbit",
   "main": "src/index.js",
   "repository": "git@github.com:draftbit/jigsaw-component-library.git",
@@ -8,11 +8,13 @@
   "license": "ISC",
   "private": false,
   "scripts": {
+    "clean": "del-cli ./dist",
     "precommit": "echo yarn lint && yarn flow && yarn test",
     "flow": "flow",
     "lint": "eslint src",
     "test": "jest",
-    "pretty": "prettier --config ./package.json --write '{example,src}/**/*.{js,css,json}'"
+    "pretty": "prettier --config ./package.json --write '{example,src}/**/*.{js,css,json}'",
+    "build:web": "yarn clean && babel src -d --out-dir dist --ignore \"**/__tests__\" && cp -r src/assets dist/."
   },
   "jest": {
     "preset": "react-native"
@@ -23,7 +25,20 @@
     "react-native": ">=0.54.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "babel-preset-react-native": "^4.0.1",
+    "del-cli": "^2.0.0",
     "flow-bin": "^0.100.0",
     "glob": "^7.1.4",
     "jest": "^24.8.0",
@@ -38,7 +53,7 @@
     "create-react-context": "^0.3.0",
     "react-lifecycles-compat": "^3.0.4",
     "react-native-platform-touchable": "^1.1.1",
-    "react-native-progress": "^3.6.0",
+    "@draftbit/react-native-progress": "^3.6.1",
     "react-native-slider": "^0.11.0",
     "react-native-step-indicator": "^0.0.11"
   },

@@ -1,13 +1,13 @@
 import * as React from "react"
 import { View, Image } from "react-native"
 import { withTheme } from "../core/theming"
+import Elevation from "./Elevation"
 import {
   COMPONENT_TYPES,
   FORM_TYPES,
   BORDER_RADIUS_MODE,
   ELEVATION_TYPE
 } from "../core/component-types"
-import Elevation from "./Elevation"
 
 class Container extends React.Component {
   render() {

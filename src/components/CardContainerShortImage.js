@@ -1,5 +1,6 @@
 import React from "react"
-import { Image, View, Text } from "react-native"
+import { View, Text } from "react-native"
+import Image from "./Image"
 import Card from "./Card"
 import Elevation from "./Elevation"
 import { withTheme } from "../core/theming"

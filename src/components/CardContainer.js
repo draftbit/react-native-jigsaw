@@ -1,6 +1,7 @@
 import React from "react"
-import { Image, View, Text } from "react-native"
+import { View, Text } from "react-native"
 import color from "color"
+import Image from "./Image"
 import Card from "./Card"
 import Elevation from "./Elevation"
 import Icon from "./Icon"

@@ -41,6 +41,9 @@ const ProgressIndicator = ({
           : stepIndicatorCurrentColor,
         stepIndicatorLabelUnFinishedColor: stepNumberUnfinishedColor,
         stepIndicatorLabelFinishedColor: stepNumberFinishedColor,
+        stepIndicatorCurrentColor: stepIndicatorCurrentColor
+          ? stepIndicatorCurrentColor
+          : unfinishedColor,
         stepIndicatorLabelCurrentColor: stepIndicatorLabelCurrentColor
           ? stepIndicatorLabelCurrentColor
           : stepNumberFinishedColor,
@@ -177,7 +180,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.number,
-      min: 10,
+      min: 1,
       max: 20,
       step: 1,
       precision: 0,

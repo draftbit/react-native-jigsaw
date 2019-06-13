@@ -41,6 +41,9 @@ const ProgressIndicator = ({
           : stepIndicatorCurrentColor,
         stepIndicatorLabelUnFinishedColor: stepNumberUnfinishedColor,
         stepIndicatorLabelFinishedColor: stepNumberFinishedColor,
+        stepIndicatorCurrentColor: stepIndicatorCurrentColor
+          ? stepIndicatorCurrentColor
+          : unfinishedColor,
         stepIndicatorLabelCurrentColor: stepIndicatorLabelCurrentColor
           ? stepIndicatorLabelCurrentColor
           : stepNumberFinishedColor,

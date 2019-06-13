@@ -60,6 +60,10 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.formControl,
   preview_image_url: "{CLOUDINARY_URL}/Control_Slider.png",
   supports_list_render: false,
+  layout: {
+    width: 375,
+    height: 50
+  },
   props: {
     numberOfSteps: {
       label: "Number of Steps",
@@ -190,10 +194,6 @@ export const SEED_DATA = {
       step: 5,
       precision: 0,
       value: null
-    },
-    layout: {
-      width: 375,
-      height: 50
     }
   }
 }

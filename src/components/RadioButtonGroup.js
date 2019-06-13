@@ -19,7 +19,7 @@ type Props = {
   borderRadius: number,
   optionSpacing: number,
   borderColor: string,
-  unSelectedContentColor: string,
+  unselectedContentColor: string,
   theme: theme
 }
 
@@ -43,7 +43,7 @@ class RadioButtonGroup extends React.Component<Props> {
       borderRadius,
       optionSpacing,
       borderColor,
-      unSelectedContentColor,
+      unselectedContentColor,
       theme: { colors }
     } = this.props
 
@@ -88,7 +88,7 @@ class RadioButtonGroup extends React.Component<Props> {
                   <Text
                     style={[
                       labelStyle,
-                      { color: selected ? contentColor : unSelectedContentColor }
+                      { color: selected ? contentColor : unselectedContentColor }
                     ]}>
                     {option.label}
                   </Text>
@@ -151,8 +151,8 @@ export const SEED_DATA = {
       editable: true,
       required: true
     },
-    unSelectedContentColor: {
-      label: "Unfinished Content Color",
+    unselectedContentColor: {
+      label: "Unselected Content Color",
       description: "Unfinished Color of the content(Icon and Label)",
       value: null,
       type: FORM_TYPES.color,

@@ -99,7 +99,7 @@ export default withTheme(RadioButtonGroup)
 export const SEED_DATA = {
   name: "Radio Button Group",
   tag: "RadioButtonGroup",
-  category: COMPONENT_TYPES.formControl,
+  category: COMPONENT_TYPES.input,
   preview_image_url: "{CLOUDINARY_URL}/Control_Radio.png",
   props: {
     options: {

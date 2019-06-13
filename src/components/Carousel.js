@@ -172,7 +172,7 @@ export const SEED_DATA = [
   {
     name: "Carousel",
     tag: "Carousel",
-    category: COMPONENT_TYPES.content,
+    category: COMPONENT_TYPES.blocks,
     description: "A horizontal scrolling carousel of images",
     preview_image_url: "{CLOUDINARY_URL}/Carousel.png",
     supports_list_render: false,

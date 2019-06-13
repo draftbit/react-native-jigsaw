@@ -19,6 +19,7 @@ type Props = {
   borderRadius: number,
   optionSpacing: number,
   borderColor: string,
+  unSelectedContentColor: string,
   theme: theme
 }
 
@@ -42,7 +43,7 @@ class RadioButtonGroup extends React.Component<Props> {
       borderRadius,
       optionSpacing,
       borderColor,
-      unSelectedContentColor
+      unSelectedContentColor,
       theme: { colors }
     } = this.props
 

@@ -42,6 +42,7 @@ class RadioButtonGroup extends React.Component<Props> {
       borderRadius,
       optionSpacing,
       borderColor,
+      unSelectedContentColor
       theme: { colors }
     } = this.props
 
@@ -83,7 +84,13 @@ class RadioButtonGroup extends React.Component<Props> {
                   <Icon name={option.icon} size={iconSize} color={contentColor} />
                 ) : null}
                 {option.label ? (
-                  <Text style={[labelStyle, { color: contentColor }]}>{option.label}</Text>
+                  <Text
+                    style={[
+                      labelStyle,
+                      { color: selected ? contentColor : unSelectedContentColor }
+                    ]}>
+                    {option.label}
+                  </Text>
                 ) : null}
               </View>
             </Touchable>
@@ -136,8 +143,16 @@ export const SEED_DATA = {
       required: true
     },
     contentColor: {
-      label: "Content Color",
+      label: "Selected Content Color",
       description: "Color of the content(Icon and Label)",
+      value: null,
+      type: FORM_TYPES.color,
+      editable: true,
+      required: true
+    },
+    unSelectedContentColor: {
+      label: "Unfinished Content Color",
+      description: "Unfinished Color of the content(Icon and Label)",
       value: null,
       type: FORM_TYPES.color,
       editable: true,

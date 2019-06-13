@@ -134,7 +134,7 @@ export const SEED_DATA = {
       type: FORM_TYPES.color,
       value: null
     },
-    stepNumberUnFinishedColor: {
+    stepNumberUnfinishedColor: {
       label: "Unfinished Number Color",
       description: "The color of the number within the step when unfinished",
       editable: true,

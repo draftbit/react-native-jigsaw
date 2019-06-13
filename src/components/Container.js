@@ -104,7 +104,7 @@ export const SEED_DATA = {
       label: "Background color",
       description: "Background color to apply to the container",
       type: FORM_TYPES.color,
-      value: "background",
+      value: null,
       editable: true,
       required: false
     },

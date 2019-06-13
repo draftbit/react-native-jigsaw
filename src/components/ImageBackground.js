@@ -11,7 +11,7 @@ export const SEED_DATA = {
     "https://github.com/facebook/react-native/blob/master/Libraries/Image/ImageBackground.js",
   description:
     "A very simple drop-in replacement for Image that allows you to use an Image as a background.",
-  type: COMPONENT_TYPES.container,
+  category: COMPONENT_TYPES.container,
   supports_list_render: false,
   layout: {
     width: "100%",

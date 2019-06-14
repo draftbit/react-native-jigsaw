@@ -53,12 +53,15 @@ class RadioButtonGroup extends React.Component<Props> {
 
     return (
       <View
-        style={{
-          flexDirection: direction === "vertical" ? "column" : "row",
-          alignItems: "center",
-          borderRadius: optionSpacing ? 0 : borderRadius,
-          overflow: "hidden"
-        }}>
+        style={[
+          style,
+          {
+            flexDirection: direction === "vertical" ? "column" : "row",
+            alignItems: "center",
+            borderRadius: optionSpacing ? 0 : borderRadius,
+            overflow: "hidden"
+          }
+        ]}>
         {options.map((option, index) => {
           const selected = option.label == this.state.selected
           return (

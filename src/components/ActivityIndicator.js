@@ -9,7 +9,7 @@ const SEED_DATA = {
   doc_link: "https://docs.expo.io/versions/latest/react-native/activityindicator/",
   code_link:
     "https://github.com/expo/expo/blob/master/ios/versioned-react-native/ABI32_0_0/Libraries/Components/ActivityIndicator/ActivityIndicator.js",
-  type: "primitive",
+  category: COMPONENT_TYPES.formControl,
   supports_list_render: false,
   layout: { width: 36, height: 36 },
   props: {

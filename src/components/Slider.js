@@ -19,12 +19,15 @@ const Slider = ({
   theme,
   trackBorderRadius,
   thumbBorderRadius,
-  thumbStyle,
   thumbSize,
   ...props
 }) => {
-  const thumbHeightSize = style.height * 0.4
-  const thumbWidthSize = style.width * 0.1
+  const thumbStyle = {
+    borderRadius: thumbBorderRadius || 0,
+    width: thumbSize || (style && style.height ? style.height * 0.4 : null),
+    height: thumbSize || (style && style.width ? style.width * 0.1 : null)
+  }
+
   return (
     <ReactNativeSlider
       {...props}
@@ -35,19 +38,15 @@ const Slider = ({
       minimumTrackTintColor={minimumTrackTintColor}
       maximumTrackTintColor={maximumTrackTintColor}
       thumbTintColor={disabled && disabledThumbTintColor ? disabledThumbTintColor : thumbTintColor}
-      thumbTouchSize={{ width: thumbTouchSize, height: thumbTouchSize }}
+      thumbTouchSize={{ width: thumbTouchSize || 0, height: thumbTouchSize || 0 }}
       onValueChange={onValueChange}
       trackStyle={{
         borderRadius: trackBorderRadius ? trackBorderRadius : 0,
-        width: style.width,
-        height: style.height
+        width: style ? style.width : "100%",
+        height: style ? style.height : null
       }}
-      thumbStyle={{
-        borderRadius: thumbBorderRadius ? thumbBorderRadius : 0,
-        width: thumbSize ? thumbSize : thumbWidthSize,
-        height: thumbSize ? thumbSize : thumbHeightSize
-      }}
-      style={disabled ? [{ ...style }, { opacity: 0.6 }] : style}
+      thumbStyle={thumbStyle}
+      style={disabled ? [style, { opacity: 0.6 }] : style}
       step={step}
     />
   )

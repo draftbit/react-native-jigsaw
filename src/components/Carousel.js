@@ -86,7 +86,7 @@ class Carousel extends React.PureComponent<CarouselProps> {
         </ScrollView>
         <View style={[styles.swipeNavWrapper, { bottom: spacing.large }]}>
           <View style={styles.swipeNav}>
-            {[...Array(images.length)].map((_, i) => {
+            {Array.from({ length: images.length }, (_, i) => {
               const calculatedIndex = this.state.scrollOffset / width
               const activeDot = calculatedIndex >= i - 0.5 && calculatedIndex < i + 0.5
 

@@ -1,6 +1,6 @@
 import React from "react"
 import { View, Text } from "react-native"
-import { MapView } from "expo"
+import MapView from "react-native-maps"
 import { withTheme } from "../core/theming"
 import type { Theme } from "../types"
 import { COMPONENT_TYPES, FORM_TYPES, BORDER_RADIUS_MODE } from "../core/component-types"

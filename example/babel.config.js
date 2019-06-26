@@ -7,7 +7,7 @@ module.exports = function(api) {
         "module-resolver",
         {
           alias: {
-            "@draftbit/ui": "../src/index",
+            "@draftbit/ui": "../dist/index",
             "@draftbit/ui/types": "../types",
             "react-native-vector-icons": "@expo/vector-icons"
           }

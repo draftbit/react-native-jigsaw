@@ -111,10 +111,22 @@ export const SEED_DATA = {
       required: false,
       type: FORM_TYPES.number,
       min: 10,
-      max: 100,
+      max: 50,
       step: 1,
       precision: 0,
-      value: 25
+      value: 15
+    },
+    currentStepIndicatorLabelFontSize: {
+      label: "Current Step Font Size",
+      description: "The font size of the step circle",
+      editable: true,
+      required: false,
+      type: FORM_TYPES.number,
+      min: 10,
+      max: 50,
+      step: 1,
+      precision: 0,
+      value: 15
     },
     unfinishedColor: {
       label: "Unfinished Color",

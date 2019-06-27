@@ -105,8 +105,8 @@ export const SEED_DATA = {
       value: 25
     },
     stepIndicatorLabelFontSize: {
-      label: "Step Number Size",
-      description: "The font size of the step circle",
+      label: "Step Font Size",
+      description: "The font size of the step number",
       editable: true,
       required: false,
       type: FORM_TYPES.number,
@@ -118,7 +118,7 @@ export const SEED_DATA = {
     },
     currentStepIndicatorLabelFontSize: {
       label: "Current Step Font Size",
-      description: "The font size of the step circle",
+      description: "The font size of the current step number",
       editable: true,
       required: false,
       type: FORM_TYPES.number,

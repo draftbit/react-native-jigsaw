@@ -60,9 +60,7 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.content,
   supports_list_render: false,
   preview_image_url: "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/Text.svg",
-  layout: {
-    width: "100%"
-  },
+  layout: {},
   props: {
     children: {
       label: "Text",

@@ -55,6 +55,24 @@ class DatePickerExample extends React.Component {
             date={this.state.solidPickerDate}
             onDateChange={solidPickerDate => this.setState({ solidPickerDate })}
           />
+          <Text style={{ marginVertical: spacing.large }}>Time Picker - Solid</Text>
+          <DatePicker
+            label="Time"
+            mode="time"
+            placeholder="Select a time..."
+            type="solid"
+            date={this.state.solidPickerDate}
+            onDateChange={solidPickerDate => this.setState({ solidPickerDate })}
+          />
+          <Text style={{ marginVertical: spacing.large }}>DateTime Picker - Solid</Text>
+          <DatePicker
+            label="Date Time"
+            mode="datetime"
+            placeholder="Select a datetime..."
+            type="solid"
+            date={this.state.solidPickerDate}
+            onDateChange={solidPickerDate => this.setState({ solidPickerDate })}
+          />
           <Text style={{ marginVertical: spacing.large }}>Date Picker - Solid (Error)</Text>
           <DatePicker
             label="Date"

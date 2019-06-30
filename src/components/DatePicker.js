@@ -8,7 +8,8 @@ import {
   StyleSheet,
   Platform,
   DatePickerIOS,
-  DatePickerAndroid
+  DatePickerAndroid,
+  TimePickerAndroid
 } from "react-native"
 import { withTheme } from "../core/theming"
 import type { Theme } from "../types"
@@ -82,7 +83,7 @@ class Picker extends React.Component<Props> {
   }
 
   formatDate = () => {
-    const { date } = this.props
+    const { date, mode } = this.props
     const months = [
       "January",
       "February",
@@ -98,22 +99,44 @@ class Picker extends React.Component<Props> {
       "December"
     ]
 
+    if (mode === "time") {
+      return `${date.toLocaleTimeString()}`
+    }
+
+    if (mode === "datetime") {
+      return `${date.toLocaleString()}`
+    }
+
     return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
   }
 
   toggleVisibility = async () => {
-    const { date, onDateChange } = this.props
+    const { date, mode, onDateChange } = this.props
 
     if (Platform.OS === "ios") {
       this.setState(prevState => ({ pickerVisible: !prevState.pickerVisible }))
     } else {
       try {
-        const { action, year, month, day } = await DatePickerAndroid.open({
-          date
-        })
+        if (mode === "date") {
+          const { action, year, month, day } = await DatePickerAndroid.open({
+            date
+          })
 
-        if (action !== DatePickerAndroid.dismissedAction) {
-          onDateChange(new Date(year, month, day))
+          if (action !== DatePickerAndroid.dismissedAction) {
+            return onDateChange(new Date(year, month, day))
+          }
+        }
+
+        if (mode === "time") {
+          const { action, hour, minute } = await TimePickerAndroid.open({ mode: "default" })
+
+          if (action !== DatePickerAndroid.dismissedAction) {
+            const time = new Date()
+            time.setHours(hour)
+            time.setMinutes(minute)
+            time.setSeconds(0)
+            onDateChange(time)
+          }
         }
       } catch ({ code, message }) {
         console.warn("Cannot open date picker", message)
@@ -124,7 +147,20 @@ class Picker extends React.Component<Props> {
   }
 
   render() {
-    const { style, theme, options, date, onDateChange, disabled, mode, ...props } = this.props
+    const {
+      style,
+      theme,
+      options,
+      initialDate,
+      locale,
+      minuteInterval,
+      timeZoneOffsetInMinutes,
+      date,
+      onDateChange,
+      disabled,
+      mode,
+      ...props
+    } = this.props
     const { colors, spacing } = theme
 
     const { pickerVisible } = this.state
@@ -193,10 +229,53 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: true
   },
+  mode: {
+    label: "Mode",
+    description: "Choose between date, time and datetime",
+    value: "date",
+    editable: true,
+    required: true,
+    type: FORM_TYPES.flatArray,
+    options: ["date", "time", "datetime"]
+  },
   assistiveText: {
     label: "Assistive text",
     description: "Helper text to display below the picker",
     type: FORM_TYPES.string,
+    value: null,
+    editable: true,
+    required: false
+  },
+  locale: {
+    label: "Locale",
+    description: "Locale for the datepicker. Must be a valid Locale",
+    type: FORM_TYPES.string,
+    value: null,
+    editable: true,
+    required: false
+  },
+  minuteInterval: {
+    label: "Minute Interval",
+    description: "The interval at which minutes can be selected",
+    type: FORM_TYPES.flatArray,
+    options: [1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30],
+    value: null,
+    editable: true,
+    required: false
+  },
+  timeZoneOffsetInMinutes: {
+    label: "Time zone offset",
+    description:
+      "By default, the datepicker uses the device's timezone. This will allow you to offset it",
+    type: FORM_TYPES.number,
+    value: null,
+    editable: true,
+    required: false
+  },
+  initialDate: {
+    label: "Initial Date",
+    description: "Optionally set an initial date to make your forms easier to work with",
+    type: FORM_TYPES.date,
     value: null,
     editable: true,
     required: false
@@ -279,10 +358,7 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 345,
-      height: 82
-    }
+    layout: {}
   },
   {
     name: "Date Picker - Underline",
@@ -299,9 +375,6 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 345,
-      height: 82
-    }
+    layout: {}
   }
 ]

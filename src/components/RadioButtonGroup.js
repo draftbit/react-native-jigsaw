@@ -4,7 +4,7 @@ import * as React from "react"
 import { withTheme } from "../core/theming"
 import { View, Text, StyleSheet } from "react-native"
 import Icon from "./Icon.js"
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
 import Touchable from "./Touchable"
 
 type Props = {
@@ -27,6 +27,11 @@ class RadioButtonGroup extends React.Component<Props> {
   state = { selected: this.props.defaultSelection }
 
   onPress = selected => {
+    const { onChange } = this.props
+    if (onChange) {
+      onChange(selected)
+    }
+
     this.setState({ selected })
   }
 
@@ -213,10 +218,8 @@ export const SEED_DATA = {
       precision: 1,
       editable: true,
       required: false
-    }
+    },
+    fieldName: FIELD_NAME
   },
-  layout: {
-    width: 200,
-    height: 40
-  }
+  layout: {}
 }

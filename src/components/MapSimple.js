@@ -149,8 +149,5 @@ export const SEED_DATA = {
     },
     borderRadiusMode: BORDER_RADIUS_MODE
   },
-  layout: {
-    width: 345,
-    height: 302
-  }
+  layout: {}
 }

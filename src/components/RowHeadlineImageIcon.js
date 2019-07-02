@@ -85,10 +85,7 @@ export const SEED_DATA = [
         editable: true
       }
     },
-    layout: {
-      width: 343,
-      height: 57
-    }
+    layout: {}
   },
   {
     name: "Row Single Line Headline Icon Image",
@@ -120,10 +117,7 @@ export const SEED_DATA = [
         editable: true
       }
     },
-    layout: {
-      width: 343,
-      height: 57
-    }
+    layout: {}
   },
   {
     name: "Row Double Line Headline Icon",
@@ -155,10 +149,7 @@ export const SEED_DATA = [
         editable: true
       }
     },
-    layout: {
-      width: 343,
-      height: 83
-    }
+    layout: {}
   },
   {
     name: "Row Double Line Headline Image Icon",
@@ -197,10 +188,7 @@ export const SEED_DATA = [
         editable: true
       }
     },
-    layout: {
-      width: 375,
-      height: 83
-    }
+    layout: {}
   },
   {
     name: "Row Multiline Headline Icon",
@@ -239,10 +227,7 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 375,
-      height: 105
-    }
+    layout: {}
   },
   {
     name: "Row Multiline Headline Image Icon",
@@ -288,9 +273,6 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 375,
-      height: 105
-    }
+    layout: {}
   }
 ]

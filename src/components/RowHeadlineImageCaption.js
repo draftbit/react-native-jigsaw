@@ -78,10 +78,7 @@ export const SEED_DATA = [
         editable: true
       }
     },
-    layout: {
-      width: 343,
-      height: 57
-    }
+    layout: {}
   },
   {
     name: "Row Single Line Headline Image Caption",
@@ -113,10 +110,7 @@ export const SEED_DATA = [
         editable: true
       }
     },
-    layout: {
-      width: 343,
-      height: 57
-    }
+    layout: {}
   },
   {
     name: "Row Double Line Headline Caption",
@@ -149,10 +143,7 @@ export const SEED_DATA = [
         editable: true
       }
     },
-    layout: {
-      width: 343,
-      height: 83
-    }
+    layout: {}
   },
   {
     name: "Row Double Line Headline Image Caption",
@@ -192,9 +183,6 @@ export const SEED_DATA = [
         editable: true
       }
     },
-    layout: {
-      width: 343,
-      height: 83
-    }
+    layout: {}
   }
 ]

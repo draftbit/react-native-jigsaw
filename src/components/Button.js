@@ -283,10 +283,7 @@ export const SEED_DATA = [
         value: "outline"
       }
     },
-    layout: {
-      width: "100%",
-      height: 48
-    }
+    layout: {}
   },
   {
     name: "Button Solid",
@@ -304,9 +301,6 @@ export const SEED_DATA = [
         value: "solid"
       }
     },
-    layout: {
-      width: "100%",
-      height: 48
-    }
+    layout: {}
   }
 ]

@@ -226,10 +226,7 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 169,
-      height: 215
-    }
+    layout: {}
   },
   {
     name: "Large rating card",
@@ -246,9 +243,6 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 345,
-      height: 348
-    }
+    layout: {}
   }
 ]

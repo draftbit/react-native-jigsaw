@@ -146,8 +146,8 @@ export const SEED_DATA = [
       }
     },
     layout: {
-      width: 300,
-      height: 300
+      width: 250,
+      height: 250
     }
   }
 ]

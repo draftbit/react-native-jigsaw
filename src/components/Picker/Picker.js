@@ -191,10 +191,7 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 345,
-      height: 82
-    }
+    layout: {}
   },
   {
     name: "Picker - Underline",
@@ -211,9 +208,6 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 345,
-      height: 82
-    }
+    layout: {}
   }
 ]

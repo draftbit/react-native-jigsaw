@@ -75,10 +75,7 @@ export const SEED_DATA = [
         handlerPropName: "onValueChange"
       }
     },
-    layout: {
-      width: 375,
-      height: 59
-    }
+    layout: {}
   },
   {
     name: "Row Double Line Body Switch",
@@ -115,9 +112,6 @@ export const SEED_DATA = [
         handlerPropName: "onValueChange"
       }
     },
-    layout: {
-      width: 375,
-      height: 81
-    }
+    layout: {}
   }
 ]

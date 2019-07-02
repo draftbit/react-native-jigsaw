@@ -126,8 +126,5 @@ export const SEED_DATA = {
       type: FORM_TYPES.function
     }
   },
-  layout: {
-    width: 343,
-    height: 59
-  }
+  layout: {}
 }

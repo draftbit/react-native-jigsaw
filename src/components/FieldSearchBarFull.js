@@ -134,9 +134,6 @@ export const SEED_DATA = [
       },
       fieldName: FIELD_NAME
     },
-    layout: {
-      width: 375,
-      height: 56
-    }
+    layout: {}
   }
 ]

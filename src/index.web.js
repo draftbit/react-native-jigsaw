@@ -6,6 +6,7 @@ export { default as DefaultTheme } from "./styles/DefaultTheme"
 export { default as Touchable } from "./components/Touchable"
 
 export { default as Config } from "./components/Config.web.js"
+export { default as Video } from "./components/Video.web.js"
 export { default as Avatar } from "./components/Avatar"
 export { default as AvatarEdit } from "./components/AvatarEdit"
 export { default as Button } from "./components/Button"

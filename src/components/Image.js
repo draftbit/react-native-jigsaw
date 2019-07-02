@@ -29,7 +29,7 @@ export const SEED_DATA = {
   supports_list_render: false,
   preview_image_url: "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/Image.png",
   layout: {
-    width: "100%",
+    width: 250,
     height: 250
   },
   props: {

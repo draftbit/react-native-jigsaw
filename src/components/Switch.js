@@ -83,8 +83,5 @@ export const SEED_DATA = {
       handlerPropName: "onValueChange"
     }
   },
-  layout: {
-    width: 36,
-    height: 22
-  }
+  layout: {}
 }

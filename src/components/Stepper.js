@@ -89,9 +89,6 @@ export const SEED_DATA = [
         value: "stepperValue"
       }
     },
-    layout: {
-      width: 126,
-      height: 42
-    }
+    layout: {}
   }
 ]

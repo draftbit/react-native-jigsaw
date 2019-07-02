@@ -313,10 +313,7 @@ export const SEED_DATA = [
         value: null
       }
     },
-    layout: {
-      width: 80,
-      height: 80
-    }
+    layout: {}
   },
   {
     name: "FAB Outline",
@@ -342,10 +339,7 @@ export const SEED_DATA = [
         value: null
       }
     },
-    layout: {
-      width: 80,
-      height: 80
-    }
+    layout: {}
   },
   {
     name: "FAB Extended",
@@ -363,10 +357,7 @@ export const SEED_DATA = [
         value: "extended"
       }
     },
-    layout: {
-      width: 281,
-      height: 48
-    }
+    layout: {}
   },
   {
     name: "FAB Fixed",
@@ -384,9 +375,6 @@ export const SEED_DATA = [
         value: "fixed"
       }
     },
-    layout: {
-      width: 375,
-      height: 64
-    }
+    layout: {}
   }
 ]

@@ -10,10 +10,7 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.input,
   preview_image_url: "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/TextInput.png",
   supports_list_render: false,
-  layout: {
-    width: "100%",
-    height: 40
-  },
+  layout: {},
   props: {
     allowFontScaling: {
       label: "Allow Font Scaling",

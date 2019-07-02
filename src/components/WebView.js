@@ -11,7 +11,11 @@ export const SEED_DATA = {
     "https://github.com/expo/expo/blob/master/ios/versioned-react-native/ABI32_0_0/Libraries/Components/WebView/WebViewShared.js",
   category: COMPONENT_TYPES.content,
   supports_list_render: false,
-  layout: {},
+  layout: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0
+  },
   props: {
     source: {
       label: "Website url",

@@ -14,8 +14,9 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.container,
   supports_list_render: false,
   layout: {
-    width: "100%",
-    height: "100%"
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0
   },
   props: {
     source: {

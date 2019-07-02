@@ -180,10 +180,7 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 109,
-      height: 109
-    }
+    layout: {}
   },
   {
     name: "Medium Block Card",
@@ -208,10 +205,7 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 167,
-      height: 172
-    }
+    layout: {}
   },
   {
     name: "Large Block Card",
@@ -236,9 +230,6 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 343,
-      height: 296
-    }
+    layout: {}
   }
 ]

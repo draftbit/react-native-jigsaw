@@ -150,10 +150,7 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 345,
-      height: 84
-    }
+    layout: {}
   },
   {
     name: "CardContainerShortRightImage",
@@ -201,9 +198,6 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 375,
-      height: 84
-    }
+    layout: {}
   }
 ]

@@ -719,10 +719,7 @@ export const SEED_DATA = [
         required: false
       }
     },
-    layout: {
-      width: 345,
-      height: 82
-    }
+    layout: {}
   },
   {
     name: "Text Field - Underline",
@@ -747,10 +744,7 @@ export const SEED_DATA = [
         required: false
       }
     },
-    layout: {
-      width: 345,
-      height: 82
-    }
+    layout: {}
   },
   {
     name: "Text Area - Solid",
@@ -772,10 +766,7 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 345,
-      height: 140
-    }
+    layout: {}
   },
   {
     name: "Text Area - Underline",
@@ -797,9 +788,6 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 345,
-      height: 140
-    }
+    layout: {}
   }
 ]

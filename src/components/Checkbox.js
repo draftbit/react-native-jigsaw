@@ -81,8 +81,5 @@ export const SEED_DATA = {
       handlerPropName: "onPress"
     }
   },
-  layout: {
-    width: 24,
-    height: 24
-  }
+  layout: {}
 }

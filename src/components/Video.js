@@ -10,7 +10,10 @@ export const SEED_DATA = {
   code_link: "https://github.com/expo/expo/blob/master/packages/expo-av/src/Video.tsx",
   category: COMPONENT_TYPES.content,
   supports_list_render: false,
-  layout: {},
+  layout: {
+    width: "100%",
+    height: 250
+  },
   props: {
     source: {
       label: "Video URL",

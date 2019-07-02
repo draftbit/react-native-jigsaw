@@ -148,10 +148,7 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 109,
-      height: 109
-    }
+    layout: {}
   },
   {
     name: "Medium Inline Card",
@@ -183,10 +180,7 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 167,
-      height: 167
-    }
+    layout: {}
   },
   {
     name: "Large Inline Card",
@@ -218,9 +212,6 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 343,
-      height: 343
-    }
+    layout: {}
   }
 ]

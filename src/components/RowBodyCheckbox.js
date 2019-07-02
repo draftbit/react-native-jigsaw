@@ -83,10 +83,7 @@ export const SEED_DATA = [
         handlerPropName: "onPress"
       }
     },
-    layout: {
-      width: 375,
-      height: 59
-    }
+    layout: {}
   },
   {
     name: "Row Double Line Body Checkbox",
@@ -124,9 +121,6 @@ export const SEED_DATA = [
         handlerPropName: "onPress"
       }
     },
-    layout: {
-      width: 375,
-      height: 81
-    }
+    layout: {}
   }
 ]

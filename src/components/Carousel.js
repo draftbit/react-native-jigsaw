@@ -177,7 +177,6 @@ export const SEED_DATA = [
     preview_image_url: "{CLOUDINARY_URL}/Carousel.png",
     supports_list_render: false,
     layout: {
-      width: "100%",
       height: 250
     },
     props: {

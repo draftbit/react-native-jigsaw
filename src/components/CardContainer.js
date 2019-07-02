@@ -212,10 +212,7 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 169,
-      height: 194
-    }
+    layout: {}
   },
   {
     name: "Large Contained Card",
@@ -232,9 +229,6 @@ export const SEED_DATA = [
         editable: false
       }
     },
-    layout: {
-      width: 345,
-      height: 314
-    }
+    layout: {}
   }
 ]

@@ -5,7 +5,7 @@ import AspectRatio from "./AspectRatio"
 export default function UnsupportedView({ tag, style }) {
   const { aspectRatio, ...extraStyles } = StyleSheet.flatten(style)
   const [layout, setLayout] = useState({})
-  const message = `${tag} is not supported in Web Preview yet, please use "Live Preview" to view!`
+  const message = `${tag} is not supported in Web Preview yet, please use Live Preview`
   if (aspectRatio && extraStyles.position !== "absolute") {
     return (
       <AspectRatio

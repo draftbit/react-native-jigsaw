@@ -49,7 +49,7 @@ class RadioButtonGroup extends React.Component<Props> {
       optionSpacing,
       borderColor,
       unselectedContentColor,
-      theme: { colors }
+      theme: { colors, spacing }
     } = this.props
 
     const marginHorizontal = direction === "horizontal" && optionSpacing ? optionSpacing / 2 : 0
@@ -58,7 +58,6 @@ class RadioButtonGroup extends React.Component<Props> {
     return (
       <View
         style={[
-          { flex: 1 },
           style,
           {
             flexDirection: direction === "vertical" ? "column" : "row",
@@ -70,14 +69,13 @@ class RadioButtonGroup extends React.Component<Props> {
         {options.map((option, index) => {
           const selected = option.label == this.state.selected
           return (
-            <Touchable onPress={() => this.onPress(option.label)} style={{ flex: 1 }}>
+            <Touchable onPress={() => this.onPress(option.label)}>
               <View
                 style={{
                   flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "center",
                   backgroundColor: selected ? activeColor : inactiveColor,
-                  height: style && style.height ? style.height : 50,
                   borderLeftWidth: borderColor && index !== 0 ? StyleSheet.hairlineWidth : 0,
                   borderRightWidth:
                     borderColor && index !== options.length - 1 ? StyleSheet.hairlineWidth : 0,
@@ -86,7 +84,8 @@ class RadioButtonGroup extends React.Component<Props> {
                   marginLeft: marginHorizontal,
                   marginRight: marginHorizontal,
                   marginTop: marginVertical,
-                  marginBottom: marginVertical
+                  marginBottom: marginVertical,
+                  padding: spacing.large
                 }}>
                 {option.icon ? (
                   <Icon name={option.icon} size={iconSize} color={contentColor} />
@@ -220,9 +219,5 @@ export const SEED_DATA = {
     },
     fieldName: FIELD_NAME
   },
-  layout: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0
-  }
+  layout: {}
 }

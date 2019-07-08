@@ -51,7 +51,6 @@ class RadioButtonGroup extends React.Component<Props> {
     return (
       <View
         style={{
-          flex: 1,
           flexDirection: direction === "vertical" ? "column" : "row",
           alignItems: "center",
           borderRadius: optionSpacing ? 0 : borderRadius,

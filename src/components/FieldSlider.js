@@ -31,12 +31,20 @@ class FieldSlider extends React.Component {
 
     const labelStyle = [typography.caption, { color: colors.light }]
 
+    const sliderStyle = {}
+    if (style.width) {
+      sliderStyle.width = style.width
+    }
+    if (style.height) {
+      sliderStyle.height = style.height
+    }
+
     return (
       <View style={[styles.container, style]}>
         {title && (
           <Text style={[typography.body1, { marginBottom: spacing.text / 2 }]}>{title}</Text>
         )}
-        <Slider style={{ width: style.width, height: style.height }} {...props} />
+        <Slider style={sliderStyle} {...props} />
         <View style={[styles.bottomContainer, { marginTop: spacing.text }]}>
           <Text style={[labelStyle, { flex: 1 }]}>{minimumLabel}</Text>
           <Text style={labelStyle}>{this.props.value}</Text>

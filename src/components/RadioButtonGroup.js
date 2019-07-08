@@ -49,7 +49,7 @@ class RadioButtonGroup extends React.Component<Props> {
       optionSpacing,
       borderColor,
       unselectedContentColor,
-      theme: { colors, spacing }
+      theme: { colors, spacing, typography }
     } = this.props
 
     const marginHorizontal = direction === "horizontal" && optionSpacing ? optionSpacing / 2 : 0
@@ -93,6 +93,7 @@ class RadioButtonGroup extends React.Component<Props> {
                 {option.label ? (
                   <Text
                     style={[
+                      typography.button,
                       labelStyle,
                       { color: selected ? contentColor : unselectedContentColor }
                     ]}>
@@ -177,7 +178,7 @@ export const SEED_DATA = {
       label: "Label Style",
       description: "Font and weight of the Label",
       type: FORM_TYPES.typeStyle,
-      value: null,
+      value: "Button",
       editable: true,
       required: true
     },

@@ -284,6 +284,13 @@ const SEED_DATA_PROPS = {
     required: false,
     type: FORM_TYPES.color,
     value: null
+  },
+  onPress: {
+    label: "Action",
+    description: "Action to execute when button pressed",
+    editable: true,
+    type: FORM_TYPES.action,
+    value: null
   }
 }
 

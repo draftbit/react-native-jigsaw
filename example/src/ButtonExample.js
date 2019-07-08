@@ -67,11 +67,10 @@ class ButtonExample extends React.Component {
             Text Disabled
           </Button>
         </View>
-        <View style={styles.column}>
+        <View style={styles.row}>
           <RadioButtonGroup
-            style={{ width: 400, height: 40 }}
-            direction={"horizontal"}
-            defaultSelection={"ne"}
+            direction="horizontal"
+            defaultSelection="First"
             options={[
               { label: "First", icon: "add" },
               { label: "Second" },
@@ -86,18 +85,17 @@ class ButtonExample extends React.Component {
             borderColor="#000000"
           />
         </View>
-        <View style={styles.column}>
+        <View style={styles.row}>
           <RadioButtonGroup
-            style={{ width: 200, height: 50 }}
             direction="vertical"
-            defaultSelection="ne"
+            defaultSelection="First"
             options={[
               { label: "First", icon: "add" },
               { label: "Second" },
               { label: "Third" },
               { label: "Fourth" }
             ]}
-            spacing={10}
+            optionSpacing={10}
             borderRadius={100}
             activeColor="#DCDCDC"
             inactiveColor="#5a45ff"
@@ -105,18 +103,17 @@ class ButtonExample extends React.Component {
             contentColor="#ffffff"
           />
         </View>
-        <View style={styles.column}>
+        <View style={styles.row}>
           <RadioButtonGroup
-            style={{ width: 300, height: 40 }}
             direction="horizontal"
-            defaultSelection="ne"
+            defaultSelection="First"
             options={[
               { label: "First", icon: "add" },
               { label: "Second" },
               { label: "Third" },
               { label: "Fourth" }
             ]}
-            spacing={10}
+            optionSpacing={10}
             borderRadius={10}
             activeColor="#DCDCDC"
             inactiveColor="#5a45ff"

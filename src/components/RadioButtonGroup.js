@@ -49,12 +49,11 @@ class RadioButtonGroup extends React.Component<Props> {
       optionSpacing,
       borderColor,
       unselectedContentColor,
-      theme: { colors }
+      theme: { colors, spacing, typography }
     } = this.props
 
-    const optionWidth = style.width / options.length
-    const marginHorizontal = direction === "horizontal" ? optionSpacing / 2 : 0
-    const marginVertical = direction === "vertical" ? optionSpacing / 2 : 0
+    const marginHorizontal = direction === "horizontal" && optionSpacing ? optionSpacing / 2 : 0
+    const marginVertical = direction === "vertical" && optionSpacing ? optionSpacing / 2 : 0
 
     return (
       <View
@@ -77,8 +76,6 @@ class RadioButtonGroup extends React.Component<Props> {
                   alignItems: "center",
                   justifyContent: "center",
                   backgroundColor: selected ? activeColor : inactiveColor,
-                  height: style.height,
-                  width: optionWidth,
                   borderLeftWidth: borderColor && index !== 0 ? StyleSheet.hairlineWidth : 0,
                   borderRightWidth:
                     borderColor && index !== options.length - 1 ? StyleSheet.hairlineWidth : 0,
@@ -87,7 +84,8 @@ class RadioButtonGroup extends React.Component<Props> {
                   marginLeft: marginHorizontal,
                   marginRight: marginHorizontal,
                   marginTop: marginVertical,
-                  marginBottom: marginVertical
+                  marginBottom: marginVertical,
+                  padding: spacing.large
                 }}>
                 {option.icon ? (
                   <Icon name={option.icon} size={iconSize} color={contentColor} />
@@ -95,6 +93,7 @@ class RadioButtonGroup extends React.Component<Props> {
                 {option.label ? (
                   <Text
                     style={[
+                      typography.button,
                       labelStyle,
                       { color: selected ? contentColor : unselectedContentColor }
                     ]}>
@@ -179,7 +178,7 @@ export const SEED_DATA = {
       label: "Label Style",
       description: "Font and weight of the Label",
       type: FORM_TYPES.typeStyle,
-      value: null,
+      value: "Button",
       editable: true,
       required: true
     },

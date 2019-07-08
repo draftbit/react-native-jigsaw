@@ -45,13 +45,13 @@ class RadioButtonGroup extends React.Component<Props> {
       theme: { colors }
     } = this.props
 
-    const optionWidth = style.width / options.length
-    const marginHorizontal = direction === "horizontal" ? optionSpacing / 2 : 0
-    const marginVertical = direction === "vertical" ? optionSpacing / 2 : 0
+    const marginHorizontal = direction === "horizontal" && optionSpacing ? optionSpacing / 2 : 0
+    const marginVertical = direction === "vertical" && optionSpacing ? optionSpacing / 2 : 0
 
     return (
       <View
         style={{
+          flex: 1,
           flexDirection: direction === "vertical" ? "column" : "row",
           alignItems: "center",
           borderRadius: optionSpacing ? 0 : borderRadius,
@@ -60,15 +60,14 @@ class RadioButtonGroup extends React.Component<Props> {
         {options.map((option, index) => {
           const selected = option.label == this.state.selected
           return (
-            <Touchable onPress={() => this.onPress(option.label)}>
+            <Touchable onPress={() => this.onPress(option.label)} style={{ flex: 1 }}>
               <View
                 style={{
                   flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "center",
                   backgroundColor: selected ? activeColor : inactiveColor,
-                  height: style.height,
-                  width: optionWidth,
+                  height: style && style.height ? style.height : 50,
                   borderLeftWidth: borderColor && index !== 0 ? StyleSheet.hairlineWidth : 0,
                   borderRightWidth:
                     borderColor && index !== options.length - 1 ? StyleSheet.hairlineWidth : 0,

@@ -11,6 +11,7 @@ import {
   DatePickerAndroid,
   TimePickerAndroid
 } from "react-native"
+import dateFormat from "dateformat"
 import { withTheme } from "../core/theming"
 import type { Theme } from "../types"
 import Portal from "./Portal/Portal"
@@ -28,6 +29,10 @@ type Props = {
    * In `solid` type, the background color of the label is derived from `colors.background` in theme or the `backgroundColor` style.
    */
   type?: "underline" | "solid",
+  /**
+   * Uses dateFormat library to format your date / time
+   */
+  format?: string,
   /**
    * If true, user won't be able to interact with the component.
    */
@@ -83,7 +88,10 @@ class Picker extends React.Component<Props> {
   }
 
   formatDate = () => {
-    const { date, mode } = this.props
+    const { date, mode, format } = this.props
+
+    if (format) return dateFormat(date, format)
+
     const months = [
       "January",
       "February",

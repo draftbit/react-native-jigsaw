@@ -439,6 +439,12 @@ class TextField extends React.Component<Props, State> {
       ]
     }
 
+    const inputStyles = [
+      styles.input,
+      inputStyle,
+      type === "solid" ? { marginHorizontal: spacing.medium } : {}
+    ]
+
     return (
       <View style={[styles.container, style]}>
         {leftIconName && leftIconMode === "outset" ? (
@@ -544,7 +550,7 @@ class TextField extends React.Component<Props, State> {
             onFocus: this._handleFocus,
             onBlur: this._handleBlur,
             underlineColorAndroid: "transparent",
-            style: [styles.input, inputStyle]
+            style: inputStyles
           })}
         </View>
         {rightIconName ? (

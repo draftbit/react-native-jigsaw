@@ -698,7 +698,10 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false
   },
-  fieldName: FIELD_NAME
+  fieldName: {
+    ...FIELD_NAME,
+    value: 'textFieldValue'
+  }
 }
 
 export const SEED_DATA = [

@@ -700,7 +700,8 @@ const SEED_DATA_PROPS = {
   },
   fieldName: {
     ...FIELD_NAME,
-    value: 'textFieldValue'
+    handlerPropName: "onChangeText",
+    value: "textFieldValue"
   }
 }
 

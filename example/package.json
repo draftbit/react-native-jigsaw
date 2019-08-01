@@ -12,6 +12,7 @@
     "@callstack/react-theme-provider": "^3.0.2",
     "color": "^3.1.2",
     "create-react-context": "^0.3.0",
+    "@draftbit/ui": "draftbit/jigsaw-component-library#fix_deps",
     "dateformat": "^3.0.3",
     "expo": "^34.0.3",
     "react": "16.8.6",

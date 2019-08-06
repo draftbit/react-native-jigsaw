@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "2.32.0",
+  "version": "2.32.1",
   "description": "Jigsaw component library for Draftbit",
   "main": "src/index.js",
   "repository": "git@github.com:draftbit/jigsaw-component-library.git",
@@ -22,7 +22,7 @@
   "peerDependencies": {
     "expo": ">=34.0.3",
     "react": "16.8.3",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz"
+    "react-native": ">=0.59.8"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",

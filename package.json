@@ -22,7 +22,7 @@
   "peerDependencies": {
     "expo": ">=34.0.3",
     "react": "16.8.3",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz"
+    "react-native": ">=0.59.8"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",

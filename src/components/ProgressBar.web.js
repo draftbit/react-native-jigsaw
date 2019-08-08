@@ -1,10 +1,8 @@
 import React from "react"
-import { ProgressBar as NativeProgressBar } from 'react-native'
 
 export default function ProgressBar({
   progress,
   borderRadius,
-  animationType,
   color,
   unfilledColor,
   borderColor,
@@ -12,11 +10,8 @@ export default function ProgressBar({
   style,
 }) {
   return (
-    <NativeProgressBar
-      color={color}
-      progress={progress}
-      trackColor={color}
-      style={style}
-    />
+    <View style={[...style, {backgroundColor:unfilledColor, borderRadius}]}>
+      <View style={{backgroundColor:color ,width:progress, height:"100%"}}/>
+    </View>
   )
 }

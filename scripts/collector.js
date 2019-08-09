@@ -18,6 +18,7 @@ const ERROR_FILES = []
 const COMPLETED_FILES = []
 
 async function main() {
+  console.log("Running on", getUrl(), '[warnings surpressed]')
   let files = await globAsync(`${COMPONENT_PATH}/**/*.js`)
   files = files.filter(file => !IGNORED_FILES.includes(file))
 
@@ -29,7 +30,6 @@ async function main() {
     } catch (error) {
       const name = file.split("jigsaw-component-library/")[1]
       ERROR_FILES.push({ file, error: error.message })
-      console.log("WARNING", name, error.message)
     }
   }
 

@@ -1,4 +1,5 @@
 export const FORM_TYPES = {
+  json: "json",
   multiselect: "multiselect",
   position: "position",
   sourceUrl: "sourceUrl",

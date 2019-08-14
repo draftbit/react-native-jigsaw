@@ -25,6 +25,7 @@ import FABExample from "./src/FABExample"
 import AvatarExample from "./src/AvatarExample"
 import SliderExample from "./src/SliderExample"
 import StepperExample from "./src/StepperExample"
+import VideoExample from "./src/VideoExample"
 
 const Drawer = createDrawerNavigator({
   Home: () => (
@@ -52,7 +53,8 @@ const Drawer = createDrawerNavigator({
   Row: RowExample,
   Slider: SliderExample,
   Stepper: StepperExample,
-  TextField: TextFieldExample
+  TextField: TextFieldExample,
+  Video: VideoExample
 })
 
 const AppNavigator = createStackNavigator({

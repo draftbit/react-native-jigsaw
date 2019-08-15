@@ -27,6 +27,7 @@ import AvatarExample from "./src/AvatarExample"
 import SliderExample from "./src/SliderExample"
 import StepperExample from "./src/StepperExample"
 import VideoExample from "./src/VideoExample"
+import ImageBackgroundExample from "./src/ImageBackgroundExample"
 
 const Drawer = createDrawerNavigator({
   Home: () => (
@@ -49,6 +50,7 @@ const Drawer = createDrawerNavigator({
   FieldSearchBarFull: FieldSearchBarFullExample,
   Header: HeaderExample,
   Map: MapExample,
+  ImageBackground: ImageBackgroundExample,
   Picker: PickerExample,
   ProgressBar: ProgressBarExample,
   ProgressIndicator: ProgressIndicatorExample,

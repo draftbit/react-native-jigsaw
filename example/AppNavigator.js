@@ -3,6 +3,7 @@ import { StatusBar, View, Text } from "react-native"
 import { Provider, DefaultTheme, Touchable, Icon } from "@draftbit/ui"
 import { createAppContainer, createDrawerNavigator, createStackNavigator } from "react-navigation"
 
+import ActivityIndicatorExample from "./src/ActivityIndicatorExample"
 import ButtonExample from "./src/ButtonExample"
 import CardBlockExample from "./src/CardBlockExample"
 import CardContainerShortImageExample from "./src/CardContainerShortImageExample"
@@ -33,6 +34,7 @@ const Drawer = createDrawerNavigator({
       <Text style={{ alignSelf: "center", marginTop: 30 }}>Select an example from the drawer</Text>
     </View>
   ),
+  ActivityIndicator: ActivityIndicatorExample,
   Avatar: AvatarExample,
   Button: ButtonExample,
   Carousel: CarouselExample,

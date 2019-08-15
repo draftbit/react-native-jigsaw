@@ -1,7 +1,7 @@
 /* @flow */
 
 import * as React from "react"
-import { View, StyleSheet } from "react-native"
+import { View, Text, StyleSheet } from "react-native"
 import { ImageBackground, withTheme } from "@draftbit/ui"
 import EXAMPLE_IMAGES from "../constants"
 
@@ -23,8 +23,9 @@ class ImageBackgroundExample extends React.Component {
           source={{
             uri: EXAMPLE_IMAGES.imageBackground
           }}
-          resizeMode="cover"
-        />
+          resizeMode="cover">
+          <Text style={styles.text}>"It's a gundam!"</Text>
+        </ImageBackground>
       </View>
     )
   }
@@ -36,7 +37,15 @@ const styles = StyleSheet.create({
   },
   imageBackground: {
     width: "100%",
-    height: "100%"
+    height: "100%",
+    alignContent: "center",
+    justifyContent: "center"
+  },
+  text: {
+    textAlign: "center",
+    color: "#ffffff",
+    fontWeight: "bold",
+    fontSize: 30
   }
 })
 

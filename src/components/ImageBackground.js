@@ -16,7 +16,9 @@ export const SEED_DATA = {
   layout: {
     flexGrow: 1,
     flexShrink: 1,
-    flexBasis: 0
+    flexBasis: 0,
+    height: "100%",
+    width: "100%"
   },
   props: {
     source: {

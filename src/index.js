@@ -9,6 +9,7 @@ export { default as Touchable } from "./components/Touchable"
 
 export { default as Avatar } from "./components/Avatar"
 export { default as AvatarEdit } from "./components/AvatarEdit"
+export { default as ActivityIndicator } from "./components/ActivityIndicator"
 export { default as Button } from "./components/Button"
 export { default as IconButton } from "./components/IconButton"
 export { default as CardBlock } from "./components/CardBlock"

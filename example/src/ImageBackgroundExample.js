@@ -3,6 +3,7 @@
 import * as React from "react"
 import { View, StyleSheet } from "react-native"
 import { ImageBackground, withTheme } from "@draftbit/ui"
+import EXAMPLE_IMAGES from "../constants"
 
 class ImageBackgroundExample extends React.Component {
   render() {
@@ -20,8 +21,7 @@ class ImageBackgroundExample extends React.Component {
         <ImageBackground
           style={styles.imageBackground}
           source={{
-            uri:
-              "https://images.unsplash.com/photo-1562461089-907f104c2b9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80"
+            uri: EXAMPLE_IMAGES.imageBackground
           }}
           resizeMode="cover"
         />

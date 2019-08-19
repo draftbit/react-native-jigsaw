@@ -356,7 +356,7 @@ export const SEED_DATA = {
     },
     fieldName: {
       ...FIELD_NAME,
-      value: textInputValue,
+      value: "textInputValue",
       handlerPropName: "onChangeText"
     }
   }

@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { StyleSheet, View, ScrollView, KeyboardAvoidingView } from "react-native"
-import { TextField, withTheme } from "@draftbit/ui"
+import { TextField, TextInput, withTheme } from "@draftbit/ui"
 import type { Theme } from "@draftbit/ui/types"
 
 type Props = {
@@ -187,6 +187,7 @@ class TextFieldExample extends React.Component<Props, State> {
             onChangeText={outlinedTextareaText => this.setState({ outlinedTextareaText })}
             multiline
           />
+          <TextInput style={[styles.textInput]} defaultValue="Default Value" />
         </ScrollView>
       </KeyboardAvoidingView>
     )
@@ -203,6 +204,10 @@ const styles = StyleSheet.create({
   },
   inputContainerStyle: {
     marginVertical: 16
+  },
+  textInput: {
+    height: 30,
+    width: 200
   }
 })
 

@@ -95,6 +95,7 @@ class Button extends React.Component<Props> {
       type,
       loading,
       icon,
+      labelColor,
       color: colorOverride,
       children,
       onPress,
@@ -118,7 +119,7 @@ class Button extends React.Component<Props> {
           .rgb()
           .string()
       } else {
-        textColor = colors.surface
+        textColor = labelColor || colors.surface
       }
     } else {
       backgroundColor = "transparent"
@@ -129,7 +130,7 @@ class Button extends React.Component<Props> {
           .rgb()
           .string()
       } else {
-        textColor = buttonColor
+        textColor = labelColor || buttonColor
       }
     }
 
@@ -236,6 +237,14 @@ const SEED_DATA_PROPS = {
   color: {
     label: "Color Override",
     description: "Override the background color of the button",
+    editable: true,
+    required: false,
+    type: FORM_TYPES.color,
+    value: null
+  },
+  labelColor: {
+    label: "Label Color Override",
+    description: "Override the label color of the button",
     editable: true,
     required: false,
     type: FORM_TYPES.color,

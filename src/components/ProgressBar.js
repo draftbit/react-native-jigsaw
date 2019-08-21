@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Platform } from "react-native"
+import { Platform, View} from "react-native"
 import * as Progress from "react-native-progress"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 import { withTheme } from "../core/theming"
@@ -15,18 +15,19 @@ const ProgressBar = ({
   style
 }) => {
   return (
-    <Progress.Bar
-      progress={progress}
-      color={color}
-      unfilledColor={unfilledColor}
-      borderColor={borderColor}
-      borderWidth={borderWidth}
-      width={style.width}
-      height={style.height}
-      borderRadius={borderRadius}
-      animationType={animationType}
-      style
-    />
+    <View style={style}>
+      <Progress.Bar
+        progress={progress}
+        color={color}
+        unfilledColor={unfilledColor}
+        borderColor={borderColor}
+        borderWidth={borderWidth}
+        width={null}
+        height={style.height}
+        borderRadius={borderRadius}
+        animationType={animationType}
+      />
+    </View>
   )
 }
 

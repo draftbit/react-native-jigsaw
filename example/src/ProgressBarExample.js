@@ -23,7 +23,7 @@ class ProgressBarExample extends React.Component<Props> {
         <View style={{ marginBottom: 40 }}>
           <ProgressBar
             progress={0.5}
-            style={{ width: 250, height: 5 }}
+            style={{ height: 20 }}
             borderRadius={10}
             color="#5a45ff"
             unfilledColor="#000000"

@@ -45,7 +45,8 @@ export const COMPONENT_TYPES = {
   content: "content",
   input: "input",
   container: "container",
-  blocks: "blocks"
+  blocks: "blocks",
+  data: "data"
 }
 
 export const ELEVATION_TYPE = {

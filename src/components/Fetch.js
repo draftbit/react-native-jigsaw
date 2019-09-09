@@ -3,7 +3,7 @@ export const SEED_DATA = {
   name: "Fetch",
   tag: "Fetch",
   description: "Rest API Declarative Fetch component. Uses react-request internally",
-  type: COMPONENT_TYPES.primitive,
+  type: COMPONENT_TYPES.data,
   supports_list_render: false,
   layout: {},
   props: {
@@ -37,7 +37,7 @@ export const SEED_DATA = {
         },
         null,
         2
-      ),
+      )
     },
     body: {
       label: "HTTP Body",
@@ -45,7 +45,7 @@ export const SEED_DATA = {
       required: false,
       editable: true,
       type: FORM_TYPES.json,
-      value: JSON.stringify({}),
+      value: JSON.stringify({})
     },
     mode: {
       label: "HTTP Mode",

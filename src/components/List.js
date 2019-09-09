@@ -15,14 +15,6 @@ export const SEED_DATA = {
     flexBasis: 0
   },
   props: {
-    component: {
-      label: "Component",
-      description: "Component to render",
-      editable: true,
-      required: true,
-      type: FORM_TYPES.component,
-      value: null
-    },
     horizontal: {
       label: "Horizontal",
       description: "Render list horizontally",
@@ -42,18 +34,6 @@ export const SEED_DATA = {
       step: 1,
       precision: 0,
       value: null
-    },
-    numberComponents: {
-      label: "Number of components",
-      description: "Number of components to render in list",
-      editable: true,
-      required: true,
-      type: FORM_TYPES.number,
-      min: 1,
-      max: 10,
-      step: 1,
-      precision: 0,
-      value: 3
     }
   }
 }

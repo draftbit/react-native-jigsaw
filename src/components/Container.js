@@ -95,7 +95,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.number,
-      min: 1,
+      min: 0,
       max: 20,
       step: 1,
       precision: 0

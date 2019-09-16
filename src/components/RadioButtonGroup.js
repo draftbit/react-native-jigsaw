@@ -43,6 +43,7 @@ class RadioButtonGroup extends React.Component<Props> {
       activeColor,
       inactiveColor,
       labelStyle,
+      labelWrapperStyle,
       iconSize,
       contentColor,
       borderRadius,
@@ -51,9 +52,9 @@ class RadioButtonGroup extends React.Component<Props> {
       unselectedContentColor,
       theme: { colors, spacing, typography }
     } = this.props
-
     const marginHorizontal = direction === "horizontal" && optionSpacing ? optionSpacing / 2 : 0
     const marginVertical = direction === "vertical" && optionSpacing ? optionSpacing / 2 : 0
+    const optionWrapperWidth = direction === "vertical" ? "100%" : "auto"
 
     return (
       <View
@@ -69,7 +70,9 @@ class RadioButtonGroup extends React.Component<Props> {
         {options.map((option, index) => {
           const selected = option.label == this.state.selected
           return (
-            <Touchable onPress={() => this.onPress(option.label)}>
+            <Touchable
+              style={{ width: optionWrapperWidth }}
+              onPress={() => this.onPress(option.label)}>
               <View
                 style={{
                   flexDirection: "row",
@@ -85,7 +88,8 @@ class RadioButtonGroup extends React.Component<Props> {
                   marginRight: marginHorizontal,
                   marginTop: marginVertical,
                   marginBottom: marginVertical,
-                  padding: spacing.large
+                  padding: spacing.large,
+                  ...labelWrapperStyle
                 }}>
                 {option.icon ? (
                   <Icon name={option.icon} size={iconSize} color={contentColor} />

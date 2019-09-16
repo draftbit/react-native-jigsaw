@@ -27,12 +27,22 @@ class RadioButtonGroup extends React.Component<Props> {
   state = { selected: this.props.defaultSelection }
 
   onPress = selected => {
-    const { onChange } = this.props
+    const { controlled, onChange } = this.props
     if (onChange) {
       onChange(selected)
     }
 
-    this.setState({ selected })
+    if (!controlled) {
+      return this.setState({ selected })
+    }
+  }
+
+  getSelected = () => {
+    if (this.props.controlled) {
+      return this.props.value
+    }
+
+    return this.state.selected
   }
 
   render() {
@@ -49,6 +59,7 @@ class RadioButtonGroup extends React.Component<Props> {
       borderRadius,
       optionSpacing,
       borderColor,
+      controlled,
       unselectedContentColor,
       theme: { colors, spacing, typography }
     } = this.props
@@ -68,7 +79,7 @@ class RadioButtonGroup extends React.Component<Props> {
           }
         ]}>
         {options.map((option, index) => {
-          const selected = option.label == this.state.selected
+          const selected = option.label == this.getSelected()
           return (
             <Touchable
               style={{ width: optionWrapperWidth }}

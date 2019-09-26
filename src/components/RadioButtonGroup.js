@@ -82,6 +82,7 @@ class RadioButtonGroup extends React.Component<Props> {
           const selected = option.label == this.getSelected()
           return (
             <Touchable
+              key={option.key || index}
               style={{ width: optionWrapperWidth }}
               onPress={() => this.onPress(option.label)}>
               <View

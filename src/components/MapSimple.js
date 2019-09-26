@@ -7,10 +7,12 @@ import { COMPONENT_TYPES, FORM_TYPES, BORDER_RADIUS_MODE } from "../core/compone
 
 export type MapSimpleProps = {
   aspectRatio?: number,
+  interactionDisabled?: boolean,
   initialLatitude: number,
   initialLongitude: number,
   initialLatitudeDelta: number,
   initialLongitudeDelta: number,
+  pinColor: string,
   markers?: Array<{
     title?: string,
     description?: string,
@@ -36,6 +38,8 @@ class MapSimple extends React.PureComponent<MapSimpleProps> {
       initialLongitudeDelta,
       markers,
       style,
+      pinColor,
+      interactionDisabled,
       theme: { borderRadius, colors }
     } = this.props
 
@@ -47,6 +51,10 @@ class MapSimple extends React.PureComponent<MapSimpleProps> {
           latitudeDelta: initialLatitudeDelta,
           longitudeDelta: initialLongitudeDelta
         }}
+        pitchEnabled={!interactionDisabled}
+        rotateEnabled={!interactionDisabled}
+        scrollEnabled={!interactionDisabled}
+        zoomEnabled={!interactionDisabled}
         style={[
           {
             width: "100%",
@@ -62,7 +70,7 @@ class MapSimple extends React.PureComponent<MapSimpleProps> {
             }}
             title={m.title}
             description={m.description}
-            pinColor={colors.primary}
+            pinColor={pinColor || colors.primary}
             key={i}
           />
         ))}
@@ -137,6 +145,14 @@ export const SEED_DATA = {
       value: 1,
       editable: true,
       required: true
+    },
+    interactionDisabled: {
+      label: "Disable Interaciton",
+      description: "Prevent users from dragging or zooming on the map",
+      type: FORM_TYPES.boolean,
+      value: false,
+      editable: true,
+      required: false
     },
     markers: {
       label: "Markers",

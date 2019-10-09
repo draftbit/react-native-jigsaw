@@ -40,7 +40,7 @@ class MapSimple extends React.PureComponent<MapSimpleProps> {
       style,
       pinColor,
       interactionDisabled,
-      theme: { borderRadius, colors }
+      theme: { colors }
     } = this.props
 
     return (
@@ -162,6 +162,14 @@ export const SEED_DATA = {
       value: null,
       required: false,
       editable: true
+    },
+    pinColor: {
+      label: "Pin Color",
+      description: "Color of the map pins",
+      editable: true,
+      required: true,
+      value: "primary",
+      type: FORM_TYPES.color
     },
     borderRadiusMode: BORDER_RADIUS_MODE
   },

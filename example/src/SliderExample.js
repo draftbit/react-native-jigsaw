@@ -57,8 +57,8 @@ class SliderExample extends React.Component<Props> {
           thumbBorderRadius={20}
           thumbSize={20}
           value={disabledSliderValue}
-          onValueChange={sliderValue => {
-            this.setState({ sliderValue })
+          onValueChange={disabledSliderValue => {
+            this.setState({ disabledSliderValue })
           }}
           minimumValue={0}
           maximumValue={10}
@@ -69,10 +69,6 @@ class SliderExample extends React.Component<Props> {
           title="Title"
           minimumLabel="0"
           maximumLabel="10"
-          value={fieldSliderValue}
-          onValueChange={fieldSliderValue => {
-            this.setState({ fieldSliderValue })
-          }}
           style={{ width: 300, height: 30 }}
           minimumTrackTintColor="#5a45ff"
           maximumTrackTintColor="#536070"
@@ -81,9 +77,9 @@ class SliderExample extends React.Component<Props> {
           trackBorderRadius={10}
           thumbSize={20}
           thumbTouchSize={20}
-          value={sliderValue}
-          onValueChange={sliderValue => {
-            this.setState({ sliderValue })
+          value={fieldSliderValue}
+          onValueChange={fieldSliderValue => {
+            this.setState({ fieldSliderValue })
           }}
           minimumValue={0}
           maximumValue={10}

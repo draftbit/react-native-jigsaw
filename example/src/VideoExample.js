@@ -18,7 +18,7 @@ class VideoExample extends React.Component {
           }
         ]}>
         <Video
-          style={{width: 300, height:300}}
+          style={{ width: 300, height: 300 }}
           rate={1}
           source={{ uri: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4" }}
           volume={1}

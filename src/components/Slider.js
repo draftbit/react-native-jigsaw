@@ -22,7 +22,11 @@ const Slider = ({
   thumbSize,
   ...props
 }) => {
+<<<<<<< HEAD
   const [internalValue, setInternalValue] = React.useState(0);
+=======
+  const [internalValue, setInternalValue] = React.useState(0)
+>>>>>>> 422089419ebd32c33642fd9cff0ebe7c39c1e8a0
 
   const thumbStyle = {
     borderRadius: thumbBorderRadius || 0,
@@ -34,14 +38,14 @@ const Slider = ({
     <ReactNativeSlider
       {...props}
       disabled={disabled}
-      value={disabled ? 0 : ('value' in props) ? value : internalValue}
+      value={disabled ? 0 : value || internalValue}
       minimumValue={minimumValue}
       maximumValue={maximumValue}
       minimumTrackTintColor={minimumTrackTintColor}
       maximumTrackTintColor={maximumTrackTintColor}
       thumbTintColor={disabled && disabledThumbTintColor ? disabledThumbTintColor : thumbTintColor}
       thumbTouchSize={{ width: thumbTouchSize || 0, height: thumbTouchSize || 0 }}
-      onValueChange={(newValue) => {
+      onValueChange={newValue => {
         onValueChange(newValue)
         setInternalValue(newValue)
       }}

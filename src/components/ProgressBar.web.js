@@ -8,11 +8,11 @@ export default function ProgressBar({
   unfilledColor,
   borderColor,
   borderWidth,
-  style,
+  style
 }) {
   return (
-    <View style={[style, {backgroundColor:unfilledColor, borderRadius}]}>
-      <View style={{backgroundColor:color ,width:progress, height:"100%"}}/>
+    <View style={[style, { backgroundColor: unfilledColor, borderRadius }]}>
+      <View style={{ backgroundColor: color, width: progress, height: "100%" }} />
     </View>
   )
 }

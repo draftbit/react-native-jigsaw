@@ -22,11 +22,7 @@ const Slider = ({
   thumbSize,
   ...props
 }) => {
-<<<<<<< HEAD
-  const [internalValue, setInternalValue] = React.useState(0);
-=======
   const [internalValue, setInternalValue] = React.useState(0)
->>>>>>> 422089419ebd32c33642fd9cff0ebe7c39c1e8a0
 
   const thumbStyle = {
     borderRadius: thumbBorderRadius || 0,

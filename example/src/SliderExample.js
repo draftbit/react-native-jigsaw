@@ -38,7 +38,6 @@ class SliderExample extends React.Component<Props> {
           trackBorderRadius={20}
           thumbSize={20}
           thumbTouchSize={20}
-
           minimumValue={0}
           maximumValue={10}
           step={0.02}

@@ -1,4 +1,4 @@
-import * as React  from "react"
+import * as React from "react"
 import { default as ReactNativeSlider } from "react-native-slider"
 import { withTheme } from "../core/theming"
 import { FORM_TYPES, COMPONENT_TYPES, FIELD_NAME } from "../core/component-types"

@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React  from "react"
 import { default as ReactNativeSlider } from "react-native-slider"
 import { withTheme } from "../core/theming"
 import { FORM_TYPES, COMPONENT_TYPES, FIELD_NAME } from "../core/component-types"
@@ -15,13 +15,15 @@ const Slider = ({
   thumbTouchSize,
   step,
   disabled,
-  onValueChange,
+  onValueChange = () => {},
   theme,
   trackBorderRadius,
   thumbBorderRadius,
   thumbSize,
   ...props
 }) => {
+  const [internalValue, setInternalValue] = React.useState(0);
+
   const thumbStyle = {
     borderRadius: thumbBorderRadius || 0,
     width: thumbSize || (style && style.height ? style.height * 0.4 : null),
@@ -32,14 +34,17 @@ const Slider = ({
     <ReactNativeSlider
       {...props}
       disabled={disabled}
-      value={disabled ? 0 : value}
+      value={disabled ? 0 : ('value' in props) ? value : internalValue}
       minimumValue={minimumValue}
       maximumValue={maximumValue}
       minimumTrackTintColor={minimumTrackTintColor}
       maximumTrackTintColor={maximumTrackTintColor}
       thumbTintColor={disabled && disabledThumbTintColor ? disabledThumbTintColor : thumbTintColor}
       thumbTouchSize={{ width: thumbTouchSize || 0, height: thumbTouchSize || 0 }}
-      onValueChange={onValueChange}
+      onValueChange={(newValue) => {
+        onValueChange(newValue)
+        setInternalValue(newValue)
+      }}
       trackStyle={{
         borderRadius: trackBorderRadius ? trackBorderRadius : 0,
         width: style ? style.width : "100%",

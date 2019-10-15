@@ -30,6 +30,8 @@ const Slider = ({
     height: thumbSize || (style && style.width ? style.width * 0.1 : null)
   }
 
+  let actualThumbTouchSize = thumbSize + (thumbTouchSize || 0)
+
   return (
     <ReactNativeSlider
       {...props}
@@ -40,7 +42,7 @@ const Slider = ({
       minimumTrackTintColor={minimumTrackTintColor}
       maximumTrackTintColor={maximumTrackTintColor}
       thumbTintColor={disabled && disabledThumbTintColor ? disabledThumbTintColor : thumbTintColor}
-      thumbTouchSize={{ width: thumbTouchSize || 0, height: thumbTouchSize || 0 }}
+      thumbTouchSize={{ width: actualThumbTouchSize || 0, height: actualThumbTouchSize || 0 }}
       onValueChange={newValue => {
         onValueChange(newValue)
         setInternalValue(newValue)

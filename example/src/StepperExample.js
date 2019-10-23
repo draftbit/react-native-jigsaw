@@ -32,6 +32,8 @@ class StepperExample extends React.Component<Props> {
       <ScrollView
         style={[styles.container, { backgroundColor: background, padding: spacing.large }]}>
         <Stepper value={value} onChange={this.onChange} style={styles.stepper} />
+        <Stepper value={value} style={styles.stepper} />
+        <Stepper style={styles.stepper} />
       </ScrollView>
     )
   }
@@ -42,7 +44,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
   stepper: {
-    alignSelf: "center"
+    alignSelf: "center",
+    margin: 16
   }
 })
 

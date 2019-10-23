@@ -20,18 +20,28 @@ class Stepper extends React.Component<Props> {
     value: 0
   }
 
+  state = {
+    value: 0
+  }
+
   handleMinus = () => {
     const { value, onChange } = this.props
-
-    if (value > 0) {
-      onChange(value - 1)
+    if (value || value === 0) {
+      onChange && onChange(value - 1)
+    } else {
+      const { value: stateValue } = this.state
+      this.setState({ value: stateValue - 1 })
     }
   }
 
   handlePlus = () => {
     const { value, onChange } = this.props
-
-    onChange(value + 1)
+    if (value || value === 0) {
+      onChange && onChange(value + 1)
+    } else {
+      const { value: stateValue } = this.state
+      this.setState({ value: stateValue + 1 })
+    }
   }
 
   render() {
@@ -41,6 +51,8 @@ class Stepper extends React.Component<Props> {
       style
     } = this.props
 
+    const { value: stateValue } = this.state
+
     return (
       <View style={[{ flexDirection: "row" }, style]}>
         <IconButton
@@ -48,7 +60,7 @@ class Stepper extends React.Component<Props> {
           onPress={this.handleMinus}
           size={Config.stepperButtonSize}
           color={colors.strong}
-          disabled={value === 0}
+          disabled={value ? value === 0 : stateValue === 0}
         />
         <Text
           style={[
@@ -60,7 +72,7 @@ class Stepper extends React.Component<Props> {
               marginHorizontal: spacing.medium
             }
           ]}>
-          {value}
+          {value || stateValue}
         </Text>
         <IconButton
           icon="MaterialIcons/add"

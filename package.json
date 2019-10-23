@@ -9,8 +9,6 @@
   "private": false,
   "scripts": {
     "clean": "del-cli ./dist",
-    "precommit": "echo yarn lint && yarn flow && yarn test",
-    "flow": "flow",
     "lint": "eslint src",
     "test": "jest",
     "pretty": "prettier --config ./package.json --write '{example,src}/**/*.{js,css,json}'",
@@ -42,7 +40,9 @@
     "del-cli": "^2.0.0",
     "flow-bin": "^0.101.0",
     "glob": "^7.1.4",
+    "husky": "^3.0.9",
     "jest": "^24.8.0",
+    "lint-staged": "^9.4.2",
     "node-fetch": "^2.6.0",
     "prettier": "1.18.2",
     "react-test-renderer": "^16.8.6"
@@ -73,5 +73,16 @@
     "arrowParens": "avoid",
     "trailingComma": "none",
     "jsxBracketSameLine": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

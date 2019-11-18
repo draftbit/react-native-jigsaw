@@ -154,15 +154,6 @@ export const SEED_DATA = {
       editable: true,
       required: false
     },
-    markers: {
-      label: "Markers",
-      description:
-        "An array of marker objects, containing required latitude and longitdue, and optional title and description",
-      type: FORM_TYPES.array,
-      value: null,
-      required: false,
-      editable: true
-    },
     pinColor: {
       label: "Pin Color",
       description: "Color of the map pins",

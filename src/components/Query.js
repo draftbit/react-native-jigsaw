@@ -4,7 +4,7 @@ export const SEED_DATA = {
   name: "Query",
   tag: "Query",
   description: "GraphQL-connected Query component",
-  type: COMPONENT_TYPES.primitive,
+  category: COMPONENT_TYPES.data,
   supports_list_render: false,
   layout: {},
   props: {

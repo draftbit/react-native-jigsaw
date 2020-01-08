@@ -8,7 +8,7 @@ export const SEED_DATA = {
   description: "Given a URL, display a video",
   doc_link: "https://docs.expo.io/versions/latest/sdk/video/",
   code_link: "https://github.com/expo/expo/blob/master/packages/expo-av/src/Video.tsx",
-  category: COMPONENT_TYPES.content,
+  category: COMPONENT_TYPES.media,
   supports_list_render: false,
   layout: {
     width: "100%",

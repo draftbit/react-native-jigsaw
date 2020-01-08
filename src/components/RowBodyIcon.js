@@ -56,7 +56,7 @@ export const SEED_DATA = [
     name: "Row Single Line Body Icon",
     tag: "RowBodyIcon",
     description: "A row with left aligned body text and a right aligned icon",
-    category: COMPONENT_TYPES.row,
+    category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_BodyIcon.png",
     supports_list_render: true,
     props: {
@@ -81,7 +81,7 @@ export const SEED_DATA = [
     name: "Row Double Line Body Icon",
     tag: "RowBodyIcon",
     description: "A row with left aligned body text and subtitle text and a right aligned icon",
-    category: COMPONENT_TYPES.row,
+    category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_BodyIcon.png",
     supports_list_render: true,
     props: {

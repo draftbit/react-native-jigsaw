@@ -22,31 +22,30 @@ export const FORM_TYPES = {
   flatArray: "flatArray",
   aspectRatio: "aspectRatio",
   date: "date",
-  component: "component",
   borderRadiusMode: "borderRadiusMode",
   fieldName: "fieldName",
-  position: "position",
   action: "action",
   query: "query",
   arrayInput: "arrayInput"
 }
 
 export const COMPONENT_TYPES = {
+  basic: "basic",
+  media: "media",
+  layout: "layout",
+  input: "input",
+  data: "data",
   card: "card",
   header: "header",
   button: "button",
   image: "image",
   primitive: "primitive",
-  FAB: "FAB",
   field: "field",
   formControl: "formControl",
   row: "row",
-  data: "data",
-  content: "content",
-  input: "input",
   container: "container",
   blocks: "blocks",
-  data: "data"
+  deprecated: "deprecated"
 }
 
 export const ELEVATION_TYPE = {

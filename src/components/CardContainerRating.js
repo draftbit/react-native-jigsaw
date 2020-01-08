@@ -211,7 +211,7 @@ const SEED_DATA_PROPS = {
 
 export const SEED_DATA = [
   {
-    name: "Medium rating card",
+    name: "Medium Card (Rating)",
     tag: "CardContainerRating",
     description:
       "An elevated card with a title and description, that takes up half of its container.",
@@ -229,7 +229,7 @@ export const SEED_DATA = [
     layout: {}
   },
   {
-    name: "Large rating card",
+    name: "Large Card (Rating)",
     tag: "CardContainerRating",
     description: "An elevated card with a title and description, that takes up its full container.",
     category: COMPONENT_TYPES.card,

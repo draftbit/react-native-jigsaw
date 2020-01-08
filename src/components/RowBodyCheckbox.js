@@ -59,7 +59,7 @@ export const SEED_DATA = [
     tag: "RowBodyCheckbox",
     description: "A row with left aligned body text and a right aligned checkbox",
     preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_BodyCheckbox.png",
-    category: COMPONENT_TYPES.row,
+    category: COMPONENT_TYPES.deprecated,
     supports_list_render: true,
     props: {
       title: {
@@ -89,7 +89,7 @@ export const SEED_DATA = [
     name: "Row Double Line Body Checkbox",
     tag: "RowBodyCheckbox",
     description: "A row with left aligned body text and subtitle text and a right aligned checkbox",
-    category: COMPONENT_TYPES.row,
+    category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_BodyCheckbox.png",
     supports_list_render: true,
     props: {

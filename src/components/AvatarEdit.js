@@ -78,7 +78,7 @@ export const SEED_DATA = {
   name: "Avatar Edit",
   tag: "AvatarEdit",
   description: "An avatar with an edit icon in the top right",
-  category: COMPONENT_TYPES.button,
+  category: COMPONENT_TYPES.deprecated,
   preview_image_url: "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/AvatarEdit.png",
   props: {
     size: {

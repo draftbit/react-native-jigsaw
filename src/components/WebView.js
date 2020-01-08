@@ -9,7 +9,7 @@ export const SEED_DATA = {
   doc_link: "https://docs.expo.io/versions/latest/sdk/webview/",
   code_link:
     "https://github.com/expo/expo/blob/master/ios/versioned-react-native/ABI32_0_0/Libraries/Components/WebView/WebViewShared.js",
-  category: COMPONENT_TYPES.content,
+  category: COMPONENT_TYPES.media,
   supports_list_render: false,
   layout: {
     flexGrow: 1,

@@ -136,7 +136,7 @@ export default withTheme(IconButton)
 export const SEED_DATA = {
   name: "Icon Button",
   tag: "IconButton",
-  category: COMPONENT_TYPES.button,
+  category: COMPONENT_TYPES.deprecated,
   preview_image_url: "{CLOUDINARY_URL}/Button_Icon.png",
   props: {
     icon: {

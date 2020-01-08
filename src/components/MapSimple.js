@@ -85,7 +85,7 @@ export const SEED_DATA = {
   name: "Map",
   tag: "MapSimple",
   description: "A map, with optional markers",
-  category: COMPONENT_TYPES.blocks,
+  category: COMPONENT_TYPES.media,
   preview_image_url: "{CLOUDINARY_URL}/Map_Simple.png",
   supports_list_render: false,
   layout: {},
@@ -163,6 +163,5 @@ export const SEED_DATA = {
       type: FORM_TYPES.color
     },
     borderRadiusMode: BORDER_RADIUS_MODE
-  },
-  layout: {}
+  }
 }

@@ -126,7 +126,7 @@ const SEED_DATA_PROPS = {
 
 export const SEED_DATA = [
   {
-    name: "Small Inline Card",
+    name: "Small Card (Inline)",
     tag: "CardInline",
     description:
       "An elevated card with image and a centered line of text overlayed, that takes up a third of its container.",
@@ -151,11 +151,11 @@ export const SEED_DATA = [
     layout: {}
   },
   {
-    name: "Medium Inline Card",
+    name: "Medium Card (Inline)",
     tag: "CardInline",
     description:
       "An elevated card with image and a title and description overlayed, that takes up half of its container.",
-    category: COMPONENT_TYPES.card,
+    category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Card_Inline_2col.png",
     supports_list_render: true,
     props: {
@@ -183,7 +183,7 @@ export const SEED_DATA = [
     layout: {}
   },
   {
-    name: "Large Inline Card",
+    name: "Large Card (Inline)",
     tag: "CardInline",
     description:
       "An elevated card with image and a title and description overlayed, that takes up the full width of its container.",

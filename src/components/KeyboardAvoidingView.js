@@ -7,7 +7,7 @@ export const SEED_DATA = {
   name: "KeyboardAvoidingView",
   tag: "KeyboardAvoidingView",
   description: "View that moves out of the way of the virtual keyboard. ",
-  category: COMPONENT_TYPES.container,
+  category: COMPONENT_TYPES.layout,
   supports_list_render: false,
   layout: {},
   props: {

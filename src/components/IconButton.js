@@ -145,7 +145,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.icon,
-      value: "MaterialIcons/brightness-4"
+      value: null
     },
     size: {
       label: "Icon Size",

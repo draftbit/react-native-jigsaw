@@ -74,7 +74,7 @@ export const SEED_DATA = [
         label: "Icon",
         description: "Name of icon to display",
         type: FORM_TYPES.icon,
-        value: "MaterialIcons/chevron-right",
+        value: null,
         editable: true
       },
       onPress: {

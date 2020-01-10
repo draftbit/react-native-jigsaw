@@ -172,7 +172,10 @@ const SEED_DATA_PROPS = {
     value: null,
     editable: true
   },
-  fieldName: FIELD_NAME
+  fieldName: {
+    ...FIELD_NAME,
+    value: "pickerValue"
+  }
 }
 
 export const SEED_DATA = [

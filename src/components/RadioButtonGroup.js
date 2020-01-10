@@ -234,7 +234,10 @@ export const SEED_DATA = {
       editable: true,
       required: false
     },
-    fieldName: FIELD_NAME
+    fieldName: {
+      ...FIELD_NAME,
+      value: "radioButtonValue"
+    }
   },
   layout: {}
 }

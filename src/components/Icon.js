@@ -104,7 +104,7 @@ export const SEED_DATA = {
       label: "Name",
       description: "Name of the icon",
       type: FORM_TYPES.icon,
-      value: "cloud",
+      value: null,
       editable: true,
       required: true
     },

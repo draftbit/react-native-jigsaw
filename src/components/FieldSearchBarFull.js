@@ -132,7 +132,10 @@ export const SEED_DATA = [
         type: FORM_TYPES.action,
         value: null
       },
-      fieldName: FIELD_NAME
+      fieldName: {
+        ...FIELD_NAME,
+        value: "searchBarValue"
+      }
     },
     layout: {}
   }

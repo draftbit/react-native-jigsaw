@@ -71,7 +71,7 @@ export const SEED_DATA = [
         label: "Icon",
         description: "Icon to display",
         type: FORM_TYPES.icon,
-        value: "MaterialIcons/favorite",
+        value: null,
         editable: true
       }
     },
@@ -103,7 +103,7 @@ export const SEED_DATA = [
         label: "Icon",
         description: "Icon to display",
         type: FORM_TYPES.icon,
-        value: "MaterialIcons/favorite",
+        value: null,
         editable: true
       }
     },

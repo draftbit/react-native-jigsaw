@@ -40,6 +40,7 @@ export default class Avatar extends React.PureComponent<AvatarProps> {
 export const SEED_DATA = {
   name: "Avatar",
   tag: "Avatar",
+  category: COMPONENT_TYPES.media,
   props: {
     size: {
       label: "Size",

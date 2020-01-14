@@ -51,12 +51,9 @@ export const COMPONENT_TYPES = {
 export const ELEVATION_TYPE = {
   label: "Elevation",
   description: "Elevation of the component. A number 0-3.",
-  type: FORM_TYPES.number,
-  value: 2,
-  min: 0,
-  max: 3,
-  step: 1,
-  precision: 0,
+  type: FORM_TYPES.flatArray,
+  options: [0, 1, 2, 3],
+  value: 0,
   editable: true
 }
 

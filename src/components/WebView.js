@@ -82,16 +82,6 @@ export const SEED_DATA = {
         right: 0
       },
       type: FORM_TYPES.position
-    },
-    dataDetectorTypes: {
-      label: "Clickable Data Types",
-      description:
-        "Determines the type of data thats converted into clickable URLs inside the web view. (Default is phone numbers only)",
-      editable: true,
-      required: false,
-      value: ["phoneNumber"],
-      options: ["phoneNumber", "link", "address", "calendarEvent", "none", "all"],
-      type: FORM_TYPES.multiselect
     }
   }
 }

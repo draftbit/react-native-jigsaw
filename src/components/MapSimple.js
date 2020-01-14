@@ -162,6 +162,14 @@ export const SEED_DATA = {
       value: "primary",
       type: FORM_TYPES.color
     },
+    markers: {
+      label: "Markers",
+      description: "Markers for the map.",
+      type: FORM_TYPES.arrayInput,
+      value: [],
+      editable: true,
+      required: false
+    },
     borderRadiusMode: BORDER_RADIUS_MODE
   }
 }

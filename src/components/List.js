@@ -9,11 +9,7 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.data,
   supports_list_render: false,
   preview_image_url: "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/List.svg",
-  layout: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0
-  },
+  layout: {},
   props: {
     horizontal: {
       label: "Horizontal",

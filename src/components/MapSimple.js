@@ -147,7 +147,7 @@ export const SEED_DATA = {
       required: true
     },
     interactionDisabled: {
-      label: "Disable Interaciton",
+      label: "Disable interaction",
       description: "Prevent users from dragging or zooming on the map",
       type: FORM_TYPES.boolean,
       value: false,
@@ -155,7 +155,7 @@ export const SEED_DATA = {
       required: false
     },
     pinColor: {
-      label: "Pin Color",
+      label: "Pin color",
       description: "Color of the map pins",
       editable: true,
       required: true,

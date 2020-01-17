@@ -24,6 +24,7 @@ type Props = {
 }
 
 class RadioButtonGroup extends React.Component<Props> {
+  static defaultProps = { options: [] }
   state = { selected: this.props.defaultSelection }
 
   onPress = selected => {

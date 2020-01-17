@@ -128,7 +128,6 @@ export const SEED_DATA = {
       type: FORM_TYPES.flatArray,
       options: ["cover", "contain", "stretch", "repeat", "center"]
     },
-    borderRadiusMode: BORDER_RADIUS_MODE,
     elevation: {
       ...ELEVATION_TYPE,
       value: 0

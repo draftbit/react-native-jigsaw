@@ -50,7 +50,6 @@ export const SEED_DATA = {
       value: "cover",
       type: FORM_TYPES.flatArray,
       options: ["cover", "contain", "stretch", "repeat", "center"]
-    },
-    borderRadiusMode: BORDER_RADIUS_MODE
+    }
   }
 }

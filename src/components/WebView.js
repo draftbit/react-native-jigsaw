@@ -1,4 +1,4 @@
-import { WebView } from "react-native"
+import { WebView } from "react-native-webview"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 export default WebView
 

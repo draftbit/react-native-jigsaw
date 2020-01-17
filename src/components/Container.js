@@ -52,7 +52,9 @@ class Container extends React.Component {
                 top: 0,
                 bottom: 0,
                 left: 0,
-                right: 0
+                right: 0,
+                width: style && style.width,
+                height: style && style.height
               }}
             />
           ) : null}

@@ -3,7 +3,7 @@ export const SEED_DATA = {
   name: "Fetch",
   tag: "Fetch",
   description: "Rest API Declarative Fetch component. Uses react-request internally",
-  type: COMPONENT_TYPES.data,
+  category: COMPONENT_TYPES.data,
   supports_list_render: false,
   layout: {},
   props: {

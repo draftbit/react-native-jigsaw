@@ -6,7 +6,6 @@ const { promisify } = require("util")
 const parser = require("./parser")
 
 const globAsync = promisify(glob)
-const writeFileSync = promisify(fs.writeFile)
 
 const LOCAL_API_URL = "http://localhost:3001"
 const STAGING_API_URL = "https://api.stagingbit.com"
@@ -18,7 +17,7 @@ const ERROR_FILES = []
 const COMPLETED_FILES = []
 
 async function main() {
-  console.log("Running on", getUrl(), '[warnings surpressed]')
+  console.log("Running on", getUrl(), "[warnings surpressed]")
   let files = await globAsync(`${COMPONENT_PATH}/**/*.js`)
   files = files.filter(file => !IGNORED_FILES.includes(file))
 
@@ -33,8 +32,8 @@ async function main() {
     }
   }
 
-  await fs.writeFileSync("completed.json", JSON.stringify(COMPLETED_FILES, null, 2))
-  await fs.writeFileSync("errors.json", JSON.stringify(ERROR_FILES, null, 2))
+  fs.writeFileSync("completed.json", JSON.stringify(COMPLETED_FILES, null, 2))
+  fs.writeFileSync("errors.json", JSON.stringify(ERROR_FILES, null, 2))
 }
 
 function getUrl() {

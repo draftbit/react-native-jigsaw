@@ -6,7 +6,6 @@ const { promisify } = require("util")
 const parser = require("./parser")
 
 const globAsync = promisify(glob)
-const writeFileSync = promisify(fs.writeFile)
 
 const COMPONENT_PATH = path.resolve("./src/components")
 const COMPONENTS = []
@@ -62,7 +61,7 @@ async function main() {
   const UNIQUE = [...new Set(COMPONENTS)]
   const FILTERED = UNIQUE.filter(f => !THEME_PROPS.includes(f))
 
-  await fs.writeFileSync("components.json", JSON.stringify(FILTERED, null, 2))
+  fs.writeFileSync("components.json", JSON.stringify(FILTERED, null, 2))
 }
 
 main()

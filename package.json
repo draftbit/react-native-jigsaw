@@ -11,6 +11,7 @@
     "clean": "del-cli ./dist",
     "lint": "eslint src",
     "test": "jest",
+    "seed:db": "node scripts/collector.js",
     "pretty": "prettier --config ./package.json --write '{example,src}/**/*.{js,css,json}'",
     "build:web": "yarn clean && babel src -d --out-dir dist --ignore \"**/__tests__\" && cp -r src/assets dist/."
   },

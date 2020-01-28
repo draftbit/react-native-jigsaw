@@ -3,7 +3,7 @@
 import * as React from "react"
 import { withTheme } from "../core/theming"
 import { View, Text, StyleSheet } from "react-native"
-import Icon from "./Icon.web.js"
+import Icon from "./Icon"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 import Touchable from "./Touchable"
 

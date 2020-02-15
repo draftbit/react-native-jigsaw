@@ -4,7 +4,7 @@ import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 export default KeyboardAvoidingView
 
 export const SEED_DATA = {
-  name: "KeyboardAvoidingView",
+  name: "Keyboard Avoiding View",
   tag: "KeyboardAvoidingView",
   description: "View that moves out of the way of the virtual keyboard. ",
   category: COMPONENT_TYPES.layout,

@@ -45,7 +45,7 @@ export const SEED_DATA = {
       required: false,
       editable: true,
       type: FORM_TYPES.json,
-      value: JSON.stringify({})
+      value: null
     },
     mode: {
       label: "HTTP Mode",

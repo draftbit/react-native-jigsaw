@@ -13,7 +13,7 @@ export const SEED_DATA = {
     "A very simple drop-in replacement for Image that allows you to use an Image as a background.",
   category: COMPONENT_TYPES.media,
   supports_list_render: false,
-  layout: {},
+  layout: { width: "100%", height: "100%" },
   props: {
     source: {
       label: "Image Source",

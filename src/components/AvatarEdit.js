@@ -1,32 +1,13 @@
-// @flow
 import * as React from "react"
 import { View, Image } from "react-native"
 import Icon from "./Icon"
 import Touchable from "./Touchable"
 import Avatar from "./Avatar"
 import { withTheme } from "../core/theming"
-import type { Theme } from "../types"
-import type { IconSource } from "./Icon"
+
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 
-export type AvatarEditProps = {
-  /**
-   * Image source for the avatar
-   */
-  image: IconSource,
-  /**
-   * Size of avatar in width and height
-   */
-  size: number,
-  /**
-   * Function to execute when image pressed
-   */
-  onPress: () => void,
-  style?: any,
-  theme: Theme
-}
-
-class AvatarEdit extends React.PureComponent<AvatarEditProps> {
+class AvatarEdit extends React.PureComponent {
   static defaultProps = {
     onPress: () => {}
   }

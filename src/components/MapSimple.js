@@ -1,29 +1,9 @@
 import React from "react"
-import { View, Text } from "react-native"
 import MapView from "react-native-maps"
 import { withTheme } from "../core/theming"
-import type { Theme } from "../types"
 import { COMPONENT_TYPES, FORM_TYPES, BORDER_RADIUS_MODE } from "../core/component-types"
 
-export type MapSimpleProps = {
-  aspectRatio?: number,
-  interactionDisabled?: boolean,
-  initialLatitude: number,
-  initialLongitude: number,
-  initialLatitudeDelta: number,
-  initialLongitudeDelta: number,
-  pinColor: string,
-  markers?: Array<{
-    title?: string,
-    description?: string,
-    latitude: number,
-    longitude: number
-  }>,
-  style: any,
-  theme: Theme
-}
-
-class MapSimple extends React.PureComponent<MapSimpleProps> {
+class MapSimple extends React.PureComponent {
   static defaultProps = {
     aspectRatio: 1,
     markers: []

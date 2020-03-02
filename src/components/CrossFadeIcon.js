@@ -1,34 +1,10 @@
-/* @flow */
-
 import * as React from "react"
 import { Animated, StyleSheet, View } from "react-native"
 import { polyfill } from "react-lifecycles-compat"
 import Icon, { isValidIcon, isEqualIcon } from "./Icon"
-import type { IconSource } from "./Icon"
 
-type Props = {|
-  /**
-   * Icon to display for the `CrossFadeIcon`.
-   */
-  source: IconSource,
-  /**
-   * Color of the icon.
-   */
-  color: string,
-  /**
-   * Size of the icon.
-   */
-  size: number
-|}
-
-type State = {
-  currentIcon: IconSource,
-  previousIcon: ?IconSource,
-  fade: Animated.Value
-}
-
-class CrossFadeIcon extends React.Component<Props, State> {
-  static getDerivedStateFromProps(nextProps: Props, nextState: State) {
+class CrossFadeIcon extends React.Component {
+  static getDerivedStateFromProps(nextProps, nextState) {
     if (nextState.currentIcon === nextProps.source) {
       return null
     }
@@ -45,7 +21,7 @@ class CrossFadeIcon extends React.Component<Props, State> {
     fade: new Animated.Value(1)
   }
 
-  componentDidUpdate(prevProps: Props, prevState: State) {
+  componentDidUpdate(prevProps, prevState) {
     const { previousIcon } = this.state
 
     if (!isValidIcon(previousIcon) || isEqualIcon(previousIcon, prevState.previousIcon)) {

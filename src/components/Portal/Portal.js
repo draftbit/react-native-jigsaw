@@ -1,22 +1,9 @@
-/* @flow */
 /* eslint-disable react/no-unused-prop-types */
 
 import * as React from "react"
 import PortalConsumer from "./PortalConsumer"
 import PortalHost, { PortalContext } from "./PortalHost"
 import { ThemeProvider, withTheme } from "../../core/theming"
-import type { Theme } from "../../types"
-
-type Props = {
-  /**
-   * Content of the `Portal`.
-   */
-  children: React.Node,
-  /**
-   * @optional
-   */
-  theme: Theme
-}
 
 /**
  * Portal allows to render a component at a different place in the parent tree.
@@ -40,7 +27,7 @@ type Props = {
  * }
  * ```
  */
-class Portal extends React.Component<Props> {
+class Portal extends React.Component {
   // @component ./PortalHost.js
   static Host = PortalHost
 

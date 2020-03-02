@@ -1,13 +1,11 @@
-/* @flow */
-
 import * as React from "react"
 import { View, Picker as NativePicker, StyleSheet } from "react-native"
 import { withTheme } from "../../core/theming"
-import type { Theme } from "../../types"
+
 import TextField from "../TextField"
 import Touchable from "../Touchable"
 
-class Picker extends React.Component<Props> {
+class Picker extends React.Component {
   constructor(props) {
     super(props)
     this.textField = React.createRef()

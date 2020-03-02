@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as React from "react"
 import { View, ScrollView, StyleSheet } from "react-native"
 import { ProgressIndicator, withTheme } from "@draftbit/ui"

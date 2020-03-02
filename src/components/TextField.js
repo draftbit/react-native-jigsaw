@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as React from "react"
 import {
   View,
@@ -12,7 +10,7 @@ import {
 import { polyfill } from "react-lifecycles-compat"
 import { withTheme } from "../core/theming"
 import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
-import type { Theme } from "../types"
+
 import Icon from "./Icon"
 
 const AnimatedText = Animated.createAnimatedComponent(Text)
@@ -21,114 +19,7 @@ const FOCUS_ANIMATION_DURATION = 150
 const BLUR_ANIMATION_DURATION = 180
 const ICON_SIZE = 24
 
-type RenderProps = {
-  ref: any => void,
-  onChange: string => void,
-  placeholder: ?string,
-  editable?: boolean,
-  selectionColor: string,
-  underlineColorAndroid: string,
-  style: any,
-  multiline?: boolean,
-  numberOfLines?: number,
-  value?: string
-}
-
-type Props = {
-  /**
-   * Type of the TextField.
-   * - `underline` - input with an underline.
-   * - `solid` - input with an outline.
-   *
-   * In `solid` type, the background color of the label is derived from `colors.background` in theme or the `backgroundColor` style.
-   */
-  type?: "underline" | "solid",
-  /**
-   * If true, user won't be able to interact with the component.
-   */
-  disabled?: boolean,
-  /**
-   * The text to use for the floating label.
-   */
-  label?: string,
-  /**
-   * Placeholder for the input.
-   */
-  placeholder?: string,
-  /**
-   * Whether to style the TextField with error style.
-   */
-  error?: boolean,
-  /**
-   * Callback that is called when the text input's text changes. Changed text is passed as an argument to the callback handler.
-   */
-  onChange?: Function,
-  /**
-   * Whether the input can have multiple lines.
-   */
-  multiline?: boolean,
-  /**
-   * The number of lines to show in the input (Android only).
-   */
-  numberOfLines?: number,
-  /**
-   * Helper text to display below the input
-   */
-  assistiveText?: string,
-  /**
-   * The name of the icon to show on the left
-   */
-  leftIconName?: string,
-  /**
-   * Whether to display the left button inside or outside of the TextField
-   */
-  leftIconMode?: "inset" | "outset",
-  /**
-   * The name of the icon to show on the right
-   */
-  rightIconName?: string,
-  /**
-   *
-   * Callback to render a custom input component such as `react-native-text-input-mask`
-   * instead of the default `TextInput` component from `react-native`.
-   *
-   * Example:
-   * ```js
-   * <TextField
-   *   label="Phone number"
-   *   render={props =>
-   *     <TextInputMask
-   *       {...props}
-   *       mask="+[00] [000] [000] [000]"
-   *     />
-   *   }
-   * />
-   * ```
-   */
-  render: (props: RenderProps) => React.Node,
-  /**
-   * Value of the text input.
-   */
-  value?: string,
-  style?: any,
-  /**
-   * @optional
-   */
-  theme: Theme
-}
-
-type State = {
-  labeled: Animated.Value,
-  focused: boolean,
-  placeholder: ?string,
-  value: ?string,
-  labelLayout: {
-    measured: boolean,
-    width: number
-  }
-}
-
-class TextField extends React.Component<Props, State> {
+class TextField extends React.Component {
   static defaultProps = {
     type: "underline",
     disabled: false,
@@ -200,9 +91,6 @@ class TextField extends React.Component<Props, State> {
       placeholder: ""
     })
 
-  _timer: TimeoutID
-  _root: ?NativeTextInput
-
   _restoreLabel = () =>
     Animated.timing(this.state.labeled, {
       toValue: 1,
@@ -233,7 +121,7 @@ class TextField extends React.Component<Props, State> {
     this.setState({ focused: false })
   }
 
-  _handleChangeText = (value: string) => {
+  _handleChangeText = value => {
     if (this.props.disabled) {
       return
     }

@@ -1,32 +1,11 @@
-/* @flow */
-
 import * as React from "react"
 import { withTheme } from "../core/theming"
-import type { Theme } from "../types"
+
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 import Config from "./Config"
 import IconButton from "./IconButton"
 
-type Props = {|
-  /**
-   * Status of radio button
-   */
-  selected: boolean,
-  /**
-   * Whether the radio button is disabled.
-   */
-  disabled?: boolean,
-  /**
-   * Function to execute on press.
-   */
-  onPress?: () => mixed,
-  /**
-   * @optional
-   */
-  theme: Theme
-|}
-
-class RadioButton extends React.Component<Props> {
+class RadioButton extends React.Component {
   onPress = () => {
     const { onPress } = this.props
 

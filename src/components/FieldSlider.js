@@ -1,28 +1,9 @@
-/* @flow */
-
 import * as React from "react"
 import { View, Text, StyleSheet } from "react-native"
 import { withTheme } from "../core/theming"
-import type { Theme } from "../types"
+
 import Slider from "./Slider"
 import { FORM_TYPES, COMPONENT_TYPES, FIELD_NAME } from "../core/component-types"
-
-type Props = {
-  title?: string,
-  minimumLabel?: string,
-  maximumLabel?: string,
-  disabled?: boolean,
-  maximumValue?: number,
-  minimumValue?: number,
-  step?: number,
-  onValueChange: () => void,
-  value: number,
-  style?: any,
-  /**
-   * @optional
-   */
-  theme: Theme
-}
 
 class FieldSlider extends React.Component {
   render() {

@@ -1,15 +1,8 @@
-/* @flow */
-
 import * as React from "react"
 import { StyleSheet, Text, ScrollView } from "react-native"
 import { Slider, FieldSlider, withTheme } from "@draftbit/ui"
-import type { Theme } from "@draftbit/ui/types"
 
-type Props = {
-  theme: Theme
-}
-
-class SliderExample extends React.Component<Props> {
+class SliderExample extends React.Component {
   state = { sliderValue: 5, disabledSliderValue: 5, fieldSliderValue: 5 }
 
   render() {

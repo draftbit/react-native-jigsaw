@@ -1,15 +1,8 @@
-/* @flow */
-
 import * as React from "react"
 import { StyleSheet, ScrollView, View } from "react-native"
 import { withTheme, ProgressBar, ProgressCircle } from "@draftbit/ui"
-import type { Theme } from "@draftbit/ui/types"
 
-type Props = {
-  theme: Theme
-}
-
-class ProgressBarExample extends React.Component<Props> {
+class ProgressBarExample extends React.Component {
   render() {
     const {
       theme: {

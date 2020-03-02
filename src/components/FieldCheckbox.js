@@ -1,24 +1,13 @@
-/* @flow */
 import * as React from "react"
 import { withTheme } from "../core/theming"
 import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
 import { StyleSheet, View, Text } from "react-native"
 import Touchable from "./Touchable"
 import Checkbox from "./Checkbox"
-import type { Theme } from "../types"
+
 import color from "color"
 
-type Props = {|
-  title: string,
-  style?: any,
-  theme: Theme,
-  status: "checked" | "unchecked" | "indeterminate",
-  disabled?: boolean,
-  color?: string,
-  onPress?: () => mixed
-|}
-
-class FieldCheckbox extends React.Component<Props> {
+class FieldCheckbox extends React.Component {
   onPress = () => {
     const { onPress } = this.props
     if (onPress) {

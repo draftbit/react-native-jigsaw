@@ -1,22 +1,10 @@
-/* @flow */
-
 import * as React from "react"
 import { Text } from "react-native"
 import { withTheme } from "../core/theming"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 import Row from "./Row"
-import type { Theme } from "../types"
 
-type Props = {
-  title: string,
-  subtitle?: string,
-  caption: string,
-  image: string | { uri: string },
-  style?: any,
-  theme: Theme
-}
-
-class RowHeadlineImageCaption extends React.Component<Props> {
+class RowHeadlineImageCaption extends React.Component {
   render() {
     const {
       title,

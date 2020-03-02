@@ -1,22 +1,11 @@
-/* @flow */
-
 import * as React from "react"
-import { View, Text, TextInput, StyleSheet } from "react-native"
+import { View, TextInput, StyleSheet } from "react-native"
 import { withTheme } from "../core/theming"
 import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
 import Icon from "./Icon"
 import Config from "./Config"
-import type { Theme } from "../types"
 
-type Props = {
-  icon: string,
-  placeholder?: string,
-  onSubmit: (text: string) => void,
-  theme: Theme,
-  style?: any
-}
-
-class FieldSearchBarFull extends React.Component<Props> {
+class FieldSearchBarFull extends React.Component {
   state = {
     focused: false
   }

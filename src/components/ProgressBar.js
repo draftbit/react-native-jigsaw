@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Platform, View } from "react-native"
+import { View } from "react-native"
 import * as Progress from "react-native-progress"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 import { withTheme } from "../core/theming"

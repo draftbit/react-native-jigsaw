@@ -1,9 +1,6 @@
-/* @flow */
-
 import * as React from "react"
 import { View, ScrollView, StyleSheet } from "react-native"
 import { Avatar, AvatarEdit, withTheme } from "@draftbit/ui"
-import type { Theme } from "@draftbit/ui/types"
 
 class AvatarExample extends React.Component {
   static title = "Avatar"

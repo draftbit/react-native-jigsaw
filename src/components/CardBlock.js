@@ -5,24 +5,9 @@ import Card from "./Card"
 import Elevation from "./Elevation"
 import { withTheme } from "../core/theming"
 import { COMPONENT_TYPES, FORM_TYPES, ELEVATION_TYPE } from "../core/component-types"
-import type { Theme } from "../types"
 import Config from "./Config"
 
-export type CardBlockProps = {
-  image: string | { uri: string },
-  title?: string,
-  leftDescription?: string,
-  rightDescription?: string,
-  titleCentered?: boolean,
-  aspectRatio?: number,
-  elevation: number,
-  numColumns: 1 | 2 | 3,
-  theme: Theme,
-  style: any,
-  onPress: () => void
-}
-
-class CardBlock extends React.PureComponent<CardBlockProps> {
+class CardBlock extends React.PureComponent {
   static defaultProps = {
     image: Config.cardImageUrl,
     aspectRatio: 1.5,

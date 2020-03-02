@@ -1,9 +1,6 @@
-/* @flow */
-
 import * as React from "react"
 import { View, StyleSheet } from "react-native"
 import { MapSimple, withTheme } from "@draftbit/ui"
-import type { Theme } from "@draftbit/ui/types"
 
 class MapExample extends React.Component {
   render() {

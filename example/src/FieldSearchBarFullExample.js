@@ -1,15 +1,8 @@
-/* @flow */
-
 import * as React from "react"
 import { StyleSheet, ScrollView } from "react-native"
 import { FieldSearchBarFull, withTheme } from "@draftbit/ui"
-import type { Theme } from "@draftbit/ui/types"
 
-type Props = {
-  theme: Theme
-}
-
-class FieldSearchBarFullExample extends React.Component<Props> {
+class FieldSearchBarFullExample extends React.Component {
   render() {
     const {
       theme: {

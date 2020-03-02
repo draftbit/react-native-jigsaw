@@ -1,15 +1,8 @@
-/* @flow */
-
 import * as React from "react"
 import { StyleSheet, ScrollView } from "react-native"
 import { HeaderLarge, HeaderMedium, HeaderOverline, withTheme } from "@draftbit/ui"
-import type { Theme } from "@draftbit/ui/types"
 
-type Props = {
-  theme: Theme
-}
-
-class HeaderExample extends React.Component<Props> {
+class HeaderExample extends React.Component {
   render() {
     const {
       theme: {

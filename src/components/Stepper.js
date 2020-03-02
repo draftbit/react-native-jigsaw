@@ -1,21 +1,11 @@
-/* @flow */
-
 import * as React from "react"
-import { View, Image, Text } from "react-native"
+import { View, Text } from "react-native"
 import { withTheme } from "../core/theming"
-import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
+import { COMPONENT_TYPES, FIELD_NAME } from "../core/component-types"
 import IconButton from "./IconButton"
 import Config from "./Config"
-import type { Theme } from "../types"
 
-type Props = {
-  value: number,
-  onChange: number => void,
-  style?: any,
-  theme: Theme
-}
-
-class Stepper extends React.Component<Props> {
+class Stepper extends React.Component {
   static defaultProps = {
     value: 0
   }

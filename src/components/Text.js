@@ -1,27 +1,14 @@
-/* @flow */
-
 import * as React from "react"
 import { Text as NativeText, I18nManager } from "react-native"
 import { withTheme } from "../core/theming"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
-import type { Theme } from "../types"
-
-type Props = React.ElementConfig<typeof NativeText> & {
-  style?: any,
-  /**
-   * @optional
-   */
-  theme: Theme
-}
 
 /**
  * Text component which follows styles from the theme.
  *
  * @extends Text props https://facebook.github.io/react-native/docs/text.html#props
  */
-class Text extends React.Component<Props> {
-  _root: ?NativeText
-
+class Text extends React.Component {
   /**
    * @internal
    */

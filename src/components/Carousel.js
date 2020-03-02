@@ -4,20 +4,9 @@ import Image from "./Image"
 import Elevation from "./Elevation"
 import { withTheme } from "../core/theming"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
-import type { Theme } from "../types"
 import Config from "./Config"
 
-export type CarouselProps = {
-  images: Array<string | { uri: string }>,
-  swiperPalette: "surface" | "background",
-  aspectRatio: number,
-  resizeMode: "cover" | "contain" | "stretch" | "repeat" | "center",
-  dotColor: string,
-  theme: Theme,
-  style: any
-}
-
-class Carousel extends React.PureComponent<CarouselProps> {
+class Carousel extends React.PureComponent {
   state = {}
 
   static defaultProps = {

@@ -1,9 +1,6 @@
-/* @flow */
-
 import * as React from "react"
-import { View, ScrollView, StyleSheet, Image } from "react-native"
+import { View, ScrollView, StyleSheet } from "react-native"
 import { Button, IconButton, withTheme, RadioButtonGroup } from "@draftbit/ui"
-import type { Theme } from "@draftbit/ui/types"
 
 class ButtonExample extends React.Component {
   static title = "Button"

@@ -1,9 +1,6 @@
-/* @flow */
-
 import * as React from "react"
 import { View, ScrollView, StyleSheet, Text } from "react-native"
-import { Picker, Divider, withTheme } from "@draftbit/ui"
-import type { Theme } from "@draftbit/ui/types"
+import { Picker, withTheme } from "@draftbit/ui"
 
 class PickerExample extends React.Component {
   state = {}

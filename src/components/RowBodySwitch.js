@@ -1,23 +1,10 @@
-/* @flow */
-
 import * as React from "react"
 import { withTheme } from "../core/theming"
 import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
 import Row from "./Row"
 import Switch from "./Switch"
-import type { Theme } from "../types"
 
-type Props = {
-  title: string,
-  subtitle?: string,
-  style?: any,
-  theme: Theme,
-  value?: boolean,
-  color?: string,
-  onValueChange?: Function
-}
-
-class RowBodySwitch extends React.Component<Props> {
+class RowBodySwitch extends React.Component {
   render() {
     const {
       title,

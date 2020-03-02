@@ -6,22 +6,8 @@ import Elevation from "./Elevation"
 import { withTheme } from "../core/theming"
 import { COMPONENT_TYPES, FORM_TYPES, ELEVATION_TYPE } from "../core/component-types"
 import Config from "./Config"
-import type { Theme } from "../types"
 
-export type CardInlineProps = {
-  image: string | { uri: string },
-  title?: string,
-  description?: string,
-  textCentered?: boolean,
-  aspectRatio?: number,
-  elevation: number,
-  numColumns: 1 | 2 | 3,
-  theme: Theme,
-  style: any,
-  onPress: () => void
-}
-
-class CardInline extends React.PureComponent<CardInlineProps> {
+class CardInline extends React.PureComponent {
   static defaultProps = {
     image: Config.cardImageUrl,
     aspectRatio: 1.5,

@@ -1,30 +1,8 @@
-/* @flow */
-
 import * as React from "react"
-import { StyleSheet, View, ScrollView, KeyboardAvoidingView } from "react-native"
+import { StyleSheet, ScrollView, KeyboardAvoidingView } from "react-native"
 import { TextField, TextInput, withTheme } from "@draftbit/ui"
-import type { Theme } from "@draftbit/ui/types"
 
-type Props = {
-  theme: Theme
-}
-
-type State = {
-  text: string,
-  outlinedText: string,
-  name: string,
-  outlinedName: string,
-  textWithPlaceholder: string,
-  outlinedTextWithPlaceholder: string,
-  textWithLeftOutsetIcon: string,
-  outlinedTextWithLeftOutsetIcon: string,
-  textWithLeftInsetIcon: string,
-  outlinedTextWithLeftInsetIcon: string,
-  textWithRightIcon: string,
-  outlinedTextWithRightIcon: string
-}
-
-class TextFieldExample extends React.Component<Props, State> {
+class TextFieldExample extends React.Component {
   state = {
     text: "",
     outlinedText: "",

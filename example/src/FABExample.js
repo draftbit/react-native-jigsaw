@@ -1,9 +1,6 @@
-/* @flow */
-
 import * as React from "react"
 import { View, ScrollView, StyleSheet, Alert } from "react-native"
-import { Button, withTheme, FAB } from "@draftbit/ui"
-import type { Theme } from "@draftbit/ui/types"
+import { withTheme, FAB } from "@draftbit/ui"
 
 class FABExample extends React.Component {
   static title = "FAB (Floating Action Button)"

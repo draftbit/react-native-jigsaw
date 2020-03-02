@@ -1,7 +1,5 @@
-/* @flow */
-
 import * as React from "react"
-import { StyleSheet, Text } from "react-native"
+import { Text } from "react-native"
 import { ScreenContainer, Container, withTheme } from "@draftbit/ui"
 
 class ContainerExample extends React.Component {

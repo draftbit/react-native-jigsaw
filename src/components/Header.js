@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as React from "react"
 import { View, Text, StyleSheet } from "react-native"
 import { withTheme } from "../core/theming"
@@ -7,20 +5,8 @@ import Divider from "./Divider"
 import Icon from "./Icon"
 import Touchable from "./Touchable"
 import Config from "./Config"
-import type { Theme, Color, TypeStyle } from "../types"
 
-type Props = {
-  titleTypeStyle: TypeStyle,
-  titleColor: Color,
-  title: string,
-  buttonText: string,
-  icon: string,
-  onPress: () => void,
-  theme: Theme,
-  style?: any
-}
-
-class Header extends React.Component<Props> {
+class Header extends React.Component {
   static defaultProps = {
     icon: "chevron-right"
   }

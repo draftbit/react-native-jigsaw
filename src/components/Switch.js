@@ -1,35 +1,9 @@
-/* @flow */
 import * as React from "react"
 import { Switch as NativeSwitch, Platform } from "react-native"
 import { withTheme } from "../core/theming"
-import type { Theme } from "../types"
 import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
 
-type Props = {
-  /**
-   * Disable toggling the switch.
-   */
-  disabled?: boolean,
-  /**
-   * Value of the switch, true means 'on', false means 'off'.
-   */
-  value?: boolean,
-  /**
-   * Custom color for switch.
-   */
-  color?: string,
-  /**
-   * Callback called with the new value when it changes.
-   */
-  onValueChange?: Function,
-  style?: any,
-  /**
-   * @optional
-   */
-  theme: Theme
-}
-
-class Switch extends React.Component<Props> {
+class Switch extends React.Component {
   render() {
     const { value, disabled, onValueChange, color, theme, ...props } = this.props
     let thumbColor = undefined

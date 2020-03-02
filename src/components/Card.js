@@ -1,23 +1,9 @@
-/* @flow */
-
 import React from "react"
-import { View, Dimensions } from "react-native"
 import { withTheme } from "../core/theming"
 import Touchable from "./Touchable"
 import Config from "./Config"
 
-import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet"
-import type { Theme } from "../types"
-
-type Props = {
-  numColumns: 1 | 2 | 3,
-  children: React.Node,
-  onPress: () => void,
-  style?: ViewStyleProp,
-  theme: Theme
-}
-
-class Card extends React.Component<Props> {
+class Card extends React.Component {
   static defaultProps = {
     numColumns: 3
   }

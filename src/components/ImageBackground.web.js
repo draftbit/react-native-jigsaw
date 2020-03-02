@@ -1,13 +1,9 @@
-// @flow
 import React from "react"
 import { ImageBackground as NativeImage } from "react-native"
 import AspectRatio from "./AspectRatio.web"
-import { COMPONENT_TYPES, FORM_TYPES, BORDER_RADIUS_MODE } from "../core/component-types"
 import Config from "./Config"
 
-export type Props = { source: string, resizeMode: string }
-
-export default class ImageBackground extends React.PureComponent<Props> {
+export default class ImageBackground extends React.PureComponent {
   static defaultProps = {
     source: Config.placeholderImageURL,
     resizeMode: "cover"

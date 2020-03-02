@@ -1,9 +1,6 @@
-/* @flow */
-
 import * as React from "react"
 import { View, ScrollView, StyleSheet, Text } from "react-native"
-import { DatePicker, Divider, withTheme } from "@draftbit/ui"
-import type { Theme } from "@draftbit/ui/types"
+import { DatePicker, withTheme } from "@draftbit/ui"
 
 class DatePickerExample extends React.Component {
   state = {

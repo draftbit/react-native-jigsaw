@@ -1,54 +1,13 @@
-/* @flow */
-
 import * as React from "react"
-import { ActivityIndicator, Animated, View, Text, StyleSheet } from "react-native"
+import { ActivityIndicator, View, Text, StyleSheet } from "react-native"
 import color from "color"
 import Config from "./Config"
 import Icon from "./Icon"
 import Touchable from "./Touchable"
 import Elevation from "./Elevation"
 import { withTheme } from "../core/theming"
-import type { Theme } from "../types"
-import type { IconSource } from "./Icon"
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types"
 
-type Props = {
-  /**
-   * Type of the button. You can change the type to adjust the styling to give it desired emphasis.
-   * - `outline` - button with an outline (medium emphasis)
-   * - `solid` - button with a background color (high emphasis)
-   */
-  type?: "outline" | "solid",
-  /**
-   * Custom text color for flat button, or background color for solid button.
-   */
-  color?: string,
-  /**
-   * Whether to show a loading indicator.
-   */
-  loading?: boolean,
-  /**
-   * Icon to display for the `Button`.
-   */
-  icon?: IconSource,
-  /**
-   * Whether the button is disabled. A disabled button is greyed out and `onPress` is not called on touch.
-   */
-  disabled?: boolean,
-  /**
-   * Label text of the button.
-   */
-  children: React.Node,
-  /**
-   * Function to execute on press.
-   */
-  onPress?: () => mixed,
-  style?: any,
-  /**
-   * @optional
-   */
-  theme: Theme
-}
+import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types"
 
 /**
  * A button is component that the user can press to trigger an action.
@@ -83,7 +42,7 @@ type Props = {
  * ```
  */
 
-class Button extends React.Component<Props> {
+class Button extends React.Component {
   static defaultProps = {
     elevation: 0,
     type: "solid"

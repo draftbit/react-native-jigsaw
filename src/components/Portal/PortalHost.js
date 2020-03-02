@@ -1,26 +1,9 @@
-/* @flow */
-
 import * as React from "react"
 import { View, StyleSheet } from "react-native"
 import PortalManager from "./PortalManager"
-import createReactContext, { type Context } from "create-react-context"
+import createReactContext from "create-react-context"
 
-type Props = {
-  children: React.Node
-}
-
-type Operation =
-  | { type: "mount", key: number, children: React.Node }
-  | { type: "update", key: number, children: React.Node }
-  | { type: "unmount", key: number }
-
-export type PortalMethods = {
-  mount: (children: React.Node) => number,
-  update: (key: number, children: React.Node) => void,
-  unmount: (key: number) => void
-}
-
-export const PortalContext: Context<PortalMethods> = createReactContext((null: any))
+export const PortalContext = createReactContext(null)
 
 /**
  * Portal host renders all of its children `Portal` elements.
@@ -46,7 +29,7 @@ export const PortalContext: Context<PortalMethods> = createReactContext((null: a
  *
  * Here any `Portal` elements under `<App />` are rendered alongside `<App />` and will appear above `<App />` like a `Modal`.
  */
-export default class PortalHost extends React.Component<Props> {
+export default class PortalHost extends React.Component {
   static displayName = "Portal.Host"
 
   componentDidMount() {
@@ -71,11 +54,11 @@ export default class PortalHost extends React.Component<Props> {
     }
   }
 
-  _setManager = (manager: ?Object) => {
+  _setManager = manager => {
     this._manager = manager
   }
 
-  _mount = (children: React.Node) => {
+  _mount = children => {
     const key = this._nextKey++
 
     if (this._manager) {
@@ -87,7 +70,7 @@ export default class PortalHost extends React.Component<Props> {
     return key
   }
 
-  _update = (key: number, children: React.Node) => {
+  _update = (key, children) => {
     if (this._manager) {
       this._manager.update(key, children)
     } else {
@@ -97,7 +80,6 @@ export default class PortalHost extends React.Component<Props> {
       )
 
       if (index > -1) {
-        /* $FlowFixMe */
         this._queue[index] = op
       } else {
         this._queue.push(op)
@@ -105,7 +87,7 @@ export default class PortalHost extends React.Component<Props> {
     }
   }
 
-  _unmount = (key: number) => {
+  _unmount = key => {
     if (this._manager) {
       this._manager.unmount(key)
     } else {
@@ -114,8 +96,7 @@ export default class PortalHost extends React.Component<Props> {
   }
 
   _nextKey = 0
-  _queue: Operation[] = []
-  _manager: ?PortalManager
+  _queue = []
 
   render() {
     return (

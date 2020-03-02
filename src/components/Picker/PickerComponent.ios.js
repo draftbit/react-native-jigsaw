@@ -1,15 +1,13 @@
-/* @flow */
-
 import * as React from "react"
-import { View, SafeAreaView, Text, StyleSheet, Picker as NativePicker } from "react-native"
+import { View, SafeAreaView, StyleSheet, Picker as NativePicker } from "react-native"
 import { withTheme } from "../../core/theming"
-import type { Theme } from "../../types"
+
 import Portal from "../Portal/Portal"
 import Button from "../Button"
 import TextField from "../TextField"
 import Touchable from "../Touchable"
 
-class Picker extends React.Component<Props> {
+class Picker extends React.Component {
   state = {
     pickerVisible: false
   }

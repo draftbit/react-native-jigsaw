@@ -1,15 +1,8 @@
-/* @flow */
-
 import * as React from "react"
 import { StyleSheet, ScrollView } from "react-native"
 import { Stepper, withTheme } from "@draftbit/ui"
-import type { Theme } from "@draftbit/ui/types"
 
-type Props = {
-  theme: Theme
-}
-
-class StepperExample extends React.Component<Props> {
+class StepperExample extends React.Component {
   state = {
     value: 0
   }

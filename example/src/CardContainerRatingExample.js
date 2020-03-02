@@ -1,15 +1,8 @@
-/* @flow */
-
 import * as React from "react"
-import { StyleSheet, View, Text, ScrollView } from "react-native"
+import { StyleSheet, Text, ScrollView } from "react-native"
 import { CardContainerRating, withTheme } from "@draftbit/ui"
-import type { Theme } from "@draftbit/ui/types"
 
-type Props = {
-  theme: Theme
-}
-
-class CardContainerRatingExample extends React.Component<Props> {
+class CardContainerRatingExample extends React.Component {
   render() {
     const {
       theme: {

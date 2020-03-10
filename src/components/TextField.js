@@ -10,6 +10,7 @@ import {
 import { polyfill } from "react-lifecycles-compat"
 import { withTheme } from "../core/theming"
 import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
+import TextInputCommonProps from "./props/TextInputCommonProps"
 
 import Icon from "./Icon"
 
@@ -501,6 +502,7 @@ const styles = StyleSheet.create({
 })
 
 const SEED_DATA_PROPS = {
+  ...TextInputCommonProps,
   label: {
     label: "Label",
     description: "The label to be displayed on the text field",
@@ -508,14 +510,6 @@ const SEED_DATA_PROPS = {
     value: "First Name",
     editable: true,
     required: true
-  },
-  placeholder: {
-    label: "Placeholder",
-    description: "The placeholder text of the input",
-    type: FORM_TYPES.string,
-    value: null,
-    editable: true,
-    required: false
   },
   assistiveText: {
     label: "Assistive text",
@@ -562,29 +556,6 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.icon,
     value: null,
     editable: true
-  },
-  keyboardType: {
-    label: "Keyboard type",
-    description: "Determines which keyboard to open",
-    type: FORM_TYPES.flatArray,
-    value: null,
-    options: [
-      "default",
-      "number-pad",
-      "decimal-pad",
-      "numeric",
-      "email-address",
-      "phone-pad",
-      "ascii-capable",
-      "numbers-and-punctuation",
-      "url",
-      "name-phone-pad",
-      "twitter",
-      "web-search",
-      "visible-password"
-    ],
-    editable: true,
-    required: false
   },
   fieldName: {
     ...FIELD_NAME,

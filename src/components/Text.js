@@ -57,54 +57,6 @@ export const SEED_DATA = {
       type: FORM_TYPES.string,
       value: "Hello World!"
     },
-    style: {
-      label: "Style",
-      description: "Text Style",
-      editable: true,
-      required: false,
-      type: FORM_TYPES.typeStyle,
-      value: null
-    },
-    textAlign: {
-      label: "Text Align",
-      description: "Text Align",
-      editable: true,
-      required: false,
-      type: FORM_TYPES.flatArray,
-      options: ["Auto", "Left", "Right", "Center", "Justify"]
-    },
-    textDecorationLine: {
-      label: "Text Decoration",
-      description: "Text Decoration",
-      editable: true,
-      required: false,
-      type: FORM_TYPES.flatArray,
-      options: ["None", "Underline", "Line-Through", "Underline Line-Through"]
-    },
-    textDecorationColor: {
-      label: "Text Decoration Color",
-      description: "Text Decoration Color",
-      editable: true,
-      required: false,
-      type: FORM_TYPES.color,
-      value: null
-    },
-    textDecorationStyle: {
-      label: "Text Decoration Style",
-      description: "Text Decoration Style",
-      editable: true,
-      required: false,
-      type: FORM_TYPES.flatArray,
-      options: ["None", "Solid", "Double", "Dotted", "Dashed"]
-    },
-    color: {
-      label: "Text Color",
-      description: "Text Color",
-      editable: true,
-      required: false,
-      type: FORM_TYPES.color,
-      value: "strong"
-    },
     numberOfLines: {
       label: "Number of Lines",
       description: "Limits the maximum number of lines and truncates when needed",

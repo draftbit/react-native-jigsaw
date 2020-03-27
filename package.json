@@ -19,9 +19,10 @@
     "preset": "react-native"
   },
   "peerDependencies": {
-    "expo": ">=34.0.3",
-    "react": "16.8.3",
-    "react-native": ">=0.59.8"
+    "expo": "^36.0.0",
+    "react": "~16.9.0",
+    "react-dom": "~16.9.0",
+    "react-native": "*"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -48,18 +49,18 @@
   },
   "dependencies": {
     "@callstack/react-theme-provider": "^3.0.0",
-    "@expo/vector-icons": "^10.0.2",
+    "@expo/vector-icons": "~10.0.0",
     "color": "^3.1.2",
     "create-react-context": "^0.3.0",
     "dateformat": "^3.0.3",
-    "expo-av": "^6.0.0",
+    "expo-av": "~8.0.0",
     "expo-constants": "^6.0.0",
     "react-lifecycles-compat": "^3.0.4",
-    "react-native-gesture-handler": "^1.3.0",
-    "react-native-maps": "^0.24.2",
+    "react-native-gesture-handler": "~1.5.0",
+    "react-native-maps": "0.26.1",
     "react-native-platform-touchable": "^1.1.1",
     "react-native-progress": "^3.6.0",
-    "react-native-reanimated": "^1.1.0",
+    "react-native-reanimated": "~1.4.0",
     "react-native-slider": "^0.11.0",
     "react-native-step-indicator": "^0.0.11",
     "react-native-webview": "^8.0.3"

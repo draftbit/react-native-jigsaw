@@ -1,27 +1,19 @@
-/* @flow */
-
 import * as React from "react"
-import { StyleSheet, View, Text, ScrollView } from "react-native"
+import { StyleSheet, Text, ScrollView } from "react-native"
 import {
   RowHeadlineImageIcon,
   RowHeadlineImageCaption,
-  RowSingleLineHeadlineImageCaption,
   RowBodyIcon,
   Divider,
   withTheme,
   RowBodyCheckbox,
   RowBodySwitch
 } from "@draftbit/ui"
-import type { Theme } from "@draftbit/ui/types"
 
 const IMAGE_URL =
   "https://res.cloudinary.com/altos/image/upload/c_scale,q_auto,dpr_auto,w_100/Avatar.png"
 
-type Props = {
-  theme: Theme
-}
-
-class RowExample extends React.Component<Props> {
+class RowExample extends React.Component {
   render() {
     const {
       theme: {

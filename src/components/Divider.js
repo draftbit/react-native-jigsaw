@@ -1,20 +1,9 @@
-/* @flow */
-
 import * as React from "react"
 import { StyleSheet, View } from "react-native"
 import { withTheme } from "../core/theming"
 import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types"
-import type { Theme } from "../types"
 
-type Props = {
-  style?: any,
-  /**
-   * @optional
-   */
-  theme: Theme
-}
-
-class Divider extends React.Component<Props> {
+class Divider extends React.Component {
   render() {
     const {
       style,

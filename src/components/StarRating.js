@@ -1,29 +1,10 @@
-// @flow
 import * as React from "react"
-import { Text, View, StyleSheet } from "react-native"
-import type { Theme } from "../types"
+import { View, StyleSheet } from "react-native"
 import Icon from "./Icon"
 import Config from "./Config"
 import { withTheme } from "../core/theming"
 
-type Props = {
-  /**
-   * Maximum number of stars to be displayed
-   */
-  maxStars: number,
-  /**
-   * Number of stars to be filled in
-   */
-  rating: number,
-  /**
-   * Number of ratings
-   */
-  numberOfRatings?: ?number,
-  theme: Theme,
-  style?: any
-}
-
-class StarRating extends React.PureComponent<Props> {
+class StarRating extends React.PureComponent {
   static defaultProps = {
     maxStars: 5,
     rating: 0

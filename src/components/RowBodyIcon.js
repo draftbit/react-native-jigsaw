@@ -1,23 +1,11 @@
-/* @flow */
-
 import * as React from "react"
-import { View, Text, Image, StyleSheet } from "react-native"
 import { withTheme } from "../core/theming"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 import Row from "./Row"
 import Icon from "./Icon"
 import Config from "./Config"
-import type { Theme } from "../types"
 
-type Props = {
-  title: string,
-  subtitle?: string,
-  icon: string,
-  style?: any,
-  theme: Theme
-}
-
-class RowBodyIcon extends React.Component<Props> {
+class RowBodyIcon extends React.Component {
   render() {
     const {
       title,

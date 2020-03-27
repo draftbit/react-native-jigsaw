@@ -1,13 +1,6 @@
-/* @flow */
-
 import * as React from "react"
-import { StyleSheet, View, Text, ScrollView } from "react-native"
+import { StyleSheet, View, Text } from "react-native"
 import { Carousel, withTheme } from "@draftbit/ui"
-import type { Theme } from "@draftbit/ui/types"
-
-type Props = {
-  theme: Theme
-}
 
 const IMAGES = [
   "https://apps-draftbit-com.s3.amazonaws.com/xxQUEDSJ/assets/b23d4319-96fc-4ab5-813a-4538a84a6fd6",
@@ -16,7 +9,7 @@ const IMAGES = [
   "https://apps-draftbit-com.s3.amazonaws.com/xxQUEDSJ/assets/96c42572-3a34-47a5-95b0-0c332f9505ef"
 ]
 
-class CarouselExample extends React.Component<Props> {
+class CarouselExample extends React.Component {
   render() {
     const {
       theme: {

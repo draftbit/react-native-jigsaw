@@ -1,26 +1,9 @@
-/* @flow */
-
 import * as React from "react"
 import { View, Text, Image, StyleSheet } from "react-native"
 import { withTheme } from "../core/theming"
 import Config from "./Config"
-import type { Theme, Color, TypeStyle } from "../types"
 
-type Props = {
-  titleTypeStyle: TypeStyle,
-  titleColor: Color,
-  subtitleTypeStyle?: TypeStyle,
-  subtitleColor?: Color,
-  title: string,
-  subtitle?: string,
-  multilineSubtitle?: boolean,
-  image: string | { uri: string },
-  right: Function,
-  theme: Theme,
-  style?: any
-}
-
-class Row extends React.Component<Props> {
+class Row extends React.Component {
   render() {
     const {
       titleTypeStyle,

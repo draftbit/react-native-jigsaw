@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as React from "react"
 import { View, ScrollView, StyleSheet } from "react-native"
 import {
@@ -11,7 +9,6 @@ import {
   FieldRadioButton,
   FieldCheckbox
 } from "@draftbit/ui"
-import type { Theme } from "@draftbit/ui/types"
 
 class ControllerExample extends React.Component {
   static title = "Controller"

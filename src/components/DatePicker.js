@@ -1,10 +1,7 @@
-/* @flow */
-
 import * as React from "react"
 import {
   View,
   SafeAreaView,
-  Text,
   StyleSheet,
   Platform,
   DatePickerIOS,
@@ -13,62 +10,14 @@ import {
 } from "react-native"
 import dateFormat from "dateformat"
 import { withTheme } from "../core/theming"
-import type { Theme } from "../types"
+
 import Portal from "./Portal/Portal"
 import Button from "./Button"
 import TextField from "./TextField"
 import Touchable from "./Touchable"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 
-type Props = {
-  /**
-   * Type of the Picker.
-   * - `underline` - input with an underline.
-   * - `solid` - input with an outline.
-   *
-   * In `solid` type, the background color of the label is derived from `colors.background` in theme or the `backgroundColor` style.
-   */
-  type?: "underline" | "solid",
-  /**
-   * Uses dateFormat library to format your date / time
-   */
-  format?: string,
-  /**
-   * If true, user won't be able to interact with the component.
-   */
-  disabled?: boolean,
-  /**
-   * The text to use for the floating label.
-   */
-  label?: string,
-  /**
-   * Whether to style the Picker with error style.
-   */
-  error?: boolean,
-  /**
-   * Helper text to display below the input
-   */
-  assistiveText?: string,
-  /**
-   * The name of the icon to show on the left
-   */
-  leftIconName?: string,
-  /**
-   * Whether to display the left button inside or outside of the Picker
-   */
-  leftIconMode?: "inset" | "outset",
-  /**
-   * The name of the icon to show on the right
-   */
-  rightIconName?: string,
-  options: Array<{ label: string, value: string }>,
-  date: Date,
-  onDateChange: (date: Date) => void,
-  style?: any,
-  theme: Theme
-}
-
-class Picker extends React.Component<Props> {
+class Picker extends React.Component {
   static defaultProps = {
     type: "underline",
     mode: "date",

@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as React from "react"
 import { ActivityIndicator, Animated, View, StyleSheet } from "react-native"
 import color from "color"
@@ -9,50 +7,8 @@ import Text from "./Text"
 import Touchable from "./Touchable"
 import Elevation from "./Elevation"
 import { withTheme } from "../core/theming"
-import type { Theme } from "../types"
-import type { IconSource } from "./Icon"
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types"
 
-type Props = $RemoveChildren<typeof Elevation> & {|
-  /**
-   * Icon to display for the `FAB`.
-   */
-  icon: IconSource,
-  /**
-   * Optional label for extended `FAB`.
-   */
-  label?: string,
-  /**
-   * Accessibility label for the FAB. This is read by the screen reader when the user taps the FAB.
-   * Uses `label` by default if specified.
-   */
-  accessibilityLabel?: string,
-  /**
-   *  Type of the FAB.
-   *  - `standard` - a standard size FAB with no label and an icon (default)
-   *  - `outline` - an outlined version of a standard FAB
-   *  - `extended` - an extended FAB with room for a label
-   *  - `fixed` - an extended, full screen, fixed to the bottom button with a label
-   */
-  type?: "standard" | "outline" | "extended" | "fixed",
-  /**
-   * Whether `FAB` is disabled. A disabled button is greyed out and `onPress` is not called on touch.
-   */
-  disabled?: boolean,
-  /**
-   * Whether `FAB` is loading. A loading button is greyed out and `onPress` is not called on touch.
-   */
-  loading?: boolean,
-  /**
-   * Function to execute on press.
-   */
-  onPress?: () => mixed,
-  style?: any,
-  /**
-   * @optional
-   */
-  theme: Theme
-|}
+import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types"
 
 /**
  * A floating action button represents the primary action in an application.
@@ -89,7 +45,7 @@ type Props = $RemoveChildren<typeof Elevation> & {|
  * export default MyComponent;
  * ```
  */
-class FAB extends React.Component<Props> {
+class FAB extends React.Component {
   static defaultProps = {
     elevation: 0,
     type: "solid"

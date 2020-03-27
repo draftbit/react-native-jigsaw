@@ -1,44 +1,10 @@
-/* @flow */
 import * as React from "react"
 import { Animated, View, StyleSheet } from "react-native"
-import color from "color"
 import Icon from "./Icon"
 import Touchable from "./Touchable"
 import { withTheme } from "../core/theming"
-import type { Theme, $RemoveChildren } from "../types"
 
-type Props = $RemoveChildren<typeof TouchableRipple> & {|
-  /**
-   * Status of checkbox.
-   */
-  status: "checked" | "unchecked" | "indeterminate",
-  /**
-   * Whether checkbox is disabled.
-   */
-  disabled?: boolean,
-  /**
-   * Function to execute on press.
-   */
-  onPress?: () => mixed,
-  /**
-   * Custom color for unchecked checkbox.
-   */
-  uncheckedColor?: string,
-  /**
-   * Custom color for checkbox.
-   */
-  color?: string,
-  /**
-   * @optional
-   */
-  theme: Theme
-|}
-
-type State = {
-  scaleAnim: Animated.Value
-}
-
-class CheckboxAndroid extends React.Component<Props, State> {
+class CheckboxAndroid extends React.Component {
   static displayName = "Checkbox.Android"
 
   state = {

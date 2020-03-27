@@ -1,51 +1,10 @@
-/* @flow */
-
 import * as React from "react"
 import { View, StyleSheet, ActivityIndicator } from "react-native"
 import color from "color"
-
 import Touchable from "./Touchable"
 import Icon from "./Icon"
 import { withTheme } from "../core/theming"
-import type { IconSource } from "./Icon"
-import type { Theme, $RemoveChildren } from "../types"
 import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types"
-
-type Props = $RemoveChildren<typeof Touchable> & {|
-  /**
-   * Icon to display.
-   */
-  icon: IconSource,
-  /**
-   * Color of the icon.
-   */
-  color?: string,
-  /**
-   * Size of the icon.
-   */
-  size?: number,
-  /**
-   * Whether the button is disabled. A disabled button is greyed out and `onPress` is not called on touch.
-   */
-  disabled?: boolean,
-  /**
-   * Whether the button is loading. A loading button is greyed out and `onPress` is not called on touch.
-   */
-  loading?: boolean,
-  /**
-   * Accessibility label for the button. This is read by the screen reader when the user taps the button.
-   */
-  accessibilityLabel?: string,
-  /**
-   * Function to execute on press.
-   */
-  onPress?: () => mixed,
-  style?: any,
-  /**
-   * @optional
-   */
-  theme: Theme
-|}
 
 /**
  * An icon button is a button which displays only an icon without a label.
@@ -89,7 +48,7 @@ const IconButton = ({
   theme,
   style,
   ...rest
-}: Props) => {
+}) => {
   const iconColor = customColor || theme.colors.text
   const rippleColor = color(iconColor)
     .alpha(theme.disabledOpacity)

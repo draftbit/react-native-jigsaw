@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as React from "react"
 import { Image, Text, View, StyleSheet } from "react-native"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
@@ -24,16 +22,7 @@ try {
   }
 }
 
-export type IconSource = string | { uri: string } | number | React.Node
-
-export type Props = {
-  name: IconSource,
-  color?: string,
-  size?: number,
-  style?: any
-}
-
-const Icon = ({ name, color, size, style, ...rest }: Props) => {
+const Icon = ({ name, color, size, style, ...rest }) => {
   if (!name) return null
 
   let iconSet = "MaterialIcons"
@@ -77,7 +66,7 @@ const Icon = ({ name, color, size, style, ...rest }: Props) => {
         styles.container,
         style
       ]}>
-      {(name: any)}
+      {name}
     </View>
   )
 }

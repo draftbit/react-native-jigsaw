@@ -1,21 +1,9 @@
-/* @flow */
-
 import * as React from "react"
 import { withTheme } from "../core/theming"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 import Header from "./Header"
-import type { Theme, Color, TypeStyle } from "../types"
 
-type Props = {
-  title: string,
-  buttonText: string,
-  icon: string,
-  onPress: () => void,
-  theme: Theme,
-  style?: any
-}
-
-class HeaderMedium extends React.Component<Props> {
+class HeaderMedium extends React.Component {
   static defaultProps = {
     onPress: () => {}
   }

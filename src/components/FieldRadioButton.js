@@ -1,42 +1,12 @@
-/* @flow */
-
 import * as React from "react"
 import { View, Text } from "react-native"
-import color from "color"
 import { withTheme } from "../core/theming"
 import Touchable from "./Touchable"
 import RadioButton from "./RadioButton"
-import type { Theme } from "../types"
+
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
 
-type Props = {|
-  /**
-   * Title to display alongside radio button
-   */
-  title?: string,
-  /**
-   * Status of radio button
-   */
-  selected: boolean,
-  /**
-   * Whether the radio button is disabled.
-   */
-  disabled?: boolean,
-  /**
-   * Function to execute on press.
-   */
-  onPress?: () => mixed,
-  /**
-   * @optional
-   */
-  color?: string,
-  /**
-   * Color of the radio button
-   */
-  theme: Theme
-|}
-
-class FieldRadioButton extends React.Component<Props> {
+class FieldRadioButton extends React.Component {
   onPress = () => {
     const { onPress } = this.props
 

@@ -1,41 +1,12 @@
-/* @flow */
-
 import * as React from "react"
 import { Platform } from "react-native"
 import CheckboxAndroid from "./CheckboxAndroid"
 import CheckboxIOS from "./CheckboxIOS"
 import { withTheme } from "../core/theming"
-import type { Theme } from "../types"
+
 import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
 
-type Props = {|
-  /**
-   * Status of checkbox.
-   */
-  status: "checked" | "unchecked" | "indeterminate",
-  /**
-   * Whether checkbox is disabled.
-   */
-  disabled?: boolean,
-  /**
-   * Function to execute on press.
-   */
-  onPress?: () => mixed,
-  /**
-   * Custom color for unchecked checkbox.
-   */
-  uncheckedColor?: string,
-  /**
-   * Custom color for checkbox.
-   */
-  color?: string,
-  /**
-   * @optional
-   */
-  theme: Theme
-|}
-
-class Checkbox extends React.Component<Props> {
+class Checkbox extends React.Component {
   // @component ./CheckboxAndroid.js
   static Android = CheckboxAndroid
 

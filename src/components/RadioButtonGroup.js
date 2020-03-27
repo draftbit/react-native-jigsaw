@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as React from "react"
 import { withTheme } from "../core/theming"
 import { View, Text, StyleSheet } from "react-native"
@@ -7,23 +5,7 @@ import Icon from "./Icon.js"
 import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
 import Touchable from "./Touchable"
 
-type Props = {
-  style: object,
-  direction: string,
-  options: Array<{ id: number, icon: string, label: string }>,
-  activeColor: string,
-  inactiveColor: string,
-  labelStyle: object,
-  iconSize: number,
-  contentColor: string,
-  borderRadius: number,
-  optionSpacing: number,
-  borderColor: string,
-  unselectedContentColor: string,
-  theme: theme
-}
-
-class RadioButtonGroup extends React.Component<Props> {
+class RadioButtonGroup extends React.Component {
   static defaultProps = { options: [] }
   state = { selected: this.props.defaultSelection }
 

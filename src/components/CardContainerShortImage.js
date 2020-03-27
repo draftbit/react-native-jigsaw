@@ -5,22 +5,9 @@ import Card from "./Card"
 import Elevation from "./Elevation"
 import { withTheme } from "../core/theming"
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
-import type { Theme } from "../types"
 import Config from "./Config"
 
-export type CardContainerShortImageProps = {
-  image: string | { uri: string },
-  title?: string,
-  subtitle?: string,
-  aspectRatio?: number,
-  mode: "left" | "right",
-  elevation: number,
-  theme: Theme,
-  style: any,
-  onPress: () => void
-}
-
-class CardContainerShortImage extends React.PureComponent<CardContainerShortImageProps> {
+class CardContainerShortImage extends React.PureComponent {
   static defaultProps = {
     image: Config.squareImageUrl,
     elevation: 2,

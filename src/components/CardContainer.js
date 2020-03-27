@@ -8,27 +8,11 @@ import Icon from "./Icon"
 import { withTheme } from "../core/theming"
 import { FORM_TYPES, COMPONENT_TYPES, ELEVATION_TYPE } from "../core/component-types"
 import Config from "./Config"
-import type { Theme } from "../types"
 
 const ICON_CONTAINER_SIZE = Config.cardIconSize * 2
 const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1
 
-export type CardContainerProps = {
-  image: string | { uri: string },
-  title?: string,
-  leftDescription?: string,
-  rightDescription?: string,
-  textCentered?: boolean,
-  icon?: string,
-  aspectRatio?: number,
-  elevation: number,
-  numColumns: 2 | 3,
-  theme: Theme,
-  style: any,
-  onPress: () => void
-}
-
-class CardContainer extends React.PureComponent<CardContainerProps> {
+class CardContainer extends React.PureComponent {
   static defaultProps = {
     image: Config.cardImageUrl,
     aspectRatio: 1.5,

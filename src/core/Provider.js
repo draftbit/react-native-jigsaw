@@ -1,17 +1,10 @@
-/* @flow */
 /* eslint-disable react/no-unused-prop-types */
 
 import * as React from "react"
 import { ThemeProvider } from "./theming"
 import Portal from "../components/Portal/Portal"
-import type { Theme } from "../types"
 
-type Props = {
-  children: React.Node,
-  theme?: $Shape<Theme>
-}
-
-export default class Provider extends React.Component<Props> {
+export default class Provider extends React.Component {
   render() {
     return (
       <Portal.Host>

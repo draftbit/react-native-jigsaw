@@ -1,5 +1,4 @@
 import { TextInput } from "react-native"
-import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
 import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME, TEXT_INPUT_PROPS } from "../core/component-types"
 
 export default TextInput

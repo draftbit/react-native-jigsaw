@@ -12,7 +12,7 @@ export const SEED_DATA = {
   supports_list_render: false,
   layout: {},
   props: {
-    ...TEXTINPUT_PROPS,
+    ...TEXT_INPUT_PROPS,
     style: {
       label: "Style",
       description: "Text Style",

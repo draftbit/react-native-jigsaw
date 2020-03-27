@@ -9,8 +9,7 @@ import {
 } from "react-native"
 import { polyfill } from "react-lifecycles-compat"
 import { withTheme } from "../core/theming"
-import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
-import TextInputCommonProps from "./props/TextInputCommonProps"
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME, TEXT_INPUT_PROPS } from "../core/component-types"
 
 import Icon from "./Icon"
 
@@ -502,7 +501,7 @@ const styles = StyleSheet.create({
 })
 
 const SEED_DATA_PROPS = {
-  ...TextInputCommonProps,
+  ...TEXT_INPUT_PROPS,
   label: {
     label: "Label",
     description: "The label to be displayed on the text field",

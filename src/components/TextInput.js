@@ -1,6 +1,6 @@
 import { TextInput } from "react-native"
 import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
-import TextInputProps from "./props/TextInputProps"
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME, TEXT_INPUT_PROPS } from "../core/component-types"
 
 export default TextInput
 
@@ -13,7 +13,7 @@ export const SEED_DATA = {
   supports_list_render: false,
   layout: {},
   props: {
-    ...TextInputCommonProps,
+    ...TEXTINPUT_PROPS,
     style: {
       label: "Style",
       description: "Text Style",

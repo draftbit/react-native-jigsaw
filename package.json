@@ -13,7 +13,8 @@
     "test": "jest",
     "seed:db": "node scripts/collector.js",
     "pretty": "prettier --config ./package.json --write '{example,src}/**/*.{js,css,json}'",
-    "build:web": "yarn clean && babel src -d --out-dir dist --ignore \"**/__tests__\" && cp -r src/assets dist/."
+    "build:web": "yarn clean && babel src -d --out-dir dist --ignore \"**/__tests__\" && cp -r src/assets dist/.",
+    "sync:glyphmaps": "aws s3 sync glyphmaps s3://static.draftbit.com/fonts/glyphmaps --profile DraftbitS3SharedStatic --exclude \"*\" --include \"*.json\" --acl public-read"
   },
   "jest": {
     "preset": "react-native"

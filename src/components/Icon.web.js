@@ -1,5 +1,5 @@
 import React from "react"
-import { KEY, ICON_FAMILIES } from "core/icons"
+import { KEY, ICON_FAMILIES } from "../core/icons"
 
 function withIcons(WrappedComponent) {
   return class extends React.Component {

@@ -21,7 +21,6 @@ function withIcons(WrappedComponent) {
       const iconSets = {}
       await Promise.all(
         ICON_FAMILIES.map(async iconFamily => {
-          console.log(iconFamily.url)
           const icons = await fetch(iconFamily.url)
             .then(res => res.json())
             .catch(error => {

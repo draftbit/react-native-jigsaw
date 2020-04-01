@@ -50,9 +50,20 @@ function Icon({ loading, iconSets, name: path, color, size }) {
     return null
   }
 
-  const [set, name] = path.split("/")
+  // Originally, only MaterialIcons were supported, so not all legacy
+  // apps in draftbit define icons with fully-qualified icon names.
+  let set = "MaterialIcons"
+  let name = path
 
-  const icons = iconSets[set].icons
+  if (path.includes("/")) {
+    ;[set, name] = path.split("/")
+  }
+
+  const icons = iconSets[set] && iconSets[set].icons
+
+  if (!icons) {
+    return null
+  }
 
   return (
     <span

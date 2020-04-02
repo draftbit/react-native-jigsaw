@@ -78,33 +78,6 @@ export const SEED_DATA = {
       editable: true,
       required: true
     },
-    borderColor: {
-      label: "Border Color",
-      description: "Border Color of the container",
-      type: FORM_TYPES.color,
-      value: null,
-      editable: true,
-      required: false
-    },
-    borderWidth: {
-      label: "Border Width",
-      description: "Border width of the container(Required if color is selected)",
-      editable: true,
-      required: false,
-      type: FORM_TYPES.number,
-      min: 0,
-      max: 20,
-      step: 1,
-      precision: 0
-    },
-    backgroundColor: {
-      label: "Background color",
-      description: "Background color to apply to the container",
-      type: FORM_TYPES.color,
-      value: null,
-      editable: true,
-      required: false
-    },
     backgroundImage: {
       label: "Background image",
       description: "Background image to apply to the container",

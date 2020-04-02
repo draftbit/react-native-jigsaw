@@ -237,13 +237,6 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false
   },
-  onDateChange: {
-    label: "Picker onDateChange function",
-    description: "Function to call as picker date is changed",
-    editable: true,
-    type: FORM_TYPES.function,
-    value: "{this.onDateChange}"
-  },
   options: {
     label: "Options",
     description: "Array of picker options. An array of objects containing a label and value.",

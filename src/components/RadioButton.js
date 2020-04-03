@@ -77,14 +77,6 @@ export const SEED_DATA = {
       required: false,
       value: null,
       type: FORM_TYPES.boolean
-    },
-    onPress: {
-      label: "OnPress handler",
-      description: "Function that is called when radio button pressed",
-      editable: true,
-      required: false,
-      value: "{this.onPress}",
-      type: FORM_TYPES.function
     }
   },
   layout: {

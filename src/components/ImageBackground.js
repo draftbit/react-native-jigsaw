@@ -33,15 +33,6 @@ export const SEED_DATA = {
       type: FORM_TYPES.flatArray,
       options: ["cover", "contain", "stretch", "repeat", "center"]
     },
-    overflow: {
-      label: "Overflow",
-      description: "If the image goes outside of its container, show or hide it",
-      editable: true,
-      required: false,
-      value: null,
-      type: FORM_TYPES.flatArray,
-      options: ["visible", "hidden"]
-    },
     backfaceVisibility: {
       label: "Backface Visibility",
       description: "When animating a card, show the back face of it",

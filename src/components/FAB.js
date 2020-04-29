@@ -203,6 +203,8 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   icon: {
+    alignItems: "center",
+    justifyContent: "center",
     width: Config.buttonIconSize
   },
   fixed: {

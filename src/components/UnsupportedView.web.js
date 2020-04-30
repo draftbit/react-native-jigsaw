@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-import { StyleSheet, Text, ImageBackground } from "react-native"
+import { StyleSheet, Text, ImageBackground, Image } from "react-native"
 import AspectRatio from "./AspectRatio"
 
-function maybeRenderText(layout) {
-  if (!layout) return true
-  if (layout.width * layout.height < 10000) return false
-  return true
+function TextOrImage({ layout, message }) {
+  if (layout.width * layout.height < 10000)
+    return <Image style={{ width: 64, height: 64 }} source={require("../assets/warning.svg")} />
+
+  return <Text style={styles.text}>{message}</Text>
 }
 
 export default function UnsupportedView({ tag, style }) {
@@ -33,7 +34,7 @@ export default function UnsupportedView({ tag, style }) {
           imageStyle={styles.image}
           source={require("../assets/bg.png")}
           resizeMode="repeat">
-          {maybeRenderText(layout) ? <Text style={styles.text}>{message}</Text> : null}
+          <TextOrImage layout={layout} message={message} />
         </ImageBackground>
       </AspectRatio>
     )
@@ -50,7 +51,7 @@ export default function UnsupportedView({ tag, style }) {
       style={[extraStyles, styles.container]}
       source={require("../assets/bg.png")}
       resizeMode="repeat">
-      {maybeRenderText(layout) ? <Text style={styles.text}>{message}</Text> : null}
+      <TextOrImage layout={layout} message={message} />
     </ImageBackground>
   )
 }

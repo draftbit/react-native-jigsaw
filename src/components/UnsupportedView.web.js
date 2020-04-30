@@ -3,13 +3,14 @@ import { StyleSheet, Text, ImageBackground } from "react-native"
 import AspectRatio from "./AspectRatio"
 
 function maybeRenderText(layout) {
-  if (layout.width > 100 && layout.height > 100) return true
-  return false
+  if (!layout) return true
+  if (layout.width * layout.height < 10000) return false
+  return true
 }
 
 export default function UnsupportedView({ tag, style }) {
   const { aspectRatio, ...extraStyles } = StyleSheet.flatten(style)
-  const [layout, setLayout] = useState({})
+  const [layout, setLayout] = useState({ width: null, height: null })
 
   const message = `${tag} is not supported in Web Preview yet, please use Live Preview`
   if (aspectRatio && extraStyles.position !== "absolute") {

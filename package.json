@@ -2,22 +2,29 @@
   "name": "@draftbit/ui",
   "version": "36.8.0",
   "description": "Jigsaw component library for Draftbit",
-  "main": "src/index.js",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "react-native": "lib/module/index.js",
+  "files": [
+    "src/",
+    "lib/"
+  ],
   "repository": "git@github.com:draftbit/jigsaw-component-library.git",
   "author": "Draftbit",
   "license": "ISC",
   "private": false,
   "scripts": {
-    "babel:build": "babel src -d --out-dir dist --ignore \"**/__tests__\" --copy-files",
     "clean": "del-cli ./dist",
     "lint": "eslint src",
     "test": "jest",
     "seed:db": "node scripts/collector.js",
     "pretty": "prettier --config ./package.json --write '{example,src}/**/*.{js,css,json}'",
-    "build:web": "yarn clean && yarn babel:build",
-    "sync:glyphmaps": "aws s3 sync glyphmaps s3://static.draftbit.com/fonts/glyphmaps --profile DraftbitS3SharedStatic --exclude \"*\" --include \"*.json\" --acl public-read"
+    "prepare": "bob build"
   },
   "jest": {
+    "modulePathIgnorePatterns": [
+      "<rootDir>/lib/"
+    ],
     "preset": "react-native"
   },
   "peerDependencies": {
@@ -25,19 +32,7 @@
     "react-native": "*"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-add-module-exports": "^1.0.2",
-    "babel-plugin-module-resolver": "^3.2.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "babel-preset-minify": "^0.5.0",
-    "babel-preset-react-native": "^4.0.1",
+    "@react-native-community/bob": "^0.10.1",
     "del-cli": "^2.0.0",
     "glob": "^7.1.4",
     "husky": "^3.0.9",
@@ -80,6 +75,17 @@
     "*.{js,json,css,md}": [
       "prettier --write",
       "git add"
+    ]
+  },
+  "@react-native-community/bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module"
+    ],
+    "files": [
+      "src/"
     ]
   }
 }

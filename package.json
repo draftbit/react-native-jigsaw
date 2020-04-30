@@ -20,11 +20,6 @@
   "jest": {
     "preset": "react-native"
   },
-  "peerDependencies": {
-    "expo": "*",
-    "react": "*",
-    "react-native": "*"
-  },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
@@ -36,7 +31,6 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-add-module-exports": "^1.0.2",
     "babel-plugin-module-resolver": "^3.2.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "babel-preset-minify": "^0.5.0",
     "babel-preset-react-native": "^4.0.1",
     "del-cli": "^2.0.0",
@@ -45,8 +39,7 @@
     "jest": "^24.8.0",
     "lint-staged": "^9.4.2",
     "node-fetch": "^2.6.0",
-    "prettier": "1.18.2",
-    "react-test-renderer": "^16.8.6"
+    "prettier": "1.18.2"
   },
   "dependencies": {
     "@callstack/react-theme-provider": "^3.0.5",

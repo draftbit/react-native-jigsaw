@@ -15,6 +15,11 @@ export default class ImageBackground extends React.PureComponent {
       width: e.nativeEvent.layout.width,
       height: e.nativeEvent.layout.height
     })
+
+    return {
+      width: e.nativeEvent.layout.width,
+      height: e.nativeEvent.layout.height
+    }
   }
 
   render() {

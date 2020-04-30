@@ -1,25 +1,40 @@
 import React, { useState } from "react"
-import { StyleSheet, Text, ImageBackground } from "react-native"
+import { StyleSheet, Text, ImageBackground, Image } from "react-native"
 import AspectRatio from "./AspectRatio"
+
+function TextOrImage({ layout, message }) {
+  if (layout.width * layout.height < 10000)
+    return <Image style={{ width: 32, height: 32 }} source={require("../assets/warning.svg")} />
+
+  return <Text style={styles.text}>{message}</Text>
+}
 
 export default function UnsupportedView({ tag, style }) {
   const { aspectRatio, ...extraStyles } = StyleSheet.flatten(style)
-  const [layout, setLayout] = useState({})
+  const [layout, setLayout] = useState({ width: null, height: null })
+
   const message = `${tag} is not supported in Web Preview yet, please use Live Preview`
   if (aspectRatio && extraStyles.position !== "absolute") {
     return (
       <AspectRatio
         ratio={aspectRatio}
-        onLayout={e => ({
-          width: e.nativeEvent.layout.width,
-          height: e.nativeEvent.layout.height
-        })}>
+        onLayout={e => {
+          setLayout({
+            width: e.nativeEvent.layout.width,
+            height: e.nativeEvent.layout.height
+          })
+
+          return {
+            width: e.nativeEvent.layout.width,
+            height: e.nativeEvent.layout.height
+          }
+        }}>
         <ImageBackground
           style={[extraStyles, styles.container, { width: layout.width, height: layout.height }]}
           imageStyle={styles.image}
           source={require("../assets/bg.png")}
           resizeMode="repeat">
-          <Text style={styles.text}>{message}</Text>
+          <TextOrImage layout={layout} message={message} />
         </ImageBackground>
       </AspectRatio>
     )
@@ -27,16 +42,23 @@ export default function UnsupportedView({ tag, style }) {
 
   return (
     <ImageBackground
+      onLayout={e => {
+        setLayout({
+          width: e.nativeEvent.layout.width,
+          height: e.nativeEvent.layout.height
+        })
+      }}
       style={[extraStyles, styles.container]}
       source={require("../assets/bg.png")}
       resizeMode="repeat">
-      <Text style={styles.text}>{message}</Text>
+      <TextOrImage layout={layout} message={message} />
     </ImageBackground>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
+    overflow: "hidden",
     alignItems: "center",
     justifyContent: "center",
     padding: 10

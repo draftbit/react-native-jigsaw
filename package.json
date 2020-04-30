@@ -22,7 +22,7 @@
   },
   "peerDependencies": {
     "expo": "^36.0.0",
-    "react": "16.9.0",
+    "react": "^16.9.0",
     "react-native": "*"
   },
   "devDependencies": {

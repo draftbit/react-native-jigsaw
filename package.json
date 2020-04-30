@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "36.9.0",
+  "version": "36.10.0",
   "description": "Jigsaw component library for Draftbit",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",

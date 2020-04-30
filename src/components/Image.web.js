@@ -19,7 +19,7 @@ export default class Image extends React.PureComponent {
 
   render() {
     const { source, style, image, resizeMode, ...props } = this.props
-    if (style.aspectRatio) {
+    if (style && style.aspectRatio) {
       return (
         <AspectRatio onLayout={this.onLayout} ratio={style.aspectRatio}>
           <NativeImage

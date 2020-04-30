@@ -1,9 +1,8 @@
 import * as React from "react"
 import { View, StyleSheet } from "react-native"
 import PortalManager from "./PortalManager"
-import createReactContext from "create-react-context"
 
-export const PortalContext = createReactContext(null)
+export const PortalContext = React.createContext(null)
 
 /**
  * Portal host renders all of its children `Portal` elements.
@@ -107,7 +106,7 @@ export default class PortalHost extends React.Component {
           unmount: this._unmount
         }}>
         {/* Need collapsable=false here to clip the elevations, otherwise they appear above Portal components */}
-        <View style={styles.container} collapsable={false}>
+        <View style={styles.container} collapsable={false} pointerEvents="box-none">
           {this.props.children}
         </View>
         <PortalManager ref={this._setManager} />

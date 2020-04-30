@@ -7,7 +7,6 @@ import {
   Text,
   I18nManager
 } from "react-native"
-import { polyfill } from "react-lifecycles-compat"
 import { withTheme } from "../core/theming"
 import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME, TEXT_INPUT_PROPS } from "../core/component-types"
 
@@ -471,8 +470,6 @@ class TextField extends React.Component {
     )
   }
 }
-
-polyfill(TextField)
 
 export default withTheme(TextField)
 

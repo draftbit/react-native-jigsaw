@@ -4,7 +4,7 @@ import AspectRatio from "./AspectRatio"
 
 function TextOrImage({ layout, message }) {
   if (layout.width * layout.height < 10000)
-    return <Image style={{ width: 32, height: 32 }} source={require("../assets/warning.svg")} />
+    return <Image style={{ width: 32, height: 32 }} source={require("../assets/warning.png")} />
 
   return <Text style={styles.text}>{message}</Text>
 }

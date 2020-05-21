@@ -1,17 +1,26 @@
-import React from "react"
-import { Image as NativeImage } from "react-native"
-import Config from "./Config"
-import { COMPONENT_TYPES, FORM_TYPES, BORDER_RADIUS_MODE } from "../core/component-types"
+import React from "react";
+import { Image as NativeImage } from "react-native";
+import Config from "./Config";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  BORDER_RADIUS_MODE,
+} from "../core/component-types";
 
 export default class Image extends React.PureComponent {
   static defaultProps = {
     source: Config.placeholderImageURL,
-    resizeMode: "cover"
-  }
+    resizeMode: "cover",
+  };
 
   render() {
-    const { source, ...props } = this.props
-    return <NativeImage source={typeof source === "string" ? { uri: source } : source} {...props} />
+    const { source, ...props } = this.props;
+    return (
+      <NativeImage
+        source={typeof source === "string" ? { uri: source } : source}
+        {...props}
+      />
+    );
   }
 }
 
@@ -21,10 +30,11 @@ export const SEED_DATA = {
   description: "A basic Image Component",
   category: COMPONENT_TYPES.media,
   supports_list_render: false,
-  preview_image_url: "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/Image.png",
+  preview_image_url:
+    "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/Image.png",
   layout: {
     width: 250,
-    height: 250
+    height: 250,
   },
   props: {
     source: {
@@ -33,7 +43,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       type: FORM_TYPES.localImage,
-      value: null
+      value: null,
     },
     resizeMode: {
       label: "Resize Mode",
@@ -43,7 +53,7 @@ export const SEED_DATA = {
       required: false,
       value: "cover",
       type: FORM_TYPES.flatArray,
-      options: ["cover", "contain", "stretch", "repeat", "center"]
-    }
-  }
-}
+      options: ["cover", "contain", "stretch", "repeat", "center"],
+    },
+  },
+};

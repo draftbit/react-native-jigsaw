@@ -1,16 +1,18 @@
-import * as React from "react"
-import { Animated, StyleSheet } from "react-native"
-import shadow from "../styles/shadow"
-import { withTheme } from "../core/theming"
+import * as React from "react";
+import { Animated, StyleSheet } from "react-native";
+import shadow from "../styles/shadow";
+import { withTheme } from "../core/theming";
 
-class Elevation extends React.Component {
-  render() {
-    const { style, theme, ...rest } = this.props
-    const flattenedStyles = StyleSheet.flatten(style) || {}
-    const { elevation } = flattenedStyles
+function Elevation({ style, theme, ...rest }) {
+  const flattenedStyles = StyleSheet.flatten(style) || {};
+  const { elevation } = flattenedStyles;
 
-    return <Animated.View {...rest} style={[elevation && shadow(elevation, theme), style]} />
+  const styles = [style];
+  if (elevation) {
+    styles.push(shadow(elevation, theme));
   }
+
+  return <Animated.View {...rest} style={styles} />;
 }
 
-export default withTheme(Elevation)
+export default withTheme(Elevation);

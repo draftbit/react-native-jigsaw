@@ -1,0 +1,134 @@
+[
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/AspectRatio.web.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Card.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Carousel.web.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/CheckboxAndroid.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/CheckboxIOS.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Config.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Config.web.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/CrossFadeIcon.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Elevation.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Header.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Icon.web.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Image.web.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/ImageBackground.web.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/MapSimple.web.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Picker/Picker.js",
+    "error": "ENOENT: no such file or directory, open './mappings/Picker/Picker.json'"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Picker/PickerComponent.android.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Picker/PickerComponent.ios.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Picker/PickerComponent.web.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Portal/Portal.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Portal/PortalConsumer.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Portal/PortalHost.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Portal/PortalManager.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/ProgressBar.web.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/ProgressCircle.web.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/ProgressIndicator.web.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/RadioButtonGroup.web.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Row.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/ScreenContainer.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/StarRating.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Touchable.web.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/UnsupportedView.web.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/Video.web.js",
+    "error": "SEED_DATA not found"
+  },
+  {
+    "file": "/Users/peter/Projects/draftbit-ui/src/components/WebView.web.js",
+    "error": "SEED_DATA not found"
+  }
+]

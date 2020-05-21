@@ -1,12 +1,13 @@
-import { ImageBackground } from "react-native"
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import { ImageBackground } from "react-native";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
-export default ImageBackground
+export default ImageBackground;
 
 export const SEED_DATA = {
   name: "Image Background",
   tag: "ImageBackground",
-  doc_link: "https://docs.expo.io/versions/v32.0.0/react-native/imagebackground/",
+  doc_link:
+    "https://docs.expo.io/versions/v32.0.0/react-native/imagebackground/",
   code_link:
     "https://github.com/facebook/react-native/blob/master/Libraries/Image/ImageBackground.js",
   description:
@@ -21,7 +22,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       type: FORM_TYPES.localImage,
-      value: null
+      value: null,
     },
     resizeMode: {
       label: "Resize Mode",
@@ -31,7 +32,7 @@ export const SEED_DATA = {
       required: false,
       value: "cover",
       type: FORM_TYPES.flatArray,
-      options: ["cover", "contain", "stretch", "repeat", "center"]
+      options: ["cover", "contain", "stretch", "repeat", "center"],
     },
     backfaceVisibility: {
       label: "Backface Visibility",
@@ -40,7 +41,7 @@ export const SEED_DATA = {
       required: false,
       value: null,
       type: FORM_TYPES.flatArray,
-      options: ["visible", "hidden"]
+      options: ["visible", "hidden"],
     },
     backgroundColor: {
       label: "Background Color",
@@ -48,7 +49,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: null,
-      type: FORM_TYPES.color
-    }
-  }
-}
+      type: FORM_TYPES.color,
+    },
+  },
+};

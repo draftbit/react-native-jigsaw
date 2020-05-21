@@ -1,17 +1,16 @@
-import React from "react"
-import { View } from "react-native"
-import Touchable from "react-native-platform-touchable"
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import React from "react";
+import { View, TouchableHighlight as Touchable } from "react-native";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 export default class extends Touchable {
   render() {
-    const { children, ...props } = this.props
+    const { children, ...props } = this.props;
 
     return (
       <Touchable {...props}>
         <View>{children}</View>
       </Touchable>
-    )
+    );
   }
 }
 
@@ -29,7 +28,7 @@ export const SEED_DATA = {
       description: "Action to execute when touchable pressed",
       editable: true,
       type: FORM_TYPES.action,
-      value: null
+      value: null,
     },
     hitSlop: {
       label: "Hit Slop",
@@ -38,7 +37,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.position,
-      value: null
-    }
-  }
-}
+      value: null,
+    },
+  },
+};

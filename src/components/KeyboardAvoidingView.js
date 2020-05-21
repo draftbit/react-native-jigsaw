@@ -1,7 +1,7 @@
-import { KeyboardAvoidingView } from "react-native"
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import { KeyboardAvoidingView } from "react-native";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
-export default KeyboardAvoidingView
+export default KeyboardAvoidingView;
 
 export const SEED_DATA = {
   name: "Keyboard Avoiding View",
@@ -17,7 +17,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       value: true,
-      type: FORM_TYPES.boolean
+      type: FORM_TYPES.boolean,
     },
     behavior: {
       label: "Resizing Behavior",
@@ -27,15 +27,16 @@ export const SEED_DATA = {
       required: true,
       value: "padding",
       options: ["padding", "position", "height"],
-      type: FORM_TYPES.flatArray
+      type: FORM_TYPES.flatArray,
     },
     keyboardVerticalOffset: {
       label: "Keyboard Vertical Offset",
-      description: "The distance between the bottom of the view and the keyboard",
+      description:
+        "The distance between the bottom of the view and the keyboard",
       editable: true,
       required: false,
       value: 0,
-      type: FORM_TYPES.number
-    }
-  }
-}
+      type: FORM_TYPES.number,
+    },
+  },
+};

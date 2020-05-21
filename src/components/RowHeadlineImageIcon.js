@@ -1,10 +1,10 @@
-import * as React from "react"
-import { withTheme } from "../core/theming"
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import * as React from "react";
+import { withTheme } from "../core/theming";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
-import Row from "./Row"
-import Icon from "./Icon"
-import Config from "./Config"
+import Row from "./Row";
+import Icon from "./Icon";
+import Config from "./Config";
 
 class RowHeadlineImageIcon extends React.Component {
   render() {
@@ -15,8 +15,8 @@ class RowHeadlineImageIcon extends React.Component {
       multilineSubtitle,
       icon,
       style,
-      theme: { colors, typography, spacing }
-    } = this.props
+      theme: { colors, typography, spacing },
+    } = this.props;
 
     return (
       <Row
@@ -31,28 +31,33 @@ class RowHeadlineImageIcon extends React.Component {
         right={() => (
           <Icon
             name={icon}
-            size={multilineSubtitle ? Config.rowMultiLineIconSize : Config.rowSingleLineIconSize}
+            size={
+              multilineSubtitle
+                ? Config.rowMultiLineIconSize
+                : Config.rowSingleLineIconSize
+            }
             color={colors.light}
             style={{
               marginLeft: spacing.large,
               alignSelf: multilineSubtitle ? "flex-start" : "center",
-              marginTop: multilineSubtitle ? spacing.text : 0
+              marginTop: multilineSubtitle ? spacing.text : 0,
             }}
           />
         )}
         style={style}
       />
-    )
+    );
   }
 }
 
-export default withTheme(RowHeadlineImageIcon)
+export default withTheme(RowHeadlineImageIcon);
 
 export const SEED_DATA = [
   {
     name: "Row Single Line Headline Icon",
     tag: "RowHeadlineImageIcon",
-    description: "A row with left aligned headline text and a right aligned icon",
+    description:
+      "A row with left aligned headline text and a right aligned icon",
     category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_HeadlineIcon.png",
     supports_list_render: true,
@@ -62,22 +67,23 @@ export const SEED_DATA = [
         description: "Headline text to display",
         type: FORM_TYPES.string,
         value: "Beautiful West Coast Villa",
-        editable: true
+        editable: true,
       },
       icon: {
         label: "Icon",
         description: "Icon to display",
         type: FORM_TYPES.icon,
         value: null,
-        editable: true
-      }
+        editable: true,
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "Row Single Line Headline Icon Image",
     tag: "RowHeadlineImageIcon",
-    description: "A row with left aligned image and headline text and a right aligned icon",
+    description:
+      "A row with left aligned image and headline text and a right aligned icon",
     category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_HeadlineIconImage.png",
     supports_list_render: true,
@@ -87,29 +93,30 @@ export const SEED_DATA = [
         description: "Headline text to display",
         type: FORM_TYPES.string,
         value: "Beautiful West Coast Villa",
-        editable: true
+        editable: true,
       },
       icon: {
         label: "Icon",
         description: "Icon to display",
         type: FORM_TYPES.icon,
         value: null,
-        editable: true
+        editable: true,
       },
       image: {
         label: "Image",
         description: "Image to display",
         type: FORM_TYPES.remoteImage,
         value: null,
-        editable: true
-      }
+        editable: true,
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "Row Double Line Headline Icon",
     tag: "RowHeadlineImageIcon",
-    description: "A row with left aligned headline text and subtitle text and a right aligned icon",
+    description:
+      "A row with left aligned headline text and subtitle text and a right aligned icon",
     category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_HeadlineIcon.png",
     supports_list_render: true,
@@ -119,29 +126,30 @@ export const SEED_DATA = [
         description: "Headline text to display",
         type: FORM_TYPES.string,
         value: "Beautiful West Coast Villa",
-        editable: true
+        editable: true,
       },
       subtitle: {
         label: "Subtitle",
         description: "Subtitle text to display",
         type: FORM_TYPES.string,
         value: "San Diego",
-        editable: true
+        editable: true,
       },
       icon: {
         label: "Icon",
         description: "Icon to display",
         type: FORM_TYPES.icon,
         value: null,
-        editable: true
-      }
+        editable: true,
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "Row Double Line Headline Image Icon",
     tag: "RowHeadlineImageIcon",
-    description: "A row with left aligned headline text and subtitle text and a right aligned icon",
+    description:
+      "A row with left aligned headline text and subtitle text and a right aligned icon",
     category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_HeadlineImageIcon.png",
     supports_list_render: true,
@@ -151,31 +159,31 @@ export const SEED_DATA = [
         description: "Headline text to display",
         type: FORM_TYPES.string,
         value: "Beautiful West Coast Villa",
-        editable: true
+        editable: true,
       },
       subtitle: {
         label: "Subtitle",
         description: "Subtitle text to display",
         type: FORM_TYPES.string,
         value: "San Diego",
-        editable: true
+        editable: true,
       },
       icon: {
         label: "Icon",
         description: "Icon to display",
         type: FORM_TYPES.icon,
         value: null,
-        editable: true
+        editable: true,
       },
       image: {
         label: "Image",
         description: "Image to display",
         type: FORM_TYPES.remoteImage,
         value: null,
-        editable: true
-      }
+        editable: true,
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "Row Multiline Headline Icon",
@@ -191,7 +199,7 @@ export const SEED_DATA = [
         description: "Headline text to display",
         type: FORM_TYPES.string,
         value: "Beautiful West Coast Villa",
-        editable: true
+        editable: true,
       },
       subtitle: {
         label: "Subtitle",
@@ -199,22 +207,22 @@ export const SEED_DATA = [
         type: FORM_TYPES.string,
         value:
           "San Diego is a city on the Pacific coast of California known for its beaches, parks and warm climate",
-        editable: true
+        editable: true,
       },
       icon: {
         label: "Icon",
         description: "Icon to display",
         type: FORM_TYPES.icon,
         value: null,
-        editable: true
+        editable: true,
       },
       multilineSubtitle: {
         type: FORM_TYPES.boolean,
         value: true,
-        editable: false
-      }
+        editable: false,
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "Row Multiline Headline Image Icon",
@@ -230,7 +238,7 @@ export const SEED_DATA = [
         description: "Headline text to display",
         type: FORM_TYPES.string,
         value: "Beautiful West Coast Villa",
-        editable: true
+        editable: true,
       },
       subtitle: {
         label: "Subtitle",
@@ -238,28 +246,28 @@ export const SEED_DATA = [
         type: FORM_TYPES.string,
         value:
           "San Diego is a city on the Pacific coast of California known for its beaches, parks and warm climate",
-        editable: true
+        editable: true,
       },
       icon: {
         label: "Icon",
         description: "Icon to display",
         type: FORM_TYPES.icon,
         value: null,
-        editable: true
+        editable: true,
       },
       image: {
         label: "Image",
         description: "Image to display",
         type: FORM_TYPES.remoteImage,
         value: null,
-        editable: true
+        editable: true,
       },
       multilineSubtitle: {
         type: FORM_TYPES.boolean,
         value: true,
-        editable: false
-      }
+        editable: false,
+      },
     },
-    layout: {}
-  }
-]
+    layout: {},
+  },
+];

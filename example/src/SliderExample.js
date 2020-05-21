@@ -1,64 +1,55 @@
-import * as React from "react"
-import { StyleSheet, Text, ScrollView } from "react-native"
-import { Slider, FieldSlider, withTheme } from "@draftbit/ui"
+import * as React from "react";
+import { Slider, FieldSlider, withTheme } from "@draftbit/ui";
+import Section, { Container } from "./Section";
 
-class SliderExample extends React.Component {
-  state = { sliderValue: 5, disabledSliderValue: 5, fieldSliderValue: 5 }
+function SliderExample({ theme }) {
+  const [value, setValue] = React.useState(4);
+  const handleChange = (value) => setValue(value);
 
-  render() {
-    const {
-      theme: {
-        colors: { background },
-        spacing
-      }
-    } = this.props
-
-    const { sliderValue, disabledSliderValue, fieldSliderValue } = this.state
-
-    return (
-      <ScrollView
-        style={[
-          styles.container,
-          { backgroundColor: background, paddingHorizontal: spacing.large }
-        ]}>
-        <Text style={{ marginVertical: spacing.large }}>Slider</Text>
+  return (
+    <Container style={{ backgroundColor: theme.colors.background }}>
+      <Section title="Active">
         <Slider
-          style={{ width: 300, height: 30 }}
-          minimumTrackTintColor="#5a45ff"
-          maximumTrackTintColor="#536070"
-          thumbTintColor="#3BC9EA"
-          thumbBorderRadius={20}
-          trackBorderRadius={20}
-          thumbSize={20}
-          thumbTouchSize={20}
+          style={{ height: 4 }}
+          maximumTrackTintColor="#5a45ff"
+          minimumTrackTintColor="#536070"
+          thumbTintColor="#5a45ff"
+          thumbBorderRadius={4}
+          trackBorderRadius={4}
+          thumbSize={8}
+          thumbTouchSize={4}
+          value={value}
           minimumValue={0}
           maximumValue={10}
-          step={0.02}
+          step={1}
+          onValueChange={handleChange}
         />
-        <Text style={{ marginVertical: spacing.large }}>Slider (Disabled)</Text>
+      </Section>
+
+      <Section title="Disabled">
         <Slider
           disabled={true}
-          style={{ width: 300, height: 30 }}
+          style={{ height: 10 }}
           minimumTrackTintColor="#5a45ff"
           maximumTrackTintColor="#536070"
           thumbTintColor="#00FF00"
           disabledThumbTintColor="#000000"
           thumbBorderRadius={20}
           thumbSize={20}
-          value={disabledSliderValue}
-          onValueChange={disabledSliderValue => {
-            this.setState({ disabledSliderValue })
-          }}
+          value={value}
           minimumValue={0}
           maximumValue={10}
-          step={0.02}
+          step={1}
+          onValueChange={handleChange}
         />
-        <Text style={{ marginVertical: spacing.large }}>FieldSlider</Text>
+      </Section>
+
+      <Section title="Field Slider with a Title">
         <FieldSlider
-          title="Title"
+          title="This is my title"
           minimumLabel="0"
           maximumLabel="10"
-          style={{ width: 300, height: 30 }}
+          style={{ height: 6 }}
           minimumTrackTintColor="#5a45ff"
           maximumTrackTintColor="#536070"
           thumbTintColor="#3BC9EA"
@@ -66,23 +57,15 @@ class SliderExample extends React.Component {
           trackBorderRadius={10}
           thumbSize={20}
           thumbTouchSize={20}
-          value={fieldSliderValue}
-          onValueChange={fieldSliderValue => {
-            this.setState({ fieldSliderValue })
-          }}
+          value={value}
           minimumValue={0}
           maximumValue={10}
           step={1}
+          onValueChange={handleChange}
         />
-      </ScrollView>
-    )
-  }
+      </Section>
+    </Container>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
-
-export default withTheme(SliderExample)
+export default withTheme(SliderExample);

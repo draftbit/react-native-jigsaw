@@ -1,19 +1,23 @@
-import React from "react"
-import { View, Text } from "react-native"
-import Image from "./Image"
-import Card from "./Card"
-import Elevation from "./Elevation"
-import { withTheme } from "../core/theming"
-import { COMPONENT_TYPES, FORM_TYPES, ELEVATION_TYPE } from "../core/component-types"
-import Config from "./Config"
+import React from "react";
+import { View, Text } from "react-native";
+import Image from "./Image";
+import Card from "./Card";
+import Elevation from "./Elevation";
+import { withTheme } from "../core/theming";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  ELEVATION_TYPE,
+} from "../core/component-types";
+import Config from "./Config";
 
 class CardInline extends React.PureComponent {
   static defaultProps = {
     image: Config.cardImageUrl,
     aspectRatio: 1.5,
     elevation: 2,
-    numColumns: 3
-  }
+    numColumns: 3,
+  };
 
   render() {
     const {
@@ -26,23 +30,23 @@ class CardInline extends React.PureComponent {
       numColumns,
       theme: { colors, borderRadius, typography, spacing },
       style,
-      onPress
-    } = this.props
+      onPress,
+    } = this.props;
 
-    let titleStyle, descriptionStyle
+    let titleStyle, descriptionStyle;
     switch (numColumns) {
       case 1:
-        titleStyle = typography.headline6
-        descriptionStyle = typography.subtitle2
-        break
+        titleStyle = typography.headline6;
+        descriptionStyle = typography.subtitle2;
+        break;
       case 2:
-        titleStyle = typography.headline5
-        descriptionStyle = typography.subtitle2
-        break
+        titleStyle = typography.headline5;
+        descriptionStyle = typography.subtitle2;
+        break;
       case 3:
-        titleStyle = typography.headline4
-        descriptionStyle = typography.subtitle1
-        break
+        titleStyle = typography.headline4;
+        descriptionStyle = typography.subtitle1;
+        break;
     }
 
     return (
@@ -51,7 +55,7 @@ class CardInline extends React.PureComponent {
           <Image
             style={{
               borderRadius: borderRadius.global,
-              aspectRatio
+              aspectRatio,
             }}
             source={typeof image === "string" ? { uri: image } : image}
             resizeMode="cover"
@@ -62,28 +66,36 @@ class CardInline extends React.PureComponent {
               alignItems: textCentered ? "center" : "flex-start",
               bottom: numColumns === 1 ? spacing.medium : spacing.large,
               left: spacing.large,
-              right: spacing.large
-            }}>
+              right: spacing.large,
+            }}
+          >
             {title ? (
-              <Text numberOfLines={1} style={[titleStyle, { color: colors.strongInverse }]}>
+              <Text
+                numberOfLines={1}
+                style={[titleStyle, { color: colors.strongInverse }]}
+              >
                 {title}
               </Text>
             ) : null}
             {description ? (
               <Text
                 numberOfLines={1}
-                style={[descriptionStyle, { color: colors.lightInverse, marginTop: spacing.text }]}>
+                style={[
+                  descriptionStyle,
+                  { color: colors.lightInverse, marginTop: spacing.text },
+                ]}
+              >
                 {description}
               </Text>
             ) : null}
           </View>
         </Elevation>
       </Card>
-    )
+    );
   }
 }
 
-export default withTheme(CardInline)
+export default withTheme(CardInline);
 
 const SEED_DATA_PROPS = {
   image: {
@@ -91,24 +103,24 @@ const SEED_DATA_PROPS = {
     description: "Image",
     type: FORM_TYPES.remoteImage,
     value: null,
-    editable: true
+    editable: true,
   },
   title: {
     label: "Title",
     description: "Text to display",
     type: FORM_TYPES.string,
     value: "Beautiful West Coast Villa",
-    editable: true
+    editable: true,
   },
   textCentered: {
     label: "Text centered",
     description: "Whether to center the text",
     type: FORM_TYPES.boolean,
     value: false,
-    editable: true
+    editable: true,
   },
-  elevation: ELEVATION_TYPE
-}
+  elevation: ELEVATION_TYPE,
+};
 
 export const SEED_DATA = [
   {
@@ -126,15 +138,15 @@ export const SEED_DATA = [
         description: "Aspect ratio of the image",
         type: FORM_TYPES.aspectRatio,
         value: 1,
-        editable: true
+        editable: true,
       },
       numColumns: {
         type: FORM_TYPES.number,
         value: 1,
-        editable: false
-      }
+        editable: false,
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "Medium Card (Inline)",
@@ -151,22 +163,22 @@ export const SEED_DATA = [
         description: "Text to display on the left",
         type: FORM_TYPES.string,
         value: "San Diego",
-        editable: true
+        editable: true,
       },
       aspectRatio: {
         label: "Aspect ratio",
         description: "Aspect ratio of the image",
         type: FORM_TYPES.aspectRatio,
         value: 1.5,
-        editable: true
+        editable: true,
       },
       numColumns: {
         type: FORM_TYPES.number,
         value: 2,
-        editable: false
-      }
+        editable: false,
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "Large Card (Inline)",
@@ -183,21 +195,21 @@ export const SEED_DATA = [
         description: "Text to display on the left",
         type: FORM_TYPES.string,
         value: "San Diego",
-        editable: true
+        editable: true,
       },
       aspectRatio: {
         label: "Aspect ratio",
         description: "Aspect ratio of the image",
         type: FORM_TYPES.aspectRatio,
         value: 1.5,
-        editable: true
+        editable: true,
       },
       numColumns: {
         type: FORM_TYPES.number,
         value: 3,
-        editable: false
-      }
+        editable: false,
+      },
     },
-    layout: {}
-  }
-]
+    layout: {},
+  },
+];

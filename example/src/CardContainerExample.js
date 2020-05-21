@@ -1,79 +1,65 @@
-import * as React from "react"
-import { StyleSheet, Text, ScrollView } from "react-native"
-import { CardContainer, withTheme } from "@draftbit/ui"
+import * as React from "react";
+import { CardContainer, withTheme } from "@draftbit/ui";
+import Section, { Container } from "./Section";
 
-class CardContainerExample extends React.Component {
-  render() {
-    const {
-      theme: {
-        colors: { background },
-        spacing
-      }
-    } = this.props
+function CardContainerExample({ theme }) {
+  return (
+    <Container style={{ backgroundColor: theme.colors.background }}>
+      {Array.from({ length: 3 }).map((_v, i) => {
+        const numColumns = i + 1;
+        return (
+          <Section title={`(${numColumns} Column)`}>
+            <CardContainer
+              title="Beautiful West Coast Villa"
+              leftDescription="San Diego"
+              rightDescription="$100"
+              numColumns={numColumns}
+              icon="cloud"
+            />
+          </Section>
+        );
+      })}
 
-    return (
-      <ScrollView
-        style={[styles.container, { padding: spacing.large, backgroundColor: background }]}>
-        <Text style={{ marginBottom: spacing.medium }}>CardContainer2Col</Text>
-        <CardContainer
-          title="Beautiful West Coast Villa"
-          leftDescription="San Diego"
-          rightDescription="$100"
-          numColumns={2}
-          icon="cloud"
-          style={{ marginBottom: spacing.large }}
-        />
-        <Text style={{ marginBottom: spacing.medium }}>CardContainer3Col</Text>
-        <CardContainer
-          title="Beautiful West Coast Villa"
-          leftDescription="San Diego"
-          rightDescription="$100"
-          icon="cloud"
-          style={{ marginBottom: spacing.large }}
-        />
-        <Text style={{ marginBottom: spacing.medium }}>CardContainer2Col with centered text</Text>
+      {Array.from({ length: 3 }).map((_v, i) => {
+        const numColumns = i + 1;
+        return (
+          <Section title={`(${numColumns} Columns 1x1 aspectRatio)`}>
+            <CardContainer
+              title="Beautiful West Coast Villa"
+              leftDescription="San Diego"
+              rightDescription="$100"
+              numColumns={numColumns}
+              aspectRatio={1}
+            />
+          </Section>
+        );
+      })}
+
+      <Section title="1 Column Centered Title">
         <CardContainer
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           textCentered
           numColumns={2}
-          style={{ marginBottom: spacing.large }}
         />
-        <Text style={{ marginBottom: spacing.medium }}>CardContainer2Col, 1x1 aspect ratio</Text>
-        <CardContainer
-          title="Beautiful West Coast Villa"
-          leftDescription="San Diego"
-          rightDescription="$100"
-          numColumns={2}
-          aspectRatio={1}
-          style={{ marginBottom: spacing.large }}
-        />
-        <Text style={{ marginBottom: spacing.medium }}>CardContainer3Col, 1x1 aspect ratio</Text>
-        <CardContainer
-          title="Beautiful West Coast Villa"
-          leftDescription="San Diego"
-          rightDescription="$100"
-          aspectRatio={1}
-          style={{ marginBottom: spacing.large }}
-        />
-        <Text style={{ marginBottom: spacing.medium }}>
-          CardContainer2Col, no right description
-        </Text>
+      </Section>
+
+      <Section title="2 Column No Right Description">
         <CardContainer
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           numColumns={2}
-          style={{ marginBottom: spacing.large }}
         />
-      </ScrollView>
-    )
-  }
+      </Section>
+
+      <Section title="3 Column No Left Description">
+        <CardContainer
+          title="Beautiful West Coast Villa"
+          rightDescription="$100"
+        />
+      </Section>
+    </Container>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
-
-export default withTheme(CardContainerExample)
+export default withTheme(CardContainerExample);

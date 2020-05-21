@@ -1,18 +1,19 @@
-import { Video } from "expo-av"
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
-export default Video
+import { Video } from "expo-av";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+export default Video;
 
 export const SEED_DATA = {
   name: "Video",
   tag: "Video",
   description: "Given a URL, display a video",
   doc_link: "https://docs.expo.io/versions/latest/sdk/video/",
-  code_link: "https://github.com/expo/expo/blob/master/packages/expo-av/src/Video.tsx",
+  code_link:
+    "https://github.com/expo/expo/blob/master/packages/expo-av/src/Video.tsx",
   category: COMPONENT_TYPES.media,
   supports_list_render: false,
   layout: {
     width: "100%",
-    height: 250
+    height: 250,
   },
   props: {
     source: {
@@ -21,7 +22,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       value: "",
-      type: FORM_TYPES.sourceUrl
+      type: FORM_TYPES.sourceUrl,
     },
     usePoster: {
       label: "Use Thumbnail",
@@ -29,7 +30,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: false,
-      type: FORM_TYPES.boolean
+      type: FORM_TYPES.boolean,
     },
     posterSource: {
       label: "Thumbnail Source",
@@ -37,16 +38,17 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: null,
-      type: FORM_TYPES.localImage
+      type: FORM_TYPES.localImage,
     },
     resizeMode: {
       label: "Resize Mode",
-      description: "How the video should be scaled for display. (Default: stretch) ",
+      description:
+        "How the video should be scaled for display. (Default: stretch) ",
       editable: true,
       required: true,
       value: "contain",
       options: ["stretch", "contain", "cover"],
-      type: FORM_TYPES.flatArray
+      type: FORM_TYPES.flatArray,
     },
     positionMillis: {
       label: "Starting Point",
@@ -57,7 +59,7 @@ export const SEED_DATA = {
       value: 0,
       min: 0,
       step: 0.01,
-      precision: 2
+      precision: 2,
     },
     rate: {
       label: "Playback Rate",
@@ -70,7 +72,7 @@ export const SEED_DATA = {
       max: 32,
       step: 0.25,
       precision: 2,
-      value: 1
+      value: 1,
     },
     volume: {
       label: "Volume",
@@ -83,7 +85,7 @@ export const SEED_DATA = {
       max: 1,
       step: 0.1,
       precision: 1,
-      value: 1
+      value: 1,
     },
     isMuted: {
       label: "Mute",
@@ -91,7 +93,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: false,
-      type: FORM_TYPES.boolean
+      type: FORM_TYPES.boolean,
     },
     useNativeControls: {
       label: "Use Native Controls",
@@ -99,7 +101,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       value: false,
-      type: FORM_TYPES.boolean
+      type: FORM_TYPES.boolean,
     },
     shouldPlay: {
       label: "Play on Load",
@@ -107,7 +109,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: true,
-      type: FORM_TYPES.boolean
+      type: FORM_TYPES.boolean,
     },
     isLooping: {
       label: "Allow Looping",
@@ -115,7 +117,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       value: false,
-      type: FORM_TYPES.boolean
-    }
-  }
-}
+      type: FORM_TYPES.boolean,
+    },
+  },
+};

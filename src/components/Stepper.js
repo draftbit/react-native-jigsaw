@@ -1,47 +1,47 @@
-import * as React from "react"
-import { View, Text } from "react-native"
-import { withTheme } from "../core/theming"
-import { COMPONENT_TYPES, FIELD_NAME } from "../core/component-types"
-import IconButton from "./IconButton"
-import Config from "./Config"
+import * as React from "react";
+import { View, Text } from "react-native";
+import { withTheme } from "../core/theming";
+import { COMPONENT_TYPES, FIELD_NAME } from "../core/component-types";
+import IconButton from "./IconButton";
+import Config from "./Config";
 
 class Stepper extends React.Component {
   static defaultProps = {
-    value: 0
-  }
+    value: 0,
+  };
 
   state = {
-    value: 0
-  }
+    value: 0,
+  };
 
   handleMinus = () => {
-    const { value, onChange } = this.props
+    const { value, onChange } = this.props;
     if (value || value === 0) {
-      onChange && onChange(value - 1)
+      onChange && onChange(value - 1);
     } else {
-      const { value: stateValue } = this.state
-      this.setState({ value: stateValue - 1 })
+      const { value: stateValue } = this.state;
+      this.setState({ value: stateValue - 1 });
     }
-  }
+  };
 
   handlePlus = () => {
-    const { value, onChange } = this.props
+    const { value, onChange } = this.props;
     if (value || value === 0) {
-      onChange && onChange(value + 1)
+      onChange && onChange(value + 1);
     } else {
-      const { value: stateValue } = this.state
-      this.setState({ value: stateValue + 1 })
+      const { value: stateValue } = this.state;
+      this.setState({ value: stateValue + 1 });
     }
-  }
+  };
 
   render() {
     const {
       value,
       theme: { colors, spacing, typography },
-      style
-    } = this.props
+      style,
+    } = this.props;
 
-    const { value: stateValue } = this.state
+    const { value: stateValue } = this.state;
 
     return (
       <View style={[{ flexDirection: "row" }, style]}>
@@ -59,9 +59,10 @@ class Stepper extends React.Component {
               textAlign: "center",
               alignSelf: "center",
               color: colors.medium,
-              marginHorizontal: spacing.medium
-            }
-          ]}>
+              marginHorizontal: spacing.medium,
+            },
+          ]}
+        >
           {value || stateValue}
         </Text>
         <IconButton
@@ -71,11 +72,11 @@ class Stepper extends React.Component {
           color={colors.strong}
         />
       </View>
-    )
+    );
   }
 }
 
-export default withTheme(Stepper)
+export default withTheme(Stepper);
 
 export const SEED_DATA = [
   {
@@ -88,9 +89,9 @@ export const SEED_DATA = [
     props: {
       fieldName: {
         ...FIELD_NAME,
-        value: "stepperValue"
-      }
+        value: "stepperValue",
+      },
     },
-    layout: {}
-  }
-]
+    layout: {},
+  },
+];

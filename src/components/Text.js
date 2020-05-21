@@ -1,7 +1,7 @@
-import * as React from "react"
-import { Text as NativeText, I18nManager } from "react-native"
-import { withTheme } from "../core/theming"
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import * as React from "react";
+import { Text as NativeText, I18nManager } from "react-native";
+import { withTheme } from "../core/theming";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 /**
  * Text component which follows styles from the theme.
@@ -13,32 +13,32 @@ class Text extends React.Component {
    * @internal
    */
   setNativeProps(...args) {
-    return this._root && this._root.setNativeProps(...args)
+    return this._root && this._root.setNativeProps(...args);
   }
 
   render() {
-    const { style, theme, ...rest } = this.props
-    const writingDirection = I18nManager.isRTL ? "rtl" : "ltr"
+    const { style, theme, ...rest } = this.props;
+    const writingDirection = I18nManager.isRTL ? "rtl" : "ltr";
 
     return (
       <NativeText
         {...rest}
-        ref={c => {
-          this._root = c
+        ref={(c) => {
+          this._root = c;
         }}
         style={[
           {
             textAlign: "left",
-            writingDirection
+            writingDirection,
           },
-          style
+          style,
         ]}
       />
-    )
+    );
   }
 }
 
-export default withTheme(Text)
+export default withTheme(Text);
 
 export const SEED_DATA = {
   name: "Text",
@@ -46,7 +46,8 @@ export const SEED_DATA = {
   description: "A basic Text component",
   category: COMPONENT_TYPES.basic,
   supports_list_render: false,
-  preview_image_url: "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/Text.svg",
+  preview_image_url:
+    "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/Text.svg",
   layout: {},
   props: {
     children: {
@@ -55,18 +56,19 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       type: FORM_TYPES.string,
-      value: "Hello World!"
+      value: "Hello World!",
     },
     numberOfLines: {
       label: "Number of Lines",
-      description: "Limits the maximum number of lines and truncates when needed",
+      description:
+        "Limits the maximum number of lines and truncates when needed",
       editable: true,
       required: false,
       type: FORM_TYPES.number,
       value: null,
       min: 0,
       max: 10,
-      step: 1
+      step: 1,
     },
     ellipsizeMode: {
       label: "Ellipsize Mode",
@@ -74,7 +76,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.flatArray,
-      options: ["head", "middle", "tail", "clip"]
-    }
-  }
-}
+      options: ["head", "middle", "tail", "clip"],
+    },
+  },
+};

@@ -1,88 +1,56 @@
-import * as React from "react"
-import { StyleSheet, Text, ScrollView } from "react-native"
-import { CardInline, withTheme } from "@draftbit/ui"
+import * as React from "react";
+import { CardInline, withTheme } from "@draftbit/ui";
+import Section, { Container } from "./Section";
 
-class CardInlineExample extends React.Component {
-  render() {
-    const {
-      theme: {
-        colors: { background },
-        spacing
-      }
-    } = this.props
+function CardInlineExample({ theme }) {
+  return (
+    <Container style={{ backgroundColor: theme.colors.background }}>
+      {Array.from({ length: 3 }).map((_v, i) => {
+        const numColumns = i + 1;
+        return (
+          <Section title={`(${numColumns} Column)`}>
+            <CardInline
+              title="Beautiful West Coast Villa"
+              leftDescription="San Diego"
+              rightDescription="$100"
+              numColumns={numColumns}
+            />
+          </Section>
+        );
+      })}
 
-    return (
-      <ScrollView
-        style={[styles.container, { backgroundColor: background, padding: spacing.large }]}>
-        <Text style={{ marginBottom: spacing.medium }}>CardInline1Col</Text>
-        <CardInline
-          title="Beautiful West Coast Villa"
-          numColumns={1}
-          style={{ marginBottom: spacing.medium * 2 }}
-        />
-        <Text style={{ marginBottom: spacing.medium }}>CardInline2Col</Text>
-        <CardInline
-          title="Beautiful West Coast Villa"
-          description="San Diego"
-          numColumns={2}
-          style={{ marginBottom: spacing.medium * 2 }}
-        />
-        <Text style={{ marginBottom: spacing.medium }}>CardInline3Col</Text>
-        <CardInline
-          title="Beautiful West Coast Villa"
-          description="San Diego"
-          style={{ marginBottom: spacing.medium * 2 }}
-        />
-        <Text style={{ marginBottom: spacing.medium }}>CardInline1Col, 1x1 aspect ratio</Text>
-        <CardInline
-          title="Beautiful West Coast Villa"
-          numColumns={1}
-          aspectRatio={1}
-          style={{ marginBottom: spacing.medium * 2 }}
-        />
-        <Text style={{ marginBottom: spacing.medium }}>CardInline2Col, 1x1 aspect ratio</Text>
+      {Array.from({ length: 3 }).map((_v, i) => {
+        const numColumns = i + 1;
+        return (
+          <Section title={`(${numColumns} Column 1x1 aspectRatio)`}>
+            <CardInline
+              title="Beautiful West Coast Villa"
+              leftDescription="San Diego"
+              rightDescription="$100"
+              numColumns={numColumns}
+              aspectRatio={1}
+            />
+          </Section>
+        );
+      })}
+
+      <Section title="1 Column Centered Title">
+        <CardInline title="Hello" titleCentered numColumns={1} />
+      </Section>
+
+      <Section title="2 Column No Right Description">
         <CardInline
           title="Beautiful West Coast Villa"
           description="San Diego"
           numColumns={2}
-          aspectRatio={1}
-          style={{ marginBottom: spacing.medium * 2 }}
         />
-        <Text style={{ marginBottom: spacing.medium }}>CardInline3Col, 1x1 aspect ratio</Text>
-        <CardInline
-          title="Beautiful West Coast Villa"
-          description="San Diego"
-          aspectRatio={1}
-          style={{ marginBottom: spacing.medium * 2 }}
-        />
-        <Text style={{ marginBottom: spacing.medium }}>CardInline1Col, centered title</Text>
-        <CardInline
-          title="Hello"
-          titleCentered
-          numColumns={1}
-          style={{ marginBottom: spacing.medium * 2 }}
-        />
-        <Text style={{ marginBottom: spacing.medium }}>CardInline2Col, no right description</Text>
-        <CardInline
-          title="Beautiful West Coast Villa"
-          description="San Diego"
-          numColumns={2}
-          style={{ marginBottom: spacing.medium * 2 }}
-        />
-        <Text style={{ marginBottom: spacing.medium }}>CardInline3Col, no left description</Text>
-        <CardInline
-          title="Beautiful West Coast Villa"
-          style={{ marginBottom: spacing.medium * 2 }}
-        />
-      </ScrollView>
-    )
-  }
+      </Section>
+
+      <Section title="1 Column No Left Description">
+        <CardInline title="Beautiful West Coast Villa" />
+      </Section>
+    </Container>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
-
-export default withTheme(CardInlineExample)
+export default withTheme(CardInlineExample);

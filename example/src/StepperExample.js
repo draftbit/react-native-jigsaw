@@ -1,45 +1,26 @@
-import * as React from "react"
-import { StyleSheet, ScrollView } from "react-native"
-import { Stepper, withTheme } from "@draftbit/ui"
+import * as React from "react";
+import { Stepper, withTheme } from "@draftbit/ui";
+import Section, { Container } from "./Section";
 
-class StepperExample extends React.Component {
-  state = {
-    value: 0
-  }
+function StepperExample({ theme }) {
+  const [value, setValue] = React.useState(0);
+  const handleChange = (value) => setValue(value);
 
-  onChange = value => {
-    this.setState({ value })
-  }
+  return (
+    <Container style={{ backgroundColor: theme.colors.background }}>
+      <Section title="With State">
+        <Stepper value={value} onChange={handleChange} />
+      </Section>
 
-  render() {
-    const {
-      theme: {
-        colors: { background },
-        spacing
-      }
-    } = this.props
+      <Section title="Static">
+        <Stepper value={value} />
+      </Section>
 
-    const { value } = this.state
-
-    return (
-      <ScrollView
-        style={[styles.container, { backgroundColor: background, padding: spacing.large }]}>
-        <Stepper value={value} onChange={this.onChange} style={styles.stepper} />
-        <Stepper value={value} style={styles.stepper} />
-        <Stepper style={styles.stepper} />
-      </ScrollView>
-    )
-  }
+      <Section title="No Value">
+        <Stepper />
+      </Section>
+    </Container>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  stepper: {
-    alignSelf: "center",
-    margin: 16
-  }
-})
-
-export default withTheme(StepperExample)
+export default withTheme(StepperExample);

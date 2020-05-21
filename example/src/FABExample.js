@@ -1,104 +1,73 @@
-import * as React from "react"
-import { View, ScrollView, StyleSheet, Alert } from "react-native"
-import { withTheme, FAB } from "@draftbit/ui"
+import * as React from "react";
+import { withTheme, FAB } from "@draftbit/ui";
+import Section, { Container, styles } from "./Section";
 
-class FABExample extends React.Component {
-  static title = "FAB (Floating Action Button)"
+function FABExample({ theme }) {
+  // const [elevation, setElevation] = React.useState(0);
 
-  state = {
-    elevation: 0
-  }
+  const handlePress = () => {};
+  return (
+    <Container style={{ backgroundColor: theme.colors.background }}>
+      <Section title="Solid" style={styles.row}>
+        <FAB type="standard" icon="add" onPress={handlePress} />
+        <FAB type="standard" icon="add" disabled onPress={handlePress} />
+        <FAB type="standard" icon="add" loading onPress={handlePress} />
+      </Section>
 
-  _onPress = () => Alert.alert("Pressed")
+      <Section title="Extended" style={styles.row}>
+        <FAB type="extended" label="Extended FAB" onPress={handlePress} />
+        <FAB
+          type="extended"
+          icon="add"
+          label="Extended FAB"
+          onPress={handlePress}
+        />
+        <FAB
+          type="extended"
+          icon="add"
+          label="Extended Disabled FAB"
+          disabled
+          onPress={handlePress}
+        />
+        <FAB
+          type="extended"
+          icon="add"
+          label="Extended Loading FAB"
+          loading
+          onPress={handlePress}
+        />
+      </Section>
 
-  render() {
-    const { elevation } = this.state
-    const { colors } = this.props.theme
+      <Section title="Outline">
+        <FAB type="outline" icon="add" onPress={handlePress} />
+        <FAB type="outline" icon="add" disabled onPress={handlePress} />
+        <FAB type="outline" icon="add" loading onPress={handlePress} />
+      </Section>
 
-    return (
-      <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
-        <View style={styles.row}>
-          <FAB style={styles.button} type="standard" icon="add" onPress={this._onPress} />
-          <FAB style={styles.button} type="standard" icon="add" disabled onPress={this._onPress} />
-          <FAB style={styles.button} type="standard" icon="add" loading onPress={this._onPress} />
-        </View>
-        <View style={styles.row}>
-          <FAB style={styles.button} type="outline" icon="add" onPress={this._onPress} />
-          <FAB style={styles.button} type="outline" icon="add" disabled onPress={this._onPress} />
-          <FAB style={styles.button} type="outline" icon="add" loading onPress={this._onPress} />
-        </View>
-        <View style={styles.column}>
-          <FAB style={styles.button} type="extended" label="Extended FAB" onPress={this._onPress} />
-          <FAB
-            style={styles.button}
-            type="extended"
-            icon="add"
-            label="Extended FAB"
-            onPress={this._onPress}
-          />
-          <FAB
-            style={styles.button}
-            type="extended"
-            icon="add"
-            label="Extended Disabled FAB"
-            disabled
-            onPress={this._onPress}
-          />
-          <FAB
-            style={styles.button}
-            type="extended"
-            icon="add"
-            label="Extended Loading FAB"
-            loading
-            onPress={this._onPress}
-          />
-        </View>
-        <View style={styles.column}>
-          <FAB style={styles.button} type="fixed" label="Fixed FAB" onPress={this._onPress} />
-          <FAB
-            style={styles.button}
-            type="fixed"
-            icon="alarm"
-            label="Fixed FAB"
-            onPress={this._onPress}
-          />
-          <FAB
-            style={styles.button}
-            type="fixed"
-            icon="alarm"
-            label="Fixed Disabled FAB"
-            disabled
-            onPress={this._onPress}
-          />
-          <FAB
-            style={styles.button}
-            type="fixed"
-            icon="alarm"
-            label="Fixed Loading FAB"
-            loading
-            onPress={this._onPress}
-          />
-        </View>
-      </ScrollView>
-    )
-  }
+      <Section title="Fixed">
+        <FAB type="fixed" label="Fixed FAB" onPress={handlePress} />
+        <FAB
+          type="fixed"
+          icon="alarm"
+          label="Fixed FAB"
+          onPress={handlePress}
+        />
+        <FAB
+          type="fixed"
+          icon="alarm"
+          label="Fixed Disabled FAB"
+          disabled
+          onPress={handlePress}
+        />
+        <FAB
+          type="fixed"
+          icon="alarm"
+          label="Fixed Loading FAB"
+          loading
+          onPress={handlePress}
+        />
+      </Section>
+    </Container>
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  button: {
-    marginVertical: 4
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  column: {
-    alignItems: "center"
-  }
-})
-
-export default withTheme(FABExample)
+export default withTheme(FABExample);

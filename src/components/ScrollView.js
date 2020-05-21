@@ -1,6 +1,6 @@
-import { ScrollView } from "react-native"
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
-export default ScrollView
+import { ScrollView } from "react-native";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+export default ScrollView;
 
 export const SEED_DATA = {
   name: "ScrollView",
@@ -16,23 +16,25 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      value: false
+      value: false,
     },
     showsHorizontalScrollIndicator: {
       label: "Show Horizontal Scroll Indicator",
-      description: "When true, shows a horizontal scroll indicator. The default value is true.",
+      description:
+        "When true, shows a horizontal scroll indicator. The default value is true.",
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      value: true
+      value: true,
     },
     showsVerticalScrollIndicator: {
       label: "Show Vertical Scroll Indicator",
-      description: "When true, shows a vertical scroll indicator. The default value is true.",
+      description:
+        "When true, shows a vertical scroll indicator. The default value is true.",
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      value: true
+      value: true,
     },
     bounces: {
       label: "Bounce",
@@ -41,7 +43,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      value: true
-    }
-  }
-}
+      value: true,
+    },
+  },
+};

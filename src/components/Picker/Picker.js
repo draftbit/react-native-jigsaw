@@ -1,42 +1,41 @@
-import * as React from "react"
-import { withTheme } from "../../core/theming"
-import PickerComponent from "./PickerComponent"
+import * as React from "react";
+import { withTheme } from "../../core/theming";
+import PickerComponent from "./PickerComponent";
 
-import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../../core/component-types"
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  FIELD_NAME,
+} from "../../core/component-types";
 
 class Picker extends React.Component {
   static defaultProps = {
-    options: [
-      { value: "Audi", label: "Audi" },
-      { value: "BMW", label: "BMW" },
-      { value: "Cadillac", label: "Cadillac" },
-      { value: "Dodge", label: "Dodge" }
-    ],
+    options: [],
     type: "underline",
     disabled: false,
-    error: false
-  }
+    error: false,
+  };
 
   state = {
-    pickerVisible: false
-  }
+    pickerVisible: false,
+  };
 
   onValueChange = (itemValue, itemIndex) => {
-    const { placeholder, onChange } = this.props
+    const { placeholder, onChange } = this.props;
 
     if (placeholder && itemIndex === 0) {
-      return
+      return;
     }
 
-    onChange && onChange(itemValue, itemIndex)
-  }
+    onChange && onChange(itemValue, itemIndex);
+  };
 
   render() {
-    const { placeholder, options, value, ...props } = this.props
+    const { placeholder, options, value, ...props } = this.props;
 
     const pickerOptions = placeholder
       ? [{ value: placeholder, label: placeholder }, ...options]
-      : options
+      : options;
 
     return (
       <PickerComponent
@@ -46,11 +45,11 @@ class Picker extends React.Component {
         options={pickerOptions}
         onValueChange={this.onValueChange}
       />
-    )
+    );
   }
 }
 
-export default withTheme(Picker)
+export default withTheme(Picker);
 
 const SEED_DATA_PROPS = {
   label: {
@@ -59,7 +58,7 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.string,
     value: "Make",
     editable: true,
-    required: true
+    required: true,
   },
   placeholder: {
     label: "Placeholder",
@@ -67,7 +66,7 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.string,
     value: "Select a make...",
     editable: true,
-    required: false
+    required: false,
   },
   assistiveText: {
     label: "Assistive text",
@@ -75,14 +74,15 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.string,
     value: null,
     editable: true,
-    required: false
+    required: false,
   },
   options: {
     label: "Options",
-    description: "Array of picker options. An array of objects containing a label and value.",
+    description:
+      "Array of picker options. An array of objects containing a label and value.",
     editable: true,
     type: FORM_TYPES.array,
-    value: null
+    value: null,
   },
   disabled: {
     label: "Disabled",
@@ -90,43 +90,44 @@ const SEED_DATA_PROPS = {
       "Whether the picker should be disabled. Will prevent selection and show a greyed out state.",
     type: FORM_TYPES.boolean,
     value: false,
-    editable: true
+    editable: true,
   },
   error: {
     label: "Error",
     description: "Whether the picker should display the error state",
     type: FORM_TYPES.boolean,
     value: false,
-    editable: true
+    editable: true,
   },
   leftIconName: {
     label: "Left icon name",
     description: "The icon to display on the left",
     type: FORM_TYPES.icon,
     value: null,
-    editable: true
+    editable: true,
   },
   leftIconMode: {
     label: "Left icon mode",
-    description: "The mode of the icon to display on the left. 'inset' or 'outset'.",
+    description:
+      "The mode of the icon to display on the left. 'inset' or 'outset'.",
     type: FORM_TYPES.flatArray,
     value: "inset",
     options: ["inset", "outset"],
     editable: true,
-    required: true
+    required: true,
   },
   rightIconName: {
     label: "Right icon name",
     description: "The icon to display on the right",
     type: FORM_TYPES.icon,
     value: null,
-    editable: true
+    editable: true,
   },
   fieldName: {
     ...FIELD_NAME,
-    value: "pickerValue"
-  }
-}
+    value: "pickerValue",
+  },
+};
 
 export const SEED_DATA = [
   {
@@ -141,10 +142,10 @@ export const SEED_DATA = [
       type: {
         type: FORM_TYPES.string,
         value: "solid",
-        editable: false
-      }
+        editable: false,
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "Picker - Underline",
@@ -158,9 +159,9 @@ export const SEED_DATA = [
       type: {
         type: FORM_TYPES.string,
         value: "underline",
-        editable: false
-      }
+        editable: false,
+      },
     },
-    layout: {}
-  }
-]
+    layout: {},
+  },
+];

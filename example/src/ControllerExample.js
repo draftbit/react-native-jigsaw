@@ -1,5 +1,4 @@
-import * as React from "react"
-import { View, ScrollView, StyleSheet } from "react-native"
+import * as React from "react";
 import {
   Button,
   withTheme,
@@ -7,80 +6,59 @@ import {
   Checkbox,
   RadioButton,
   FieldRadioButton,
-  FieldCheckbox
-} from "@draftbit/ui"
+  FieldCheckbox,
+} from "@draftbit/ui";
+import Section, { Container, styles } from "./Section";
 
-class ControllerExample extends React.Component {
-  static title = "Controller"
+function ControllerExample({ theme }) {
+  const [value, setValue] = React.useState(false);
+  const [disabled, disable] = React.useState(false);
 
-  state = {
-    elevation: 2,
-    disabled: false,
-    value: false
-  }
+  const handleDisable = (state) => disable(!state);
+  const handleChange = (value) => setValue(value);
 
-  toggle = () => {
-    this.setState({ value: !this.state.value })
-  }
+  return (
+    <Container style={{ backgroundColor: theme.colors.background }}>
+      <Section title="Controlled Elements" style={styles.row}>
+        <Button onPress={handleDisable} type="text">
+          {disabled ? "Enable" : "Disable"}
+        </Button>
 
-  disable = () => {
-    this.setState({ disabled: !this.state.disabled })
-  }
+        <Switch
+          onValueChange={handleChange}
+          disabled={disabled}
+          value={value}
+        />
 
-  render() {
-    const { value, disabled } = this.state
-    const { colors } = this.props.theme
-
-    return (
-      <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
-        <View style={styles.row}>
-          <Button onPress={this.disable} type="text">
-            {disabled ? "Enable" : "Disable"}
-          </Button>
-        </View>
-        <View style={styles.row}>
-          <Switch onValueChange={this.toggle} disabled={disabled} value={value} />
-        </View>
-        <View style={styles.row}>
-          <Checkbox
-            status={value ? "checked" : "unchecked"}
-            disabled={disabled}
-            onPress={this.toggle}
-          />
-        </View>
-        <View style={styles.row}>
-          <RadioButton color="#5a45ff" selected={value} disabled={disabled} onPress={this.toggle} />
-        </View>
-        <View style={styles.row}>
-          <FieldRadioButton
-            title="Title"
-            selected={value}
-            disabled={disabled}
-            onPress={this.toggle}
-          />
-        </View>
-        <View style={styles.row}>
-          <FieldCheckbox
-            title="Title"
-            status={value ? "checked" : "unchecked"}
-            disabled={disabled}
-            onPress={this.toggle}
-            color={colors.primary}
-          />
-        </View>
-      </ScrollView>
-    )
-  }
+        <Checkbox
+          status={value ? "checked" : "unchecked"}
+          disabled={disabled}
+          onPress={handleChange}
+        />
+        <RadioButton
+          color="#5a45ff"
+          selected={value}
+          disabled={disabled}
+          onPress={handleChange}
+        />
+      </Section>
+      <Section title="Controlled Elements via Field" style={styles.row}>
+        <FieldRadioButton
+          title="Title"
+          selected={value}
+          disabled={disabled}
+          onPress={handleDisable}
+        />
+        <FieldCheckbox
+          title="Title"
+          status={value ? "checked" : "unchecked"}
+          disabled={disabled}
+          onPress={handleChange}
+          color={theme.colors.primary}
+        />
+      </Section>
+    </Container>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  row: {
-    alignItems: "center",
-    margin: 4
-  }
-})
-
-export default withTheme(ControllerExample)
+export default withTheme(ControllerExample);

@@ -1,7 +1,7 @@
-import * as React from "react"
-import * as Progress from "react-native-progress"
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
-import { withTheme } from "../core/theming"
+import * as React from "react";
+import * as Progress from "react-native-progress";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { withTheme } from "../core/theming";
 
 const ProgressCircle = ({
   progress,
@@ -16,7 +16,7 @@ const ProgressCircle = ({
   strokeCap,
   fill,
   textStyle,
-  thickness
+  thickness,
 }) => {
   return (
     <Progress.Circle
@@ -34,10 +34,10 @@ const ProgressCircle = ({
       textStyle={textStyle}
       thickness={thickness}
     />
-  )
-}
+  );
+};
 
-export default withTheme(ProgressCircle)
+export default withTheme(ProgressCircle);
 
 export const SEED_DATA = [
   {
@@ -58,7 +58,7 @@ export const SEED_DATA = [
         step: 0.01,
         precision: 2,
         editable: true,
-        required: true
+        required: true,
       },
       color: {
         label: "Color",
@@ -66,7 +66,7 @@ export const SEED_DATA = [
         editable: true,
         value: "primary",
         required: true,
-        type: FORM_TYPES.color
+        type: FORM_TYPES.color,
       },
       unfilledColor: {
         label: "Unfilled Color",
@@ -75,7 +75,7 @@ export const SEED_DATA = [
         editable: true,
         value: null,
         required: true,
-        type: FORM_TYPES.color
+        type: FORM_TYPES.color,
       },
       fill: {
         label: "Inner circle fill",
@@ -83,7 +83,7 @@ export const SEED_DATA = [
         editable: true,
         value: null,
         required: false,
-        type: FORM_TYPES.color
+        type: FORM_TYPES.color,
       },
       size: {
         label: "Size",
@@ -95,7 +95,7 @@ export const SEED_DATA = [
         step: 1,
         precision: 1,
         editable: true,
-        required: true
+        required: true,
       },
       showsText: {
         label: "Show Progress Text",
@@ -103,7 +103,7 @@ export const SEED_DATA = [
         type: FORM_TYPES.boolean,
         value: true,
         editable: true,
-        required: true
+        required: true,
       },
       textStyle: {
         label: "Text Style",
@@ -111,7 +111,7 @@ export const SEED_DATA = [
         editable: true,
         required: true,
         type: FORM_TYPES.typeStyle,
-        value: null
+        value: null,
       },
       thickness: {
         label: "Thickness",
@@ -123,7 +123,7 @@ export const SEED_DATA = [
         step: 1,
         precision: 1,
         editable: true,
-        required: true
+        required: true,
       },
       direction: {
         label: "Direction",
@@ -132,7 +132,7 @@ export const SEED_DATA = [
         value: "clockwise",
         options: ["counter-clockwise", "clockwise"],
         editable: true,
-        required: true
+        required: true,
       },
       strokeCap: {
         label: "Stroke Cap",
@@ -141,12 +141,12 @@ export const SEED_DATA = [
         value: "butt",
         options: ["butt", "square", "round"],
         editable: true,
-        required: true
-      }
+        required: true,
+      },
     },
     layout: {
       width: 250,
-      height: 250
-    }
-  }
-]
+      height: 250,
+    },
+  },
+];

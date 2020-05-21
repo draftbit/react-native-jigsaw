@@ -1,14 +1,14 @@
-import * as React from "react"
-import { ActivityIndicator, Animated, View, StyleSheet } from "react-native"
-import color from "color"
-import Config from "./Config"
-import Icon from "./Icon"
-import Text from "./Text"
-import Touchable from "./Touchable"
-import Elevation from "./Elevation"
-import { withTheme } from "../core/theming"
+import * as React from "react";
+import { ActivityIndicator, Animated, View, StyleSheet } from "react-native";
+import color from "color";
+import Config from "./Config";
+import Icon from "./Icon";
+import Text from "./Text";
+import Touchable from "./Touchable";
+import Elevation from "./Elevation";
+import { withTheme } from "../core/theming";
 
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types"
+import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
 
 /**
  * A floating action button represents the primary action in an application.
@@ -48,8 +48,8 @@ import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types"
 class FAB extends React.Component {
   static defaultProps = {
     elevation: 0,
-    type: "solid"
-  }
+    type: "solid",
+  };
 
   render() {
     const {
@@ -64,50 +64,47 @@ class FAB extends React.Component {
       style,
       theme,
       ...rest
-    } = this.props
+    } = this.props;
 
-    const { colors, disabledOpacity, borderRadius, spacing, typography } = theme
+    const {
+      colors,
+      disabledOpacity,
+      borderRadius,
+      spacing,
+      typography,
+    } = theme;
 
-    let backgroundColor, borderColor, textColor, borderWidth
-    const buttonColor = colorOverride || colors.primary
+    let backgroundColor, borderColor, textColor, borderWidth;
+    const buttonColor = colorOverride || colors.primary;
 
     if (type === "standard" || type === "extended" || type === "fixed") {
-      backgroundColor = buttonColor
+      backgroundColor = buttonColor;
 
       if (disabled) {
-        textColor = color(colors.surface)
-          .alpha(disabledOpacity)
-          .rgb()
-          .string()
+        textColor = color(colors.surface).alpha(disabledOpacity).rgb().string();
       } else {
-        textColor = colors.surface
+        textColor = colors.surface;
       }
     } else {
-      backgroundColor = "transparent"
+      backgroundColor = "transparent";
 
       if (disabled) {
-        textColor = color(buttonColor)
-          .alpha(disabledOpacity)
-          .rgb()
-          .string()
+        textColor = color(buttonColor).alpha(disabledOpacity).rgb().string();
       } else {
-        textColor = buttonColor
+        textColor = buttonColor;
       }
     }
 
     if (type === "outline") {
       if (disabled) {
-        borderColor = color(buttonColor)
-          .alpha(disabledOpacity)
-          .rgb()
-          .string()
+        borderColor = color(buttonColor).alpha(disabledOpacity).rgb().string();
       } else {
-        borderColor = buttonColor
+        borderColor = buttonColor;
       }
-      borderWidth = StyleSheet.hairlineWidth
+      borderWidth = StyleSheet.hairlineWidth;
     } else {
-      borderColor = "transparent"
-      borderWidth = 0
+      borderColor = "transparent";
+      borderWidth = 0;
     }
 
     const buttonStyle = {
@@ -116,107 +113,119 @@ class FAB extends React.Component {
       borderWidth,
       borderRadius: borderRadius.button,
       alignItems: "center",
-      justifyContent: "center"
-    }
+      justifyContent: "center",
+    };
 
-    const buttonStyles = [styles.button, buttonStyle]
+    const buttonStyles = [styles.button, buttonStyle];
 
-    const contentStyle = [styles.content]
+    const contentStyle = [styles.content];
 
     const textStyle = {
       textAlign: "center",
-      color: textColor
-    }
+      color: textColor,
+    };
 
     const iconStyle = [
       styles.icon,
       {
-        width: Config.buttonIconSize
-      }
-    ]
+        width: Config.buttonIconSize,
+      },
+    ];
 
     if (type === "standard" || type === "outline") {
-      buttonStyle.width = Config.FABSize
-      buttonStyle.height = Config.FABSize
-      buttonStyle.borderRadius = Config.FABBorderRadius
+      buttonStyle.width = Config.FABSize;
+      buttonStyle.height = Config.FABSize;
+      buttonStyle.borderRadius = Config.FABBorderRadius;
 
       contentStyle.push({
         width: Config.FABSize,
-        height: Config.FABSize
-      })
+        height: Config.FABSize,
+      });
     }
 
     if (type === "extended" || type === "fixed") {
       iconStyle.push({
         marginLeft: spacing.large,
-        marginRight: -8
-      })
+        marginRight: -8,
+      });
 
-      textStyle.margin = spacing.large
+      textStyle.margin = spacing.large;
     }
 
     if (type === "fixed") {
       buttonStyles.push({
         height: Config.FABFixedHeight,
-        alignSelf: "stretch"
-      })
-      buttonStyles.push(styles.fixed)
+        alignSelf: "stretch",
+      });
+      buttonStyles.push(styles.fixed);
     }
 
     return (
-      <Elevation style={{ elevation }} style={style}>
+      <Elevation style={[{ elevation }, style]}>
         <Touchable
           {...rest}
           onPress={onPress}
           accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
           accessibilityComponentType="button"
           disabled={disabled || loading}
-          style={buttonStyles}>
+          style={buttonStyles}
+        >
           <View style={styles.content}>
             {icon && loading !== true ? (
               <View style={iconStyle}>
-                <Icon name={icon} size={Config.buttonIconSize} color={textColor} />
+                <Icon
+                  name={icon}
+                  size={Config.buttonIconSize}
+                  color={textColor}
+                />
               </View>
             ) : null}
             {loading ? (
-              <ActivityIndicator size="small" color={textColor} style={iconStyle} />
+              <ActivityIndicator
+                size="small"
+                color={textColor}
+                style={iconStyle}
+              />
             ) : null}
             {label ? (
-              <Text numberOfLines={1} style={[styles.label, textStyle, typography.button]}>
+              <Text
+                numberOfLines={1}
+                style={[styles.label, textStyle, typography.button]}
+              >
                 {label}
               </Text>
             ) : null}
           </View>
         </Touchable>
       </Elevation>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   button: {
-    borderStyle: "solid"
+    borderStyle: "solid",
   },
   content: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   icon: {
     alignItems: "center",
     justifyContent: "center",
-    width: Config.buttonIconSize
+    width: Config.buttonIconSize,
   },
   fixed: {
     left: 0,
     right: 0,
     bottom: 0,
     height: 64,
-    borderRadius: 0
-  }
-})
+    borderRadius: 0,
+  },
+});
 
-export default withTheme(FAB)
+export default withTheme(FAB);
 
 const SEED_DATA_PROPS = {
   icon: {
@@ -225,7 +234,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: true,
     type: FORM_TYPES.icon,
-    value: null
+    value: null,
   },
   label: {
     label: "Label",
@@ -233,7 +242,7 @@ const SEED_DATA_PROPS = {
     required: true,
     editable: true,
     type: FORM_TYPES.string,
-    value: "GET STARTED"
+    value: "GET STARTED",
   },
   color: {
     label: "Color Override",
@@ -241,16 +250,16 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
     type: FORM_TYPES.color,
-    value: null
+    value: null,
   },
   onPress: {
     label: "Action",
     description: "Action to execute when button pressed",
     editable: true,
     type: FORM_TYPES.action,
-    value: null
-  }
-}
+    value: null,
+  },
+};
 
 export const SEED_DATA = [
   {
@@ -267,7 +276,7 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         type: FORM_TYPES.icon,
-        value: "standard"
+        value: "standard",
       },
       label: {
         label: "Label",
@@ -275,10 +284,10 @@ export const SEED_DATA = [
         required: false,
         editable: false,
         type: FORM_TYPES.string,
-        value: null
-      }
+        value: null,
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "FAB Outline",
@@ -293,7 +302,7 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         type: FORM_TYPES.string,
-        value: "outline"
+        value: "outline",
       },
       label: {
         label: "Label",
@@ -301,10 +310,10 @@ export const SEED_DATA = [
         required: false,
         editable: false,
         type: FORM_TYPES.string,
-        value: null
-      }
+        value: null,
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "FAB Extended",
@@ -319,10 +328,10 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         type: FORM_TYPES.string,
-        value: "extended"
-      }
+        value: "extended",
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "FAB Fixed",
@@ -337,9 +346,9 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         type: FORM_TYPES.string,
-        value: "fixed"
-      }
+        value: "fixed",
+      },
     },
-    layout: {}
-  }
-]
+    layout: {},
+  },
+];

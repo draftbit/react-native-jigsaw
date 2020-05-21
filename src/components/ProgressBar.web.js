@@ -1,5 +1,5 @@
-import * as React from "react"
-import { View } from "react-native"
+import * as React from "react";
+import { View } from "react-native";
 
 export default function ProgressBar({
   progress,
@@ -8,11 +8,13 @@ export default function ProgressBar({
   unfilledColor,
   borderColor,
   borderWidth,
-  style
+  style,
 }) {
   return (
     <View style={[style, { backgroundColor: unfilledColor, borderRadius }]}>
-      <View style={{ backgroundColor: color, width: progress, height: "100%" }} />
+      <View
+        style={{ backgroundColor: color, width: progress, height: "100%" }}
+      />
     </View>
-  )
+  );
 }

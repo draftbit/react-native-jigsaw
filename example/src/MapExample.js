@@ -1,20 +1,12 @@
-import * as React from "react"
-import { View, StyleSheet } from "react-native"
-import { MapSimple, withTheme } from "@draftbit/ui"
+import * as React from "react";
+import { MapSimple, withTheme } from "@draftbit/ui";
 
-class MapExample extends React.Component {
-  render() {
-    const { colors, spacing } = this.props.theme
+import Section, { Container } from "./Section";
 
-    return (
-      <View
-        style={[
-          styles.container,
-          {
-            backgroundColor: colors.background,
-            padding: spacing.large
-          }
-        ]}>
+function MapExample({ theme }) {
+  return (
+    <Container style={{ backgroundColor: theme.colors.background }}>
+      <Section title="MapSimple">
         <MapSimple
           initialLatitude={37.402184}
           initialLongitude={-122.121264}
@@ -25,19 +17,13 @@ class MapExample extends React.Component {
               latitude: 37.402184,
               longitude: -122.121264,
               title: "Home",
-              description: "319 Lunada Court, Los Altos, CA, 94022"
-            }
+              description: "319 Lunada Court, Los Altos, CA, 94022",
+            },
           ]}
         />
-      </View>
-    )
-  }
+      </Section>
+    </Container>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
-
-export default withTheme(MapExample)
+export default withTheme(MapExample);

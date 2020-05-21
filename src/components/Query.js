@@ -1,4 +1,4 @@
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 export const SEED_DATA = {
   name: "Query",
@@ -13,8 +13,9 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       type: FORM_TYPES.query,
-      description: "A GraphQL-enabled query that lets you fetch data from your database",
-      value: ""
+      description:
+        "A GraphQL-enabled query that lets you fetch data from your database",
+      value: "",
     },
     loading: {
       label: "Loading Component",
@@ -22,7 +23,7 @@ export const SEED_DATA = {
       required: false,
       type: FORM_TYPES.component,
       description: "Loading component to render until data shows up",
-      value: null
+      value: null,
     },
     error: {
       label: "Error Component",
@@ -30,7 +31,7 @@ export const SEED_DATA = {
       required: false,
       type: FORM_TYPES.component,
       description: "Error component to render until data shows up",
-      value: null
-    }
-  }
-}
+      value: null,
+    },
+  },
+};

@@ -24,10 +24,10 @@ async function main() {
   for (const file of files) {
     try {
       const component = await parser(file)
-      await uploadComponent(component)
+      const name = file.split("components/").pop().split(".js")[0]
+      await uploadComponent(component, name)
       COMPLETED_FILES.push(file)
     } catch (error) {
-      const name = file.split("jigsaw-component-library/")[1]
       ERROR_FILES.push({ file, error: error.message })
     }
   }
@@ -47,12 +47,8 @@ function getUrl() {
   }
 }
 
-async function uploadComponent(component) {
-  const url = getUrl()
-  await fetch(`${url}/components`, {
-    method: "POST",
-    body: component
-  })
+async function uploadComponent(component, name) {
+  fs.writeFileSync(`./mappings/${name}.json`, component)
 }
 
 main()

@@ -1,17 +1,17 @@
-import * as React from "react"
-import { View } from "react-native"
-import Icon from "./Icon"
-import Touchable from "./Touchable"
-import { withTheme } from "../core/theming"
+import * as React from "react";
+import { View } from "react-native";
+import Icon from "./Icon";
+import Touchable from "./Touchable";
+import { withTheme } from "../core/theming";
 
 class CheckboxIOS extends React.Component {
-  static displayName = "Checkbox.IOS"
+  static displayName = "Checkbox.IOS";
 
   render() {
-    const { status, disabled, onPress, theme, ...rest } = this.props
-    const indeterminate = status === "indeterminate"
-    const checkedColor = this.props.color || theme.colors.primary
-    const icon = indeterminate ? "MaterialIcons/remove" : "MaterialIcons/done"
+    const { status, disabled, onPress, theme, ...rest } = this.props;
+    const indeterminate = status === "indeterminate";
+    const checkedColor = this.props.color || theme.colors.primary;
+    const icon = indeterminate ? "MaterialIcons/remove" : "MaterialIcons/done";
 
     return (
       <Touchable
@@ -28,20 +28,28 @@ class CheckboxIOS extends React.Component {
           borderRadius: 2,
           width: 25,
           height: 25,
-          backgroundColor: status === "unchecked" ? theme.colors.surface : checkedColor,
+          backgroundColor:
+            status === "unchecked" ? theme.colors.surface : checkedColor,
           borderColor: theme.colors.light,
           borderWidth: status === "unchecked" ? 2 : 0,
-          opacity: disabled ? theme.disabledOpacity : 1
-        }}>
+          opacity: disabled ? theme.disabledOpacity : 1,
+        }}
+      >
         <View
           style={{
-            opacity: indeterminate || disabled ? theme.disabledOpacity : 1
-          }}>
-          <Icon allowFontScaling={false} name={icon} size={24} color={theme.colors.surface} />
+            opacity: indeterminate || disabled ? theme.disabledOpacity : 1,
+          }}
+        >
+          <Icon
+            allowFontScaling={false}
+            name={icon}
+            size={24}
+            color={theme.colors.surface}
+          />
         </View>
       </Touchable>
-    )
+    );
   }
 }
 
-export default withTheme(CheckboxIOS)
+export default withTheme(CheckboxIOS);

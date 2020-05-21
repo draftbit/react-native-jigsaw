@@ -60,3 +60,5 @@ android/keystores/debug.keystore
 lib/
 
 example/web-build
+completed.json
+errors.json

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Image } from "react-native";
+import { View } from "react-native";
 import Icon from "./Icon";
 import Touchable from "./Touchable";
 import Avatar from "./Avatar";

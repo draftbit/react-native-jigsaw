@@ -74,7 +74,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "yarn lint && yarn typescript"
+      "pre-commit": "yarn lint"
     }
   },
   "eslintConfig": {
@@ -83,6 +83,7 @@
       "prettier"
     ],
     "rules": {
+      "react-native/no-inline-styles": "off",
       "prettier/prettier": [
         "error",
         {

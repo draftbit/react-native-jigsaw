@@ -118,7 +118,7 @@ class Picker extends React.Component {
                 </Button>
                 <DateTimePicker
                   value={date}
-                  onChange={(_event, date) => onDateChange(date)}
+                  onChange={(_event, newDate) => onDateChange(newDate)}
                   mode={mode}
                 />
               </SafeAreaView>

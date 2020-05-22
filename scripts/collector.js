@@ -24,8 +24,9 @@ async function main() {
   for (const file of files) {
     try {
       const component = await parser(file);
-      const name = file.split("components/").pop().split(".js")[0];
-      await uploadComponent(component, name);
+      // const name = file.split("components/").pop().split(".js")[0];
+      // await writeComponentToFile(component, name);
+      await uploadComponent(component);
       COMPLETED_FILES.push(file);
     } catch (error) {
       ERROR_FILES.push({ file, error: error.message });
@@ -47,8 +48,16 @@ function getUrl() {
   }
 }
 
-async function uploadComponent(component, name) {
-  fs.writeFileSync(`./mappings/${name}.json`, component);
+// async function writeComponentToFile(component, name) {
+//   fs.writeFileSync(`./mappings/${name}.json`, component);
+// }
+
+async function uploadComponent(component) {
+  const url = getUrl();
+  await fetch(`${url}/components`, {
+    method: "POST",
+    body: component,
+  });
 }
 
 main();

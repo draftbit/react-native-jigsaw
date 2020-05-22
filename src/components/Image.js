@@ -1,11 +1,7 @@
 import React from "react";
 import { Image as NativeImage } from "react-native";
 import Config from "./Config";
-import {
-  COMPONENT_TYPES,
-  FORM_TYPES,
-  BORDER_RADIUS_MODE,
-} from "../core/component-types";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 export default class Image extends React.PureComponent {
   static defaultProps = {

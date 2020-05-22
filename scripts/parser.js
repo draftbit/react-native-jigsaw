@@ -65,6 +65,7 @@ async function main(filePath) {
   const parsedComponentFile = await parseFileSeedData(componentFile);
 
   const combinedFile = typesFile + parsedComponentFile;
+  // eslint-disable-next-line
   const data = eval(`${combinedFile}\n JSON.stringify(SEED_DATA)`);
   return data;
 }

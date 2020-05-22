@@ -17,7 +17,7 @@ class RowBodySwitch extends React.Component {
       value,
       onValueChange,
       color,
-      theme: { colors, typography, spacing },
+      theme: { colors, typography },
     } = this.props;
 
     return (

@@ -42,7 +42,6 @@ class FieldSearchBarFull extends React.Component {
     const {
       icon,
       placeholder,
-      onSubmit,
       style,
       theme: { colors, spacing, typography },
       onChange,

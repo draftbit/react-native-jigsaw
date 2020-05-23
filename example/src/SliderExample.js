@@ -4,7 +4,7 @@ import Section, { Container } from "./Section";
 
 function SliderExample({ theme }) {
   const [value, setValue] = React.useState(4);
-  const handleChange = (value) => setValue(value);
+  const handleChange = (v) => setValue(v);
 
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>

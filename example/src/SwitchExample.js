@@ -4,7 +4,7 @@ import Section, { Container } from "./Section";
 
 function SwitchExample({ theme }) {
   const [value, toggle] = React.useState(false);
-  const handleChange = (value) => toggle(value);
+  const handleChange = (v) => toggle(v);
 
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>

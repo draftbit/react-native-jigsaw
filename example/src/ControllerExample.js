@@ -15,7 +15,7 @@ function ControllerExample({ theme }) {
   const [disabled, disable] = React.useState(false);
 
   const handleDisable = (state) => disable(!state);
-  const handleChange = (value) => setValue(value);
+  const handleChange = (v) => setValue(v);
 
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>

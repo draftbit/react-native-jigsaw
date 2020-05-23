@@ -15,9 +15,12 @@ function withIcons(WrappedComponent) {
       };
     }
 
-    async componentDidMount() {
+    componentDidMount() {
       if (Object.keys(this.state.iconSets).length) return;
+      this.loadIconSet();
+    }
 
+    loadIconSet = async () => {
       const iconSets = {};
       await Promise.all(
         ICON_FAMILIES.map(async (iconFamily) => {
@@ -35,7 +38,7 @@ function withIcons(WrappedComponent) {
       );
       this.setState({ iconSets, loading: false });
       window.sessionStorage.setItem(KEY, JSON.stringify(iconSets));
-    }
+    };
 
     render() {
       return <WrappedComponent {...this.props} {...this.state} />;

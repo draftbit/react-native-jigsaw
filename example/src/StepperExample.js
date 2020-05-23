@@ -4,7 +4,7 @@ import Section, { Container } from "./Section";
 
 function StepperExample({ theme }) {
   const [value, setValue] = React.useState(0);
-  const handleChange = (value) => setValue(value);
+  const handleChange = (v) => setValue(v);
 
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>

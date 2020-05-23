@@ -4,7 +4,7 @@ import Section, { Container } from "./Section";
 
 function DatePickerExample({ theme }) {
   const [date, setDate] = React.useState(new Date());
-  const handleChange = (date) => setDate(date);
+  const handleChange = (d) => setDate(d);
 
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>

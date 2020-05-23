@@ -4,8 +4,7 @@ import Section, { Container } from "./Section";
 
 function PickerExample({ theme }) {
   const [value, setValue] = React.useState("Audi");
-
-  const handleChange = (value) => setValue(value);
+  const handleChange = (v) => setValue(v);
 
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>

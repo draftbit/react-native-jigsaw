@@ -26,7 +26,7 @@ import MapExample from "./MapExample";
 
 import PickerExample from "./PickerExample";
 
-// import ProgressBarExample from './ProgressBarExample';
+import ProgressBarExample from "./ProgressBarExample";
 
 import RowExample from "./RowExample";
 
@@ -57,7 +57,7 @@ const ROUTES = {
   Header: HeaderExample,
   Map: MapExample,
   Picker: PickerExample,
-  // ProgressBar: ProgressBarExample,
+  ProgressBar: ProgressBarExample,
   // TODO fix ProgressIndicator (elemtn invalid)
   // ProgressIndicator: ProgressIndicatorExample,
   // TODO fix Row (spacing problem)

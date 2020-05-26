@@ -43,9 +43,9 @@ export { default as MapSimple } from "./components/MapSimple";
 export { default as Picker } from "./components/Picker/Picker";
 
 // TODO implement with SVG react-native-progressbar no longer works with Expo
-// export { default as ProgressBar } from './components/ProgressBar';
-// export { default as ProgressCircle } from './components/ProgressCircle';
-// export { default as ProgressIndicator } from './components/ProgressIndicator';
+export { default as ProgressBar } from "./components/ProgressBar";
+export { default as ProgressCircle } from "./components/ProgressCircle";
+export { default as ProgressIndicator } from "./components/ProgressIndicator";
 
 export { default as RadioButton } from "./components/RadioButton";
 export { default as RadioButtonGroup } from "./components/RadioButtonGroup";

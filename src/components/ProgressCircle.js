@@ -1,27 +1,58 @@
 import * as React from "react";
-import { View } from "react-native";
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { Text } from "react-native";
+import AnimatedCircularProgress from "./AnimatedCircularProgress";
 import { withTheme } from "../core/theming";
 
-// TODO upgrade ProgressCircle to work on both web / ios
 const ProgressCircle = ({
-  // progress,
+  progress,
   style,
-  // color,
+  color,
   size,
-  // showsText,
-  // direction,
-  // unfilledColor,
-  // borderColor,
-  // borderWidth,
-  // strokeCap,
-  // fill,
-  // textStyle,
-  // thickness,
+  showsText,
+  unfilledColor,
+  strokeCap,
+  textStyle,
+  thickness,
+  theme,
 }) => {
+  const progressNum = Math.round(progress * 100);
+
+  const tintColor = theme.colors[color || "primary"];
+  const backgroundColor = theme.colors[unfilledColor || "secondary"];
+
   return (
-    <View style={[{ width: size, height: size, borderRadius: 100 }, style]} />
+    <AnimatedCircularProgress
+      size={size}
+      width={thickness}
+      backgroundWidth={thickness}
+      fill={progressNum}
+      tintColor={tintColor}
+      backgroundColor={backgroundColor}
+      rotation={0}
+      lineCap={strokeCap}
+      style={style}
+    >
+      {(fill) =>
+        showsText ? (
+          <Text
+            style={[{ fontSize: size * 0.275, color: tintColor }, textStyle]}
+          >
+            {Math.round(fill)}%
+          </Text>
+        ) : null
+      }
+    </AnimatedCircularProgress>
   );
+};
+
+ProgressCircle.defaultProps = {
+  progress: 0.5,
+  color: "primary",
+  size: 100,
+  showsText: true,
+  thickness: 1,
+  strokeCap: "butt",
 };
 
 export default withTheme(ProgressCircle);
@@ -63,14 +94,6 @@ export const SEED_DATA = {
       required: true,
       type: FORM_TYPES.color,
     },
-    fill: {
-      label: "Inner circle fill",
-      description: "Color of the inner circle",
-      editable: true,
-      value: null,
-      required: false,
-      type: FORM_TYPES.color,
-    },
     size: {
       label: "Size",
       description: "The size of the circle",
@@ -108,15 +131,6 @@ export const SEED_DATA = {
       max: 15,
       step: 1,
       precision: 1,
-      editable: true,
-      required: true,
-    },
-    direction: {
-      label: "Direction",
-      description: "Direction that the circle renders in",
-      type: FORM_TYPES.flatArray,
-      value: "clockwise",
-      options: ["counter-clockwise", "clockwise"],
       editable: true,
       required: true,
     },

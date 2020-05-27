@@ -2,7 +2,7 @@ import * as React from "react";
 import { withTheme, ProgressBar, ProgressCircle } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
-function ProgressBarExample({ theme }) {
+function ProgressExample({ theme }) {
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>
       <Section title="ProgressBar">
@@ -19,26 +19,15 @@ function ProgressBarExample({ theme }) {
         <ProgressCircle
           size={100}
           progress={0.8}
-          color="#5a45ff"
-          unfilledColor="#eee"
+          color="primary"
+          unfilledColor="secondary"
           showsText={true}
-          direction="clockwise"
           thickness={4}
-        />
-      </Section>
-
-      <Section title="ProgressCircle">
-        <ProgressCircle
-          size={100}
-          progress={0.5}
-          color="#5a45ff"
-          unfilledColor="#eee"
-          showsText={false}
-          direction="counter-clockwise"
+          strokeCap={"round"}
         />
       </Section>
     </Container>
   );
 }
 
-export default withTheme(ProgressBarExample);
+export default withTheme(ProgressExample);

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View } from "react-native";
+import StepIndicator from "expo-step-indicator";
 import { withTheme } from "../core/theming";
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
@@ -19,40 +19,38 @@ const ProgressIndicator = ({
   finishedColor,
   theme,
 }) => {
-  // const currentPosition = currentStep - 1;
-  // TODO fix StepIndicator
+  const currentPosition = currentStep - 1;
   return (
-    <View style={{ height: 40, backgroundColor: "orange" }} />
-    // <StepIndicator
-    //   stepCount={numberOfSteps}
-    //   currentPosition={currentPosition}
-    //   customStyles={{
-    //     stepIndicatorSize,
-    //     currentStepIndicatorSize: currentStepIndicatorSize
-    //       ? currentStepIndicatorSize
-    //       : stepIndicatorSize,
-    //     stepStrokeFinishedColor: finishedColor,
-    //     stepStrokeUnFinishedColor: unfinishedColor,
-    //     separatorFinishedColor: finishedColor,
-    //     separatorUnFinishedColor: unfinishedColor,
-    //     stepIndicatorFinishedColor: finishedColor,
-    //     stepIndicatorUnFinishedColor: unfinishedColor,
-    //     currentStepStrokeWidth,
-    //     stepStrokeCurrentColor: stepStrokeCurrentColor
-    //       ? stepStrokeCurrentColor
-    //       : stepIndicatorCurrentColor,
-    //     stepIndicatorLabelUnFinishedColor: stepNumberUnfinishedColor,
-    //     stepIndicatorLabelFinishedColor: stepNumberFinishedColor,
-    //     stepIndicatorCurrentColor: stepIndicatorCurrentColor
-    //       ? stepIndicatorCurrentColor
-    //       : unfinishedColor,
-    //     stepIndicatorLabelCurrentColor: stepIndicatorLabelCurrentColor
-    //       ? stepIndicatorLabelCurrentColor
-    //       : stepNumberFinishedColor,
-    //     stepIndicatorLabelFontSize,
-    //     labelFontFamily: theme.typography.default,
-    //   }}
-    // />
+    <StepIndicator
+      stepCount={numberOfSteps}
+      currentPosition={currentPosition}
+      customStyles={{
+        stepIndicatorSize,
+        currentStepIndicatorSize: currentStepIndicatorSize
+          ? currentStepIndicatorSize
+          : stepIndicatorSize,
+        stepStrokeFinishedColor: finishedColor,
+        stepStrokeUnFinishedColor: unfinishedColor,
+        separatorFinishedColor: finishedColor,
+        separatorUnFinishedColor: unfinishedColor,
+        stepIndicatorFinishedColor: finishedColor,
+        stepIndicatorUnFinishedColor: unfinishedColor,
+        currentStepStrokeWidth,
+        stepStrokeCurrentColor: stepStrokeCurrentColor
+          ? stepStrokeCurrentColor
+          : stepIndicatorCurrentColor,
+        stepIndicatorLabelUnFinishedColor: stepNumberUnfinishedColor,
+        stepIndicatorLabelFinishedColor: stepNumberFinishedColor,
+        stepIndicatorCurrentColor: stepIndicatorCurrentColor
+          ? stepIndicatorCurrentColor
+          : unfinishedColor,
+        stepIndicatorLabelCurrentColor: stepIndicatorLabelCurrentColor
+          ? stepIndicatorLabelCurrentColor
+          : stepNumberFinishedColor,
+        stepIndicatorLabelFontSize,
+        labelFontFamily: theme.typography.default,
+      }}
+    />
   );
 };
 

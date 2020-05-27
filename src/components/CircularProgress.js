@@ -81,9 +81,7 @@ export default class CircularProgress extends React.PureComponent {
       radius,
       currentFillAngle
     );
-    const cap = this.props.renderCap
-      ? this.props.renderCap({ center: coordinate })
-      : null;
+    const cap = renderCap ? renderCap({ center: coordinate }) : null;
 
     const offset = size - maxWidthCircle * 2;
 
@@ -104,12 +102,12 @@ export default class CircularProgress extends React.PureComponent {
 
     const strokeDasharrayTint =
       dashedTint.gap > 0
-        ? Object.values(dashedTint).map((value) => parseInt(value))
+        ? Object.values(dashedTint).map((value) => parseInt(value, 10))
         : null;
 
     const strokeDasharrayBackground =
       dashedBackground.gap > 0
-        ? Object.values(dashedBackground).map((value) => parseInt(value))
+        ? Object.values(dashedBackground).map((value) => parseInt(value, 10))
         : null;
 
     return (

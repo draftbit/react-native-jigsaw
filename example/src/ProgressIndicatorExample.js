@@ -7,15 +7,15 @@ function ProgressIndicatorExample({ theme }) {
     <Container style={{ backgroundColor: theme.colors.background }}>
       <Section title="ProgressIndicator">
         <ProgressIndicator
-          numberOfSteps={6}
+          numberOfSteps={5}
           currentStep={3}
           currentStepStrokeWidth={0}
-          stepIndicatorSize={16}
-          stepIndicatorLabelFontSize={13}
+          stepIndicatorSize={28}
+          stepIndicatorLabelFontSize={16}
           stepNumberFinishedColor={"#5a45ff"}
           stepNumberUnfinishedColor={"#ffffff"}
           unfinishedColor={"#eee"}
-          finishedColor={"#fff"}
+          finishedColor={"#5a45ff"}
         />
       </Section>
     </Container>

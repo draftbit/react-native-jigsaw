@@ -36,7 +36,7 @@ import StepperExample from "./StepperExample";
 
 import TextFieldExample from "./TextFieldExample";
 
-// import ProgressIndicatorExample from './ProgressIndicatorExample.js';
+import ProgressIndicatorExample from "./ProgressIndicatorExample.js";
 
 const ROUTES = {
   Avatar: AvatarExample,
@@ -58,8 +58,7 @@ const ROUTES = {
   Map: MapExample,
   Picker: PickerExample,
   ProgressBar: ProgressExample,
-  // TODO fix ProgressIndicator (element invalid)
-  // ProgressIndicator: ProgressIndicatorExample,
+  ProgressIndicator: ProgressIndicatorExample,
   // TODO fix Row (spacing problem)
   Row: RowExample,
   // TODO (componentWillReceieveProps insider slider component)

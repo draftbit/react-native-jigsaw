@@ -39,10 +39,9 @@ export { default as HeaderOverline } from "./components/HeaderOverline";
 
 export { default as MapSimple } from "./components/MapSimple";
 
-// TODO fix Picker onClick is broken
+// TODO fix Picker web onClick is broken
 export { default as Picker } from "./components/Picker/Picker";
 
-// TODO implement with SVG react-native-progressbar no longer works with Expo
 export { default as ProgressBar } from "./components/ProgressBar";
 export { default as ProgressCircle } from "./components/ProgressCircle";
 export { default as ProgressIndicator } from "./components/ProgressIndicator";

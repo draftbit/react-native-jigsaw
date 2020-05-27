@@ -2,7 +2,6 @@ export { withTheme, ThemeProvider } from "./core/theming";
 export { default as Provider } from "./core/Provider";
 export { default as DefaultTheme } from "./styles/DefaultTheme";
 
-// AVATAR BROKEN
 export { default as Avatar } from "./components/Avatar";
 export { default as AvatarEdit } from "./components/AvatarEdit";
 
@@ -15,6 +14,7 @@ export { default as CardContainer } from "./components/CardContainer";
 export { default as CardContainerRating } from "./components/CardContainerRating";
 
 export { default as Carousel } from "./components/Carousel";
+
 // TODO missing examples
 export { default as Checkbox } from "./components/Checkbox";
 

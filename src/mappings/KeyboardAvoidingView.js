@@ -1,7 +1,4 @@
-import { KeyboardAvoidingView } from "react-native";
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-
-export default KeyboardAvoidingView;
 
 export const SEED_DATA = {
   name: "Keyboard Avoiding View",

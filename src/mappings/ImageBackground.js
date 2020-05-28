@@ -1,13 +1,10 @@
-import { ImageBackground } from "react-native";
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-
-export default ImageBackground;
 
 export const SEED_DATA = {
   name: "Image Background",
   tag: "ImageBackground",
   doc_link:
-    "https://docs.expo.io/versions/v32.0.0/react-native/imagebackground/",
+    "https://docs.expo.io/versions/latest/react-native/imagebackground/",
   code_link:
     "https://github.com/facebook/react-native/blob/master/Libraries/Image/ImageBackground.js",
   description:

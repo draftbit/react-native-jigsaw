@@ -1,6 +1,4 @@
-import { ActivityIndicator } from "react-native";
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-export default ActivityIndicator;
 
 export const SEED_DATA = {
   name: "Activity Indicator",

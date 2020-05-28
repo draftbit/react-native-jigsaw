@@ -1,7 +1,4 @@
-import { BlurView } from "expo-blur";
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-export default BlurView;
-
 export const SEED_DATA = {
   name: "Blur View",
   tag: "BlurView",

@@ -1,6 +1,4 @@
-import { View } from "react-native";
 import { COMPONENT_TYPES } from "../core/component-types";
-export default View;
 
 export const SEED_DATA = {
   name: "View",

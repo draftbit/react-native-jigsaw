@@ -1,7 +1,4 @@
-import { Video } from "expo-av";
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-export default Video;
-
 export const SEED_DATA = {
   name: "Video",
   tag: "Video",

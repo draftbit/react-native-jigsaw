@@ -60,8 +60,5 @@ export { default as Slider } from "./components/Slider";
 export { default as Stepper } from "./components/Stepper";
 export { default as Switch } from "./components/Switch";
 
-// TODO missing examples
-export { default as TextInput } from "./components/TextInput.js";
-
 export { default as TextField } from "./components/TextField";
 export { default as Touchable } from "./components/Touchable";

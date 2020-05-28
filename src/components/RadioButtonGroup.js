@@ -39,7 +39,11 @@ function RadioButtonGroup({
       {options.map((option, index) => {
         const selected = option.label === value;
         return (
-          <Touchable onPress={() => onSelect(option.label)} style={{ flex: 1 }}>
+          <Touchable
+            key={index}
+            onPress={() => onSelect(option.label)}
+            style={{ flex: 1 }}
+          >
             <View
               style={{
                 flexDirection: "row",

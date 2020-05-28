@@ -8,7 +8,7 @@ function CardContainerExample({ theme }) {
       {Array.from({ length: 3 }).map((_v, i) => {
         const numColumns = i + 1;
         return (
-          <Section title={`(${numColumns} Column)`}>
+          <Section key={i} title={`(${numColumns} Column)`}>
             <CardContainer
               title="Beautiful West Coast Villa"
               leftDescription="San Diego"
@@ -23,7 +23,7 @@ function CardContainerExample({ theme }) {
       {Array.from({ length: 3 }).map((_v, i) => {
         const numColumns = i + 1;
         return (
-          <Section title={`(${numColumns} Columns 1x1 aspectRatio)`}>
+          <Section key={i} title={`(${numColumns} Columns 1x1 aspectRatio)`}>
             <CardContainer
               title="Beautiful West Coast Villa"
               leftDescription="San Diego"

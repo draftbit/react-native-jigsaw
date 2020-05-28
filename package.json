@@ -62,7 +62,8 @@
   "peerDependencies": {
     "@expo/vector-icons": "*",
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-safe-area-context": "^3.0.0"
   },
   "jest": {
     "preset": "react-native",

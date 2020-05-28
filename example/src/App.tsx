@@ -1,5 +1,9 @@
 import * as React from "react";
 import { View, Text, ScrollView } from "react-native";
+import {
+  SafeAreaProvider,
+  initialWindowMetrics,
+} from "react-native-safe-area-context";
 import { Provider, DefaultTheme } from "@draftbit/ui";
 
 import AvatarExample from "./AvatarExample";
@@ -89,16 +93,18 @@ function Example({ title, children }) {
 
 export default function App() {
   return (
-    <Provider theme={DefaultTheme}>
-      <ScrollView style={{ flex: 1 }}>
-        {Object.entries(ROUTES).map(([key, Screen]) => {
-          return (
-            <Example key={key} title={key}>
-              <Screen />
-            </Example>
-          );
-        })}
-      </ScrollView>
-    </Provider>
+    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+      <Provider theme={DefaultTheme}>
+        <ScrollView style={{ flex: 1 }}>
+          {Object.entries(ROUTES).map(([key, Screen]) => {
+            return (
+              <Example key={key} title={key}>
+                <Screen />
+              </Example>
+            );
+          })}
+        </ScrollView>
+      </Provider>
+    </SafeAreaProvider>
   );
 }

@@ -1,11 +1,6 @@
 import * as React from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Platform,
-} from "react-native";
+import { StyleSheet, ScrollView, View, Platform } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { withTheme } from "../core/theming";
 import Config from "./Config";
 

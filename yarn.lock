@@ -1681,13 +1681,6 @@
     wcwidth "^1.0.1"
     ws "^1.1.0"
 
-"@react-native-community/datetimepicker@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-2.4.0.tgz#6b3cf050f507f9b70d31d5a572e1153bb5bd50c9"
-  integrity sha512-ZXPwNAQt4T66PTL20l2nSEbtsn6vtsvFqdYWBfx8aaNKBoCPDygR6SsYzWcIoexKH5wmX0zctSzIsryl+Gtngg==
-  dependencies:
-    invariant "^2.2.4"
-
 "@react-native-community/eslint-config@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-config/-/eslint-config-1.1.0.tgz#2dacad06dd44d13e778510864473fc6091f080c0"
@@ -4228,14 +4221,6 @@ expect@^26.0.1:
     jest-matcher-utils "^26.0.1"
     jest-message-util "^26.0.1"
     jest-regex-util "^26.0.0"
-
-expo-av@^8.1.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/expo-av/-/expo-av-8.1.0.tgz#376e2a821168cd83e997c6dd84350fab6b293f10"
-  integrity sha512-owWxOCyK+dPyT3pF4rDOf2W8Sn8LSEvfw1HvU9xM0wzH7xF0bw3Zs3wcXxvtfhnXAZ5dCDQfvZI5cXk+lml+IQ==
-  dependencies:
-    lodash "^4.17.15"
-    nullthrows "^1.1.0"
 
 expo-step-indicator@0.1.2:
   version "0.1.2"
@@ -7017,9 +7002,9 @@ mimic-response@^3.1.0:
   integrity sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ==
 
 min-indent@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/min-indent/-/min-indent-1.0.0.tgz#cfc45c37e9ec0d8f0a0ec3dd4ef7f7c3abe39256"
-  integrity sha1-z8RcN+nsDY8KDsPdTvf3w6vjklY=
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/min-indent/-/min-indent-1.0.1.tgz#a63f681673b30571fbe8bc25686ae746eefa9869"
+  integrity sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==
 
 minimatch@^3.0.4:
   version "3.0.4"
@@ -7395,9 +7380,9 @@ open@^6.2.0:
     is-wsl "^1.1.0"
 
 opencollective-postinstall@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.2.tgz#5657f1bede69b6e33a45939b061eb53d3c6c3a89"
-  integrity sha512-pVOEP16TrAO2/fjej1IdOyupJY8KDUM1CvsaScRbw6oddvpQoOfGk4ywha0HKKVAD6RkW4x6Q+tNBwhf3Bgpuw==
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.3.tgz#7a0fff978f6dbfa4d006238fbac98ed4198c3259"
+  integrity sha512-8AV/sCtuzUeTo8gQK5qDZzARrulB3egtLzFgteqB2tcT4Mw7B8Kt7JcDHmltjz6FOAHsvTevk70gZEbhM4ZS9Q==
 
 optionator@^0.8.1, optionator@^0.8.3:
   version "0.8.3"
@@ -7992,11 +7977,6 @@ react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
-
-react-native-maps@0.27.1:
-  version "0.27.1"
-  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.27.1.tgz#2f10cd417bb2fd938c9e015b1c9b6d9b1a44b97f"
-  integrity sha512-HygBkZBecTnIVRYrSiLRAvu4OmXOYso/A7c6Cy73HkOh9CgGV8Ap5eBea24tvmFGptjj5Hg8AJ94/YbmWK1Okw==
 
 react-native-slider@^0.11.0:
   version "0.11.0"

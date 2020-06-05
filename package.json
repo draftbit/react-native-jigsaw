@@ -61,6 +61,7 @@
   },
   "peerDependencies": {
     "@expo/vector-icons": "*",
+    "@react-native-community/datetimepicker": "*",
     "react": "*",
     "react-native": "*",
     "react-native-svg": "*"

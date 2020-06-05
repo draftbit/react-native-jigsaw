@@ -16,6 +16,8 @@ import CarouselExample from "./CarouselExample";
 import ContainerExample from "./ContainerExample";
 import ControllerExample from "./ControllerExample";
 
+import DatePickerExample from "./DatePickerExample";
+
 import FABExample from "./FABExample";
 import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
 
@@ -48,6 +50,7 @@ const ROUTES = {
   Carousel: CarouselExample,
   Container: ContainerExample,
   Controllers: ControllerExample,
+  DatePicker: DatePickerExample,
   FieldSearchBarFull: FieldSearchBarFullExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
   Header: HeaderExample,

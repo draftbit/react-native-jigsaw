@@ -94,8 +94,10 @@ const styles = StyleSheet.create({
     flex: 1,
     ...Platform.select({
       web: {
-        width: 375,
-        height: 812
+        minWidth: 375,
+        minHeight: 812,
+        width: "100%",
+        height: "100%"
       }
     })
   }

@@ -64,7 +64,6 @@
     "@react-native-community/datetimepicker": "*",
     "react": "*",
     "react-native": "*",
-    "react-native-maps": "*",
     "react-native-svg": "*"
   },
   "jest": {

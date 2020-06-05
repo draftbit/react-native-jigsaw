@@ -1,11 +1,5 @@
 import * as React from "react";
-import {
-  StyleSheet,
-  ScrollView,
-  View,
-  Platform,
-  SafeAreaView,
-} from "react-native";
+import { StyleSheet, ScrollView, View, SafeAreaView } from "react-native";
 import { withTheme } from "../core/theming";
 import Config from "./Config";
 
@@ -104,12 +98,6 @@ class ScreenContainer extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    ...Platform.select({
-      web: {
-        width: 375,
-        height: 812,
-      },
-    }),
   },
 });
 

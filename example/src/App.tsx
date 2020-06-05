@@ -22,7 +22,6 @@ import FABExample from "./FABExample";
 import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
 
 import HeaderExample from "./HeaderExample";
-import MapExample from "./MapExample";
 
 import PickerExample from "./PickerExample";
 
@@ -55,7 +54,6 @@ const ROUTES = {
   FieldSearchBarFull: FieldSearchBarFullExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
   Header: HeaderExample,
-  Map: MapExample,
   Picker: PickerExample,
   ProgressBar: ProgressExample,
   ProgressIndicator: ProgressIndicatorExample,

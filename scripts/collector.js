@@ -13,7 +13,10 @@ const PRODUCTION_API_URL = "https://api.draftbit.com";
 
 const COMPONENT_PATH = path.resolve("./src/components");
 const MAPPING_PATH = path.resolve("./src/mappings");
-const IGNORED_FILES = [];
+const IGNORED_FILES = [
+  "src/mappings/Query.js", // doesn't work at all
+  "src/mappings/LinearGradient.js", // missing gradient UI
+];
 const ERROR_FILES = [];
 const COMPLETED_FILES = [];
 

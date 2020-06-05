@@ -12,14 +12,18 @@ const STAGING_API_URL = "https://api.stagingbit.com";
 const PRODUCTION_API_URL = "https://api.draftbit.com";
 
 const COMPONENT_PATH = path.resolve("./src/components");
+const MAPPING_PATH = path.resolve("./src/mappings");
 const IGNORED_FILES = [];
 const ERROR_FILES = [];
 const COMPLETED_FILES = [];
 
 async function main() {
   console.log("Running on", getUrl(), "[warnings surpressed]");
-  let files = await globAsync(`${COMPONENT_PATH}/**/*.js`);
-  files = files.filter((file) => !IGNORED_FILES.includes(file));
+  const componentFiles = await globAsync(`${COMPONENT_PATH}/**/*.js`);
+  const mappingFiles = await globAsync(`${MAPPING_PATH}/**/*.js`);
+  const files = [...componentFiles, ...mappingFiles].filter(
+    (file) => !IGNORED_FILES.includes(file)
+  );
 
   for (const file of files) {
     try {

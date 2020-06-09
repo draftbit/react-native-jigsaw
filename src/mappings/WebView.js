@@ -1,6 +1,6 @@
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 export const SEED_DATA = {
-  name: "WebView",
+  name: "Web View",
   tag: "WebView",
   description: "Embed a website into your app",
   doc_link: "https://docs.expo.io/versions/latest/sdk/video/",

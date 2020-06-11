@@ -56,25 +56,6 @@ export const SEED_DATA = {
       required: true,
       type: FORM_TYPES.string,
       value: "Hello World!"
-    },
-    numberOfLines: {
-      label: "Number of Lines",
-      description: "Limits the maximum number of lines and truncates when needed",
-      editable: true,
-      required: false,
-      type: FORM_TYPES.number,
-      value: null,
-      min: 0,
-      max: 10,
-      step: 1
-    },
-    ellipsizeMode: {
-      label: "Ellipsize Mode",
-      description: "The styling for the ellipsize(Default: tail)",
-      editable: true,
-      required: false,
-      type: FORM_TYPES.flatArray,
-      options: ["head", "middle", "tail", "clip"]
     }
   }
 }

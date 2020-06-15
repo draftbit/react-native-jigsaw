@@ -1,0 +1,1 @@
+"use strict";exports.__esModule=!0,exports.default=Icon;var _react=_interopRequireDefault(require("react")),_reactNative=require("react-native");function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function Icon(a){let{size:b,style:c}=a;return _react.default.createElement(_reactNative.Image,{source:require("../assets/icon.png"),style:[{width:b,height:b},c]})}

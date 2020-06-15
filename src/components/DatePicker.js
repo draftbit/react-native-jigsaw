@@ -1,21 +1,14 @@
-import * as React from "react"
-import {
-  View,
-  SafeAreaView,
-  StyleSheet,
-  Platform,
-  DatePickerIOS,
-  DatePickerAndroid,
-  TimePickerAndroid
-} from "react-native"
-import dateFormat from "dateformat"
-import { withTheme } from "../core/theming"
+import * as React from "react";
+import { View, SafeAreaView, StyleSheet } from "react-native";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import dateFormat from "dateformat";
+import { withTheme } from "../core/theming";
 
-import Portal from "./Portal/Portal"
-import Button from "./Button"
-import TextField from "./TextField"
-import Touchable from "./Touchable"
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import Portal from "./Portal/Portal";
+import Button from "./Button";
+import TextField from "./TextField";
+import Touchable from "./Touchable";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 class Picker extends React.Component {
   static defaultProps = {
@@ -24,22 +17,22 @@ class Picker extends React.Component {
     disabled: false,
     error: false,
     date: new Date(),
-    onDateChange: () => {}
-  }
+    onDateChange: () => {},
+  };
 
   state = {
-    pickerVisible: false
-  }
+    pickerVisible: false,
+  };
 
   constructor(props) {
-    super(props)
-    this.textField = React.createRef()
+    super(props);
+    this.textField = React.createRef();
   }
 
   formatDate = () => {
-    const { date, mode, format } = this.props
+    const { date, mode, format } = this.props;
 
-    if (format) return dateFormat(date, format)
+    if (format) return dateFormat(date, format);
 
     const months = [
       "January",
@@ -53,55 +46,26 @@ class Picker extends React.Component {
       "September",
       "October",
       "November",
-      "December"
-    ]
+      "December",
+    ];
 
     if (mode === "time") {
-      return `${date.toLocaleTimeString()}`
+      return `${date.toLocaleTimeString()}`;
     }
 
     if (mode === "datetime") {
-      return `${date.toLocaleString()}`
+      return `${date.toLocaleString()}`;
     }
 
-    return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
-  }
+    return `${
+      months[date.getMonth()]
+    } ${date.getDate()}, ${date.getFullYear()}`;
+  };
 
   toggleVisibility = async () => {
-    const { date, mode, onDateChange } = this.props
-
-    if (Platform.OS === "ios") {
-      this.setState(prevState => ({ pickerVisible: !prevState.pickerVisible }))
-    } else {
-      try {
-        if (mode === "date") {
-          const { action, year, month, day } = await DatePickerAndroid.open({
-            date
-          })
-
-          if (action !== DatePickerAndroid.dismissedAction) {
-            return onDateChange(new Date(year, month, day))
-          }
-        }
-
-        if (mode === "time") {
-          const { action, hour, minute } = await TimePickerAndroid.open({ mode: "default" })
-
-          if (action !== DatePickerAndroid.dismissedAction) {
-            const time = new Date()
-            time.setHours(hour)
-            time.setMinutes(minute)
-            time.setSeconds(0)
-            onDateChange(time)
-          }
-        }
-      } catch ({ code, message }) {
-        console.warn("Cannot open date picker", message)
-      }
-    }
-
-    this.textField.current.toggleFocus()
-  }
+    this.setState((prevState) => ({ pickerVisible: !prevState.pickerVisible }));
+    this.textField.current.toggleFocus();
+  };
 
   render() {
     const {
@@ -117,10 +81,10 @@ class Picker extends React.Component {
       disabled,
       mode,
       ...props
-    } = this.props
-    const { colors, spacing } = theme
+    } = this.props;
 
-    const { pickerVisible } = this.state
+    const { colors } = theme;
+    const { pickerVisible } = this.state;
 
     return (
       <View style={[styles.container, style]}>
@@ -140,26 +104,35 @@ class Picker extends React.Component {
               style={[
                 styles.picker,
                 {
-                  backgroundColor: colors.divider
-                }
-              ]}>
+                  backgroundColor: colors.divider,
+                },
+              ]}
+            >
               <SafeAreaView style={styles.pickerContainer}>
-                <Button type="text" onPress={this.toggleVisibility} style={styles.closeButton}>
+                <Button
+                  type="text"
+                  onPress={this.toggleVisibility}
+                  style={styles.closeButton}
+                >
                   Close
                 </Button>
-                <DatePickerIOS date={date} onDateChange={onDateChange} mode={mode} />
+                <DateTimePicker
+                  value={date}
+                  onChange={(_event, newDate) => onDateChange(newDate)}
+                  mode={mode}
+                />
               </SafeAreaView>
             </View>
           </Portal>
         )}
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    alignSelf: "stretch"
+    alignSelf: "stretch",
   },
   picker: {
     position: "absolute",
@@ -167,15 +140,15 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     flexDirection: "row",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   pickerContainer: { flexDirection: "column", width: "100%" },
   closeButton: {
-    alignSelf: "flex-end"
-  }
-})
+    alignSelf: "flex-end",
+  },
+});
 
-export default withTheme(Picker)
+export default withTheme(Picker);
 
 const SEED_DATA_PROPS = {
   label: {
@@ -184,7 +157,7 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.string,
     value: "Date",
     editable: true,
-    required: true
+    required: true,
   },
   mode: {
     label: "Mode",
@@ -193,7 +166,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: true,
     type: FORM_TYPES.flatArray,
-    options: ["date", "time", "datetime"]
+    options: ["date", "time", "datetime"],
   },
   assistiveText: {
     label: "Assistive text",
@@ -201,7 +174,7 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.string,
     value: null,
     editable: true,
-    required: false
+    required: false,
   },
   locale: {
     label: "Locale",
@@ -209,7 +182,7 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.string,
     value: null,
     editable: true,
-    required: false
+    required: false,
   },
   minuteInterval: {
     label: "Minute Interval",
@@ -218,7 +191,7 @@ const SEED_DATA_PROPS = {
     options: [1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30],
     value: null,
     editable: true,
-    required: false
+    required: false,
   },
   timeZoneOffsetInMinutes: {
     label: "Time zone offset",
@@ -227,22 +200,24 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.number,
     value: null,
     editable: true,
-    required: false
+    required: false,
   },
   initialDate: {
     label: "Initial Date",
-    description: "Optionally set an initial date to make your forms easier to work with",
+    description:
+      "Optionally set an initial date to make your forms easier to work with",
     type: FORM_TYPES.date,
     value: null,
     editable: true,
-    required: false
+    required: false,
   },
   options: {
     label: "Options",
-    description: "Array of picker options. An array of objects containing a label and value.",
+    description:
+      "Array of picker options. An array of objects containing a label and value.",
     editable: true,
     type: FORM_TYPES.array,
-    value: null
+    value: null,
   },
   disabled: {
     label: "Disabled",
@@ -250,39 +225,40 @@ const SEED_DATA_PROPS = {
       "Whether the picker should be disabled. Will prevent selection and show a greyed out state.",
     type: FORM_TYPES.boolean,
     value: false,
-    editable: true
+    editable: true,
   },
   error: {
     label: "Error",
     description: "Whether the picker should display the error state",
     type: FORM_TYPES.boolean,
     value: false,
-    editable: true
+    editable: true,
   },
   leftIconName: {
     label: "Left icon name",
     description: "The icon to display on the left",
     type: FORM_TYPES.icon,
     value: null,
-    editable: true
+    editable: true,
   },
   leftIconMode: {
     label: "Left icon mode",
-    description: "The mode of the icon to display on the left. 'inset' or 'outset'.",
+    description:
+      "The mode of the icon to display on the left. 'inset' or 'outset'.",
     type: FORM_TYPES.flatArray,
     value: "inset",
     options: ["inset", "outset"],
     editable: true,
-    required: true
+    required: true,
   },
   rightIconName: {
     label: "Right icon name",
     description: "The icon to display on the right",
     type: FORM_TYPES.icon,
     value: null,
-    editable: true
-  }
-}
+    editable: true,
+  },
+};
 
 export const SEED_DATA = [
   {
@@ -297,10 +273,10 @@ export const SEED_DATA = [
       type: {
         type: FORM_TYPES.string,
         value: "solid",
-        editable: false
-      }
+        editable: false,
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "Date Picker - Underline",
@@ -314,9 +290,9 @@ export const SEED_DATA = [
       type: {
         type: FORM_TYPES.string,
         value: "underline",
-        editable: false
-      }
+        editable: false,
+      },
     },
-    layout: {}
-  }
-]
+    layout: {},
+  },
+];

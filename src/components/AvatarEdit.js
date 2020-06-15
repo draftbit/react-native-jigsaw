@@ -1,16 +1,17 @@
-import * as React from "react"
-import { View, Image } from "react-native"
-import Icon from "./Icon"
-import Touchable from "./Touchable"
-import Avatar from "./Avatar"
-import { withTheme } from "../core/theming"
+import * as React from "react";
+import { View } from "react-native";
+import Icon from "./Icon";
+import Touchable from "./Touchable";
+import Avatar from "./Avatar";
+import { withTheme } from "../core/theming";
 
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 class AvatarEdit extends React.PureComponent {
   static defaultProps = {
-    onPress: () => {}
-  }
+    size: 80,
+    onPress: () => {},
+  };
 
   render() {
     const {
@@ -18,18 +19,23 @@ class AvatarEdit extends React.PureComponent {
       size,
       onPress,
       style,
-      theme: { colors }
-    } = this.props
+      theme: { colors },
+    } = this.props;
 
     const colorStyles = {
       editBackgroundColor: colors.primary,
       editIconColor: colors.surface,
-      editBorderColor: colors.surface
-    }
+      editBorderColor: colors.surface,
+    };
+
+    const dimensions = {
+      width: size,
+      height: size,
+    };
 
     return (
-      <Touchable style={style} onPress={onPress}>
-        <View>
+      <View style={[style, dimensions]}>
+        <Touchable onPress={onPress}>
           <Avatar image={image} size={size} />
           <View
             style={{
@@ -39,28 +45,30 @@ class AvatarEdit extends React.PureComponent {
               borderColor: colorStyles.editBorderColor,
               backgroundColor: colorStyles.editBackgroundColor,
               borderRadius: size * (3 / 16),
-              padding: size * (3 / 32)
-            }}>
+              padding: size * (3 / 32),
+            }}
+          >
             <Icon
               name="MaterialIcons/edit"
               color={colorStyles.editIconColor}
               size={size * (3 / 16)}
             />
           </View>
-        </View>
-      </Touchable>
-    )
+        </Touchable>
+      </View>
+    );
   }
 }
 
-export default withTheme(AvatarEdit)
+export default withTheme(AvatarEdit);
 
 export const SEED_DATA = {
   name: "Avatar Edit",
   tag: "AvatarEdit",
   description: "An avatar with an edit icon in the top right",
   category: COMPONENT_TYPES.deprecated,
-  preview_image_url: "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/AvatarEdit.png",
+  preview_image_url:
+    "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/AvatarEdit.png",
   props: {
     size: {
       label: "Size",
@@ -72,7 +80,7 @@ export const SEED_DATA = {
       max: 300,
       precision: 0,
       step: 1,
-      value: 80
+      value: 80,
     },
     image: {
       label: "Image",
@@ -80,11 +88,11 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       type: FORM_TYPES.remoteImage,
-      value: "brightness-5"
-    }
+      value: "brightness-5",
+    },
   },
   layout: {
     width: 64,
-    height: 64
-  }
-}
+    height: 64,
+  },
+};

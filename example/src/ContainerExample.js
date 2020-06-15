@@ -1,64 +1,91 @@
-import * as React from "react"
-import { Text } from "react-native"
-import { ScreenContainer, Container, withTheme } from "@draftbit/ui"
+import * as React from "react";
+import { Text } from "react-native";
+import Section, { Container as ExampleContainer } from "./Section";
+import { Container, withTheme } from "@draftbit/ui";
 
-class ContainerExample extends React.Component {
-  static title = "Container"
+const IMAGE =
+  "https://res.cloudinary.com/altos/image/upload/w_600,f_auto,c_scale/draftbit/components/Image.png";
 
-  render() {
-    const { theme } = this.props
-
-    return (
-      <ScreenContainer>
+function ContainerExample({ theme }) {
+  return (
+    <ExampleContainer style={{ backgroundColor: theme.colors.background }}>
+      <Section title="Container with no theme gutter padding)">
         <Container style={{ paddingVertical: theme.spacing.large }}>
           <Text>Container without theme gutter padding</Text>
         </Container>
-        <Container useThemeGutterPadding style={{ paddingVertical: theme.spacing.large }}>
+      </Section>
+
+      <Section title="Container with theme gutter padding)">
+        <Container
+          useThemeGutterPadding
+          style={{ paddingVertical: theme.spacing.large }}
+        >
           <Text>Container with theme gutter padding</Text>
         </Container>
-        <Container backgroundColor="#ff0000" style={{ paddingVertical: theme.spacing.large }}>
+      </Section>
+
+      <Section title="Container with background color">
+        <Container
+          backgroundColor="#ff0000"
+          style={{ paddingVertical: theme.spacing.large }}
+        >
           <Text>Container with background color</Text>
         </Container>
+      </Section>
+
+      <Section title="Container with Background Image">
         <Container
-          backgroundImage="https://res.cloudinary.com/altos/image/upload/w_200,f_auto,c_scale/draftbit/components/Image.png"
+          backgroundImage={IMAGE}
           style={{
             paddingVertical: theme.spacing.large,
-            width: 200,
-            height: 133
-          }}>
+            height: 300,
+          }}
+        >
           <Text>Container with background image</Text>
         </Container>
+      </Section>
+
+      <Section title="Container with Background Image and resizeMode=cover">
         <Container
-          backgroundImage="https://res.cloudinary.com/altos/image/upload/w_200,f_auto,c_scale/draftbit/components/Image.png"
+          backgroundImage={IMAGE}
           backgroundImageResizeMode="cover"
           style={{
             paddingVertical: theme.spacing.large,
-            width: 200,
-            height: 200
-          }}>
+            width: 300,
+            height: 300,
+          }}
+        >
           <Text>Container with background image and resize mode cover</Text>
         </Container>
+      </Section>
+
+      <Section title="Container with Background Image and resizeMode=contain">
         <Container
-          backgroundImage="https://res.cloudinary.com/altos/image/upload/w_200,f_auto,c_scale/draftbit/components/Image.png"
+          backgroundImage={IMAGE}
           backgroundImageResizeMode="contain"
           style={{
             paddingVertical: theme.spacing.large,
-            width: 200,
-            height: 200
-          }}>
-          <Text>Container with background image and resize mode contain</Text>
+            width: 300,
+            height: 300,
+          }}
+        >
+          <Text>Container with background image and resize mode cover</Text>
         </Container>
+      </Section>
+
+      <Section title="Container with random borderColor">
         <Container
           style={{
             paddingVertical: theme.spacing.large,
             borderColor: "#39ff14",
-            borderWidth: 1
-          }}>
+            borderWidth: 10,
+          }}
+        >
           <Text>Container with borderColor</Text>
         </Container>
-      </ScreenContainer>
-    )
-  }
+      </Section>
+    </ExampleContainer>
+  );
 }
 
-export default withTheme(ContainerExample)
+export default withTheme(ContainerExample);

@@ -1,89 +1,70 @@
-import * as React from "react"
-import { StyleSheet, Text, ScrollView } from "react-native"
-import { CardContainerRating, withTheme } from "@draftbit/ui"
+import * as React from "react";
+import { CardContainerRating, withTheme } from "@draftbit/ui";
+import Section, { Container } from "./Section";
 
-class CardContainerRatingExample extends React.Component {
-  render() {
-    const {
-      theme: {
-        colors: { background },
-        spacing
-      }
-    } = this.props
+function CardContainerRatingExample({ theme }) {
+  return (
+    <Container style={{ backgroundColor: theme.colors.background }}>
+      {Array.from({ length: 3 }).map((_v, i) => {
+        const numColumns = i + 1;
+        return (
+          <Section key={i} title={`(${numColumns} Column)`}>
+            <CardContainerRating
+              title="Beautiful West Coast Villa"
+              leftDescription="San Diego"
+              rating={4}
+              rightDescription="$100"
+              numColumns={numColumns}
+              icon="star"
+            />
+          </Section>
+        );
+      })}
 
-    return (
-      <ScrollView
-        style={[styles.container, { padding: spacing.large, backgroundColor: background }]}>
-        <Text style={{ marginBottom: spacing.medium }}>CardContainerRating2Col</Text>
-        <CardContainerRating
-          title="Beautiful West Coast Villa"
-          leftDescription="San Diego"
-          rating={4}
-          rightDescription="$100"
-          numColumns={2}
-          icon="star"
-          style={{ marginBottom: spacing.large }}
-        />
-        <Text style={{ marginBottom: spacing.medium }}>CardContainerRating3Col</Text>
-        <CardContainerRating
-          title="Beautiful West Coast Villa"
-          leftDescription="San Diego"
-          rating={4}
-          rightDescription="$100"
-          icon="star"
-          style={{ marginBottom: spacing.large }}
-        />
-        <Text style={{ marginBottom: spacing.medium }}>
-          CardContainerRating2Col with centered text
-        </Text>
+      {Array.from({ length: 3 }).map((_v, i) => {
+        const numColumns = i + 1;
+        return (
+          <Section key={i} title={`(${numColumns} Columns 1x1 aspectRatio)`}>
+            <CardContainerRating
+              title="Beautiful West Coast Villa"
+              leftDescription="San Diego"
+              rating={5}
+              rightDescription="$100"
+              numColumns={numColumns}
+              aspectRatio={1}
+            />
+          </Section>
+        );
+      })}
+
+      <Section title="1 Column Centered Title">
         <CardContainerRating
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           textCentered
           numColumns={2}
-          style={{ marginBottom: spacing.large }}
         />
-        <Text style={{ marginBottom: spacing.medium }}>
-          CardContainerRating2Col, 1x1 aspect ratio
-        </Text>
+      </Section>
+
+      <Section title="2 Column No Right Description">
         <CardContainerRating
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
-          rating={4}
-          rightDescription="$100"
           numColumns={2}
-          aspectRatio={1}
-          style={{ marginBottom: spacing.large }}
         />
-        <Text style={{ marginBottom: spacing.medium }}>
-          CardContainerRating3Col, 1x1 aspect ratio
-        </Text>
+      </Section>
+
+      <Section title="2 Column No Left Description">
         <CardContainerRating
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           rating={4}
           rightDescription="$100"
           aspectRatio={1}
-          style={{ marginBottom: spacing.large }}
         />
-        <Text style={{ marginBottom: spacing.medium }}>
-          CardContainerRating2Col, no right description
-        </Text>
-        <CardContainerRating
-          title="Beautiful West Coast Villa"
-          leftDescription="San Diego"
-          numColumns={2}
-          style={{ marginBottom: spacing.large }}
-        />
-      </ScrollView>
-    )
-  }
+      </Section>
+    </Container>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
-
-export default withTheme(CardContainerRatingExample)
+export default withTheme(CardContainerRatingExample);

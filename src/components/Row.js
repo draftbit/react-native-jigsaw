@@ -1,7 +1,7 @@
-import * as React from "react"
-import { View, Text, Image, StyleSheet } from "react-native"
-import { withTheme } from "../core/theming"
-import Config from "./Config"
+import * as React from "react";
+import { View, Text, Image, StyleSheet } from "react-native";
+import { withTheme } from "../core/theming";
+import Config from "./Config";
 
 class Row extends React.Component {
   render() {
@@ -16,8 +16,8 @@ class Row extends React.Component {
       image,
       right,
       style,
-      theme: { spacing }
-    } = this.props
+      theme: { spacing },
+    } = this.props;
 
     return (
       <View style={[styles.container, { padding: spacing.large }, style]}>
@@ -27,8 +27,12 @@ class Row extends React.Component {
               source={typeof image === "string" ? { uri: image } : image}
               style={{
                 marginRight: spacing.medium,
-                width: subtitle ? Config.rowMultiLineImageSize : Config.rowSingleLineImageSize,
-                height: subtitle ? Config.rowMultiLineImageSize : Config.rowSingleLineImageSize
+                width: subtitle
+                  ? Config.rowMultiLineImageSize
+                  : Config.rowSingleLineImageSize,
+                height: subtitle
+                  ? Config.rowMultiLineImageSize
+                  : Config.rowSingleLineImageSize,
               }}
             />
           )}
@@ -37,10 +41,11 @@ class Row extends React.Component {
               style={[
                 titleTypeStyle,
                 {
-                  color: titleColor
-                }
+                  color: titleColor,
+                },
               ]}
-              numberOfLines={1}>
+              numberOfLines={1}
+            >
               {title}
             </Text>
             {subtitle ? (
@@ -49,10 +54,11 @@ class Row extends React.Component {
                   subtitleTypeStyle,
                   {
                     color: subtitleColor,
-                    marginTop: spacing.text
-                  }
+                    marginTop: spacing.text,
+                  },
                 ]}
-                numberOfLines={multilineSubtitle ? undefined : 1}>
+                numberOfLines={multilineSubtitle ? undefined : 1}
+              >
                 {subtitle}
               </Text>
             ) : null}
@@ -60,24 +66,24 @@ class Row extends React.Component {
         </View>
         {right && right()}
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   leftContainer: {
     flexDirection: "row",
-    flex: 1
+    flex: 1,
   },
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
   },
   textContainer: {
     flex: 1,
-    justifyContent: "center"
-  }
-})
+    justifyContent: "center",
+  },
+});
 
-export default withTheme(Row)
+export default withTheme(Row);

@@ -1,53 +1,56 @@
-import * as React from "react"
-import { View, TextInput, StyleSheet } from "react-native"
-import { withTheme } from "../core/theming"
-import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
-import Icon from "./Icon"
-import Config from "./Config"
+import * as React from "react";
+import { View, TextInput, StyleSheet } from "react-native";
+import { withTheme } from "../core/theming";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  FIELD_NAME,
+} from "../core/component-types";
+import Icon from "./Icon";
+import Config from "./Config";
 
 class FieldSearchBarFull extends React.Component {
   state = {
-    focused: false
-  }
+    focused: false,
+  };
 
   static defaultProps = {
-    icon: "search"
-  }
+    icon: "search",
+  };
 
   clearText = () => {
-    this.setState({ value: "" })
-  }
+    this.setState({ value: "" });
+  };
 
   onBlur = () => {
-    this.setState({ focused: false })
-  }
+    this.setState({ focused: false });
+  };
 
-  onChange = value => {
-    this.props.onChange && this.props.onChange(value)
-  }
+  onChange = (value) => {
+    this.props.onChange && this.props.onChange(value);
+  };
 
   onFocus = () => {
-    this.setState({ focused: true })
-  }
+    this.setState({ focused: true });
+  };
 
   onSubmit = () => {
-    this.props.onSubmit && this.props.onSubmit()
-  }
+    this.props.onSubmit && this.props.onSubmit();
+  };
 
   render() {
     const {
       icon,
       placeholder,
-      onSubmit,
       style,
       theme: { colors, spacing, typography },
       onChange,
-      value
-    } = this.props
+      value,
+    } = this.props;
 
-    const { focused } = this.state
+    const { focused } = this.state;
 
-    const { lineHeight, ...typeStyle } = typography.body2
+    const { lineHeight, ...typeStyle } = typography.body2;
 
     return (
       <View style={[{ padding: spacing.large }, styles.container, style]}>
@@ -71,23 +74,23 @@ class FieldSearchBarFull extends React.Component {
               color: colors.medium,
               marginLeft: spacing.medium,
               flex: 1,
-              justifyContent: "center"
-            }
+              justifyContent: "center",
+            },
           ]}
         />
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    alignItems: "center"
-  }
-})
+    alignItems: "center",
+  },
+});
 
-export default withTheme(FieldSearchBarFull)
+export default withTheme(FieldSearchBarFull);
 
 export const SEED_DATA = [
   {
@@ -104,7 +107,7 @@ export const SEED_DATA = [
         type: FORM_TYPES.icon,
         value: null,
         editable: true,
-        required: false
+        required: false,
       },
       placeholder: {
         label: "Placeholder",
@@ -112,20 +115,20 @@ export const SEED_DATA = [
         type: FORM_TYPES.string,
         value: "Type something...",
         editable: true,
-        required: false
+        required: false,
       },
       onSubmit: {
         label: "Submit action",
         description: "Action to execute on submission",
         editable: true,
         type: FORM_TYPES.action,
-        value: null
+        value: null,
       },
       fieldName: {
         ...FIELD_NAME,
-        value: "searchBarValue"
-      }
+        value: "searchBarValue",
+      },
     },
-    layout: {}
-  }
-]
+    layout: {},
+  },
+];

@@ -1,0 +1,1 @@
+"use strict";exports.__esModule=!0,exports.default=void 0;var _react=_interopRequireDefault(require("react")),_reactNative=require("react-native");function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}_reactNative.TouchableOpacity.Ripple=()=>null;var _default=_reactNative.TouchableOpacity;exports.default=_default;

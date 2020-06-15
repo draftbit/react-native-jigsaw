@@ -1,32 +1,18 @@
-import * as React from "react"
-import { StyleSheet, ScrollView } from "react-native"
-import { FieldSearchBarFull, withTheme } from "@draftbit/ui"
+import * as React from "react";
+import { FieldSearchBarFull, withTheme } from "@draftbit/ui";
+import Section, { Container } from "./Section";
 
-class FieldSearchBarFullExample extends React.Component {
-  render() {
-    const {
-      theme: {
-        colors: { background },
-        spacing
-      }
-    } = this.props
-
-    return (
-      <ScrollView
-        style={[styles.container, { backgroundColor: background, paddingVertical: spacing.large }]}>
+function FieldSearchBarFullExample({ theme }) {
+  return (
+    <Container style={{ backgroundColor: theme.colors.background }}>
+      <Section title="FieldSearchBarFull">
         <FieldSearchBarFull
           placeholder="Type something..."
-          onSubmit={text => alert(`Executing search: ${text}`)}
+          onSubmit={(_text) => {}}
         />
-      </ScrollView>
-    )
-  }
+      </Section>
+    </Container>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
-
-export default withTheme(FieldSearchBarFullExample)
+export default withTheme(FieldSearchBarFullExample);

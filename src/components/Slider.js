@@ -1,7 +1,12 @@
-import * as React from "react"
-import { default as ReactNativeSlider } from "react-native-slider"
-import { withTheme } from "../core/theming"
-import { FORM_TYPES, COMPONENT_TYPES, FIELD_NAME } from "../core/component-types"
+import * as React from "react";
+// TODO replace this with community slider
+import { default as ReactNativeSlider } from "react-native-slider";
+import { withTheme } from "../core/theming";
+import {
+  FORM_TYPES,
+  COMPONENT_TYPES,
+  FIELD_NAME,
+} from "../core/component-types";
 
 const Slider = ({
   style,
@@ -22,15 +27,15 @@ const Slider = ({
   thumbSize,
   ...props
 }) => {
-  const [internalValue, setInternalValue] = React.useState(0)
+  const [internalValue, setInternalValue] = React.useState(0);
 
   const thumbStyle = {
     borderRadius: thumbBorderRadius || 0,
     width: thumbSize || (style && style.height ? style.height * 0.4 : null),
-    height: thumbSize || (style && style.width ? style.width * 0.1 : null)
-  }
+    height: thumbSize || (style && style.width ? style.width * 0.1 : null),
+  };
 
-  let actualThumbTouchSize = thumbSize + (thumbTouchSize || 0)
+  let actualThumbTouchSize = thumbSize + (thumbTouchSize || 0);
 
   return (
     <ReactNativeSlider
@@ -41,25 +46,32 @@ const Slider = ({
       maximumValue={maximumValue}
       minimumTrackTintColor={minimumTrackTintColor}
       maximumTrackTintColor={maximumTrackTintColor}
-      thumbTintColor={disabled && disabledThumbTintColor ? disabledThumbTintColor : thumbTintColor}
-      thumbTouchSize={{ width: actualThumbTouchSize || 0, height: actualThumbTouchSize || 0 }}
-      onValueChange={newValue => {
-        onValueChange(newValue)
-        setInternalValue(newValue)
+      thumbTintColor={
+        disabled && disabledThumbTintColor
+          ? disabledThumbTintColor
+          : thumbTintColor
+      }
+      thumbTouchSize={{
+        width: actualThumbTouchSize || 0,
+        height: actualThumbTouchSize || 0,
+      }}
+      onValueChange={(newValue) => {
+        onValueChange(newValue);
+        setInternalValue(newValue);
       }}
       trackStyle={{
         borderRadius: trackBorderRadius ? trackBorderRadius : 0,
         width: style ? style.width : "100%",
-        height: style ? style.height : null
+        height: style ? style.height : null,
       }}
       thumbStyle={thumbStyle}
       style={disabled ? [style, { opacity: 0.6 }] : style}
       step={step}
     />
-  )
-}
+  );
+};
 
-export default withTheme(Slider)
+export default withTheme(Slider);
 
 export const SEED_DATA = {
   name: "Slider",
@@ -75,7 +87,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      value: null
+      value: null,
     },
     maximumValue: {
       label: "Maximum value",
@@ -87,7 +99,7 @@ export const SEED_DATA = {
       max: 1000000,
       step: 1,
       precision: 0,
-      value: 10
+      value: 10,
     },
     minimumValue: {
       label: "Minimum value",
@@ -99,7 +111,7 @@ export const SEED_DATA = {
       max: 1000000,
       step: 1,
       precision: 0,
-      value: 0
+      value: 0,
     },
     step: {
       label: "Step",
@@ -111,12 +123,12 @@ export const SEED_DATA = {
       max: 100,
       step: 0.01,
       precision: 2,
-      value: null
+      value: null,
     },
     fieldName: {
       ...FIELD_NAME,
       value: "sliderValue",
-      handlerPropName: "onValueChange"
+      handlerPropName: "onValueChange",
     },
     maximumTrackTintColor: {
       label: "Maximum Color",
@@ -124,7 +136,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.color,
-      value: null
+      value: null,
     },
     minimumTrackTintColor: {
       label: "Minimum Color",
@@ -132,7 +144,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.color,
-      value: null
+      value: null,
     },
     thumbTintColor: {
       label: "Thumb Tint Color",
@@ -140,7 +152,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.color,
-      value: null
+      value: null,
     },
     disabledThumbTintColor: {
       label: "Disabled Thumb Tint Color",
@@ -148,7 +160,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.color,
-      value: null
+      value: null,
     },
     thumbTouchSize: {
       label: "Hit Slop",
@@ -160,7 +172,7 @@ export const SEED_DATA = {
       max: 100,
       step: 1,
       precision: 2,
-      value: null
+      value: null,
     },
     trackBorderRadius: {
       label: "Track Border Radius",
@@ -172,7 +184,7 @@ export const SEED_DATA = {
       max: 50,
       step: 1,
       precision: 0,
-      value: 10
+      value: 10,
     },
     thumbBorderRadius: {
       label: "Thumb Border Radius",
@@ -184,7 +196,7 @@ export const SEED_DATA = {
       max: 50,
       step: 1,
       precision: 0,
-      value: 10
+      value: 10,
     },
     thumbSize: {
       label: "Thumb Size",
@@ -196,8 +208,8 @@ export const SEED_DATA = {
       max: 100,
       step: 1,
       precision: 2,
-      value: null
-    }
+      value: null,
+    },
   },
-  layout: {}
-}
+  layout: {},
+};

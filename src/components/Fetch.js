@@ -52,7 +52,7 @@ export const SEED_DATA = {
       description: "The mode you want to use for the request",
       required: true,
       editable: true,
-      value: "same-origin",
+      value: null,
       type: FORM_TYPES.flatArray,
       options: ["cors", "no-cors", "same-origin"]
     },
@@ -61,7 +61,7 @@ export const SEED_DATA = {
       description: "The credentials you want to use for the request",
       required: true,
       editable: true,
-      value: "same-origin",
+      value: null,
       type: FORM_TYPES.flatArray,
       options: ["omit", "same-origin", "include"]
     },
@@ -70,7 +70,7 @@ export const SEED_DATA = {
       description: "Set this to true if you don't want to make the request initially",
       required: false,
       editable: true,
-      value: false,
+      value: null,
       type: FORM_TYPES.boolean
     },
     fetchPolicy: {
@@ -80,7 +80,7 @@ export const SEED_DATA = {
       required: false,
       type: FORM_TYPES.flatArray,
       options: ["cache-first", "cache-and-network", "network-only", "cache-only"],
-      value: "cache-first"
+      value: null
     },
     loading: {
       label: "Loading Component",

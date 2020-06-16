@@ -56,8 +56,8 @@ class ScreenContainer extends React.Component {
         contentContainerStyle={[
           {
             flexGrow: 1,
+            style,
           },
-          style,
         ]}
       >
         {children}

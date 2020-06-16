@@ -7,16 +7,13 @@ const parser = require("./parser");
 
 const globAsync = promisify(glob);
 
-const LOCAL_API_URL = "http://localhost:3001";
-const STAGING_API_URL = "https://api.stagingbit.com";
-const PRODUCTION_API_URL = "https://api.draftbit.com";
-
 const COMPONENT_PATH = path.resolve("./src/components");
 const MAPPING_PATH = path.resolve("./src/mappings");
 const IGNORED_FILES = [
   "src/mappings/Query.js", // doesn't work at all
   "src/mappings/LinearGradient.js", // missing gradient UI
 ];
+
 const ERROR_FILES = [];
 const COMPLETED_FILES = [];
 
@@ -31,8 +28,6 @@ async function main() {
   for (const file of files) {
     try {
       const component = await parser(file);
-      // const name = file.split("components/").pop().split(".js")[0];
-      // await writeComponentToFile(component, name);
       await uploadComponent(component);
       COMPLETED_FILES.push(file);
     } catch (error) {
@@ -45,6 +40,9 @@ async function main() {
 }
 
 function getUrl() {
+  const LOCAL_API_URL = "http://localhost:3001";
+  const STAGING_API_URL = "https://api.stagingbit.com";
+  const PRODUCTION_API_URL = "https://api.draftbit.com";
   switch (process.env.target) {
     case "staging":
       return STAGING_API_URL;
@@ -55,15 +53,14 @@ function getUrl() {
   }
 }
 
-// async function writeComponentToFile(component, name) {
-//   fs.writeFileSync(`./mappings/${name}.json`, component);
-// }
-
 async function uploadComponent(component) {
   const url = getUrl();
   await fetch(`${url}/components`, {
     method: "POST",
     body: component,
+    headers: {
+      Authorization: `Bearer: ${process.env.authToken}`,
+    },
   });
 }
 

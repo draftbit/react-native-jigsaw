@@ -1,9 +1,9 @@
-import * as React from "react"
-import { withTheme } from "../core/theming"
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
-import Row from "./Row"
-import Icon from "./Icon"
-import Config from "./Config"
+import * as React from "react";
+import { withTheme } from "../core/theming";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import Row from "./Row";
+import Icon from "./Icon";
+import Config from "./Config";
 
 class RowBodyIcon extends React.Component {
   render() {
@@ -12,8 +12,8 @@ class RowBodyIcon extends React.Component {
       subtitle,
       icon,
       style,
-      theme: { colors, typography, spacing }
-    } = this.props
+      theme: { colors, typography, spacing },
+    } = this.props;
 
     return (
       <Row
@@ -33,11 +33,11 @@ class RowBodyIcon extends React.Component {
         )}
         style={style}
       />
-    )
+    );
   }
 }
 
-export default withTheme(RowBodyIcon)
+export default withTheme(RowBodyIcon);
 
 export const SEED_DATA = [
   {
@@ -53,22 +53,23 @@ export const SEED_DATA = [
         description: "Text to display",
         type: FORM_TYPES.string,
         value: "Beautiful West Coast Villa",
-        editable: true
+        editable: true,
       },
       icon: {
         label: "Icon",
         description: "Icon to display",
         type: FORM_TYPES.icon,
         value: null,
-        editable: true
-      }
+        editable: true,
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "Row Double Line Body Icon",
     tag: "RowBodyIcon",
-    description: "A row with left aligned body text and subtitle text and a right aligned icon",
+    description:
+      "A row with left aligned body text and subtitle text and a right aligned icon",
     category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_BodyIcon.png",
     supports_list_render: true,
@@ -78,23 +79,23 @@ export const SEED_DATA = [
         description: "Text to display",
         type: FORM_TYPES.string,
         value: "Beautiful West Coast Villa",
-        editable: true
+        editable: true,
       },
       subtitle: {
         label: "Subtitle",
         description: "Subtitle text to display",
         type: FORM_TYPES.string,
         value: "San Diego",
-        editable: true
+        editable: true,
       },
       icon: {
         label: "Icon",
         description: "Icon to display",
         type: FORM_TYPES.icon,
         value: null,
-        editable: true
-      }
+        editable: true,
+      },
     },
-    layout: {}
-  }
-]
+    layout: {},
+  },
+];

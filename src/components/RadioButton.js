@@ -1,44 +1,32 @@
-import * as React from "react"
-import { withTheme } from "../core/theming"
+import * as React from "react";
+import { withTheme } from "../core/theming";
 
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
-import Config from "./Config"
-import IconButton from "./IconButton"
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import Config from "./Config";
+import IconButton from "./IconButton";
 
-class RadioButton extends React.Component {
-  onPress = () => {
-    const { onPress } = this.props
-
-    if (onPress) {
-      onPress()
-    }
-  }
-
-  render() {
-    const {
-      selected,
-      disabled,
-      color,
-      unselectedColor,
-      onPress,
-      theme: { colors }
-    } = this.props
-
-    return (
-      <IconButton
-        icon={
-          selected ? "MaterialIcons/radio-button-checked" : "MaterialIcons/radio-button-unchecked"
-        }
-        color={selected ? color : unselectedColor}
-        disabled={disabled}
-        size={Config.radioButtonSize}
-        onPress={this.onPress}
-      />
-    )
-  }
+function RadioButton({ selected, disabled, color, unselectedColor, onPress }) {
+  return (
+    <IconButton
+      icon={
+        selected
+          ? "MaterialIcons/radio-button-checked"
+          : "MaterialIcons/radio-button-unchecked"
+      }
+      color={selected ? color : unselectedColor}
+      disabled={disabled}
+      onPress={() => onPress()}
+      size={Config.radioButtonSize}
+    />
+  );
 }
 
-export default withTheme(RadioButton)
+RadioButton.defaultProps = {
+  onPress: () => {},
+  selectedColor: "#5a45ff",
+};
+
+export default withTheme(RadioButton);
 
 export const SEED_DATA = {
   name: "Radio Button",
@@ -52,7 +40,7 @@ export const SEED_DATA = {
       required: true,
       editable: true,
       value: true,
-      type: FORM_TYPES.boolean
+      type: FORM_TYPES.boolean,
     },
     color: {
       label: "Color",
@@ -60,7 +48,7 @@ export const SEED_DATA = {
       required: false,
       editable: true,
       value: "primary",
-      type: FORM_TYPES.color
+      type: FORM_TYPES.color,
     },
     unselectedColor: {
       label: "Unselected Color",
@@ -68,7 +56,7 @@ export const SEED_DATA = {
       required: false,
       editable: true,
       value: "secondary",
-      type: FORM_TYPES.color
+      type: FORM_TYPES.color,
     },
     disabled: {
       label: "Disabled",
@@ -76,11 +64,11 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: null,
-      type: FORM_TYPES.boolean
-    }
+      type: FORM_TYPES.boolean,
+    },
   },
   layout: {
     width: 24,
-    height: 24
-  }
-}
+    height: 24,
+  },
+};

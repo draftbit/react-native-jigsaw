@@ -1,16 +1,27 @@
-# Jigsaw powered by Draftbit
+# @draftbit/ui
 
-Jigsaw is Draftbit's official component libraries.
+Draftbit UI Library
 
-## Getting Started
+## Installation
 
 ```sh
-yarn
+npm install @draftbit/ui
 ```
 
-## Example
+## Usage
 
+```js
+import Ui from "@draftbit/ui";
+
+// ...
+
+const result = await Ui.multiply(3, 7);
 ```
-cd example
-yarn start
-```
+
+## Contributing
+
+See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+
+## License
+
+MIT

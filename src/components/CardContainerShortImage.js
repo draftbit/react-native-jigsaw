@@ -1,19 +1,19 @@
-import React from "react"
-import { View, Text } from "react-native"
-import Image from "./Image"
-import Card from "./Card"
-import Elevation from "./Elevation"
-import { withTheme } from "../core/theming"
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
-import Config from "./Config"
+import React from "react";
+import { View, Text } from "react-native";
+import Image from "./Image";
+import Card from "./Card";
+import Elevation from "./Elevation";
+import { withTheme } from "../core/theming";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import Config from "./Config";
 
 class CardContainerShortImage extends React.PureComponent {
   static defaultProps = {
     image: Config.squareImageUrl,
     elevation: 2,
     aspectRatio: 1,
-    mode: "left"
-  }
+    mode: "left",
+  };
 
   render() {
     const {
@@ -25,23 +25,25 @@ class CardContainerShortImage extends React.PureComponent {
       elevation,
       theme: { colors, borderRadius, typography, spacing },
       style,
-      onPress
-    } = this.props
+      onPress,
+    } = this.props;
 
     return (
       <Card style={style} onPress={onPress}>
         <Elevation
           style={{
             elevation,
-            borderRadius: borderRadius.global
-          }}>
+            borderRadius: borderRadius.global,
+          }}
+        >
           <View
             style={{
               overflow: "hidden",
               flexDirection: "row",
               justifyContent: mode === "right" ? "space-between" : "flex-start",
-              borderRadius: borderRadius.global
-            }}>
+              borderRadius: borderRadius.global,
+            }}
+          >
             {mode === "left" && (
               <Image
                 style={{ aspectRatio }}
@@ -53,15 +55,23 @@ class CardContainerShortImage extends React.PureComponent {
               style={{
                 padding: spacing.large,
                 backgroundColor: colors.surface,
-                flex: 1
-              }}>
-              <Text numberOfLines={1} style={[typography.headline5, { color: colors.strong }]}>
+                flex: 1,
+              }}
+            >
+              <Text
+                numberOfLines={1}
+                style={[typography.headline5, { color: colors.strong }]}
+              >
                 {title}
               </Text>
               {subtitle ? (
                 <Text
                   numberOfLines={1}
-                  style={[typography.body2, { color: colors.medium, marginTop: spacing.text }]}>
+                  style={[
+                    typography.body2,
+                    { color: colors.medium, marginTop: spacing.text },
+                  ]}
+                >
                   {subtitle}
                 </Text>
               ) : null}
@@ -76,17 +86,18 @@ class CardContainerShortImage extends React.PureComponent {
           </View>
         </Elevation>
       </Card>
-    )
+    );
   }
 }
 
-export default withTheme(CardContainerShortImage)
+export default withTheme(CardContainerShortImage);
 
 export const SEED_DATA = [
   {
     name: "Short Card (Left)",
     tag: "CardContainerShortImage",
-    description: "An elevated card with a left aligned image and a title and subtitle",
+    description:
+      "An elevated card with a left aligned image and a title and subtitle",
     category: COMPONENT_TYPES.card,
     preview_image_url: "{CLOUDINARY_URL}/Card_ContainerShortLeftImage.png",
     supports_list_render: true,
@@ -96,21 +107,21 @@ export const SEED_DATA = [
         description: "Image",
         type: FORM_TYPES.remoteImage,
         value: null,
-        editable: true
+        editable: true,
       },
       title: {
         label: "Title",
         description: "Title to display",
         type: FORM_TYPES.string,
         value: "Beautiful West Coast Villa",
-        editable: true
+        editable: true,
       },
       subtitle: {
         label: "Subtitle",
         description: "Subtitle to display",
         type: FORM_TYPES.string,
         value: "San Diego",
-        editable: true
+        editable: true,
       },
       aspectRatio: {
         label: "Aspect ratio",
@@ -118,7 +129,7 @@ export const SEED_DATA = [
         type: FORM_TYPES.aspectRatio,
         value: null,
         editable: true,
-        required: false
+        required: false,
       },
       elevation: {
         label: "Elevation",
@@ -129,20 +140,21 @@ export const SEED_DATA = [
         max: 3,
         step: 1,
         precision: 0,
-        editable: true
+        editable: true,
       },
       mode: {
         type: FORM_TYPES.string,
         value: "left",
-        editable: false
-      }
+        editable: false,
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "Short Card (Right)",
     tag: "CardContainerShortImage",
-    description: "An elevated card with a right aligned image and a title and subtitle",
+    description:
+      "An elevated card with a right aligned image and a title and subtitle",
     category: COMPONENT_TYPES.card,
     preview_image_url: "{CLOUDINARY_URL}/Card_ContainerShortRightImage.png",
     supports_list_render: true,
@@ -152,21 +164,21 @@ export const SEED_DATA = [
         description: "Image",
         type: FORM_TYPES.remoteImage,
         value: null,
-        editable: true
+        editable: true,
       },
       title: {
         label: "Title",
         description: "Title to display",
         type: FORM_TYPES.string,
         value: "Beautiful West Coast Villa",
-        editable: true
+        editable: true,
       },
       subtitle: {
         label: "Subtitle",
         description: "Subtitle to display",
         type: FORM_TYPES.string,
         value: "San Diego",
-        editable: true
+        editable: true,
       },
       elevation: {
         label: "Elevation",
@@ -177,14 +189,14 @@ export const SEED_DATA = [
         max: 3,
         step: 1,
         precision: 0,
-        editable: true
+        editable: true,
       },
       mode: {
         type: FORM_TYPES.string,
         value: "right",
-        editable: false
-      }
+        editable: false,
+      },
     },
-    layout: {}
-  }
-]
+    layout: {},
+  },
+];

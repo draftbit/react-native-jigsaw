@@ -1,68 +1,71 @@
-import React from "react"
-import { KEY, ICON_FAMILIES } from "../core/icons"
+import React from "react";
+import { KEY, ICON_FAMILIES } from "../core/icons";
 
 function withIcons(WrappedComponent) {
   return class extends React.Component {
     constructor(props) {
-      super(props)
+      super(props);
 
-      const iconSets = sessionStorage.getItem(KEY)
+      const iconSets = window.sessionStorage.getItem(KEY);
 
       this.state = {
         loading: !iconSets,
         iconSets: iconSets ? JSON.parse(iconSets) : {},
-        error: null
-      }
+        error: null,
+      };
     }
 
-    async componentDidMount() {
-      if (Object.keys(this.state.iconSets).length) return
+    componentDidMount() {
+      if (Object.keys(this.state.iconSets).length) return;
+      this.loadIconSet();
+    }
 
-      const iconSets = {}
+    loadIconSet = async () => {
+      const iconSets = {};
       await Promise.all(
-        ICON_FAMILIES.map(async iconFamily => {
+        ICON_FAMILIES.map(async (iconFamily) => {
           const icons = await fetch(iconFamily.url)
-            .then(res => res.json())
-            .catch(error => {
-              this.setState({ error, loading: false })
-            })
+            .then((res) => res.json())
+            .catch((error) => {
+              this.setState({ error, loading: false });
+            });
           iconSets[iconFamily.name] = {
             icons,
             label: iconFamily.label,
-            count: Object.keys(icons).length
-          }
+            count: Object.keys(icons).length,
+          };
         })
-      )
-      this.setState({ iconSets, loading: false })
-      sessionStorage.setItem(KEY, JSON.stringify(iconSets))
-    }
+      );
+      this.setState({ iconSets, loading: false });
+      window.sessionStorage.setItem(KEY, JSON.stringify(iconSets));
+    };
 
     render() {
-      return <WrappedComponent {...this.props} {...this.state} />
+      return <WrappedComponent {...this.props} {...this.state} />;
     }
-  }
+  };
 }
 
-export default withIcons(Icon)
+export default withIcons(Icon);
 
 function Icon({ loading, iconSets, name: path, color, size }) {
   if (!path || !iconSets || loading) {
-    return null
+    return null;
   }
 
   // Originally, only MaterialIcons were supported, so not all legacy
   // apps in draftbit define icons with fully-qualified icon names.
-  let set = "MaterialIcons"
-  let name = path
+  let set = "MaterialIcons";
+  let name = path;
 
   if (path.includes("/")) {
-    ;[set, name] = path.split("/")
+    [set, name] = path.split("/");
   }
 
-  const icons = iconSets[set] && iconSets[set].icons
+  const icons = iconSets[set] && iconSets[set].icons;
 
   if (!icons) {
-    return null
+    return null;
   }
 
   return (
@@ -71,9 +74,10 @@ function Icon({ loading, iconSets, name: path, color, size }) {
         fontFamily: set,
         fontSize: size,
         lineHeight: size + "px",
-        color
-      }}>
+        color,
+      }}
+    >
       {String.fromCharCode(icons[name])}
     </span>
-  )
+  );
 }

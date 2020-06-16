@@ -1,6 +1,5 @@
-import React from "react"
-import { TouchableOpacity } from "react-native"
+import { TouchableOpacity } from "react-native";
 
-TouchableOpacity.Ripple = () => null
+TouchableOpacity.Ripple = () => null;
 
-export default TouchableOpacity
+export default TouchableOpacity;

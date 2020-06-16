@@ -1,112 +1,86 @@
-import * as React from "react"
-import { View, ScrollView, StyleSheet, Text } from "react-native"
-import { DatePicker, withTheme } from "@draftbit/ui"
+import * as React from "react";
+import { DatePicker, withTheme } from "@draftbit/ui";
+import Section, { Container } from "./Section";
 
-class DatePickerExample extends React.Component {
-  state = {
-    underlinePickerDate: new Date(),
-    solidPickerDate: new Date()
-  }
+function DatePickerExample({ theme }) {
+  const [date, setDate] = React.useState(new Date());
+  const handleChange = (d) => setDate(d);
 
-  render() {
-    const { colors, spacing } = this.props.theme
+  return (
+    <Container style={{ backgroundColor: theme.colors.background }}>
+      <Section title="Underline">
+        <DatePicker
+          label="Date"
+          placeholder="Select a date..."
+          date={date}
+          onDateChange={handleChange}
+        />
 
-    return (
-      <ScrollView
-        style={[
-          styles.container,
-          {
-            backgroundColor: colors.background,
-            paddingHorizontal: spacing.large
-          }
-        ]}>
-        <View>
-          <Text style={{ marginVertical: spacing.large }}>Date Picker - Underline</Text>
-          <DatePicker
-            label="Date"
-            placeholder="Select a date..."
-            date={this.state.underlinePickerDate}
-            onDateChange={underlinePickerDate => this.setState({ underlinePickerDate })}
-          />
-          <Text style={{ marginVertical: spacing.large }}>Date Picker - Underline (Error)</Text>
-          <DatePicker
-            label="Date"
-            placeholder="Select a date..."
-            date={this.state.underlinePickerDate}
-            error
-            onDateChange={underlinePickerDate => this.setState({ underlinePickerDate })}
-          />
-          <Text style={{ marginVertical: spacing.large }}>Date Picker - Underline (Disabled)</Text>
-          <DatePicker
-            label="Date"
-            placeholder="Select a date..."
-            date={this.state.underlinePickerDate}
-            disabled
-            onDateChange={underlinePickerDate => this.setState({ underlinePickerDate })}
-          />
-          <Text style={{ marginVertical: spacing.large }}>Date Picker - Solid</Text>
-          <DatePicker
-            label="Date"
-            placeholder="Select a date..."
-            type="solid"
-            date={this.state.solidPickerDate}
-            onDateChange={solidPickerDate => this.setState({ solidPickerDate })}
-          />
-          <Text style={{ marginVertical: spacing.large }}>Time Picker - Solid</Text>
-          <DatePicker
-            label="Time"
-            mode="time"
-            placeholder="Select a time..."
-            type="solid"
-            date={this.state.solidPickerDate}
-            onDateChange={solidPickerDate => this.setState({ solidPickerDate })}
-          />
-          <DatePicker
-            label="Formatted Time"
-            mode="time"
-            placeholder="Select a time..."
-            format="h:mm tt"
-            type="solid"
-            date={this.state.solidPickerDate}
-            onDateChange={solidPickerDate => this.setState({ solidPickerDate })}
-          />
-          <Text style={{ marginVertical: spacing.large }}>DateTime Picker - Solid</Text>
-          <DatePicker
-            label="Date Time"
-            mode="datetime"
-            placeholder="Select a datetime..."
-            type="solid"
-            date={this.state.solidPickerDate}
-            onDateChange={solidPickerDate => this.setState({ solidPickerDate })}
-          />
-          <Text style={{ marginVertical: spacing.large }}>Date Picker - Solid (Error)</Text>
-          <DatePicker
-            label="Date"
-            placeholder="Select a date..."
-            type="solid"
-            date={this.state.solidPickerDate}
-            error
-            onDateChange={solidPickerDate => this.setState({ solidPickerDate })}
-          />
-          <Text style={{ marginVertical: spacing.large }}>Date Picker - Solid (Disabled)</Text>
-          <DatePicker
-            label="Date"
-            placeholder="Select a date..."
-            type="solid"
-            date={this.state.solidPickerDate}
-            disabled
-            onDateChange={solidPickerDate => this.setState({ solidPickerDate })}
-          />
-        </View>
-      </ScrollView>
-    )
-  }
+        <DatePicker
+          label="Date"
+          placeholder="Select a date..."
+          error
+          date={date}
+          onDateChange={handleChange}
+        />
+
+        <DatePicker
+          label="Date"
+          placeholder="Select a date..."
+          disabled
+          date={date}
+          onDateChange={handleChange}
+        />
+      </Section>
+
+      <Section title="Solid">
+        <DatePicker
+          label="Date"
+          placeholder="Select a date..."
+          type="solid"
+          date={date}
+          onDateChange={handleChange}
+        />
+
+        <DatePicker
+          label="Formatted Time"
+          mode="time"
+          placeholder="Select a time..."
+          format="h:MM TT"
+          type="solid"
+          date={date}
+          onDateChange={handleChange}
+        />
+
+        <DatePicker
+          label="Date Time"
+          mode="datetime"
+          placeholder="Select a datetime..."
+          type="solid"
+          date={date}
+          onDateChange={handleChange}
+        />
+
+        <DatePicker
+          label="Date"
+          placeholder="Select a date..."
+          type="solid"
+          disabled
+          date={date}
+          onDateChange={handleChange}
+        />
+
+        <DatePicker
+          label="Date"
+          placeholder="Select a date..."
+          type="solid"
+          error
+          date={date}
+          onDateChange={handleChange}
+        />
+      </Section>
+    </Container>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
-
-export default withTheme(DatePickerExample)
+export default withTheme(DatePickerExample);

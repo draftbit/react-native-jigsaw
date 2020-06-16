@@ -1,55 +1,71 @@
-import * as React from "react"
-import { View, Text, StyleSheet } from "react-native"
-import { withTheme } from "../core/theming"
+import * as React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { withTheme } from "../core/theming";
 
-import Slider from "./Slider"
-import { FORM_TYPES, COMPONENT_TYPES, FIELD_NAME } from "../core/component-types"
+import Slider from "./Slider";
+import {
+  FORM_TYPES,
+  COMPONENT_TYPES,
+  FIELD_NAME,
+} from "../core/component-types";
 
 class FieldSlider extends React.Component {
   render() {
-    const { title, minimumLabel, maximumLabel, style, theme, ...props } = this.props
-    const { colors, typography, spacing } = theme
+    const {
+      title,
+      minimumLabel,
+      maximumLabel,
+      style,
+      theme,
+      ...props
+    } = this.props;
+    const { colors, typography, spacing } = theme;
 
-    const labelStyle = [typography.caption, { color: colors.light }]
+    const labelStyle = [typography.caption, { color: colors.light }];
 
     return (
       <View style={[styles.container, style]}>
         {title && (
-          <Text style={[typography.body1, { marginBottom: spacing.text / 2 }]}>{title}</Text>
+          <Text style={[typography.body1, { marginBottom: spacing.text / 2 }]}>
+            {title}
+          </Text>
         )}
         <Slider
           style={{
             width: style && style.width,
-            height: style && style.height
+            height: style && style.height,
           }}
           {...props}
         />
         <View style={[styles.bottomContainer, { marginTop: spacing.text }]}>
           <Text style={[labelStyle, { flex: 1 }]}>{minimumLabel}</Text>
           <Text style={labelStyle}>{this.props.value}</Text>
-          <Text style={[labelStyle, { flex: 1, textAlign: "right" }]}>{maximumLabel}</Text>
+          <Text style={[labelStyle, { flex: 1, textAlign: "right" }]}>
+            {maximumLabel}
+          </Text>
         </View>
       </View>
-    )
+    );
   }
 }
 
-export default withTheme(FieldSlider)
+export default withTheme(FieldSlider);
 
 const styles = StyleSheet.create({
   container: {
-    alignSelf: "stretch"
+    alignSelf: "stretch",
   },
   bottomContainer: {
     flexDirection: "row",
-    justifyContent: "space-between"
-  }
-})
+    justifyContent: "space-between",
+  },
+});
 
 export const SEED_DATA = {
   name: "Slider Field",
   tag: "FieldSlider",
-  description: "A component used to set a value in a range, along with a title and label text",
+  description:
+    "A component used to set a value in a range, along with a title and label text",
   category: COMPONENT_TYPES.field,
   preview_image_url: "{CLOUDINARY_URL}/Field_Slider.png",
   supports_list_render: false,
@@ -60,7 +76,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.string,
-      value: "Title"
+      value: "Title",
     },
     minimumLabel: {
       label: "Minimum label",
@@ -68,7 +84,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.string,
-      value: "0"
+      value: "0",
     },
     maximumLabel: {
       label: "Maximum label",
@@ -76,7 +92,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.string,
-      value: "10"
+      value: "10",
     },
     disabled: {
       label: "Disabled",
@@ -84,7 +100,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      value: null
+      value: null,
     },
     maximumValue: {
       label: "Maximum value",
@@ -96,7 +112,7 @@ export const SEED_DATA = {
       max: 1000000,
       step: 1,
       precision: 0,
-      value: 10
+      value: 10,
     },
     minimumValue: {
       label: "Minimum value",
@@ -108,7 +124,7 @@ export const SEED_DATA = {
       max: 1000000,
       step: 1,
       precision: 0,
-      value: 0
+      value: 0,
     },
     step: {
       label: "Step",
@@ -120,12 +136,12 @@ export const SEED_DATA = {
       max: 100,
       step: 0.01,
       precision: 2,
-      value: 1
+      value: 1,
     },
     fieldName: {
       ...FIELD_NAME,
       value: "sliderValue",
-      handlerPropName: "onValueChange"
+      handlerPropName: "onValueChange",
     },
     maximumTrackTintColor: {
       label: "Maximum Color",
@@ -133,7 +149,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.color,
-      value: null
+      value: null,
     },
     minimumTrackTintColor: {
       label: "Minimum Color",
@@ -141,7 +157,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.color,
-      value: null
+      value: null,
     },
     thumbTintColor: {
       label: "Thumb Tint Color",
@@ -149,7 +165,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.color,
-      value: null
+      value: null,
     },
     thumbTouchSize: {
       label: "Hit Slop",
@@ -161,7 +177,7 @@ export const SEED_DATA = {
       max: 40,
       step: 1,
       precision: 2,
-      value: null
+      value: null,
     },
     trackBorderRadius: {
       label: "Track Border Radius",
@@ -173,7 +189,7 @@ export const SEED_DATA = {
       max: 50,
       step: 1,
       precision: 0,
-      value: 10
+      value: 10,
     },
     thumbBorderRadius: {
       label: "Thumb Border Radius",
@@ -185,7 +201,7 @@ export const SEED_DATA = {
       max: 50,
       step: 1,
       precision: 0,
-      value: 10
+      value: 10,
     },
     thumbSize: {
       label: "Thumb Size",
@@ -197,8 +213,8 @@ export const SEED_DATA = {
       max: 100,
       step: 1,
       precision: 2,
-      value: null
-    }
+      value: null,
+    },
   },
-  layout: {}
-}
+  layout: {},
+};

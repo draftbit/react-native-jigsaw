@@ -65,7 +65,7 @@ class CardContainerRating extends React.PureComponent {
             <Image
               style={{ aspectRatio }}
               source={typeof image === "string" ? { uri: image } : image}
-              resizeMode="cover"
+              resizeMode="contain"
             />
             <View style={{ padding: spacing.large }}>
               {title ? (

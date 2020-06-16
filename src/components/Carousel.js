@@ -1,6 +1,5 @@
 import React from "react";
-import { ScrollView, View, StyleSheet } from "react-native";
-import Image from "./Image";
+import { ScrollView, View, StyleSheet, Image } from "react-native";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
@@ -79,7 +78,12 @@ class Carousel extends React.PureComponent {
                 <Image
                   source={typeof image === "string" ? { uri: image } : image}
                   resizeMode={resizeMode}
-                  style={{ width, flex: 1, aspectRatio }}
+                  style={{
+                    width: width,
+                    flex: 1,
+                    aspectRatio,
+                    height: style.height,
+                  }}
                 />
               </View>
             );

@@ -4,9 +4,8 @@
     "paths": {
       "@draftbit/ui": ["./src/index"]
     },
-    "allowJs": true,
     "allowUnreachableCode": false,
-    "allowUnusedLabels": true,
+    "allowUnusedLabels": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
@@ -16,14 +15,13 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
-    "noImplicitAny": false,
     "noStrictGenericChecks": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "noImplicitAny": false,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": false,
-    "target": "esnext",
-    "noEmit": true
+    "strict": true,
+    "target": "esnext"
   }
 }

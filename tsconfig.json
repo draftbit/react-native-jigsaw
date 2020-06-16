@@ -4,8 +4,9 @@
     "paths": {
       "@draftbit/ui": ["./src/index"]
     },
+    "allowJs": true,
     "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
+    "allowUnusedLabels": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
@@ -20,7 +21,7 @@
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "target": "esnext"
   }
 }

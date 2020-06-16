@@ -1,13 +1,13 @@
-import React from "react"
-import { ScrollView, View, StyleSheet } from "react-native"
-import Image from "./Image"
-import Elevation from "./Elevation"
-import { withTheme } from "../core/theming"
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types"
-import Config from "./Config"
+import React from "react";
+import { ScrollView, View, StyleSheet } from "react-native";
+import Image from "./Image";
+import Elevation from "./Elevation";
+import { withTheme } from "../core/theming";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import Config from "./Config";
 
 class Carousel extends React.PureComponent {
-  state = {}
+  state = {};
 
   static defaultProps = {
     images: [
@@ -17,49 +17,61 @@ class Carousel extends React.PureComponent {
       Config.placeholderImageURL,
       Config.placeholderImageURL,
       Config.placeholderImageURL,
-      Config.placeholderImageURL
+      Config.placeholderImageURL,
     ],
     resizeMode: "cover",
-    style: { height: 250 }
-  }
+    style: { height: 250 },
+  };
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      scrollOffset: 0
-    }
+      scrollOffset: 0,
+    };
   }
 
-  handleScroll = e => {
-    this.setState({ scrollOffset: e.nativeEvent.contentOffset.x })
-  }
+  handleScroll = (e) => {
+    this.setState({ scrollOffset: e.nativeEvent.contentOffset.x });
+  };
 
-  onPageLayout = event => {
-    const { width } = event.nativeEvent.layout
-    this.setState({ width })
-  }
+  onPageLayout = (event) => {
+    const { width } = event.nativeEvent.layout;
+    this.setState({ width });
+  };
 
   render() {
-    const { images, aspectRatio, swiperPalette, resizeMode, dotColor, theme, style } = this.props
-    const { colors, spacing } = theme
-    const { width } = this.state
+    const {
+      images,
+      aspectRatio,
+      swiperPalette,
+      resizeMode,
+      dotColor,
+      theme,
+      style,
+    } = this.props;
+    const { colors, spacing } = theme;
+    const { width } = this.state;
 
     return (
-      <View style={[styles.container, { aspectRatio }, style]} onLayout={this.onPageLayout}>
+      <View
+        style={[styles.container, { aspectRatio }, style]}
+        onLayout={this.onPageLayout}
+      >
         <ScrollView
           onScroll={this.handleScroll}
           horizontal
           pagingEnabled
           showsHorizontalScrollIndicator={false}
-          scrollEventThrottle={16}>
+          scrollEventThrottle={16}
+        >
           {images.map((image, index) => {
-            const imageStyle = { width }
+            const imageStyle = { width };
 
             if (aspectRatio) {
-              imageStyle.aspectRatio = aspectRatio
+              imageStyle.aspectRatio = aspectRatio;
             } else {
-              imageStyle.flex = 1
+              imageStyle.flex = 1;
             }
 
             return (
@@ -70,30 +82,31 @@ class Carousel extends React.PureComponent {
                   style={{ width, flex: 1, aspectRatio }}
                 />
               </View>
-            )
+            );
           })}
         </ScrollView>
         <View style={[styles.swipeNavWrapper, { bottom: spacing.large }]}>
           <View style={styles.swipeNav}>
             {Array.from({ length: images.length }, (_, i) => {
-              const calculatedIndex = this.state.scrollOffset / width
-              const activeDot = calculatedIndex >= i - 0.5 && calculatedIndex < i + 0.5
+              const calculatedIndex = this.state.scrollOffset / width;
+              const activeDot =
+                calculatedIndex >= i - 0.5 && calculatedIndex < i + 0.5;
 
-              let backgroundColor
+              let backgroundColor;
               if (dotColor) {
-                backgroundColor = dotColor
+                backgroundColor = dotColor;
               } else {
                 if (swiperPalette === "surface") {
                   if (activeDot) {
-                    backgroundColor = colors.strong
+                    backgroundColor = colors.strong;
                   } else {
-                    backgroundColor = colors.light
+                    backgroundColor = colors.light;
                   }
                 } else {
                   if (activeDot) {
-                    backgroundColor = colors.background
+                    backgroundColor = colors.background;
                   } else {
-                    backgroundColor = colors.surface
+                    backgroundColor = colors.surface;
                   }
                 }
               }
@@ -104,58 +117,58 @@ class Carousel extends React.PureComponent {
                   style={[
                     {
                       backgroundColor,
-                      marginHorizontal: spacing.small / 2
+                      marginHorizontal: spacing.small / 2,
                     },
                     styles.dot,
-                    activeDot ? styles.activeDot : null
+                    activeDot ? styles.activeDot : null,
                   ]}
                 />
-              )
+              );
             })}
           </View>
         </View>
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    alignSelf: "stretch"
+    alignSelf: "stretch",
   },
   slidingPanel: {
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   swipeNavWrapper: {
     position: "absolute",
     justifyContent: "center",
     alignItems: "center",
     left: 0,
-    right: 0
+    right: 0,
   },
   swipeNav: {
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   dot: {
     opacity: 0.5,
     width: Config.swiperInactiveDotSize,
     height: Config.swiperInactiveDotSize,
-    borderRadius: Config.swiperInactiveDotSize
+    borderRadius: Config.swiperInactiveDotSize,
   },
   activeDot: {
     opacity: 1,
     elevation: 1,
     width: Config.swiperActiveDotSize,
     height: Config.swiperActiveDotSize,
-    borderRadius: Config.swiperActiveDotSize
-  }
-})
+    borderRadius: Config.swiperActiveDotSize,
+  },
+});
 
-export default withTheme(Carousel)
+export default withTheme(Carousel);
 
 export const SEED_DATA = [
   {
@@ -166,7 +179,7 @@ export const SEED_DATA = [
     preview_image_url: "{CLOUDINARY_URL}/Carousel.png",
     supports_list_render: false,
     layout: {
-      height: 250
+      height: 250,
     },
     props: {
       images: {
@@ -174,7 +187,7 @@ export const SEED_DATA = [
         description: "A series of images to display in the carousel",
         editable: true,
         type: FORM_TYPES.localImageArray,
-        value: null
+        value: null,
       },
       resizeMode: {
         label: "Resize Mode",
@@ -184,7 +197,7 @@ export const SEED_DATA = [
         required: false,
         value: "cover",
         type: FORM_TYPES.flatArray,
-        options: ["cover", "contain", "stretch", "repeat", "center"]
+        options: ["cover", "contain", "stretch", "repeat", "center"],
       },
       dotColor: {
         label: "Dot Color",
@@ -192,8 +205,8 @@ export const SEED_DATA = [
         editable: true,
         required: true,
         value: "strong",
-        type: FORM_TYPES.color
-      }
-    }
-  }
-]
+        type: FORM_TYPES.color,
+      },
+    },
+  },
+];

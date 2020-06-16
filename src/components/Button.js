@@ -1,13 +1,13 @@
-import * as React from "react"
-import { ActivityIndicator, View, Text, StyleSheet } from "react-native"
-import color from "color"
-import Config from "./Config"
-import Icon from "./Icon"
-import Touchable from "./Touchable"
-import Elevation from "./Elevation"
-import { withTheme } from "../core/theming"
+import * as React from "react";
+import { ActivityIndicator, View, Text, StyleSheet } from "react-native";
+import color from "color";
+import Config from "./Config";
+import Icon from "./Icon";
+import Touchable from "./Touchable";
+import Elevation from "./Elevation";
+import { withTheme } from "../core/theming";
 
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types"
+import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
 
 /**
  * A button is component that the user can press to trigger an action.
@@ -45,8 +45,8 @@ import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types"
 class Button extends React.Component {
   static defaultProps = {
     elevation: 0,
-    type: "solid"
-  }
+    type: "solid",
+  };
 
   render() {
     const {
@@ -62,74 +62,71 @@ class Button extends React.Component {
       style,
       theme,
       ...rest
-    } = this.props
+    } = this.props;
 
-    const { colors, disabledOpacity, borderRadius, spacing, typography } = theme
+    const {
+      colors,
+      disabledOpacity,
+      borderRadius,
+      spacing,
+      typography,
+    } = theme;
 
-    let backgroundColor, borderColor, textColor, borderWidth
-    const buttonColor = colorOverride || colors.primary
+    let backgroundColor, borderColor, textColor, borderWidth;
+    const buttonColor = colorOverride || colors.primary;
 
     if (type === "solid") {
-      backgroundColor = buttonColor
+      backgroundColor = buttonColor;
 
       if (disabled) {
-        textColor = color(colors.surface)
-          .alpha(disabledOpacity)
-          .rgb()
-          .string()
+        textColor = color(colors.surface).alpha(disabledOpacity).rgb().string();
       } else {
-        textColor = labelColor || colors.surface
+        textColor = labelColor || colors.surface;
       }
     } else {
-      backgroundColor = "transparent"
+      backgroundColor = "transparent";
 
       if (disabled) {
-        textColor = color(buttonColor)
-          .alpha(disabledOpacity)
-          .rgb()
-          .string()
+        textColor = color(buttonColor).alpha(disabledOpacity).rgb().string();
       } else {
-        textColor = labelColor || buttonColor
+        textColor = labelColor || buttonColor;
       }
     }
 
     if (type === "outline") {
       if (disabled) {
-        borderColor = color(buttonColor)
-          .alpha(disabledOpacity)
-          .rgb()
-          .string()
+        borderColor = color(buttonColor).alpha(disabledOpacity).rgb().string();
       } else {
-        borderColor = buttonColor
+        borderColor = buttonColor;
       }
-      borderWidth = StyleSheet.hairlineWidth
+      borderWidth = StyleSheet.hairlineWidth;
     } else {
-      borderColor = "transparent"
-      borderWidth = 0
+      borderColor = "transparent";
+      borderWidth = 0;
     }
 
     const buttonStyle = {
       backgroundColor,
       borderColor,
       borderWidth,
-      borderRadius: borderRadius.button
-    }
+      borderRadius: borderRadius.button,
+    };
 
     const textStyle = {
       textAlign: "center",
       color: textColor,
       marginVertical: spacing.large,
-      marginHorizontal: spacing.large
-    }
+      marginHorizontal: spacing.large,
+    };
 
     const iconStyle = [
       styles.icon,
       {
         marginLeft: spacing.large,
         marginRight: -8,
-        width: Config.buttonIconSize
-      }
-    ]
+        width: Config.buttonIconSize,
+      },
+    ];
 
     return (
       <Elevation style={{ elevation, alignSelf: "stretch" }}>
@@ -139,42 +136,54 @@ class Button extends React.Component {
           accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
           accessibilityComponentType="button"
           disabled={disabled || loading}
-          style={[styles.button, buttonStyle, style]}>
+          style={[styles.button, buttonStyle, style]}
+        >
           <View style={styles.content}>
             {icon && loading !== true ? (
               <View style={iconStyle}>
-                <Icon name={icon} size={Config.buttonIconSize} color={textColor} />
+                <Icon
+                  name={icon}
+                  size={Config.buttonIconSize}
+                  color={textColor}
+                />
               </View>
             ) : null}
             {loading ? (
-              <ActivityIndicator size="small" color={textColor} style={iconStyle} />
+              <ActivityIndicator
+                size="small"
+                color={textColor}
+                style={iconStyle}
+              />
             ) : null}
-            <Text numberOfLines={1} style={[styles.label, textStyle, typography.button]}>
+            <Text
+              numberOfLines={1}
+              style={[styles.label, textStyle, typography.button]}
+            >
               {children}
             </Text>
           </View>
         </Touchable>
       </Elevation>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   button: {
     minWidth: 64,
-    borderStyle: "solid"
+    borderStyle: "solid",
   },
   content: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   icon: {
-    width: Config.buttonIconSize
-  }
-})
+    width: Config.buttonIconSize,
+  },
+});
 
-export default withTheme(Button)
+export default withTheme(Button);
 
 const SEED_DATA_PROPS = {
   icon: {
@@ -183,7 +192,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: true,
     type: FORM_TYPES.icon,
-    value: null
+    value: null,
   },
   children: {
     label: "Label",
@@ -191,7 +200,7 @@ const SEED_DATA_PROPS = {
     required: true,
     editable: true,
     type: FORM_TYPES.string,
-    value: "Get Started"
+    value: "Get Started",
   },
   color: {
     label: "Color Override",
@@ -199,7 +208,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
     type: FORM_TYPES.color,
-    value: null
+    value: null,
   },
   labelColor: {
     label: "Label Color Override",
@@ -207,7 +216,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
     type: FORM_TYPES.color,
-    value: null
+    value: null,
   },
   disabled: {
     label: "Disabled",
@@ -215,7 +224,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
     type: FORM_TYPES.boolean,
-    value: null
+    value: null,
   },
   loading: {
     label: "Loading",
@@ -223,16 +232,16 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
     type: FORM_TYPES.boolean,
-    value: null
+    value: null,
   },
   onPress: {
     label: "Action",
     description: "Action to execute when button pressed",
     editable: true,
     type: FORM_TYPES.action,
-    value: null
-  }
-}
+    value: null,
+  },
+};
 
 export const SEED_DATA = [
   {
@@ -248,10 +257,10 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         type: FORM_TYPES.string,
-        value: "outline"
-      }
+        value: "outline",
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "Button Solid",
@@ -266,9 +275,9 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         type: FORM_TYPES.string,
-        value: "solid"
-      }
+        value: "solid",
+      },
     },
-    layout: {}
-  }
-]
+    layout: {},
+  },
+];

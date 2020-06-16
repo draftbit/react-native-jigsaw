@@ -1,24 +1,28 @@
-import React from "react"
-import { View, Text } from "react-native"
-import color from "color"
-import Image from "./Image"
-import Card from "./Card"
-import Elevation from "./Elevation"
-import Icon from "./Icon"
-import { withTheme } from "../core/theming"
-import { FORM_TYPES, COMPONENT_TYPES, ELEVATION_TYPE } from "../core/component-types"
-import Config from "./Config"
+import React from "react";
+import { View, Text } from "react-native";
+import color from "color";
+import Image from "./Image";
+import Card from "./Card";
+import Elevation from "./Elevation";
+import Icon from "./Icon";
+import { withTheme } from "../core/theming";
+import {
+  FORM_TYPES,
+  COMPONENT_TYPES,
+  ELEVATION_TYPE,
+} from "../core/component-types";
+import Config from "./Config";
 
-const ICON_CONTAINER_SIZE = Config.cardIconSize * 2
-const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1
+const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
+const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
 
 class CardContainer extends React.PureComponent {
   static defaultProps = {
     image: Config.cardImageUrl,
     aspectRatio: 1.5,
     elevation: 2,
-    numColumns: 3
-  }
+    numColumns: 3,
+  };
 
   render() {
     const {
@@ -33,23 +37,23 @@ class CardContainer extends React.PureComponent {
       numColumns,
       theme: { colors, borderRadius, typography, spacing },
       style,
-      onPress
-    } = this.props
+      onPress,
+    } = this.props;
 
-    let textJustification, titleStyle
+    let textJustification, titleStyle;
     if (textCentered && !rightDescription) {
-      textJustification = "center"
+      textJustification = "center";
     } else {
-      textJustification = "space-between"
+      textJustification = "space-between";
     }
 
     switch (numColumns) {
       case 2:
-        titleStyle = typography.headline6
-        break
+        titleStyle = typography.headline6;
+        break;
       case 3:
-        titleStyle = typography.headline5
-        break
+        titleStyle = typography.headline5;
+        break;
     }
 
     return (
@@ -59,8 +63,9 @@ class CardContainer extends React.PureComponent {
             style={{
               borderRadius: borderRadius.global,
               overflow: "hidden",
-              backgroundColor: colors.surface
-            }}>
+              backgroundColor: colors.surface,
+            }}
+          >
             <Image
               style={{ aspectRatio }}
               source={typeof image === "string" ? { uri: image } : image}
@@ -72,9 +77,13 @@ class CardContainer extends React.PureComponent {
                   style={{
                     flexDirection: "row",
                     alignItems: "center",
-                    justifyContent: textJustification
-                  }}>
-                  <Text numberOfLines={1} style={[titleStyle, { color: colors.strong }]}>
+                    justifyContent: textJustification,
+                  }}
+                >
+                  <Text
+                    numberOfLines={1}
+                    style={[titleStyle, { color: colors.strong }]}
+                  >
                     {title}
                   </Text>
                 </View>
@@ -85,13 +94,21 @@ class CardContainer extends React.PureComponent {
                     flexDirection: "row",
                     justifyContent: textJustification,
                     alignItems: "center",
-                    marginTop: numColumns === 3 ? spacing.text : spacing.text / 2
-                  }}>
-                  <Text numberOfLines={1} style={[typography.body2, { color: colors.medium }]}>
+                    marginTop:
+                      numColumns === 3 ? spacing.text : spacing.text / 2,
+                  }}
+                >
+                  <Text
+                    numberOfLines={1}
+                    style={[typography.body2, { color: colors.medium }]}
+                  >
                     {leftDescription}
                   </Text>
                   {rightDescription ? (
-                    <Text numberOfLines={1} style={[typography.subtitle2, { color: colors.light }]}>
+                    <Text
+                      numberOfLines={1}
+                      style={[typography.subtitle2, { color: colors.light }]}
+                    >
                       {rightDescription}
                     </Text>
                   ) : null}
@@ -112,19 +129,24 @@ class CardContainer extends React.PureComponent {
                   backgroundColor: color(colors.strong)
                     .alpha(Config.cardIconBackgroundOpacity)
                     .rgb()
-                    .string()
-                }}>
-                <Icon name={icon} size={Config.cardIconSize} color={colors.surface} />
+                    .string(),
+                }}
+              >
+                <Icon
+                  name={icon}
+                  size={Config.cardIconSize}
+                  color={colors.surface}
+                />
               </Elevation>
             ) : null}
           </View>
         </Elevation>
       </Card>
-    )
+    );
   }
 }
 
-export default withTheme(CardContainer)
+export default withTheme(CardContainer);
 
 const SEED_DATA_PROPS = {
   image: {
@@ -132,52 +154,52 @@ const SEED_DATA_PROPS = {
     description: "Image",
     type: FORM_TYPES.remoteImage,
     value: null,
-    editable: true
+    editable: true,
   },
   title: {
     label: "Title",
     description: "Text to display",
     type: FORM_TYPES.string,
     value: "Beautiful West Coast Villa",
-    editable: true
+    editable: true,
   },
   leftDescription: {
     label: "Left description",
     description: "Text to display on the left",
     type: FORM_TYPES.string,
     value: "San Diego",
-    editable: true
+    editable: true,
   },
   rightDescription: {
     label: "Right description",
     description: "Text to display on the right",
     type: FORM_TYPES.string,
     value: "$100",
-    editable: true
+    editable: true,
   },
   icon: {
     label: "Icon",
     description: "Icon to display on the top right",
     type: FORM_TYPES.icon,
     value: null,
-    editable: true
+    editable: true,
   },
   aspectRatio: {
     label: "Aspect ratio",
     description: "Aspect ratio of the image",
     type: FORM_TYPES.aspectRatio,
     value: 1.5,
-    editable: true
+    editable: true,
   },
   textCentered: {
     label: "Text centered",
     description: "Whether to center the text",
     type: FORM_TYPES.boolean,
     value: false,
-    editable: true
+    editable: true,
   },
-  elevation: ELEVATION_TYPE
-}
+  elevation: ELEVATION_TYPE,
+};
 
 export const SEED_DATA = [
   {
@@ -193,15 +215,16 @@ export const SEED_DATA = [
       numColumns: {
         type: FORM_TYPES.number,
         value: 2,
-        editable: false
-      }
+        editable: false,
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "Large Card",
     tag: "CardContainer",
-    description: "An elevated card with a title and description, that takes up its full container.",
+    description:
+      "An elevated card with a title and description, that takes up its full container.",
     category: COMPONENT_TYPES.card,
     preview_image_url: "{CLOUDINARY_URL}/Card_Container_3col.png",
     supports_list_render: true,
@@ -210,9 +233,9 @@ export const SEED_DATA = [
       numColumns: {
         type: FORM_TYPES.number,
         value: 3,
-        editable: false
-      }
+        editable: false,
+      },
     },
-    layout: {}
-  }
-]
+    layout: {},
+  },
+];

@@ -1,9 +1,13 @@
-import * as React from "react"
-import { withTheme } from "../core/theming"
-import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
-import Row from "./Row"
-import Checkbox from "./Checkbox"
-import Config from "./Config"
+import * as React from "react";
+import { withTheme } from "../core/theming";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  FIELD_NAME,
+} from "../core/component-types";
+import Row from "./Row";
+import Checkbox from "./Checkbox";
+import Config from "./Config";
 
 class RowBodyCheckbox extends React.Component {
   render() {
@@ -14,8 +18,8 @@ class RowBodyCheckbox extends React.Component {
       status,
       onPress,
       color,
-      theme: { colors, typography }
-    } = this.props
+      theme: { colors, typography },
+    } = this.props;
 
     return (
       <Row
@@ -35,17 +39,18 @@ class RowBodyCheckbox extends React.Component {
         )}
         style={style}
       />
-    )
+    );
   }
 }
 
-export default withTheme(RowBodyCheckbox)
+export default withTheme(RowBodyCheckbox);
 
 export const SEED_DATA = [
   {
     name: "Row Single Line Body Checkbox",
     tag: "RowBodyCheckbox",
-    description: "A row with left aligned body text and a right aligned checkbox",
+    description:
+      "A row with left aligned body text and a right aligned checkbox",
     preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_BodyCheckbox.png",
     category: COMPONENT_TYPES.deprecated,
     supports_list_render: true,
@@ -55,28 +60,29 @@ export const SEED_DATA = [
         description: "Text to display",
         type: FORM_TYPES.string,
         value: "Beautiful West Coast Villa",
-        editable: true
+        editable: true,
       },
       color: {
         label: "Checkbox color",
         description: "Custom color for Checkbox",
         editable: true,
         required: false,
-        type: FORM_TYPES.color
+        type: FORM_TYPES.color,
       },
       fieldName: {
         ...FIELD_NAME,
         value: "checkboxValue",
         valuePropName: "status",
-        handlerPropName: "onPress"
-      }
+        handlerPropName: "onPress",
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "Row Double Line Body Checkbox",
     tag: "RowBodyCheckbox",
-    description: "A row with left aligned body text and subtitle text and a right aligned checkbox",
+    description:
+      "A row with left aligned body text and subtitle text and a right aligned checkbox",
     category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_BodyCheckbox.png",
     supports_list_render: true,
@@ -86,29 +92,29 @@ export const SEED_DATA = [
         description: "Text to display",
         type: FORM_TYPES.string,
         value: "Beautiful West Coast Villa",
-        editable: true
+        editable: true,
       },
       subtitle: {
         label: "Subtitle",
         description: "Subtitle text to display",
         type: FORM_TYPES.string,
         value: "San Diego",
-        editable: true
+        editable: true,
       },
       color: {
         label: "Color",
         description: "Custom color for Checkbox",
         editable: true,
         required: false,
-        type: FORM_TYPES.color
+        type: FORM_TYPES.color,
       },
       fieldName: {
         ...FIELD_NAME,
         value: "checkboxValue",
         valuePropName: "status",
-        handlerPropName: "onPress"
-      }
+        handlerPropName: "onPress",
+      },
     },
-    layout: {}
-  }
-]
+    layout: {},
+  },
+];

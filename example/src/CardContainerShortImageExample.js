@@ -1,60 +1,43 @@
-import * as React from "react"
-import { StyleSheet, Text, ScrollView } from "react-native"
-import { CardContainerShortImage, withTheme } from "@draftbit/ui"
+import * as React from "react";
+import { CardContainerShortImage, withTheme } from "@draftbit/ui";
+import Section, { Container } from "./Section";
 
-class CardContainerShortImageExample extends React.Component {
-  render() {
-    const {
-      theme: {
-        colors: { background },
-        spacing
-      }
-    } = this.props
-
-    return (
-      <ScrollView
-        style={[styles.container, { backgroundColor: background, padding: spacing.large }]}>
-        <Text style={{ marginBottom: spacing.medium }}>CardContainerShortLeftImage</Text>
+function CardContainerShortImageExample({ theme }) {
+  return (
+    <Container style={{ backgroundColor: theme.colors.background }}>
+      <Section title="Left Image">
         <CardContainerShortImage
           title="Beautiful West Coast Villa"
           subtitle="San Diego"
           mode="left"
-          style={{ marginBottom: spacing.large }}
         />
-        <Text style={{ marginBottom: spacing.medium }}>
-          CardContainerShortLeftImage with long title and subtitle
-        </Text>
+      </Section>
+
+      <Section title="Left Image Long Title & Subtitle">
         <CardContainerShortImage
           title="Title that is quite long so that it won't fit on a single line"
           subtitle="Subtitle that is quite long so that it won't fit on a single line"
           mode="left"
-          style={{ marginBottom: spacing.large }}
         />
-        <Text style={{ marginBottom: spacing.medium }}>CardContainerShortRightImage</Text>
+      </Section>
+
+      <Section title="Right">
         <CardContainerShortImage
           title="Beautiful West Coast Villa"
           subtitle="San Diego"
           mode="right"
-          style={{ marginBottom: spacing.large }}
         />
-        <Text style={{ marginBottom: spacing.medium }}>
-          CardContainerShortRightImage with long title and subtitle
-        </Text>
+      </Section>
+
+      <Section title="Right Image Long Title & Subtitle">
         <CardContainerShortImage
           title="Title that is quite long so that it won't fit on a single line"
           subtitle="Subtitle that is quite long so that it won't fit on a single line"
           mode="right"
-          style={{ marginBottom: spacing.large }}
         />
-      </ScrollView>
-    )
-  }
+      </Section>
+    </Container>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
-
-export default withTheme(CardContainerShortImageExample)
+export default withTheme(CardContainerShortImageExample);

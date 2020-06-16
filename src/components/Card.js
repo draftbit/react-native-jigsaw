@@ -1,12 +1,12 @@
-import React from "react"
-import { withTheme } from "../core/theming"
-import Touchable from "./Touchable"
-import Config from "./Config"
+import React from "react";
+import { withTheme } from "../core/theming";
+import Touchable from "./Touchable";
+import Config from "./Config";
 
 class Card extends React.Component {
   static defaultProps = {
-    numColumns: 3
-  }
+    numColumns: 3,
+  };
 
   render() {
     const {
@@ -14,32 +14,33 @@ class Card extends React.Component {
       children,
       onPress,
       theme: { spacing },
-      style
-    } = this.props
+      style,
+    } = this.props;
 
-    let cardStyle
+    let cardStyle;
     if (numColumns === 1) {
       cardStyle = {
-        width: (Config.windowWidth - spacing.gutters * 2 - spacing.small * 2) / 3
-      }
+        width:
+          (Config.windowWidth - spacing.gutters * 2 - spacing.small * 2) / 3,
+      };
     } else if (numColumns === 2) {
       cardStyle = {
-        width: (Config.windowWidth - spacing.gutters * 2 - spacing.small) / 2
-      }
+        width: (Config.windowWidth - spacing.gutters * 2 - spacing.small) / 2,
+      };
     } else {
-      cardStyle = { width: Config.windowWidth - spacing.gutters * 2 }
+      cardStyle = { width: Config.windowWidth - spacing.gutters * 2 };
     }
 
     return (
       <Touchable
         disabled={!onPress}
-        numColumns={numColumns}
         onPress={onPress}
-        style={[cardStyle, style]}>
+        style={[cardStyle, style]}
+      >
         {children}
       </Touchable>
-    )
+    );
   }
 }
 
-export default withTheme(Card)
+export default withTheme(Card);

@@ -1,5 +1,9 @@
-module.exports = function(api) {
-  api.cache(true)
+const path = require("path");
+const pak = require("../package.json");
+
+module.exports = function (api) {
+  api.cache(true);
+
   return {
     presets: ["babel-preset-expo"],
     plugins: [
@@ -7,12 +11,11 @@ module.exports = function(api) {
         "module-resolver",
         {
           alias: {
-            "@draftbit/ui": "../src/index",
-            "@draftbit/ui/types": "../types",
-            "react-native-vector-icons": "@expo/vector-icons"
-          }
-        }
-      ]
-    ]
-  }
-}
+            // For development, we want to alias the library to the source
+            [pak.name]: path.join(__dirname, "..", pak.source),
+          },
+        },
+      ],
+    ],
+  };
+};

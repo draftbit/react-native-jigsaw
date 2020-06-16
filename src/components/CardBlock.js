@@ -1,19 +1,23 @@
-import React from "react"
-import { View, Text } from "react-native"
-import Image from "./Image"
-import Card from "./Card"
-import Elevation from "./Elevation"
-import { withTheme } from "../core/theming"
-import { COMPONENT_TYPES, FORM_TYPES, ELEVATION_TYPE } from "../core/component-types"
-import Config from "./Config"
+import React from "react";
+import { View, Text } from "react-native";
+import Image from "./Image";
+import Card from "./Card";
+import Elevation from "./Elevation";
+import { withTheme } from "../core/theming";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  ELEVATION_TYPE,
+} from "../core/component-types";
+import Config from "./Config";
 
 class CardBlock extends React.PureComponent {
   static defaultProps = {
     image: Config.cardImageUrl,
     aspectRatio: 1.5,
     elevation: 2,
-    numColumns: 3
-  }
+    numColumns: 3,
+  };
 
   render() {
     const {
@@ -27,25 +31,28 @@ class CardBlock extends React.PureComponent {
       numColumns,
       theme: { colors, borderRadius, typography, spacing },
       style,
-      onPress
-    } = this.props
+      onPress,
+    } = this.props;
 
-    let titleJustification, titleStyle
+    let titleJustification, titleStyle;
     if (titleCentered && !leftDescription && !rightDescription) {
-      titleJustification = "center"
+      titleJustification = "center";
     } else {
-      titleJustification = "space-between"
+      titleJustification = "space-between";
     }
 
     if (numColumns === 1) {
-      titleStyle = typography.button
+      titleStyle = typography.button;
     } else if (numColumns === 2) {
-      titleStyle = typography.headline6
+      titleStyle = typography.headline6;
     } else {
-      titleStyle = typography.headline5
+      titleStyle = typography.headline5;
     }
 
-    const rightDescriptionStyles = [typography.subtitle2, { color: colors.light }]
+    const rightDescriptionStyles = [
+      typography.subtitle2,
+      { color: colors.light },
+    ];
 
     return (
       <Card style={style} onPress={onPress} numColumns={numColumns}>
@@ -54,7 +61,7 @@ class CardBlock extends React.PureComponent {
             <Image
               style={{
                 borderRadius: borderRadius.global,
-                aspectRatio
+                aspectRatio,
               }}
               source={typeof image === "string" ? { uri: image } : image}
               resizeMode="cover"
@@ -66,9 +73,13 @@ class CardBlock extends React.PureComponent {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: titleJustification,
-                marginTop: numColumns === 3 ? spacing.large : spacing.medium
-              }}>
-              <Text numberOfLines={1} style={[titleStyle, { color: colors.strong }]}>
+                marginTop: numColumns === 3 ? spacing.large : spacing.medium,
+              }}
+            >
+              <Text
+                numberOfLines={1}
+                style={[titleStyle, { color: colors.strong }]}
+              >
                 {title}
               </Text>
               {!leftDescription && rightDescription ? (
@@ -82,9 +93,13 @@ class CardBlock extends React.PureComponent {
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
-                marginTop: numColumns === 3 ? spacing.text : spacing.text / 2
-              }}>
-              <Text numberOfLines={1} style={[typography.body2, { color: colors.medium }]}>
+                marginTop: numColumns === 3 ? spacing.text : spacing.text / 2,
+              }}
+            >
+              <Text
+                numberOfLines={1}
+                style={[typography.body2, { color: colors.medium }]}
+              >
                 {leftDescription}
               </Text>
               {rightDescription ? (
@@ -96,11 +111,11 @@ class CardBlock extends React.PureComponent {
           ) : null}
         </View>
       </Card>
-    )
+    );
   }
 }
 
-export default withTheme(CardBlock)
+export default withTheme(CardBlock);
 
 const SEED_DATA_PROPS = {
   image: {
@@ -108,45 +123,45 @@ const SEED_DATA_PROPS = {
     description: "Image",
     type: FORM_TYPES.remoteImage,
     value: null,
-    editable: true
+    editable: true,
   },
   title: {
     label: "Title",
     description: "Text to display",
     type: FORM_TYPES.string,
     value: "Beautiful West Coast Villa",
-    editable: true
+    editable: true,
   },
   leftDescription: {
     label: "Left description",
     description: "Text to display on the left",
     type: FORM_TYPES.string,
     value: "San Diego",
-    editable: true
+    editable: true,
   },
   rightDescription: {
     label: "Right description",
     description: "Text to display on the right",
     type: FORM_TYPES.string,
     value: "$100",
-    editable: true
+    editable: true,
   },
   aspectRatio: {
     label: "Aspect ratio",
     description: "Aspect ratio of the image",
     type: FORM_TYPES.aspectRatio,
     value: 1.5,
-    editable: true
+    editable: true,
   },
   titleCentered: {
     label: "Title centered",
     description: "Whether to center the title",
     type: FORM_TYPES.boolean,
     value: false,
-    editable: true
+    editable: true,
   },
-  elevation: ELEVATION_TYPE
-}
+  elevation: ELEVATION_TYPE,
+};
 
 export const SEED_DATA = [
   {
@@ -162,10 +177,10 @@ export const SEED_DATA = [
       numColumns: {
         type: FORM_TYPES.number,
         value: 1,
-        editable: false
-      }
+        editable: false,
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "Medium Block Card",
@@ -182,15 +197,15 @@ export const SEED_DATA = [
         description: "Icon to display on the top right",
         type: FORM_TYPES.icon,
         value: null,
-        editable: true
+        editable: true,
       },
       numColumns: {
         type: FORM_TYPES.number,
         value: 2,
-        editable: false
-      }
+        editable: false,
+      },
     },
-    layout: {}
+    layout: {},
   },
   {
     name: "Large Block Card",
@@ -207,14 +222,14 @@ export const SEED_DATA = [
         description: "Icon to display on the top right",
         type: FORM_TYPES.icon,
         value: null,
-        editable: true
+        editable: true,
       },
       numColumns: {
         type: FORM_TYPES.number,
         value: 3,
-        editable: false
-      }
+        editable: false,
+      },
     },
-    layout: {}
-  }
-]
+    layout: {},
+  },
+];

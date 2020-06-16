@@ -1,8 +1,12 @@
-import * as React from "react"
-import { View, Image } from "react-native"
-import { withTheme } from "../core/theming"
-import Elevation from "./Elevation"
-import { COMPONENT_TYPES, FORM_TYPES, ELEVATION_TYPE } from "../core/component-types"
+import * as React from "react";
+import { View, Image } from "react-native";
+import { withTheme } from "../core/theming";
+import Elevation from "./Elevation";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  ELEVATION_TYPE,
+} from "../core/component-types";
 
 class Container extends React.Component {
   render() {
@@ -16,21 +20,21 @@ class Container extends React.Component {
       backgroundImageResizeMode,
       elevation,
       style,
-      children
-    } = this.props
+      children,
+    } = this.props;
 
     const containerStyle = {
       paddingHorizontal: useThemeGutterPadding ? spacing.gutters : 0,
       backgroundColor,
       borderColor,
       borderWidth,
-      width: "100%"
-    }
+      width: "100%",
+    };
 
-    const Wrap = elevation ? Elevation : View
+    const Wrap = elevation ? Elevation : View;
 
     if (elevation) {
-      containerStyle.elevation = elevation
+      containerStyle.elevation = elevation;
     }
 
     return (
@@ -39,7 +43,9 @@ class Container extends React.Component {
           {backgroundImage ? (
             <Image
               source={
-                typeof backgroundImage === "string" ? { uri: backgroundImage } : backgroundImage
+                typeof backgroundImage === "string"
+                  ? { uri: backgroundImage }
+                  : backgroundImage
               }
               resizeMode={backgroundImageResizeMode}
               style={{
@@ -49,18 +55,18 @@ class Container extends React.Component {
                 left: 0,
                 right: 0,
                 width: style && style.width,
-                height: style && style.height
+                height: style && style.height,
               }}
             />
           ) : null}
           {children}
         </React.Fragment>
       </Wrap>
-    )
+    );
   }
 }
 
-export default withTheme(Container)
+export default withTheme(Container);
 
 export const SEED_DATA = {
   name: "Container",
@@ -72,11 +78,12 @@ export const SEED_DATA = {
   props: {
     useThemeGutterPadding: {
       label: "Use gutter padding",
-      description: "When true, uses the theme gutter spacing as the container's horizontal padding",
+      description:
+        "When true, uses the theme gutter spacing as the container's horizontal padding",
       type: FORM_TYPES.boolean,
       value: true,
       editable: true,
-      required: true
+      required: true,
     },
     backgroundImage: {
       label: "Background image",
@@ -84,7 +91,7 @@ export const SEED_DATA = {
       type: FORM_TYPES.remoteImage,
       value: null,
       editable: true,
-      required: false
+      required: false,
     },
     backgroundImageResizeMode: {
       label: "Background image resize mode",
@@ -94,11 +101,11 @@ export const SEED_DATA = {
       required: false,
       value: null,
       type: FORM_TYPES.flatArray,
-      options: ["cover", "contain", "stretch", "repeat", "center"]
+      options: ["cover", "contain", "stretch", "repeat", "center"],
     },
     elevation: {
       ...ELEVATION_TYPE,
-      value: 0
-    }
-  }
-}
+      value: 0,
+    },
+  },
+};

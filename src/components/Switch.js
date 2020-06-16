@@ -1,15 +1,26 @@
-import * as React from "react"
-import { Switch as NativeSwitch, Platform } from "react-native"
-import { withTheme } from "../core/theming"
-import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
+import * as React from "react";
+import { Switch as NativeSwitch, Platform } from "react-native";
+import { withTheme } from "../core/theming";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  FIELD_NAME,
+} from "../core/component-types";
 
 class Switch extends React.Component {
   render() {
-    const { value, disabled, onValueChange, color, theme, ...props } = this.props
-    let thumbColor = undefined
-    let checkedColor = color || theme.colors.primary
+    const {
+      value,
+      disabled,
+      onValueChange,
+      color,
+      theme,
+      ...props
+    } = this.props;
+    let thumbColor;
+    let checkedColor = color || theme.colors.primary;
     if (Platform.OS !== "ios") {
-      thumbColor = theme.colors.surface
+      thumbColor = theme.colors.surface;
     }
     return (
       <NativeSwitch
@@ -20,14 +31,15 @@ class Switch extends React.Component {
         thumbColor={thumbColor}
         onValueChange={disabled ? undefined : onValueChange}
         style={{
-          opacity: disabled && Platform.OS !== "ios" ? theme.disabledOpacity : 1
+          opacity:
+            disabled && Platform.OS !== "ios" ? theme.disabledOpacity : 1,
         }}
       />
-    )
+    );
   }
 }
 
-export default withTheme(Switch)
+export default withTheme(Switch);
 
 export const SEED_DATA = {
   name: "Switch",
@@ -41,7 +53,7 @@ export const SEED_DATA = {
       required: false,
       editable: true,
       value: false,
-      type: FORM_TYPES.boolean
+      type: FORM_TYPES.boolean,
     },
     color: {
       label: "Color",
@@ -49,13 +61,13 @@ export const SEED_DATA = {
       editable: true,
       value: null,
       required: false,
-      type: FORM_TYPES.color
+      type: FORM_TYPES.color,
     },
     fieldName: {
       ...FIELD_NAME,
       value: "switchValue",
-      handlerPropName: "onValueChange"
-    }
+      handlerPropName: "onValueChange",
+    },
   },
-  layout: {}
-}
+  layout: {},
+};

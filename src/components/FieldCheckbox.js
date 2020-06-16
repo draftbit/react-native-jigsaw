@@ -1,19 +1,23 @@
-import * as React from "react"
-import { withTheme } from "../core/theming"
-import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "../core/component-types"
-import { StyleSheet, View, Text } from "react-native"
-import Touchable from "./Touchable"
-import Checkbox from "./Checkbox"
+import * as React from "react";
+import { withTheme } from "../core/theming";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  FIELD_NAME,
+} from "../core/component-types";
+import { StyleSheet, View, Text } from "react-native";
+import Touchable from "./Touchable";
+import Checkbox from "./Checkbox";
 
-import color from "color"
+import color from "color";
 
 class FieldCheckbox extends React.Component {
   onPress = () => {
-    const { onPress } = this.props
+    const { onPress } = this.props;
     if (onPress) {
-      onPress()
+      onPress();
     }
-  }
+  };
 
   render() {
     const {
@@ -22,39 +26,46 @@ class FieldCheckbox extends React.Component {
       onPress,
       color: checkboxColor,
       disabled,
-      theme: { colors, typography, spacing, disabledOpacity }
-    } = this.props
+      theme: { colors, typography, spacing, disabledOpacity },
+    } = this.props;
 
-    let titleColor = status === "checked" ? colors.medium : colors.light
+    let titleColor = status === "checked" ? colors.medium : colors.light;
 
     if (disabled) {
-      titleColor = color(titleColor)
-        .alpha(disabledOpacity)
-        .rgb()
-        .string()
+      titleColor = color(titleColor).alpha(disabledOpacity).rgb().string();
     }
 
     return (
       <Touchable onPress={this.onPress} disabled={disabled}>
         <View style={styles.container}>
-          <Checkbox status={status} disabled={disabled} onPress={onPress} color={checkboxColor} />
-          <Text style={[typography.body1, { marginLeft: spacing.medium, color: titleColor }]}>
+          <Checkbox
+            status={status}
+            disabled={disabled}
+            onPress={onPress}
+            color={checkboxColor}
+          />
+          <Text
+            style={[
+              typography.body1,
+              { marginLeft: spacing.medium, color: titleColor },
+            ]}
+          >
             {title}
           </Text>
         </View>
       </Touchable>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    alignItems: "center"
-  }
-})
+    alignItems: "center",
+  },
+});
 
-export default withTheme(FieldCheckbox)
+export default withTheme(FieldCheckbox);
 
 export const SEED_DATA = [
   {
@@ -70,14 +81,14 @@ export const SEED_DATA = [
         description: "Text to display",
         type: FORM_TYPES.string,
         value: "Beautiful West Coast Villa",
-        editable: true
+        editable: true,
       },
       color: {
         label: "Color",
         description: "Custom color for the checkbox",
         editable: true,
         required: false,
-        type: FORM_TYPES.color
+        type: FORM_TYPES.color,
       },
       disabled: {
         label: "Disabled",
@@ -85,15 +96,15 @@ export const SEED_DATA = [
         editable: true,
         required: false,
         value: false,
-        type: FORM_TYPES.boolean
+        type: FORM_TYPES.boolean,
       },
       fieldName: {
         ...FIELD_NAME,
         value: "checkboxValue",
         valuePropName: "status",
-        handlerPropName: "onPress"
-      }
+        handlerPropName: "onPress",
+      },
     },
-    layout: {}
-  }
-]
+    layout: {},
+  },
+];

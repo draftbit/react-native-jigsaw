@@ -21,11 +21,7 @@ const IGNORED_FILES = [];
 const ERROR_FILES = [];
 const COMPLETED_FILES = [];
 
-const getFileName = file =>
-  file
-    .split("/")
-    .pop()
-    .split(".")[0];
+const getFileName = (file) => file.split("/").pop().split(".")[0];
 
 async function getComponent(filePath) {
   try {
@@ -40,7 +36,7 @@ async function getComponent(filePath) {
 function findPropFromLabel(props, label) {
   const prop = Object.entries(props).reduce(([key, value], prev) => {
     if (value.label === label) {
-      prev[key] = valuye;
+      prev[key] = value;
     }
 
     return prev;
@@ -51,15 +47,15 @@ function findPropFromLabel(props, label) {
 
 async function main(airtableRecords) {
   let files = await globAsync(`${COMPONENT_PATH}/**/*.js`);
-  files = files.filter(file => !IGNORED_FILES.includes(file));
+  files = files.filter((file) => !IGNORED_FILES.includes(file));
 
   for (const record of airtableRecords) {
-    const getTag = c => {
+    const getTag = (c) => {
       if (c.indexOf("(") !== -1) return c.split("(")[0];
       return c.trim();
     };
 
-    const getName = c => {
+    const getName = (c) => {
       if (c.indexOf("(") !== -1) {
         const name = c.split("(")[1].split(")")[0];
         return name.trim();
@@ -75,7 +71,7 @@ async function main(airtableRecords) {
     if (Array.isArray(parsed)) {
       if (record.component.indexOf("(") === -1) continue;
       const name = getName(record.component);
-      parsed = parsed.find(c => c.name === name);
+      parsed = parsed.find((c) => c.name === name);
       if (!parsed) continue;
     }
 
@@ -117,7 +113,7 @@ async function main(airtableRecords) {
 async function uploadComponent(component) {
   await fetch(`${API_URL}/components`, {
     method: "POST",
-    body: component
+    body: component,
   });
 }
 
@@ -134,9 +130,9 @@ async function makeRequest() {
     const url = "https://api.airtable.com/v0/appXGqhNmmLTdBDv1/Config?" + query;
     const data = await fetch(url, {
       headers: {
-        Authorization: "Bearer keyrNUVpKgeWCvUXk"
-      }
-    }).then(res => res.json());
+        Authorization: "Bearer keyrNUVpKgeWCvUXk",
+      },
+    }).then((res) => res.json());
 
     offset = data.offset;
     records.push(...data.records);
@@ -148,22 +144,22 @@ async function makeRequest() {
 async function fetchFromAirtable() {
   const records = await makeRequest();
   const fieldsToUpdate = records
-    .map(r => ({
+    .map((r) => ({
       shouldSkip: r.fields["Status"] === "Needs Review",
       component: r.fields.Component,
       oldLabel: r.fields["Old Label"],
       newLabel: r.fields["New Label"] || "",
       oldDescription: r.fields["Old Description"],
-      newDescription: r.fields["New Description"] || ""
+      newDescription: r.fields["New Description"] || "",
     }))
-    .filter(r => !r.shouldSkip)
-    .map(r => {
+    .filter((r) => !r.shouldSkip)
+    .map((r) => {
       return {
         component: r.component.trim(),
         oldLabel: r.oldLabel.trim(),
         newLabel: r.newLabel.trim(),
         oldDescription: r.oldDescription.trim(),
-        newDescription: r.newDescription.trim()
+        newDescription: r.newDescription.trim(),
       };
     });
 

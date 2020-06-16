@@ -1,97 +1,56 @@
-import * as React from "react"
-import { StyleSheet, Text, ScrollView } from "react-native"
-import { CardBlock, withTheme } from "@draftbit/ui"
+import * as React from "react";
+import { CardBlock, withTheme } from "@draftbit/ui";
+import Section, { Container } from "./Section";
 
-class CardBlockExample extends React.Component {
-  render() {
-    const {
-      theme: {
-        colors: { background }
-      }
-    } = this.props
+function CardBlockExample({ theme }) {
+  return (
+    <Container style={{ backgroundColor: theme.colors.background }}>
+      {Array.from({ length: 3 }).map((_v, i) => {
+        const numColumns = i + 1;
+        return (
+          <Section key={i} title={`(${numColumns} Column)`}>
+            <CardBlock
+              title="Beautiful West Coast Villa"
+              leftDescription="San Diego"
+              rightDescription="$100"
+              numColumns={numColumns}
+            />
+          </Section>
+        );
+      })}
 
-    return (
-      <ScrollView style={[styles.container, { backgroundColor: background }]}>
-        <Text style={styles.title}>CardBlock1Col</Text>
-        <CardBlock
-          title="Beautiful West Coast Villa"
-          leftDescription="San Diego"
-          rightDescription="$100"
-          numColumns={1}
-          style={styles.cardBlockStyle}
-        />
-        <Text style={styles.title}>CardBlock2Col</Text>
-        <CardBlock
-          title="Beautiful West Coast Villa"
-          leftDescription="San Diego"
-          rightDescription="$100"
-          numColumns={2}
-          style={styles.cardBlockStyle}
-        />
-        <Text style={styles.title}>CardBlock3Col</Text>
-        <CardBlock
-          title="Beautiful West Coast Villa"
-          leftDescription="San Diego"
-          rightDescription="$100"
-          style={styles.cardBlockStyle}
-        />
-        <Text style={styles.title}>CardBlock1Col, 1x1 aspect ratio</Text>
-        <CardBlock
-          title="Beautiful West Coast Villa"
-          leftDescription="San Diego"
-          rightDescription="$100"
-          numColumns={1}
-          aspectRatio={1}
-          style={styles.cardBlockStyle}
-        />
-        <Text style={styles.title}>CardBlock2Col, 1x1 aspect ratio</Text>
-        <CardBlock
-          title="Beautiful West Coast Villa"
-          leftDescription="San Diego"
-          rightDescription="$100"
-          numColumns={2}
-          aspectRatio={1}
-          style={styles.cardBlockStyle}
-        />
-        <Text style={styles.title}>CardBlock3Col, 1x1 aspect ratio</Text>
-        <CardBlock
-          title="Beautiful West Coast Villa"
-          leftDescription="San Diego"
-          rightDescription="$100"
-          aspectRatio={1}
-          style={styles.cardBlockStyle}
-        />
-        <Text style={styles.title}>CardBlock1Col, centered title</Text>
-        <CardBlock title="Hello" titleCentered numColumns={1} style={styles.cardBlockStyle} />
-        <Text style={styles.title}>CardBlock2Col, no right description</Text>
+      {Array.from({ length: 3 }).map((_v, i) => {
+        const numColumns = i + 1;
+        return (
+          <Section key={i} title={`(${numColumns} Column 1x1 aspectRatio)`}>
+            <CardBlock
+              title="Beautiful West Coast Villa"
+              leftDescription="San Diego"
+              rightDescription="$100"
+              numColumns={numColumns}
+              aspectRatio={1}
+            />
+          </Section>
+        );
+      })}
+
+      <Section title="1 Column Centered Title">
+        <CardBlock title="Hello" titleCentered numColumns={1} />
+      </Section>
+
+      <Section title="2 Column No Right Description">
         <CardBlock
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
           numColumns={2}
-          style={styles.cardBlockStyle}
         />
-        <Text style={styles.title}>CardBlock3Col, no left description</Text>
-        <CardBlock
-          title="Beautiful West Coast Villa"
-          rightDescription="$100"
-          style={styles.cardBlockStyle}
-        />
-      </ScrollView>
-    )
-  }
+      </Section>
+
+      <Section title="3 Column No Left Description">
+        <CardBlock title="Beautiful West Coast Villa" rightDescription="$100" />
+      </Section>
+    </Container>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16
-  },
-  title: {
-    marginBottom: 12
-  },
-  cardBlockStyle: {
-    marginBottom: 24
-  }
-})
-
-export default withTheme(CardBlockExample)
+export default withTheme(CardBlockExample);

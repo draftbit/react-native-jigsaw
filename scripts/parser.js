@@ -14,7 +14,7 @@ const IDENTIFIERS = {
   extraPropsStart: "SEED_DATA_PROPS",
   seedDataStart: "SEED_DATA",
   seedDataEnd: "]",
-  cloudinaryUrl: "{CLOUDINARY_URL}"
+  cloudinaryUrl: "{CLOUDINARY_URL}",
 };
 
 async function loadFile(file) {
@@ -40,12 +40,12 @@ async function parseFileSeedData(file) {
     file = replaceIdentifiers(file, IDENTIFIERS);
     const lines = file.split("\n");
     const codeStart = lines.findIndex(
-      l => l.indexOf(IDENTIFIERS.seedDataStart) !== -1
+      (l) => l.indexOf(IDENTIFIERS.seedDataStart) !== -1
     );
 
     if (extraPropsExist) {
       const extraPropsStart = lines.findIndex(
-        l => l.indexOf(IDENTIFIERS.extraPropsStart) !== -1
+        (l) => l.indexOf(IDENTIFIERS.extraPropsStart) !== -1
       );
       const str = lines.slice(extraPropsStart).join("\n");
     }
@@ -65,6 +65,7 @@ async function main(filePath) {
   const parsedComponentFile = await parseFileSeedData(componentFile);
 
   const combinedFile = typesFile + parsedComponentFile;
+  // eslint-disable-next-line
   const data = eval(`${combinedFile}\n JSON.stringify(SEED_DATA)`);
   return data;
 }

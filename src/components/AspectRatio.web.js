@@ -1,35 +1,35 @@
-import React from "react"
-import { View, createElement, StyleSheet } from "react-native"
+import React from "react";
+import { View, createElement, StyleSheet } from "react-native";
 
 export default class AspectRatio extends React.Component {
-  static displayName = "AspectRatio"
+  static displayName = "AspectRatio";
 
   render() {
-    const { children, onLayout, ratio, style } = this.props
-    const percentage = 100 / ratio
+    const { children, onLayout, ratio, style } = this.props;
+    const percentage = 100 / ratio;
 
     return (
       <View onLayout={onLayout} style={[styles.root, style]}>
         {createElement("div", {
-          style: [styles.ratio, { paddingBottom: `${percentage}%` }]
+          style: [styles.ratio, { paddingBottom: `${percentage}%` }],
         })}
         {createElement("div", {
           children,
-          style: styles.content
+          style: styles.content,
         })}
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   root: {
     display: "block",
-    overflow: "hidden"
+    overflow: "hidden",
   },
   ratio: {
     display: "block",
-    width: "100%"
+    width: "100%",
   },
   content: {
     bottom: 0,
@@ -37,6 +37,6 @@ const styles = StyleSheet.create({
     left: 0,
     position: "absolute",
     top: 0,
-    width: "100%"
-  }
-})
+    width: "100%",
+  },
+});

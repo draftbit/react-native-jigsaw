@@ -1,7 +1,7 @@
-import * as React from "react"
-import { StyleSheet, View } from "react-native"
-import { withTheme } from "../core/theming"
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types"
+import * as React from "react";
+import { StyleSheet, View } from "react-native";
+import { withTheme } from "../core/theming";
+import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
 
 class Divider extends React.Component {
   render() {
@@ -9,22 +9,22 @@ class Divider extends React.Component {
       style,
       color,
       height,
-      theme: { colors }
-    } = this.props
+      theme: { colors },
+    } = this.props;
 
     return (
       <View
         style={[
           { backgroundColor: color || colors.divider },
           style,
-          { height: height || StyleSheet.hairlineWidth }
+          { height: height || StyleSheet.hairlineWidth },
         ]}
       />
-    )
+    );
   }
 }
 
-export default withTheme(Divider)
+export default withTheme(Divider);
 
 export const SEED_DATA = [
   {
@@ -40,7 +40,7 @@ export const SEED_DATA = [
         editable: true,
         required: false,
         value: "divider",
-        type: FORM_TYPES.color
+        type: FORM_TYPES.color,
       },
       height: {
         label: "Height",
@@ -52,11 +52,11 @@ export const SEED_DATA = [
         min: 1,
         max: 50,
         step: 1,
-        precision: 0
-      }
+        precision: 0,
+      },
     },
     layout: {
-      height: 1
-    }
-  }
-]
+      height: 1,
+    },
+  },
+];

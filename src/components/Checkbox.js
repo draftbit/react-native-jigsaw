@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as React from "react";
 import { Platform } from "react-native";
 import CheckboxAndroid from "./CheckboxAndroid";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as React from "react";
 import { Animated, View, StyleSheet } from "react-native";
 import Icon from "./Icon";

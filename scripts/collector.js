@@ -59,7 +59,7 @@ async function uploadComponent(component) {
     method: "POST",
     body: component,
     headers: {
-      Authorization: `Bearer: ${process.env.authToken}`,
+      Authorization: `Bearer: ${process.env.JIGSAW_AUTH_TOKEN}`,
     },
   });
 }

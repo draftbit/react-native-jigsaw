@@ -1,15 +1,15 @@
 {
+  "exclude": [
+    "example",
+    "node_modules",
+    "glyphmaps",
+    "scripts"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@draftbit/ui": ["./src/index"]
     },
-    "exclude": [
-      "example",
-      "node_modules",
-      "glyphmaps",
-      "scripts"
-    ],
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "esModuleInterop": true,

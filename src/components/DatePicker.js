@@ -8,7 +8,6 @@ import Portal from "./Portal/Portal";
 import Button from "./Button";
 import TextField from "./TextField";
 import Touchable from "./Touchable";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 class Picker extends React.Component {
   static defaultProps = {

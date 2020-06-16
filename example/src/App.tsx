@@ -1,6 +1,8 @@
 import * as React from "react";
 import { View, Text, ScrollView } from "react-native";
 import { Provider, DefaultTheme } from "@draftbit/ui";
+import { AppLoading } from "expo";
+import * as Font from "expo-font";
 
 import AvatarExample from "./AvatarExample";
 import ButtonExample from "./ButtonExample";
@@ -72,6 +74,7 @@ function Example({ title, children }) {
       <Text
         style={{
           fontWeight: "bold",
+          fontFamily: "Testing",
           fontSize: 28,
           backgroundColor: "rgba(250, 250, 0, 0.2)",
           marginBottom: 8,
@@ -85,18 +88,44 @@ function Example({ title, children }) {
   );
 }
 
-export default function App() {
-  return (
-    <Provider theme={DefaultTheme}>
-      <ScrollView style={{ flex: 1 }}>
-        {Object.entries(ROUTES).map(([key, Screen]) => {
-          return (
-            <Example key={key} title={key}>
-              <Screen />
-            </Example>
-          );
-        })}
-      </ScrollView>
-    </Provider>
-  );
+let customFonts = {
+  "FiraCode": require("../assets/fonts/FiraCode-Bold.otf"),
+  "Testing": require("../assets/fonts/Sriracha-Regular.ttf"),
+  "Inter-SemiBoldItalic":
+    "https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12",
+};
+
+export default class App extends React.Component {
+  state = {
+    fontsLoaded: false,
+  };
+
+  async _loadFontsAsync() {
+    await Font.loadAsync(customFonts);
+    this.setState({ fontsLoaded: true });
+  }
+
+  componentDidMount() {
+    this._loadFontsAsync();
+  }
+
+  render() {
+    if (this.state.fontsLoaded) {
+      return (
+        <Provider theme={DefaultTheme}>
+          <ScrollView style={{ flex: 1 }}>
+            {Object.entries(ROUTES).map(([key, Screen]) => {
+              return (
+                <Example key={key} title={key}>
+                  <Screen />
+                </Example>
+              );
+            })}
+          </ScrollView>
+        </Provider>
+      );
+    } else {
+      return <AppLoading />;
+    }
+  }
 }

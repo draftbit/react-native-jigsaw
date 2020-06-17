@@ -1,3 +1,4 @@
+require("dotenv").config();
 const fs = require("fs");
 const path = require("path");
 const glob = require("glob");
@@ -10,19 +11,24 @@ const globAsync = promisify(glob);
 const COMPONENT_PATH = path.resolve("./src/components");
 const MAPPING_PATH = path.resolve("./src/mappings");
 const IGNORED_FILES = [
-  "src/mappings/Query.js", // doesn't work at all
-  "src/mappings/LinearGradient.js", // missing gradient UI
+  "Query.js", // doesn't work at all
+  "LinearGradient.js", // missing gradient UI
 ];
 
 const ERROR_FILES = [];
 const COMPLETED_FILES = [];
 
 async function main() {
+  if (!process.env.JIGSAW_AUTH_TOKEN) {
+    console.error("Missing auth token! Talk to a Draftbit team member.");
+    process.exit(1);
+  }
+
   console.log("Running on", getUrl(), "[warnings surpressed]");
   const componentFiles = await globAsync(`${COMPONENT_PATH}/**/*.js`);
   const mappingFiles = await globAsync(`${MAPPING_PATH}/**/*.js`);
   const files = [...componentFiles, ...mappingFiles].filter(
-    (file) => !IGNORED_FILES.includes(file)
+    (file) => !IGNORED_FILES.includes(file.split("/").pop())
   );
 
   for (const file of files) {

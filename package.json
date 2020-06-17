@@ -19,7 +19,7 @@
     "test": "jest",
     "typescript": "tsc --noEmit",
     "lint": "eslint --ext .js,.ts,.tsx .",
-    "prepare": "bob build",
+    "prepublishOnly": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
@@ -58,6 +58,11 @@
     "react-native": "~0.61.5",
     "release-it": "^13.6.3",
     "typescript": "3.8.3"
+  },
+  "scriptDependencies": {
+    "dotenv": "^8.2.0",
+    "glob": "^7.1.6",
+    "node-fetch": "^2.6.0"
   },
   "peerDependencies": {
     "@expo/vector-icons": "*",

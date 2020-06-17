@@ -1,7 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 const glob = require("glob");
-const fetch = require("node-fetch");
 const { promisify } = require("util");
 const parser = require("./parser");
 

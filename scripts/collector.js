@@ -11,7 +11,7 @@ const globAsync = promisify(glob);
 const COMPONENT_PATH = path.resolve("./src/components");
 const MAPPING_PATH = path.resolve("./src/mappings");
 const IGNORED_FILES = [
-  "Query.js", // doesn't work at all
+  // "Query.js", // doesn't work at all
   "LinearGradient.js", // missing gradient UI
 ];
 

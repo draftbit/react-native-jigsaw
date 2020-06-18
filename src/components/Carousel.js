@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, View, StyleSheet, Image } from "react-native";
+import { ScrollView, View, StyleSheet, Image, Dimensions } from "react-native";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
 import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
@@ -34,8 +34,8 @@ class Carousel extends React.PureComponent {
     this.setState({ scrollOffset: e.nativeEvent.contentOffset.x });
   };
 
-  onPageLayout = (event) => {
-    const { width } = event.nativeEvent.layout;
+  onPageLayout = () => {
+    const width = Dimensions.get("window").width;
     this.setState({ width });
   };
 
@@ -54,13 +54,12 @@ class Carousel extends React.PureComponent {
 
     return (
       <View
-        style={[styles.container, { aspectRatio }, style]}
+        style={[styles.container, { aspectRatio, width }, style]}
         onLayout={this.onPageLayout}
       >
         <ScrollView
           onScroll={this.handleScroll}
           horizontal
-          pagingEnabled
           showsHorizontalScrollIndicator={false}
           scrollEventThrottle={16}
         >
@@ -79,7 +78,7 @@ class Carousel extends React.PureComponent {
                   source={typeof image === "string" ? { uri: image } : image}
                   resizeMode={resizeMode}
                   style={{
-                    width: width,
+                    width,
                     flex: 1,
                     aspectRatio,
                     height: style.height,

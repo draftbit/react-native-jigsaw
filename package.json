@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "37.0.2",
+  "version": "37.0.3",
   "description": "Draftbit UI Library",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",

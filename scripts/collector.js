@@ -19,10 +19,10 @@ const ERROR_FILES = [];
 const COMPLETED_FILES = [];
 
 async function main() {
-  if (!process.env.JIGSAW_AUTH_TOKEN) {
-    console.error("Missing auth token! Talk to a Draftbit team member.");
-    process.exit(1);
-  }
+  // if (!process.env.JIGSAW_AUTH_TOKEN) {
+  //   console.error("Missing auth token! Talk to a Draftbit team member.");
+  //   process.exit(1);
+  // }
 
   console.log("Running on", getUrl(), "[warnings surpressed]");
   const componentFiles = await globAsync(`${COMPONENT_PATH}/**/*.js`);
@@ -65,7 +65,7 @@ async function uploadComponent(component) {
     method: "POST",
     body: component,
     headers: {
-      Authorization: `Bearer: ${process.env.JIGSAW_AUTH_TOKEN}`,
+      // Authorization: `Bearer: ${process.env.JIGSAW_AUTH_TOKEN}`,
     },
   });
 }

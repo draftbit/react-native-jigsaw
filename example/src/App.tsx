@@ -5,6 +5,7 @@ import { AppLoading } from "expo";
 import * as Font from "expo-font";
 
 import AvatarExample from "./AvatarExample";
+import IconExample from "./IconExample";
 import ButtonExample from "./ButtonExample";
 import RadioButtonExample from "./RadioButtonExample";
 
@@ -41,6 +42,7 @@ import ProgressIndicatorExample from "./ProgressIndicatorExample.js";
 
 const ROUTES = {
   Avatar: AvatarExample,
+  Icon: IconExample,
   Button: ButtonExample,
   FAB: FABExample,
   RadioButton: RadioButtonExample,

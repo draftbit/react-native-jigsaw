@@ -32,11 +32,14 @@ async function main() {
   );
 
   for (const file of files) {
+    const name = file.split("/").pop();
     try {
+      console.log("uploading:", name);
       const component = await parser(file);
       await uploadComponent(component);
       COMPLETED_FILES.push(file);
     } catch (error) {
+      console.log("failed:", name, error);
       ERROR_FILES.push({ file, error: error.message });
     }
   }
@@ -64,9 +67,9 @@ async function uploadComponent(component) {
   await fetch(`${url}/components`, {
     method: "POST",
     body: component,
-    headers: {
-      // Authorization: `Bearer: ${process.env.JIGSAW_AUTH_TOKEN}`,
-    },
+    // headers: {
+    // Authorization: `Bearer: ${process.env.JIGSAW_AUTH_TOKEN}`,
+    // },
   });
 }
 

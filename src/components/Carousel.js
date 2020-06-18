@@ -36,7 +36,7 @@ class Carousel extends React.PureComponent {
 
   onPageLayout = () => {
     const width = Dimensions.get("window").width;
-    this.setState({ width });
+    this.setState({ width: this.props.style.width || width });
   };
 
   render() {

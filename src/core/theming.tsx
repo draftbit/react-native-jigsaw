@@ -1,4 +1,4 @@
-import { createTheming } from "@callstack/react-theme-provider";
+import { createTheming } from "@draftbit/react-theme-provider";
 import DefaultTheme from "../styles/DefaultTheme";
 import { Theme } from "../types";
 

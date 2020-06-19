@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "37.0.4",
+  "version": "37.0.5",
   "description": "Draftbit UI Library",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -19,6 +19,7 @@
     "test": "jest",
     "typescript": "tsc --noEmit",
     "lint": "eslint --ext .js,.ts,.tsx .",
+    "build": "bob build",
     "prepublishOnly": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
@@ -148,7 +149,7 @@
     ]
   },
   "dependencies": {
-    "@callstack/react-theme-provider": "^3.0.5",
+    "@draftbit/react-theme-provider": "^2.1.1",
     "color": "^3.1.2",
     "dateformat": "^3.0.3",
     "expo-font": "^8.1.1",

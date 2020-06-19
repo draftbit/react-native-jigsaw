@@ -1,6 +1,9 @@
 import * as React from "react";
 import { withTheme } from "../../core/theming";
-import PickerComponent from "./PickerComponent";
+import { View, StyleSheet } from "react-native";
+import { Picker as ReactNativeCommunityPicker } from "@react-native-community/picker";
+import TextField from "../TextField";
+import Touchable from "../Touchable";
 
 import {
   COMPONENT_TYPES,
@@ -31,23 +34,74 @@ class Picker extends React.Component {
   };
 
   render() {
-    const { placeholder, options, value, ...props } = this.props;
+    const {
+      placeholder,
+      options,
+      value,
+      disabled,
+      style,
+      ...props
+    } = this.props;
 
     const pickerOptions = placeholder
       ? [{ value: placeholder, label: placeholder }, ...options]
       : options;
 
     return (
-      <PickerComponent
-        {...props}
-        selectedValue={value}
-        placeholder={placeholder}
-        options={pickerOptions}
-        onValueChange={this.onValueChange}
-      />
+      // <ReactNativeCommunityPicker
+      //   {...props}
+      //   selectedValue={value}
+      //   placeholder={placeholder}
+      //   options={pickerOptions}
+      //   onValueChange={this.onValueChange}
+      // />
+      <Touchable
+        disabled={disabled}
+        onPress={this.toggleFocus}
+        style={[styles.container, style]}
+      >
+        <View style={{ width: "100%", height: "100%" }}>
+          <ReactNativeCommunityPicker
+            enabled={!disabled}
+            selectedValue={value}
+            onValueChange={this.onValueChange}
+            style={{
+              opacity: 0,
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            }}
+          >
+            {pickerOptions.map((o) => (
+              <ReactNativeCommunityPicker.Item
+                label={o.label}
+                value={o.value}
+                key={o.value}
+              />
+            ))}
+          </ReactNativeCommunityPicker>
+          <View pointerEvents="none">
+            <TextField
+              {...props}
+              value={value}
+              placeholder={placeholder}
+              ref={this.textField}
+              disabled={disabled}
+            />
+          </View>
+        </View>
+      </Touchable>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    alignSelf: "stretch",
+  },
+});
 
 export default withTheme(Picker);
 

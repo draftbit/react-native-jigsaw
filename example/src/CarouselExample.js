@@ -12,8 +12,15 @@ const IMAGES = [
 function CarouselExample({ theme }) {
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>
-      <Section title="Remote Images">
+      <Section title="No Fixed Width">
         <Carousel images={IMAGES} dotColor={theme.colors.background} />
+      </Section>
+      <Section title="Fixed Width">
+        <Carousel
+          images={IMAGES}
+          dotColor={theme.colors.background}
+          style={{ height: 400, width: 250 }}
+        />
       </Section>
     </Container>
   );

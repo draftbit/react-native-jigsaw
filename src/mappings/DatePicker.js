@@ -1,4 +1,8 @@
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  FIELD_NAME,
+} from "../core/component-types";
 const SEED_DATA_PROPS = {
   label: {
     label: "Label",
@@ -106,6 +110,12 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.icon,
     value: null,
     editable: true,
+  },
+  fieldName: {
+    ...FIELD_NAME,
+    handlerPropName: "onDateChange",
+    valuePropName: "date",
+    value: "date",
   },
 };
 

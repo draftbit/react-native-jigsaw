@@ -60,6 +60,7 @@ class Carousel extends React.PureComponent {
         <ScrollView
           onScroll={this.handleScroll}
           horizontal
+          pagingEnabled
           showsHorizontalScrollIndicator={false}
           scrollEventThrottle={16}
         >

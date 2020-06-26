@@ -143,6 +143,7 @@ const styles = StyleSheet.create({
   slidingPanel: {
     alignItems: "center",
     justifyContent: "center",
+    flex: 1,
   },
   swipeNavWrapper: {
     position: "absolute",

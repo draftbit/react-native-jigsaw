@@ -89,14 +89,6 @@ export const TEXT_INPUT_PROPS = {
     value: null,
     type: FORM_TYPES.boolean,
   },
-  color: {
-    label: "Text Color",
-    description: "Text Color",
-    editable: true,
-    required: false,
-    type: FORM_TYPES.color,
-    value: "strong",
-  },
   autoCapitalize: {
     label: "Auto Capitalize",
     description:

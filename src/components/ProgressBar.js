@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Animated, Easing, View, I18nManager } from "react-native";
+import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 const INDETERMINATE_WIDTH_FACTOR = 0.3;
 const BAR_WIDTH_ZERO_POSITION =
@@ -156,3 +157,91 @@ export default class ProgressBar extends Component {
     );
   }
 }
+
+export const SEED_DATA = [
+  {
+    name: "Progress Bar",
+    tag: "ProgressBar",
+    description: "A horizontal bar used to show completed progress",
+    category: COMPONENT_TYPES.formControl,
+    preview_image_url: "{CLOUDINARY_URL}/Status_Progress.png",
+    supports_list_render: false,
+    props: {
+      progress: {
+        label: "Progress",
+        description: "The amount of progress to display. A number 0-1.",
+        type: FORM_TYPES.number,
+        value: 0.5,
+        min: 0,
+        max: 1,
+        step: 0.01,
+        precision: 2,
+        editable: true,
+        required: true,
+      },
+      color: {
+        label: "Progress Color",
+        description: "Custom color for the progress shown",
+        type: FORM_TYPES.color,
+        value: null,
+        editable: true,
+        required: true,
+      },
+      unfilledColor: {
+        label: "Unfilled Color",
+        description:
+          "The color of the unfilled portion of the progress bar(eg. if at 50% then this is the color of the other 50%)",
+        type: FORM_TYPES.color,
+        value: null,
+        editable: true,
+        required: true,
+      },
+      borderRadius: {
+        label: "Border Radius",
+        description: "The border radius of the bar",
+        type: FORM_TYPES.number,
+        value: 10,
+        min: 0,
+        max: 100,
+        step: 1,
+        precision: 1,
+        editable: true,
+        required: true,
+      },
+      borderWidth: {
+        label: "Border Width",
+        description: "The width of the border that surrounds the bar.",
+        type: FORM_TYPES.number,
+        value: 1,
+        min: 0,
+        max: 15,
+        step: 1,
+        precision: 1,
+        editable: true,
+        required: true,
+      },
+      borderColor: {
+        label: "Border Color",
+        description: "Custom color for border of the entire bar",
+        type: FORM_TYPES.color,
+        value: null,
+        editable: true,
+        required: true,
+      },
+      animationType: {
+        label: "Animation Type",
+        description:
+          "The type of animation that occurs when the bar is filled(Default is Spring)",
+        type: FORM_TYPES.flatArray,
+        value: "spring",
+        options: ["decay", "timing", "spring"],
+        editable: true,
+        required: true,
+      },
+    },
+    layout: {
+      width: 200,
+      height: 20,
+    },
+  },
+];

@@ -3,6 +3,11 @@ import { withTheme } from "../core/theming";
 import { View, Text, StyleSheet } from "react-native";
 import Icon from "./Icon";
 import Touchable from "./Touchable";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  FIELD_NAME,
+} from "../core/component-types";
 
 function RadioButtonGroup({
   direction,
@@ -12,6 +17,7 @@ function RadioButtonGroup({
   labelStyle,
   iconSize,
   contentColor,
+  unselectedContentColor,
   borderRadius,
   optionSpacing,
   borderColor,
@@ -66,10 +72,19 @@ function RadioButtonGroup({
               }}
             >
               {option.icon ? (
-                <Icon name={option.icon} size={iconSize} color={contentColor} />
+                <Icon
+                  name={option.icon}
+                  size={iconSize}
+                  color={selected ? contentColor : unselectedContentColor}
+                />
               ) : null}
               {option.label ? (
-                <Text style={[labelStyle, { color: contentColor }]}>
+                <Text
+                  style={[
+                    labelStyle,
+                    { color: selected ? contentColor : unselectedContentColor },
+                  ]}
+                >
                   {option.label}
                 </Text>
               ) : null}
@@ -86,3 +101,119 @@ RadioButtonGroup.defaultProps = {
 };
 
 export default withTheme(RadioButtonGroup);
+
+export const SEED_DATA = {
+  name: "Radio Button Group",
+  tag: "RadioButtonGroup",
+  category: COMPONENT_TYPES.button,
+  preview_image_url: "{CLOUDINARY_URL}/Control_Radio.png",
+  props: {
+    options: {
+      label: "Options",
+      description: "Options for the button group.",
+      type: FORM_TYPES.arrayInput,
+      value: [],
+      editable: true,
+      required: true,
+    },
+    direction: {
+      label: "Horizontal/Vertical",
+      description: "Whether the buttons should be Horizontal or Vertical",
+      type: FORM_TYPES.flatArray,
+      value: "horizontal",
+      options: ["horizontal", "vertical"],
+      editable: true,
+      required: true,
+    },
+    activeColor: {
+      label: "Active Color",
+      description: "Color of the button when it's selected",
+      value: null,
+      type: FORM_TYPES.color,
+      editable: true,
+      required: true,
+    },
+    inactiveColor: {
+      label: "Inactive Color",
+      description: "Color of the button when it's selected not selected",
+      value: null,
+      type: FORM_TYPES.color,
+      editable: true,
+      required: true,
+    },
+    contentColor: {
+      label: "Selected Content Color",
+      description: "Color of the content(Icon and Label)",
+      value: null,
+      type: FORM_TYPES.color,
+      editable: true,
+      required: true,
+    },
+    unselectedContentColor: {
+      label: "Unselected Content Color",
+      description: "Unfinished Color of the content(Icon and Label)",
+      value: null,
+      type: FORM_TYPES.color,
+      editable: true,
+      required: true,
+    },
+    borderColor: {
+      label: "Border Color",
+      description: "Border color of the option",
+      value: null,
+      type: FORM_TYPES.color,
+      editable: true,
+      required: true,
+    },
+    labelStyle: {
+      label: "Label Style",
+      description: "Font and weight of the Label",
+      type: FORM_TYPES.typeStyle,
+      value: "Button",
+      editable: true,
+      required: true,
+    },
+    optionSpacing: {
+      label: "Option Spacing",
+      description: "The spacing between each option",
+      type: FORM_TYPES.number,
+      value: 1,
+      min: 0,
+      max: 20,
+      step: 1,
+      precision: 1,
+      editable: true,
+      required: false,
+    },
+    borderRadius: {
+      label: "Border Radius",
+      description: "The border radius for the container or options",
+      type: FORM_TYPES.number,
+      value: 0,
+      min: 0,
+      max: 100,
+      step: 1,
+      precision: 1,
+      editable: true,
+      required: false,
+    },
+    iconSize: {
+      label: "Icon Size",
+      description: "The size of the icon if enabled",
+      type: FORM_TYPES.number,
+      value: 0,
+      min: 0,
+      max: 50,
+      step: 1,
+      precision: 1,
+      editable: true,
+      required: false,
+    },
+    fieldName: {
+      ...FIELD_NAME,
+      value: "radioButtonValue",
+      handlerPropName: "onSelect",
+    },
+  },
+  layout: {},
+};

@@ -26,7 +26,7 @@ class FieldSearchBarFull extends React.Component {
     this.setState({ focused: false });
   };
 
-  onChange = (value) => {
+  onChangeText = (value) => {
     this.props.onChangeText && this.props.onChangeText(value);
   };
 

@@ -27,7 +27,7 @@ class FieldSearchBarFull extends React.Component {
   };
 
   onChange = (value) => {
-    this.props.onChange && this.props.onChange(value);
+    this.props.onChangeText && this.props.onChangeText(value);
   };
 
   onFocus = () => {
@@ -44,7 +44,7 @@ class FieldSearchBarFull extends React.Component {
       placeholder,
       style,
       theme: { colors, spacing, typography },
-      onChange,
+      onChangeText,
       value,
     } = this.props;
 
@@ -65,7 +65,7 @@ class FieldSearchBarFull extends React.Component {
           value={value}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
-          onChange={onChange}
+          onChange={onChangeText}
           onSubmitEditing={this.onSubmit}
           placeholderTextColor={colors.light}
           style={[

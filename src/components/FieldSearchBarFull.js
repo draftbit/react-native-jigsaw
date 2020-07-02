@@ -127,6 +127,7 @@ export const SEED_DATA = [
       fieldName: {
         ...FIELD_NAME,
         value: "searchBarValue",
+        handlerPropName: "onChangeText",
       },
     },
     layout: {},

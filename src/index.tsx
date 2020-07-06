@@ -1,7 +1,7 @@
 // @ts-nocheck
-export { withTheme, ThemeProvider } from "./core/theming";
+export { useTheme, withTheme, ThemeProvider } from "./core/theming";
 export { default as Provider } from "./core/Provider";
-export { default as DefaultTheme } from "./styles/DefaultTheme";
+export { default as DefaultTheme } from "./styles/DraftbitTheme";
 
 export { default as Avatar } from "./components/Avatar";
 export { default as AvatarEdit } from "./components/AvatarEdit";

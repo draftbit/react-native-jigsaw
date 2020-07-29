@@ -154,6 +154,7 @@
     "dateformat": "^3.0.3",
     "expo-font": "^8.1.1",
     "expo-step-indicator": "0.1.2",
+    "onegraph-auth": "^2.2.4",
     "react-native-slider": "^0.11.0"
   }
 }

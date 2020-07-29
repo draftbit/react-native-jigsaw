@@ -26,6 +26,8 @@ import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
 
 import HeaderExample from "./HeaderExample";
 
+import OneGraphLoginExample from "./OneGraphLoginExample";
+
 import PickerExample from "./PickerExample";
 
 import ProgressExample from "./ProgressExample";
@@ -41,6 +43,7 @@ import TextFieldExample from "./TextFieldExample";
 import ProgressIndicatorExample from "./ProgressIndicatorExample.js";
 
 const ROUTES = {
+  OneGraphLogin: OneGraphLoginExample,
   Avatar: AvatarExample,
   Icon: IconExample,
   Button: ButtonExample,

@@ -38,6 +38,8 @@ export { default as HeaderLarge } from "./components/HeaderLarge";
 export { default as HeaderMedium } from "./components/HeaderMedium";
 export { default as HeaderOverline } from "./components/HeaderOverline";
 
+export { default as OneGraphLogin } from "./components/OneGraphLogin";
+
 // TODO fix Picker web onClick is broken
 export { default as Picker } from "./components/Picker/Picker";
 

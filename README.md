@@ -1,21 +1,11 @@
 # @draftbit/ui
 
-Draftbit UI Library
+This is our component library that we use inside Draftbit. It's based on [React Native Paper](https://github.com/callstack/react-native-paper) but allows us to extend and empower our users with more features.
 
 ## Installation
 
 ```sh
 npm install @draftbit/ui
-```
-
-## Usage
-
-```js
-import Ui from "@draftbit/ui";
-
-// ...
-
-const result = await Ui.multiply(3, 7);
 ```
 
 ## Contributing

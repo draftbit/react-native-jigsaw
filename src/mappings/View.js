@@ -207,7 +207,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.string,
+      type: FORM_TYPES.boolean,
       defaultValue: null,
     },
   },

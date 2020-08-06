@@ -189,6 +189,8 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.number,
+      step: 1,
+      precision: 1,
       defaultValue: null,
     },
     selectable: {

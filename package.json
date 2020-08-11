@@ -31,13 +31,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/draftbit/draftbit",
+  "repository": "https://github.com/draftbit/react-native-jigsaw",
   "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/draftbit/draftbit/issues"
+    "url": "https://github.com/draftbit/react-native-jigsaw/issues"
   },
-  "homepage": "https://github.com/draftbit/draftbit#readme",
+  "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
     "@expo/vector-icons": "^10.2.0",

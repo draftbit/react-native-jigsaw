@@ -84,6 +84,7 @@ export const FIELD_NAME = {
   handlerPropName: "onChange",
   editable: true,
   required: false,
+  group: GROUPS.basic,
 };
 
 export const TEXT_INPUT_PROPS = {
@@ -95,6 +96,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     value: null,
     type: FORM_TYPES.boolean,
+    group: GROUPS.basic,
   },
   autoCapitalize: {
     label: "Auto Capitalize",
@@ -105,6 +107,7 @@ export const TEXT_INPUT_PROPS = {
     value: null,
     options: ["none", "sentences", "words", "characters"],
     type: FORM_TYPES.flatArray,
+    group: GROUPS.basic,
   },
   autoCorrect: {
     label: "Auto Correct",
@@ -113,6 +116,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     value: null,
     type: FORM_TYPES.boolean,
+    group: GROUPS.basic,
   },
   autoFocus: {
     label: "Auto Focus",
@@ -121,6 +125,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     value: null,
     type: FORM_TYPES.boolean,
+    group: GROUPS.basic,
   },
   caretHidden: {
     label: "Hide Caret",
@@ -130,6 +135,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     value: null,
     type: FORM_TYPES.boolean,
+    group: GROUPS.basic,
   },
   contextMenuHidden: {
     label: "Hide Context Menu",
@@ -138,6 +144,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     value: null,
     type: FORM_TYPES.boolean,
+    group: GROUPS.advanced,
   },
   defaultValue: {
     label: "Default Value",
@@ -147,6 +154,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     value: null,
     type: FORM_TYPES.string,
+    group: GROUPS.basic,
   },
   editable: {
     label: "Editable",
@@ -155,6 +163,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     value: null,
     type: FORM_TYPES.boolean,
+    group: GROUPS.basic,
   },
   keyboardAppearance: {
     label: "Keyboard Appearance",
@@ -164,6 +173,7 @@ export const TEXT_INPUT_PROPS = {
     value: "default",
     options: ["default", "light", "dark"],
     type: FORM_TYPES.flatArray,
+    group: GROUPS.basic,
   },
   keyboardType: {
     label: "Keyboard Type",
@@ -187,6 +197,7 @@ export const TEXT_INPUT_PROPS = {
       "visible-password",
     ],
     type: FORM_TYPES.flatArray,
+    group: GROUPS.basic,
   },
   maxLength: {
     label: "Max Length",
@@ -198,6 +209,7 @@ export const TEXT_INPUT_PROPS = {
     step: 1,
     precision: 0,
     type: FORM_TYPES.number,
+    group: GROUPS.basic,
   },
   placeholder: {
     label: "Placeholder Text",
@@ -206,6 +218,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     value: null,
     type: FORM_TYPES.string,
+    group: GROUPS.basic,
   },
   placeholderTextColor: {
     label: "Placeholder Text Color",
@@ -214,6 +227,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     value: null,
     type: FORM_TYPES.color,
+    group: GROUPS.basic,
   },
   returnKeyLabel: {
     label: "Return Key Label",
@@ -223,6 +237,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     value: null,
     type: FORM_TYPES.string,
+    group: GROUPS.advanced,
   },
   returnKeyType: {
     label: "Return Key Type",
@@ -246,6 +261,7 @@ export const TEXT_INPUT_PROPS = {
       "yahoo",
     ],
     type: FORM_TYPES.flatArray,
+    group: GROUPS.advanced,
   },
   secureTextEntry: {
     label: "Password Field",
@@ -255,6 +271,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     value: null,
     type: FORM_TYPES.boolean,
+    group: GROUPS.basic,
   },
   selectionColor: {
     label: "Selection Color",
@@ -263,6 +280,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     value: null,
     type: FORM_TYPES.color,
+    group: GROUPS.advanced,
   },
   selectTextOnFocus: {
     label: "Select Text on Focus",
@@ -272,5 +290,6 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     value: null,
     type: FORM_TYPES.boolean,
+    group: GROUPS.basic,
   },
 };

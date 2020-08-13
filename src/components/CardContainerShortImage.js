@@ -4,7 +4,12 @@ import Image from "./Image";
 import Card from "./Card";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  GROUPS,
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  ELEVATION_TYPE,
+} from "../core/component-types";
 import Config from "./Config";
 
 class CardContainerShortImage extends React.PureComponent {
@@ -99,10 +104,10 @@ export const SEED_DATA = [
     description:
       "An elevated card with a left aligned image and a title and subtitle",
     category: COMPONENT_TYPES.card,
-    preview_image_url: "{CLOUDINARY_URL}/Card_ContainerShortLeftImage.png",
-    supports_list_render: true,
+    layout: null,
     props: {
       image: {
+        group: GROUPS.data,
         label: "Image",
         description: "Image",
         type: FORM_TYPES.remoteImage,
@@ -110,6 +115,7 @@ export const SEED_DATA = [
         editable: true,
       },
       title: {
+        group: GROUPS.data,
         label: "Title",
         description: "Title to display",
         type: FORM_TYPES.string,
@@ -117,6 +123,7 @@ export const SEED_DATA = [
         editable: true,
       },
       subtitle: {
+        group: GROUPS.data,
         label: "Subtitle",
         description: "Subtitle to display",
         type: FORM_TYPES.string,
@@ -124,6 +131,7 @@ export const SEED_DATA = [
         editable: true,
       },
       aspectRatio: {
+        group: GROUPS.basic,
         label: "Aspect ratio",
         description: "Aspect ratio of the image",
         type: FORM_TYPES.aspectRatio,
@@ -131,18 +139,8 @@ export const SEED_DATA = [
         editable: true,
         required: false,
       },
-      elevation: {
-        label: "Elevation",
-        description: "Elevation of the card. A number 0-3.",
-        type: FORM_TYPES.number,
-        value: 2,
-        min: 0,
-        max: 3,
-        step: 1,
-        precision: 0,
-        editable: true,
-      },
       mode: {
+        group: GROUPS.basic,
         label: "Image Side",
         description: "The side on which the image is on (left or right)",
         type: FORM_TYPES.flatArray,
@@ -150,8 +148,8 @@ export const SEED_DATA = [
         options: ["left", "right"],
         editable: false,
       },
+      ...ELEVATION_TYPE,
     },
-    layout: {},
   },
   {
     name: "Short Card (Right)",
@@ -159,10 +157,10 @@ export const SEED_DATA = [
     description:
       "An elevated card with a right aligned image and a title and subtitle",
     category: COMPONENT_TYPES.card,
-    preview_image_url: "{CLOUDINARY_URL}/Card_ContainerShortRightImage.png",
-    supports_list_render: true,
+    layout: null,
     props: {
       image: {
+        group: GROUPS.data,
         label: "Image",
         description: "Image",
         type: FORM_TYPES.remoteImage,
@@ -170,6 +168,7 @@ export const SEED_DATA = [
         editable: true,
       },
       title: {
+        group: GROUPS.data,
         label: "Title",
         description: "Title to display",
         type: FORM_TYPES.string,
@@ -177,21 +176,11 @@ export const SEED_DATA = [
         editable: true,
       },
       subtitle: {
+        group: GROUPS.data,
         label: "Subtitle",
         description: "Subtitle to display",
         type: FORM_TYPES.string,
         value: "San Diego",
-        editable: true,
-      },
-      elevation: {
-        label: "Elevation",
-        description: "Elevation of the card. A number 0-3.",
-        type: FORM_TYPES.number,
-        value: 2,
-        min: 0,
-        max: 3,
-        step: 1,
-        precision: 0,
         editable: true,
       },
       mode: {
@@ -199,7 +188,7 @@ export const SEED_DATA = [
         value: "right",
         editable: false,
       },
+      ...ELEVATION_TYPE,
     },
-    layout: {},
   },
 ];

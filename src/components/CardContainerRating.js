@@ -8,6 +8,7 @@ import Icon from "./Icon";
 import StarRating from "./StarRating";
 import { withTheme } from "../core/theming";
 import {
+  GROUPS,
   FORM_TYPES,
   COMPONENT_TYPES,
   ELEVATION_TYPE,
@@ -157,6 +158,7 @@ export default withTheme(CardContainerRating);
 
 const SEED_DATA_PROPS = {
   image: {
+    group: GROUPS.data,
     label: "Image",
     description: "Image",
     type: FORM_TYPES.remoteImage,
@@ -164,6 +166,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   title: {
+    group: GROUPS.data,
     label: "Title",
     description: "Text to display",
     type: FORM_TYPES.string,
@@ -171,6 +174,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   leftDescription: {
+    group: GROUPS.data,
     label: "Left description",
     description: "Text to display on the left",
     type: FORM_TYPES.string,
@@ -178,6 +182,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   rightDescription: {
+    group: GROUPS.data,
     label: "Right description",
     description: "Text to display on the right",
     type: FORM_TYPES.string,
@@ -185,6 +190,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   icon: {
+    group: GROUPS.basic,
     label: "Icon",
     description: "Icon to display on the top right",
     type: FORM_TYPES.icon,
@@ -192,6 +198,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   aspectRatio: {
+    group: GROUPS.basic,
     label: "Aspect ratio",
     description: "Aspect ratio of the image",
     type: FORM_TYPES.aspectRatio,
@@ -199,6 +206,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   rating: {
+    group: GROUPS.data,
     label: "Rating",
     description: "Number of stars to show. A number 0-5.",
     type: FORM_TYPES.number,
@@ -218,17 +226,17 @@ export const SEED_DATA = [
     description:
       "An elevated card with a title and description, that takes up half of its container.",
     category: COMPONENT_TYPES.card,
-    preview_image_url: "{CLOUDINARY_URL}/Card_ContainerRating_2col.png",
-    supports_list_render: true,
+    layout: null,
     props: {
       ...SEED_DATA_PROPS,
       numColumns: {
+        label: "Number of Columns",
+        group: GROUPS.basic,
         type: FORM_TYPES.number,
         value: 2,
         editable: false,
       },
     },
-    layout: {},
   },
   {
     name: "Large Card (Rating)",
@@ -236,16 +244,16 @@ export const SEED_DATA = [
     description:
       "An elevated card with a title and description, that takes up its full container.",
     category: COMPONENT_TYPES.card,
-    preview_image_url: "{CLOUDINARY_URL}/Card_ContainerRating_3col.png",
-    supports_list_render: true,
+    layout: null,
     props: {
       ...SEED_DATA_PROPS,
       numColumns: {
+        label: "Number of Columns",
+        group: GROUPS.basic,
         type: FORM_TYPES.number,
         value: 3,
         editable: false,
       },
     },
-    layout: {},
   },
 ];

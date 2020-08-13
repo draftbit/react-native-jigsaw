@@ -5,6 +5,7 @@ import Card from "./Card";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
 import {
+  GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
   ELEVATION_TYPE,
@@ -119,6 +120,7 @@ export default withTheme(CardBlock);
 
 const SEED_DATA_PROPS = {
   image: {
+    group: GROUPS.data,
     label: "Image",
     description: "Image",
     type: FORM_TYPES.remoteImage,
@@ -126,6 +128,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   title: {
+    group: GROUPS.data,
     label: "Title",
     description: "Text to display",
     type: FORM_TYPES.string,
@@ -133,6 +136,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   leftDescription: {
+    group: GROUPS.data,
     label: "Left description",
     description: "Text to display on the left",
     type: FORM_TYPES.string,
@@ -140,6 +144,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   rightDescription: {
+    group: GROUPS.data,
     label: "Right description",
     description: "Text to display on the right",
     type: FORM_TYPES.string,
@@ -147,6 +152,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   aspectRatio: {
+    group: GROUPS.basic,
     label: "Aspect ratio",
     description: "Aspect ratio of the image",
     type: FORM_TYPES.aspectRatio,
@@ -154,6 +160,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   titleCentered: {
+    group: GROUPS.basic,
     label: "Title centered",
     description: "Whether to center the title",
     type: FORM_TYPES.boolean,
@@ -173,6 +180,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       numColumns: {
+        group: GROUPS.basic,
         type: FORM_TYPES.number,
         value: 1,
         editable: false,
@@ -188,6 +196,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       icon: {
+        group: GROUPS.basic,
         label: "Icon",
         description: "Icon to display on the top right",
         type: FORM_TYPES.icon,
@@ -195,6 +204,7 @@ export const SEED_DATA = [
         editable: true,
       },
       numColumns: {
+        group: GROUPS.basic,
         type: FORM_TYPES.number,
         value: 2,
         editable: false,
@@ -210,6 +220,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       icon: {
+        group: GROUPS.basic,
         label: "Icon",
         description: "Icon to display on the top right",
         type: FORM_TYPES.icon,
@@ -217,6 +228,7 @@ export const SEED_DATA = [
         editable: true,
       },
       numColumns: {
+        group: GROUPS.basic,
         type: FORM_TYPES.number,
         value: 3,
         editable: false,

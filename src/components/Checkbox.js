@@ -33,7 +33,7 @@ export const SEED_DATA = {
   name: "Checkbox",
   tag: "Checkbox",
   category: COMPONENT_TYPES.input,
-  preview_image_url: "{CLOUDINARY_URL}/Control_Checkbox.png",
+  layout: null,
   props: {
     disabled: {
       label: "Disabled",
@@ -57,5 +57,4 @@ export const SEED_DATA = {
       handlerPropName: "onPress",
     },
   },
-  layout: {},
 };

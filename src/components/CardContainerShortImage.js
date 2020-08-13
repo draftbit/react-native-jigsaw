@@ -5,6 +5,7 @@ import Card from "./Card";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
 import {
+  GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
   createElevationType,
@@ -107,6 +108,7 @@ export const SEED_DATA = [
     supports_list_render: true,
     props: {
       image: {
+        group: GROUPS.data,
         label: "Image",
         description: "Image",
         formType: FORM_TYPES.remoteImage,
@@ -114,6 +116,7 @@ export const SEED_DATA = [
         editable: true,
       },
       title: {
+        group: GROUPS.data,
         label: "Title",
         description: "Title to display",
         formType: FORM_TYPES.string,
@@ -121,6 +124,7 @@ export const SEED_DATA = [
         editable: true,
       },
       subtitle: {
+        group: GROUPS.data,
         label: "Subtitle",
         description: "Subtitle to display",
         formType: FORM_TYPES.string,
@@ -128,6 +132,7 @@ export const SEED_DATA = [
         editable: true,
       },
       aspectRatio: {
+        group: GROUPS.basic,
         label: "Aspect ratio",
         description: "Aspect ratio of the image",
         formType: FORM_TYPES.aspectRatio,
@@ -137,8 +142,12 @@ export const SEED_DATA = [
       },
       elevation: createElevationType(2),
       mode: {
-        formType: FORM_TYPES.string,
+        group: GROUPS.uncategorized,
+        label: "Image Side",
+        description: "The side on which the image is on (left or right)",
+        formType: FORM_TYPES.flatArray,
         defaultValue: "left",
+        options: ["left", "right"],
         editable: false,
       },
     },
@@ -154,6 +163,7 @@ export const SEED_DATA = [
     supports_list_render: true,
     props: {
       image: {
+        group: GROUPS.basic,
         label: "Image",
         description: "Image",
         formType: FORM_TYPES.remoteImage,
@@ -161,6 +171,7 @@ export const SEED_DATA = [
         editable: true,
       },
       title: {
+        group: GROUPS.basic,
         label: "Title",
         description: "Title to display",
         formType: FORM_TYPES.string,
@@ -168,6 +179,7 @@ export const SEED_DATA = [
         editable: true,
       },
       subtitle: {
+        group: GROUPS.basic,
         label: "Subtitle",
         description: "Subtitle to display",
         formType: FORM_TYPES.string,
@@ -175,6 +187,7 @@ export const SEED_DATA = [
         editable: true,
       },
       elevation: {
+        group: GROUPS.basic,
         label: "Elevation",
         description: "Elevation of the card. A number 0-3.",
         formType: FORM_TYPES.number,
@@ -186,6 +199,7 @@ export const SEED_DATA = [
         editable: true,
       },
       mode: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.string,
         defaultValue: "right",
         editable: false,

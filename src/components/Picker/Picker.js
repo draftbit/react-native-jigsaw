@@ -81,8 +81,8 @@ const SEED_DATA_PROPS = {
     description:
       "Array of picker options. An array of objects containing a label and value.",
     editable: true,
-    type: FORM_TYPES.array,
-    value: null,
+    type: FORM_TYPES.arrayInput,
+    value: [],
   },
   disabled: {
     label: "Disabled",

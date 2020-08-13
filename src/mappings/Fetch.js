@@ -5,8 +5,6 @@ export const SEED_DATA = {
   description:
     "Rest API Declarative Fetch component. Uses react-request internally",
   category: COMPONENT_TYPES.data,
-  supports_list_render: false,
-  layout: {},
   props: {
     url: {
       label: "URL",

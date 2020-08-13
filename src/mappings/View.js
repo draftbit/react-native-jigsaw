@@ -1,47 +1,46 @@
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 export const SEED_DATA = {
   name: "View",
   tag: "View",
   description: "A basic View component",
   category: COMPONENT_TYPES.basic,
-  supports_list_render: false,
-  layout: {},
   props: {
     accessible: {
+      group: GROUPS.accessibility,
       name: "accessible",
       label: "accessible",
       description:
         "When true, indicates that the view is an accessibility element. By default, all the touchable elements are accessible.",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      defaultValue: true,
+      value: true,
     },
     accessibilityLabel: {
+      group: GROUPS.accessibility,
       name: "accessibilityLabel",
       label: "accessibilityLabel",
       description:
         "Overrides the text that's read by the screen reader when the user interacts with the element. By default, the label is constructed by traversing all the children and accumulating all the Text nodes separated by space.",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.string,
-      defaultValue: null,
+      value: null,
     },
     accessibilityHint: {
+      group: GROUPS.accessibility,
       name: "accessibilityHint",
       label: "accessibilityHint",
       description:
         "An accessibility hint helps users understand what will happen when they perform an action on the accessibility element when that result is not clear from the accessibility label.",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.string,
-      defaultValue: null,
+      value: null,
     },
     accessibilityRole: {
+      group: GROUPS.accessibility,
       name: "accessibilityRole",
       label: "accessibilityRole",
       description:
@@ -77,10 +76,11 @@ export const SEED_DATA = {
       ],
       editable: true,
       required: false,
-      type: FORM_TYPES.array,
-      defaultValue: null,
+      type: FORM_TYPES.flatArray,
+      value: null,
     },
     accessibilityElementsHidden: {
+      group: GROUPS.accessibility,
       name: "accessibilityElementsHidden",
       label: "accessibilityElementsHidden",
       description:
@@ -89,9 +89,10 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      defaultValue: false,
+      value: false,
     },
     accessibilityIgnoresInvertColors: {
+      group: GROUPS.accessibility,
       name: "accessibilityIgnoresInvertColors",
       label: "accessibilityIgnoresInvertColors",
       description:
@@ -100,9 +101,10 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      defaultValue: null,
+      value: null,
     },
     accessibilityLiveRegion: {
+      group: GROUPS.accessibility,
       name: "accessibilityLiveRegion",
       label: "accessibilityLiveRegion",
       description:
@@ -110,10 +112,11 @@ export const SEED_DATA = {
       options: ["none", "polite", "assertive"],
       editable: true,
       required: false,
-      type: FORM_TYPES.array,
-      defaultValue: null,
+      type: FORM_TYPES.flatArray,
+      value: null,
     },
     importantForAccessibility: {
+      group: GROUPS.accessibility,
       name: "importantForAccessibility",
       label: "importantForAccessibility",
       description:
@@ -121,20 +124,22 @@ export const SEED_DATA = {
       options: ["auto", "yes", "no", "no-hide-descendants"],
       editable: true,
       required: false,
-      type: FORM_TYPES.array,
+      type: FORM_TYPES.flatArray,
+      value: null,
     },
     hitSlop: {
+      group: GROUPS.basic,
       name: "hitSlop",
       label: "hitSlop",
       description:
         "This defines how far a touch event can start away from the view. Typical interface guidelines recommend touch targets that are at least 30 - 40 points/density-independent pixels.For example, if a touchable view has a height of 20 the touchable height can be extended to 40 with hitSlop={{top: 10, bottom: 10, left: 0, right: 0}}\nThe touch area never extends past the parent view bounds and the Z-index of sibling views always takes precedence if a touch hits two overlapping views.\n",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.position,
-      defaultValue: "{}",
+      value: "{}",
     },
     pointerEvents: {
+      group: GROUPS.advanced,
       name: "pointerEvents",
       label: "pointerEvents",
       description:
@@ -142,73 +147,73 @@ export const SEED_DATA = {
       options: ["auto", "none", "box-none", "box-only"],
       editable: true,
       required: false,
-      type: FORM_TYPES.array,
-      defaultValue: "auto",
+      type: FORM_TYPES.flatArray,
+      value: "auto",
     },
     removeClippedSubviews: {
+      group: GROUPS.advanced,
       name: "removeClippedSubviews",
       label: "removeClippedSubviews",
       description:
         "This is a reserved performance property exposed by RCTView and is useful for scrolling content when there are many subviews, most of which are offscreen. For this property to be effective, it must be applied to a view that contains many subviews that extend outside its bound. The subviews must also have overflow: hidden, as should the containing view (or one of its superviews).",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      defaultValue: null,
+      value: null,
     },
     collapsable: {
+      group: GROUPS.advanced,
       name: "collapsable",
       label: "collapsable",
       description:
         "Views that are only used to layout their children or otherwise don't draw anything may be automatically removed from the native hierarchy as an optimization. Set this property to false to disable this optimization and ensure that this View exists in the native view hierarchy.",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      defaultValue: null,
+      value: null,
     },
     needsOffscreenAlphaCompositing: {
+      group: GROUPS.advanced,
       name: "needsOffscreenAlphaCompositing",
       label: "needsOffscreenAlphaCompositing",
       description:
         "Whether this View needs to rendered offscreen and composited with an alpha in order to preserve 100% correct colors and blending behavior. The default (false) falls back to drawing the component and its children with an alpha applied to the paint used to draw each element instead of rendering the full component offscreen and compositing it back with an alpha value. This default may be noticeable and undesired in the case where the View you are setting an opacity on has multiple overlapping elements (e.g. multiple overlapping Views, or text and a background).Rendering offscreen to preserve correct alpha behavior is extremely expensive and hard to debug for non-native developers, which is why it is not turned on by default. If you do need to enable this property for an animation, consider combining it with renderToHardwareTextureAndroid if the view contents are static (i.e. it doesn't need to be redrawn each frame). If that property is enabled, this View will be rendered off-screen once, saved in a hardware texture, and then composited onto the screen with an alpha each frame without having to switch rendering targets on the GPU.",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
     },
     renderToHardwareTextureAndroid: {
+      group: GROUPS.advanced,
       name: "renderToHardwareTextureAndroid",
       label: "renderToHardwareTextureAndroid",
       description:
         "Whether this View should render itself (and all of its children) into a single hardware texture on the GPU.On Android, this is useful for animations and interactions that only modify opacity, rotation, translation, and/or scale: in those cases, the view doesn't have to be redrawn and display lists don't need to be re-executed. The texture can be re-used and re-composited with different parameters. The downside is that this can use up limited video memory, so this prop should be set back to false at the end of the interaction/animation.",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      defaultValue: null,
+      value: null,
     },
     shouldRasterizeIOS: {
+      group: GROUPS.advanced,
       name: "shouldRasterizeIOS",
       label: "shouldRasterizeIOS",
       description:
         "Whether this View should be rendered as a bitmap before compositing.On iOS, this is useful for animations and interactions that do not modify this component's dimensions nor its children; for example, when translating the position of a static view, rasterization allows the renderer to reuse a cached bitmap of a static view and quickly composite it during each frame.Rasterization incurs an off-screen drawing pass and the bitmap consumes memory. Test and measure when using this property.",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      defaultValue: null,
+      value: null,
     },
     clickable: {
+      group: GROUPS.basic,
       name: "clickable",
-      label: "clickable",
+      label: "Clickable",
       description:
         "Determines whether this View is clickable or tappable for accessibility hints.",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      defaultValue: null,
+      value: null,
     },
   },
 };

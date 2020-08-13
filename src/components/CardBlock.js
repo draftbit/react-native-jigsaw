@@ -170,8 +170,6 @@ export const SEED_DATA = [
     description:
       "An elevated card with a title and description, that takes up one third of its container.",
     category: COMPONENT_TYPES.card,
-    preview_image_url: "{CLOUDINARY_URL}/Card_Block_1col.png",
-    supports_list_render: true,
     props: {
       ...SEED_DATA_PROPS,
       numColumns: {
@@ -180,7 +178,6 @@ export const SEED_DATA = [
         editable: false,
       },
     },
-    layout: {},
   },
   {
     name: "Medium Block Card",
@@ -188,8 +185,6 @@ export const SEED_DATA = [
     description:
       "An elevated card with a title and description, that takes up one half of its container.",
     category: COMPONENT_TYPES.deprecated,
-    preview_image_url: "{CLOUDINARY_URL}/Card_Block_2col.png",
-    supports_list_render: true,
     props: {
       ...SEED_DATA_PROPS,
       icon: {
@@ -205,7 +200,6 @@ export const SEED_DATA = [
         editable: false,
       },
     },
-    layout: {},
   },
   {
     name: "Large Block Card",
@@ -213,8 +207,6 @@ export const SEED_DATA = [
     description:
       "An elevated card with a title and description, that takes up the full width its container.",
     category: COMPONENT_TYPES.deprecated,
-    preview_image_url: "{CLOUDINARY_URL}/Card_Block_3col.png",
-    supports_list_render: true,
     props: {
       ...SEED_DATA_PROPS,
       icon: {
@@ -230,6 +222,5 @@ export const SEED_DATA = [
         editable: false,
       },
     },
-    layout: {},
   },
 ];

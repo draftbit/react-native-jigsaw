@@ -1,3 +1,10 @@
+export const GROUPS = {
+  accessibility: "accessibility",
+  basic: "basic",
+  advanced: "advanced",
+  data: "data",
+};
+
 export const FORM_TYPES = {
   json: "json",
   multiselect: "multiselect",
@@ -18,7 +25,7 @@ export const FORM_TYPES = {
   icon: "icon",
   style: "style",
   function: "function",
-  array: "array",
+  // array: "array",
   flatArray: "flatArray",
   aspectRatio: "aspectRatio",
   date: "date",
@@ -39,7 +46,6 @@ export const COMPONENT_TYPES = {
   header: "header",
   button: "button",
   image: "image",
-  primitive: "primitive",
   field: "field",
   formControl: "formControl",
   row: "row",
@@ -55,6 +61,7 @@ export const ELEVATION_TYPE = {
   options: [0, 1, 2, 3],
   value: 0,
   editable: true,
+  group: GROUPS.basic,
 };
 
 export const BORDER_RADIUS_MODE = {

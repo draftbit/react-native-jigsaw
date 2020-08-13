@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text as NativeText, I18nManager } from "react-native";
 import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 /**
  * Text component which follows styles from the theme.
@@ -45,10 +45,6 @@ export const SEED_DATA = {
   tag: "Text",
   description: "A basic Text component",
   category: COMPONENT_TYPES.basic,
-  supports_list_render: false,
-  preview_image_url:
-    "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/Text.svg",
-  layout: {},
   props: {
     children: {
       label: "Text",
@@ -57,19 +53,21 @@ export const SEED_DATA = {
       required: true,
       type: FORM_TYPES.string,
       value: "Hello World!",
+      group: GROUPS.data,
     },
     accessibilityLabel: {
+      group: GROUPS.accessibility,
       name: "accessibilityLabel",
       label: "accessibilityLabel",
       description:
         "Overrides the text that's read by the screen reader when the user interacts with the element. By default, the label is constructed by traversing all the children and accumulating all the Text nodes separated by space.",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.string,
-      defaultValue: null,
+      value: null,
     },
     accessibilityRole: {
+      group: GROUPS.accessibility,
       name: "accessibilityRole",
       label: "accessibilityRole",
       description:
@@ -89,43 +87,44 @@ export const SEED_DATA = {
       ],
       editable: true,
       required: false,
-      type: FORM_TYPES.array,
-      defaultValue: null,
+      type: FORM_TYPES.flatArray,
+      value: null,
     },
     accessible: {
+      group: GROUPS.accessibility,
       name: "accessible",
       label: "accessible",
       description:
         "When set to true, indicates that the view is an accessibility element. The default value for a Text element is true.See the Accessibility guide for more information.",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      defaultValue: true,
+      value: true,
     },
     adjustsFontSizeToFit: {
+      group: GROUPS.basic,
       name: "adjustsFontSizeToFit",
       label: "adjustsFontSizeToFit",
       description:
         "Specifies whether fonts should be scaled down automatically to fit given style constraints.",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      defaultValue: false,
+      value: false,
     },
     allowFontScaling: {
+      group: GROUPS.basic,
       name: "allowFontScaling",
       label: "allowFontScaling",
       description:
         "Specifies whether fonts should scale to respect Text Size accessibility settings. The default is true.",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      defaultValue: true,
+      value: true,
     },
     dataDetectorType: {
+      group: GROUPS.basic,
       name: "dataDetectorType",
       label: "dataDetectorType",
       description:
@@ -133,21 +132,22 @@ export const SEED_DATA = {
       options: ["phoneNumber", "link", "email", "none", "all"],
       editable: true,
       required: false,
-      type: FORM_TYPES.array,
-      defaultValue: null,
+      type: FORM_TYPES.flatArray,
+      value: null,
     },
     disabled: {
+      group: GROUPS.basic,
       name: "disabled",
       label: "disabled",
       description:
         "Specifies the disabled state of the text view for testing purposes",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      defaultValue: false,
+      value: false,
     },
     ellipsizeMode: {
+      group: GROUPS.basic,
       name: "ellipsizeMode",
       label: "ellipsizeMode",
       description:
@@ -155,77 +155,82 @@ export const SEED_DATA = {
       options: ["head", "middle", "tail", "clip"],
       editable: true,
       required: false,
-      type: FORM_TYPES.array,
-      defaultValue: "tail",
+      type: FORM_TYPES.flatArray,
+      value: "tail",
     },
     maxFontSizeMultiplier: {
+      group: GROUPS.advanced,
       name: "maxFontSizeMultiplier",
       label: "maxFontSizeMultiplier",
       description:
         "Specifies largest possible scale a font can reach when allowFontScaling is enabled. Possible values:\nnull/undefined (default): inherit from the parent node or the global default (0)\n0: no max, ignore parent/global default\n>= 1: sets the maxFontSizeMultiplier of this node to this value\n",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.number,
-      defaultValue: null,
+      value: null,
     },
     minimumFontScale: {
+      group: GROUPS.advanced,
       name: "minimumFontScale",
       label: "minimumFontScale",
       description:
         "Specifies smallest possible scale a font can reach when adjustsFontSizeToFit is enabled. (values 0.01-1.0).",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.number,
-      defaultValue: null,
+      min: 0.01,
+      max: 1.0,
+      precision: 2,
+      step: 0.1,
+      value: null,
     },
     numberOfLines: {
+      group: GROUPS.basic,
       name: "numberOfLines",
       label: "numberOfLines",
       description:
         "Used to truncate the text with an ellipsis after computing the text layout, including line wrapping, such that the total number of lines does not exceed this number.This prop is commonly used with ellipsizeMode.",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.number,
       step: 1,
       precision: 1,
-      defaultValue: null,
+      value: null,
     },
     selectable: {
+      group: GROUPS.basic,
       name: "selectable",
       label: "selectable",
       description:
         "Lets the user select text, to use the native copy and paste functionality.",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      defaultValue: null,
+      value: null,
     },
     selectionColor: {
+      group: GROUPS.advanced,
       name: "selectionColor",
       label: "selectionColor",
       description: "The highlight color of the text.",
-      options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.string,
-      defaultValue: null,
+      type: FORM_TYPES.color,
+      value: null,
     },
     suppressHighlighting: {
+      group: GROUPS.advanced,
       name: "suppressHighlighting",
       label: "suppressHighlighting",
       description:
         "When true, no visual change is made when text is pressed down. By default, a gray oval highlights the text on press down.",
-      options: [],
       editable: true,
       required: false,
       type: FORM_TYPES.boolean,
-      defaultValue: false,
+      value: false,
     },
     textBreakStrategy: {
+      group: GROUPS.advanced,
       name: "textBreakStrategy",
       label: "textBreakStrategy",
       description:
@@ -233,8 +238,8 @@ export const SEED_DATA = {
       options: ["simple", "highQuality", "balanced"],
       editable: true,
       required: false,
-      type: FORM_TYPES.array,
-      defaultValue: "highQuality",
+      type: FORM_TYPES.flatArray,
+      value: "highQuality",
     },
   },
 };

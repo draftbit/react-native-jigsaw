@@ -1,4 +1,5 @@
 import {
+  GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
   FIELD_NAME,
@@ -11,6 +12,7 @@ const SEED_DATA_PROPS = {
     value: "Date",
     editable: true,
     required: true,
+    group: GROUPS.data,
   },
   mode: {
     label: "Mode",
@@ -20,6 +22,7 @@ const SEED_DATA_PROPS = {
     required: true,
     type: FORM_TYPES.flatArray,
     options: ["date", "time", "datetime"],
+    group: GROUPS.basic,
   },
   assistiveText: {
     label: "Assistive text",
@@ -28,6 +31,7 @@ const SEED_DATA_PROPS = {
     value: null,
     editable: true,
     required: false,
+    group: GROUPS.basic,
   },
   locale: {
     label: "Locale",
@@ -36,6 +40,7 @@ const SEED_DATA_PROPS = {
     value: null,
     editable: true,
     required: false,
+    group: GROUPS.basic,
   },
   minuteInterval: {
     label: "Minute Interval",
@@ -45,6 +50,7 @@ const SEED_DATA_PROPS = {
     value: null,
     editable: true,
     required: false,
+    group: GROUPS.basic,
   },
   timeZoneOffsetInMinutes: {
     label: "Time zone offset",
@@ -54,6 +60,7 @@ const SEED_DATA_PROPS = {
     value: null,
     editable: true,
     required: false,
+    group: GROUPS.basic,
   },
   initialDate: {
     label: "Initial Date",
@@ -63,14 +70,17 @@ const SEED_DATA_PROPS = {
     value: null,
     editable: true,
     required: false,
+    group: GROUPS.basic,
   },
   options: {
     label: "Options",
     description:
       "Array of picker options. An array of objects containing a label and value.",
     editable: true,
-    type: FORM_TYPES.array,
-    value: null,
+    required: false,
+    type: FORM_TYPES.arrayInput,
+    value: [],
+    group: GROUPS.data,
   },
   disabled: {
     label: "Disabled",
@@ -79,6 +89,7 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.boolean,
     value: false,
     editable: true,
+    group: GROUPS.basic,
   },
   error: {
     label: "Error",
@@ -86,6 +97,7 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.boolean,
     value: false,
     editable: true,
+    group: GROUPS.data,
   },
   leftIconName: {
     label: "Left icon name",
@@ -93,6 +105,7 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.icon,
     value: null,
     editable: true,
+    group: GROUPS.basic,
   },
   leftIconMode: {
     label: "Left icon mode",
@@ -103,6 +116,7 @@ const SEED_DATA_PROPS = {
     options: ["inset", "outset"],
     editable: true,
     required: true,
+    group: GROUPS.basic,
   },
   rightIconName: {
     label: "Right icon name",
@@ -110,12 +124,14 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.icon,
     value: null,
     editable: true,
+    group: GROUPS.basic,
   },
   fieldName: {
     ...FIELD_NAME,
     handlerPropName: "onDateChange",
     valuePropName: "date",
     value: "date",
+    group: GROUPS.basic,
   },
 };
 
@@ -125,33 +141,31 @@ export const SEED_DATA = [
     tag: "DatePicker",
     description: "A date picker with a solid border",
     category: COMPONENT_TYPES.field,
-    preview_image_url: "{CLOUDINARY_URL}/DatePicker.png",
-    supports_list_render: false,
+    layout: null,
     props: {
       ...SEED_DATA_PROPS,
       type: {
         type: FORM_TYPES.string,
         value: "solid",
         editable: false,
+        group: GROUPS.basic,
       },
     },
-    layout: {},
   },
   {
     name: "Date Picker - Underline",
     tag: "DatePicker",
     description: "A date picker with an underline",
     category: COMPONENT_TYPES.field,
-    preview_image_url: "{CLOUDINARY_URL}/DatePicker.png",
-    supports_list_render: false,
+    layout: null,
     props: {
       ...SEED_DATA_PROPS,
       type: {
         type: FORM_TYPES.string,
         value: "underline",
         editable: false,
+        group: GROUPS.basic,
       },
     },
-    layout: {},
   },
 ];

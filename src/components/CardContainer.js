@@ -7,6 +7,7 @@ import Elevation from "./Elevation";
 import Icon from "./Icon";
 import { withTheme } from "../core/theming";
 import {
+  GROUPS,
   FORM_TYPES,
   COMPONENT_TYPES,
   ELEVATION_TYPE,
@@ -155,6 +156,8 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.remoteImage,
     value: null,
     editable: true,
+    required: true,
+    group: GROUPS.data,
   },
   title: {
     label: "Title",
@@ -162,6 +165,8 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.string,
     value: "Beautiful West Coast Villa",
     editable: true,
+    required: false,
+    group: GROUPS.data,
   },
   leftDescription: {
     label: "Left description",
@@ -169,6 +174,7 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.string,
     value: "San Diego",
     editable: true,
+    group: GROUPS.data,
   },
   rightDescription: {
     label: "Right description",
@@ -176,6 +182,7 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.string,
     value: "$100",
     editable: true,
+    group: GROUPS.data,
   },
   icon: {
     label: "Icon",
@@ -183,6 +190,7 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.icon,
     value: null,
     editable: true,
+    group: GROUPS.basic,
   },
   aspectRatio: {
     label: "Aspect ratio",
@@ -190,13 +198,17 @@ const SEED_DATA_PROPS = {
     type: FORM_TYPES.aspectRatio,
     value: 1.5,
     editable: true,
+    required: false,
+    group: GROUPS.basic,
   },
   textCentered: {
-    label: "Text centered",
+    label: "Centered Text",
     description: "Whether to center the text",
     type: FORM_TYPES.boolean,
     value: false,
     editable: true,
+    required: false,
+    group: GROUPS.basic,
   },
   elevation: ELEVATION_TYPE,
 };
@@ -208,17 +220,16 @@ export const SEED_DATA = [
     description:
       "An elevated card with a title and description, that takes up half of its container.",
     category: COMPONENT_TYPES.card,
-    preview_image_url: "{CLOUDINARY_URL}/Card_Inline_2col.png",
-    supports_list_render: true,
+    layout: null,
     props: {
       ...SEED_DATA_PROPS,
       numColumns: {
         type: FORM_TYPES.number,
         value: 2,
         editable: false,
+        group: GROUPS.basic,
       },
     },
-    layout: {},
   },
   {
     name: "Large Card",
@@ -226,16 +237,15 @@ export const SEED_DATA = [
     description:
       "An elevated card with a title and description, that takes up its full container.",
     category: COMPONENT_TYPES.card,
-    preview_image_url: "{CLOUDINARY_URL}/Card_Container_3col.png",
-    supports_list_render: true,
+    layout: null,
     props: {
       ...SEED_DATA_PROPS,
       numColumns: {
         type: FORM_TYPES.number,
         value: 3,
         editable: false,
+        group: GROUPS.basic,
       },
     },
-    layout: {},
   },
 ];

@@ -143,8 +143,11 @@ export const SEED_DATA = [
         editable: true,
       },
       mode: {
-        type: FORM_TYPES.string,
+        label: "Image Side",
+        description: "The side on which the image is on (left or right)",
+        type: FORM_TYPES.flatArray,
         value: "left",
+        options: ["left", "right"],
         editable: false,
       },
     },

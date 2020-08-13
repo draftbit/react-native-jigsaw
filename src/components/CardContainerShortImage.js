@@ -148,7 +148,7 @@ export const SEED_DATA = [
         options: ["left", "right"],
         editable: false,
       },
-      ...ELEVATION_TYPE,
+      elevation: ELEVATION_TYPE,
     },
   },
   {
@@ -188,7 +188,7 @@ export const SEED_DATA = [
         value: "right",
         editable: false,
       },
-      ...ELEVATION_TYPE,
+      elevation: ELEVATION_TYPE,
     },
   },
 ];

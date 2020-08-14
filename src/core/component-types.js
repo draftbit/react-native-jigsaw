@@ -25,7 +25,6 @@ export const FORM_TYPES = {
   icon: "icon",
   style: "style",
   function: "function",
-  // array: "array",
   flatArray: "flatArray",
   aspectRatio: "aspectRatio",
   date: "date",
@@ -54,7 +53,7 @@ export const COMPONENT_TYPES = {
   deprecated: "deprecated",
 };
 
-export const ELEVATION_TYPE = {
+const ELEVATION_TYPE = {
   label: "Elevation",
   description: "Elevation of the component. A number 0-3.",
   type: FORM_TYPES.flatArray,
@@ -64,12 +63,10 @@ export const ELEVATION_TYPE = {
   group: GROUPS.basic,
 };
 
-export function createElevationType(value) {
-  return {
-    ...ELEVATION_TYPE,
-    value,
-  };
-}
+export const createElevationType = (value) => ({
+  ...ELEVATION_TYPE,
+  value,
+});
 
 export const BORDER_RADIUS_MODE = {
   label: "Border radius",

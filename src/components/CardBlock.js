@@ -8,7 +8,7 @@ import {
   GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
-  ELEVATION_TYPE,
+  createElevationType,
 } from "../core/component-types";
 import Config from "./Config";
 
@@ -167,7 +167,7 @@ const SEED_DATA_PROPS = {
     value: false,
     editable: true,
   },
-  elevation: ELEVATION_TYPE,
+  elevation: createElevationType(2),
 };
 
 export const SEED_DATA = [

@@ -64,6 +64,13 @@ export const ELEVATION_TYPE = {
   group: GROUPS.basic,
 };
 
+export function createElevationType(value) {
+  return {
+    ...ELEVATION_TYPE,
+    value,
+  };
+}
+
 export const BORDER_RADIUS_MODE = {
   label: "Border radius",
   description:

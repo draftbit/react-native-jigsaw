@@ -7,10 +7,10 @@ export const GROUPS = {
 
 export const FORM_TYPES = {
   json: "json",
-  multiselect: "multiselect",
+  // multiselect: "multiselect",
   position: "position",
   sourceUrl: "sourceUrl",
-  url: "url",
+  // url: "url",
   string: "string",
   boolean: "boolean",
   number: "number",
@@ -31,7 +31,7 @@ export const FORM_TYPES = {
   borderRadiusMode: "borderRadiusMode",
   fieldName: "fieldName",
   action: "action",
-  query: "query",
+  // query: "query",
   arrayInput: "arrayInput",
 };
 

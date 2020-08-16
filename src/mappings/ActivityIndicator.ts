@@ -1,6 +1,12 @@
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+  GROUPS,
+  ComponentManifest,
+} from "../core/component-types";
 
-export const SEED_DATA = {
+export const SEED_DATA: ComponentManifest = {
   name: "Activity Indicator",
   tag: "ActivityIndicator",
   description: "Displays a circular loading indicator.",
@@ -9,42 +15,49 @@ export const SEED_DATA = {
   code_link:
     "https://github.com/expo/expo/blob/master/ios/versioned-react-native/ABI32_0_0/Libraries/Components/ActivityIndicator/ActivityIndicator.js",
   category: COMPONENT_TYPES.formControl,
-  supports_list_render: false,
   layout: { width: 36, height: 36 },
   props: {
     size: {
       label: "Size",
       description: "The size of the loading indicator (Default: small)",
       options: ["small", "large"],
-      type: FORM_TYPES.flatArray,
+      formType: FORM_TYPES.flatArray,
+      propType: PROP_TYPES.STRING,
       editable: true,
       required: false,
-      value: "small",
+      defaultValue: "small",
+      group: GROUPS.basic,
     },
     animating: {
       label: "Spinning",
       description: "Whether to show the loading indicator (Default: true)",
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       editable: true,
       required: false,
-      value: true,
+      defaultValue: true,
+      group: GROUPS.basic,
     },
     hidesWhenStopped: {
       label: "Hide When Stopped",
       description:
         "Whether the indicator should hide when not animating (Default: true)",
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       editable: true,
       required: false,
-      value: true,
+      defaultValue: true,
+      group: GROUPS.basic,
     },
     color: {
       label: "Color",
       description: "The color of the loading indicator (Default: gray)",
-      type: FORM_TYPES.color,
+      formType: FORM_TYPES.color,
+      propType: PROP_TYPES.STRING,
       editable: true,
       required: false,
-      value: null,
+      defaultValue: null,
+      group: GROUPS.basic,
     },
   },
 };

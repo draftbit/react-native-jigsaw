@@ -27,8 +27,8 @@ export const SEED_DATA = {
       label: "Action",
       description: "Action to execute when touchable pressed",
       editable: true,
-      type: FORM_TYPES.action,
-      value: null,
+      formType: FORM_TYPES.action,
+      defaultValue: null,
     },
     hitSlop: {
       label: "Hit Slop",
@@ -36,8 +36,8 @@ export const SEED_DATA = {
         "Makes the Touchable easier to press by expanding the touchable area a specified number of points, without having to change the layout of the Touchable (e.g. by adding padding)",
       editable: true,
       required: false,
-      type: FORM_TYPES.position,
-      value: null,
+      formType: FORM_TYPES.position,
+      defaultValue: null,
     },
   },
 };

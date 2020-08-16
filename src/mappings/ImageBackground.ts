@@ -1,6 +1,12 @@
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+  GROUPS,
+  ComponentManifest,
+} from "../core/component-types";
 
-export const SEED_DATA = {
+export const SEED_DATA: ComponentManifest = {
   name: "Image Background",
   tag: "ImageBackground",
   doc_link:
@@ -18,8 +24,9 @@ export const SEED_DATA = {
       description: "The source of the image",
       editable: true,
       required: true,
-      type: FORM_TYPES.localImage,
-      value: null,
+      formType: FORM_TYPES.localImage,
+      propType: PROP_TYPES.ASSET,
+      defaultValue: null,
     },
     resizeMode: {
       group: GROUPS.basic,
@@ -28,8 +35,9 @@ export const SEED_DATA = {
         "Determines how to resize the image when the frame doesn't match the raw image dimensions",
       editable: true,
       required: false,
-      value: "cover",
-      type: FORM_TYPES.flatArray,
+      defaultValue: "cover",
+      formType: FORM_TYPES.flatArray,
+      propType: PROP_TYPES.STRING,
       options: ["cover", "contain", "stretch", "repeat", "center"],
     },
     backfaceVisibility: {
@@ -38,8 +46,9 @@ export const SEED_DATA = {
       description: "When animating a card, show the back face of it",
       editable: false,
       required: false,
-      value: null,
-      type: FORM_TYPES.flatArray,
+      defaultValue: null,
+      formType: FORM_TYPES.flatArray,
+      propType: PROP_TYPES.STRING,
       options: ["visible", "hidden"],
     },
     backgroundColor: {
@@ -48,8 +57,9 @@ export const SEED_DATA = {
       description: "If no image is chosen render a colored background.",
       editable: true,
       required: false,
-      value: null,
-      type: FORM_TYPES.color,
+      defaultValue: null,
+      formType: FORM_TYPES.color,
+      propType: PROP_TYPES.STRING,
     },
   },
 };

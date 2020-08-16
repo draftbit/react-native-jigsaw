@@ -1,105 +1,157 @@
-export const GROUPS = {
-  accessibility: "accessibility",
-  basic: "basic",
-  advanced: "advanced",
-  data: "data",
+export enum PROP_TYPES {
+  "STRING" = "STRING",
+  "ARRAY" = "ARRAY",
+  "NUMBER" = "NUMBER",
+  "BOOLEAN" = "BOOLEAN",
+  "OBJECT" = "OBJECT",
+  "ASSET" = "ASSET",
+  "THEME" = "THEME",
+}
+
+export enum GROUPS {
+  accessibility = "accessibility",
+  basic = "basic",
+  advanced = "advanced",
+  data = "data",
+}
+
+export enum FORM_TYPES {
+  json = "json",
+  position = "position",
+  sourceUrl = "sourceUrl",
+  string = "string",
+  boolean = "boolean",
+  number = "number",
+  select = "select",
+  color = "color",
+  typeStyle = "typeStyle",
+  component = "component",
+  geolocation = "geolocation",
+  localImage = "localImage",
+  remoteImage = "remoteImage",
+  localImageArray = "localImageArray",
+  icon = "icon",
+  style = "style",
+  function = "function",
+  flatArray = "flatArray",
+  aspectRatio = "aspectRatio",
+  date = "date",
+  borderRadiusMode = "borderRadiusMode",
+  fieldName = "fieldName",
+  action = "action",
+  arrayInput = "arrayInput",
+}
+
+export enum COMPONENT_TYPES {
+  basic = "basic",
+  media = "media",
+  layout = "layout",
+  input = "input",
+  data = "data",
+  card = "card",
+  header = "header",
+  button = "button",
+  image = "image",
+  field = "field",
+  formControl = "formControl",
+  row = "row",
+  container = "container",
+  blocks = "blocks",
+  deprecated = "deprecated",
+}
+
+export interface Mapping {
+  label: string;
+  description: string;
+  editable: boolean;
+  required: boolean;
+  defaultValue: string | number | boolean | null;
+  formType: FORM_TYPES;
+  propType: PROP_TYPES;
+  options?: Array<string | number>;
+  group: GROUPS;
+}
+
+export type FieldMapping = Mapping & {
+  valuePropName: string;
+  handlerPropName: string;
 };
 
-export const FORM_TYPES = {
-  json: "json",
-  // multiselect: "multiselect",
-  position: "position",
-  sourceUrl: "sourceUrl",
-  // url: "url",
-  string: "string",
-  boolean: "boolean",
-  number: "number",
-  select: "select",
-  color: "color",
-  typeStyle: "typeStyle",
-  component: "component",
-  geolocation: "geolocation",
-  localImage: "localImage",
-  remoteImage: "remoteImage",
-  localImageArray: "localImageArray",
-  icon: "icon",
-  style: "style",
-  function: "function",
-  flatArray: "flatArray",
-  aspectRatio: "aspectRatio",
-  date: "date",
-  borderRadiusMode: "borderRadiusMode",
-  fieldName: "fieldName",
-  action: "action",
-  // query: "query",
-  arrayInput: "arrayInput",
+export type NumberMapping = Mapping & {
+  min: number;
+  max: number;
+  step: number;
+  precision: number;
 };
 
-export const COMPONENT_TYPES = {
-  basic: "basic",
-  media: "media",
-  layout: "layout",
-  input: "input",
-  data: "data",
-  card: "card",
-  header: "header",
-  button: "button",
-  image: "image",
-  field: "field",
-  formControl: "formControl",
-  row: "row",
-  container: "container",
-  blocks: "blocks",
-  deprecated: "deprecated",
-};
+export interface ComponentMapping {
+  [key: string]: Mapping | FieldMapping | NumberMapping;
+}
 
-const ELEVATION_TYPE = {
+export interface ComponentManifest {
+  name: string;
+  tag: string;
+  description: string;
+  doc_link?: string;
+  code_link?: string;
+  category: COMPONENT_TYPES;
+  layout?: {} | null;
+  props: ComponentMapping;
+}
+
+const ELEVATION_TYPE: Mapping = {
   label: "Elevation",
   description: "Elevation of the component. A number 0-3.",
-  type: FORM_TYPES.flatArray,
   options: [0, 1, 2, 3],
-  value: 0,
+  defaultValue: 0,
   editable: true,
+  required: false,
   group: GROUPS.basic,
+  formType: FORM_TYPES.flatArray,
+  propType: PROP_TYPES.NUMBER,
 };
 
-export const createElevationType = (value) => ({
+export const createElevationType = (defaultValue: number) => ({
   ...ELEVATION_TYPE,
-  value,
+  defaultValue,
 });
 
-export const BORDER_RADIUS_MODE = {
+export const BORDER_RADIUS_MODE: Mapping = {
   label: "Border radius",
   description:
     "Border radius of the element - either None, Global (using theme global border radius), or Round (must specify a width and height on component)",
-  type: FORM_TYPES.borderRadiusMode,
-  value: null,
   editable: true,
   required: true,
+  defaultValue: null,
+  formType: FORM_TYPES.borderRadiusMode,
+  propType: PROP_TYPES.STRING,
+  group: GROUPS.basic,
 };
 
-export const FIELD_NAME = {
+export const FIELD_NAME: FieldMapping = {
   label: "Field name",
   description:
     "The name of the field within the screen that will store this component's value",
-  type: FORM_TYPES.fieldName,
-  value: null,
+  defaultValue: null,
   valuePropName: "value",
   handlerPropName: "onChange",
   editable: true,
   required: false,
   group: GROUPS.basic,
+  formType: FORM_TYPES.fieldName,
+  propType: PROP_TYPES.STRING,
 };
 
-export const TEXT_INPUT_PROPS = {
+export const TEXT_INPUT_PROPS: ComponentMapping = {
   allowFontScaling: {
     label: "Allow Font Scaling",
     description:
       "Whether fonts should scale to respect Text Size in the user's accessibility settings. (Default: true)",
     editable: true,
     required: false,
-    value: null,
-    type: FORM_TYPES.boolean,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
     group: GROUPS.basic,
   },
   autoCapitalize: {
@@ -108,9 +160,10 @@ export const TEXT_INPUT_PROPS = {
       "Can automatically capitalize sentences, words, and characters (Default: none).",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     options: ["none", "sentences", "words", "characters"],
-    type: FORM_TYPES.flatArray,
+    formType: FORM_TYPES.flatArray,
+    propType: PROP_TYPES.STRING,
     group: GROUPS.basic,
   },
   autoCorrect: {
@@ -118,8 +171,9 @@ export const TEXT_INPUT_PROPS = {
     description: "Enables auto correction",
     editable: true,
     required: false,
-    value: null,
-    type: FORM_TYPES.boolean,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
     group: GROUPS.basic,
   },
   autoFocus: {
@@ -127,8 +181,9 @@ export const TEXT_INPUT_PROPS = {
     description: "Focuses the input on load in and brings up the keyboard",
     editable: true,
     required: false,
-    value: null,
-    type: FORM_TYPES.boolean,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
     group: GROUPS.basic,
   },
   caretHidden: {
@@ -137,8 +192,9 @@ export const TEXT_INPUT_PROPS = {
       "Hides the caret(the line small line underneath each showing where you're editing/typing",
     editable: true,
     required: false,
-    value: null,
-    type: FORM_TYPES.boolean,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
     group: GROUPS.basic,
   },
   contextMenuHidden: {
@@ -146,8 +202,9 @@ export const TEXT_INPUT_PROPS = {
     description: "Hides the system context menu (Default: false)",
     editable: true,
     required: false,
-    value: null,
-    type: FORM_TYPES.boolean,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
     group: GROUPS.advanced,
   },
   defaultValue: {
@@ -156,8 +213,9 @@ export const TEXT_INPUT_PROPS = {
       "The value that of the text-input initially, not a placeholder but the value that the textInput is taking in.",
     editable: true,
     required: false,
-    value: null,
-    type: FORM_TYPES.string,
+    defaultValue: null,
+    formType: FORM_TYPES.string,
+    propType: PROP_TYPES.STRING,
     group: GROUPS.basic,
   },
   editable: {
@@ -165,8 +223,9 @@ export const TEXT_INPUT_PROPS = {
     description: "If false, the text is not editable",
     editable: true,
     required: false,
-    value: null,
-    type: FORM_TYPES.boolean,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
     group: GROUPS.basic,
   },
   keyboardAppearance: {
@@ -174,9 +233,10 @@ export const TEXT_INPUT_PROPS = {
     description: "Determines the color of the keyboard.(iOS Only)",
     editable: true,
     required: false,
-    value: "default",
+    defaultValue: "default",
     options: ["default", "light", "dark"],
-    type: FORM_TYPES.flatArray,
+    formType: FORM_TYPES.flatArray,
+    propType: PROP_TYPES.STRING,
     group: GROUPS.basic,
   },
   keyboardType: {
@@ -184,7 +244,7 @@ export const TEXT_INPUT_PROPS = {
     description: "Determines what keyboard is given to the user.",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     options: [
       "default",
       "email-address",
@@ -200,7 +260,8 @@ export const TEXT_INPUT_PROPS = {
       "web-search",
       "visible-password",
     ],
-    type: FORM_TYPES.flatArray,
+    formType: FORM_TYPES.flatArray,
+    propType: PROP_TYPES.STRING,
     group: GROUPS.basic,
   },
   maxLength: {
@@ -208,20 +269,23 @@ export const TEXT_INPUT_PROPS = {
     description: "Limits the input to a set number of characters.",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     min: 0,
     step: 1,
     precision: 0,
-    type: FORM_TYPES.number,
+    formType: FORM_TYPES.number,
+    propType: PROP_TYPES.NUMBER,
     group: GROUPS.basic,
   },
   placeholder: {
     label: "Placeholder Text",
-    description: "The text that is shown on load when no value is available.",
+    description:
+      "The text that is shown on load when no defaultValue is available.",
     editable: true,
     required: false,
-    value: null,
-    type: FORM_TYPES.string,
+    defaultValue: null,
+    formType: FORM_TYPES.string,
+    propType: PROP_TYPES.STRING,
     group: GROUPS.basic,
   },
   placeholderTextColor: {
@@ -229,8 +293,9 @@ export const TEXT_INPUT_PROPS = {
     description: "The color of the placeholder text.",
     editable: true,
     required: false,
-    value: null,
-    type: FORM_TYPES.color,
+    defaultValue: null,
+    formType: FORM_TYPES.color,
+    propType: PROP_TYPES.STRING, // TODO color?
     group: GROUPS.basic,
   },
   returnKeyLabel: {
@@ -239,8 +304,9 @@ export const TEXT_INPUT_PROPS = {
       "(Android Only) Sets the label on the return key (use this instead of rewturnKeyType)",
     editable: true,
     required: false,
-    value: null,
-    type: FORM_TYPES.string,
+    defaultValue: null,
+    formType: FORM_TYPES.string,
+    propType: PROP_TYPES.STRING,
     group: GROUPS.advanced,
   },
   returnKeyType: {
@@ -248,7 +314,7 @@ export const TEXT_INPUT_PROPS = {
     description: "Determines how the return key should look like",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     options: [
       "done",
       "go",
@@ -264,7 +330,8 @@ export const TEXT_INPUT_PROPS = {
       "route",
       "yahoo",
     ],
-    type: FORM_TYPES.flatArray,
+    formType: FORM_TYPES.flatArray,
+    propType: PROP_TYPES.STRING,
     group: GROUPS.advanced,
   },
   secureTextEntry: {
@@ -273,8 +340,9 @@ export const TEXT_INPUT_PROPS = {
       "Hides the characters with a *, useful for passwords and other sensitive information.",
     editable: true,
     required: false,
-    value: null,
-    type: FORM_TYPES.boolean,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
     group: GROUPS.basic,
   },
   selectionColor: {
@@ -282,8 +350,9 @@ export const TEXT_INPUT_PROPS = {
     description: "Color of the highlighted portion when selecting.",
     editable: true,
     required: false,
-    value: null,
-    type: FORM_TYPES.color,
+    defaultValue: null,
+    formType: FORM_TYPES.color,
+    propType: PROP_TYPES.STRING,
     group: GROUPS.advanced,
   },
   selectTextOnFocus: {
@@ -292,8 +361,9 @@ export const TEXT_INPUT_PROPS = {
       "If true, all the text will automatically be selected on focus",
     editable: true,
     required: false,
-    value: null,
-    type: FORM_TYPES.boolean,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
     group: GROUPS.basic,
   },
 };

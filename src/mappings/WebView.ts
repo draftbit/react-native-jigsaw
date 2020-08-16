@@ -1,5 +1,12 @@
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-export const SEED_DATA = {
+import {
+  GROUPS,
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+  ComponentManifest,
+} from "../core/component-types";
+
+export const SEED_DATA: ComponentManifest = {
   name: "Web View",
   tag: "WebView",
   description: "Embed a website into your app",
@@ -15,8 +22,9 @@ export const SEED_DATA = {
       description: "The URL for the website",
       editable: true,
       required: true,
-      value: "https://www.draftbit.com",
-      type: FORM_TYPES.sourceUrl,
+      defaultValue: "https://www.draftbit.com",
+      formType: FORM_TYPES.sourceUrl,
+      propType: PROP_TYPES.STRING,
     },
   },
 };

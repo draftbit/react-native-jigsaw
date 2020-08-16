@@ -7,11 +7,11 @@ import Config from "./Config";
 
 class Stepper extends React.Component {
   static defaultProps = {
-    value: 0,
+    defaultValue: 0,
   };
 
   state = {
-    value: 0,
+    defaultValue: 0,
   };
 
   handleMinus = () => {
@@ -89,7 +89,7 @@ export const SEED_DATA = [
     props: {
       fieldName: {
         ...FIELD_NAME,
-        value: "stepperValue",
+        defaultValue: "stepperValue",
       },
     },
     layout: {},

@@ -1,20 +1,26 @@
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+  GROUPS,
+  ComponentManifest,
+} from "../core/component-types";
 
-export const SEED_DATA = {
+export const SEED_DATA: ComponentManifest = {
   name: "Keyboard Avoiding View",
   tag: "KeyboardAvoidingView",
   description: "View that moves out of the way of the virtual keyboard. ",
   category: COMPONENT_TYPES.layout,
-  supports_list_render: false,
-  layout: {},
   props: {
     enabled: {
       label: "Enable",
       description: "Enable the keyboard avoiding view",
       editable: true,
       required: true,
-      value: true,
-      type: FORM_TYPES.boolean,
+      defaultValue: true,
+      formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
+      group: GROUPS.basic,
     },
     behavior: {
       label: "Resizing Behavior",
@@ -22,9 +28,11 @@ export const SEED_DATA = {
         "The behavior for how the keyboard resizing interacts with the rest of the screen. (Default: padding).",
       editable: true,
       required: true,
-      value: "padding",
+      defaultValue: "padding",
       options: ["padding", "position", "height"],
-      type: FORM_TYPES.flatArray,
+      formType: FORM_TYPES.flatArray,
+      propType: PROP_TYPES.STRING,
+      group: GROUPS.basic,
     },
     keyboardVerticalOffset: {
       label: "Keyboard Vertical Offset",
@@ -32,8 +40,10 @@ export const SEED_DATA = {
         "The distance between the bottom of the view and the keyboard",
       editable: true,
       required: false,
-      value: 0,
-      type: FORM_TYPES.number,
+      defaultValue: 0,
+      formType: FORM_TYPES.number,
+      propType: PROP_TYPES.NUMBER,
+      group: GROUPS.basic,
     },
   },
 };

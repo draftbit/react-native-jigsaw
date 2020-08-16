@@ -1,22 +1,29 @@
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-export const SEED_DATA = {
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+  GROUPS,
+  ComponentManifest,
+} from "../core/component-types";
+
+export const SEED_DATA: ComponentManifest = {
   name: "Blur View",
   tag: "BlurView",
   doc_link: "https://docs.expo.io/versions/latest/sdk/blur-view/",
   code_link:
     "https://github.com/expo/expo/blob/master/packages/expo/src/effects/BlurView.d.ts",
   category: COMPONENT_TYPES.layout,
-  supports_list_render: false,
-  layout: {},
   props: {
     tint: {
       label: "Tint",
       description: "The tint of the blur view",
       editable: true,
       required: true,
-      value: "default",
-      type: FORM_TYPES.flatArray,
+      defaultValue: "default",
+      formType: FORM_TYPES.flatArray,
+      propType: PROP_TYPES.STRING,
       options: ["default", "light", "dark"],
+      group: GROUPS.basic,
     },
     intensity: {
       label: "Intensity",
@@ -24,12 +31,14 @@ export const SEED_DATA = {
         "A number from 1 to 100 that controls the intensity of the blur effect",
       editable: true,
       required: true,
-      value: 50,
-      type: FORM_TYPES.number,
+      defaultValue: 50,
+      formType: FORM_TYPES.number,
+      propType: PROP_TYPES.NUMBER,
       min: 0,
       max: 100,
       step: 1,
       precision: 0,
+      group: GROUPS.basic,
     },
   },
 };

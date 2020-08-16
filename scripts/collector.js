@@ -39,8 +39,10 @@ async function main() {
       await uploadComponent(component);
       COMPLETED_FILES.push(file);
     } catch (error) {
-      console.log("failed:", name, error);
-      ERROR_FILES.push({ file, error: error.message });
+      if (!error.message.includes("SEED_DATA")) {
+        console.log("failed:", name, error);
+        ERROR_FILES.push({ file, error: error.message });
+      }
     }
   }
 

@@ -39,7 +39,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       formType: FORM_TYPES.localImage,
-      value: null,
+      defaultValue: null,
     },
     resizeMode: {
       label: "Resize Mode",
@@ -47,7 +47,7 @@ export const SEED_DATA = {
         "Determines how to resize the image when the frame doesn't match the raw image dimensions",
       editable: true,
       required: false,
-      value: "cover",
+      defaultValue: "cover",
       formType: FORM_TYPES.flatArray,
       options: ["cover", "contain", "stretch", "repeat", "center"],
     },

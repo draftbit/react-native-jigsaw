@@ -16,7 +16,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       formType: FORM_TYPES.boolean,
-      value: false,
+      defaultValue: false,
     },
     numColumns: {
       label: "Number of columns",
@@ -28,7 +28,7 @@ export const SEED_DATA = {
       max: 4,
       step: 1,
       precision: 0,
-      value: null,
+      defaultValue: null,
     },
   },
 };

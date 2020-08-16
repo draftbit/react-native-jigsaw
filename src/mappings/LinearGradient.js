@@ -15,7 +15,7 @@ export const SEED_DATA = {
       description: "The colors required for your gradient",
       editable: true,
       required: true,
-      value: null,
+      defaultValue: null,
       formType: FORM_TYPES.gradient,
     },
   },

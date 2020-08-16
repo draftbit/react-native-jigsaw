@@ -40,7 +40,7 @@ export const SEED_DATA = {
       description: "Whether checkbox is disabled",
       editable: true,
       required: false,
-      value: false,
+      defaultValue: false,
       formType: FORM_TYPES.boolean,
     },
     color: {
@@ -52,7 +52,7 @@ export const SEED_DATA = {
     },
     fieldName: {
       ...FIELD_NAME,
-      value: "checkboxValue",
+      defaultValue: "checkboxValue",
       valuePropName: "status",
       handlerPropName: "onPress",
     },

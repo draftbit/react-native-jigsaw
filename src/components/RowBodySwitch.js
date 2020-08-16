@@ -52,7 +52,7 @@ export const SEED_DATA = [
         label: "Title",
         description: "Text to display",
         formType: FORM_TYPES.string,
-        value: "Beautiful West Coast Villa",
+        defaultValue: "Beautiful West Coast Villa",
         editable: true,
       },
       color: {
@@ -64,7 +64,7 @@ export const SEED_DATA = [
       },
       fieldName: {
         ...FIELD_NAME,
-        value: "switchValue",
+        defaultValue: "switchValue",
         handlerPropName: "onValueChange",
       },
     },
@@ -83,14 +83,14 @@ export const SEED_DATA = [
         label: "Title",
         description: "Text to display",
         formType: FORM_TYPES.string,
-        value: "Beautiful West Coast Villa",
+        defaultValue: "Beautiful West Coast Villa",
         editable: true,
       },
       subtitle: {
         label: "Subtitle",
         description: "Subtitle text to display",
         formType: FORM_TYPES.string,
-        value: "San Diego",
+        defaultValue: "San Diego",
         editable: true,
       },
       color: {
@@ -102,7 +102,7 @@ export const SEED_DATA = [
       },
       fieldName: {
         ...FIELD_NAME,
-        value: "switchValue",
+        defaultValue: "switchValue",
         handlerPropName: "onValueChange",
       },
     },

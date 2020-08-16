@@ -192,7 +192,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: true,
     formType: FORM_TYPES.icon,
-    value: null,
+    defaultValue: null,
   },
   children: {
     label: "Label",
@@ -200,7 +200,7 @@ const SEED_DATA_PROPS = {
     required: true,
     editable: true,
     formType: FORM_TYPES.string,
-    value: "Get Started",
+    defaultValue: "Get Started",
   },
   color: {
     label: "Color Override",
@@ -208,7 +208,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
     formType: FORM_TYPES.color,
-    value: null,
+    defaultValue: null,
   },
   labelColor: {
     label: "Label Color Override",
@@ -216,7 +216,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
     formType: FORM_TYPES.color,
-    value: null,
+    defaultValue: null,
   },
   disabled: {
     label: "Disabled",
@@ -224,7 +224,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
     formType: FORM_TYPES.boolean,
-    value: null,
+    defaultValue: null,
   },
   loading: {
     label: "Loading",
@@ -232,14 +232,14 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
     formType: FORM_TYPES.boolean,
-    value: null,
+    defaultValue: null,
   },
   onPress: {
     label: "Action",
     description: "Action to execute when button pressed",
     editable: true,
     formType: FORM_TYPES.action,
-    value: null,
+    defaultValue: null,
   },
 };
 
@@ -257,7 +257,7 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         formType: FORM_TYPES.string,
-        value: "outline",
+        defaultValue: "outline",
       },
     },
     layout: {},
@@ -275,7 +275,7 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         formType: FORM_TYPES.string,
-        value: "solid",
+        defaultValue: "solid",
       },
     },
     layout: {},

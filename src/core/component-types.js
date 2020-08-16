@@ -53,7 +53,7 @@ export const ELEVATION_TYPE = {
   description: "Elevation of the component. A number 0-3.",
   formType: FORM_TYPES.flatArray,
   options: [0, 1, 2, 3],
-  value: 0,
+  defaultValue: 0,
   editable: true,
 };
 
@@ -62,7 +62,7 @@ export const BORDER_RADIUS_MODE = {
   description:
     "Border radius of the element - either None, Global (using theme global border radius), or Round (must specify a width and height on component)",
   formType: FORM_TYPES.borderRadiusMode,
-  value: null,
+  defaultValue: null,
   editable: true,
   required: true,
 };
@@ -72,7 +72,7 @@ export const FIELD_NAME = {
   description:
     "The name of the field within the screen that will store this component's value",
   formType: FORM_TYPES.fieldName,
-  value: null,
+  defaultValue: null,
   valuePropName: "value",
   handlerPropName: "onChange",
   editable: true,
@@ -86,7 +86,7 @@ export const TEXT_INPUT_PROPS = {
       "Whether fonts should scale to respect Text Size in the user's accessibility settings. (Default: true)",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     formType: FORM_TYPES.boolean,
   },
   autoCapitalize: {
@@ -95,7 +95,7 @@ export const TEXT_INPUT_PROPS = {
       "Can automatically capitalize sentences, words, and characters (Default: none).",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     options: ["none", "sentences", "words", "characters"],
     formType: FORM_TYPES.flatArray,
   },
@@ -104,7 +104,7 @@ export const TEXT_INPUT_PROPS = {
     description: "Enables auto correction",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     formType: FORM_TYPES.boolean,
   },
   autoFocus: {
@@ -112,7 +112,7 @@ export const TEXT_INPUT_PROPS = {
     description: "Focuses the input on load in and brings up the keyboard",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     formType: FORM_TYPES.boolean,
   },
   caretHidden: {
@@ -121,7 +121,7 @@ export const TEXT_INPUT_PROPS = {
       "Hides the caret(the line small line underneath each showing where you're editing/typing",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     formType: FORM_TYPES.boolean,
   },
   contextMenuHidden: {
@@ -129,7 +129,7 @@ export const TEXT_INPUT_PROPS = {
     description: "Hides the system context menu (Default: false)",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     formType: FORM_TYPES.boolean,
   },
   defaultValue: {
@@ -138,7 +138,7 @@ export const TEXT_INPUT_PROPS = {
       "The value that of the text-input initially, not a placeholder but the value that the textInput is taking in.",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     formType: FORM_TYPES.string,
   },
   editable: {
@@ -146,7 +146,7 @@ export const TEXT_INPUT_PROPS = {
     description: "If false, the text is not editable",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     formType: FORM_TYPES.boolean,
   },
   keyboardAppearance: {
@@ -154,7 +154,7 @@ export const TEXT_INPUT_PROPS = {
     description: "Determines the color of the keyboard.(iOS Only)",
     editable: true,
     required: false,
-    value: "default",
+    defaultValue: "default",
     options: ["default", "light", "dark"],
     formType: FORM_TYPES.flatArray,
   },
@@ -163,7 +163,7 @@ export const TEXT_INPUT_PROPS = {
     description: "Determines what keyboard is given to the user.",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     options: [
       "default",
       "email-address",
@@ -186,7 +186,7 @@ export const TEXT_INPUT_PROPS = {
     description: "Limits the input to a set number of characters.",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     min: 0,
     step: 1,
     precision: 0,
@@ -197,7 +197,7 @@ export const TEXT_INPUT_PROPS = {
     description: "The text that is shown on load when no value is available.",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     formType: FORM_TYPES.string,
   },
   placeholderTextColor: {
@@ -205,7 +205,7 @@ export const TEXT_INPUT_PROPS = {
     description: "The color of the placeholder text.",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     formType: FORM_TYPES.color,
   },
   returnKeyLabel: {
@@ -214,7 +214,7 @@ export const TEXT_INPUT_PROPS = {
       "(Android Only) Sets the label on the return key (use this instead of rewturnKeyType)",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     formType: FORM_TYPES.string,
   },
   returnKeyType: {
@@ -222,7 +222,7 @@ export const TEXT_INPUT_PROPS = {
     description: "Determines how the return key should look like",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     options: [
       "done",
       "go",
@@ -246,7 +246,7 @@ export const TEXT_INPUT_PROPS = {
       "Hides the characters with a *, useful for passwords and other sensitive information.",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     formType: FORM_TYPES.boolean,
   },
   selectionColor: {
@@ -254,7 +254,7 @@ export const TEXT_INPUT_PROPS = {
     description: "Color of the highlighted portion when selecting.",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     formType: FORM_TYPES.color,
   },
   selectTextOnFocus: {
@@ -263,7 +263,7 @@ export const TEXT_INPUT_PROPS = {
       "If true, all the text will automatically be selected on focus",
     editable: true,
     required: false,
-    value: null,
+    defaultValue: null,
     formType: FORM_TYPES.boolean,
   },
 };

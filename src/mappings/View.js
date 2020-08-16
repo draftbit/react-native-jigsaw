@@ -1,4 +1,9 @@
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  GROUPS,
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+} from "../core/component-types";
 
 export const SEED_DATA = {
   name: "View",
@@ -15,6 +20,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: true,
     },
     accessibilityLabel: {
@@ -26,6 +32,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.string,
+      propType: PROP_TYPES.STRING,
       defaultValue: null,
     },
     accessibilityHint: {
@@ -37,6 +44,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.string,
+      propType: PROP_TYPES.STRING,
       defaultValue: null,
     },
     accessibilityRole: {
@@ -77,6 +85,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.array,
+      propType: PROP_TYPES.STRING,
       defaultValue: null,
     },
     accessibilityElementsHidden: {
@@ -85,10 +94,10 @@ export const SEED_DATA = {
       label: "accessibilityElementsHidden",
       description:
         "A value indicating whether the accessibility elements contained within this accessibility element are hidden. Default is false.See the Accessibility guide for more information.",
-      options: [],
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: false,
     },
     accessibilityIgnoresInvertColors: {
@@ -97,10 +106,10 @@ export const SEED_DATA = {
       label: "accessibilityIgnoresInvertColors",
       description:
         "A value indicating this view should or should not be inverted when color inversion is turned on. A value of true will tell the view to not be inverted even if color inversion is turned on.See the Accessibility guide for more information.",
-      options: [],
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: null,
     },
     accessibilityLiveRegion: {
@@ -113,6 +122,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.array,
+      propType: PROP_TYPES.STRING,
       defaultValue: null,
     },
     importantForAccessibility: {
@@ -125,9 +135,10 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.array,
+      propType: PROP_TYPES.STRING,
     },
     hitSlop: {
-      group: GROUPS.basic,
+      group: GROUPS.advanced,
       name: "hitSlop",
       label: "hitSlop",
       description:
@@ -135,6 +146,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.position,
+      propType: PROP_TYPES.OBJECT,
       defaultValue: "{}",
     },
     pointerEvents: {
@@ -147,6 +159,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.array,
+      propType: PROP_TYPES.STRING,
       defaultValue: "auto",
     },
     removeClippedSubviews: {
@@ -158,6 +171,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: null,
     },
     collapsable: {
@@ -169,6 +183,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: null,
     },
     needsOffscreenAlphaCompositing: {
@@ -180,6 +195,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
     },
     renderToHardwareTextureAndroid: {
       group: GROUPS.advanced,
@@ -190,6 +206,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: null,
     },
     shouldRasterizeIOS: {
@@ -201,17 +218,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
-      defaultValue: null,
-    },
-    clickable: {
-      group: GROUPS.basic,
-      name: "clickable",
-      label: "Clickable",
-      description:
-        "Determines whether this View is clickable or tappable for accessibility hints.",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: null,
     },
   },

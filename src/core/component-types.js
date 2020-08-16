@@ -1,3 +1,13 @@
+export const PROP_TYPES = {
+  STRING: "STRING",
+  ARRAY: "ARRAY",
+  NUMBER: "NUMBER",
+  BOOLEAN: "BOOLEAN",
+  OBJECT: "OBJECT",
+  ASSET: "ASSET",
+  THEME: "THEME",
+};
+
 export const GROUPS = {
   accessibility: "accessibility",
   basic: "basic",
@@ -58,6 +68,7 @@ const ELEVATION_TYPE = {
   label: "Elevation",
   description: "Elevation of the component. A number 0-3.",
   formType: FORM_TYPES.flatArray,
+  propType: PROP_TYPES.NUMBER,
   options: [0, 1, 2, 3],
   defaultValue: 0,
   editable: true,
@@ -85,6 +96,7 @@ export const FIELD_NAME = {
   description:
     "The name of the field within the screen that will store this component's value",
   formType: FORM_TYPES.fieldName,
+  propType: PROP_TYPES.STRING,
   defaultValue: null,
   valuePropName: "value",
   handlerPropName: "onChange",
@@ -99,8 +111,9 @@ export const TEXT_INPUT_PROPS = {
       "Whether fonts should scale to respect Text Size in the user's accessibility settings. (Default: true)",
     editable: true,
     required: false,
-    defaultValue: null,
+    defaultValue: true,
     formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
   },
   autoCapitalize: {
     label: "Auto Capitalize",
@@ -108,9 +121,10 @@ export const TEXT_INPUT_PROPS = {
       "Can automatically capitalize sentences, words, and characters (Default: none).",
     editable: true,
     required: false,
-    defaultValue: null,
+    defaultValue: "none",
     options: ["none", "sentences", "words", "characters"],
     formType: FORM_TYPES.flatArray,
+    propType: PROP_TYPES.STRING,
   },
   autoCorrect: {
     label: "Auto Correct",
@@ -119,6 +133,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     defaultValue: null,
     formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
   },
   autoFocus: {
     label: "Auto Focus",
@@ -127,6 +142,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     defaultValue: null,
     formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
   },
   caretHidden: {
     label: "Hide Caret",
@@ -136,14 +152,16 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     defaultValue: null,
     formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
   },
   contextMenuHidden: {
     label: "Hide Context Menu",
     description: "Hides the system context menu (Default: false)",
     editable: true,
     required: false,
-    defaultValue: null,
+    defaultValue: false,
     formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
   },
   defaultValue: {
     label: "Default Value",
@@ -153,6 +171,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     defaultValue: null,
     formType: FORM_TYPES.string,
+    propType: PROP_TYPES.STRING,
   },
   editable: {
     label: "Editable",
@@ -161,6 +180,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     defaultValue: null,
     formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
   },
   keyboardAppearance: {
     label: "Keyboard Appearance",
@@ -170,13 +190,14 @@ export const TEXT_INPUT_PROPS = {
     defaultValue: "default",
     options: ["default", "light", "dark"],
     formType: FORM_TYPES.flatArray,
+    propType: PROP_TYPES.STRING,
   },
   keyboardType: {
     label: "Keyboard Type",
     description: "Determines what keyboard is given to the user.",
     editable: true,
     required: false,
-    defaultValue: null,
+    defaultValue: "default",
     options: [
       "default",
       "email-address",
@@ -193,6 +214,7 @@ export const TEXT_INPUT_PROPS = {
       "visible-password",
     ],
     formType: FORM_TYPES.flatArray,
+    propType: PROP_TYPES.STRING,
   },
   maxLength: {
     label: "Max Length",
@@ -204,6 +226,7 @@ export const TEXT_INPUT_PROPS = {
     step: 1,
     precision: 0,
     formType: FORM_TYPES.number,
+    propType: PROP_TYPES.NUMBER,
   },
   placeholder: {
     label: "Placeholder Text",
@@ -212,6 +235,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     defaultValue: null,
     formType: FORM_TYPES.string,
+    propType: PROP_TYPES.STRING,
   },
   placeholderTextColor: {
     label: "Placeholder Text Color",
@@ -220,6 +244,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     defaultValue: null,
     formType: FORM_TYPES.color,
+    propType: PROP_TYPES.STRING,
   },
   returnKeyLabel: {
     label: "Return Key Label",
@@ -229,6 +254,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     defaultValue: null,
     formType: FORM_TYPES.string,
+    propType: PROP_TYPES.STRING,
   },
   returnKeyType: {
     label: "Return Key Type",
@@ -252,6 +278,7 @@ export const TEXT_INPUT_PROPS = {
       "yahoo",
     ],
     formType: FORM_TYPES.flatArray,
+    propType: PROP_TYPES.STRING,
   },
   secureTextEntry: {
     label: "Password Field",
@@ -261,6 +288,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     defaultValue: null,
     formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
   },
   selectionColor: {
     label: "Selection Color",
@@ -269,6 +297,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     defaultValue: null,
     formType: FORM_TYPES.color,
+    propType: PROP_TYPES.STRING,
   },
   selectTextOnFocus: {
     label: "Select Text on Focus",
@@ -278,5 +307,6 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     defaultValue: null,
     formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
   },
 };

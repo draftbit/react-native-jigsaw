@@ -7,7 +7,7 @@ import Touchable from "./Touchable";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
 
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
+import { GROUPS, FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
 
 /**
  * A button is component that the user can press to trigger an action.
@@ -187,6 +187,7 @@ export default withTheme(Button);
 
 const SEED_DATA_PROPS = {
   icon: {
+    group: GROUPS.basic,
     label: "Icon Name",
     description: "Name of the icon",
     editable: true,
@@ -195,6 +196,7 @@ const SEED_DATA_PROPS = {
     defaultValue: null,
   },
   children: {
+    group: GROUPS.data,
     label: "Label",
     description: "Button label",
     required: true,
@@ -203,6 +205,7 @@ const SEED_DATA_PROPS = {
     defaultValue: "Get Started",
   },
   color: {
+    group: GROUPS.basic,
     label: "Color Override",
     description: "Override the background color of the button",
     editable: true,
@@ -211,6 +214,7 @@ const SEED_DATA_PROPS = {
     defaultValue: null,
   },
   labelColor: {
+    group: GROUPS.basic,
     label: "Label Color Override",
     description: "Override the label color of the button",
     editable: true,
@@ -219,6 +223,7 @@ const SEED_DATA_PROPS = {
     defaultValue: null,
   },
   disabled: {
+    group: GROUPS.basic,
     label: "Disabled",
     description: "Whether the button should be disabled",
     editable: true,
@@ -227,6 +232,7 @@ const SEED_DATA_PROPS = {
     defaultValue: null,
   },
   loading: {
+    group: GROUPS.data,
     label: "Loading",
     description: "Whether to show a loading indicator",
     editable: true,
@@ -235,6 +241,7 @@ const SEED_DATA_PROPS = {
     defaultValue: null,
   },
   onPress: {
+    group: GROUPS.basic,
     label: "Action",
     description: "Action to execute when button pressed",
     editable: true,
@@ -252,6 +259,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
+        group: GROUPS.uncategorized,
         label: "Type",
         description: "Button type",
         editable: false,
@@ -270,6 +278,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
+        group: GROUPS.uncategorized,
         label: "Type",
         description: "Button type",
         editable: false,

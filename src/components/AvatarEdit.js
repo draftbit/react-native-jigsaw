@@ -5,7 +5,7 @@ import Touchable from "./Touchable";
 import Avatar from "./Avatar";
 import { withTheme } from "../core/theming";
 
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 class AvatarEdit extends React.PureComponent {
   static defaultProps = {
@@ -71,6 +71,7 @@ export const SEED_DATA = {
     "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/AvatarEdit.png",
   props: {
     size: {
+      group: GROUPS.basic,
       label: "Size",
       description: "Size of avatar / width, height",
       editable: true,
@@ -83,6 +84,7 @@ export const SEED_DATA = {
       defaultValue: 80,
     },
     image: {
+      group: GROUPS.data,
       label: "Image",
       description: "Name of the image",
       editable: true,

@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollView, View, StyleSheet, Image, Dimensions } from "react-native";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import Config from "./Config";
 
 class Carousel extends React.PureComponent {
@@ -188,6 +188,7 @@ export const SEED_DATA = [
     },
     props: {
       images: {
+        group: GROUPS.data,
         label: "Images",
         description: "A series of images to display in the carousel",
         editable: true,
@@ -195,6 +196,7 @@ export const SEED_DATA = [
         defaultValue: null,
       },
       resizeMode: {
+        group: GROUPS.basic,
         label: "Resize Mode",
         description:
           "Determines how to resize the images when the frame doesn't match the raw image dimensions",
@@ -205,6 +207,7 @@ export const SEED_DATA = [
         options: ["cover", "contain", "stretch", "repeat", "center"],
       },
       dotColor: {
+        group: GROUPS.basic,
         label: "Dot Color",
         description: "Color of the carousel's dots",
         editable: true,

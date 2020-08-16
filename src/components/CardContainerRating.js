@@ -8,6 +8,7 @@ import Icon from "./Icon";
 import StarRating from "./StarRating";
 import { withTheme } from "../core/theming";
 import {
+  GROUPS,
   FORM_TYPES,
   COMPONENT_TYPES,
   createElevationType,
@@ -157,6 +158,7 @@ export default withTheme(CardContainerRating);
 
 const SEED_DATA_PROPS = {
   image: {
+    group: GROUPS.data,
     label: "Image",
     description: "Image",
     formType: FORM_TYPES.remoteImage,
@@ -164,6 +166,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   title: {
+    group: GROUPS.data,
     label: "Title",
     description: "Text to display",
     formType: FORM_TYPES.string,
@@ -171,6 +174,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   leftDescription: {
+    group: GROUPS.data,
     label: "Left description",
     description: "Text to display on the left",
     formType: FORM_TYPES.string,
@@ -178,6 +182,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   rightDescription: {
+    group: GROUPS.data,
     label: "Right description",
     description: "Text to display on the right",
     formType: FORM_TYPES.string,
@@ -185,6 +190,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   icon: {
+    group: GROUPS.basic,
     label: "Icon",
     description: "Icon to display on the top right",
     formType: FORM_TYPES.icon,
@@ -192,6 +198,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   aspectRatio: {
+    group: GROUPS.basic,
     label: "Aspect ratio",
     description: "Aspect ratio of the image",
     formType: FORM_TYPES.aspectRatio,
@@ -199,6 +206,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   rating: {
+    group: GROUPS.data,
     label: "Rating",
     description: "Number of stars to show. A number 0-5.",
     formType: FORM_TYPES.number,
@@ -223,6 +231,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       numColumns: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.number,
         defaultValue: 2,
         editable: false,
@@ -241,6 +250,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       numColumns: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.number,
         defaultValue: 3,
         editable: false,

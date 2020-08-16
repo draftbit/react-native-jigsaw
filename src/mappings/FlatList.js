@@ -1,4 +1,4 @@
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 export const SEED_DATA = {
   name: "List",
@@ -11,6 +11,7 @@ export const SEED_DATA = {
   layout: {},
   props: {
     horizontal: {
+      group: GROUPS.basic,
       label: "Horizontal",
       description: "Render list horizontally",
       editable: true,
@@ -19,6 +20,7 @@ export const SEED_DATA = {
       defaultValue: false,
     },
     numColumns: {
+      group: GROUPS.basic,
       label: "Number of columns",
       description: "Number of columns (vertical list only)",
       editable: true,

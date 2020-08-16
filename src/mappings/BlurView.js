@@ -1,4 +1,4 @@
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 export const SEED_DATA = {
   name: "Blur View",
   tag: "BlurView",
@@ -10,6 +10,7 @@ export const SEED_DATA = {
   layout: {},
   props: {
     tint: {
+      group: GROUPS.basic,
       label: "Tint",
       description: "The tint of the blur view",
       editable: true,
@@ -19,6 +20,7 @@ export const SEED_DATA = {
       options: ["default", "light", "dark"],
     },
     intensity: {
+      group: GROUPS.basic,
       label: "Intensity",
       description:
         "A number from 1 to 100 that controls the intensity of the blur effect",

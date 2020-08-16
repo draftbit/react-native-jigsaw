@@ -1,4 +1,4 @@
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 export const SEED_DATA = {
   name: "Activity Indicator",
@@ -13,6 +13,7 @@ export const SEED_DATA = {
   layout: { width: 36, height: 36 },
   props: {
     size: {
+      group: GROUPS.basic,
       label: "Size",
       description: "The size of the loading indicator (Default: small)",
       options: ["small", "large"],
@@ -22,6 +23,7 @@ export const SEED_DATA = {
       defaultValue: "small",
     },
     animating: {
+      group: GROUPS.basic,
       label: "Spinning",
       description: "Whether to show the loading indicator (Default: true)",
       formType: FORM_TYPES.boolean,
@@ -30,6 +32,7 @@ export const SEED_DATA = {
       defaultValue: true,
     },
     hidesWhenStopped: {
+      group: GROUPS.basic,
       label: "Hide When Stopped",
       description:
         "Whether the indicator should hide when not animating (Default: true)",
@@ -39,6 +42,7 @@ export const SEED_DATA = {
       defaultValue: true,
     },
     color: {
+      group: GROUPS.basic,
       label: "Color",
       description: "The color of the loading indicator (Default: gray)",
       formType: FORM_TYPES.color,

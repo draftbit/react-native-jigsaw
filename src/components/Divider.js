@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
 import { withTheme } from "../core/theming";
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
+import { GROUPS, FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
 
 class Divider extends React.Component {
   render() {
@@ -36,6 +36,7 @@ export const SEED_DATA = [
     supports_list_render: false,
     props: {
       color: {
+        group: GROUPS.basic,
         label: "Color",
         editable: true,
         required: false,
@@ -43,6 +44,7 @@ export const SEED_DATA = [
         formType: FORM_TYPES.color,
       },
       height: {
+        group: GROUPS.basic,
         label: "Height",
         description:
           "The height (thickness) of the divider. If not provided, defaults to StyleSheet.hairlineWidth.",

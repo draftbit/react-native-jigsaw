@@ -5,6 +5,7 @@ import Card from "./Card";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
 import {
+  GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
   createElevationType,
@@ -119,6 +120,7 @@ export default withTheme(CardBlock);
 
 const SEED_DATA_PROPS = {
   image: {
+    group: GROUPS.data,
     label: "Image",
     description: "Image",
     formType: FORM_TYPES.remoteImage,
@@ -126,6 +128,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   title: {
+    group: GROUPS.data,
     label: "Title",
     description: "Text to display",
     formType: FORM_TYPES.string,
@@ -133,6 +136,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   leftDescription: {
+    group: GROUPS.data,
     label: "Left description",
     description: "Text to display on the left",
     formType: FORM_TYPES.string,
@@ -140,6 +144,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   rightDescription: {
+    group: GROUPS.data,
     label: "Right description",
     description: "Text to display on the right",
     formType: FORM_TYPES.string,
@@ -147,6 +152,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   aspectRatio: {
+    group: GROUPS.basic,
     label: "Aspect ratio",
     description: "Aspect ratio of the image",
     formType: FORM_TYPES.aspectRatio,
@@ -154,6 +160,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   titleCentered: {
+    group: GROUPS.basic,
     label: "Title centered",
     description: "Whether to center the title",
     formType: FORM_TYPES.boolean,
@@ -170,17 +177,15 @@ export const SEED_DATA = [
     description:
       "An elevated card with a title and description, that takes up one third of its container.",
     category: COMPONENT_TYPES.card,
-    preview_image_url: "{CLOUDINARY_URL}/Card_Block_1col.png",
-    supports_list_render: true,
     props: {
       ...SEED_DATA_PROPS,
       numColumns: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.number,
         defaultValue: 1,
         editable: false,
       },
     },
-    layout: {},
   },
   {
     name: "Medium Block Card",
@@ -188,11 +193,10 @@ export const SEED_DATA = [
     description:
       "An elevated card with a title and description, that takes up one half of its container.",
     category: COMPONENT_TYPES.deprecated,
-    preview_image_url: "{CLOUDINARY_URL}/Card_Block_2col.png",
-    supports_list_render: true,
     props: {
       ...SEED_DATA_PROPS,
       icon: {
+        group: GROUPS.basic,
         label: "Icon",
         description: "Icon to display on the top right",
         formType: FORM_TYPES.icon,
@@ -200,12 +204,12 @@ export const SEED_DATA = [
         editable: true,
       },
       numColumns: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.number,
         defaultValue: 2,
         editable: false,
       },
     },
-    layout: {},
   },
   {
     name: "Large Block Card",
@@ -213,11 +217,10 @@ export const SEED_DATA = [
     description:
       "An elevated card with a title and description, that takes up the full width its container.",
     category: COMPONENT_TYPES.deprecated,
-    preview_image_url: "{CLOUDINARY_URL}/Card_Block_3col.png",
-    supports_list_render: true,
     props: {
       ...SEED_DATA_PROPS,
       icon: {
+        group: GROUPS.basic,
         label: "Icon",
         description: "Icon to display on the top right",
         formType: FORM_TYPES.icon,
@@ -225,11 +228,11 @@ export const SEED_DATA = [
         editable: true,
       },
       numColumns: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.number,
         defaultValue: 3,
         editable: false,
       },
     },
-    layout: {},
   },
 ];

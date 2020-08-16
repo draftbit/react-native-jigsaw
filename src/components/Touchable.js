@@ -1,6 +1,6 @@
 import React from "react";
 import { View, TouchableHighlight as Touchable } from "react-native";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 export default class extends Touchable {
   render() {
@@ -24,6 +24,7 @@ export const SEED_DATA = {
   layout: {},
   props: {
     onPress: {
+      group: GROUPS.basic,
       label: "Action",
       description: "Action to execute when touchable pressed",
       editable: true,
@@ -31,6 +32,7 @@ export const SEED_DATA = {
       defaultValue: null,
     },
     hitSlop: {
+      group: GROUPS.advanced,
       label: "Hit Slop",
       description:
         "Makes the Touchable easier to press by expanding the touchable area a specified number of points, without having to change the layout of the Touchable (e.g. by adding padding)",

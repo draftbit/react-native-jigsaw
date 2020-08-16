@@ -1,4 +1,4 @@
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 export const SEED_DATA = {
   name: "ScrollView",
@@ -9,6 +9,7 @@ export const SEED_DATA = {
   layout: {},
   props: {
     horizontal: {
+      group: GROUPS.basic,
       label: "Horizontal",
       description: "Render scrollview horizontally",
       editable: true,
@@ -17,6 +18,7 @@ export const SEED_DATA = {
       defaultValue: false,
     },
     showsHorizontalScrollIndicator: {
+      group: GROUPS.basic,
       label: "Show Horizontal Scroll Indicator",
       description:
         "When true, shows a horizontal scroll indicator. The default value is true.",
@@ -26,6 +28,7 @@ export const SEED_DATA = {
       defaultValue: true,
     },
     showsVerticalScrollIndicator: {
+      group: GROUPS.basic,
       label: "Show Vertical Scroll Indicator",
       description:
         "When true, shows a vertical scroll indicator. The default value is true.",
@@ -35,6 +38,7 @@ export const SEED_DATA = {
       defaultValue: true,
     },
     bounces: {
+      group: GROUPS.basic,
       label: "Bounce",
       description:
         "When true, the scroll view bounces when it reaches the end of the content if the content is larger then the scroll view along the axis of the scroll direction.",

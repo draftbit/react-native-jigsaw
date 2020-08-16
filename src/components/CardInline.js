@@ -5,6 +5,7 @@ import Card from "./Card";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
 import {
+  GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
   createElevationType,
@@ -99,6 +100,7 @@ export default withTheme(CardInline);
 
 const SEED_DATA_PROPS = {
   image: {
+    group: GROUPS.data,
     label: "Image",
     description: "Image",
     formType: FORM_TYPES.remoteImage,
@@ -106,6 +108,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   title: {
+    group: GROUPS.data,
     label: "Title",
     description: "Text to display",
     formType: FORM_TYPES.string,
@@ -113,6 +116,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   textCentered: {
+    group: GROUPS.basic,
     label: "Text centered",
     description: "Whether to center the text",
     formType: FORM_TYPES.boolean,
@@ -134,6 +138,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       aspectRatio: {
+        group: GROUPS.basic,
         label: "Aspect ratio",
         description: "Aspect ratio of the image",
         formType: FORM_TYPES.aspectRatio,
@@ -141,6 +146,7 @@ export const SEED_DATA = [
         editable: true,
       },
       numColumns: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.number,
         defaultValue: 1,
         editable: false,
@@ -159,6 +165,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       description: {
+        group: GROUPS.data,
         label: "Left description",
         description: "Text to display on the left",
         formType: FORM_TYPES.string,
@@ -166,6 +173,7 @@ export const SEED_DATA = [
         editable: true,
       },
       aspectRatio: {
+        group: GROUPS.basic,
         label: "Aspect ratio",
         description: "Aspect ratio of the image",
         formType: FORM_TYPES.aspectRatio,
@@ -173,6 +181,7 @@ export const SEED_DATA = [
         editable: true,
       },
       numColumns: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.number,
         defaultValue: 2,
         editable: false,
@@ -191,6 +200,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       description: {
+        group: GROUPS.data,
         label: "Left description",
         description: "Text to display on the left",
         formType: FORM_TYPES.string,
@@ -198,6 +208,7 @@ export const SEED_DATA = [
         editable: true,
       },
       aspectRatio: {
+        group: GROUPS.basic,
         label: "Aspect ratio",
         description: "Aspect ratio of the image",
         formType: FORM_TYPES.aspectRatio,
@@ -205,6 +216,7 @@ export const SEED_DATA = [
         editable: true,
       },
       numColumns: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.number,
         defaultValue: 3,
         editable: false,

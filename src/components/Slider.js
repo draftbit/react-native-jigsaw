@@ -3,6 +3,7 @@ import * as React from "react";
 import { default as ReactNativeSlider } from "react-native-slider";
 import { withTheme } from "../core/theming";
 import {
+  GROUPS,
   FORM_TYPES,
   COMPONENT_TYPES,
   FIELD_NAME,
@@ -82,6 +83,7 @@ export const SEED_DATA = {
   supports_list_render: false,
   props: {
     disabled: {
+      group: GROUPS.data,
       label: "Disabled",
       description: "Whether the slider is disabled",
       editable: true,
@@ -90,6 +92,7 @@ export const SEED_DATA = {
       defaultValue: null,
     },
     maximumValue: {
+      group: GROUPS.basic,
       label: "Maximum value",
       description: "The maximum value of the slider",
       editable: true,
@@ -102,6 +105,7 @@ export const SEED_DATA = {
       defaultValue: 10,
     },
     minimumValue: {
+      group: GROUPS.basic,
       label: "Minimum value",
       description: "The minimum value of the slider",
       editable: true,
@@ -114,6 +118,7 @@ export const SEED_DATA = {
       defaultValue: 0,
     },
     step: {
+      group: GROUPS.basic,
       label: "Step",
       description: "The amount the value should change per step",
       editable: true,
@@ -131,6 +136,7 @@ export const SEED_DATA = {
       handlerPropName: "onValueChange",
     },
     maximumTrackTintColor: {
+      group: GROUPS.basic,
       label: "Maximum Color",
       description: "Color of the track from the right of the thumb",
       editable: true,
@@ -139,6 +145,7 @@ export const SEED_DATA = {
       defaultValue: null,
     },
     minimumTrackTintColor: {
+      group: GROUPS.basic,
       label: "Minimum Color",
       description: "Color of the track from the left of the thumb",
       editable: true,
@@ -147,6 +154,7 @@ export const SEED_DATA = {
       defaultValue: null,
     },
     thumbTintColor: {
+      group: GROUPS.basic,
       label: "Thumb Tint Color",
       description: "Color of the thumb",
       editable: true,
@@ -155,6 +163,7 @@ export const SEED_DATA = {
       defaultValue: null,
     },
     disabledThumbTintColor: {
+      group: GROUPS.basic,
       label: "Disabled Thumb Tint Color",
       description: "Color of the thumb when the slider is disabled",
       editable: true,
@@ -163,6 +172,7 @@ export const SEED_DATA = {
       defaultValue: null,
     },
     thumbTouchSize: {
+      group: GROUPS.advanced,
       label: "Hit Slop",
       description: "The size of the hit slop",
       editable: true,
@@ -175,6 +185,7 @@ export const SEED_DATA = {
       defaultValue: null,
     },
     trackBorderRadius: {
+      group: GROUPS.basic,
       label: "Track Border Radius",
       description: "The border radius for the track ",
       editable: true,
@@ -187,6 +198,7 @@ export const SEED_DATA = {
       defaultValue: 10,
     },
     thumbBorderRadius: {
+      group: GROUPS.basic,
       label: "Thumb Border Radius",
       description: "The border radius for the thumb",
       editable: true,
@@ -199,6 +211,7 @@ export const SEED_DATA = {
       defaultValue: 10,
     },
     thumbSize: {
+      group: GROUPS.basic,
       label: "Thumb Size",
       description: "Size of the thumb",
       editable: true,

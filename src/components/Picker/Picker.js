@@ -3,6 +3,7 @@ import { withTheme } from "../../core/theming";
 import PickerComponent from "./PickerComponent";
 
 import {
+  GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
   FIELD_NAME,
@@ -53,6 +54,7 @@ export default withTheme(Picker);
 
 const SEED_DATA_PROPS = {
   label: {
+    group: GROUPS.data,
     label: "Label",
     description: "The label to be displayed on the picker",
     formType: FORM_TYPES.string,
@@ -61,6 +63,7 @@ const SEED_DATA_PROPS = {
     required: true,
   },
   placeholder: {
+    group: GROUPS.basic,
     label: "Placeholder",
     description: "The placeholder text of the picker",
     formType: FORM_TYPES.string,
@@ -69,6 +72,7 @@ const SEED_DATA_PROPS = {
     required: false,
   },
   assistiveText: {
+    group: GROUPS.basic,
     label: "Assistive text",
     description: "Helper text to display below the picker",
     formType: FORM_TYPES.string,
@@ -77,6 +81,7 @@ const SEED_DATA_PROPS = {
     required: false,
   },
   options: {
+    group: GROUPS.data,
     label: "Options",
     description:
       "Array of picker options. An array of objects containing a label and value.",
@@ -85,6 +90,7 @@ const SEED_DATA_PROPS = {
     defaultValue: null,
   },
   disabled: {
+    group: GROUPS.basic,
     label: "Disabled",
     description:
       "Whether the picker should be disabled. Will prevent selection and show a greyed out state.",
@@ -93,6 +99,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   error: {
+    group: GROUPS.data,
     label: "Error",
     description: "Whether the picker should display the error state",
     formType: FORM_TYPES.boolean,
@@ -100,6 +107,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   leftIconName: {
+    group: GROUPS.basic,
     label: "Left icon name",
     description: "The icon to display on the left",
     formType: FORM_TYPES.icon,
@@ -107,6 +115,7 @@ const SEED_DATA_PROPS = {
     editable: true,
   },
   leftIconMode: {
+    group: GROUPS.basic,
     label: "Left icon mode",
     description:
       "The mode of the icon to display on the left. 'inset' or 'outset'.",
@@ -117,6 +126,7 @@ const SEED_DATA_PROPS = {
     required: true,
   },
   rightIconName: {
+    group: GROUPS.basic,
     label: "Right icon name",
     description: "The icon to display on the right",
     formType: FORM_TYPES.icon,
@@ -140,6 +150,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.string,
         defaultValue: "solid",
         editable: false,
@@ -157,6 +168,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.string,
         defaultValue: "underline",
         editable: false,

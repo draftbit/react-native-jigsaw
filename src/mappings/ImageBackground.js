@@ -1,4 +1,4 @@
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 export const SEED_DATA = {
   name: "Image Background",
@@ -10,10 +10,10 @@ export const SEED_DATA = {
   description:
     "A very simple drop-in replacement for Image that allows you to use an Image as a background.",
   category: COMPONENT_TYPES.media,
-  supports_list_render: false,
   layout: { width: "100%", height: "100%" },
   props: {
     source: {
+      group: GROUPS.data,
       label: "Image Source",
       description: "The source of the image",
       editable: true,
@@ -22,6 +22,7 @@ export const SEED_DATA = {
       defaultValue: null,
     },
     resizeMode: {
+      group: GROUPS.basic,
       label: "Resize Mode",
       description:
         "Determines how to resize the image when the frame doesn't match the raw image dimensions",
@@ -32,6 +33,7 @@ export const SEED_DATA = {
       options: ["cover", "contain", "stretch", "repeat", "center"],
     },
     backfaceVisibility: {
+      group: GROUPS.advanced,
       label: "Backface Visibility",
       description: "When animating a card, show the back face of it",
       editable: false,
@@ -41,6 +43,7 @@ export const SEED_DATA = {
       options: ["visible", "hidden"],
     },
     backgroundColor: {
+      group: GROUPS.basic,
       label: "Background Color",
       description: "If no image is chosen render a colored background.",
       editable: true,

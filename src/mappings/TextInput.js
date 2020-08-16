@@ -1,4 +1,5 @@
 import {
+  GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
   FIELD_NAME,
@@ -16,7 +17,9 @@ export const SEED_DATA = {
   layout: {},
   props: {
     ...TEXT_INPUT_PROPS,
+    /* TODO remove this ? */
     style: {
+      group: GROUPS.basic,
       label: "Style",
       description: "Text Style",
       editable: true,
@@ -25,6 +28,7 @@ export const SEED_DATA = {
       defaultValue: null,
     },
     clearButtonMode: {
+      group: GROUPS.basic,
       label: "Clear Button Mode",
       description:
         "Enables a button within the textInput to clear the data entered",
@@ -35,6 +39,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.flatArray,
     },
     clearTextOnFocus: {
+      group: GROUPS.basic,
       label: "Clear Text on Focus",
       description:
         "If true, clears the text field automatically when its focused.",
@@ -44,6 +49,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
     },
     enablesReturnKeyAutomatically: {
+      group: GROUPS.basic,
       label: "Enables Return Key Automatically",
       description:
         "If true, the keyboard disables the return key when there is no text and automatically enables it when there is (Default: false)",
@@ -53,6 +59,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
     },
     keyboardAppearance: {
+      group: GROUPS.basic,
       label: "Keyboard Appearance",
       description: "Determines color of the keyboard on iOS",
       editable: true,
@@ -62,6 +69,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.flatArray,
     },
     multiline: {
+      group: GROUPS.basic,
       label: "Multiple Lines",
       description:
         "Allows multiple lines of input, useful for situations where the user may be typing in a lot of data.",
@@ -71,6 +79,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
     },
     numberOfLines: {
+      group: GROUPS.basic,
       label: "Number of Lines",
       description:
         "Sets the number of lines for the input (Multiple Lines needs to be true)",
@@ -83,6 +92,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.number,
     },
     scrollEnabled: {
+      group: GROUPS.basic,
       label: "Scroll Enabled",
       description:
         "If false, scrolling of the input will be disabled. Only works when Multiple Lines is true",
@@ -92,6 +102,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
     },
     spellcheck: {
+      group: GROUPS.basic,
       label: "Disable Spell Check",
       description:
         "If false, disables spell-check style (red underlines). Default comes from Auto Correct",
@@ -101,6 +112,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
     },
     textContentType: {
+      group: GROUPS.advanced,
       label: "Text Content Type",
       description:
         "Give the keyboard and system about what it should do with the input. For example, if its an address, autofill from address book",
@@ -138,6 +150,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.flatArray,
     },
     textBreakStrategy: {
+      group: GROUPS.advanced,
       label: "Text Break Strategy",
       description:
         "(Android Only) Set the text break strategy. (Default: simple)",
@@ -148,6 +161,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.flatArray,
     },
     underlineColorAndroid: {
+      group: GROUPS.basic,
       label: "Underline color",
       description:
         "(Android Only) The color of the underline(the line underneath the text when finished typing.",

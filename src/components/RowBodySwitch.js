@@ -44,9 +44,7 @@ export const SEED_DATA = [
     name: "Row Single Line Body Switch",
     tag: "RowBodySwitch",
     description: "A row with left aligned body text and a right aligned switch",
-    preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_BodyToggle.png",
     category: COMPONENT_TYPES.deprecated,
-    supports_list_render: true,
     props: {
       title: {
         label: "Title",
@@ -68,7 +66,6 @@ export const SEED_DATA = [
         handlerPropName: "onValueChange",
       },
     },
-    layout: {},
   },
   {
     name: "Row Double Line Body Switch",
@@ -76,8 +73,6 @@ export const SEED_DATA = [
     description:
       "A row with left aligned body text and subtitle text and a right aligned switch",
     category: COMPONENT_TYPES.deprecated,
-    preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_Body_Toggle.png",
-    supports_list_render: true,
     props: {
       title: {
         label: "Title",
@@ -106,6 +101,5 @@ export const SEED_DATA = [
         handlerPropName: "onValueChange",
       },
     },
-    layout: {},
   },
 ];

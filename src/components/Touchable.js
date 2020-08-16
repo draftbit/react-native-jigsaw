@@ -20,14 +20,13 @@ export const SEED_DATA = {
   description:
     "Provides a way to capture tapping gestures, and displays feedback when a gesture is recognized",
   category: COMPONENT_TYPES.input,
-  supports_list_render: false,
-  layout: {},
   props: {
     onPress: {
       label: "Action",
       description: "Action to execute when touchable pressed",
       editable: true,
       formType: FORM_TYPES.action,
+      propType: PROP_TYPES.STRING /* todo? */,
       defaultValue: null,
     },
     hitSlop: {
@@ -37,6 +36,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.position,
+      propType: PROP_TYPES.OBJECT /* todo? */,
       defaultValue: null,
     },
   },

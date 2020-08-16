@@ -58,7 +58,7 @@ export const SEED_DATA = {
       description: "Title to display alongside radio button",
       required: false,
       editable: true,
-      value: "Title",
+      defaultValue: "Title",
       formType: FORM_TYPES.string,
     },
     selected: {
@@ -66,7 +66,7 @@ export const SEED_DATA = {
       description: "Whether the radio button is selected",
       required: true,
       editable: true,
-      value: true,
+      defaultValue: true,
       formType: FORM_TYPES.boolean,
     },
     color: {
@@ -74,7 +74,7 @@ export const SEED_DATA = {
       description: "Color for the button",
       required: false,
       editable: true,
-      value: "primary",
+      defaultValue: "primary",
       formType: FORM_TYPES.color,
     },
     disabled: {
@@ -82,7 +82,7 @@ export const SEED_DATA = {
       description: "Whether radio button is disabled",
       editable: true,
       required: false,
-      value: null,
+      defaultValue: null,
       formType: FORM_TYPES.boolean,
     },
   },

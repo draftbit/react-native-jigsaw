@@ -15,7 +15,7 @@ export const SEED_DATA = {
       description: "The URL for the website",
       editable: true,
       required: true,
-      value: "https://www.draftbit.com",
+      defaultValue: "https://www.draftbit.com",
       formType: FORM_TYPES.sourceUrl,
     },
   },

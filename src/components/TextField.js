@@ -45,7 +45,7 @@ class TextField extends React.Component {
     labeled: new Animated.Value(this.props.value || this.props.error ? 0 : 1),
     focused: false,
     placeholder: this.props.error ? this.props.placeholder : "",
-    value: this.props.value,
+    defaultValue: this.props.value,
     labelLayout: {
       measured: false,
       width: 0,
@@ -544,7 +544,7 @@ const SEED_DATA_PROPS = {
     label: "Label",
     description: "The label to be displayed on the text field",
     formType: FORM_TYPES.string,
-    value: "First Name",
+    defaultValue: "First Name",
     editable: true,
     required: true,
   },
@@ -552,7 +552,7 @@ const SEED_DATA_PROPS = {
     label: "Assistive text",
     description: "Helper text to display below the input",
     formType: FORM_TYPES.string,
-    value: null,
+    defaultValue: null,
     editable: true,
     required: false,
   },
@@ -561,21 +561,21 @@ const SEED_DATA_PROPS = {
     description:
       "Whether the input should be disabled. Will prevent input and show a greyed out state.",
     formType: FORM_TYPES.boolean,
-    value: null,
+    defaultValue: null,
     editable: true,
   },
   error: {
     label: "Error",
     description: "Whether the input should display the error state",
     formType: FORM_TYPES.boolean,
-    value: null,
+    defaultValue: null,
     editable: true,
   },
   leftIconName: {
     label: "Left icon name",
     description: "The icon to display on the left",
     formType: FORM_TYPES.icon,
-    value: null,
+    defaultValue: null,
     editable: true,
   },
   leftIconMode: {
@@ -583,7 +583,7 @@ const SEED_DATA_PROPS = {
     description:
       "The mode of the icon to display on the left. 'inset' or 'outset'.",
     formType: FORM_TYPES.flatArray,
-    value: "inset",
+    defaultValue: "inset",
     options: ["inset", "outset"],
     editable: true,
     required: true,
@@ -592,13 +592,13 @@ const SEED_DATA_PROPS = {
     label: "Right icon name",
     description: "The icon to display on the right",
     formType: FORM_TYPES.icon,
-    value: null,
+    defaultValue: null,
     editable: true,
   },
   fieldName: {
     ...FIELD_NAME,
     handlerPropName: "onChangeText",
-    value: "textFieldValue",
+    defaultValue: "textFieldValue",
   },
 };
 
@@ -614,7 +614,7 @@ export const SEED_DATA = [
       ...SEED_DATA_PROPS,
       type: {
         formType: FORM_TYPES.string,
-        value: "solid",
+        defaultValue: "solid",
         editable: false,
       },
       secureTextEntry: {
@@ -622,7 +622,7 @@ export const SEED_DATA = [
         description:
           "If true, this turns the field into a password field, hiding the text",
         formType: FORM_TYPES.boolean,
-        value: null,
+        defaultValue: null,
         editable: true,
         required: false,
       },
@@ -640,7 +640,7 @@ export const SEED_DATA = [
       ...SEED_DATA_PROPS,
       type: {
         formType: FORM_TYPES.string,
-        value: "underline",
+        defaultValue: "underline",
         editable: false,
       },
       secureTextEntry: {
@@ -648,7 +648,7 @@ export const SEED_DATA = [
         description:
           "If true, this turns the field into a password field, hiding the text",
         formType: FORM_TYPES.boolean,
-        value: null,
+        defaultValue: null,
         editable: true,
         required: false,
       },
@@ -666,12 +666,12 @@ export const SEED_DATA = [
       ...SEED_DATA_PROPS,
       type: {
         formType: FORM_TYPES.string,
-        value: "solid",
+        defaultValue: "solid",
         editable: false,
       },
       multiline: {
         formType: FORM_TYPES.boolean,
-        value: true,
+        defaultValue: true,
         editable: false,
       },
     },
@@ -688,12 +688,12 @@ export const SEED_DATA = [
       ...SEED_DATA_PROPS,
       type: {
         formType: FORM_TYPES.string,
-        value: "underline",
+        defaultValue: "underline",
         editable: false,
       },
       multiline: {
         formType: FORM_TYPES.boolean,
-        value: true,
+        defaultValue: true,
         editable: false,
       },
     },

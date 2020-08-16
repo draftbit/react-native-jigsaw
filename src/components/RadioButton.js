@@ -39,7 +39,7 @@ export const SEED_DATA = {
       description: "Whether the radio button is selected",
       required: true,
       editable: true,
-      value: true,
+      defaultValue: true,
       formType: FORM_TYPES.boolean,
     },
     color: {
@@ -47,7 +47,7 @@ export const SEED_DATA = {
       description: "Color for the button",
       required: false,
       editable: true,
-      value: "primary",
+      defaultValue: "primary",
       formType: FORM_TYPES.color,
     },
     unselectedColor: {
@@ -55,7 +55,7 @@ export const SEED_DATA = {
       description: "Unselected Color for the button",
       required: false,
       editable: true,
-      value: "secondary",
+      defaultValue: "secondary",
       formType: FORM_TYPES.color,
     },
     disabled: {
@@ -63,7 +63,7 @@ export const SEED_DATA = {
       description: "Whether radio button is disabled",
       editable: true,
       required: false,
-      value: null,
+      defaultValue: null,
       formType: FORM_TYPES.boolean,
     },
   },

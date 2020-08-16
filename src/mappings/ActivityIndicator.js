@@ -19,7 +19,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.flatArray,
       editable: true,
       required: false,
-      value: "small",
+      defaultValue: "small",
     },
     animating: {
       label: "Spinning",
@@ -27,7 +27,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
       editable: true,
       required: false,
-      value: true,
+      defaultValue: true,
     },
     hidesWhenStopped: {
       label: "Hide When Stopped",
@@ -36,7 +36,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
       editable: true,
       required: false,
-      value: true,
+      defaultValue: true,
     },
     color: {
       label: "Color",
@@ -44,7 +44,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.color,
       editable: true,
       required: false,
-      value: null,
+      defaultValue: null,
     },
   },
 };

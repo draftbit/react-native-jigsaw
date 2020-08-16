@@ -76,7 +76,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.string,
-      value: "Title",
+      defaultValue: "Title",
     },
     minimumLabel: {
       label: "Minimum label",
@@ -84,7 +84,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.string,
-      value: "0",
+      defaultValue: "0",
     },
     maximumLabel: {
       label: "Maximum label",
@@ -92,7 +92,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.string,
-      value: "10",
+      defaultValue: "10",
     },
     disabled: {
       label: "Disabled",
@@ -100,7 +100,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
-      value: null,
+      defaultValue: null,
     },
     maximumValue: {
       label: "Maximum value",
@@ -112,7 +112,7 @@ export const SEED_DATA = {
       max: 1000000,
       step: 1,
       precision: 0,
-      value: 10,
+      defaultValue: 10,
     },
     minimumValue: {
       label: "Minimum value",
@@ -124,7 +124,7 @@ export const SEED_DATA = {
       max: 1000000,
       step: 1,
       precision: 0,
-      value: 0,
+      defaultValue: 0,
     },
     step: {
       label: "Step",
@@ -136,11 +136,11 @@ export const SEED_DATA = {
       max: 100,
       step: 0.01,
       precision: 2,
-      value: 1,
+      defaultValue: 1,
     },
     fieldName: {
       ...FIELD_NAME,
-      value: "sliderValue",
+      defaultValue: "sliderValue",
       handlerPropName: "onValueChange",
     },
     maximumTrackTintColor: {
@@ -149,7 +149,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.color,
-      value: null,
+      defaultValue: null,
     },
     minimumTrackTintColor: {
       label: "Minimum Color",
@@ -157,7 +157,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.color,
-      value: null,
+      defaultValue: null,
     },
     thumbTintColor: {
       label: "Thumb Tint Color",
@@ -165,7 +165,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.color,
-      value: null,
+      defaultValue: null,
     },
     thumbTouchSize: {
       label: "Hit Slop",
@@ -177,7 +177,7 @@ export const SEED_DATA = {
       max: 40,
       step: 1,
       precision: 2,
-      value: null,
+      defaultValue: null,
     },
     trackBorderRadius: {
       label: "Track Border Radius",
@@ -189,7 +189,7 @@ export const SEED_DATA = {
       max: 50,
       step: 1,
       precision: 0,
-      value: 10,
+      defaultValue: 10,
     },
     thumbBorderRadius: {
       label: "Thumb Border Radius",
@@ -201,7 +201,7 @@ export const SEED_DATA = {
       max: 50,
       step: 1,
       precision: 0,
-      value: 10,
+      defaultValue: 10,
     },
     thumbSize: {
       label: "Thumb Size",
@@ -213,7 +213,7 @@ export const SEED_DATA = {
       max: 100,
       step: 1,
       precision: 2,
-      value: null,
+      defaultValue: null,
     },
   },
   layout: {},

@@ -39,7 +39,7 @@ export const SEED_DATA = [
         label: "Color",
         editable: true,
         required: false,
-        value: "divider",
+        defaultValue: "divider",
         formType: FORM_TYPES.color,
       },
       height: {

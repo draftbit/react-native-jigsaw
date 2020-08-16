@@ -80,7 +80,7 @@ export const SEED_DATA = [
         label: "Title",
         description: "Text to display",
         formType: FORM_TYPES.string,
-        value: "Beautiful West Coast Villa",
+        defaultValue: "Beautiful West Coast Villa",
         editable: true,
       },
       color: {
@@ -95,12 +95,12 @@ export const SEED_DATA = [
         description: "Whether checkbox and headline is disabled",
         editable: true,
         required: false,
-        value: false,
+        defaultValue: false,
         formType: FORM_TYPES.boolean,
       },
       fieldName: {
         ...FIELD_NAME,
-        value: "checkboxValue",
+        defaultValue: "checkboxValue",
         valuePropName: "status",
         handlerPropName: "onPress",
       },

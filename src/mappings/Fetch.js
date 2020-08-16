@@ -21,7 +21,7 @@ export const SEED_DATA = {
       description: "The HTTP method required to complete the request",
       required: true,
       editable: true,
-      value: "GET",
+      defaultValue: "GET",
       formType: FORM_TYPES.flatArray,
       options: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     },
@@ -32,7 +32,7 @@ export const SEED_DATA = {
       required: false,
       editable: true,
       formType: FORM_TYPES.json,
-      value: JSON.stringify(
+      defaultValue: JSON.stringify(
         {
           "Content-type": "application/json",
           "Accept": "application/json",
@@ -48,14 +48,14 @@ export const SEED_DATA = {
       required: false,
       editable: true,
       formType: FORM_TYPES.json,
-      value: null,
+      defaultValue: null,
     },
     mode: {
       label: "HTTP Mode",
       description: "The mode you want to use for the request",
       required: true,
       editable: true,
-      value: null,
+      defaultValue: null,
       formType: FORM_TYPES.flatArray,
       options: ["cors", "no-cors", "same-origin"],
     },
@@ -64,7 +64,7 @@ export const SEED_DATA = {
       description: "The credentials you want to use for the request",
       required: true,
       editable: true,
-      value: null,
+      defaultValue: null,
       formType: FORM_TYPES.flatArray,
       options: ["omit", "same-origin", "include"],
     },
@@ -74,7 +74,7 @@ export const SEED_DATA = {
         "Set this to true if you don't want to make the request initially",
       required: false,
       editable: true,
-      value: null,
+      defaultValue: null,
       formType: FORM_TYPES.boolean,
     },
     fetchPolicy: {
@@ -89,7 +89,7 @@ export const SEED_DATA = {
         "network-only",
         "cache-only",
       ],
-      value: null,
+      defaultValue: null,
     },
     loading: {
       label: "Loading Component",
@@ -97,7 +97,7 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.component,
       description: "Loading component to render until data shows up",
-      value: null,
+      defaultValue: null,
     },
     error: {
       label: "Error Component",
@@ -105,7 +105,7 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.component,
       description: "Error component to render until data shows up",
-      value: null,
+      defaultValue: null,
     },
   },
 };

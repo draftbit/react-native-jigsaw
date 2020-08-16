@@ -14,7 +14,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
-      value: false,
+      defaultValue: false,
     },
     showsHorizontalScrollIndicator: {
       label: "Show Horizontal Scroll Indicator",
@@ -23,7 +23,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
-      value: true,
+      defaultValue: true,
     },
     showsVerticalScrollIndicator: {
       label: "Show Vertical Scroll Indicator",
@@ -32,7 +32,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
-      value: true,
+      defaultValue: true,
     },
     bounces: {
       label: "Bounce",
@@ -41,7 +41,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
-      value: true,
+      defaultValue: true,
     },
   },
 };

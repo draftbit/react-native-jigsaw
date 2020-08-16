@@ -56,7 +56,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       formType: FORM_TYPES.string,
-      value: "Hello World!",
+      defaultValue: "Hello World!",
     },
     accessibilityLabel: {
       name: "accessibilityLabel",

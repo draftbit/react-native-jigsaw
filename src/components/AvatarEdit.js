@@ -80,7 +80,7 @@ export const SEED_DATA = {
       max: 300,
       precision: 0,
       step: 1,
-      value: 80,
+      defaultValue: 80,
     },
     image: {
       label: "Image",
@@ -88,7 +88,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       formType: FORM_TYPES.remoteImage,
-      value: "brightness-5",
+      defaultValue: "brightness-5",
     },
   },
   layout: {

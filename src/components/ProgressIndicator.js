@@ -75,7 +75,7 @@ export const SEED_DATA = {
       max: 10,
       step: 1,
       precision: 0,
-      value: 5,
+      defaultValue: 5,
     },
     currentStep: {
       label: "Current Step",
@@ -87,7 +87,7 @@ export const SEED_DATA = {
       max: 10,
       step: 1,
       precision: 0,
-      value: 5,
+      defaultValue: 5,
     },
     stepIndicatorSize: {
       label: "Step Size",
@@ -99,7 +99,7 @@ export const SEED_DATA = {
       max: 100,
       step: 5,
       precision: 0,
-      value: 25,
+      defaultValue: 25,
     },
     stepIndicatorLabelFontSize: {
       label: "Step Font Size",
@@ -111,7 +111,7 @@ export const SEED_DATA = {
       max: 50,
       step: 1,
       precision: 0,
-      value: 15,
+      defaultValue: 15,
     },
     currentStepIndicatorLabelFontSize: {
       label: "Current Step Font Size",
@@ -123,7 +123,7 @@ export const SEED_DATA = {
       max: 50,
       step: 1,
       precision: 0,
-      value: 15,
+      defaultValue: 15,
     },
     unfinishedColor: {
       label: "Unfinished Color",
@@ -132,7 +132,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.color,
-      value: null,
+      defaultValue: null,
     },
     finishedColor: {
       label: "Finished Color",
@@ -141,7 +141,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.color,
-      value: null,
+      defaultValue: null,
     },
     stepNumberUnfinishedColor: {
       label: "Unfinished Number Color",
@@ -149,7 +149,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.color,
-      value: null,
+      defaultValue: null,
     },
     stepNumberFinishedColor: {
       label: "Finished Number Color",
@@ -157,7 +157,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.color,
-      value: null,
+      defaultValue: null,
     },
     stepIndicatorCurrentColor: {
       label: "Current Step Color",
@@ -165,7 +165,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.color,
-      value: null,
+      defaultValue: null,
     },
     stepIndicatorLabelCurrentColor: {
       label: "Current Step Number Color",
@@ -173,7 +173,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.color,
-      value: null,
+      defaultValue: null,
     },
     stepStrokeCurrentColor: {
       label: "Current Step Border Color",
@@ -181,7 +181,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.color,
-      value: null,
+      defaultValue: null,
     },
     currentStepStrokeWidth: {
       label: "Current Step Border Width",
@@ -193,7 +193,7 @@ export const SEED_DATA = {
       max: 20,
       step: 1,
       precision: 0,
-      value: 0,
+      defaultValue: 0,
     },
     currentStepIndicatorSize: {
       label: "Current Step Size",
@@ -205,7 +205,7 @@ export const SEED_DATA = {
       max: 100,
       step: 5,
       precision: 0,
-      value: null,
+      defaultValue: null,
     },
   },
 };

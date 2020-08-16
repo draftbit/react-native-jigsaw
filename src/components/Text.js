@@ -55,7 +55,7 @@ export const SEED_DATA = {
       description: "Text for the text",
       editable: true,
       required: true,
-      type: FORM_TYPES.string,
+      formType: FORM_TYPES.string,
       value: "Hello World!",
     },
     accessibilityLabel: {
@@ -66,7 +66,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.string,
+      formType: FORM_TYPES.string,
       defaultValue: null,
     },
     accessibilityRole: {
@@ -89,7 +89,7 @@ export const SEED_DATA = {
       ],
       editable: true,
       required: false,
-      type: FORM_TYPES.array,
+      formType: FORM_TYPES.array,
       defaultValue: null,
     },
     accessible: {
@@ -100,7 +100,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       defaultValue: true,
     },
     adjustsFontSizeToFit: {
@@ -111,7 +111,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       defaultValue: false,
     },
     allowFontScaling: {
@@ -122,7 +122,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       defaultValue: true,
     },
     dataDetectorType: {
@@ -133,7 +133,7 @@ export const SEED_DATA = {
       options: ["phoneNumber", "link", "email", "none", "all"],
       editable: true,
       required: false,
-      type: FORM_TYPES.array,
+      formType: FORM_TYPES.array,
       defaultValue: null,
     },
     disabled: {
@@ -144,7 +144,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       defaultValue: false,
     },
     ellipsizeMode: {
@@ -155,7 +155,7 @@ export const SEED_DATA = {
       options: ["head", "middle", "tail", "clip"],
       editable: true,
       required: false,
-      type: FORM_TYPES.array,
+      formType: FORM_TYPES.array,
       defaultValue: "tail",
     },
     maxFontSizeMultiplier: {
@@ -166,7 +166,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.number,
+      formType: FORM_TYPES.number,
       defaultValue: null,
     },
     minimumFontScale: {
@@ -177,7 +177,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.number,
+      formType: FORM_TYPES.number,
       defaultValue: null,
     },
     numberOfLines: {
@@ -188,7 +188,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.number,
+      formType: FORM_TYPES.number,
       step: 1,
       precision: 1,
       defaultValue: null,
@@ -201,7 +201,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       defaultValue: null,
     },
     selectionColor: {
@@ -211,7 +211,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.string,
+      formType: FORM_TYPES.string,
       defaultValue: null,
     },
     suppressHighlighting: {
@@ -222,7 +222,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       defaultValue: false,
     },
     textBreakStrategy: {
@@ -233,7 +233,7 @@ export const SEED_DATA = {
       options: ["simple", "highQuality", "balanced"],
       editable: true,
       required: false,
-      type: FORM_TYPES.array,
+      formType: FORM_TYPES.array,
       defaultValue: "highQuality",
     },
   },

@@ -15,7 +15,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       value: "default",
-      type: FORM_TYPES.flatArray,
+      formType: FORM_TYPES.flatArray,
       options: ["default", "light", "dark"],
     },
     intensity: {
@@ -25,7 +25,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       value: 50,
-      type: FORM_TYPES.number,
+      formType: FORM_TYPES.number,
       min: 0,
       max: 100,
       step: 1,

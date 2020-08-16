@@ -16,7 +16,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       value: "https://www.draftbit.com",
-      type: FORM_TYPES.sourceUrl,
+      formType: FORM_TYPES.sourceUrl,
     },
   },
 };

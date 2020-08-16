@@ -51,7 +51,7 @@ export const SEED_DATA = [
       title: {
         label: "Title",
         description: "Text to display",
-        type: FORM_TYPES.string,
+        formType: FORM_TYPES.string,
         value: "Beautiful West Coast Villa",
         editable: true,
       },
@@ -60,7 +60,7 @@ export const SEED_DATA = [
         description: "Custom color for switch",
         editable: true,
         required: false,
-        type: FORM_TYPES.color,
+        formType: FORM_TYPES.color,
       },
       fieldName: {
         ...FIELD_NAME,
@@ -82,14 +82,14 @@ export const SEED_DATA = [
       title: {
         label: "Title",
         description: "Text to display",
-        type: FORM_TYPES.string,
+        formType: FORM_TYPES.string,
         value: "Beautiful West Coast Villa",
         editable: true,
       },
       subtitle: {
         label: "Subtitle",
         description: "Subtitle text to display",
-        type: FORM_TYPES.string,
+        formType: FORM_TYPES.string,
         value: "San Diego",
         editable: true,
       },
@@ -98,7 +98,7 @@ export const SEED_DATA = [
         description: "Custom color for switch",
         editable: true,
         required: false,
-        type: FORM_TYPES.color,
+        formType: FORM_TYPES.color,
       },
       fieldName: {
         ...FIELD_NAME,

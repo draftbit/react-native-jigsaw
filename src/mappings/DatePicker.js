@@ -7,7 +7,7 @@ const SEED_DATA_PROPS = {
   label: {
     label: "Label",
     description: "The label to be displayed on the picker",
-    type: FORM_TYPES.string,
+    formType: FORM_TYPES.string,
     value: "Date",
     editable: true,
     required: true,
@@ -18,13 +18,13 @@ const SEED_DATA_PROPS = {
     value: "date",
     editable: true,
     required: true,
-    type: FORM_TYPES.flatArray,
+    formType: FORM_TYPES.flatArray,
     options: ["date", "time", "datetime"],
   },
   assistiveText: {
     label: "Assistive text",
     description: "Helper text to display below the picker",
-    type: FORM_TYPES.string,
+    formType: FORM_TYPES.string,
     value: null,
     editable: true,
     required: false,
@@ -32,7 +32,7 @@ const SEED_DATA_PROPS = {
   locale: {
     label: "Locale",
     description: "Locale for the datepicker. Must be a valid Locale",
-    type: FORM_TYPES.string,
+    formType: FORM_TYPES.string,
     value: null,
     editable: true,
     required: false,
@@ -40,7 +40,7 @@ const SEED_DATA_PROPS = {
   minuteInterval: {
     label: "Minute Interval",
     description: "The interval at which minutes can be selected",
-    type: FORM_TYPES.flatArray,
+    formType: FORM_TYPES.flatArray,
     options: [1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30],
     value: null,
     editable: true,
@@ -50,7 +50,7 @@ const SEED_DATA_PROPS = {
     label: "Time zone offset",
     description:
       "By default, the datepicker uses the device's timezone. This will allow you to offset it",
-    type: FORM_TYPES.number,
+    formType: FORM_TYPES.number,
     value: null,
     editable: true,
     required: false,
@@ -59,7 +59,7 @@ const SEED_DATA_PROPS = {
     label: "Initial Date",
     description:
       "Optionally set an initial date to make your forms easier to work with",
-    type: FORM_TYPES.date,
+    formType: FORM_TYPES.date,
     value: null,
     editable: true,
     required: false,
@@ -69,28 +69,28 @@ const SEED_DATA_PROPS = {
     description:
       "Array of picker options. An array of objects containing a label and value.",
     editable: true,
-    type: FORM_TYPES.array,
+    formType: FORM_TYPES.array,
     value: null,
   },
   disabled: {
     label: "Disabled",
     description:
       "Whether the picker should be disabled. Will prevent selection and show a greyed out state.",
-    type: FORM_TYPES.boolean,
+    formType: FORM_TYPES.boolean,
     value: false,
     editable: true,
   },
   error: {
     label: "Error",
     description: "Whether the picker should display the error state",
-    type: FORM_TYPES.boolean,
+    formType: FORM_TYPES.boolean,
     value: false,
     editable: true,
   },
   leftIconName: {
     label: "Left icon name",
     description: "The icon to display on the left",
-    type: FORM_TYPES.icon,
+    formType: FORM_TYPES.icon,
     value: null,
     editable: true,
   },
@@ -98,7 +98,7 @@ const SEED_DATA_PROPS = {
     label: "Left icon mode",
     description:
       "The mode of the icon to display on the left. 'inset' or 'outset'.",
-    type: FORM_TYPES.flatArray,
+    formType: FORM_TYPES.flatArray,
     value: "inset",
     options: ["inset", "outset"],
     editable: true,
@@ -107,7 +107,7 @@ const SEED_DATA_PROPS = {
   rightIconName: {
     label: "Right icon name",
     description: "The icon to display on the right",
-    type: FORM_TYPES.icon,
+    formType: FORM_TYPES.icon,
     value: null,
     editable: true,
   },
@@ -130,7 +130,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
-        type: FORM_TYPES.string,
+        formType: FORM_TYPES.string,
         value: "solid",
         editable: false,
       },
@@ -147,7 +147,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
-        type: FORM_TYPES.string,
+        formType: FORM_TYPES.string,
         value: "underline",
         editable: false,
       },

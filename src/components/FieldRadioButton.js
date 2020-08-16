@@ -59,7 +59,7 @@ export const SEED_DATA = {
       required: false,
       editable: true,
       value: "Title",
-      type: FORM_TYPES.string,
+      formType: FORM_TYPES.string,
     },
     selected: {
       label: "Selected",
@@ -67,7 +67,7 @@ export const SEED_DATA = {
       required: true,
       editable: true,
       value: true,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
     },
     color: {
       label: "Color",
@@ -75,7 +75,7 @@ export const SEED_DATA = {
       required: false,
       editable: true,
       value: "primary",
-      type: FORM_TYPES.color,
+      formType: FORM_TYPES.color,
     },
     disabled: {
       label: "Disabled",
@@ -83,7 +83,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: null,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
     },
   },
   layout: {},

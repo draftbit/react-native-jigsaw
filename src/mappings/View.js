@@ -16,7 +16,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       defaultValue: true,
     },
     accessibilityLabel: {
@@ -27,7 +27,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.string,
+      formType: FORM_TYPES.string,
       defaultValue: null,
     },
     accessibilityHint: {
@@ -38,7 +38,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.string,
+      formType: FORM_TYPES.string,
       defaultValue: null,
     },
     accessibilityRole: {
@@ -77,7 +77,7 @@ export const SEED_DATA = {
       ],
       editable: true,
       required: false,
-      type: FORM_TYPES.array,
+      formType: FORM_TYPES.array,
       defaultValue: null,
     },
     accessibilityElementsHidden: {
@@ -88,7 +88,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       defaultValue: false,
     },
     accessibilityIgnoresInvertColors: {
@@ -99,7 +99,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       defaultValue: null,
     },
     accessibilityLiveRegion: {
@@ -110,7 +110,7 @@ export const SEED_DATA = {
       options: ["none", "polite", "assertive"],
       editable: true,
       required: false,
-      type: FORM_TYPES.array,
+      formType: FORM_TYPES.array,
       defaultValue: null,
     },
     importantForAccessibility: {
@@ -121,7 +121,7 @@ export const SEED_DATA = {
       options: ["auto", "yes", "no", "no-hide-descendants"],
       editable: true,
       required: false,
-      type: FORM_TYPES.array,
+      formType: FORM_TYPES.array,
     },
     hitSlop: {
       name: "hitSlop",
@@ -131,7 +131,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.position,
+      formType: FORM_TYPES.position,
       defaultValue: "{}",
     },
     pointerEvents: {
@@ -142,7 +142,7 @@ export const SEED_DATA = {
       options: ["auto", "none", "box-none", "box-only"],
       editable: true,
       required: false,
-      type: FORM_TYPES.array,
+      formType: FORM_TYPES.array,
       defaultValue: "auto",
     },
     removeClippedSubviews: {
@@ -153,7 +153,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       defaultValue: null,
     },
     collapsable: {
@@ -164,7 +164,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       defaultValue: null,
     },
     needsOffscreenAlphaCompositing: {
@@ -175,7 +175,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
     },
     renderToHardwareTextureAndroid: {
       name: "renderToHardwareTextureAndroid",
@@ -185,7 +185,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       defaultValue: null,
     },
     shouldRasterizeIOS: {
@@ -196,7 +196,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       defaultValue: null,
     },
     clickable: {
@@ -207,7 +207,7 @@ export const SEED_DATA = {
       options: [],
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       defaultValue: null,
     },
   },

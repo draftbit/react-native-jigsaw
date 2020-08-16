@@ -14,7 +14,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       value: true,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
     },
     behavior: {
       label: "Resizing Behavior",
@@ -24,7 +24,7 @@ export const SEED_DATA = {
       required: true,
       value: "padding",
       options: ["padding", "position", "height"],
-      type: FORM_TYPES.flatArray,
+      formType: FORM_TYPES.flatArray,
     },
     keyboardVerticalOffset: {
       label: "Keyboard Vertical Offset",
@@ -33,7 +33,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: 0,
-      type: FORM_TYPES.number,
+      formType: FORM_TYPES.number,
     },
   },
 };

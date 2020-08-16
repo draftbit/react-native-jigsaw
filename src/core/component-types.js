@@ -51,7 +51,7 @@ export const COMPONENT_TYPES = {
 export const ELEVATION_TYPE = {
   label: "Elevation",
   description: "Elevation of the component. A number 0-3.",
-  type: FORM_TYPES.flatArray,
+  formType: FORM_TYPES.flatArray,
   options: [0, 1, 2, 3],
   value: 0,
   editable: true,
@@ -61,7 +61,7 @@ export const BORDER_RADIUS_MODE = {
   label: "Border radius",
   description:
     "Border radius of the element - either None, Global (using theme global border radius), or Round (must specify a width and height on component)",
-  type: FORM_TYPES.borderRadiusMode,
+  formType: FORM_TYPES.borderRadiusMode,
   value: null,
   editable: true,
   required: true,
@@ -71,7 +71,7 @@ export const FIELD_NAME = {
   label: "Field name",
   description:
     "The name of the field within the screen that will store this component's value",
-  type: FORM_TYPES.fieldName,
+  formType: FORM_TYPES.fieldName,
   value: null,
   valuePropName: "value",
   handlerPropName: "onChange",
@@ -87,7 +87,7 @@ export const TEXT_INPUT_PROPS = {
     editable: true,
     required: false,
     value: null,
-    type: FORM_TYPES.boolean,
+    formType: FORM_TYPES.boolean,
   },
   autoCapitalize: {
     label: "Auto Capitalize",
@@ -97,7 +97,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     value: null,
     options: ["none", "sentences", "words", "characters"],
-    type: FORM_TYPES.flatArray,
+    formType: FORM_TYPES.flatArray,
   },
   autoCorrect: {
     label: "Auto Correct",
@@ -105,7 +105,7 @@ export const TEXT_INPUT_PROPS = {
     editable: true,
     required: false,
     value: null,
-    type: FORM_TYPES.boolean,
+    formType: FORM_TYPES.boolean,
   },
   autoFocus: {
     label: "Auto Focus",
@@ -113,7 +113,7 @@ export const TEXT_INPUT_PROPS = {
     editable: true,
     required: false,
     value: null,
-    type: FORM_TYPES.boolean,
+    formType: FORM_TYPES.boolean,
   },
   caretHidden: {
     label: "Hide Caret",
@@ -122,7 +122,7 @@ export const TEXT_INPUT_PROPS = {
     editable: true,
     required: false,
     value: null,
-    type: FORM_TYPES.boolean,
+    formType: FORM_TYPES.boolean,
   },
   contextMenuHidden: {
     label: "Hide Context Menu",
@@ -130,7 +130,7 @@ export const TEXT_INPUT_PROPS = {
     editable: true,
     required: false,
     value: null,
-    type: FORM_TYPES.boolean,
+    formType: FORM_TYPES.boolean,
   },
   defaultValue: {
     label: "Default Value",
@@ -139,7 +139,7 @@ export const TEXT_INPUT_PROPS = {
     editable: true,
     required: false,
     value: null,
-    type: FORM_TYPES.string,
+    formType: FORM_TYPES.string,
   },
   editable: {
     label: "Editable",
@@ -147,7 +147,7 @@ export const TEXT_INPUT_PROPS = {
     editable: true,
     required: false,
     value: null,
-    type: FORM_TYPES.boolean,
+    formType: FORM_TYPES.boolean,
   },
   keyboardAppearance: {
     label: "Keyboard Appearance",
@@ -156,7 +156,7 @@ export const TEXT_INPUT_PROPS = {
     required: false,
     value: "default",
     options: ["default", "light", "dark"],
-    type: FORM_TYPES.flatArray,
+    formType: FORM_TYPES.flatArray,
   },
   keyboardType: {
     label: "Keyboard Type",
@@ -179,7 +179,7 @@ export const TEXT_INPUT_PROPS = {
       "web-search",
       "visible-password",
     ],
-    type: FORM_TYPES.flatArray,
+    formType: FORM_TYPES.flatArray,
   },
   maxLength: {
     label: "Max Length",
@@ -190,7 +190,7 @@ export const TEXT_INPUT_PROPS = {
     min: 0,
     step: 1,
     precision: 0,
-    type: FORM_TYPES.number,
+    formType: FORM_TYPES.number,
   },
   placeholder: {
     label: "Placeholder Text",
@@ -198,7 +198,7 @@ export const TEXT_INPUT_PROPS = {
     editable: true,
     required: false,
     value: null,
-    type: FORM_TYPES.string,
+    formType: FORM_TYPES.string,
   },
   placeholderTextColor: {
     label: "Placeholder Text Color",
@@ -206,7 +206,7 @@ export const TEXT_INPUT_PROPS = {
     editable: true,
     required: false,
     value: null,
-    type: FORM_TYPES.color,
+    formType: FORM_TYPES.color,
   },
   returnKeyLabel: {
     label: "Return Key Label",
@@ -215,7 +215,7 @@ export const TEXT_INPUT_PROPS = {
     editable: true,
     required: false,
     value: null,
-    type: FORM_TYPES.string,
+    formType: FORM_TYPES.string,
   },
   returnKeyType: {
     label: "Return Key Type",
@@ -238,7 +238,7 @@ export const TEXT_INPUT_PROPS = {
       "route",
       "yahoo",
     ],
-    type: FORM_TYPES.flatArray,
+    formType: FORM_TYPES.flatArray,
   },
   secureTextEntry: {
     label: "Password Field",
@@ -247,7 +247,7 @@ export const TEXT_INPUT_PROPS = {
     editable: true,
     required: false,
     value: null,
-    type: FORM_TYPES.boolean,
+    formType: FORM_TYPES.boolean,
   },
   selectionColor: {
     label: "Selection Color",
@@ -255,7 +255,7 @@ export const TEXT_INPUT_PROPS = {
     editable: true,
     required: false,
     value: null,
-    type: FORM_TYPES.color,
+    formType: FORM_TYPES.color,
   },
   selectTextOnFocus: {
     label: "Select Text on Focus",
@@ -264,6 +264,6 @@ export const TEXT_INPUT_PROPS = {
     editable: true,
     required: false,
     value: null,
-    type: FORM_TYPES.boolean,
+    formType: FORM_TYPES.boolean,
   },
 };

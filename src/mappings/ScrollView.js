@@ -13,7 +13,7 @@ export const SEED_DATA = {
       description: "Render scrollview horizontally",
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       value: false,
     },
     showsHorizontalScrollIndicator: {
@@ -22,7 +22,7 @@ export const SEED_DATA = {
         "When true, shows a horizontal scroll indicator. The default value is true.",
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       value: true,
     },
     showsVerticalScrollIndicator: {
@@ -31,7 +31,7 @@ export const SEED_DATA = {
         "When true, shows a vertical scroll indicator. The default value is true.",
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       value: true,
     },
     bounces: {
@@ -40,7 +40,7 @@ export const SEED_DATA = {
         "When true, the scroll view bounces when it reaches the end of the content if the content is larger then the scroll view along the axis of the scroll direction.",
       editable: true,
       required: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       value: true,
     },
   },

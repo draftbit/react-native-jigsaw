@@ -16,7 +16,7 @@ export const SEED_DATA = {
       label: "Size",
       description: "The size of the loading indicator (Default: small)",
       options: ["small", "large"],
-      type: FORM_TYPES.flatArray,
+      formType: FORM_TYPES.flatArray,
       editable: true,
       required: false,
       value: "small",
@@ -24,7 +24,7 @@ export const SEED_DATA = {
     animating: {
       label: "Spinning",
       description: "Whether to show the loading indicator (Default: true)",
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       editable: true,
       required: false,
       value: true,
@@ -33,7 +33,7 @@ export const SEED_DATA = {
       label: "Hide When Stopped",
       description:
         "Whether the indicator should hide when not animating (Default: true)",
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       editable: true,
       required: false,
       value: true,
@@ -41,7 +41,7 @@ export const SEED_DATA = {
     color: {
       label: "Color",
       description: "The color of the loading indicator (Default: gray)",
-      type: FORM_TYPES.color,
+      formType: FORM_TYPES.color,
       editable: true,
       required: false,
       value: null,

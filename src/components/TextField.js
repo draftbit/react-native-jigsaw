@@ -543,7 +543,7 @@ const SEED_DATA_PROPS = {
   label: {
     label: "Label",
     description: "The label to be displayed on the text field",
-    type: FORM_TYPES.string,
+    formType: FORM_TYPES.string,
     value: "First Name",
     editable: true,
     required: true,
@@ -551,7 +551,7 @@ const SEED_DATA_PROPS = {
   assistiveText: {
     label: "Assistive text",
     description: "Helper text to display below the input",
-    type: FORM_TYPES.string,
+    formType: FORM_TYPES.string,
     value: null,
     editable: true,
     required: false,
@@ -560,21 +560,21 @@ const SEED_DATA_PROPS = {
     label: "Disabled",
     description:
       "Whether the input should be disabled. Will prevent input and show a greyed out state.",
-    type: FORM_TYPES.boolean,
+    formType: FORM_TYPES.boolean,
     value: null,
     editable: true,
   },
   error: {
     label: "Error",
     description: "Whether the input should display the error state",
-    type: FORM_TYPES.boolean,
+    formType: FORM_TYPES.boolean,
     value: null,
     editable: true,
   },
   leftIconName: {
     label: "Left icon name",
     description: "The icon to display on the left",
-    type: FORM_TYPES.icon,
+    formType: FORM_TYPES.icon,
     value: null,
     editable: true,
   },
@@ -582,7 +582,7 @@ const SEED_DATA_PROPS = {
     label: "Left icon mode",
     description:
       "The mode of the icon to display on the left. 'inset' or 'outset'.",
-    type: FORM_TYPES.flatArray,
+    formType: FORM_TYPES.flatArray,
     value: "inset",
     options: ["inset", "outset"],
     editable: true,
@@ -591,7 +591,7 @@ const SEED_DATA_PROPS = {
   rightIconName: {
     label: "Right icon name",
     description: "The icon to display on the right",
-    type: FORM_TYPES.icon,
+    formType: FORM_TYPES.icon,
     value: null,
     editable: true,
   },
@@ -613,7 +613,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
-        type: FORM_TYPES.string,
+        formType: FORM_TYPES.string,
         value: "solid",
         editable: false,
       },
@@ -621,7 +621,7 @@ export const SEED_DATA = [
         label: "Password field",
         description:
           "If true, this turns the field into a password field, hiding the text",
-        type: FORM_TYPES.boolean,
+        formType: FORM_TYPES.boolean,
         value: null,
         editable: true,
         required: false,
@@ -639,7 +639,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
-        type: FORM_TYPES.string,
+        formType: FORM_TYPES.string,
         value: "underline",
         editable: false,
       },
@@ -647,7 +647,7 @@ export const SEED_DATA = [
         label: "Password field",
         description:
           "If true, this turns the field into a password field, hiding the text",
-        type: FORM_TYPES.boolean,
+        formType: FORM_TYPES.boolean,
         value: null,
         editable: true,
         required: false,
@@ -665,12 +665,12 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
-        type: FORM_TYPES.string,
+        formType: FORM_TYPES.string,
         value: "solid",
         editable: false,
       },
       multiline: {
-        type: FORM_TYPES.boolean,
+        formType: FORM_TYPES.boolean,
         value: true,
         editable: false,
       },
@@ -687,12 +687,12 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
-        type: FORM_TYPES.string,
+        formType: FORM_TYPES.string,
         value: "underline",
         editable: false,
       },
       multiline: {
-        type: FORM_TYPES.boolean,
+        formType: FORM_TYPES.boolean,
         value: true,
         editable: false,
       },

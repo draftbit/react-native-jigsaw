@@ -16,7 +16,7 @@ export const SEED_DATA = {
       label: "Initial latitude",
       description:
         "The latitude of the location to center the map on initially",
-      type: FORM_TYPES.number,
+      formType: FORM_TYPES.number,
       min: -90,
       max: 90,
       step: 1,
@@ -29,7 +29,7 @@ export const SEED_DATA = {
       label: "Initial longitude",
       description:
         "The longitude of the location to center the map on initially",
-      type: FORM_TYPES.number,
+      formType: FORM_TYPES.number,
       min: -180,
       max: 180,
       step: 1,
@@ -42,7 +42,7 @@ export const SEED_DATA = {
       label: "Initial latitude delta",
       description:
         "The amount of latitude to display on the map initially (the horizontal zoom)",
-      type: FORM_TYPES.number,
+      formType: FORM_TYPES.number,
       min: 0.0001,
       max: 100,
       step: 1,
@@ -55,7 +55,7 @@ export const SEED_DATA = {
       label: "Initial longitude delta",
       description:
         "The amount of longitude to display on the map initially (the vertical zoom)",
-      type: FORM_TYPES.number,
+      formType: FORM_TYPES.number,
       min: 0.0001,
       max: 100,
       step: 1,
@@ -67,7 +67,7 @@ export const SEED_DATA = {
     aspectRatio: {
       label: "Aspect ratio",
       description: "Aspect ratio of the map",
-      type: FORM_TYPES.aspectRatio,
+      formType: FORM_TYPES.aspectRatio,
       value: 1,
       editable: true,
       required: true,
@@ -75,7 +75,7 @@ export const SEED_DATA = {
     interactionDisabled: {
       label: "Disable interaction",
       description: "Prevent users from dragging or zooming on the map",
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       value: false,
       editable: true,
       required: false,
@@ -86,12 +86,12 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       value: "primary",
-      type: FORM_TYPES.color,
+      formType: FORM_TYPES.color,
     },
     markers: {
       label: "Markers",
       description: "Markers for the map.",
-      type: FORM_TYPES.arrayInput,
+      formType: FORM_TYPES.arrayInput,
       value: [],
       editable: true,
       required: false,

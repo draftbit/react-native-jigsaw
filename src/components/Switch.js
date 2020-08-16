@@ -53,7 +53,7 @@ export const SEED_DATA = {
       required: false,
       editable: true,
       value: false,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
     },
     color: {
       label: "Color",
@@ -61,7 +61,7 @@ export const SEED_DATA = {
       editable: true,
       value: null,
       required: false,
-      type: FORM_TYPES.color,
+      formType: FORM_TYPES.color,
     },
     fieldName: {
       ...FIELD_NAME,

@@ -21,7 +21,7 @@ export const SEED_DATA = {
       description: "Text Style",
       editable: true,
       required: false,
-      type: FORM_TYPES.typeStyle,
+      formType: FORM_TYPES.typeStyle,
       value: null,
     },
     clearButtonMode: {
@@ -32,7 +32,7 @@ export const SEED_DATA = {
       required: false,
       options: ["never", "while-editing", "unless-editing", "always"],
       value: null,
-      type: FORM_TYPES.flatArray,
+      formType: FORM_TYPES.flatArray,
     },
     clearTextOnFocus: {
       label: "Clear Text on Focus",
@@ -41,7 +41,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: null,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
     },
     enablesReturnKeyAutomatically: {
       label: "Enables Return Key Automatically",
@@ -50,7 +50,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: null,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
     },
     keyboardAppearance: {
       label: "Keyboard Appearance",
@@ -59,7 +59,7 @@ export const SEED_DATA = {
       required: false,
       value: null,
       options: ["default", "light", "dark"],
-      type: FORM_TYPES.flatArray,
+      formType: FORM_TYPES.flatArray,
     },
     multiline: {
       label: "Multiple Lines",
@@ -68,7 +68,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: null,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
     },
     numberOfLines: {
       label: "Number of Lines",
@@ -80,7 +80,7 @@ export const SEED_DATA = {
       min: 0,
       step: 1,
       precision: 0,
-      type: FORM_TYPES.number,
+      formType: FORM_TYPES.number,
     },
     scrollEnabled: {
       label: "Scroll Enabled",
@@ -89,7 +89,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: null,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
     },
     spellcheck: {
       label: "Disable Spell Check",
@@ -98,7 +98,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: null,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
     },
     textContentType: {
       label: "Text Content Type",
@@ -135,7 +135,7 @@ export const SEED_DATA = {
         "username",
         "password",
       ],
-      type: FORM_TYPES.flatArray,
+      formType: FORM_TYPES.flatArray,
     },
     textBreakStrategy: {
       label: "Text Break Strategy",
@@ -145,7 +145,7 @@ export const SEED_DATA = {
       required: false,
       value: null,
       options: ["simple", "highQuality", "balanced"],
-      type: FORM_TYPES.flatArray,
+      formType: FORM_TYPES.flatArray,
     },
     underlineColorAndroid: {
       label: "Underline color",
@@ -154,7 +154,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: null,
-      type: FORM_TYPES.color,
+      formType: FORM_TYPES.color,
     },
     fieldName: {
       ...FIELD_NAME,

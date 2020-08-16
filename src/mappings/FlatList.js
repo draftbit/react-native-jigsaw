@@ -15,7 +15,7 @@ export const SEED_DATA = {
       description: "Render list horizontally",
       editable: true,
       required: true,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       value: false,
     },
     numColumns: {
@@ -23,7 +23,7 @@ export const SEED_DATA = {
       description: "Number of columns (vertical list only)",
       editable: true,
       required: false,
-      type: FORM_TYPES.number,
+      formType: FORM_TYPES.number,
       min: 1,
       max: 4,
       step: 1,

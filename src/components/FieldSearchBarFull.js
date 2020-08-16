@@ -104,7 +104,7 @@ export const SEED_DATA = [
       icon: {
         label: "Icon",
         description: "Left icon to display",
-        type: FORM_TYPES.icon,
+        formType: FORM_TYPES.icon,
         value: null,
         editable: true,
         required: false,
@@ -112,7 +112,7 @@ export const SEED_DATA = [
       placeholder: {
         label: "Placeholder",
         description: "Input placeholder text",
-        type: FORM_TYPES.string,
+        formType: FORM_TYPES.string,
         value: "Type something...",
         editable: true,
         required: false,
@@ -121,7 +121,7 @@ export const SEED_DATA = [
         label: "Submit action",
         description: "Action to execute on submission",
         editable: true,
-        type: FORM_TYPES.action,
+        formType: FORM_TYPES.action,
         value: null,
       },
       fieldName: {

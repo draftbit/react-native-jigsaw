@@ -133,7 +133,7 @@ export const SEED_DATA = {
     name: {
       label: "Name",
       description: "Name of the icon",
-      type: FORM_TYPES.icon,
+      formType: FORM_TYPES.icon,
       value: null,
       editable: true,
       required: true,
@@ -141,7 +141,7 @@ export const SEED_DATA = {
     color: {
       label: "Color",
       description: "Color of the icon",
-      type: FORM_TYPES.color,
+      formType: FORM_TYPES.color,
       value: "strong",
       editable: true,
       required: true,
@@ -149,7 +149,7 @@ export const SEED_DATA = {
     size: {
       label: "Size",
       description: "Width and height of the icon",
-      type: FORM_TYPES.number,
+      formType: FORM_TYPES.number,
       value: 24,
       min: 1,
       max: 200,

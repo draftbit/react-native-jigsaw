@@ -14,7 +14,7 @@ export const SEED_DATA = {
         "The URL you want to fetch data from. You may have to add draftbit.com to your CORS setting",
       required: true,
       editable: true,
-      type: FORM_TYPES.url,
+      formType: FORM_TYPES.url,
     },
     method: {
       label: "HTTP Method",
@@ -22,7 +22,7 @@ export const SEED_DATA = {
       required: true,
       editable: true,
       value: "GET",
-      type: FORM_TYPES.flatArray,
+      formType: FORM_TYPES.flatArray,
       options: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     },
     headers: {
@@ -31,7 +31,7 @@ export const SEED_DATA = {
         "Any specific headers you have to add to complete the request.",
       required: false,
       editable: true,
-      type: FORM_TYPES.json,
+      formType: FORM_TYPES.json,
       value: JSON.stringify(
         {
           "Content-type": "application/json",
@@ -47,7 +47,7 @@ export const SEED_DATA = {
         "Any specific JSON body you have to add to complete the request.",
       required: false,
       editable: true,
-      type: FORM_TYPES.json,
+      formType: FORM_TYPES.json,
       value: null,
     },
     mode: {
@@ -56,7 +56,7 @@ export const SEED_DATA = {
       required: true,
       editable: true,
       value: null,
-      type: FORM_TYPES.flatArray,
+      formType: FORM_TYPES.flatArray,
       options: ["cors", "no-cors", "same-origin"],
     },
     credentials: {
@@ -65,7 +65,7 @@ export const SEED_DATA = {
       required: true,
       editable: true,
       value: null,
-      type: FORM_TYPES.flatArray,
+      formType: FORM_TYPES.flatArray,
       options: ["omit", "same-origin", "include"],
     },
     lazy: {
@@ -75,14 +75,14 @@ export const SEED_DATA = {
       required: false,
       editable: true,
       value: null,
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
     },
     fetchPolicy: {
       label: "Fetch Policy",
       description: "Determines how the request interacts with the cache",
       editable: true,
       required: false,
-      type: FORM_TYPES.flatArray,
+      formType: FORM_TYPES.flatArray,
       options: [
         "cache-first",
         "cache-and-network",
@@ -95,7 +95,7 @@ export const SEED_DATA = {
       label: "Loading Component",
       editable: true,
       required: false,
-      type: FORM_TYPES.component,
+      formType: FORM_TYPES.component,
       description: "Loading component to render until data shows up",
       value: null,
     },
@@ -103,7 +103,7 @@ export const SEED_DATA = {
       label: "Error Component",
       editable: true,
       required: false,
-      type: FORM_TYPES.component,
+      formType: FORM_TYPES.component,
       description: "Error component to render until data shows up",
       value: null,
     },

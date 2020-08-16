@@ -153,7 +153,7 @@ const SEED_DATA_PROPS = {
   image: {
     label: "Image",
     description: "Image",
-    type: FORM_TYPES.remoteImage,
+    formType: FORM_TYPES.remoteImage,
     value: null,
     editable: true,
     required: true,
@@ -162,7 +162,7 @@ const SEED_DATA_PROPS = {
   title: {
     label: "Title",
     description: "Text to display",
-    type: FORM_TYPES.string,
+    formType: FORM_TYPES.string,
     value: "Beautiful West Coast Villa",
     editable: true,
     required: false,
@@ -171,7 +171,7 @@ const SEED_DATA_PROPS = {
   leftDescription: {
     label: "Left description",
     description: "Text to display on the left",
-    type: FORM_TYPES.string,
+    formType: FORM_TYPES.string,
     value: "San Diego",
     editable: true,
     group: GROUPS.data,
@@ -179,7 +179,7 @@ const SEED_DATA_PROPS = {
   rightDescription: {
     label: "Right description",
     description: "Text to display on the right",
-    type: FORM_TYPES.string,
+    formType: FORM_TYPES.string,
     value: "$100",
     editable: true,
     group: GROUPS.data,
@@ -187,7 +187,7 @@ const SEED_DATA_PROPS = {
   icon: {
     label: "Icon",
     description: "Icon to display on the top right",
-    type: FORM_TYPES.icon,
+    formType: FORM_TYPES.icon,
     value: null,
     editable: true,
     group: GROUPS.basic,
@@ -195,7 +195,7 @@ const SEED_DATA_PROPS = {
   aspectRatio: {
     label: "Aspect ratio",
     description: "Aspect ratio of the image",
-    type: FORM_TYPES.aspectRatio,
+    formType: FORM_TYPES.aspectRatio,
     value: 1.5,
     editable: true,
     required: false,
@@ -204,7 +204,7 @@ const SEED_DATA_PROPS = {
   textCentered: {
     label: "Centered Text",
     description: "Whether to center the text",
-    type: FORM_TYPES.boolean,
+    formType: FORM_TYPES.boolean,
     value: false,
     editable: true,
     required: false,
@@ -224,7 +224,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       numColumns: {
-        type: FORM_TYPES.number,
+        formType: FORM_TYPES.number,
         value: 2,
         editable: false,
         group: GROUPS.basic,
@@ -241,7 +241,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       numColumns: {
-        type: FORM_TYPES.number,
+        formType: FORM_TYPES.number,
         value: 3,
         editable: false,
         group: GROUPS.basic,

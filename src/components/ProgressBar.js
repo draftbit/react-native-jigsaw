@@ -170,7 +170,7 @@ export const SEED_DATA = [
       progress: {
         label: "Progress",
         description: "The amount of progress to display. A number 0-1.",
-        type: FORM_TYPES.number,
+        formType: FORM_TYPES.number,
         value: 0.5,
         min: 0,
         max: 1,
@@ -182,7 +182,7 @@ export const SEED_DATA = [
       color: {
         label: "Progress Color",
         description: "Custom color for the progress shown",
-        type: FORM_TYPES.color,
+        formType: FORM_TYPES.color,
         value: null,
         editable: true,
         required: true,
@@ -191,7 +191,7 @@ export const SEED_DATA = [
         label: "Unfilled Color",
         description:
           "The color of the unfilled portion of the progress bar(eg. if at 50% then this is the color of the other 50%)",
-        type: FORM_TYPES.color,
+        formType: FORM_TYPES.color,
         value: null,
         editable: true,
         required: true,
@@ -199,7 +199,7 @@ export const SEED_DATA = [
       borderRadius: {
         label: "Border Radius",
         description: "The border radius of the bar",
-        type: FORM_TYPES.number,
+        formType: FORM_TYPES.number,
         value: 10,
         min: 0,
         max: 100,
@@ -211,7 +211,7 @@ export const SEED_DATA = [
       borderWidth: {
         label: "Border Width",
         description: "The width of the border that surrounds the bar.",
-        type: FORM_TYPES.number,
+        formType: FORM_TYPES.number,
         value: 1,
         min: 0,
         max: 15,
@@ -223,7 +223,7 @@ export const SEED_DATA = [
       borderColor: {
         label: "Border Color",
         description: "Custom color for border of the entire bar",
-        type: FORM_TYPES.color,
+        formType: FORM_TYPES.color,
         value: null,
         editable: true,
         required: true,
@@ -232,7 +232,7 @@ export const SEED_DATA = [
         label: "Animation Type",
         description:
           "The type of animation that occurs when the bar is filled(Default is Spring)",
-        type: FORM_TYPES.flatArray,
+        formType: FORM_TYPES.flatArray,
         value: "spring",
         options: ["decay", "timing", "spring"],
         editable: true,

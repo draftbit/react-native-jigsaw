@@ -191,7 +191,7 @@ export const SEED_DATA = [
         label: "Images",
         description: "A series of images to display in the carousel",
         editable: true,
-        type: FORM_TYPES.localImageArray,
+        formType: FORM_TYPES.localImageArray,
         value: null,
       },
       resizeMode: {
@@ -201,7 +201,7 @@ export const SEED_DATA = [
         editable: true,
         required: false,
         value: "cover",
-        type: FORM_TYPES.flatArray,
+        formType: FORM_TYPES.flatArray,
         options: ["cover", "contain", "stretch", "repeat", "center"],
       },
       dotColor: {
@@ -210,7 +210,7 @@ export const SEED_DATA = [
         editable: true,
         required: true,
         value: "strong",
-        type: FORM_TYPES.color,
+        formType: FORM_TYPES.color,
       },
     },
   },

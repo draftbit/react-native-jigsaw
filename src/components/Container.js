@@ -80,7 +80,7 @@ export const SEED_DATA = {
       label: "Use gutter padding",
       description:
         "When true, uses the theme gutter spacing as the container's horizontal padding",
-      type: FORM_TYPES.boolean,
+      formType: FORM_TYPES.boolean,
       value: true,
       editable: true,
       required: true,
@@ -88,7 +88,7 @@ export const SEED_DATA = {
     backgroundImage: {
       label: "Background image",
       description: "Background image to apply to the container",
-      type: FORM_TYPES.remoteImage,
+      formType: FORM_TYPES.remoteImage,
       value: null,
       editable: true,
       required: false,
@@ -100,7 +100,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: null,
-      type: FORM_TYPES.flatArray,
+      formType: FORM_TYPES.flatArray,
       options: ["cover", "contain", "stretch", "repeat", "center"],
     },
     elevation: createElevationType(0),

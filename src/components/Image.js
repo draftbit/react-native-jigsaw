@@ -36,7 +36,7 @@ export const SEED_DATA = {
       description: "The source of the image",
       editable: true,
       required: true,
-      type: FORM_TYPES.localImage,
+      formType: FORM_TYPES.localImage,
       value: null,
     },
     resizeMode: {
@@ -47,7 +47,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       value: "cover",
-      type: FORM_TYPES.flatArray,
+      formType: FORM_TYPES.flatArray,
       options: ["cover", "contain", "stretch", "repeat", "center"],
     },
   },

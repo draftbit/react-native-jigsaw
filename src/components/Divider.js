@@ -40,7 +40,7 @@ export const SEED_DATA = [
         editable: true,
         required: false,
         value: "divider",
-        type: FORM_TYPES.color,
+        formType: FORM_TYPES.color,
       },
       height: {
         label: "Height",
@@ -48,7 +48,7 @@ export const SEED_DATA = [
           "The height (thickness) of the divider. If not provided, defaults to StyleSheet.hairlineWidth.",
         editable: true,
         required: false,
-        type: FORM_TYPES.number,
+        formType: FORM_TYPES.number,
         min: 1,
         max: 50,
         step: 1,

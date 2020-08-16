@@ -1,6 +1,10 @@
 import React from "react";
 import { View, TouchableHighlight as Touchable } from "react-native";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+} from "../core/component-types";
 
 export default class extends Touchable {
   render() {

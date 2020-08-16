@@ -4,7 +4,11 @@ import Image from "./Image";
 import Card from "./Card";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  createElevationType,
+} from "../core/component-types";
 import Config from "./Config";
 
 class CardContainerShortImage extends React.PureComponent {
@@ -131,17 +135,7 @@ export const SEED_DATA = [
         editable: true,
         required: false,
       },
-      elevation: {
-        label: "Elevation",
-        description: "Elevation of the card. A number 0-3.",
-        formType: FORM_TYPES.number,
-        defaultValue: 2,
-        min: 0,
-        max: 3,
-        step: 1,
-        precision: 0,
-        editable: true,
-      },
+      elevation: createElevationType(2),
       mode: {
         formType: FORM_TYPES.string,
         defaultValue: "left",

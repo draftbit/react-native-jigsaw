@@ -48,7 +48,7 @@ export const COMPONENT_TYPES = {
   deprecated: "deprecated",
 };
 
-export const ELEVATION_TYPE = {
+const ELEVATION_TYPE = {
   label: "Elevation",
   description: "Elevation of the component. A number 0-3.",
   formType: FORM_TYPES.flatArray,
@@ -56,6 +56,11 @@ export const ELEVATION_TYPE = {
   defaultValue: 0,
   editable: true,
 };
+
+export const createElevationType = (defaultValue) => ({
+  ...ELEVATION_TYPE,
+  defaultValue,
+});
 
 export const BORDER_RADIUS_MODE = {
   label: "Border radius",

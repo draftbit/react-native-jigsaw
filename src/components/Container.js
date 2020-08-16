@@ -5,7 +5,7 @@ import Elevation from "./Elevation";
 import {
   COMPONENT_TYPES,
   FORM_TYPES,
-  ELEVATION_TYPE,
+  createElevationType,
 } from "../core/component-types";
 
 class Container extends React.Component {
@@ -103,9 +103,6 @@ export const SEED_DATA = {
       formType: FORM_TYPES.flatArray,
       options: ["cover", "contain", "stretch", "repeat", "center"],
     },
-    elevation: {
-      ...ELEVATION_TYPE,
-      defaultValue: 0,
-    },
+    elevationType: createElevationType(0),
   },
 };

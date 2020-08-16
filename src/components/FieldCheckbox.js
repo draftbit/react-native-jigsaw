@@ -1,6 +1,7 @@
 import * as React from "react";
 import { withTheme } from "../core/theming";
 import {
+  GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
   FIELD_NAME,
@@ -77,6 +78,7 @@ export const SEED_DATA = [
     supports_list_render: true,
     props: {
       title: {
+        group: GROUPS.data,
         label: "Title",
         description: "Text to display",
         formType: FORM_TYPES.string,
@@ -84,6 +86,7 @@ export const SEED_DATA = [
         editable: true,
       },
       color: {
+        group: GROUPS.basic,
         label: "Color",
         description: "Custom color for the checkbox",
         editable: true,
@@ -91,6 +94,7 @@ export const SEED_DATA = [
         formType: FORM_TYPES.color,
       },
       disabled: {
+        group: GROUPS.basic,
         label: "Disabled",
         description: "Whether checkbox and headline is disabled",
         editable: true,

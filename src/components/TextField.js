@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { withTheme } from "../core/theming";
 import {
+  GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
   FIELD_NAME,
@@ -613,11 +614,13 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.string,
         defaultValue: "solid",
         editable: false,
       },
       secureTextEntry: {
+        group: GROUPS.basic,
         label: "Password field",
         description:
           "If true, this turns the field into a password field, hiding the text",
@@ -639,11 +642,13 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.string,
         defaultValue: "underline",
         editable: false,
       },
       secureTextEntry: {
+        group: GROUPS.basic,
         label: "Password field",
         description:
           "If true, this turns the field into a password field, hiding the text",
@@ -665,11 +670,13 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.string,
         defaultValue: "solid",
         editable: false,
       },
       multiline: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.boolean,
         defaultValue: true,
         editable: false,
@@ -687,11 +694,13 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.string,
         defaultValue: "underline",
         editable: false,
       },
       multiline: {
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.boolean,
         defaultValue: true,
         editable: false,

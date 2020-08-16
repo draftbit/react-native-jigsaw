@@ -1,7 +1,7 @@
 import * as React from "react";
 import { withTheme } from "../core/theming";
 
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import Config from "./Config";
 import IconButton from "./IconButton";
 
@@ -35,6 +35,7 @@ export const SEED_DATA = {
   preview_image_url: "{CLOUDINARY_URL}/Control_Radio.png",
   props: {
     selected: {
+      group: GROUPS.data,
       label: "Selected",
       description: "Whether the radio button is selected",
       required: true,
@@ -43,6 +44,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
     },
     color: {
+      group: GROUPS.basic,
       label: "Color",
       description: "Color for the button",
       required: false,
@@ -51,6 +53,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.color,
     },
     unselectedColor: {
+      group: GROUPS.basic,
       label: "Unselected Color",
       description: "Unselected Color for the button",
       required: false,
@@ -59,6 +62,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.color,
     },
     disabled: {
+      group: GROUPS.data,
       label: "Disabled",
       description: "Whether radio button is disabled",
       editable: true,

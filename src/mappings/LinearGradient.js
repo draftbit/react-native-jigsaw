@@ -1,4 +1,4 @@
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 export const SEED_DATA = {
   name: "Linear Gradient",
@@ -11,6 +11,7 @@ export const SEED_DATA = {
   layout: {},
   props: {
     colors: {
+      group: GROUPS.basic,
       label: "Colors",
       description: "The colors required for your gradient",
       editable: true,

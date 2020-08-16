@@ -1,6 +1,6 @@
 import * as React from "react";
 import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import Header from "./Header";
 
 class HeaderOverline extends React.Component {
@@ -46,6 +46,7 @@ export const SEED_DATA = [
     supports_list_render: false,
     props: {
       title: {
+        groups: GROUPS.data,
         label: "Title",
         description: "Text to display",
         formType: FORM_TYPES.string,
@@ -53,6 +54,7 @@ export const SEED_DATA = [
         editable: true,
       },
       buttonText: {
+        groups: GROUPS.data,
         label: "Button text",
         description: "Right aligned button text to display",
         formType: FORM_TYPES.string,
@@ -60,6 +62,7 @@ export const SEED_DATA = [
         editable: true,
       },
       icon: {
+        groups: GROUPS.basic,
         label: "Icon",
         description: "Name of icon to display",
         formType: FORM_TYPES.icon,
@@ -67,6 +70,7 @@ export const SEED_DATA = [
         editable: true,
       },
       onPress: {
+        groups: GROUPS.basic,
         label: "Action",
         description: "Action to execute when button pressed",
         editable: true,

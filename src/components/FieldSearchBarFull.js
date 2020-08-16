@@ -2,6 +2,7 @@ import * as React from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 import { withTheme } from "../core/theming";
 import {
+  GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
   FIELD_NAME,
@@ -102,6 +103,7 @@ export const SEED_DATA = [
     supports_list_render: false,
     props: {
       icon: {
+        group: GROUPS.basic,
         label: "Icon",
         description: "Left icon to display",
         formType: FORM_TYPES.icon,
@@ -110,6 +112,7 @@ export const SEED_DATA = [
         required: false,
       },
       placeholder: {
+        group: GROUPS.basic,
         label: "Placeholder",
         description: "Input placeholder text",
         formType: FORM_TYPES.string,
@@ -118,6 +121,7 @@ export const SEED_DATA = [
         required: false,
       },
       onSubmit: {
+        group: GROUPS.basic,
         label: "Submit action",
         description: "Action to execute on submission",
         editable: true,

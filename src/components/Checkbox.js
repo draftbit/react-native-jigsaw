@@ -6,6 +6,7 @@ import CheckboxIOS from "./CheckboxIOS";
 import { withTheme } from "../core/theming";
 
 import {
+  GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
   FIELD_NAME,
@@ -36,6 +37,7 @@ export const SEED_DATA = {
   layout: null,
   props: {
     disabled: {
+      group: GROUPS.data,
       label: "Disabled",
       description: "Whether checkbox is disabled",
       editable: true,
@@ -44,6 +46,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
     },
     color: {
+      group: GROUPS.basic,
       label: "Color",
       description: "Custom color for Checkbox",
       editable: true,

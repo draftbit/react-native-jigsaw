@@ -5,7 +5,7 @@ import { withTheme } from "../core/theming";
 import Touchable from "./Touchable";
 import RadioButton from "./RadioButton";
 
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 function FieldRadioButton({
   onPress,
@@ -54,6 +54,7 @@ export const SEED_DATA = {
   preview_image_url: "{CLOUDINARY_URL}/Field_Radio.png",
   props: {
     title: {
+      group: GROUPS.data,
       label: "Title",
       description: "Title to display alongside radio button",
       required: false,
@@ -62,6 +63,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.string,
     },
     selected: {
+      group: GROUPS.data,
       label: "Selected",
       description: "Whether the radio button is selected",
       required: true,
@@ -70,6 +72,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
     },
     color: {
+      group: GROUPS.basic,
       label: "Color",
       description: "Color for the button",
       required: false,
@@ -78,6 +81,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.color,
     },
     disabled: {
+      group: GROUPS.basic,
       label: "Disabled",
       description: "Whether radio button is disabled",
       editable: true,

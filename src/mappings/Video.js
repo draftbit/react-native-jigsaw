@@ -1,4 +1,4 @@
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 export const SEED_DATA = {
   name: "Video",
   tag: "Video",
@@ -7,21 +7,22 @@ export const SEED_DATA = {
   code_link:
     "https://github.com/expo/expo/blob/master/packages/expo-av/src/Video.tsx",
   category: COMPONENT_TYPES.media,
-  supports_list_render: false,
   layout: {
     width: "100%",
     height: 250,
   },
   props: {
     source: {
+      group: GROUPS.data,
       label: "Video URL",
       description: "The URL the video should load",
       editable: true,
       required: true,
-      defaultValue: "",
+      defaultValue: null,
       formType: FORM_TYPES.sourceUrl,
     },
     usePoster: {
+      group: GROUPS.basic,
       label: "Use Thumbnail",
       description: "Thumbnail for the video",
       editable: true,
@@ -30,6 +31,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
     },
     posterSource: {
+      group: GROUPS.data,
       label: "Thumbnail Source",
       description: "Thumbnail Source",
       editable: true,
@@ -38,6 +40,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.localImage,
     },
     resizeMode: {
+      group: GROUPS.basic,
       label: "Resize Mode",
       description:
         "How the video should be scaled for display. (Default: stretch) ",
@@ -48,6 +51,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.flatArray,
     },
     positionMillis: {
+      group: GROUPS.data,
       label: "Starting Point",
       description: "Set a certian starting point of the video",
       editable: true,
@@ -59,6 +63,7 @@ export const SEED_DATA = {
       precision: 2,
     },
     rate: {
+      group: GROUPS.data,
       label: "Playback Rate",
       description:
         "The playback rate of the media. This value must be between 0.0 and 32.0 (Default: 1)",
@@ -72,6 +77,7 @@ export const SEED_DATA = {
       defaultValue: 1,
     },
     volume: {
+      group: GROUPS.data,
       label: "Volume",
       description:
         "The volume of the audio for this media. This value must be between 0.0 (silence) and 1.0 (maximum volume). (Default: .5)",
@@ -85,7 +91,8 @@ export const SEED_DATA = {
       defaultValue: 1,
     },
     isMuted: {
-      label: "Mute",
+      group: GROUPS.data,
+      label: "Mute Audio",
       description: "To mute the audio of the video.",
       editable: true,
       required: false,
@@ -93,6 +100,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
     },
     useNativeControls: {
+      group: GROUPS.basic,
       label: "Use Native Controls",
       description: "Allow users to have the option to pause or play the video",
       editable: true,
@@ -101,6 +109,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
     },
     shouldPlay: {
+      group: GROUPS.basic,
       label: "Play on Load",
       description: "Allows the video play on loading",
       editable: true,
@@ -109,6 +118,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
     },
     isLooping: {
+      group: GROUPS.basic,
       label: "Allow Looping",
       description: "Allows the video to loop",
       editable: true,

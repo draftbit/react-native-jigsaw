@@ -4,6 +4,7 @@ import { withTheme } from "../core/theming";
 
 import Slider from "./Slider";
 import {
+  GROUPS,
   FORM_TYPES,
   COMPONENT_TYPES,
   FIELD_NAME,
@@ -71,6 +72,7 @@ export const SEED_DATA = {
   supports_list_render: false,
   props: {
     title: {
+      group: GROUPS.data,
       label: "Title",
       description: "Title to show above slider",
       editable: true,
@@ -79,6 +81,7 @@ export const SEED_DATA = {
       defaultValue: "Title",
     },
     minimumLabel: {
+      group: GROUPS.basic,
       label: "Minimum label",
       description: "Label to show below left side of slider",
       editable: true,
@@ -87,6 +90,7 @@ export const SEED_DATA = {
       defaultValue: "0",
     },
     maximumLabel: {
+      group: GROUPS.basic,
       label: "Maximum label",
       description: "Label to show below right side of slider",
       editable: true,
@@ -95,6 +99,7 @@ export const SEED_DATA = {
       defaultValue: "10",
     },
     disabled: {
+      group: GROUPS.basic,
       label: "Disabled",
       description: "Whether the slider is disabled",
       editable: true,
@@ -103,6 +108,7 @@ export const SEED_DATA = {
       defaultValue: null,
     },
     maximumValue: {
+      group: GROUPS.basic,
       label: "Maximum value",
       description: "The maximum value of the slider",
       editable: true,
@@ -115,6 +121,7 @@ export const SEED_DATA = {
       defaultValue: 10,
     },
     minimumValue: {
+      group: GROUPS.basic,
       label: "Minimum value",
       description: "The minimum value of the slider",
       editable: true,
@@ -127,6 +134,7 @@ export const SEED_DATA = {
       defaultValue: 0,
     },
     step: {
+      group: GROUPS.basic,
       label: "Step",
       description: "The amount the value should change per step",
       editable: true,
@@ -144,6 +152,7 @@ export const SEED_DATA = {
       handlerPropName: "onValueChange",
     },
     maximumTrackTintColor: {
+      group: GROUPS.basic,
       label: "Maximum Color",
       description: "Color of the track from the right of the thumb",
       editable: true,
@@ -152,6 +161,7 @@ export const SEED_DATA = {
       defaultValue: null,
     },
     minimumTrackTintColor: {
+      group: GROUPS.basic,
       label: "Minimum Color",
       description: "Color of the track from the left of the thumb",
       editable: true,
@@ -160,6 +170,7 @@ export const SEED_DATA = {
       defaultValue: null,
     },
     thumbTintColor: {
+      group: GROUPS.basic,
       label: "Thumb Tint Color",
       description: "Color of the thumb",
       editable: true,
@@ -168,6 +179,7 @@ export const SEED_DATA = {
       defaultValue: null,
     },
     thumbTouchSize: {
+      group: GROUPS.basic,
       label: "Hit Slop",
       description: "The size of the hit slop",
       editable: true,
@@ -180,6 +192,7 @@ export const SEED_DATA = {
       defaultValue: null,
     },
     trackBorderRadius: {
+      group: GROUPS.basic,
       label: "Track Border Radius",
       description: "The border radius for the track ",
       editable: true,
@@ -192,6 +205,7 @@ export const SEED_DATA = {
       defaultValue: 10,
     },
     thumbBorderRadius: {
+      group: GROUPS.basic,
       label: "Thumb Border Radius",
       description: "The border radius for the thumb",
       editable: true,
@@ -204,6 +218,7 @@ export const SEED_DATA = {
       defaultValue: 10,
     },
     thumbSize: {
+      group: GROUPS.basic,
       label: "Thumb Size",
       description: "Size of the thumb",
       editable: true,

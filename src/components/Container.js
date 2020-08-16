@@ -3,6 +3,7 @@ import { View, Image } from "react-native";
 import { withTheme } from "../core/theming";
 import Elevation from "./Elevation";
 import {
+  GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
   createElevationType,
@@ -77,6 +78,7 @@ export const SEED_DATA = {
   layout: {},
   props: {
     useThemeGutterPadding: {
+      group: GROUPS.basic,
       label: "Use gutter padding",
       description:
         "When true, uses the theme gutter spacing as the container's horizontal padding",
@@ -86,6 +88,7 @@ export const SEED_DATA = {
       required: true,
     },
     backgroundImage: {
+      group: GROUPS.data,
       label: "Background image",
       description: "Background image to apply to the container",
       formType: FORM_TYPES.remoteImage,
@@ -94,6 +97,7 @@ export const SEED_DATA = {
       required: false,
     },
     backgroundImageResizeMode: {
+      group: GROUPS.basic,
       label: "Background image resize mode",
       description:
         "Determines how to resize the background image when the frame doesn't match the raw image dimensions",

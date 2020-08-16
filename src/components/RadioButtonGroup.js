@@ -4,6 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 import Icon from "./Icon";
 import Touchable from "./Touchable";
 import {
+  GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
   FIELD_NAME,
@@ -109,6 +110,7 @@ export const SEED_DATA = {
   preview_image_url: "{CLOUDINARY_URL}/Control_Radio.png",
   props: {
     options: {
+      group: GROUPS.data,
       label: "Options",
       description: "Options for the button group.",
       formType: FORM_TYPES.arrayInput,
@@ -117,6 +119,7 @@ export const SEED_DATA = {
       required: true,
     },
     direction: {
+      group: GROUPS.basic,
       label: "Horizontal/Vertical",
       description: "Whether the buttons should be Horizontal or Vertical",
       formType: FORM_TYPES.flatArray,
@@ -126,6 +129,7 @@ export const SEED_DATA = {
       required: true,
     },
     activeColor: {
+      group: GROUPS.basic,
       label: "Active Color",
       description: "Color of the button when it's selected",
       defaultValue: null,
@@ -134,6 +138,7 @@ export const SEED_DATA = {
       required: true,
     },
     inactiveColor: {
+      group: GROUPS.basic,
       label: "Inactive Color",
       description: "Color of the button when it's selected not selected",
       defaultValue: null,
@@ -142,6 +147,7 @@ export const SEED_DATA = {
       required: true,
     },
     contentColor: {
+      group: GROUPS.basic,
       label: "Selected Content Color",
       description: "Color of the content(Icon and Label)",
       defaultValue: null,
@@ -150,6 +156,7 @@ export const SEED_DATA = {
       required: true,
     },
     unselectedContentColor: {
+      group: GROUPS.basic,
       label: "Unselected Content Color",
       description: "Unfinished Color of the content(Icon and Label)",
       defaultValue: null,
@@ -158,6 +165,7 @@ export const SEED_DATA = {
       required: true,
     },
     borderColor: {
+      group: GROUPS.basic,
       label: "Border Color",
       description: "Border color of the option",
       defaultValue: null,
@@ -166,6 +174,7 @@ export const SEED_DATA = {
       required: true,
     },
     labelStyle: {
+      group: GROUPS.basic,
       label: "Label Style",
       description: "Font and weight of the Label",
       formType: FORM_TYPES.typeStyle,
@@ -174,6 +183,7 @@ export const SEED_DATA = {
       required: true,
     },
     optionSpacing: {
+      group: GROUPS.basic,
       label: "Option Spacing",
       description: "The spacing between each option",
       formType: FORM_TYPES.number,
@@ -186,6 +196,7 @@ export const SEED_DATA = {
       required: false,
     },
     borderRadius: {
+      group: GROUPS.basic,
       label: "Border Radius",
       description: "The border radius for the container or options",
       formType: FORM_TYPES.number,
@@ -198,6 +209,7 @@ export const SEED_DATA = {
       required: false,
     },
     iconSize: {
+      group: GROUPS.basic,
       label: "Icon Size",
       description: "The size of the icon if enabled",
       formType: FORM_TYPES.number,

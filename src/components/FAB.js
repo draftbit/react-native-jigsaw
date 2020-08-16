@@ -8,7 +8,7 @@ import Touchable from "./Touchable";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
 
-import { FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
+import { GROUPS, FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
 
 /**
  * A floating action button represents the primary action in an application.
@@ -229,6 +229,7 @@ export default withTheme(FAB);
 
 const SEED_DATA_PROPS = {
   icon: {
+    group: GROUPS.basic,
     label: "Icon Name",
     description: "Name of the icon",
     editable: true,
@@ -237,6 +238,7 @@ const SEED_DATA_PROPS = {
     defaultValue: null,
   },
   label: {
+    group: GROUPS.basic,
     label: "Label",
     description: "Button label",
     required: true,
@@ -245,6 +247,7 @@ const SEED_DATA_PROPS = {
     defaultValue: "GET STARTED",
   },
   color: {
+    group: GROUPS.basic,
     label: "Color Override",
     description: "Override the background color of the button",
     editable: true,
@@ -253,6 +256,7 @@ const SEED_DATA_PROPS = {
     defaultValue: null,
   },
   onPress: {
+    group: GROUPS.basic,
     label: "Action",
     description: "Action to execute when button pressed",
     editable: true,
@@ -271,6 +275,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
+        group: GROUPS.uncategorized,
         label: "Type",
         description: "Button type",
         editable: false,
@@ -279,6 +284,7 @@ export const SEED_DATA = [
         defaultValue: "standard",
       },
       label: {
+        group: GROUPS.uncategorized,
         label: "Label",
         description: "Button label",
         required: false,
@@ -297,6 +303,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
+        group: GROUPS.uncategorized,
         label: "Type",
         description: "Button type",
         editable: false,
@@ -305,6 +312,7 @@ export const SEED_DATA = [
         defaultValue: "outline",
       },
       label: {
+        group: GROUPS.uncategorized,
         label: "Label",
         description: "Button label",
         required: false,
@@ -323,6 +331,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
+        group: GROUPS.uncategorized,
         label: "Type",
         description: "Button type",
         editable: false,
@@ -341,6 +350,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
+        group: GROUPS.uncategorized,
         label: "Type",
         description: "Button type",
         editable: false,

@@ -1,4 +1,4 @@
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 export const SEED_DATA = {
   name: "Keyboard Avoiding View",
@@ -9,6 +9,7 @@ export const SEED_DATA = {
   layout: {},
   props: {
     enabled: {
+      group: GROUPS.basic,
       label: "Enable",
       description: "Enable the keyboard avoiding view",
       editable: true,
@@ -17,6 +18,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
     },
     behavior: {
+      group: GROUPS.basic,
       label: "Resizing Behavior",
       description:
         "The behavior for how the keyboard resizing interacts with the rest of the screen. (Default: padding).",
@@ -27,6 +29,7 @@ export const SEED_DATA = {
       formType: FORM_TYPES.flatArray,
     },
     keyboardVerticalOffset: {
+      group: GROUPS.basic,
       label: "Keyboard Vertical Offset",
       description:
         "The distance between the bottom of the view and the keyboard",

@@ -1,9 +1,8 @@
 import * as React from "react";
-import { ActivityIndicator, View, StyleSheet } from "react-native";
+import { ActivityIndicator, View, StyleSheet, Text } from "react-native";
 import color from "color";
 import Config from "./Config";
 import Icon from "./Icon";
-import Text from "./Text";
 import Touchable from "./Touchable";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";

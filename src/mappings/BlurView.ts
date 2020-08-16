@@ -9,6 +9,7 @@ import {
 export const SEED_DATA: ComponentManifest = {
   name: "Blur View",
   tag: "BlurView",
+  description: "Expo Blur View",
   doc_link: "https://docs.expo.io/versions/latest/sdk/blur-view/",
   code_link:
     "https://github.com/expo/expo/blob/master/packages/expo/src/effects/BlurView.d.ts",

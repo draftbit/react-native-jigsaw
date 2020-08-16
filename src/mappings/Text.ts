@@ -1,46 +1,12 @@
-import * as React from "react";
-import { Text as NativeText, I18nManager } from "react-native";
-import { withTheme } from "../core/theming";
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  GROUPS,
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+  ComponentManifest,
+} from "../core/component-types";
 
-/**
- * Text component which follows styles from the theme.
- *
- * @extends Text props https://facebook.github.io/react-native/docs/text.html#props
- */
-class Text extends React.Component {
-  /**
-   * @internal
-   */
-  setNativeProps(...args) {
-    return this._root && this._root.setNativeProps(...args);
-  }
-
-  render() {
-    const { style, theme, ...rest } = this.props;
-    const writingDirection = I18nManager.isRTL ? "rtl" : "ltr";
-
-    return (
-      <NativeText
-        {...rest}
-        ref={(c) => {
-          this._root = c;
-        }}
-        style={[
-          {
-            textAlign: "left",
-            writingDirection,
-          },
-          style,
-        ]}
-      />
-    );
-  }
-}
-
-export default withTheme(Text);
-
-export const SEED_DATA = {
+export const SEED_DATA: ComponentManifest = {
   name: "Text",
   tag: "Text",
   description: "A basic Text component",
@@ -58,7 +24,6 @@ export const SEED_DATA = {
     },
     accessibilityLabel: {
       group: GROUPS.accessibility,
-      name: "accessibilityLabel",
       label: "accessibilityLabel",
       description:
         "Overrides the text that's read by the screen reader when the user interacts with the element. By default, the label is constructed by traversing all the children and accumulating all the Text nodes separated by space.",
@@ -70,7 +35,6 @@ export const SEED_DATA = {
     },
     accessibilityRole: {
       group: GROUPS.accessibility,
-      name: "accessibilityRole",
       label: "accessibilityRole",
       description:
         "Tells the screen reader to treat the currently focused on element as having a specific role.Possible values for AccessibilityRole is one of:\n'none' - The element has no role.\n'button' - The element should be treated as a button.\n'link' - The element should be treated as a link.\n'header' - The element is a header that divides content into sections.\n'search' - The element should be treated as a search field.\n'image' - The element should be treated as an image.\n'key' - The element should be treated like a keyboard key.\n'text' - The element should be treated as text.\n'summary' - The element provides app summary information.\n'imagebutton' - The element has the role of both an image and also a button.\n'adjustable' - The element allows adjustment over a range of values.\nOn iOS, these roles map to corresponding Accessibility Traits. Image button has the same functionality as if the trait was set to both 'image' and 'button'. See the Accessibility guide for more information.On Android, these roles have similar functionality on TalkBack as adding Accessibility Traits does on Voiceover in iOS",
@@ -95,7 +59,6 @@ export const SEED_DATA = {
     },
     accessible: {
       group: GROUPS.accessibility,
-      name: "accessible",
       label: "accessible",
       description:
         "When set to true, indicates that the view is an accessibility element. The default value for a Text element is true.See the Accessibility guide for more information.",
@@ -107,7 +70,6 @@ export const SEED_DATA = {
     },
     adjustsFontSizeToFit: {
       group: GROUPS.basic,
-      name: "adjustsFontSizeToFit",
       label: "adjustsFontSizeToFit",
       description:
         "Specifies whether fonts should be scaled down automatically to fit given style constraints.",
@@ -119,7 +81,6 @@ export const SEED_DATA = {
     },
     allowFontScaling: {
       group: GROUPS.basic,
-      name: "allowFontScaling",
       label: "allowFontScaling",
       description:
         "Specifies whether fonts should scale to respect Text Size accessibility settings. The default is true.",
@@ -131,7 +92,6 @@ export const SEED_DATA = {
     },
     dataDetectorType: {
       group: GROUPS.basic,
-      name: "dataDetectorType",
       label: "dataDetectorType",
       description:
         "Determines the types of data converted to clickable URLs in the text element. By default no data types are detected.You can provide only one type.Possible values for dataDetectorType are:\n'phoneNumber'\n'link'\n'email'\n'none'\n'all'\n",
@@ -144,7 +104,6 @@ export const SEED_DATA = {
     },
     disabled: {
       group: GROUPS.basic,
-      name: "disabled",
       label: "disabled",
       description:
         "Specifies the disabled state of the text view for testing purposes",
@@ -156,7 +115,6 @@ export const SEED_DATA = {
     },
     ellipsizeMode: {
       group: GROUPS.basic,
-      name: "ellipsizeMode",
       label: "ellipsizeMode",
       description:
         'When numberOfLines is set, this prop defines how text will be truncated. numberOfLines must be set in conjunction with this prop.This can be one of the following values:\nhead - The line is displayed so that the end fits in the container and the missing text at the beginning of the line is indicated by an ellipsis glyph. e.g., "...wxyz"\nmiddle - The line is displayed so that the beginning and end fit in the container and the missing text in the middle is indicated by an ellipsis glyph. "ab...yz"\ntail - The line is displayed so that the beginning fits in the container and the missing text at the end of the line is indicated by an ellipsis glyph. e.g., "abcd..."\nclip - Lines are not drawn past the edge of the text container.\nThe default is tail.',
@@ -169,7 +127,6 @@ export const SEED_DATA = {
     },
     maxFontSizeMultiplier: {
       group: GROUPS.advanced,
-      name: "maxFontSizeMultiplier",
       label: "maxFontSizeMultiplier",
       description:
         "Specifies largest possible scale a font can reach when allowFontScaling is enabled. Possible values:\nnull/undefined (default): inherit from the parent node or the global default (0)\n0: no max, ignore parent/global default\n>= 1: sets the maxFontSizeMultiplier of this node to this value\n",
@@ -181,7 +138,6 @@ export const SEED_DATA = {
     },
     minimumFontScale: {
       group: GROUPS.advanced,
-      name: "minimumFontScale",
       label: "minimumFontScale",
       description:
         "Specifies smallest possible scale a font can reach when adjustsFontSizeToFit is enabled. (values 0.01-1.0).",
@@ -197,7 +153,6 @@ export const SEED_DATA = {
     },
     numberOfLines: {
       group: GROUPS.basic,
-      name: "numberOfLines",
       label: "numberOfLines",
       description:
         "Used to truncate the text with an ellipsis after computing the text layout, including line wrapping, such that the total number of lines does not exceed this number.This prop is commonly used with ellipsizeMode.",
@@ -211,7 +166,6 @@ export const SEED_DATA = {
     },
     selectable: {
       group: GROUPS.basic,
-      name: "selectable",
       label: "selectable",
       description:
         "Lets the user select text, to use the native copy and paste functionality.",
@@ -223,7 +177,6 @@ export const SEED_DATA = {
     },
     selectionColor: {
       group: GROUPS.advanced,
-      name: "selectionColor",
       label: "selectionColor",
       description: "The highlight color of the text.",
       editable: true,
@@ -234,7 +187,6 @@ export const SEED_DATA = {
     },
     suppressHighlighting: {
       group: GROUPS.advanced,
-      name: "suppressHighlighting",
       label: "suppressHighlighting",
       description:
         "When true, no visual change is made when text is pressed down. By default, a gray oval highlights the text on press down.",
@@ -246,7 +198,6 @@ export const SEED_DATA = {
     },
     textBreakStrategy: {
       group: GROUPS.advanced,
-      name: "textBreakStrategy",
       label: "textBreakStrategy",
       description:
         "Set text break strategy on Android API Level 23+, possible values are simple, highQuality, balanced The default value is highQuality.",

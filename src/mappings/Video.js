@@ -1,4 +1,9 @@
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  GROUPS,
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+} from "../core/component-types";
 export const SEED_DATA = {
   name: "Video",
   tag: "Video",
@@ -20,6 +25,7 @@ export const SEED_DATA = {
       required: true,
       defaultValue: null,
       formType: FORM_TYPES.sourceUrl,
+      propType: PROP_TYPES.STRING,
     },
     usePoster: {
       group: GROUPS.basic,
@@ -29,6 +35,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
     },
     posterSource: {
       group: GROUPS.data,
@@ -38,6 +45,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: null,
       formType: FORM_TYPES.localImage,
+      propType: PROP_TYPES.ASSET,
     },
     resizeMode: {
       group: GROUPS.basic,
@@ -49,6 +57,7 @@ export const SEED_DATA = {
       defaultValue: "contain",
       options: ["stretch", "contain", "cover"],
       formType: FORM_TYPES.flatArray,
+      propType: PROP_TYPES.STRING,
     },
     positionMillis: {
       group: GROUPS.data,
@@ -57,6 +66,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.number,
+      propType: PROP_TYPES.NUMBER,
       defaultValue: 0,
       min: 0,
       step: 0.01,
@@ -70,6 +80,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       formType: FORM_TYPES.number,
+      propType: PROP_TYPES.NUMBER,
       min: 0,
       max: 32,
       step: 0.25,
@@ -84,6 +95,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.number,
+      propType: PROP_TYPES.NUMBER,
       min: 0,
       max: 1,
       step: 0.1,
@@ -98,6 +110,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
     },
     useNativeControls: {
       group: GROUPS.basic,
@@ -107,6 +120,7 @@ export const SEED_DATA = {
       required: true,
       defaultValue: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
     },
     shouldPlay: {
       group: GROUPS.basic,
@@ -116,6 +130,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: true,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
     },
     isLooping: {
       group: GROUPS.basic,
@@ -125,6 +140,7 @@ export const SEED_DATA = {
       required: true,
       defaultValue: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
     },
   },
 };

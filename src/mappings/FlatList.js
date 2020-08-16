@@ -1,14 +1,15 @@
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+  GROUPS,
+} from "../core/component-types";
 
 export const SEED_DATA = {
   name: "List",
   tag: "FlatList",
   description: "A basic List component",
   category: COMPONENT_TYPES.data,
-  supports_list_render: false,
-  preview_image_url:
-    "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/List.svg",
-  layout: {},
   props: {
     horizontal: {
       group: GROUPS.basic,
@@ -17,6 +18,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: false,
     },
     numColumns: {
@@ -26,6 +28,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.number,
+      propType: PROP_TYPES.NUMBER,
       min: 1,
       max: 4,
       step: 1,

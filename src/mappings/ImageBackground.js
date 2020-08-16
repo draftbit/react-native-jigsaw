@@ -1,4 +1,9 @@
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+  GROUPS,
+} from "../core/component-types";
 
 export const SEED_DATA = {
   name: "Image Background",
@@ -19,6 +24,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       formType: FORM_TYPES.localImage,
+      propType: PROP_TYPES.ASSET,
       defaultValue: null,
     },
     resizeMode: {
@@ -30,6 +36,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: "cover",
       formType: FORM_TYPES.flatArray,
+      propType: PROP_TYPES.STRING,
       options: ["cover", "contain", "stretch", "repeat", "center"],
     },
     backfaceVisibility: {
@@ -40,6 +47,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: null,
       formType: FORM_TYPES.flatArray,
+      propType: PROP_TYPES.STRING,
       options: ["visible", "hidden"],
     },
     backgroundColor: {
@@ -50,6 +58,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: null,
       formType: FORM_TYPES.color,
+      propType: PROP_TYPES.STRING,
     },
   },
 };

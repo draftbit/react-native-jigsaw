@@ -1,12 +1,15 @@
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+  GROUPS,
+} from "../core/component-types";
 
 export const SEED_DATA = {
   name: "ScrollView",
   tag: "ScrollView",
   description: "A basic ScrollView component",
   category: COMPONENT_TYPES.layout,
-  supports_list_render: false,
-  layout: {},
   props: {
     horizontal: {
       group: GROUPS.basic,
@@ -15,6 +18,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: false,
     },
     showsHorizontalScrollIndicator: {
@@ -25,6 +29,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: true,
     },
     showsVerticalScrollIndicator: {
@@ -35,6 +40,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: true,
     },
     bounces: {
@@ -45,6 +51,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: true,
     },
   },

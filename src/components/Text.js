@@ -233,8 +233,8 @@ export const SEED_DATA = {
       description: "The highlight color of the text.",
       editable: true,
       required: false,
-      formType: FORM_TYPES.string,
-      propType: PROP_TYPES.STRING,
+      formType: FORM_TYPES.color,
+      propType: PROP_TYPES.THEME,
       defaultValue: null,
     },
     suppressHighlighting: {

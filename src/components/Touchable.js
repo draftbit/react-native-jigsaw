@@ -28,6 +28,7 @@ export const SEED_DATA = {
       label: "Action",
       description: "Action to execute when touchable pressed",
       editable: true,
+      required: false,
       formType: FORM_TYPES.action,
       defaultValue: null,
     },

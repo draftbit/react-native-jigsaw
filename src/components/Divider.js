@@ -1,7 +1,12 @@
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
 import { withTheme } from "../core/theming";
-import { GROUPS, FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
+import {
+  GROUPS,
+  FORM_TYPES,
+  PROP_TYPES,
+  COMPONENT_TYPES,
+} from "../core/component-types";
 
 class Divider extends React.Component {
   render() {
@@ -38,10 +43,12 @@ export const SEED_DATA = [
       color: {
         group: GROUPS.basic,
         label: "Color",
+        description: "The color of the divider",
         editable: true,
         required: false,
         defaultValue: "divider",
         formType: FORM_TYPES.color,
+        propType: PROP_TYPES.THEME,
       },
       height: {
         group: GROUPS.basic,
@@ -51,6 +58,8 @@ export const SEED_DATA = [
         editable: true,
         required: false,
         formType: FORM_TYPES.number,
+        propType: PROP_TYPES.NUMBER,
+        defaultValue: 1,
         min: 1,
         max: 50,
         step: 1,

@@ -7,6 +7,7 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.data,
   props: {
     url: {
+      defaultValue: null,
       label: "URL",
       description:
         "The URL you want to fetch data from. You may have to add draftbit.com to your CORS setting",

@@ -89,7 +89,7 @@ export const SEED_DATA = [
     props: {
       fieldName: {
         ...FIELD_NAME,
-        value: "stepperValue",
+        defaultValue: "stepperValue",
       },
     },
     layout: {},

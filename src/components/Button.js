@@ -7,7 +7,12 @@ import Touchable from "./Touchable";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
 
-import { GROUPS, FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
+import {
+  GROUPS,
+  FORM_TYPES,
+  PROP_TYPES,
+  COMPONENT_TYPES,
+} from "../core/component-types";
 
 /**
  * A button is component that the user can press to trigger an action.
@@ -193,6 +198,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: true,
     formType: FORM_TYPES.icon,
+    propType: PROP_TYPES.STRING,
     defaultValue: null,
   },
   children: {
@@ -202,6 +208,7 @@ const SEED_DATA_PROPS = {
     required: true,
     editable: true,
     formType: FORM_TYPES.string,
+    propType: PROP_TYPES.STRING,
     defaultValue: "Get Started",
   },
   color: {
@@ -211,6 +218,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
     formType: FORM_TYPES.color,
+    propType: PROP_TYPES.THEME,
     defaultValue: null,
   },
   labelColor: {
@@ -220,6 +228,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
     formType: FORM_TYPES.color,
+    propType: PROP_TYPES.THEME,
     defaultValue: null,
   },
   disabled: {
@@ -229,6 +238,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
     formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
     defaultValue: null,
   },
   loading: {
@@ -238,6 +248,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
     formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
     defaultValue: null,
   },
   onPress: {
@@ -245,6 +256,7 @@ const SEED_DATA_PROPS = {
     label: "Action",
     description: "Action to execute when button pressed",
     editable: true,
+    required: false,
     formType: FORM_TYPES.action,
     defaultValue: null,
   },
@@ -265,6 +277,7 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         formType: FORM_TYPES.string,
+        propType: PROP_TYPES.STRING,
         defaultValue: "outline",
       },
     },
@@ -284,6 +297,7 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         formType: FORM_TYPES.string,
+        propType: PROP_TYPES.STRING,
         defaultValue: "solid",
       },
     },

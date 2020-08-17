@@ -52,7 +52,7 @@ export const SEED_DATA = {
       label: "Color",
       description: "The color of the loading indicator (Default: gray)",
       formType: FORM_TYPES.color,
-      propType: PROP_TYPES.STRING,
+      propType: PROP_TYPES.THEME,
       editable: true,
       required: false,
       defaultValue: null,

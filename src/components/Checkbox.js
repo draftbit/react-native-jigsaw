@@ -52,6 +52,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.color,
+      defaultValue: null,
     },
     fieldName: {
       ...FIELD_NAME,

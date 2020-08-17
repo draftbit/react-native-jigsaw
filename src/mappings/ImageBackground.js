@@ -58,7 +58,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: null,
       formType: FORM_TYPES.color,
-      propType: PROP_TYPES.STRING,
+      propType: PROP_TYPES.THEME,
     },
   },
 };

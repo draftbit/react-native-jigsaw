@@ -204,6 +204,7 @@ export const SEED_DATA = {
       group: GROUPS.basic,
       name: "numberOfLines",
       label: "numberOfLines",
+      defaultValue: null,
       description:
         "Used to truncate the text with an ellipsis after computing the text layout, including line wrapping, such that the total number of lines does not exceed this number.This prop is commonly used with ellipsizeMode.",
       editable: true,
@@ -212,7 +213,6 @@ export const SEED_DATA = {
       propType: PROP_TYPES.NUMBER,
       step: 1,
       precision: 1,
-      value: null,
     },
     selectable: {
       group: GROUPS.basic,

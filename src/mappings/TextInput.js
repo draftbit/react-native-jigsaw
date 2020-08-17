@@ -2,6 +2,7 @@ import {
   GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
+  PROP_TYPES,
   FIELD_NAME,
   TEXT_INPUT_PROPS,
 } from "../core/component-types";
@@ -25,6 +26,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.typeStyle,
+      propType: PROP_TYPES.THEME,
       defaultValue: null,
     },
     clearButtonMode: {
@@ -37,6 +39,7 @@ export const SEED_DATA = {
       options: ["never", "while-editing", "unless-editing", "always"],
       defaultValue: null,
       formType: FORM_TYPES.flatArray,
+      propType: PROP_TYPES.STRING,
     },
     clearTextOnFocus: {
       group: GROUPS.basic,
@@ -47,6 +50,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: null,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
     },
     enablesReturnKeyAutomatically: {
       group: GROUPS.basic,
@@ -57,6 +61,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: null,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
     },
     keyboardAppearance: {
       group: GROUPS.basic,
@@ -67,6 +72,7 @@ export const SEED_DATA = {
       defaultValue: null,
       options: ["default", "light", "dark"],
       formType: FORM_TYPES.flatArray,
+      propType: PROP_TYPES.STRING,
     },
     multiline: {
       group: GROUPS.basic,
@@ -77,6 +83,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: null,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
     },
     numberOfLines: {
       group: GROUPS.basic,
@@ -90,6 +97,7 @@ export const SEED_DATA = {
       step: 1,
       precision: 0,
       formType: FORM_TYPES.number,
+      propType: PROP_TYPES.NUMBER,
     },
     scrollEnabled: {
       group: GROUPS.basic,
@@ -100,6 +108,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: null,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
     },
     spellcheck: {
       group: GROUPS.basic,
@@ -110,6 +119,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: null,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
     },
     textContentType: {
       group: GROUPS.advanced,
@@ -148,6 +158,7 @@ export const SEED_DATA = {
         "password",
       ],
       formType: FORM_TYPES.flatArray,
+      propType: PROP_TYPES.STRING,
     },
     textBreakStrategy: {
       group: GROUPS.advanced,
@@ -159,6 +170,7 @@ export const SEED_DATA = {
       defaultValue: null,
       options: ["simple", "highQuality", "balanced"],
       formType: FORM_TYPES.flatArray,
+      propType: PROP_TYPES.STRING,
     },
     underlineColorAndroid: {
       group: GROUPS.basic,
@@ -169,6 +181,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: null,
       formType: FORM_TYPES.color,
+      propType: PROP_TYPES.THEME,
     },
     fieldName: {
       ...FIELD_NAME,

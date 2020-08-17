@@ -111,7 +111,7 @@ export const SEED_DATA = {
       defaultValue: true,
     },
     adjustsFontSizeToFit: {
-      group: GROUPS.basic,
+      group: GROUPS.advanced,
       name: "adjustsFontSizeToFit",
       label: "adjustsFontSizeToFit",
       description:
@@ -123,7 +123,7 @@ export const SEED_DATA = {
       defaultValue: false,
     },
     allowFontScaling: {
-      group: GROUPS.basic,
+      group: GROUPS.advanced,
       name: "allowFontScaling",
       label: "allowFontScaling",
       description:
@@ -135,7 +135,7 @@ export const SEED_DATA = {
       defaultValue: true,
     },
     dataDetectorType: {
-      group: GROUPS.basic,
+      group: GROUPS.advanced,
       name: "dataDetectorType",
       label: "dataDetectorType",
       description:
@@ -215,7 +215,7 @@ export const SEED_DATA = {
       precision: 1,
     },
     selectable: {
-      group: GROUPS.basic,
+      group: GROUPS.advanced,
       name: "selectable",
       label: "selectable",
       description:

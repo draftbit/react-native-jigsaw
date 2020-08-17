@@ -84,6 +84,7 @@ export const BORDER_RADIUS_MODE = {
   description:
     "Border radius of the element - either None, Global (using theme global border radius), or Round (must specify a width and height on component)",
   formType: FORM_TYPES.borderRadiusMode,
+  propType: PROP_TYPES.THEME,
   defaultValue: null,
   editable: true,
   required: true,

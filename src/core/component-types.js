@@ -73,6 +73,7 @@ const ELEVATION_TYPE = {
   options: [0, 1, 2, 3],
   defaultValue: 0,
   editable: true,
+  required: false,
   group: GROUPS.basic,
 };
 

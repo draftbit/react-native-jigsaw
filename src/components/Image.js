@@ -1,7 +1,12 @@
 import React from "react";
 import { Image as NativeImage } from "react-native";
 import Config from "./Config";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+  GROUPS,
+} from "../core/component-types";
 
 export default class Image extends React.PureComponent {
   static defaultProps = {
@@ -34,14 +39,17 @@ export const SEED_DATA = {
   },
   props: {
     source: {
+      group: GROUPS.data,
       label: "Image Source",
       description: "The source of the image",
       editable: true,
       required: true,
       formType: FORM_TYPES.localImage,
+      propType: PROP_TYPES.ASSET,
       defaultValue: null,
     },
     resizeMode: {
+      group: GROUPS.basic,
       label: "Resize Mode",
       description:
         "Determines how to resize the image when the frame doesn't match the raw image dimensions",
@@ -49,6 +57,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: "cover",
       formType: FORM_TYPES.flatArray,
+      propType: PROP_TYPES.STRING,
       options: ["cover", "contain", "stretch", "repeat", "center"],
     },
   },

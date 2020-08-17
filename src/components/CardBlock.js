@@ -128,6 +128,7 @@ const SEED_DATA_PROPS = {
     propType: PROP_TYPES.ASSET,
     defaultValue: null,
     editable: true,
+    required: false,
   },
   title: {
     group: GROUPS.data,
@@ -137,6 +138,7 @@ const SEED_DATA_PROPS = {
     propType: PROP_TYPES.STRING,
     defaultValue: "Beautiful West Coast Villa",
     editable: true,
+    required: false,
   },
   leftDescription: {
     group: GROUPS.data,
@@ -146,6 +148,7 @@ const SEED_DATA_PROPS = {
     propType: PROP_TYPES.STRING,
     defaultValue: "San Diego",
     editable: true,
+    required: false,
   },
   rightDescription: {
     group: GROUPS.data,
@@ -155,6 +158,7 @@ const SEED_DATA_PROPS = {
     propType: PROP_TYPES.STRING,
     defaultValue: "$100",
     editable: true,
+    required: false,
   },
   aspectRatio: {
     group: GROUPS.basic,
@@ -164,6 +168,7 @@ const SEED_DATA_PROPS = {
     propType: PROP_TYPES.NUMBER,
     defaultValue: 1.5,
     editable: true,
+    required: false,
   },
   titleCentered: {
     group: GROUPS.basic,
@@ -172,6 +177,7 @@ const SEED_DATA_PROPS = {
     formType: FORM_TYPES.boolean,
     defaultValue: false,
     editable: true,
+    required: false,
   },
   elevation: createElevationType(2),
 };

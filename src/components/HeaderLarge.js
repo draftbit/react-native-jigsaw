@@ -51,6 +51,7 @@ export const SEED_DATA = [
         formType: FORM_TYPES.string,
         defaultValue: "Title",
         editable: true,
+        required: false,
       },
       buttonText: {
         group: GROUPS.data,
@@ -59,6 +60,7 @@ export const SEED_DATA = [
         formType: FORM_TYPES.string,
         defaultValue: "See All",
         editable: true,
+        required: false,
       },
       icon: {
         group: GROUPS.basic,
@@ -67,12 +69,14 @@ export const SEED_DATA = [
         formType: FORM_TYPES.icon,
         defaultValue: null,
         editable: true,
+        required: false,
       },
       onPress: {
         group: GROUPS.basic,
         label: "Action",
         description: "Action to execute when button pressed",
         editable: true,
+        required: false,
         formType: FORM_TYPES.action,
         defaultValue: null,
       },

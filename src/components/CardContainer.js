@@ -178,6 +178,7 @@ const SEED_DATA_PROPS = {
     propType: PROP_TYPES.STRING,
     defaultValue: "San Diego",
     editable: true,
+    required: false,
     group: GROUPS.data,
   },
   rightDescription: {
@@ -187,6 +188,7 @@ const SEED_DATA_PROPS = {
     propType: PROP_TYPES.STRING,
     defaultValue: "$100",
     editable: true,
+    required: false,
     group: GROUPS.data,
   },
   icon: {
@@ -196,6 +198,7 @@ const SEED_DATA_PROPS = {
     propType: PROP_TYPES.STRING /* OR ASSET TODO TEST ME */,
     defaultValue: null,
     editable: true,
+    required: false,
     group: GROUPS.basic,
   },
   aspectRatio: {
@@ -236,6 +239,7 @@ export const SEED_DATA = [
         propType: PROP_TYPES.NUMBER,
         defaultValue: 2,
         editable: false,
+        required: false,
         group: GROUPS.basic,
       },
     },
@@ -254,6 +258,7 @@ export const SEED_DATA = [
         propType: PROP_TYPES.NUMBER,
         defaultValue: 3,
         editable: false,
+        required: false,
         group: GROUPS.basic,
       },
     },

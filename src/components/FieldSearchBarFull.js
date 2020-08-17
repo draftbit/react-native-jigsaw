@@ -5,6 +5,7 @@ import {
   GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
+  PROP_TYPES,
   FIELD_NAME,
 } from "../core/component-types";
 import Icon from "./Icon";
@@ -107,6 +108,7 @@ export const SEED_DATA = [
         label: "Icon",
         description: "Left icon to display",
         formType: FORM_TYPES.icon,
+        propType: PROP_TYPES.ASSET,
         defaultValue: null,
         editable: true,
         required: false,
@@ -116,7 +118,8 @@ export const SEED_DATA = [
         label: "Placeholder",
         description: "Input placeholder text",
         formType: FORM_TYPES.string,
-        defaultValue: "Type something...",
+        propType: PROP_TYPES.STRING,
+        defaultValue: "Search for...",
         editable: true,
         required: false,
       },
@@ -125,7 +128,9 @@ export const SEED_DATA = [
         label: "Submit action",
         description: "Action to execute on submission",
         editable: true,
+        required: false,
         formType: FORM_TYPES.action,
+        propType: PROP_TYPES.STRING,
         defaultValue: null,
       },
       fieldName: {

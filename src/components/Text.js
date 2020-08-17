@@ -1,7 +1,12 @@
 import * as React from "react";
 import { Text as NativeText, I18nManager } from "react-native";
 import { withTheme } from "../core/theming";
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  GROUPS,
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+} from "../core/component-types";
 
 /**
  * Text component which follows styles from the theme.
@@ -53,7 +58,8 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       formType: FORM_TYPES.string,
-      defaultValue: "Hello World!",
+      propType: PROP_TYPES.STRING,
+      defaultValue: "Change me under the Data Panel",
     },
     accessibilityLabel: {
       group: GROUPS.accessibility,
@@ -64,6 +70,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.string,
+      propType: PROP_TYPES.STRING,
       defaultValue: null,
     },
     accessibilityRole: {
@@ -88,6 +95,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.array,
+      propType: PROP_TYPES.STRING,
       defaultValue: null,
     },
     accessible: {
@@ -99,6 +107,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: true,
     },
     adjustsFontSizeToFit: {
@@ -110,6 +119,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: false,
     },
     allowFontScaling: {
@@ -121,6 +131,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: true,
     },
     dataDetectorType: {
@@ -133,6 +144,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.array,
+      propType: PROP_TYPES.STRING,
       defaultValue: null,
     },
     disabled: {
@@ -144,6 +156,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: false,
     },
     ellipsizeMode: {
@@ -156,6 +169,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.array,
+      propType: PROP_TYPES.STRING,
       defaultValue: "tail",
     },
     maxFontSizeMultiplier: {
@@ -167,6 +181,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.number,
+      propType: PROP_TYPES.NUMBER,
       defaultValue: null,
     },
     minimumFontScale: {
@@ -178,20 +193,26 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.number,
+      propType: PROP_TYPES.NUMBER,
+      min: 0.01,
+      step: 0.01,
+      precision: 2,
+      max: 1.0,
       defaultValue: null,
     },
     numberOfLines: {
       group: GROUPS.basic,
       name: "numberOfLines",
       label: "numberOfLines",
+      defaultValue: null,
       description:
         "Used to truncate the text with an ellipsis after computing the text layout, including line wrapping, such that the total number of lines does not exceed this number.This prop is commonly used with ellipsizeMode.",
       editable: true,
       required: false,
       formType: FORM_TYPES.number,
+      propType: PROP_TYPES.NUMBER,
       step: 1,
       precision: 1,
-      value: null,
     },
     selectable: {
       group: GROUPS.basic,
@@ -202,6 +223,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: null,
     },
     selectionColor: {
@@ -212,6 +234,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.string,
+      propType: PROP_TYPES.STRING,
       defaultValue: null,
     },
     suppressHighlighting: {
@@ -223,6 +246,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: false,
     },
     textBreakStrategy: {
@@ -235,6 +259,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.array,
+      propType: PROP_TYPES.STRING,
       defaultValue: "highQuality",
     },
   },

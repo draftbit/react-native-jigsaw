@@ -8,7 +8,12 @@ import Touchable from "./Touchable";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
 
-import { GROUPS, FORM_TYPES, COMPONENT_TYPES } from "../core/component-types";
+import {
+  GROUPS,
+  FORM_TYPES,
+  PROP_TYPES,
+  COMPONENT_TYPES,
+} from "../core/component-types";
 
 /**
  * A floating action button represents the primary action in an application.
@@ -235,6 +240,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: true,
     formType: FORM_TYPES.icon,
+    propType: PROP_TYPES.ASSET,
     defaultValue: null,
   },
   label: {
@@ -244,6 +250,7 @@ const SEED_DATA_PROPS = {
     required: true,
     editable: true,
     formType: FORM_TYPES.string,
+    propType: PROP_TYPES.STRING,
     defaultValue: "GET STARTED",
   },
   color: {
@@ -253,6 +260,7 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
     formType: FORM_TYPES.color,
+    propType: PROP_TYPES.THEME,
     defaultValue: null,
   },
   onPress: {
@@ -260,7 +268,9 @@ const SEED_DATA_PROPS = {
     label: "Action",
     description: "Action to execute when button pressed",
     editable: true,
+    required: false,
     formType: FORM_TYPES.action,
+    propType: PROP_TYPES.STRING,
     defaultValue: null,
   },
 };
@@ -281,15 +291,17 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         formType: FORM_TYPES.icon,
+        propType: PROP_TYPES.STRING,
         defaultValue: "standard",
       },
       label: {
-        group: GROUPS.uncategorized,
+        group: GROUPS.data,
         label: "Label",
         description: "Button label",
         required: false,
         editable: false,
         formType: FORM_TYPES.string,
+        propType: PROP_TYPES.STRING,
         defaultValue: null,
       },
     },
@@ -308,6 +320,7 @@ export const SEED_DATA = [
         description: "Button type",
         editable: false,
         required: true,
+        propType: PROP_TYPES.STRING,
         formType: FORM_TYPES.string,
         defaultValue: "outline",
       },
@@ -318,6 +331,7 @@ export const SEED_DATA = [
         required: false,
         editable: false,
         formType: FORM_TYPES.string,
+        propType: PROP_TYPES.STRING,
         defaultValue: null,
       },
     },
@@ -337,6 +351,7 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         formType: FORM_TYPES.string,
+        propType: PROP_TYPES.STRING,
         defaultValue: "extended",
       },
     },
@@ -356,6 +371,7 @@ export const SEED_DATA = [
         editable: false,
         required: true,
         formType: FORM_TYPES.string,
+        propType: PROP_TYPES.STRING,
         defaultValue: "fixed",
       },
     },

@@ -1,4 +1,9 @@
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  GROUPS,
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+} from "../core/component-types";
 
 export const SEED_DATA = {
   name: "View",
@@ -15,6 +20,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: true,
     },
     accessibilityLabel: {
@@ -23,9 +29,10 @@ export const SEED_DATA = {
       label: "accessibilityLabel",
       description:
         "Overrides the text that's read by the screen reader when the user interacts with the element. By default, the label is constructed by traversing all the children and accumulating all the Text nodes separated by space.",
+      formType: FORM_TYPES.string,
+      propType: PROP_TYPES.STRING,
       editable: true,
       required: false,
-      formType: FORM_TYPES.string,
       defaultValue: null,
     },
     accessibilityHint: {
@@ -37,6 +44,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.string,
+      propType: PROP_TYPES.STRING,
       defaultValue: null,
     },
     accessibilityRole: {
@@ -77,6 +85,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.array,
+      propType: PROP_TYPES.STRING,
       defaultValue: null,
     },
     accessibilityElementsHidden: {
@@ -85,10 +94,10 @@ export const SEED_DATA = {
       label: "accessibilityElementsHidden",
       description:
         "A value indicating whether the accessibility elements contained within this accessibility element are hidden. Default is false.See the Accessibility guide for more information.",
-      options: [],
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: false,
     },
     accessibilityIgnoresInvertColors: {
@@ -97,10 +106,10 @@ export const SEED_DATA = {
       label: "accessibilityIgnoresInvertColors",
       description:
         "A value indicating this view should or should not be inverted when color inversion is turned on. A value of true will tell the view to not be inverted even if color inversion is turned on.See the Accessibility guide for more information.",
-      options: [],
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: null,
     },
     accessibilityLiveRegion: {
@@ -113,21 +122,24 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.array,
+      propType: PROP_TYPES.STRING,
       defaultValue: null,
     },
     importantForAccessibility: {
       group: GROUPS.accessibility,
       name: "importantForAccessibility",
       label: "importantForAccessibility",
+      defaultValue: "auto",
       description:
         "Controls how view is important for accessibility which is if it fires accessibility events and if it is reported to accessibility services that query the screen. Works for Android only.Possible values:\n'auto' - The system determines whether the view is important for accessibility - default (recommended).\n'yes' - The view is important for accessibility.\n'no' - The view is not important for accessibility.\n'no-hide-descendants' - The view is not important for accessibility, nor are any of its descendant views.\nSee the Android importantForAccessibility docs for reference.",
       options: ["auto", "yes", "no", "no-hide-descendants"],
       editable: true,
       required: false,
       formType: FORM_TYPES.array,
+      propType: PROP_TYPES.STRING,
     },
     hitSlop: {
-      group: GROUPS.basic,
+      group: GROUPS.advanced,
       name: "hitSlop",
       label: "hitSlop",
       description:
@@ -135,6 +147,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.position,
+      propType: PROP_TYPES.OBJECT,
       defaultValue: "{}",
     },
     pointerEvents: {
@@ -147,6 +160,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.array,
+      propType: PROP_TYPES.STRING,
       defaultValue: "auto",
     },
     removeClippedSubviews: {
@@ -158,6 +172,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: null,
     },
     collapsable: {
@@ -169,6 +184,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: null,
     },
     needsOffscreenAlphaCompositing: {
@@ -179,7 +195,9 @@ export const SEED_DATA = {
         "Whether this View needs to rendered offscreen and composited with an alpha in order to preserve 100% correct colors and blending behavior. The default (false) falls back to drawing the component and its children with an alpha applied to the paint used to draw each element instead of rendering the full component offscreen and compositing it back with an alpha value. This default may be noticeable and undesired in the case where the View you are setting an opacity on has multiple overlapping elements (e.g. multiple overlapping Views, or text and a background).Rendering offscreen to preserve correct alpha behavior is extremely expensive and hard to debug for non-native developers, which is why it is not turned on by default. If you do need to enable this property for an animation, consider combining it with renderToHardwareTextureAndroid if the view contents are static (i.e. it doesn't need to be redrawn each frame). If that property is enabled, this View will be rendered off-screen once, saved in a hardware texture, and then composited onto the screen with an alpha each frame without having to switch rendering targets on the GPU.",
       editable: true,
       required: false,
+      defaultValue: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
     },
     renderToHardwareTextureAndroid: {
       group: GROUPS.advanced,
@@ -190,6 +208,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: null,
     },
     shouldRasterizeIOS: {
@@ -201,17 +220,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.boolean,
-      defaultValue: null,
-    },
-    clickable: {
-      group: GROUPS.basic,
-      name: "clickable",
-      label: "Clickable",
-      description:
-        "Determines whether this View is clickable or tappable for accessibility hints.",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: null,
     },
   },

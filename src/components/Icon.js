@@ -4,7 +4,12 @@ import { Image, Text, View, StyleSheet } from "react-native";
 // import * as VectorIcons from "@expo/vector-icons";
 // console.log("VECTORICONS", VectorIcons);
 
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  GROUPS,
+  PROP_TYPES,
+} from "../core/component-types";
 
 let VectorIcons;
 
@@ -131,25 +136,31 @@ export const SEED_DATA = {
   supports_list_render: false,
   props: {
     name: {
+      group: GROUPS.basic,
       label: "Name",
       description: "Name of the icon",
       formType: FORM_TYPES.icon,
+      propType: PROP_TYPES.ASSET,
       defaultValue: null,
       editable: true,
       required: true,
     },
     color: {
+      group: GROUPS.basic,
       label: "Color",
       description: "Color of the icon",
       formType: FORM_TYPES.color,
+      propType: PROP_TYPES.THEME,
       defaultValue: "strong",
       editable: true,
       required: true,
     },
     size: {
+      group: GROUPS.basic,
       label: "Size",
       description: "Width and height of the icon",
       formType: FORM_TYPES.number,
+      propType: PROP_TYPES.NUMBER,
       defaultValue: 24,
       min: 1,
       max: 200,

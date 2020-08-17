@@ -4,6 +4,7 @@ import {
   GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
+  PROP_TYPES,
   FIELD_NAME,
 } from "../core/component-types";
 import { StyleSheet, View, Text } from "react-native";
@@ -82,6 +83,7 @@ export const SEED_DATA = [
         label: "Title",
         description: "Text to display",
         formType: FORM_TYPES.string,
+        propType: PROP_TYPES.STRING,
         defaultValue: "Beautiful West Coast Villa",
         editable: true,
       },
@@ -92,6 +94,7 @@ export const SEED_DATA = [
         editable: true,
         required: false,
         formType: FORM_TYPES.color,
+        propType: PROP_TYPES.THEME,
       },
       disabled: {
         group: GROUPS.basic,
@@ -101,6 +104,7 @@ export const SEED_DATA = [
         required: false,
         defaultValue: false,
         formType: FORM_TYPES.boolean,
+        propType: PROP_TYPES.BOOLEAN,
       },
       fieldName: {
         ...FIELD_NAME,

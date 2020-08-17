@@ -2,7 +2,12 @@ import React from "react";
 import { ScrollView, View, StyleSheet, Image, Dimensions } from "react-native";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  GROUPS,
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+} from "../core/component-types";
 import Config from "./Config";
 
 class Carousel extends React.PureComponent {
@@ -192,7 +197,9 @@ export const SEED_DATA = [
         label: "Images",
         description: "A series of images to display in the carousel",
         editable: true,
+        required: false,
         formType: FORM_TYPES.localImageArray,
+        propType: PROP_TYPES.ASSET,
         defaultValue: null,
       },
       resizeMode: {
@@ -204,6 +211,7 @@ export const SEED_DATA = [
         required: false,
         defaultValue: "cover",
         formType: FORM_TYPES.flatArray,
+        propType: PROP_TYPES.STRING,
         options: ["cover", "contain", "stretch", "repeat", "center"],
       },
       dotColor: {
@@ -214,6 +222,7 @@ export const SEED_DATA = [
         required: true,
         defaultValue: "strong",
         formType: FORM_TYPES.color,
+        propType: PROP_TYPES.THEME,
       },
     },
   },

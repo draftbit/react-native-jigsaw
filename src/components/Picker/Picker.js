@@ -91,6 +91,7 @@ const SEED_DATA_PROPS = {
       "Array of picker options. An array of objects containing a label and value.",
     editable: true,
     formType: FORM_TYPES.array,
+    propType: PROP_TYPES.OBJECT,
     options: [],
     defaultValue: null,
   },

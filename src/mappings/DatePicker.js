@@ -81,16 +81,15 @@ const SEED_DATA_PROPS = {
     required: false,
     group: GROUPS.basic,
   },
-  /* TODO FIX DATEPICKER OPTIONS */
   options: {
     label: "Options",
     description:
       "Array of picker options. An array of objects containing a label and value.",
     editable: true,
     required: false,
-    formType: FORM_TYPES.arrayInput,
-    propType: PROP_TYPES.STRING,
-    defaultValue: null /* TODO FIX THIS */,
+    formType: FORM_TYPES.array,
+    propType: PROP_TYPES.OBJECT,
+    defaultValue: null,
     group: GROUPS.data,
   },
   disabled: {

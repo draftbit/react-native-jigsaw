@@ -36,7 +36,7 @@ description:
 options: ["simple", "highQuality", "balanced"],
 editable: true,
 required: false,
-formType: FORM_TYPES.array,
+formType: FORM_TYPES.flatArray,
 propType: PROP_TYPES.STRING,
 defaultValue: "highQuality",
 ```

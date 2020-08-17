@@ -35,16 +35,13 @@ export const FORM_TYPES = {
   icon: "icon",
   style: "style",
   function: "function",
-  /* TODO remove array in next PR */
-  array: "array",
-  flatArray: "flatArray",
+  flatArray: "flatArray" /* array of strings or numbers */,
+  array: "array" /* array of objects */,
   aspectRatio: "aspectRatio",
   date: "date",
   borderRadiusMode: "borderRadiusMode",
   fieldName: "fieldName",
   action: "action",
-  query: "query",
-  arrayInput: "arrayInput",
 };
 
 export const COMPONENT_TYPES = {

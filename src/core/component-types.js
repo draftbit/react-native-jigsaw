@@ -13,6 +13,7 @@ export const GROUPS = {
   basic: "basic",
   advanced: "advanced",
   data: "data",
+  uncategorized: "uncategorized",
 };
 
 export const FORM_TYPES = {
@@ -77,6 +78,18 @@ const ELEVATION_TYPE = {
 export const createElevationType = (defaultValue) => ({
   ...ELEVATION_TYPE,
   defaultValue,
+});
+
+export const createNumColumnsType = (overrides) => ({
+  label: "Number of Columns",
+  description: "Number of Columns",
+  group: GROUPS.uncategorized,
+  formType: FORM_TYPES.number,
+  propType: PROP_TYPES.NUMBER,
+  defaultValue: 1,
+  editable: false,
+  required: false,
+  ...overrides,
 });
 
 export const BORDER_RADIUS_MODE = {

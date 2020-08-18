@@ -9,6 +9,7 @@ import {
   COMPONENT_TYPES,
   FORM_TYPES,
   createElevationType,
+  createNumColumnsType,
 } from "../core/component-types";
 import Config from "./Config";
 
@@ -145,12 +146,9 @@ export const SEED_DATA = [
         defaultValue: 1,
         editable: true,
       },
-      numColumns: {
-        group: GROUPS.uncategorized,
-        formType: FORM_TYPES.number,
+      numColumns: createNumColumnsType({
         defaultValue: 1,
-        editable: false,
-      },
+      }),
     },
     layout: {},
   },
@@ -180,12 +178,9 @@ export const SEED_DATA = [
         defaultValue: 1.5,
         editable: true,
       },
-      numColumns: {
-        group: GROUPS.uncategorized,
-        formType: FORM_TYPES.number,
+      numColumns: createNumColumnsType({
         defaultValue: 2,
-        editable: false,
-      },
+      }),
     },
     layout: {},
   },
@@ -215,12 +210,9 @@ export const SEED_DATA = [
         defaultValue: 1.5,
         editable: true,
       },
-      numColumns: {
-        group: GROUPS.uncategorized,
-        formType: FORM_TYPES.number,
+      numColumns: createNumColumnsType({
         defaultValue: 3,
-        editable: false,
-      },
+      }),
     },
     layout: {},
   },

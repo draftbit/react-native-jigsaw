@@ -574,6 +574,7 @@ const SEED_DATA_PROPS = {
     required: false,
   },
   error: {
+    group: GROUPS.data,
     label: "Error",
     description: "Whether the input should display the error state",
     formType: FORM_TYPES.boolean,

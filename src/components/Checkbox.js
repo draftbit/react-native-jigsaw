@@ -9,6 +9,7 @@ import {
   GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
+  PROP_TYPES,
   FIELD_NAME,
 } from "../core/component-types";
 
@@ -44,6 +45,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: false,
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
     },
     color: {
       group: GROUPS.basic,
@@ -52,6 +54,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.color,
+      propType: PROP_TYPES.THEME,
       defaultValue: null,
     },
     fieldName: {

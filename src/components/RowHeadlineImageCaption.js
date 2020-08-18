@@ -59,6 +59,7 @@ export const SEED_DATA = [
     supports_list_render: true,
     props: {
       title: {
+        group: GROUPS.data,
         label: "Title",
         description: "Headline text to display",
         formType: FORM_TYPES.string,
@@ -68,6 +69,7 @@ export const SEED_DATA = [
         required: false,
       },
       caption: {
+        group: GROUPS.data,
         label: "Caption",
         description: "Caption text to display",
         formType: FORM_TYPES.string,
@@ -90,6 +92,7 @@ export const SEED_DATA = [
     supports_list_render: true,
     props: {
       title: {
+        group: GROUPS.data,
         label: "Title",
         description: "Headline text to display",
         formType: FORM_TYPES.string,
@@ -99,6 +102,7 @@ export const SEED_DATA = [
         required: false,
       },
       caption: {
+        group: GROUPS.data,
         label: "Caption",
         description: "Caption text to display",
         formType: FORM_TYPES.string,
@@ -108,6 +112,7 @@ export const SEED_DATA = [
         required: false,
       },
       image: {
+        group: GROUPS.data,
         label: "Image",
         description: "Image to display",
         formType: FORM_TYPES.remoteImage,

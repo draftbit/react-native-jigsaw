@@ -1,6 +1,11 @@
 import * as React from "react";
 import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  GROUPS,
+  PROP_TYPES,
+} from "../core/component-types";
 import Row from "./Row";
 import Icon from "./Icon";
 import Config from "./Config";
@@ -49,18 +54,24 @@ export const SEED_DATA = [
     supports_list_render: true,
     props: {
       title: {
+        group: GROUPS.data,
         label: "Title",
         description: "Text to display",
         formType: FORM_TYPES.string,
+        propType: PROP_TYPES.STRING,
         defaultValue: "Beautiful West Coast Villa",
         editable: true,
+        required: false,
       },
       icon: {
+        group: GROUPS.basic,
         label: "Icon",
         description: "Icon to display",
         formType: FORM_TYPES.icon,
+        propType: PROP_TYPES.ASSET,
         defaultValue: null,
         editable: true,
+        required: false,
       },
     },
     layout: {},
@@ -75,25 +86,34 @@ export const SEED_DATA = [
     supports_list_render: true,
     props: {
       title: {
+        group: GROUPS.data,
         label: "Title",
         description: "Text to display",
         formType: FORM_TYPES.string,
+        propType: PROP_TYPES.STRING,
         defaultValue: "Beautiful West Coast Villa",
         editable: true,
+        required: false,
       },
       subtitle: {
+        group: GROUPS.data,
         label: "Subtitle",
         description: "Subtitle text to display",
         formType: FORM_TYPES.string,
+        propType: PROP_TYPES.STRING,
         defaultValue: "San Diego",
         editable: true,
+        required: false,
       },
       icon: {
+        group: GROUPS.basic,
         label: "Icon",
         description: "Icon to display",
         formType: FORM_TYPES.icon,
+        propType: PROP_TYPES.ASSET,
         defaultValue: null,
         editable: true,
+        required: false,
       },
     },
     layout: {},

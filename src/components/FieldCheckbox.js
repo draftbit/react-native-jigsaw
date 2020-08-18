@@ -95,6 +95,7 @@ export const SEED_DATA = [
         required: false,
         formType: FORM_TYPES.color,
         propType: PROP_TYPES.THEME,
+        defaultValue: null,
       },
       disabled: {
         group: GROUPS.basic,

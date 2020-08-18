@@ -90,6 +90,7 @@ const SEED_DATA_PROPS = {
     description:
       "Array of picker options. An array of objects containing a label and value.",
     editable: true,
+    required: false,
     formType: FORM_TYPES.array,
     propType: PROP_TYPES.OBJECT,
     options: [],
@@ -104,6 +105,7 @@ const SEED_DATA_PROPS = {
     propType: PROP_TYPES.BOOLEAN,
     defaultValue: false,
     editable: true,
+    required: false,
   },
   error: {
     group: GROUPS.data,

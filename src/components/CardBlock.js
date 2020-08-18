@@ -10,6 +10,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   createElevationType,
+  createNumColumnsType,
 } from "../core/component-types";
 import Config from "./Config";
 
@@ -191,13 +192,9 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.card,
     props: {
       ...SEED_DATA_PROPS,
-      numColumns: {
-        group: GROUPS.uncategorized,
-        formType: FORM_TYPES.number,
-        propType: PROP_TYPES.NUMBER,
+      numColumns: createNumColumnsType({
         defaultValue: 1,
-        editable: false,
-      },
+      }),
     },
   },
   {
@@ -217,13 +214,9 @@ export const SEED_DATA = [
         defaultValue: null,
         editable: true,
       },
-      numColumns: {
-        group: GROUPS.uncategorized,
-        formType: FORM_TYPES.number,
-        propType: PROP_TYPES.NUMBER,
+      numColumns: createNumColumnsType({
         defaultValue: 2,
-        editable: false,
-      },
+      }),
     },
   },
   {
@@ -243,13 +236,9 @@ export const SEED_DATA = [
         defaultValue: null,
         editable: true,
       },
-      numColumns: {
-        group: GROUPS.uncategorized,
-        formType: FORM_TYPES.number,
-        propType: PROP_TYPES.NUMBER,
+      numColumns: createNumColumnsType({
         defaultValue: 3,
-        editable: false,
-      },
+      }),
     },
   },
 ];

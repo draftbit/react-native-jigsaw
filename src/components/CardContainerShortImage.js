@@ -173,7 +173,7 @@ export const SEED_DATA = [
     supports_list_render: true,
     props: {
       image: {
-        group: GROUPS.basic,
+        group: GROUPS.data,
         label: "Image",
         description: "Image",
         formType: FORM_TYPES.remoteImage,
@@ -183,7 +183,7 @@ export const SEED_DATA = [
         required: false,
       },
       title: {
-        group: GROUPS.basic,
+        group: GROUPS.data,
         label: "Title",
         description: "Title to display",
         formType: FORM_TYPES.string,
@@ -193,7 +193,7 @@ export const SEED_DATA = [
         required: false,
       },
       subtitle: {
-        group: GROUPS.basic,
+        group: GROUPS.data,
         label: "Subtitle",
         description: "Subtitle to display",
         formType: FORM_TYPES.string,

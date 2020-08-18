@@ -116,6 +116,7 @@ export const SEED_DATA = {
       description: "Options for the button group.",
       formType: FORM_TYPES.array,
       propType: PROP_TYPES.OBJECT,
+      options: [],
       defaultValue: null,
       editable: true,
       required: true,

@@ -23,7 +23,7 @@ export const SEED_DATA = {
       required: true,
       defaultValue: "https://www.draftbit.com",
       formType: FORM_TYPES.sourceUrl,
-      propType: PROP_TYPES.STRING,
+      propType: PROP_TYPES.OBJECT,
     },
   },
 };

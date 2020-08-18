@@ -11,7 +11,7 @@ const globAsync = promisify(glob);
 const COMPONENT_PATH = path.resolve("./src/components");
 const MAPPING_PATH = path.resolve("./src/mappings");
 const IGNORED_FILES = [
-  // "Query.js", // doesn't work at all
+  "Query.js", // doesn't work at all
   "LinearGradient.js", // missing gradient UI
 ];
 
@@ -27,9 +27,19 @@ async function main() {
   console.log("Running on", getUrl(), "[warnings surpressed]");
   const componentFiles = await globAsync(`${COMPONENT_PATH}/**/*.js`);
   const mappingFiles = await globAsync(`${MAPPING_PATH}/**/*.js`);
-  const files = [...componentFiles, ...mappingFiles].filter(
-    (file) => !IGNORED_FILES.includes(file.split("/").pop())
-  );
+  const files = [...componentFiles, ...mappingFiles].filter((file) => {
+    const name = file.split("/").pop();
+
+    if (
+      name.includes("web") ||
+      name.includes("ios") ||
+      name.includes("android")
+    ) {
+      return false;
+    }
+
+    return !IGNORED_FILES.includes(name);
+  });
 
   for (const file of files) {
     const name = file.split("/").pop();

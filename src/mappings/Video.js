@@ -25,7 +25,7 @@ export const SEED_DATA = {
       required: true,
       defaultValue: null,
       formType: FORM_TYPES.sourceUrl,
-      propType: PROP_TYPES.STRING,
+      propType: PROP_TYPES.OBJECT,
     },
     usePoster: {
       group: GROUPS.basic,

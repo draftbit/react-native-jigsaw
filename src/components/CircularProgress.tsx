@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
 import { Svg, Path, G } from "react-native-svg";
 
-interface Props {
+export interface Props {
   size: number;
   width: number;
   backgroundWidth?: number;

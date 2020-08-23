@@ -1,5 +1,14 @@
 import * as React from "react";
-import { ActivityIndicator, View, Text, StyleSheet } from "react-native";
+import {
+  ActivityIndicator,
+  View,
+  Text,
+  StyleSheet,
+  TouchableHighlightProps,
+  StyleProp,
+  ViewStyle,
+  TextStyle,
+} from "react-native";
 import color from "color";
 import Config from "./Config";
 import Icon from "./Icon";
@@ -13,6 +22,7 @@ import {
   PROP_TYPES,
   COMPONENT_TYPES,
 } from "../core/component-types";
+import theme from "../styles/DefaultTheme";
 
 /**
  * A button is component that the user can press to trigger an action.
@@ -47,131 +57,125 @@ import {
  * ```
  */
 
-class Button extends React.Component {
-  static defaultProps = {
-    elevation: 0,
-    type: "solid",
+interface Props extends TouchableHighlightProps {
+  disabled: boolean;
+  type?: "solid" | "outline";
+  loading: boolean;
+  icon?: string;
+  labelColor: string;
+  color: string;
+  children: React.ReactNode;
+  onPress: () => void;
+  elevation?: number;
+  style?: StyleProp<ViewStyle>;
+  theme: typeof theme;
+}
+
+const Button: React.FC<Props> = ({
+  disabled,
+  type = "solid",
+  loading,
+  icon,
+  labelColor,
+  color: colorOverride,
+  children,
+  onPress,
+  elevation = 0,
+  style,
+  theme: { colors, disabledOpacity, borderRadius, spacing, typography },
+  ...rest
+}) => {
+  let backgroundColor, borderColor, textColor, borderWidth;
+  const buttonColor = colorOverride || colors.primary;
+
+  if (type === "solid") {
+    backgroundColor = buttonColor;
+
+    if (disabled) {
+      textColor = color(colors.surface).alpha(disabledOpacity).rgb().string();
+    } else {
+      textColor = labelColor || colors.surface;
+    }
+  } else {
+    backgroundColor = "transparent";
+
+    if (disabled) {
+      textColor = color(buttonColor).alpha(disabledOpacity).rgb().string();
+    } else {
+      textColor = labelColor || buttonColor;
+    }
+  }
+
+  if (type === "outline") {
+    if (disabled) {
+      borderColor = color(buttonColor).alpha(disabledOpacity).rgb().string();
+    } else {
+      borderColor = buttonColor;
+    }
+    borderWidth = StyleSheet.hairlineWidth;
+  } else {
+    borderColor = "transparent";
+    borderWidth = 0;
+  }
+
+  const buttonStyle = {
+    backgroundColor,
+    borderColor,
+    borderWidth,
+    borderRadius: borderRadius.button,
   };
 
-  render() {
-    const {
-      disabled,
-      type,
-      loading,
-      icon,
-      labelColor,
-      color: colorOverride,
-      children,
-      onPress,
-      elevation,
-      style,
-      theme,
-      ...rest
-    } = this.props;
+  const textStyle: StyleProp<TextStyle> = {
+    textAlign: "center",
+    color: textColor,
+    marginVertical: spacing.large,
+    marginHorizontal: spacing.large,
+  };
 
-    const {
-      colors,
-      disabledOpacity,
-      borderRadius,
-      spacing,
-      typography,
-    } = theme;
+  const iconStyle = [
+    styles.icon,
+    {
+      marginLeft: spacing.large,
+      marginRight: -8,
+      width: Config.buttonIconSize,
+    },
+  ];
 
-    let backgroundColor, borderColor, textColor, borderWidth;
-    const buttonColor = colorOverride || colors.primary;
-
-    if (type === "solid") {
-      backgroundColor = buttonColor;
-
-      if (disabled) {
-        textColor = color(colors.surface).alpha(disabledOpacity).rgb().string();
-      } else {
-        textColor = labelColor || colors.surface;
-      }
-    } else {
-      backgroundColor = "transparent";
-
-      if (disabled) {
-        textColor = color(buttonColor).alpha(disabledOpacity).rgb().string();
-      } else {
-        textColor = labelColor || buttonColor;
-      }
-    }
-
-    if (type === "outline") {
-      if (disabled) {
-        borderColor = color(buttonColor).alpha(disabledOpacity).rgb().string();
-      } else {
-        borderColor = buttonColor;
-      }
-      borderWidth = StyleSheet.hairlineWidth;
-    } else {
-      borderColor = "transparent";
-      borderWidth = 0;
-    }
-
-    const buttonStyle = {
-      backgroundColor,
-      borderColor,
-      borderWidth,
-      borderRadius: borderRadius.button,
-    };
-
-    const textStyle = {
-      textAlign: "center",
-      color: textColor,
-      marginVertical: spacing.large,
-      marginHorizontal: spacing.large,
-    };
-
-    const iconStyle = [
-      styles.icon,
-      {
-        marginLeft: spacing.large,
-        marginRight: -8,
-        width: Config.buttonIconSize,
-      },
-    ];
-
-    return (
-      <Elevation style={{ elevation, alignSelf: "stretch" }}>
-        <Touchable
-          {...rest}
-          onPress={onPress}
-          accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
-          accessibilityComponentType="button"
-          disabled={disabled || loading}
-          style={[styles.button, buttonStyle, style]}
-        >
-          <View style={styles.content}>
-            {icon && loading !== true ? (
-              <View style={iconStyle}>
-                <Icon
-                  name={icon}
-                  size={Config.buttonIconSize}
-                  color={textColor}
-                />
-              </View>
-            ) : null}
-            {loading ? (
-              <ActivityIndicator
-                size="small"
+  return (
+    <Elevation style={{ elevation, alignSelf: "stretch" }}>
+      <Touchable
+        {...rest}
+        onPress={onPress}
+        accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
+        accessibilityComponentType="button"
+        disabled={disabled || loading}
+        style={[styles.button, buttonStyle, style]}
+      >
+        <View style={styles.content}>
+          {icon && loading !== true ? (
+            <View style={iconStyle}>
+              <Icon
+                name={icon}
+                size={Config.buttonIconSize}
                 color={textColor}
-                style={iconStyle}
               />
-            ) : null}
-            <Text
-              numberOfLines={1}
-              style={[styles.label, textStyle, typography.button]}
-            >
-              {children}
-            </Text>
-          </View>
-        </Touchable>
-      </Elevation>
-    );
-  }
-}
+            </View>
+          ) : null}
+          {loading ? (
+            <ActivityIndicator
+              size="small"
+              color={textColor}
+              style={iconStyle}
+            />
+          ) : null}
+          <Text numberOfLines={1} style={[textStyle, typography.button]}>
+            {children}
+          </Text>
+        </View>
+      </Touchable>
+    </Elevation>
+  );
+};
 
 const styles = StyleSheet.create({
   button: {

@@ -16,14 +16,14 @@ import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 
 interface Props {
-  image: any;
+  image?: any;
   title?: string;
   leftDescription?: string;
   rightDescription?: string;
   titleCentered: boolean;
-  aspectRatio: number;
-  elevation: number;
-  numColumns: number;
+  aspectRatio?: number;
+  elevation?: number;
+  numColumns?: number;
   theme: typeof theme;
   style: StyleProp<ViewStyle>;
   onPress: () => void;

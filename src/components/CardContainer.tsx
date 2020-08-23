@@ -19,18 +19,17 @@ import theme from "../styles/DefaultTheme";
 
 const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
 const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
-console.log("HHELO TEST");
 
 interface Props {
-  image: any;
+  image?: any;
   title?: string;
   leftDescription?: string;
   rightDescription?: string;
   textCentered: boolean;
   icon?: string;
-  aspectRatio: number;
-  elevation: number;
-  numColumns: number;
+  aspectRatio?: number;
+  elevation?: number;
+  numColumns?: number;
   theme: typeof theme;
   style: StyleProp<ViewStyle>;
   onPress: () => void;

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleProp, ViewStyle } from "react-native";
 import Image from "./Image";
 import Card from "./Card";
 import Elevation from "./Elevation";
@@ -12,89 +12,91 @@ import {
   createElevationType,
 } from "../core/component-types";
 import Config from "./Config";
+import theme from "../styles/DefaultTheme";
 
-class CardContainerShortImage extends React.PureComponent {
-  static defaultProps = {
-    image: Config.squareImageUrl,
-    elevation: 2,
-    aspectRatio: 1,
-    mode: "left",
-  };
+interface Props {
+  image?: any;
+  title?: string;
+  subtitle?: string;
+  mode?: "right" | "left";
+  aspectRatio?: number;
+  elevation?: number;
+  theme: typeof theme;
+  style: StyleProp<ViewStyle>;
+  onPress: () => void;
+}
 
-  render() {
-    const {
-      image,
-      title,
-      subtitle,
-      mode,
-      aspectRatio,
-      elevation,
-      theme: { colors, borderRadius, typography, spacing },
-      style,
-      onPress,
-    } = this.props;
-
-    return (
-      <Card style={style} onPress={onPress}>
-        <Elevation
+const CardContainerShortImage: React.FC<Props> = ({
+  image = Config.squareImageUrl,
+  title,
+  subtitle,
+  mode = "left",
+  aspectRatio = 1,
+  elevation = 2,
+  theme: { colors, borderRadius, typography, spacing },
+  style,
+  onPress,
+}) => {
+  return (
+    <Card style={style} onPress={onPress}>
+      <Elevation
+        style={{
+          elevation,
+          borderRadius: borderRadius.global,
+        }}
+      >
+        <View
           style={{
-            elevation,
+            overflow: "hidden",
+            flexDirection: "row",
+            justifyContent: mode === "right" ? "space-between" : "flex-start",
             borderRadius: borderRadius.global,
           }}
         >
+          {mode === "left" && (
+            <Image
+              style={{ aspectRatio }}
+              source={typeof image === "string" ? { uri: image } : image}
+              resizeMode="cover"
+            />
+          )}
           <View
             style={{
-              overflow: "hidden",
-              flexDirection: "row",
-              justifyContent: mode === "right" ? "space-between" : "flex-start",
-              borderRadius: borderRadius.global,
+              padding: spacing.large,
+              backgroundColor: colors.surface,
+              flex: 1,
             }}
           >
-            {mode === "left" && (
-              <Image
-                style={{ aspectRatio }}
-                source={typeof image === "string" ? { uri: image } : image}
-                resizeMode="cover"
-              />
-            )}
-            <View
-              style={{
-                padding: spacing.large,
-                backgroundColor: colors.surface,
-                flex: 1,
-              }}
+            <Text
+              numberOfLines={1}
+              style={[typography.headline5, { color: colors.strong }]}
             >
+              {title}
+            </Text>
+            {subtitle ? (
               <Text
                 numberOfLines={1}
-                style={[typography.headline5, { color: colors.strong }]}
+                style={[
+                  typography.body2,
+                  { color: colors.medium, marginTop: spacing.text },
+                ]}
               >
-                {title}
+                {subtitle}
               </Text>
-              {subtitle ? (
-                <Text
-                  numberOfLines={1}
-                  style={[
-                    typography.body2,
-                    { color: colors.medium, marginTop: spacing.text },
-                  ]}
-                >
-                  {subtitle}
-                </Text>
-              ) : null}
-            </View>
-            {mode === "right" && (
-              <Image
-                style={{ aspectRatio }}
-                source={typeof image === "string" ? { uri: image } : image}
-                resizeMode="cover"
-              />
-            )}
+            ) : null}
           </View>
-        </Elevation>
-      </Card>
-    );
-  }
-}
+          {mode === "right" && (
+            <Image
+              style={{ aspectRatio }}
+              source={typeof image === "string" ? { uri: image } : image}
+              resizeMode="cover"
+            />
+          )}
+        </View>
+      </Elevation>
+    </Card>
+  );
+};
 
 export default withTheme(CardContainerShortImage);
 

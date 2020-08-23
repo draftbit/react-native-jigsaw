@@ -12,8 +12,17 @@ import {
   PROP_TYPES,
   FIELD_NAME,
 } from "../core/component-types";
+import themeI from "../styles/DefaultTheme";
 
-class Checkbox extends React.Component {
+interface Props extends TouchableHighlightProps {
+  status: "checked" | "indeterminate" | "unchecked";
+  disabled: boolean;
+  onPress: () => void;
+  theme: typeof themeI;
+  color?: string;
+}
+
+class Checkbox extends React.Component<Props> {
   // @component ./CheckboxAndroid.js
   static Android = CheckboxAndroid;
 

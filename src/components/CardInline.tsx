@@ -23,7 +23,7 @@ interface Props {
   elevation?: number;
   numColumns?: number;
   theme: typeof theme;
-  style: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
   onPress: () => void;
 }
 

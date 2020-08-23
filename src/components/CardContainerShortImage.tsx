@@ -22,7 +22,7 @@ interface Props {
   aspectRatio?: number;
   elevation?: number;
   theme: typeof theme;
-  style: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
   onPress: () => void;
 }
 

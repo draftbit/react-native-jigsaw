@@ -1,28 +1,30 @@
 import * as React from "react";
-import { Image } from "react-native";
+import { Image, StyleProp, ImageStyle } from "react-native";
 import Config from "./Config";
 
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
-export default class Avatar extends React.PureComponent {
-  static defaultProps = {
-    image: Config.avatarImageUrl,
-    size: Config.avatarImageSize,
-  };
-
-  render() {
-    const { image, size, style } = this.props;
-    const borderRadius = size / 2;
-
-    return (
-      <Image
-        style={[{ width: size, height: size, borderRadius }, style]}
-        source={typeof image === "string" ? { uri: image } : image}
-        resizeMode="cover"
-      />
-    );
-  }
+interface Props {
+  image?: any;
+  size?: number;
+  style?: StyleProp<ImageStyle>;
 }
+
+const Avatar: React.FC<Props> = ({
+  image = Config.avatarImageUrl,
+  size = Config.avatarImageSize,
+  style,
+}) => {
+  const borderRadius = size / 2;
+
+  return (
+    <Image
+      style={[{ width: size, height: size, borderRadius }, style]}
+      source={typeof image === "string" ? { uri: image } : image}
+      resizeMode="cover"
+    />
+  );
+};
 
 export const SEED_DATA = {
   name: "Avatar",
@@ -57,3 +59,5 @@ export const SEED_DATA = {
     height: 80,
   },
 };
+
+export default Avatar;

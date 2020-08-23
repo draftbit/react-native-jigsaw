@@ -1,17 +1,48 @@
 import React from "react";
-import { View } from "react-native";
+import { View, StyleProp, ViewStyle } from "react-native";
 import { Svg, Path, G } from "react-native-svg";
 
-export default class CircularProgress extends React.PureComponent {
-  polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+interface Props {
+  size: number;
+  width: number;
+  backgroundWidth?: number;
+  tintColor?: string;
+  tintTransparency?: boolean;
+  backgroundColor?: string;
+  style?: StyleProp<ViewStyle>;
+  rotation?: string | number | undefined;
+  lineCap?: "butt" | "square" | "round" | undefined;
+  arcSweepAngle?: number;
+  fill: number;
+  children?: (fill: number) => React.ReactNode;
+  childrenContainerStyle?: StyleProp<ViewStyle>;
+  padding?: number;
+  renderCap?: (obj: { center: { x: number; y: number } }) => React.ReactNode;
+  dashedBackground?: { width: number; gap: number };
+  dashedTint?: { width: number; gap: number };
+}
+
+class CircularProgress extends React.Component<Props> {
+  polarToCartesian = (
+    centerX: number,
+    centerY: number,
+    radius: number,
+    angleInDegrees: number
+  ): { x: number; y: number } => {
     var angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
     return {
       x: centerX + radius * Math.cos(angleInRadians),
       y: centerY + radius * Math.sin(angleInRadians),
     };
-  }
+  };
 
-  circlePath(x, y, radius, startAngle, endAngle) {
+  circlePath = (
+    x: number,
+    y: number,
+    radius: number,
+    startAngle: number,
+    endAngle: number
+  ): string => {
     var start = this.polarToCartesian(x, y, radius, endAngle * 0.9999);
     var end = this.polarToCartesian(x, y, radius, startAngle);
     var largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
@@ -29,29 +60,29 @@ export default class CircularProgress extends React.PureComponent {
       end.y,
     ];
     return d.join(" ");
-  }
+  };
 
-  clampFill = (fill) => Math.min(100, Math.max(0, fill));
+  clampFill = (fill: number) => Math.min(100, Math.max(0, fill));
 
   render() {
     const {
       size,
       width,
       backgroundWidth,
-      tintColor,
-      tintTransparency,
+      tintColor = "black",
+      tintTransparency = true,
       backgroundColor,
       style,
-      rotation,
-      lineCap,
-      arcSweepAngle,
+      rotation = 90,
+      lineCap = "butt",
+      arcSweepAngle = 360,
       fill,
       children,
       childrenContainerStyle,
-      padding,
+      padding = 0,
       renderCap,
-      dashedBackground,
-      dashedTint,
+      dashedBackground = { width: 0, gap: 0 },
+      dashedTint = { width: 0, gap: 0 },
     } = this.props;
 
     const maxWidthCircle = backgroundWidth
@@ -68,7 +99,7 @@ export default class CircularProgress extends React.PureComponent {
       tintTransparency ? 0 : currentFillAngle,
       arcSweepAngle
     );
-    const circlePath = this.circlePath(
+    const circlePathItem = this.circlePath(
       sizeWithPadding,
       sizeWithPadding,
       radius,
@@ -85,7 +116,7 @@ export default class CircularProgress extends React.PureComponent {
 
     const offset = size - maxWidthCircle * 2;
 
-    const localChildrenContainerStyle = [
+    const localChildrenContainerStyle: StyleProp<ViewStyle>[] = [
       {
         position: "absolute",
         left: maxWidthCircle + padding / 2,
@@ -102,13 +133,17 @@ export default class CircularProgress extends React.PureComponent {
 
     const strokeDasharrayTint =
       dashedTint.gap > 0
-        ? Object.values(dashedTint).map((value) => parseInt(value, 10))
-        : null;
+        ? Object.values(dashedTint)
+            .map((value) => value.toString())
+            .join(" ")
+        : "";
 
     const strokeDasharrayBackground =
       dashedBackground.gap > 0
-        ? Object.values(dashedBackground).map((value) => parseInt(value, 10))
-        : null;
+        ? Object.values(dashedBackground)
+            .map((value) => value.toString())
+            .join(" ")
+        : "";
 
     return (
       <View style={style}>
@@ -130,7 +165,7 @@ export default class CircularProgress extends React.PureComponent {
             )}
             {fill > 0 && (
               <Path
-                d={circlePath}
+                d={circlePathItem}
                 stroke={tintColor}
                 strokeWidth={width}
                 strokeLinecap={lineCap}
@@ -149,13 +184,4 @@ export default class CircularProgress extends React.PureComponent {
   }
 }
 
-CircularProgress.defaultProps = {
-  tintColor: "black",
-  tintTransparency: true,
-  rotation: 90,
-  lineCap: "butt",
-  arcSweepAngle: 360,
-  padding: 0,
-  dashedBackground: { width: 0, gap: 0 },
-  dashedTint: { width: 0, gap: 0 },
-};
+export default CircularProgress;

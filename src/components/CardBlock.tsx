@@ -17,9 +17,9 @@ import theme from "../styles/DefaultTheme";
 
 interface Props {
   image: any;
-  title: string;
-  leftDescription: string;
-  rightDescription: string;
+  title?: string;
+  leftDescription?: string;
+  rightDescription?: string;
   titleCentered: boolean;
   aspectRatio: number;
   elevation: number;

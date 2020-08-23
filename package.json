@@ -59,7 +59,7 @@
     "pod-install": "^0.1.7",
     "prettier": "^2.0.5",
     "react": "~16.9.0",
-    "react-native": "~0.61.5",
+    "react-native": "~0.62.2",
     "release-it": "^13.6.3",
     "typescript": "3.8.3"
   },

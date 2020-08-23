@@ -3,13 +3,14 @@ import { withTheme } from "../core/theming";
 import Touchable from "./Touchable";
 import Config from "./Config";
 import { StyleProp, ViewStyle } from "react-native";
+import theme from "../styles/DefaultTheme";
 
 interface Props {
   numColumns?: number;
   children?: React.ReactNode;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
-  theme: { spacing: { gutters: number; small: number } };
+  theme: typeof theme;
 }
 const Card: React.FC<Props> = ({
   numColumns = 3,

@@ -2,35 +2,38 @@ import * as React from "react";
 import { withTheme } from "../core/theming";
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import Header from "./Header";
+import theme from "../styles/DefaultTheme";
+import { StyleProp, ViewStyle } from "react-native";
 
-class HeaderLarge extends React.Component {
-  static defaultProps = {
-    onPress: () => {},
-  };
-
-  render() {
-    const {
-      title,
-      buttonText,
-      icon,
-      onPress,
-      style,
-      theme: { colors, typography },
-    } = this.props;
-
-    return (
-      <Header
-        titleTypeStyle={typography.headline4}
-        titleColor={colors.strong}
-        title={title}
-        buttonText={buttonText}
-        icon={icon}
-        onPress={onPress}
-        style={style}
-      />
-    );
-  }
+interface Props {
+  title: string;
+  buttonText: string;
+  icon: string;
+  onPress?: () => void;
+  style?: StyleProp<ViewStyle>;
+  theme: typeof theme;
 }
+
+const HeaderLarge: React.FC<Props> = ({
+  title,
+  buttonText,
+  icon,
+  onPress = () => {},
+  style,
+  theme: { colors, typography },
+}) => {
+  return (
+    <Header
+      titleTypeStyle={typography.headline4}
+      titleColor={colors.strong}
+      title={title}
+      buttonText={buttonText}
+      icon={icon}
+      onPress={onPress}
+      style={style}
+    />
+  );
+};
 
 export default withTheme(HeaderLarge);
 

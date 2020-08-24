@@ -6,22 +6,29 @@ import Touchable from "./Touchable";
 import RadioButton from "./RadioButton";
 
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import themeI from "../styles/DefaultTheme";
 
-function FieldRadioButton({
-  onPress,
-  title,
+interface Props {
+  onPress?: () => void;
+  title?: string;
+  selected: boolean;
+  disabled?: boolean;
+  color: string;
+  theme: typeof themeI;
+}
+
+const FieldRadioButton: React.FC<Props> = ({
+  onPress = () => {},
+  title = "",
   selected,
-  disabled,
+  disabled = false,
   color,
   theme,
-}) {
+}) => {
   let titleColor = selected ? theme.colors.primary : theme.colors.light;
 
   if (disabled) {
-    titleColor = Color(titleColor)
-      .alpha(theme.colors.disabledOpacity)
-      .rgb()
-      .string();
+    titleColor = Color(titleColor).alpha(theme.disabledOpacity).rgb().string();
   }
 
   return (
@@ -39,10 +46,6 @@ function FieldRadioButton({
       </View>
     </Touchable>
   );
-}
-
-FieldRadioButton.defaultProps = {
-  onPress: () => {},
 };
 
 export default withTheme(FieldRadioButton);

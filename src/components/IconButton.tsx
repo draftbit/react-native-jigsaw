@@ -1,5 +1,11 @@
 import * as React from "react";
-import { View, StyleSheet, ActivityIndicator } from "react-native";
+import {
+  View,
+  StyleSheet,
+  ActivityIndicator,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import Touchable from "./Touchable";
 import Icon from "./Icon";
 import { withTheme } from "../core/theming";
@@ -9,21 +15,34 @@ import {
   GROUPS,
   PROP_TYPES,
 } from "../core/component-types";
+import themeI from "../styles/DefaultTheme";
 
-const IconButton = ({
+interface Props {
+  icon?: string;
+  color?: string;
+  size?: number;
+  accessibilityLabel?: string;
+  disabled?: boolean;
+  loading?: boolean;
+  onPress: () => void;
+  theme: typeof themeI;
+  style?: StyleProp<ViewStyle>;
+}
+
+const IconButton: React.FC<Props> = ({
   icon,
   color: customColor,
   size = 32,
   accessibilityLabel,
-  disabled,
-  loading,
+  disabled = false,
+  loading = false,
   onPress,
   theme,
   style,
   ...rest
 }) => {
-  const iconColor = customColor || theme.colors.text;
-  const containerStyles = [styles.container];
+  const iconColor = customColor || theme.colors.primary;
+  const containerStyles: StyleProp<ViewStyle>[] = [styles.container];
 
   if (loading || disabled) {
     containerStyles.push({ opacity: theme.disabledOpacity });
@@ -42,7 +61,7 @@ const IconButton = ({
       accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
       accessibilityComponentType="button"
       accessibilityRole="button"
-      accessibilityStates={disabled ? ["disabled"] : undefined}
+      accessibilityState={{ disabled }}
       hitSlop={{ top: 6, left: 6, bottom: 6, right: 6 }}
       {...rest}
     >

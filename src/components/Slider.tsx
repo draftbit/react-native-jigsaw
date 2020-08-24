@@ -9,7 +9,7 @@ import {
   FIELD_NAME,
 } from "../core/component-types";
 import { StyleProp, ViewStyle } from "react-native";
-// import themeI from "../styles/DefaultTheme";
+import themeI from "../styles/DefaultTheme";
 
 interface Props {
   style?: StyleProp<ViewStyle>;
@@ -24,7 +24,7 @@ interface Props {
   step: number;
   disabled?: boolean;
   onValueChange?: (value: number) => void;
-  // theme: typeof themeI;
+  theme: typeof themeI;
   trackBorderRadius?: number;
   thumbBorderRadius?: number;
   thumbSize: number;
@@ -41,7 +41,7 @@ const Slider: React.FC<Props> = ({
   maximumValue,
   thumbTouchSize,
   step,
-  // theme,
+  //theme,
   disabled = false,
   onValueChange = () => {},
   trackBorderRadius,

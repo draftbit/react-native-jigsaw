@@ -1,8 +1,8 @@
 import * as React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, StyleProp, ViewStyle } from "react-native";
 import { withTheme } from "../core/theming";
 
-import Slider from "./Slider";
+import Slider, { Props as SliderProps } from "./Slider";
 import {
   GROUPS,
   FORM_TYPES,
@@ -10,45 +10,47 @@ import {
   FIELD_NAME,
 } from "../core/component-types";
 
-class FieldSlider extends React.Component {
-  render() {
-    const {
-      title,
-      minimumLabel,
-      maximumLabel,
-      style,
-      theme,
-      ...props
-    } = this.props;
-    const { colors, typography, spacing } = theme;
-
-    const labelStyle = [typography.caption, { color: colors.light }];
-
-    return (
-      <View style={[styles.container, style]}>
-        {title && (
-          <Text style={[typography.body1, { marginBottom: spacing.text / 2 }]}>
-            {title}
-          </Text>
-        )}
-        <Slider
-          style={{
-            width: style && style.width,
-            height: style && style.height,
-          }}
-          {...props}
-        />
-        <View style={[styles.bottomContainer, { marginTop: spacing.text }]}>
-          <Text style={[labelStyle, { flex: 1 }]}>{minimumLabel}</Text>
-          <Text style={labelStyle}>{this.props.value}</Text>
-          <Text style={[labelStyle, { flex: 1, textAlign: "right" }]}>
-            {maximumLabel}
-          </Text>
-        </View>
-      </View>
-    );
-  }
+interface Props extends SliderProps {
+  title?: string;
+  minimumLabel: string;
+  maximumLabel: string;
+  style?: StyleProp<ViewStyle>;
 }
+
+const FieldSlider: React.FC<Props> = ({
+  title,
+  minimumLabel,
+  maximumLabel,
+  style,
+  theme: { colors, typography, spacing },
+  ...props
+}) => {
+  const labelStyle = [typography.caption, { color: colors.light }];
+
+  return (
+    <View style={[styles.container, style]}>
+      {title && (
+        <Text style={[typography.body1, { marginBottom: spacing.text / 2 }]}>
+          {title}
+        </Text>
+      )}
+      <Slider
+        style={{
+          width: style && style.width,
+          height: style && style.height,
+        }}
+        {...props}
+      />
+      <View style={[styles.bottomContainer, { marginTop: spacing.text }]}>
+        <Text style={[labelStyle, { flex: 1 }]}>{minimumLabel}</Text>
+        <Text style={labelStyle}>{props.value}</Text>
+        <Text style={[labelStyle, { flex: 1, textAlign: "right" }]}>
+          {maximumLabel}
+        </Text>
+      </View>
+    </View>
+  );
+};
 
 export default withTheme(FieldSlider);
 

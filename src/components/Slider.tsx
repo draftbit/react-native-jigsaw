@@ -11,7 +11,7 @@ import {
 import { StyleProp, ViewStyle } from "react-native";
 import themeI from "../styles/DefaultTheme";
 
-interface Props {
+export interface Props {
   style?: StyleProp<ViewStyle>;
   value?: number;
   minimumTrackTintColor: string;

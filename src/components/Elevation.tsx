@@ -1,9 +1,21 @@
 import * as React from "react";
-import { Animated, StyleSheet } from "react-native";
+import {
+  Animated,
+  StyleSheet,
+  ViewProps,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import shadow from "../styles/shadow";
 import { withTheme } from "../core/theming";
+import theme from "../styles/DefaultTheme";
 
-function Elevation({ style, theme, ...rest }) {
+interface Props extends ViewProps {
+  style?: StyleProp<ViewStyle>;
+  theme: typeof theme;
+}
+
+const Elevation: React.FC<Props> = ({ style, theme, ...rest }) => {
   const flattenedStyles = StyleSheet.flatten(style) || {};
   const { elevation } = flattenedStyles;
 
@@ -13,6 +25,6 @@ function Elevation({ style, theme, ...rest }) {
   }
 
   return <Animated.View {...rest} style={styles} />;
-}
+};
 
 export default withTheme(Elevation);

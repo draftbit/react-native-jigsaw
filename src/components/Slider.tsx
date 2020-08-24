@@ -8,8 +8,29 @@ import {
   COMPONENT_TYPES,
   FIELD_NAME,
 } from "../core/component-types";
+import { StyleProp, ViewStyle } from "react-native";
+// import themeI from "../styles/DefaultTheme";
 
-const Slider = ({
+interface Props {
+  style?: StyleProp<ViewStyle>;
+  value?: number;
+  minimumTrackTintColor: string;
+  maximumTrackTintColor: string;
+  thumbTintColor: string;
+  disabledThumbTintColor?: string;
+  minimumValue: number;
+  maximumValue: number;
+  thumbTouchSize: number;
+  step: number;
+  disabled?: boolean;
+  onValueChange?: (value: number) => void;
+  // theme: typeof themeI;
+  trackBorderRadius?: number;
+  thumbBorderRadius?: number;
+  thumbSize: number;
+}
+
+const Slider: React.FC<Props> = ({
   style,
   value,
   minimumTrackTintColor,
@@ -20,9 +41,9 @@ const Slider = ({
   maximumValue,
   thumbTouchSize,
   step,
-  disabled,
+  // theme,
+  disabled = false,
   onValueChange = () => {},
-  theme,
   trackBorderRadius,
   thumbBorderRadius,
   thumbSize,
@@ -56,7 +77,7 @@ const Slider = ({
         width: actualThumbTouchSize || 0,
         height: actualThumbTouchSize || 0,
       }}
-      onValueChange={(newValue) => {
+      onValueChange={(newValue: number) => {
         onValueChange(newValue);
         setInternalValue(newValue);
       }}

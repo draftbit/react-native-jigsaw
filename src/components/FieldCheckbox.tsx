@@ -12,53 +12,56 @@ import Touchable from "./Touchable";
 import Checkbox from "./Checkbox";
 
 import color from "color";
+import theme from "../styles/DefaultTheme";
 
-class FieldCheckbox extends React.Component {
-  onPress = () => {
-    const { onPress } = this.props;
-    if (onPress) {
-      onPress();
-    }
-  };
-
-  render() {
-    const {
-      title,
-      status,
-      onPress,
-      color: checkboxColor,
-      disabled,
-      theme: { colors, typography, spacing, disabledOpacity },
-    } = this.props;
-
-    let titleColor = status === "checked" ? colors.medium : colors.light;
-
-    if (disabled) {
-      titleColor = color(titleColor).alpha(disabledOpacity).rgb().string();
-    }
-
-    return (
-      <Touchable onPress={this.onPress} disabled={disabled}>
-        <View style={styles.container}>
-          <Checkbox
-            status={status}
-            disabled={disabled}
-            onPress={onPress}
-            color={checkboxColor}
-          />
-          <Text
-            style={[
-              typography.body1,
-              { marginLeft: spacing.medium, color: titleColor },
-            ]}
-          >
-            {title}
-          </Text>
-        </View>
-      </Touchable>
-    );
-  }
+interface Props {
+  title?: string;
+  status: "checked" | "indeterminate" | "unchecked";
+  onPress?: () => void;
+  color: string;
+  disabled?: boolean;
+  theme: typeof theme;
 }
+
+const FieldCheckbox: React.FC<Props> = ({
+  title = "",
+  status,
+  onPress,
+  color: checkboxColor,
+  disabled = false,
+  theme: { colors, typography, spacing, disabledOpacity },
+}) => {
+  let titleColor = status === "checked" ? colors.medium : colors.light;
+
+  if (disabled) {
+    titleColor = color(titleColor).alpha(disabledOpacity).rgb().string();
+  }
+
+  return (
+    <Touchable onPress={onPress} disabled={disabled}>
+      <View style={styles.container}>
+        <Checkbox
+          status={status}
+          disabled={disabled}
+          onPress={() => {
+            if (onPress) {
+              onPress();
+            }
+          }}
+          color={checkboxColor}
+        />
+        <Text
+          style={[
+            typography.body1,
+            { marginLeft: spacing.medium, color: titleColor },
+          ]}
+        >
+          {title}
+        </Text>
+      </View>
+    </Touchable>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

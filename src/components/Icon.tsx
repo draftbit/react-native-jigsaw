@@ -1,5 +1,13 @@
 import * as React from "react";
-import { Image, Text, View, StyleSheet } from "react-native";
+import {
+  Image,
+  Text,
+  View,
+  StyleSheet,
+  ViewProps,
+  StyleProp,
+  ImageStyle,
+} from "react-native";
 // import { Ionicons } from "@expo/vector-icons";
 // import * as VectorIcons from "@expo/vector-icons";
 // console.log("VECTORICONS", VectorIcons);
@@ -11,7 +19,7 @@ import {
   PROP_TYPES,
 } from "../core/component-types";
 
-let VectorIcons;
+let VectorIcons: any;
 
 try {
   // Optionally require vector-icons
@@ -64,11 +72,18 @@ try {
   }
 }
 
-const Icon = ({ name, color, size, style, ...rest }) => {
+interface Props extends ViewProps {
+  name: string | number | { uri: string };
+  color?: string;
+  size: number;
+  style?: StyleProp<ImageStyle>;
+}
+
+const Icon: React.FC<Props> = ({ name, color, size, style, ...rest }) => {
   if (!name) return null;
 
   let iconSet = "MaterialIcons";
-  if (name.indexOf("/") !== -1) {
+  if (typeof name === "string" && name.indexOf("/") !== -1) {
     [iconSet, name] = name.split("/");
   }
 

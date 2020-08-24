@@ -1,5 +1,5 @@
 import React from "react";
-import { Image as NativeImage } from "react-native";
+import { Image as NativeImage, ImageProps } from "react-native";
 import Config from "./Config";
 import {
   COMPONENT_TYPES,
@@ -8,22 +8,23 @@ import {
   GROUPS,
 } from "../core/component-types";
 
-export default class Image extends React.PureComponent {
-  static defaultProps = {
-    source: Config.placeholderImageURL,
-    resizeMode: "cover",
-  };
-
-  render() {
-    const { source, ...props } = this.props;
-    return (
-      <NativeImage
-        source={typeof source === "string" ? { uri: source } : source}
-        {...props}
-      />
-    );
-  }
+interface Props extends ImageProps {
+  source: any;
 }
+
+const Image: React.FC<Props> = ({
+  source = Config.placeholderImageURL,
+  resizeMode = "cover",
+  ...props
+}) => {
+  return (
+    <NativeImage
+      source={typeof source === "string" ? { uri: source } : source}
+      resizeMode={resizeMode}
+      {...props}
+    />
+  );
+};
 
 export const SEED_DATA = {
   name: "Image",
@@ -62,3 +63,5 @@ export const SEED_DATA = {
     },
   },
 };
+
+export default Image;

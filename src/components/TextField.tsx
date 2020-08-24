@@ -6,6 +6,13 @@ import {
   StyleSheet,
   Text,
   I18nManager,
+  StyleProp,
+  TextInputProps,
+  NativeSyntheticEvent,
+  TextInputChangeEventData,
+  ViewStyle,
+  TextStyle,
+  LayoutChangeEvent,
 } from "react-native";
 import { withTheme } from "../core/theming";
 import {
@@ -18,6 +25,7 @@ import {
 } from "../core/component-types";
 
 import Icon from "./Icon";
+import theme from "../styles/DefaultTheme";
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
 
@@ -25,16 +33,35 @@ const FOCUS_ANIMATION_DURATION = 150;
 const BLUR_ANIMATION_DURATION = 180;
 const ICON_SIZE = 24;
 
-class TextField extends React.Component {
-  static defaultProps = {
-    type: "underline",
-    disabled: false,
-    error: false,
-    multiline: false,
-    render: (props) => <NativeTextInput {...props} />,
-  };
+interface Props extends TextInputProps {
+  type?: "solid" | "underline";
+  disabled?: boolean;
+  label?: string;
+  error?: boolean;
+  leftIconName?: string;
+  leftIconMode?: "inset" | "outset";
+  rightIconName?: string;
+  assistiveText?: string;
+  multiline?: boolean;
+  style?: StyleProp<ViewStyle>;
+  theme: typeof theme;
+  render?: (props: TextInputProps) => React.ReactNode;
+}
 
-  static getDerivedStateFromProps(nextProps, prevState) {
+interface State {
+  labeled: Animated.Value;
+  focused?: boolean;
+  placeholder?: string | undefined;
+  defaultValue?: string | undefined;
+  labelLayout: {
+    measured: boolean;
+    width: number;
+  };
+  value?: string;
+}
+
+class TextField extends React.Component<Props> {
+  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     return {
       value:
         typeof nextProps.value !== "undefined"
@@ -43,7 +70,7 @@ class TextField extends React.Component {
     };
   }
 
-  state = {
+  state: State = {
     labeled: new Animated.Value(this.props.value || this.props.error ? 0 : 1),
     focused: false,
     placeholder: this.props.error ? this.props.placeholder : "",
@@ -54,7 +81,7 @@ class TextField extends React.Component {
     },
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
     if (
       prevState.focused !== this.state.focused ||
       prevState.value !== this.state.value
@@ -82,6 +109,8 @@ class TextField extends React.Component {
       }
     }
   }
+
+  _timer = setTimeout(() => {}, 0);
 
   componentWillUnmount() {
     clearTimeout(this._timer);
@@ -120,7 +149,7 @@ class TextField extends React.Component {
       useNativeDriver: true,
     }).start();
 
-  _handleFocus = (...args) => {
+  _handleFocus = () => {
     if (this.props.disabled) {
       return;
     }
@@ -128,7 +157,7 @@ class TextField extends React.Component {
     this.setState({ focused: true });
   };
 
-  _handleBlur = (...args) => {
+  _handleBlur = () => {
     if (this.props.disabled) {
       return;
     }
@@ -136,7 +165,9 @@ class TextField extends React.Component {
     this.setState({ focused: false });
   };
 
-  _handleChangeText = (value) => {
+  _handleChangeText = (
+    value: NativeSyntheticEvent<TextInputChangeEventData>
+  ) => {
     if (this.props.disabled) {
       return;
     }
@@ -146,14 +177,15 @@ class TextField extends React.Component {
   };
 
   toggleFocus() {
-    this.setState((prevState) => ({ focused: !prevState.focused }));
+    this.setState((prevState: State) => ({ focused: !prevState.focused }));
   }
 
+  _root: NativeTextInput | undefined = undefined;
   /**
    * @internal
    */
-  setNativeProps(...args) {
-    return this._root && this._root.setNativeProps(...args);
+  setNativeProps(args: Props) {
+    return this._root && this._root.setNativeProps(args);
   }
 
   isFocused() {
@@ -174,28 +206,20 @@ class TextField extends React.Component {
 
   render() {
     const {
-      type,
-      disabled,
+      type = "underline",
+      disabled = false,
       label,
-      error,
+      error = false,
       leftIconName,
       leftIconMode,
       rightIconName,
       assistiveText,
-      multiline,
+      multiline = false,
       style,
-      theme,
-      render,
+      theme: { colors, typography, spacing, borderRadius, disabledOpacity },
+      render = (props) => <NativeTextInput {...props} />,
       ...rest
     } = this.props;
-
-    const {
-      colors,
-      typography,
-      spacing,
-      borderRadius,
-      disabledOpacity,
-    } = theme;
 
     const MINIMIZED_LABEL_Y_OFFSET = -(
       typography.caption.lineHeight + spacing.text
@@ -214,9 +238,9 @@ class TextField extends React.Component {
       underlineColor,
       borderColor,
       placeholderColor,
-      containerStyle,
+      containerStyle: StyleProp<ViewStyle>,
       backgroundColor,
-      inputStyle;
+      inputStyle: StyleProp<TextStyle>;
 
     inputTextColor = colors.strong;
     if (disabled) {
@@ -409,7 +433,7 @@ class TextField extends React.Component {
               ]}
             >
               <AnimatedText
-                onLayout={(e) =>
+                onLayout={(e: LayoutChangeEvent) =>
                   this.setState({
                     labelLayout: {
                       width: e.nativeEvent.layout.width,
@@ -462,7 +486,7 @@ class TextField extends React.Component {
 
           {render({
             ...rest,
-            ref: (c) => {
+            ref: (c: any) => {
               this._root = c;
             },
             onChange: this._handleChangeText,
@@ -498,7 +522,6 @@ class TextField extends React.Component {
         {assistiveText ? (
           <Text
             style={[
-              styles.caption,
               {
                 color: error ? colors.error : colors.light,
                 marginTop: spacing.small,

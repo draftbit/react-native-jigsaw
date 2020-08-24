@@ -9,6 +9,8 @@ import Button from "./Button";
 import TextField from "./TextField";
 import Touchable from "./Touchable";
 
+interface Props {}
+
 class Picker extends React.Component {
   static defaultProps = {
     type: "underline",

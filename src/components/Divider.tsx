@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, StyleProp, ViewStyle } from "react-native";
 import { withTheme } from "../core/theming";
 import {
   GROUPS,
@@ -7,27 +7,31 @@ import {
   PROP_TYPES,
   COMPONENT_TYPES,
 } from "../core/component-types";
+import theme from "../styles/DefaultTheme";
 
-class Divider extends React.Component {
-  render() {
-    const {
-      style,
-      color,
-      height,
-      theme: { colors },
-    } = this.props;
-
-    return (
-      <View
-        style={[
-          { backgroundColor: color || colors.divider },
-          style,
-          { height: height || StyleSheet.hairlineWidth },
-        ]}
-      />
-    );
-  }
+interface Props {
+  style?: StyleProp<ViewStyle>;
+  color?: string;
+  height?: number;
+  theme: typeof theme;
 }
+
+const Divider: React.FC<Props> = ({
+  style,
+  color,
+  height,
+  theme: { colors },
+}) => {
+  return (
+    <View
+      style={[
+        { backgroundColor: color || colors.divider },
+        style,
+        { height: height || StyleSheet.hairlineWidth },
+      ]}
+    />
+  );
+};
 
 export default withTheme(Divider);
 

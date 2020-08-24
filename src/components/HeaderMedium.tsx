@@ -7,35 +7,38 @@ import {
   PROP_TYPES,
 } from "../core/component-types";
 import Header from "./Header";
+import theme from "../styles/DefaultTheme";
+import { StyleProp, ViewStyle } from "react-native";
 
-class HeaderMedium extends React.Component {
-  static defaultProps = {
-    onPress: () => {},
-  };
-
-  render() {
-    const {
-      title,
-      buttonText,
-      icon,
-      onPress,
-      style,
-      theme: { colors, typography },
-    } = this.props;
-
-    return (
-      <Header
-        titleTypeStyle={typography.headline6}
-        titleColor={colors.strong}
-        title={title}
-        buttonText={buttonText}
-        icon={icon}
-        onPress={onPress}
-        style={style}
-      />
-    );
-  }
+interface Props {
+  title: string;
+  buttonText: string;
+  icon: string;
+  onPress?: () => void;
+  style?: StyleProp<ViewStyle>;
+  theme: typeof theme;
 }
+
+const HeaderMedium: React.FC<Props> = ({
+  title,
+  buttonText,
+  icon,
+  onPress = () => {},
+  style,
+  theme: { colors, typography },
+}) => {
+  return (
+    <Header
+      titleTypeStyle={typography.headline6}
+      titleColor={colors.strong}
+      title={title}
+      buttonText={buttonText}
+      icon={icon}
+      onPress={onPress}
+      style={style}
+    />
+  );
+};
 
 export default withTheme(HeaderMedium);
 

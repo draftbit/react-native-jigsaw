@@ -33,7 +33,7 @@ const FOCUS_ANIMATION_DURATION = 150;
 const BLUR_ANIMATION_DURATION = 180;
 const ICON_SIZE = 24;
 
-interface Props extends TextInputProps {
+export interface Props extends TextInputProps {
   type?: "solid" | "underline";
   disabled?: boolean;
   label?: string;

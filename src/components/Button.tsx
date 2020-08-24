@@ -58,13 +58,13 @@ import theme from "../styles/DefaultTheme";
  */
 
 interface Props extends TouchableHighlightProps {
-  disabled: boolean;
-  type?: "solid" | "outline";
-  loading: boolean;
+  disabled?: boolean;
+  type?: "solid" | "outline" | "text";
+  loading?: boolean;
   icon?: string;
-  labelColor: string;
-  color: string;
-  children: React.ReactNode;
+  labelColor?: string;
+  color?: string;
+  children?: React.ReactNode;
   onPress: () => void;
   elevation?: number;
   style?: StyleProp<ViewStyle>;
@@ -72,9 +72,9 @@ interface Props extends TouchableHighlightProps {
 }
 
 const Button: React.FC<Props> = ({
-  disabled,
+  disabled = false,
   type = "solid",
-  loading,
+  loading = false,
   icon,
   labelColor,
   color: colorOverride,

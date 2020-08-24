@@ -7,36 +7,39 @@ import {
   PROP_TYPES,
 } from "../core/component-types";
 import Header from "./Header";
+import theme from "../styles/DefaultTheme";
+import { StyleProp, ViewStyle } from "react-native";
 
-class HeaderOverline extends React.Component {
-  static defaultProps = {
-    onPress: () => {},
-  };
-
-  render() {
-    const {
-      title,
-      buttonText,
-      icon,
-      onPress,
-      style,
-      theme: { colors, spacing, typography },
-    } = this.props;
-
-    return (
-      <Header
-        titleTypeStyle={typography.overline}
-        titleColor={colors.light}
-        title={title && title.toUpperCase()}
-        buttonText={buttonText}
-        icon={icon}
-        dividerTopMargin={spacing.medium}
-        onPress={onPress}
-        style={style}
-      />
-    );
-  }
+interface Props {
+  title: string;
+  buttonText: string;
+  icon: string;
+  onPress?: () => void;
+  style?: StyleProp<ViewStyle>;
+  theme: typeof theme;
 }
+
+const HeaderOverline: React.FC<Props> = ({
+  title,
+  buttonText,
+  icon,
+  onPress = () => {},
+  style,
+  theme: { colors, typography, spacing },
+}) => {
+  return (
+    <Header
+      titleTypeStyle={typography.overline}
+      titleColor={colors.light}
+      title={title && title.toUpperCase()}
+      buttonText={buttonText}
+      icon={icon}
+      dividerTopMargin={spacing.medium}
+      onPress={onPress}
+      style={style}
+    />
+  );
+};
 
 export default withTheme(HeaderOverline);
 

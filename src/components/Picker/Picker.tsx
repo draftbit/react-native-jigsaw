@@ -1,6 +1,7 @@
 import * as React from "react";
 import { withTheme } from "../../core/theming";
 import PickerComponent from "./PickerComponent";
+import { PickerComponentProps } from "./PickerTypes";
 
 import {
   GROUPS,
@@ -10,46 +11,39 @@ import {
   FIELD_NAME,
 } from "../../core/component-types";
 
-class Picker extends React.Component {
-  static defaultProps = {
-    options: [],
-    type: "underline",
-    disabled: false,
-    error: false,
-  };
+interface Props extends PickerComponentProps {
+  placeholder?: string;
+  value: string;
+}
 
-  state = {
-    pickerVisible: false,
-  };
-
-  onValueChange = (itemValue, itemIndex) => {
-    const { placeholder, onChange } = this.props;
-
+const Picker: React.FC<Props> = ({
+  options = [],
+  placeholder,
+  onValueChange: onValueChangeOverride,
+  value,
+  ...props
+}) => {
+  const onValueChange = (itemValue: string, itemIndex: number) => {
     if (placeholder && itemIndex === 0) {
       return;
     }
-
-    onChange && onChange(itemValue, itemIndex);
+    onValueChangeOverride && onValueChangeOverride(itemValue, itemIndex);
   };
 
-  render() {
-    const { placeholder, options, value, ...props } = this.props;
+  const pickerOptions = placeholder
+    ? [{ value: placeholder, label: placeholder }, ...options]
+    : options;
 
-    const pickerOptions = placeholder
-      ? [{ value: placeholder, label: placeholder }, ...options]
-      : options;
-
-    return (
-      <PickerComponent
-        {...props}
-        selectedValue={value}
-        placeholder={placeholder}
-        options={pickerOptions}
-        onValueChange={this.onValueChange}
-      />
-    );
-  }
-}
+  return (
+    <PickerComponent
+      {...props}
+      selectedValue={value}
+      placeholder={placeholder}
+      options={pickerOptions}
+      onValueChange={onValueChange}
+    />
+  );
+};
 
 export default withTheme(Picker);
 

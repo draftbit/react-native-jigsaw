@@ -8,14 +8,14 @@ import {
   FORM_TYPES,
   FIELD_NAME,
 } from "../core/component-types";
-import theme from "../styles/DefaultTheme";
+import themeT from "../styles/DefaultTheme";
 
 interface Props extends SwitchProps {
   value: boolean;
   disabled?: boolean;
   onValueChange?: (value: boolean) => {};
   color?: string;
-  theme: typeof theme;
+  theme: typeof themeT;
 }
 
 const Switch: React.FC<Props> = ({

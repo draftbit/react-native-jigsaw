@@ -4,37 +4,22 @@ import {
   SafeAreaView,
   StyleSheet,
   Picker as NativePicker,
-  StyleProp,
-  ViewStyle,
 } from "react-native";
 import { withTheme } from "../../core/theming";
 
 import Portal from "../Portal/Portal";
 import Button from "../Button";
-import TextField, { Props as TextFieldProps } from "../TextField";
+import TextField from "../TextField";
 import Touchable from "../Touchable";
+import { PickerComponentProps } from "./PickerTypes";
 
-interface PickerOption {
-  value: string;
-  label: string;
-}
-
-interface Props extends TextFieldProps {
-  style?: StyleProp<ViewStyle>;
-  options: PickerOption[];
-  placeholder?: string;
-  selectedValue: string;
-  disabled?: boolean;
-  onValueChanged: (value: string, index: number) => void;
-}
-
-const Picker: React.FC<Props> = ({
+const Picker: React.FC<PickerComponentProps> = ({
   style,
   options,
   placeholder,
   selectedValue,
   disabled = false,
-  onValueChanged = () => {},
+  onValueChange = () => {},
   theme: { colors },
   ...props
 }) => {
@@ -71,7 +56,7 @@ const Picker: React.FC<Props> = ({
               </Button>
               <NativePicker
                 selectedValue={selectedValue}
-                onValueChange={onValueChanged}
+                onValueChange={onValueChange}
               >
                 {options.map((o) => (
                   <NativePicker.Item

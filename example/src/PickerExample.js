@@ -18,7 +18,7 @@ function PickerExample({ theme }) {
             { value: "Cadillac", label: "Cadillac" },
             { value: "Dodge", label: "Dodge" },
           ]}
-          selectedValue={value}
+          value={value}
           onValueChange={handleChange}
         />
       </Section>
@@ -34,7 +34,7 @@ function PickerExample({ theme }) {
             { value: "Dodge", label: "Dodge" },
           ]}
           disabled
-          selectedValue={value}
+          value={value}
           onValueChange={handleChange}
         />
       </Section>
@@ -50,7 +50,7 @@ function PickerExample({ theme }) {
             { value: "Dodge", label: "Dodge" },
           ]}
           error
-          selectedValue={value}
+          value={value}
           onValueChange={handleChange}
         />
       </Section>
@@ -66,7 +66,7 @@ function PickerExample({ theme }) {
             { value: "Cadillac", label: "Cadillac" },
             { value: "Dodge", label: "Dodge" },
           ]}
-          selectedValue={value}
+          value={value}
           onValueChange={handleChange}
         />
       </Section>
@@ -83,7 +83,7 @@ function PickerExample({ theme }) {
             { value: "Dodge", label: "Dodge" },
           ]}
           disabled
-          selectedValue={value}
+          value={value}
           onValueChange={handleChange}
         />
       </Section>
@@ -100,7 +100,7 @@ function PickerExample({ theme }) {
             { value: "Dodge", label: "Dodge" },
           ]}
           error
-          selectedValue={value}
+          value={value}
           onValueChange={handleChange}
         />
       </Section>

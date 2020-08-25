@@ -9,11 +9,11 @@ import {
 } from "react-native";
 import { withTheme } from "../core/theming";
 import Config from "./Config";
-import theme from "../styles/DefaultTheme";
+import themeT from "../styles/DefaultTheme";
 interface Props {
   children?: React.ReactNode;
   style?: StyleProp<ViewStyle>;
-  theme: typeof theme;
+  theme: typeof themeT;
   hasSafeArea?: boolean;
   scrollable?: boolean;
 }

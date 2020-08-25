@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from "react";
 import {
   Animated,
@@ -9,13 +8,13 @@ import {
 import Icon from "./Icon";
 import Touchable from "./Touchable";
 import { withTheme } from "../core/theming";
-import themeI from "../styles/DefaultTheme";
+import themeT from "../styles/DefaultTheme";
 
 interface Props extends TouchableHighlightProps {
   status: "checked" | "indeterminate" | "unchecked";
   disabled: boolean;
   onPress: () => void;
-  theme: typeof themeI;
+  theme: typeof themeT;
   color?: string;
 }
 
@@ -27,11 +26,7 @@ const CheckboxAndroid: React.FC<Props> = ({
   color,
   ...rest
 }) => {
-  //const displayName = "Checkbox.Android";
-
-  const [scaleAnim] = React.useState<typeof Animated.Value>(
-    new Animated.Value(1)
-  );
+  const [scaleAnim] = React.useState<Animated.Value>(new Animated.Value(1));
 
   const checked = status === "checked";
   const indeterminate = status === "indeterminate";
@@ -52,16 +47,16 @@ const CheckboxAndroid: React.FC<Props> = ({
     : "MaterialIcons/check-box-outline-blank";
 
   React.useEffect(() => {
-    const checked = status === "checked";
+    const check = status === "checked";
     Animated.sequence([
       Animated.timing(scaleAnim, {
         toValue: 0.85,
-        duration: checked ? 200 : 0,
+        duration: check ? 200 : 0,
         useNativeDriver: false,
       }),
       Animated.timing(scaleAnim, {
         toValue: 1,
-        duration: checked ? 200 : 350,
+        duration: check ? 200 : 350,
         useNativeDriver: false,
       }),
     ]).start();
@@ -70,14 +65,12 @@ const CheckboxAndroid: React.FC<Props> = ({
   return (
     <Touchable
       {...rest}
-      borderless={true}
-      rippleColor={rippleColor}
       onPress={onPress}
       disabled={disabled}
       accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
       accessibilityComponentType="button"
       accessibilityRole="button"
-      accessibilityStates={disabled ? ["disabled"] : undefined}
+      accessibilityState={{ disabled }}
       accessibilityLiveRegion="polite"
       style={{
         borderRadius: 18,
@@ -87,12 +80,7 @@ const CheckboxAndroid: React.FC<Props> = ({
       }}
     >
       <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
-        <Icon
-          allowFontScaling={false}
-          name={icon}
-          size={29}
-          color={checkboxColor}
-        />
+        <Icon name={icon} size={29} color={checkboxColor} />
         <View style={[StyleSheet.absoluteFill, styles.fillContainer]}>
           <Animated.View
             style={[

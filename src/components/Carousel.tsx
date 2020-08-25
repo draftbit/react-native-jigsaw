@@ -21,18 +21,13 @@ import {
 } from "../core/component-types";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
+import { ResizeModeType } from "./ResizeMode";
 
 interface Props {
-  images: any[];
+  images: string | Blob;
   aspectRatio?: number;
   swiperPalette?: "surface" | "non-sruface";
-  resizeMode?:
-    | "stretch"
-    | "center"
-    | "cover"
-    | "contain"
-    | "repeat"
-    | undefined;
+  resizeMode?: ResizeModeType;
   dotColor?: string;
   theme: typeof theme;
   style?: StyleProp<ViewStyle>;

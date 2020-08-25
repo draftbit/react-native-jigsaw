@@ -21,7 +21,7 @@ const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
 const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
 
 interface Props {
-  image?: any;
+  image?: string | Blob;
   title?: string;
   leftDescription?: string;
   rightDescription?: string;
@@ -34,6 +34,15 @@ interface Props {
   style?: StyleProp<ViewStyle>;
   onPress: () => void;
 }
+
+type justificationType =
+  | "flex-start"
+  | "flex-end"
+  | "center"
+  | "space-between"
+  | "space-around"
+  | "space-evenly"
+  | undefined;
 
 const CardContainer: React.FC<Props> = ({
   image = Config.cardImageUrl,
@@ -49,14 +58,7 @@ const CardContainer: React.FC<Props> = ({
   style,
   onPress,
 }) => {
-  let textJustification:
-    | "flex-start"
-    | "flex-end"
-    | "center"
-    | "space-between"
-    | "space-around"
-    | "space-evenly"
-    | undefined;
+  let textJustification: justificationType;
 
   let titleStyle;
 

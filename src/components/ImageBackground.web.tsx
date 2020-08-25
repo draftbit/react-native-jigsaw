@@ -8,17 +8,12 @@ import {
 } from "react-native";
 import AspectRatio from "./AspectRatio.web";
 import Config from "./Config";
+import { ResizeModeType } from "./ResizeMode";
 
 interface Props extends ImageProps {
-  source: any;
+  source: string | Blob;
   style?: StyleProp<ImageStyle>;
-  resizeMode?:
-    | "cover"
-    | "contain"
-    | "stretch"
-    | "repeat"
-    | "center"
-    | undefined;
+  resizeMode?: ResizeModeType;
 }
 
 const ImageBackground: React.FC<Props> = ({

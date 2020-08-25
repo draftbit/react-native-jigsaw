@@ -29,11 +29,6 @@ const AnimatedCircularProgress: React.FC<Props> = ({
     new Animated.Value(prefill)
   );
 
-  //   const reAnimate = (prefill, toVal, dur, ease) => {
-  //     setFillAnimation(new Animated.Value(prefill));
-  //     animate(toVal, dur, ease);
-  //   };
-
   const animate = React.useCallback(
     (
       toVal: number = -1,

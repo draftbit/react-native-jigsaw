@@ -1,16 +1,15 @@
-// @ts-nocheck
 import * as React from "react";
-import { View } from "react-native";
+import { View, TouchableHighlightProps } from "react-native";
 import Icon from "./Icon";
 import Touchable from "./Touchable";
 import { withTheme } from "../core/theming";
-import themeI from "../styles/DefaultTheme";
+import themeT from "../styles/DefaultTheme";
 
 interface Props extends TouchableHighlightProps {
   status: "checked" | "indeterminate" | "unchecked";
   disabled: boolean;
   onPress: () => void;
-  theme: typeof themeI;
+  theme: typeof themeT;
   color?: string;
 }
 
@@ -22,8 +21,6 @@ const CheckboxIOS: React.FC<Props> = ({
   color,
   ...rest
 }) => {
-  //const displayName = "Checkbox.IOS";
-
   const indeterminate = status === "indeterminate";
   const checkedColor = color || theme.colors.primary;
   const icon = indeterminate ? "MaterialIcons/remove" : "MaterialIcons/done";
@@ -32,12 +29,11 @@ const CheckboxIOS: React.FC<Props> = ({
     <Touchable
       {...rest}
       onPress={onPress}
-      borderless={false}
       disabled={disabled}
       accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
       accessibilityComponentType="button"
       accessibilityRole="button"
-      accessibilityStates={disabled ? ["disabled"] : undefined}
+      accessibilityState={{ disabled }}
       accessibilityLiveRegion="polite"
       style={{
         borderRadius: 2,
@@ -55,12 +51,7 @@ const CheckboxIOS: React.FC<Props> = ({
           opacity: indeterminate || disabled ? theme.disabledOpacity : 1,
         }}
       >
-        <Icon
-          allowFontScaling={false}
-          name={icon}
-          size={24}
-          color={theme.colors.surface}
-        />
+        <Icon name={icon} size={24} color={theme.colors.surface} />
       </View>
     </Touchable>
   );

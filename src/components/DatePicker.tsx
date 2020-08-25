@@ -32,6 +32,21 @@ interface Props extends TextFieldProps {
   mode?: "date" | "time" | "datetime";
 }
 
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 const DatePicker: React.FC<Props> = ({
   style,
   theme: { colors },
@@ -48,21 +63,6 @@ const DatePicker: React.FC<Props> = ({
   const formatDate = (): string => {
     if (format) return dateFormat(date, format);
 
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
     if (mode === "time") {
       return `${date.toLocaleTimeString()}`;
     }
@@ -72,13 +72,11 @@ const DatePicker: React.FC<Props> = ({
     }
 
     return `${
-      months[date.getMonth()]
+      MONTHS[date.getMonth()]
     } ${date.getDate()}, ${date.getFullYear()}`;
   };
 
   const toggleVisibility = async () => {
-    console.log("SET TO", !pickerVisible);
-
     setPickerVisible(!pickerVisible);
     if (textField.current) {
       textField.current.toggleFocus();
@@ -117,11 +115,11 @@ const DatePicker: React.FC<Props> = ({
               </Button>
               <DateTimePicker
                 value={date}
+                mode={mode}
                 onChange={(_event: any, data: any) => {
                   toggleVisibility();
                   onDateChange(data);
                 }}
-                mode={mode}
               />
             </SafeAreaView>
           </View>

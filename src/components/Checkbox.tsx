@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from "react";
 import { Platform } from "react-native";
 import CheckboxAndroid from "./CheckboxAndroid";
@@ -12,13 +11,13 @@ import {
   PROP_TYPES,
   FIELD_NAME,
 } from "../core/component-types";
-import themeI from "../styles/DefaultTheme";
+import themeT from "../styles/DefaultTheme";
 
 interface Props extends TouchableHighlightProps {
   status: "checked" | "indeterminate" | "unchecked";
   disabled: boolean;
   onPress: () => void;
-  theme: typeof themeI;
+  theme: typeof themeT;
   color?: string;
 }
 

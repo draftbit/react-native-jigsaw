@@ -9,7 +9,7 @@ import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import theme from "../styles/DefaultTheme";
 
 interface Props {
-  image: any;
+  image: string | Blob;
   size?: number;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;

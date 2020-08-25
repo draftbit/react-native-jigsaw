@@ -6,7 +6,7 @@ import Touchable from "./Touchable";
 import RadioButton from "./RadioButton";
 
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-import themeI from "../styles/DefaultTheme";
+import themeT from "../styles/DefaultTheme";
 
 interface Props {
   onPress?: () => void;
@@ -14,12 +14,12 @@ interface Props {
   selected: boolean;
   disabled?: boolean;
   color: string;
-  theme: typeof themeI;
+  theme: typeof themeT;
 }
 
 const FieldRadioButton: React.FC<Props> = ({
   onPress = () => {},
-  title = "",
+  title,
   selected,
   disabled = false,
   color,

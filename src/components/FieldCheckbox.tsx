@@ -24,7 +24,7 @@ interface Props {
 }
 
 const FieldCheckbox: React.FC<Props> = ({
-  title = "",
+  title,
   status,
   onPress,
   color: checkboxColor,
@@ -43,12 +43,12 @@ const FieldCheckbox: React.FC<Props> = ({
         <Checkbox
           status={status}
           disabled={disabled}
+          color={checkboxColor}
           onPress={() => {
             if (onPress) {
               onPress();
             }
           }}
-          color={checkboxColor}
         />
         <Text
           style={[

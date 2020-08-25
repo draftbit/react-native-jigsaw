@@ -9,6 +9,7 @@ import {
   createElevationType,
 } from "../core/component-types";
 import theme from "../styles/DefaultTheme";
+import { ResizeModeType } from "./ResizeMode";
 
 interface Props {
   theme: typeof theme;
@@ -16,14 +17,8 @@ interface Props {
   borderColor: string;
   borderWidth: number;
   backgroundColor: string;
-  backgroundImage?: any;
-  backgroundImageResizeMode?:
-    | "cover"
-    | "contain"
-    | "stretch"
-    | "repeat"
-    | "center"
-    | undefined;
+  backgroundImage?: string | Blob;
+  backgroundImageResizeMode?: ResizeModeType;
   elevation?: number;
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;

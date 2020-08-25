@@ -15,7 +15,7 @@ import {
   GROUPS,
   PROP_TYPES,
 } from "../core/component-types";
-import themeI from "../styles/DefaultTheme";
+import themeT from "../styles/DefaultTheme";
 
 interface Props {
   icon?: string;
@@ -25,7 +25,7 @@ interface Props {
   disabled?: boolean;
   loading?: boolean;
   onPress: () => void;
-  theme: typeof themeI;
+  theme: typeof themeT;
   style?: StyleProp<ViewStyle>;
 }
 

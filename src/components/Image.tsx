@@ -9,7 +9,7 @@ import {
 } from "../core/component-types";
 
 interface Props extends ImageProps {
-  source: any;
+  source: string | Blob;
 }
 
 const Image: React.FC<Props> = ({

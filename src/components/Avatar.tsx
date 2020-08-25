@@ -5,7 +5,7 @@ import Config from "./Config";
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
 interface Props {
-  image?: any;
+  image?: string | Blob;
   size?: number;
   style?: StyleProp<ImageStyle>;
 }

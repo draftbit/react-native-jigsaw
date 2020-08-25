@@ -16,7 +16,7 @@ import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 
 interface Props {
-  image?: any;
+  image?: string | Blob;
   title?: string;
   leftDescription?: string;
   rightDescription?: string;

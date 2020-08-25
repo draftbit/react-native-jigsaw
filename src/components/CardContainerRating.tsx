@@ -21,7 +21,7 @@ const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
 const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
 
 interface Props {
-  image?: any;
+  image?: string | Blob;
   title?: string;
   leftDescription?: string;
   rightDescription?: string;

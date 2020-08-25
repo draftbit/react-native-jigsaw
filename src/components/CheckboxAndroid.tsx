@@ -33,7 +33,6 @@ const CheckboxAndroid: React.FC<Props> = ({
   const uncheckedColor = theme.colors.light;
   const checkedColor = color || theme.colors.primary;
   const checkboxColor = checked ? checkedColor : uncheckedColor;
-  const rippleColor = checkedColor;
 
   const borderWidth = scaleAnim.interpolate({
     inputRange: [0.8, 1],

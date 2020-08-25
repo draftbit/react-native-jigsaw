@@ -8,11 +8,11 @@ import {
 } from "react-native";
 import shadow from "../styles/shadow";
 import { withTheme } from "../core/theming";
-import theme from "../styles/DefaultTheme";
+import themeT from "../styles/DefaultTheme";
 
 interface Props extends ViewProps {
   style?: StyleProp<ViewStyle>;
-  theme: typeof theme;
+  theme: typeof themeT;
 }
 
 const Elevation: React.FC<Props> = ({ style, theme, ...rest }) => {

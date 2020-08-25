@@ -7,8 +7,26 @@ import {
   GROUPS,
   PROP_TYPES,
 } from "../core/component-types";
+import themeT from "../styles/DefaultTheme";
 
-const ProgressIndicator = ({
+interface Props {
+  numberOfSteps?: number;
+  currentStep: number;
+  currentStepStrokeWidth?: number;
+  stepStrokeCurrentColor?: string;
+  stepIndicatorSize?: number;
+  currentStepIndicatorSize?: number;
+  stepIndicatorCurrentColor?: string;
+  stepIndicatorLabelCurrentColor?: string;
+  stepIndicatorLabelFontSize?: number;
+  stepNumberFinishedColor?: string;
+  stepNumberUnfinishedColor?: string;
+  unfinishedColor?: string;
+  finishedColor?: string;
+  theme: typeof themeT;
+}
+
+const ProgressIndicator: React.FC<Props> = ({
   numberOfSteps,
   currentStep,
   currentStepStrokeWidth,
@@ -53,7 +71,7 @@ const ProgressIndicator = ({
           ? stepIndicatorLabelCurrentColor
           : stepNumberFinishedColor,
         stepIndicatorLabelFontSize,
-        labelFontFamily: theme.typography.default,
+        labelFontFamily: theme.typography.body1.fontFamily,
       }}
     />
   );

@@ -1,10 +1,25 @@
 import * as React from "react";
-import { StyleSheet, ScrollView, View, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  ScrollView,
+  View,
+  SafeAreaView,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import { withTheme } from "../core/theming";
 import Config from "./Config";
+import theme from "../styles/DefaultTheme";
+interface Props {
+  children?: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
+  theme: typeof theme;
+  hasSafeArea?: boolean;
+  scrollable?: boolean;
+}
 
-class ScreenContainer extends React.Component {
-  renderScrollableSafeAreaView(themeStyles) {
+class ScreenContainer extends React.Component<Props> {
+  renderScrollableSafeAreaView(themeStyles: ViewStyle) {
     const { children, style } = this.props;
     return (
       <SafeAreaView
@@ -31,24 +46,24 @@ class ScreenContainer extends React.Component {
     );
   }
 
-  renderSafeAreaView(themeStyles) {
+  renderSafeAreaView(themeStyle: ViewStyle) {
     const { children, style } = this.props;
     return (
       <SafeAreaView
         style={[
           styles.container,
           {
-            backgroundColor: themeStyles.backgroundColor,
+            backgroundColor: themeStyle.backgroundColor,
             paddingTop: Config.topSafeAreaViewHeight,
           },
         ]}
       >
-        <View style={[styles.container, themeStyles, style]}>{children}</View>
+        <View style={[styles.container, themeStyle, style]}>{children}</View>
       </SafeAreaView>
     );
   }
 
-  renderScrollView(themeStyles) {
+  renderScrollView(themeStyles: ViewStyle) {
     const { children, style } = this.props;
     return (
       <ScrollView
@@ -65,7 +80,7 @@ class ScreenContainer extends React.Component {
     );
   }
 
-  renderView(themeStyles) {
+  renderView(themeStyles: ViewStyle) {
     const { children, style } = this.props;
     return (
       <View style={[styles.container, themeStyles, style]}>{children}</View>

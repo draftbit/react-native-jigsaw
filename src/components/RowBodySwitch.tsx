@@ -7,36 +7,43 @@ import {
 } from "../core/component-types";
 import Row from "./Row";
 import Switch from "./Switch";
+import theme from "../styles/DefaultTheme";
+import { StyleProp, ViewStyle } from "react-native";
 
-class RowBodySwitch extends React.Component {
-  render() {
-    const {
-      title,
-      subtitle,
-      style,
-      value,
-      onValueChange,
-      color,
-      theme: { colors, typography },
-    } = this.props;
-
-    return (
-      <Row
-        titleTypeStyle={typography.body1}
-        titleColor={colors.medium}
-        subtitleTypeStyle={typography.subtitle2}
-        subtitleColor={colors.light}
-        title={title}
-        subtitle={subtitle}
-        right={() => (
-          <Switch value={value} color={color} onValueChange={onValueChange} />
-        )}
-        style={style}
-      />
-    );
-  }
+interface Props {
+  title?: string;
+  subtitle?: string;
+  style?: StyleProp<ViewStyle>;
+  value: boolean;
+  onValueChange?: (value: boolean) => void;
+  color?: string;
+  theme: typeof theme;
 }
 
+const RowBodySwitch: React.FC<Props> = ({
+  title,
+  subtitle,
+  style,
+  value,
+  onValueChange,
+  color,
+  theme: { colors, typography },
+}) => {
+  return (
+    <Row
+      titleTypeStyle={typography.body1}
+      titleColor={colors.medium}
+      subtitleTypeStyle={typography.subtitle2}
+      subtitleColor={colors.light}
+      title={title}
+      subtitle={subtitle}
+      right={() => (
+        <Switch value={value} color={color} onValueChange={onValueChange} />
+      )}
+      style={style}
+    />
+  );
+};
 export default withTheme(RowBodySwitch);
 
 export const SEED_DATA = [

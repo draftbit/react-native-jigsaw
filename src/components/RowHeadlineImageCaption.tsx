@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text } from "react-native";
+import { Text, StyleProp, ViewStyle } from "react-native";
 import { withTheme } from "../core/theming";
 import {
   COMPONENT_TYPES,
@@ -8,43 +8,49 @@ import {
   GROUPS,
 } from "../core/component-types";
 import Row from "./Row";
+import theme from "../styles/DefaultTheme";
 
-class RowHeadlineImageCaption extends React.Component {
-  render() {
-    const {
-      title,
-      subtitle,
-      caption,
-      image,
-      style,
-      theme: { colors, typography, spacing },
-    } = this.props;
-
-    return (
-      <Row
-        titleTypeStyle={typography.headline6}
-        titleColor={colors.strong}
-        subtitleTypeStyle={typography.body2}
-        subtitleColor={colors.medium}
-        title={title}
-        subtitle={subtitle}
-        image={image}
-        right={() => (
-          <Text
-            style={{
-              ...typography.caption,
-              color: colors.strong,
-              marginLeft: spacing.large,
-            }}
-          >
-            {caption}
-          </Text>
-        )}
-        style={style}
-      />
-    );
-  }
+interface Props {
+  title?: string;
+  subtitle?: string;
+  caption?: string;
+  image: string | Blod;
+  style?: StyleProp<ViewStyle>;
+  theme: typeof theme;
 }
+
+const RowHeadlineImageCaption: React.FC<Props> = ({
+  title,
+  subtitle,
+  caption,
+  image,
+  style,
+  theme: { colors, typography, spacing },
+}) => {
+  return (
+    <Row
+      titleTypeStyle={typography.headline6}
+      titleColor={colors.strong}
+      subtitleTypeStyle={typography.body2}
+      subtitleColor={colors.medium}
+      title={title}
+      subtitle={subtitle}
+      image={image}
+      right={() => (
+        <Text
+          style={{
+            ...typography.caption,
+            color: colors.strong,
+            marginLeft: spacing.large,
+          }}
+        >
+          {caption}
+        </Text>
+      )}
+      style={style}
+    />
+  );
+};
 
 export default withTheme(RowHeadlineImageCaption);
 

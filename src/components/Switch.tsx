@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Switch as NativeSwitch, Platform } from "react-native";
+import { Switch as NativeSwitch, Platform, SwitchProps } from "react-native";
 import { withTheme } from "../core/theming";
 import {
   GROUPS,
@@ -8,38 +8,43 @@ import {
   FORM_TYPES,
   FIELD_NAME,
 } from "../core/component-types";
+import theme from "../styles/DefaultTheme";
 
-class Switch extends React.Component {
-  render() {
-    const {
-      value,
-      disabled,
-      onValueChange,
-      color,
-      theme,
-      ...props
-    } = this.props;
-    let thumbColor;
-    let checkedColor = color || theme.colors.primary;
-    if (Platform.OS !== "ios") {
-      thumbColor = theme.colors.surface;
-    }
-    return (
-      <NativeSwitch
-        {...props}
-        value={value}
-        disabled={disabled}
-        trackColor={{ false: null, true: checkedColor }}
-        thumbColor={thumbColor}
-        onValueChange={disabled ? undefined : onValueChange}
-        style={{
-          opacity:
-            disabled && Platform.OS !== "ios" ? theme.disabledOpacity : 1,
-        }}
-      />
-    );
-  }
+interface Props extends SwitchProps {
+  value: boolean;
+  disabled?: boolean;
+  onValueChange?: (value: boolean) => {};
+  color?: string;
+  theme: typeof theme;
 }
+
+const Switch: React.FC<Props> = ({
+  value,
+  disabled,
+  onValueChange,
+  color,
+  theme,
+  ...props
+}) => {
+  let thumbColor;
+  let checkedColor = color || theme.colors.primary;
+  if (Platform.OS !== "ios") {
+    thumbColor = theme.colors.surface;
+  }
+  return (
+    <NativeSwitch
+      {...props}
+      value={value}
+      disabled={disabled}
+      trackColor={{ false: "", true: checkedColor }}
+      thumbColor={thumbColor}
+      onValueChange={disabled ? undefined : onValueChange}
+      style={{
+        opacity: disabled && Platform.OS !== "ios" ? theme.disabledOpacity : 1,
+      }}
+    />
+  );
+};
 
 export default withTheme(Switch);
 

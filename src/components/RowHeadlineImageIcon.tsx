@@ -5,50 +5,58 @@ import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import Row from "./Row";
 import Icon from "./Icon";
 import Config from "./Config";
+import theme from "../styles/DefaultTheme";
+import { StyleProp, ViewStyle } from "react-native";
 
-class RowHeadlineImageIcon extends React.Component {
-  render() {
-    const {
-      title,
-      image,
-      subtitle,
-      multilineSubtitle,
-      icon,
-      style,
-      theme: { colors, typography, spacing },
-    } = this.props;
-
-    return (
-      <Row
-        titleTypeStyle={typography.headline6}
-        titleColor={colors.strong}
-        subtitleTypeStyle={typography.body2}
-        subtitleColor={colors.medium}
-        title={title}
-        subtitle={subtitle}
-        multilineSubtitle={multilineSubtitle}
-        image={image}
-        right={() => (
-          <Icon
-            name={icon}
-            size={
-              multilineSubtitle
-                ? Config.rowMultiLineIconSize
-                : Config.rowSingleLineIconSize
-            }
-            color={colors.light}
-            style={{
-              marginLeft: spacing.large,
-              alignSelf: multilineSubtitle ? "flex-start" : "center",
-              marginTop: multilineSubtitle ? spacing.text : 0,
-            }}
-          />
-        )}
-        style={style}
-      />
-    );
-  }
+interface Props {
+  title?: string;
+  image: string | Blob;
+  subtitle?: string;
+  multilineSubtitle?: boolean;
+  icon: string;
+  style?: StyleProp<ViewStyle>;
+  theme: typeof theme;
 }
+
+const RowHeadlineImageIcon: React.FC<Props> = ({
+  title,
+  image,
+  subtitle,
+  multilineSubtitle = false,
+  icon,
+  style,
+  theme: { colors, typography, spacing },
+}) => {
+  return (
+    <Row
+      titleTypeStyle={typography.headline6}
+      titleColor={colors.strong}
+      subtitleTypeStyle={typography.body2}
+      subtitleColor={colors.medium}
+      title={title}
+      subtitle={subtitle}
+      multilineSubtitle={multilineSubtitle}
+      image={image}
+      right={() => (
+        <Icon
+          name={icon}
+          size={
+            multilineSubtitle
+              ? Config.rowMultiLineIconSize
+              : Config.rowSingleLineIconSize
+          }
+          color={colors.light}
+          style={{
+            marginLeft: spacing.large,
+            alignSelf: multilineSubtitle ? "flex-start" : "center",
+            marginTop: multilineSubtitle ? spacing.text : 0,
+          }}
+        />
+      )}
+      style={style}
+    />
+  );
+};
 
 export default withTheme(RowHeadlineImageIcon);
 

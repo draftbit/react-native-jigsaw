@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text as NativeText, I18nManager } from "react-native";
+import { Text as NativeText, I18nManager, TextProps } from "react-native";
 import { withTheme } from "../core/theming";
 import {
   GROUPS,
@@ -7,22 +7,21 @@ import {
   FORM_TYPES,
   PROP_TYPES,
 } from "../core/component-types";
+import themeT from "../styles/DefaultTheme";
 
-/**
- * Text component which follows styles from the theme.
- *
- * @extends Text props https://facebook.github.io/react-native/docs/text.html#props
- */
-class Text extends React.Component {
-  /**
-   * @internal
-   */
-  setNativeProps(...args) {
-    return this._root && this._root.setNativeProps(...args);
+interface Props extends TextProps {
+  theme: typeof themeT;
+}
+
+class Text extends React.Component<Props> {
+  _root: any;
+
+  setNativeProps(args: TextProps) {
+    return this._root && this._root.setNativeProps(args);
   }
 
   render() {
-    const { style, theme, ...rest } = this.props;
+    const { style, ...rest } = this.props;
     const writingDirection = I18nManager.isRTL ? "rtl" : "ltr";
 
     return (

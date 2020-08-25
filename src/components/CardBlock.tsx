@@ -14,6 +14,7 @@ import {
 } from "../core/component-types";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
+import { justificationType } from "./Justification";
 
 interface Props {
   image?: string | Blob;
@@ -42,14 +43,7 @@ const CardBlock: React.FC<Props> = ({
   style,
   onPress,
 }) => {
-  let titleJustification:
-    | "flex-start"
-    | "flex-end"
-    | "center"
-    | "space-between"
-    | "space-around"
-    | "space-evenly"
-    | undefined;
+  let titleJustification: justificationType;
 
   let titleStyle;
   if (titleCentered && !leftDescription && !rightDescription) {

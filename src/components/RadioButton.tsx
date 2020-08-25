@@ -4,8 +4,24 @@ import { withTheme } from "../core/theming";
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import Config from "./Config";
 import IconButton from "./IconButton";
+import themeT from "../styles/DefaultTheme";
 
-function RadioButton({ selected, disabled, color, unselectedColor, onPress }) {
+interface Props {
+  selected: boolean;
+  disabled?: boolean;
+  color?: string;
+  unselectedColor?: string;
+  onPress?: () => void;
+  theme: typeof themeT;
+}
+
+const RadioButton: React.FC<Props> = ({
+  selected,
+  disabled = false,
+  color = "#5a45ff",
+  unselectedColor,
+  onPress = () => {},
+}) => {
   return (
     <IconButton
       icon={
@@ -19,11 +35,6 @@ function RadioButton({ selected, disabled, color, unselectedColor, onPress }) {
       size={Config.radioButtonSize}
     />
   );
-}
-
-RadioButton.defaultProps = {
-  onPress: () => {},
-  selectedColor: "#5a45ff",
 };
 
 export default withTheme(RadioButton);

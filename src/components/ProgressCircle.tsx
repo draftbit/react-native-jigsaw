@@ -12,28 +12,28 @@ import themeT from "../styles/DefaultTheme";
 import { colorTypes } from "../types";
 
 interface Props {
-  progress: number;
+  progress?: number;
   style?: StyleProp<ViewStyle>;
   color?: colorTypes;
-  size: number;
+  size?: number;
   showsText?: boolean;
   unfilledColor?: colorTypes;
   strokeCap?: "butt" | "square" | "round" | undefined;
   textStyle?: StyleProp<TextStyle>;
-  thickness: number;
+  thickness?: number;
   theme: typeof themeT;
 }
 
 const ProgressCircle: React.FC<Props> = ({
-  progress,
+  progress = 0.5,
   style,
-  color,
-  size,
-  showsText = false,
+  color = "primary",
+  size = 100,
+  showsText = true,
   unfilledColor,
-  strokeCap,
+  strokeCap = "butt",
   textStyle,
-  thickness,
+  thickness = 1,
   theme,
 }) => {
   const progressNum = Math.round(progress * 100);
@@ -64,15 +64,6 @@ const ProgressCircle: React.FC<Props> = ({
       }
     </AnimatedCircularProgress>
   );
-};
-
-ProgressCircle.defaultProps = {
-  progress: 0.5,
-  color: "primary",
-  size: 100,
-  showsText: true,
-  thickness: 1,
-  strokeCap: "butt",
 };
 
 export default withTheme(ProgressCircle);

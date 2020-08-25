@@ -1,8 +1,19 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, ImageBackground, Image } from "react-native";
-import AspectRatio from "./AspectRatio";
+import {
+  StyleSheet,
+  Text,
+  ImageBackground,
+  Image,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
+import AspectRatio from "./AspectRatio.web";
 
-function TextOrImage({ layout, message }) {
+interface TextOrImageProps {
+  layout: { width: number; height: number };
+  message?: string;
+}
+const TextOrImage: React.FC<TextOrImageProps> = ({ layout, message }) => {
   if (layout.width * layout.height < 10000)
     return (
       <Image
@@ -12,11 +23,15 @@ function TextOrImage({ layout, message }) {
     );
 
   return <Text style={styles.text}>{message}</Text>;
-}
+};
 
-export default function UnsupportedView({ tag, style }) {
+interface Props {
+  tag: string;
+  style?: StyleProp<ViewStyle>;
+}
+const UnsupportedView: React.FC<Props> = ({ tag, style }) => {
   const { aspectRatio, ...extraStyles } = StyleSheet.flatten(style);
-  const [layout, setLayout] = useState({ width: null, height: null });
+  const [layout, setLayout] = useState({ width: 0, height: 0 });
 
   const message = `${tag} is not supported in Web Preview yet, please use Live Preview`;
   if (aspectRatio && extraStyles.position !== "absolute") {
@@ -41,7 +56,6 @@ export default function UnsupportedView({ tag, style }) {
             styles.container,
             { width: layout.width, height: layout.height },
           ]}
-          imageStyle={styles.image}
           source={require("../assets/bg.png")}
           resizeMode="repeat"
         >
@@ -66,7 +80,9 @@ export default function UnsupportedView({ tag, style }) {
       <TextOrImage layout={layout} message={message} />
     </ImageBackground>
   );
-}
+};
+
+export default UnsupportedView;
 
 const styles = StyleSheet.create({
   container: {

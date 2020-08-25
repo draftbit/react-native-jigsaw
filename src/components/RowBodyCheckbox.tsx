@@ -7,41 +7,41 @@ import {
 } from "../core/component-types";
 import Row from "./Row";
 import Checkbox from "./Checkbox";
-import Config from "./Config";
+import theme from "../styles/DefaultTheme";
+import { StyleProp, ViewStyle } from "react-native";
 
-class RowBodyCheckbox extends React.Component {
-  render() {
-    const {
-      title,
-      subtitle,
-      style,
-      status,
-      onPress,
-      color,
-      theme: { colors, typography },
-    } = this.props;
-
-    return (
-      <Row
-        titleTypeStyle={typography.body1}
-        titleColor={colors.medium}
-        subtitleTypeStyle={typography.subtitle2}
-        subtitleColor={colors.light}
-        title={title}
-        subtitle={subtitle}
-        right={() => (
-          <Checkbox
-            status={status}
-            size={Config.rowSingleLineIconSize}
-            color={color}
-            onPress={onPress}
-          />
-        )}
-        style={style}
-      />
-    );
-  }
+interface Props {
+  title?: string;
+  subtitle?: string;
+  style?: StyleProp<ViewStyle>;
+  status?: "checked" | "indeterminate" | "unchecked";
+  onPress?: () => void;
+  color?: string;
+  theme: typeof theme;
 }
+
+const RowBodyCheckbox: React.FC<Props> = ({
+  title,
+  subtitle,
+  style,
+  status = "unchecked",
+  onPress = () => {},
+  color,
+  theme: { colors, typography },
+}) => {
+  return (
+    <Row
+      titleTypeStyle={typography.body1}
+      titleColor={colors.medium}
+      subtitleTypeStyle={typography.subtitle2}
+      subtitleColor={colors.light}
+      title={title}
+      subtitle={subtitle}
+      right={() => <Checkbox status={status} color={color} onPress={onPress} />}
+      style={style}
+    />
+  );
+};
 
 export default withTheme(RowBodyCheckbox);
 

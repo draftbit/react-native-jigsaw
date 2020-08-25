@@ -11,17 +11,17 @@ import { withTheme } from "../core/theming";
 import themeT from "../styles/DefaultTheme";
 
 interface Props extends TouchableHighlightProps {
-  status: "checked" | "indeterminate" | "unchecked";
-  disabled: boolean;
-  onPress: () => void;
+  status?: "checked" | "indeterminate" | "unchecked";
+  disabled?: boolean;
+  onPress?: () => void;
   theme: typeof themeT;
   color?: string;
 }
 
 const CheckboxAndroid: React.FC<Props> = ({
-  status,
-  disabled,
-  onPress,
+  status = "unchecked",
+  disabled = false,
+  onPress = () => {},
   theme,
   color,
   ...rest

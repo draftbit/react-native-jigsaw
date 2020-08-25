@@ -10,7 +10,7 @@ const getWindowDimensions = () => {
 
 const { windowWidth, windowHeight } = getWindowDimensions();
 
-const getFilters = (options = {}) => {
+const getFilters = (options: { width: number; height: number }) => {
   const { width, height } = options;
   const filters = ["c_scale", "q_auto", "dpr_auto"];
 
@@ -20,7 +20,10 @@ const getFilters = (options = {}) => {
   return filters.join(",");
 };
 
-const buildImageUrl = (options, name) => {
+const buildImageUrl = (
+  options: { width: number; height: number },
+  name: string
+) => {
   const filters = getFilters(options);
   return [
     "https://res.cloudinary.com/altos/image/upload",
@@ -35,6 +38,7 @@ export default {
   avatarImageUrl: buildImageUrl(
     {
       width: 60,
+      height: 60,
     },
     "Avatar"
   ),
@@ -49,7 +53,7 @@ export default {
     "https://res.cloudinary.com/altos/image/upload/v1552677596/draftbit/Jigsaw/image-placeholder_1.png",
   getPlaceholderImageUrl: ({ width, height }) =>
     buildImageUrl({ width, height }, "image-placeholder_1"),
-  squareImageUrl: buildImageUrl({ width: 100 }, "Avatar"),
+  squareImageUrl: buildImageUrl({ width: 100, height: 100 }, "Avatar"),
   FABSize: 40,
   FABBorderRadius: 20,
   FABFixedHeight: 64,

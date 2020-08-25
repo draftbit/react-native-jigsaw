@@ -1,6 +1,13 @@
 import * as React from "react";
 import { withTheme } from "../core/theming";
-import { View, Text, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
+} from "react-native";
 import Icon from "./Icon";
 import Touchable from "./Touchable";
 import {
@@ -10,10 +17,33 @@ import {
   PROP_TYPES,
   FIELD_NAME,
 } from "../core/component-types";
+import themeT from "../styles/DefaultTheme";
 
-function RadioButtonGroup({
-  direction,
-  options,
+interface RadioButtonOption {
+  label: string;
+  icon?: string;
+}
+
+interface Props {
+  direction?: "horizontal" | "vertical";
+  options?: RadioButtonOption[];
+  activeColor?: string;
+  inactiveColor?: string;
+  labelStyle?: StyleProp<TextStyle>;
+  iconSize: number;
+  contentColor?: string;
+  unselectedContentColor?: string;
+  borderRadius?: number;
+  optionSpacing?: number;
+  borderColor?: string;
+  style?: StyleProp<ViewStyle>;
+  value: string;
+  onSelect?: (label: string) => void;
+  theme: typeof themeT;
+}
+const RadioButtonGroup: React.FC<Props> = ({
+  direction = "horizontal",
+  options = [],
   activeColor,
   inactiveColor,
   labelStyle,
@@ -25,14 +55,14 @@ function RadioButtonGroup({
   borderColor,
   style,
   value,
-  onSelect,
-}) {
+  onSelect = () => {},
+}) => {
   const marginHorizontal =
     direction === "horizontal" && optionSpacing ? optionSpacing / 2 : 0;
   const marginVertical =
     direction === "vertical" && optionSpacing ? optionSpacing / 2 : 0;
 
-  const containerStyle = {
+  const containerStyle: StyleProp<ViewStyle> = {
     flexDirection: direction === "vertical" ? "column" : "row",
     borderRadius: optionSpacing ? 0 : borderRadius,
     overflow: "hidden",
@@ -96,10 +126,6 @@ function RadioButtonGroup({
       })}
     </View>
   );
-}
-
-RadioButtonGroup.defaultProps = {
-  options: [],
 };
 
 export default withTheme(RadioButtonGroup);

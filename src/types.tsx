@@ -23,6 +23,20 @@ export type Fonts = {
   thin: Font;
 };
 
+export type colorTypes =
+  | "primary"
+  | "secondary"
+  | "surface"
+  | "background"
+  | "error"
+  | "divider"
+  | "strong"
+  | "medium"
+  | "light"
+  | "strongInverse"
+  | "mediumInverse"
+  | "lightInverse";
+
 export type Theme = any;
 
 // export type Theme = {

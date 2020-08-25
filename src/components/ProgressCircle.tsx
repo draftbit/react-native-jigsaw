@@ -5,16 +5,31 @@ import {
   GROUPS,
   PROP_TYPES,
 } from "../core/component-types";
-import { Text } from "react-native";
+import { Text, StyleProp, ViewStyle, TextStyle } from "react-native";
 import AnimatedCircularProgress from "./AnimatedCircularProgress";
 import { withTheme } from "../core/theming";
+import themeT from "../styles/DefaultTheme";
+import { colorTypes } from "../types";
 
-const ProgressCircle = ({
+interface Props {
+  progress: number;
+  style?: StyleProp<ViewStyle>;
+  color?: colorTypes;
+  size: number;
+  showsText?: boolean;
+  unfilledColor?: colorTypes;
+  strokeCap?: "butt" | "square" | "round" | undefined;
+  textStyle?: StyleProp<TextStyle>;
+  thickness: number;
+  theme: typeof themeT;
+}
+
+const ProgressCircle: React.FC<Props> = ({
   progress,
   style,
   color,
   size,
-  showsText,
+  showsText = false,
   unfilledColor,
   strokeCap,
   textStyle,

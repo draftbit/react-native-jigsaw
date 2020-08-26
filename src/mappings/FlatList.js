@@ -3,6 +3,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   GROUPS,
+  createNumColumnsType,
 } from "../core/component-types";
 
 export const SEED_DATA = {
@@ -21,19 +22,11 @@ export const SEED_DATA = {
       propType: PROP_TYPES.BOOLEAN,
       defaultValue: false,
     },
-    numColumns: {
+    numColumns: createNumColumnsType({
       group: GROUPS.basic,
-      label: "Number of columns",
-      description: "Number of columns (vertical list only)",
       editable: true,
-      required: false,
-      formType: FORM_TYPES.number,
-      propType: PROP_TYPES.NUMBER,
-      min: 1,
-      max: 4,
-      step: 1,
-      precision: 0,
-      defaultValue: null,
-    },
+      required: true,
+      description: "Number of columns (vertical list only)",
+    }),
   },
 };

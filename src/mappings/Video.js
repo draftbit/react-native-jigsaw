@@ -23,7 +23,7 @@ export const SEED_DATA = {
       description: "The URL the video should load",
       editable: true,
       required: true,
-      defaultValue: null,
+      defaultValue: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
       formType: FORM_TYPES.sourceUrl,
       propType: PROP_TYPES.OBJECT,
     },

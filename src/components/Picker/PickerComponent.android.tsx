@@ -24,7 +24,7 @@ const Picker: React.FC<PickerComponentProps> = ({
 
   const toggleFocus = () => {
     if (!disabled) {
-      textField.current.toggleFocus();
+      textField.current.toggleFocus(); // cannot determine if method exists due to component being wrapped in a withTheme()
     }
   };
 
@@ -57,7 +57,7 @@ const Picker: React.FC<PickerComponentProps> = ({
             {...props}
             value={selectedValue}
             placeholder={placeholder}
-            ref={textField}
+            ref={textField} // cannot determine if ref is of correct type due to component being wrapped in a withTheme()
             disabled={disabled}
           />
         </View>

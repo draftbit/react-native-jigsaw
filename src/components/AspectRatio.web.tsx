@@ -32,11 +32,9 @@ const AspectRatio: React.FC<Props> = ({ children, onLayout, ratio, style }) => {
 
 const styles = StyleSheet.create({
   root: {
-    display: "block",
     overflow: "hidden",
   },
   ratio: {
-    display: "block",
     width: "100%",
   },
   content: {

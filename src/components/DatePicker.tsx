@@ -58,7 +58,7 @@ const DatePicker: React.FC<Props> = ({
   ...props
 }) => {
   const [pickerVisible, setPickerVisible] = React.useState(false);
-  const textField = React.useRef<typeof TextField | null>();
+  const textField = React.useRef<typeof TextField | null>(null);
 
   const formatDate = (): string => {
     if (format) return dateFormat(date, format);
@@ -79,7 +79,7 @@ const DatePicker: React.FC<Props> = ({
   const toggleVisibility = async () => {
     setPickerVisible(!pickerVisible);
     if (textField.current) {
-      textField.current.toggleFocus();
+      textField.current.toggleFocus(); // cannot determine if method exists due to component being wrapped in a withTheme()
     }
   };
 
@@ -90,7 +90,7 @@ const DatePicker: React.FC<Props> = ({
           <TextField
             {...props}
             value={formatDate()}
-            ref={textField}
+            ref={textField} // cannot determine if ref is of correct type due to component being wrapped in a withTheme()
             disabled={disabled}
           />
         </View>

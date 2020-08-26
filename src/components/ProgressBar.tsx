@@ -98,6 +98,7 @@ export default class ProgressBar extends Component<Props, State> {
         Animated[animationType](this.state.progress, {
           ...animationConfig,
           toValue: progress,
+          velocity: 0, //adjust this value if animation fails - velocity is required
           useNativeDriver,
         }).start();
       } else {

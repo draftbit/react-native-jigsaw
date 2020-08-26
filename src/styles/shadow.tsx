@@ -1,8 +1,9 @@
 import color from "color";
+import themeT from "./DefaultTheme";
 // import * as Colors from "./colors";
 // import { Animated } from "react-native";
 
-export default function shadow(elevation, theme) {
+export default function shadow(elevation: number, theme: typeof themeT) {
   if (theme.elevation[elevation]) {
     const { borderOpacity, ...themeElevation } = theme.elevation[elevation];
     themeElevation.borderColor = color(themeElevation.borderColor)

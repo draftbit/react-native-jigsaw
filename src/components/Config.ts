@@ -51,8 +51,11 @@ export default {
   cardIconElevation: 1,
   placeholderImageURL:
     "https://res.cloudinary.com/altos/image/upload/v1552677596/draftbit/Jigsaw/image-placeholder_1.png",
-  getPlaceholderImageUrl: ({ width, height }) =>
-    buildImageUrl({ width, height }, "image-placeholder_1"),
+  getPlaceholderImageUrl: (size: { width: number; height: number }) =>
+    buildImageUrl(
+      { width: size.width, height: size.height },
+      "image-placeholder_1"
+    ),
   squareImageUrl: buildImageUrl({ width: 100, height: 100 }, "Avatar"),
   FABSize: 40,
   FABBorderRadius: 20,

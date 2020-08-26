@@ -75,12 +75,12 @@ const ELEVATION_TYPE = {
   group: GROUPS.basic,
 };
 
-export const createElevationType = (defaultValue) => ({
+export const createElevationType = (defaultValue: any) => ({
   ...ELEVATION_TYPE,
   defaultValue,
 });
 
-export const createNumColumnsType = (overrides) => ({
+export const createNumColumnsType = (overrides: any) => ({
   label: "Number of Columns",
   description: "Number of Columns",
   group: GROUPS.uncategorized,

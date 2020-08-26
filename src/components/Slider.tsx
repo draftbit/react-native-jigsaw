@@ -51,10 +51,11 @@ const Slider: React.FC<Props> = ({
 }) => {
   const [internalValue, setInternalValue] = React.useState(0);
 
+  const s = style as ViewStyle;
   const thumbStyle = {
     borderRadius: thumbBorderRadius || 0,
-    width: thumbSize || (style && style.height ? style.height * 0.4 : null),
-    height: thumbSize || (style && style.width ? style.width * 0.1 : null),
+    width: thumbSize || (s && s.height ? (s.height as number) * 0.4 : null),
+    height: thumbSize || (s && s.width ? (s.width as number) * 0.1 : null),
   };
 
   let actualThumbTouchSize = thumbSize + (thumbTouchSize || 0);
@@ -83,8 +84,8 @@ const Slider: React.FC<Props> = ({
       }}
       trackStyle={{
         borderRadius: trackBorderRadius ? trackBorderRadius : 0,
-        width: style ? style.width : "100%",
-        height: style ? style.height : null,
+        width: style ? s.width : "100%",
+        height: style ? s.height : null,
       }}
       thumbStyle={thumbStyle}
       style={disabled ? [style, { opacity: 0.6 }] : style}

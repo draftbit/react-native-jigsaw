@@ -28,7 +28,7 @@ const Picker: React.FC<PickerComponentProps> = ({
 
   const toggleVisibility = () => {
     setIsPickerVisible(!pickerVisible);
-    textField.current.toggleFocus();
+    textField.current.toggleFocus(); // cannot determine if method exists due to component being wrapped in a withTheme()
   };
 
   return (
@@ -38,7 +38,7 @@ const Picker: React.FC<PickerComponentProps> = ({
           {...props}
           value={selectedValue}
           placeholder={placeholder}
-          ref={textField}
+          ref={textField} // cannot determine if ref is of correct type due to component being wrapped in a withTheme()
           disabled={disabled}
           pointerEvents="none"
         />

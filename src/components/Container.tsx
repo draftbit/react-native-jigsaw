@@ -67,8 +67,8 @@ const Container: React.FC<Props> = ({
               bottom: 0,
               left: 0,
               right: 0,
-              width: style && style.width,
-              height: style && style.height,
+              width: style ? (style as ViewStyle).width : 0,
+              height: style ? (style as ViewStyle).height : 0,
             }}
           />
         ) : null}

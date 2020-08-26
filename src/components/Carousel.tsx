@@ -24,7 +24,7 @@ import theme from "../styles/DefaultTheme";
 import { ResizeModeType } from "./ResizeMode";
 
 interface Props {
-  images: string | Blob;
+  images: string[] | Blob[];
   aspectRatio?: number;
   swiperPalette?: "surface" | "non-sruface";
   resizeMode?: ResizeModeType;
@@ -60,7 +60,7 @@ const Carousel: React.FC<Props> = ({
     const widthD = Dimensions.get("window").width;
     const s = style as ViewStyle;
     if (s.width) {
-      setWidth(s.width);
+      setWidth(typeof s.width === "string" ? +s.width : s.width);
     } else {
       setWidth(widthD);
     }
@@ -95,7 +95,7 @@ const Carousel: React.FC<Props> = ({
                   width,
                   flex: 1,
                   aspectRatio,
-                  height: style.height,
+                  height: (style as ViewStyle).height,
                 }}
               />
             </View>

@@ -1,22 +1,15 @@
 import React, { useState } from "react";
 import {
   Image as NativeImage,
-  StyleProp,
   ImageStyle,
   ImageProps,
   LayoutChangeEvent,
+  ImageSourcePropType,
 } from "react-native";
 import AspectRatio from "./AspectRatio.web";
 import Config from "./Config";
-import { ResizeModeType } from "./ResizeMode";
 
-interface Props extends ImageProps {
-  source: string | Blob;
-  style?: StyleProp<ImageStyle>;
-  resizeMode?: ResizeModeType;
-}
-
-const Image: React.FC<Props> = ({
+const Image: React.FC<ImageProps> = ({
   source = Config.placeholderImageURL,
   style,
   resizeMode = "cover",
@@ -44,14 +37,14 @@ const Image: React.FC<Props> = ({
               height,
             },
           ]}
-          source={source}
+          source={source as ImageSourcePropType}
           resizeMode={resizeMode}
         />
       </AspectRatio>
     );
   }
 
-  return <NativeImage source={source} {...props} />;
+  return <NativeImage source={source as ImageSourcePropType} {...props} />;
 };
 
 export default Image;

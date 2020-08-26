@@ -13,7 +13,7 @@ import themeT from "../styles/DefaultTheme";
 interface Props extends SwitchProps {
   value: boolean;
   disabled?: boolean;
-  onValueChange?: (value: boolean) => {};
+  onValueChange?: (value: boolean) => void;
   color?: string;
   theme: typeof themeT;
 }

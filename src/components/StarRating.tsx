@@ -22,7 +22,7 @@ const StarRating: React.FC<Props> = ({
 
   return (
     <View style={[styles.containerStyle, style]}>
-      {[...Array(maxStars)].map((s, i) => (
+      {[...Array(maxStars)].map((_, i) => (
         <Icon
           key={i}
           name={

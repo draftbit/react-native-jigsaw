@@ -107,8 +107,8 @@ export default {
     global: 6,
     button: 24,
   },
-  elevation: {
-    0: {
+  elevation: [
+    {
       shadowColor: colors.strong,
       shadowOffset: { width: 0, height: 0 },
       shadowRadius: 0,
@@ -117,7 +117,7 @@ export default {
       borderColor: colors.strong,
       borderOpacity: 0,
     },
-    1: {
+    {
       shadowColor: colors.strong,
       shadowOffset: { width: 0, height: 2 },
       shadowRadius: 4,
@@ -126,7 +126,7 @@ export default {
       borderColor: colors.strong,
       borderOpacity: 0.06,
     },
-    2: {
+    {
       shadowColor: colors.strong,
       shadowOffset: { width: 0, height: 2 },
       shadowRadius: 4,
@@ -135,7 +135,7 @@ export default {
       borderColor: colors.strong,
       borderOpacity: 0,
     },
-    3: {
+    {
       shadowColor: colors.strong,
       shadowOffset: { width: 0, height: 6 },
       shadowRadius: 6,
@@ -144,5 +144,5 @@ export default {
       borderColor: colors.strong,
       borderOpacity: 0,
     },
-  },
+  ],
 };

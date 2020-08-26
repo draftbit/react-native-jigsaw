@@ -1,5 +1,11 @@
 import * as React from "react";
-import { Animated, Easing, EasingFunction } from "react-native";
+import {
+  Animated,
+  Easing,
+  EasingFunction,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import CircularProgress, {
   Props as CircularProgressProps,
 } from "./CircularProgress";
@@ -80,6 +86,12 @@ const AnimatedCircularProgress: React.FC<Props> = ({
   return (
     <AnimatedProgress
       {...other}
+      style={other.style as Animated.WithAnimatedValue<StyleProp<ViewStyle>>}
+      childrenContainerStyle={
+        other.childrenContainerStyle as Animated.WithAnimatedValue<
+          StyleProp<ViewStyle>
+        >
+      }
       fill={fillAnimation}
       tintColor={animateColor()}
     />

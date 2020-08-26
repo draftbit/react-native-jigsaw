@@ -8,11 +8,7 @@ import {
   GROUPS,
 } from "../core/component-types";
 
-interface Props extends ImageProps {
-  source: string | Blob;
-}
-
-const Image: React.FC<Props> = ({
+const Image: React.FC<ImageProps> = ({
   source = Config.placeholderImageURL,
   resizeMode = "cover",
   ...props

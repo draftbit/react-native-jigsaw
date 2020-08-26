@@ -13,6 +13,7 @@ import {
   ViewStyle,
   TextStyle,
   LayoutChangeEvent,
+  ImageStyle,
 } from "react-native";
 import { withTheme } from "../core/theming";
 import {
@@ -45,7 +46,9 @@ export interface Props extends TextInputProps {
   multiline?: boolean;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
-  render?: (props: TextInputProps) => React.ReactNode;
+  render?: (
+    props: TextInputProps & { ref: (c: NativeTextInput) => void }
+  ) => React.ReactNode;
 }
 
 interface State {
@@ -327,10 +330,10 @@ class TextField extends React.Component<Props> {
     const leftIconProps = {
       size: 24,
       color: leftIconColor,
-      name: leftIconName,
+      name: leftIconName || "",
     };
 
-    const leftIconStyle = {
+    const leftIconStyle: ImageStyle = {
       position: "absolute",
       marginTop:
         type === "solid"
@@ -485,8 +488,7 @@ class TextField extends React.Component<Props> {
           ) : null}
 
           {render({
-            ...rest,
-            ref: (c: any) => {
+            ref: (c: NativeTextInput) => {
               this._root = c;
             },
             onChange: this._handleChangeText,
@@ -501,6 +503,7 @@ class TextField extends React.Component<Props> {
             onBlur: this._handleBlur,
             underlineColorAndroid: "transparent",
             style: inputStyles,
+            ...rest,
           })}
         </View>
         {rightIconName ? (

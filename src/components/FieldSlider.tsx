@@ -36,8 +36,8 @@ const FieldSlider: React.FC<Props> = ({
       )}
       <Slider
         style={{
-          width: style && style.width,
-          height: style && style.height,
+          width: style ? (style as ViewStyle).width : 0,
+          height: style ? (style as ViewStyle).height : 0,
         }}
         {...props}
       />

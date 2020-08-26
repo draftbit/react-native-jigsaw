@@ -88,7 +88,11 @@ const RadioButtonGroup: React.FC<Props> = ({
                 alignItems: "center",
                 justifyContent: "center",
                 backgroundColor: selected ? activeColor : inactiveColor,
-                height: style && style.height ? style.height : 50,
+                height: style
+                  ? (style as ViewStyle).height
+                    ? (style as ViewStyle).height
+                    : 50
+                  : 50,
                 borderLeftWidth:
                   borderColor && index !== 0 ? StyleSheet.hairlineWidth : 0,
                 borderRightWidth:

@@ -18,10 +18,8 @@ export const GROUPS = {
 
 export const FORM_TYPES = {
   json: "json",
-  multiselect: "multiselect",
   position: "position",
   sourceUrl: "sourceUrl",
-  url: "url",
   string: "string",
   boolean: "boolean",
   number: "number",
@@ -29,7 +27,6 @@ export const FORM_TYPES = {
   color: "color",
   typeStyle: "typeStyle",
   component: "component",
-  geolocation: "geolocation",
   localImage: "localImage",
   remoteImage: "remoteImage",
   localImageArray: "localImageArray",
@@ -40,7 +37,6 @@ export const FORM_TYPES = {
   array: "array" /* array of objects */,
   aspectRatio: "aspectRatio",
   date: "date",
-  borderRadiusMode: "borderRadiusMode",
   fieldName: "fieldName",
   action: "action",
 };
@@ -84,24 +80,14 @@ export const createNumColumnsType = (overrides) => ({
   label: "Number of Columns",
   description: "Number of Columns",
   group: GROUPS.uncategorized,
-  formType: FORM_TYPES.number,
+  options: [1, 2, 3, 4],
+  formType: FORM_TYPES.flatArray,
   propType: PROP_TYPES.NUMBER,
   defaultValue: 1,
   editable: false,
   required: false,
   ...overrides,
 });
-
-export const BORDER_RADIUS_MODE = {
-  label: "Border radius",
-  description:
-    "Border radius of the element - either None, Global (using theme global border radius), or Round (must specify a width and height on component)",
-  formType: FORM_TYPES.borderRadiusMode,
-  propType: PROP_TYPES.THEME,
-  defaultValue: null,
-  editable: true,
-  required: true,
-};
 
 export const FIELD_NAME = {
   group: GROUPS.basic,

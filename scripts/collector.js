@@ -25,7 +25,7 @@ async function main() {
   // }
 
   console.log("Running on", getUrl(), "[warnings surpressed]");
-  const componentFiles = await globAsync(`${COMPONENT_PATH}/**/*.js`);
+  const componentFiles = await globAsync(`${COMPONENT_PATH}/**/*.tsx`);
   const mappingFiles = await globAsync(`${MAPPING_PATH}/**/*.js`);
   const files = [...componentFiles, ...mappingFiles].filter((file) => {
     const name = file.split("/").pop();

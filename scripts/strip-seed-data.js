@@ -4,7 +4,7 @@ const { promisify } = require("util");
 
 const readFileAsync = promisify(fs.readFile);
 
-const COMPONENT_TYPES_PATH = path.resolve("./src/core/component-types.js");
+const COMPONENT_TYPES_PATH = path.resolve("./src/core/component-types.ts");
 const CLOUDINARY_URL =
   "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps";
 

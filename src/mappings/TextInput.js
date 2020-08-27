@@ -18,12 +18,11 @@ export const SEED_DATA = {
   layout: {},
   props: {
     ...TEXT_INPUT_PROPS,
-    /* TODO remove this ? */
     style: {
       group: GROUPS.basic,
       label: "Style",
       description: "Text Style",
-      editable: true,
+      editable: false,
       required: false,
       formType: FORM_TYPES.typeStyle,
       propType: PROP_TYPES.THEME,

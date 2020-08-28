@@ -107,7 +107,7 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
-      defaultValue: true,
+      defaultValue: null,
     },
     adjustsFontSizeToFit: {
       group: GROUPS.advanced,
@@ -119,7 +119,7 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
-      defaultValue: false,
+      defaultValue: null,
     },
     allowFontScaling: {
       group: GROUPS.advanced,
@@ -131,7 +131,7 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
-      defaultValue: true,
+      defaultValue: null,
     },
     dataDetectorType: {
       group: GROUPS.advanced,
@@ -156,7 +156,7 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
-      defaultValue: false,
+      defaultValue: null,
     },
     ellipsizeMode: {
       group: GROUPS.basic,
@@ -169,7 +169,7 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.STRING,
-      defaultValue: "tail",
+      defaultValue: null,
     },
     maxFontSizeMultiplier: {
       group: GROUPS.advanced,
@@ -246,7 +246,7 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
-      defaultValue: false,
+      defaultValue: null,
     },
     textBreakStrategy: {
       group: GROUPS.advanced,
@@ -259,7 +259,7 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.STRING,
-      defaultValue: "highQuality",
+      defaultValue: null,
     },
   },
 };

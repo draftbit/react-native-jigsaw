@@ -90,6 +90,7 @@ const SEED_DATA_PROPS = {
     formType: FORM_TYPES.array,
     propType: PROP_TYPES.OBJECT,
     defaultValue: null,
+    options: [],
     group: GROUPS.data,
   },
   disabled: {

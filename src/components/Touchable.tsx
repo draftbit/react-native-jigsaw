@@ -1,12 +1,12 @@
 import React from "react";
 import {
   View,
-  TouchableHighlight as Touchable,
-  TouchableHighlightProps,
+  TouchableOpacity as Touchable,
+  TouchableOpacityProps,
 } from "react-native";
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
-export default class extends React.Component<TouchableHighlightProps> {
+export default class extends React.Component<TouchableOpacityProps> {
   render() {
     const { children, ...props } = this.props;
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import color from "color";
 import themeT from "./DefaultTheme";
 // import * as Colors from "./colors";

@@ -8205,6 +8205,11 @@ react-native-svg@^12.1.0:
     css-select "^2.1.0"
     css-tree "^1.0.0-alpha.39"
 
+react-native-typography@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/react-native-typography/-/react-native-typography-1.4.1.tgz#2d05cb5935a2f7fdb6b43bbde93d60f1324578e3"
+  integrity sha512-dc9Zfs4jUdq4ygx4/KwO6jKTERBu6cRrfPJGntw/pA+D6BMjlWfMNuhZ/69vf4Zpsnt9s4AGe+Z/V1QFYaCXAA==
+
 react-native-windows@^0.62.0-0:
   version "0.62.6"
   resolved "https://registry.yarnpkg.com/react-native-windows/-/react-native-windows-0.62.6.tgz#a5bcd10ac4cae6ca5e63bff9b4b3368fd172770f"

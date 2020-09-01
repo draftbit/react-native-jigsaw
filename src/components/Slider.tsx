@@ -1,5 +1,6 @@
 import * as React from "react";
 // TODO replace this with community slider
+//@ts-ignore
 import { default as ReactNativeSlider } from "react-native-slider";
 import { withTheme } from "../core/theming";
 import {

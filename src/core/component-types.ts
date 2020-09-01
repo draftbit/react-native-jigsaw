@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const PROP_TYPES = {
   STRING: "STRING",
   ARRAY: "ARRAY",
@@ -75,12 +76,12 @@ const ELEVATION_TYPE = {
   group: GROUPS.basic,
 };
 
-export const createElevationType = (defaultValue: any) => ({
+export const createElevationType = (defaultValue) => ({
   ...ELEVATION_TYPE,
   defaultValue,
 });
 
-export const createNumColumnsType = (overrides: any) => ({
+export const createNumColumnsType = (overrides) => ({
   label: "Number of Columns",
   description: "Number of Columns",
   group: GROUPS.uncategorized,

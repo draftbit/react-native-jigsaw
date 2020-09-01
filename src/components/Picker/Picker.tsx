@@ -1,5 +1,6 @@
 import * as React from "react";
 import { withTheme } from "../../core/theming";
+//@ts-ignore
 import PickerComponent from "./PickerComponent"; //unable to find file due to using .android/.web/.ios
 import { PickerComponentProps } from "./PickerTypes";
 

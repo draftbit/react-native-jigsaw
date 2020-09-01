@@ -22,6 +22,8 @@ const Image: React.FC<ImageProps> = ({
   );
 };
 
+export default Image;
+
 export const SEED_DATA = {
   name: "Image",
   tag: "Image",
@@ -59,5 +61,3 @@ export const SEED_DATA = {
     },
   },
 };
-
-export default Image;

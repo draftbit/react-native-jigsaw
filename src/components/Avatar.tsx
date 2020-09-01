@@ -26,6 +26,8 @@ const Avatar: React.FC<Props> = ({
   );
 };
 
+export default Avatar;
+
 export const SEED_DATA = {
   name: "Avatar",
   tag: "Avatar",
@@ -59,5 +61,3 @@ export const SEED_DATA = {
     height: 80,
   },
 };
-
-export default Avatar;

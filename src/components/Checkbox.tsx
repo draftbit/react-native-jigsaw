@@ -1,8 +1,7 @@
 import * as React from "react";
-import { Platform, TouchableHighlightProps } from "react-native";
+import { Platform, TouchableOpacityProps } from "react-native";
 import CheckboxAndroid from "./CheckboxAndroid";
 import CheckboxIOS from "./CheckboxIOS";
-import { withTheme } from "../core/theming";
 
 import {
   GROUPS,
@@ -11,35 +10,21 @@ import {
   PROP_TYPES,
   FIELD_NAME,
 } from "../core/component-types";
-import themeT from "../styles/DefaultTheme";
 
-interface Props extends TouchableHighlightProps {
+interface Props extends TouchableOpacityProps {
   status?: "checked" | "indeterminate" | "unchecked";
   disabled?: boolean;
   onPress?: () => void;
-  theme: typeof themeT;
   color?: string;
 }
 
-class Checkbox extends React.Component<Props> {
-  // @component ./CheckboxAndroid.js
-  static Android = CheckboxAndroid;
-
-  // @component ./CheckboxIOS.js
-  static IOS = CheckboxIOS;
-
-  render() {
-    const { theme, ...props } = this.props;
-    theme; //has to be removed from props to pass to ios + android version - this gets rid of unused var error
-    return Platform.OS === "ios" ? (
-      <CheckboxIOS {...props} />
-    ) : (
-      <CheckboxAndroid {...props} />
-    );
-  }
+export default function Checkbox(props: Props) {
+  return Platform.OS === "ios" ? (
+    <CheckboxIOS {...props} />
+  ) : (
+    <CheckboxAndroid {...props} />
+  );
 }
-
-export default withTheme(Checkbox);
 
 export const SEED_DATA = {
   name: "Checkbox",

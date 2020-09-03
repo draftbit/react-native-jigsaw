@@ -1,7 +1,13 @@
 import * as React from "react";
-import { View, Text, StyleProp, ViewStyle } from "react-native";
+import { View, Text, StyleProp, ViewStyle, TextStyle } from "react-native";
 import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FIELD_NAME } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  GROUPS,
+  PROP_TYPES,
+  FIELD_NAME,
+} from "../core/component-types";
 import IconButton from "./IconButton";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
@@ -11,6 +17,10 @@ interface Props {
   theme: typeof theme;
   style?: StyleProp<ViewStyle>;
   onChange?: (value: number) => void;
+  iconSize?: number;
+  iconColor?: string;
+  borderRadius?: number;
+  typeStyle?: StyleProp<TextStyle>;
 }
 
 const Stepper: React.FC<Props> = ({
@@ -18,6 +28,10 @@ const Stepper: React.FC<Props> = ({
   style,
   onChange,
   theme: { colors, typography, spacing },
+  iconSize = Config.stepperButtonSize,
+  iconColor = colors.strong,
+  borderRadius = 0,
+  typeStyle,
 }) => {
   const [stateValue, setStateValue] = React.useState(value);
 
@@ -38,12 +52,18 @@ const Stepper: React.FC<Props> = ({
   };
 
   return (
-    <View style={[{ flexDirection: "row" }, style]}>
+    <View
+      style={[
+        { flexDirection: "row" },
+        style,
+        borderRadius ? { borderRadius } : {},
+      ]}
+    >
       <IconButton
         icon="MaterialIcons/remove"
         onPress={handleMinus}
-        size={Config.stepperButtonSize}
-        color={colors.strong}
+        size={iconSize}
+        color={iconColor}
         disabled={value ? value === 0 : stateValue === 0}
       />
       <Text
@@ -55,6 +75,7 @@ const Stepper: React.FC<Props> = ({
             color: colors.medium,
             marginHorizontal: spacing.medium,
           },
+          typeStyle,
         ]}
       >
         {value || stateValue}
@@ -62,8 +83,8 @@ const Stepper: React.FC<Props> = ({
       <IconButton
         icon="MaterialIcons/add"
         onPress={handlePlus}
-        size={Config.stepperButtonSize}
-        color={colors.strong}
+        size={iconSize}
+        color={iconColor}
       />
     </View>
   );
@@ -83,6 +104,36 @@ export const SEED_DATA = [
       fieldName: {
         ...FIELD_NAME,
         defaultValue: "stepperValue",
+      },
+      iconSize: {
+        group: GROUPS.basic,
+        label: "Current Icon Size",
+        description: "The size of the icons",
+        editable: true,
+        required: false,
+        formType: FORM_TYPES.number,
+        propType: PROP_TYPES.NUMBER,
+        defaultValue: null,
+      },
+      iconColor: {
+        group: GROUPS.basic,
+        label: "Current Icon Color",
+        description: "The color of the icons",
+        editable: true,
+        required: false,
+        formType: FORM_TYPES.color,
+        propType: PROP_TYPES.THEME,
+        defaultValue: null,
+      },
+      borderRadius: {
+        group: GROUPS.basic,
+        label: "Current Container Border Radius",
+        description: "The radius of the stepper container",
+        editable: true,
+        required: false,
+        formType: FORM_TYPES.number,
+        propType: PROP_TYPES.NUMBER,
+        defaultValue: null,
       },
     },
     layout: {},

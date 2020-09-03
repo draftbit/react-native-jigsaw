@@ -70,6 +70,8 @@ const ROUTES = {
   TextField: TextFieldExample,
 };
 
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+
 function Example({ title, children }) {
   return (
     <View style={{ marginBottom: 24 }}>
@@ -115,15 +117,19 @@ export default class App extends React.Component {
     if (this.state.fontsLoaded) {
       return (
         <Provider theme={DefaultTheme}>
-          <ScrollView style={{ flex: 1 }}>
-            {Object.entries(ROUTES).map(([key, Screen]) => {
-              return (
-                <Example key={key} title={key}>
-                  <Screen />
-                </Example>
-              );
-            })}
-          </ScrollView>
+          <SafeAreaProvider>
+            <SafeAreaView style={{ flex: 1 }}>
+              <ScrollView style={{ flex: 1 }}>
+                {Object.entries(ROUTES).map(([key, Screen]) => {
+                  return (
+                    <Example key={key} title={key}>
+                      <Screen />
+                    </Example>
+                  );
+                })}
+              </ScrollView>
+            </SafeAreaView>
+          </SafeAreaProvider>
         </Provider>
       );
     } else {

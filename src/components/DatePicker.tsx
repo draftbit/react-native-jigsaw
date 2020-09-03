@@ -1,11 +1,7 @@
 import * as React from "react";
-import {
-  View,
-  SafeAreaView,
-  StyleSheet,
-  StyleProp,
-  ViewStyle,
-} from "react-native";
+import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 import DateTimePicker from "@react-native-community/datetimepicker";
 import dateFormat from "dateformat";
 import { withTheme } from "../core/theming";

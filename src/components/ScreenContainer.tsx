@@ -3,10 +3,11 @@ import {
   StyleSheet,
   ScrollView,
   View,
-  SafeAreaView,
   StyleProp,
   ViewStyle,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 import { withTheme } from "../core/theming";
 import Config from "./Config";
 import themeT from "../styles/DefaultTheme";

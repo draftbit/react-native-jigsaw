@@ -1,5 +1,14 @@
+import "react-native-gesture-handler";
 import * as React from "react";
-import { View, Text, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  Dimensions,
+} from "react-native";
 import { Provider, DefaultTheme } from "@draftbit/ui";
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
@@ -39,6 +48,12 @@ import StepperExample from "./StepperExample";
 import TextFieldExample from "./TextFieldExample";
 
 import ProgressIndicatorExample from "./ProgressIndicatorExample.js";
+import {
+  NavigationContainer,
+  useNavigation,
+  DrawerActions,
+} from "@react-navigation/native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const ROUTES = {
   Avatar: AvatarExample,
@@ -72,22 +87,28 @@ const ROUTES = {
 
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
+const screenWidth = Dimensions.get("window").width;
+const screenHeight = Dimensions.get("window").height;
+
 function Example({ title, children }) {
+  const navigation = useNavigation();
   return (
-    <View style={{ marginBottom: 24 }}>
-      <Text
-        style={{
-          fontWeight: "bold",
-          fontFamily: "Testing",
-          fontSize: 28,
-          backgroundColor: "rgba(250, 250, 0, 0.2)",
-          marginBottom: 8,
-          paddingVertical: 4,
-        }}
-      >
-        {title}
-      </Text>
-      <View>{children}</View>
+    <View style={exampleStyles.mainParent}>
+      <View style={exampleStyles.headerStyle}>
+        <TouchableOpacity
+          style={exampleStyles.menuButtonStyle}
+          onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
+        >
+          <Image
+            style={exampleStyles.menuButtonImageStyle}
+            source={require("../assets/images/hamburger.png")}
+          />
+        </TouchableOpacity>
+
+        <Text style={[exampleStyles.headerTextStyle]}>{title}</Text>
+      </View>
+
+      <ScrollView>{children}</ScrollView>
     </View>
   );
 }
@@ -113,21 +134,35 @@ export default class App extends React.Component {
     this._loadFontsAsync();
   }
 
+  renderScreen = (key: string, Screen: any) => {
+    return () => (
+      <Example key={key} title={key}>
+        <Screen />
+      </Example>
+    );
+  };
+
   render() {
+    const Drawer = createDrawerNavigator();
+
     if (this.state.fontsLoaded) {
       return (
         <Provider theme={DefaultTheme}>
           <SafeAreaProvider>
             <SafeAreaView style={{ flex: 1 }}>
-              <ScrollView style={{ flex: 1 }}>
-                {Object.entries(ROUTES).map(([key, Screen]) => {
-                  return (
-                    <Example key={key} title={key}>
-                      <Screen />
-                    </Example>
-                  );
-                })}
-              </ScrollView>
+              <NavigationContainer>
+                <Drawer.Navigator initialRouteName="Avatar">
+                  {Object.entries(ROUTES).map(([key, Screen]) => {
+                    return (
+                      <Drawer.Screen
+                        key={key}
+                        name={key}
+                        component={this.renderScreen(key, Screen)}
+                      />
+                    );
+                  })}
+                </Drawer.Navigator>
+              </NavigationContainer>
             </SafeAreaView>
           </SafeAreaProvider>
         </Provider>
@@ -137,3 +172,51 @@ export default class App extends React.Component {
     }
   }
 }
+
+const exampleStyles = StyleSheet.create({
+  mainParent: {
+    width: screenWidth,
+    height: screenHeight,
+    backgroundColor: "rgba(251, 252, 253, 1)",
+  },
+  headerStyle: {
+    flexDirection: "row",
+    backgroundColor: "rgba(90, 69, 255, 1)",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    height: "10%",
+    overflow: "hidden",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+
+    elevation: 7,
+  },
+  menuButtonStyle: {
+    flex: 0.2,
+    alignItems: "center",
+  },
+  menuButtonImageStyle: {
+    height: screenHeight * 0.1 * 0.5, //Uses screenHeight & width due to expo web not supporting percentages
+    width: screenWidth * 0.5,
+    resizeMode: "contain",
+    tintColor: "white",
+  },
+  headerTextStyle: {
+    flex: 1,
+    fontWeight: "bold",
+    color: "white",
+    fontSize: 22,
+    marginTop: screenHeight * 0.01,
+    marginStart: "2%",
+    marginBottom: 8,
+    paddingVertical: 4,
+  },
+  scrollViewStyle: {
+    paddingBottom: 20,
+  },
+});

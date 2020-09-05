@@ -11,9 +11,9 @@ function SliderExample({ theme }) {
       <Section title="Active">
         <Slider
           style={{ height: 4 }}
-          maximumTrackTintColor="#5a45ff"
-          minimumTrackTintColor="#536070"
-          thumbTintColor="#5a45ff"
+          maximumTrackTintColor="primary"
+          minimumTrackTintColor="light"
+          thumbTintColor="primary"
           thumbBorderRadius={4}
           trackBorderRadius={4}
           thumbSize={8}
@@ -30,10 +30,10 @@ function SliderExample({ theme }) {
         <Slider
           disabled={true}
           style={{ height: 10 }}
-          minimumTrackTintColor="#5a45ff"
-          maximumTrackTintColor="#536070"
-          thumbTintColor="#00FF00"
-          disabledThumbTintColor="#000000"
+          maximumTrackTintColor="primary"
+          minimumTrackTintColor="light"
+          thumbTintColor="primary"
+          disabledThumbTintColor="strong"
           thumbBorderRadius={20}
           thumbSize={20}
           value={value}
@@ -50,9 +50,9 @@ function SliderExample({ theme }) {
           minimumLabel="0"
           maximumLabel="10"
           style={{ height: 6 }}
-          minimumTrackTintColor="#5a45ff"
-          maximumTrackTintColor="#536070"
-          thumbTintColor="#3BC9EA"
+          maximumTrackTintColor="primary"
+          minimumTrackTintColor="light"
+          thumbTintColor="primary"
           thumbBorderRadius={10}
           trackBorderRadius={10}
           thumbSize={20}

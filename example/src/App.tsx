@@ -151,7 +151,12 @@ export default class App extends React.Component {
           <SafeAreaProvider>
             <SafeAreaView style={{ flex: 1 }}>
               <NavigationContainer>
-                <Drawer.Navigator initialRouteName="Avatar">
+                <Drawer.Navigator
+                  drawerContentOptions={{
+                    activeTintColor: "rgba(90, 69, 255, 1)",
+                  }}
+                  initialRouteName="Avatar"
+                >
                   {Object.entries(ROUTES).map(([key, Screen]) => {
                     return (
                       <Drawer.Screen

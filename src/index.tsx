@@ -46,6 +46,8 @@ export { default as ProgressIndicator } from "./components/ProgressIndicator";
 
 export { default as RadioButton } from "./components/RadioButton";
 export { default as RadioButtonGroup } from "./components/RadioButtonGroup";
+export { default as RadioButtonFieldRow } from "./components/RadioButtonFieldRow";
+export { default as RadioButtonFieldGroup } from "./components/RadioButtonFieldGroup";
 
 export { default as RowBodyCheckbox } from "./components/RowBodyCheckbox";
 export { default as RowBodyIcon } from "./components/RowBodyIcon";

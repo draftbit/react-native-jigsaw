@@ -10,6 +10,7 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
   ImageStyle,
+  Platform,
 } from "react-native";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
@@ -22,6 +23,8 @@ import {
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 import { ResizeModeType } from "./ResizeMode";
+
+const screenWidth = Dimensions.get("window").width;
 
 interface Props {
   images: string[] | Blob[];
@@ -47,7 +50,7 @@ const Carousel: React.FC<Props> = ({
   resizeMode = "cover",
   dotColor,
   theme: { colors, spacing },
-  style = { height: 250 },
+  style = { height: screenWidth * 0.5 },
 }) => {
   const [scrollOffset, setScrollOffset] = useState(0);
   const [width, setWidth] = useState(0);
@@ -57,12 +60,11 @@ const Carousel: React.FC<Props> = ({
   };
 
   const onPageLayout = () => {
-    const widthD = Dimensions.get("window").width;
     const s = style as ViewStyle;
     if (s.width) {
       setWidth(typeof s.width === "string" ? +s.width : s.width);
     } else {
-      setWidth(widthD);
+      setWidth(screenWidth);
     }
   };
 
@@ -75,7 +77,7 @@ const Carousel: React.FC<Props> = ({
         onScroll={handleScroll}
         horizontal
         pagingEnabled
-        showsHorizontalScrollIndicator={false}
+        showsHorizontalScrollIndicator={Platform.OS === "web"}
         scrollEventThrottle={16}
       >
         {images.map((image, index) => {

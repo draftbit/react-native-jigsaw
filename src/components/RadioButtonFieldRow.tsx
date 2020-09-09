@@ -11,12 +11,13 @@ import RadioButton from "./RadioButton";
 import themeT from "../styles/DefaultTheme";
 import { View } from "react-native";
 import Text from "./Text";
+import { colorTypes } from "../types";
 
 interface Props {
   label: string;
-  backgroundColor?: string;
-  labelColor?: string;
-  radioButtonColor?: string;
+  backgroundColor?: colorTypes;
+  labelColor?: colorTypes;
+  radioButtonColor?: colorTypes;
   style?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
   onPress?: () => void;
@@ -26,10 +27,10 @@ interface Props {
 
 const RadioButtonFieldRow: React.FC<Props> = ({
   label,
-  theme: { colors },
-  backgroundColor = colors.background,
-  labelColor = "#000",
-  radioButtonColor = colors.primary,
+  theme,
+  backgroundColor = "background",
+  labelColor = "strong",
+  radioButtonColor = "primary",
   onPress,
   selected,
   style,
@@ -38,14 +39,20 @@ const RadioButtonFieldRow: React.FC<Props> = ({
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[styles.mainParent, style, { backgroundColor }]}
+      style={[
+        styles.mainParent,
+        style,
+        { backgroundColor: theme.colors[backgroundColor] },
+      ]}
     >
-      <Text style={[styles.label, labelStyle, { color: labelColor }]}>
+      <Text
+        style={[styles.label, labelStyle, { color: theme.colors[labelColor] }]}
+      >
         {label}
       </Text>
       <View style={styles.radioButton}>
         <RadioButton
-          color={radioButtonColor}
+          color={theme.colors[radioButtonColor]}
           unselectedColor={radioButtonColor}
           selected={selected}
           onPress={onPress}

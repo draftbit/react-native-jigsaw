@@ -7,9 +7,9 @@ import {
   GROUPS,
   PROP_TYPES,
   FIELD_NAME,
+  BORDER_RADIUS_MODE,
 } from "../core/component-types";
 import IconButton from "./IconButton";
-import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 
 interface Props {
@@ -28,9 +28,9 @@ const Stepper: React.FC<Props> = ({
   style,
   onChange,
   theme: { colors, typography, spacing },
-  iconSize = Config.stepperButtonSize,
+  iconSize = 24,
   iconColor = colors.strong,
-  borderRadius = 0,
+  borderRadius = theme.borderRadius.button,
   typeStyle,
 }) => {
   const [stateValue, setStateValue] = React.useState(value);
@@ -73,7 +73,7 @@ const Stepper: React.FC<Props> = ({
             textAlign: "center",
             alignSelf: "center",
             color: colors.medium,
-            marginHorizontal: spacing.medium,
+            marginHorizontal: spacing.small,
           },
           typeStyle,
         ]}
@@ -111,9 +111,12 @@ export const SEED_DATA = [
         description: "The size of the icons",
         editable: true,
         required: false,
+        min: 0,
+        max: 60,
+        step: 1,
         formType: FORM_TYPES.number,
         propType: PROP_TYPES.NUMBER,
-        defaultValue: null,
+        defaultValue: 24,
       },
       iconColor: {
         group: GROUPS.basic,
@@ -123,17 +126,10 @@ export const SEED_DATA = [
         required: false,
         formType: FORM_TYPES.color,
         propType: PROP_TYPES.THEME,
-        defaultValue: null,
+        defaultValue: "strong",
       },
       borderRadius: {
-        group: GROUPS.basic,
-        label: "Current Container Border Radius",
-        description: "The radius of the stepper container",
-        editable: true,
-        required: false,
-        formType: FORM_TYPES.number,
-        propType: PROP_TYPES.NUMBER,
-        defaultValue: null,
+        ...BORDER_RADIUS_MODE,
       },
     },
     layout: {},

@@ -7,7 +7,6 @@ import {
   Image,
   TouchableOpacity,
   StyleSheet,
-  Dimensions,
 } from "react-native";
 import { Provider, DefaultTheme } from "@draftbit/ui";
 import { AppLoading } from "expo";
@@ -87,9 +86,6 @@ const ROUTES = {
 
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
-const screenWidth = Dimensions.get("window").width;
-const screenHeight = Dimensions.get("window").height;
-
 function Example({ title, children }) {
   const navigation = useNavigation();
   return (
@@ -120,6 +116,8 @@ let customFonts = {
     "https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12",
 };
 
+const Drawer = createDrawerNavigator();
+
 export default class App extends React.Component {
   state = {
     fontsLoaded: false,
@@ -143,8 +141,6 @@ export default class App extends React.Component {
   };
 
   render() {
-    const Drawer = createDrawerNavigator();
-
     if (this.state.fontsLoaded) {
       return (
         <Provider theme={DefaultTheme}>
@@ -180,8 +176,8 @@ export default class App extends React.Component {
 
 const exampleStyles = StyleSheet.create({
   mainParent: {
-    width: screenWidth,
-    height: screenHeight,
+    width: "100%",
+    height: "100%",
     backgroundColor: "rgba(251, 252, 253, 1)",
   },
   headerStyle: {
@@ -190,6 +186,7 @@ const exampleStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     height: "10%",
+    maxHeight: 60,
     overflow: "hidden",
     shadowColor: "#000",
     shadowOffset: {
@@ -206,8 +203,8 @@ const exampleStyles = StyleSheet.create({
     alignItems: "center",
   },
   menuButtonImageStyle: {
-    height: screenHeight * 0.1 * 0.5, //Uses screenHeight & width due to expo web not supporting percentages
-    width: screenWidth * 0.5,
+    height: 30,
+    width: 30,
     resizeMode: "contain",
     tintColor: "white",
   },
@@ -215,8 +212,8 @@ const exampleStyles = StyleSheet.create({
     flex: 1,
     fontWeight: "bold",
     color: "white",
-    fontSize: 22,
-    marginTop: screenHeight * 0.01,
+    fontSize: 20,
+    marginTop: 5,
     marginStart: "2%",
     marginBottom: 8,
     paddingVertical: 4,

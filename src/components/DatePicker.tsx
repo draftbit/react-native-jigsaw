@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import { View, StyleSheet, StyleProp, ViewStyle, Platform } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -73,6 +73,9 @@ const DatePicker: React.FC<Props> = ({
   };
 
   const toggleVisibility = async () => {
+    if (Platform.OS === "web") {
+      return;
+    }
     setPickerVisible(!pickerVisible);
     if (textField.current) {
       //@ts-ignore

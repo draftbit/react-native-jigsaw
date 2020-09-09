@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleProp,
-  ViewStyle,
-  TextStyle,
-  StyleSheet,
-} from "react-native";
+import { View, StyleProp, ViewStyle, TextStyle } from "react-native";
 import Text from "./Text";
 import RadioButtonFieldRow from "./RadioButtonFieldRow";
 import Divider from "./Divider";
+import themeT from "../styles/DefaultTheme";
+import { withTheme } from "../core/theming";
+import { colorTypes } from "../types";
 
 interface RadioButtonOption {
   key: string;
@@ -20,14 +17,15 @@ interface Props {
   label?: string;
   onSelect?: (value: string) => void;
   value?: string;
-  radioButtonColor?: string;
-  labelColor?: string;
-  backgroundColor?: string;
+  radioButtonColor?: colorTypes;
+  labelColor?: colorTypes;
+  backgroundColor?: colorTypes;
   style?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
-  itemBackgroundColor?: string;
+  itemBackgroundColor?: colorTypes;
   itemStyle?: StyleProp<ViewStyle>;
   itemLabelStyle?: StyleProp<TextStyle>;
+  theme: typeof themeT;
 }
 
 const RadioButtonFieldGroup: React.FC<Props> = ({
@@ -43,18 +41,32 @@ const RadioButtonFieldGroup: React.FC<Props> = ({
   itemStyle,
   itemLabelStyle,
   itemBackgroundColor,
+  theme,
 }) => {
-  let initValue = "";
-  if (value) {
-    initValue = value;
-  } else if (options.length > 0) {
-    initValue = options[0].value;
-  }
-  const [selected, setSelected] = useState(initValue);
+  const [selected, setSelected] = useState("");
 
   return (
-    <View style={[{ backgroundColor }, style]}>
-      <Text style={[styles.label, labelStyle]}>{label}</Text>
+    <View
+      style={[
+        {
+          backgroundColor: backgroundColor
+            ? theme.colors[backgroundColor]
+            : undefined,
+        },
+        style,
+      ]}
+    >
+      <Text
+        style={[
+          {
+            fontSize: theme.typography.headline4.fontSize,
+            color: theme.typography.headline4.color,
+          },
+          labelStyle,
+        ]}
+      >
+        {label}
+      </Text>
       {options.map((item) => {
         return (
           <View key={item.key}>
@@ -80,10 +92,5 @@ const RadioButtonFieldGroup: React.FC<Props> = ({
     </View>
   );
 };
-const styles = StyleSheet.create({
-  label: {
-    fontSize: 16,
-    color: "#000",
-  },
-});
-export default RadioButtonFieldGroup;
+
+export default withTheme(RadioButtonFieldGroup);

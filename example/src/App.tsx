@@ -132,14 +132,6 @@ export default class App extends React.Component {
     this._loadFontsAsync();
   }
 
-  renderScreen = (key: string, Screen: any) => {
-    return () => (
-      <Example key={key} title={key}>
-        <Screen />
-      </Example>
-    );
-  };
-
   render() {
     if (this.state.fontsLoaded) {
       return (
@@ -158,7 +150,11 @@ export default class App extends React.Component {
                       <Drawer.Screen
                         key={key}
                         name={key}
-                        component={this.renderScreen(key, Screen)}
+                        component={() => (
+                          <Example title={key}>
+                            <Screen />
+                          </Example>
+                        )}
                       />
                     );
                   })}

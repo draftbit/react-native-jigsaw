@@ -1,5 +1,12 @@
 import * as React from "react";
-import { View, StyleSheet, StyleProp, ViewStyle, Platform } from "react-native";
+import {
+  View,
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+  Platform,
+  SafeAreaView as NativeSafeAreaView,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -43,6 +50,8 @@ const MONTHS = [
   "December",
 ];
 
+const SafeArea = Platform.OS === "web" ? NativeSafeAreaView : SafeAreaView;
+
 const DatePicker: React.FC<Props> = ({
   style,
   theme: { colors },
@@ -73,9 +82,6 @@ const DatePicker: React.FC<Props> = ({
   };
 
   const toggleVisibility = async () => {
-    if (Platform.OS === "web") {
-      return;
-    }
     setPickerVisible(!pickerVisible);
     if (textField.current) {
       //@ts-ignore
@@ -106,7 +112,7 @@ const DatePicker: React.FC<Props> = ({
               },
             ]}
           >
-            <SafeAreaView style={styles.pickerContainer}>
+            <SafeArea style={styles.pickerContainer}>
               <Button
                 type="text"
                 onPress={toggleVisibility}
@@ -122,7 +128,7 @@ const DatePicker: React.FC<Props> = ({
                   onDateChange(data);
                 }}
               />
-            </SafeAreaView>
+            </SafeArea>
           </View>
         </Portal>
       )}

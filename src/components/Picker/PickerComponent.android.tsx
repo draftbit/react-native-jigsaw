@@ -1,6 +1,7 @@
 import * as React from "react";
-import { View, Picker as NativePicker, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { withTheme } from "../../core/theming";
+import { Picker as NativePicker } from "@react-native-community/picker";
 
 import TextField from "../TextField";
 import Touchable from "../Touchable";
@@ -39,7 +40,9 @@ const Picker: React.FC<PickerComponentProps> = ({
         <NativePicker
           enabled={!disabled}
           selectedValue={selectedValue}
-          onValueChange={onValueChange}
+          onValueChange={(value, index) =>
+            onValueChange(value.toString(), index)
+          }
           style={{
             opacity: 0,
             position: "absolute",

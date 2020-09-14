@@ -1,10 +1,9 @@
 import * as React from "react";
-import {
-  View,
-  SafeAreaView,
-  StyleSheet,
-  Picker as NativePicker,
-} from "react-native";
+import { View, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import { Picker as NativePicker } from "@react-native-community/picker";
+
 import { withTheme } from "../../core/theming";
 
 import Portal from "../Portal/Portal";
@@ -58,7 +57,9 @@ const Picker: React.FC<PickerComponentProps> = ({
               </Button>
               <NativePicker
                 selectedValue={selectedValue}
-                onValueChange={onValueChange}
+                onValueChange={(value, index) =>
+                  onValueChange(value.toString(), index)
+                }
               >
                 {options.map((o) => (
                   <NativePicker.Item

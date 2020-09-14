@@ -1,11 +1,7 @@
 import * as React from "react";
-import {
-  View,
-  SafeAreaView,
-  StyleSheet,
-  StyleProp,
-  ViewStyle,
-} from "react-native";
+import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+
 import DateTimePicker from "@react-native-community/datetimepicker";
 import dateFormat from "dateformat";
 import { withTheme } from "../core/theming";
@@ -83,6 +79,7 @@ const DatePicker: React.FC<Props> = ({
       textField.current.toggleFocus(); // cannot determine if method exists due to component being wrapped in a withTheme()
     }
   };
+  const insets = useSafeAreaInsets();
 
   return (
     <View style={[styles.container, style]}>
@@ -107,7 +104,17 @@ const DatePicker: React.FC<Props> = ({
               },
             ]}
           >
-            <SafeAreaView style={styles.pickerContainer}>
+            <View
+              style={[
+                styles.pickerContainer,
+                {
+                  paddingTop: insets.top,
+                  paddingBottom: insets.bottom,
+                  paddingLeft: insets.left,
+                  paddingRight: insets.right,
+                },
+              ]}
+            >
               <Button
                 type="text"
                 onPress={toggleVisibility}
@@ -123,7 +130,7 @@ const DatePicker: React.FC<Props> = ({
                   onDateChange(data);
                 }}
               />
-            </SafeAreaView>
+            </View>
           </View>
         </Portal>
       )}

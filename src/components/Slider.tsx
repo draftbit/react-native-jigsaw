@@ -1,24 +1,25 @@
 import * as React from "react";
-// TODO replace this with community slider
 //@ts-ignore
-import { default as ReactNativeSlider } from "react-native-slider";
+import ReactNativeSlider from "react-native-slider";
 import { withTheme } from "../core/theming";
 import {
   GROUPS,
   FORM_TYPES,
   COMPONENT_TYPES,
   FIELD_NAME,
+  PROP_TYPES,
 } from "../core/component-types";
 import { StyleProp, ViewStyle } from "react-native";
 import themeT from "../styles/DefaultTheme";
+import { colorTypes } from "../types";
 
 export interface Props {
   style?: StyleProp<ViewStyle>;
   value?: number;
-  minimumTrackTintColor: string;
-  maximumTrackTintColor: string;
-  thumbTintColor: string;
-  disabledThumbTintColor?: string;
+  minimumTrackTintColor: colorTypes;
+  maximumTrackTintColor: colorTypes;
+  thumbTintColor: colorTypes;
+  disabledThumbTintColor?: colorTypes;
   minimumValue: number;
   maximumValue: number;
   thumbTouchSize: number;
@@ -32,22 +33,22 @@ export interface Props {
 }
 
 const Slider: React.FC<Props> = ({
-  style,
+  style = { height: 4 },
   value,
-  minimumTrackTintColor,
-  maximumTrackTintColor,
-  thumbTintColor,
-  disabledThumbTintColor,
-  minimumValue,
-  maximumValue,
-  thumbTouchSize,
-  step,
-  //theme,
+  minimumTrackTintColor = "light",
+  maximumTrackTintColor = "primary",
+  thumbTintColor = "primary",
+  disabledThumbTintColor = "strong",
+  minimumValue = 0,
+  maximumValue = 10,
+  thumbTouchSize = 4,
+  step = 1,
+  theme,
   disabled = false,
   onValueChange = () => {},
-  trackBorderRadius,
-  thumbBorderRadius,
-  thumbSize,
+  trackBorderRadius = 4,
+  thumbBorderRadius = 4,
+  thumbSize = 8,
   ...props
 }) => {
   const [internalValue, setInternalValue] = React.useState(0);
@@ -68,12 +69,12 @@ const Slider: React.FC<Props> = ({
       value={disabled ? 0 : value || internalValue}
       minimumValue={minimumValue}
       maximumValue={maximumValue}
-      minimumTrackTintColor={minimumTrackTintColor}
-      maximumTrackTintColor={maximumTrackTintColor}
+      minimumTrackTintColor={theme.colors[minimumTrackTintColor]}
+      maximumTrackTintColor={theme.colors[maximumTrackTintColor]}
       thumbTintColor={
         disabled && disabledThumbTintColor
-          ? disabledThumbTintColor
-          : thumbTintColor
+          ? theme.colors[disabledThumbTintColor]
+          : theme.colors[thumbTintColor]
       }
       thumbTouchSize={{
         width: actualThumbTouchSize || 0,
@@ -165,7 +166,8 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.color,
-      defaultValue: null,
+      propType: PROP_TYPES.THEME,
+      defaultValue: "primary",
     },
     minimumTrackTintColor: {
       group: GROUPS.basic,
@@ -174,7 +176,8 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.color,
-      defaultValue: null,
+      propType: PROP_TYPES.THEME,
+      defaultValue: "light",
     },
     thumbTintColor: {
       group: GROUPS.basic,
@@ -183,7 +186,8 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.color,
-      defaultValue: null,
+      propType: PROP_TYPES.THEME,
+      defaultValue: "primary",
     },
     disabledThumbTintColor: {
       group: GROUPS.basic,
@@ -192,7 +196,8 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.color,
-      defaultValue: null,
+      propType: PROP_TYPES.THEME,
+      defaultValue: "strong",
     },
     thumbTouchSize: {
       group: GROUPS.advanced,
@@ -205,7 +210,7 @@ export const SEED_DATA = {
       max: 100,
       step: 1,
       precision: 2,
-      defaultValue: null,
+      defaultValue: 4,
     },
     trackBorderRadius: {
       group: GROUPS.basic,
@@ -218,7 +223,7 @@ export const SEED_DATA = {
       max: 50,
       step: 1,
       precision: 0,
-      defaultValue: 10,
+      defaultValue: 4,
     },
     thumbBorderRadius: {
       group: GROUPS.basic,
@@ -231,7 +236,7 @@ export const SEED_DATA = {
       max: 50,
       step: 1,
       precision: 0,
-      defaultValue: 10,
+      defaultValue: 4,
     },
     thumbSize: {
       group: GROUPS.basic,
@@ -244,7 +249,7 @@ export const SEED_DATA = {
       max: 100,
       step: 1,
       precision: 2,
-      defaultValue: null,
+      defaultValue: 8,
     },
   },
   layout: {},

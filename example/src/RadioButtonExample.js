@@ -1,5 +1,5 @@
 import * as React from "react";
-import { RadioButtonGroup } from "@draftbit/ui";
+import { RadioButtonGroup, RadioButtonFieldGroup } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
 export default function RadioButtonGroupExample() {
@@ -65,6 +65,20 @@ export default function RadioButtonGroupExample() {
           contentColor="#ffffff"
           value={selected}
           onSelect={handleSelect}
+        />
+      </Section>
+
+      <Section title="RadioButtonFieldGroup">
+        <RadioButtonFieldGroup
+          label={"Test"}
+          options={[
+            { key: "First", value: "First" },
+            { key: "Second", value: "Second" },
+            { key: "Third", value: "Third" },
+            { key: "Fourth", value: "Fourth" },
+          ]}
+          onSelect={handleSelect}
+          value={selected}
         />
       </Section>
     </Container>

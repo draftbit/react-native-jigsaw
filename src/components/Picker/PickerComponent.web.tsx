@@ -1,6 +1,5 @@
 import * as React from "react";
-import { View, StyleSheet } from "react-native";
-import { Picker as NativePicker } from "@react-native-community/picker";
+import { View, StyleSheet, Picker as NativePicker } from "react-native";
 import { withTheme } from "../../core/theming";
 
 import TextField from "../TextField";

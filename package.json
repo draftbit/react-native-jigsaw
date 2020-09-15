@@ -40,7 +40,7 @@
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
-    "@react-native-community/bob": "^0.15.1",
+    "@react-native-community/bob": "^0.16.2",
     "@react-native-community/datetimepicker": "2.4.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@react-native-community/picker": "^1.6.0",
@@ -73,13 +73,13 @@
     "node-fetch": "^2.6.0"
   },
   "peerDependencies": {
+    "@expo/vector-icons": "*",
     "@react-native-community/datetimepicker": "2.4.0",
     "@react-native-community/picker": "*",
     "react": "*",
     "react-native": "*",
     "react-native-safe-area-context": "*",
-    "react-native-svg": "*",
-    "@expo/vector-icons": "*"
+    "react-native-svg": "*"
   },
   "jest": {
     "preset": "react-native",

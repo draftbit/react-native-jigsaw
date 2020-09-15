@@ -1739,10 +1739,10 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@react-native-community/bob@^0.15.1":
-  version "0.15.1"
-  resolved "https://registry.yarnpkg.com/@react-native-community/bob/-/bob-0.15.1.tgz#49404c0efce76a23988bca95ac9572c56c303252"
-  integrity sha512-uU1uN2kL0us8iDuYtGpHzw/xDKi5ZLQ1IRz2Cu3JPEjtB/NIiqHrb4t4vzr/qSNPPJBjcVdd2bS3eH2rYDCzuQ==
+"@react-native-community/bob@^0.16.2":
+  version "0.16.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/bob/-/bob-0.16.2.tgz#9102b0160e70084fa1b75403a80dec332647c950"
+  integrity sha512-gHEGXOfEHlIX8meXHbjpVvGJbfKFFpomgPUdGBwPwFb7Di4EIXC97ru6ONhOruwth1YVfZtGabk4oDiDvz/RHg==
   dependencies:
     "@babel/core" "^7.10.2"
     "@babel/plugin-proposal-class-properties" "^7.10.1"

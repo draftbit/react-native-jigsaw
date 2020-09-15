@@ -73,7 +73,6 @@
     "node-fetch": "^2.6.0"
   },
   "peerDependencies": {
-    "@expo/vector-icons": "*",
     "@react-native-community/datetimepicker": "2.4.0",
     "@react-native-community/picker": "*",
     "react": "*",

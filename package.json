@@ -1,5 +1,5 @@
 {
-  "name": "@draftbit/ui",
+  "name": "@draftbit/web",
   "version": "37.8.1",
   "description": "Draftbit UI Library",
   "main": "lib/commonjs/index.js",

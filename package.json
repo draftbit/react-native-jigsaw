@@ -160,7 +160,6 @@
     "@draftbit/react-theme-provider": "^2.1.1",
     "color": "^3.1.2",
     "dateformat": "^3.0.3",
-    "expo-font": "^8.1.1",
     "expo-step-indicator": "0.1.2",
     "react-native-safe-area-context": "~3.0.7",
     "react-native-slider": "^0.11.0",

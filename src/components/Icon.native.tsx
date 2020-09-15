@@ -20,7 +20,7 @@ let VectorIcons: any;
 
 try {
   // Optionally require vector-icons
-  VectorIcons = require("react-native-vector-icons");
+  VectorIcons = require("@expo/vector-icons");
 } catch (e) {
   if (
     // @ts-ignore

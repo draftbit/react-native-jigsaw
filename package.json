@@ -78,8 +78,7 @@
     "react": "*",
     "react-native": "*",
     "react-native-safe-area-context": "*",
-    "react-native-svg": "*",
-    "react-native-vector-icons": "^7.1.0"
+    "react-native-svg": "*"
   },
   "jest": {
     "preset": "react-native",

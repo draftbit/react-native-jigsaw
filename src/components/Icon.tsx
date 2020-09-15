@@ -8,9 +8,6 @@ import {
   StyleProp,
   ImageStyle,
 } from "react-native";
-// import { Ionicons } from "@expo/vector-icons";
-// import * as VectorIcons from "@expo/vector-icons";
-// console.log("VECTORICONS", VectorIcons);
 
 import {
   COMPONENT_TYPES,
@@ -23,7 +20,7 @@ let VectorIcons: any;
 
 try {
   // Optionally require vector-icons
-  VectorIcons = require("@expo/vector-icons");
+  VectorIcons = require("react-native-vector-icons");
 } catch (e) {
   if (
     // @ts-ignore

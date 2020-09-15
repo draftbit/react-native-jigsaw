@@ -147,15 +147,13 @@ export default class App extends React.Component {
                 >
                   {Object.entries(ROUTES).map(([key, Screen]) => {
                     return (
-                      <Drawer.Screen
-                        key={key}
-                        name={key}
-                        component={() => (
+                      <Drawer.Screen key={key} name={key}>
+                        {() => (
                           <Example title={key}>
                             <Screen />
                           </Example>
                         )}
-                      />
+                      </Drawer.Screen>
                     );
                   })}
                 </Drawer.Navigator>

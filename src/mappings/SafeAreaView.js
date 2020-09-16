@@ -4,15 +4,13 @@ import {
   FORM_TYPES,
   PROP_TYPES,
 } from "../core/component-types";
-import { SEED_DATA as VIEW_SEED_DATA } from "./View";
 
 export const SEED_DATA = {
   name: "SafeAreaView",
   tag: "SafeAreaView",
   description: "A basic View that handles safe area",
-  category: COMPONENT_TYPES.basic,
+  category: COMPONENT_TYPES.container,
   props: {
-    ...VIEW_SEED_DATA.props,
     edges: {
       group: GROUPS.basic,
       name: "edges",
@@ -22,7 +20,8 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.STRING,
-      defaultValue: null,
+      options: ["right", "bottom", "left", "top"],
+      defaultValue: ["right", "bottom", "left", "top"],
     },
     mode: {
       group: GROUPS.basic,
@@ -32,7 +31,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       options: ["padding", "margin"],
-      formType: FORM_TYPES.select,
+      formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.STRING,
       defaultValue: "padding",
     },

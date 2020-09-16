@@ -1,11 +1,11 @@
 import * as React from "react";
 import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
 import Icon from "./Icon";
-import Config from "./Config";
 import { withTheme } from "../core/theming";
 import theme from "../styles/DefaultTheme";
 
 interface Props {
+  starSize?: number;
   maxStars?: number;
   rating?: number;
   theme: typeof theme;
@@ -13,6 +13,7 @@ interface Props {
 }
 
 const StarRating: React.FC<Props> = ({
+  starSize = 16,
   maxStars = 5,
   rating = 0,
   theme: { colors },
@@ -30,7 +31,7 @@ const StarRating: React.FC<Props> = ({
               ? "MaterialIcons/star-half"
               : "MaterialIcons/star"
           }
-          size={Config.ratingStarSize}
+          size={starSize}
           color={ratingRounded > i ? colors.primary : colors.divider}
         />
       ))}

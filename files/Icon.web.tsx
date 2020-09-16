@@ -9,8 +9,7 @@ interface Props extends ViewProps {
 
 // !!! This file doesn't do anything !!!
 // It gets overwritten by the builder's version of Icon
-const Icon: React.FC<Props> = ({ name, color, size, style }) => {
-  console.log({ name, color, size, style });
+const Icon: React.FC<Props> = ({ _name, _color, _size, _style }) => {
   return null;
 };
 

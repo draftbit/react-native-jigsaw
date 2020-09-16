@@ -3,7 +3,8 @@
     "example",
     "node_modules",
     "glyphmaps",
-    "scripts"
+    "scripts",
+    "files"
   ],
   "compilerOptions": {
     "baseUrl": ".",

@@ -1,6 +1,6 @@
 import { FORM_TYPES, PROP_TYPES, GROUPS } from "../core/component-types";
 
-export const SEED_DATA_PROPS = {
+export const SEED_DATA = {
   starSize: {
     defaultValue: 16,
     description: "Size of each individual star",

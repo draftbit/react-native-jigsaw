@@ -4,9 +4,9 @@ import {
   ScrollView,
   View,
   StyleProp,
+  SafeAreaView,
   ViewStyle,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import { withTheme } from "../core/theming";
 import Config from "./Config";

@@ -10,10 +10,22 @@
 
 We love React Native Paper and even plan on supporting it one day as a different component library, Jigsaw just allows us to deeply embed components, props, themes directly into the Draftbit platform
 
+## Differences between @draftbit/ui and @draftbit/web
+
+@draftbit/web is only used for our internal builder. Because we're using `@expo/vector-icons` and React Native's way of compiling files, this isn't compatible inside create-react-app. The fix is to publish a separate `@draftbit/web` file with Icon.web.tsx being the Icon.tsx file and Icon.native.tsx being the Icon.tsx file.
+
+Both icon files live inside `files/` top level, next to `src`.
+
 ## Installation
 
 ```sh
 npm install @draftbit/ui
+```
+
+## Publishing
+
+```sh
+yarn publish:both
 ```
 
 ## Contributing

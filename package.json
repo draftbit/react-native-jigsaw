@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "37.10.0",
+  "version": "37.9.1",
   "description": "Draftbit UI Library",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -22,6 +22,7 @@
     "build": "bob build",
     "prepublishOnly": "bob build",
     "release": "release-it",
+    "publish:both": "./publish.sh",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods"
@@ -40,7 +41,7 @@
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
-    "@react-native-community/bob": "^0.15.1",
+    "@react-native-community/bob": "^0.16.2",
     "@react-native-community/datetimepicker": "2.4.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@react-native-community/picker": "^1.6.0",
@@ -78,8 +79,7 @@
     "react": "*",
     "react-native": "*",
     "react-native-safe-area-context": "*",
-    "react-native-svg": "*",
-    "react-native-vector-icons": "^7.1.0"
+    "react-native-svg": "*"
   },
   "jest": {
     "preset": "react-native",
@@ -161,7 +161,6 @@
     "@draftbit/react-theme-provider": "^2.1.1",
     "color": "^3.1.2",
     "dateformat": "^3.0.3",
-    "expo-font": "^8.1.1",
     "expo-step-indicator": "0.1.2",
     "react-native-safe-area-context": "~3.0.7",
     "react-native-slider": "^0.11.0",

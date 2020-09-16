@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ViewProps, StyleProp, ImageStyle } from "react-native";
 
 interface Props extends ViewProps {
@@ -7,8 +8,6 @@ interface Props extends ViewProps {
   style?: StyleProp<ImageStyle>;
 }
 
-// !!! This file doesn't do anything !!!
-// It gets overwritten by the builder's version of Icon
 const Icon: React.FC<Props> = ({ _name, _color, _size, _style }) => {
   return null;
 };

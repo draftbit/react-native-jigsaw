@@ -8,38 +8,39 @@ import {
   PROP_TYPES,
 } from "../core/component-types";
 import themeT from "../styles/DefaultTheme";
+import { colorTypes } from "../types";
 
 interface Props {
   numberOfSteps?: number;
   currentStep: number;
   currentStepStrokeWidth?: number;
-  stepStrokeCurrentColor?: string;
+  stepStrokeCurrentColor?: colorTypes;
   stepIndicatorSize?: number;
   currentStepIndicatorSize?: number;
-  stepIndicatorCurrentColor?: string;
-  stepIndicatorLabelCurrentColor?: string;
+  stepIndicatorCurrentColor?: colorTypes;
+  stepIndicatorLabelCurrentColor?: colorTypes;
   stepIndicatorLabelFontSize?: number;
-  stepNumberFinishedColor?: string;
-  stepNumberUnfinishedColor?: string;
-  unfinishedColor?: string;
-  finishedColor?: string;
+  stepNumberFinishedColor?: colorTypes;
+  stepNumberUnfinishedColor?: colorTypes;
+  unfinishedColor?: colorTypes;
+  finishedColor?: colorTypes;
   theme: typeof themeT;
 }
 
 const ProgressIndicator: React.FC<Props> = ({
   numberOfSteps,
   currentStep,
-  currentStepStrokeWidth,
-  stepStrokeCurrentColor,
+  currentStepStrokeWidth = 3,
+  stepStrokeCurrentColor = "primary",
   stepIndicatorSize,
   currentStepIndicatorSize,
   stepIndicatorCurrentColor,
   stepIndicatorLabelCurrentColor,
-  stepIndicatorLabelFontSize,
-  stepNumberFinishedColor,
-  stepNumberUnfinishedColor,
-  unfinishedColor,
-  finishedColor,
+  stepIndicatorLabelFontSize = 12,
+  stepNumberFinishedColor = "strongInverse",
+  stepNumberUnfinishedColor = "primary",
+  unfinishedColor = "light",
+  finishedColor = "primary",
   theme,
 }) => {
   const currentPosition = currentStep - 1;
@@ -52,24 +53,32 @@ const ProgressIndicator: React.FC<Props> = ({
         currentStepIndicatorSize: currentStepIndicatorSize
           ? currentStepIndicatorSize
           : stepIndicatorSize,
-        stepStrokeFinishedColor: finishedColor,
-        stepStrokeUnFinishedColor: unfinishedColor,
-        separatorFinishedColor: finishedColor,
-        separatorUnFinishedColor: unfinishedColor,
-        stepIndicatorFinishedColor: finishedColor,
-        stepIndicatorUnFinishedColor: unfinishedColor,
+        stepStrokeFinishedColor: finishedColor && theme.colors[finishedColor],
+        stepStrokeUnFinishedColor:
+          unfinishedColor && theme.colors[unfinishedColor],
+        separatorFinishedColor: finishedColor && theme.colors[finishedColor],
+        separatorUnFinishedColor:
+          unfinishedColor && theme.colors[unfinishedColor],
+        stepIndicatorFinishedColor:
+          finishedColor && theme.colors[finishedColor],
+        stepIndicatorUnFinishedColor:
+          unfinishedColor && theme.colors[unfinishedColor],
         currentStepStrokeWidth,
         stepStrokeCurrentColor: stepStrokeCurrentColor
-          ? stepStrokeCurrentColor
-          : stepIndicatorCurrentColor,
-        stepIndicatorLabelUnFinishedColor: stepNumberUnfinishedColor,
-        stepIndicatorLabelFinishedColor: stepNumberFinishedColor,
+          ? theme.colors[stepStrokeCurrentColor]
+          : stepIndicatorCurrentColor &&
+            theme.colors[stepIndicatorCurrentColor],
+        stepIndicatorLabelUnFinishedColor:
+          stepNumberUnfinishedColor && theme.colors[stepNumberUnfinishedColor],
+        stepIndicatorLabelFinishedColor:
+          stepNumberFinishedColor && theme.colors[stepNumberFinishedColor],
         stepIndicatorCurrentColor: stepIndicatorCurrentColor
-          ? stepIndicatorCurrentColor
-          : unfinishedColor,
+          ? theme.colors[stepIndicatorCurrentColor]
+          : unfinishedColor && theme.colors[unfinishedColor],
         stepIndicatorLabelCurrentColor: stepIndicatorLabelCurrentColor
-          ? stepIndicatorLabelCurrentColor
-          : stepNumberFinishedColor,
+          ? theme.colors[stepIndicatorLabelCurrentColor]
+          : stepNumberUnfinishedColor &&
+            theme.colors[stepNumberUnfinishedColor],
         stepIndicatorLabelFontSize,
         labelFontFamily: theme.typography.body1.fontFamily,
       }}

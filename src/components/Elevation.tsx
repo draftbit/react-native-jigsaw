@@ -19,7 +19,7 @@ const Elevation: React.FC<Props> = ({ style, theme, ...rest }) => {
   const flattenedStyles = StyleSheet.flatten(style) || {};
   const { elevation } = flattenedStyles;
 
-  const styles = [style];
+  const styles = [style, { zIndex: 100 }];
   if (elevation) {
     styles.push(shadow(elevation, theme));
   }

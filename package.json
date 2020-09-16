@@ -22,6 +22,7 @@
     "build": "bob build",
     "prepublishOnly": "bob build",
     "release": "release-it",
+    "publish:both": "./publish.sh",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods"

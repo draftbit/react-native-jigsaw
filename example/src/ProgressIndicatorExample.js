@@ -12,7 +12,8 @@ function ProgressIndicatorExample({ theme }) {
           currentStepStrokeWidth={3}
           stepIndicatorSize={28}
           stepIndicatorLabelFontSize={12}
-          stepNumberFinishedColor={"primary"}
+          stepIndicatorCurrentColor={"primary"}
+          stepNumberFinishedColor={"strongInverse"}
           stepNumberUnfinishedColor={"strongInverse"}
           unfinishedColor={"light"}
           finishedColor={"primary"}

@@ -37,6 +37,9 @@ const Switch: React.FC<Props> = ({
       value={value}
       disabled={disabled}
       trackColor={{ false: "", true: checkedColor }}
+      //@ts-ignore
+      activeTrackColor={checkedColor}
+      activeThumbColor={thumbColor}
       thumbColor={thumbColor}
       onValueChange={disabled ? undefined : onValueChange}
       style={{

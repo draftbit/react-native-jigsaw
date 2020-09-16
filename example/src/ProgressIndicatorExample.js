@@ -9,13 +9,14 @@ function ProgressIndicatorExample({ theme }) {
         <ProgressIndicator
           numberOfSteps={5}
           currentStep={3}
-          currentStepStrokeWidth={0}
+          currentStepStrokeWidth={3}
           stepIndicatorSize={28}
-          stepIndicatorLabelFontSize={16}
-          stepNumberFinishedColor={"#5a45ff"}
-          stepNumberUnfinishedColor={"#ffffff"}
-          unfinishedColor={"#eee"}
-          finishedColor={"#5a45ff"}
+          stepIndicatorLabelFontSize={12}
+          stepIndicatorCurrentColor={"primary"}
+          stepNumberFinishedColor={"strongInverse"}
+          stepNumberUnfinishedColor={"strongInverse"}
+          unfinishedColor={"light"}
+          finishedColor={"primary"}
         />
       </Section>
     </Container>

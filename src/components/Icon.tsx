@@ -1,4 +1,3 @@
-/* This is the Expo Icon (PWA, iOS, Android) NOT for the builder */
 import * as React from "react";
 import {
   Image,

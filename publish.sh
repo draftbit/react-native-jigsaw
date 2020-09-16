@@ -17,6 +17,3 @@ node scripts/change-pak-name.js "ui"
 echo "Creating Icon.native.tsx"
 cp ./files/Icon.native.tsx ./src/components/Icon.tsx
 npm publish
-
-echo "Resetting repo"
-rm -rf ./src/components/Icon.tsx

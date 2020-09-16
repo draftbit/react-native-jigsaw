@@ -65,7 +65,6 @@ export default {
   rowMultiLineImageSize: 48,
   rowSingleLineIconSize: 24,
   rowMultiLineIconSize: 16,
-  ratingStarSize: 16,
   headerIconSize: 24,
   buttonIconSize: 24,
   swiperInactiveDotSize: 6,

@@ -78,7 +78,11 @@ const CardContainerRating: React.FC<Props> = ({
             source={typeof image === "string" ? { uri: image } : image}
             resizeMode="cover"
           />
-          <View style={{ padding: spacing.large }}>
+          <View
+            style={{
+              padding: numColumns === 1 ? spacing.small : spacing.large,
+            }}
+          >
             {title ? (
               <View
                 style={{
@@ -118,7 +122,10 @@ const CardContainerRating: React.FC<Props> = ({
                 marginTop: numColumns === 3 ? spacing.large : spacing.medium,
               }}
             >
-              <StarRating rating={rating} />
+              <StarRating
+                starSize={numColumns === 1 ? 10 : 16}
+                rating={rating}
+              />
               <Text
                 style={[
                   rightDescriptionStyle,

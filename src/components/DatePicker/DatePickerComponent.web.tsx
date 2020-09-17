@@ -6,14 +6,7 @@ import {
   TimePicker,
   DateTimePicker,
 } from "@material-ui/pickers";
-
-interface Props {
-  value: Date;
-  onChange: (e: any, data?: any) => void;
-  mode: "date" | "time" | "datetime";
-  toggleVisibility: () => void;
-  isVisible: boolean;
-}
+import { DatePickerComponentProps as Props } from "./DatePickerComponentType";
 
 const DatePickerComponent: React.FC<Props> = ({
   value,
@@ -38,6 +31,7 @@ const DatePickerComponent: React.FC<Props> = ({
           toggleVisibility();
           onChange(null, d);
         }}
+        onClose={() => toggleVisibility()}
         variant="dialog"
         TextFieldComponent={() => null}
       />

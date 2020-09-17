@@ -1,12 +1,7 @@
 import React from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { DatePickerComponentProps as Props } from "./DatePickerComponentType";
 
-interface Props {
-  value: Date;
-  onChange: (e: any, data?: any) => void;
-  mode: "date" | "time" | "datetime";
-  toggleVisibility: () => void;
-}
 const DatePickerComponent: React.FC<Props> = ({
   value,
   onChange,

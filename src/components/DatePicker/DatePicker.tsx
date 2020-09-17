@@ -3,14 +3,13 @@ import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import dateFormat from "dateformat";
-import { withTheme } from "../core/theming";
+import { withTheme } from "../../core/theming";
 
-import Portal from "./Portal/Portal";
-import Button from "./Button";
-import TextField, { Props as TextFieldProps } from "./TextField";
-import Touchable from "./Touchable";
-import theme from "../styles/DefaultTheme";
-//@ts-ignore
+import Portal from "../Portal/Portal";
+import Button from "../Button";
+import TextField, { Props as TextFieldProps } from "../TextField";
+import Touchable from "../Touchable";
+import theme from "../../styles/DefaultTheme";
 import DateTimePicker from "./DatePickerComponent";
 
 interface Props extends TextFieldProps {

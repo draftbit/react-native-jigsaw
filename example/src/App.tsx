@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Provider, DefaultTheme } from "@draftbit/ui";
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
@@ -83,8 +84,6 @@ const ROUTES = {
   Stepper: StepperExample,
   TextField: TextFieldExample,
 };
-
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 function Example({ title, children }) {
   const navigation = useNavigation();

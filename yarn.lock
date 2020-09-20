@@ -4432,11 +4432,6 @@ expect@^26.0.1:
     jest-message-util "^26.0.1"
     jest-regex-util "^26.0.0"
 
-expo-step-indicator@0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/expo-step-indicator/-/expo-step-indicator-0.1.2.tgz#862018c585658b5cb0ef0f89b4c599232c36886d"
-  integrity sha512-SE0V+eE4izH++bnubFPEV2DyD5QcVYoQ+g/41H1YRNVfIwCUOBInd0uML3P6D2j/DZJ2aeaU8qZLb3RzvwTBRw==
-
 extend-shallow@^1.1.2:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/extend-shallow/-/extend-shallow-1.1.4.tgz#19d6bf94dfc09d76ba711f39b872d21ff4dd9071"

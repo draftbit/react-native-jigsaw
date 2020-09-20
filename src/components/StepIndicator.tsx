@@ -322,7 +322,7 @@ export default class StepIndicator extends Component<Props> {
   };
 
   renderStep = (position) => {
-    const { direction, renderStepIndicator } = this.props;
+    const { renderStepIndicator } = this.props;
     let stepStyle;
     let indicatorLabelStyle;
     switch (this.getStepStatus(position)) {

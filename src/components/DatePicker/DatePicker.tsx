@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import { View, StyleSheet, StyleProp, ViewStyle, Platform } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import dateFormat from "dateformat";
@@ -115,13 +115,15 @@ const DatePicker: React.FC<Props> = ({
                 },
               ]}
             >
-              <Button
-                type="text"
-                onPress={toggleVisibility}
-                style={styles.closeButton}
-              >
-                Close
-              </Button>
+              {Platform.OS === "ios" && (
+                <Button
+                  type="text"
+                  onPress={toggleVisibility}
+                  style={styles.closeButton}
+                >
+                  Close
+                </Button>
+              )}
 
               <DateTimePicker
                 value={date}

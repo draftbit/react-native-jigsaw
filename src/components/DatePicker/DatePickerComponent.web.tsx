@@ -6,7 +6,9 @@ import {
   TimePicker,
   DateTimePicker,
 } from "@material-ui/pickers";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { DatePickerComponentProps as Props } from "./DatePickerComponentType";
+import { withTheme } from "../../core/theming";
 
 const DatePickerComponent: React.FC<Props> = ({
   value,
@@ -14,7 +16,19 @@ const DatePickerComponent: React.FC<Props> = ({
   mode,
   toggleVisibility,
   isVisible,
+  theme: { colors },
 }) => {
+  const internalTheme = createMuiTheme({
+    palette: {
+      primary: {
+        main: colors.primary,
+      },
+      secondary: {
+        main: colors.secondary,
+      },
+    },
+  });
+
   const Picker =
     mode === "date"
       ? DatePicker
@@ -24,19 +38,21 @@ const DatePickerComponent: React.FC<Props> = ({
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <Picker
-        value={value}
-        open={isVisible}
-        onChange={(d) => {
-          toggleVisibility();
-          onChange(null, d);
-        }}
-        onClose={() => toggleVisibility()}
-        variant="dialog"
-        TextFieldComponent={() => null}
-      />
+      <ThemeProvider theme={internalTheme}>
+        <Picker
+          value={value}
+          open={isVisible}
+          onChange={(d) => {
+            toggleVisibility();
+            onChange(null, d);
+          }}
+          onClose={() => toggleVisibility()}
+          variant="dialog"
+          TextFieldComponent={() => null}
+        />
+      </ThemeProvider>
     </MuiPickersUtilsProvider>
   );
 };
 
-export default DatePickerComponent;
+export default withTheme(DatePickerComponent);

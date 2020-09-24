@@ -63,6 +63,7 @@
     "pod-install": "^0.1.7",
     "prettier": "^2.0.5",
     "react": "~16.9.0",
+    "react-dom": "^16.13.1",
     "react-native": "~0.62.2",
     "react-native-svg": "^12.1.0",
     "release-it": "^13.6.3",
@@ -158,8 +159,12 @@
     ]
   },
   "dependencies": {
+    "@date-io/date-fns": "1.x",
     "@draftbit/react-theme-provider": "^2.1.1",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/pickers": "^3.2.10",
     "color": "^3.1.2",
+    "date-fns": "^2.16.1",
     "dateformat": "^3.0.3",
     "expo-step-indicator": "0.1.2",
     "react-native-safe-area-context": "~3.0.7",

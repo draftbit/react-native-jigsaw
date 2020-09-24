@@ -1,16 +1,16 @@
 import * as React from "react";
-import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import { View, StyleSheet, StyleProp, ViewStyle, Platform } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import DateTimePicker from "@react-native-community/datetimepicker";
 import dateFormat from "dateformat";
-import { withTheme } from "../core/theming";
+import { withTheme } from "../../core/theming";
 
-import Portal from "./Portal/Portal";
-import Button from "./Button";
-import TextField, { Props as TextFieldProps } from "./TextField";
-import Touchable from "./Touchable";
-import theme from "../styles/DefaultTheme";
+import Portal from "../Portal/Portal";
+import Button from "../Button";
+import TextField, { Props as TextFieldProps } from "../TextField";
+import Touchable from "../Touchable";
+import theme from "../../styles/DefaultTheme";
+import DateTimePicker from "./DatePickerComponent";
 
 interface Props extends TextFieldProps {
   style?: StyleProp<ViewStyle>;
@@ -115,16 +115,21 @@ const DatePicker: React.FC<Props> = ({
                 },
               ]}
             >
-              <Button
-                type="text"
-                onPress={toggleVisibility}
-                style={styles.closeButton}
-              >
-                Close
-              </Button>
+              {Platform.OS === "ios" && (
+                <Button
+                  type="text"
+                  onPress={toggleVisibility}
+                  style={styles.closeButton}
+                >
+                  Close
+                </Button>
+              )}
+
               <DateTimePicker
                 value={date}
                 mode={mode}
+                isVisible={pickerVisible}
+                toggleVisibility={toggleVisibility}
                 onChange={(_event: any, data: any) => {
                   toggleVisibility();
                   onDateChange(data);

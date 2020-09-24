@@ -20,7 +20,7 @@ export { default as Checkbox } from "./components/Checkbox";
 
 export { default as Container } from "./components/Container";
 
-export { default as DatePicker } from "./components/DatePicker";
+export { default as DatePicker } from "./components/DatePicker/DatePicker";
 export { default as Divider } from "./components/Divider";
 
 export { default as FAB } from "./components/FAB";

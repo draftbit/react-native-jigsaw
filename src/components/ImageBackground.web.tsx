@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   ImageBackground as NativeImage,
   ImageProps,
   ImageStyle,
-  LayoutChangeEvent,
   ImageSourcePropType,
 } from "react-native";
 import AspectRatio from "./AspectRatio.web";
@@ -15,26 +14,15 @@ const ImageBackground: React.FC<ImageProps> = ({
   resizeMode = "cover",
   ...props
 }) => {
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
-
-  const onLayout = (e: LayoutChangeEvent) => {
-    setWidth(e.nativeEvent.layout.width);
-    setHeight(e.nativeEvent.layout.height);
-  };
-
   if (style && (style as ImageStyle).aspectRatio) {
     return (
-      <AspectRatio
-        onLayout={onLayout}
-        ratio={(style as ImageStyle).aspectRatio!!}
-      >
+      <AspectRatio style={style as ImageStyle}>
         <NativeImage
           style={[
             style,
             {
-              width: width,
-              height: height,
+              width: "100%",
+              height: "100%",
             },
           ]}
           source={source as ImageSourcePropType}

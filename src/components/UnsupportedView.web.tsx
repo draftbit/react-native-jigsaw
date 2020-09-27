@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -31,35 +31,21 @@ interface Props {
 }
 const UnsupportedView: React.FC<Props> = ({ tag, style }) => {
   const { aspectRatio, ...extraStyles } = StyleSheet.flatten(style);
-  const [layout, setLayout] = useState({ width: 0, height: 0 });
 
   const message = `${tag} is not supported in Web Preview yet, please use Live Preview`;
   if (aspectRatio && extraStyles.position !== "absolute") {
     return (
-      <AspectRatio
-        ratio={aspectRatio}
-        onLayout={(e) => {
-          setLayout({
-            width: e.nativeEvent.layout.width,
-            height: e.nativeEvent.layout.height,
-          });
-
-          return {
-            width: e.nativeEvent.layout.width,
-            height: e.nativeEvent.layout.height,
-          };
-        }}
-      >
+      <AspectRatio style={{ aspectRatio }}>
         <ImageBackground
           style={[
             extraStyles,
             styles.container,
-            { width: layout.width, height: layout.height },
+            { width: "100%", height: "100%" },
           ]}
           source={require("../assets/bg.png")}
           resizeMode="repeat"
         >
-          <TextOrImage layout={layout} message={message} />
+          <TextOrImage layout={{ width: 200, height: 200 }} message={message} />
         </ImageBackground>
       </AspectRatio>
     );
@@ -67,17 +53,12 @@ const UnsupportedView: React.FC<Props> = ({ tag, style }) => {
 
   return (
     <ImageBackground
-      onLayout={(e) => {
-        setLayout({
-          width: e.nativeEvent.layout.width,
-          height: e.nativeEvent.layout.height,
-        });
-      }}
+      onLayout={() => {}}
       style={[extraStyles, styles.container]}
       source={require("../assets/bg.png")}
       resizeMode="repeat"
     >
-      <TextOrImage layout={layout} message={message} />
+      <TextOrImage layout={{ width: 200, height: 200 }} message={message} />
     </ImageBackground>
   );
 };

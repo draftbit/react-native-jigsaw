@@ -1,50 +1,40 @@
 import React from "react";
 import {
   View,
-  createElement,
   StyleSheet,
-  LayoutChangeEvent,
+  LayoutRectangle,
   StyleProp,
   ViewStyle,
 } from "react-native";
 
 interface Props {
   children?: React.ReactNode;
-  onLayout?: (event: LayoutChangeEvent) => void;
-  ratio: number;
   style?: StyleProp<ViewStyle>;
 }
 
-const AspectRatio: React.FC<Props> = ({ children, onLayout, ratio, style }) => {
-  const percentage = 100 / ratio;
+const AspectRatio: React.FC<Props> = (props) => {
+  const [layout, setLayout] = React.useState<LayoutRectangle | null>(null);
+  const { aspectRatio = 1, ...inputStyle } =
+    StyleSheet.flatten(props.style) || {};
+  const style = [inputStyle, { aspectRatio }];
+
+  if (layout) {
+    const { width = 0, height = 0 } = layout;
+    if (width === 0) {
+      style.push({ width: height * aspectRatio, height });
+    } else {
+      style.push({ width, height: width * aspectRatio });
+    }
+  }
   return (
-    <View onLayout={onLayout} style={[styles.root, style]}>
-      {createElement("div", {
-        style: [styles.ratio, { paddingBottom: `${percentage}%` }],
-      })}
-      {createElement("div", {
-        children,
-        style: styles.content,
-      })}
+    <View
+      {...props}
+      style={style}
+      onLayout={({ nativeEvent: { layout } }) => setLayout(layout)}
+    >
+      {props.children}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  root: {
-    overflow: "hidden",
-  },
-  ratio: {
-    width: "100%",
-  },
-  content: {
-    bottom: 0,
-    height: "100%",
-    left: 0,
-    position: "absolute",
-    top: 0,
-    width: "100%",
-  },
-});
 
 export default AspectRatio;

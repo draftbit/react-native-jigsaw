@@ -118,6 +118,6 @@ export const SEED_DATA = {
       formType: FORM_TYPES.flatArray,
       options: ["cover", "contain", "stretch", "repeat", "center"],
     },
-    elevationType: createElevationType(0),
+    elevation: createElevationType(0),
   },
 };

@@ -44,7 +44,7 @@
     "@react-native-community/bob": "^0.16.2",
     "@react-native-community/datetimepicker": "2.4.0",
     "@react-native-community/eslint-config": "^2.0.0",
-    "@react-native-community/picker": "^1.6.0",
+    "@react-native-community/picker": "^1.8.0",
     "@release-it/conventional-changelog": "^1.1.4",
     "@types/color": "^3.0.1",
     "@types/dateformat": "^3.0.1",

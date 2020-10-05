@@ -4,7 +4,9 @@ import Section, { Container } from "./Section";
 
 function CardContainerShortImageExample({ theme }) {
   return (
-    <Container style={{ backgroundColor: theme.colors.background }}>
+    <Container
+      style={{ backgroundColor: theme.colors.background, alignItems: "center" }}
+    >
       <Section title="Left Image">
         <CardContainerShortImage
           title="Beautiful West Coast Villa"

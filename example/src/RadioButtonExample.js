@@ -12,17 +12,17 @@ export default function RadioButtonGroupExample() {
         <RadioButtonGroup
           direction="horizontal"
           options={[
-            { label: "First", icon: "add" },
+            { label: "First", icon: "check" },
             { label: "Second" },
             { label: "Third" },
             { label: "Fourth" },
           ]}
           borderRadius={10}
-          inactiveColor="#DCDCDC"
-          activeColor="#5a45ff"
-          iconSize={10}
-          contentColor="#ffffff"
-          borderColor="#000000"
+          inactiveColor="divider"
+          activeColor="primary"
+          iconSize={15}
+          contentColor="surface"
+          borderColor="strong"
           value={selected}
           onSelect={handleSelect}
         />
@@ -32,17 +32,17 @@ export default function RadioButtonGroupExample() {
         <RadioButtonGroup
           direction="vertical"
           options={[
-            { label: "First", icon: "add" },
+            { label: "First", icon: "check" },
             { label: "Second" },
             { label: "Third" },
             { label: "Fourth" },
           ]}
           optionSpacing={10}
           borderRadius={100}
-          inactiveColor="#DCDCDC"
-          activeColor="#5a45ff"
-          iconSize={10}
-          contentColor="#ffffff"
+          inactiveColor="divider"
+          activeColor="primary"
+          iconSize={15}
+          contentColor="surface"
           value={selected}
           onSelect={handleSelect}
         />
@@ -52,17 +52,17 @@ export default function RadioButtonGroupExample() {
         <RadioButtonGroup
           direction="horizontal"
           options={[
-            { label: "First", icon: "add" },
+            { label: "First", icon: "check" },
             { label: "Second" },
             { label: "Third" },
             { label: "Fourth" },
           ]}
           optionSpacing={8}
           borderRadius={10}
-          inactiveColor="#DCDCDC"
-          activeColor="#5a45ff"
-          iconSize={10}
-          contentColor="#ffffff"
+          inactiveColor="divider"
+          activeColor="primary"
+          iconSize={15}
+          contentColor="surface"
           value={selected}
           onSelect={handleSelect}
         />

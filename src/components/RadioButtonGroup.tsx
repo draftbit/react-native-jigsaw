@@ -1,13 +1,6 @@
 import * as React from "react";
 import { withTheme } from "../core/theming";
-import {
-  View,
-  Text,
-  StyleSheet,
-  StyleProp,
-  TextStyle,
-  ViewStyle,
-} from "react-native";
+import { View, Text, StyleProp, TextStyle, ViewStyle } from "react-native";
 import Icon from "./Icon";
 import Touchable from "./Touchable";
 import {
@@ -18,6 +11,7 @@ import {
   FIELD_NAME,
 } from "../core/component-types";
 import themeT from "../styles/DefaultTheme";
+import { colorTypes } from "../types";
 
 interface RadioButtonOption {
   label: string;
@@ -27,15 +21,15 @@ interface RadioButtonOption {
 interface Props {
   direction?: "horizontal" | "vertical";
   options?: RadioButtonOption[];
-  activeColor?: string;
-  inactiveColor?: string;
+  activeColor?: colorTypes;
+  inactiveColor?: colorTypes;
   labelStyle?: StyleProp<TextStyle>;
   iconSize: number;
-  contentColor?: string;
-  unselectedContentColor?: string;
+  contentColor?: colorTypes;
+  unselectedContentColor?: colorTypes;
   borderRadius?: number;
   optionSpacing?: number;
-  borderColor?: string;
+  borderColor?: colorTypes;
   style?: StyleProp<ViewStyle>;
   value: string;
   onSelect?: (label: string) => void;
@@ -55,6 +49,7 @@ const RadioButtonGroup: React.FC<Props> = ({
   borderColor,
   style,
   value,
+  theme: { colors },
   onSelect = () => {},
 }) => {
   const marginHorizontal =
@@ -87,19 +82,18 @@ const RadioButtonGroup: React.FC<Props> = ({
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: selected ? activeColor : inactiveColor,
+                backgroundColor: selected
+                  ? activeColor && colors[activeColor]
+                  : inactiveColor && colors[inactiveColor],
                 height: style
                   ? (style as ViewStyle).height
                     ? (style as ViewStyle).height
                     : 50
                   : 50,
-                borderLeftWidth:
-                  borderColor && index !== 0 ? StyleSheet.hairlineWidth : 0,
+                borderLeftWidth: borderColor && index !== 0 ? 0.5 : 0,
                 borderRightWidth:
-                  borderColor && index !== options.length - 1
-                    ? StyleSheet.hairlineWidth
-                    : 0,
-                borderColor,
+                  borderColor && index !== options.length - 1 ? 0.5 : 0,
+                borderColor: borderColor && colors[borderColor],
                 borderRadius: optionSpacing ? borderRadius : 0,
                 marginLeft: marginHorizontal,
                 marginRight: marginHorizontal,
@@ -109,16 +103,26 @@ const RadioButtonGroup: React.FC<Props> = ({
             >
               {option.icon ? (
                 <Icon
+                  style={{ paddingEnd: 5 }}
                   name={option.icon}
                   size={iconSize}
-                  color={selected ? contentColor : unselectedContentColor}
+                  color={
+                    selected
+                      ? contentColor && colors[contentColor]
+                      : unselectedContentColor && colors[unselectedContentColor]
+                  }
                 />
               ) : null}
               {option.label ? (
                 <Text
                   style={[
                     labelStyle,
-                    { color: selected ? contentColor : unselectedContentColor },
+                    {
+                      color: selected
+                        ? contentColor && colors[contentColor]
+                        : unselectedContentColor &&
+                          colors[unselectedContentColor],
+                    },
                   ]}
                 >
                   {option.label}

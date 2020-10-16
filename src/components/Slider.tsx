@@ -1,6 +1,6 @@
 import * as React from "react";
-//@ts-ignore
-import ReactNativeSlider from "react-native-slider";
+import ReactNativeSlider from "@react-native-community/slider";
+
 import { withTheme } from "../core/theming";
 import {
   GROUPS,
@@ -22,14 +22,14 @@ export interface Props {
   disabledThumbTintColor?: colorTypes;
   minimumValue: number;
   maximumValue: number;
-  thumbTouchSize: number;
+  //thumbTouchSize: number;
   step: number;
   disabled?: boolean;
   onValueChange?: (value: number) => void;
   theme: typeof themeT;
-  trackBorderRadius?: number;
-  thumbBorderRadius?: number;
-  thumbSize: number;
+  //trackBorderRadius?: number;
+  //thumbBorderRadius?: number;
+  //thumbSize: number;
 }
 
 const Slider: React.FC<Props> = ({
@@ -41,26 +41,14 @@ const Slider: React.FC<Props> = ({
   disabledThumbTintColor = "strong",
   minimumValue = 0,
   maximumValue = 10,
-  thumbTouchSize = 4,
   step = 1,
   theme,
   disabled = false,
   onValueChange = () => {},
-  trackBorderRadius = 4,
-  thumbBorderRadius = 4,
-  thumbSize = 8,
+
   ...props
 }) => {
   const [internalValue, setInternalValue] = React.useState(0);
-
-  const s = style as ViewStyle;
-  const thumbStyle = {
-    borderRadius: thumbBorderRadius || 0,
-    width: thumbSize || (s && s.height ? (s.height as number) * 0.4 : null),
-    height: thumbSize || (s && s.width ? (s.width as number) * 0.1 : null),
-  };
-
-  let actualThumbTouchSize = thumbSize + (thumbTouchSize || 0);
 
   return (
     <ReactNativeSlider
@@ -76,20 +64,10 @@ const Slider: React.FC<Props> = ({
           ? theme.colors[disabledThumbTintColor]
           : theme.colors[thumbTintColor]
       }
-      thumbTouchSize={{
-        width: actualThumbTouchSize || 0,
-        height: actualThumbTouchSize || 0,
-      }}
       onValueChange={(newValue: number) => {
         onValueChange(newValue);
         setInternalValue(newValue);
       }}
-      trackStyle={{
-        borderRadius: trackBorderRadius ? trackBorderRadius : 0,
-        width: style ? s.width : "100%",
-        height: style ? s.height : null,
-      }}
-      thumbStyle={thumbStyle}
       style={disabled ? [style, { opacity: 0.6 }] : style}
       step={step}
     />

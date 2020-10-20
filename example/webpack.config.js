@@ -7,12 +7,22 @@ const node_modules = path.join(__dirname, "node_modules");
 
 module.exports = async function (env, argv) {
   const config = await createExpoWebpackConfigAsync(env, argv);
+  config.module.rules.push({
+    test: /postMock.html$/,
+    use: {
+      loader: "file-loader",
+      options: {
+        name: "[name].[ext]",
+      },
+    },
+  });
 
   config.module.rules.push({
     test: /\.(js|ts|tsx)$/,
     include: path.resolve(root, "src"),
     use: "babel-loader",
   });
+  config.resolve.alias["react-native-webview"] = "react-native-web-webview";
 
   // We need to make sure that only one version is loaded for peerDependencies
   // So we alias them to the versions in example's node_modules

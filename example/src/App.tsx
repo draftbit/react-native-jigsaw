@@ -46,6 +46,8 @@ import StepperExample from "./StepperExample";
 
 import TextFieldExample from "./TextFieldExample";
 
+import WebViewExample from "./WebViewExample";
+
 import ProgressIndicatorExample from "./ProgressIndicatorExample.js";
 import {
   NavigationContainer,
@@ -82,6 +84,7 @@ const ROUTES = {
   Switch: SwitchExample,
   Stepper: StepperExample,
   TextField: TextFieldExample,
+  WebView: WebViewExample,
 };
 
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";

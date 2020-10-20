@@ -2,7 +2,7 @@ import React from "react";
 import {
   Image as NativeImage,
   ImageProps,
-  ImageStyle,
+  StyleSheet,
   View,
 } from "react-native";
 import Config from "./Config";
@@ -22,9 +22,9 @@ const Image: React.FC<ImageProps> = ({
   return (
     <>
       {style &&
-      (style as ImageStyle).aspectRatio &&
+      StyleSheet.flatten(style).aspectRatio &&
       typeof source !== "string" ? (
-        <View style={style}>
+        <View style={[style]}>
           <NativeImage
             source={typeof source === "string" ? { uri: source } : source}
             resizeMode={resizeMode}

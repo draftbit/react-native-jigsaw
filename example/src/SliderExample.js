@@ -14,10 +14,6 @@ function SliderExample({ theme }) {
           maximumTrackTintColor="primary"
           minimumTrackTintColor="light"
           thumbTintColor="primary"
-          thumbBorderRadius={4}
-          trackBorderRadius={4}
-          thumbSize={8}
-          thumbTouchSize={4}
           value={value}
           minimumValue={0}
           maximumValue={10}
@@ -35,7 +31,6 @@ function SliderExample({ theme }) {
           thumbTintColor="primary"
           disabledThumbTintColor="strong"
           thumbBorderRadius={20}
-          thumbSize={20}
           value={value}
           minimumValue={0}
           maximumValue={10}
@@ -53,10 +48,6 @@ function SliderExample({ theme }) {
           maximumTrackTintColor="primary"
           minimumTrackTintColor="light"
           thumbTintColor="primary"
-          thumbBorderRadius={10}
-          trackBorderRadius={10}
-          thumbSize={20}
-          thumbTouchSize={20}
           value={value}
           minimumValue={0}
           maximumValue={10}

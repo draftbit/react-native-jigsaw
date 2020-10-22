@@ -1,5 +1,10 @@
 import React from "react";
-import { Image as NativeImage, ImageProps } from "react-native";
+import {
+  Image as NativeImage,
+  ImageProps,
+  StyleSheet,
+  View,
+} from "react-native";
 import Config from "./Config";
 import {
   COMPONENT_TYPES,
@@ -11,14 +16,34 @@ import {
 const Image: React.FC<ImageProps> = ({
   source = Config.placeholderImageURL,
   resizeMode = "cover",
+  style,
   ...props
 }) => {
   return (
-    <NativeImage
-      source={typeof source === "string" ? { uri: source } : source}
-      resizeMode={resizeMode}
-      {...props}
-    />
+    <>
+      {style &&
+      StyleSheet.flatten(style).aspectRatio &&
+      typeof source !== "string" ? (
+        <View style={[style]}>
+          <NativeImage
+            source={typeof source === "string" ? { uri: source } : source}
+            resizeMode={resizeMode}
+            style={[
+              style,
+              { aspectRatio: undefined },
+              { width: "100%", height: "100%" },
+            ]}
+            {...props}
+          />
+        </View>
+      ) : (
+        <NativeImage
+          source={typeof source === "string" ? { uri: source } : source}
+          resizeMode={resizeMode}
+          {...props}
+        />
+      )}
+    </>
   );
 };
 

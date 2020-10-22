@@ -4,6 +4,7 @@ import {
   ImageStyle,
   ImageProps,
   ImageSourcePropType,
+  StyleSheet,
 } from "react-native";
 import AspectRatio from "./AspectRatio.web";
 import Config from "./Config";
@@ -14,15 +15,15 @@ const Image: React.FC<ImageProps> = ({
   resizeMode = "cover",
   ...props
 }) => {
-  if (style && (style as ImageStyle).aspectRatio) {
+  if (style && StyleSheet.flatten(style).aspectRatio) {
     return (
       <AspectRatio style={style as ImageStyle}>
         <NativeImage
           style={[
             style,
             {
-              width: "100%",
               height: "100%",
+              width: "100%",
             },
           ]}
           source={source as ImageSourcePropType}

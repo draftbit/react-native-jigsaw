@@ -9,23 +9,22 @@ import {
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { DatePickerComponentProps as Props } from "./DatePickerComponentType";
 import { withTheme } from "../../core/theming";
-import Theme from "../../styles/DefaultTheme";
 
-const DatePickerComponent: React.FC<Props & { theme: typeof Theme }> = ({
+const DatePickerComponent: React.FC<Props> = ({
   value,
   onChange,
   mode,
   toggleVisibility,
   isVisible,
-  theme,
+  theme: { colors },
 }) => {
   const internalTheme = createMuiTheme({
     palette: {
       primary: {
-        main: theme?.colors?.primary ?? Theme.colors.primary,
+        main: colors.primary,
       },
       secondary: {
-        main: theme?.colors?.secondary ?? Theme.colors.secondary,
+        main: colors.secondary,
       },
     },
   });

@@ -39,6 +39,6 @@
     "@babel/runtime": "^7.11.2",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-expo": "^8.3.0",
-    "expo-cli": "^3.17.18"
+    "expo-cli": "^3.28.1"
   }
 }

@@ -21,9 +21,9 @@ const AspectRatio: React.FC<Props> = (props) => {
   if (layout) {
     const { width = 0, height = 0 } = layout;
     if (width === 0) {
-      style.push({ width: height * aspectRatio, height });
+      style.push({ width: height * (1 / aspectRatio), height });
     } else {
-      style.push({ width, height: width * aspectRatio });
+      style.push({ width, height: width * (1 / aspectRatio) });
     }
   }
   return (

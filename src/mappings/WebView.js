@@ -13,7 +13,11 @@ export const SEED_DATA = {
   code_link:
     "https://github.com/expo/expo/blob/master/packages/expo-av/src/Video.tsx",
   category: COMPONENT_TYPES.media,
-  layout: null,
+  layout: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+  },
   props: {
     source: {
       group: GROUPS.data,
@@ -21,7 +25,7 @@ export const SEED_DATA = {
       description: "The URL for the website",
       editable: true,
       required: true,
-      defaultValue: "https://www.draftbit.com",
+      defaultValue: "https://draftbit.com",
       formType: FORM_TYPES.sourceUrl,
       propType: PROP_TYPES.OBJECT,
     },

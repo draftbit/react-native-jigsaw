@@ -13,8 +13,7 @@ export const SEED_DATA = {
     "https://github.com/expo/expo/blob/master/packages/expo-av/src/Video.tsx",
   category: COMPONENT_TYPES.media,
   layout: {
-    width: "100%",
-    height: 250,
+    height: 215,
   },
   props: {
     source: {
@@ -118,7 +117,7 @@ export const SEED_DATA = {
       description: "Allow users to have the option to pause or play the video",
       editable: true,
       required: true,
-      defaultValue: false,
+      defaultValue: true,
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
     },

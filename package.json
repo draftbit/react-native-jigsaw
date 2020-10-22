@@ -1,6 +1,6 @@
 {
-  "name": "@draftbit/ui",
-  "version": "37.11.0",
+  "name": "@draftbit/web",
+  "version": "37.11.0-rc.0",
   "description": "Draftbit UI Library",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -77,6 +77,7 @@
   "peerDependencies": {
     "@react-native-community/datetimepicker": "2.4.0",
     "@react-native-community/picker": "*",
+    "expo-av": "^8.6.0",
     "react": "*",
     "react-native": "*",
     "react-native-safe-area-context": "*",

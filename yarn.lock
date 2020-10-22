@@ -4587,6 +4587,14 @@ expect@^26.0.1:
     jest-message-util "^26.0.1"
     jest-regex-util "^26.0.0"
 
+expo-av@^8.6.0:
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/expo-av/-/expo-av-8.6.0.tgz#ab434c05241c1dcdca0edd57acb03aa21a3e46cc"
+  integrity sha512-ZZJtCLCDigeDMu2fyv76Kyifu2quhTn6ViYjM2ku/HvFSvUxlb5kK9imuLog3kR+LRxeIiVS9F29r3PCOqI+rQ==
+  dependencies:
+    lodash "^4.17.15"
+    nullthrows "^1.1.0"
+
 expo-step-indicator@0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/expo-step-indicator/-/expo-step-indicator-0.1.2.tgz#862018c585658b5cb0ef0f89b4c599232c36886d"
@@ -7675,7 +7683,7 @@ nth-check@^1.0.2:
   dependencies:
     boolbase "~1.0.0"
 
-nullthrows@^1.1.1:
+nullthrows@^1.1.0, nullthrows@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/nullthrows/-/nullthrows-1.1.1.tgz#7818258843856ae971eae4208ad7d7eb19a431b1"
   integrity sha512-2vPPEi+Z7WqML2jZYddDIfy5Dqb0r2fze2zTxNNknZaFpVHU3mFB3R+DWeJWGVx0ecvttSGlJTI+WG+8Z4cDWw==

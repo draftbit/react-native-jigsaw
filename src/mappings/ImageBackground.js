@@ -15,7 +15,11 @@ export const SEED_DATA = {
   description:
     "A very simple drop-in replacement for Image that allows you to use an Image as a background.",
   category: COMPONENT_TYPES.media,
-  layout: { width: "100%", height: "100%" },
+  layout: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+  },
   props: {
     source: {
       group: GROUPS.data,

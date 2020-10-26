@@ -13,6 +13,11 @@ export const SEED_DATA = {
   code_link:
     "https://github.com/expo/expo/blob/master/packages/expo/src/effects/BlurView.d.ts",
   category: COMPONENT_TYPES.layout,
+  layout: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+  },
   props: {
     tint: {
       label: "Tint",

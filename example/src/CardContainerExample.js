@@ -25,7 +25,7 @@ function CardContainerExample({ theme }) {
         return (
           <Section key={i} title={`(${numColumns} Columns 1x1 aspectRatio)`}>
             <CardContainer
-              image={require("../assets/images/splash.png")}
+              image={require("./assets/images/splash.png")}
               title="Beautiful West Coast Villa"
               leftDescription="San Diego"
               rightDescription="$100"

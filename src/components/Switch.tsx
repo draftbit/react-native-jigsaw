@@ -24,6 +24,7 @@ const Switch: React.FC<Props> = ({
   onValueChange,
   color,
   theme,
+  style,
   ...props
 }) => {
   let thumbColor;

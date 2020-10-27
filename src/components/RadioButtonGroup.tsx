@@ -1,6 +1,13 @@
 import * as React from "react";
 import { withTheme } from "../core/theming";
-import { View, Text, StyleProp, TextStyle, ViewStyle } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
+} from "react-native";
 import Icon from "./Icon";
 import Touchable from "./Touchable";
 import {
@@ -68,7 +75,7 @@ const RadioButtonGroup: React.FC<Props> = ({
   }
 
   return (
-    <View style={containerStyle}>
+    <View style={[containerStyle, style]}>
       {options.map((option, index) => {
         const selected = option.label === value;
         return (
@@ -90,10 +97,13 @@ const RadioButtonGroup: React.FC<Props> = ({
                     ? (style as ViewStyle).height
                     : 50
                   : 50,
-                borderLeftWidth: borderColor && index !== 0 ? 0.5 : 0,
+                borderLeftWidth:
+                  borderColor && index !== 0 ? StyleSheet.hairlineWidth : 0,
                 borderRightWidth:
-                  borderColor && index !== options.length - 1 ? 0.5 : 0,
-                borderColor: borderColor && colors[borderColor],
+                  borderColor && index !== options.length - 1
+                    ? StyleSheet.hairlineWidth
+                    : 0,
+                borderColor: borderColor ? colors[borderColor] : colors.divider,
                 borderRadius: optionSpacing ? borderRadius : 0,
                 marginLeft: marginHorizontal,
                 marginRight: marginHorizontal,
@@ -150,8 +160,16 @@ export const SEED_DATA = {
       description: "Options for the button group.",
       formType: FORM_TYPES.array,
       propType: PROP_TYPES.OBJECT,
-      options: [],
-      defaultValue: null,
+      options: [
+        { icon: "", label: "One" },
+        { icon: "", label: "Two" },
+        { icon: "", label: "Three" },
+      ],
+      defaultValue: [
+        { icon: "", label: "One" },
+        { icon: "", label: "Two" },
+        { icon: "", label: "Three" },
+      ],
       editable: true,
       required: true,
     },
@@ -170,7 +188,7 @@ export const SEED_DATA = {
       group: GROUPS.basic,
       label: "Active Color",
       description: "Color of the button when it's selected",
-      defaultValue: null,
+      defaultValue: "primary",
       formType: FORM_TYPES.color,
       propType: PROP_TYPES.THEME,
       editable: true,
@@ -180,7 +198,7 @@ export const SEED_DATA = {
       group: GROUPS.basic,
       label: "Inactive Color",
       description: "Color of the button when it's selected not selected",
-      defaultValue: null,
+      defaultValue: "divider",
       formType: FORM_TYPES.color,
       propType: PROP_TYPES.THEME,
       editable: true,
@@ -190,7 +208,7 @@ export const SEED_DATA = {
       group: GROUPS.basic,
       label: "Selected Content Color",
       description: "Color of the content(Icon and Label)",
-      defaultValue: null,
+      defaultValue: "surface",
       formType: FORM_TYPES.color,
       propType: PROP_TYPES.THEME,
       editable: true,
@@ -210,7 +228,7 @@ export const SEED_DATA = {
       group: GROUPS.basic,
       label: "Border Color",
       description: "Border color of the option",
-      defaultValue: null,
+      defaultValue: "light",
       formType: FORM_TYPES.color,
       propType: PROP_TYPES.THEME,
       editable: true,
@@ -246,7 +264,7 @@ export const SEED_DATA = {
       description: "The border radius for the container or options",
       formType: FORM_TYPES.number,
       propType: PROP_TYPES.NUMBER,
-      defaultValue: 0,
+      defaultValue: 10,
       min: 0,
       max: 100,
       step: 1,
@@ -260,9 +278,9 @@ export const SEED_DATA = {
       description: "The size of the icon if enabled",
       formType: FORM_TYPES.number,
       propType: PROP_TYPES.NUMBER,
-      defaultValue: 0,
+      defaultValue: 16,
       min: 0,
-      max: 50,
+      max: 24,
       step: 1,
       precision: 1,
       editable: true,

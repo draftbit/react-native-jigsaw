@@ -20,9 +20,9 @@ export default function RadioButtonGroupExample() {
           borderRadius={10}
           inactiveColor="divider"
           activeColor="primary"
-          iconSize={15}
+          iconSize={16}
           contentColor="surface"
-          borderColor="strong"
+          borderColor="light"
           value={selected}
           onSelect={handleSelect}
         />

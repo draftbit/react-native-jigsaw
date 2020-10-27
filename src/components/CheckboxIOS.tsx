@@ -19,6 +19,7 @@ const CheckboxIOS: React.FC<Props> = ({
   onPress = () => {},
   theme,
   color,
+  style,
   ...rest
 }) => {
   const indeterminate = status === "indeterminate";
@@ -35,16 +36,19 @@ const CheckboxIOS: React.FC<Props> = ({
       accessibilityRole="button"
       accessibilityState={{ disabled }}
       accessibilityLiveRegion="polite"
-      style={{
-        borderRadius: 2,
-        width: 25,
-        height: 25,
-        backgroundColor:
-          status === "unchecked" ? theme.colors.surface : checkedColor,
-        borderColor: theme.colors.light,
-        borderWidth: status === "unchecked" ? 2 : 0,
-        opacity: disabled ? theme.disabledOpacity : 1,
-      }}
+      style={[
+        {
+          borderRadius: 2,
+          width: 25,
+          height: 25,
+          backgroundColor:
+            status === "unchecked" ? theme.colors.surface : checkedColor,
+          borderColor: theme.colors.light,
+          borderWidth: status === "unchecked" ? 2 : 0,
+          opacity: disabled ? theme.disabledOpacity : 1,
+        },
+        style,
+      ]}
     >
       <View
         style={{

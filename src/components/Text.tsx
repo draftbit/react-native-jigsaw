@@ -50,7 +50,7 @@ export const SEED_DATA = {
   description: "A basic Text component",
   category: COMPONENT_TYPES.basic,
   layout: {
-    color: "strong",
+    color: "strong", // This is translated on collector script run by the extractValueAndType function
   },
   props: {
     children: {

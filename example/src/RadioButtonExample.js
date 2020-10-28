@@ -13,9 +13,9 @@ export default function RadioButtonGroupExample() {
           direction="horizontal"
           options={[
             { label: "First", icon: "check" },
-            { label: "Second" },
-            { label: "Third" },
-            { label: "Fourth" },
+            { label: "Second", icon: "check" },
+            { label: "Third", icon: "check" },
+            { label: "Fourth", icon: "check" },
           ]}
           borderRadius={10}
           inactiveColor="divider"

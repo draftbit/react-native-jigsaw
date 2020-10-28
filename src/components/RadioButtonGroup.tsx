@@ -78,6 +78,11 @@ const RadioButtonGroup: React.FC<Props> = ({
     <View style={[containerStyle, style]}>
       {options.map((option, index) => {
         const selected = option.label === value;
+        const textColor = selected
+          ? contentColor && colors[contentColor]
+          : unselectedContentColor && colors[unselectedContentColor];
+
+        console.log({ selected, textColor });
         return (
           <Touchable
             key={index}
@@ -116,11 +121,7 @@ const RadioButtonGroup: React.FC<Props> = ({
                   style={{ paddingEnd: 5 }}
                   name={option.icon}
                   size={iconSize}
-                  color={
-                    selected
-                      ? contentColor && colors[contentColor]
-                      : unselectedContentColor && colors[unselectedContentColor]
-                  }
+                  color={textColor}
                 />
               ) : null}
               {option.label ? (
@@ -128,10 +129,7 @@ const RadioButtonGroup: React.FC<Props> = ({
                   style={[
                     labelStyle,
                     {
-                      color: selected
-                        ? contentColor && colors[contentColor]
-                        : unselectedContentColor &&
-                          colors[unselectedContentColor],
+                      color: textColor,
                     },
                   ]}
                 >
@@ -218,7 +216,7 @@ export const SEED_DATA = {
       group: GROUPS.basic,
       label: "Unselected Content Color",
       description: "Unfinished Color of the content(Icon and Label)",
-      defaultValue: null,
+      defaultValue: "strong",
       formType: FORM_TYPES.color,
       propType: PROP_TYPES.THEME,
       editable: true,

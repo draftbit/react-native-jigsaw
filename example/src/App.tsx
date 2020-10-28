@@ -97,7 +97,7 @@ function Example({ title, children }) {
         >
           <Image
             style={exampleStyles.menuButtonImageStyle}
-            source={require("../assets/images/hamburger.png")}
+            source={require("./assets/images/hamburger.png")}
           />
         </TouchableOpacity>
 
@@ -110,8 +110,8 @@ function Example({ title, children }) {
 }
 
 let customFonts = {
-  "FiraCode": require("../assets/fonts/FiraCode-Bold.otf"),
-  "Testing": require("../assets/fonts/Sriracha-Regular.ttf"),
+  "FiraCode": require("./assets/fonts/FiraCode-Bold.otf"),
+  "Testing": require("./assets/fonts/Sriracha-Regular.ttf"),
   "Inter-SemiBoldItalic":
     "https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12",
 };

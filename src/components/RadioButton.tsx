@@ -24,11 +24,9 @@ const RadioButton: React.FC<Props> = ({
   unselectedColor,
   onPress = () => {},
   style,
-  ...rest
 }) => {
   return (
     <IconButton
-      {...rest}
       style={style}
       icon={
         selected

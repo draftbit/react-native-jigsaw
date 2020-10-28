@@ -130,14 +130,14 @@ export default class StepIndicator extends Component<Props, State> {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.customStyles !== this.props.customStyles) {
-      this.setState((state) => ({
-        customStyles: Object.assign(
-          state.customStyles,
-          this.props.customStyles
-        ),
-      }));
-    }
+    // if (prevProps.customStyles !== this.props.customStyles) {
+    //   this.setState((state) => ({
+    //     customStyles: Object.assign(
+    //       state.customStyles,
+    //       this.props.customStyles
+    //     ),
+    //   }));
+    // }
 
     if (prevProps.currentPosition !== this.props.currentPosition) {
       this.onCurrentPositionChanged(this.props.currentPosition);

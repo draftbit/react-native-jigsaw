@@ -1,4 +1,5 @@
 import * as React from "react";
+import { StyleProp, ViewStyle } from "react-native";
 import { withTheme } from "../core/theming";
 
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
@@ -13,6 +14,7 @@ interface Props {
   unselectedColor?: string;
   onPress?: () => void;
   theme: typeof themeT;
+  style?: StyleProp<ViewStyle>;
 }
 
 const RadioButton: React.FC<Props> = ({
@@ -21,9 +23,13 @@ const RadioButton: React.FC<Props> = ({
   color = "#5a45ff",
   unselectedColor,
   onPress = () => {},
+  style,
+  ...rest
 }) => {
   return (
     <IconButton
+      {...rest}
+      style={style}
       icon={
         selected
           ? "MaterialIcons/radio-button-checked"

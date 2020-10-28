@@ -24,6 +24,7 @@ const CheckboxAndroid: React.FC<Props> = ({
   onPress = () => {},
   theme,
   color,
+  style,
   ...rest
 }) => {
   const [scaleAnim] = React.useState<Animated.Value>(new Animated.Value(1));
@@ -71,12 +72,15 @@ const CheckboxAndroid: React.FC<Props> = ({
       accessibilityRole="button"
       accessibilityState={{ disabled }}
       accessibilityLiveRegion="polite"
-      style={{
-        borderRadius: 18,
-        width: 30,
-        height: 30,
-        opacity: disabled ? 0.5 : 1,
-      }}
+      style={[
+        {
+          borderRadius: 18,
+          width: 30,
+          height: 30,
+          opacity: disabled ? 0.5 : 1,
+        },
+        style,
+      ]}
     >
       <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
         <Icon name={icon} size={29} color={checkboxColor} />

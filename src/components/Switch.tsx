@@ -24,6 +24,7 @@ const Switch: React.FC<Props> = ({
   onValueChange,
   color,
   theme,
+  style,
   ...props
 }) => {
   let thumbColor;
@@ -42,9 +43,13 @@ const Switch: React.FC<Props> = ({
       activeThumbColor={thumbColor}
       thumbColor={thumbColor}
       onValueChange={disabled ? undefined : onValueChange}
-      style={{
-        opacity: disabled && Platform.OS !== "ios" ? theme.disabledOpacity : 1,
-      }}
+      style={[
+        {
+          opacity:
+            disabled && Platform.OS !== "ios" ? theme.disabledOpacity : 1,
+        },
+        style,
+      ]}
     />
   );
 };

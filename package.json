@@ -47,6 +47,7 @@
     "color": "^3.1.2",
     "date-fns": "^2.16.1",
     "dateformat": "^3.0.3",
+    "react-native-safe-area-context": "~3.1.4",
     "react-native-typography": "^1.4.1"
   },
   "devDependencies": {
@@ -55,6 +56,7 @@
     "@react-native-community/datetimepicker": "~3.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@react-native-community/picker": "~1.6.6",
+    "react-native-safe-area-context": "~3.1.4",
     "@release-it/conventional-changelog": "^1.1.4",
     "@types/color": "^3.0.1",
     "@types/dateformat": "^3.0.1",
@@ -87,7 +89,6 @@
     "react-native": "*",
     "@react-native-community/datetimepicker": "~3.0.0",
     "@react-native-community/picker": "~1.6.6",
-    "react-native-safe-area-context": "~3.1.4",
     "react-native-svg": "~12.1.0"
   },
   "husky": {

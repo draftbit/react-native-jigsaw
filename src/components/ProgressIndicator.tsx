@@ -1,5 +1,5 @@
 import * as React from "react";
-import StepIndicator from "expo-step-indicator";
+import StepIndicator from "./StepIndicator";
 import { withTheme } from "../core/theming";
 import {
   COMPONENT_TYPES,
@@ -11,7 +11,7 @@ import themeT from "../styles/DefaultTheme";
 import { colorTypes } from "../types";
 
 interface Props {
-  numberOfSteps?: number;
+  numberOfSteps: number;
   currentStep: number;
   currentStepStrokeWidth?: number;
   stepStrokeCurrentColor?: colorTypes;

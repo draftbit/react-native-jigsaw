@@ -81,8 +81,6 @@ const RadioButtonGroup: React.FC<Props> = ({
         const textColor = selected
           ? contentColor && colors[contentColor]
           : unselectedContentColor && colors[unselectedContentColor];
-
-        console.log({ selected, textColor });
         return (
           <Touchable
             key={index}

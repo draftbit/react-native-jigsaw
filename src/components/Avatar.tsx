@@ -31,7 +31,7 @@ export default Avatar;
 export const SEED_DATA = {
   name: "Avatar",
   tag: "Avatar",
-  category: COMPONENT_TYPES.media,
+  category: COMPONENT_TYPES.deprecated,
   props: {
     size: {
       group: GROUPS.basic,

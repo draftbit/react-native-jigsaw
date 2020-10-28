@@ -13,16 +13,16 @@ export default function RadioButtonGroupExample() {
           direction="horizontal"
           options={[
             { label: "First", icon: "check" },
-            { label: "Second" },
-            { label: "Third" },
-            { label: "Fourth" },
+            { label: "Second", icon: "check" },
+            { label: "Third", icon: "check" },
+            { label: "Fourth", icon: "check" },
           ]}
           borderRadius={10}
           inactiveColor="divider"
           activeColor="primary"
-          iconSize={15}
+          iconSize={16}
           contentColor="surface"
-          borderColor="strong"
+          borderColor="light"
           value={selected}
           onSelect={handleSelect}
         />

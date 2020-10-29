@@ -6,7 +6,6 @@ import {
   StyleProp,
   ViewStyle,
   NativeSyntheticEvent,
-  TextInputChangeEventData,
   TextInputSubmitEditingEventData,
 } from "react-native";
 import { withTheme } from "../core/theming";
@@ -26,7 +25,7 @@ interface Props {
   placeholder?: string;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
-  onChange?: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
+  onChange: (text: string) => void;
   onSubmit?: (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
   value: string;
 }
@@ -46,8 +45,8 @@ const FieldSearchBarFull: React.FC<Props> = ({
     setIsFocused(false);
   };
 
-  const onChange = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
-    changeOverride && changeOverride(e);
+  const onChange = (text: string) => {
+    changeOverride && changeOverride(text);
   };
 
   const onFocus = () => {
@@ -60,7 +59,7 @@ const FieldSearchBarFull: React.FC<Props> = ({
     submitOverride && submitOverride(e);
   };
 
-  const { ...typeStyle } = typography.body2;
+  const { lineHeight, ...typeStyles } = typography.body2; // eslint-disable-line @typescript-eslint/no-unused-vars
 
   return (
     <View style={[{ padding: spacing.large }, styles.container, style]}>
@@ -69,25 +68,19 @@ const FieldSearchBarFull: React.FC<Props> = ({
         size={Config.fieldSearchBarFullIconSize}
         color={focused ? colors.primary : colors.light}
       />
-      <TextInput
-        clearButtonMode="while-editing"
-        placeholder={placeholder}
-        value={value}
-        onBlur={onBlur}
-        onFocus={onFocus}
-        onChange={onChange}
-        onSubmitEditing={onSubmit}
-        placeholderTextColor={colors.light}
-        style={[
-          typeStyle,
-          {
-            color: colors.medium,
-            marginLeft: spacing.medium,
-            flex: 1,
-            justifyContent: "center",
-          },
-        ]}
-      />
+      <View style={{ marginLeft: spacing.medium, flex: 1 }}>
+        <TextInput
+          clearButtonMode="while-editing"
+          placeholder={placeholder}
+          value={value}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          onChangeText={onChange}
+          onSubmitEditing={onSubmit}
+          placeholderTextColor={colors.light}
+          style={typeStyles}
+        />
+      </View>
     </View>
   );
 };

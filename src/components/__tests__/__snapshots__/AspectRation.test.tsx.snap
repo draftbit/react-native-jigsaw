@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders aspect ratio 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    Array [
+      Object {},
+      Object {
+        "aspectRatio": 2,
+      },
+    ]
+  }
+>
+  <View />
+</View>
+`;

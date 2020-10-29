@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders animated circular progress 1`] = `
+<View>
+  <RNSVGSvgView
+    bbHeight={30}
+    bbWidth={30}
+    focusable={false}
+    height={30}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        Object {
+          "flex": 0,
+          "height": 30,
+          "width": 30,
+        },
+      ]
+    }
+    width={30}
+  >
+    <RNSVGGroup>
+      <RNSVGGroup
+        matrix={
+          Array [
+            6.123233995736766e-17,
+            1,
+            -1,
+            6.123233995736766e-17,
+            30,
+            -1.7763568394002505e-15,
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;

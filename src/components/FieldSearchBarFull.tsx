@@ -78,7 +78,12 @@ const FieldSearchBarFull: React.FC<Props> = ({
           onChangeText={onChange}
           onSubmitEditing={onSubmit}
           placeholderTextColor={colors.light}
-          style={typeStyles}
+          style={[
+            {
+              color: colors.medium,
+            },
+            typeStyles,
+          ]}
         />
       </View>
     </View>

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders avatar 1`] = `
+<Image
+  resizeMode="cover"
+  source={
+    Object {
+      "uri": "https://res.cloudinary.com/altos/image/upload/c_scale,q_auto,dpr_auto,w_60,h_60/Avatar.png",
+    }
+  }
+  style={
+    Array [
+      Object {
+        "borderRadius": 30,
+        "height": 60,
+        "width": 60,
+      },
+      undefined,
+    ]
+  }
+/>
+`;

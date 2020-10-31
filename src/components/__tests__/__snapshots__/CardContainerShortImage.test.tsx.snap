@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders card container short image 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+      "width": 718,
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        Object {
+          "borderColor": "rgba(18, 20, 44, 0)",
+          "borderRadius": 6,
+          "borderWidth": 0,
+          "elevation": 2,
+          "shadowColor": "rgba(18, 20, 44, 1)",
+          "shadowOffset": Object {
+            "height": 2,
+            "width": 0,
+          },
+          "shadowOpacity": 0.0799999982,
+          "shadowRadius": 4,
+          "zIndex": 100,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "borderRadius": 6,
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+            "overflow": "hidden",
+          }
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "aspectRatio": 1,
+              },
+            ]
+          }
+        >
+          <Image
+            resizeMode="cover"
+            source={
+              Object {
+                "uri": "https://res.cloudinary.com/altos/image/upload/c_scale,q_auto,dpr_auto,w_100,h_100/Avatar.png",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "aspectRatio": 1,
+                },
+                Object {
+                  "aspectRatio": undefined,
+                },
+                Object {
+                  "height": "100%",
+                  "width": "100%",
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "flex": 1,
+              "padding": 16,
+            }
+          }
+        >
+          <Text
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "fontFamily": "System",
+                  "fontSize": 20,
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 26,
+                },
+                Object {
+                  "color": "rgba(18, 20, 44, 1)",
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

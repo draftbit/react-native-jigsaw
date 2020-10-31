@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders card container 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+      "width": 718,
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        Object {
+          "borderColor": "rgba(18, 20, 44, 0)",
+          "borderRadius": 6,
+          "borderWidth": 0,
+          "elevation": 2,
+          "shadowColor": "rgba(18, 20, 44, 1)",
+          "shadowOffset": Object {
+            "height": 2,
+            "width": 0,
+          },
+          "shadowOpacity": 0.0799999982,
+          "shadowRadius": 4,
+          "zIndex": 100,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "rgba(255, 255, 255, 1)",
+            "borderRadius": 6,
+            "overflow": "hidden",
+          }
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "aspectRatio": 1.5,
+              },
+            ]
+          }
+        >
+          <Image
+            resizeMode="cover"
+            source={
+              Object {
+                "uri": "https://res.cloudinary.com/altos/image/upload/w_400,f_auto,c_scale/draftbit/components/Image.png",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "aspectRatio": 1.5,
+                },
+                Object {
+                  "aspectRatio": undefined,
+                },
+                Object {
+                  "height": "100%",
+                  "width": "100%",
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "padding": 16,
+            }
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;

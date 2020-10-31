@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders button 1`] = `
+<View
+  style={
+    Object {
+      "alignSelf": "stretch",
+      "elevation": 0,
+      "zIndex": 100,
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "rgba(90, 69, 255, 1)",
+        "borderColor": "transparent",
+        "borderRadius": 24,
+        "borderStyle": "solid",
+        "borderWidth": 0,
+        "minWidth": 64,
+        "opacity": 1,
+      }
+    }
+  >
+    <View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "rgba(255, 255, 255, 1)",
+                "marginHorizontal": 16,
+                "marginVertical": 16,
+                "textAlign": "center",
+              },
+              Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 14,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 16,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;

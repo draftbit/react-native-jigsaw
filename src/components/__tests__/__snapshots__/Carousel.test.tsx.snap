@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders carousel 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    Array [
+      Object {
+        "alignSelf": "stretch",
+      },
+      Object {
+        "aspectRatio": undefined,
+        "width": 0,
+      },
+      Object {
+        "height": 375,
+      },
+    ]
+  }
+>
+  <RCTScrollView
+    horizontal={true}
+    onScroll={[Function]}
+    pagingEnabled={true}
+    scrollEventThrottle={16}
+    showsHorizontalScrollIndicator={false}
+  >
+    <View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            Object {
+              "width": 0,
+            },
+          ]
+        }
+      >
+        <Image
+          resizeMode="cover"
+          source={1}
+          style={
+            Object {
+              "aspectRatio": undefined,
+              "flex": 1,
+              "height": 375,
+              "width": 0,
+            }
+          }
+        />
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            Object {
+              "width": 0,
+            },
+          ]
+        }
+      >
+        <Image
+          resizeMode="cover"
+          source={1}
+          style={
+            Object {
+              "aspectRatio": undefined,
+              "flex": 1,
+              "height": 375,
+              "width": 0,
+            }
+          }
+        />
+      </View>
+    </View>
+  </RCTScrollView>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        },
+        Object {
+          "bottom": 16,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "flexDirection": "row",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "rgba(255, 255, 255, 1)",
+            "borderRadius": 6,
+            "height": 6,
+            "marginHorizontal": 4,
+            "opacity": 0.5,
+            "width": 6,
+            "zIndex": 100,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "backgroundColor": "rgba(255, 255, 255, 1)",
+            "borderRadius": 6,
+            "height": 6,
+            "marginHorizontal": 4,
+            "opacity": 0.5,
+            "width": 6,
+            "zIndex": 100,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

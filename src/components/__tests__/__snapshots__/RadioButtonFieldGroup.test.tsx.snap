@@ -1,0 +1,806 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders radio button field group 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": undefined,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "textAlign": "left",
+          "writingDirection": "ltr",
+        },
+        Array [
+          Object {
+            "color": undefined,
+            "fontSize": 24,
+          },
+          undefined,
+        ],
+      ]
+    }
+    theme={
+      Object {
+        "borderRadius": Object {
+          "button": 24,
+          "global": 6,
+        },
+        "colors": Object {
+          "background": "rgba(251, 252, 253, 1)",
+          "divider": "rgba(234, 237, 242, 1)",
+          "error": "rgba(255, 69, 100, 1)",
+          "light": "rgba(165, 173, 183, 1)",
+          "lightInverse": "rgba(255, 255, 255, 0.68)",
+          "medium": "rgba(70, 78, 88, 1)",
+          "mediumInverse": "rgba(255, 255, 255, 0.87)",
+          "primary": "rgba(90, 69, 255, 1)",
+          "secondary": "rgba(59, 201, 234, 1)",
+          "strong": "rgba(18, 20, 44, 1)",
+          "strongInverse": "rgba(255, 255, 255, 1)",
+          "surface": "rgba(255, 255, 255, 1)",
+        },
+        "disabledOpacity": 0.5,
+        "elevation": Object {
+          "0": Object {
+            "borderColor": "rgba(18, 20, 44, 1)",
+            "borderOpacity": 0,
+            "borderWidth": 0,
+            "shadowColor": "rgba(18, 20, 44, 1)",
+            "shadowOffset": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
+            "shadowRadius": 0,
+          },
+          "1": Object {
+            "borderColor": "rgba(18, 20, 44, 1)",
+            "borderOpacity": 0.0599999987,
+            "borderWidth": 1,
+            "shadowColor": "rgba(18, 20, 44, 1)",
+            "shadowOffset": Object {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.0599999987,
+            "shadowRadius": 4,
+          },
+          "2": Object {
+            "borderColor": "rgba(18, 20, 44, 1)",
+            "borderOpacity": 0,
+            "borderWidth": 0,
+            "shadowColor": "rgba(18, 20, 44, 1)",
+            "shadowOffset": Object {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.0799999982,
+            "shadowRadius": 4,
+          },
+          "3": Object {
+            "borderColor": "rgba(18, 20, 44, 1)",
+            "borderOpacity": 0,
+            "borderWidth": 0,
+            "shadowColor": "rgba(18, 20, 44, 1)",
+            "shadowOffset": Object {
+              "height": 6,
+              "width": 0,
+            },
+            "shadowOpacity": 0.119999997,
+            "shadowRadius": 6,
+          },
+        },
+        "spacing": Object {
+          "gutters": 16,
+          "large": 16,
+          "medium": 12,
+          "small": 8,
+          "text": 4,
+        },
+        "typography": Object {
+          "body1": Object {
+            "backgroundColor": "transparent",
+            "fontFamily": "System",
+            "fontSize": 16,
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 26,
+          },
+          "body2": Object {
+            "backgroundColor": "transparent",
+            "fontFamily": "System",
+            "fontSize": 14,
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 22,
+          },
+          "button": Object {
+            "backgroundColor": "transparent",
+            "fontFamily": "System",
+            "fontSize": 14,
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 16,
+          },
+          "caption": Object {
+            "backgroundColor": "transparent",
+            "fontFamily": "System",
+            "fontSize": 12,
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 16,
+          },
+          "headline1": Object {
+            "backgroundColor": "transparent",
+            "fontFamily": "System",
+            "fontSize": 60,
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 71,
+          },
+          "headline2": Object {
+            "backgroundColor": "transparent",
+            "fontFamily": "System",
+            "fontSize": 48,
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 58,
+          },
+          "headline3": Object {
+            "backgroundColor": "transparent",
+            "fontFamily": "System",
+            "fontSize": 34,
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 40,
+          },
+          "headline4": Object {
+            "backgroundColor": "transparent",
+            "fontFamily": "System",
+            "fontSize": 24,
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 34,
+          },
+          "headline5": Object {
+            "backgroundColor": "transparent",
+            "fontFamily": "System",
+            "fontSize": 20,
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 26,
+          },
+          "headline6": Object {
+            "backgroundColor": "transparent",
+            "fontFamily": "System",
+            "fontSize": 16,
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 24,
+          },
+          "overline": Object {
+            "backgroundColor": "transparent",
+            "fontFamily": "System",
+            "fontSize": 12,
+            "fontWeight": "400",
+            "letterSpacing": 2,
+            "lineHeight": 16,
+          },
+          "subtitle1": Object {
+            "backgroundColor": "transparent",
+            "fontFamily": "System",
+            "fontSize": 16,
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 26,
+          },
+          "subtitle2": Object {
+            "backgroundColor": "transparent",
+            "fontFamily": "System",
+            "fontSize": 14,
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 22,
+          },
+        },
+      }
+    }
+  />
+  <View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgba(251, 252, 253, 1)",
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "minHeight": 50,
+          "opacity": 1,
+          "paddingEnd": 20,
+          "paddingStart": 20,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "textAlign": "left",
+              "writingDirection": "ltr",
+            },
+            Array [
+              Object {
+                "flex": 3,
+                "fontSize": 14,
+              },
+              Array [
+                undefined,
+              ],
+              Object {
+                "color": "rgba(18, 20, 44, 1)",
+              },
+            ],
+          ]
+        }
+        theme={
+          Object {
+            "borderRadius": Object {
+              "button": 24,
+              "global": 6,
+            },
+            "colors": Object {
+              "background": "rgba(251, 252, 253, 1)",
+              "divider": "rgba(234, 237, 242, 1)",
+              "error": "rgba(255, 69, 100, 1)",
+              "light": "rgba(165, 173, 183, 1)",
+              "lightInverse": "rgba(255, 255, 255, 0.68)",
+              "medium": "rgba(70, 78, 88, 1)",
+              "mediumInverse": "rgba(255, 255, 255, 0.87)",
+              "primary": "rgba(90, 69, 255, 1)",
+              "secondary": "rgba(59, 201, 234, 1)",
+              "strong": "rgba(18, 20, 44, 1)",
+              "strongInverse": "rgba(255, 255, 255, 1)",
+              "surface": "rgba(255, 255, 255, 1)",
+            },
+            "disabledOpacity": 0.5,
+            "elevation": Object {
+              "0": Object {
+                "borderColor": "rgba(18, 20, 44, 1)",
+                "borderOpacity": 0,
+                "borderWidth": 0,
+                "shadowColor": "rgba(18, 20, 44, 1)",
+                "shadowOffset": Object {
+                  "height": 0,
+                  "width": 0,
+                },
+                "shadowOpacity": 0,
+                "shadowRadius": 0,
+              },
+              "1": Object {
+                "borderColor": "rgba(18, 20, 44, 1)",
+                "borderOpacity": 0.0599999987,
+                "borderWidth": 1,
+                "shadowColor": "rgba(18, 20, 44, 1)",
+                "shadowOffset": Object {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.0599999987,
+                "shadowRadius": 4,
+              },
+              "2": Object {
+                "borderColor": "rgba(18, 20, 44, 1)",
+                "borderOpacity": 0,
+                "borderWidth": 0,
+                "shadowColor": "rgba(18, 20, 44, 1)",
+                "shadowOffset": Object {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.0799999982,
+                "shadowRadius": 4,
+              },
+              "3": Object {
+                "borderColor": "rgba(18, 20, 44, 1)",
+                "borderOpacity": 0,
+                "borderWidth": 0,
+                "shadowColor": "rgba(18, 20, 44, 1)",
+                "shadowOffset": Object {
+                  "height": 6,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.119999997,
+                "shadowRadius": 6,
+              },
+            },
+            "spacing": Object {
+              "gutters": 16,
+              "large": 16,
+              "medium": 12,
+              "small": 8,
+              "text": 4,
+            },
+            "typography": Object {
+              "body1": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 16,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 26,
+              },
+              "body2": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 14,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+              },
+              "button": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 14,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 16,
+              },
+              "caption": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 12,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 16,
+              },
+              "headline1": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 60,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 71,
+              },
+              "headline2": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 48,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 58,
+              },
+              "headline3": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 34,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 40,
+              },
+              "headline4": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 24,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 34,
+              },
+              "headline5": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 20,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 26,
+              },
+              "headline6": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 16,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 24,
+              },
+              "overline": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 12,
+                "fontWeight": "400",
+                "letterSpacing": 2,
+                "lineHeight": 16,
+              },
+              "subtitle1": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 16,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 26,
+              },
+              "subtitle2": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 14,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+              },
+            },
+          }
+        }
+      >
+        first
+      </Text>
+      <View
+        style={
+          Object {
+            "alignItems": "flex-end",
+            "flex": 1,
+          }
+        }
+      >
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            Object {
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          hitSlop={
+            Object {
+              "bottom": 6,
+              "left": 6,
+              "right": 6,
+              "top": 6,
+            }
+          }
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+              "opacity": 1,
+            }
+          }
+        >
+          <View>
+            <View />
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(234, 237, 242, 1)",
+          },
+          undefined,
+          Object {
+            "height": 0.5,
+          },
+        ]
+      }
+    />
+  </View>
+  <View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgba(251, 252, 253, 1)",
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "minHeight": 50,
+          "opacity": 1,
+          "paddingEnd": 20,
+          "paddingStart": 20,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "textAlign": "left",
+              "writingDirection": "ltr",
+            },
+            Array [
+              Object {
+                "flex": 3,
+                "fontSize": 14,
+              },
+              Array [
+                undefined,
+              ],
+              Object {
+                "color": "rgba(18, 20, 44, 1)",
+              },
+            ],
+          ]
+        }
+        theme={
+          Object {
+            "borderRadius": Object {
+              "button": 24,
+              "global": 6,
+            },
+            "colors": Object {
+              "background": "rgba(251, 252, 253, 1)",
+              "divider": "rgba(234, 237, 242, 1)",
+              "error": "rgba(255, 69, 100, 1)",
+              "light": "rgba(165, 173, 183, 1)",
+              "lightInverse": "rgba(255, 255, 255, 0.68)",
+              "medium": "rgba(70, 78, 88, 1)",
+              "mediumInverse": "rgba(255, 255, 255, 0.87)",
+              "primary": "rgba(90, 69, 255, 1)",
+              "secondary": "rgba(59, 201, 234, 1)",
+              "strong": "rgba(18, 20, 44, 1)",
+              "strongInverse": "rgba(255, 255, 255, 1)",
+              "surface": "rgba(255, 255, 255, 1)",
+            },
+            "disabledOpacity": 0.5,
+            "elevation": Object {
+              "0": Object {
+                "borderColor": "rgba(18, 20, 44, 1)",
+                "borderOpacity": 0,
+                "borderWidth": 0,
+                "shadowColor": "rgba(18, 20, 44, 1)",
+                "shadowOffset": Object {
+                  "height": 0,
+                  "width": 0,
+                },
+                "shadowOpacity": 0,
+                "shadowRadius": 0,
+              },
+              "1": Object {
+                "borderColor": "rgba(18, 20, 44, 1)",
+                "borderOpacity": 0.0599999987,
+                "borderWidth": 1,
+                "shadowColor": "rgba(18, 20, 44, 1)",
+                "shadowOffset": Object {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.0599999987,
+                "shadowRadius": 4,
+              },
+              "2": Object {
+                "borderColor": "rgba(18, 20, 44, 1)",
+                "borderOpacity": 0,
+                "borderWidth": 0,
+                "shadowColor": "rgba(18, 20, 44, 1)",
+                "shadowOffset": Object {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.0799999982,
+                "shadowRadius": 4,
+              },
+              "3": Object {
+                "borderColor": "rgba(18, 20, 44, 1)",
+                "borderOpacity": 0,
+                "borderWidth": 0,
+                "shadowColor": "rgba(18, 20, 44, 1)",
+                "shadowOffset": Object {
+                  "height": 6,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.119999997,
+                "shadowRadius": 6,
+              },
+            },
+            "spacing": Object {
+              "gutters": 16,
+              "large": 16,
+              "medium": 12,
+              "small": 8,
+              "text": 4,
+            },
+            "typography": Object {
+              "body1": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 16,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 26,
+              },
+              "body2": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 14,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+              },
+              "button": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 14,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 16,
+              },
+              "caption": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 12,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 16,
+              },
+              "headline1": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 60,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 71,
+              },
+              "headline2": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 48,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 58,
+              },
+              "headline3": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 34,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 40,
+              },
+              "headline4": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 24,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 34,
+              },
+              "headline5": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 20,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 26,
+              },
+              "headline6": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 16,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 24,
+              },
+              "overline": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 12,
+                "fontWeight": "400",
+                "letterSpacing": 2,
+                "lineHeight": 16,
+              },
+              "subtitle1": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 16,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 26,
+              },
+              "subtitle2": Object {
+                "backgroundColor": "transparent",
+                "fontFamily": "System",
+                "fontSize": 14,
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+              },
+            },
+          }
+        }
+      >
+        second
+      </Text>
+      <View
+        style={
+          Object {
+            "alignItems": "flex-end",
+            "flex": 1,
+          }
+        }
+      >
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            Object {
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          hitSlop={
+            Object {
+              "bottom": 6,
+              "left": 6,
+              "right": 6,
+              "top": 6,
+            }
+          }
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+              "opacity": 1,
+            }
+          }
+        >
+          <View>
+            <View />
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(234, 237, 242, 1)",
+          },
+          undefined,
+          Object {
+            "height": 0.5,
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;

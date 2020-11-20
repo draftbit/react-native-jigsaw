@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders checkbox IOS 1`] = `
+<View
+  accessibilityLiveRegion="polite"
+  accessibilityRole="button"
+  accessibilityState={
+    Object {
+      "disabled": false,
+    }
+  }
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "rgba(90, 69, 255, 1)",
+      "borderColor": "rgba(165, 173, 183, 1)",
+      "borderRadius": 2,
+      "borderWidth": 0,
+      "height": 25,
+      "opacity": 1,
+      "width": 25,
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    />
+  </View>
+</View>
+`;

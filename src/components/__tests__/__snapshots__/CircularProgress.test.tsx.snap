@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders circular progress 1`] = `
+<View>
+  <RNSVGSvgView
+    bbHeight={40}
+    bbWidth={40}
+    focusable={false}
+    height={40}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        Object {
+          "flex": 0,
+          "height": 40,
+          "width": 40,
+        },
+      ]
+    }
+    width={40}
+  >
+    <RNSVGGroup>
+      <RNSVGGroup
+        matrix={
+          Array [
+            6.123233995736766e-17,
+            1,
+            -1,
+            6.123233995736766e-17,
+            40,
+            0,
+          ]
+        }
+      >
+        <RNSVGPath
+          d="M -56.0814141252192 44.730920417705775 A -80 -80 0 0 0 19.999999999999996 100"
+          fill={0}
+          propList={
+            Array [
+              "fill",
+              "stroke",
+              "strokeWidth",
+              "strokeDasharray",
+              "strokeLinecap",
+            ]
+          }
+          stroke={4278190080}
+          strokeDasharray={null}
+          strokeLinecap={0}
+          strokeWidth={200}
+        />
+      </RNSVGGroup>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;

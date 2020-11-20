@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders switch 1`] = `
+<RCTSwitch
+  accessibilityRole="switch"
+  activeTrackColor="rgba(90, 69, 255, 1)"
+  onChange={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  onTintColor="rgba(90, 69, 255, 1)"
+  style={
+    Array [
+      Object {
+        "height": 31,
+        "width": 51,
+      },
+      Array [
+        Object {
+          "opacity": 1,
+        },
+        undefined,
+      ],
+    ]
+  }
+  tintColor=""
+  value={false}
+/>
+`;

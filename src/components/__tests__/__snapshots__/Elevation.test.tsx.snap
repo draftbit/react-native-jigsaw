@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders elevation 1`] = `
+<View
+  style={
+    Object {
+      "zIndex": 100,
+    }
+  }
+/>
+`;

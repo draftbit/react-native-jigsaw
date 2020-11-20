@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders container 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignSelf": "stretch",
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "fontFamily": "System",
+            "fontSize": 24,
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 34,
+          },
+          Object {
+            "color": "rgba(18, 20, 44, 1)",
+            "flex": 1,
+          },
+        ]
+      }
+    >
+      Test Title
+    </Text>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignSelf": "center",
+          "marginLeft": 12,
+          "opacity": 1,
+        }
+      }
+    >
+      <View>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "fontFamily": "System",
+                  "fontSize": 14,
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
+                },
+                Object {
+                  "color": "rgba(165, 173, 183, 1)",
+                  "marginRight": 8,
+                },
+              ]
+            }
+          >
+            Test
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(234, 237, 242, 1)",
+        },
+        Object {
+          "marginTop": 16,
+        },
+        Object {
+          "height": 0.5,
+        },
+      ]
+    }
+  />
+</View>
+`;

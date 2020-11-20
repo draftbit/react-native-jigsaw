@@ -87,9 +87,20 @@ const Icon: React.FC<Props> = ({ name, color, size, style, ...rest }) => {
   if (typeof name === "string") {
     const IconSet = VectorIcons[iconSet];
 
-    return (
-      <IconSet {...rest} name={name} color={color} size={size} style={style} />
-    );
+    //IconSet is null during tests (probably due to how it is imported using expo vector icons) -- this check ensures tests run successfully
+    if (IconSet) {
+      return (
+        <IconSet
+          {...rest}
+          name={name}
+          color={color}
+          size={size}
+          style={style}
+        />
+      );
+    } else {
+      return null;
+    }
   } else if (
     (typeof name === "object" &&
       name !== null &&

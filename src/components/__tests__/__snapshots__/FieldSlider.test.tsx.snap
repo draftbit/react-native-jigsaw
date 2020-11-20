@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders field slider 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignSelf": "stretch",
+      },
+      Object {
+        "height": 6,
+      },
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "fontFamily": "System",
+          "fontSize": 16,
+          "fontWeight": "400",
+          "letterSpacing": 0,
+          "lineHeight": 26,
+        },
+        Object {
+          "marginBottom": 2,
+        },
+      ]
+    }
+  >
+    This is my title
+  </Text>
+  <RNCSlider
+    disabled={false}
+    enabled={true}
+    inverted={false}
+    maximumTrackTintColor="rgba(90, 69, 255, 1)"
+    maximumValue={10}
+    minimumTrackTintColor="rgba(165, 173, 183, 1)"
+    minimumValue={0}
+    onChange={[Function]}
+    onRNCSliderSlidingComplete={null}
+    onRNCSliderSlidingStart={null}
+    onRNCSliderValueChange={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    step={1}
+    style={
+      Array [
+        Object {
+          "height": 40,
+        },
+        Object {
+          "height": 6,
+          "width": undefined,
+        },
+      ]
+    }
+    thumbImage={
+      Object {
+        "__packager_asset": true,
+        "height": 1,
+        "scale": 1,
+        "uri": "file://assets/full/path/to/directory/name.type",
+        "width": 1,
+      }
+    }
+    thumbTintColor="rgba(90, 69, 255, 1)"
+    value={0}
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        },
+        Object {
+          "marginTop": 4,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "fontFamily": "System",
+              "fontSize": 12,
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 16,
+            },
+            Object {
+              "color": "rgba(165, 173, 183, 1)",
+            },
+          ],
+          Object {
+            "flex": 1,
+          },
+        ]
+      }
+    >
+      0
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "fontFamily": "System",
+            "fontSize": 12,
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 16,
+          },
+          Object {
+            "color": "rgba(165, 173, 183, 1)",
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "fontFamily": "System",
+              "fontSize": 12,
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 16,
+            },
+            Object {
+              "color": "rgba(165, 173, 183, 1)",
+            },
+          ],
+          Object {
+            "flex": 1,
+            "textAlign": "right",
+          },
+        ]
+      }
+    >
+      10
+    </Text>
+  </View>
+</View>
+`;

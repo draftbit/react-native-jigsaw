@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders progress bar 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": undefined,
+        "borderColor": "rgba(0, 122, 255, 1)",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "overflow": "hidden",
+        "width": 150,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "rgba(0, 122, 255, 1)",
+        "height": 6,
+        "transform": Array [
+          Object {
+            "translateX": 0,
+          },
+          Object {
+            "translateX": -74,
+          },
+          Object {
+            "scaleX": 0.0001,
+          },
+        ],
+      }
+    }
+  />
+</View>
+`;

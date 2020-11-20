@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders progress circle 1`] = `
+<View>
+  <RNSVGSvgView
+    bbHeight={100}
+    bbWidth={100}
+    focusable={false}
+    height={100}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        Object {
+          "flex": 0,
+          "height": 100,
+          "width": 100,
+        },
+      ]
+    }
+    width={100}
+  >
+    <RNSVGGroup>
+      <RNSVGGroup
+        matrix={
+          Array [
+            1,
+            0,
+            -0,
+            1,
+            0,
+            0,
+          ]
+        }
+      >
+        <RNSVGPath
+          d="M 49.96889823477586 0.5000097709080364 A 49.5 49.5 0 1 0 50 0.5"
+          fill={0}
+          propList={
+            Array [
+              "fill",
+              "stroke",
+              "strokeWidth",
+              "strokeDasharray",
+              "strokeLinecap",
+            ]
+          }
+          stroke={4282108394}
+          strokeDasharray={null}
+          strokeLinecap={0}
+          strokeWidth={1}
+        />
+      </RNSVGGroup>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "borderRadius": 49,
+          "height": 98,
+          "justifyContent": "center",
+          "left": 1,
+          "overflow": "hidden",
+          "position": "absolute",
+          "top": 1,
+          "width": 98,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "rgba(90, 69, 255, 1)",
+            "fontSize": 27.500000000000004,
+          },
+          undefined,
+        ]
+      }
+    >
+      0
+      %
+    </Text>
+  </View>
+</View>
+`;

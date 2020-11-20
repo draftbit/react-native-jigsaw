@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders checkbox android 1`] = `
+<View
+  accessibilityLiveRegion="polite"
+  accessibilityRole="button"
+  accessibilityState={
+    Object {
+      "disabled": false,
+    }
+  }
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "borderRadius": 18,
+      "height": 30,
+      "opacity": 1,
+      "width": 30,
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        Object {
+          "transform": Array [
+            Object {
+              "scale": 1,
+            },
+          ],
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Object {
+              "borderColor": "rgba(90, 69, 255, 1)",
+              "borderWidth": 0,
+              "height": 30,
+              "width": 30,
+            }
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;

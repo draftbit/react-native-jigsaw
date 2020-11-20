@@ -1,0 +1,294 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders step indicator 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+      },
+      Object {
+        "flexDirection": "column",
+      },
+    ]
+  }
+>
+  <View
+    onLayout={[Function]}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+        },
+        Object {
+          "flexDirection": "row",
+          "height": 40,
+        },
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderColor": "#4aae4f",
+            "borderRadius": 15,
+            "borderWidth": 5,
+            "height": 30,
+            "justifyContent": "center",
+            "width": 30,
+            "zIndex": 2,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#000000",
+              "fontSize": 15,
+            }
+          }
+        >
+          1
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#a4d4a5",
+            "borderColor": "#4aae4f",
+            "borderRadius": 15,
+            "borderWidth": 0,
+            "height": 30,
+            "justifyContent": "center",
+            "width": 30,
+            "zIndex": 2,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "rgba(255,255,255,0.5)",
+              "fontSize": 15,
+              "overflow": "hidden",
+            }
+          }
+        >
+          2
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#a4d4a5",
+            "borderColor": "#4aae4f",
+            "borderRadius": 15,
+            "borderWidth": 0,
+            "height": 30,
+            "justifyContent": "center",
+            "width": 30,
+            "zIndex": 2,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "rgba(255,255,255,0.5)",
+              "fontSize": 15,
+              "overflow": "hidden",
+            }
+          }
+        >
+          3
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#a4d4a5",
+            "borderColor": "#4aae4f",
+            "borderRadius": 15,
+            "borderWidth": 0,
+            "height": 30,
+            "justifyContent": "center",
+            "width": 30,
+            "zIndex": 2,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "rgba(255,255,255,0.5)",
+              "fontSize": 15,
+              "overflow": "hidden",
+            }
+          }
+        >
+          4
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#a4d4a5",
+            "borderColor": "#4aae4f",
+            "borderRadius": 15,
+            "borderWidth": 0,
+            "height": 30,
+            "justifyContent": "center",
+            "width": 30,
+            "zIndex": 2,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "rgba(255,255,255,0.5)",
+              "fontSize": 15,
+              "overflow": "hidden",
+            }
+          }
+        >
+          5
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

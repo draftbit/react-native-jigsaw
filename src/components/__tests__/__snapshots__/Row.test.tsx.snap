@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders row 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      },
+      Object {
+        "padding": 16,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "row",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            undefined,
+            Object {
+              "color": undefined,
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

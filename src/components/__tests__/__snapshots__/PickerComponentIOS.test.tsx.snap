@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders picker component IOS 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignSelf": "stretch",
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignSelf": "stretch",
+            },
+            undefined,
+          ]
+        }
+      >
+        <View
+          style={
+            Object {
+              "borderTopLeftRadius": 6,
+              "borderTopRightRadius": 6,
+              "marginTop": 16,
+              "paddingBottom": 12,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "rgba(165, 173, 183, 1)",
+                "bottom": 0,
+                "height": 2,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "transform": Array [
+                  Object {
+                    "scaleY": 0.5,
+                  },
+                ],
+              }
+            }
+          />
+          <TextInput
+            allowFontScaling={true}
+            editable={true}
+            multiline={false}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            placeholderTextColor="rgba(165, 173, 183, 1)"
+            pointerEvents="none"
+            rejectResponderTermination={true}
+            selectionColor="rgba(90, 69, 255, 1)"
+            style={
+              Array [
+                Object {
+                  "flexGrow": 1,
+                  "justifyContent": "center",
+                  "margin": 0,
+                  "textAlign": "left",
+                  "textAlignVertical": "center",
+                },
+                Object {
+                  "backgroundColor": "transparent",
+                  "color": "rgba(18, 20, 44, 1)",
+                  "fontFamily": "System",
+                  "fontSize": 16,
+                  "fontWeight": "400",
+                  "height": 26,
+                  "letterSpacing": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 12,
+                  "paddingVertical": 0,
+                },
+                Object {},
+              ]
+            }
+            underlineColorAndroid="transparent"
+            value="value1"
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

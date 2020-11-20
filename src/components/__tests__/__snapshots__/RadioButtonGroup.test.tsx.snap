@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders radio button group 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "borderRadius": undefined,
+        "flexDirection": "row",
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "flex": 1,
+        "opacity": 1,
+      }
+    }
+  >
+    <View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": undefined,
+            "borderColor": "rgba(234, 237, 242, 1)",
+            "borderLeftWidth": 0,
+            "borderRadius": 0,
+            "borderRightWidth": 0,
+            "flexDirection": "row",
+            "height": 50,
+            "justifyContent": "center",
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              undefined,
+              Object {
+                "color": undefined,
+              },
+            ]
+          }
+        >
+          first
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "flex": 1,
+        "opacity": 1,
+      }
+    }
+  >
+    <View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": undefined,
+            "borderColor": "rgba(234, 237, 242, 1)",
+            "borderLeftWidth": 0,
+            "borderRadius": 0,
+            "borderRightWidth": 0,
+            "flexDirection": "row",
+            "height": 50,
+            "justifyContent": "center",
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              undefined,
+              Object {
+                "color": undefined,
+              },
+            ]
+          }
+        >
+          second
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

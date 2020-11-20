@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders avatar edit 1`] = `
+<View
+  style={
+    Array [
+      undefined,
+      Object {
+        "height": 80,
+        "width": 80,
+      },
+    ]
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <View>
+      <Image
+        resizeMode="cover"
+        source={1}
+        style={
+          Array [
+            Object {
+              "borderRadius": 40,
+              "height": 80,
+              "width": 80,
+            },
+            undefined,
+          ]
+        }
+      />
+      <View
+        style={
+          Object {
+            "backgroundColor": "rgba(90, 69, 255, 1)",
+            "borderColor": "rgba(255, 255, 255, 1)",
+            "borderRadius": 15,
+            "padding": 7.5,
+            "position": "absolute",
+            "right": -3,
+            "top": -3,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

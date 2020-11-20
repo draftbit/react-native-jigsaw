@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders image 1`] = `
+<Image
+  resizeMode="cover"
+  source={1}
+/>
+`;

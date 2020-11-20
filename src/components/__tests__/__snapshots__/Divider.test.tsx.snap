@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders divider 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "rgba(234, 237, 242, 1)",
+      },
+      undefined,
+      Object {
+        "height": 0.5,
+      },
+    ]
+  }
+/>
+`;

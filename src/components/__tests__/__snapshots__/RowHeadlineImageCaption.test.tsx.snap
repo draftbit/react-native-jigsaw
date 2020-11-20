@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders row headline image caption 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      },
+      Object {
+        "padding": 16,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Image
+      source={1}
+      style={
+        Object {
+          "height": 24,
+          "marginRight": 12,
+          "width": 24,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "fontFamily": "System",
+              "fontSize": 16,
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 24,
+            },
+            Object {
+              "color": "rgba(18, 20, 44, 1)",
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+  <Text
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "color": "rgba(18, 20, 44, 1)",
+        "fontFamily": "System",
+        "fontSize": 12,
+        "fontWeight": "400",
+        "letterSpacing": 0,
+        "lineHeight": 16,
+        "marginLeft": 16,
+      }
+    }
+  />
+</View>
+`;

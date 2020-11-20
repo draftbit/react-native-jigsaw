@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders row body checkbox 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      },
+      Object {
+        "padding": 16,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "row",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "fontFamily": "System",
+              "fontSize": 16,
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 26,
+            },
+            Object {
+              "color": "rgba(70, 78, 88, 1)",
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+  <View
+    accessibilityLiveRegion="polite"
+    accessibilityRole="button"
+    accessibilityState={
+      Object {
+        "disabled": false,
+      }
+    }
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+        "borderColor": "rgba(165, 173, 183, 1)",
+        "borderRadius": 2,
+        "borderWidth": 2,
+        "height": 25,
+        "opacity": 1,
+        "width": 25,
+      }
+    }
+  >
+    <View>
+      <View
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

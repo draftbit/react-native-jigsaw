@@ -1,8 +1,8 @@
 import * as React from "react";
 import renderer from "react-test-renderer";
-import Checkbox from "../Checkbox";
+import Checkbox from "../CheckboxIOS";
 
-it("renders checkbox", () => {
+it("renders checkbox IOS", () => {
   const tree = renderer.create(<Checkbox status="checked" />).toJSON();
 
   expect(tree).toMatchSnapshot();

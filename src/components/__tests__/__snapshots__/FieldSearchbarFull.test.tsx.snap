@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders field search bar full 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "padding": 16,
+      },
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "marginLeft": 12,
+      }
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      clearButtonMode="while-editing"
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      onSubmitEditing={[Function]}
+      placeholder=""
+      placeholderTextColor="rgba(165, 173, 183, 1)"
+      rejectResponderTermination={true}
+      style={
+        Array [
+          Object {
+            "color": "rgba(70, 78, 88, 1)",
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "fontFamily": "System",
+            "fontSize": 14,
+            "fontWeight": "400",
+            "letterSpacing": 0,
+          },
+        ]
+      }
+      underlineColorAndroid="transparent"
+      value="Test Value"
+    />
+  </View>
+</View>
+`;

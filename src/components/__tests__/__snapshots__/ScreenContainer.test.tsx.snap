@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders screen container 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+      },
+      Object {
+        "backgroundColor": "rgba(251, 252, 253, 1)",
+      },
+      undefined,
+    ]
+  }
+/>
+`;

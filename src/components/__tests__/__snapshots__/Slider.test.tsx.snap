@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders slider 1`] = `
+<RNCSlider
+  disabled={false}
+  enabled={true}
+  inverted={false}
+  maximumTrackTintColor="rgba(90, 69, 255, 1)"
+  maximumValue={10}
+  minimumTrackTintColor="rgba(165, 173, 183, 1)"
+  minimumValue={0}
+  onChange={[Function]}
+  onRNCSliderSlidingComplete={null}
+  onRNCSliderSlidingStart={null}
+  onRNCSliderValueChange={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  step={1}
+  style={
+    Array [
+      Object {
+        "height": 40,
+      },
+      Object {
+        "height": 4,
+      },
+    ]
+  }
+  thumbImage={
+    Object {
+      "__packager_asset": true,
+      "height": 1,
+      "scale": 1,
+      "uri": "file://assets/full/path/to/directory/name.type",
+      "width": 1,
+    }
+  }
+  thumbTintColor="rgba(90, 69, 255, 1)"
+  value={0}
+/>
+`;

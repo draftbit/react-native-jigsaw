@@ -84,6 +84,12 @@ class TextField extends React.Component<Props> {
     },
   };
 
+  componentDidMount() {
+    if (this.props.placeholder) {
+      this._minmizeLabel();
+    }
+  }
+
   componentDidUpdate(prevProps: Props, prevState: State) {
     if (
       prevState.focused !== this.state.focused ||
@@ -91,7 +97,12 @@ class TextField extends React.Component<Props> {
     ) {
       // The label should be minimized if the text input is focused, or has text
       // In minimized mode, the label moves up and becomes small
-      if (this.state.value || this.state.focused || this.props.error) {
+      if (
+        this.state.value ||
+        this.state.focused ||
+        this.props.error ||
+        this.props.placeholder
+      ) {
         this._minmizeLabel();
       } else {
         this._restoreLabel();

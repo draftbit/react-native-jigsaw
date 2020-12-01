@@ -70,6 +70,7 @@ interface Props extends TouchableHighlightProps {
   onPress: () => void;
   elevation?: number;
   theme: typeof theme;
+  IconOverride: typeof Icon;
   style?: StyleProp<ViewStyle>;
 }
 
@@ -83,11 +84,14 @@ const FAB: React.FC<Props> = ({
   onPress,
   elevation = 0,
   style,
+  IconOverride = null,
   theme: { colors, disabledOpacity, borderRadius, spacing, typography },
   ...rest
 }) => {
   let backgroundColor, borderColor, textColor, borderWidth;
   const buttonColor = colorOverride || colors.primary;
+
+  const SelectedIcon = IconOverride || Icon;
 
   if (type === "standard" || type === "extended" || type === "fixed") {
     backgroundColor = buttonColor;
@@ -184,7 +188,7 @@ const FAB: React.FC<Props> = ({
         <View style={styles.content}>
           {icon && loading !== true ? (
             <View style={iconStyle}>
-              <Icon
+              <SelectedIcon
                 name={icon}
                 size={Config.buttonIconSize}
                 color={textColor}

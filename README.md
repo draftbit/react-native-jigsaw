@@ -24,9 +24,10 @@ npm install @draftbit/ui
 
 ## Publishing
 
-```sh
-yarn publish:both
-```
+After your last commit, run `npm version`. Probably minor or patch. We only run major for major Expo releases.
+
+There's a `publish.sh` script that is supposed to work, but running `npm publish` from within that script is flaky.
+
 
 ## Contributing
 

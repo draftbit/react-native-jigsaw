@@ -37,11 +37,14 @@ const Container: React.FC<Props> = ({
   children,
 }) => {
   const containerStyle: StyleProp<ViewStyle> = {
-    paddingHorizontal: useThemeGutterPadding ? spacing.gutters : 0,
     backgroundColor,
     borderColor,
     borderWidth,
     width: "100%",
+  };
+
+  const innerStyle: StyleProp<ViewStyle> = {
+    paddingHorizontal: useThemeGutterPadding ? spacing.gutters : 0,
   };
 
   const Wrap = elevation ? Elevation : View;
@@ -52,23 +55,26 @@ const Container: React.FC<Props> = ({
 
   return (
     <Wrap style={[containerStyle, style]}>
-      <React.Fragment>
-        {backgroundImage ? (
-          <Image
-            source={
-              typeof backgroundImage === "string"
-                ? { uri: backgroundImage }
-                : backgroundImage
-            }
-            resizeMode={backgroundImageResizeMode}
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
-          />
-        ) : null}
-        {children}
-      </React.Fragment>
+      {backgroundImage ? (
+        <Image
+          source={
+            typeof backgroundImage === "string"
+              ? { uri: backgroundImage }
+              : backgroundImage
+          }
+          resizeMode={backgroundImageResizeMode}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: "100%",
+            height: "100%",
+          }}
+        />
+      ) : null}
+      <View style={innerStyle}>{children}</View>
     </Wrap>
   );
 };

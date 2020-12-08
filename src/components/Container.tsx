@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Image, StyleProp, ViewStyle } from "react-native";
+import { View, ImageBackground, StyleProp, ViewStyle } from "react-native";
 import { withTheme } from "../core/theming";
 import Elevation from "./Elevation";
 import {
@@ -56,7 +56,7 @@ const Container: React.FC<Props> = ({
   return (
     <Wrap style={[containerStyle, style]}>
       {backgroundImage ? (
-        <Image
+        <ImageBackground
           source={
             typeof backgroundImage === "string"
               ? { uri: backgroundImage }
@@ -64,17 +64,15 @@ const Container: React.FC<Props> = ({
           }
           resizeMode={backgroundImageResizeMode}
           style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
             width: "100%",
             height: "100%",
           }}
-        />
-      ) : null}
-      <View style={innerStyle}>{children}</View>
+        >
+          <View style={innerStyle}>{children}</View>
+        </ImageBackground>
+      ) : (
+        <View style={innerStyle}>{children}</View>
+      )}
     </Wrap>
   );
 };

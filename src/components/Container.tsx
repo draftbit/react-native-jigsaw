@@ -42,9 +42,12 @@ const Container: React.FC<Props> = ({
   style,
   children,
 }) => {
-  const { justifyContent, alignItems, ...styleProp } = StyleSheet.flatten(
-    style
-  );
+  const {
+    flexDirection,
+    justifyContent,
+    alignItems,
+    ...styleProp
+  } = StyleSheet.flatten(style);
 
   const containerStyle: StyleProp<ViewStyle> = {
     backgroundColor,
@@ -57,6 +60,7 @@ const Container: React.FC<Props> = ({
   const innerStyle: StyleProp<ViewStyle> = {
     flex: 1,
     paddingHorizontal: useThemeGutterPadding ? spacing.gutters : 0,
+    flexDirection,
     justifyContent,
     alignItems,
   };

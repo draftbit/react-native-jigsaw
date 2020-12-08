@@ -1,5 +1,11 @@
 import * as React from "react";
-import { View, ImageBackground, StyleProp, ViewStyle } from "react-native";
+import {
+  View,
+  ImageBackground,
+  StyleProp,
+  StyleSheet,
+  ViewStyle,
+} from "react-native";
 import { withTheme } from "../core/theming";
 import Elevation from "./Elevation";
 import {
@@ -36,16 +42,27 @@ const Container: React.FC<Props> = ({
   style,
   children,
 }) => {
+  const {
+    flexDirection,
+    justifyContent,
+    alignItems,
+    ...styleProp
+  } = StyleSheet.flatten(style);
+
   const containerStyle: StyleProp<ViewStyle> = {
     backgroundColor,
     borderColor,
     borderWidth,
     width: "100%",
+    ...styleProp,
   };
 
   const innerStyle: StyleProp<ViewStyle> = {
     flex: 1,
     paddingHorizontal: useThemeGutterPadding ? spacing.gutters : 0,
+    flexDirection,
+    justifyContent,
+    alignItems,
   };
 
   const Wrap = elevation ? Elevation : View;

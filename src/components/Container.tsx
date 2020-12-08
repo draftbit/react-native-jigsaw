@@ -44,6 +44,7 @@ const Container: React.FC<Props> = ({
   };
 
   const innerStyle: StyleProp<ViewStyle> = {
+    flex: 1,
     paddingHorizontal: useThemeGutterPadding ? spacing.gutters : 0,
   };
 
@@ -64,8 +65,7 @@ const Container: React.FC<Props> = ({
           }
           resizeMode={backgroundImageResizeMode}
           style={{
-            width: "100%",
-            height: "100%",
+            flex: 1,
           }}
         >
           <View style={innerStyle}>{children}</View>

@@ -42,12 +42,8 @@ const Container: React.FC<Props> = ({
   style,
   children,
 }) => {
-  const {
-    flexDirection,
-    justifyContent,
-    alignItems,
-    ...styleProp
-  } = StyleSheet.flatten(style);
+  const { flexDirection, justifyContent, alignItems, ...styleProp } =
+    StyleSheet.flatten(style) || {};
 
   const containerStyle: StyleProp<ViewStyle> = {
     backgroundColor,

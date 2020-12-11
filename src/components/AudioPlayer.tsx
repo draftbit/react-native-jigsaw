@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as React from "react";
 import { Text, View, StyleSheet, Pressable } from "react-native";
 import { Audio } from "expo-av";
@@ -11,41 +12,37 @@ import {
   PROP_TYPES,
 } from "../core/component-types";
 
+function formatDuration(duration) {
+  if (duration === 0 || duration === 1) return "00:00";
+
+  var seconds = Math.floor((duration / 1000) % 60),
+    minutes = Math.floor((duration / (1000 * 60)) % 60),
+    hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+  hours = hours < 10 ? "0" + hours : hours;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  if (hours > 0) {
+    return hours + ":" + minutes + ":" + seconds;
+  }
+
+  return minutes + ":" + seconds;
+}
+
 export default function AudioPlayer({ source }) {
   const [sound, setSound] = React.useState();
   const [playing, setPlay] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-  const [durationMillis, setDurationMillis] = React.useState(0);
+  const [durationMillis, setDurationMillis] = React.useState(1);
   const [isDraggingSlider, setIsDraggingSlider] = React.useState(false);
   const [sliderPositionMillis, setSliderPositionMillis] = React.useState(0);
 
-  function onPlaybackStatusUpdate(playbackStatus) {
-    if (!playbackStatus.isLoaded) {
-      // Update your UI for the unloaded state
-      if (playbackStatus.error) {
-        console.log(
-          `Encountered a fatal error during playback: ${playbackStatus.error}`
-        );
-        // Send Expo team the error on Slack or the forums so we can help you debug!
-      }
-    } else {
-      // Update your UI for the loaded state
-
-      if (playbackStatus.isPlaying) {
-        // Update your UI for the playing state
-      } else {
-        // Update your UI for the paused state
-      }
-
-      if (playbackStatus.isBuffering) {
-        // Update your UI for the buffering state
-      }
-
-      if (playbackStatus.didJustFinish && !playbackStatus.isLooping) {
-        // The player has just finished playing and will stop. Maybe you want to play something else?
-      }
+  const onPlaybackStatusUpdate = (status) => {
+    if (status.isPlaying && !isDraggingSlider) {
+      setSliderPositionMillis(status.positionMillis);
     }
-  }
+  };
 
   const setOnPlaybackStatusUpdate = () => {
     if (sound) {
@@ -53,22 +50,32 @@ export default function AudioPlayer({ source }) {
     }
   };
 
-  async function loadSound() {
+  React.useEffect(() => {
+    setOnPlaybackStatusUpdate();
+  }, [isDraggingSlider]);
+
+  React.useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
+  async function loadAudio() {
     setLoading(true);
-    const { sound, status } = await Audio.Sound.createAsync(source);
-    console.log(status);
+    const { sound } = await Audio.Sound.createAsync(source);
     setSound(sound);
     setLoading(false);
-    await sound.playAsync();
-    sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
-    setPlay(true);
-
     setOnPlaybackStatusUpdate();
-
     setDurationMillis(sound.durationMillis);
+    sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
+
+    await sound.playAsync();
+    setPlay(true);
   }
 
-  async function playSound() {
+  async function playAudio() {
     if (playing) {
       await sound.pauseAsync();
       setPlay(false);
@@ -81,20 +88,8 @@ export default function AudioPlayer({ source }) {
       return;
     }
 
-    await loadSound();
+    await loadAudio();
   }
-
-  React.useEffect(() => {
-    return sound
-      ? () => {
-          sound.unloadAsync();
-        }
-      : undefined;
-  }, [sound]);
-
-  React.useEffect(() => {
-    setOnPlaybackStatusUpdate();
-  }, [isDraggingSlider]);
 
   const onSliderChange = () => {
     if (!isDraggingSlider) {
@@ -115,19 +110,30 @@ export default function AudioPlayer({ source }) {
     setTrackPosition(sliderValue);
   };
 
+  const onSliderChange = () => {
+    if (!isDraggingSlider) {
+      setIsDraggingSlider(true);
+    }
+  };
+
   const iconName = loading ? "loading1" : !sound || !playing ? "play" : "pause";
 
   return (
     <View style={styles.container}>
       <Pressable
-        onPress={playSound}
+        onPress={playAudio}
         style={{ cursor: "pointer", marginRight: 8 }}
       >
         <AntDesign name={iconName} size={24} />
       </Pressable>
+      <Text style={{ marginRight: 8 }}>
+        {formatDuration(sliderPositionMillis || 0)} /{" "}
+        {formatDuration(durationMillis || 0)}
+      </Text>
       <Slider
-        minimumTrackTintColor="#eee"
-        maximumTrackTintColor="#000000"
+        style={{ flex: 1 }}
+        minimumTrackTintColor="#000"
+        maximumTrackTintColor="#333"
         thumbTintColor="black"
         minimumValue={0}
         value={sliderPositionMillis}

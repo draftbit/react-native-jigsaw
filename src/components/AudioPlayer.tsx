@@ -91,12 +91,6 @@ export default function AudioPlayer({ source }) {
     await loadAudio();
   }
 
-  const onSliderChange = () => {
-    if (!isDraggingSlider) {
-      setIsDraggingSlider(true);
-    }
-  };
-
   const setTrackPosition = async (positionMillis) => {
     if (sound) {
       await sound.setPositionAsync(positionMillis);

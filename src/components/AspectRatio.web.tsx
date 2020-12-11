@@ -30,7 +30,7 @@ const AspectRatio: React.FC<Props> = (props) => {
     <View
       {...props}
       style={style}
-      onLayout={({ nativeEvent: { layout } }) => setLayout(layout)}
+      onLayout={({ nativeEvent: { layout: l } }) => setLayout(l)}
     >
       {props.children}
     </View>

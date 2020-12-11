@@ -50,9 +50,9 @@ export default function AudioPlayer({ source }) {
     }
   };
 
-  React.useEffect(() => {
-    setOnPlaybackStatusUpdate();
-  }, [isDraggingSlider]);
+  // React.useEffect(() => {
+  //   setOnPlaybackStatusUpdate();
+  // }, [isDraggingSlider]);
 
   React.useEffect(() => {
     return sound
@@ -64,18 +64,23 @@ export default function AudioPlayer({ source }) {
 
   async function loadAudio() {
     setLoading(true);
-    const { sound } = await Audio.Sound.createAsync(source);
-    setSound(sound);
+
+    const { sound: s, status } = await Audio.Sound.createAsync(source);
+    setSound(s);
     setLoading(false);
     setOnPlaybackStatusUpdate();
-    setDurationMillis(sound.durationMillis);
-    sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
 
-    await sound.playAsync();
+    if (status.durationMillis) {
+      setDurationMillis(status.durationMillis);
+    }
+
+    s.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
+
+    await s.playAsync();
     setPlay(true);
   }
 
-  async function playAudio() {
+  async function playSound() {
     if (playing) {
       await sound.pauseAsync();
       setPlay(false);
@@ -115,7 +120,7 @@ export default function AudioPlayer({ source }) {
   return (
     <View style={styles.container}>
       <Pressable
-        onPress={playAudio}
+        onPress={playSound}
         style={{ cursor: "pointer", marginRight: 8 }}
       >
         <AntDesign name={iconName} size={24} />
@@ -126,8 +131,8 @@ export default function AudioPlayer({ source }) {
       </Text>
       <Slider
         style={{ flex: 1 }}
-        minimumTrackTintColor="#000"
-        maximumTrackTintColor="#333"
+        minimumTrackTintColor="#333"
+        maximumTrackTintColor="#000000"
         thumbTintColor="black"
         minimumValue={0}
         value={sliderPositionMillis}

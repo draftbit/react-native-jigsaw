@@ -1,5 +1,11 @@
 import * as React from "react";
-import { View, Image, StyleProp, ViewStyle } from "react-native";
+import {
+  View,
+  ImageBackground,
+  StyleProp,
+  StyleSheet,
+  ViewStyle,
+} from "react-native";
 import { withTheme } from "../core/theming";
 import Elevation from "./Elevation";
 import {
@@ -36,12 +42,23 @@ const Container: React.FC<Props> = ({
   style,
   children,
 }) => {
+  const { flexDirection, justifyContent, alignItems, ...styleProp } =
+    StyleSheet.flatten(style) || {};
+
   const containerStyle: StyleProp<ViewStyle> = {
-    paddingHorizontal: useThemeGutterPadding ? spacing.gutters : 0,
     backgroundColor,
     borderColor,
     borderWidth,
     width: "100%",
+    ...styleProp,
+  };
+
+  const innerStyle: StyleProp<ViewStyle> = {
+    flex: 1,
+    paddingHorizontal: useThemeGutterPadding ? spacing.gutters : 0,
+    flexDirection,
+    justifyContent,
+    alignItems,
   };
 
   const Wrap = elevation ? Elevation : View;
@@ -52,23 +69,23 @@ const Container: React.FC<Props> = ({
 
   return (
     <Wrap style={[containerStyle, style]}>
-      <React.Fragment>
-        {backgroundImage ? (
-          <Image
-            source={
-              typeof backgroundImage === "string"
-                ? { uri: backgroundImage }
-                : backgroundImage
-            }
-            resizeMode={backgroundImageResizeMode}
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
-          />
-        ) : null}
-        {children}
-      </React.Fragment>
+      {backgroundImage ? (
+        <ImageBackground
+          source={
+            typeof backgroundImage === "string"
+              ? { uri: backgroundImage }
+              : backgroundImage
+          }
+          resizeMode={backgroundImageResizeMode}
+          style={{
+            flex: 1,
+          }}
+        >
+          <View style={innerStyle}>{children}</View>
+        </ImageBackground>
+      ) : (
+        <View style={innerStyle}>{children}</View>
+      )}
     </Wrap>
   );
 };

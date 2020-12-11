@@ -1,9 +1,10 @@
-// @ts-nocheck
 import * as React from "react";
 import { Text, View, StyleSheet, Pressable } from "react-native";
 import { Audio } from "expo-av";
 import { AntDesign } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
+
+import { AVPlaybackSource, AVPlaybackStatusToSet } from "expo-av/build/AV";
 
 import {
   GROUPS,
@@ -12,12 +13,12 @@ import {
   PROP_TYPES,
 } from "../core/component-types";
 
-function formatDuration(duration) {
+function formatDuration(duration: number) {
   if (duration === 0 || duration === 1) return "00:00";
 
-  var seconds = Math.floor((duration / 1000) % 60),
-    minutes = Math.floor((duration / (1000 * 60)) % 60),
-    hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+  let seconds = Math.floor((duration / 1000) % 60);
+  let minutes = Math.floor((duration / (1000 * 60)) % 60);
+  let hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
 
   hours = hours < 10 ? "0" + hours : hours;
   minutes = minutes < 10 ? "0" + minutes : minutes;
@@ -30,7 +31,7 @@ function formatDuration(duration) {
   return minutes + ":" + seconds;
 }
 
-export default function AudioPlayer({ source }) {
+export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
   const [sound, setSound] = React.useState();
   const [playing, setPlay] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
@@ -38,7 +39,7 @@ export default function AudioPlayer({ source }) {
   const [isDraggingSlider, setIsDraggingSlider] = React.useState(false);
   const [sliderPositionMillis, setSliderPositionMillis] = React.useState(0);
 
-  const onPlaybackStatusUpdate = (status) => {
+  const onPlaybackStatusUpdate = (status: AVPlaybackStatus) => {
     if (status.isPlaying && !isDraggingSlider) {
       setSliderPositionMillis(status.positionMillis);
     }
@@ -96,13 +97,13 @@ export default function AudioPlayer({ source }) {
     await loadAudio();
   }
 
-  const setTrackPosition = async (positionMillis) => {
+  const setTrackPosition = async (positionMillis: number) => {
     if (sound) {
       await sound.setPositionAsync(positionMillis);
     }
   };
 
-  const onSlidingComplete = (sliderValue) => {
+  const onSlidingComplete = (sliderValue: number) => {
     if (isDraggingSlider) {
       setIsDraggingSlider(false);
     }

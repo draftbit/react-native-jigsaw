@@ -2,25 +2,23 @@ const fs = require("fs");
 const pak = require("../package.json");
 
 function changePackageName(name) {
-  return JSON.stringify(
-    {
-      ...pak,
-      name: "@draftbit/" + name,
-    },
-    null,
-    2
-  );
+  return {
+    ...pak,
+    name: "@draftbit/" + name,
+  };
 }
 
 function removeDependency(package, dependencyName) {
-  return package.replace(new RegExp(` +"${dependencyName}"[^\n]+\n`), "");
+  const duplicatedPak = { ...package };
+  delete duplicatedPak.dependencies[dependencyName];
+  return duplicatedPak;
 }
 
 function main() {
   console.log(`Changing name to "@draftbit/web"`);
   const packageWithChangedName = changePackageName("web");
   const draftbitWeb = removeDependency(packageWithChangedName, "@expo/vector-icons");
-  fs.writeFileSync("package.json", draftbitWeb, "utf-8");
+  fs.writeFileSync("package.json", JSON.stringify(draftbitWeb, null, 2), "utf-8");
 }
 
 main(process.argv.slice(2));

@@ -62,7 +62,7 @@
     "@types/color": "^3.0.1",
     "@types/dateformat": "^3.0.1",
     "@types/react": "^16.9.36",
-    "@types/react-native": "0.62.13",
+    "@types/react-native": "^0.63.40",
     "commitlint": "^8.3.5",
     "dotenv": "^8.2.0",
     "eslint": "^7.2.0",

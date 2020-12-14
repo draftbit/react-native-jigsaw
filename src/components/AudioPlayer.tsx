@@ -5,6 +5,7 @@ import { AntDesign } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
 
 import type { AVPlaybackSource, AVPlaybackStatus } from "expo-av/build/AV";
+import type { Sound } from "expo-av/build/Audio/Sound";
 
 import {
   GROUPS,
@@ -32,7 +33,7 @@ function formatDuration(duration: number) {
 }
 
 export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
-  const [sound, setSound] = React.useState();
+  const [sound, setSound] = React.useState<Sound>();
   const [playing, setPlay] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [durationMillis, setDurationMillis] = React.useState(1);
@@ -40,8 +41,10 @@ export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
   const [sliderPositionMillis, setSliderPositionMillis] = React.useState(0);
 
   const onPlaybackStatusUpdate = (status: AVPlaybackStatus) => {
-    if (status.isPlaying && !isDraggingSlider) {
-      setSliderPositionMillis(status.positionMillis);
+    if (status.isLoaded) {
+      if (status.isPlaying && !isDraggingSlider) {
+        setSliderPositionMillis(status.positionMillis);
+      }
     }
   };
 
@@ -67,7 +70,7 @@ export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
     setLoading(false);
     setOnPlaybackStatusUpdate();
 
-    if (status.durationMillis) {
+    if (status.isLoaded && status.durationMillis) {
       setDurationMillis(status.durationMillis);
     }
 
@@ -78,13 +81,13 @@ export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
   }
 
   async function playSound() {
-    if (playing) {
+    if (sound && playing) {
       await sound.pauseAsync();
       setPlay(false);
       return;
     }
 
-    if (sound) {
+    if (sound && !playing) {
       await sound.playAsync();
       setPlay(true);
       return;
@@ -116,10 +119,7 @@ export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
 
   return (
     <View style={styles.container}>
-      <Pressable
-        onPress={playSound}
-        style={{ cursor: "pointer", marginRight: 8 }}
-      >
+      <Pressable onPress={playSound} style={{ marginRight: 8 }}>
         <AntDesign name={iconName} size={24} />
       </Pressable>
       <Text style={{ marginRight: 8 }}>

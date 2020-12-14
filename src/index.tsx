@@ -4,6 +4,7 @@ export { default as DefaultTheme } from "./styles/DefaultTheme";
 
 export { default as Avatar } from "./components/Avatar";
 export { default as AvatarEdit } from "./components/AvatarEdit";
+export { default as AudioPlayer } from "./components/AudioPlayer";
 
 export { default as Button } from "./components/Button";
 

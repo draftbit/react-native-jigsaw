@@ -51,10 +51,6 @@ export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
     }
   };
 
-  // React.useEffect(() => {
-  //   setOnPlaybackStatusUpdate();
-  // }, [isDraggingSlider]);
-
   React.useEffect(() => {
     return sound
       ? () => {

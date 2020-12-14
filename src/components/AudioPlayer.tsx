@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View, StyleSheet, Pressable } from "react-native";
+import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
 import { Audio } from "expo-av";
 import { AntDesign } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
@@ -119,9 +119,9 @@ export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={playSound} style={{ marginRight: 8 }}>
+      <TouchableHighlight onPress={playSound} style={{ marginRight: 8 }}>
         <AntDesign name={iconName} size={24} />
-      </Pressable>
+      </TouchableHighlight>
       <Text style={{ marginRight: 8 }}>
         {formatDuration(sliderPositionMillis || 0)} /{" "}
         {formatDuration(durationMillis || 0)}

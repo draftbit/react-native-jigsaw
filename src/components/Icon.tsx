@@ -1,7 +1,6 @@
 import * as React from "react";
 import {
   Image,
-  Text,
   View,
   StyleSheet,
   ViewProps,
@@ -16,58 +15,7 @@ import {
   PROP_TYPES,
 } from "../core/component-types";
 
-let VectorIcons: any;
-
-try {
-  // Optionally require vector-icons
-  VectorIcons = require("@expo/vector-icons");
-} catch (e) {
-  if (
-    // @ts-ignore
-    global.__expo &&
-    // @ts-ignore
-    global.__expo.Icon
-  ) {
-    // Snack doesn't properly bundle vector icons from subpath
-    // Use icons from the __expo global if available
-    // @ts-ignore
-    VectorIcons = global.__expo.Icon;
-  } else {
-    let isErrorLogged = false;
-
-    // Fallback component for icons
-    // @ts-ignore
-    VectorIcons = ({ name, color, size, style, ...rest }) => {
-      if (!isErrorLogged) {
-        if (
-          !/(Cannot find module|Module not found|Cannot resolve module)/.test(
-            e.message
-          )
-        ) {
-          console.error(e);
-        }
-
-        console.warn(
-          `Tried to use the icon '${name}' in a component from '@draftbit/ui', but '@expo/vector-icons' could not be loaded.`,
-          `To remove this warning, try installing '@expo/vector-icons'`
-        );
-
-        isErrorLogged = true;
-      }
-
-      return (
-        <Text
-          {...rest}
-          style={[{ color, fontSize: size }, style]}
-          // @ts-ignore
-          pointerEvents="none"
-        >
-          □
-        </Text>
-      );
-    };
-  }
-}
+import VectorIcons from "@expo/vector-icons";
 
 interface Props extends ViewProps {
   name: string | number | { uri: string };
@@ -85,7 +33,7 @@ const Icon: React.FC<Props> = ({ name, color, size, style, ...rest }) => {
   }
 
   if (typeof name === "string") {
-    const IconSet = VectorIcons[iconSet];
+    const IconSet = (VectorIcons as any)[iconSet];
 
     return (
       <IconSet {...rest} name={name} color={color} size={size} style={style} />

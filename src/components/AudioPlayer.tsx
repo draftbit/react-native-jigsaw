@@ -4,7 +4,7 @@ import { Audio } from "expo-av";
 import { AntDesign } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
 
-import { AVPlaybackSource, AVPlaybackStatusToSet } from "expo-av/build/AV";
+import type { AVPlaybackSource, AVPlaybackStatus } from "expo-av/build/AV";
 
 import {
   GROUPS,
@@ -16,19 +16,19 @@ import {
 function formatDuration(duration: number) {
   if (duration === 0 || duration === 1) return "00:00";
 
-  let seconds = Math.floor((duration / 1000) % 60);
-  let minutes = Math.floor((duration / (1000 * 60)) % 60);
-  let hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+  const seconds = Math.floor((duration / 1000) % 60);
+  const minutes = Math.floor((duration / (1000 * 60)) % 60);
+  const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
 
-  hours = hours < 10 ? "0" + hours : hours;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
+  const renderedHours = hours < 10 ? "0" + hours : hours;
+  const renderedMinutes = minutes < 10 ? "0" + minutes : minutes;
+  const renderedSeconds = seconds < 10 ? "0" + seconds : seconds;
 
   if (hours > 0) {
-    return hours + ":" + minutes + ":" + seconds;
+    return renderedHours + ":" + renderedMinutes + ":" + renderedSeconds;
   }
 
-  return minutes + ":" + seconds;
+  return renderedMinutes + ":" + renderedSeconds;
 }
 
 export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
 export const SEED_DATA = {
   name: "Audio Player",
   tag: "AudioPlayer",
-  description: "Given a URL, plays sounds",
+  description: "Given a URL, plays sounds!",
   category: COMPONENT_TYPES.media,
   layout: {},
   props: {

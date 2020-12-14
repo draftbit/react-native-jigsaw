@@ -1,12 +1,10 @@
 const fs = require("fs");
 const pak = require("../package.json");
 
-const pipe = (...fns) => x => fns.reduce((v, f) => f(v), x);
-
-function changePackageName(package, name) {
+function changePackageName(name) {
   return JSON.stringify(
     {
-      ...package,
+      ...pak,
       name: "@draftbit/" + name,
     },
     null,
@@ -15,16 +13,14 @@ function changePackageName(package, name) {
 }
 
 function removeDependency(package, dependencyName) {
-  return package.replace(new RegExp(` +"${dependencyName}"[^\n]+`), "");
+  return package.replace(new RegExp(` +"${dependencyName}"[^\n]+\n`), "");
 }
 
 function main() {
   console.log(`Changing name to "@draftbit/web"`);
-  let json = pipe(
-    changePackageName("web"),
-    removeDependency("@expo/vector-icons")
-  )(pak);
-  fs.writeFileSync("package.json", json, "utf-8");
+  const packageWithChangedName = changePackageName("web");
+  const draftbitWeb = removeDependency(packageWithChangedName, "@expo/vector-icons");
+  fs.writeFileSync("package.json", draftbitWeb, "utf-8");
 }
 
 main(process.argv.slice(2));

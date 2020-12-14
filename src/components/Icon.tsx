@@ -33,8 +33,7 @@ const Icon: React.FC<Props> = ({ name, color, size, style, ...rest }) => {
   }
 
   if (typeof name === "string") {
-    // @ts-ignore
-    const IconSet = VectorIcons[iconSet];
+    const IconSet = (VectorIcons as any)[iconSet];
 
     return (
       <IconSet {...rest} name={name} color={color} size={size} style={style} />

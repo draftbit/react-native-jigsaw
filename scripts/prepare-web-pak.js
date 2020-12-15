@@ -17,7 +17,8 @@ function removeDependency(package, dependencyName) {
 function main() {
   console.log(`Changing name to "@draftbit/web"`);
   const packageWithChangedName = changePackageName("web");
-  const draftbitWeb = removeDependency(packageWithChangedName, "@expo/vector-icons");
+  const pakWithoutIcons = removeDependency(packageWithChangedName, "@expo/vector-icons");
+  const draftbitWeb = removeDependency(pakWithoutIcons, "expo-av");
   fs.writeFileSync("package.json", JSON.stringify(draftbitWeb, null, 2), "utf-8");
 }
 

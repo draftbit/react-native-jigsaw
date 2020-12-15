@@ -11,3 +11,6 @@ node scripts/prepare-web-pak.js
 echo "Creating Icon.web.tsx"
 cp ./files/Icon.web.tsx ./src/components/Icon.tsx
 npm publish
+
+echo "Resetting repo"
+git restore package.json src/components/Icon.tsx

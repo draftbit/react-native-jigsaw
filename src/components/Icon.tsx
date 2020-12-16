@@ -15,7 +15,7 @@ import {
   PROP_TYPES,
 } from "../core/component-types";
 
-import VectorIcons from "@expo/vector-icons";
+import * as VectorIcons from "@expo/vector-icons";
 
 interface Props extends ViewProps {
   name: string | number | { uri: string };

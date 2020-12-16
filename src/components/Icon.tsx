@@ -15,7 +15,8 @@ import {
   PROP_TYPES,
 } from "../core/component-types";
 
-import * as VectorIcons from "@expo/vector-icons";
+// This must use require to work in both web as a published project and in Snack
+const VectorIcons = require("@expo/vector-icons");
 
 interface Props extends ViewProps {
   name: string | number | { uri: string };
@@ -33,7 +34,7 @@ const Icon: React.FC<Props> = ({ name, color, size, style, ...rest }) => {
   }
 
   if (typeof name === "string") {
-    const IconSet = (VectorIcons as any)[iconSet];
+    const IconSet = VectorIcons[iconSet];
 
     return (
       <IconSet {...rest} name={name} color={color} size={size} style={style} />

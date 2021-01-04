@@ -1,5 +1,7 @@
 import * as React from "react";
-import { View } from "react-native";
+import { View, StyleProp, ViewStyle } from "react-native";
+// @ts-ignore
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 
 import {
   GROUPS,
@@ -8,13 +10,82 @@ import {
   COMPONENT_TYPES,
 } from "../core/component-types";
 
+export function Center({
+  width,
+  height,
+  children,
+  bgColor,
+  style,
+}: {
+  width: number;
+  height: number;
+  bgColor: string;
+  children: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
+}) {
+  return (
+    <View
+      style={[
+        {
+          justifyContent: "center",
+          alignItems: "center",
+          width,
+          height,
+          backgroundColor: bgColor,
+        },
+        style,
+      ]}
+    >
+      {children}
+    </View>
+  );
+}
+
+export function Circle({
+  size,
+  bgColor,
+  children,
+}: {
+  size: number;
+  bgColor: string;
+  children: React.ReactNode;
+}) {
+  const borderRadius = 1000;
+  return (
+    <Center
+      width={size}
+      height={size}
+      bgColor={bgColor}
+      style={{ backgroundColor: bgColor, borderRadius }}
+    >
+      {children}
+    </Center>
+  );
+}
+
+export function Square({
+  size,
+  bgColor,
+  children,
+}: {
+  size: number;
+  bgColor: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Center width={size} height={size} bgColor={bgColor}>
+      {children}
+    </Center>
+  );
+}
+
 export function Row({
   justifyContent,
   alignItems,
   children,
 }: {
-  alignItems?: string;
-  justifyContent?: string;
+  alignItems: ViewStyleProp.alignItems;
+  justifyContent: ViewStyleProp.justifyContent;
   children: React.ReactNode;
 }) {
   return (
@@ -62,8 +133,8 @@ export function Stack({
   justifyContent,
   alignItems,
 }: {
-  justifyContent?: string;
-  alignItems?: string;
+  justifyContent: ViewStyleProp.justifyContent;
+  alignItems: ViewStyleProp.alignItems;
   children: React.ReactNode;
 }) {
   return <View style={{ justifyContent, alignItems }}>{children}</View>;
@@ -73,41 +144,34 @@ export const SEED_DATA = [
   {
     name: "Row",
     tag: "Row",
-    category: COMPONENT_TYPES.basic,
+    category: COMPONENT_TYPES.layout,
     props: {
-      wrap: {
-        label: "Wrap",
-        group: GROUPS.basic,
-        description: "Justify horizontally",
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "flex-start",
-        editable: true,
-      },
       justifyContent: {
-        label: "Justify",
+        label: "Align Horizontally",
         group: GROUPS.basic,
-        description: "Justify horizontally",
+        description: "Align Items Horizontally (on the X Axis)",
         formType: FORM_TYPES.string,
         propType: PROP_TYPES.STRING,
         defaultValue: "flex-start",
         editable: true,
+        required: false,
       },
       alignItems: {
-        label: "Align",
+        label: "Align Vertically",
         group: GROUPS.basic,
-        description: "Vertical align",
+        description: "Align Items Vertically (on the Y Axis)",
         formType: FORM_TYPES.string,
         propType: PROP_TYPES.STRING,
         defaultValue: "flex-start",
         editable: true,
+        required: false,
       },
     },
   },
   {
     name: "Space",
     tag: "Space",
-    category: COMPONENT_TYPES.basic,
+    category: COMPONENT_TYPES.layout,
     props: {
       top: {
         label: "Top",
@@ -117,6 +181,7 @@ export const SEED_DATA = [
         group: GROUPS.basic,
         defaultValue: 0,
         editable: true,
+        required: false,
       },
       right: {
         label: "Right",
@@ -126,6 +191,7 @@ export const SEED_DATA = [
         group: GROUPS.basic,
         defaultValue: 0,
         editable: true,
+        required: false,
       },
       bottom: {
         label: "Bottom",
@@ -135,6 +201,7 @@ export const SEED_DATA = [
         group: GROUPS.basic,
         defaultValue: 0,
         editable: true,
+        required: false,
       },
       left: {
         label: "Left",
@@ -144,13 +211,14 @@ export const SEED_DATA = [
         group: GROUPS.basic,
         defaultValue: 0,
         editable: true,
+        required: false,
       },
     },
   },
   {
     name: "Stack",
     tag: "Stack",
-    category: COMPONENT_TYPES.basic,
+    category: COMPONENT_TYPES.layout,
     props: {
       justifyContent: {
         label: "Justify",
@@ -159,6 +227,7 @@ export const SEED_DATA = [
         propType: PROP_TYPES.STRING,
         defaultValue: "flex-start",
         editable: true,
+        required: false,
       },
       alignItems: {
         label: "Align",
@@ -167,6 +236,88 @@ export const SEED_DATA = [
         propType: PROP_TYPES.STRING,
         defaultValue: "flex-start",
         editable: true,
+        required: false,
+      },
+    },
+  },
+  {
+    name: "Center",
+    tag: "Center",
+    category: COMPONENT_TYPES.layout,
+    props: {
+      width: {
+        label: "Width",
+        description: "Width",
+        formType: FORM_TYPES.number,
+        propType: PROP_TYPES.NUMBER,
+        group: GROUPS.basic,
+        defaultValue: 50,
+        editable: true,
+        required: false,
+      },
+      height: {
+        label: "Height",
+        description: "Height",
+        formType: FORM_TYPES.number,
+        propType: PROP_TYPES.NUMBER,
+        group: GROUPS.basic,
+        defaultValue: 50,
+        editable: true,
+        required: false,
+      },
+    },
+  },
+  {
+    name: "Circle",
+    tag: "Circle",
+    category: COMPONENT_TYPES.layout,
+    props: {
+      size: {
+        label: "Size",
+        description: "Size",
+        formType: FORM_TYPES.number,
+        propType: PROP_TYPES.NUMBER,
+        group: GROUPS.basic,
+        defaultValue: 50,
+        editable: true,
+        required: false,
+      },
+      bgColor: {
+        label: "Background Color",
+        description: "Background color",
+        formType: FORM_TYPES.color,
+        propType: PROP_TYPES.THEME,
+        editable: true,
+        required: false,
+        defaultValue: null,
+        group: GROUPS.basic,
+      },
+    },
+  },
+  {
+    name: "Square",
+    tag: "Square",
+    category: COMPONENT_TYPES.layout,
+    props: {
+      size: {
+        label: "Size",
+        description: "Size",
+        formType: FORM_TYPES.number,
+        propType: PROP_TYPES.NUMBER,
+        group: GROUPS.basic,
+        defaultValue: 50,
+        editable: true,
+        required: false,
+      },
+      bgColor: {
+        label: "Background Color",
+        description: "Background color",
+        formType: FORM_TYPES.color,
+        propType: PROP_TYPES.THEME,
+        editable: true,
+        required: false,
+        defaultValue: null,
+        group: GROUPS.basic,
       },
     },
   },

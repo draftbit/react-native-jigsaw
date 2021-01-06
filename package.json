@@ -48,7 +48,7 @@
     "color": "^3.1.2",
     "date-fns": "^2.16.1",
     "dateformat": "^3.0.3",
-    "expo-av": "^8.7.0",
+    "expo-av": "~8.6.0",
     "react-native-safe-area-context": "~3.1.4",
     "react-native-typography": "^1.4.1"
   },

@@ -8,19 +8,21 @@ import {
   COMPONENT_TYPES,
 } from "../core/component-types";
 import theme from "../styles/DefaultTheme";
+import { FocusProps } from "src/types";
 
-interface Props {
+type Props = {
   style?: StyleProp<ViewStyle>;
   color?: string;
   height?: number;
   theme: typeof theme;
-}
+} & FocusProps;
 
 const Divider: React.FC<Props> = ({
   style,
   color,
   height,
   theme: { colors },
+  ...rest
 }) => {
   return (
     <View
@@ -29,6 +31,7 @@ const Divider: React.FC<Props> = ({
         style,
         { height: height || StyleSheet.hairlineWidth },
       ]}
+      {...rest}
     />
   );
 };

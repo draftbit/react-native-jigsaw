@@ -4,20 +4,23 @@ import Touchable from "./Touchable";
 import Config from "./Config";
 import { StyleProp, ViewStyle } from "react-native";
 import theme from "../styles/DefaultTheme";
+import { FocusProps } from "src/types";
 
-interface Props {
+type Props = {
   numColumns?: number;
   children?: React.ReactNode;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
-}
+} & FocusProps;
+
 const Card: React.FC<Props> = ({
   numColumns = 3,
   children,
   onPress,
   theme: { spacing },
   style,
+  ...rest
 }) => {
   let cardStyle;
   if (numColumns === 1) {
@@ -33,7 +36,12 @@ const Card: React.FC<Props> = ({
   }
 
   return (
-    <Touchable disabled={!onPress} onPress={onPress} style={[cardStyle, style]}>
+    <Touchable
+      disabled={!onPress}
+      onPress={onPress}
+      style={[cardStyle, style]}
+      {...rest}
+    >
       {children}
     </Touchable>
   );

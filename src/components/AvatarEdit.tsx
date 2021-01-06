@@ -7,14 +7,15 @@ import { withTheme } from "../core/theming";
 
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import theme from "../styles/DefaultTheme";
+import { FocusProps } from "src/types";
 
-interface Props {
+type Props = {
   image: string | Blob;
   size?: number;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
-}
+} & FocusProps;
 
 const AvatarEdit: React.FC<Props> = ({
   image,
@@ -22,6 +23,7 @@ const AvatarEdit: React.FC<Props> = ({
   onPress = () => {},
   style,
   theme: { colors },
+  ...rest
 }) => {
   const colorStyles = {
     editBackgroundColor: colors.primary,
@@ -35,7 +37,7 @@ const AvatarEdit: React.FC<Props> = ({
   };
 
   return (
-    <View style={[style, dimensions]}>
+    <View style={[style, dimensions]} {...rest}>
       <Touchable onPress={onPress}>
         <Avatar image={image} size={size} />
         <View

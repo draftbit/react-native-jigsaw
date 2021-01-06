@@ -70,3 +70,8 @@ export type $RemoveChildren<T extends React.ComponentType<any>> = $Omit<
 >;
 
 export type EllipsizeProp = "head" | "middle" | "tail" | "clip";
+
+export interface FocusProps {
+  "data-focus"?: boolean;
+  "data-content"?: string;
+}

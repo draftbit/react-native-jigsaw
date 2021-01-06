@@ -42,6 +42,7 @@ const CardBlock: React.FC<Props> = ({
   theme: { colors, borderRadius, typography, spacing },
   style,
   onPress,
+  ...rest
 }) => {
   let titleJustification: justificationType;
 
@@ -66,7 +67,7 @@ const CardBlock: React.FC<Props> = ({
   ];
 
   return (
-    <Card style={style} onPress={onPress} numColumns={numColumns}>
+    <Card style={style} onPress={onPress} numColumns={numColumns} {...rest}>
       <View style={{ backgroundColor: colors.background }}>
         <Elevation style={{ elevation, borderRadius: borderRadius.global }}>
           <Image

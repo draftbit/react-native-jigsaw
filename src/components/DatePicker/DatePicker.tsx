@@ -11,8 +11,9 @@ import TextField, { Props as TextFieldProps } from "../TextField";
 import Touchable from "../Touchable";
 import theme from "../../styles/DefaultTheme";
 import DateTimePicker from "./DatePickerComponent";
+import { FocusProps } from "src/types";
 
-interface Props extends TextFieldProps {
+type Props = {
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
   // initialDate?: string;
@@ -26,7 +27,8 @@ interface Props extends TextFieldProps {
   onDateChange?: (data?: any) => void;
   disabled?: boolean;
   mode?: "date" | "time" | "datetime";
-}
+} & TextFieldProps &
+  FocusProps;
 
 const MONTHS = [
   "January",

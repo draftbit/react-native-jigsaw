@@ -6,8 +6,9 @@ import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import Config from "./Config";
 import IconButton from "./IconButton";
 import themeT from "../styles/DefaultTheme";
+import { FocusProps } from "src/types";
 
-interface Props {
+type Props = {
   selected: boolean;
   disabled?: boolean;
   color?: string;
@@ -15,7 +16,7 @@ interface Props {
   onPress?: () => void;
   theme: typeof themeT;
   style?: StyleProp<ViewStyle>;
-}
+} & FocusProps;
 
 const RadioButton: React.FC<Props> = ({
   selected,
@@ -24,6 +25,7 @@ const RadioButton: React.FC<Props> = ({
   unselectedColor,
   onPress = () => {},
   style,
+  ...rest
 }) => {
   return (
     <IconButton
@@ -37,6 +39,7 @@ const RadioButton: React.FC<Props> = ({
       disabled={disabled}
       onPress={() => onPress()}
       size={Config.radioButtonSize}
+      {...rest}
     />
   );
 };

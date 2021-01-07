@@ -11,13 +11,13 @@ import {
 import { withTheme } from "../core/theming";
 import Config from "./Config";
 import themeT from "../styles/DefaultTheme";
-interface Props {
+type Props = {
   children?: React.ReactNode;
   style?: StyleProp<ViewStyle>;
   theme: typeof themeT;
   hasSafeArea?: boolean;
   scrollable?: boolean;
-}
+};
 
 class ScreenContainer extends React.Component<Props> {
   renderScrollableSafeAreaView(themeStyles: ViewStyle) {

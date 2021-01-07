@@ -11,14 +11,14 @@ import CircularProgress, {
 } from "./CircularProgress";
 const AnimatedProgress = Animated.createAnimatedComponent(CircularProgress);
 
-interface Props extends CircularProgressProps {
+type Props = {
   duration?: number;
   easing?: EasingFunction;
   prefill?: number;
   useNativeDriver?: boolean;
   tintColorSecondary?: string;
   onAnimationComplete?: Animated.EndCallback | undefined;
-}
+} & CircularProgressProps;
 
 const AnimatedCircularProgress: React.FC<Props> = ({
   duration = 500,

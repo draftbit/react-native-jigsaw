@@ -12,7 +12,7 @@ interface RadioButtonOption {
   value: string;
 }
 
-interface Props {
+type Props = {
   options: RadioButtonOption[];
   label?: string;
   onSelect?: (value: string) => void;
@@ -26,7 +26,7 @@ interface Props {
   itemStyle?: StyleProp<ViewStyle>;
   itemLabelStyle?: StyleProp<TextStyle>;
   theme: typeof themeT;
-}
+};
 
 const RadioButtonFieldGroup: React.FC<Props> = ({
   options,

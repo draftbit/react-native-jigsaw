@@ -18,12 +18,12 @@ import {
 // This must use require to work in both web as a published project and in Snack
 const VectorIcons = require("@expo/vector-icons");
 
-interface Props extends ViewProps {
+type Props = {
   name: string | number | { uri: string };
   color?: string;
   size: number;
   style?: StyleProp<ImageStyle>;
-}
+} & ViewProps;
 
 const Icon: React.FC<Props> = ({ name, color, size, style, ...rest }) => {
   if (!name) return null;

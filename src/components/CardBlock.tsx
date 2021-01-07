@@ -16,7 +16,7 @@ import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 import { justificationType } from "./Justification";
 
-interface Props {
+type Props = {
   image?: string | Blob;
   title?: string;
   leftDescription?: string;
@@ -28,7 +28,7 @@ interface Props {
   theme: typeof theme;
   style?: StyleProp<ViewStyle>;
   onPress: () => void;
-}
+};
 
 const CardBlock: React.FC<Props> = ({
   image = Config.cardImageUrl,

@@ -12,7 +12,7 @@ import {
 import IconButton from "./IconButton";
 import theme from "../styles/DefaultTheme";
 
-interface Props {
+type Props = {
   value?: number;
   theme: typeof theme;
   style?: StyleProp<ViewStyle>;
@@ -21,7 +21,7 @@ interface Props {
   iconColor?: string;
   borderRadius?: number;
   typeStyle?: StyleProp<TextStyle>;
-}
+};
 
 const Stepper: React.FC<Props> = ({
   value = 0,

@@ -3,13 +3,12 @@ import { Image, StyleProp, ImageStyle } from "react-native";
 import Config from "./Config";
 
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-import { FocusProps } from "src/types";
 
 type Props = {
   image?: string | Blob;
   size?: number;
   style?: StyleProp<ImageStyle>;
-} & FocusProps;
+};
 
 const Avatar: React.FC<Props> = ({
   image = Config.avatarImageUrl,

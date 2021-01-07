@@ -4,13 +4,13 @@ import Icon from "./Icon";
 import { withTheme } from "../core/theming";
 import theme from "../styles/DefaultTheme";
 
-interface Props {
+type Props = {
   starSize?: number;
   maxStars?: number;
   rating?: number;
   theme: typeof theme;
   style?: StyleProp<ViewStyle>;
-}
+};
 
 const StarRating: React.FC<Props> = ({
   starSize = 16,

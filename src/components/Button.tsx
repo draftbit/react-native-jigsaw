@@ -23,7 +23,6 @@ import {
   COMPONENT_TYPES,
 } from "../core/component-types";
 import theme from "../styles/DefaultTheme";
-import { FocusProps } from "src/types";
 
 /**
  * A button is component that the user can press to trigger an action.

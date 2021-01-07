@@ -20,7 +20,7 @@ import Icon from "./Icon";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 
-interface Props {
+type Props = {
   icon?: string;
   placeholder?: string;
   style?: StyleProp<ViewStyle>;
@@ -28,7 +28,7 @@ interface Props {
   onChange: (text: string) => void;
   onSubmit?: (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
   value: string;
-}
+};
 
 const FieldSearchBarFull: React.FC<Props> = ({
   icon = "search",

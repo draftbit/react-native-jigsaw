@@ -10,14 +10,14 @@ import {
 import Row from "./Row";
 import theme from "../styles/DefaultTheme";
 
-interface Props {
+type Props = {
   title?: string;
   subtitle?: string;
   caption?: string;
   image: string | Blob;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
-}
+};
 
 const RowHeadlineImageCaption: React.FC<Props> = ({
   title,

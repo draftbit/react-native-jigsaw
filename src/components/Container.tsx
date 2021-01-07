@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from "react-native";
 import { withTheme } from "../core/theming";
-import { FocusProps } from "../types";
+
 import Elevation from "./Elevation";
 import {
   GROUPS,
@@ -29,7 +29,7 @@ type Props = {
   elevation?: number;
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
-} & FocusProps;
+};
 
 const Container: React.FC<Props> = ({
   theme: { spacing },

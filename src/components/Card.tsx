@@ -4,7 +4,6 @@ import Touchable from "./Touchable";
 import Config from "./Config";
 import { StyleProp, ViewStyle } from "react-native";
 import theme from "../styles/DefaultTheme";
-import { FocusProps } from "src/types";
 
 type Props = {
   numColumns?: number;
@@ -12,7 +11,7 @@ type Props = {
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
-} & FocusProps;
+};
 
 const Card: React.FC<Props> = ({
   numColumns = 3,

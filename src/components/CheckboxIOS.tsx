@@ -4,7 +4,6 @@ import Icon from "./Icon";
 import Touchable from "./Touchable";
 import { withTheme } from "../core/theming";
 import themeT from "../styles/DefaultTheme";
-import { FocusProps } from "src/types";
 
 type Props = {
   status?: "checked" | "indeterminate" | "unchecked";

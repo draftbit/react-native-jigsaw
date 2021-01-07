@@ -10,7 +10,6 @@ import {
   PROP_TYPES,
   FIELD_NAME,
 } from "../core/component-types";
-import { FocusProps } from "src/types";
 
 type Props = {
   status?: "checked" | "indeterminate" | "unchecked";

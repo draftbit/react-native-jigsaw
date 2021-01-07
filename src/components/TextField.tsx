@@ -24,7 +24,6 @@ import {
   FIELD_NAME,
   TEXT_INPUT_PROPS,
 } from "../core/component-types";
-import { FocusProps } from "../types";
 
 import Icon from "./Icon";
 import theme from "../styles/DefaultTheme";

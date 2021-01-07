@@ -11,7 +11,6 @@ import TextField, { Props as TextFieldProps } from "../TextField";
 import Touchable from "../Touchable";
 import theme from "../../styles/DefaultTheme";
 import DateTimePicker from "./DatePickerComponent";
-import { FocusProps } from "src/types";
 
 type Props = {
   style?: StyleProp<ViewStyle>;

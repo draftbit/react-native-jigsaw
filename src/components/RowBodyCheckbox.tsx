@@ -10,7 +10,7 @@ import Checkbox from "./Checkbox";
 import theme from "../styles/DefaultTheme";
 import { StyleProp, ViewStyle } from "react-native";
 
-interface Props {
+type Props = {
   title?: string;
   subtitle?: string;
   style?: StyleProp<ViewStyle>;
@@ -18,7 +18,7 @@ interface Props {
   onPress?: () => void;
   color?: string;
   theme: typeof theme;
-}
+};
 
 const RowBodyCheckbox: React.FC<Props> = ({
   title,

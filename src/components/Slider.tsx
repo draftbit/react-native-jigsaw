@@ -13,7 +13,7 @@ import { StyleProp, ViewStyle } from "react-native";
 import themeT from "../styles/DefaultTheme";
 import { colorTypes } from "../types";
 
-export interface Props {
+export type Props = {
   style?: StyleProp<ViewStyle>;
   value?: number;
   minimumTrackTintColor: colorTypes;
@@ -30,7 +30,7 @@ export interface Props {
   //trackBorderRadius?: number;
   //thumbBorderRadius?: number;
   //thumbSize: number;
-}
+};
 
 const Slider: React.FC<Props> = ({
   style = { height: 4 },

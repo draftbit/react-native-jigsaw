@@ -7,10 +7,10 @@ import {
   ViewStyle,
 } from "react-native";
 
-interface Props {
+type Props = {
   children?: React.ReactNode;
   style?: StyleProp<ViewStyle>;
-}
+};
 
 const AspectRatio: React.FC<Props> = (props) => {
   const [layout, setLayout] = React.useState<LayoutRectangle | null>(null);

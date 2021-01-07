@@ -20,7 +20,7 @@ const INDETERMINATE_WIDTH_FACTOR = 0.3;
 const BAR_WIDTH_ZERO_POSITION =
   INDETERMINATE_WIDTH_FACTOR / (1 + INDETERMINATE_WIDTH_FACTOR);
 
-interface Props extends ViewProps {
+type Props = {
   borderColor?: string;
   borderRadius?: number;
   borderWidth?: number;
@@ -37,7 +37,7 @@ interface Props extends ViewProps {
   useNativeDriver?: boolean;
   animationConfig?: Animated.AnimationConfig;
   animationType?: "decay" | "timing" | "spring";
-}
+} & ViewProps;
 
 interface State {
   width: number;

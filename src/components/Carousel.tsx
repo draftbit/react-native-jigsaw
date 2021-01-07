@@ -23,7 +23,6 @@ import {
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 import { ResizeModeType } from "./ResizeMode";
-import { FocusProps } from "src/types";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -35,7 +34,7 @@ type Props = {
   dotColor?: string;
   theme: typeof theme;
   style?: StyleProp<ViewStyle>;
-} & FocusProps;
+};
 
 const Carousel: React.FC<Props> = ({
   images = [

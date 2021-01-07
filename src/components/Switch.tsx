@@ -10,13 +10,13 @@ import {
 } from "../core/component-types";
 import themeT from "../styles/DefaultTheme";
 
-interface Props extends SwitchProps {
+type Props = {
   value: boolean;
   disabled?: boolean;
   onValueChange?: (value: boolean) => void;
   color?: string;
   theme: typeof themeT;
-}
+} & SwitchProps;
 
 const Switch: React.FC<Props> = ({
   value,

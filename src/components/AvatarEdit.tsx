@@ -7,7 +7,6 @@ import { withTheme } from "../core/theming";
 
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import theme from "../styles/DefaultTheme";
-import { FocusProps } from "src/types";
 
 type Props = {
   image: string | Blob;
@@ -15,7 +14,7 @@ type Props = {
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
-} & FocusProps;
+};
 
 const AvatarEdit: React.FC<Props> = ({
   image,

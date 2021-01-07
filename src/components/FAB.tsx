@@ -60,7 +60,7 @@ import theme from "../styles/DefaultTheme";
  * ```
  */
 
-interface Props extends TouchableHighlightProps {
+type Props = {
   disabled?: boolean;
   type?: "solid" | "extended" | "outline" | "fixed" | "standard";
   loading?: boolean;
@@ -72,7 +72,7 @@ interface Props extends TouchableHighlightProps {
   theme: typeof theme;
   IconOverride: typeof Icon;
   style?: StyleProp<ViewStyle>;
-}
+} & TouchableHighlightProps;
 
 const FAB: React.FC<Props> = ({
   disabled = false,

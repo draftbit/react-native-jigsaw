@@ -8,14 +8,13 @@ import {
   COMPONENT_TYPES,
 } from "../core/component-types";
 import theme from "../styles/DefaultTheme";
-import { FocusProps } from "src/types";
 
 type Props = {
   style?: StyleProp<ViewStyle>;
   color?: string;
   height?: number;
   theme: typeof theme;
-} & FocusProps;
+};
 
 const Divider: React.FC<Props> = ({
   style,

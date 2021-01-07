@@ -17,7 +17,6 @@ import {
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 import { justificationType } from "./Justification";
-import { FocusProps } from "src/types";
 
 const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
 const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
@@ -35,7 +34,7 @@ type Props = {
   theme: typeof theme;
   style?: StyleProp<ViewStyle>;
   onPress: () => void;
-} & FocusProps;
+};
 
 const CardContainer: React.FC<Props> = ({
   image = Config.cardImageUrl,

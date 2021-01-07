@@ -13,7 +13,6 @@ import {
 } from "../core/component-types";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
-import { FocusProps } from "src/types";
 
 type Props = {
   image?: string | Blob;
@@ -26,7 +25,7 @@ type Props = {
   theme: typeof theme;
   style?: StyleProp<ViewStyle>;
   onPress: () => void;
-} & FocusProps;
+};
 
 const CardInline: React.FC<Props> = ({
   image = Config.cardImageUrl,

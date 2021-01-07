@@ -16,7 +16,6 @@ import {
   PROP_TYPES,
 } from "../core/component-types";
 import themeT from "../styles/DefaultTheme";
-import { FocusProps } from "src/types";
 
 type Props = {
   icon?: string;
@@ -28,7 +27,7 @@ type Props = {
   onPress: () => void;
   theme: typeof themeT;
   style?: StyleProp<ViewStyle>;
-} & FocusProps;
+};
 
 const IconButton: React.FC<Props> = ({
   icon,

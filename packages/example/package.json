@@ -1,16 +1,18 @@
 {
-  "name": "@draftbit/ui-example",
+  "name": "@draftbit/example",
   "description": "Example app for @draftbit/ui",
   "version": "39.1.0",
   "private": true,
-  "main": "index.js",
+  "main": "__generated__/AppEntry.js",
   "scripts": {
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "start": "expo start",
     "eject": "expo eject",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "expo-yarn-workspaces postinstall",
+    "example": "yarn --cwd example"
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
@@ -18,26 +20,20 @@
     "@react-native-community/picker": "~1.6.6",
     "@react-navigation/drawer": "^5.7.7",
     "@react-navigation/native": "^5.4.2",
-    "@unimodules/core": "~5.5.0",
-    "@unimodules/react-native-adapter": "~5.6.0",
     "expo": "~39.0.2",
     "expo-font": "~8.3.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "~0.63.2",
     "react-native-gesture-handler": "~1.7.0",
-    "react-native-safe-area-context": "~3.1.4",
     "react-native-reanimated": "^1.13.1",
+    "react-native-safe-area-context": "3.1.4",
     "react-native-screens": "~2.10.1",
     "react-native-svg": "^12.1.0",
-    "react-native-unimodules": "~0.11.0",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
-    "@babel/runtime": "^7.11.2",
-    "babel-plugin-module-resolver": "^4.0.0",
-    "babel-preset-expo": "^8.3.0",
-    "expo-cli": "^3.28.1"
+    "@babel/runtime": "^7.11.2"
   }
 }

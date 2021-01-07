@@ -7,6 +7,7 @@ import {
   ViewStyle,
 } from "react-native";
 import { withTheme } from "../core/theming";
+
 import Elevation from "./Elevation";
 import {
   GROUPS,
@@ -17,7 +18,7 @@ import {
 import theme from "../styles/DefaultTheme";
 import { ResizeModeType } from "./ResizeMode";
 
-interface Props {
+type Props = {
   theme: typeof theme;
   useThemeGutterPadding: boolean;
   borderColor: string;
@@ -28,7 +29,7 @@ interface Props {
   elevation?: number;
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
-}
+};
 
 const Container: React.FC<Props> = ({
   theme: { spacing },
@@ -41,6 +42,7 @@ const Container: React.FC<Props> = ({
   elevation,
   style,
   children,
+  ...rest
 }) => {
   const { flexDirection, justifyContent, alignItems, ...styleProp } =
     StyleSheet.flatten(style) || {};
@@ -68,7 +70,7 @@ const Container: React.FC<Props> = ({
   }
 
   return (
-    <Wrap style={[containerStyle, style]}>
+    <Wrap style={[containerStyle, style]} {...rest}>
       {backgroundImage ? (
         <ImageBackground
           source={

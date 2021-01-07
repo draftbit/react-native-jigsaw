@@ -8,7 +8,7 @@ import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 import { StyleProp, ViewStyle } from "react-native";
 
-interface Props {
+type Props = {
   title?: string;
   image: string | Blob;
   subtitle?: string;
@@ -16,7 +16,7 @@ interface Props {
   icon: string;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
-}
+};
 
 const RowHeadlineImageIcon: React.FC<Props> = ({
   title,

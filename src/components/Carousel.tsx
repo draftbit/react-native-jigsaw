@@ -26,7 +26,7 @@ import { ResizeModeType } from "./ResizeMode";
 
 const screenWidth = Dimensions.get("window").width;
 
-interface Props {
+type Props = {
   images: string[] | Blob[];
   aspectRatio?: number;
   swiperPalette?: "surface" | "non-sruface";
@@ -34,7 +34,8 @@ interface Props {
   dotColor?: string;
   theme: typeof theme;
   style?: StyleProp<ViewStyle>;
-}
+};
+
 const Carousel: React.FC<Props> = ({
   images = [
     Config.placeholderImageURL,
@@ -51,6 +52,7 @@ const Carousel: React.FC<Props> = ({
   dotColor,
   theme: { colors, spacing },
   style = { height: screenWidth * 0.5 },
+  ...rest
 }) => {
   const [scrollOffset, setScrollOffset] = useState(0);
   const [width, setWidth] = useState(0);
@@ -72,6 +74,7 @@ const Carousel: React.FC<Props> = ({
     <View
       style={[styles.container, { aspectRatio, width }, style]}
       onLayout={onPageLayout}
+      {...rest}
     >
       <ScrollView
         onScroll={handleScroll}

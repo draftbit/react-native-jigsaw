@@ -14,7 +14,7 @@ import Touchable from "./Touchable";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 
-interface Props {
+type Props = {
   titleTypeStyle?: StyleProp<TextStyle>;
   titleColor: string;
   title: string;
@@ -24,7 +24,7 @@ interface Props {
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
-}
+};
 
 const Header: React.FC<Props> = ({
   titleTypeStyle,

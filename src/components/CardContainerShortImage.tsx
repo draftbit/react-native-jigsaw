@@ -14,7 +14,7 @@ import {
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 
-interface Props {
+type Props = {
   image?: string | Blob;
   title?: string;
   subtitle?: string;
@@ -24,7 +24,7 @@ interface Props {
   theme: typeof theme;
   style?: StyleProp<ViewStyle>;
   onPress: () => void;
-}
+};
 
 const CardContainerShortImage: React.FC<Props> = ({
   image = Config.squareImageUrl,
@@ -36,9 +36,10 @@ const CardContainerShortImage: React.FC<Props> = ({
   theme: { colors, borderRadius, typography, spacing },
   style,
   onPress,
+  ...rest
 }) => {
   return (
-    <Card style={style} onPress={onPress}>
+    <Card style={style} onPress={onPress} {...rest}>
       <Elevation
         style={{
           elevation,

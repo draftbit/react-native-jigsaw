@@ -17,7 +17,7 @@ import {
 } from "../core/component-types";
 import themeT from "../styles/DefaultTheme";
 
-interface Props {
+type Props = {
   icon?: string;
   color?: string;
   size?: number;
@@ -27,7 +27,7 @@ interface Props {
   onPress: () => void;
   theme: typeof themeT;
   style?: StyleProp<ViewStyle>;
-}
+};
 
 const IconButton: React.FC<Props> = ({
   icon,

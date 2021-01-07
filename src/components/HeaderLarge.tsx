@@ -5,14 +5,14 @@ import Header from "./Header";
 import theme from "../styles/DefaultTheme";
 import { StyleProp, ViewStyle } from "react-native";
 
-interface Props {
+type Props = {
   title: string;
   buttonText: string;
   icon: string;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
-}
+};
 
 const HeaderLarge: React.FC<Props> = ({
   title,

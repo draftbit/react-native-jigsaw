@@ -21,7 +21,7 @@ import { justificationType } from "./Justification";
 const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
 const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
 
-interface Props {
+type Props = {
   image?: string | Blob;
   title?: string;
   leftDescription?: string;
@@ -34,7 +34,7 @@ interface Props {
   theme: typeof theme;
   style?: StyleProp<ViewStyle>;
   onPress: () => void;
-}
+};
 
 const CardContainer: React.FC<Props> = ({
   image = Config.cardImageUrl,
@@ -49,6 +49,7 @@ const CardContainer: React.FC<Props> = ({
   theme: { colors, borderRadius, typography, spacing },
   style,
   onPress,
+  ...rest
 }) => {
   let textJustification: justificationType;
 
@@ -70,7 +71,7 @@ const CardContainer: React.FC<Props> = ({
   }
 
   return (
-    <Card style={style} onPress={onPress} numColumns={numColumns}>
+    <Card style={style} onPress={onPress} numColumns={numColumns} {...rest}>
       <Elevation style={{ elevation, borderRadius: borderRadius.global }}>
         <View
           style={{

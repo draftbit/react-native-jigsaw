@@ -42,18 +42,18 @@ interface CustomStyles {
   labelFontFamily?: string;
 }
 
-interface Props {
+type Props = {
   stepCount: number;
   currentPosition: number;
   customStyles: CustomStyles;
-}
+};
 
-interface State {
+type State = {
   width: number;
   height: number;
   progressBarSize: number;
   customStyles: CustomStyles;
-}
+};
 
 export default class StepIndicator extends Component<Props, State> {
   constructor(props: Props) {

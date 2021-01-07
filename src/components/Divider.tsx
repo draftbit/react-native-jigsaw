@@ -9,18 +9,19 @@ import {
 } from "../core/component-types";
 import theme from "../styles/DefaultTheme";
 
-interface Props {
+type Props = {
   style?: StyleProp<ViewStyle>;
   color?: string;
   height?: number;
   theme: typeof theme;
-}
+};
 
 const Divider: React.FC<Props> = ({
   style,
   color,
   height,
   theme: { colors },
+  ...rest
 }) => {
   return (
     <View
@@ -29,6 +30,7 @@ const Divider: React.FC<Props> = ({
         style,
         { height: height || StyleSheet.hairlineWidth },
       ]}
+      {...rest}
     />
   );
 };

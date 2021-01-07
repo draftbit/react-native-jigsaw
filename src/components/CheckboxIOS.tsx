@@ -5,13 +5,14 @@ import Touchable from "./Touchable";
 import { withTheme } from "../core/theming";
 import themeT from "../styles/DefaultTheme";
 
-interface Props extends TouchableHighlightProps {
+type Props = {
   status?: "checked" | "indeterminate" | "unchecked";
   disabled?: boolean;
   onPress?: () => void;
   theme: typeof themeT;
   color?: string;
-}
+} & TouchableHighlightProps &
+  FocusProps;
 
 const CheckboxIOS: React.FC<Props> = ({
   status = "unchecked",

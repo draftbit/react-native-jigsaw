@@ -12,7 +12,7 @@ import { withTheme } from "../core/theming";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 
-interface Props {
+type Props = {
   titleTypeStyle?: StyleProp<TextStyle>;
   titleColor?: string;
   subtitleTypeStyle?: StyleProp<TextStyle>;
@@ -24,7 +24,7 @@ interface Props {
   right?: () => React.ReactNode;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
-}
+};
 
 const Row: React.FC<Props> = ({
   titleTypeStyle,

@@ -10,12 +10,12 @@ import {
   FIELD_NAME,
 } from "../core/component-types";
 
-interface Props extends SliderProps {
+type Props = {
   title?: string;
   minimumLabel: string;
   maximumLabel: string;
   style?: StyleProp<ViewStyle>;
-}
+} & SliderProps;
 
 const FieldSlider: React.FC<Props> = ({
   title,

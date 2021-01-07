@@ -34,7 +34,7 @@ const FOCUS_ANIMATION_DURATION = 150;
 const BLUR_ANIMATION_DURATION = 180;
 const ICON_SIZE = 24;
 
-export interface Props extends TextInputProps {
+export type Props = {
   type?: "solid" | "underline";
   disabled?: boolean;
   label?: string;
@@ -49,7 +49,8 @@ export interface Props extends TextInputProps {
   render?: (
     props: TextInputProps & { ref: (c: NativeTextInput) => void }
   ) => React.ReactNode;
-}
+} & TextInputProps &
+  FocusProps;
 
 interface State {
   labeled: Animated.Value;

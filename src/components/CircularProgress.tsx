@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
 import { Svg, Path, G } from "react-native-svg";
 
-export interface Props {
+export type Props = {
   size: number;
   width: number;
   backgroundWidth?: number;
@@ -20,7 +20,7 @@ export interface Props {
   renderCap?: (obj: { center: { x: number; y: number } }) => React.ReactNode;
   dashedBackground?: { width: number; gap: number };
   dashedTint?: { width: number; gap: number };
-}
+};
 
 class CircularProgress extends React.Component<Props> {
   polarToCartesian = (

@@ -16,7 +16,7 @@ import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 import { justificationType } from "./Justification";
 
-interface Props {
+type Props = {
   image?: string | Blob;
   title?: string;
   leftDescription?: string;
@@ -28,7 +28,7 @@ interface Props {
   theme: typeof theme;
   style?: StyleProp<ViewStyle>;
   onPress: () => void;
-}
+};
 
 const CardBlock: React.FC<Props> = ({
   image = Config.cardImageUrl,
@@ -42,6 +42,7 @@ const CardBlock: React.FC<Props> = ({
   theme: { colors, borderRadius, typography, spacing },
   style,
   onPress,
+  ...rest
 }) => {
   let titleJustification: justificationType;
 
@@ -66,7 +67,7 @@ const CardBlock: React.FC<Props> = ({
   ];
 
   return (
-    <Card style={style} onPress={onPress} numColumns={numColumns}>
+    <Card style={style} onPress={onPress} numColumns={numColumns} {...rest}>
       <View style={{ backgroundColor: colors.background }}>
         <Elevation style={{ elevation, borderRadius: borderRadius.global }}>
           <Image

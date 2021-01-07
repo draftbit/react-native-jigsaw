@@ -57,7 +57,7 @@ import theme from "../styles/DefaultTheme";
  * ```
  */
 
-interface Props extends TouchableHighlightProps {
+type Props = {
   disabled?: boolean;
   type?: "solid" | "outline" | "text";
   loading?: boolean;
@@ -69,7 +69,8 @@ interface Props extends TouchableHighlightProps {
   elevation?: number;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
-}
+} & TouchableHighlightProps &
+  FocusProps;
 
 const Button: React.FC<Props> = ({
   disabled = false,

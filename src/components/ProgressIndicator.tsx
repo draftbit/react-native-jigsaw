@@ -10,7 +10,7 @@ import {
 import themeT from "../styles/DefaultTheme";
 import { colorTypes } from "../types";
 
-interface Props {
+type Props = {
   numberOfSteps: number;
   currentStep: number;
   currentStepStrokeWidth?: number;
@@ -25,7 +25,7 @@ interface Props {
   unfinishedColor?: colorTypes;
   finishedColor?: colorTypes;
   theme: typeof themeT;
-}
+};
 
 const ProgressIndicator: React.FC<Props> = ({
   numberOfSteps,

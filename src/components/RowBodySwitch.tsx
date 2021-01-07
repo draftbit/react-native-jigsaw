@@ -10,7 +10,7 @@ import Switch from "./Switch";
 import theme from "../styles/DefaultTheme";
 import { StyleProp, ViewStyle } from "react-native";
 
-interface Props {
+type Props = {
   title?: string;
   subtitle?: string;
   style?: StyleProp<ViewStyle>;
@@ -18,7 +18,7 @@ interface Props {
   onValueChange?: (value: boolean) => void;
   color?: string;
   theme: typeof theme;
-}
+};
 
 const RowBodySwitch: React.FC<Props> = ({
   title,

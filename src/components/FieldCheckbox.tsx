@@ -14,14 +14,14 @@ import Checkbox from "./Checkbox";
 import color from "color";
 import theme from "../styles/DefaultTheme";
 
-interface Props {
+type Props = {
   title?: string;
   status: "checked" | "indeterminate" | "unchecked";
   onPress?: () => void;
   color: string;
   disabled?: boolean;
   theme: typeof theme;
-}
+};
 
 const FieldCheckbox: React.FC<Props> = ({
   title,

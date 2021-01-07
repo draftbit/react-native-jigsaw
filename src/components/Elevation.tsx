@@ -10,10 +10,10 @@ import shadow from "../styles/shadow";
 import { withTheme } from "../core/theming";
 import themeT from "../styles/DefaultTheme";
 
-interface Props extends ViewProps {
+type Props = {
   style?: StyleProp<ViewStyle>;
   theme: typeof themeT;
-}
+} & ViewProps;
 
 const Elevation: React.FC<Props> = ({ style, theme, ...rest }) => {
   const flattenedStyles = StyleSheet.flatten(style) || {};

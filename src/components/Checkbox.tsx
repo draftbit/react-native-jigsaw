@@ -11,12 +11,13 @@ import {
   FIELD_NAME,
 } from "../core/component-types";
 
-interface Props extends TouchableOpacityProps {
+type Props = {
   status?: "checked" | "indeterminate" | "unchecked";
   disabled?: boolean;
   onPress?: () => void;
   color?: string;
-}
+} & TouchableOpacityProps &
+  FocusProps;
 
 export default function Checkbox(props: Props) {
   return Platform.OS === "ios" ? (

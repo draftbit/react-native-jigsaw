@@ -25,7 +25,7 @@ interface RadioButtonOption {
   icon?: string;
 }
 
-interface Props {
+type Props = {
   direction?: "horizontal" | "vertical";
   options?: RadioButtonOption[];
   activeColor?: colorTypes;
@@ -41,7 +41,7 @@ interface Props {
   value: string;
   onSelect?: (label: string) => void;
   theme: typeof themeT;
-}
+};
 const RadioButtonGroup: React.FC<Props> = ({
   direction = "horizontal",
   options = [],

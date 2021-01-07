@@ -11,7 +11,7 @@ import { withTheme } from "../core/theming";
 import themeT from "../styles/DefaultTheme";
 import { colorTypes } from "../types";
 
-interface Props {
+type Props = {
   progress?: number;
   style?: StyleProp<ViewStyle>;
   color?: colorTypes;
@@ -22,7 +22,7 @@ interface Props {
   textStyle?: StyleProp<TextStyle>;
   thickness?: number;
   theme: typeof themeT;
-}
+};
 
 const ProgressCircle: React.FC<Props> = ({
   progress = 0.5,

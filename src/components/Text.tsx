@@ -9,9 +9,9 @@ import {
 } from "../core/component-types";
 import themeT from "../styles/DefaultTheme";
 
-interface Props extends TextProps {
+type Props = {
   theme: typeof themeT;
-}
+} & TextProps;
 
 class Text extends React.Component<Props> {
   _root: any;

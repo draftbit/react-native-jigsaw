@@ -8,14 +8,14 @@ import RadioButton from "./RadioButton";
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import themeT from "../styles/DefaultTheme";
 
-interface Props {
+type Props = {
   onPress?: () => void;
   title?: string;
   selected: boolean;
   disabled?: boolean;
   color: string;
   theme: typeof themeT;
-}
+};
 
 const FieldRadioButton: React.FC<Props> = ({
   onPress = () => {},

@@ -12,13 +12,13 @@ import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 import { StyleProp, ViewStyle } from "react-native";
 
-interface Props {
+type Props = {
   title?: string;
   subtitle?: string;
   icon: string;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
-}
+};
 
 const RowBodyIcon: React.FC<Props> = ({
   title,

@@ -14,7 +14,7 @@ import {
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 
-interface Props {
+type Props = {
   image?: string | Blob;
   title?: string;
   description?: string;
@@ -25,7 +25,7 @@ interface Props {
   theme: typeof theme;
   style?: StyleProp<ViewStyle>;
   onPress: () => void;
-}
+};
 
 const CardInline: React.FC<Props> = ({
   image = Config.cardImageUrl,
@@ -38,6 +38,7 @@ const CardInline: React.FC<Props> = ({
   theme: { colors, borderRadius, typography, spacing },
   style,
   onPress,
+  ...rest
 }) => {
   let titleStyle, descriptionStyle;
   switch (numColumns) {
@@ -56,7 +57,7 @@ const CardInline: React.FC<Props> = ({
   }
 
   return (
-    <Card style={style} onPress={onPress} numColumns={numColumns}>
+    <Card style={style} onPress={onPress} numColumns={numColumns} {...rest}>
       <Elevation style={{ elevation, borderRadius: borderRadius.global }}>
         <Image
           style={{

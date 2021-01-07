@@ -12,10 +12,10 @@ import {
   FIELD_NAME,
 } from "../../core/component-types";
 
-interface Props extends PickerComponentProps {
+type Props = {
   placeholder?: string;
   value: string;
-}
+} & PickerComponentProps;
 
 const Picker: React.FC<Props> = ({
   options = [],

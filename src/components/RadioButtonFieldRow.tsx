@@ -13,7 +13,7 @@ import { View } from "react-native";
 import Text from "./Text";
 import { colorTypes } from "../types";
 
-interface Props {
+type Props = {
   label: string;
   backgroundColor?: colorTypes;
   labelColor?: colorTypes;
@@ -23,7 +23,7 @@ interface Props {
   onPress?: () => void;
   selected: boolean;
   theme: typeof themeT;
-}
+};
 
 const RadioButtonFieldRow: React.FC<Props> = ({
   label,

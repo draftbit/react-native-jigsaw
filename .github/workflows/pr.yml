@@ -9,6 +9,10 @@ on:
   pull_request:
     types: [assigned, opened, synchronize, reopened]
 
+defaults:
+  run:
+    working-directory: packages/react-native-jigsaw
+
 jobs:
   build:
     runs-on: ubuntu-latest

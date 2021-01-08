@@ -9,7 +9,7 @@ import {
   StyleSheet,
 } from "react-native";
 import { Provider, DefaultTheme } from "@draftbit/ui";
-import { AppLoading } from "expo";
+import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 
 import AvatarExample from "./AvatarExample";
@@ -137,7 +137,7 @@ export default class App extends React.Component {
       return (
         <Provider theme={DefaultTheme}>
           <SafeAreaProvider>
-            <SafeAreaView style={{ flex: 1 }}>
+            <SafeAreaView style={{ flex: 1 }} edges={['right', 'bottom', 'left']}>
               <NavigationContainer>
                 <Drawer.Navigator
                   drawerContentOptions={{

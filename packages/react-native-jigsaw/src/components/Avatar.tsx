@@ -1,14 +1,19 @@
 import * as React from "react";
-import { Image, StyleProp, ImageStyle } from "react-native";
+import {
+  Image,
+  ImageSourcePropType,
+  StyleProp,
+  ImageStyle,
+} from "react-native";
 import Config from "./Config";
 
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 
-type Props = {
-  image?: string | Blob;
+interface Props {
+  image?: string | ImageSourcePropType;
   size?: number;
   style?: StyleProp<ImageStyle>;
-};
+}
 
 const Avatar: React.FC<Props> = ({
   image = Config.avatarImageUrl,

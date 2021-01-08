@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, StyleProp, ViewStyle } from "react-native";
+import {
+  ImageSourcePropType,
+  View,
+  Text,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import Image from "./Image";
 import Card from "./Card";
 import Elevation from "./Elevation";
@@ -17,7 +23,7 @@ import theme from "../styles/DefaultTheme";
 import { justificationType } from "./Justification";
 
 type Props = {
-  image?: string | Blob;
+  image?: string | ImageSourcePropType;
   title?: string;
   leftDescription?: string;
   rightDescription?: string;

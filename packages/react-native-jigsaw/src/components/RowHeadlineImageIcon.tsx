@@ -6,11 +6,11 @@ import Row from "./Row";
 import Icon from "./Icon";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
-import { StyleProp, ViewStyle } from "react-native";
+import { ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
 
 type Props = {
   title?: string;
-  image: string | Blob;
+  image: string | ImageSourcePropType;
   subtitle?: string;
   multilineSubtitle?: boolean;
   icon: string;

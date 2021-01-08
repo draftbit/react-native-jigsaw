@@ -9,7 +9,7 @@ import {
   StyleSheet,
 } from "react-native";
 import { Provider, DefaultTheme } from "@draftbit/ui";
-import { AppLoading } from "expo";
+import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 
 import AvatarExample from "./AvatarExample";

@@ -3,6 +3,7 @@ import {
   View,
   Text,
   Image,
+  ImageSourcePropType,
   StyleSheet,
   StyleProp,
   TextStyle,
@@ -20,7 +21,7 @@ type Props = {
   title?: string;
   subtitle?: string;
   multilineSubtitle?: boolean;
-  image?: string | Blob;
+  image?: string | ImageSourcePropType;
   right?: () => React.ReactNode;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;

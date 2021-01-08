@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleProp, ViewStyle } from "react-native";
+import { View, Text, ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
 import Image from "./Image";
 import Card from "./Card";
 import Elevation from "./Elevation";
@@ -15,7 +15,7 @@ import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 
 type Props = {
-  image?: string | Blob;
+  image?: string | ImageSourcePropType;
   title?: string;
   description?: string;
   textCentered: boolean;

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, StyleProp, ViewStyle } from "react-native";
+import { Text, ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
 import { withTheme } from "../core/theming";
 import {
   COMPONENT_TYPES,
@@ -14,7 +14,7 @@ type Props = {
   title?: string;
   subtitle?: string;
   caption?: string;
-  image: string | Blob;
+  image: string | ImageSourcePropType;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
 };

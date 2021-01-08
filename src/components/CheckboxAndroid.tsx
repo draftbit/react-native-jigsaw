@@ -67,10 +67,8 @@ const CheckboxAndroid: React.FC<Props> = ({
       {...rest}
       onPress={onPress}
       disabled={disabled}
-      accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
-      accessibilityComponentType="button"
-      accessibilityRole="button"
       accessibilityState={{ disabled }}
+        accessibilityRole="button"
       accessibilityLiveRegion="polite"
       style={[
         {

@@ -146,8 +146,8 @@ const Button: React.FC<Props> = ({
       <Touchable
         {...rest}
         onPress={onPress}
-        accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
-        accessibilityComponentType="button"
+        accessibilityState={{ disabled }}
+        accessibilityRole="button"
         disabled={disabled || loading}
         style={[styles.button, buttonStyle, style]}
       >

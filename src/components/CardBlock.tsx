@@ -1,5 +1,11 @@
 import React from "react";
-import { ImageSourcePropType, View, Text, StyleProp, ViewStyle } from "react-native";
+import {
+  ImageSourcePropType,
+  View,
+  Text,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import Image from "./Image";
 import Card from "./Card";
 import Elevation from "./Elevation";

@@ -9,6 +9,10 @@ on:
   pull_request:
     types: [assigned, opened, synchronize, reopened]
 
+defaults:
+  run:
+    working-directory: packages/react-native-jigsaw
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,9 +22,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '12'
-
-      - name: Move to the jigsaw folder
-        run: cd packages/react-native-jigsaw
 
       # https://github.com/actions/cache/blob/main/examples.md#node---yarn
       - name: Restore node_modules cache

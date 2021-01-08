@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, StyleProp, ViewStyle } from "react-native";
+import { View, ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
 import Icon from "./Icon";
 import Touchable from "./Touchable";
 import Avatar from "./Avatar";
@@ -9,7 +9,7 @@ import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import theme from "../styles/DefaultTheme";
 
 type Props = {
-  image: string | Blob;
+  image: string | ImageSourcePropType;
   size?: number;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;

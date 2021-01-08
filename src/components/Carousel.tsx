@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Image,
   Dimensions,
+  ImageSourcePropType,
   StyleProp,
   ViewStyle,
   NativeSyntheticEvent,
@@ -26,8 +27,10 @@ import { ResizeModeType } from "./ResizeMode";
 
 const screenWidth = Dimensions.get("window").width;
 
+type ImageT = string | ImageSourcePropType;
+
 type Props = {
-  images: string[] | Blob[];
+  images: ImageT[];
   aspectRatio?: number;
   swiperPalette?: "surface" | "non-sruface";
   resizeMode?: ResizeModeType;
@@ -83,7 +86,7 @@ const Carousel: React.FC<Props> = ({
         showsHorizontalScrollIndicator={Platform.OS === "web"}
         scrollEventThrottle={16}
       >
-        {images.map((image, index) => {
+        {images.map((image: ImageT, index: number) => {
           const imageStyle: StyleProp<ImageStyle> = { width };
           if (aspectRatio) {
             imageStyle.aspectRatio = aspectRatio;

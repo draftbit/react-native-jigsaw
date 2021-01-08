@@ -2,6 +2,7 @@ import * as React from "react";
 import {
   View,
   ImageBackground,
+  ImageSourcePropType,
   StyleProp,
   StyleSheet,
   ViewStyle,
@@ -24,7 +25,7 @@ type Props = {
   borderColor: string;
   borderWidth: number;
   backgroundColor: string;
-  backgroundImage?: string | Blob;
+  backgroundImage?: string | ImageSourcePropType;
   backgroundImageResizeMode?: ResizeModeType;
   elevation?: number;
   style?: StyleProp<ViewStyle>;

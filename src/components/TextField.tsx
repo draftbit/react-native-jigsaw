@@ -49,8 +49,7 @@ export type Props = {
   render?: (
     props: TextInputProps & { ref: (c: NativeTextInput) => void }
   ) => React.ReactNode;
-} & TextInputProps &
-  FocusProps;
+} & TextInputProps;
 
 interface State {
   labeled: Animated.Value;

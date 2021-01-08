@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, StyleProp, ViewStyle } from "react-native";
+import {
+  View,
+  ImageSourcePropType,
+  Text,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import color from "color";
 import Image from "./Image";
 import Card from "./Card";
@@ -22,7 +28,7 @@ const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
 const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
 
 type Props = {
-  image?: string | Blob;
+  image?: string | ImageSourcePropType;
   title?: string;
   leftDescription?: string;
   rightDescription?: string;

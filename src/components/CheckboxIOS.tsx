@@ -11,8 +11,7 @@ type Props = {
   onPress?: () => void;
   theme: typeof themeT;
   color?: string;
-} & TouchableHighlightProps &
-  FocusProps;
+} & TouchableHighlightProps;
 
 const CheckboxIOS: React.FC<Props> = ({
   status = "unchecked",
@@ -32,10 +31,8 @@ const CheckboxIOS: React.FC<Props> = ({
       {...rest}
       onPress={onPress}
       disabled={disabled}
-      accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
-      accessibilityComponentType="button"
-      accessibilityRole="button"
       accessibilityState={{ disabled }}
+      accessibilityRole="button"
       accessibilityLiveRegion="polite"
       style={[
         {

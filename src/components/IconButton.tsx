@@ -58,10 +58,8 @@ const IconButton: React.FC<Props> = ({
       disabled={disabled || loading}
       style={containerStyles}
       accessibilityLabel={accessibilityLabel}
-      accessibilityTraits={disabled ? ["button", "disabled"] : "button"}
-      accessibilityComponentType="button"
-      accessibilityRole="button"
       accessibilityState={{ disabled }}
+      accessibilityRole="button"
       hitSlop={{ top: 6, left: 6, bottom: 6, right: 6 }}
       {...rest}
     >

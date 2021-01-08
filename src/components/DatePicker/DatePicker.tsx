@@ -26,8 +26,7 @@ type Props = {
   onDateChange?: (data?: any) => void;
   disabled?: boolean;
   mode?: "date" | "time" | "datetime";
-} & TextFieldProps &
-  FocusProps;
+} & TextFieldProps;
 
 const MONTHS = [
   "January",

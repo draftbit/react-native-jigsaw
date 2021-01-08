@@ -24,7 +24,6 @@ const RadioButton: React.FC<Props> = ({
   unselectedColor,
   onPress = () => {},
   style,
-  ...rest
 }) => {
   return (
     <IconButton
@@ -38,7 +37,6 @@ const RadioButton: React.FC<Props> = ({
       disabled={disabled}
       onPress={() => onPress()}
       size={Config.radioButtonSize}
-      {...rest}
     />
   );
 };

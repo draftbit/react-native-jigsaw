@@ -28,6 +28,7 @@ jobs:
           key: node_modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile
 
       - name: Lint

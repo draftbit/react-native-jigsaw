@@ -69,8 +69,7 @@ type Props = {
   elevation?: number;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
-} & TouchableHighlightProps &
-  FocusProps;
+} & TouchableHighlightProps;
 
 const Button: React.FC<Props> = ({
   disabled = false,

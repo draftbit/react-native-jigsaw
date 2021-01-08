@@ -16,8 +16,7 @@ type Props = {
   onPress?: () => void;
   theme: typeof themeT;
   color?: string;
-} & TouchableHighlightProps &
-  FocusProps;
+} & TouchableHighlightProps;
 
 const CheckboxAndroid: React.FC<Props> = ({
   status = "unchecked",

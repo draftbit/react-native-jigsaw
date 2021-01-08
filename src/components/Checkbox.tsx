@@ -16,8 +16,7 @@ type Props = {
   disabled?: boolean;
   onPress?: () => void;
   color?: string;
-} & TouchableOpacityProps &
-  FocusProps;
+} & TouchableOpacityProps;
 
 export default function Checkbox(props: Props) {
   return Platform.OS === "ios" ? (

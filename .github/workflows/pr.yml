@@ -1,0 +1,23 @@
+# This workflow will run on each PR
+
+name: Build & Test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1.1.1
+        with:
+          node-version: "12.14.1"
+      - run: yarn install
+      - run: yarn lint
+      - run: yarn typescript
+      - run: yarn build

@@ -32,7 +32,7 @@ const CheckboxIOS: React.FC<Props> = ({
       onPress={onPress}
       disabled={disabled}
       accessibilityState={{ disabled }}
-        accessibilityRole="button"
+      accessibilityRole="button"
       accessibilityLiveRegion="polite"
       style={[
         {

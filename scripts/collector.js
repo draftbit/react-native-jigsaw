@@ -14,7 +14,6 @@ const COMPONENT_PATH = path.resolve(
 const MAPPING_PATH = path.resolve(
   "./packages/react-native-jigsaw/src/mappings"
 );
-console.log(MAPPING_PATH, COMPONENT_PATH);
 const IGNORED_FILES = [
   "Query.js", // doesn't work at all
   "LinearGradient.js", // missing gradient UI

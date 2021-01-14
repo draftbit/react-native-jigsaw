@@ -8,8 +8,13 @@ const parser = require("./parser");
 
 const globAsync = promisify(glob);
 
-const COMPONENT_PATH = path.resolve("./src/components");
-const MAPPING_PATH = path.resolve("./src/mappings");
+const COMPONENT_PATH = path.resolve(
+  "./packages/react-native-jigsaw/src/components"
+);
+const MAPPING_PATH = path.resolve(
+  "./packages/react-native-jigsaw/src/mappings"
+);
+console.log(MAPPING_PATH, COMPONENT_PATH);
 const IGNORED_FILES = [
   "Query.js", // doesn't work at all
   "LinearGradient.js", // missing gradient UI

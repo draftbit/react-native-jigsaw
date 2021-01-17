@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import { FlatList, StyleSheet } from "react-native";
 
@@ -8,7 +9,6 @@ import {
   COMPONENT_TYPES,
   FORM_TYPES,
   PROP_TYPES,
-  createElevationType,
   createNumColumnsType,
 } from "../core/component-types";
 
@@ -19,12 +19,7 @@ type Props = {
   renderItem: () => any;
 };
 
-export default function ListViewScreen({
-  inverted,
-  numColumns,
-  data,
-  renderItem,
-}: Props) {
+function ListViewScreen({ inverted, numColumns, data, renderItem }: Props) {
   return (
     <FlatList
       style={styles.container}

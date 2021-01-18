@@ -64,4 +64,4 @@ export { default as Switch } from "./components/Switch";
 export { default as TextField } from "./components/TextField";
 export { default as Touchable } from "./components/Touchable";
 
-export { default as ListViewScreen } from "./screens/ListViewScreen";
+export { default as ListViewScreen } from "./screens/ListScreen";

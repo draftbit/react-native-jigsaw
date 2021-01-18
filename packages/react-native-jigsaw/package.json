@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "40.0.1",
+  "version": "40.0.1-listview1",
   "description": "Draftbit UI Library",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",

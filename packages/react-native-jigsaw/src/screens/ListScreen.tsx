@@ -42,29 +42,31 @@ export default withTheme(ListViewScreen);
 
 export const SEED_DATA = {
   name: "ListView Screen",
-  tag: "ListViewScreen",
-  category: COMPONENT_TYPES.layout, // TODO screen
+  tag: "ListScreen",
+  category: COMPONENT_TYPES.button, // TODO screen
   props: {
     numColumns: createNumColumnsType({
       defaultValue: 1,
     }),
     data: {
+      group: GROUPS.basic,
       label: "Data",
       description: "Data",
       required: true,
       editable: true,
-      formType: FORM_TYPES.MAPPING,
-      propType: PROP_TYPES.MAPPING,
+      formType: FORM_TYPES.string,
+      propType: PROP_TYPES.STRING,
       defaultValue: [],
     },
     renderItem: {
+      group: GROUPS.basic,
       label: "Render Item",
       description: "What you want to show up for each row",
       required: true,
       editable: true,
-      formType: FORM_TYPES.ROW,
-      propType: PROP_TYPES.ROW,
-      defaultValue: () => {},
+      formType: FORM_TYPES.string,
+      propType: PROP_TYPES.STRING,
+      defaultValue: "",
     },
     onPressRow: {
       group: GROUPS.basic,
@@ -72,9 +74,9 @@ export const SEED_DATA = {
       description: "Upon pressing a row, take me to...",
       editable: true,
       required: false,
-      formType: FORM_TYPES.NAVIGATE,
-      propType: PROP_TYPES.NAVIGATE,
-      defaultValue: null,
+      formType: FORM_TYPES.string,
+      propType: PROP_TYPES.STRING,
+      defaultValue: "",
     },
   },
 };

@@ -37,6 +37,7 @@ export { default as IconButton } from "./components/IconButton";
 export { default as HeaderLarge } from "./components/HeaderLarge";
 export { default as HeaderMedium } from "./components/HeaderMedium";
 export { default as HeaderOverline } from "./components/HeaderOverline";
+export { Center, Circle, Square, Row, Stack, Space } from "./components/Layout";
 
 export { default as Picker } from "./components/Picker/Picker";
 

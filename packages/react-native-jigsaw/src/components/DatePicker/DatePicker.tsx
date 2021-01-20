@@ -131,7 +131,7 @@ const DatePicker: React.FC<Props> = ({
                 isVisible={pickerVisible}
                 toggleVisibility={toggleVisibility}
                 onChange={(_event: any, data: any) => {
-                  toggleVisibility();
+                  Platform.OS === "ios" ? null : toggleVisibility();
                   onDateChange(data);
                 }}
               />

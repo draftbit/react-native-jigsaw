@@ -7,9 +7,7 @@ import {
   TextInput,
   View,
 } from "react-native";
-import type {
-  ImageSource,
-} from "react-native/Libraries/Image/ImageSource";
+import type { ImageSource } from "react-native/Libraries/Image/ImageSource";
 
 import ScreenContainer from "../components/ScreenContainer";
 import Button from "../components/Button";
@@ -21,7 +19,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
 } from "../core/component-types";
-import { DataContext, DataContextType } from "../core/GenericData";
+import { DataContext } from "../core/GenericData";
 
 type Props = {
   theme: Theme;
@@ -30,10 +28,11 @@ type Props = {
   navigation: {
     navigate: (screen: string) => void;
   };
-  navigateToOnLogin: string
+  navigateToOnLogin: string;
+  signInWithEmailAndPassword: (email: string, password: string) => Promise<void>
 };
 
-const EmailLoginScreen = (props: Props) => {
+const FirebaseEmailLoginScreen = (props: Props) => {
   const [emailInput, setEmailInput] = React.useState("");
   const [passwordInput, setPasswordInput] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
@@ -45,147 +44,131 @@ const EmailLoginScreen = (props: Props) => {
     navigateToOnLogin,
   } = props;
 
-  // TODO actually use this
-  if (errorMessage) {
-  }
+  const { signInWithEmailAndPassword } = React.useContext(DataContext);
 
   return (
-    <DataContext.Consumer>
-      {({ signInWithEmailAndPassword }: DataContextType) => {
-        if (!signInWithEmailAndPassword) {
-          throw new Error(
-            "Email/password signin has not been configured for this app"
-          );
-        }
+    <ScreenContainer hasSafeArea={true} scrollable={true}>
+      <KeyboardAvoidingView
+        style={{ justifyContent: "space-around", flexGrow: 1 }}
+        behavior="position"
+        enabled={true}
+        keyboardVerticalOffset={44}
+      >
+        <View
+          style={{
+            paddingLeft: 32,
+            paddingRight: 32,
+            paddingBottom: 34,
+            paddingTop: 80,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {mainImage ? (
+            <Image
+              style={styles.MainImage}
+              resizeMode="contain"
+              source={mainImage}
+            />
+          ) : null}
+          <Text
+            style={StyleSheet.flatten([
+              theme.typography.headline2,
+              { color: theme.colors.strong, textAlign: "center" },
+            ])}
+          >
+            {welcomeText}
+          </Text>
+        </View>
 
-        return (
-          <ScreenContainer hasSafeArea={true} scrollable={true}>
-            <KeyboardAvoidingView
-              style={{ justifyContent: "space-around", flexGrow: 1 }}
-              behavior="position"
-              enabled={true}
-              keyboardVerticalOffset={44}
-            >
-              <View
-                style={{
-                  paddingLeft: 32,
-                  paddingRight: 32,
-                  paddingBottom: 34,
-                  paddingTop: 80,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                {mainImage ? (
-                  <Image
-                    style={styles.MainImage}
-                    resizeMode="contain"
-                    source={mainImage}
-                  />
-                ) : null}
-                <Text
-                  style={StyleSheet.flatten([
-                    theme.typography.headline2,
-                    { color: theme.colors.strong, textAlign: "center" },
-                  ])}
-                >
-                  {welcomeText}
-                </Text>
-              </View>
+        <View
+          style={{
+            paddingLeft: 32,
+            paddingRight: 32,
+            marginBottom: 24,
+          }}
+        >
+          <TextInput
+            style={StyleSheet.flatten([
+              styles.EmailTextInput,
+              {
+                borderColor: theme.colors.divider,
+                borderRadius: theme.borderRadius.global,
+                color: theme.colors.strong,
+                backgroundColor: theme.colors.background,
+              },
+            ])}
+            value={emailInput}
+            onChangeText={(emailInput) => setEmailInput(emailInput)}
+            placeholder="Email"
+            clearTextOnFocus={false}
+            enablesReturnKeyAutomatically={true}
+            placeholderTextColor={theme.colors.medium}
+            clearButtonMode="while-editing"
+            returnKeyType="next"
+            textContentType="emailAddress"
+          />
+          <TextInput
+            style={StyleSheet.flatten([
+              styles.PasswordTextInput,
+              {
+                color: theme.colors.strong,
+                borderColor: theme.colors.divider,
+                borderRadius: theme.borderRadius.global,
+                backgroundColor: theme.colors.background,
+              },
+            ])}
+            enablesReturnKeyAutomatically={true}
+            clearTextOnFocus={false}
+            placeholder="Password"
+            onChangeText={(passwordInput) => setPasswordInput(passwordInput)}
+            value={passwordInput}
+            placeholderTextColor={theme.colors.medium}
+            clearButtonMode="while-editing"
+            secureTextEntry={true}
+            returnKeyType="done"
+            textContentType="password"
+          />
+          <Button
+            style={StyleSheet.flatten([
+              styles.LoginButton,
+              { borderRadius: theme.borderRadius.global },
+            ])}
+            type="solid"
+            onPress={() =>
+              signInWithEmailAndPassword(emailInput, passwordInput)
+                .then(() => navigation.navigate(navigateToOnLogin))
+                .catch((err: Error) => setErrorMessage(err.message))
+            }
+          >
+            Log In
+          </Button>
+        </View>
 
-              <View
-                style={{
-                  paddingLeft: 32,
-                  paddingRight: 32,
-                  marginBottom: 24,
-                }}
-              >
-                <TextInput
-                  style={StyleSheet.flatten([
-                    styles.EmailTextInput,
-                    {
-                      borderColor: theme.colors.divider,
-                      borderRadius: theme.borderRadius.global,
-                      color: theme.colors.strong,
-                      backgroundColor: theme.colors.background,
-                    },
-                  ])}
-                  value={emailInput}
-                  onChangeText={(emailInput) => setEmailInput(emailInput)}
-                  placeholder="Email"
-                  clearTextOnFocus={false}
-                  enablesReturnKeyAutomatically={true}
-                  placeholderTextColor={theme.colors.medium}
-                  clearButtonMode="while-editing"
-                  returnKeyType="next"
-                  textContentType="emailAddress"
-                />
-                <TextInput
-                  style={StyleSheet.flatten([
-                    styles.PasswordTextInput,
-                    {
-                      color: theme.colors.strong,
-                      borderColor: theme.colors.divider,
-                      borderRadius: theme.borderRadius.global,
-                      backgroundColor: theme.colors.background,
-                    },
-                  ])}
-                  enablesReturnKeyAutomatically={true}
-                  clearTextOnFocus={false}
-                  placeholder="Password"
-                  onChangeText={(passwordInput) =>
-                    setPasswordInput(passwordInput)
-                  }
-                  value={passwordInput}
-                  placeholderTextColor={theme.colors.medium}
-                  clearButtonMode="while-editing"
-                  secureTextEntry={true}
-                  returnKeyType="done"
-                  textContentType="password"
-                />
-                <Button
-                  style={StyleSheet.flatten([
-                    styles.LoginButton,
-                    { borderRadius: theme.borderRadius.global },
-                  ])}
-                  type="solid"
-                  onPress={() => {
-                    return signInWithEmailAndPassword(emailInput, passwordInput)
-                      .then(() => navigation.navigate(navigateToOnLogin))
-                      .catch((err: Error) => setErrorMessage(err.message));
-                  }}
-                >
-                  Log In
-                </Button>
-              </View>
+        <View style={styles.SignupView}>
+          <Text
+            style={StyleSheet.flatten([
+              theme.typography.subtitle2,
+              { color: theme.colors.medium },
+            ])}
+          >
+            "Don't have an account?"
+          </Text>
 
-              <View style={styles.SignupView}>
-                <Text
-                  style={StyleSheet.flatten([
-                    theme.typography.subtitle2,
-                    { color: theme.colors.medium },
-                  ])}
-                >
-                  "Don't have an account?"
-                </Text>
-
-                <Button
-                  style={StyleSheet.flatten([
-                    styles.SignupButton,
-                    { borderColor: theme.colors.custom_rgba0_0_0_0 },
-                  ])}
-                  type="outline"
-                  color={theme.colors.primary}
-                  onPress={() => {}}
-                >
-                  Sign Up
-                </Button>
-              </View>
-            </KeyboardAvoidingView>
-          </ScreenContainer>
-        );
-      }}
-    </DataContext.Consumer>
+          <Button
+            style={StyleSheet.flatten([
+              styles.SignupButton,
+              { borderColor: theme.colors.custom_rgba0_0_0_0 },
+            ])}
+            type="outline"
+            color={theme.colors.primary}
+            onPress={() => {}}
+          >
+            Sign Up
+          </Button>
+        </View>
+      </KeyboardAvoidingView>
+    </ScreenContainer>
   );
 };
 
@@ -242,11 +225,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(EmailLoginScreen);
+export default withTheme(FirebaseEmailLoginScreen);
 
 export const SEED_DATA = {
-  name: "Email Login Screen",
-  tag: "EmailLoginScreen",
+  name: "Email Login Screen (Firebase)",
+  tag: "FirebaseEmailLoginScreen",
   category: COMPONENT_TYPES.button, // TODO screen
   props: {
     mainImage: {

@@ -1,23 +1,17 @@
 import * as React from "react";
-import appConfig from "app-config";
-
-let signInWithEmailAndPassword;
-
-if (appConfig) {
-  if (appConfig.firebase) {
-    const firebase = require("firebase");
-
-    signInWithEmailAndPassword = (email, password) =>
-      firebase.auth().signInWithEmailAndPassword(email, password);
-  }
-}
 
 export type DataContextType = {
   signInWithEmailAndPassword: (email: string, password: string) => Promise<void>;
+  signOut: () => Promise<void>;
 };
 
-const defaultValue: DataContextType = {
-  signInWithEmailAndPassword,
+const defaultDataContext: DataContextType = {
+  signInWithEmailAndPassword: () => {
+    throw new Error("Signin has not been implemented for this app");
+  },
+  signOut: () => {
+    throw new Error("Signout has not been implemented for this app");
+  }
 };
 
-export const DataContext = React.createContext(defaultValue);
+export const DataContext = React.createContext(defaultDataContext);

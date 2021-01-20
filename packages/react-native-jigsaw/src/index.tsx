@@ -65,3 +65,4 @@ export { default as TextField } from "./components/TextField";
 export { default as Touchable } from "./components/Touchable";
 
 export { default as ListViewScreen } from "./screens/ListScreen";
+export { default as LoginWithEmailScreen } from "./screens/LoginWithEmailScreen";

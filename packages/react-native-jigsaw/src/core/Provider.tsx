@@ -2,6 +2,7 @@ import * as React from "react";
 import { ThemeProvider } from "./theming";
 import PortalHost from "../components/Portal/PortalHost";
 import { Theme } from "../types";
+import { DataContext } from "./GenericData";
 
 type Props = {
   children: React.ReactNode;
@@ -13,7 +14,7 @@ export default class Provider extends React.Component<Props> {
     return (
       <PortalHost>
         <ThemeProvider theme={this.props.theme}>
-          {this.props.children}
+          <DataContext.Provider>{this.props.children}</DataContext.Provider>
         </ThemeProvider>
       </PortalHost>
     );

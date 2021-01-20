@@ -7,134 +7,185 @@ import {
   TextInput,
   View,
 } from "react-native";
+import type {
+  ImageSource,
+} from "react-native/Libraries/Image/ImageSource";
+
 import ScreenContainer from "../components/ScreenContainer";
 import Button from "../components/Button";
 import { withTheme } from "../core/theming";
+import { Theme } from "../types";
 import {
   GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
   PROP_TYPES,
-  createNumColumnsType,
 } from "../core/component-types";
+import { DataContext, DataContextType } from "../core/GenericData";
 
-const EmailLoginScreen = (props) => {
-  const [emailInput, setEmailInput] = React.useState(undefined);
-  const [passwordInput, setPasswordInput] = React.useState(undefined);
-  const { theme, mainImage, welcomeText } = props;
+type Props = {
+  theme: Theme;
+  mainImage: ImageSource;
+  welcomeText: string;
+  navigation: {
+    navigate: (screen: string) => void;
+  };
+  navigateToOnLogin: string
+};
+
+const EmailLoginScreen = (props: Props) => {
+  const [emailInput, setEmailInput] = React.useState("");
+  const [passwordInput, setPasswordInput] = React.useState("");
+  const [errorMessage, setErrorMessage] = React.useState("");
+  const {
+    theme,
+    mainImage,
+    welcomeText,
+    navigation,
+    navigateToOnLogin,
+  } = props;
+
+  // TODO actually use this
+  if (errorMessage) {
+  }
 
   return (
-    <ScreenContainer hasSafeArea={true} scrollable={true}>
-      <KeyboardAvoidingView
-        style={{ justifyContent: "space-around", flexGrow: 1 }}
-        behavior="position"
-        enabled={true}
-        keyboardVerticalOffset={44}
-      >
-        <View style={styles.HeaderView}>
-          {mainImage ? (
-            <Image
-              style={styles.MainImage}
-              resizeMode="contain"
-              source={mainImage}
-            />
-          ) : null}
-          <Text
-            style={StyleSheet.flatten([
-              theme.typography.headline2,
-              { color: theme.colors.strong, textAlign: "center" },
-            ])}
-          >
-            {welcomeText}
-          </Text>
-        </View>
+    <DataContext.Consumer>
+      {({ signInWithEmailAndPassword }: DataContextType) => {
+        if (!signInWithEmailAndPassword) {
+          throw new Error(
+            "Email/password signin has not been configured for this app"
+          );
+        }
 
-        <View
-          style={{
-            paddingLeft: 32,
-            paddingRight: 32,
-            marginBottom: 24,
-          }}
-          pointerEvents={[{ label: "", value: "" }]}
-          clickable=""
-        >
-          <TextInput
-            style={StyleSheet.flatten([
-              styles.EmailTextInput,
-              {
-                borderColor: theme.colors.divider,
-                borderRadius: theme.borderRadius.global,
-                color: theme.colors.strong,
-                backgroundColor: theme.colors.background,
-              },
-            ])}
-            value={emailInput}
-            onChangeText={(emailInput) => setEmailInput(emailInput)}
-            spellcheck={true}
-            placeholder="Email"
-            clearTextOnFocus={false}
-            enablesReturnKeyAutomatically={true}
-            placeholderTextColor={theme.colors.medium}
-            clearButtonMode="while-editing"
-            returnKeyType="next"
-            textContentType="emailaddress"
-          />
-          <TextInput
-            style={StyleSheet.flatten([
-              styles.PasswordTextInput,
-              {
-                color: theme.colors.strong,
-                borderColor: theme.colors.divider,
-                borderRadius: theme.borderRadius.global,
-                backgroundColor: theme.colors.background,
-              },
-            ])}
-            enablesReturnKeyAutomatically={true}
-            clearTextOnFocus={false}
-            placeholder="Password"
-            spellcheck={true}
-            onChangeText={(passwordInput) => setPasswordInput(passwordInput)}
-            value={passwordInput}
-            placeholderTextColor={theme.colors.medium}
-            clearButtonMode="while-editing"
-            secureTextEntry={true}
-            returnKeyType="done"
-            textContentType="password"
-          />
-          <Button
-            style={StyleSheet.flatten([
-              styles.LoginButton,
-              { borderRadius: theme.borderRadius.global },
-            ])}
-            type="solid"
-          >
-            Log In
-          </Button>
-        </View>
+        return (
+          <ScreenContainer hasSafeArea={true} scrollable={true}>
+            <KeyboardAvoidingView
+              style={{ justifyContent: "space-around", flexGrow: 1 }}
+              behavior="position"
+              enabled={true}
+              keyboardVerticalOffset={44}
+            >
+              <View
+                style={{
+                  paddingLeft: 32,
+                  paddingRight: 32,
+                  paddingBottom: 34,
+                  paddingTop: 80,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {mainImage ? (
+                  <Image
+                    style={styles.MainImage}
+                    resizeMode="contain"
+                    source={mainImage}
+                  />
+                ) : null}
+                <Text
+                  style={StyleSheet.flatten([
+                    theme.typography.headline2,
+                    { color: theme.colors.strong, textAlign: "center" },
+                  ])}
+                >
+                  {welcomeText}
+                </Text>
+              </View>
 
-        <View style={styles.SignupView}>
-          <Text
-            style={StyleSheet.flatten([
-              theme.typography.subtitle2,
-              { color: theme.colors.medium },
-            ])}
-          >
-            "Don't have an account?"
-          </Text>
+              <View
+                style={{
+                  paddingLeft: 32,
+                  paddingRight: 32,
+                  marginBottom: 24,
+                }}
+              >
+                <TextInput
+                  style={StyleSheet.flatten([
+                    styles.EmailTextInput,
+                    {
+                      borderColor: theme.colors.divider,
+                      borderRadius: theme.borderRadius.global,
+                      color: theme.colors.strong,
+                      backgroundColor: theme.colors.background,
+                    },
+                  ])}
+                  value={emailInput}
+                  onChangeText={(emailInput) => setEmailInput(emailInput)}
+                  placeholder="Email"
+                  clearTextOnFocus={false}
+                  enablesReturnKeyAutomatically={true}
+                  placeholderTextColor={theme.colors.medium}
+                  clearButtonMode="while-editing"
+                  returnKeyType="next"
+                  textContentType="emailAddress"
+                />
+                <TextInput
+                  style={StyleSheet.flatten([
+                    styles.PasswordTextInput,
+                    {
+                      color: theme.colors.strong,
+                      borderColor: theme.colors.divider,
+                      borderRadius: theme.borderRadius.global,
+                      backgroundColor: theme.colors.background,
+                    },
+                  ])}
+                  enablesReturnKeyAutomatically={true}
+                  clearTextOnFocus={false}
+                  placeholder="Password"
+                  onChangeText={(passwordInput) =>
+                    setPasswordInput(passwordInput)
+                  }
+                  value={passwordInput}
+                  placeholderTextColor={theme.colors.medium}
+                  clearButtonMode="while-editing"
+                  secureTextEntry={true}
+                  returnKeyType="done"
+                  textContentType="password"
+                />
+                <Button
+                  style={StyleSheet.flatten([
+                    styles.LoginButton,
+                    { borderRadius: theme.borderRadius.global },
+                  ])}
+                  type="solid"
+                  onPress={() => {
+                    return signInWithEmailAndPassword(emailInput, passwordInput)
+                      .then(() => navigation.navigate(navigateToOnLogin))
+                      .catch((err: Error) => setErrorMessage(err.message));
+                  }}
+                >
+                  Log In
+                </Button>
+              </View>
 
-          <Button
-            style={StyleSheet.flatten([
-              styles.SignupButton,
-              { borderColor: theme.colors.custom_rgba0_0_0_0 },
-            ])}
-            type="outline"
-            color={theme.colors.primary}
-          >
-            Sign Up
-          </Button>
-        </View>
-      </KeyboardAvoidingView>
-    </ScreenContainer>
+              <View style={styles.SignupView}>
+                <Text
+                  style={StyleSheet.flatten([
+                    theme.typography.subtitle2,
+                    { color: theme.colors.medium },
+                  ])}
+                >
+                  "Don't have an account?"
+                </Text>
+
+                <Button
+                  style={StyleSheet.flatten([
+                    styles.SignupButton,
+                    { borderColor: theme.colors.custom_rgba0_0_0_0 },
+                  ])}
+                  type="outline"
+                  color={theme.colors.primary}
+                  onPress={() => {}}
+                >
+                  Sign Up
+                </Button>
+              </View>
+            </KeyboardAvoidingView>
+          </ScreenContainer>
+        );
+      }}
+    </DataContext.Consumer>
   );
 };
 
@@ -208,9 +259,9 @@ export const SEED_DATA = {
       propType: PROP_TYPES.ASSET,
       defaultValue: null,
     },
-    onLogin: {
+    navigateToOnLogin: {
       group: GROUPS.basic,
-      label: "On Login",
+      label: "Post-login screen",
       description: "After a successful login, navigate to...",
       editable: true,
       required: false,

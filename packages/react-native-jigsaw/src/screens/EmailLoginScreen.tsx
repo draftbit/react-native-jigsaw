@@ -144,6 +144,8 @@ const FirebaseEmailLoginScreen = (props: Props) => {
           </Button>
         </View>
 
+        {errorMessage ? <View><Text>{errorMessage}</Text></View> : null }
+
         <View style={styles.SignupView}>
           <Text
             style={StyleSheet.flatten([

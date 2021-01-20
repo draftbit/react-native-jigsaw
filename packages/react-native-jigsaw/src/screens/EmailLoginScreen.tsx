@@ -7,6 +7,8 @@ import {
   TextInput,
   View,
 } from "react-native";
+
+// @ts-ignore
 import type { ImageSource } from "react-native/Libraries/Image/ImageSource";
 
 import ScreenContainer from "../components/ScreenContainer";

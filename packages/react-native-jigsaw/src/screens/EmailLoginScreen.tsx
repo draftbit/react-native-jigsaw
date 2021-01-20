@@ -19,7 +19,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
 } from "../core/component-types";
-import { DataContext } from "../core/GenericData";
+import { DataContext } from "../core/DataContext";
 
 type Props = {
   theme: Theme;
@@ -29,7 +29,6 @@ type Props = {
     navigate: (screen: string) => void;
   };
   navigateToOnLogin: string;
-  signInWithEmailAndPassword: (email: string, password: string) => Promise<void>
 };
 
 const FirebaseEmailLoginScreen = (props: Props) => {

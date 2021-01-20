@@ -5,7 +5,7 @@ export type DataContextType = {
   signOut: () => Promise<void>;
 };
 
-const defaultDataContext: DataContextType = {
+export const defaultDataContext: DataContextType = {
   signInWithEmailAndPassword: () => {
     throw new Error("Signin has not been implemented for this app");
   },

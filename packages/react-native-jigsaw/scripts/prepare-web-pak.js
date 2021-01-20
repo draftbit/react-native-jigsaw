@@ -19,6 +19,8 @@ function main() {
   const packageWithChangedName = changePackageName("web");
   const pakWithoutIcons = removeDependency(packageWithChangedName, "@expo/vector-icons");
   const draftbitWeb = removeDependency(pakWithoutIcons, "expo-av");
+  console.log(`Removing postinstall script`);
+  delete draftbitWeb.scripts.postinstall;
   fs.writeFileSync("package.json", JSON.stringify(draftbitWeb, null, 2), "utf-8");
 }
 

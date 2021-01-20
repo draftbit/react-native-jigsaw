@@ -68,4 +68,3 @@ export { default as ListViewScreen } from "./screens/ListScreen";
 export { default as EmailLoginScreen } from "./screens/EmailLoginScreen";
 
 export { DataContext, defaultDataContext } from "./core/DataContext";
-export { default as FirebaseDataContext } from "./core/FirebaseDataContext";

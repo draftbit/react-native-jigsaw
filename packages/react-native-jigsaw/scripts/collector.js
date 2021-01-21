@@ -49,7 +49,7 @@ async function main() {
   for (const file of files) {
     const [name, category] = file.split("/").reverse();
     try {
-      console.log("uploading:", `${category}/${name}`);
+      console.log("uploading", name, "from", category);
       const component = await parser(file);
       await uploadComponent(component);
       COMPLETED_FILES.push(file);

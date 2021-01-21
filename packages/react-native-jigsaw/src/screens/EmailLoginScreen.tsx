@@ -31,6 +31,7 @@ type Props = {
     navigate: (screen: string) => void;
   };
   navigateToOnLogin: string;
+  navigateToOnSignUp: string;
 };
 
 const EmailLoginScreen = (props: Props) => {
@@ -43,6 +44,7 @@ const EmailLoginScreen = (props: Props) => {
     welcomeText,
     navigation,
     navigateToOnLogin,
+    navigateToOnSignUp,
   } = props;
 
   const { signInWithEmailAndPassword } = React.useContext(DataContext);
@@ -139,7 +141,9 @@ const EmailLoginScreen = (props: Props) => {
             onPress={() =>
               signInWithEmailAndPassword(emailInput, passwordInput)
                 .then(() => navigation.navigate(navigateToOnLogin))
-                .catch((err: Error) => setErrorMessage(err.message))
+                .catch((err: Error) =>
+                  setErrorMessage(err.message || err.toString())
+                )
             }
           >
             Log In
@@ -152,28 +156,30 @@ const EmailLoginScreen = (props: Props) => {
           </View>
         ) : null}
 
-        <View style={styles.SignupView}>
-          <Text
-            style={StyleSheet.flatten([
-              theme.typography.subtitle2,
-              { color: theme.colors.medium },
-            ])}
-          >
-            "Don't have an account?"
-          </Text>
+        {navigateToOnSignUp ? (
+          <View style={styles.SignupView}>
+            <Text
+              style={StyleSheet.flatten([
+                theme.typography.subtitle2,
+                { color: theme.colors.medium },
+              ])}
+            >
+              {"Don't have an account?"}
+            </Text>
 
-          <Button
-            style={StyleSheet.flatten([
-              styles.SignupButton,
-              { borderColor: theme.colors.custom_rgba0_0_0_0 },
-            ])}
-            type="outline"
-            color={theme.colors.primary}
-            onPress={() => {}}
-          >
-            Sign Up
-          </Button>
-        </View>
+            <Button
+              style={StyleSheet.flatten([
+                styles.SignupButton,
+                { borderColor: theme.colors.custom_rgba0_0_0_0 },
+              ])}
+              type="outline"
+              color={theme.colors.primary}
+              onPress={() => navigation.navigate(navigateToOnSignUp)}
+            >
+              Sign Up
+            </Button>
+          </View>
+        ) : null}
       </KeyboardAvoidingView>
     </ScreenContainer>
   );

@@ -27,6 +27,7 @@ type Props = {
   onPress: () => void;
   theme: typeof themeT;
   style?: StyleProp<ViewStyle>;
+  IconOverride?: typeof Icon;
 };
 
 const IconButton: React.FC<Props> = ({
@@ -36,6 +37,7 @@ const IconButton: React.FC<Props> = ({
   accessibilityLabel,
   disabled = false,
   loading = false,
+  IconOverride = null,
   onPress,
   theme,
   style,
@@ -43,6 +45,9 @@ const IconButton: React.FC<Props> = ({
 }) => {
   const iconColor = customColor || theme.colors.primary;
   const containerStyles: StyleProp<ViewStyle>[] = [styles.container];
+
+  // Necessary to inject web-renderable Icons in buider.
+  const SelectedIcon = IconOverride || Icon;
 
   if (loading || disabled) {
     containerStyles.push({ opacity: theme.disabledOpacity });
@@ -65,7 +70,7 @@ const IconButton: React.FC<Props> = ({
     >
       <View>
         {icon && !loading ? (
-          <Icon name={icon} size={size} color={iconColor} />
+          <SelectedIcon name={icon} size={size} color={iconColor} />
         ) : null}
         {loading ? <ActivityIndicator size="small" color={iconColor} /> : null}
       </View>

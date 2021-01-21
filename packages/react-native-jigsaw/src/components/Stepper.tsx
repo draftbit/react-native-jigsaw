@@ -11,6 +11,7 @@ import {
 } from "../core/component-types";
 import IconButton from "./IconButton";
 import theme from "../styles/DefaultTheme";
+import type Icon from "./Icon";
 
 type Props = {
   value?: number;
@@ -21,6 +22,7 @@ type Props = {
   iconColor?: string;
   borderRadius?: number;
   typeStyle?: StyleProp<TextStyle>;
+  IconOverride?: typeof Icon;
 };
 
 const Stepper: React.FC<Props> = ({
@@ -31,6 +33,7 @@ const Stepper: React.FC<Props> = ({
   iconSize = 24,
   iconColor = colors.strong,
   borderRadius = theme.borderRadius.button,
+  IconOverride,
   typeStyle,
 }) => {
   const [stateValue, setStateValue] = React.useState(value);
@@ -65,6 +68,7 @@ const Stepper: React.FC<Props> = ({
         size={iconSize}
         color={iconColor}
         disabled={value ? value === 0 : stateValue === 0}
+        IconOverride={IconOverride}
       />
       <Text
         style={[
@@ -85,6 +89,7 @@ const Stepper: React.FC<Props> = ({
         onPress={handlePlus}
         size={iconSize}
         color={iconColor}
+        IconOverride={IconOverride}
       />
     </View>
   );

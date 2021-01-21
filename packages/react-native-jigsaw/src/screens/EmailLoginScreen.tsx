@@ -33,7 +33,7 @@ type Props = {
   navigateToOnLogin: string;
 };
 
-const FirebaseEmailLoginScreen = (props: Props) => {
+const EmailLoginScreen = (props: Props) => {
   const [emailInput, setEmailInput] = React.useState("");
   const [passwordInput, setPasswordInput] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
@@ -228,11 +228,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(FirebaseEmailLoginScreen);
+export default withTheme(EmailLoginScreen);
 
 export const SEED_DATA = {
-  name: "Email Login Screen (Firebase)",
-  tag: "FirebaseEmailLoginScreen",
+  name: "Email Login Screen",
+  tag: "EmailLoginScreen",
   category: COMPONENT_TYPES.button, // TODO screen
   props: {
     mainImage: {

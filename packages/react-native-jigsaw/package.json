@@ -1,6 +1,7 @@
 {
   "name": "@draftbit/ui",
-  "version": "40.0.1-firebase2",
+  "version": "41.0.0",
+  "version": "40.1.0",
   "description": "Draftbit UI Library",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",

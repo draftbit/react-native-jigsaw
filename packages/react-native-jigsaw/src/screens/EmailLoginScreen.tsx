@@ -146,7 +146,11 @@ const EmailLoginScreen = (props: Props) => {
           </Button>
         </View>
 
-        {errorMessage ? <View><Text>{errorMessage}</Text></View> : null }
+        {errorMessage ? (
+          <View>
+            <Text>{errorMessage}</Text>
+          </View>
+        ) : null}
 
         <View style={styles.SignupView}>
           <Text
@@ -233,7 +237,7 @@ export default withTheme(EmailLoginScreen);
 export const SEED_DATA = {
   name: "Email Login Screen",
   tag: "EmailLoginScreen",
-  category: COMPONENT_TYPES.button, // TODO screen
+  category: COMPONENT_TYPES.screen,
   props: {
     mainImage: {
       group: GROUPS.data,
@@ -249,6 +253,15 @@ export const SEED_DATA = {
       group: GROUPS.basic,
       label: "Post-login screen",
       description: "After a successful login, navigate to...",
+      editable: true,
+      required: false,
+      formType: FORM_TYPES.string,
+      propType: PROP_TYPES.STRING,
+    },
+    navigateToOnSignUp: {
+      group: GROUPS.basic,
+      label: "Sign-up screen",
+      description: "Go to this screen if the user wants to sign up",
       editable: true,
       required: false,
       formType: FORM_TYPES.string,

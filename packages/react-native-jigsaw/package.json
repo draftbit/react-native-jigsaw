@@ -26,7 +26,11 @@
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods",
-    "postinstall": "expo-yarn-workspaces check-workspace-dependencies"
+    "postinstall": "expo-yarn-workspaces check-workspace-dependencies",
+    "set-up-hooks": "mkdir -p ../.git/hooks && cp -v ../../hooks/* ../../.git/hooks",
+    "prepare": "if [ -z \"$CI\" ]; then yarn set-up-hooks; fi",
+    "format": "git diff --relative --name-only | rg '.*.(tsx|ts|js|json|mdd)$' | xargs yarn prettier --write",
+    "collector": "node scripts/collector.js"
   },
   "keywords": [
     "react-native",

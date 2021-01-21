@@ -10,6 +10,7 @@ const globAsync = promisify(glob);
 
 const COMPONENT_PATH = path.resolve("./src/components");
 const MAPPING_PATH = path.resolve("./src/mappings");
+const SCREEN_PATH = path.resolve("./src/screens");
 
 const IGNORED_FILES = [
   "Query.js", // doesn't work at all
@@ -46,9 +47,9 @@ async function main() {
   );
 
   for (const file of files) {
-    const name = file.split("/").pop();
+    const [name, category] = file.split("/").reverse();
     try {
-      console.log("uploading:", name);
+      console.log("uploading:", `${category}/${name}`);
       const component = await parser(file);
       await uploadComponent(component);
       COMPLETED_FILES.push(file);

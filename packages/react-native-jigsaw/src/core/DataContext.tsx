@@ -1,7 +1,10 @@
 import * as React from "react";
 
 export type DataContextType = {
-  signInWithEmailAndPassword: (email: string, password: string) => Promise<void>;
+  signInWithEmailAndPassword: (
+    email: string,
+    password: string
+  ) => Promise<void>;
   signOut: () => Promise<void>;
 };
 
@@ -11,7 +14,7 @@ export const defaultDataContext: DataContextType = {
   },
   signOut: () => {
     throw new Error("Signout has not been implemented for this app");
-  }
+  },
 };
 
 export const DataContext = React.createContext(defaultDataContext);

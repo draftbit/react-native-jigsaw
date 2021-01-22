@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "40.1.0",
+  "version": "40.1.1",
   "description": "Draftbit UI Library",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -24,8 +24,7 @@
     "publish:both": "./publish.sh",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
-    "bootstrap": "yarn example && yarn && yarn pods",
-    "postinstall": "expo-yarn-workspaces check-workspace-dependencies"
+    "bootstrap": "yarn example && yarn && yarn pods"
   },
   "keywords": [
     "react-native",

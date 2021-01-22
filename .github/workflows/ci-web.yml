@@ -1,18 +1,18 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
-
-name: NPM Publish
+name: Build, Test and Publish @draftbit/ui
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
 
 defaults:
   run:
-    working-directory: packages/react-native-jigsaw
+    working-directory: packages/web
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -36,13 +36,20 @@ jobs:
       - name: Lint
         run: yarn lint
 
-      - name: Typecheck
-        run: yarn typescript
-
       - name: Build
         run: yarn build
 
-      - name: Publish to npm registry
-        run: yarn publish
+      - name: Release next NPM package
+        if: github.event_name == 'pull_request'
+        run: |
+          npm version prerelease --preid $(git rev-parse --short HEAD) -no-git-tag-version
+          npm publish --access public --tag next
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+
+      - name: Release NPM package
+        if: github.event_name != 'pull_request'
+        run: |
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}

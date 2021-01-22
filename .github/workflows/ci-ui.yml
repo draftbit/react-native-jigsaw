@@ -1,6 +1,4 @@
-# This workflow will run on each PR
-
-name: Build & Test
+name: Build, Test and Publish @draftbit/ui
 
 on:
   push:
@@ -38,8 +36,20 @@ jobs:
       - name: Lint
         run: yarn lint
 
-      - name: Typecheck
-        run: yarn typescript
-
       - name: Build
         run: yarn build
+
+      - name: Release next NPM package
+        if: github.event_name == 'pull_request'
+        run: |
+          npm version prerelease --preid $(git rev-parse --short HEAD) -no-git-tag-version
+          npm publish --access public --tag next
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+
+      - name: Release NPM package
+        if: github.event_name != 'pull_request'
+        run: |
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}

@@ -18,13 +18,7 @@
   "scripts": {
     "typescript": "tsc --noEmit",
     "lint": "eslint --ext .js,.ts,.tsx .",
-    "build": "bob build",
-    "prepublishOnly": "bob build",
-    "release": "release-it",
-    "publish:both": "./publish.sh",
-    "example": "yarn --cwd example",
-    "pods": "cd example && pod-install --quiet",
-    "bootstrap": "yarn example && yarn && yarn pods"
+    "build": "bob build"
   },
   "keywords": [
     "react-native",
@@ -72,7 +66,6 @@
     "glob": "^7.1.6",
     "husky": "^4.2.5",
     "node-fetch": "^2.6.0",
-    "pod-install": "^0.1.7",
     "prettier": "^2.0.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",

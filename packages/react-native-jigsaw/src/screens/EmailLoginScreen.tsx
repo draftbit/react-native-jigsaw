@@ -102,7 +102,7 @@ const EmailLoginScreen = (props: Props) => {
               },
             ])}
             value={emailInput}
-            onChangeText={(emailInput) => setEmailInput(emailInput)}
+            onChangeText={(email) => setEmailInput(email)}
             placeholder="Email"
             clearTextOnFocus={false}
             enablesReturnKeyAutomatically={true}
@@ -124,7 +124,7 @@ const EmailLoginScreen = (props: Props) => {
             enablesReturnKeyAutomatically={true}
             clearTextOnFocus={false}
             placeholder="Password"
-            onChangeText={(passwordInput) => setPasswordInput(passwordInput)}
+            onChangeText={(password) => setPasswordInput(password)}
             value={passwordInput}
             placeholderTextColor={theme.colors.medium}
             clearButtonMode="while-editing"

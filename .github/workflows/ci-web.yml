@@ -1,4 +1,4 @@
-name: Build, Test and Publish @draftbit/ui
+name: Build, Test and Publish @draftbit/web
 
 on:
   push:
@@ -42,7 +42,7 @@ jobs:
       - name: Release next NPM package
         if: github.event_name == 'pull_request'
         run: |
-          npm version prerelease --preid $(git rev-parse --short HEAD) -no-git-tag-version
+          npm version prerelease --preid rc-$(git rev-parse --short HEAD) -no-git-tag-version
           npm publish --access public --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}

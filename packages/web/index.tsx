@@ -1,7 +1,6 @@
-// @ts-nocheck
 import * as JigsawUI from "../react-native-jigsaw/src/index";
 
-const JigsawWeb = {
+const JigsawWeb: any = {
   ...JigsawUI,
   /* TODO: Explain why */
   Icon: () => null,

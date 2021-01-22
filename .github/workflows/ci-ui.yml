@@ -46,7 +46,7 @@ jobs:
         if: github.event_name == 'pull_request'
         run: |
           npm version prerelease --preid rc$(git rev-parse --short HEAD) -no-git-tag-version
-          npm publish --access public --tag next
+          # npm publish --access public --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
         working-directory: packages/react-native-jigsaw
@@ -54,7 +54,7 @@ jobs:
       - name: Release NPM package
         if: github.event_name != 'pull_request'
         run: |
-          npm publish --access public
+          # npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
         working-directory: packages/react-native-jigsaw

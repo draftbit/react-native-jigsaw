@@ -3,15 +3,10 @@
     "example",
     "node_modules",
     "glyphmaps",
-    "scripts"
+    "scripts",
   ],
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "@draftbit/ui": [
-        "packages/react-native-jigsaw/src/index"
-      ]
-    },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "esModuleInterop": true,

@@ -8,8 +8,8 @@ function changePackageName(name) {
   };
 }
 
-function removeDependency(package, dependencyName) {
-  const duplicatedPak = { ...package };
+function removeDependency(pck, dependencyName) {
+  const duplicatedPak = { ...pck };
   delete duplicatedPak.dependencies[dependencyName];
   return duplicatedPak;
 }

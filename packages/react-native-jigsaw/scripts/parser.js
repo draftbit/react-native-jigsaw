@@ -1,8 +1,5 @@
-const fs = require("fs");
+const fs = require("fs/promises");
 const path = require("path");
-const { promisify } = require("util");
-
-const readFileAsync = promisify(fs.readFile);
 
 const COMPONENT_TYPES_PATH = path.resolve("./src/core/component-types.ts");
 const CLOUDINARY_URL =
@@ -18,7 +15,7 @@ const IDENTIFIERS = {
 };
 
 async function loadFile(file) {
-  const res = await readFileAsync(file, { encoding: "utf-8" });
+  const res = await fs.readFileAsync(file, { encoding: "utf-8" });
   return res;
 }
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as JigsawUI from "../react-native-jigsaw/src/index";
 
 const JigsawWeb = {

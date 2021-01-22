@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "40.1.1",
+  "version": "40.3.0",
   "description": "Draftbit UI Library",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -24,7 +24,12 @@
     "publish:both": "./publish.sh",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
-    "bootstrap": "yarn example && yarn && yarn pods"
+    "bootstrap": "yarn example && yarn && yarn pods",
+    "postinstall": "expo-yarn-workspaces check-workspace-dependencies",
+    "set-up-hooks": "mkdir -p ../.git/hooks && cp -v ../../hooks/* ../../.git/hooks",
+    "prepare": "if [ -z \"$CI\" ]; then yarn set-up-hooks; fi",
+    "format": "git diff --relative --name-only | rg '.*.(tsx|ts|js|json|mdd)$' | xargs yarn prettier --write",
+    "upload-component-defs": "node scripts/collector.js"
   },
   "keywords": [
     "react-native",
@@ -71,6 +76,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "glob": "^7.1.6",
     "husky": "^4.2.5",
+    "lint-staged": "^10.5.3",
     "node-fetch": "^2.6.0",
     "pod-install": "^0.1.7",
     "prettier": "^2.0.5",
@@ -152,6 +158,11 @@
         "preset": "angular"
       }
     }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,md,scss,css,json}": [
+      "prettier --write"
+    ]
   },
   "@react-native-community/bob": {
     "source": "src",

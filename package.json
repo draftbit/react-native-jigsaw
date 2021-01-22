@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "react-native-jigsaw",
-  "version": "1.0.0",
+  "version": "0.0.0-this-is-not-publishable",
   "description": "Root package.json for workspaces",
   "scripts": {
     "postinstall": "expo-yarn-workspaces check-workspace-dependencies"

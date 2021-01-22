@@ -7,10 +7,6 @@ on:
   pull_request:
     types: [assigned, opened, synchronize, reopened]
 
-defaults:
-  run:
-    working-directory: packages/react-native-jigsaw
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,15 +25,22 @@ jobs:
           path: "**/node_modules"
           key: node_modules-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Install dependencies
+      - name: Install monorepo dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile
 
+      - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile
+        working-directory: packages/react-native-jigsaw
+
       - name: Lint
         run: yarn lint
+        working-directory: packages/react-native-jigsaw
 
       - name: Build
         run: yarn build
+        working-directory: packages/react-native-jigsaw
 
       - name: Release next NPM package
         if: github.event_name == 'pull_request'
@@ -46,6 +49,7 @@ jobs:
           npm publish --access public --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+        working-directory: packages/react-native-jigsaw
 
       - name: Release NPM package
         if: github.event_name != 'pull_request'
@@ -53,3 +57,4 @@ jobs:
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+        working-directory: packages/react-native-jigsaw

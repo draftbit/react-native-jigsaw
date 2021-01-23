@@ -62,6 +62,7 @@ export const COMPONENT_TYPES = {
   container: "container",
   blocks: "blocks",
   deprecated: "deprecated",
+  screen: "screen",
 };
 
 const ELEVATION_TYPE = {

@@ -1,4 +1,4 @@
-const fs = require("fs/promises");
+const { promises: fs } = require("fs");
 
 const CLOUDINARY_URL =
   "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps";

@@ -1,4 +1,4 @@
-const fs = require("fs/promises");
+const { promises: fs } = require("fs");
 const path = require("path");
 
 const SRC_PATH = path.join(__dirname, "..", "src");

@@ -46,6 +46,7 @@ jobs:
       - name: Release next NPM package
         if: github.event_name == 'pull_request'
         run: |
+          npm config set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
           npm version prerelease --preid rc$(git rev-parse --short HEAD) -no-git-tag-version
           npm publish --access public --tag next --verbose
         env:
@@ -55,6 +56,7 @@ jobs:
       - name: Release NPM package
         if: github.event_name != 'pull_request'
         run: |
+          npm config set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
           npm config set scope "@draftbit"
           NPM_TOKEN=$NODE_AUTH_TOKEN npm publish --access public
         env:

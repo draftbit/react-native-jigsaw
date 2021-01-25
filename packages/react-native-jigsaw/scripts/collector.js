@@ -8,9 +8,10 @@ const parser = require("./parser");
 
 const globAsync = promisify(glob);
 
-const COMPONENT_PATH = path.resolve("./src/components");
-const MAPPING_PATH = path.resolve("./src/mappings");
-const SCREEN_PATH = path.resolve("./src/screens");
+const SRC_PATH = path.join(__dirname, "..", "src");
+const COMPONENT_PATH = path.join(SRC_PATH, "components");
+const MAPPING_PATH = path.join(SRC_PATH, "mappings");
+const SCREEN_PATH = path.join(SRC_PATH, "screens");
 
 const IGNORED_FILES = [
   "Query.js", // doesn't work at all

@@ -14,11 +14,11 @@ const IDENTIFIERS = {
 };
 
 async function loadFile(file) {
-  const res = await fs.readFileAsync(file, { encoding: "utf-8" });
+  const res = await fs.readFile(file, { encoding: "utf-8" });
   return res;
 }
 
-function replaceIdentifiers(file, identifiers) {
+function replaceIdentifiers(file) {
   const regex = new RegExp(IDENTIFIERS.es6Export, "g");
   file = file.replace(regex, IDENTIFIERS.commonJsExport);
   file = file.replace(

@@ -43,6 +43,13 @@ jobs:
         run: yarn build
         working-directory: packages/react-native-jigsaw
 
+      - name: Test collector script
+        run: |
+          npx json-server --port 3001 db.json & export JSON_SERVER_PID=$!
+          node scripts/collector.js
+          kill $JSON_SERVER_PID
+        working-directory: packages/react-native-jigsaw
+
       - name: Release next NPM package
         if: github.event_name == 'pull_request'
         run: |

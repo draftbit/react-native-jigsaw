@@ -48,7 +48,7 @@ jobs:
           npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
           npm config set scope "@draftbit"
           npm version prerelease --preid rc$(git rev-parse --short HEAD) -no-git-tag-version
-          npm publish --access public --tag next
+          # npm publish --access public --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         working-directory: packages/web
@@ -58,7 +58,7 @@ jobs:
         run: |
           npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
           npm config set scope "@draftbit"
-          npm publish --access public
+          # npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         working-directory: packages/web

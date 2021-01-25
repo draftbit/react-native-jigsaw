@@ -16,6 +16,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '12'
+          registry-url: https://registry.npmjs.org/
 
       # https://github.com/actions/cache/blob/main/examples.md#node---yarn
       - name: Restore node_modules cache
@@ -45,8 +46,8 @@ jobs:
       - name: Release next NPM package
         if: github.event_name == 'pull_request'
         run: |
-          # npm version prerelease --preid rc$(git rev-parse --short HEAD) -no-git-tag-version
-          NPM_TOKEN=$NODE_AUTH_TOKEN npm publish --access public --tag next
+          npm version prerelease --preid rc$(git rev-parse --short HEAD) -no-git-tag-version
+          npm publish --access public --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         working-directory: packages/react-native-jigsaw
@@ -54,7 +55,6 @@ jobs:
       - name: Release NPM package
         if: github.event_name != 'pull_request'
         run: |
-          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
           npm config set scope "@draftbit"
           NPM_TOKEN=$NODE_AUTH_TOKEN npm publish --access public
         env:

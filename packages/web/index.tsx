@@ -4,7 +4,7 @@ import * as JigsawUI from "../react-native-jigsaw/src/index";
 
 const JigsawWeb: any = {
   ...JigsawUI,
-  /* TODO: Explain why */
+  /* Icon and AudioPlayer aren't rendering anything in web */
   Icon: () => null,
   AudioPlayer: () => null,
 };

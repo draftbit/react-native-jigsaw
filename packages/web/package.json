@@ -18,7 +18,6 @@
   ],
   "scripts": {
     "typescript": "tsc --noEmit",
-    "lint": "eslint --ext .js,.ts,.tsx .",
     "build": "bob build"
   },
   "keywords": [
@@ -47,30 +46,21 @@
     "react-native-typography": "^1.4.1"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^8.3.4",
     "@react-native-community/bob": "^0.16.2",
     "@react-native-community/datetimepicker": "~3.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@react-native-community/picker": "~1.6.6",
-    "@release-it/conventional-changelog": "^1.1.4",
     "@types/color": "^3.0.1",
     "@types/dateformat": "^3.0.1",
     "@types/react": "^16.9.36",
     "@types/react-native": "^0.63.40",
-    "commitlint": "^8.3.5",
     "dotenv": "^8.2.0",
-    "eslint": "^7.2.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
     "glob": "^7.1.6",
-    "husky": "^4.2.5",
     "node-fetch": "^2.6.0",
-    "prettier": "^2.0.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "~0.63.2",
     "react-native-svg": "~12.1.0",
-    "release-it": "^13.6.3",
     "typescript": "3.8.3"
   },
   "scriptDependencies": {
@@ -84,66 +74,6 @@
     "react": "*",
     "react-native": "*",
     "react-native-svg": "~12.1.0"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "yarn lint"
-    }
-  },
-  "eslintConfig": {
-    "extends": [
-      "@react-native-community",
-      "prettier"
-    ],
-    "rules": {
-      "react-native/no-inline-styles": "off",
-      "prettier/prettier": [
-        "error",
-        {
-          "quoteProps": "consistent",
-          "semi": true,
-          "singleQuote": false,
-          "tabWidth": 2,
-          "trailingComma": "es5",
-          "useTabs": false
-        }
-      ]
-    }
-  },
-  "eslintIgnore": [
-    "scripts",
-    "example/web-build",
-    "node_modules/",
-    "lib/"
-  ],
-  "prettier": {
-    "quoteProps": "consistent",
-    "semi": true,
-    "singleQuote": false,
-    "tabWidth": 2,
-    "trailingComma": "es5",
-    "useTabs": false
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: release ${version}",
-      "tagName": "v${version}"
-    },
-    "npm": {
-      "publish": true
-    },
-    "github": {
-      "release": true
-    },
-    "plugins": {
-      "@release-it/conventional-changelog": {
-        "preset": "angular"
-      }
-    }
   },
   "@react-native-community/bob": {
     "source": "src",

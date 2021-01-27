@@ -4,12 +4,69 @@
   "version": "0.0.0-this-is-not-publishable",
   "description": "Root package.json for workspaces",
   "scripts": {
+    "lint": "eslint --ext .js,.ts,.tsx .",
     "postinstall": "expo-yarn-workspaces check-workspace-dependencies"
   },
   "workspaces": [
     "packages/*"
   ],
   "devDependencies": {
-    "expo-yarn-workspaces": "1.2.1"
+    "expo-yarn-workspaces": "1.2.1",
+    "@commitlint/config-conventional": "^8.3.4",
+    "commitlint": "^8.3.5",
+    "eslint": "^7.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "yarn lint"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "@react-native-community",
+      "prettier"
+    ],
+    "rules": {
+      "react-native/no-inline-styles": "off",
+      "prettier/prettier": [
+        "error",
+        {
+          "quoteProps": "consistent",
+          "semi": true,
+          "singleQuote": false,
+          "tabWidth": 2,
+          "trailingComma": "es5",
+          "useTabs": false
+        }
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "scripts",
+    "example/web-build",
+    "node_modules/",
+    "lib/",
+    "__generated__"
+  ],
+  "prettier": {
+    "quoteProps": "consistent",
+    "semi": true,
+    "singleQuote": false,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,md,scss,css,json}": [
+      "prettier --write"
+    ]
   }
 }

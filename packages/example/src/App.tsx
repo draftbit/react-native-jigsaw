@@ -137,7 +137,10 @@ export default class App extends React.Component {
       return (
         <Provider theme={DefaultTheme}>
           <SafeAreaProvider>
-            <SafeAreaView style={{ flex: 1 }} edges={['right', 'bottom', 'left']}>
+            <SafeAreaView
+              style={{ flex: 1 }}
+              edges={["right", "bottom", "left"]}
+            >
               <NavigationContainer>
                 <Drawer.Navigator
                   drawerContentOptions={{

@@ -37,7 +37,6 @@ jobs:
 
       - name: Lint
         run: yarn lint
-        working-directory: packages/react-native-jigsaw
 
       - name: Build
         run: yarn build

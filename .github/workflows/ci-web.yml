@@ -36,7 +36,6 @@ jobs:
 
       - name: Lint
         run: yarn lint
-        working-directory: packages/web
 
       - name: Build
         run: yarn build

@@ -1,10 +1,8 @@
-const fs = require("fs");
+const { promises: fs } = require("fs");
 const path = require("path");
-const { promisify } = require("util");
 
-const readFileAsync = promisify(fs.readFile);
-
-const COMPONENT_TYPES_PATH = path.resolve("./src/core/component-types.ts");
+const SRC_PATH = path.join(__dirname, "..", "src");
+const COMPONENT_TYPES_PATH = path.join(SRC_PATH, "core", "component-types.ts");
 const CLOUDINARY_URL =
   "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps";
 
@@ -18,7 +16,7 @@ const IDENTIFIERS = {
 };
 
 async function loadFile(file) {
-  const res = await readFileAsync(file, { encoding: "utf-8" });
+  const res = await fs.readFile(file, { encoding: "utf-8" });
   return res;
 }
 

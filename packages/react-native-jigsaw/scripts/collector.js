@@ -8,9 +8,10 @@ const parser = require("./parser");
 
 const globAsync = promisify(glob);
 
-const COMPONENT_PATH = path.resolve("./src/components");
-const MAPPING_PATH = path.resolve("./src/mappings");
-const SCREEN_PATH = path.resolve("./src/screens");
+const SRC_PATH = path.join(__dirname, "..", "src");
+const COMPONENT_PATH = path.join(SRC_PATH, "components");
+const MAPPING_PATH = path.join(SRC_PATH, "mappings");
+const SCREEN_PATH = path.join(SRC_PATH, "screens");
 
 const IGNORED_FILES = [
   "Query.js", // doesn't work at all
@@ -21,11 +22,6 @@ const ERROR_FILES = [];
 const COMPLETED_FILES = [];
 
 async function main() {
-  // if (!process.env.JIGSAW_AUTH_TOKEN) {
-  //   console.error("Missing auth token! Talk to a Draftbit team member.");
-  //   process.exit(1);
-  // }
-
   console.log("Running on", getUrl(), "[warnings surpressed]");
   const componentFiles = await globAsync(`${COMPONENT_PATH}/**/*.tsx`);
   const screenFiles = await globAsync(`${SCREEN_PATH}/**/*.tsx`);
@@ -84,9 +80,6 @@ async function uploadComponent(component) {
   await fetch(`${url}/components`, {
     method: "POST",
     body: component,
-    // headers: {
-    // Authorization: `Bearer: ${process.env.JIGSAW_AUTH_TOKEN}`,
-    // },
   });
 }
 

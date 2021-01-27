@@ -1,7 +1,7 @@
 {
   "NOTE": "This package.json should be in sync with @draftbit/ui's package.json",
   "name": "@draftbit/web",
-  "version": "40.3.0-rc0",
+  "version": "40.4.0",
   "description": "Draftbit UI Library for React Native Web",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",

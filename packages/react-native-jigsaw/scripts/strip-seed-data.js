@@ -1,16 +1,10 @@
-const fs = require("fs");
-const path = require("path");
-const { promisify } = require("util");
+const { promises: fs } = require("fs");
 
-const readFileAsync = promisify(fs.readFile);
-
-const COMPONENT_TYPES_PATH = path.resolve(
-  "./packages/react-native-jigsaw/src/core/component-types.ts"
-);
 const CLOUDINARY_URL =
   "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps";
 
 const IDENTIFIERS = {
+  import: "component-types",
   es6Export: "export const",
   commonJsExport: "const",
   extraPropsStart: "SEED_DATA_PROPS",
@@ -20,11 +14,11 @@ const IDENTIFIERS = {
 };
 
 async function loadFile(file) {
-  const res = await readFileAsync(file, { encoding: "utf-8" });
+  const res = await fs.readFile(file, { encoding: "utf-8" });
   return res;
 }
 
-function replaceIdentifiers(file, identifiers) {
+function replaceIdentifiers(file) {
   const regex = new RegExp(IDENTIFIERS.es6Export, "g");
   file = file.replace(regex, IDENTIFIERS.commonJsExport);
   file = file.replace(
@@ -52,7 +46,10 @@ async function parseFileSeedData(file) {
       const str = lines.slice(extraPropsStart).join("\n");
     }
 
-    const str = lines.slice(codeStart).join("\n");
+    const str = lines
+      .slice(0, codeStart)
+      .filter((line) => !line.includes(IDENTIFIERS.import))
+      .join("\n");
     return str;
   }
 
@@ -60,23 +57,9 @@ async function parseFileSeedData(file) {
 }
 
 async function main(filePath) {
-  const typesFile = await loadFile(COMPONENT_TYPES_PATH).then(
-    replaceIdentifiers
-  );
   const componentFile = await loadFile(filePath);
   const parsedComponentFile = await parseFileSeedData(componentFile);
-
-  const combinedFile = typesFile + parsedComponentFile;
-  // eslint-disable-next-line
-  const data = eval(`${combinedFile}\n JSON.stringify(SEED_DATA)`);
-  return data;
+  return parsedComponentFile;
 }
-
-// if (process.argv[2]) {
-//   main(process.argv[2])
-// } else {
-//   console.log("Pass in a file as an argument")
-//   process.exit(1)
-// }
 
 module.exports = main;

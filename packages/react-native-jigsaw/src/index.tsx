@@ -64,3 +64,7 @@ export { default as Switch } from "./components/Switch";
 
 export { default as TextField } from "./components/TextField";
 export { default as Touchable } from "./components/Touchable";
+
+export { default as EmailLoginScreen } from "./screens/EmailLoginScreen";
+
+export { DataContext, defaultDataContext } from "./core/DataContext";

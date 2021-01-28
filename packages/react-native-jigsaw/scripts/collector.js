@@ -8,12 +8,11 @@ const parser = require("./parser");
 
 const globAsync = promisify(glob);
 
-const COMPONENT_PATH = path.resolve(
-  "./packages/react-native-jigsaw/src/components"
-);
-const MAPPING_PATH = path.resolve(
-  "./packages/react-native-jigsaw/src/mappings"
-);
+const SRC_PATH = path.join(__dirname, "..", "src");
+const COMPONENT_PATH = path.join(SRC_PATH, "components");
+const MAPPING_PATH = path.join(SRC_PATH, "mappings");
+const SCREEN_PATH = path.join(SRC_PATH, "screens");
+
 const IGNORED_FILES = [
   "Query.js", // doesn't work at all
   "LinearGradient.js", // missing gradient UI
@@ -23,32 +22,30 @@ const ERROR_FILES = [];
 const COMPLETED_FILES = [];
 
 async function main() {
-  // if (!process.env.JIGSAW_AUTH_TOKEN) {
-  //   console.error("Missing auth token! Talk to a Draftbit team member.");
-  //   process.exit(1);
-  // }
-
   console.log("Running on", getUrl(), "[warnings surpressed]");
   const componentFiles = await globAsync(`${COMPONENT_PATH}/**/*.tsx`);
+  const screenFiles = await globAsync(`${SCREEN_PATH}/**/*.tsx`);
   const mappingFiles = await globAsync(`${MAPPING_PATH}/**/*.js`);
-  const files = [...componentFiles, ...mappingFiles].filter((file) => {
-    const name = file.split("/").pop();
+  const files = [...componentFiles, ...screenFiles, ...mappingFiles].filter(
+    (file) => {
+      const name = file.split("/").pop();
 
-    if (
-      name.includes("web") ||
-      name.includes("ios") ||
-      name.includes("android")
-    ) {
-      return false;
+      if (
+        name.includes("web") ||
+        name.includes("ios") ||
+        name.includes("android")
+      ) {
+        return false;
+      }
+
+      return !IGNORED_FILES.includes(name);
     }
-
-    return !IGNORED_FILES.includes(name);
-  });
+  );
 
   for (const file of files) {
-    const name = file.split("/").pop();
+    const [name, category] = file.split("/").reverse();
     try {
-      console.log("uploading:", name);
+      console.log("uploading", name, "from", category);
       const component = await parser(file);
       await uploadComponent(component);
       COMPLETED_FILES.push(file);
@@ -83,9 +80,6 @@ async function uploadComponent(component) {
   await fetch(`${url}/components`, {
     method: "POST",
     body: component,
-    // headers: {
-    // Authorization: `Bearer: ${process.env.JIGSAW_AUTH_TOKEN}`,
-    // },
   });
 }
 

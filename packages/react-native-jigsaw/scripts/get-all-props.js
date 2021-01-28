@@ -52,7 +52,6 @@ async function main() {
         COMPONENTS.push(key);
       }
     } catch (error) {
-      const name = file.split("jigsaw-component-library/")[1];
       ERROR_FILES.push({ file, error: error.message });
     }
   }

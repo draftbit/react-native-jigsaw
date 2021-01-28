@@ -32,14 +32,18 @@ jobs:
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile
-        working-directory: packages/web
+        working-directory: packages/react-native-jigsaw
 
       - name: Lint
         run: yarn lint
 
+      - name: Transform @draftbit/ui to @draftbit/web
+        run: node scripts/transform-package-json.js
+        working-directory: packages/react-native-jigsaw
+
       - name: Build
         run: yarn build
-        working-directory: packages/web
+        working-directory: packages/react-native-jigsaw
 
       - name: Release next NPM package
         if: github.event_name == 'pull_request'
@@ -49,7 +53,7 @@ jobs:
           npm publish --access public --tag next --verbose
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
-        working-directory: packages/web
+        working-directory: packages/react-native-jigsaw
 
       - name: Release NPM package
         if: github.event_name != 'pull_request'
@@ -58,4 +62,4 @@ jobs:
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
-        working-directory: packages/web
+        working-directory: packages/react-native-jigsaw

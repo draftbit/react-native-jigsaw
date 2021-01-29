@@ -21,11 +21,13 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "typescript": "tsc --noEmit --composite false",
     "test": "jest",
+    "build": "lerna run prepare",
     "prerelease": "lerna run clean",
     "release": "# lerna publish",
     "example": "yarn --cwd example",
     "pretty": "prettier --write .",
-    "upload": "node packages/ui/scripts/collector.js"
+    "upload": "node packages/ui/scripts/collector.js",
+    "version": "lerna version"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
@@ -111,5 +113,6 @@
     "*.{js,ts,tsx,md,scss,css,json}": [
       "prettier --write"
     ]
-  }
+  },
+  "version": "40.5.1"
 }

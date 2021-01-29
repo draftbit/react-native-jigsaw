@@ -1,36 +1,92 @@
 {
-  "private": true,
   "name": "react-native-jigsaw",
-  "version": "0.0.0-this-is-not-publishable",
   "description": "Root package.json for workspaces",
-  "scripts": {
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "postinstall": "expo-yarn-workspaces check-workspace-dependencies"
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "example"
+    ]
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/draftbit/react-native-jigsaw.git"
+  },
+  "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
+  "scripts": {
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "typescript": "tsc --noEmit --composite false",
+    "wtf": "tsc --version",
+    "test": "jest",
+    "prerelease": "lerna run clean",
+    "release": "lerna publish",
+    "example": "yarn --cwd example",
+    "set-up-hooks": "mkdir -p ../.git/hooks && cp -v ../../hooks/* ../../.git/hooks",
+    "format": "git diff --relative --name-only | rg '.*.(tsx|ts|js|json|mdd)$' | xargs yarn prettier --write",
+    "upload-component-defs": "node scripts/collector.js"
+  },
   "devDependencies": {
-    "expo-yarn-workspaces": "1.2.1",
     "@commitlint/config-conventional": "^8.3.4",
+    "@types/jest": "^26.0.20",
+    "babel-jest": "^26.6.3",
     "commitlint": "^8.3.5",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.2.5",
-    "prettier": "^2.0.5"
+    "jest": "^26.6.1",
+    "lerna": "^3.22.1",
+    "metro-react-native-babel-preset": "^0.65.0",
+    "prettier": "^2.0.5",
+    "typescript": "~4.0.3"
+  },
+  "resolutions": {
+    "react": "~16.13.1",
+    "react-native": "~0.63.2"
   },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "yarn lint"
+      "pre-commit": "yarn lint && yarn typescript && yarn test"
     }
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testRegex": "/__tests__/.*\\.(test|spec)\\.(js|tsx?)$",
+    "setupFiles": [
+      "<rootDir>/jest/setup.js"
+    ],
+    "moduleNameMapper": {
+      "@draftbit/([^/]+)": "<rootDir>/packages/$1/src"
+    },
+    "preset": "react-native"
+  },
+  "prettier": {
+    "quoteProps": "consistent",
+    "semi": true,
+    "singleQuote": false,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false
   },
   "eslintConfig": {
     "extends": [
       "@react-native-community",
       "prettier"
     ],
+    "settings": {
+      "react": {
+        "version": "16"
+      }
+    },
+    "env": {
+      "browser": true,
+      "node": true
+    },
     "rules": {
       "react-native/no-inline-styles": "off",
       "prettier/prettier": [
@@ -53,17 +109,6 @@
     "lib/",
     "__generated__"
   ],
-  "prettier": {
-    "quoteProps": "consistent",
-    "semi": true,
-    "singleQuote": false,
-    "tabWidth": 2,
-    "trailingComma": "es5",
-    "useTabs": false
-  },
-  "publishConfig": {
-    "access": "public"
-  },
   "lint-staged": {
     "*.{js,ts,tsx,md,scss,css,json}": [
       "prettier --write"

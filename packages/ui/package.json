@@ -16,19 +16,22 @@
     "draftbit-ui.podspec"
   ],
   "scripts": {
-    "typescript": "tsc --noEmit",
-    "build": "bob build",
-    "set-up-hooks": "mkdir -p ../.git/hooks && cp -v ../../hooks/* ../../.git/hooks",
-    "prepare": "if [ -z \"$CI\" ]; then yarn set-up-hooks; fi",
-    "format": "git diff --relative --name-only | rg '.*.(tsx|ts|js|json|mdd)$' | xargs yarn prettier --write",
-    "upload-component-defs": "node scripts/collector.js"
+    "prepare": "bob build",
+    "clean": "rimraf lib"
   },
   "keywords": [
     "react-native",
     "ios",
     "android"
   ],
-  "repository": "https://github.com/draftbit/react-native-jigsaw",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/draftbit/react-native-jigsaw",
+    "directory": "packages/ui"
+  },
   "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
   "license": "MIT",
   "bugs": {
@@ -68,12 +71,8 @@
     "react-dom": "16.13.1",
     "react-native": "~0.63.2",
     "react-native-svg": "~12.1.0",
-    "typescript": "3.8.3"
-  },
-  "scriptDependencies": {
-    "dotenv": "^8.2.0",
-    "glob": "^7.1.6",
-    "node-fetch": "^2.6.0"
+    "rimraf": "^3.0.2",
+    "typescript": "4.0.3"
   },
   "peerDependencies": {
     "@react-native-community/datetimepicker": "~3.0.0",
@@ -88,7 +87,12 @@
     "targets": [
       "commonjs",
       "module",
-      "typescript"
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
     ]
   }
 }

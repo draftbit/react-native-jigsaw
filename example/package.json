@@ -1,18 +1,14 @@
 {
   "name": "@draftbit/example",
   "description": "Example app for @draftbit/ui",
-  "version": "39.1.0",
+  "version": "40.4.0",
   "private": true,
-  "main": "__generated__/AppEntry.js",
   "scripts": {
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "start": "expo start",
-    "eject": "expo eject",
-    "test": "jest",
-    "postinstall": "expo-yarn-workspaces postinstall",
-    "example": "yarn --cwd example"
+    "test": "jest"
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.0",
@@ -35,7 +31,12 @@
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
+    "expo-cli": "^4.0.0",
     "@babel/core": "^7.11.4",
-    "@babel/runtime": "^7.11.2"
+    "@babel/runtime": "^7.11.2",
+    "@expo/webpack-config": "^0.12.56",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-preset-expo": "^8.3.0"
   }
 }

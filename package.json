@@ -27,7 +27,9 @@
     "example": "yarn --cwd example",
     "pretty": "prettier --write .",
     "upload": "node packages/ui/scripts/collector.js",
-    "version": "lerna version"
+    "version:expo": "lerna version major",
+    "version:major": "lerna version minor",
+    "version:minor": "lerna version patch"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",

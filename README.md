@@ -23,9 +23,21 @@ themes directly into the Draftbit platform
 
 ## Contributing
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the
-repository and the development workflow.
+Quickstart:
 
+```console
+$ git clone https://github.com/draftbit/react-native-jigsaw && cd react-native-jigsaw
+$ yarn
+$ yarn examples start
+# Open example project in ios/web/android using metro bundler that opens in
+# your browser
+```
+
+Any changes in the `packages/ui` project typescript files should be
+automatically picked up by the bundler and reflected in the example application.
+
+Please read the [contributing guide](CONTRIBUTING.md) before making
+a pull-request and to understand the full development flow
 
 ## License
 

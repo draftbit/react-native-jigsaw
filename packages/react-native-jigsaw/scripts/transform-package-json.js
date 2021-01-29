@@ -9,7 +9,24 @@ const packageJson = require("../package.json");
 const ROOT_PATH = path.join(__dirname, "..");
 const COMPONENT_PATH = path.join(ROOT_PATH, "src", "components");
 
-const NULL_REACT_COMPONENT = "export default () => null;";
+const NULL_AUDIO_PLAYER_COMPONENT = `export default () => null;`;
+const NULL_ICON_COMPONENT = `
+// @ts-nocheck
+import { ViewProps, StyleProp, ImageStyle } from "react-native";
+
+type Props = {
+  name: string | number | { uri: string };
+  color?: string;
+  size: number;
+  style?: StyleProp<ImageStyle>;
+} & ViewProps;
+
+const Icon: React.FC<Props> = ({ _name, _color, _size, _style }) => {
+  return null;
+};
+
+export default Icon;
+`;
 
 function changePackageName(package, name) {
   return {
@@ -51,8 +68,8 @@ function main() {
   );
 
   /* This overrides Icon and AudioPlayer to be null components on the draftbit/web package */
-  overrideComponents("Icon.tsx", NULL_REACT_COMPONENT);
-  overrideComponents("AudioPlayer.tsx", NULL_REACT_COMPONENT);
+  overrideComponents("Icon.tsx", NULL_ICON_COMPONENT);
+  overrideComponents("AudioPlayer.tsx", NULL_AUDIO_PLAYER_COMPONENT);
 }
 
 main();

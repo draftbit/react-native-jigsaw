@@ -2,7 +2,7 @@
 
 ## Installation
 
-```sh npm install @draftbit/ui ```
+`sh npm install @draftbit/ui `
 
 ## Publishing
 

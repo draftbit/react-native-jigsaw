@@ -1,9 +1,7 @@
 {
   "extends": "../../tsconfig.json",
-  "references": [
-    { "path": "../ui" }
-  ],
-  "compilerOptions":{
+  "references": [{ "path": "../ui" }],
+  "compilerOptions": {
     "outDir": "./lib/typescript"
   }
 }

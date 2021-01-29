@@ -60,7 +60,6 @@ yarn test
 
 ## Adding components
 
-
 ### Primitives (Text, View)
 
 Most of the primitives should already be here. If a component with no actual
@@ -90,6 +89,7 @@ formType: FORM_TYPES.flatArray,
 propType: PROP_TYPES.STRING,
 defaultValue: "highQuality",
 ```
+
 `src/core/component-types.js` will show you the different GROUPS, PROP_TYPES,
 FORM_TYPES, and other fields you might need.
 
@@ -121,14 +121,14 @@ Our pre-commit hooks verify that the linter and tests pass when committing.
 ### Scripts
 
 The `package.json` file for the root package contains various scripts for common
-tasks, and the `scripts/` folder for less-common tasks.  The scripts in the
+tasks, and the `scripts/` folder for less-common tasks. The scripts in the
 individual packages should remain minimal.
 
 ### Sending a pull request
 
 > **Working on your first pull request?** You can learn how from this _free_
 > series: [How to Contribute to an Open Source Project on
-  GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
+> GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
 
 When you're sending a pull request:
 

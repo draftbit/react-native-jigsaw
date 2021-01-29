@@ -6,25 +6,15 @@ const fs = require("fs");
 const path = require("path");
 const packageJson = require("../package.json");
 
-const SRC_PATH = path.join(__dirname, "..");
+const ROOT_PATH = path.join(__dirname, "..");
+const COMPONENT_PATH = path.join(ROOT_PATH, "src", "components");
+
+const NULL_REACT_COMPONENT = "export default () => null;";
 
 function changePackageName(package, name) {
   return {
     ...package,
     name: "@draftbit/" + name,
-  };
-}
-
-function changeEntrypoints(package, entryfile) {
-  /* These replaces ensure that the entrypoint of the package is web.tsx,
-  where we exclude the non-valid web components from the build */
-  return {
-    ...package,
-    "main": package.main.replace("index", entryfile),
-    "module": package.module.replace("index", entryfile),
-    "types": package.types.replace("index", entryfile),
-    "source": package.source.replace("index", entryfile),
-    "react-native": package["react-native"].replace("index", entryfile),
   };
 }
 
@@ -34,27 +24,35 @@ function removeDependency(package, dependencyName) {
   return duplicatedPak;
 }
 
+function overrideFile(path, content) {
+  fs.writeFileSync(path, content, { encoding: "utf8", flag: "w" });
+}
+
+function overrideComponents(name, content) {
+  return overrideFile(path.join(COMPONENT_PATH, name), content);
+}
+
 function main() {
   const packageWithChangedName = changePackageName(packageJson, "web");
-  const packageWithEntrypoints = changeEntrypoints(
-    packageWithChangedName,
-    "web"
-  );
   const pakWithoutIcons = removeDependency(
-    packageWithEntrypoints,
+    packageWithChangedName,
     "@expo/vector-icons"
   );
   const draftbitWeb = removeDependency(pakWithoutIcons, "expo-av");
   console.log("@draftbit/web package.json:");
   console.log(draftbitWeb);
 
-  const newPackageJson = path.join(SRC_PATH, "package.json");
+  const newPackageJson = path.join(ROOT_PATH, "package.json");
 
   fs.writeFileSync(
     newPackageJson,
     JSON.stringify(draftbitWeb, null, 2),
     "utf-8"
   );
+
+  /* This overrides Icon and AudioPlayer to be null components on the draftbit/web package */
+  overrideComponents("Icon.tsx", NULL_REACT_COMPONENT);
+  overrideComponents("AudioPlayer.tsx", NULL_REACT_COMPONENT);
 }
 
 main();

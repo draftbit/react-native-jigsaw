@@ -22,10 +22,10 @@
     "typescript": "tsc --noEmit --composite false",
     "test": "jest",
     "prerelease": "lerna run clean",
-    "release": "lerna publish",
+    "release": "# lerna publish",
     "example": "yarn --cwd example",
     "pretty": "prettier --write .",
-    "upload-component-defs": "node scripts/collector.js"
+    "upload": "node packages/ui/scripts/collector.js"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",

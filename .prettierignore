@@ -8,3 +8,8 @@ web-report/
 .expo/
 .yarn/
 .vscode/
+
+# Logs
+completed.json
+errors.json
+components.json

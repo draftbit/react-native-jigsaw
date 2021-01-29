@@ -1,5 +1,9 @@
 # react-native-jigsaw
 
+## Installation
+
+```sh npm install @draftbit/ui ```
+
 ## Publishing
 
 After your last commit, run `npm version`. Probably minor or patch. We only run major for major Expo releases.

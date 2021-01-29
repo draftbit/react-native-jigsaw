@@ -20,7 +20,6 @@
   "scripts": {
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "typescript": "tsc --noEmit --composite false",
-    "wtf": "tsc --version",
     "test": "jest",
     "prerelease": "lerna run clean",
     "release": "lerna publish",

@@ -40,7 +40,7 @@ jobs:
         run: yarn test
 
       - name: Build
-        run: lerna prepare
+        run: yarn lerna prepare
 
       - name: Test collector script
         working-directory: packages/ui

@@ -1,7 +1,7 @@
 {
   "name": "@draftbit/web",
   "description": "Draftbit UI Library for React Native Web",
-  "version": "40.4.0",
+  "version": "40.5.1",
   "keywords": [
     "react-native",
     "ios",
@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw/packages/web#readme",
   "dependencies": {
-    "@draftbit/ui": "40.5.0"
+    "@draftbit/ui": "next"
   },
   "devDependencies": {
     "@date-io/date-fns": "^1.3.13",

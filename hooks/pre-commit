@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-set -ex
-(cd packages/react-native-jigsaw && yarn lint-staged)

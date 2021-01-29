@@ -24,8 +24,7 @@
     "prerelease": "lerna run clean",
     "release": "lerna publish",
     "example": "yarn --cwd example",
-    "set-up-hooks": "mkdir -p ../.git/hooks && cp -v ../../hooks/* ../../.git/hooks",
-    "format": "git diff --relative --name-only | rg '.*.(tsx|ts|js|json|mdd)$' | xargs yarn prettier --write",
+    "pretty": "prettier --write .",
     "upload-component-defs": "node scripts/collector.js"
   },
   "devDependencies": {
@@ -50,7 +49,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "yarn lint && yarn typescript && yarn test"
+      "pre-commit": "yarn lint && yarn typescript && yarn test && yarn pretty --check"
     }
   },
   "jest": {

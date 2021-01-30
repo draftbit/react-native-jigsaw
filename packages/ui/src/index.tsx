@@ -1,3 +1,7 @@
+/**
+ * If you're adding a new component, remember to also re-export it from
+ * @draftbit/web
+ */
 export { withTheme, ThemeProvider } from "./core/theming";
 export { default as Provider } from "./core/Provider";
 export { default as DefaultTheme } from "./styles/DefaultTheme";

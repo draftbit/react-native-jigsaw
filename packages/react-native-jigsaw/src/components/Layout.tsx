@@ -11,8 +11,8 @@ import {
 } from "../core/component-types";
 
 export function Center({
-  width,
-  height,
+  width = 120,
+  height = 80,
   children,
   bgColor,
   style,
@@ -42,7 +42,7 @@ export function Center({
 }
 
 export function Circle({
-  size,
+  size = 50,
   bgColor,
   children,
 }: {
@@ -64,7 +64,7 @@ export function Circle({
 }
 
 export function Square({
-  size,
+  size = 50,
   bgColor,
   children,
 }: {
@@ -102,10 +102,10 @@ export function Row({
 }
 
 export function Space({
-  top,
-  right,
-  bottom,
-  left,
+  top = 8,
+  right = 8,
+  bottom = 8,
+  left = 8,
   children,
 }: {
   top?: number;
@@ -130,8 +130,8 @@ export function Space({
 
 export function Stack({
   children,
-  justifyContent,
-  alignItems,
+  justifyContent = "flex-start",
+  alignItems = "flex-start",
 }: {
   justifyContent: ViewStyleProp.justifyContent;
   alignItems: ViewStyleProp.alignItems;
@@ -179,7 +179,7 @@ export const SEED_DATA = [
         formType: FORM_TYPES.number,
         propType: PROP_TYPES.NUMBER,
         group: GROUPS.basic,
-        defaultValue: 0,
+        defaultValue: 8,
         editable: true,
         required: false,
       },
@@ -189,7 +189,7 @@ export const SEED_DATA = [
         formType: FORM_TYPES.number,
         propType: PROP_TYPES.NUMBER,
         group: GROUPS.basic,
-        defaultValue: 0,
+        defaultValue: 8,
         editable: true,
         required: false,
       },
@@ -199,7 +199,7 @@ export const SEED_DATA = [
         formType: FORM_TYPES.number,
         propType: PROP_TYPES.NUMBER,
         group: GROUPS.basic,
-        defaultValue: 0,
+        defaultValue: 8,
         editable: true,
         required: false,
       },
@@ -209,7 +209,7 @@ export const SEED_DATA = [
         formType: FORM_TYPES.number,
         propType: PROP_TYPES.NUMBER,
         group: GROUPS.basic,
-        defaultValue: 0,
+        defaultValue: 8,
         editable: true,
         required: false,
       },
@@ -251,7 +251,7 @@ export const SEED_DATA = [
         formType: FORM_TYPES.number,
         propType: PROP_TYPES.NUMBER,
         group: GROUPS.basic,
-        defaultValue: 50,
+        defaultValue: 120,
         editable: true,
         required: false,
       },
@@ -261,9 +261,19 @@ export const SEED_DATA = [
         formType: FORM_TYPES.number,
         propType: PROP_TYPES.NUMBER,
         group: GROUPS.basic,
-        defaultValue: 50,
+        defaultValue: 80,
         editable: true,
         required: false,
+      },
+      bgColor: {
+        label: "Background Color",
+        description: "Background color",
+        formType: FORM_TYPES.color,
+        propType: PROP_TYPES.THEME,
+        editable: true,
+        required: false,
+        defaultValue: "light",
+        group: GROUPS.basic,
       },
     },
   },
@@ -289,7 +299,7 @@ export const SEED_DATA = [
         propType: PROP_TYPES.THEME,
         editable: true,
         required: false,
-        defaultValue: null,
+        defaultValue: "light",
         group: GROUPS.basic,
       },
     },
@@ -316,7 +326,7 @@ export const SEED_DATA = [
         propType: PROP_TYPES.THEME,
         editable: true,
         required: false,
-        defaultValue: null,
+        defaultValue: "light",
         group: GROUPS.basic,
       },
     },

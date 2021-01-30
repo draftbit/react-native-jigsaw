@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw/packages/web#readme",
   "dependencies": {
-    "@draftbit/ui": "next"
+    "@draftbit/ui": "40.5.1"
   },
   "devDependencies": {
     "@date-io/date-fns": "^1.3.13",

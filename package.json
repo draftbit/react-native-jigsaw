@@ -30,9 +30,10 @@
     "pretty": "prettier --write .",
     "upload:run": "node packages/ui/scripts/collector.js",
     "upload:test": "bash ./scripts/test-collector.bash",
-    "version:expo": "lerna version major",
-    "version:major": "lerna version minor",
-    "version:minor": "lerna version patch"
+    "version:expo": "lerna version major --no-push",
+    "version:major": "lerna version minor --no-push",
+    "version:minor": "lerna version patch --no-push",
+    "version:patch": "echo \"No patch versions: See root README.md\""
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",

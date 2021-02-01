@@ -4,7 +4,6 @@
   "version": "0.0.0-this-is-not-publishable",
   "description": "Root package.json for workspaces",
   "scripts": {
-    "collector": "node packages/react-native-jigsaw/scripts/collector.js",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "postinstall": "expo-yarn-workspaces check-workspace-dependencies"
   },

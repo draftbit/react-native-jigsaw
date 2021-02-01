@@ -5,5 +5,8 @@ sleep 2;
 echo "Testing...."
 node scripts/collector.js;
 kill $JSON_SERVER_PID;
-[[ $(jq '.components | length' mock-backend.json) > 0 ]] || exit 1;
-
+if [[ $(jq '.components | length' mock-backend.json) > 0 ]]; then
+  git checkout mock-backend.json;
+else
+  exit 1;
+fi

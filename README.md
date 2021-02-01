@@ -26,9 +26,9 @@ a pull-request and to understand the full development flow
 ## Linking
 
 If you want to dynamically link these packages into a project using `yarn link`,
-you work at Draftbit , make sure to run `yarn build` from the
-root folder so that lerna can properly cross link everything, then `yarn link`
-from the particular package directory (not the root!) you are interested in.
+make sure to run `yarn build` from the root folder so that lerna can properly
+cross link everything, then `yarn link` from the particular package directory
+(not the root!) you are interested in.
 
 ## Publishing
 

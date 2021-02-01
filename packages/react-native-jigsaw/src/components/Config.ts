@@ -1,4 +1,4 @@
-import { Dimensions } from "react-native";
+import { Dimensions, Platform } from "react-native";
 
 const getWindowDimensions = () => {
   const { width, height } = Dimensions.get("window");
@@ -32,6 +32,10 @@ const buildImageUrl = (
   ].join("/");
 };
 
+const getExtension = () => {
+  return Platform.OS === "web" ? ".svg" : ".png";
+};
+
 export default {
   windowWidth,
   windowHeight,
@@ -45,12 +49,12 @@ export default {
   avatarImageSize: 60,
   cardImageSize: 200,
   cardImageUrl:
-    "https://res.cloudinary.com/altos/image/upload/w_400,f_auto,c_scale/draftbit/components/Image.png",
+    "https://static.draftbit.com/images/placeholder-image" + getExtension(),
   cardIconSize: 16,
   cardIconBackgroundOpacity: 0.24,
   cardIconElevation: 1,
   placeholderImageURL:
-    "https://res.cloudinary.com/altos/image/upload/v1552677596/draftbit/Jigsaw/image-placeholder_1.png",
+    "https://static.draftbit.com/images/placeholder-image" + getExtension(),
   getPlaceholderImageUrl: (size: { width: number; height: number }) =>
     buildImageUrl(
       { width: size.width, height: size.height },

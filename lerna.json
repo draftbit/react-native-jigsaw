@@ -5,7 +5,9 @@
   "packages": ["packages/*", "example"],
   "command": {
     "publish": {
-      "ignoreChanges": ["**/example/**", "**/*.md"]
+      "npmClient": "npm",
+      "ignoreChanges": ["**/example/**", "**/*.md"],
+      "message:": "chore: publish"
     }
   }
 }

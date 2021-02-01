@@ -18,6 +18,8 @@
   },
   "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
   "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "crosslink": "lerna link",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "typescript": "tsc --noEmit --composite false",
     "test": "jest",

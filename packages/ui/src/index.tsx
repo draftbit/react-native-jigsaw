@@ -64,6 +64,7 @@ import {
 } from "@draftbit/core";
 
 import { Icon } from "@draftbit/native";
+export { Icon };
 
 export const IconButton = injectIcon(BaseIconButton, Icon);
 export const FAB = injectIcon(BaseFab, Icon);
@@ -90,7 +91,7 @@ export const RowBodyCheckbox = injectIcon(BaseRowBodyCheckbox, Icon);
 export const CardContainerRating = injectIcon(BaseCardContainerRating, Icon);
 export const FieldCheckbox = injectIcon(BaseFieldCheckbox, Icon);
 export const CardContainer = injectIcon(BaseCardContainer, Icon);
-export const PickerComponent = injectIcon(BasePickerComponent, Icon);
+export const Picker = injectIcon(BasePickerComponent, Icon);
 export const FieldRadioButton = injectIcon(BaseFieldRadioButton, Icon);
 export const RadioButtonFieldRow = injectIcon(BaseRadioButtonFieldRow, Icon);
 export const HeaderOverline = injectIcon(BaseHeaderOverline, Icon);

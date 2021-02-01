@@ -1,4 +1,5 @@
-export { IconI, injectIcon } from "./interfaces/Icon";
+export { injectIcon } from "./interfaces/Icon";
+export type { IconI } from "./interfaces/Icon";
 
 export { withTheme, ThemeProvider } from "./theming";
 export { default as Provider } from "./Provider";

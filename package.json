@@ -28,7 +28,7 @@
     "release": "# lerna publish",
     "example": "yarn --cwd example",
     "pretty": "prettier --write .",
-    "upload:run": "node packages/ui/scripts/collector.js",
+    "upload:run": "node ./scripts/collector.js",
     "upload:test": "bash ./scripts/test-collector.bash",
     "version:expo": "lerna version major --no-push",
     "version:major": "lerna version minor --no-push",
@@ -121,6 +121,5 @@
     "*.{js,ts,tsx,md,scss,css,json}": [
       "prettier --write"
     ]
-  },
-  "version": "40.5.1"
+  }
 }

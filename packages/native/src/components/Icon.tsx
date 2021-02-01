@@ -9,7 +9,7 @@ import {
   PROP_TYPES,
 } from "@draftbit/types";
 
-import type { IconI } from "@draftbit/core";
+import type { IconI } from "@draftbit/core/src/interfaces/Icon";
 
 // This must use require to work in both web as a published project and in Snack
 const VectorIcons = require("@expo/vector-icons");

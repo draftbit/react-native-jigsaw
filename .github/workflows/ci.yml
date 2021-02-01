@@ -31,22 +31,21 @@ jobs:
         run: yarn install --frozen-lockfile
 
       # - name: Type Check
-        # run: yarn typescript
-#
+      # run: yarn typescript
+      #
       # - name: Lint
-        # run: yarn lint && yarn prettier --check .
-#
+      # run: yarn lint && yarn prettier --check .
+      #
       # - name: Test Files
-        # run: yarn test
-#
+      # run: yarn test
+      #
       # - name: Test Collector
-        # run: yarn upload:test
-#
+      # run: yarn upload:test
+      #
       # - name: Build
-        # run: yarn build
+      # run: yarn build
 
       - name: Release next packages
-        working-directory: packages/ui
         if: github.event_name == 'pull_request'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
@@ -55,6 +54,8 @@ jobs:
           npm whoami
           npm doctor
           npm config list
+          cat .npmrc || exit 0
+          cat ~/.npmrc || exit 0
           # Publishes pre-release versions of any changed packages
           yarn lerna publish --dist-tag next --canary --yes
 

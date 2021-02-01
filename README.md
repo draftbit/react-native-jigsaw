@@ -1,27 +1,68 @@
-# @draftbit/core
+# react-native-jigsaw
 
-This module contains all non-native components used by @draftbit/ui.
+This is a monorepository containing the packages comprising `@draftbit/ui`,
+[Draftbit's](https://draftbit.com) component library used inside our Builder.
 
-You should look @ `@draftbit/ui` if you are just looking to use these components
-in your own projects.
-
-This module is consumed by the `ui` or `web` modules, which inject environment
-specific dependencies and re-export the components with those dependencies
-included.
-
-It is possible, but not advised, to directly consume components from this module
-in your own projects. You will have to inject your own compatible dependencies.
+See [the `ui` package readme](./packages/ui#readme) for details.
 
 ## Contributing
 
-If you're looking to contribute to components in `@draftbit/ui` this is usually
-the module you're looking for. Checkout [@draftbit/native](../native/) if you
-need to add a module with a native dependency, please open a PR to discuss. It's
-possible! There's just some gotcha's we should talk through before you start.
+Quickstart:
 
-## Note on Dependencies
+```console
+$ git clone https://github.com/draftbit/react-native-jigsaw && cd react-native-jigsaw
+$ yarn install
+$ yarn examples start
+# Open example project in ios/web/android using metro bundler your browser
+# Edit files in `packages/core` or `packages/native`
+```
 
-`@draftbit/native` can (and should) depend on this module when composing
-components to create higher-order functionality, and to share interfaces. This
-module should _never_ depend on `@draftbit/native`, directly or otherwise, as
-that will break non-Expo toolchains that expect to be able use `@draftbit/web`.
+Any changes in the `packages/` typescript files should be automatically picked
+up by the Metro bundler and reflected in the example application.
+
+Please read the [contributing guide](CONTRIBUTING.md) before making
+a pull-request and to understand the full development flow
+
+## Linking
+
+If you want to dynamically link these packages into a project using `yarn link`,
+you work at Draftbit , make sure to run `yarn build` from the
+root folder so that lerna can properly cross link everything, then `yarn link`
+from the particular package directory (not the root!) you are interested in.
+
+## Publishing
+
+Pre-Release:
+
+- Every pull request will cause a prerelease version to be published on npm.
+  You can use these versions to test you changes without having to worry about
+  linking packages.
+
+Release Process:
+
+- We release master, meaning a pull-request containing substantive changes
+  should not alter any version information.
+
+- When master is ready for release, create a new branch and run a `yarn version:XXXX` command from the root, as appropriate. Lerna will update all
+  the package.json files with the next version, and create and tag a commit.
+
+  - **NOTE:** We follow a modified semver: EXPO_VERSION.MAJOR.MINOR.
+
+- Push the branch and tag to github, and open a pull-request for the new
+  version.
+
+- When the pull-request is approved and merged to master, a github action
+  & lerna will automatically publish all packages to npm with the new version.
+
+- If auto-publication fails, say because npm is down, contributors can also run
+  `yarn lerna publish from-package` from an up-to-date master branch. Lerna
+  will automatically inspect the registry and the versions on master and
+  publish only the appropriate packages.
+
+## Plug
+
+Sound cool? [We're hiring!](https://draftbit.com/jobs).
+
+## License
+
+MIT

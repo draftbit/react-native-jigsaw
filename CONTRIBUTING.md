@@ -3,41 +3,41 @@
 We want this community to be friendly and respectful to each other. Please
 follow it in all your interactions with the project.
 
+The project uses a monorepo structure for the packages managed by yarn
+workspaces and [lerna](https://github.com/lerna/lerna). This helps us separate
+components with native dependencies that cannot build for web
+(`packages/native`) from those that can (`packages/core`), a feature which helps
+us power our incredible builder experience at [draftbit.com](draftbit.com).
+
+However, most users of this library will only ever consume the `ui` package,
+which injects native dependencies into `core` and is ready for use powering apps
+created in Draftbit's builder, or hand coded by you.
+
 ## Development workflow
 
-The project uses a monorepo structure for the packages managed by yarn
-workspaces and lerna. To get started with the project, run yarn in the root
-directory to install the required dependencies for each package:
+To get started with the project and install dependencies in each package, run:
 
 ```sh
-yarn
+yarn install
 ```
 
-While developing, you can run the [example app](/example/) to test your changes.
-
-To start the packager:
+The monorepository will have linked together all the packages, so you just get
+started. The recommended work flow after installation is to open the demo app:
 
 ```sh
 yarn example start
 ```
 
-To run the example app on Android:
+Which will launch the Expo Metro bundler in your browser. Follow the
+instructions in Metro to open the example with your phone in the Expo App
+or as a web app in browser.
 
-```sh
-yarn example android
-```
+Try making a change in the `core` or `native` packages and preview the change
+in the example App. Metro should have picked up the change automatically,
+rebuilt, and the example should reflect your change.
 
-To run the example app on iOS:
-
-```sh
-yarn example ios
-```
-
-To run the example app on Web:
-
-```sh
-yarn example web
-```
+For any change related to tooling or repository structure, we suggest opening
+a PR first, so we can discuss.
 
 Make sure your code passes TypeScript and ESLint. Run the following to verify:
 
@@ -63,13 +63,17 @@ yarn test
 ### Primitives (Text, View)
 
 Most of the primitives should already be here. If a component with no actual
-logic needs to be added, you can add that into `src/mappings` (see that folder
-for an example)
+logic needs to be added, you can add that into `packages/core/src/mappings` (see
+that folder for an example)
 
 ### New Components
 
-All components live inside the `packages/ui/components` folder. Add your
-component, add the required `SEED_DATA` and you should be good to go!
+All components live inside the `src/components` folder of the `native` or
+`core` packages. Add your component, add the required `SEED_DATA` and you should
+be good to go!
+
+_Don't forget to re-export any new component from the `ui` package_, which
+consolidates the two kinds of components for consumption.
 
 ## Seed Data
 
@@ -80,8 +84,7 @@ on this format:
 group: GROUPS.advanced,
 name: "textBreakStrategy",
 label: "textBreakStrategy",
-description:
-"Set text break strategy on Android API Level 23+, possible values are simple, highQuality, balanced The default value is highQuality.",
+description: "Set text break strategy on Android API Level 23+, possible values are simple, highQuality, balanced The default value is highQuality.",
 options: ["simple", "highQuality", "balanced"],
 editable: true,
 required: false,
@@ -90,8 +93,8 @@ propType: PROP_TYPES.STRING,
 defaultValue: "highQuality",
 ```
 
-`src/core/component-types.js` will show you the different GROUPS, PROP_TYPES,
-FORM_TYPES, and other fields you might need.
+`packages/types/src/component-types.js` will show you the different GROUPS,
+PROP_TYPES, FORM_TYPES, and other fields you might need.
 
 ### Commit message convention
 

@@ -15,6 +15,7 @@ import {
   PROP_TYPES,
 } from "@draftbit/types";
 import themeT from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
 
 type Props = {
   icon?: string;
@@ -26,17 +27,16 @@ type Props = {
   onPress: () => void;
   theme: typeof themeT;
   style?: StyleProp<ViewStyle>;
-  Icon: React.ComponentType<any>;
-};
+} & IconSlot;
 
 const IconButton: React.FC<Props> = ({
+  Icon,
   icon,
   color: customColor,
   size = 32,
   accessibilityLabel,
   disabled = false,
   loading = false,
-  Icon,
   onPress,
   theme,
   style,

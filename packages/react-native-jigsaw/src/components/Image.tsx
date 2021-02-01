@@ -70,7 +70,7 @@ export const SEED_DATA = {
       required: true,
       formType: FORM_TYPES.localImage,
       propType: PROP_TYPES.ASSET,
-      defaultValue: null,
+      defaultValue: "https://static.draftbit.com/images/placeholder-image.svg",
     },
     resizeMode: {
       group: GROUPS.basic,

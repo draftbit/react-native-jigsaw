@@ -50,12 +50,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         run: |
-          npm config set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
-          npm whoami
-          npm doctor
-          npm config list
-          cat .npmrc || echo "no .npmrc"
-          cat ~/.npmrc || echo "no ~/.npmrc"
           # Publishes pre-release versions of any changed packages
           yarn lerna publish --dist-tag next --canary --yes
 

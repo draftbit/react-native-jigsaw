@@ -7,7 +7,7 @@ const IDENTIFIERS = {
     replace: "const",
   },
   cloudinaryUrl: {
-    match: /\{CLOUDINARY_URL\}/,
+    match: /\{CLOUDINARY_URL\}/g,
     replace:
       "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps",
   },

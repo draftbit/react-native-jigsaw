@@ -65,5 +65,11 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         run: |
-          # Only publishes when finding a new `lerna version`
-          yarn lerna publish from-git --yes
+          # Only publishes when finding a new `lerna version` was pushed to
+          # the branch. But for purposes of _this_ action, that means master.
+          # You have to manually run lerna version locally and get that PR
+          # merged before this does anything.
+          yarn lerna publish from-git \
+            --ignore-scripts \
+            --yes \
+            --no-verify-access

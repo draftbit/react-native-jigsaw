@@ -53,8 +53,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         run: |
           # Publishes pre-release versions of any changed packages
-          yarn lerna publish from-git \
+          yarn lerna publish \
             --dist-tag next \
+            --ignore-scripts \
             --canary \
             --yes \
             --no-verify-access

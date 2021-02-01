@@ -1,7 +1,7 @@
 {
-  "name": "@draftbit/ui",
+  "name": "@draftbit/native",
   "version": "40.5.1",
-  "description": "Draftbit UI Library",
+  "description": "Draftbit UI Components that Depend on Native Components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
   "types": "lib/typescript/src/index.d.ts",
@@ -9,11 +9,7 @@
   "source": "src/index.tsx",
   "files": [
     "src",
-    "lib",
-    "android",
-    "ios",
-    "cpp",
-    "draftbit-ui.podspec"
+    "lib"
   ],
   "scripts": {
     "prepare": "bob build",
@@ -22,7 +18,6 @@
   "keywords": [
     "react-native",
     "ios",
-    "draftbit",
     "android"
   ],
   "publishConfig": {
@@ -31,7 +26,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/draftbit/react-native-jigsaw",
-    "directory": "packages/ui"
+    "directory": "packages/native"
   },
   "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
   "license": "MIT",
@@ -41,16 +36,22 @@
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
     "@draftbit/core": "40.5.1",
-    "@draftbit/native": "40.5.1"
+    "@draftbit/types": "40.5.1",
+    "@expo/vector-icons": "^12.0.2",
+    "@react-native-community/slider": "~3.0.3",
+    "expo-av": "^8.7.0"
   },
   "devDependencies": {
-    "utility-types": "^3.0.0",
+    "@react-native-community/bob": "^0.16.2",
+    "@types/react": "^16.9.36",
+    "@types/react-native": "^0.63.40",
     "react": "16.13.1",
     "react-native": "~0.63.2",
     "rimraf": "^3.0.2",
     "typescript": "4.0.3"
   },
   "peerDependencies": {
+    "@expo/vector-icons": "^12.0.2",
     "react": "*",
     "react-native": "*"
   },

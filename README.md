@@ -1,44 +1,27 @@
-# react-native-jigsaw
+# @draftbit/core
 
-[Draftbit's](https://draftbit.com) component library used inside our Builder.
-It's based on [React Native
-Paper](https://github.com/callstack/react-native-paper) but allows us to extend
-and empower our users with more features ⚡️
+This module contains all non-native components used by @draftbit/ui.
 
-## Differences between React Native Paper and Jigsaw
+You should look @ `@draftbit/ui` if you are just looking to use these components
+in your own projects.
 
-- Embedded themes. Jigsaw has a very robust theming system that is directly
-  integrated into our builder. React Native Paper is based on Material Design
-  where ours is more generalized for both iOS and Android. That doesn't make it
-  any better or worse, it just means ours is directly integrated into our
-  product and by controlling the library we can make changes as often as we need
+This module is consumed by the `ui` or `web` modules, which inject environment
+specific dependencies and re-export the components with those dependencies
+included.
 
-- Different components & use cases. React Native Paper is really great for
-  building Material-style apps where we use Jigsaw to build any type of app.
-  You'll find a different series of components for different use cases.
-
-We love React Native Paper and even plan on supporting it one day as a different
-component library, Jigsaw just allows us to deeply embed components, props,
-themes directly into the Draftbit platform
+It is possible, but not advised, to directly consume components from this module
+in your own projects. You will have to inject your own compatible dependencies.
 
 ## Contributing
 
-Quickstart:
+If you're looking to contribute to components in `@draftbit/ui` this is usually
+the module you're looking for. Checkout [@draftbit/native](../native/) if you
+need to add a module with a native dependency, please open a PR to discuss. It's
+possible! There's just some gotcha's we should talk through before you start.
 
-```console
-$ git clone https://github.com/draftbit/react-native-jigsaw && cd react-native-jigsaw
-$ yarn
-$ yarn examples start
-# Open example project in ios/web/android using metro bundler that opens in
-# your browser
-```
+## Note on Dependencies
 
-Any changes in the `packages/ui` project typescript files should be
-automatically picked up by the bundler and reflected in the example application.
-
-Please read the [contributing guide](CONTRIBUTING.md) before making
-a pull-request and to understand the full development flow
-
-## License
-
-MIT
+`@draftbit/native` can (and should) depend on this module when composing
+components to create higher-order functionality, and to share interfaces. This
+module should _never_ depend on `@draftbit/native`, directly or otherwise, as
+that will break non-Expo toolchains that expect to be able use `@draftbit/web`.

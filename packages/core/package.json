@@ -1,7 +1,7 @@
 {
-  "name": "@draftbit/ui",
+  "name": "@draftbit/core",
   "version": "40.5.1",
-  "description": "Draftbit UI Library",
+  "description": "Core (non-native) Components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
   "types": "lib/typescript/src/index.d.ts",
@@ -9,11 +9,7 @@
   "source": "src/index.tsx",
   "files": [
     "src",
-    "lib",
-    "android",
-    "ios",
-    "cpp",
-    "draftbit-ui.podspec"
+    "lib"
   ],
   "scripts": {
     "prepare": "bob build",
@@ -22,7 +18,6 @@
   "keywords": [
     "react-native",
     "ios",
-    "draftbit",
     "android"
   ],
   "publishConfig": {
@@ -31,7 +26,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/draftbit/react-native-jigsaw",
-    "directory": "packages/ui"
+    "directory": "packages/core"
   },
   "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
   "license": "MIT",
@@ -40,19 +35,41 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/core": "40.5.1",
-    "@draftbit/native": "40.5.1"
+    "@draftbit/types": "40.5.1",
+    "@draftbit/react-theme-provider": "^2.1.1",
+    "@date-io/date-fns": "^1.3.13",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/pickers": "^3.2.10",
+    "@react-native-community/slider": "~3.0.3",
+    "color": "^3.1.2",
+    "date-fns": "^2.16.1",
+    "dateformat": "^3.0.3",
+    "react-native-safe-area-context": "3.1.9",
+    "react-native-typography": "^1.4.1"
   },
   "devDependencies": {
-    "utility-types": "^3.0.0",
+    "@react-native-community/bob": "^0.16.2",
+    "@react-native-community/datetimepicker": "~3.0.0",
+    "@react-native-community/picker": "~1.6.6",
+    "@types/color": "^3.0.1",
+    "@types/dateformat": "^3.0.1",
+    "@types/react": "^16.9.36",
+    "@types/react-native": "^0.63.40",
+    "dotenv": "^8.2.0",
+    "glob": "^7.1.6",
     "react": "16.13.1",
+    "react-dom": "16.13.1",
     "react-native": "~0.63.2",
+    "react-native-svg": "~12.1.0",
     "rimraf": "^3.0.2",
     "typescript": "4.0.3"
   },
   "peerDependencies": {
+    "@react-native-community/datetimepicker": "~3.0.0",
+    "@react-native-community/picker": "~1.6.6",
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-svg": "~12.1.0"
   },
   "@react-native-community/bob": {
     "source": "src",

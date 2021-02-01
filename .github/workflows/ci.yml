@@ -54,8 +54,8 @@ jobs:
           npm whoami
           npm doctor
           npm config list
-          cat .npmrc || exit 0
-          cat ~/.npmrc || exit 0
+          cat .npmrc || echo "no .npmrc"
+          cat ~/.npmrc || echo "no ~/.npmrc"
           # Publishes pre-release versions of any changed packages
           yarn lerna publish --dist-tag next --canary --yes
 

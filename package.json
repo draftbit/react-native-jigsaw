@@ -29,7 +29,10 @@
     "example": "yarn --cwd example",
     "pretty": "prettier --write .",
     "upload:run": "node packages/ui/scripts/collector.js",
-    "upload:test": "bash ./scripts/test-collector.bash"
+    "upload:test": "bash ./scripts/test-collector.bash",
+    "version:expo": "lerna version major",
+    "version:major": "lerna version minor",
+    "version:minor": "lerna version patch"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",

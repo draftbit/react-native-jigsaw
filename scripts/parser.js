@@ -1,18 +1,23 @@
 const { promises: fs } = require("fs");
-const path = require("path");
-
-const SRC_PATH = path.join(__dirname, "..", "src");
-const COMPONENT_TYPES_PATH = path.join(SRC_PATH, "core", "component-types.ts");
-const CLOUDINARY_URL =
-  "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps";
+const { COMPONENT_TYPES_PATH } = require("./paths");
 
 const IDENTIFIERS = {
-  es6Export: "export const",
-  commonJsExport: "const",
+  es6Export: {
+    match: /export const/g,
+    replace: "const",
+  },
+  cloudinaryUrl: {
+    match: /\{CLOUDINARY_URL\}/,
+    replace:
+      "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps",
+  },
+  types: {
+    match: /: any\)/g,
+    replace: ")",
+  },
   extraPropsStart: "SEED_DATA_PROPS",
   seedDataStart: "SEED_DATA",
   seedDataEnd: "]",
-  cloudinaryUrl: "{CLOUDINARY_URL}",
 };
 
 async function loadFile(file) {
@@ -20,13 +25,16 @@ async function loadFile(file) {
   return res;
 }
 
-function replaceIdentifiers(file, identifiers) {
-  const regex = new RegExp(IDENTIFIERS.es6Export, "g");
-  file = file.replace(regex, IDENTIFIERS.commonJsExport);
+function replaceIdentifiers(file) {
   file = file.replace(
-    new RegExp(IDENTIFIERS.cloudinaryUrl, "g"),
-    CLOUDINARY_URL
+    IDENTIFIERS.es6Export.match,
+    IDENTIFIERS.es6Export.replace
   );
+  file = file.replace(
+    IDENTIFIERS.cloudinaryUrl.match,
+    IDENTIFIERS.cloudinaryUrl.replace
+  );
+  file = file.replace(IDENTIFIERS.types.match, IDENTIFIERS.types.replace);
   return file;
 }
 
@@ -35,7 +43,8 @@ async function parseFileSeedData(file) {
   const extraPropsExist = file.indexOf(IDENTIFIERS.extraPropsStart) !== -1;
 
   if (lineStart !== -1) {
-    file = replaceIdentifiers(file, IDENTIFIERS);
+    let str;
+    file = replaceIdentifiers(file);
     const lines = file.split("\n");
     const codeStart = lines.findIndex(
       (l) => l.indexOf(IDENTIFIERS.seedDataStart) !== -1
@@ -45,20 +54,19 @@ async function parseFileSeedData(file) {
       const extraPropsStart = lines.findIndex(
         (l) => l.indexOf(IDENTIFIERS.extraPropsStart) !== -1
       );
-      const str = lines.slice(extraPropsStart).join("\n");
+      str = lines.slice(extraPropsStart).join("\n");
     }
 
-    const str = lines.slice(codeStart).join("\n");
+    str = lines.slice(codeStart).join("\n");
     return str;
   }
 
   throw new Error(`${IDENTIFIERS.seedDataStart} not found`);
 }
 
-async function main(filePath) {
-  const typesFile = await loadFile(COMPONENT_TYPES_PATH).then(
-    replaceIdentifiers
-  );
+module.exports = async function parser(filePath) {
+  const typesFileRaw = await loadFile(COMPONENT_TYPES_PATH);
+  const typesFile = replaceIdentifiers(typesFileRaw);
   const componentFile = await loadFile(filePath);
   const parsedComponentFile = await parseFileSeedData(componentFile);
 
@@ -66,13 +74,4 @@ async function main(filePath) {
   // eslint-disable-next-line
   const data = eval(`${combinedFile}\n JSON.stringify(SEED_DATA)`);
   return data;
-}
-
-// if (process.argv[2]) {
-//   main(process.argv[2])
-// } else {
-//   console.log("Pass in a file as an argument")
-//   process.exit(1)
-// }
-
-module.exports = main;
+};

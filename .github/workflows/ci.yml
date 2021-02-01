@@ -36,56 +36,30 @@ jobs:
       - name: Lint
         run: yarn lint && yarn prettier --check .
 
-      - name: Test
+      - name: Test Files
         run: yarn test
+
+      - name: Test Collector
+        run: yarn upload:test
 
       - name: Build
         run: yarn build
 
-      - name: Test collector script
-        working-directory: packages/ui
-        run: |
-          npx json-server --port 3001 mock-backend.json & export JSON_SERVER_PID=$!;
-          sleep 2;
-          node scripts/collector.js;
-          kill $JSON_SERVER_PID;
-          [[ $(jq '.components | length' mock-backend.json) > 0 ]] || exit 1;
-
-      # Avoiding lerna commands in favor of manual process for now
-      - name: Release next /ui package
+      - name: Release next packages
         working-directory: packages/ui
         if: github.event_name == 'pull_request'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         run: |
           npm config set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
-          npm version prerelease --preid rc$(git rev-parse --short HEAD) -no-git-tag-version
-          npm publish --access public --tag next --verbose
+          # Publishes pre-release versions of any changed packages
+          yarn lerna publish --dist-tag next --canary --yes
 
-      - name: Release /ui package
+      - name: Release packages
         if: github.event_name != 'pull_request'
-        working-directory: packages/ui
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         run: |
           npm config set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
-          npm publish --access public
-
-      - name: Release next /web package
-        if: github.event_name == 'pull_request'
-        working-directory: packages/web
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
-        run: |
-          npm config set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
-          npm version prerelease --preid rc$(git rev-parse --short HEAD) -no-git-tag-version
-          npm publish --access public --tag next --verbose
-
-      - name: Release next /web package
-        if: github.event_name != 'pull_request'
-        working-directory: packages/web
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
-        run: |
-          npm config set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
-          npm publish --access public
+          # Only publishes when finding a new `lerna version`
+          yarn lerna publish from-git --yes

@@ -28,10 +28,8 @@
     "release": "# lerna publish",
     "example": "yarn --cwd example",
     "pretty": "prettier --write .",
-    "upload": "node packages/ui/scripts/collector.js",
-    "version:expo": "lerna version major",
-    "version:major": "lerna version minor",
-    "version:minor": "lerna version patch"
+    "upload:run": "node packages/ui/scripts/collector.js",
+    "upload:test": "bash ./scripts/test-collector.bash"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
@@ -44,6 +42,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.2.5",
     "jest": "^26.6.1",
+    "json-server": "^0.16.3",
     "lerna": "^3.22.1",
     "metro-react-native-babel-preset": "^0.65.0",
     "prettier": "^2.0.5",

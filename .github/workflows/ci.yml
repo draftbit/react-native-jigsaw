@@ -57,6 +57,7 @@ jobs:
             --dist-tag next \
             --ignore-scripts \
             --canary \
+            --preid $(git rev-parse --short=6 HEAD) \
             --yes \
             --no-verify-access
 

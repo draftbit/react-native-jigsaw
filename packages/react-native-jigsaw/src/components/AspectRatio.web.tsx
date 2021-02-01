@@ -26,6 +26,7 @@ const AspectRatio: React.FC<Props> = (props) => {
       style.push({ width, height: width * (1 / aspectRatio) });
     }
   }
+
   return (
     <View
       {...props}

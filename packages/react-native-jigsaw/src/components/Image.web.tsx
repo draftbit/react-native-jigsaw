@@ -15,10 +15,12 @@ const Image: React.FC<ImageProps> = ({
   resizeMode = "cover",
   ...props
 }) => {
-  if (style && StyleSheet.flatten(style).aspectRatio) {
+  const flattenedStyles = StyleSheet.flatten(style || {});
+  if (flattenedStyles.aspectRatio) {
     return (
-      <AspectRatio style={style as ImageStyle}>
+      <AspectRatio style={[style, { width: flattenedStyles.width || "100%" }]}>
         <NativeImage
+          {...props}
           style={[
             style,
             {
@@ -33,7 +35,14 @@ const Image: React.FC<ImageProps> = ({
     );
   }
 
-  return <NativeImage source={source as ImageSourcePropType} {...props} />;
+  return (
+    <NativeImage
+      {...props}
+      style={style as ImageStyle}
+      source={source as ImageSourcePropType}
+      resizeMode={resizeMode}
+    />
+  );
 };
 
 export default Image;

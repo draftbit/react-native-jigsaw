@@ -30,28 +30,26 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile
 
-      # - name: Type Check
-      # run: yarn typescript
-      #
-      # - name: Lint
-      # run: yarn lint && yarn prettier --check .
-      #
-      # - name: Test Files
-      # run: yarn test
-      #
-      # - name: Test Collector
-      # run: yarn upload:test
-      #
-      # - name: Build
-      # run: yarn build
+      - name: Type Check
+        run: yarn typescript
+
+      - name: Lint
+        run: yarn lint && yarn prettier --check .
+
+      - name: Test Files
+        run: yarn test
+
+      - name: Test Collector
+        run: yarn upload:test
+
+      - name: Build
+        run: yarn build
 
       - name: Release next packages
         if: github.event_name == 'pull_request'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         run: |
-          echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
-          cat ~/.npmrc
           # Publishes pre-release versions of any changed packages
           yarn lerna publish --dist-tag next --canary --yes --no-verify-access
 
@@ -60,6 +58,5 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         run: |
-          npm config set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
           # Only publishes when finding a new `lerna version`
           yarn lerna publish from-git --yes

@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v2
         with:
@@ -51,7 +53,11 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         run: |
           # Publishes pre-release versions of any changed packages
-          yarn lerna publish --dist-tag next --canary --yes --no-verify-access
+          yarn lerna publish from-git \
+            --dist-tag next \
+            --canary \
+            --yes \
+            --no-verify-access
 
       - name: Release packages
         if: github.event_name != 'pull_request'

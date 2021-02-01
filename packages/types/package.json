@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/types",
-  "version": "40.5.1",
+  "version": "40.5.2",
   "description": "Shared constants and types between native and core components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -34,7 +34,6 @@
     "url": "https://github.com/draftbit/react-native-jigsaw/issues"
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
-  "dependencies": {},
   "devDependencies": {
     "@types/react": "^16.13.0",
     "rimraf": "^3.0.2",

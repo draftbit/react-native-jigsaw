@@ -1,11 +1,17 @@
 {
-  "version": "40.5.1",
+  "version": "40.5.2",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": ["packages/*", "example"],
+  "packages": [
+    "packages/*",
+    "example"
+  ],
   "command": {
     "publish": {
-      "ignoreChanges": ["**/example/**", "**/*.md"]
+      "ignoreChanges": [
+        "**/example/**",
+        "**/*.md"
+      ]
     }
   }
 }

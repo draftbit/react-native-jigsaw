@@ -5,6 +5,9 @@ lib/
 web-build/
 web-report/
 
+# Lerna writes to this file on version updates.
+lerna.json
+
 .expo/
 .yarn/
 .vscode/

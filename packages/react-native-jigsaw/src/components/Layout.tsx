@@ -102,10 +102,10 @@ export function Row({
 }
 
 export function Spacer({
-  top = 8,
-  right = 8,
-  bottom = 8,
-  left = 8,
+  top = 16,
+  right = 16,
+  bottom = 16,
+  left = 16,
   children,
 }: {
   top?: number;
@@ -251,7 +251,7 @@ export const SEED_DATA = [
         formType: FORM_TYPES.number,
         propType: PROP_TYPES.NUMBER,
         group: GROUPS.basic,
-        defaultValue: 120,
+        defaultValue: 240,
         editable: true,
         required: false,
       },
@@ -261,7 +261,7 @@ export const SEED_DATA = [
         formType: FORM_TYPES.number,
         propType: PROP_TYPES.NUMBER,
         group: GROUPS.basic,
-        defaultValue: 80,
+        defaultValue: 120,
         editable: true,
         required: false,
       },

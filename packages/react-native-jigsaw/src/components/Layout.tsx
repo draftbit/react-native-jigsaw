@@ -101,7 +101,7 @@ export function Row({
   );
 }
 
-export function Space({
+export function Spacer({
   top = 8,
   right = 8,
   bottom = 8,
@@ -169,8 +169,8 @@ export const SEED_DATA = [
     },
   },
   {
-    name: "Space",
-    tag: "Space",
+    name: "Spacer",
+    tag: "Spacer",
     category: COMPONENT_TYPES.layout,
     props: {
       top: {

@@ -12,6 +12,7 @@ export const PROP_TYPES = {
 export const GROUPS = {
   accessibility: "accessibility",
   basic: "basic",
+  layout: "layout",
   advanced: "advanced",
   data: "data",
   uncategorized: "uncategorized",

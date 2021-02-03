@@ -33,6 +33,7 @@ import FABExample from "./FABExample";
 import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
 
 import HeaderExample from "./HeaderExample";
+import LayoutExample from "./LayoutExample";
 
 import PickerExample from "./PickerExample";
 
@@ -55,6 +56,7 @@ import {
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const ROUTES = {
+  Layout: LayoutExample,
   Avatar: AvatarExample,
   Icon: IconExample,
   Button: ButtonExample,

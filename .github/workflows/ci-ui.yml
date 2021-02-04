@@ -77,8 +77,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           VERSION=$(npm view @draftbit/ui dist-tags.next);
-          echo $VERSION;
           curl -X POST $URL \
             -H "Content-Type: application/json" \
             -H "Authorization: token $GITHUB_TOKEN" \
-            --data "{ \"body\": \" Published version: $VERSION \" }"
+            --data "{ \"body\": \"Published version: [@draftbit/ui@$VERSION](https://www.npmjs.com/package/@draftbit/ui/v/$VERSION)\" }"

@@ -63,3 +63,14 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         working-directory: packages/react-native-jigsaw
+
+      - name: Add comment to PR
+        env:
+          URL: ${{ github.event.pull_request.comments_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION=$(npm view @draftbit/web dist-tags.next);
+          curl -X POST $URL \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            --data "{ \"body\": \"Published version: [@draftbit/web@$VERSION](https://www.npmjs.com/package/@draftbit/web/v/$VERSION)\" }"

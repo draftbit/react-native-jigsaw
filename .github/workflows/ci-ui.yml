@@ -76,7 +76,8 @@ jobs:
           URL: ${{ github.event.pull_request.comments_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          version=$(npm view @draftbit/ui dist-tags.next)
+          VERSION=$(npm view @draftbit/ui dist-tags.next);
+          echo $VERSION;
           curl -sI -X POST $URL \
             -H "Content-Type: application/json" \
             -H "Authorization: token $GITHUB_TOKEN" \

@@ -52,7 +52,7 @@ jobs:
         working-directory: packages/react-native-jigsaw
 
       - name: Release next NPM package
-        id: release-candidate-version
+        id: release_candidate_version
         if: github.event_name == 'pull_request'
         run: |
           npm config set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
@@ -75,11 +75,11 @@ jobs:
         env:
           URL: ${{ github.event.pull_request.comments_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION: ${{ steps.release-candidate-version }}
+          VERSION: ${{ steps.release_candidate_version }}
         run: |
           curl \
             -X POST \
             $URL \
             -H "Content-Type: application/json" \
             -H "Authorization: token $GITHUB_TOKEN" \
-            --data "{ 'body': 'wat' }"
+            --data '{ "body": "blah blah" }'

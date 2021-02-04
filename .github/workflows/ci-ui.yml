@@ -78,7 +78,7 @@ jobs:
         run: |
           VERSION=$(npm view @draftbit/ui dist-tags.next);
           echo $VERSION;
-          curl -sI -X POST $URL \
+          curl -X POST $URL \
             -H "Content-Type: application/json" \
             -H "Authorization: token $GITHUB_TOKEN" \
             --data "{ \"body\": \" Published version: $VERSION \" }"

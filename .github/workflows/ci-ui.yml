@@ -52,6 +52,7 @@ jobs:
         working-directory: packages/react-native-jigsaw
 
       - name: Release next NPM package
+        id: release-candidate-version
         if: github.event_name == 'pull_request'
         run: |
           npm config set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
@@ -69,3 +70,11 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         working-directory: packages/react-native-jigsaw
+
+      - name: Comment PR
+        uses: unsplash/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          msg: "${{ steps.release-candidate-version }}"
+          check_for_duplicate_msg: true

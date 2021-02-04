@@ -71,10 +71,14 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         working-directory: packages/react-native-jigsaw
 
-      - name: Comment PR
-        uses: unsplash/comment-on-pr@master
+      - name: Add comment to PR
         env:
+          URL: ${{ github.event.pull_request.comments_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          msg: "${{ steps.release-candidate-version }}"
-          check_for_duplicate_msg: true
+        run: |
+          curl \
+            -X POST \
+            $URL \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            --data '{ "body": "blah blah" }'

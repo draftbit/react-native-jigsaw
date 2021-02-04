@@ -7,8 +7,8 @@ function ProgressExample({ theme }) {
     <Container style={{ backgroundColor: theme.colors.background }}>
       <Section title="ProgressBar">
         <ProgressBar
-          progress={0.5}
-          style={{ height: 8 }}
+          progress={0.9}
+          style={{ height: 10 }}
           borderRadius={4}
           color="#5a45ff"
           unfilledColor="#eee"

@@ -17,7 +17,8 @@
   ],
   "scripts": {
     "prepare": "bob build",
-    "clean": "rimraf lib"
+    "clean": "rimraf lib",
+    "clean:modules": "rimraf node_modules"
   },
   "keywords": [
     "react-native",

@@ -19,5 +19,4 @@ We nohoist the following packages because we found it to be the least
 complicated solution to certain build issues that pop up.
 
 - `react-native-web`
-  - Added as a development dependency to assist resolution for the example
-    app. See `example/webpack.config.js`.
+- `react-native`

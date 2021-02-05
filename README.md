@@ -12,7 +12,7 @@ Quickstart:
 ```sh
 git clone https://github.com/draftbit/react-native-jigsaw && cd react-native-jigsaw
 yarn install
-yarn examples start
+yarn example start
 # Open example project in ios/web/android using metro bundler that opened in
 # your browser
 # Edit files in `packages/core` or `packages/native`

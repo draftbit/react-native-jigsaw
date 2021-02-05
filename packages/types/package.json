@@ -35,12 +35,6 @@
     "url": "https://github.com/draftbit/react-native-jigsaw/issues"
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
-  "dependencies": {},
-  "devDependencies": {
-    "@types/react": "^16.13.0",
-    "rimraf": "^3.0.2",
-    "typescript": "4.0.3"
-  },
   "@react-native-community/bob": {
     "source": "src",
     "output": "lib",
@@ -50,7 +44,8 @@
       [
         "typescript",
         {
-          "project": "tsconfig.build.json"
+          "project": "tsconfig.build.json",
+          "tsc": "../../node_modules/typescript/bin/tsc"
         }
       ]
     ]

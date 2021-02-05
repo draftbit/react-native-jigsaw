@@ -48,23 +48,6 @@
     "react-native-safe-area-context": "3.1.9",
     "react-native-typography": "^1.4.1"
   },
-  "devDependencies": {
-    "@react-native-community/bob": "^0.16.2",
-    "@react-native-community/datetimepicker": "~3.0.0",
-    "@react-native-community/picker": "~1.6.6",
-    "@types/color": "^3.0.1",
-    "@types/dateformat": "^3.0.1",
-    "@types/react": "^16.9.36",
-    "@types/react-native": "^0.63.40",
-    "dotenv": "^8.2.0",
-    "glob": "^7.1.6",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-native": "~0.63.2",
-    "react-native-svg": "~12.1.0",
-    "rimraf": "^3.0.2",
-    "typescript": "4.0.3"
-  },
   "peerDependencies": {
     "@react-native-community/datetimepicker": "~3.0.0",
     "@react-native-community/picker": "~1.6.6",
@@ -81,7 +64,8 @@
       [
         "typescript",
         {
-          "project": "tsconfig.build.json"
+          "project": "tsconfig.build.json",
+          "tsc": "../../node_modules/typescript/bin/tsc"
         }
       ]
     ]

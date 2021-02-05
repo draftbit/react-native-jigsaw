@@ -27,9 +27,30 @@ a pull-request and to understand the full development flow
 ## Linking
 
 If you want to dynamically link these packages into a project using `yarn link`,
-make sure to run `yarn build` from the root folder so that lerna can properly
-cross link everything, then `yarn link` from the particular package directory
-(not the root!) you are interested in.
+make sure to run `yarn watch <packagename>` from the root folder so that lerna
+can properly cross link everything, then `yarn link` from the particular package
+directory (not the root!) you are interested in.
+
+So if using `@draftbit/core` in a create-react-app, this would look like:
+
+```console
+# In react-native-jigsaw/
+$ yarn install
+$ yarn watch core
+
+# In ./packages/core/
+$ yarn link
+
+# In create-react-app project root
+$ <shutdown any running create-react-app dev mode>
+$ yarn add @draftbit/core # only if this is the first time using it
+$ yarn install
+$ yarn link @draftbit/core
+$ yarn start
+```
+
+You should be able to make changes inside `core/`, have nodemon pick them up and
+rebuild, then have create-react-app pick that up and rebuild.
 
 ## Publishing
 
@@ -44,7 +65,8 @@ Release Process:
 - We release master, meaning a pull-request containing substantive changes
   should not alter any version information.
 
-- When master is ready for release, create a new branch and run a `yarn version:XXXX` command from the root, as appropriate. Lerna will update all
+- When master is ready for release, create a new branch and run a `yarn
+  version:XXXX` command from the root, as appropriate. Lerna will update all
   the package.json files with the next version, and create and tag a commit.
 
   - **NOTE:** We follow a modified semver: EXPO_VERSION.MAJOR.MINOR.

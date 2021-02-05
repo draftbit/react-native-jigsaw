@@ -8,8 +8,10 @@
       "example"
     ],
     "nohoist": [
-      "**/packages/**/react-native-web",
-      "/react-native-web/**"
+      "**/react-native",
+      "**/react-native/**",
+      "**/react-native-web",
+      "**/react-native-web/**"
     ]
   },
   "publishConfig": {

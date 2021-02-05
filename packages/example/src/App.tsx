@@ -9,6 +9,7 @@ import {
   StyleSheet,
 } from "react-native";
 import { Provider, DefaultTheme } from "@draftbit/ui";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 
@@ -86,12 +87,20 @@ const ROUTES = {
   TextField: TextFieldExample,
 };
 
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+let customFonts = {
+  "FiraCode": require("./assets/fonts/FiraCode-Bold.otf"),
+  "Testing": require("./assets/fonts/Sriracha-Regular.ttf"),
+  "Inter-SemiBoldItalic":
+    "https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12",
+};
+
+const Drawer = createDrawerNavigator();
 
 function Example({ title, children }) {
   const navigation = useNavigation();
+
   return (
-    <View style={exampleStyles.mainParent}>
+    <SafeAreaView insets={["top", "bottom"]} style={exampleStyles.mainParent}>
       <View style={exampleStyles.headerStyle}>
         <TouchableOpacity
           style={exampleStyles.menuButtonStyle}
@@ -107,70 +116,49 @@ function Example({ title, children }) {
       </View>
 
       <ScrollView>{children}</ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
-let customFonts = {
-  "FiraCode": require("./assets/fonts/FiraCode-Bold.otf"),
-  "Testing": require("./assets/fonts/Sriracha-Regular.ttf"),
-  "Inter-SemiBoldItalic":
-    "https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12",
-};
+function Examples() {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator
+        initialRouteName="Avatar"
+        drawerContentOptions={{
+          activeTintColor: "rgba(90, 69, 255, 1)",
+        }}
+      >
+        {Object.entries(ROUTES).map(([key, Screen]) => {
+          return (
+            <Drawer.Screen key={key} name={key}>
+              {() => (
+                <Example title={key}>
+                  <Screen />
+                </Example>
+              )}
+            </Drawer.Screen>
+          );
+        })}
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+}
 
-const Drawer = createDrawerNavigator();
+export default function App() {
+  const [loaded] = Font.useFonts(customFonts);
 
-export default class App extends React.Component {
-  state = {
-    fontsLoaded: false,
-  };
-
-  async _loadFontsAsync() {
-    await Font.loadAsync(customFonts);
-    this.setState({ fontsLoaded: true });
+  if (!loaded) {
+    return <AppLoading />;
   }
 
-  componentDidMount() {
-    this._loadFontsAsync();
-  }
-
-  render() {
-    if (this.state.fontsLoaded) {
-      return (
-        <Provider theme={DefaultTheme}>
-          <SafeAreaProvider>
-            <SafeAreaView
-              style={{ flex: 1 }}
-              edges={["right", "bottom", "left"]}
-            >
-              <NavigationContainer>
-                <Drawer.Navigator
-                  drawerContentOptions={{
-                    activeTintColor: "rgba(90, 69, 255, 1)",
-                  }}
-                  initialRouteName="Avatar"
-                >
-                  {Object.entries(ROUTES).map(([key, Screen]) => {
-                    return (
-                      <Drawer.Screen key={key} name={key}>
-                        {() => (
-                          <Example title={key}>
-                            <Screen />
-                          </Example>
-                        )}
-                      </Drawer.Screen>
-                    );
-                  })}
-                </Drawer.Navigator>
-              </NavigationContainer>
-            </SafeAreaView>
-          </SafeAreaProvider>
-        </Provider>
-      );
-    } else {
-      return <AppLoading />;
-    }
-  }
+  return (
+    <Provider theme={DefaultTheme}>
+      <SafeAreaProvider>
+        <Examples />
+      </SafeAreaProvider>
+    </Provider>
+  );
 }
 
 const exampleStyles = StyleSheet.create({

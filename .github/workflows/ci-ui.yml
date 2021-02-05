@@ -72,6 +72,7 @@ jobs:
         working-directory: packages/react-native-jigsaw
 
       - name: Add comment to PR
+        if: github.event_name == 'pull_request'
         env:
           URL: ${{ github.event.pull_request.comments_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

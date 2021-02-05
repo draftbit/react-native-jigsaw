@@ -143,7 +143,6 @@ export default class ProgressBar extends Component<Props, State> {
       borderWidth = 1,
       children,
       color = "rgba(0, 122, 255, 1)",
-      height = 6,
       style,
       unfilledColor,
       width = 150,
@@ -161,7 +160,8 @@ export default class ProgressBar extends Component<Props, State> {
     };
     const progressStyle = {
       backgroundColor: color,
-      height,
+      // Always take up full height of container.
+      height: "100%",
       transform: [
         {
           translateX: this.state.animationValue.interpolate({

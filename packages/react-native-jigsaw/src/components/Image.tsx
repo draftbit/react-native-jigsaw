@@ -30,14 +30,6 @@ const generateDimensions = ({ aspectRatio, width, height }: ImageStyleProp) => {
     };
   }
 
-  if (aspectRatio && width && height) {
-    return {
-      aspectRatio,
-      height,
-      width: aspectRatio * height,
-    };
-  }
-
   if (aspectRatio && height) {
     return {
       aspectRatio,

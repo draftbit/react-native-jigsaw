@@ -34,6 +34,8 @@ const Card: React.FC<Props> = ({
     cardStyle = { width: Config.windowWidth - spacing.gutters * 2 };
   }
 
+  console.log("cardStyle", cardStyle);
+
   return (
     <Touchable
       disabled={!onPress}

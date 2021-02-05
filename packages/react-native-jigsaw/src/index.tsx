@@ -8,7 +8,6 @@ export { default as AudioPlayer } from "./components/AudioPlayer";
 
 export { default as Button } from "./components/Button";
 
-export { default as CardBlock } from "./components/CardBlock";
 export { default as CardInline } from "./components/CardInline";
 export { default as CardContainerShortImage } from "./components/CardContainerShortImage";
 export { default as CardContainer } from "./components/CardContainer";

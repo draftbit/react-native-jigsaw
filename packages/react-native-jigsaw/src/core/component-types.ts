@@ -83,6 +83,42 @@ export const createElevationType = (defaultValue) => ({
   defaultValue,
 });
 
+export const createImageType = (options) => ({
+  label: "Image",
+  description: "Image",
+  formType: FORM_TYPES.remoteImage,
+  propType: PROP_TYPES.ASSET,
+  defaultValue: null,
+  editable: true,
+  required: true,
+  group: GROUPS.data,
+  ...options,
+});
+
+export const createAspectRatioImageType = (options) => ({
+  label: "Aspect ratio",
+  description: "Aspect ratio of the image",
+  formType: FORM_TYPES.aspectRatio,
+  propType: PROP_TYPES.NUMBER,
+  defaultValue: 1.5,
+  editable: true,
+  required: false,
+  group: GROUPS.basic,
+  ...options,
+});
+
+export const createTextType = (options) => ({
+  label: "Title",
+  description: "Title text",
+  formType: FORM_TYPES.string,
+  propType: PROP_TYPES.STRING,
+  defaultValue: "Beautiful West Coast Villa",
+  editable: true,
+  required: false,
+  group: GROUPS.data,
+  ...options,
+});
+
 export const createNumColumnsType = (overrides) => ({
   label: "Number of Columns",
   description: "Number of Columns",

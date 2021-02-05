@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import color from "color";
 import Image from "./Image";
-import Card from "./Card";
 import Elevation from "./Elevation";
 import Icon from "./Icon";
 import { withTheme } from "../core/theming";
@@ -77,96 +76,116 @@ const CardContainer: React.FC<Props> = ({
   }
 
   return (
-    <Card style={style} onPress={onPress} numColumns={numColumns} {...rest}>
-      <Elevation style={{ elevation, borderRadius: borderRadius.global }}>
-        <View
-          style={{
-            borderRadius: borderRadius.global,
-            overflow: "hidden",
-            backgroundColor: colors.surface,
-          }}
-        >
-          <Image
-            style={{ aspectRatio }}
-            source={typeof image === "string" ? { uri: image } : image}
-            resizeMode="cover"
-          />
-          <View style={{ padding: spacing.large }}>
-            {title ? (
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: textJustification,
-                }}
-              >
-                <Text
-                  numberOfLines={1}
-                  style={[titleStyle, { color: colors.strong }]}
-                >
-                  {title}
-                </Text>
-              </View>
-            ) : null}
-            {leftDescription ? (
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: textJustification,
-                  alignItems: "center",
-                  marginTop: numColumns === 3 ? spacing.text : spacing.text / 2,
-                }}
-              >
-                <Text
-                  numberOfLines={1}
-                  style={[typography.body2, { color: colors.medium }]}
-                >
-                  {leftDescription}
-                </Text>
-                {rightDescription ? (
-                  <Text
-                    numberOfLines={1}
-                    style={[typography.subtitle2, { color: colors.light }]}
-                  >
-                    {rightDescription}
-                  </Text>
-                ) : null}
-              </View>
-            ) : null}
-          </View>
-          {icon ? (
-            <Elevation
+    <Elevation style={{ elevation, borderRadius: borderRadius.global }}>
+      <View
+        style={{
+          borderRadius: borderRadius.global,
+          overflow: "hidden",
+          backgroundColor: colors.surface,
+        }}
+      >
+        <Image
+          style={{ aspectRatio }}
+          source={typeof image === "string" ? { uri: image } : image}
+          resizeMode="cover"
+        />
+        <View style={{ padding: spacing.large }}>
+          {title ? (
+            <View
               style={{
-                elevation: Config.cardIconElevation,
-                position: "absolute",
-                top: spacing.medium,
-                right: spacing.medium,
-                width: ICON_CONTAINER_SIZE,
-                height: ICON_CONTAINER_SIZE,
-                padding: ICON_CONTAINER_PADDING,
-                borderRadius: ICON_CONTAINER_SIZE,
-                backgroundColor: color(colors.strong)
-                  .alpha(Config.cardIconBackgroundOpacity)
-                  .rgb()
-                  .string(),
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: textJustification,
               }}
             >
-              <Icon
-                name={icon}
-                size={Config.cardIconSize}
-                color={colors.surface}
-              />
-            </Elevation>
+              <Text
+                numberOfLines={1}
+                style={[titleStyle, { color: colors.strong }]}
+              >
+                {title}
+              </Text>
+            </View>
+          ) : null}
+          {leftDescription ? (
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: textJustification,
+                alignItems: "center",
+                marginTop: numColumns === 3 ? spacing.text : spacing.text / 2,
+              }}
+            >
+              <Text
+                numberOfLines={1}
+                style={[typography.body2, { color: colors.medium }]}
+              >
+                {leftDescription}
+              </Text>
+              {rightDescription ? (
+                <Text
+                  numberOfLines={1}
+                  style={[typography.subtitle2, { color: colors.light }]}
+                >
+                  {rightDescription}
+                </Text>
+              ) : null}
+            </View>
           ) : null}
         </View>
-      </Elevation>
-    </Card>
+        {icon ? (
+          <Elevation
+            style={{
+              elevation: Config.cardIconElevation,
+              position: "absolute",
+              top: spacing.medium,
+              right: spacing.medium,
+              width: ICON_CONTAINER_SIZE,
+              height: ICON_CONTAINER_SIZE,
+              padding: ICON_CONTAINER_PADDING,
+              borderRadius: ICON_CONTAINER_SIZE,
+              backgroundColor: color(colors.strong)
+                .alpha(Config.cardIconBackgroundOpacity)
+                .rgb()
+                .string(),
+            }}
+          >
+            <Icon
+              name={icon}
+              size={Config.cardIconSize}
+              color={colors.surface}
+            />
+          </Elevation>
+        ) : null}
+      </View>
+    </Elevation>
   );
 };
 
 export default withTheme(CardContainer);
 
 const SEED_DATA_PROPS = {
+  size: {
+    label: "Size",
+    description: "Small, Medium, Large",
+    formType: FORM_TYPES.flatArray,
+    propType: PROP_TYPES.STRING,
+    options: ["small", "medium", "large"],
+    defaultValue: "large",
+    editable: true,
+    required: true,
+    group: GROUPS.basic,
+  },
+  footerPadding: {
+    label: "Footer Padding",
+    description: "Padding powered by your theme's spacing options",
+    formType: FORM_TYPES.flatArray,
+    propType: PROP_TYPES.STRING,
+    options: ["text", "small", "medium", "large"],
+    defaultValue: "large",
+    editable: true,
+    required: true,
+    group: GROUPS.basic,
+  },
   image: {
     label: "Image",
     description: "Image",
@@ -179,7 +198,7 @@ const SEED_DATA_PROPS = {
   },
   title: {
     label: "Title",
-    description: "Text to display",
+    description: "Title text",
     formType: FORM_TYPES.string,
     propType: PROP_TYPES.STRING,
     defaultValue: "Beautiful West Coast Villa",

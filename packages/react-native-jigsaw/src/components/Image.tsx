@@ -23,6 +23,13 @@ type ImageStyleProp = {
 };
 
 const generateDimensions = ({ aspectRatio, width, height }: ImageStyleProp) => {
+  if (aspectRatio && !width && !height) {
+    return {
+      aspectRatio,
+      width: "100%",
+    };
+  }
+
   if (aspectRatio && width && height) {
     return {
       aspectRatio,

@@ -1,7 +1,6 @@
 import React from "react";
 import { withTheme } from "../core/theming";
 import Touchable from "./Touchable";
-import Config from "./Config";
 import { StyleProp, ViewStyle } from "react-native";
 import theme from "../styles/DefaultTheme";
 
@@ -13,32 +12,30 @@ type Props = {
   theme: typeof theme;
 };
 
+const getWidth = (numColumns: number) => {
+  switch (numColumns) {
+    case 1:
+      return "33%";
+    case 2:
+      return "50%";
+    default:
+      return "100%";
+  }
+};
+
 const Card: React.FC<Props> = ({
   numColumns = 3,
   children,
   onPress,
-  theme: { spacing },
   style,
   ...rest
 }) => {
-  let cardStyle;
-  if (numColumns === 1) {
-    cardStyle = {
-      width: (Config.windowWidth - spacing.gutters * 2 - spacing.small * 2) / 3,
-    };
-  } else if (numColumns === 2) {
-    cardStyle = {
-      width: (Config.windowWidth - spacing.gutters * 2 - spacing.small) / 2,
-    };
-  } else {
-    cardStyle = { width: Config.windowWidth - spacing.gutters * 2 };
-  }
-
+  const width = getWidth(numColumns);
   return (
     <Touchable
       disabled={!onPress}
       onPress={onPress}
-      style={[cardStyle, style]}
+      style={[style, { width }]}
       {...rest}
     >
       {children}

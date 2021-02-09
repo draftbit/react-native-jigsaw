@@ -91,7 +91,11 @@ const CardContainer: React.FC<Props> = ({
             source={typeof image === "string" ? { uri: image } : image}
             resizeMode="cover"
           />
-          <View style={{ padding: spacing.large }}>
+          <View
+            style={{
+              padding: numColumns === 1 ? spacing.small : spacing.large,
+            }}
+          >
             {title ? (
               <View
                 style={{

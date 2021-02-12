@@ -23,7 +23,7 @@ function CardContainerExample({ theme }) {
       {Array.from({ length: 3 }).map((_v, i) => {
         const numColumns = i + 1;
         return (
-          <Section key={i} title={`(${numColumns} Columns 1x1 aspectRatio)`}>
+          <Section key={i} title={`(${numColumns} Columns 1:1 aspectRatio)`}>
             <CardContainer
               image={require("./assets/images/splash.png")}
               title="Beautiful West Coast Villa"
@@ -31,6 +31,22 @@ function CardContainerExample({ theme }) {
               rightDescription="$100"
               numColumns={numColumns}
               aspectRatio={1}
+            />
+          </Section>
+        );
+      })}
+
+      {Array.from({ length: 3 }).map((_v, i) => {
+        const numColumns = i + 1;
+        return (
+          <Section key={i} title={`(${numColumns} Columns 3:2 aspectRatio)`}>
+            <CardContainer
+              image={require("./assets/images/splash.png")}
+              title="Beautiful West Coast Villa"
+              leftDescription="San Diego"
+              rightDescription="$100"
+              numColumns={numColumns}
+              aspectRatio={3 / 2}
             />
           </Section>
         );

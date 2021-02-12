@@ -1,9 +1,10 @@
+/* README: Internal Image component used for stuff like Card. DO NOT EXPORT! */
 import React from "react";
 import {
   Image as NativeImage,
   ImageProps,
   StyleSheet,
-  View,
+  ImageSourcePropType,
 } from "react-native";
 import Config from "./Config";
 import {
@@ -13,37 +14,78 @@ import {
   GROUPS,
 } from "@draftbit/types";
 
+import AspectRatio from "./AspectRatio";
+
+type ImageStyleProp = {
+  width?: number;
+  height?: number;
+  aspectRatio?: number;
+};
+
+const generateDimensions = ({ aspectRatio, width, height }: ImageStyleProp) => {
+  if (aspectRatio && !width && !height) {
+    return {
+      aspectRatio,
+      width: "100%",
+    };
+  }
+
+  if (aspectRatio && height) {
+    return {
+      aspectRatio,
+      height,
+      width: aspectRatio * height,
+    };
+  }
+
+  if (aspectRatio && width) {
+    return {
+      aspectRatio,
+      width,
+      height: width / aspectRatio,
+    };
+  }
+
+  return { width, height };
+};
+
 const Image: React.FC<ImageProps> = ({
   source = Config.placeholderImageURL,
   resizeMode = "cover",
   style,
   ...props
 }) => {
-  return (
-    <>
-      {style &&
-      StyleSheet.flatten(style).aspectRatio &&
-      typeof source !== "string" ? (
-        <View style={[style]}>
-          <NativeImage
-            source={typeof source === "string" ? { uri: source } : source}
-            resizeMode={resizeMode}
-            style={[
-              style,
-              { aspectRatio: undefined },
-              { width: "100%", height: "100%" },
-            ]}
-            {...props}
-          />
-        </View>
-      ) : (
+  const styles = StyleSheet.flatten(style || {});
+  const { aspectRatio, width, height } = generateDimensions(
+    styles as ImageStyleProp
+  );
+
+  if (aspectRatio) {
+    return (
+      <AspectRatio style={[style, { width, height, aspectRatio }]}>
         <NativeImage
-          source={typeof source === "string" ? { uri: source } : source}
-          resizeMode={resizeMode}
           {...props}
+          source={source as ImageSourcePropType}
+          resizeMode={resizeMode}
+          style={[
+            style,
+            {
+              height: "100%",
+              width: "100%",
+            },
+          ]}
         />
-      )}
-    </>
+      </AspectRatio>
+    );
+  }
+
+  return (
+    <NativeImage
+      {...props}
+      source={source as ImageSourcePropType}
+      resizeMode={resizeMode}
+      style={style}
+    />
   );
 };
 
@@ -70,7 +112,7 @@ export const SEED_DATA = {
       required: true,
       formType: FORM_TYPES.localImage,
       propType: PROP_TYPES.ASSET,
-      defaultValue: null,
+      defaultValue: "https://static.draftbit.com/images/placeholder-image.svg",
     },
     resizeMode: {
       group: GROUPS.basic,

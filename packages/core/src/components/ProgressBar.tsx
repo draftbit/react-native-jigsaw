@@ -160,6 +160,7 @@ export default class ProgressBar extends Component<Props, State> {
     };
     const progressStyle = {
       backgroundColor: color,
+      // Always take up full height of container.
       height: "100%",
       transform: [
         {

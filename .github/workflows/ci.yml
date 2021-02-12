@@ -74,3 +74,15 @@ jobs:
             --ignore-scripts \
             --yes \
             --no-verify-access
+
+      - name: Add comment to pull request
+        if: github.event_name == 'pull_request'
+        env:
+          URL: ${{ github.event.pull_request.comments_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION=$(npm view @draftbit/ui dist-tags.next);
+          curl -X POST $URL \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            --data "{ \"body\": \"Published version: [@draftbit/ui@$VERSION](https://www.npmjs.com/package/@draftbit/ui/v/$VERSION)\" }"

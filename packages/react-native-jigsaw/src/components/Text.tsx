@@ -164,7 +164,7 @@ export const SEED_DATA = {
     ellipsizeMode: {
       group: GROUPS.basic,
       name: "ellipsizeMode",
-      label: "ellipsizeMode",
+      label: "Truncate Text?",
       description:
         'When numberOfLines is set, this prop defines how text will be truncated. numberOfLines must be set in conjunction with this prop.This can be one of the following values:\nhead - The line is displayed so that the end fits in the container and the missing text at the beginning of the line is indicated by an ellipsis glyph. e.g., "...wxyz"\nmiddle - The line is displayed so that the beginning and end fit in the container and the missing text in the middle is indicated by an ellipsis glyph. "ab...yz"\ntail - The line is displayed so that the beginning fits in the container and the missing text at the end of the line is indicated by an ellipsis glyph. e.g., "abcd..."\nclip - Lines are not drawn past the edge of the text container.\nThe default is tail.',
       options: ["head", "middle", "tail", "clip"],
@@ -205,7 +205,7 @@ export const SEED_DATA = {
     numberOfLines: {
       group: GROUPS.basic,
       name: "numberOfLines",
-      label: "numberOfLines",
+      label: "Max # of Lines",
       defaultValue: null,
       description:
         "Used to truncate the text with an ellipsis after computing the text layout, including line wrapping, such that the total number of lines does not exceed this number.This prop is commonly used with ellipsizeMode.",
@@ -258,7 +258,7 @@ export const SEED_DATA = {
       description:
         "Set text break strategy on Android API Level 23+, possible values are simple, highQuality, balanced The default value is highQuality.",
       options: ["simple", "highQuality", "balanced"],
-      editable: true,
+      editable: false,
       required: false,
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.STRING,

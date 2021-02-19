@@ -56,12 +56,12 @@ export const SEED_DATA = {
     children: {
       group: GROUPS.data,
       label: "Text",
-      description: "Text for the text",
+      description: "Text",
       editable: true,
       required: true,
       formType: FORM_TYPES.string,
       propType: PROP_TYPES.STRING,
-      defaultValue: "Change me under the Data Panel",
+      defaultValue: "Double click me to edit 👀",
     },
     accessibilityLabel: {
       group: GROUPS.accessibility,
@@ -69,7 +69,7 @@ export const SEED_DATA = {
       label: "accessibilityLabel",
       description:
         "Overrides the text that's read by the screen reader when the user interacts with the element. By default, the label is constructed by traversing all the children and accumulating all the Text nodes separated by space.",
-      editable: true,
+      editable: false,
       required: false,
       formType: FORM_TYPES.string,
       propType: PROP_TYPES.STRING,
@@ -94,7 +94,7 @@ export const SEED_DATA = {
         "imagebutton",
         "adjustable",
       ],
-      editable: true,
+      editable: false,
       required: false,
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.STRING,
@@ -106,7 +106,7 @@ export const SEED_DATA = {
       label: "accessible",
       description:
         "When set to true, indicates that the view is an accessibility element. The default value for a Text element is true.See the Accessibility guide for more information.",
-      editable: true,
+      editable: false,
       required: false,
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
@@ -118,7 +118,7 @@ export const SEED_DATA = {
       label: "adjustsFontSizeToFit",
       description:
         "Specifies whether fonts should be scaled down automatically to fit given style constraints.",
-      editable: true,
+      editable: false,
       required: false,
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
@@ -130,7 +130,7 @@ export const SEED_DATA = {
       label: "allowFontScaling",
       description:
         "Specifies whether fonts should scale to respect Text Size accessibility settings. The default is true.",
-      editable: true,
+      editable: false,
       required: false,
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
@@ -143,7 +143,7 @@ export const SEED_DATA = {
       description:
         "Determines the types of data converted to clickable URLs in the text element. By default no data types are detected.You can provide only one type.Possible values for dataDetectorType are:\n'phoneNumber'\n'link'\n'email'\n'none'\n'all'\n",
       options: ["phoneNumber", "link", "email", "none", "all"],
-      editable: true,
+      editable: false,
       required: false,
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.STRING,
@@ -155,7 +155,7 @@ export const SEED_DATA = {
       label: "disabled",
       description:
         "Specifies the disabled state of the text view for testing purposes",
-      editable: true,
+      editable: false,
       required: false,
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
@@ -180,7 +180,7 @@ export const SEED_DATA = {
       label: "maxFontSizeMultiplier",
       description:
         "Specifies largest possible scale a font can reach when allowFontScaling is enabled. Possible values:\nnull/undefined (default): inherit from the parent node or the global default (0)\n0: no max, ignore parent/global default\n>= 1: sets the maxFontSizeMultiplier of this node to this value\n",
-      editable: true,
+      editable: false,
       required: false,
       formType: FORM_TYPES.number,
       propType: PROP_TYPES.NUMBER,
@@ -192,7 +192,7 @@ export const SEED_DATA = {
       label: "minimumFontScale",
       description:
         "Specifies smallest possible scale a font can reach when adjustsFontSizeToFit is enabled. (values 0.01-1.0).",
-      editable: true,
+      editable: false,
       required: false,
       formType: FORM_TYPES.number,
       propType: PROP_TYPES.NUMBER,
@@ -222,7 +222,7 @@ export const SEED_DATA = {
       label: "selectable",
       description:
         "Lets the user select text, to use the native copy and paste functionality.",
-      editable: true,
+      editable: false,
       required: false,
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
@@ -233,7 +233,7 @@ export const SEED_DATA = {
       name: "selectionColor",
       label: "selectionColor",
       description: "The highlight color of the text.",
-      editable: true,
+      editable: false,
       required: false,
       formType: FORM_TYPES.color,
       propType: PROP_TYPES.THEME,
@@ -245,7 +245,7 @@ export const SEED_DATA = {
       label: "suppressHighlighting",
       description:
         "When true, no visual change is made when text is pressed down. By default, a gray oval highlights the text on press down.",
-      editable: true,
+      editable: false,
       required: false,
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,

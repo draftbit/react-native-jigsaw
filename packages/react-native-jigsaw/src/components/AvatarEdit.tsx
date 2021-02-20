@@ -2,7 +2,7 @@ import * as React from "react";
 import { View, ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
 import Icon from "./Icon";
 import Touchable from "./Touchable";
-import Avatar from "./Avatar";
+import CircleImage from "./CircleImage";
 import { withTheme } from "../core/theming";
 
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
@@ -38,7 +38,7 @@ const AvatarEdit: React.FC<Props> = ({
   return (
     <View style={[style, dimensions]} {...rest}>
       <Touchable onPress={onPress}>
-        <Avatar image={image} size={size} />
+        <CircleImage source={image} size={size} />
         <View
           style={{
             position: "absolute",

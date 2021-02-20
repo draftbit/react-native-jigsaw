@@ -13,7 +13,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 
-import AvatarExample from "./AvatarExample";
+import CircleImageExample from "./CircleImageExample";
 import IconExample from "./IconExample";
 import ButtonExample from "./ButtonExample";
 import RadioButtonExample from "./RadioButtonExample";
@@ -58,7 +58,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const ROUTES = {
   Layout: LayoutExample,
-  Avatar: AvatarExample,
+  CircleImage: CircleImageExample,
   Icon: IconExample,
   Button: ButtonExample,
   FAB: FABExample,
@@ -124,7 +124,7 @@ function Examples() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="Avatar"
+        initialRouteName="CircleImage"
         drawerContentOptions={{
           activeTintColor: "rgba(90, 69, 255, 1)",
         }}

@@ -1,22 +1,18 @@
 import * as React from "react";
-import { Avatar, AvatarEdit } from "@draftbit/ui";
+import { CircleImage, AvatarEdit } from "@draftbit/ui";
 import Section, { Container, styles } from "./Section";
 
-export default function AvatarExample() {
+export default function CircleImageExample() {
   return (
     <Container>
-      <Section title="Avatar" style={styles.row}>
-        <Avatar size={60} style={styles.space} />
-        <Avatar
+      <Section title="CircleImage" style={styles.row}>
+        <CircleImage size={60} style={styles.space} />
+        <CircleImage
           size={60}
           style={styles.space}
-          image="https://picsum.photos/180/180/?random"
+          source="https://picsum.photos/180/180/?random"
         />
-        <Avatar
-          size={60}
-          style={styles.space}
-          image="https://picsum.photos/180/180/?random"
-        />
+        <CircleImage style={styles.space} />
       </Section>
       <Section title="AvatarEdit" style={styles.row}>
         <AvatarEdit size={60} style={styles.space} />

@@ -2,7 +2,9 @@ export { withTheme, ThemeProvider } from "./core/theming";
 export { default as Provider } from "./core/Provider";
 export { default as DefaultTheme } from "./styles/DefaultTheme";
 
-export { default as Avatar } from "./components/Avatar";
+export { default as CircleImage } from "./components/CircleImage";
+/* deprecated, use CircleImage */
+export { default as Avatar } from "./components/CircleImage";
 export { default as AvatarEdit } from "./components/AvatarEdit";
 export { default as AudioPlayer } from "./components/AudioPlayer";
 

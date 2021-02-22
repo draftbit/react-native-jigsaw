@@ -46,6 +46,16 @@ export const SEED_DATA = {
   description: "A circle image",
   category: COMPONENT_TYPES.media,
   props: {
+    source: {
+      group: GROUPS.data,
+      label: "Image Source",
+      description: "The source of the image",
+      editable: true,
+      required: true,
+      formType: FORM_TYPES.localImage,
+      propType: PROP_TYPES.ASSET,
+      defaultValue: "https://static.draftbit.com/images/placeholder-image.svg",
+    },
     size: {
       group: GROUPS.basic,
       label: "Size",

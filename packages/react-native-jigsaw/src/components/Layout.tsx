@@ -56,7 +56,7 @@ export function Circle({
       width={size}
       height={size}
       bgColor={bgColor}
-      style={{ backgroundColor: bgColor, borderRadius }}
+      style={{ backgroundColor: bgColor, borderRadius, overflow: "hidden" }}
     >
       {children}
     </Center>

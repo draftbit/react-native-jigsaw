@@ -11,8 +11,8 @@ import {
 } from "../core/component-types";
 
 export function Center({
-  width = 120,
-  height = 80,
+  width = 240,
+  height = 200,
   children,
   bgColor,
   style,
@@ -261,7 +261,7 @@ export const SEED_DATA = [
         formType: FORM_TYPES.number,
         propType: PROP_TYPES.NUMBER,
         group: GROUPS.basic,
-        defaultValue: 120,
+        defaultValue: 200,
         editable: true,
         required: false,
       },

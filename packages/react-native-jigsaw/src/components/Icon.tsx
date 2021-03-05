@@ -97,7 +97,7 @@ export const SEED_DATA = {
   supports_list_render: false,
   props: {
     name: {
-      group: GROUPS.basic,
+      group: GROUPS.data,
       label: "Name",
       description: "Name of the icon",
       formType: FORM_TYPES.icon,

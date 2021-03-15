@@ -49,9 +49,7 @@ const RadioButtonFieldGroup: React.FC<Props> = ({
     <View
       style={[
         {
-          backgroundColor: backgroundColor
-            ? theme.colors[backgroundColor]
-            : undefined,
+          backgroundColor: backgroundColor || undefined,
         },
         style,
       ]}

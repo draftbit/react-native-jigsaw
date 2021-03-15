@@ -78,9 +78,7 @@ const RadioButtonGroup: React.FC<Props> = ({
     <View style={[containerStyle, style]}>
       {options.map((option, index) => {
         const selected = option.label === value;
-        const textColor = selected
-          ? contentColor && colors[contentColor]
-          : unselectedContentColor && colors[unselectedContentColor];
+        const textColor = selected ? contentColor : unselectedContentColor;
         return (
           <Touchable
             key={index}
@@ -92,9 +90,7 @@ const RadioButtonGroup: React.FC<Props> = ({
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: selected
-                  ? activeColor && colors[activeColor]
-                  : inactiveColor && colors[inactiveColor],
+                backgroundColor: selected ? activeColor : inactiveColor,
                 height: style
                   ? (style as ViewStyle).height
                     ? (style as ViewStyle).height
@@ -106,7 +102,7 @@ const RadioButtonGroup: React.FC<Props> = ({
                   borderColor && index !== options.length - 1
                     ? StyleSheet.hairlineWidth
                     : 0,
-                borderColor: borderColor ? colors[borderColor] : colors.divider,
+                borderColor: borderColor || colors.divider,
                 borderRadius: optionSpacing ? borderRadius : 0,
                 marginLeft: marginHorizontal,
                 marginRight: marginHorizontal,

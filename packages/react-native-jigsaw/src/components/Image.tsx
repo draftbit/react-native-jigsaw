@@ -112,7 +112,7 @@ export const SEED_DATA = {
       required: true,
       formType: FORM_TYPES.localImage,
       propType: PROP_TYPES.ASSET,
-      defaultValue: "https://static.draftbit.com/images/placeholder-image.svg",
+      defaultValue: "https://static.draftbit.com/images/placeholder-image.png",
     },
     resizeMode: {
       group: GROUPS.basic,

@@ -50,11 +50,16 @@ const generateDimensions = ({ aspectRatio, width, height }: ImageStyleProp) => {
 };
 
 const Image: React.FC<ImageProps> = ({
-  source = Config.placeholderImageURL,
+  source,
   resizeMode = "cover",
   style,
   ...props
 }) => {
+  let imageSource =
+    source === null || source === undefined
+      ? Config.placeholderImageURL
+      : source;
+
   const styles = StyleSheet.flatten(style || {});
   const { aspectRatio, width, height } = generateDimensions(
     styles as ImageStyleProp
@@ -65,7 +70,7 @@ const Image: React.FC<ImageProps> = ({
       <AspectRatio style={[style, { width, height, aspectRatio }]}>
         <NativeImage
           {...props}
-          source={source as ImageSourcePropType}
+          source={imageSource as ImageSourcePropType}
           resizeMode={resizeMode}
           style={[
             style,
@@ -97,8 +102,6 @@ export const SEED_DATA = {
   description: "A basic Image Component",
   category: COMPONENT_TYPES.media,
   supports_list_render: false,
-  preview_image_url:
-    "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/Image.png",
   layout: {
     width: 250,
     height: 250,

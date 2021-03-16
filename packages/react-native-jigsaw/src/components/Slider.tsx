@@ -42,7 +42,6 @@ const Slider: React.FC<Props> = ({
   minimumValue = 0,
   maximumValue = 10,
   step = 1,
-  theme,
   disabled = false,
   onValueChange = () => {},
 
@@ -57,12 +56,12 @@ const Slider: React.FC<Props> = ({
       value={disabled ? 0 : value || internalValue}
       minimumValue={minimumValue}
       maximumValue={maximumValue}
-      minimumTrackTintColor={theme.colors[minimumTrackTintColor]}
-      maximumTrackTintColor={theme.colors[maximumTrackTintColor]}
+      minimumTrackTintColor={minimumTrackTintColor}
+      maximumTrackTintColor={maximumTrackTintColor}
       thumbTintColor={
         disabled && disabledThumbTintColor
-          ? theme.colors[disabledThumbTintColor]
-          : theme.colors[thumbTintColor]
+          ? disabledThumbTintColor
+          : thumbTintColor
       }
       onValueChange={(newValue: number) => {
         onValueChange(newValue);

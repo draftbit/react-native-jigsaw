@@ -27,7 +27,6 @@ type Props = {
 
 const RadioButtonFieldRow: React.FC<Props> = ({
   label,
-  theme,
   backgroundColor = "background",
   labelColor = "strong",
   radioButtonColor = "primary",
@@ -39,20 +38,14 @@ const RadioButtonFieldRow: React.FC<Props> = ({
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[
-        styles.mainParent,
-        style,
-        { backgroundColor: theme.colors[backgroundColor] },
-      ]}
+      style={[styles.mainParent, style, { backgroundColor }]}
     >
-      <Text
-        style={[styles.label, labelStyle, { color: theme.colors[labelColor] }]}
-      >
+      <Text style={[styles.label, labelStyle, { color: labelColor }]}>
         {label}
       </Text>
       <View style={styles.radioButton}>
         <RadioButton
-          color={theme.colors[radioButtonColor]}
+          color={radioButtonColor}
           unselectedColor={radioButtonColor}
           selected={selected}
           onPress={onPress}

@@ -38,8 +38,8 @@ const ProgressCircle: React.FC<Props> = ({
 }) => {
   const progressNum = Math.round(progress * 100);
 
-  const tintColor = theme.colors[color || "primary"];
-  const backgroundColor = theme.colors[unfilledColor || "secondary"];
+  const tintColor = color || theme.colors.primary;
+  const backgroundColor = unfilledColor || theme.colors.secondary;
 
   return (
     <AnimatedCircularProgress

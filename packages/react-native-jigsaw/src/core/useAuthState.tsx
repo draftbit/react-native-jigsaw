@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export const useAuthState = (auth) => {
+export const useAuthState = (auth: any) => {
   const [error, setError] = React.useState();
   const [value, setValue] = React.useState(auth.currentUser);
 
@@ -12,14 +12,14 @@ export const useAuthState = (auth) => {
     };
   }, [auth]);
 
-  const signInWithEmailAndPassword = (user, password) => {
+  const signInWithEmailAndPassword = (user: string, password: string) => {
     auth
       .signInWithEmailAndPassword(user, password)
       .then(setValue)
       .catch(setError);
   };
 
-  const createUserWithEmailAndPassword = (user, password) => {
+  const createUserWithEmailAndPassword = (user: string, password: string) => {
     auth
       .signInWithEmailAndPassword(user, password)
       .then(setValue)

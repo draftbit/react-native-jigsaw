@@ -292,8 +292,8 @@ class TextField extends React.Component<Props> {
     let assistiveTextLeftMargin;
     if (type === "underline") {
       containerStyle = {
-        borderTopLeftRadius: borderRadius.global,
-        borderTopRightRadius: borderRadius.global,
+        borderTopLeftRadius: borderRadius,
+        borderTopRightRadius: borderRadius,
         paddingBottom: spacing.medium,
         marginTop: spacing.large,
       };
@@ -305,7 +305,7 @@ class TextField extends React.Component<Props> {
       }
     } else {
       containerStyle = {
-        borderRadius: borderRadius.global,
+        borderRadius: borderRadius,
         borderColor: hasActiveOutline ? activeColor : borderColor,
         borderWidth: 1,
         paddingTop: this.state.labeled ? spacing.large * 1.5 : spacing.large,

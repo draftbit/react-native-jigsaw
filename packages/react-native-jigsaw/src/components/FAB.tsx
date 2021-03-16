@@ -127,7 +127,7 @@ const FAB: React.FC<Props> = ({
     backgroundColor,
     borderColor,
     borderWidth,
-    borderRadius: borderRadius.button,
+    borderRadius: borderRadius,
     alignItems: "center",
     justifyContent: "center",
   };

@@ -122,7 +122,7 @@ const Button: React.FC<Props> = ({
     backgroundColor,
     borderColor,
     borderWidth,
-    borderRadius: borderRadius.button,
+    borderRadius: borderRadius,
   };
 
   const textStyle: StyleProp<TextStyle> = {

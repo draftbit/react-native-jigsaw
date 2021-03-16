@@ -9,10 +9,7 @@ export default {
     medium: 12,
     large: 16,
   },
-  borderRadius: {
-    global: 6,
-    button: 24,
-  },
+  borderRadius: 6,
   colors: {
     primary: "rgba(90, 69, 255, 1)",
     secondary: "rgba(59, 201, 234, 1)",

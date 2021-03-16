@@ -13,7 +13,6 @@ import color from "color";
 import Config from "./Config";
 import Icon from "./Icon";
 import Touchable from "./Touchable";
-import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
 
 import {
@@ -80,9 +79,8 @@ const Button: React.FC<Props> = ({
   color: colorOverride,
   children,
   onPress,
-  elevation = 0,
   style,
-  theme: { colors, disabledOpacity, borderRadius, spacing, typography },
+  theme: { colors, disabledOpacity, borderRadius, typography },
   ...rest
 }) => {
   let backgroundColor, borderColor, textColor, borderWidth;
@@ -122,58 +120,45 @@ const Button: React.FC<Props> = ({
     backgroundColor,
     borderColor,
     borderWidth,
-    borderRadius: borderRadius,
+    borderRadius,
   };
 
   const textStyle: StyleProp<TextStyle> = {
     textAlign: "center",
     color: textColor,
-    marginVertical: spacing.large,
-    marginHorizontal: spacing.large,
   };
 
   const iconStyle = [
     styles.icon,
     {
-      marginLeft: spacing.large,
-      marginRight: -8,
+      marginRight: 4,
       width: Config.buttonIconSize,
     },
   ];
 
   return (
-    <Elevation style={{ elevation, alignSelf: "stretch" }}>
-      <Touchable
-        {...rest}
-        onPress={onPress}
-        accessibilityState={{ disabled }}
-        accessibilityRole="button"
-        disabled={disabled || loading}
-        style={[styles.button, buttonStyle, style]}
-      >
-        <View style={styles.content}>
-          {icon && loading !== true ? (
-            <View style={iconStyle}>
-              <Icon
-                name={icon}
-                size={Config.buttonIconSize}
-                color={textColor}
-              />
-            </View>
-          ) : null}
-          {loading ? (
-            <ActivityIndicator
-              size="small"
-              color={textColor}
-              style={iconStyle}
-            />
-          ) : null}
-          <Text numberOfLines={1} style={[textStyle, typography.button]}>
-            {children}
-          </Text>
-        </View>
-      </Touchable>
-    </Elevation>
+    <Touchable
+      {...rest}
+      onPress={onPress}
+      accessibilityState={{ disabled }}
+      accessibilityRole="button"
+      disabled={disabled || loading}
+      style={[styles.button, buttonStyle, style]}
+    >
+      <View style={styles.content}>
+        {icon && loading !== true ? (
+          <View style={iconStyle}>
+            <Icon name={icon} size={Config.buttonIconSize} color={textColor} />
+          </View>
+        ) : null}
+        {loading ? (
+          <ActivityIndicator size="small" color={textColor} style={iconStyle} />
+        ) : null}
+        <Text numberOfLines={1} style={[textStyle, typography.button]}>
+          {children}
+        </Text>
+      </View>
+    </Touchable>
   );
 };
 
@@ -181,6 +166,9 @@ const styles = StyleSheet.create({
   button: {
     minWidth: 64,
     borderStyle: "solid",
+    height: 40,
+    paddingHorizontal: 12,
+    justifyContent: "center",
   },
   content: {
     flexDirection: "row",

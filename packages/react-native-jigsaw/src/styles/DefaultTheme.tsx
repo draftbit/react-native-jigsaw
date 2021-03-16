@@ -9,6 +9,7 @@ export default {
     medium: 12,
     large: 16,
   },
+  borderRadius: 8,
   borderRadius: {
     global: 6,
     button: 24,

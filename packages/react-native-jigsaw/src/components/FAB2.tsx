@@ -37,7 +37,7 @@ const FAB: React.FC<Props> = ({
   disabled,
   loading,
   bgColor = "#5a45ff",
-  iconColor = "#000",
+  iconColor = "#FFF",
   iconName = "add",
   style,
   theme,
@@ -45,6 +45,9 @@ const FAB: React.FC<Props> = ({
   IconOverride = null,
   ...props
 }) => {
+  const backgroundColor = bgColor || theme.colors.primary;
+  const textColor = iconColor || theme.colors.strong;
+
   const SelectedIcon = IconOverride || Icon;
   return (
     <View
@@ -70,7 +73,7 @@ const FAB: React.FC<Props> = ({
               width: size,
               height: size,
               borderRadius: size / 2,
-              backgroundColor: bgColor,
+              backgroundColor,
             },
             style,
           ];
@@ -79,9 +82,9 @@ const FAB: React.FC<Props> = ({
       >
         <View style={styles.icon}>
           {!loading ? (
-            <ActivityIndicator size="small" color={iconColor} />
+            <ActivityIndicator size="small" color={textColor} />
           ) : (
-            <SelectedIcon name={iconName} size={28} color={iconColor} />
+            <SelectedIcon name={iconName} size={28} color={textColor} />
           )}
         </View>
       </Pressable>
@@ -114,33 +117,33 @@ export const SEED_DATA = [
     props: {
       icon: {
         group: GROUPS.basic,
-        label: "Icon Name",
+        label: "Icon",
         description: "Name of the icon",
         editable: true,
         required: true,
         formType: FORM_TYPES.icon,
         propType: PROP_TYPES.ASSET,
-        defaultValue: null,
+        defaultValue: "MaterialIcons/add",
       },
       bgColor: {
         group: GROUPS.basic,
-        label: "Color Override",
+        label: "Bg Color",
         description: "Override the background color of the button",
         editable: true,
         required: false,
         formType: FORM_TYPES.color,
         propType: PROP_TYPES.THEME,
-        defaultValue: null,
+        defaultValue: "#5a45ff",
       },
       iconColor: {
         group: GROUPS.basic,
-        label: "Color Override",
+        label: "Icon Color",
         description: "Override the background color of the button",
         editable: true,
         required: false,
         formType: FORM_TYPES.color,
         propType: PROP_TYPES.THEME,
-        defaultValue: null,
+        defaultValue: "#FFF",
       },
       onPress: {
         group: GROUPS.basic,

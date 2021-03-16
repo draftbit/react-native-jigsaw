@@ -12,22 +12,16 @@ export const SEED_DATA = {
   tag: "TextInput",
   description: "An input field that allows users to type in data.",
   category: COMPONENT_TYPES.input,
-  preview_image_url:
-    "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/TextInput.png",
   supports_list_render: false,
-  layout: {},
+  layout: {
+    height: 42,
+    borderColor: "#eee",
+    borderWidth: 1,
+    borderRadius: 4,
+    padding: 8,
+  },
   props: {
     ...TEXT_INPUT_PROPS,
-    style: {
-      group: GROUPS.basic,
-      label: "Style",
-      description: "Text Style",
-      editable: false,
-      required: false,
-      formType: FORM_TYPES.typeStyle,
-      propType: PROP_TYPES.THEME,
-      defaultValue: null,
-    },
     clearButtonMode: {
       group: GROUPS.basic,
       label: "Clear Button Mode",

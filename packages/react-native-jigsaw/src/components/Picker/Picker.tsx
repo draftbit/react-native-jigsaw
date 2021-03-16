@@ -147,6 +147,7 @@ const SEED_DATA_PROPS = {
   fieldName: {
     ...FIELD_NAME,
     defaultValue: "pickerValue",
+    handlerPropName: "onValueChange",
   },
 };
 

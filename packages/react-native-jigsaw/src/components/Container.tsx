@@ -110,7 +110,7 @@ export const SEED_DATA = {
         "When true, uses the theme gutter spacing as the container's horizontal padding",
       formType: FORM_TYPES.boolean,
       defaultValue: true,
-      editable: false,
+      editable: true,
       required: true,
     },
     backgroundImage: {

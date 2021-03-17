@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text } from "react-native";
+import { View, Text } from "react-native";
 import { FieldSearchBarFull, withTheme } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
@@ -10,9 +10,11 @@ function FieldSearchBarFullExample({ theme }) {
       <Section title="FieldSearchBarFull">
         <FieldSearchBarFull
           value={searchBarValue}
-          onChange={(value) => setSearchBarValue(value)}
+          onChangeText={(value) => setSearchBarValue(value)}
         />
-        <Text>Value: {searchBarValue}</Text>
+        <View style={{ marginTop: 12 }}>
+          <Text>Value: {searchBarValue}</Text>
+        </View>
       </Section>
     </Container>
   );

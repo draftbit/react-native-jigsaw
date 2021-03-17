@@ -6,8 +6,6 @@ import {
   ViewStyle,
   StyleProp,
   TextInputProps,
-  NativeSyntheticEvent,
-  TextInputSubmitEditingEventData,
 } from "react-native";
 import { withTheme } from "../core/theming";
 import {
@@ -15,7 +13,7 @@ import {
   COMPONENT_TYPES,
   FORM_TYPES,
   PROP_TYPES,
-  FIELD_NAME,
+  createFieldName,
 } from "../core/component-types";
 import Icon from "./Icon";
 import IconButton from "./IconButton";
@@ -27,8 +25,7 @@ type Props = {
   placeholder?: string;
   style?: StyleProp<ViewStyle>;
   theme: typeof theme;
-  onChange: (text: string) => void;
-  onSubmit?: (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
+  onChangeText?: (text: string) => void;
   IconOverride?: typeof Icon;
   value: string;
 };
@@ -44,9 +41,7 @@ const FieldSearchBarFull = React.forwardRef<TextInputHandles, Props>(
       icon = "MaterialIcons/search",
       placeholder = "Search for...",
       style,
-      theme: { dark, colors, typography, borderRadius },
-      onChange = () => {},
-      onSubmit = () => {},
+      theme: { dark, colors, borderRadius },
       IconOverride = null,
       value,
       ...rest
@@ -85,7 +80,7 @@ const FieldSearchBarFull = React.forwardRef<TextInputHandles, Props>(
 
     const handleClearPress = () => {
       root.current?.clear();
-      rest.onChange?.("");
+      rest.onChangeText?.("");
     };
 
     const onBlur = () => {
@@ -96,8 +91,6 @@ const FieldSearchBarFull = React.forwardRef<TextInputHandles, Props>(
       setIsFocused(true);
     };
 
-    const { lineHeight, ...typeStyles } = typography.body2; // eslint-disable-line @typescript-eslint/no-unused-vars
-
     return (
       <View style={[styles.container, { borderRadius }, style]}>
         <SelectedIcon
@@ -106,7 +99,7 @@ const FieldSearchBarFull = React.forwardRef<TextInputHandles, Props>(
           color={focused ? colors.primary : colors.light}
         />
         <TextInput
-          style={[styles.input, { color: colors.text }, typeStyles]}
+          style={[styles.input, { color: colors.text }]}
           clearButtonMode="never"
           placeholder={placeholder}
           placeholderTextColor={colors.placeholder}
@@ -117,19 +110,29 @@ const FieldSearchBarFull = React.forwardRef<TextInputHandles, Props>(
           value={value}
           onBlur={onBlur}
           onFocus={onFocus}
-          onChangeText={onChange}
-          onSubmitEditing={onSubmit}
           accessibilityRole="search"
           ref={root}
           {...rest}
         />
-        <IconButton
-          icon="MaterialIcons/clear"
-          onPress={handleClearPress}
-          size={24}
-          color={colors.placeholder}
-          IconOverride={SelectedIcon}
-        />
+        {value ? (
+          <IconButton
+            size={20}
+            icon="MaterialIcons/clear"
+            onPress={handleClearPress}
+            color={colors.placeholder}
+            IconOverride={SelectedIcon}
+            // @ts-expect-error We keep old a11y props for backwards compat with old RN versions
+            accessibilityTraits="button"
+            accessibilityComponentType="button"
+            accessibilityRole="button"
+            hitSlop={{
+              left: 12,
+              right: 12,
+              top: 12,
+              bottom: 12,
+            }}
+          />
+        ) : null}
       </View>
     );
   }
@@ -161,8 +164,11 @@ export const SEED_DATA = [
     tag: "FieldSearchBarFull",
     description: "A search bar with accompanying search icon and clear button.",
     category: COMPONENT_TYPES.field,
-    preview_image_url: "{CLOUDINARY_URL}/Field_SearchBar_Full.png",
-    supports_list_render: false,
+    layout: {
+      padding: 8,
+      borderColor: "#eee",
+      borderWidth: 1,
+    },
     props: {
       icon: {
         group: GROUPS.basic,
@@ -177,7 +183,7 @@ export const SEED_DATA = [
       placeholder: {
         group: GROUPS.basic,
         label: "Placeholder",
-        description: "Input placeholder text",
+        description: "Placeholder text",
         formType: FORM_TYPES.string,
         propType: PROP_TYPES.STRING,
         defaultValue: "Search for...",
@@ -186,7 +192,7 @@ export const SEED_DATA = [
       },
       onSubmit: {
         group: GROUPS.basic,
-        label: "Submit action",
+        label: "Action",
         description: "Action to execute on submission",
         editable: true,
         required: false,
@@ -194,11 +200,10 @@ export const SEED_DATA = [
         propType: PROP_TYPES.STRING,
         defaultValue: null,
       },
-      fieldName: {
-        ...FIELD_NAME,
-        defaultValue: "searchBarValue",
-      },
+      fieldName: createFieldName({
+        defaultValue: "query",
+        handlerPropName: "onChangeText",
+      }),
     },
-    layout: {},
   },
 ];

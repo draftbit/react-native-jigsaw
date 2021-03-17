@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import Image from "./Image";
 import CardWrapper from "./CardWrapper";
-import Elevation from "./Elevation";
+import Surface from "./Surface";
 import { withTheme } from "../core/theming";
 import {
   GROUPS,

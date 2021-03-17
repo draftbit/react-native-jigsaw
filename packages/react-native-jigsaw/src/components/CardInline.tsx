@@ -9,7 +9,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import Image from "./Image";
 import CardWrapper from "./CardWrapper";
-import Elevation from "./Elevation";
+import Surface from "./Surface";
 import { withTheme } from "../core/theming";
 import {
   GROUPS,

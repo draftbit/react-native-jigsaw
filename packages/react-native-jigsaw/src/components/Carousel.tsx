@@ -13,7 +13,7 @@ import {
   ImageStyle,
   Platform,
 } from "react-native";
-import Elevation from "./Elevation";
+import Surface from "./Surface";
 import { withTheme } from "../core/theming";
 import {
   GROUPS,

@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { withTheme } from "../core/theming";
 
-import Elevation from "./Elevation";
+import Surface from "./Surface";
 import {
   GROUPS,
   COMPONENT_TYPES,

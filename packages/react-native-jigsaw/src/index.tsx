@@ -70,6 +70,7 @@ export { default as Slider } from "./components/Slider";
 export { default as Stepper } from "./components/Stepper";
 export { default as StarRating } from "./components/StarRating";
 export { default as Switch } from "./components/Switch";
+export { default as Surface } from "./components/Surface";
 
 export { default as TextField } from "./components/TextField";
 export { default as Touchable } from "./components/Touchable";

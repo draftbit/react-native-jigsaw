@@ -9,7 +9,7 @@ import {
 import color from "color";
 import Image from "./Image";
 import CardWrapper from "./CardWrapper";
-import Elevation from "./Elevation";
+import Surface from "./Surface";
 import Icon from "./Icon";
 import { withTheme } from "../core/theming";
 import {

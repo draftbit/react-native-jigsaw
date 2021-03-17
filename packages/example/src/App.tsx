@@ -20,7 +20,6 @@ import RadioButtonExample from "./RadioButtonExample";
 
 import CardBlockExample from "./CardBlockExample";
 import CardInlineExample from "./CardInlineExample";
-import CardContainerShortImageExample from "./CardContainerShortImageExample";
 import CardContainerExample from "./CardContainerExample";
 import CardContainerRatingExample from "./CardContainerRatingExample";
 
@@ -65,7 +64,6 @@ const ROUTES = {
   RadioButton: RadioButtonExample,
   CardBlock: CardBlockExample,
   CardInline: CardInlineExample,
-  CardContainerShortImage: CardContainerShortImageExample,
   CardContainer: CardContainerExample,
   CardContainerRating: CardContainerRatingExample,
   Carousel: CarouselExample,

@@ -79,7 +79,7 @@ const CardInline: React.FC<Props> = ({
             resizeMode="cover"
             source={typeof image === "string" ? { uri: image } : image}
             style={{
-              borderRadius: borderRadius,
+              borderRadius,
               aspectRatio,
             }}
           />
@@ -95,7 +95,7 @@ const CardInline: React.FC<Props> = ({
             {title ? (
               <Text
                 numberOfLines={1}
-                style={[titleStyle, { color: colors.strongInverse }]}
+                style={[titleStyle, { color: colors.text }]}
               >
                 {title}
               </Text>
@@ -103,10 +103,7 @@ const CardInline: React.FC<Props> = ({
             {description ? (
               <Text
                 numberOfLines={1}
-                style={[
-                  descriptionStyle,
-                  { color: colors.lightInverse, marginTop: 2 },
-                ]}
+                style={[descriptionStyle, { color: colors.text, marginTop: 2 }]}
               >
                 {description}
               </Text>

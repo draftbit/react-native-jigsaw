@@ -10,21 +10,20 @@ export default function CircleImageExample() {
         <CircleImage
           size={60}
           style={styles.space}
-          source="https://picsum.photos/180/180/?random"
+          source="https://picsum.photos/seed/picsum/180"
         />
-        <CircleImage style={styles.space} />
       </Section>
       <Section title="AvatarEdit" style={styles.row}>
         <AvatarEdit size={60} style={styles.space} />
         <AvatarEdit
           size={60}
           style={styles.space}
-          image="https://picsum.photos/180/180/?random"
+          image="https://picsum.photos/seed/picsum/180?grayscale"
         />
         <AvatarEdit
           size={60}
           style={styles.space}
-          image="https://picsum.photos/180/180/?random"
+          image="https://picsum.photos/seed/picsum/180"
         />
       </Section>
     </Container>

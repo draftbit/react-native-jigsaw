@@ -37,7 +37,7 @@ const ProgressIndicator: React.FC<Props> = ({
   stepIndicatorCurrentColor,
   stepIndicatorLabelCurrentColor,
   stepIndicatorLabelFontSize = 12,
-  stepNumberFinishedColor = "strongInverse",
+  stepNumberFinishedColor = "light",
   stepNumberUnfinishedColor = "primary",
   unfinishedColor = "light",
   finishedColor = "primary",

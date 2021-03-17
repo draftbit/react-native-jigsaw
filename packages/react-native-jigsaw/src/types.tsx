@@ -32,10 +32,7 @@ export type colorTypes =
   | "divider"
   | "strong"
   | "medium"
-  | "light"
-  | "strongInverse"
-  | "mediumInverse"
-  | "lightInverse";
+  | "light";
 
 export type Theme = any;
 

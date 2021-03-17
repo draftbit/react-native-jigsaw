@@ -6,8 +6,9 @@ import {
   StyleProp,
   ViewStyle,
 } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 import Image from "./Image";
-import Card from "./Card";
+import CardWrapper from "./CardWrapper";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
 import {
@@ -63,47 +64,57 @@ const CardInline: React.FC<Props> = ({
   }
 
   return (
-    <Card style={style} onPress={onPress} numColumns={numColumns} {...rest}>
+    <CardWrapper
+      style={style}
+      onPress={onPress}
+      numColumns={numColumns}
+      {...rest}
+    >
       <Elevation style={{ elevation, borderRadius: borderRadius }}>
-        <Image
-          style={{
-            borderRadius: borderRadius,
-            aspectRatio,
-          }}
-          source={typeof image === "string" ? { uri: image } : image}
-          resizeMode="cover"
-        />
-        <View
-          style={{
-            position: "absolute",
-            alignItems: textCentered ? "center" : "flex-start",
-            bottom: numColumns === 1 ? spacing.medium : spacing.large,
-            left: spacing.large,
-            right: spacing.large,
-          }}
+        <LinearGradient
+          style={{ flex: 1 }}
+          colors={["transparent", "rgba(0, 0, 0, 0.5)"]}
         >
-          {title ? (
-            <Text
-              numberOfLines={1}
-              style={[titleStyle, { color: colors.strongInverse }]}
-            >
-              {title}
-            </Text>
-          ) : null}
-          {description ? (
-            <Text
-              numberOfLines={1}
-              style={[
-                descriptionStyle,
-                { color: colors.lightInverse, marginTop: spacing.text },
-              ]}
-            >
-              {description}
-            </Text>
-          ) : null}
-        </View>
+          <Image
+            resizeMode="cover"
+            source={typeof image === "string" ? { uri: image } : image}
+            style={{
+              borderRadius: borderRadius,
+              aspectRatio,
+            }}
+          />
+          <View
+            style={{
+              position: "absolute",
+              alignItems: textCentered ? "center" : "flex-start",
+              bottom: numColumns === 1 ? spacing.medium : spacing.large,
+              left: spacing.large,
+              right: spacing.large,
+            }}
+          >
+            {title ? (
+              <Text
+                numberOfLines={1}
+                style={[titleStyle, { color: colors.strongInverse }]}
+              >
+                {title}
+              </Text>
+            ) : null}
+            {description ? (
+              <Text
+                numberOfLines={1}
+                style={[
+                  descriptionStyle,
+                  { color: colors.lightInverse, marginTop: 2 },
+                ]}
+              >
+                {description}
+              </Text>
+            ) : null}
+          </View>
+        </LinearGradient>
       </Elevation>
-    </Card>
+    </CardWrapper>
   );
 };
 

@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { withTheme } from "../core/theming";
 import Icon from "./Icon";
-import theme from "../styles/DefaultTheme";
+import themeT from "../styles/DefaultTheme";
 
 import {
   GROUPS,
@@ -28,7 +28,7 @@ type Props = {
   iconColor?: string;
   iconName?: string;
   onPress: () => void;
-  theme: typeof theme;
+  theme: typeof themeT;
   IconOverride: typeof Icon;
   style?: StyleProp<ViewStyle>;
 } & PressableProps;

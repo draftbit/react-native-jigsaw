@@ -121,6 +121,13 @@ export const FIELD_NAME = {
   required: false,
 };
 
+export const createFieldName = (options) => {
+  return {
+    ...FIELD_NAME,
+    ...options,
+  };
+};
+
 export const TEXT_INPUT_PROPS = {
   allowFontScaling: {
     group: GROUPS.basic,

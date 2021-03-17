@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import color from "color";
 import Image from "./Image";
-import Card from "./Card";
+import CardWrapper from "./CardWrapper";
 import Elevation from "./Elevation";
 import Icon from "./Icon";
 import { withTheme } from "../core/theming";
@@ -77,7 +77,12 @@ const CardContainer: React.FC<Props> = ({
   }
 
   return (
-    <Card style={style} onPress={onPress} numColumns={numColumns} {...rest}>
+    <CardWrapper
+      style={style}
+      onPress={onPress}
+      numColumns={numColumns}
+      {...rest}
+    >
       <Elevation style={{ elevation, borderRadius: borderRadius }}>
         <View
           style={{
@@ -164,7 +169,7 @@ const CardContainer: React.FC<Props> = ({
           ) : null}
         </View>
       </Elevation>
-    </Card>
+    </CardWrapper>
   );
 };
 

@@ -53,7 +53,7 @@ const Carousel: React.FC<Props> = ({
   swiperPalette,
   resizeMode = "cover",
   dotColor,
-  theme: { colors, spacing },
+  theme: { colors },
   style = { height: screenWidth * 0.5 },
   ...rest
 }) => {
@@ -110,7 +110,7 @@ const Carousel: React.FC<Props> = ({
           );
         })}
       </ScrollView>
-      <View style={[styles.swipeNavWrapper, { bottom: spacing.large }]}>
+      <View style={[styles.swipeNavWrapper, { bottom: 16 }]}>
         <View style={styles.swipeNav}>
           {Array.from({ length: images.length }, (_, i) => {
             const calculatedIndex = scrollOffset / width;
@@ -142,7 +142,7 @@ const Carousel: React.FC<Props> = ({
                 style={[
                   {
                     backgroundColor,
-                    marginHorizontal: spacing.small / 2,
+                    marginHorizontal: 4,
                   },
                   styles.dot,
                   activeDot ? styles.activeDot : null,

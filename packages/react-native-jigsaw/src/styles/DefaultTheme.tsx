@@ -4,7 +4,6 @@ export default {
   disabledOpacity: 0.5,
   dark: false,
   spacing: {
-    gutters: 16,
     text: 4,
     small: 8,
     medium: 12,

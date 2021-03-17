@@ -38,6 +38,7 @@ const IconButton: React.FC<Props> = ({
   disabled = false,
   loading = false,
   IconOverride = null,
+  hitSlop = { top: 6, left: 6, bottom: 6, right: 6 },
   onPress,
   theme,
   style,
@@ -65,7 +66,7 @@ const IconButton: React.FC<Props> = ({
       accessibilityLabel={accessibilityLabel}
       accessibilityState={{ disabled }}
       accessibilityRole="button"
-      hitSlop={{ top: 6, left: 6, bottom: 6, right: 6 }}
+      hitSlop={hitSlop}
       {...rest}
     >
       <View>

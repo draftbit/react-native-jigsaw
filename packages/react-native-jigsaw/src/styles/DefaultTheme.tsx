@@ -2,6 +2,7 @@ import { systemWeights } from "react-native-typography";
 
 export default {
   disabledOpacity: 0.5,
+  dark: false,
   spacing: {
     gutters: 16,
     text: 4,
@@ -23,6 +24,8 @@ export default {
     mediumInverse: "rgba(255, 255, 255, 0.87)",
     lightInverse: "rgba(255, 255, 255, 0.68)",
     light: "rgba(165, 173, 183, 1)",
+    placeholder: "#333",
+    text: "#000",
   },
   elevation: {
     "0": {

@@ -9,7 +9,6 @@ function FieldSearchBarFullExample({ theme }) {
     <Container style={{ backgroundColor: theme.colors.background }}>
       <Section title="FieldSearchBarFull">
         <FieldSearchBarFull
-          placeholder="Type something..."
           value={searchBarValue}
           onChange={(value) => setSearchBarValue(value)}
         />

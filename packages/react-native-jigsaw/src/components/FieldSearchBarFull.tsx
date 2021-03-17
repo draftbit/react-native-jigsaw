@@ -3,8 +3,9 @@ import {
   View,
   TextInput,
   StyleSheet,
-  StyleProp,
   ViewStyle,
+  StyleProp,
+  TextInputProps,
   NativeSyntheticEvent,
   TextInputSubmitEditingEventData,
 } from "react-native";
@@ -17,6 +18,7 @@ import {
   FIELD_NAME,
 } from "../core/component-types";
 import Icon from "./Icon";
+import IconButton from "./IconButton";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 
@@ -27,73 +29,127 @@ type Props = {
   theme: typeof theme;
   onChange: (text: string) => void;
   onSubmit?: (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
+  IconOverride?: typeof Icon;
   value: string;
 };
 
-const FieldSearchBarFull: React.FC<Props> = ({
-  icon = "search",
-  placeholder = "",
-  style,
-  theme: { colors, spacing, typography },
-  onChange: changeOverride,
-  onSubmit: submitOverride,
-  value,
-}) => {
-  const [focused, setIsFocused] = React.useState(false);
+type TextInputHandles = Pick<
+  TextInput,
+  "setNativeProps" | "isFocused" | "clear" | "blur" | "focus"
+>;
 
-  const onBlur = () => {
-    setIsFocused(false);
-  };
-
-  const onChange = (text: string) => {
-    changeOverride && changeOverride(text);
-  };
-
-  const onFocus = () => {
-    setIsFocused(true);
-  };
-
-  const onSubmit = (
-    e: NativeSyntheticEvent<TextInputSubmitEditingEventData>
+const FieldSearchBarFull = React.forwardRef<TextInputHandles, Props>(
+  (
+    {
+      icon = "MaterialIcons/search",
+      placeholder = "Search for...",
+      style,
+      theme: { dark, colors, typography, borderRadius },
+      onChange = () => {},
+      onSubmit = () => {},
+      IconOverride = null,
+      value,
+      ...rest
+    },
+    ref
   ) => {
-    submitOverride && submitOverride(e);
-  };
+    const SelectedIcon = IconOverride || Icon;
+    const root = React.useRef<TextInput>(null);
+    const [focused, setIsFocused] = React.useState(false);
 
-  const { lineHeight, ...typeStyles } = typography.body2; // eslint-disable-line @typescript-eslint/no-unused-vars
+    React.useImperativeHandle(ref, () => {
+      const input = root.current;
 
-  return (
-    <View style={[{ padding: spacing.large }, styles.container, style]}>
-      <Icon
-        name={icon}
-        size={Config.fieldSearchBarFullIconSize}
-        color={focused ? colors.primary : colors.light}
-      />
-      <View style={{ marginLeft: spacing.medium, flex: 1 }}>
+      if (input) {
+        return {
+          focus: input.focus,
+          clear: input.clear,
+          setNativeProps: (args: TextInputProps) => input.setNativeProps(args),
+          isFocused: input.isFocused,
+          blur: input.blur,
+        };
+      }
+
+      const noop = () => {
+        throw new Error("TextInput is not available");
+      };
+
+      return {
+        focus: noop,
+        clear: noop,
+        setNativeProps: noop,
+        isFocused: noop,
+        blur: noop,
+      };
+    });
+
+    const handleClearPress = () => {
+      root.current?.clear();
+      rest.onChange?.("");
+    };
+
+    const onBlur = () => {
+      setIsFocused(false);
+    };
+
+    const onFocus = () => {
+      setIsFocused(true);
+    };
+
+    const { lineHeight, ...typeStyles } = typography.body2; // eslint-disable-line @typescript-eslint/no-unused-vars
+
+    return (
+      <View style={[styles.container, { borderRadius }, style]}>
+        <SelectedIcon
+          name={icon}
+          size={Config.fieldSearchBarFullIconSize}
+          color={focused ? colors.primary : colors.light}
+        />
         <TextInput
-          clearButtonMode="while-editing"
+          style={[styles.input, { color: colors.text }, typeStyles]}
+          clearButtonMode="never"
           placeholder={placeholder}
+          placeholderTextColor={colors.placeholder}
+          selectionColor={colors.primary}
+          underlineColorAndroid="transparent"
+          returnKeyType="search"
+          keyboardAppearance={dark ? "dark" : "light"}
           value={value}
           onBlur={onBlur}
           onFocus={onFocus}
           onChangeText={onChange}
           onSubmitEditing={onSubmit}
-          placeholderTextColor={colors.light}
-          style={[
-            {
-              color: colors.medium,
-            },
-            typeStyles,
-          ]}
+          accessibilityRole="search"
+          ref={root}
+          {...rest}
+        />
+        <IconButton
+          icon="MaterialIcons/clear"
+          onPress={handleClearPress}
+          size={24}
+          color={colors.placeholder}
+          IconOverride={SelectedIcon}
         />
       </View>
-    </View>
-  );
-};
+    );
+  }
+);
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
+    padding: 8,
+    borderColor: "#eee",
+    borderWidth: 1,
+  },
+  input: {
+    flex: 1,
+    fontSize: 16,
+    paddingLeft: 8,
+    alignSelf: "stretch",
+    textAlign: "left",
+    minWidth: 0,
   },
 });
 

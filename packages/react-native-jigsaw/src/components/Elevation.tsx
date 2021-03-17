@@ -7,6 +7,7 @@ import {
   ViewStyle,
 } from "react-native";
 import shadow from "../styles/shadow";
+import overlay from "../styles/overlay";
 import { withTheme } from "../core/theming";
 import themeT from "../styles/DefaultTheme";
 
@@ -16,15 +17,24 @@ type Props = {
 } & ViewProps;
 
 const Elevation: React.FC<Props> = ({ style, theme, ...rest }) => {
-  const flattenedStyles = StyleSheet.flatten(style) || {};
-  const { elevation } = flattenedStyles;
+  const { elevation = 4 } = (StyleSheet.flatten(style) || {}) as ViewStyle;
+  const { dark: isDarkTheme, mode, colors } = theme;
 
-  const styles = [style, { zIndex: 100 }];
-  if (elevation) {
-    styles.push(shadow(elevation, theme));
-  }
-
-  return <Animated.View {...rest} style={styles} />;
+  return (
+    <Animated.View
+      {...rest}
+      style={[
+        {
+          backgroundColor:
+            isDarkTheme && mode === "adaptive"
+              ? overlay(elevation, colors.surface)
+              : colors.surface,
+        },
+        elevation ? shadow(elevation) : null,
+        style,
+      ]}
+    />
+  );
 };
 
 export default withTheme(Elevation);

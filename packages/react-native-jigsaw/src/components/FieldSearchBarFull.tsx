@@ -114,7 +114,7 @@ const FieldSearchBarFull = React.forwardRef<TextInputHandles, Props>(
           ref={root}
           {...rest}
         />
-        {value ? (
+        {value !== "" ? (
           <IconButton
             size={20}
             icon="MaterialIcons/clear"

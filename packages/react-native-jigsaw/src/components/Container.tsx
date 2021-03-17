@@ -33,7 +33,6 @@ type Props = {
 };
 
 const Container: React.FC<Props> = ({
-  theme: { spacing },
   useThemeGutterPadding,
   borderColor,
   borderWidth,
@@ -58,7 +57,8 @@ const Container: React.FC<Props> = ({
 
   const innerStyle: StyleProp<ViewStyle> = {
     flex: 1,
-    paddingHorizontal: useThemeGutterPadding ? spacing.gutters : 0,
+    /* spacing.gutters: 16 */
+    paddingHorizontal: useThemeGutterPadding ? 16 : 0,
     flexDirection,
     justifyContent,
     alignItems,
@@ -110,7 +110,7 @@ export const SEED_DATA = {
         "When true, uses the theme gutter spacing as the container's horizontal padding",
       formType: FORM_TYPES.boolean,
       defaultValue: true,
-      editable: true,
+      editable: false,
       required: true,
     },
     backgroundImage: {

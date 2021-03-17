@@ -35,7 +35,7 @@ const Header: React.FC<Props> = ({
   icon,
   onPress,
   style,
-  theme: { colors, spacing, typography },
+  theme: { colors, typography },
 }) => {
   return (
     <View style={[styles.container, style]}>
@@ -54,7 +54,7 @@ const Header: React.FC<Props> = ({
         </Text>
         {onPress && (
           <Touchable
-            style={{ alignSelf: "center", marginLeft: spacing.medium }}
+            style={{ alignSelf: "center", marginLeft: 12 }}
             onPress={onPress}
           >
             <View style={styles.buttonContainer}>
@@ -63,7 +63,7 @@ const Header: React.FC<Props> = ({
                   typography.subtitle2,
                   {
                     color: colors.light,
-                    marginRight: spacing.small,
+                    marginRight: 8,
                   },
                 ]}
                 numberOfLines={1}
@@ -79,7 +79,7 @@ const Header: React.FC<Props> = ({
           </Touchable>
         )}
       </View>
-      <Divider style={{ marginTop: dividerTopMargin || spacing.large }} />
+      <Divider style={{ marginTop: dividerTopMargin || 16 }} />
     </View>
   );
 };

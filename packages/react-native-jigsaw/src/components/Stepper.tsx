@@ -29,7 +29,7 @@ const Stepper: React.FC<Props> = ({
   value = 0,
   style,
   onChange,
-  theme: { colors, typography, spacing },
+  theme: { colors, typography },
   iconSize = 24,
   iconColor = colors.strong,
   borderRadius = theme.borderRadius,
@@ -77,7 +77,7 @@ const Stepper: React.FC<Props> = ({
             textAlign: "center",
             alignSelf: "center",
             color: colors.medium,
-            marginHorizontal: spacing.small,
+            marginHorizontal: 8,
           },
           typeStyle,
         ]}

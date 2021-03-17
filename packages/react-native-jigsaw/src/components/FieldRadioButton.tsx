@@ -38,7 +38,7 @@ const FieldRadioButton: React.FC<Props> = ({
         <Text
           style={[
             theme.typography.body1,
-            { color: titleColor, marginLeft: theme.spacing.medium },
+            { color: titleColor, marginLeft: 12 },
           ]}
         >
           {title}

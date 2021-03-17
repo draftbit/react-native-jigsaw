@@ -42,7 +42,7 @@ const CardInline: React.FC<Props> = ({
   aspectRatio = 1.5,
   elevation = 2,
   numColumns = 3,
-  theme: { colors, borderRadius, typography, spacing },
+  theme: { colors, borderRadius, typography },
   style,
   onPress,
   ...rest
@@ -87,9 +87,9 @@ const CardInline: React.FC<Props> = ({
             style={{
               position: "absolute",
               alignItems: textCentered ? "center" : "flex-start",
-              bottom: numColumns === 1 ? spacing.medium : spacing.large,
-              left: spacing.large,
-              right: spacing.large,
+              bottom: numColumns === 1 ? 12 : 16,
+              left: 16,
+              right: 16,
             }}
           >
             {title ? (

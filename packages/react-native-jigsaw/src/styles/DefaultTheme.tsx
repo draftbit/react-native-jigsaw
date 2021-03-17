@@ -3,12 +3,6 @@ import { systemWeights } from "react-native-typography";
 export default {
   disabledOpacity: 0.5,
   dark: false,
-  spacing: {
-    text: 4,
-    small: 8,
-    medium: 12,
-    large: 16,
-  },
   borderRadius: 6,
   colors: {
     primary: "rgba(90, 69, 255, 1)",

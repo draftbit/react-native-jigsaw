@@ -22,7 +22,7 @@ const FieldSlider: React.FC<Props> = ({
   minimumLabel,
   maximumLabel,
   style,
-  theme: { colors, typography, spacing },
+  theme: { colors, typography },
   ...props
 }) => {
   const labelStyle = [typography.caption, { color: colors.light }];
@@ -30,9 +30,7 @@ const FieldSlider: React.FC<Props> = ({
   return (
     <View style={[styles.container, style]}>
       {title && (
-        <Text style={[typography.body1, { marginBottom: spacing.text / 2 }]}>
-          {title}
-        </Text>
+        <Text style={[typography.body1, { marginBottom: 4 / 2 }]}>{title}</Text>
       )}
       <Slider
         style={{
@@ -41,7 +39,7 @@ const FieldSlider: React.FC<Props> = ({
         }}
         {...props}
       />
-      <View style={[styles.bottomContainer, { marginTop: spacing.text }]}>
+      <View style={[styles.bottomContainer, { marginTop: 4 }]}>
         <Text style={[labelStyle, { flex: 1 }]}>{minimumLabel}</Text>
         <Text style={labelStyle}>{props.value}</Text>
         <Text style={[labelStyle, { flex: 1, textAlign: "right" }]}>

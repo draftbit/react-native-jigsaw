@@ -52,7 +52,7 @@ const CardContainer: React.FC<Props> = ({
   aspectRatio = 1.5,
   elevation = 2,
   numColumns = 3,
-  theme: { colors, borderRadius, typography, spacing },
+  theme: { colors, borderRadius, typography },
   style,
   onPress,
   ...rest
@@ -83,10 +83,10 @@ const CardContainer: React.FC<Props> = ({
       numColumns={numColumns}
       {...rest}
     >
-      <Elevation style={{ elevation, borderRadius: borderRadius }}>
+      <Elevation style={{ elevation, borderRadius }}>
         <View
           style={{
-            borderRadius: borderRadius,
+            borderRadius,
             overflow: "hidden",
             backgroundColor: colors.surface,
           }}
@@ -98,7 +98,7 @@ const CardContainer: React.FC<Props> = ({
           />
           <View
             style={{
-              padding: numColumns === 1 ? spacing.small : spacing.large,
+              padding: numColumns === 1 ? 8 : 16,
             }}
           >
             {title ? (
@@ -123,7 +123,7 @@ const CardContainer: React.FC<Props> = ({
                   flexDirection: "row",
                   justifyContent: textJustification,
                   alignItems: "center",
-                  marginTop: numColumns === 3 ? spacing.text : spacing.text / 2,
+                  marginTop: numColumns === 3 ? 4 : 2,
                 }}
               >
                 <Text
@@ -148,8 +148,8 @@ const CardContainer: React.FC<Props> = ({
               style={{
                 elevation: Config.cardIconElevation,
                 position: "absolute",
-                top: spacing.medium,
-                right: spacing.medium,
+                top: 12,
+                right: 12,
                 width: ICON_CONTAINER_SIZE,
                 height: ICON_CONTAINER_SIZE,
                 padding: ICON_CONTAINER_PADDING,

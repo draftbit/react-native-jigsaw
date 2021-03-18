@@ -35,7 +35,7 @@ type TextInputHandles = Pick<
   "setNativeProps" | "isFocused" | "clear" | "blur" | "focus"
 >;
 
-const FieldSearchBarFull = React.forwardRef<TextInputHandles, Props>(
+const Searchbar = React.forwardRef<TextInputHandles, Props>(
   (
     {
       icon = "MaterialIcons/search",
@@ -156,12 +156,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(FieldSearchBarFull);
+export default withTheme(Searchbar);
 
 export const SEED_DATA = [
   {
     name: "Search Bar",
-    tag: "FieldSearchBarFull",
+    tag: "Searchbar",
     description: "A search bar with accompanying search icon and clear button.",
     category: COMPONENT_TYPES.field,
     layout: {

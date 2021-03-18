@@ -49,7 +49,7 @@ const FAB: React.FC<Props> = ({
   const SelectedIcon = IconOverride || Icon;
 
   const backgroundColor = bgColor || theme.colors.primary;
-  const textColor = iconColor || theme.colors.strong;
+  const textColor = iconColor || theme.colors.text;
 
   return (
     <View

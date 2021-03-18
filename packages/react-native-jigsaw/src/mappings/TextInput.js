@@ -15,7 +15,7 @@ export const SEED_DATA = {
   supports_list_render: false,
   layout: {
     height: 42,
-    borderColor: "#eee",
+    borderColor: "theme.colors.border",
     borderWidth: 1,
     borderRadius: 4,
     padding: 8,

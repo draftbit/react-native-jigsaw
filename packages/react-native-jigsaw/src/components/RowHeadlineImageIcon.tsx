@@ -30,7 +30,7 @@ const RowHeadlineImageIcon: React.FC<Props> = ({
   return (
     <Row
       titleTypeStyle={typography.headline6}
-      titleColor={colors.strong}
+      titleColor={colors.text}
       subtitleTypeStyle={typography.body2}
       subtitleColor={colors.medium}
       title={title}

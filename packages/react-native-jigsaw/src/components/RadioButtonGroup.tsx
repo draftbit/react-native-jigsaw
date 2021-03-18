@@ -26,112 +26,85 @@ interface RadioButtonOption {
 }
 
 type Props = {
-  direction?: "horizontal" | "vertical";
   options?: RadioButtonOption[];
   activeColor?: colorTypes;
   inactiveColor?: colorTypes;
-  labelStyle?: StyleProp<TextStyle>;
-  iconSize: number;
   contentColor?: colorTypes;
   unselectedContentColor?: colorTypes;
-  borderRadius?: number;
-  optionSpacing?: number;
   borderColor?: colorTypes;
   style?: StyleProp<ViewStyle>;
   value: string;
   onSelect?: (label: string) => void;
   theme: typeof themeT;
 };
+
 const RadioButtonGroup: React.FC<Props> = ({
-  direction = "horizontal",
   options = [],
   activeColor,
   inactiveColor,
-  labelStyle,
-  iconSize,
   contentColor,
   unselectedContentColor,
-  borderRadius,
-  optionSpacing,
   borderColor,
   style,
   value,
   theme: { colors },
   onSelect = () => {},
 }) => {
-  const marginHorizontal =
-    direction === "horizontal" && optionSpacing ? optionSpacing / 2 : 0;
-  const marginVertical =
-    direction === "vertical" && optionSpacing ? optionSpacing / 2 : 0;
+  const [v, onChange] = React.useState(value);
 
-  const containerStyle: StyleProp<ViewStyle> = {
-    flexDirection: direction === "vertical" ? "column" : "row",
-    borderRadius: optionSpacing ? 0 : borderRadius,
-    overflow: "hidden",
-  };
-
-  if (direction !== "vertical") {
-    containerStyle.alignItems = "center";
-  }
+  React.useEffect(() => {
+    if (v !== value) {
+      onChange(value);
+    }
+  }, [value]);
 
   return (
-    <View style={[containerStyle, style]}>
-      {options.map((option, index) => {
-        const selected = option.label === value;
-        const textColor = selected ? contentColor : unselectedContentColor;
+    <View style={{ flexDirection: "row" }}>
+      {options.map((option, index, array) => {
+        const first = index === 0;
+        const last = index === array.length - 1;
+        const selected = index === v;
+
+        const styles = [];
+
+        if (first) {
+          styles.push({
+            borderTopLeftRadius: borderRadius,
+            borderBottomLeftRadius: borderRadius,
+            borderWidth: 1,
+          });
+        }
+
+        if (last) {
+          styles.push({
+            borderTopRightRadius: borderRadius,
+            borderBottomRightRadius: borderRadius,
+            borderTopWidth: 1,
+            borderBottomWidth: 1,
+            borderRightWidth: 1,
+          });
+        }
+
+        if (!first && !last) {
+          styles.push({
+            borderRightWidth: 1,
+            borderTopWidth: 1,
+            borderBottomWidth: 1,
+          });
+        }
+
         return (
-          <Touchable
-            key={index}
-            onPress={() => onSelect(option.label)}
-            style={{ flex: 1 }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: selected ? activeColor : inactiveColor,
-                height: style
-                  ? (style as ViewStyle).height
-                    ? (style as ViewStyle).height
-                    : 50
-                  : 50,
-                borderLeftWidth:
-                  borderColor && index !== 0 ? StyleSheet.hairlineWidth : 0,
-                borderRightWidth:
-                  borderColor && index !== options.length - 1
-                    ? StyleSheet.hairlineWidth
-                    : 0,
-                borderColor: borderColor || colors.divider,
-                borderRadius: optionSpacing ? borderRadius : 0,
-                marginLeft: marginHorizontal,
-                marginRight: marginHorizontal,
-                marginTop: marginVertical,
-                marginBottom: marginVertical,
-              }}
-            >
-              {option.icon ? (
-                <Icon
-                  style={{ paddingEnd: 5 }}
-                  name={option.icon}
-                  size={iconSize}
-                  color={textColor}
-                />
-              ) : null}
-              {option.label ? (
-                <Text
-                  style={[
-                    labelStyle,
-                    {
-                      color: textColor,
-                    },
-                  ]}
-                >
-                  {option.label}
-                </Text>
-              ) : null}
-            </View>
-          </Touchable>
+          <Button
+            title={option}
+            bgColor={selected ? selectedBgColor : bgColor}
+            textColor={selected ? selectedTextColor : textColor}
+            style={[{ flex: 1 }, styles]}
+            onPress={() => {
+              onChange(index);
+              onSelect(index);
+            }}
+            {...props}
+          />
         );
       })}
     </View>
@@ -144,7 +117,7 @@ export const SEED_DATA = {
   name: "Radio Button Group",
   tag: "RadioButtonGroup",
   category: COMPONENT_TYPES.button,
-  preview_image_url: "{CLOUDINARY_URL}/Control_Radio.png",
+  layout: {},
   props: {
     options: {
       group: GROUPS.data,
@@ -162,17 +135,6 @@ export const SEED_DATA = {
         { icon: "", label: "Two" },
         { icon: "", label: "Three" },
       ],
-      editable: true,
-      required: true,
-    },
-    direction: {
-      group: GROUPS.basic,
-      label: "Horizontal/Vertical",
-      description: "Whether the buttons should be Horizontal or Vertical",
-      formType: FORM_TYPES.flatArray,
-      propType: PROP_TYPES.STRING,
-      defaultValue: "horizontal",
-      options: ["horizontal", "vertical"],
       editable: true,
       required: true,
     },
@@ -210,7 +172,7 @@ export const SEED_DATA = {
       group: GROUPS.basic,
       label: "Unselected Content Color",
       description: "Unfinished Color of the content(Icon and Label)",
-      defaultValue: "strong",
+      defaultValue: "text",
       formType: FORM_TYPES.color,
       propType: PROP_TYPES.THEME,
       editable: true,
@@ -226,63 +188,10 @@ export const SEED_DATA = {
       editable: true,
       required: true,
     },
-    labelStyle: {
-      group: GROUPS.basic,
-      label: "Label Style",
-      description: "Font and weight of the Label",
-      formType: FORM_TYPES.typeStyle,
-      propType: PROP_TYPES.THEME,
-      defaultValue: "Button",
-      editable: true,
-      required: true,
-    },
-    optionSpacing: {
-      group: GROUPS.basic,
-      label: "Option Spacing",
-      description: "The spacing between each option",
-      formType: FORM_TYPES.number,
-      propType: PROP_TYPES.NUMBER,
-      defaultValue: 1,
-      min: 0,
-      max: 20,
-      step: 1,
-      precision: 1,
-      editable: true,
-      required: false,
-    },
-    borderRadius: {
-      group: GROUPS.basic,
-      label: "Border Radius",
-      description: "The border radius for the container or options",
-      formType: FORM_TYPES.number,
-      propType: PROP_TYPES.NUMBER,
-      defaultValue: 10,
-      min: 0,
-      max: 100,
-      step: 1,
-      precision: 1,
-      editable: true,
-      required: false,
-    },
-    iconSize: {
-      group: GROUPS.basic,
-      label: "Icon Size",
-      description: "The size of the icon if enabled",
-      formType: FORM_TYPES.number,
-      propType: PROP_TYPES.NUMBER,
-      defaultValue: 16,
-      min: 0,
-      max: 24,
-      step: 1,
-      precision: 1,
-      editable: true,
-      required: false,
-    },
     fieldName: {
       ...FIELD_NAME,
       defaultValue: "radioButtonValue",
       handlerPropName: "onSelect",
     },
   },
-  layout: {},
 };

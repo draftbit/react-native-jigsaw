@@ -31,7 +31,7 @@ const Stepper: React.FC<Props> = ({
   onChange,
   theme: { colors, typography },
   iconSize = 24,
-  iconColor = colors.strong,
+  iconColor = colors.text,
   borderRadius = theme.borderRadius,
   IconOverride,
   typeStyle,
@@ -102,9 +102,7 @@ export const SEED_DATA = [
     name: "Stepper",
     tag: "Stepper",
     description: "A component used to control the quantity of something",
-    category: COMPONENT_TYPES.field,
-    preview_image_url: "{CLOUDINARY_URL}/Control_Stepper.png",
-    supports_list_render: false,
+    category: COMPONENT_TYPES.deprecated,
     props: {
       fieldName: {
         ...FIELD_NAME,
@@ -131,7 +129,7 @@ export const SEED_DATA = [
         required: false,
         formType: FORM_TYPES.color,
         propType: PROP_TYPES.THEME,
-        defaultValue: "strong",
+        defaultValue: "text",
       },
       borderRadius: {
         ...BORDER_RADIUS_MODE,

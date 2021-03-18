@@ -25,7 +25,7 @@ const HeaderLarge: React.FC<Props> = ({
   return (
     <Header
       titleTypeStyle={typography.headline4}
-      titleColor={colors.strong}
+      titleColor={colors.text}
       title={title}
       buttonText={buttonText}
       icon={icon}

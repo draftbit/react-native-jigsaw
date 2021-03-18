@@ -1,15 +1,9 @@
 import React from "react";
-import {
-  View,
-  Text,
-  ImageSourcePropType,
-  StyleProp,
-  ViewStyle,
-} from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
+import { View, ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
 import Image from "./Image";
 import CardWrapper from "./CardWrapper";
 import Surface from "./Surface";
+import { Spacer } from "./Layout";
 import { withTheme } from "../core/theming";
 import {
   GROUPS,
@@ -20,6 +14,7 @@ import {
 } from "../core/component-types";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
+import { Title, Subtitle } from "./Typography";
 
 type Props = {
   image?: string | ImageSourcePropType;
@@ -42,27 +37,10 @@ const CardInline: React.FC<Props> = ({
   aspectRatio = 1.5,
   elevation = 2,
   numColumns = 3,
-  theme: { colors, borderRadius, typography },
   style,
   onPress,
   ...rest
 }) => {
-  let titleStyle, descriptionStyle;
-  switch (numColumns) {
-    case 1:
-      titleStyle = typography.headline6;
-      descriptionStyle = typography.subtitle2;
-      break;
-    case 2:
-      titleStyle = typography.headline5;
-      descriptionStyle = typography.subtitle2;
-      break;
-    case 3:
-      titleStyle = typography.headline4;
-      descriptionStyle = typography.subtitle1;
-      break;
-  }
-
   return (
     <CardWrapper
       style={style}
@@ -70,47 +48,27 @@ const CardInline: React.FC<Props> = ({
       numColumns={numColumns}
       {...rest}
     >
-      <Elevation style={{ elevation, borderRadius: borderRadius }}>
-        <LinearGradient
-          style={{ flex: 1 }}
-          colors={["transparent", "rgba(0, 0, 0, 0.5)"]}
+      <Surface style={{ elevation }}>
+        <Image
+          style={{ aspectRatio }}
+          source={typeof image === "string" ? { uri: image } : image}
+          resizeMode="cover"
+        />
+        <View
+          style={{
+            position: "absolute",
+            alignItems: textCentered ? "center" : "flex-start",
+            bottom: 16,
+            left: 16,
+            right: 16,
+          }}
         >
-          <Image
-            resizeMode="cover"
-            source={typeof image === "string" ? { uri: image } : image}
-            style={{
-              borderRadius,
-              aspectRatio,
-            }}
-          />
-          <View
-            style={{
-              position: "absolute",
-              alignItems: textCentered ? "center" : "flex-start",
-              bottom: numColumns === 1 ? 12 : 16,
-              left: 16,
-              right: 16,
-            }}
-          >
-            {title ? (
-              <Text
-                numberOfLines={1}
-                style={[titleStyle, { color: colors.text }]}
-              >
-                {title}
-              </Text>
-            ) : null}
-            {description ? (
-              <Text
-                numberOfLines={1}
-                style={[descriptionStyle, { color: colors.text, marginTop: 2 }]}
-              >
-                {description}
-              </Text>
-            ) : null}
-          </View>
-        </LinearGradient>
-      </Elevation>
+          {title ? <Title text={title} /> : null}
+          <Spacer top={2}>
+            {description ? <Subtitle text={description} /> : null}
+          </Spacer>
+        </View>
+      </Surface>
     </CardWrapper>
   );
 };

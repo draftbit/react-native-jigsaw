@@ -1,30 +1,54 @@
 import * as React from "react";
-import { CardContainer, withTheme } from "@draftbit/ui";
+import { View } from "react-native";
+import { Card, withTheme } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
-function CardContainerExample({ theme }) {
+function CardExample({ theme }) {
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>
-      {Array.from({ length: 3 }).map((_v, i) => {
-        const numColumns = i + 1;
+      {Array.from({ length: 2 }).map((_v, i) => {
+        const numColumns = i + 2;
         return (
           <Section key={i} title={`(${numColumns} Column)`}>
-            <CardContainer
+            <Card
               title="Beautiful West Coast Villa"
               leftDescription="San Diego"
               rightDescription="$100"
               numColumns={numColumns}
-              icon="cloud"
+              icon="MaterialCommunityIcons/heart"
             />
           </Section>
         );
       })}
 
-      {Array.from({ length: 3 }).map((_v, i) => {
-        const numColumns = i + 1;
+      <Section title={`(2 Column)`}>
+        <View style={{ flexDirection: "row" }}>
+          <View style={{ paddingHorizontal: 2 }}>
+            <Card
+              title="Beautiful West Coast Villa"
+              leftDescription="San Diego"
+              rightDescription="$100"
+              numColumns={2}
+              icon="MaterialCommunityIcons/heart"
+            />
+          </View>
+          <View style={{ paddingHorizontal: 2 }}>
+            <Card
+              title="Beautiful West Coast Villa"
+              leftDescription="San Diego"
+              rightDescription="$100"
+              numColumns={2}
+              icon="MaterialCommunityIcons/heart"
+            />
+          </View>
+        </View>
+      </Section>
+
+      {Array.from({ length: 2 }).map((_v, i) => {
+        const numColumns = i + 2;
         return (
           <Section key={i} title={`(${numColumns} Columns 1:1 aspectRatio)`}>
-            <CardContainer
+            <Card
               image={require("./assets/images/splash.png")}
               title="Beautiful West Coast Villa"
               leftDescription="San Diego"
@@ -40,7 +64,7 @@ function CardContainerExample({ theme }) {
         const numColumns = i + 1;
         return (
           <Section key={i} title={`(${numColumns} Columns 3:2 aspectRatio)`}>
-            <CardContainer
+            <Card
               image={require("./assets/images/splash.png")}
               title="Beautiful West Coast Villa"
               leftDescription="San Diego"
@@ -52,31 +76,27 @@ function CardContainerExample({ theme }) {
         );
       })}
 
-      <Section title="1 Column Centered Title">
-        <CardContainer
-          title="Beautiful West Coast Villa"
-          leftDescription="San Diego"
-          textCentered
-          numColumns={2}
-        />
+      <Section title="3 Column Centered Title">
+        <Card title="Beautiful West Coast Villa" textCentered numColumns={3} />
       </Section>
 
-      <Section title="2 Column No Right Description">
-        <CardContainer
+      <Section title="1 Column No Right Description">
+        <Card
           title="Beautiful West Coast Villa"
           leftDescription="San Diego"
-          numColumns={2}
+          numColumns={1}
         />
       </Section>
 
       <Section title="3 Column No Left Description">
-        <CardContainer
+        <Card
           title="Beautiful West Coast Villa"
-          rightDescription="$100"
+          leftDescription="Something fun and new"
+          textCentered={true}
         />
       </Section>
     </Container>
   );
 }
 
-export default withTheme(CardContainerExample);
+export default withTheme(CardExample);

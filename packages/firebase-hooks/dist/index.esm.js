@@ -1,0 +1,2 @@
+import*as t from"react";var n=function(n){var r=t.useState(),e=r[0],a=r[1],u=t.useState(n.currentUser),i=u[0],c=u[1];return t.useEffect(function(){var t=n.onAuthStateChanged(c,a);return function(){t()}},[n]),[i,e,function(t,r){n.signInWithEmailAndPassword(t,r).then(c).catch(a)},function(){return n.signOut()},function(t,r){n.signInWithEmailAndPassword(t,r).then(c).catch(a)}]};export{n as useAuthState};
+//# sourceMappingURL=index.esm.js.map

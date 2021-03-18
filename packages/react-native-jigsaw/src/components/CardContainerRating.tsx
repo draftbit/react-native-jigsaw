@@ -76,7 +76,7 @@ const CardContainerRating: React.FC<Props> = ({
       numColumns={numColumns}
       {...rest}
     >
-      <Elevation style={{ elevation, borderRadius }}>
+      <Surface style={{ elevation, borderRadius }}>
         <View
           style={{
             borderRadius,
@@ -105,7 +105,7 @@ const CardContainerRating: React.FC<Props> = ({
               >
                 <Text
                   numberOfLines={1}
-                  style={[titleStyle, { color: colors.strong }]}
+                  style={[titleStyle, { color: colors.text }]}
                 >
                   {title}
                 </Text>
@@ -152,7 +152,7 @@ const CardContainerRating: React.FC<Props> = ({
             </View>
           </View>
           {icon ? (
-            <Elevation
+            <Surface
               style={{
                 elevation: Config.cardIconElevation,
                 position: "absolute",
@@ -162,7 +162,7 @@ const CardContainerRating: React.FC<Props> = ({
                 height: ICON_CONTAINER_SIZE,
                 padding: ICON_CONTAINER_PADDING,
                 borderRadius: ICON_CONTAINER_SIZE,
-                backgroundColor: color(colors.strong)
+                backgroundColor: color(colors.text)
                   .alpha(Config.cardIconBackgroundOpacity)
                   .rgb()
                   .string(),
@@ -173,10 +173,10 @@ const CardContainerRating: React.FC<Props> = ({
                 size={Config.cardIconSize}
                 color={colors.surface}
               />
-            </Elevation>
+            </Surface>
           ) : null}
         </View>
-      </Elevation>
+      </Surface>
     </CardWrapper>
   );
 };

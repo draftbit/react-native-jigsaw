@@ -253,7 +253,7 @@ class TextField extends React.Component<Props> {
       backgroundColor,
       inputStyle: StyleProp<TextStyle>;
 
-    inputTextColor = colors.strong;
+    inputTextColor = colors.text;
     if (disabled) {
       activeColor = colors.light;
       placeholderColor = colors.light;

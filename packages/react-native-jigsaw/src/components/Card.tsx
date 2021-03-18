@@ -1,16 +1,11 @@
 import React from "react";
-import {
-  View,
-  ImageSourcePropType,
-  Text,
-  StyleProp,
-  ViewStyle,
-} from "react-native";
+import { View, ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
 import color from "color";
 import Image from "./Image";
 import CardWrapper from "./CardWrapper";
 import Surface from "./Surface";
 import Icon from "./Icon";
+import { Spacer } from "./Layout";
 import { withTheme } from "../core/theming";
 import {
   GROUPS,
@@ -22,7 +17,7 @@ import {
 } from "../core/component-types";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
-import { justificationType } from "./Justification";
+import { Title, Subtitle, Caption } from "./Typography";
 
 const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
 const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
@@ -42,6 +37,35 @@ type Props = {
   onPress: () => void;
 };
 
+const TopRightCircleIcon = withTheme(({ icon, theme }) => {
+  return (
+    <Surface
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+        elevation: Config.cardIconElevation,
+        position: "absolute",
+        top: 12,
+        right: 12,
+        width: ICON_CONTAINER_SIZE,
+        height: ICON_CONTAINER_SIZE,
+        padding: ICON_CONTAINER_PADDING,
+        borderRadius: ICON_CONTAINER_SIZE,
+        backgroundColor: color(theme.colors.text)
+          .alpha(Config.cardIconBackgroundOpacity)
+          .rgb()
+          .string(),
+      }}
+    >
+      <Icon
+        name={icon}
+        size={Config.cardIconSize}
+        color={theme.colors.surface}
+      />
+    </Surface>
+  );
+});
+
 const CardContainer: React.FC<Props> = ({
   image = Config.cardImageUrl,
   title,
@@ -52,30 +76,10 @@ const CardContainer: React.FC<Props> = ({
   aspectRatio = 1.5,
   elevation = 2,
   numColumns = 3,
-  theme: { colors, borderRadius, typography },
   style,
   onPress,
   ...rest
 }) => {
-  let textJustification: justificationType;
-
-  let titleStyle;
-
-  if (textCentered && !rightDescription) {
-    textJustification = "center";
-  } else {
-    textJustification = "space-between";
-  }
-
-  switch (numColumns) {
-    case 2:
-      titleStyle = typography.headline6;
-      break;
-    case 3:
-      titleStyle = typography.headline5;
-      break;
-  }
-
   return (
     <CardWrapper
       style={style}
@@ -83,92 +87,21 @@ const CardContainer: React.FC<Props> = ({
       numColumns={numColumns}
       {...rest}
     >
-      <Elevation style={{ elevation, borderRadius }}>
-        <View
-          style={{
-            borderRadius,
-            overflow: "hidden",
-            backgroundColor: colors.surface,
-          }}
-        >
-          <Image
-            style={{ aspectRatio }}
-            source={typeof image === "string" ? { uri: image } : image}
-            resizeMode="cover"
-          />
-          <View
-            style={{
-              padding: numColumns === 1 ? 8 : 16,
-            }}
-          >
-            {title ? (
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: textJustification,
-                }}
-              >
-                <Text
-                  numberOfLines={1}
-                  style={[titleStyle, { color: colors.strong }]}
-                >
-                  {title}
-                </Text>
-              </View>
-            ) : null}
-            {leftDescription ? (
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: textJustification,
-                  alignItems: "center",
-                  marginTop: numColumns === 3 ? 4 : 2,
-                }}
-              >
-                <Text
-                  numberOfLines={1}
-                  style={[typography.body2, { color: colors.medium }]}
-                >
-                  {leftDescription}
-                </Text>
-                {rightDescription ? (
-                  <Text
-                    numberOfLines={1}
-                    style={[typography.subtitle2, { color: colors.light }]}
-                  >
-                    {rightDescription}
-                  </Text>
-                ) : null}
-              </View>
-            ) : null}
+      <Surface style={{ elevation }}>
+        <Image
+          style={{ aspectRatio }}
+          source={typeof image === "string" ? { uri: image } : image}
+          resizeMode="cover"
+        />
+        <Spacer all={numColumns === 1 ? 8 : 16}>
+          <View style={{ alignItems: textCentered ? "center" : "flex-start" }}>
+            {title ? <Title text={title} /> : null}
+            {leftDescription ? <Subtitle text={leftDescription} /> : null}
+            {rightDescription ? <Caption text={rightDescription} /> : null}
           </View>
-          {icon ? (
-            <Elevation
-              style={{
-                elevation: Config.cardIconElevation,
-                position: "absolute",
-                top: 12,
-                right: 12,
-                width: ICON_CONTAINER_SIZE,
-                height: ICON_CONTAINER_SIZE,
-                padding: ICON_CONTAINER_PADDING,
-                borderRadius: ICON_CONTAINER_SIZE,
-                backgroundColor: color(colors.strong)
-                  .alpha(Config.cardIconBackgroundOpacity)
-                  .rgb()
-                  .string(),
-              }}
-            >
-              <Icon
-                name={icon}
-                size={Config.cardIconSize}
-                color={colors.surface}
-              />
-            </Elevation>
-          ) : null}
-        </View>
-      </Elevation>
+        </Spacer>
+        {icon ? <TopRightCircleIcon icon={icon} /> : null}
+      </Surface>
     </CardWrapper>
   );
 };

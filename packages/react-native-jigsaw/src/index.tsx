@@ -10,15 +10,15 @@ export { default as AudioPlayer } from "./components/AudioPlayer";
 
 export { default as Button } from "./components/Button";
 
-export { default as CardBlock } from "./components/CardBlock";
+export { default as CardBlock } from "./components/Card";
+export { default as Card } from "./components/Card";
+export { default as CardContainer } from "./components/Card";
 export { default as CardInline } from "./components/CardInline";
 // export { default as CardContainerShortImage } from "./components/CardContainerShortImage";
-export { default as CardContainer } from "./components/CardContainer";
 export { default as CardContainerRating } from "./components/CardContainerRating";
 
 export { default as Carousel } from "./components/Carousel";
 
-// TODO missing examples
 export { default as Checkbox } from "./components/Checkbox";
 
 export { default as Container } from "./components/Container";
@@ -30,7 +30,9 @@ export { default as FAB } from "./components/FAB";
 
 export { default as FieldCheckbox } from "./components/FieldCheckbox";
 export { default as FieldSlider } from "./components/FieldSlider";
-export { default as FieldSearchBarFull } from "./components/FieldSearchBarFull";
+export { default as Searchbar } from "./components/Searchbar";
+/* TODO(deprecated) */
+export { default as FieldSearchBarFull } from "./components/Searchbar";
 export { default as FieldRadioButton } from "./components/FieldRadioButton";
 
 export { default as Icon } from "./components/Icon";
@@ -70,7 +72,10 @@ export { default as Slider } from "./components/Slider";
 export { default as Stepper } from "./components/Stepper";
 export { default as StarRating } from "./components/StarRating";
 export { default as Switch } from "./components/Switch";
+
 export { default as Surface } from "./components/Surface";
+/* TODO(deprecated) */
+export { default as Elevation } from "./components/Surface";
 
 export { default as TextField } from "./components/TextField";
 export { default as Touchable } from "./components/Touchable";

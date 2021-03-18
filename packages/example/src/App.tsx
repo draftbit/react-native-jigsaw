@@ -18,9 +18,8 @@ import IconExample from "./IconExample";
 import ButtonExample from "./ButtonExample";
 import RadioButtonExample from "./RadioButtonExample";
 
-import CardBlockExample from "./CardBlockExample";
 import CardInlineExample from "./CardInlineExample";
-import CardContainerExample from "./CardContainerExample";
+import CardExample from "./CardExample";
 import CardContainerRatingExample from "./CardContainerRatingExample";
 
 import CarouselExample from "./CarouselExample";
@@ -30,7 +29,7 @@ import ControllerExample from "./ControllerExample";
 import DatePickerExample from "./DatePickerExample";
 
 import FABExample from "./FABExample";
-import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
+import SearchbarExample from "./SearchbarExample";
 
 import HeaderExample from "./HeaderExample";
 import LayoutExample from "./LayoutExample";
@@ -62,15 +61,14 @@ const ROUTES = {
   Button: ButtonExample,
   FAB: FABExample,
   RadioButton: RadioButtonExample,
-  CardBlock: CardBlockExample,
+  Card: CardExample,
   CardInline: CardInlineExample,
-  CardContainer: CardContainerExample,
   CardContainerRating: CardContainerRatingExample,
   Carousel: CarouselExample,
   Container: ContainerExample,
   Controllers: ControllerExample,
   DatePicker: DatePickerExample,
-  FieldSearchBarFull: FieldSearchBarFullExample,
+  Searchbar: SearchbarExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
   Header: HeaderExample,
   Picker: PickerExample,

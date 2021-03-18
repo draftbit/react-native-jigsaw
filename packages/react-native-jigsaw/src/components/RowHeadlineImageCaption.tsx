@@ -30,7 +30,7 @@ const RowHeadlineImageCaption: React.FC<Props> = ({
   return (
     <Row
       titleTypeStyle={typography.headline6}
-      titleColor={colors.strong}
+      titleColor={colors.text}
       subtitleTypeStyle={typography.body2}
       subtitleColor={colors.medium}
       title={title}
@@ -40,7 +40,7 @@ const RowHeadlineImageCaption: React.FC<Props> = ({
         <Text
           style={{
             ...typography.caption,
-            color: colors.strong,
+            color: colors.text,
             marginLeft: 16,
           }}
         >

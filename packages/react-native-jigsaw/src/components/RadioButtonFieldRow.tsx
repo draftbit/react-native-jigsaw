@@ -27,9 +27,9 @@ type Props = {
 
 const RadioButtonFieldRow: React.FC<Props> = ({
   label,
-  backgroundColor = "background",
-  labelColor = "strong",
-  radioButtonColor = "primary",
+  backgroundColor = "theme.colors.background",
+  labelColor = "theme.colors.text",
+  radioButtonColor = "theme.colors.primary",
   onPress,
   selected,
   style,

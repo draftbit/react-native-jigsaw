@@ -38,7 +38,7 @@ const Slider: React.FC<Props> = ({
   minimumTrackTintColor = "light",
   maximumTrackTintColor = "primary",
   thumbTintColor = "primary",
-  disabledThumbTintColor = "strong",
+  disabledThumbTintColor = "text",
   minimumValue = 0,
   maximumValue = 10,
   step = 1,
@@ -174,7 +174,7 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.color,
       propType: PROP_TYPES.THEME,
-      defaultValue: "strong",
+      defaultValue: "text",
     },
     thumbTouchSize: {
       group: GROUPS.advanced,

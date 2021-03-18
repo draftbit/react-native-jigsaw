@@ -77,7 +77,7 @@ const EmailLoginScreen = (props: Props) => {
           <Text
             style={StyleSheet.flatten([
               theme.typography.headline2,
-              { color: theme.colors.strong, textAlign: "center" },
+              { color: theme.colors.text, textAlign: "center" },
             ])}
           >
             {welcomeText}
@@ -97,7 +97,7 @@ const EmailLoginScreen = (props: Props) => {
               {
                 borderColor: theme.colors.divider,
                 borderRadius: theme.borderRadius,
-                color: theme.colors.strong,
+                color: theme.colors.text,
                 backgroundColor: theme.colors.background,
               },
             ])}
@@ -115,7 +115,7 @@ const EmailLoginScreen = (props: Props) => {
             style={StyleSheet.flatten([
               styles.PasswordTextInput,
               {
-                color: theme.colors.strong,
+                color: theme.colors.text,
                 borderColor: theme.colors.divider,
                 borderRadius: theme.borderRadius,
                 backgroundColor: theme.colors.background,

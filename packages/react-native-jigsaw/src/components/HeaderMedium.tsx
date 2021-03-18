@@ -30,7 +30,7 @@ const HeaderMedium: React.FC<Props> = ({
   return (
     <Header
       titleTypeStyle={typography.headline6}
-      titleColor={colors.strong}
+      titleColor={colors.text}
       title={title}
       buttonText={buttonText}
       icon={icon}

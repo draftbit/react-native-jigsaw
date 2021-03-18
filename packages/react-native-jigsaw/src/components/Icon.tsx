@@ -112,7 +112,7 @@ export const SEED_DATA = {
       description: "Color of the icon",
       formType: FORM_TYPES.color,
       propType: PROP_TYPES.THEME,
-      defaultValue: "strong",
+      defaultValue: "text",
       editable: true,
       required: true,
     },

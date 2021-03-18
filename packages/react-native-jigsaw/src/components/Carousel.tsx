@@ -123,7 +123,7 @@ const Carousel: React.FC<Props> = ({
             } else {
               if (swiperPalette === "surface") {
                 if (activeDot) {
-                  backgroundColor = colors.strong;
+                  backgroundColor = colors.text;
                 } else {
                   backgroundColor = colors.light;
                 }
@@ -137,7 +137,7 @@ const Carousel: React.FC<Props> = ({
             }
 
             return (
-              <Elevation
+              <Surface
                 key={i}
                 style={[
                   {
@@ -235,7 +235,7 @@ export const SEED_DATA = [
         description: "Color of the carousel's dots",
         editable: true,
         required: true,
-        defaultValue: "strong",
+        defaultValue: "text",
         formType: FORM_TYPES.color,
         propType: PROP_TYPES.THEME,
       },

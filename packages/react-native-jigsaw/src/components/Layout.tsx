@@ -106,7 +106,7 @@ export function Spacer({
   right = 8,
   bottom = 8,
   left = 8,
-  all,
+  all = null,
   children,
 }: {
   top?: number;
@@ -116,13 +116,14 @@ export function Spacer({
   all?: number | null;
   children: React.ReactNode;
 }) {
+  const hasAll = all || all === 0;
   return (
     <View
       style={{
-        paddingRight: all ? all : right,
-        paddingTop: all ? all : top,
-        paddingLeft: all ? all : left,
-        paddingBottom: all ? all : bottom,
+        paddingRight: hasAll ? all : right,
+        paddingTop: hasAll ? all : top,
+        paddingLeft: hasAll ? all : left,
+        paddingBottom: hasAll ? all : bottom,
       }}
     >
       {children}

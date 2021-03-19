@@ -13,36 +13,13 @@ function CardExample({ theme }) {
             <Card
               title="Beautiful West Coast Villa"
               leftDescription="San Diego"
-              rightDescription="$100"
+              rightDescription="Greyhound divisively hello coldly wonderfully marginally far upon excluding."
               numColumns={numColumns}
               icon="MaterialCommunityIcons/heart"
             />
           </Section>
         );
       })}
-
-      <Section title={`(2 Column)`}>
-        <View style={{ flexDirection: "row" }}>
-          <View style={{ paddingHorizontal: 2 }}>
-            <Card
-              title="Beautiful West Coast Villa"
-              leftDescription="San Diego"
-              rightDescription="$100"
-              numColumns={2}
-              icon="MaterialCommunityIcons/heart"
-            />
-          </View>
-          <View style={{ paddingHorizontal: 2 }}>
-            <Card
-              title="Beautiful West Coast Villa"
-              leftDescription="San Diego"
-              rightDescription="$100"
-              numColumns={2}
-              icon="MaterialCommunityIcons/heart"
-            />
-          </View>
-        </View>
-      </Section>
 
       {Array.from({ length: 2 }).map((_v, i) => {
         const numColumns = i + 2;
@@ -52,7 +29,6 @@ function CardExample({ theme }) {
               image={require("./assets/images/splash.png")}
               title="Beautiful West Coast Villa"
               leftDescription="San Diego"
-              rightDescription="$100"
               numColumns={numColumns}
               aspectRatio={1}
             />
@@ -68,7 +44,6 @@ function CardExample({ theme }) {
               image={require("./assets/images/splash.png")}
               title="Beautiful West Coast Villa"
               leftDescription="San Diego"
-              rightDescription="$100"
               numColumns={numColumns}
               aspectRatio={3 / 2}
             />

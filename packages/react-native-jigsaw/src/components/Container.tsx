@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { withTheme } from "../core/theming";
 
-import Surface from "./Surface";
 import {
   GROUPS,
   COMPONENT_TYPES,

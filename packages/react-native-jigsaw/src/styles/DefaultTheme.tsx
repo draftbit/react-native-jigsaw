@@ -3,7 +3,7 @@ import { systemWeights } from "react-native-typography";
 export default {
   disabledOpacity: 0.5,
   dark: false,
-  borderRadius: 6,
+  borderRadius: 8,
   colors: {
     primary: "rgba(90, 69, 255, 1)",
     secondary: "rgba(59, 201, 234, 1)",

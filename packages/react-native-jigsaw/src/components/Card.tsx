@@ -37,7 +37,7 @@ type Props = {
   onPress: () => void;
 };
 
-const TopRightCircleIcon = withTheme(({ icon, theme }) => {
+export const TopRightCircleIcon = withTheme(({ icon, theme }) => {
   return (
     <Surface
       style={{
@@ -66,18 +66,22 @@ const TopRightCircleIcon = withTheme(({ icon, theme }) => {
   );
 });
 
-const CardContainer: React.FC<Props> = ({
+const Card: React.FC<Props> = ({
   image = Config.cardImageUrl,
   title,
   leftDescription,
   rightDescription,
   textCentered,
-  icon,
+  icon = "MaterialCommunityIcons/heart",
   aspectRatio = 1.5,
   elevation = 2,
   numColumns = 3,
   style,
   onPress,
+  titleStyle,
+  subtitleStyle,
+  descriptionStyle,
+  theme,
   ...rest
 }) => {
   return (
@@ -87,7 +91,7 @@ const CardContainer: React.FC<Props> = ({
       numColumns={numColumns}
       {...rest}
     >
-      <Surface style={{ elevation }}>
+      <Surface theme={theme} style={{ elevation }}>
         <Image
           style={{ aspectRatio }}
           source={typeof image === "string" ? { uri: image } : image}
@@ -95,9 +99,21 @@ const CardContainer: React.FC<Props> = ({
         />
         <Spacer all={numColumns === 1 ? 8 : 16}>
           <View style={{ alignItems: textCentered ? "center" : "flex-start" }}>
-            {title ? <Title text={title} /> : null}
-            {leftDescription ? <Subtitle text={leftDescription} /> : null}
-            {rightDescription ? <Caption text={rightDescription} /> : null}
+            {title ? (
+              <Title theme={theme} text={title} style={titleStyle} />
+            ) : null}
+            {leftDescription ? (
+              <Subtitle
+                theme={theme}
+                text={leftDescription}
+                style={subtitleStyle}
+              />
+            ) : null}
+            {rightDescription ? (
+              <View style={{ marginTop: 4 }}>
+                <Caption text={rightDescription} style={descriptionStyle} />
+              </View>
+            ) : null}
           </View>
         </Spacer>
         {icon ? <TopRightCircleIcon icon={icon} /> : null}
@@ -106,7 +122,7 @@ const CardContainer: React.FC<Props> = ({
   );
 };
 
-export default withTheme(CardContainer);
+export default withTheme(Card);
 
 const SEED_DATA_PROPS = {
   image: {
@@ -185,7 +201,7 @@ const SEED_DATA_PROPS = {
 export const SEED_DATA = [
   {
     name: "Medium Card",
-    tag: "CardContainer",
+    tag: "Card",
     description:
       "An elevated card with a title and description, that takes up half of its container.",
     category: COMPONENT_TYPES.card,
@@ -199,7 +215,7 @@ export const SEED_DATA = [
   },
   {
     name: "Large Card",
-    tag: "CardContainer",
+    tag: "Card",
     description:
       "An elevated card with a title and description, that takes up its full container.",
     category: COMPONENT_TYPES.card,

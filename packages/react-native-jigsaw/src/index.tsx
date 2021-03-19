@@ -15,7 +15,8 @@ export { default as Card } from "./components/Card";
 export { default as CardContainer } from "./components/Card";
 export { default as CardInline } from "./components/CardInline";
 // export { default as CardContainerShortImage } from "./components/CardContainerShortImage";
-export { default as CardContainerRating } from "./components/CardContainerRating";
+export { default as CardContainerRating } from "./components/CardWithRating";
+export { default as CardWithRating } from "./components/CardWithRating";
 
 export { default as Carousel } from "./components/Carousel";
 

@@ -1,18 +1,13 @@
 import React from "react";
-import {
-  View,
-  ImageSourcePropType,
-  Text,
-  StyleProp,
-  ViewStyle,
-} from "react-native";
-import color from "color";
+import { ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
 import Image from "./Image";
 import CardWrapper from "./CardWrapper";
 import Surface from "./Surface";
-import Icon from "./Icon";
 import StarRating from "./StarRating";
 import { withTheme } from "../core/theming";
+import { TopRightCircleIcon } from "./Card";
+import { Title, Subtitle, Caption } from "./Typography";
+import { Spacer, Row } from "./Layout";
 import {
   GROUPS,
   FORM_TYPES,
@@ -22,9 +17,6 @@ import {
 } from "../core/component-types";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
-
-const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
-const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
 
 type Props = {
   image?: string | ImageSourcePropType;
@@ -42,7 +34,7 @@ type Props = {
   onPress: () => void;
 };
 
-const CardContainerRating: React.FC<Props> = ({
+const CardWithRating: React.FC<Props> = ({
   image = Config.cardImageUrl,
   title,
   leftDescription,
@@ -52,23 +44,11 @@ const CardContainerRating: React.FC<Props> = ({
   aspectRatio = 1.5,
   elevation = 2,
   numColumns = 3,
-  theme: { colors, borderRadius, typography },
+  theme,
   style,
   onPress,
   ...rest
 }) => {
-  let titleStyle, rightDescriptionStyle;
-  switch (numColumns) {
-    case 2:
-      titleStyle = typography.headline6;
-      rightDescriptionStyle = typography.body2;
-      break;
-    case 3:
-      titleStyle = typography.headline5;
-      rightDescriptionStyle = typography.caption;
-      break;
-  }
-
   return (
     <CardWrapper
       style={style}
@@ -76,112 +56,32 @@ const CardContainerRating: React.FC<Props> = ({
       numColumns={numColumns}
       {...rest}
     >
-      <Surface style={{ elevation, borderRadius }}>
-        <View
-          style={{
-            borderRadius,
-            overflow: "hidden",
-            backgroundColor: colors.background,
-            //background color is needed for bug on android 9 - https://github.com/facebook/react-native/issues/25093
-          }}
-        >
-          <Image
-            style={{ aspectRatio }}
-            source={typeof image === "string" ? { uri: image } : image}
-            resizeMode="cover"
-          />
-          <View
-            style={{
-              padding: numColumns === 3 ? 16 : 8,
-            }}
-          >
-            {title ? (
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Text
-                  numberOfLines={1}
-                  style={[titleStyle, { color: colors.text }]}
-                >
-                  {title}
-                </Text>
-              </View>
-            ) : null}
-            {leftDescription ? (
-              <Text
-                numberOfLines={1}
-                style={[
-                  typography.body2,
-                  {
-                    color: colors.medium,
-                    marginTop: numColumns === 3 ? 4 : 2,
-                  },
-                ]}
-              >
-                {leftDescription}
-              </Text>
-            ) : null}
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-                marginTop: numColumns === 3 ? 16 : 12,
-              }}
-            >
+      <Surface style={{ elevation }}>
+        <Image
+          style={{ aspectRatio }}
+          source={typeof image === "string" ? { uri: image } : image}
+          resizeMode="cover"
+        />
+        <Spacer all={numColumns === 1 ? 8 : 16}>
+          {title ? <Title text={title} /> : null}
+          {leftDescription ? <Subtitle text={leftDescription} /> : null}
+          <Spacer top={8} left={0} right={0} bottom={0}>
+            <Row justifyContent="space-between" alignItems="center">
               <StarRating
-                starSize={numColumns === 1 ? 10 : 16}
+                starSize={numColumns === 1 ? 12 : 16}
                 rating={rating}
               />
-              <Text
-                style={[
-                  rightDescriptionStyle,
-                  {
-                    color: colors.medium,
-                    marginLeft: 8,
-                  },
-                ]}
-                numberOfLines={1}
-              >
-                {rightDescription}
-              </Text>
-            </View>
-          </View>
-          {icon ? (
-            <Surface
-              style={{
-                elevation: Config.cardIconElevation,
-                position: "absolute",
-                top: 12,
-                right: 12,
-                width: ICON_CONTAINER_SIZE,
-                height: ICON_CONTAINER_SIZE,
-                padding: ICON_CONTAINER_PADDING,
-                borderRadius: ICON_CONTAINER_SIZE,
-                backgroundColor: color(colors.text)
-                  .alpha(Config.cardIconBackgroundOpacity)
-                  .rgb()
-                  .string(),
-              }}
-            >
-              <Icon
-                name={icon}
-                size={Config.cardIconSize}
-                color={colors.surface}
-              />
-            </Surface>
-          ) : null}
-        </View>
+              {rightDescription ? <Caption text={rightDescription} /> : null}
+            </Row>
+          </Spacer>
+        </Spacer>
+        {icon ? <TopRightCircleIcon icon={icon} /> : null}
       </Surface>
     </CardWrapper>
   );
 };
 
-export default withTheme(CardContainerRating);
+export default withTheme(CardWithRating);
 
 const SEED_DATA_PROPS = {
   image: {
@@ -264,7 +164,7 @@ const SEED_DATA_PROPS = {
 export const SEED_DATA = [
   {
     name: "Medium Card (Rating)",
-    tag: "CardContainerRating",
+    tag: "CardWithRating",
     description:
       "An elevated card with a title and description, that takes up half of its container.",
     category: COMPONENT_TYPES.card,
@@ -287,7 +187,7 @@ export const SEED_DATA = [
   },
   {
     name: "Large Card (Rating)",
-    tag: "CardContainerRating",
+    tag: "CardWithRating",
     description:
       "An elevated card with a title and description, that takes up its full container.",
     category: COMPONENT_TYPES.card,

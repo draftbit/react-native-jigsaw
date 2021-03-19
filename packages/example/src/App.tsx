@@ -20,7 +20,7 @@ import RadioButtonExample from "./RadioButtonExample";
 
 import CardInlineExample from "./CardInlineExample";
 import CardExample from "./CardExample";
-import CardContainerRatingExample from "./CardContainerRatingExample";
+import CardWithRatingExample from "./CardWithRatingExample";
 
 import CarouselExample from "./CarouselExample";
 import ContainerExample from "./ContainerExample";
@@ -55,32 +55,32 @@ import {
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const ROUTES = {
-  Layout: LayoutExample,
-  CircleImage: CircleImageExample,
-  Icon: IconExample,
-  Button: ButtonExample,
-  FAB: FABExample,
-  RadioButton: RadioButtonExample,
-  Card: CardExample,
-  CardInline: CardInlineExample,
-  CardContainerRating: CardContainerRatingExample,
-  Carousel: CarouselExample,
-  Container: ContainerExample,
-  Controllers: ControllerExample,
-  DatePicker: DatePickerExample,
-  Searchbar: SearchbarExample,
+  "Layout": LayoutExample,
+  "CircleImage": CircleImageExample,
+  "Icon": IconExample,
+  "Button": ButtonExample,
+  "FAB": FABExample,
+  "RadioButton": RadioButtonExample,
+  "Card": CardExample,
+  "CardInline": CardInlineExample,
+  "Card with Rating": CardWithRatingExample,
+  "Carousel": CarouselExample,
+  "Container": ContainerExample,
+  "Controllers": ControllerExample,
+  "DatePicker": DatePickerExample,
+  "Searchbar": SearchbarExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
-  Header: HeaderExample,
-  Picker: PickerExample,
-  ProgressBar: ProgressExample,
-  ProgressIndicator: ProgressIndicatorExample,
+  "Header": HeaderExample,
+  "Picker": PickerExample,
+  "ProgressBar": ProgressExample,
+  "ProgressIndicator": ProgressIndicatorExample,
   // TODO fix Row (spacing problem)
-  Row: RowExample,
+  "Row": RowExample,
   // TODO (componentWillReceieveProps insider slider component)
-  Slider: SliderExample,
-  Switch: SwitchExample,
-  Stepper: StepperExample,
-  TextField: TextFieldExample,
+  "Slider": SliderExample,
+  "Switch": SwitchExample,
+  "Stepper": StepperExample,
+  "TextField": TextFieldExample,
 };
 
 let customFonts = {

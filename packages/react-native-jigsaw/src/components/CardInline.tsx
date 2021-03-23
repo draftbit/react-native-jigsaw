@@ -114,7 +114,7 @@ const SEED_DATA_PROPS = {
     group: GROUPS.data,
     label: "Image",
     description: "Image",
-    formType: FORM_TYPES.remoteImage,
+    formType: FORM_TYPES.image,
     defaultValue: null,
     editable: true,
   },

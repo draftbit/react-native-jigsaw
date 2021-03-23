@@ -113,7 +113,7 @@ export const SEED_DATA = {
       description: "The source of the image",
       editable: true,
       required: true,
-      formType: FORM_TYPES.localImage,
+      formType: FORM_TYPES.image,
       propType: PROP_TYPES.ASSET,
       defaultValue: "https://static.draftbit.com/images/placeholder-image.png",
     },

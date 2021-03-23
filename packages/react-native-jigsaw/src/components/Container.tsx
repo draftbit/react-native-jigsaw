@@ -117,7 +117,7 @@ export const SEED_DATA = {
       group: GROUPS.data,
       label: "Background image",
       description: "Background image to apply to the container",
-      formType: FORM_TYPES.remoteImage,
+      formType: FORM_TYPES.image,
       defaultValue: null,
       editable: true,
       required: false,

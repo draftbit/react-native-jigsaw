@@ -47,7 +47,7 @@ const RadioButtonGroup: React.FC<Props> = ({
   borderColor,
   style,
   value,
-  theme: { colors },
+  theme: { borderRadius, colors },
   onSelect = () => {},
 }) => {
   const [v, onChange] = React.useState(value);

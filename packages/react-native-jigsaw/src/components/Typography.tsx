@@ -12,7 +12,15 @@ export const Title = withTheme(({ text, theme, style }: Props) => {
   return (
     <Text
       numberOfLines={1}
-      style={[theme.typography.headline5, { color: theme.colors.text }, style]}
+      style={[
+        {
+          fontSize: 20,
+          letterSpacing: 0,
+          lineHeight: 26,
+          color: theme.colors.text,
+        },
+        style,
+      ]}
     >
       {text}
     </Text>
@@ -23,7 +31,15 @@ export const Subtitle = withTheme(({ text, theme, style }: Props) => {
   return (
     <Text
       numberOfLines={1}
-      style={[theme.typography.body2, { color: theme.colors.medium }, style]}
+      style={[
+        {
+          fontSize: 14,
+          letterSpacing: 0,
+          lineHeight: 22,
+          color: theme.colors.medium,
+        },
+        style,
+      ]}
     >
       {text}
     </Text>
@@ -33,7 +49,15 @@ export const Subtitle = withTheme(({ text, theme, style }: Props) => {
 export const Caption = withTheme(({ text, theme, style }: Props) => {
   return (
     <Text
-      style={[theme.typography.subtitle2, { color: theme.colors.light }, style]}
+      style={[
+        {
+          fontSize: 12,
+          letterSpacing: 0,
+          lineHeight: 16,
+          color: theme.colors.light,
+        },
+        style,
+      ]}
     >
       {text}
     </Text>

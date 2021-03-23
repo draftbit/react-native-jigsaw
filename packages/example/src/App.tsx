@@ -17,6 +17,7 @@ import CircleImageExample from "./CircleImageExample";
 import IconExample from "./IconExample";
 import ButtonExample from "./ButtonExample";
 import RadioButtonExample from "./RadioButtonExample";
+import RowsExample from "./RowsExample";
 
 import CardInlineExample from "./CardInlineExample";
 import CardExample from "./CardExample";
@@ -24,7 +25,6 @@ import CardWithRatingExample from "./CardWithRatingExample";
 
 import CarouselExample from "./CarouselExample";
 import ContainerExample from "./ContainerExample";
-import ControllerExample from "./ControllerExample";
 
 import DatePickerExample from "./DatePickerExample";
 
@@ -40,10 +40,6 @@ import ProgressExample from "./ProgressExample";
 
 import RowExample from "./RowExample";
 
-import SliderExample from "./SliderExample";
-import SwitchExample from "./SwitchExample";
-import StepperExample from "./StepperExample";
-
 import TextFieldExample from "./TextFieldExample";
 
 import ProgressIndicatorExample from "./ProgressIndicatorExample.js";
@@ -55,6 +51,7 @@ import {
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const ROUTES = {
+  "Rows": RowsExample,
   "Layout": LayoutExample,
   "CircleImage": CircleImageExample,
   "Icon": IconExample,
@@ -66,7 +63,6 @@ const ROUTES = {
   "Card with Rating": CardWithRatingExample,
   "Carousel": CarouselExample,
   "Container": ContainerExample,
-  "Controllers": ControllerExample,
   "DatePicker": DatePickerExample,
   "Searchbar": SearchbarExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
@@ -76,10 +72,6 @@ const ROUTES = {
   "ProgressIndicator": ProgressIndicatorExample,
   // TODO fix Row (spacing problem)
   "Row": RowExample,
-  // TODO (componentWillReceieveProps insider slider component)
-  "Slider": SliderExample,
-  "Switch": SwitchExample,
-  "Stepper": StepperExample,
   "TextField": TextFieldExample,
 };
 
@@ -120,7 +112,7 @@ function Examples() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="CircleImage"
+        initialRouteName="Rows"
         drawerContentOptions={{
           activeTintColor: "rgba(90, 69, 255, 1)",
         }}

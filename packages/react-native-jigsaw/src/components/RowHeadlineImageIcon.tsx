@@ -113,7 +113,7 @@ export const SEED_DATA = [
       image: {
         label: "Image",
         description: "Image to display",
-        formType: FORM_TYPES.remoteImage,
+        formType: FORM_TYPES.image,
         defaultValue: null,
         editable: true,
       },
@@ -186,7 +186,7 @@ export const SEED_DATA = [
       image: {
         label: "Image",
         description: "Image to display",
-        formType: FORM_TYPES.remoteImage,
+        formType: FORM_TYPES.image,
         defaultValue: null,
         editable: true,
       },
@@ -266,7 +266,7 @@ export const SEED_DATA = [
       image: {
         label: "Image",
         description: "Image to display",
-        formType: FORM_TYPES.remoteImage,
+        formType: FORM_TYPES.image,
         defaultValue: null,
         editable: true,
       },

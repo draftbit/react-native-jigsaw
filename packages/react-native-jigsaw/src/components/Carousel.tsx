@@ -213,7 +213,7 @@ export const SEED_DATA = [
         description: "A series of images to display in the carousel",
         editable: true,
         required: false,
-        formType: FORM_TYPES.localImageArray,
+        formType: FORM_TYPES.imageArray,
         propType: PROP_TYPES.ASSET,
         defaultValue: null,
       },

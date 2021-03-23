@@ -1,7 +1,7 @@
 import * as React from "react";
 import { View, FlatList } from "react-native";
 import { CardInline, Spacer, withTheme } from "@draftbit/ui";
-import Section, { Container } from "./Section";
+import { Container } from "./Section";
 
 const getData = () => {
   return [
@@ -42,13 +42,14 @@ function CardInlineExample({ theme }) {
         keyExtractor={(_item, index) => index}
         renderItem={({ item }) => {
           return (
-            <View style={{ width: 200, marginRight: 8 }} key={item.key}>
+            <View style={{ marginRight: 8 }} key={item.key}>
               <CardInline
                 title={item.title}
                 description={item.subtitle}
                 image={item.imageUrl}
                 aspectRatio={5 / 3}
-                titleCentered
+                textCentered
+                style={{ width: 300 }}
               />
             </View>
           );
@@ -63,10 +64,13 @@ function CardInlineExample({ theme }) {
             <View key={item.key} style={{ flex: 1 / 3 }}>
               <Spacer all={4}>
                 <CardInline
-                  titleCentered
                   title={item.title}
                   image={item.imageUrl}
                   aspectRatio={1}
+                  style={{
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
                 />
               </Spacer>
             </View>
@@ -103,7 +107,10 @@ function CardInlineExample({ theme }) {
                 description={item.subtitle}
                 image={item.imageUrl}
                 aspectRatio={5 / 3}
-                titleCentered
+                style={{
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
               />
             </View>
           );

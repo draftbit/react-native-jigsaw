@@ -90,7 +90,7 @@ export const SEED_DATA = {
       description: "Name of the image",
       editable: true,
       required: true,
-      formType: FORM_TYPES.remoteImage,
+      formType: FORM_TYPES.image,
       defaultValue: "brightness-5",
     },
   },

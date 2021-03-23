@@ -5,51 +5,53 @@ import {
   ImageSourcePropType,
   StyleProp,
   ViewStyle,
+  TextStyle,
+  StyleSheet,
 } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
+import { Title, Subtitle } from "./Typography";
 import Image from "./Image";
 import Surface from "./Surface";
+import Config from "./Config";
 import { withTheme } from "../core/theming";
+import theme from "../styles/DefaultTheme";
 import {
   GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
+  PROP_TYPES,
   createElevationType,
 } from "../core/component-types";
-import Config from "./Config";
-import theme from "../styles/DefaultTheme";
-import { Title, Subtitle } from "./Typography";
 
 type Props = {
   image?: string | ImageSourcePropType;
   title?: string;
-  description?: string;
-  textCentered: boolean;
+  subtitle?: string;
   aspectRatio?: number;
   elevation?: number;
   theme: typeof theme;
   style?: StyleProp<ViewStyle>;
+  titleStyle?: StyleProp<TexStyle>;
+  subtitleStyle?: StyleProp<TextStyle>;
   onPress: () => void;
 };
 
 const CardInline: React.FC<Props> = ({
   image = Config.cardImageUrl,
   title,
-  description,
-  textCentered,
+  subtitle,
   aspectRatio = 1.5,
   elevation = 2,
   style,
+  titleStyle,
+  subtitleStyle,
   onPress,
-  ...props
 }) => {
+  const { alignItems, justifyContent } = StyleSheet.flatten(style || {});
   return (
     <Surface style={[{ elevation }, style]}>
       <Pressable
+        disabled={!onPress}
         onPress={onPress}
-        android_ripple={{
-          color: "#000",
-        }}
         style={({ pressed }) => {
           return [
             {
@@ -63,88 +65,84 @@ const CardInline: React.FC<Props> = ({
           source={typeof image === "string" ? { uri: image } : image}
           resizeMode="cover"
         />
-        <LinearGradient
-          style={{ position: "absolute", top: 0, bottom: 0, left: 0, right: 0 }}
-          colors={["transparent", "rgba(0, 0, 0, 0.2)"]}
-          locations={[0.5, 1]}
-        >
-          <View
-            style={{
-              position: "absolute",
-              alignItems: textCentered ? "center" : "flex-start",
-              bottom: 16,
-              left: 16,
-              right: 16,
-            }}
-          >
-            {title ? (
-              <Title theme={{ colors: { text: "white" } }} text={title} />
-            ) : null}
-            {description ? (
-              <Subtitle
-                theme={{ colors: { medium: "rgba(255, 255, 255, 0.8)" } }}
-                text={description}
-              />
-            ) : null}
-          </View>
-        </LinearGradient>
+        <View style={[styles.overlay, { justifyContent, alignItems }]}>
+          {title ? (
+            <Title style={[{ color: "white" }, titleStyle]} text={title} />
+          ) : null}
+          {subtitle ? (
+            <Subtitle
+              style={[{ color: "rgba(255, 255, 255, 0.7)" }, subtitleStyle]}
+              text={subtitle}
+            />
+          ) : null}
+        </View>
       </Pressable>
     </Surface>
   );
 };
 
+const styles = StyleSheet.create({
+  overlay: {
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    padding: 16,
+    backgroundColor: "rgba(0, 0, 0, 0.2)",
+  },
+});
+
 export default withTheme(CardInline);
 
-export const SEED_DATA = [
-  {
-    name: "Inline Card",
-    tag: "CardInline",
-    description:
-      "An elevated card with image and a title and description overlayed, that takes up the full width of its container.",
-    category: COMPONENT_TYPES.card,
-    layout: {},
-    props: {
-      image: {
-        group: GROUPS.data,
-        label: "Image",
-        description: "Image",
-        formType: FORM_TYPES.remoteImage,
-        defaultValue: null,
-        editable: true,
-      },
-      title: {
-        group: GROUPS.data,
-        label: "Title",
-        description: "Text to display",
-        formType: FORM_TYPES.string,
-        defaultValue: "Beautiful West Coast Villa",
-        editable: true,
-      },
-      description: {
-        group: GROUPS.data,
-        label: "Description",
-        description: "Subtitle text",
-        formType: FORM_TYPES.string,
-        defaultValue: "San Diego",
-        editable: true,
-      },
-      aspectRatio: {
-        group: GROUPS.basic,
-        label: "Aspect ratio",
-        description: "Aspect ratio of the image",
-        formType: FORM_TYPES.aspectRatio,
-        defaultValue: 1.5,
-        editable: true,
-      },
-      textCentered: {
-        group: GROUPS.basic,
-        label: "Text centered",
-        description: "Whether to center the text",
-        formType: FORM_TYPES.boolean,
-        defaultValue: false,
-        editable: true,
-      },
-      elevation: createElevationType(2),
+export const SEED_DATA = {
+  name: "Inline Card",
+  tag: "CardInline",
+  description:
+    "An elevated card with image and a title and description overlayed, that takes up the full width of its container.",
+  category: COMPONENT_TYPES.card,
+  layout: {},
+  props: {
+    image: {
+      group: GROUPS.data,
+      label: "Image",
+      description: "Image",
+      formType: FORM_TYPES.image,
+      propType: PROP_TYPES.ASSET,
+      defaultValue: null,
+      editable: true,
+      required: false,
     },
+    title: {
+      group: GROUPS.data,
+      label: "Title",
+      description: "Text to display",
+      formType: FORM_TYPES.string,
+      propType: PROP_TYPES.STRING,
+      defaultValue: "Beautiful West Coast Villa",
+      editable: true,
+      required: false,
+    },
+    subtitle: {
+      group: GROUPS.data,
+      label: "Subtitle",
+      description: "Subtitle text",
+      formType: FORM_TYPES.string,
+      propType: PROP_TYPES.STRING,
+      defaultValue: "San Diego",
+      editable: true,
+      required: false,
+    },
+    aspectRatio: {
+      group: GROUPS.basic,
+      label: "Aspect ratio",
+      description: "Aspect ratio of the image",
+      formType: FORM_TYPES.aspectRatio,
+      propType: PROP_TYPES.NUMBER,
+      defaultValue: 1.5,
+      editable: true,
+      required: false,
+    },
+    elevation: createElevationType(2),
   },
-];
+};

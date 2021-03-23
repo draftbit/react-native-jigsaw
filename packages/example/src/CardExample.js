@@ -1,75 +1,110 @@
 import * as React from "react";
-import { View } from "react-native";
-import { Card, withTheme } from "@draftbit/ui";
+import { View, FlatList } from "react-native";
+import { Card, Spacer, withTheme } from "@draftbit/ui";
 import Section, { Container } from "./Section";
+
+const getData = () => {
+  return [
+    {
+      title: "Cars",
+      subtitle: "New York City",
+      description:
+        "Mountains generally are understood to be larger than hills, but the term has no standardized geological meaning. Very rarely do mountains occur individually.",
+      imageUrl: "https://picsum.photos/id/130/1125",
+    },
+    {
+      title: "Mountains",
+      subtitle: "Santa Barbara",
+      description:
+        "Mountains generally are understood to be larger than hills, but the term has no standardized geological meaning. Very rarely do mountains occur individually.",
+      imageUrl: "https://picsum.photos/id/121/1125",
+    },
+    {
+      title: "Oceans",
+      subtitle: "Texas",
+      description:
+        "Mountains generally are understood to be larger than hills, but the term has no standardized geological meaning. Very rarely do mountains occur individually.",
+      imageUrl: "https://picsum.photos/id/131/1125",
+    },
+    {
+      title: "Deserts",
+      subtitle: "Egypt",
+      description:
+        "Mountains generally are understood to be larger than hills, but the term has no standardized geological meaning. Very rarely do mountains occur individually.",
+      imageUrl: "https://picsum.photos/id/141/1125",
+    },
+    {
+      title: "Woods",
+      subtitle: "Washington",
+      description:
+        "Mountains generally are understood to be larger than hills, but the term has no standardized geological meaning. Very rarely do mountains occur individually.",
+      imageUrl: "https://picsum.photos/id/161/1125",
+    },
+  ];
+};
 
 function CardExample({ theme }) {
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>
-      {Array.from({ length: 2 }).map((_v, i) => {
-        const numColumns = i + 2;
-        return (
-          <Section key={i} title={`(${numColumns} Column)`}>
-            <Card
-              title="Beautiful West Coast Villa"
-              leftDescription="San Diego"
-              rightDescription="Greyhound divisively hello coldly wonderfully marginally far upon excluding."
-              numColumns={numColumns}
-              icon="MaterialCommunityIcons/heart"
-            />
-          </Section>
-        );
-      })}
+      <FlatList
+        horizontal
+        style={{ padding: 4 }}
+        data={getData()}
+        keyExtractor={(_item, index) => index}
+        renderItem={({ item }) => {
+          return (
+            <View style={{ width: 240, marginRight: 8 }} key={item.key}>
+              <Card
+                icon="MaterialCommunityIcons/heart"
+                title={item.title}
+                description={item.subtitle}
+                image={item.imageUrl}
+                aspectRatio={5 / 3}
+                textCentered
+              />
+            </View>
+          );
+        }}
+      />
+      <Spacer top={16} />
 
-      {Array.from({ length: 2 }).map((_v, i) => {
-        const numColumns = i + 2;
-        return (
-          <Section key={i} title={`(${numColumns} Columns 1:1 aspectRatio)`}>
-            <Card
-              image={require("./assets/images/splash.png")}
-              title="Beautiful West Coast Villa"
-              leftDescription="San Diego"
-              numColumns={numColumns}
-              aspectRatio={1}
-            />
-          </Section>
-        );
-      })}
+      <FlatList
+        data={getData()}
+        numColumns={2}
+        keyExtractor={(_item, index) => index}
+        renderItem={({ item }) => {
+          return (
+            <View style={{ flex: 1 / 2 }} key={item.key}>
+              <Spacer all={4}>
+                <Card
+                  title={item.title}
+                  description={item.subtitle}
+                  aspectRatio={3 / 2}
+                  image={item.imageUrl}
+                />
+              </Spacer>
+            </View>
+          );
+        }}
+      />
 
-      {Array.from({ length: 3 }).map((_v, i) => {
-        const numColumns = i + 1;
-        return (
-          <Section key={i} title={`(${numColumns} Columns 3:2 aspectRatio)`}>
-            <Card
-              image={require("./assets/images/splash.png")}
-              title="Beautiful West Coast Villa"
-              leftDescription="San Diego"
-              numColumns={numColumns}
-              aspectRatio={3 / 2}
-            />
-          </Section>
-        );
-      })}
-
-      <Section title="3 Column Centered Title">
-        <Card title="Beautiful West Coast Villa" textCentered numColumns={3} />
-      </Section>
-
-      <Section title="1 Column No Right Description">
-        <Card
-          title="Beautiful West Coast Villa"
-          leftDescription="San Diego"
-          numColumns={1}
-        />
-      </Section>
-
-      <Section title="3 Column No Left Description">
-        <Card
-          title="Beautiful West Coast Villa"
-          leftDescription="Something fun and new"
-          textCentered={true}
-        />
-      </Section>
+      <FlatList
+        data={getData()}
+        keyExtractor={(_item, index) => index}
+        renderItem={({ item }) => {
+          return (
+            <View style={{ flex: 1, padding: 4 }} key={item.key}>
+              <Card
+                title={item.title}
+                subtitle={item.subtitle}
+                description={item.description}
+                image={item.imageUrl}
+                aspectRatio={3}
+              />
+            </View>
+          );
+        }}
+      />
     </Container>
   );
 }

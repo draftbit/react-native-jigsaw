@@ -1,8 +1,15 @@
 import React from "react";
-import { View, ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ImageSourcePropType,
+  StyleProp,
+  ViewStyle,
+  TextStyle,
+  Pressable,
+} from "react-native";
 import color from "color";
 import Image from "./Image";
-import CardWrapper from "./CardWrapper";
 import Surface from "./Surface";
 import Icon from "./Icon";
 import { Spacer } from "./Layout";
@@ -21,21 +28,6 @@ import { Title, Subtitle, Caption } from "./Typography";
 
 const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
 const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
-
-type Props = {
-  image?: string | ImageSourcePropType;
-  title?: string;
-  leftDescription?: string;
-  rightDescription?: string;
-  textCentered: boolean;
-  icon?: string;
-  aspectRatio?: number;
-  elevation?: number;
-  numColumns?: number;
-  theme: typeof theme;
-  style?: StyleProp<ViewStyle>;
-  onPress: () => void;
-};
 
 export const TopRightCircleIcon = withTheme(({ icon, theme }) => {
   return (
@@ -66,59 +58,86 @@ export const TopRightCircleIcon = withTheme(({ icon, theme }) => {
   );
 });
 
+type Props = {
+  image?: string | ImageSourcePropType;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  textCentered: boolean;
+  icon?: string;
+  aspectRatio?: number;
+  elevation?: number;
+  numColumns?: number;
+  theme: typeof theme;
+  titleStyle?: StyleProp<TextStyle>;
+  subtitleStyle?: StyleProp<TextStyle>;
+  descriptionStyle?: StyleProp<TextStyle>;
+  style?: StyleProp<ViewStyle>;
+  onPress: () => void;
+};
+
 const Card: React.FC<Props> = ({
   image = Config.cardImageUrl,
   title,
-  leftDescription,
-  rightDescription,
+  subtitle,
+  description,
   textCentered,
-  icon = "MaterialCommunityIcons/heart",
+  icon,
   aspectRatio = 1.5,
   elevation = 2,
-  numColumns = 3,
   style,
   onPress,
   titleStyle,
   subtitleStyle,
   descriptionStyle,
   theme,
-  ...rest
 }) => {
+  const { backgroundColor: bgColor, padding, ...styles } = StyleSheet.flatten(
+    style || {}
+  );
+
+  const backgroundColor = bgColor ? bgColor : theme.colors.surface;
+  const innerPadding = padding ? padding : 12;
+
   return (
-    <CardWrapper
-      style={style}
-      onPress={onPress}
-      numColumns={numColumns}
-      {...rest}
+    <Surface
+      style={{
+        elevation,
+        backgroundColor,
+      }}
     >
-      <Surface theme={theme} style={{ elevation }}>
+      <Pressable
+        disabled={!onPress}
+        onPress={onPress}
+        style={({ pressed }) => {
+          return [
+            {
+              opacity: pressed ? 0.8 : 1,
+            },
+          ];
+        }}
+      >
         <Image
           style={{ aspectRatio }}
           source={typeof image === "string" ? { uri: image } : image}
           resizeMode="cover"
         />
-        <Spacer all={numColumns === 1 ? 8 : 16}>
+        <Spacer all={innerPadding}>
           <View style={{ alignItems: textCentered ? "center" : "flex-start" }}>
-            {title ? (
-              <Title theme={theme} text={title} style={titleStyle} />
+            {title ? <Title text={title} style={titleStyle} /> : null}
+            {subtitle ? (
+              <Subtitle text={subtitle} style={subtitleStyle} />
             ) : null}
-            {leftDescription ? (
-              <Subtitle
-                theme={theme}
-                text={leftDescription}
-                style={subtitleStyle}
-              />
-            ) : null}
-            {rightDescription ? (
+            {description ? (
               <View style={{ marginTop: 4 }}>
-                <Caption text={rightDescription} style={descriptionStyle} />
+                <Caption text={description} style={descriptionStyle} />
               </View>
             ) : null}
           </View>
         </Spacer>
         {icon ? <TopRightCircleIcon icon={icon} /> : null}
-      </Surface>
-    </CardWrapper>
+      </Pressable>
+    </Surface>
   );
 };
 
@@ -128,7 +147,7 @@ const SEED_DATA_PROPS = {
   image: {
     label: "Image",
     description: "Image",
-    formType: FORM_TYPES.remoteImage,
+    formType: FORM_TYPES.image,
     propType: PROP_TYPES.ASSET,
     defaultValue: null,
     editable: true,
@@ -145,8 +164,8 @@ const SEED_DATA_PROPS = {
     required: false,
     group: GROUPS.data,
   },
-  leftDescription: {
-    label: "Left description",
+  subtitle: {
+    label: "Subtitle",
     description: "Text to display on the left",
     formType: FORM_TYPES.string,
     propType: PROP_TYPES.STRING,
@@ -155,8 +174,8 @@ const SEED_DATA_PROPS = {
     required: false,
     group: GROUPS.data,
   },
-  rightDescription: {
-    label: "Right description",
+  description: {
+    label: "Description",
     description: "Text to display on the right",
     formType: FORM_TYPES.string,
     propType: PROP_TYPES.STRING,

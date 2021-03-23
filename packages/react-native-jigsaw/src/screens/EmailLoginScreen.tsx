@@ -251,7 +251,7 @@ export const SEED_DATA = {
       description: "The source of the main image to show on the screen",
       editable: true,
       required: false,
-      formType: FORM_TYPES.localImage,
+      formType: FORM_TYPES.image,
       propType: PROP_TYPES.ASSET,
       defaultValue: null,
     },

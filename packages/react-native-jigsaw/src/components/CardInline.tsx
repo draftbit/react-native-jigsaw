@@ -14,6 +14,7 @@ import {
   GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
+  PROP_TYPES,
   createElevationType,
   createNumColumnsType,
 } from "../core/component-types";
@@ -115,6 +116,7 @@ const SEED_DATA_PROPS = {
     label: "Image",
     description: "Image",
     formType: FORM_TYPES.image,
+    propType: PROP_TYPES.ASSET,
     defaultValue: null,
     editable: true,
   },
@@ -123,6 +125,7 @@ const SEED_DATA_PROPS = {
     label: "Title",
     description: "Text to display",
     formType: FORM_TYPES.string,
+    propType: PROP_TYPES.STRING,
     defaultValue: "Beautiful West Coast Villa",
     editable: true,
   },
@@ -131,6 +134,7 @@ const SEED_DATA_PROPS = {
     label: "Text centered",
     description: "Whether to center the text",
     formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
     defaultValue: false,
     editable: true,
   },
@@ -144,8 +148,8 @@ export const SEED_DATA = [
     description:
       "An elevated card with image and a centered line of text overlayed, that takes up a third of its container.",
     category: COMPONENT_TYPES.card,
-    preview_image_url: "{CLOUDINARY_URL}/Card_Inline_1col.png",
     supports_list_render: true,
+    layout: {},
     props: {
       ...SEED_DATA_PROPS,
       aspectRatio: {
@@ -153,6 +157,7 @@ export const SEED_DATA = [
         label: "Aspect ratio",
         description: "Aspect ratio of the image",
         formType: FORM_TYPES.aspectRatio,
+        propType: PROP_TYPES.NUMBER,
         defaultValue: 1,
         editable: true,
       },
@@ -160,7 +165,6 @@ export const SEED_DATA = [
         defaultValue: 1,
       }),
     },
-    layout: {},
   },
   {
     name: "Medium Card (Inline)",
@@ -168,8 +172,8 @@ export const SEED_DATA = [
     description:
       "An elevated card with image and a title and description overlayed, that takes up half of its container.",
     category: COMPONENT_TYPES.deprecated,
-    preview_image_url: "{CLOUDINARY_URL}/Card_Inline_2col.png",
     supports_list_render: true,
+    layout: {},
     props: {
       ...SEED_DATA_PROPS,
       description: {
@@ -177,6 +181,7 @@ export const SEED_DATA = [
         label: "Left description",
         description: "Text to display on the left",
         formType: FORM_TYPES.string,
+        propType: PROP_TYPES.STRING,
         defaultValue: "San Diego",
         editable: true,
       },
@@ -185,6 +190,7 @@ export const SEED_DATA = [
         label: "Aspect ratio",
         description: "Aspect ratio of the image",
         formType: FORM_TYPES.aspectRatio,
+        propType: PROP_TYPES.NUMBER,
         defaultValue: 1.5,
         editable: true,
       },
@@ -192,7 +198,6 @@ export const SEED_DATA = [
         defaultValue: 2,
       }),
     },
-    layout: {},
   },
   {
     name: "Large Card (Inline)",
@@ -200,8 +205,8 @@ export const SEED_DATA = [
     description:
       "An elevated card with image and a title and description overlayed, that takes up the full width of its container.",
     category: COMPONENT_TYPES.card,
-    preview_image_url: "{CLOUDINARY_URL}/Card_Inline_3col.png",
     supports_list_render: true,
+    layout: {},
     props: {
       ...SEED_DATA_PROPS,
       description: {
@@ -209,6 +214,7 @@ export const SEED_DATA = [
         label: "Left description",
         description: "Text to display on the left",
         formType: FORM_TYPES.string,
+        propType: PROP_TYPES.STRING,
         defaultValue: "San Diego",
         editable: true,
       },
@@ -217,6 +223,7 @@ export const SEED_DATA = [
         label: "Aspect ratio",
         description: "Aspect ratio of the image",
         formType: FORM_TYPES.aspectRatio,
+        propType: PROP_TYPES.NUMBER,
         defaultValue: 1.5,
         editable: true,
       },
@@ -224,6 +231,5 @@ export const SEED_DATA = [
         defaultValue: 3,
       }),
     },
-    layout: {},
   },
 ];

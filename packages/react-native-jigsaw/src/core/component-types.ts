@@ -33,6 +33,7 @@ export const FORM_TYPES = {
   component: "component",
   geolocation: "geolocation",
   image: "image",
+  imageArray: "imageArray",
   icon: "icon",
   style: "style",
   function: "function",
@@ -128,7 +129,7 @@ export const createFieldName = (options) => {
 
 export const TEXT_INPUT_PROPS = {
   allowFontScaling: {
-    group: GROUPS.basic,
+    group: GROUPS.advanced,
     label: "Allow Font Scaling",
     description:
       "Whether fonts should scale to respect Text Size in the user's accessibility settings. (Default: true)",
@@ -139,7 +140,7 @@ export const TEXT_INPUT_PROPS = {
     propType: PROP_TYPES.BOOLEAN,
   },
   autoCapitalize: {
-    group: GROUPS.basic,
+    group: GROUPS.advanced,
     label: "Auto Capitalize",
     description:
       "Can automatically capitalize sentences, words, and characters (Default: none).",
@@ -151,7 +152,7 @@ export const TEXT_INPUT_PROPS = {
     propType: PROP_TYPES.STRING,
   },
   autoCorrect: {
-    group: GROUPS.basic,
+    group: GROUPS.advanced,
     label: "Auto Correct",
     description: "Enables auto correction",
     editable: true,
@@ -203,7 +204,7 @@ export const TEXT_INPUT_PROPS = {
     propType: PROP_TYPES.STRING,
   },
   editable: {
-    group: GROUPS.basic,
+    group: GROUPS.advanced,
     label: "Editable",
     description: "If false, the text is not editable",
     editable: true,
@@ -267,7 +268,7 @@ export const TEXT_INPUT_PROPS = {
     description: "The text that is shown on load when no value is available.",
     editable: true,
     required: false,
-    defaultValue: null,
+    defaultValue: "Change my fieldname to email or password on the right side",
     formType: FORM_TYPES.string,
     propType: PROP_TYPES.STRING,
   },
@@ -319,7 +320,7 @@ export const TEXT_INPUT_PROPS = {
   },
   secureTextEntry: {
     group: GROUPS.basic,
-    label: "Password Field",
+    label: "Password Input?",
     description:
       "Hides the characters with a *, useful for passwords and other sensitive information.",
     editable: true,

@@ -84,4 +84,5 @@ export { default as Touchable } from "./components/Touchable";
 export { default as EmailLoginScreen } from "./screens/EmailLoginScreen";
 
 export { DataContext, defaultDataContext } from "./core/DataContext";
+export { useAuthState } from "./core/useAuthState";
 export { SimpleRow, InputRow } from "./components/Row/index";

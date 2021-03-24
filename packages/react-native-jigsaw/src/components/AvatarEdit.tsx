@@ -5,7 +5,12 @@ import Touchable from "./Touchable";
 import CircleImage from "./CircleImage";
 import { withTheme } from "../core/theming";
 
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import {
+  GROUPS,
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  PROP_TYPES,
+} from "../core/component-types";
 import theme from "../styles/DefaultTheme";
 
 type Props = {
@@ -68,8 +73,10 @@ export const SEED_DATA = {
   tag: "AvatarEdit",
   description: "An avatar with an edit icon in the top right",
   category: COMPONENT_TYPES.deprecated,
-  preview_image_url:
-    "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/AvatarEdit.png",
+  layout: {
+    width: 64,
+    height: 64,
+  },
   props: {
     size: {
       group: GROUPS.basic,
@@ -78,6 +85,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       formType: FORM_TYPES.number,
+      propType: PROP_TYPES.NUMBER,
       min: 0,
       max: 300,
       precision: 0,
@@ -91,11 +99,8 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       formType: FORM_TYPES.image,
+      propType: PROP_TYPES.ASSET,
       defaultValue: "brightness-5",
     },
-  },
-  layout: {
-    width: 64,
-    height: 64,
   },
 };

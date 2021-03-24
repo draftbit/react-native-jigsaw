@@ -174,7 +174,7 @@ const SEED_DATA_PROPS = {
   image: {
     label: "Image",
     description: "Image",
-    formType: FORM_TYPES.remoteImage,
+    formType: FORM_TYPES.image,
     propType: PROP_TYPES.ASSET,
     defaultValue: null,
     editable: true,

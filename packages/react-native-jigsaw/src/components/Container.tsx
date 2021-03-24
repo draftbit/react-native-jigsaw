@@ -14,6 +14,7 @@ import {
   GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
+  PROP_TYPES,
   createElevationType,
 } from "../core/component-types";
 import theme from "../styles/DefaultTheme";
@@ -109,6 +110,7 @@ export const SEED_DATA = {
       description:
         "When true, uses the theme gutter spacing as the container's horizontal padding",
       formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
       defaultValue: true,
       editable: true,
       required: true,
@@ -117,7 +119,8 @@ export const SEED_DATA = {
       group: GROUPS.data,
       label: "Background image",
       description: "Background image to apply to the container",
-      formType: FORM_TYPES.remoteImage,
+      formType: FORM_TYPES.image,
+      propType: PROP_TYPES.ASSET,
       defaultValue: null,
       editable: true,
       required: false,
@@ -131,6 +134,7 @@ export const SEED_DATA = {
       required: false,
       defaultValue: null,
       formType: FORM_TYPES.flatArray,
+      propType: PROP_TYPES.STRING,
       options: ["cover", "contain", "stretch", "repeat", "center"],
     },
     elevation: createElevationType(0),

@@ -31,7 +31,6 @@ import DatePickerExample from "./DatePickerExample";
 import FABExample from "./FABExample";
 import SearchbarExample from "./SearchbarExample";
 
-import HeaderExample from "./HeaderExample";
 import LayoutExample from "./LayoutExample";
 
 import PickerExample from "./PickerExample";
@@ -42,7 +41,6 @@ import RowExample from "./RowExample";
 
 import TextFieldExample from "./TextFieldExample";
 
-import ProgressIndicatorExample from "./ProgressIndicatorExample.js";
 import {
   NavigationContainer,
   useNavigation,
@@ -65,12 +63,8 @@ const ROUTES = {
   "Container": ContainerExample,
   "DatePicker": DatePickerExample,
   "Searchbar": SearchbarExample,
-  // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
-  "Header": HeaderExample,
   "Picker": PickerExample,
   "ProgressBar": ProgressExample,
-  "ProgressIndicator": ProgressIndicatorExample,
-  // TODO fix Row (spacing problem)
   "Row": RowExample,
   "TextField": TextFieldExample,
 };

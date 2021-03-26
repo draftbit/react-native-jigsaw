@@ -27,56 +27,6 @@ export default {
     lightInverse: "rgba(255, 255, 255, 0.68)",
     light: "rgba(165, 173, 183, 1)",
   },
-  elevation: {
-    "0": {
-      shadowColor: "rgba(18, 20, 44, 1)",
-      shadowOffset: {
-        width: 0,
-        height: 0,
-      },
-      shadowRadius: 0,
-      shadowOpacity: 0,
-      borderWidth: 0,
-      borderColor: "rgba(18, 20, 44, 1)",
-      borderOpacity: 0,
-    },
-    "1": {
-      shadowColor: "rgba(18, 20, 44, 1)",
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowRadius: 4,
-      shadowOpacity: 0.0599999987,
-      borderWidth: 1,
-      borderColor: "rgba(18, 20, 44, 1)",
-      borderOpacity: 0.0599999987,
-    },
-    "2": {
-      shadowColor: "rgba(18, 20, 44, 1)",
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowRadius: 4,
-      shadowOpacity: 0.0799999982,
-      borderWidth: 0,
-      borderColor: "rgba(18, 20, 44, 1)",
-      borderOpacity: 0,
-    },
-    "3": {
-      shadowColor: "rgba(18, 20, 44, 1)",
-      shadowOffset: {
-        width: 0,
-        height: 6,
-      },
-      shadowRadius: 6,
-      shadowOpacity: 0.119999997,
-      borderWidth: 0,
-      borderColor: "rgba(18, 20, 44, 1)",
-      borderOpacity: 0,
-    },
-  },
   typography: {
     headline1: {
       ...systemWeights.regular,

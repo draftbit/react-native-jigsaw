@@ -13,8 +13,6 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 
-import CircleImageExample from "./CircleImageExample";
-import IconExample from "./IconExample";
 import ButtonExample from "./ButtonExample";
 import RadioButtonExample from "./RadioButtonExample";
 import RowsExample from "./RowsExample";
@@ -28,7 +26,6 @@ import ContainerExample from "./ContainerExample";
 
 import DatePickerExample from "./DatePickerExample";
 
-import FABExample from "./FABExample";
 import SearchbarExample from "./SearchbarExample";
 
 import LayoutExample from "./LayoutExample";
@@ -51,10 +48,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 const ROUTES = {
   "Rows": RowsExample,
   "Layout": LayoutExample,
-  "CircleImage": CircleImageExample,
-  "Icon": IconExample,
   "Button": ButtonExample,
-  "FAB": FABExample,
   "RadioButton": RadioButtonExample,
   "Card": CardExample,
   "CardInline": CardInlineExample,

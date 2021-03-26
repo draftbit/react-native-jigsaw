@@ -11,7 +11,6 @@ type Props = {
 export const Title = withTheme(({ text, theme, style }: Props) => {
   return (
     <Text
-      numberOfLines={1}
       style={[
         {
           fontSize: 20,
@@ -30,12 +29,11 @@ export const Title = withTheme(({ text, theme, style }: Props) => {
 export const Subtitle = withTheme(({ text, theme, style }: Props) => {
   return (
     <Text
-      numberOfLines={1}
       style={[
         {
           fontSize: 14,
           letterSpacing: 0,
-          lineHeight: 22,
+          lineHeight: 16,
           color: theme.colors.medium,
         },
         style,
@@ -53,7 +51,7 @@ export const Caption = withTheme(({ text, theme, style }: Props) => {
         {
           fontSize: 12,
           letterSpacing: 0,
-          lineHeight: 16,
+          lineHeight: 14,
           color: theme.colors.light,
         },
         style,

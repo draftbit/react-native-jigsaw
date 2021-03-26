@@ -7,7 +7,8 @@ const getData = () => {
   return [
     {
       title: "Cars",
-      subtitle: "New York City",
+      subtitle:
+        "Companies widely recognized for their focus on creativity and design, which is the next level of who is happening on some sort of level.",
       imageUrl: "https://picsum.photos/id/130/1125",
     },
     {
@@ -45,11 +46,15 @@ function CardInlineExample({ theme }) {
             <View style={{ marginRight: 8 }} key={item.key}>
               <CardInline
                 title={item.title}
-                description={item.subtitle}
+                subtitle={item.subtitle}
                 image={item.imageUrl}
                 aspectRatio={5 / 3}
-                textCentered
-                style={{ width: 300 }}
+                style={{
+                  height: 200,
+                  width: 300,
+                  alignItems: "flex-start",
+                  justifyContent: "flex-end",
+                }}
               />
             </View>
           );
@@ -87,7 +92,7 @@ function CardInlineExample({ theme }) {
               <Spacer all={4}>
                 <CardInline
                   title={item.title}
-                  description={item.subtitle}
+                  subtitle={item.subtitle}
                   aspectRatio={3 / 2}
                   image={item.imageUrl}
                 />
@@ -104,7 +109,7 @@ function CardInlineExample({ theme }) {
             <View style={{ flex: 1, padding: 4 }} key={item.key}>
               <CardInline
                 title={item.title}
-                description={item.subtitle}
+                subtitle={item.subtitle}
                 image={item.imageUrl}
                 aspectRatio={5 / 3}
                 style={{

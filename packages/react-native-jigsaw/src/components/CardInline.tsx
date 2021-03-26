@@ -46,7 +46,10 @@ const CardInline: React.FC<Props> = ({
   subtitleStyle,
   onPress,
 }) => {
-  const { alignItems, justifyContent } = StyleSheet.flatten(style || {});
+  const { alignItems, justifyContent, width, height } = StyleSheet.flatten(
+    style || {}
+  );
+  const imageStyles = width && height ? { width, height } : { aspectRatio };
   return (
     <Surface style={[{ elevation }, style]}>
       <Pressable
@@ -61,7 +64,7 @@ const CardInline: React.FC<Props> = ({
         }}
       >
         <Image
-          style={{ aspectRatio }}
+          style={imageStyles}
           source={typeof image === "string" ? { uri: image } : image}
           resizeMode="cover"
         />

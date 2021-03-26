@@ -43,8 +43,7 @@ const Container: React.FC<Props> = ({
   elevation,
   style,
   children,
-  // @ts-ignore
-  theme,
+  theme, // eslint-disable-line @typescript-eslint/no-unused-vars
   ...rest
 }) => {
   const { flexDirection, justifyContent, alignItems, ...styleProp } =

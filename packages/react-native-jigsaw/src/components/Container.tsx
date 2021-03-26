@@ -17,11 +17,11 @@ import {
   PROP_TYPES,
   createElevationType,
 } from "../core/component-types";
-import theme from "../styles/DefaultTheme";
+import ThemeT from "../styles/DefaultTheme";
 import { ResizeModeType } from "./ResizeMode";
 
 type Props = {
-  theme: typeof theme;
+  theme: typeof ThemeT;
   useThemeGutterPadding: boolean;
   borderColor: string;
   borderWidth: number;
@@ -43,6 +43,8 @@ const Container: React.FC<Props> = ({
   elevation,
   style,
   children,
+  // @ts-ignore
+  theme,
   ...rest
 }) => {
   const { flexDirection, justifyContent, alignItems, ...styleProp } =
@@ -110,8 +112,8 @@ export const SEED_DATA = {
         "When true, uses the theme gutter spacing as the container's horizontal padding",
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
-      defaultValue: true,
-      editable: true,
+      defaultValue: false,
+      editable: false,
       required: true,
     },
     backgroundImage: {

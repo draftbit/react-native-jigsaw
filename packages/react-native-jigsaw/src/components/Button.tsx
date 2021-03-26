@@ -82,7 +82,7 @@ const Button: React.FC<Props> = ({
   onPress,
   elevation = 0,
   style,
-  theme: { colors, disabledOpacity, borderRadius, spacing, typography },
+  theme: { colors, disabledOpacity, borderRadius, typography },
   ...rest
 }) => {
   let backgroundColor, borderColor, textColor, borderWidth;

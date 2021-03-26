@@ -29,7 +29,7 @@ const FieldCheckbox: React.FC<Props> = ({
   onPress,
   color: checkboxColor,
   disabled = false,
-  theme: { colors, typography, spacing, disabledOpacity },
+  theme: { colors, typography, disabledOpacity },
 }) => {
   let titleColor = status === "checked" ? colors.medium : colors.light;
 

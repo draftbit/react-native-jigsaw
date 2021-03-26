@@ -53,7 +53,7 @@ const Carousel: React.FC<Props> = ({
   swiperPalette,
   resizeMode = "cover",
   dotColor,
-  theme: { colors, spacing },
+  theme: { colors },
   style = { height: screenWidth * 0.5 },
   ...rest
 }) => {

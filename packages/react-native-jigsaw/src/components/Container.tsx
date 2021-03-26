@@ -34,7 +34,6 @@ type Props = {
 };
 
 const Container: React.FC<Props> = ({
-  theme: { spacing },
   useThemeGutterPadding,
   borderColor,
   borderWidth,

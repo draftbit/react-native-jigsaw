@@ -85,7 +85,7 @@ const FAB: React.FC<Props> = ({
   elevation = 0,
   style,
   IconOverride = null,
-  theme: { colors, disabledOpacity, borderRadius, spacing, typography },
+  theme: { colors, disabledOpacity, borderRadius, typography },
   ...rest
 }) => {
   let backgroundColor, borderColor, textColor, borderWidth;

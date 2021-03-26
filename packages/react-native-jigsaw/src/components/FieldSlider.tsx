@@ -22,7 +22,7 @@ const FieldSlider: React.FC<Props> = ({
   minimumLabel,
   maximumLabel,
   style,
-  theme: { colors, typography, spacing },
+  theme: { colors, typography },
   ...props
 }) => {
   const labelStyle = [typography.caption, { color: colors.light }];

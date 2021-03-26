@@ -25,7 +25,7 @@ const RowBodyIcon: React.FC<Props> = ({
   subtitle,
   icon,
   style,
-  theme: { colors, typography, spacing },
+  theme: { colors, typography },
 }) => {
   return (
     <Row

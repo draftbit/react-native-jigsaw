@@ -38,7 +38,6 @@ const Row: React.FC<Props> = ({
   image,
   right,
   style,
-  theme: { spacing },
 }) => {
   return (
     <View style={[styles.container, { padding: 16 }, style]}>

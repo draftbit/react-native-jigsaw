@@ -25,7 +25,7 @@ const RowHeadlineImageCaption: React.FC<Props> = ({
   caption,
   image,
   style,
-  theme: { colors, typography, spacing },
+  theme: { colors, typography },
 }) => {
   return (
     <Row

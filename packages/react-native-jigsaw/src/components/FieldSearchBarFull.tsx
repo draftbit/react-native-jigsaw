@@ -34,7 +34,7 @@ const FieldSearchBarFull: React.FC<Props> = ({
   icon = "search",
   placeholder = "",
   style,
-  theme: { colors, spacing, typography },
+  theme: { colors, typography },
   onChange: changeOverride,
   onSubmit: submitOverride,
   value,

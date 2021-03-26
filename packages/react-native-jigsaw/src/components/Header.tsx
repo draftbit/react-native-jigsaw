@@ -35,7 +35,7 @@ const Header: React.FC<Props> = ({
   icon,
   onPress,
   style,
-  theme: { colors, spacing, typography },
+  theme: { colors, typography },
 }) => {
   return (
     <View style={[styles.container, style]}>

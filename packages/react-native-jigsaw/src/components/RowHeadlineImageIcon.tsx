@@ -25,7 +25,7 @@ const RowHeadlineImageIcon: React.FC<Props> = ({
   multilineSubtitle = false,
   icon,
   style,
-  theme: { colors, typography, spacing },
+  theme: { colors, typography },
 }) => {
   return (
     <Row

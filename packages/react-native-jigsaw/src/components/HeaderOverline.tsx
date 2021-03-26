@@ -25,7 +25,7 @@ const HeaderOverline: React.FC<Props> = ({
   icon,
   onPress = () => {},
   style,
-  theme: { colors, typography, spacing },
+  theme: { colors, typography },
 }) => {
   return (
     <Header

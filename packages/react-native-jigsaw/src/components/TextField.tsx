@@ -235,13 +235,8 @@ class TextField extends React.Component<Props> {
       ...rest
     } = this.props;
 
-    const MINIMIZED_LABEL_Y_OFFSET = -(
-      typography.caption.lineHeight + spacing.text
-    );
-    const OUTLINE_MINIMIZED_LABEL_Y_OFFSET = -(
-      spacing.large * 0.5 +
-      spacing.text
-    );
+    const MINIMIZED_LABEL_Y_OFFSET = -(typography.caption.lineHeight + 4);
+    const OUTLINE_MINIMIZED_LABEL_Y_OFFSET = -(16 * 0.5 + 4);
     const MAXIMIZED_LABEL_FONT_SIZE = typography.subtitle1.fontSize;
     const MINIMIZED_LABEL_FONT_SIZE = typography.caption.fontSize;
 
@@ -277,11 +272,9 @@ class TextField extends React.Component<Props> {
       color: inputTextColor,
       paddingLeft:
         leftIconName && leftIconMode === "inset"
-          ? ICON_SIZE + spacing.medium + (type === "solid" ? spacing.large : 0)
+          ? ICON_SIZE + 12 + (type === "solid" ? 16 : 0)
           : 0,
-      paddingRight: rightIconName
-        ? ICON_SIZE + spacing.large + spacing.text
-        : spacing.medium,
+      paddingRight: rightIconName ? ICON_SIZE + 16 + 4 : 12,
       ...subtitle1,
     };
 
@@ -294,12 +287,12 @@ class TextField extends React.Component<Props> {
       containerStyle = {
         borderTopLeftRadius: borderRadius.global,
         borderTopRightRadius: borderRadius.global,
-        paddingBottom: spacing.medium,
-        marginTop: spacing.large,
+        paddingBottom: 12,
+        marginTop: 16,
       };
 
       if (leftIconName && leftIconMode === "outset") {
-        assistiveTextLeftMargin = ICON_SIZE + spacing.small;
+        assistiveTextLeftMargin = ICON_SIZE + 8;
       } else {
         assistiveTextLeftMargin = 0;
       }
@@ -308,25 +301,25 @@ class TextField extends React.Component<Props> {
         borderRadius: borderRadius.global,
         borderColor: hasActiveOutline ? activeColor : borderColor,
         borderWidth: 1,
-        paddingTop: this.state.labeled ? spacing.large * 1.5 : spacing.large,
-        paddingBottom: this.state.labeled ? spacing.large * 0.5 : spacing.large,
+        paddingTop: this.state.labeled ? 16 * 1.5 : 16,
+        paddingBottom: this.state.labeled ? 16 * 0.5 : 16,
         opacity: disabled ? disabledOpacity : 1,
         backgroundColor,
       };
 
       if (leftIconName && leftIconMode === "inset") {
-        assistiveTextLeftMargin = spacing.large + spacing.text;
+        assistiveTextLeftMargin = 16 + 4;
       } else if (leftIconName && leftIconMode === "outset") {
-        assistiveTextLeftMargin = ICON_SIZE + spacing.small + spacing.medium;
+        assistiveTextLeftMargin = ICON_SIZE + 8 + 12;
       } else {
-        assistiveTextLeftMargin = spacing.medium;
+        assistiveTextLeftMargin = 12;
       }
 
-      inputStyle.paddingHorizontal = spacing.medium;
+      inputStyle.paddingHorizontal = 12;
     }
 
     if (leftIconName && leftIconMode === "outset") {
-      containerStyle.marginLeft = ICON_SIZE + spacing.small;
+      containerStyle.marginLeft = ICON_SIZE + 8;
     }
 
     let leftIconColor;
@@ -348,18 +341,18 @@ class TextField extends React.Component<Props> {
       position: "absolute",
       marginTop:
         type === "solid"
-          ? MINIMIZED_LABEL_FONT_SIZE + spacing.text
+          ? MINIMIZED_LABEL_FONT_SIZE + 4
           : leftIconMode === "outset"
-          ? spacing.large
+          ? 16
           : 0,
     };
 
     const labelStyle = {
       ...typography.subtitle1,
-      top: type === "solid" ? spacing.large : 0,
+      top: type === "solid" ? 16 : 0,
       left:
         leftIconName && leftIconMode === "inset"
-          ? ICON_SIZE + (type === "solid" ? spacing.large : spacing.medium)
+          ? ICON_SIZE + (type === "solid" ? 16 : 12)
           : 0,
       transform: [
         {
@@ -401,7 +394,7 @@ class TextField extends React.Component<Props> {
     const inputStyles = [
       styles.input,
       inputStyle,
-      type === "solid" ? { marginHorizontal: spacing.medium } : {},
+      type === "solid" ? { marginHorizontal: 12 } : {},
     ];
 
     return (
@@ -457,7 +450,7 @@ class TextField extends React.Component<Props> {
                 }
                 style={[
                   styles.placeholder,
-                  type === "solid" ? { paddingHorizontal: spacing.medium } : {},
+                  type === "solid" ? { paddingHorizontal: 12 } : {},
                   labelStyle,
                   {
                     color: colors.light,
@@ -474,7 +467,7 @@ class TextField extends React.Component<Props> {
               <AnimatedText
                 style={[
                   styles.placeholder,
-                  type === "solid" ? { paddingHorizontal: spacing.medium } : {},
+                  type === "solid" ? { paddingHorizontal: 12 } : {},
                   labelStyle,
                   {
                     color: placeholderColor,
@@ -493,7 +486,7 @@ class TextField extends React.Component<Props> {
               {...leftIconProps}
               style={{
                 ...leftIconStyle,
-                marginLeft: type === "solid" ? spacing.large : 0,
+                marginLeft: type === "solid" ? 16 : 0,
               }}
             />
           ) : null}
@@ -524,11 +517,8 @@ class TextField extends React.Component<Props> {
             color={colors.light}
             style={{
               position: "absolute",
-              right: spacing.large,
-              marginTop:
-                type === "solid"
-                  ? MINIMIZED_LABEL_FONT_SIZE + spacing.text
-                  : spacing.large,
+              right: 16,
+              marginTop: type === "solid" ? MINIMIZED_LABEL_FONT_SIZE + 4 : 16,
             }}
           />
         ) : null}
@@ -538,7 +528,7 @@ class TextField extends React.Component<Props> {
             style={[
               {
                 color: error ? colors.error : colors.light,
-                marginTop: spacing.small,
+                marginTop: 8,
                 marginLeft: assistiveTextLeftMargin,
               },
             ]}

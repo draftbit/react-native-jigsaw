@@ -40,7 +40,7 @@ const RowBodyIcon: React.FC<Props> = ({
           name={icon}
           size={Config.rowSingleLineIconSize}
           color={colors.light}
-          style={{ marginLeft: spacing.large }}
+          style={{ marginLeft: 16 }}
         />
       )}
       style={style}

@@ -91,7 +91,7 @@ const CardBlock: React.FC<Props> = ({
               flexDirection: "row",
               alignItems: "center",
               justifyContent: titleJustification,
-              marginTop: numColumns === 3 ? spacing.large : spacing.medium,
+              marginTop: numColumns === 3 ? 16 : 12,
             }}
           >
             <Text
@@ -111,7 +111,7 @@ const CardBlock: React.FC<Props> = ({
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
-              marginTop: numColumns === 3 ? spacing.text : spacing.text / 2,
+              marginTop: numColumns === 3 ? 4 : 4 / 2,
             }}
           >
             <Text

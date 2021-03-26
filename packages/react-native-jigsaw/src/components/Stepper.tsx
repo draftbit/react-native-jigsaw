@@ -77,7 +77,7 @@ const Stepper: React.FC<Props> = ({
             textAlign: "center",
             alignSelf: "center",
             color: colors.medium,
-            marginHorizontal: spacing.small,
+            marginHorizontal: 8,
           },
           typeStyle,
         ]}

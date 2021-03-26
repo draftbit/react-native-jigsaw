@@ -50,12 +50,7 @@ const FieldCheckbox: React.FC<Props> = ({
             }
           }}
         />
-        <Text
-          style={[
-            typography.body1,
-            { marginLeft: spacing.medium, color: titleColor },
-          ]}
-        >
+        <Text style={[typography.body1, { marginLeft: 12, color: titleColor }]}>
           {title}
         </Text>
       </View>

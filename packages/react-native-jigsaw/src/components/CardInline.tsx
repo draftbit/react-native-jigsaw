@@ -78,9 +78,9 @@ const CardInline: React.FC<Props> = ({
           style={{
             position: "absolute",
             alignItems: textCentered ? "center" : "flex-start",
-            bottom: numColumns === 1 ? spacing.medium : spacing.large,
-            left: spacing.large,
-            right: spacing.large,
+            bottom: numColumns === 1 ? 12 : 16,
+            left: 16,
+            right: 16,
           }}
         >
           {title ? (
@@ -96,7 +96,7 @@ const CardInline: React.FC<Props> = ({
               numberOfLines={1}
               style={[
                 descriptionStyle,
-                { color: colors.lightInverse, marginTop: spacing.text },
+                { color: colors.lightInverse, marginTop: 4 },
               ]}
             >
               {description}

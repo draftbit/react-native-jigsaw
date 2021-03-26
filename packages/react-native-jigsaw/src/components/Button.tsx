@@ -128,14 +128,14 @@ const Button: React.FC<Props> = ({
   const textStyle: StyleProp<TextStyle> = {
     textAlign: "center",
     color: textColor,
-    marginVertical: spacing.large,
-    marginHorizontal: spacing.large,
+    marginVertical: 16,
+    marginHorizontal: 16,
   };
 
   const iconStyle = [
     styles.icon,
     {
-      marginLeft: spacing.large,
+      marginLeft: 16,
       marginRight: -8,
       width: Config.buttonIconSize,
     },

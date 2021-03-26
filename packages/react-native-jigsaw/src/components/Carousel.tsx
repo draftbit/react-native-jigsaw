@@ -110,7 +110,7 @@ const Carousel: React.FC<Props> = ({
           );
         })}
       </ScrollView>
-      <View style={[styles.swipeNavWrapper, { bottom: spacing.large }]}>
+      <View style={[styles.swipeNavWrapper, { bottom: 16 }]}>
         <View style={styles.swipeNav}>
           {Array.from({ length: images.length }, (_, i) => {
             const calculatedIndex = scrollOffset / width;
@@ -142,7 +142,7 @@ const Carousel: React.FC<Props> = ({
                 style={[
                   {
                     backgroundColor,
-                    marginHorizontal: spacing.small / 2,
+                    marginHorizontal: 8 / 2,
                   },
                   styles.dot,
                   activeDot ? styles.activeDot : null,

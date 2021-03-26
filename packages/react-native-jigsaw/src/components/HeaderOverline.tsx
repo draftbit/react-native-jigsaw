@@ -34,7 +34,7 @@ const HeaderOverline: React.FC<Props> = ({
       title={title && title.toUpperCase()}
       buttonText={buttonText}
       icon={icon}
-      dividerTopMargin={spacing.medium}
+      dividerTopMargin={12}
       onPress={onPress}
       style={style}
     />

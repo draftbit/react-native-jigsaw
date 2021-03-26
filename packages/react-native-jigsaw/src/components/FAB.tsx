@@ -161,11 +161,11 @@ const FAB: React.FC<Props> = ({
 
   if (type === "extended" || type === "fixed") {
     iconStyle.push({
-      marginLeft: spacing.large,
+      marginLeft: 16,
       marginRight: -8,
     });
 
-    textStyle.margin = spacing.large;
+    textStyle.margin = 16;
   }
 
   if (type === "fixed") {

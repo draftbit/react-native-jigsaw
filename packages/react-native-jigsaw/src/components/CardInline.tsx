@@ -65,10 +65,10 @@ const CardInline: React.FC<Props> = ({
 
   return (
     <Card style={style} onPress={onPress} numColumns={numColumns} {...rest}>
-      <Elevation style={{ elevation, borderRadius: borderRadius.global }}>
+      <Elevation style={{ elevation, borderRadius: borderRadius }}>
         <Image
           style={{
-            borderRadius: borderRadius.global,
+            borderRadius: borderRadius,
             aspectRatio,
           }}
           source={typeof image === "string" ? { uri: image } : image}

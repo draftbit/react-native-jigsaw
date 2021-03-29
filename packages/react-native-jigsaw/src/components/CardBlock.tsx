@@ -75,10 +75,10 @@ const CardBlock: React.FC<Props> = ({
   return (
     <Card style={style} onPress={onPress} numColumns={numColumns} {...rest}>
       <View style={{ backgroundColor: colors.background }}>
-        <Elevation style={{ elevation, borderRadius: borderRadius.global }}>
+        <Elevation style={{ elevation, borderRadius: borderRadius }}>
           <Image
             style={{
-              borderRadius: borderRadius.global,
+              borderRadius: borderRadius,
               aspectRatio,
             }}
             source={typeof image === "string" ? { uri: image } : image}

@@ -32,7 +32,7 @@ const Stepper: React.FC<Props> = ({
   theme: { colors, typography },
   iconSize = 24,
   iconColor = colors.strong,
-  borderRadius = theme.borderRadius.button,
+  borderRadius = theme.borderRadius,
   IconOverride,
   typeStyle,
 }) => {

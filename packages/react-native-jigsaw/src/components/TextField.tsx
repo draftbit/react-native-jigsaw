@@ -230,7 +230,7 @@ class TextField extends React.Component<Props> {
       assistiveText,
       multiline = false,
       style,
-      theme: { colors, typography, borderRadius, disabledOpacity },
+      theme: { colors, typography, roundness, disabledOpacity },
       render = (props) => <NativeTextInput {...props} />,
       ...rest
     } = this.props;

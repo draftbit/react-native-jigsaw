@@ -102,7 +102,10 @@ export const SEED_DATA = {
   description: "A container component with gutter padding",
   category: COMPONENT_TYPES.layout,
   supports_list_render: false,
-  layout: {},
+  layout: {
+    width: "100%",
+    height: 250,
+  },
   props: {
     useThemeGutterPadding: {
       group: GROUPS.basic,

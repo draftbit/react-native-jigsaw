@@ -29,7 +29,7 @@ const FieldCheckbox: React.FC<Props> = ({
   onPress,
   color: checkboxColor,
   disabled = false,
-  theme: { colors, typography, spacing, disabledOpacity },
+  theme: { colors, typography, disabledOpacity },
 }) => {
   let titleColor = status === "checked" ? colors.medium : colors.light;
 
@@ -50,12 +50,7 @@ const FieldCheckbox: React.FC<Props> = ({
             }
           }}
         />
-        <Text
-          style={[
-            typography.body1,
-            { marginLeft: spacing.medium, color: titleColor },
-          ]}
-        >
+        <Text style={[typography.body1, { marginLeft: 12, color: titleColor }]}>
           {title}
         </Text>
       </View>

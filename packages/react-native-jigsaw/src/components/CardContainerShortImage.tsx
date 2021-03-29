@@ -39,7 +39,7 @@ const CardContainerShortImage: React.FC<Props> = ({
   mode = "left",
   aspectRatio = 1,
   elevation = 2,
-  theme: { colors, borderRadius, typography, spacing },
+  theme: { colors, borderRadius, typography },
   style,
   onPress,
   ...rest
@@ -69,7 +69,7 @@ const CardContainerShortImage: React.FC<Props> = ({
           )}
           <View
             style={{
-              padding: spacing.large,
+              padding: 16,
               backgroundColor: colors.surface,
               flex: 1,
             }}
@@ -85,7 +85,7 @@ const CardContainerShortImage: React.FC<Props> = ({
                 numberOfLines={1}
                 style={[
                   typography.body2,
-                  { color: colors.medium, marginTop: spacing.text },
+                  { color: colors.medium, marginTop: 4 },
                 ]}
               >
                 {subtitle}

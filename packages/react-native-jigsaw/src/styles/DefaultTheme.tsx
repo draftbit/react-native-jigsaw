@@ -2,13 +2,6 @@ import { systemWeights } from "react-native-typography";
 
 export default {
   disabledOpacity: 0.5,
-  spacing: {
-    gutters: 16,
-    text: 4,
-    small: 8,
-    medium: 12,
-    large: 16,
-  },
   borderRadius: {
     global: 6,
     button: 24,

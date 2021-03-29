@@ -52,7 +52,7 @@ const CardContainerRating: React.FC<Props> = ({
   aspectRatio = 1.5,
   elevation = 2,
   numColumns = 3,
-  theme: { colors, borderRadius, typography, spacing },
+  theme: { colors, borderRadius, typography },
   style,
   onPress,
   ...rest
@@ -87,7 +87,7 @@ const CardContainerRating: React.FC<Props> = ({
           />
           <View
             style={{
-              padding: numColumns === 1 ? spacing.small : spacing.large,
+              padding: numColumns === 1 ? 8 : 16,
             }}
           >
             {title ? (
@@ -113,8 +113,7 @@ const CardContainerRating: React.FC<Props> = ({
                   typography.body2,
                   {
                     color: colors.medium,
-                    marginTop:
-                      numColumns === 3 ? spacing.text : spacing.text / 2,
+                    marginTop: numColumns === 3 ? 4 : 4 / 2,
                   },
                 ]}
               >
@@ -126,7 +125,7 @@ const CardContainerRating: React.FC<Props> = ({
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
-                marginTop: numColumns === 3 ? spacing.large : spacing.medium,
+                marginTop: numColumns === 3 ? 16 : 12,
               }}
             >
               <StarRating
@@ -138,7 +137,7 @@ const CardContainerRating: React.FC<Props> = ({
                   rightDescriptionStyle,
                   {
                     color: colors.medium,
-                    marginLeft: spacing.small,
+                    marginLeft: 8,
                   },
                 ]}
                 numberOfLines={1}
@@ -152,8 +151,8 @@ const CardContainerRating: React.FC<Props> = ({
               style={{
                 elevation: Config.cardIconElevation,
                 position: "absolute",
-                top: spacing.medium,
-                right: spacing.medium,
+                top: 12,
+                right: 12,
                 width: ICON_CONTAINER_SIZE,
                 height: ICON_CONTAINER_SIZE,
                 padding: ICON_CONTAINER_PADDING,

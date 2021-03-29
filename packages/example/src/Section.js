@@ -8,13 +8,8 @@ export function Container({ style, children }) {
 
 function Section({ title, children, theme, style }) {
   return (
-    <View style={{ marginBottom: theme.spacing.medium }}>
-      <Text
-        style={[
-          theme.typography.headline5,
-          { marginBottom: theme.spacing.small },
-        ]}
-      >
+    <View style={{ marginBottom: 12 }}>
+      <Text style={[theme.typography.headline5, { marginBottom: 8 }]}>
         {title}
       </Text>
       <View style={style}>{children}</View>

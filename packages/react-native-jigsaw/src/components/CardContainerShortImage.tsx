@@ -39,7 +39,7 @@ const CardContainerShortImage: React.FC<Props> = ({
   mode = "left",
   aspectRatio = 1,
   elevation = 2,
-  theme: { colors, borderRadius, typography },
+  theme: { colors, roundness, typography },
   style,
   onPress,
   ...rest

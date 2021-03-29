@@ -52,7 +52,7 @@ const CardContainerRating: React.FC<Props> = ({
   aspectRatio = 1.5,
   elevation = 2,
   numColumns = 3,
-  theme: { colors, borderRadius, typography },
+  theme: { colors, roundness, typography },
   style,
   onPress,
   ...rest

@@ -25,7 +25,7 @@ const RowHeadlineImageIcon: React.FC<Props> = ({
   multilineSubtitle = false,
   icon,
   style,
-  theme: { colors, typography, spacing },
+  theme: { colors, typography },
 }) => {
   return (
     <Row
@@ -47,9 +47,9 @@ const RowHeadlineImageIcon: React.FC<Props> = ({
           }
           color={colors.light}
           style={{
-            marginLeft: spacing.large,
+            marginLeft: 16,
             alignSelf: multilineSubtitle ? "flex-start" : "center",
-            marginTop: multilineSubtitle ? spacing.text : 0,
+            marginTop: multilineSubtitle ? 4 : 0,
           }}
         />
       )}

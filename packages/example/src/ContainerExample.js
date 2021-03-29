@@ -16,19 +16,13 @@ function ContainerExample({ theme }) {
       </Section>
 
       <Section title="Container with theme gutter padding)">
-        <Container
-          useThemeGutterPadding
-          style={{ paddingVertical: 16 }}
-        >
+        <Container useThemeGutterPadding style={{ paddingVertical: 16 }}>
           <Text>Container with theme gutter padding</Text>
         </Container>
       </Section>
 
       <Section title="Container with background color">
-        <Container
-          backgroundColor="#ff0000"
-          style={{ paddingVertical: 16 }}
-        >
+        <Container backgroundColor="#ff0000" style={{ paddingVertical: 16 }}>
           <Text>Container with background color</Text>
         </Container>
       </Section>

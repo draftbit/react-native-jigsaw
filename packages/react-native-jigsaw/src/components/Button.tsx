@@ -68,6 +68,7 @@ type Props = {
   onPress: () => void;
   elevation?: number;
   style?: StyleProp<ViewStyle>;
+  IconOverride: typeof Icon;
   theme: typeof theme;
 } & TouchableHighlightProps;
 
@@ -82,11 +83,14 @@ const Button: React.FC<Props> = ({
   onPress,
   elevation = 0,
   style,
+  IconOverride = null,
   theme: { colors, disabledOpacity, borderRadius, spacing, typography },
   ...rest
 }) => {
   let backgroundColor, borderColor, textColor, borderWidth;
   const buttonColor = colorOverride || colors.primary;
+
+  const SelectedIcon = IconOverride || Icon;
 
   if (type === "solid") {
     backgroundColor = buttonColor;
@@ -154,7 +158,7 @@ const Button: React.FC<Props> = ({
         <View style={styles.content}>
           {icon && loading !== true ? (
             <View style={iconStyle}>
-              <Icon
+              <SelectedIcon
                 name={icon}
                 size={Config.buttonIconSize}
                 color={textColor}

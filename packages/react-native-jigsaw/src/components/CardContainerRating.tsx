@@ -71,10 +71,10 @@ const CardContainerRating: React.FC<Props> = ({
 
   return (
     <Card style={style} onPress={onPress} numColumns={numColumns} {...rest}>
-      <Elevation style={{ elevation, borderRadius: borderRadius.global }}>
+      <Elevation style={{ elevation, borderRadius: roundness }}>
         <View
           style={{
-            borderRadius: borderRadius.global,
+            borderRadius: roundness,
             overflow: "hidden",
             backgroundColor: colors.background,
             //background color is needed for bug on android 9 - https://github.com/facebook/react-native/issues/25093

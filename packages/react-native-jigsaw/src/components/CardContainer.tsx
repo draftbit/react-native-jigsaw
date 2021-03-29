@@ -78,10 +78,10 @@ const CardContainer: React.FC<Props> = ({
 
   return (
     <Card style={style} onPress={onPress} numColumns={numColumns} {...rest}>
-      <Elevation style={{ elevation, borderRadius: borderRadius.global }}>
+      <Elevation style={{ elevation, borderRadius: roundness }}>
         <View
           style={{
-            borderRadius: borderRadius.global,
+            borderRadius: roundness,
             overflow: "hidden",
             backgroundColor: colors.surface,
           }}

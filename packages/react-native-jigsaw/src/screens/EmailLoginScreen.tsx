@@ -96,7 +96,7 @@ const EmailLoginScreen = (props: Props) => {
               styles.EmailTextInput,
               {
                 borderColor: theme.colors.divider,
-                borderRadius: theme.borderRadius.global,
+                borderRadius: theme.roundness,
                 color: theme.colors.strong,
                 backgroundColor: theme.colors.background,
               },
@@ -117,7 +117,7 @@ const EmailLoginScreen = (props: Props) => {
               {
                 color: theme.colors.strong,
                 borderColor: theme.colors.divider,
-                borderRadius: theme.borderRadius.global,
+                borderRadius: theme.roundness,
                 backgroundColor: theme.colors.background,
               },
             ])}
@@ -135,7 +135,7 @@ const EmailLoginScreen = (props: Props) => {
           <Button
             style={StyleSheet.flatten([
               styles.LoginButton,
-              { borderRadius: theme.borderRadius.global },
+              { borderRadius: theme.roundness },
             ])}
             type="solid"
             onPress={() =>

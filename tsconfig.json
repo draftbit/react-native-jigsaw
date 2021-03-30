@@ -4,6 +4,7 @@
     "node_modules",
     "glyphmaps",
     "scripts",
+    "lib"
   ],
   "compilerOptions": {
     "baseUrl": ".",
@@ -18,7 +19,8 @@
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
     "lib": [
-      "esnext"
+      "esnext",
+      "dom"
     ],
     "module": "esnext",
     "moduleResolution": "node",

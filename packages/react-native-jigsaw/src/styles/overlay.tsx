@@ -16,8 +16,8 @@ export default function overlay<T extends Animated.Value | number>(
     // @ts-expect-error: TS doesn't seem to refine the type correctly
     return elevation.interpolate({
       inputRange,
-      outputRange: inputRange.map((elevation) => {
-        return calculateColor(surfaceColor, elevation);
+      outputRange: inputRange.map((e) => {
+        return calculateColor(surfaceColor, e);
       }),
     });
   }

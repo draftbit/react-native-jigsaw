@@ -12,7 +12,12 @@ import color from "color";
 import Image from "./Image";
 import Surface from "./Surface";
 import Icon from "./Icon";
+import { Title, Subtitle, Caption } from "./Typography";
+
 import { withTheme } from "../core/theming";
+import Config from "./Config";
+import ThemeT from "../styles/DefaultTheme";
+
 import {
   GROUPS,
   FORM_TYPES,
@@ -21,15 +26,20 @@ import {
   createElevationType,
   createNumColumnsType,
 } from "../core/component-types";
-import Config from "./Config";
-import ThemeT from "../styles/DefaultTheme";
-import { Title, Subtitle, Caption } from "./Typography";
 
 const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
 const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
 
 export const TopRightCircleIcon = withTheme(
-  ({ icon, theme }: { icon: string; theme: typeof ThemeT }) => {
+  ({
+    icon,
+    theme,
+    onPress,
+  }: {
+    icon: string;
+    theme: typeof ThemeT;
+    onPress?: () => void;
+  }) => {
     return (
       <Surface
         style={{
@@ -49,11 +59,23 @@ export const TopRightCircleIcon = withTheme(
             .string(),
         }}
       >
-        <Icon
-          name={icon}
-          size={Config.cardIconSize}
-          color={theme.colors.surface}
-        />
+        <Pressable
+          disabled={!onPress}
+          onPress={onPress}
+          style={({ pressed }) => {
+            return [
+              {
+                opacity: pressed ? 0.8 : 1,
+              },
+            ];
+          }}
+        >
+          <Icon
+            name={icon}
+            size={Config.cardIconSize}
+            color={theme.colors.surface}
+          />
+        </Pressable>
       </Surface>
     );
   }
@@ -74,7 +96,8 @@ type Props = {
   subtitleStyle?: StyleProp<TextStyle>;
   descriptionStyle?: StyleProp<TextStyle>;
   style?: StyleProp<ViewStyle>;
-  onPress: () => void;
+  onPress?: () => void;
+  onPressIcon?: () => void;
 };
 
 const Card: React.FC<Props> = ({
@@ -88,6 +111,7 @@ const Card: React.FC<Props> = ({
   elevation = 2,
   style,
   onPress,
+  onPressIcon,
   titleStyle,
   subtitleStyle,
   descriptionStyle,
@@ -131,7 +155,7 @@ const Card: React.FC<Props> = ({
             ) : null}
           </View>
         </View>
-        {icon ? <TopRightCircleIcon icon={icon} /> : null}
+        {icon ? <TopRightCircleIcon icon={icon} onPress={onPressIcon} /> : null}
       </Pressable>
     </Surface>
   );

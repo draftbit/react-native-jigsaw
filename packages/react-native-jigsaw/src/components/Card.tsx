@@ -147,11 +147,13 @@ const Card: React.FC<Props> = ({
         />
         <View style={{ padding: innerPadding }}>
           <View style={{ alignItems: textCentered ? "center" : "flex-start" }}>
-            {title ? <Title text={title} style={titleStyle} /> : null}
-            {subtitle ? (
+            {title || (title && title !== "") ? (
+              <Title text={title} style={titleStyle} />
+            ) : null}
+            {subtitle || (subtitle && subtitle !== "") ? (
               <Subtitle text={subtitle} style={subtitleStyle} />
             ) : null}
-            {description ? (
+            {description || (description && description !== "") ? (
               <View style={{ marginTop: 4 }}>
                 <Caption text={description} style={descriptionStyle} />
               </View>
@@ -177,14 +179,18 @@ export const SEED_DATA = {
     title: createTextType({
       label: "Title",
       description: "Large title text",
+      defaultValue: "Title",
     }),
     subtitle: createTextType({
       label: "Subtitle",
       description: "Text underneath the title",
+      defaultValue: "Edit me in the props panel on the right",
     }),
     description: createTextType({
       label: "Description",
       description: "Smallest text underneath subtitle",
+      defaultValue:
+        "This bottom text is optional, but shows up to make your life a little easier!",
     }),
     icon: createIconType(),
     aspectRatio: createAspectRatioType({

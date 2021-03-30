@@ -39,7 +39,7 @@ const CardContainerShortImage: React.FC<Props> = ({
   mode = "left",
   aspectRatio = 1,
   elevation = 2,
-  theme: { colors, borderRadius, typography },
+  theme: { colors, roundness, typography },
   style,
   onPress,
   ...rest
@@ -49,7 +49,7 @@ const CardContainerShortImage: React.FC<Props> = ({
       <Elevation
         style={{
           elevation,
-          borderRadius: borderRadius.global,
+          borderRadius: roundness,
         }}
       >
         <View
@@ -57,7 +57,7 @@ const CardContainerShortImage: React.FC<Props> = ({
             overflow: "hidden",
             flexDirection: "row",
             justifyContent: mode === "right" ? "space-between" : "flex-start",
-            borderRadius: borderRadius.global,
+            borderRadius: roundness,
           }}
         >
           {mode === "left" && (

@@ -85,7 +85,7 @@ const FAB: React.FC<Props> = ({
   elevation = 0,
   style,
   IconOverride = null,
-  theme: { colors, disabledOpacity, borderRadius, typography },
+  theme: { colors, disabledOpacity, roundness, typography },
   ...rest
 }) => {
   let backgroundColor, borderColor, textColor, borderWidth;
@@ -127,7 +127,7 @@ const FAB: React.FC<Props> = ({
     backgroundColor,
     borderColor,
     borderWidth,
-    borderRadius: borderRadius.button,
+    borderRadius: roundness,
     alignItems: "center",
     justifyContent: "center",
   };

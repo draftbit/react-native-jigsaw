@@ -83,7 +83,7 @@ const Button: React.FC<Props> = ({
   onPress,
   elevation = 0,
   style,
-  theme: { colors, disabledOpacity, borderRadius, typography },
+  theme: { colors, disabledOpacity, roundness, typography },
   IconOverride = null,
   ...rest
 }) => {
@@ -127,7 +127,7 @@ const Button: React.FC<Props> = ({
     backgroundColor,
     borderColor,
     borderWidth,
-    borderRadius: borderRadius.button,
+    borderRadius: roundness,
   };
 
   const textStyle: StyleProp<TextStyle> = {

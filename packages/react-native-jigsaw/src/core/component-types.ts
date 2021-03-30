@@ -83,6 +83,70 @@ export const createElevationType = (defaultValue) => ({
   defaultValue,
 });
 
+export const TEXT_TYPE = {
+  label: "Text",
+  description: "Text you can customize however you'd like",
+  formType: FORM_TYPES.string,
+  propType: PROP_TYPES.STRING,
+  defaultValue: "Beautiful West Coast Villa",
+  editable: true,
+  required: false,
+  group: GROUPS.data,
+};
+
+export const createTextType = (overrides) => ({
+  ...TEXT_TYPE,
+  ...overrides,
+});
+
+export const IMAGE_TYPE = {
+  label: "Image",
+  description: "Image",
+  formType: FORM_TYPES.image,
+  propType: PROP_TYPES.ASSET,
+  defaultValue: null,
+  editable: true,
+  required: true,
+  group: GROUPS.data,
+};
+
+export const createImageType = (overrides = {}) => ({
+  ...IMAGE_TYPE,
+  ...overrides,
+});
+
+export const ICON_TYPE = {
+  label: "Icon",
+  description: "Displays an icon of your choice",
+  formType: FORM_TYPES.icon,
+  propType: PROP_TYPES.STRING /* OR ASSET TODO TEST ME */,
+  defaultValue: null,
+  editable: true,
+  required: false,
+  group: GROUPS.basic,
+};
+
+export const createIconType = (overrides = {}) => ({
+  ...ICON_TYPE,
+  ...overrides,
+});
+
+export const ASPECT_RATIO_TYPE = {
+  label: "Aspect ratio",
+  description: "Aspect ratio of the image",
+  formType: FORM_TYPES.aspectRatio,
+  propType: PROP_TYPES.NUMBER,
+  defaultValue: 1.5,
+  editable: true,
+  required: false,
+  group: GROUPS.basic,
+};
+
+export const createAspectRatioType = (overrides = {}) => ({
+  ...ASPECT_RATIO_TYPE,
+  ...overrides,
+});
+
 export const createNumColumnsType = (overrides) => ({
   label: "Number of Columns",
   description: "Number of Columns",

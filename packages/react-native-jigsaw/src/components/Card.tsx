@@ -24,7 +24,10 @@ import {
   PROP_TYPES,
   COMPONENT_TYPES,
   createElevationType,
-  createNumColumnsType,
+  createTextType,
+  createImageType,
+  createIconType,
+  createAspectRatioType,
 } from "../core/component-types";
 
 const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
@@ -163,107 +166,39 @@ const Card: React.FC<Props> = ({
 
 export default withTheme(Card);
 
-const SEED_DATA_PROPS = {
-  image: {
-    label: "Image",
-    description: "Image",
-    formType: FORM_TYPES.image,
-    propType: PROP_TYPES.ASSET,
-    defaultValue: null,
-    editable: true,
-    required: true,
-    group: GROUPS.data,
+export const SEED_DATA = {
+  name: "Card",
+  tag: "Card",
+  description: "A card you can customize however you'd like",
+  category: COMPONENT_TYPES.card,
+  props: {
+    elevation: createElevationType(3),
+    image: createImageType(),
+    title: createTextType({
+      label: "Title",
+      description: "Large title text",
+    }),
+    subtitle: createTextType({
+      label: "Subtitle",
+      description: "Text underneath the title",
+    }),
+    description: createTextType({
+      label: "Description",
+      description: "Smallest text underneath subtitle",
+    }),
+    icon: createIconType(),
+    aspectRatio: createAspectRatioType({
+      defaultValue: 1.5,
+    }),
+    textCentered: {
+      label: "Centered Text",
+      description: "Whether to center the text",
+      formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
+      defaultValue: false,
+      editable: true,
+      required: false,
+      group: GROUPS.basic,
+    },
   },
-  title: {
-    label: "Title",
-    description: "Text to display",
-    formType: FORM_TYPES.string,
-    propType: PROP_TYPES.STRING,
-    defaultValue: "Beautiful West Coast Villa",
-    editable: true,
-    required: false,
-    group: GROUPS.data,
-  },
-  subtitle: {
-    label: "Subtitle",
-    description: "Text to display on the left",
-    formType: FORM_TYPES.string,
-    propType: PROP_TYPES.STRING,
-    defaultValue: "San Diego",
-    editable: true,
-    required: false,
-    group: GROUPS.data,
-  },
-  description: {
-    label: "Description",
-    description: "Text to display on the right",
-    formType: FORM_TYPES.string,
-    propType: PROP_TYPES.STRING,
-    defaultValue: "$100",
-    editable: true,
-    required: false,
-    group: GROUPS.data,
-  },
-  icon: {
-    label: "Icon",
-    description: "Icon to display on the top right",
-    formType: FORM_TYPES.icon,
-    propType: PROP_TYPES.STRING /* OR ASSET TODO TEST ME */,
-    defaultValue: null,
-    editable: true,
-    required: false,
-    group: GROUPS.basic,
-  },
-  aspectRatio: {
-    label: "Aspect ratio",
-    description: "Aspect ratio of the image",
-    formType: FORM_TYPES.aspectRatio,
-    propType: PROP_TYPES.NUMBER,
-    defaultValue: 1.5,
-    editable: true,
-    required: false,
-    group: GROUPS.basic,
-  },
-  textCentered: {
-    label: "Centered Text",
-    description: "Whether to center the text",
-    formType: FORM_TYPES.boolean,
-    propType: PROP_TYPES.BOOLEAN,
-    defaultValue: false,
-    editable: true,
-    required: false,
-    group: GROUPS.basic,
-  },
-  elevation: createElevationType(2),
 };
-
-export const SEED_DATA = [
-  {
-    name: "Medium Card",
-    tag: "Card",
-    description:
-      "An elevated card with a title and description, that takes up half of its container.",
-    category: COMPONENT_TYPES.card,
-    layout: null,
-    props: {
-      ...SEED_DATA_PROPS,
-      numColumns: createNumColumnsType({
-        defaultValue: 2,
-      }),
-    },
-  },
-  {
-    name: "Large Card",
-    tag: "Card",
-    description:
-      "An elevated card with a title and description, that takes up its full container.",
-    category: COMPONENT_TYPES.card,
-    layout: null,
-    props: {
-      ...SEED_DATA_PROPS,
-      numColumns: createNumColumnsType({
-        defaultValue: 3,
-      }),
-    },
-  },
-];

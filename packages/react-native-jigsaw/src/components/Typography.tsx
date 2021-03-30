@@ -1,10 +1,14 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, TextStyle, StyleProp } from "react-native";
 import { withTheme } from "../core/theming";
 import Theme from "../styles/DefaultTheme";
 
 type Props = {
   text: string;
+  style?: StyleProp<TextStyle>;
+  /**
+   * @optional
+   */
   theme: typeof Theme;
 };
 

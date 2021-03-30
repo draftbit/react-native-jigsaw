@@ -12,7 +12,6 @@ import color from "color";
 import Image from "./Image";
 import Surface from "./Surface";
 import Icon from "./Icon";
-import { Spacer } from "./Layout";
 import { withTheme } from "../core/theming";
 import {
   GROUPS,
@@ -23,40 +22,42 @@ import {
   createNumColumnsType,
 } from "../core/component-types";
 import Config from "./Config";
-import theme from "../styles/DefaultTheme";
+import ThemeT from "../styles/DefaultTheme";
 import { Title, Subtitle, Caption } from "./Typography";
 
 const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
 const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
 
-export const TopRightCircleIcon = withTheme(({ icon, theme }) => {
-  return (
-    <Surface
-      style={{
-        justifyContent: "center",
-        alignItems: "center",
-        elevation: Config.cardIconElevation,
-        position: "absolute",
-        top: 12,
-        right: 12,
-        width: ICON_CONTAINER_SIZE,
-        height: ICON_CONTAINER_SIZE,
-        padding: ICON_CONTAINER_PADDING,
-        borderRadius: ICON_CONTAINER_SIZE,
-        backgroundColor: color(theme.colors.text)
-          .alpha(Config.cardIconBackgroundOpacity)
-          .rgb()
-          .string(),
-      }}
-    >
-      <Icon
-        name={icon}
-        size={Config.cardIconSize}
-        color={theme.colors.surface}
-      />
-    </Surface>
-  );
-});
+export const TopRightCircleIcon = withTheme(
+  ({ icon, theme }: { icon: string; theme: typeof ThemeT }) => {
+    return (
+      <Surface
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          elevation: Config.cardIconElevation,
+          position: "absolute",
+          top: 12,
+          right: 12,
+          width: ICON_CONTAINER_SIZE,
+          height: ICON_CONTAINER_SIZE,
+          padding: ICON_CONTAINER_PADDING,
+          borderRadius: ICON_CONTAINER_SIZE,
+          backgroundColor: color(theme.colors.text)
+            .alpha(Config.cardIconBackgroundOpacity)
+            .rgb()
+            .string(),
+        }}
+      >
+        <Icon
+          name={icon}
+          size={Config.cardIconSize}
+          color={theme.colors.surface}
+        />
+      </Surface>
+    );
+  }
+);
 
 type Props = {
   image?: string | ImageSourcePropType;
@@ -68,7 +69,7 @@ type Props = {
   aspectRatio?: number;
   elevation?: number;
   numColumns?: number;
-  theme: typeof theme;
+  theme: typeof ThemeT;
   titleStyle?: StyleProp<TextStyle>;
   subtitleStyle?: StyleProp<TextStyle>;
   descriptionStyle?: StyleProp<TextStyle>;
@@ -100,12 +101,7 @@ const Card: React.FC<Props> = ({
   const innerPadding = padding ? padding : 12;
 
   return (
-    <Surface
-      style={{
-        elevation,
-        backgroundColor,
-      }}
-    >
+    <Surface style={[{ elevation, backgroundColor }, styles]}>
       <Pressable
         disabled={!onPress}
         onPress={onPress}
@@ -122,7 +118,7 @@ const Card: React.FC<Props> = ({
           source={typeof image === "string" ? { uri: image } : image}
           resizeMode="cover"
         />
-        <Spacer all={innerPadding}>
+        <View style={{ padding: innerPadding }}>
           <View style={{ alignItems: textCentered ? "center" : "flex-start" }}>
             {title ? <Title text={title} style={titleStyle} /> : null}
             {subtitle ? (
@@ -134,7 +130,7 @@ const Card: React.FC<Props> = ({
               </View>
             ) : null}
           </View>
-        </Spacer>
+        </View>
         {icon ? <TopRightCircleIcon icon={icon} /> : null}
       </Pressable>
     </Surface>

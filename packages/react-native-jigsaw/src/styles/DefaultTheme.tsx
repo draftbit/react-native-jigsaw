@@ -2,7 +2,9 @@ import { systemWeights } from "react-native-typography";
 
 export default {
   disabledOpacity: 0.5,
-  roundness: 6,
+  roundness: 8,
+  dark: false,
+  mode: "exact",
   borderRadius: {
     global: 6,
     button: 24,

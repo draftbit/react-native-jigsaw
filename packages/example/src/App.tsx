@@ -18,6 +18,8 @@ import IconExample from "./IconExample";
 import ButtonExample from "./ButtonExample";
 import RadioButtonExample from "./RadioButtonExample";
 
+import CardExample from "./CardExample";
+
 import CardBlockExample from "./CardBlockExample";
 import CardInlineExample from "./CardInlineExample";
 import CardContainerShortImageExample from "./CardContainerShortImageExample";
@@ -63,6 +65,7 @@ const ROUTES = {
   Button: ButtonExample,
   FAB: FABExample,
   RadioButton: RadioButtonExample,
+  Card: CardExample,
   CardBlock: CardBlockExample,
   CardInline: CardInlineExample,
   CardContainerShortImage: CardContainerShortImageExample,

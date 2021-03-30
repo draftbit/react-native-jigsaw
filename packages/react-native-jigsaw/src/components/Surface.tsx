@@ -18,10 +18,10 @@ type Props = {
 } & ViewProps;
 
 const Surface: React.FC<Props> = ({ style, theme, children, ...rest }) => {
-  const { elevation = 4, borderRadius: radius } = (StyleSheet.flatten(style) ||
+  const { elevation = 3, borderRadius: radius } = (StyleSheet.flatten(style) ||
     {}) as ViewStyle;
   const { dark: isDarkTheme, mode, colors } = theme;
-  const borderRadius = radius || theme.borderRadius;
+  const borderRadius = radius || theme.roundness;
 
   return (
     <Animated.View

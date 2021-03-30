@@ -1021,6 +1021,14 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@callstack/react-theme-provider@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@callstack/react-theme-provider/-/react-theme-provider-2.1.0.tgz#a460f5c654c7b3db79f65975a34afea8ac722e8b"
+  integrity sha512-QScjktxZsiS/Ow0HQiMXwUg/TMpy6FEfGw+WC6C9fotafk/pmGYvJYvsewBvrdOA8jR/2KIrd6X2JfzXfcA9pg==
+  dependencies:
+    deepmerge "^3.2.0"
+    hoist-non-react-statics "^3.3.0"
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -1170,14 +1178,6 @@
   integrity sha512-yXxGzcRUPcogiMj58wVgFjc9qUYrCnnU9eLcyNbsQCmae4jPuZCDoIBR21j8ZURsM7GRtU62VOw5yNd4dDHunA==
   dependencies:
     "@date-io/core" "^1.3.13"
-
-"@draftbit/react-theme-provider@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@draftbit/react-theme-provider/-/react-theme-provider-2.1.1.tgz#8ae9d097d1d3c8a08fe04c583d4f020764e24f72"
-  integrity sha512-3LZeOaNik9QHox4bhqyMGZFYsuGP7ErTh075uuh5uwWfLgS1S19kqCL5vi/LcxdBEVcX8MOwn9GktYFD7Y6QYQ==
-  dependencies:
-    deepmerge "^3.2.0"
-    hoist-non-react-statics "^3.3.0"
 
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"

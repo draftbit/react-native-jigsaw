@@ -8,15 +8,14 @@ import {
   TextStyle,
   Pressable,
 } from "react-native";
-import color from "color";
 import Image from "./Image";
 import Surface from "./Surface";
 import Icon from "./Icon";
 import { Title, Subtitle, Caption } from "./Typography";
 
 import { withTheme } from "../core/theming";
-import Config from "./Config";
 import ThemeT from "../styles/DefaultTheme";
+import Config from "./Config";
 
 import {
   GROUPS,
@@ -30,8 +29,10 @@ import {
   createAspectRatioType,
 } from "../core/component-types";
 
+const ICON_SIZE = Config.cardIconSize;
 const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
 const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
+const ICON_ELEVATION = Config.cardIconElevation;
 
 export const TopRightCircleIcon = withTheme(
   ({
@@ -48,7 +49,7 @@ export const TopRightCircleIcon = withTheme(
         style={{
           justifyContent: "center",
           alignItems: "center",
-          elevation: Config.cardIconElevation,
+          elevation: ICON_ELEVATION,
           position: "absolute",
           top: 12,
           right: 12,
@@ -56,10 +57,7 @@ export const TopRightCircleIcon = withTheme(
           height: ICON_CONTAINER_SIZE,
           padding: ICON_CONTAINER_PADDING,
           borderRadius: ICON_CONTAINER_SIZE,
-          backgroundColor: color(theme.colors.text)
-            .alpha(Config.cardIconBackgroundOpacity)
-            .rgb()
-            .string(),
+          backgroundColor: "rgba(0, 0, 0, 0.1)",
         }}
       >
         <Pressable
@@ -73,11 +71,7 @@ export const TopRightCircleIcon = withTheme(
             ];
           }}
         >
-          <Icon
-            name={icon}
-            size={Config.cardIconSize}
-            color={theme.colors.surface}
-          />
+          <Icon name={icon} size={ICON_SIZE} color={theme.colors.surface} />
         </Pressable>
       </Surface>
     );

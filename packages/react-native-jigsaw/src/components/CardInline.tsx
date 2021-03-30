@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from "react-native";
 import Image from "./Image";
-import Card from "./Card";
+import Card from "./DeprecatedCardWrapper";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
 import {

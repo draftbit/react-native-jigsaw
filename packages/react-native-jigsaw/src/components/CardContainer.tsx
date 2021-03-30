@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import color from "color";
 import Image from "./Image";
-import Card from "./Card";
+import Card from "./DeprecatedCardWrapper";
 import Elevation from "./Elevation";
 import Icon from "./Icon";
 import { withTheme } from "../core/theming";

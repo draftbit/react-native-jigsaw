@@ -16,6 +16,7 @@ export const GROUPS = {
   advanced: "advanced",
   data: "data",
   uncategorized: "uncategorized",
+  style: "style",
 };
 
 export const FORM_TYPES = {
@@ -83,7 +84,7 @@ export const createElevationType = (defaultValue) => ({
   defaultValue,
 });
 
-export const TEXT_TYPE = {
+export const createTextProp = (overrides) => ({
   label: "Text",
   description: "Text you can customize however you'd like",
   formType: FORM_TYPES.string,
@@ -92,14 +93,10 @@ export const TEXT_TYPE = {
   editable: true,
   required: false,
   group: GROUPS.data,
-};
-
-export const createTextType = (overrides) => ({
-  ...TEXT_TYPE,
   ...overrides,
 });
 
-export const IMAGE_TYPE = {
+export const createImageProp = (overrides = {}) => ({
   label: "Image",
   description: "Image",
   formType: FORM_TYPES.image,
@@ -108,14 +105,10 @@ export const IMAGE_TYPE = {
   editable: true,
   required: true,
   group: GROUPS.data,
-};
-
-export const createImageType = (overrides = {}) => ({
-  ...IMAGE_TYPE,
   ...overrides,
 });
 
-export const ICON_TYPE = {
+export const createIconProp = (overrides = {}) => ({
   label: "Icon",
   description: "Displays an icon of your choice",
   formType: FORM_TYPES.icon,
@@ -124,14 +117,10 @@ export const ICON_TYPE = {
   editable: true,
   required: false,
   group: GROUPS.basic,
-};
-
-export const createIconType = (overrides = {}) => ({
-  ...ICON_TYPE,
   ...overrides,
 });
 
-export const ASPECT_RATIO_TYPE = {
+export const createAspectRatioProp = (overrides = {}) => ({
   label: "Aspect ratio",
   description: "Aspect ratio of the image",
   formType: FORM_TYPES.aspectRatio,
@@ -140,14 +129,10 @@ export const ASPECT_RATIO_TYPE = {
   editable: true,
   required: false,
   group: GROUPS.basic,
-};
-
-export const createAspectRatioType = (overrides = {}) => ({
-  ...ASPECT_RATIO_TYPE,
   ...overrides,
 });
 
-export const createActionType = (overrides = {}) => ({
+export const createActionProp = (overrides = {}) => ({
   group: GROUPS.basic,
   label: "Action",
   description: "Action to execute when button pressed",
@@ -158,7 +143,7 @@ export const createActionType = (overrides = {}) => ({
   ...overrides,
 });
 
-export const createBoolType = (overrides = {}) => ({
+export const createBoolProp = (overrides = {}) => ({
   label: "Centered Text",
   description: "Whether to center the text",
   formType: FORM_TYPES.boolean,
@@ -171,7 +156,7 @@ export const createBoolType = (overrides = {}) => ({
 });
 
 export const createTextStyle = (overrides = {}) => ({
-  group: GROUPS.basic,
+  group: GROUPS.style,
   label: "Text Style",
   description: "Change the font styles of a given component",
   editable: true,

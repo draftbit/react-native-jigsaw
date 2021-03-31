@@ -20,12 +20,12 @@ import Config from "./Config";
 import {
   COMPONENT_TYPES,
   createElevationType,
-  createTextType,
-  createImageType,
-  createIconType,
-  createAspectRatioType,
-  createActionType,
-  createBoolType,
+  createTextProp,
+  createImageProp,
+  createIconProp,
+  createAspectRatioProp,
+  createActionProp,
+  createBoolProp,
   createTextStyle,
 } from "../core/component-types";
 
@@ -186,10 +186,10 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.card,
   props: {
     elevation: createElevationType(3),
-    image: createImageType(),
-    onPress: createActionType(),
-    onPressIcon: createActionType(),
-    title: createTextType({
+    image: createImageProp(),
+    onPress: createActionProp(),
+    onPressIcon: createActionProp(),
+    title: createTextProp({
       label: "Title",
       description: "Large title text",
       defaultValue: "Title",
@@ -197,7 +197,7 @@ export const SEED_DATA = {
     titleStyle: createTextStyle({
       label: "Title Style",
     }),
-    subtitle: createTextType({
+    subtitle: createTextProp({
       label: "Subtitle",
       description: "Text underneath the title",
       defaultValue: "Edit me in the props panel on the right",
@@ -205,7 +205,7 @@ export const SEED_DATA = {
     subtitleStyle: createTextStyle({
       label: "Subtitle Style",
     }),
-    description: createTextType({
+    description: createTextProp({
       label: "Description",
       description: "Smallest text underneath subtitle",
       defaultValue:
@@ -214,11 +214,11 @@ export const SEED_DATA = {
     descriptionStyle: createTextStyle({
       label: "Description Style",
     }),
-    icon: createIconType(),
-    aspectRatio: createAspectRatioType({
+    icon: createIconProp(),
+    aspectRatio: createAspectRatioProp({
       defaultValue: 1.5,
     }),
-    textCentered: createBoolType({
+    textCentered: createBoolProp({
       label: "Centered Text",
       description: "Places your title and subtitle in the center",
     }),

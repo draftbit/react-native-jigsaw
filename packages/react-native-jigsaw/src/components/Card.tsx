@@ -26,6 +26,7 @@ import {
   createAspectRatioType,
   createActionType,
   createBoolType,
+  createTextStyle,
 } from "../core/component-types";
 
 const ICON_SIZE = Config.cardIconSize;
@@ -38,10 +39,12 @@ export const TopRightCircleIcon = withTheme(
     icon,
     theme,
     onPress,
+    IconOverride,
   }: {
     icon: string;
     theme: typeof ThemeT;
     onPress?: () => void;
+    IconOverride: typeof Icon;
   }) => {
     return (
       <Surface
@@ -70,7 +73,11 @@ export const TopRightCircleIcon = withTheme(
             ];
           }}
         >
-          <Icon name={icon} size={ICON_SIZE} color={theme.colors.surface} />
+          <IconOverride
+            name={icon}
+            size={ICON_SIZE}
+            color={theme.colors.surface}
+          />
         </Pressable>
       </Surface>
     );
@@ -94,6 +101,7 @@ type Props = {
   style?: StyleProp<ViewStyle>;
   onPress?: () => void;
   onPressIcon?: () => void;
+  IconOverride?: typeof Icon;
 };
 
 const Card: React.FC<Props> = ({
@@ -112,7 +120,11 @@ const Card: React.FC<Props> = ({
   subtitleStyle,
   descriptionStyle,
   theme,
+  IconOverride = null,
 }) => {
+  // Necessary to inject web-renderable Icons in buider.
+  const SelectedIcon = IconOverride || Icon;
+
   const { backgroundColor: bgColor, padding, ...styles } = StyleSheet.flatten(
     style || {}
   );
@@ -153,7 +165,13 @@ const Card: React.FC<Props> = ({
             ) : null}
           </View>
         </View>
-        {icon ? <TopRightCircleIcon icon={icon} onPress={onPressIcon} /> : null}
+        {icon ? (
+          <TopRightCircleIcon
+            IconOverride={SelectedIcon}
+            icon={icon}
+            onPress={onPressIcon}
+          />
+        ) : null}
       </Pressable>
     </Surface>
   );
@@ -176,16 +194,25 @@ export const SEED_DATA = {
       description: "Large title text",
       defaultValue: "Title",
     }),
+    titleStyle: createTextStyle({
+      label: "Title Style",
+    }),
     subtitle: createTextType({
       label: "Subtitle",
       description: "Text underneath the title",
       defaultValue: "Edit me in the props panel on the right",
+    }),
+    subtitleStyle: createTextStyle({
+      label: "Subtitle Style",
     }),
     description: createTextType({
       label: "Description",
       description: "Smallest text underneath subtitle",
       defaultValue:
         "This bottom text is optional, but shows up to make your life a little easier!",
+    }),
+    descriptionStyle: createTextStyle({
+      label: "Description Style",
     }),
     icon: createIconType(),
     aspectRatio: createAspectRatioType({

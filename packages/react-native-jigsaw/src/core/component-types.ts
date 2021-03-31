@@ -170,6 +170,18 @@ export const createBoolType = (overrides = {}) => ({
   ...overrides,
 });
 
+export const createTextStyle = (overrides = {}) => ({
+  group: GROUPS.basic,
+  label: "Text Style",
+  description: "Change the font styles of a given component",
+  editable: true,
+  required: true,
+  formType: FORM_TYPES.typeStyle,
+  propType: PROP_TYPES.THEME,
+  defaultValue: null,
+  ...overrides,
+});
+
 export const createNumColumnsType = (overrides) => ({
   label: "Number of Columns",
   description: "Number of Columns",

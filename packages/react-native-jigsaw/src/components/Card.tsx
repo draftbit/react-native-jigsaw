@@ -18,15 +18,14 @@ import ThemeT from "../styles/DefaultTheme";
 import Config from "./Config";
 
 import {
-  GROUPS,
-  FORM_TYPES,
-  PROP_TYPES,
   COMPONENT_TYPES,
   createElevationType,
   createTextType,
   createImageType,
   createIconType,
   createAspectRatioType,
+  createActionType,
+  createBoolType,
 } from "../core/component-types";
 
 const ICON_SIZE = Config.cardIconSize;
@@ -170,6 +169,8 @@ export const SEED_DATA = {
   props: {
     elevation: createElevationType(3),
     image: createImageType(),
+    onPress: createActionType(),
+    onPressIcon: createActionType(),
     title: createTextType({
       label: "Title",
       description: "Large title text",
@@ -190,15 +191,9 @@ export const SEED_DATA = {
     aspectRatio: createAspectRatioType({
       defaultValue: 1.5,
     }),
-    textCentered: {
+    textCentered: createBoolType({
       label: "Centered Text",
-      description: "Whether to center the text",
-      formType: FORM_TYPES.boolean,
-      propType: PROP_TYPES.BOOLEAN,
-      defaultValue: false,
-      editable: true,
-      required: false,
-      group: GROUPS.basic,
-    },
+      description: "Places your title and subtitle in the center",
+    }),
   },
 };

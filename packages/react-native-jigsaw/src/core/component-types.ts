@@ -147,6 +147,29 @@ export const createAspectRatioType = (overrides = {}) => ({
   ...overrides,
 });
 
+export const createActionType = (overrides = {}) => ({
+  group: GROUPS.basic,
+  label: "Action",
+  description: "Action to execute when button pressed",
+  editable: true,
+  required: false,
+  formType: FORM_TYPES.action,
+  defaultValue: null,
+  ...overrides,
+});
+
+export const createBoolType = (overrides = {}) => ({
+  label: "Centered Text",
+  description: "Whether to center the text",
+  formType: FORM_TYPES.boolean,
+  propType: PROP_TYPES.BOOLEAN,
+  defaultValue: false,
+  editable: true,
+  required: false,
+  group: GROUPS.basic,
+  ...overrides,
+});
+
 export const createNumColumnsType = (overrides) => ({
   label: "Number of Columns",
   description: "Number of Columns",

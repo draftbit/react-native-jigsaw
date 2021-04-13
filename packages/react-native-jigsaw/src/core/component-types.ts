@@ -16,6 +16,8 @@ export const GROUPS = {
   advanced: "advanced",
   data: "data",
   uncategorized: "uncategorized",
+  style: "style",
+  action: "action",
 };
 
 export const FORM_TYPES = {
@@ -81,6 +83,89 @@ const ELEVATION_TYPE = {
 export const createElevationType = (defaultValue) => ({
   ...ELEVATION_TYPE,
   defaultValue,
+});
+
+export const createTextProp = (overrides) => ({
+  label: "Text",
+  description: "Text you can customize however you'd like",
+  formType: FORM_TYPES.string,
+  propType: PROP_TYPES.STRING,
+  defaultValue: "Beautiful West Coast Villa",
+  editable: true,
+  required: false,
+  group: GROUPS.data,
+  ...overrides,
+});
+
+export const createImageProp = (overrides = {}) => ({
+  label: "Image",
+  description: "Image",
+  formType: FORM_TYPES.image,
+  propType: PROP_TYPES.ASSET,
+  defaultValue: null,
+  editable: true,
+  required: true,
+  group: GROUPS.data,
+  ...overrides,
+});
+
+export const createIconProp = (overrides = {}) => ({
+  label: "Icon",
+  description: "Displays an icon of your choice",
+  formType: FORM_TYPES.icon,
+  propType: PROP_TYPES.STRING /* OR ASSET TODO TEST ME */,
+  defaultValue: null,
+  editable: true,
+  required: false,
+  group: GROUPS.basic,
+  ...overrides,
+});
+
+export const createAspectRatioProp = (overrides = {}) => ({
+  label: "Aspect ratio",
+  description: "Aspect ratio of the image",
+  formType: FORM_TYPES.aspectRatio,
+  propType: PROP_TYPES.NUMBER,
+  defaultValue: 1.5,
+  editable: true,
+  required: false,
+  group: GROUPS.basic,
+  ...overrides,
+});
+
+export const createActionProp = (overrides = {}) => ({
+  group: GROUPS.basic,
+  label: "Action",
+  description: "Action to execute when button pressed",
+  editable: true,
+  required: false,
+  formType: FORM_TYPES.action,
+  defaultValue: null,
+  ...overrides,
+});
+
+export const createBoolProp = (overrides = {}) => ({
+  label: "Centered Text",
+  description: "Whether to center the text",
+  formType: FORM_TYPES.boolean,
+  propType: PROP_TYPES.BOOLEAN,
+  defaultValue: false,
+  editable: true,
+  required: false,
+  group: GROUPS.basic,
+  ...overrides,
+});
+
+export const createTextStyle = (overrides = {}) => ({
+  group: GROUPS.style,
+  label: "Text Style",
+  description: "Change the font styles of a given component",
+  editable: true,
+  required: true,
+  formType: FORM_TYPES.typeStyle,
+  propType: PROP_TYPES.THEME,
+  defaultValue: null,
+  ...overrides,
 });
 
 export const createNumColumnsType = (overrides) => ({

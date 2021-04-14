@@ -81,7 +81,7 @@ function Base({
     textDecorationColor,
     textDecorationStyle,
     ...buttonStyles
-  } = StyleSheet.flatten(style || {});
+  } = StyleSheet.flatten(style || ({} as TextStyle));
 
   const titleStyles: TextStyle = {
     color,

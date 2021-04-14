@@ -143,10 +143,12 @@ function Base({
   );
 }
 
+// @ts-ignore
 export const ButtonSolid = withTheme(({ style, ...props }: Props) => {
   return <Base type={Type.Solid} style={[styles.solid, style]} {...props} />;
 });
 
+// @ts-ignore
 export const ButtonText = withTheme(({ style, ...props }: Props) => {
   return (
     <Base
@@ -158,6 +160,7 @@ export const ButtonText = withTheme(({ style, ...props }: Props) => {
   );
 });
 
+// @ts-ignore
 export const ButtonOutline = withTheme(({ style, ...props }: Props) => {
   return (
     <Base type={Type.Outline} style={[styles.outline, style]} {...props} />

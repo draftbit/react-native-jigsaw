@@ -28,12 +28,6 @@ const CONSTANTS = {
   icon: 24,
 };
 
-enum Type {
-  Bare,
-  Solid,
-  Outline,
-}
-
 type BaseProps = {
   title: string;
   disabled: boolean;
@@ -43,7 +37,6 @@ type BaseProps = {
   icon?: string;
   IconOverride?: typeof Icon | null;
   theme: typeof Theme;
-  type: Type;
 } & PressableProps;
 
 type Props = {
@@ -65,7 +58,6 @@ function Base({
   style,
   icon,
   IconOverride = null,
-  type,
   theme,
   ...props
 }: BaseProps): JSX.Element {
@@ -136,7 +128,6 @@ export const ButtonSolid = withTheme(
   ({ style, theme, ...props }: Props): JSX.Element => {
     return (
       <Base
-        type={Type.Solid}
         theme={theme}
         style={[
           {
@@ -155,7 +146,6 @@ export const ButtonOutline = withTheme(
   ({ style, theme, ...props }: Props): JSX.Element => {
     return (
       <Base
-        type={Type.Outline}
         theme={theme}
         style={[
           styles.outline,
@@ -173,14 +163,7 @@ export const ButtonOutline = withTheme(
 
 export const Link = withTheme(
   ({ style, ...props }: Props): JSX.Element => {
-    return (
-      <Base
-        type={Type.Bare}
-        style={[styles.bare, style]}
-        hitSlop={8}
-        {...props}
-      />
-    );
+    return <Base style={[styles.bare, style]} hitSlop={8} {...props} />;
   }
 );
 
@@ -261,8 +244,8 @@ const LAYOUT = {
   alignItems: "center",
   backgroundColor: "transparent",
   justifyContent: "center",
-  borderRadius: CONSTANTS.borderRadius,
-  minHeight: CONSTANTS.baseHeight,
+  borderRadius: 8,
+  minHeight: 42,
   fontFamily: "system-700",
 };
 

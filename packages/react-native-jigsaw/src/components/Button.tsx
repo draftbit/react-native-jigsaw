@@ -140,8 +140,9 @@ const Solid = ({ style, theme, ...props }: Props): JSX.Element => {
   );
 };
 
-// @ts-expect-error
+// @ts-ignore
 const ButtonSolid = withTheme(Solid);
+// @ts-ignore
 export { ButtonSolid };
 
 const Outline = ({ style, theme, ...props }: Props): JSX.Element => {
@@ -161,8 +162,9 @@ const Outline = ({ style, theme, ...props }: Props): JSX.Element => {
   );
 };
 
-// @ts-expect-error
+// @ts-ignore
 const ButtonOutline = withTheme(Outline);
+// @ts-ignore
 export { ButtonOutline };
 
 export const BaseLink = ({ style, theme, ...props }: Props): JSX.Element => {
@@ -171,8 +173,9 @@ export const BaseLink = ({ style, theme, ...props }: Props): JSX.Element => {
   );
 };
 
-// @ts-expect-error
+// @ts-ignore
 const Link = withTheme(BaseLink);
+// @ts-ignore
 export { Link };
 
 const styles = StyleSheet.create({

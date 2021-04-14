@@ -5,8 +5,9 @@ import {
   ActivityIndicator,
   StyleProp,
   ViewStyle,
+  Pressable,
+  PressableProps,
 } from "react-native";
-import Touchable from "./Touchable";
 import Icon from "./Icon";
 import { withTheme } from "../core/theming";
 import {
@@ -14,59 +15,55 @@ import {
   COMPONENT_TYPES,
   GROUPS,
   PROP_TYPES,
+  createIconProp,
+  createActionProp,
+  createColorProp,
 } from "../core/component-types";
-import themeT from "../styles/DefaultTheme";
+import Theme from "../styles/DefaultTheme";
 
 type Props = {
   icon?: string;
   color?: string;
   size?: number;
-  accessibilityLabel?: string;
   disabled?: boolean;
   loading?: boolean;
   onPress: () => void;
-  theme: typeof themeT;
+  theme: typeof Theme;
   style?: StyleProp<ViewStyle>;
   IconOverride?: typeof Icon;
-};
+} & PressableProps;
 
 const IconButton: React.FC<Props> = ({
   icon,
   color: customColor,
   size = 32,
-  accessibilityLabel,
   disabled = false,
   loading = false,
   IconOverride = null,
   onPress,
   theme,
   style,
-  ...rest
+  ...props
 }) => {
   const iconColor = customColor || theme.colors.primary;
-  const containerStyles: StyleProp<ViewStyle>[] = [styles.container];
 
   // Necessary to inject web-renderable Icons in buider.
   const SelectedIcon = IconOverride || Icon;
 
-  if (loading || disabled) {
-    containerStyles.push({ opacity: theme.disabledOpacity });
-  }
-
-  if (style) {
-    containerStyles.push(style);
-  }
-
   return (
-    <Touchable
+    <Pressable
       onPress={onPress}
       disabled={disabled || loading}
-      style={containerStyles}
-      accessibilityLabel={accessibilityLabel}
-      accessibilityState={{ disabled }}
-      accessibilityRole="button"
-      hitSlop={{ top: 6, left: 6, bottom: 6, right: 6 }}
-      {...rest}
+      style={({ pressed }) => {
+        return [
+          styles.container,
+          {
+            opacity: pressed || disabled ? 0.75 : 1,
+          },
+          style,
+        ];
+      }}
+      {...props}
     >
       <View>
         {icon && !loading ? (
@@ -74,7 +71,7 @@ const IconButton: React.FC<Props> = ({
         ) : null}
         {loading ? <ActivityIndicator size="small" color={iconColor} /> : null}
       </View>
-    </Touchable>
+    </Pressable>
   );
 };
 
@@ -90,19 +87,11 @@ export default withTheme(IconButton);
 export const SEED_DATA = {
   name: "Icon Button",
   tag: "IconButton",
-  category: COMPONENT_TYPES.deprecated,
-  preview_image_url: "{CLOUDINARY_URL}/Button_Icon.png",
+  category: COMPONENT_TYPES.button,
+  layout: {},
   props: {
-    icon: {
-      group: GROUPS.basic,
-      label: "Icon Name",
-      description: "Name of icon",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.icon,
-      propType: PROP_TYPES.ASSET,
-      defaultValue: null,
-    },
+    icon: createIconProp(),
+    onPress: createActionProp(),
     size: {
       group: GROUPS.basic,
       label: "Icon Size",
@@ -112,30 +101,8 @@ export const SEED_DATA = {
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.NUMBER,
       defaultValue: 32,
-      options: [16, 24, 32],
+      options: [12, 16, 24, 32, 48, 64],
     },
-    color: {
-      group: GROUPS.basic,
-      label: "Color",
-      description: "Color of the icon",
-      formType: FORM_TYPES.color,
-      propType: PROP_TYPES.THEME,
-      defaultValue: "strong",
-      editable: true,
-      required: true,
-    },
-    onPress: {
-      group: GROUPS.basic,
-      label: "Action",
-      description: "Action to execute when icon button pressed",
-      editable: true,
-      formType: FORM_TYPES.action,
-      propType: PROP_TYPES.STRING,
-      defaultValue: null,
-    },
-  },
-  layout: {
-    width: 32,
-    height: 32,
+    color: createColorProp(),
   },
 };

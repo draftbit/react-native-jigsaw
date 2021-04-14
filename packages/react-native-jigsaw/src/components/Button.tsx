@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from "react";
 import {
   Text,
@@ -34,7 +33,7 @@ enum Type {
   Outline,
 }
 
-type Props = {
+type BaseProps = {
   title: string;
   disabled: boolean;
   loading: boolean;
@@ -46,6 +45,17 @@ type Props = {
   type: Type;
 } & PressableProps;
 
+type Props = {
+  title: string;
+  disabled: boolean;
+  loading: boolean;
+  style?: TextStyle;
+  onPress: () => void;
+  icon?: string;
+  IconOverride?: typeof Icon | null;
+  theme: typeof Theme;
+} & PressableProps;
+
 function Base({
   title,
   onPress,
@@ -55,10 +65,11 @@ function Base({
   icon,
   IconOverride = null,
   type,
+  theme,
   ...props
-}: Props) {
+}: BaseProps) {
   const {
-    color,
+    color = theme.colors.primary,
     fontFamily,
     fontWeight,
     fontSize,

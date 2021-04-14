@@ -66,6 +66,7 @@ export { default as RowHeadlineImageCaption } from "./components/RowHeadlineImag
 export { default as RowHeadlineImageIcon } from "./components/RowHeadlineImageIcon";
 
 export { default as ScreenContainer } from "./components/ScreenContainer";
+export { default as Surface } from "./components/Surface";
 export { default as Slider } from "./components/Slider";
 export { default as Stepper } from "./components/Stepper";
 export { default as StarRating } from "./components/StarRating";

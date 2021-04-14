@@ -124,48 +124,53 @@ function Base({
   );
 }
 
-export const ButtonSolid = withTheme(
-  ({ style, theme, ...props }: Props): JSX.Element => {
-    return (
-      <Base
-        theme={theme}
-        style={[
-          {
-            color: "#fff",
-            backgroundColor: theme.colors.primary,
-          },
-          style,
-        ]}
-        {...props}
-      />
-    );
-  }
-);
+const Solid = ({ style, theme, ...props }: Props): JSX.Element => {
+  return (
+    <Base
+      theme={theme}
+      style={[
+        {
+          color: "#fff",
+          backgroundColor: theme.colors.primary,
+        },
+        style,
+      ]}
+      {...props}
+    />
+  );
+};
 
-export const ButtonOutline = withTheme(
-  ({ style, theme, ...props }: Props): JSX.Element => {
-    return (
-      <Base
-        theme={theme}
-        style={[
-          styles.outline,
-          {
-            borderColor: theme.colors.primary,
-            color: theme.colors.primary,
-          },
-          style,
-        ]}
-        {...props}
-      />
-    );
-  }
-);
+const ButtonSolid = withTheme(Solid);
+export { ButtonSolid };
 
-export const Link = withTheme(
-  ({ style, ...props }: Props): JSX.Element => {
-    return <Base style={[styles.bare, style]} hitSlop={8} {...props} />;
-  }
-);
+const Outline = ({ style, theme, ...props }: Props): JSX.Element => {
+  return (
+    <Base
+      theme={theme}
+      style={[
+        styles.outline,
+        {
+          borderColor: theme.colors.primary,
+          color: theme.colors.primary,
+        },
+        style,
+      ]}
+      {...props}
+    />
+  );
+};
+
+const ButtonOutline = withTheme(Outline);
+export { ButtonOutline };
+
+export const BaseLink = ({ style, theme, ...props }: Props): JSX.Element => {
+  return (
+    <Base theme={theme} style={[styles.bare, style]} hitSlop={8} {...props} />
+  );
+};
+
+const Link = withTheme(BaseLink);
+export { Link };
 
 const styles = StyleSheet.create({
   base: {

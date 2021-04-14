@@ -174,8 +174,7 @@ export { Link };
 
 const styles = StyleSheet.create({
   base: {
-    color: "black",
-    textAlign: "center",
+    alignSelf: "flex-start",
     position: "relative",
     flexDirection: "row",
     alignItems: "center",
@@ -198,24 +197,23 @@ const styles = StyleSheet.create({
   },
   bare: {
     backgroundColor: "transparent",
-    color: "black",
     alignSelf: "flex-start",
     padding: 0,
     minHeight: undefined,
   },
   loading: {
-    marginRight: 4,
+    marginRight: 6,
   },
   icon: {
     ...Platform.select({
       web: {
         marginTop: 1,
-        marginRight: 4,
+        marginRight: 8,
         alignSelf: "center",
       },
       default: {
         marginBottom: 2,
-        marginRight: 4,
+        marginRight: 8,
         alignSelf: "center",
       },
     }),
@@ -243,8 +241,7 @@ const SEED_DATA_PROPS = {
 };
 
 const LAYOUT = {
-  textAlign: "center",
-  position: "relative",
+  alignSelf: "flex-start",
   flexDirection: "row",
   alignItems: "center",
   backgroundColor: "transparent",
@@ -272,7 +269,6 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.button,
     layout: {
       ...LAYOUT,
-      color: "#FFF",
       backgroundColor: "primary",
     },
     props: SEED_DATA_PROPS,
@@ -285,7 +281,6 @@ export const SEED_DATA = [
       ...LAYOUT,
       backgroundColor: "transparent",
       color: "black",
-      alignSelf: "flex-start",
       padding: 0,
       minHeight: undefined,
     },

@@ -221,8 +221,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Base);
-
 const SEED_DATA_PROPS = {
   icon: createIconProp(),
   title: createTextProp({

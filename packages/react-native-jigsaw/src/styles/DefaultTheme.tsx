@@ -2,7 +2,9 @@ import { systemWeights } from "react-native-typography";
 
 export default {
   disabledOpacity: 0.5,
-  roundness: 6,
+  roundness: 8,
+  dark: false,
+  mode: "exact",
   borderRadius: {
     global: 6,
     button: 24,
@@ -20,6 +22,9 @@ export default {
     mediumInverse: "rgba(255, 255, 255, 0.87)",
     lightInverse: "rgba(255, 255, 255, 0.68)",
     light: "rgba(165, 173, 183, 1)",
+    text: "#000",
+    placeholder: "#333",
+    disabled: "rgba(0, 0, 0, 0.25)",
   },
   typography: {
     headline1: {

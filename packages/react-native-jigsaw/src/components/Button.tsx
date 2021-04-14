@@ -14,10 +14,11 @@ import Theme from "../styles/DefaultTheme";
 import { withTheme } from "../core/theming";
 
 import {
-  GROUPS,
-  FORM_TYPES,
-  PROP_TYPES,
   COMPONENT_TYPES,
+  createIconProp,
+  createBoolProp,
+  createTextProp,
+  createActionProp,
 } from "../core/component-types";
 
 const CONSTANTS = {
@@ -226,55 +227,21 @@ const styles = StyleSheet.create({
 export default withTheme(Base);
 
 const SEED_DATA_PROPS = {
-  icon: {
-    group: GROUPS.basic,
-    label: "Icon Name",
-    description: "Name of the icon",
-    editable: true,
-    required: true,
-    formType: FORM_TYPES.icon,
-    propType: PROP_TYPES.STRING,
-    defaultValue: null,
-  },
-  title: {
-    group: GROUPS.data,
+  icon: createIconProp(),
+  title: createTextProp({
     label: "Label",
-    description: "Button label",
-    required: true,
-    editable: true,
-    formType: FORM_TYPES.string,
-    propType: PROP_TYPES.STRING,
+    description: "Button Label",
     defaultValue: "Get Started",
-  },
-  disabled: {
-    group: GROUPS.data,
+  }),
+  disabled: createBoolProp({
     label: "Disabled",
     description: "Whether the button should be disabled",
-    editable: true,
-    required: false,
-    formType: FORM_TYPES.boolean,
-    propType: PROP_TYPES.BOOLEAN,
-    defaultValue: null,
-  },
-  loading: {
-    group: GROUPS.data,
+  }),
+  loading: createBoolProp({
     label: "Loading",
     description: "Whether to show a loading indicator",
-    editable: true,
-    required: false,
-    formType: FORM_TYPES.boolean,
-    propType: PROP_TYPES.BOOLEAN,
-    defaultValue: null,
-  },
-  onPress: {
-    group: GROUPS.basic,
-    label: "Action",
-    description: "Action to execute when button pressed",
-    editable: true,
-    required: false,
-    formType: FORM_TYPES.action,
-    defaultValue: null,
-  },
+  }),
+  onPress: createActionProp(),
 };
 
 export const SEED_DATA = [
@@ -283,54 +250,20 @@ export const SEED_DATA = [
     tag: "ButtonOutline",
     category: COMPONENT_TYPES.button,
     layout: {},
-    props: {
-      ...SEED_DATA_PROPS,
-      type: {
-        group: GROUPS.uncategorized,
-        label: "Type",
-        description: "Button type",
-        editable: false,
-        required: true,
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "outline",
-      },
-    },
+    props: SEED_DATA_PROPS,
   },
   {
     name: "Button Solid",
     tag: "ButtonSolid",
+    category: COMPONENT_TYPES.button,
     layout: {},
-    props: {
-      ...SEED_DATA_PROPS,
-      type: {
-        group: GROUPS.uncategorized,
-        label: "Type",
-        description: "Button type",
-        editable: false,
-        required: true,
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "solid",
-      },
-    },
+    props: SEED_DATA_PROPS,
   },
   {
     name: "Button Text",
     tag: "ButtonText",
+    category: COMPONENT_TYPES.button,
     layout: {},
-    props: {
-      ...SEED_DATA_PROPS,
-      type: {
-        group: GROUPS.uncategorized,
-        label: "Type",
-        description: "Button type",
-        editable: false,
-        required: true,
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "solid",
-      },
-    },
+    props: SEED_DATA_PROPS,
   },
 ];

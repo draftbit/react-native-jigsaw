@@ -275,7 +275,7 @@ export const SEED_DATA = [
   {
     name: "Button Outline",
     tag: "Button",
-    category: COMPONENT_TYPES.button,
+    category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Button_Outline.png",
     props: {
       ...SEED_DATA_PROPS,
@@ -295,7 +295,7 @@ export const SEED_DATA = [
   {
     name: "Button Solid",
     tag: "Button",
-    category: COMPONENT_TYPES.button,
+    category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Button_Solid.png",
     props: {
       ...SEED_DATA_PROPS,

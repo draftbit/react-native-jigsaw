@@ -134,13 +134,14 @@ export const createAspectRatioProp = (overrides = {}) => ({
 });
 
 export const createActionProp = (overrides = {}) => ({
-  group: GROUPS.basic,
   label: "Action",
   description: "Action to execute when button pressed",
   editable: true,
   required: false,
   formType: FORM_TYPES.action,
+  propType: PROP_TYPES.STRING,
   defaultValue: null,
+  group: GROUPS.basic,
   ...overrides,
 });
 

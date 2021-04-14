@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as React from "react";
 import {
   Text,
@@ -11,6 +12,14 @@ import {
 
 import Icon from "./Icon";
 import Theme from "../styles/DefaultTheme";
+import { withTheme } from "../core/theming";
+
+import {
+  GROUPS,
+  FORM_TYPES,
+  PROP_TYPES,
+  COMPONENT_TYPES,
+} from "../core/component-types";
 
 const CONSTANTS = {
   baseHeight: 42,
@@ -37,7 +46,7 @@ type Props = {
   type: Type;
 } & PressableProps;
 
-export function Base({
+function Base({
   title,
   onPress,
   loading,
@@ -123,11 +132,11 @@ export function Base({
   );
 }
 
-export const ButtonSolid = ({ style, ...props }: Props) => {
+export const ButtonSolid = withTheme(({ style, ...props }: Props) => {
   return <Base type={Type.Solid} style={[styles.solid, style]} {...props} />;
-};
+});
 
-export const ButtonText = ({ style, ...props }: Props) => {
+export const ButtonText = withTheme(({ style, ...props }: Props) => {
   return (
     <Base
       type={Type.Bare}
@@ -136,13 +145,13 @@ export const ButtonText = ({ style, ...props }: Props) => {
       {...props}
     />
   );
-};
+});
 
-export const ButtonOutline = ({ style, ...props }: Props) => {
+export const ButtonOutline = withTheme(({ style, ...props }: Props) => {
   return (
     <Base type={Type.Outline} style={[styles.outline, style]} {...props} />
   );
-};
+});
 
 const styles = StyleSheet.create({
   base: {
@@ -202,3 +211,115 @@ const styles = StyleSheet.create({
     }),
   },
 });
+
+export default withTheme(Base);
+
+const SEED_DATA_PROPS = {
+  icon: {
+    group: GROUPS.basic,
+    label: "Icon Name",
+    description: "Name of the icon",
+    editable: true,
+    required: true,
+    formType: FORM_TYPES.icon,
+    propType: PROP_TYPES.STRING,
+    defaultValue: null,
+  },
+  title: {
+    group: GROUPS.data,
+    label: "Label",
+    description: "Button label",
+    required: true,
+    editable: true,
+    formType: FORM_TYPES.string,
+    propType: PROP_TYPES.STRING,
+    defaultValue: "Get Started",
+  },
+  disabled: {
+    group: GROUPS.data,
+    label: "Disabled",
+    description: "Whether the button should be disabled",
+    editable: true,
+    required: false,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
+    defaultValue: null,
+  },
+  loading: {
+    group: GROUPS.data,
+    label: "Loading",
+    description: "Whether to show a loading indicator",
+    editable: true,
+    required: false,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
+    defaultValue: null,
+  },
+  onPress: {
+    group: GROUPS.basic,
+    label: "Action",
+    description: "Action to execute when button pressed",
+    editable: true,
+    required: false,
+    formType: FORM_TYPES.action,
+    defaultValue: null,
+  },
+};
+
+export const SEED_DATA = [
+  {
+    name: "Button Outline",
+    tag: "ButtonOutline",
+    category: COMPONENT_TYPES.button,
+    layout: {},
+    props: {
+      ...SEED_DATA_PROPS,
+      type: {
+        group: GROUPS.uncategorized,
+        label: "Type",
+        description: "Button type",
+        editable: false,
+        required: true,
+        formType: FORM_TYPES.string,
+        propType: PROP_TYPES.STRING,
+        defaultValue: "outline",
+      },
+    },
+  },
+  {
+    name: "Button Solid",
+    tag: "ButtonSolid",
+    layout: {},
+    props: {
+      ...SEED_DATA_PROPS,
+      type: {
+        group: GROUPS.uncategorized,
+        label: "Type",
+        description: "Button type",
+        editable: false,
+        required: true,
+        formType: FORM_TYPES.string,
+        propType: PROP_TYPES.STRING,
+        defaultValue: "solid",
+      },
+    },
+  },
+  {
+    name: "Button Text",
+    tag: "ButtonText",
+    layout: {},
+    props: {
+      ...SEED_DATA_PROPS,
+      type: {
+        group: GROUPS.uncategorized,
+        label: "Type",
+        description: "Button type",
+        editable: false,
+        required: true,
+        formType: FORM_TYPES.string,
+        propType: PROP_TYPES.STRING,
+        defaultValue: "solid",
+      },
+    },
+  },
+];

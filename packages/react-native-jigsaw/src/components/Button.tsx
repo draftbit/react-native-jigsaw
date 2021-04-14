@@ -67,7 +67,7 @@ function Base({
   type,
   theme,
   ...props
-}: BaseProps) {
+}: BaseProps): JSX.Element {
   const {
     color = theme.colors.primary,
     fontFamily,
@@ -143,13 +143,11 @@ function Base({
   );
 }
 
-// @ts-ignore
-export const ButtonSolid = withTheme(({ style, ...props }: Props) => {
+export const ButtonSolid = ({ style, ...props }: Props): JSX.Element => {
   return <Base type={Type.Solid} style={[styles.solid, style]} {...props} />;
-});
+};
 
-// @ts-ignore
-export const ButtonText = withTheme(({ style, ...props }: Props) => {
+export const ButtonText = ({ style, ...props }: Props): JSX.Element => {
   return (
     <Base
       type={Type.Bare}
@@ -158,14 +156,13 @@ export const ButtonText = withTheme(({ style, ...props }: Props) => {
       {...props}
     />
   );
-});
+};
 
-// @ts-ignore
-export const ButtonOutline = withTheme(({ style, ...props }: Props) => {
+export const ButtonOutline = ({ style, ...props }: Props): JSX.Element => {
   return (
     <Base type={Type.Outline} style={[styles.outline, style]} {...props} />
   );
-});
+};
 
 const styles = StyleSheet.create({
   base: {

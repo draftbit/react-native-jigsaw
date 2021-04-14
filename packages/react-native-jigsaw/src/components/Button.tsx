@@ -36,7 +36,6 @@ type BaseProps = {
   onPress: () => void;
   icon?: string;
   IconOverride?: typeof Icon | null;
-  theme: typeof Theme;
 } & PressableProps;
 
 type Props = {
@@ -58,7 +57,6 @@ function Base({
   style,
   icon,
   IconOverride = null,
-  theme,
   ...props
 }: BaseProps): JSX.Element {
   const {
@@ -77,7 +75,7 @@ function Base({
   } = StyleSheet.flatten(style || ({} as TextStyle));
 
   const titleStyles: TextStyle = {
-    color: color ? color : theme.colors.primary,
+    color,
     fontFamily,
     fontWeight,
     fontSize,
@@ -127,10 +125,10 @@ function Base({
 const Solid = ({ style, theme, ...props }: Props): JSX.Element => {
   return (
     <Base
-      theme={theme}
       style={[
         {
-          color: "#fff",
+          color: "#FFF",
+          borderRadius: theme.roundness,
           backgroundColor: theme.colors.primary,
         },
         style,
@@ -146,10 +144,10 @@ export { ButtonSolid };
 const Outline = ({ style, theme, ...props }: Props): JSX.Element => {
   return (
     <Base
-      theme={theme}
       style={[
         styles.outline,
         {
+          borderRadius: theme.roundness,
           borderColor: theme.colors.primary,
           color: theme.colors.primary,
         },
@@ -165,7 +163,11 @@ export { ButtonOutline };
 
 export const BaseLink = ({ style, theme, ...props }: Props): JSX.Element => {
   return (
-    <Base theme={theme} style={[styles.bare, style]} hitSlop={8} {...props} />
+    <Base
+      style={[styles.bare, style, { color: theme.colors.primary }]}
+      hitSlop={8}
+      {...props}
+    />
   );
 };
 
@@ -179,7 +181,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: CONSTANTS.borderRadius,
     minHeight: CONSTANTS.baseHeight,
     paddingHorizontal: 12,
     fontFamily: "System",

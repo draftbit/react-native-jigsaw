@@ -110,9 +110,6 @@ function Base({
           styles.base,
           {
             opacity: pressed || disabled ? 0.75 : 1,
-            backgroundColor: buttonStyles.backgroundColor
-              ? buttonStyles.backgroundColor
-              : theme.colors.primary,
           },
           buttonStyles,
         ];
@@ -120,21 +117,9 @@ function Base({
       {...props}
     >
       {loading ? (
-        <ActivityIndicator
-          size="small"
-          color={color}
-          style={type === Type.Bare ? styles.bareLoading : styles.loading}
-        />
+        <ActivityIndicator size="small" color={color} style={styles.loading} />
       ) : null}
-      {type !== Type.Bare && icon ? (
-        <SelectedIcon
-          name={icon}
-          color={color as string}
-          style={styles.icon}
-          size={CONSTANTS.icon}
-        />
-      ) : null}
-      {type === Type.Bare && icon && !loading ? (
+      {icon && !loading ? (
         <SelectedIcon
           name={icon}
           color={color as string}
@@ -148,12 +133,45 @@ function Base({
 }
 
 export const ButtonSolid = withTheme(
-  ({ style, ...props }: Props): JSX.Element => {
-    return <Base type={Type.Solid} style={[styles.solid, style]} {...props} />;
+  ({ style, theme, ...props }: Props): JSX.Element => {
+    return (
+      <Base
+        type={Type.Solid}
+        theme={theme}
+        style={[
+          {
+            color: "#fff",
+            backgroundColor: theme.colors.primary,
+          },
+          style,
+        ]}
+        {...props}
+      />
+    );
   }
 );
 
-export const ButtonText = withTheme(
+export const ButtonOutline = withTheme(
+  ({ style, theme, ...props }: Props): JSX.Element => {
+    return (
+      <Base
+        type={Type.Outline}
+        theme={theme}
+        style={[
+          styles.outline,
+          {
+            borderColor: theme.colors.primary,
+            color: theme.colors.primary,
+          },
+          style,
+        ]}
+        {...props}
+      />
+    );
+  }
+);
+
+export const Link = withTheme(
   ({ style, ...props }: Props): JSX.Element => {
     return (
       <Base
@@ -166,14 +184,6 @@ export const ButtonText = withTheme(
   }
 );
 
-export const ButtonOutline = withTheme(
-  ({ style, ...props }: Props): JSX.Element => {
-    return (
-      <Base type={Type.Outline} style={[styles.outline, style]} {...props} />
-    );
-  }
-);
-
 const styles = StyleSheet.create({
   base: {
     color: "black",
@@ -181,11 +191,12 @@ const styles = StyleSheet.create({
     position: "relative",
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "transparent",
     justifyContent: "center",
-    borderRadius: 8,
-    height: CONSTANTS.baseHeight,
-    padding: CONSTANTS.padding,
+    borderRadius: CONSTANTS.borderRadius,
+    minHeight: CONSTANTS.baseHeight,
+    paddingHorizontal: 12,
+    fontFamily: "System",
+    fontWeight: "700",
     ...Platform.select({
       web: {
         cursor: "pointer",
@@ -193,29 +204,19 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  solid: {
-    backgroundColor: "#5a45ff",
-    color: "#fff",
-  },
   outline: {
-    color: "#5a45ff",
-    borderColor: "#5a45ff",
+    backgroundColor: "transparent",
     borderWidth: 1,
   },
   bare: {
+    backgroundColor: "transparent",
     color: "black",
     alignSelf: "flex-start",
     padding: 0,
-    height: undefined,
-  },
-  bareLoading: {
-    marginRight: 4,
+    minHeight: undefined,
   },
   loading: {
-    position: "absolute",
-    right: 12,
-    top: 0,
-    bottom: 0,
+    marginRight: 4,
   },
   icon: {
     ...Platform.select({
@@ -254,16 +255,15 @@ const SEED_DATA_PROPS = {
 };
 
 const LAYOUT = {
-  color: "black",
   textAlign: "center",
   position: "relative",
   flexDirection: "row",
   alignItems: "center",
   backgroundColor: "transparent",
   justifyContent: "center",
-  borderRadius: 8,
-  height: 42,
-  padding: 8,
+  borderRadius: CONSTANTS.borderRadius,
+  minHeight: CONSTANTS.baseHeight,
+  fontFamily: "system-700",
 };
 
 export const SEED_DATA = [
@@ -271,21 +271,36 @@ export const SEED_DATA = [
     name: "Button Outline",
     tag: "ButtonOutline",
     category: COMPONENT_TYPES.button,
-    layout: LAYOUT,
+    layout: {
+      ...LAYOUT,
+      backgroundColor: "transparent",
+      borderWidth: 1,
+    },
     props: SEED_DATA_PROPS,
   },
   {
     name: "Button Solid",
     tag: "ButtonSolid",
     category: COMPONENT_TYPES.button,
-    layout: LAYOUT,
+    layout: {
+      ...LAYOUT,
+      color: "#FFF",
+      backgroundColor: "primary",
+    },
     props: SEED_DATA_PROPS,
   },
   {
-    name: "Button Text",
-    tag: "ButtonText",
+    name: "Link",
+    tag: "Link",
     category: COMPONENT_TYPES.button,
-    layout: LAYOUT,
+    layout: {
+      ...LAYOUT,
+      backgroundColor: "transparent",
+      color: "black",
+      alignSelf: "flex-start",
+      padding: 0,
+      minHeight: undefined,
+    },
     props: SEED_DATA_PROPS,
   },
 ];

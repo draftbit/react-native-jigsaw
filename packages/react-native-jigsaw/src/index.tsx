@@ -9,7 +9,7 @@ export { default as AvatarEdit } from "./components/AvatarEdit";
 export { default as AudioPlayer } from "./components/AudioPlayer";
 
 export { default as Button } from "./components/DeprecatedButton";
-export { ButtonSolid, ButtonText, ButtonOutline } from "./components/Button";
+export { ButtonSolid, ButtonOutline, Link } from "./components/Button";
 
 export { default as CardBlock } from "./components/CardBlock";
 export { default as CardInline } from "./components/CardInline";

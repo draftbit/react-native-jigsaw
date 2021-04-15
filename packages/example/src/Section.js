@@ -28,4 +28,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     flexWrap: "wrap",
   },
+  button: {
+    margin: 2,
+  },
 });

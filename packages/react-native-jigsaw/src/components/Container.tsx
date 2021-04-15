@@ -16,6 +16,8 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   createElevationType,
+  createImageProp,
+  createResizeModeProp,
 } from "../core/component-types";
 import ThemeT from "../styles/DefaultTheme";
 import { ResizeModeType } from "./ResizeMode";
@@ -118,28 +120,13 @@ export const SEED_DATA = {
       editable: false,
       required: true,
     },
-    backgroundImage: {
-      group: GROUPS.data,
-      label: "Background image",
-      description: "Background image to apply to the container",
-      formType: FORM_TYPES.image,
-      propType: PROP_TYPES.ASSET,
-      defaultValue: null,
-      editable: true,
-      required: false,
-    },
-    backgroundImageResizeMode: {
-      group: GROUPS.basic,
-      label: "Background image resize mode",
-      description:
-        "Determines how to resize the background image when the frame doesn't match the raw image dimensions",
-      editable: true,
-      required: false,
-      defaultValue: null,
-      formType: FORM_TYPES.flatArray,
-      propType: PROP_TYPES.STRING,
-      options: ["cover", "contain", "stretch", "repeat", "center"],
-    },
+    backgroundImage: createImageProp({
+      label: "Background Image",
+      description: "Apply a custom background image",
+      defaultValue:
+        "https://static.draftbit.com/images/placeholder-image-background.png",
+    }),
+    backgroundImageResizeMode: createResizeModeProp(),
     elevation: createElevationType(0),
   },
 };

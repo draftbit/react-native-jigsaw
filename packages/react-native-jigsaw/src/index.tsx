@@ -33,6 +33,7 @@ export { default as FieldSlider } from "./components/FieldSlider";
 export { default as FieldSearchBarFull } from "./components/FieldSearchBarFull";
 export { default as FieldRadioButton } from "./components/FieldRadioButton";
 
+export { default as Image } from "./components/Image";
 export { default as Icon } from "./components/Icon";
 export { default as IconButton } from "./components/IconButton";
 

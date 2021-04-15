@@ -3,6 +3,9 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   GROUPS,
+  createImageProp,
+  createResizeModeProp,
+  createColorProp,
 } from "../core/component-types";
 
 export const SEED_DATA = {
@@ -20,29 +23,15 @@ export const SEED_DATA = {
     height: "100%",
   },
   props: {
-    source: {
-      group: GROUPS.data,
-      label: "Image Source",
-      description: "The source of the image",
-      editable: true,
-      required: true,
-      formType: FORM_TYPES.image,
-      propType: PROP_TYPES.ASSET,
+    source: createImageProp({
       defaultValue:
         "https://static.draftbit.com/images/placeholder-image-background.png",
-    },
-    resizeMode: {
-      group: GROUPS.basic,
-      label: "Resize Mode",
-      description:
-        "Determines how to resize the image when the frame doesn't match the raw image dimensions",
-      editable: true,
-      required: false,
-      defaultValue: "cover",
-      formType: FORM_TYPES.flatArray,
-      propType: PROP_TYPES.STRING,
-      options: ["cover", "contain", "stretch", "repeat", "center"],
-    },
+    }),
+    resizeMode: createResizeModeProp(),
+    backgroundColor: createColorProp({
+      label: "Background Color",
+      description: "If no image is chosen render a colored background.",
+    }),
     backfaceVisibility: {
       group: GROUPS.advanced,
       label: "Backface Visibility",
@@ -53,16 +42,6 @@ export const SEED_DATA = {
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.STRING,
       options: ["visible", "hidden"],
-    },
-    backgroundColor: {
-      group: GROUPS.basic,
-      label: "Background Color",
-      description: "If no image is chosen render a colored background.",
-      editable: true,
-      required: false,
-      defaultValue: null,
-      formType: FORM_TYPES.color,
-      propType: PROP_TYPES.THEME,
     },
   },
 };

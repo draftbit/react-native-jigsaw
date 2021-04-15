@@ -30,8 +30,8 @@ type Props = {
   elevation?: number;
   theme: typeof theme;
   style?: StyleProp<ViewStyle>;
-  titleStyle?: StyleProp<TexStyle>;
-  subtitleStyle?: StyleProp<TextStyle>;
+  titleStyle?: TexStyle;
+  subtitleStyle?: TextStyle;
   onPress: () => void;
 };
 

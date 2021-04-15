@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import {
   Pressable,
@@ -30,8 +31,8 @@ type Props = {
   elevation?: number;
   theme: typeof theme;
   style?: StyleProp<ViewStyle>;
-  titleStyle?: TexStyle;
-  subtitleStyle?: TextStyle;
+  titleStyle?: StyleProp<TexTStyle>;
+  subtitleStyle?: StyleProp<TextStyle>;
   onPress: () => void;
 };
 

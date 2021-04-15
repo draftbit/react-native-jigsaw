@@ -112,12 +112,26 @@ export const createColorProp = (overrides = {}) => ({
 export const createImageProp = (overrides = {}) => ({
   label: "Image",
   description: "Image",
-  formType: FORM_TYPES.image,
-  propType: PROP_TYPES.ASSET,
-  defaultValue: null,
+  group: GROUPS.data,
+  formType: FORM_TYPES.sourceUrl,
+  propType: PROP_TYPES.OBJECT,
+  defaultValue: "https://static.draftbit.com/images/placeholder-image.png",
   editable: true,
   required: true,
-  group: GROUPS.data,
+  ...overrides,
+});
+
+export const createResizeModeProp = (overrides = {}) => ({
+  group: GROUPS.basic,
+  label: "Resize Mode",
+  description:
+    "Determines how to resize the image when the frame doesn't match the raw image dimensions",
+  editable: true,
+  required: false,
+  defaultValue: "cover",
+  formType: FORM_TYPES.flatArray,
+  propType: PROP_TYPES.STRING,
+  options: ["cover", "contain", "stretch", "repeat", "center"],
   ...overrides,
 });
 
@@ -181,7 +195,7 @@ export const createTextStyle = (overrides = {}) => ({
   ...overrides,
 });
 
-export const createNumColumnsType = (overrides) => ({
+export const createNumColumnsType = (overrides = {}) => ({
   label: "Number of Columns",
   description: "Number of Columns",
   group: GROUPS.uncategorized,
@@ -190,6 +204,18 @@ export const createNumColumnsType = (overrides) => ({
   defaultValue: 1,
   editable: false,
   required: false,
+  ...overrides,
+});
+
+export const createColorProp = (overrides = {}) => ({
+  group: GROUPS.basic,
+  label: "Color",
+  description: "Select or create a color",
+  editable: true,
+  required: false,
+  defaultValue: null,
+  formType: FORM_TYPES.color,
+  propType: PROP_TYPES.THEME,
   ...overrides,
 });
 

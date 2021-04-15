@@ -8,7 +8,8 @@ export { default as Avatar } from "./components/CircleImage";
 export { default as AvatarEdit } from "./components/AvatarEdit";
 export { default as AudioPlayer } from "./components/AudioPlayer";
 
-export { default as Button } from "./components/Button";
+export { default as Button } from "./components/DeprecatedButton";
+export { ButtonSolid, ButtonOutline, Link } from "./components/Button";
 
 export { default as Card } from "./components/Card";
 
@@ -35,6 +36,7 @@ export { default as FieldSlider } from "./components/FieldSlider";
 export { default as FieldSearchBarFull } from "./components/FieldSearchBarFull";
 export { default as FieldRadioButton } from "./components/FieldRadioButton";
 
+export { default as Image } from "./components/Image";
 export { default as Icon } from "./components/Icon";
 export { default as IconButton } from "./components/IconButton";
 
@@ -68,6 +70,7 @@ export { default as RowHeadlineImageCaption } from "./components/RowHeadlineImag
 export { default as RowHeadlineImageIcon } from "./components/RowHeadlineImageIcon";
 
 export { default as ScreenContainer } from "./components/ScreenContainer";
+export { default as Surface } from "./components/Surface";
 export { default as Slider } from "./components/Slider";
 export { default as Stepper } from "./components/Stepper";
 export { default as StarRating } from "./components/StarRating";

@@ -21,7 +21,7 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
-      defaultValue: true,
+      defaultValue: null,
     },
     accessibilityLabel: {
       group: GROUPS.accessibility,
@@ -98,7 +98,7 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
-      defaultValue: false,
+      defaultValue: null,
     },
     accessibilityIgnoresInvertColors: {
       group: GROUPS.accessibility,
@@ -129,7 +129,7 @@ export const SEED_DATA = {
       group: GROUPS.accessibility,
       name: "importantForAccessibility",
       label: "importantForAccessibility",
-      defaultValue: "auto",
+      defaultValue: null,
       description:
         "Controls how view is important for accessibility which is if it fires accessibility events and if it is reported to accessibility services that query the screen. Works for Android only.Possible values:\n'auto' - The system determines whether the view is important for accessibility - default (recommended).\n'yes' - The view is important for accessibility.\n'no' - The view is not important for accessibility.\n'no-hide-descendants' - The view is not important for accessibility, nor are any of its descendant views.\nSee the Android importantForAccessibility docs for reference.",
       options: ["auto", "yes", "no", "no-hide-descendants"],
@@ -148,7 +148,7 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.position,
       propType: PROP_TYPES.OBJECT,
-      defaultValue: "{}",
+      defaultValue: null,
     },
     pointerEvents: {
       group: GROUPS.advanced,
@@ -161,7 +161,7 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.STRING,
-      defaultValue: "auto",
+      defaultValue: null,
     },
     removeClippedSubviews: {
       group: GROUPS.advanced,

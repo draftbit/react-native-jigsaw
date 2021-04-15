@@ -17,6 +17,7 @@ export const GROUPS = {
   data: "data",
   uncategorized: "uncategorized",
   style: "style",
+  action: "action",
 };
 
 export const FORM_TYPES = {
@@ -99,12 +100,26 @@ export const createTextProp = (overrides) => ({
 export const createImageProp = (overrides = {}) => ({
   label: "Image",
   description: "Image",
-  formType: FORM_TYPES.image,
-  propType: PROP_TYPES.ASSET,
-  defaultValue: null,
+  group: GROUPS.data,
+  formType: FORM_TYPES.sourceUrl,
+  propType: PROP_TYPES.OBJECT,
+  defaultValue: "https://static.draftbit.com/images/placeholder-image.png",
   editable: true,
   required: true,
-  group: GROUPS.data,
+  ...overrides,
+});
+
+export const createResizeModeProp = (overrides = {}) => ({
+  group: GROUPS.basic,
+  label: "Resize Mode",
+  description:
+    "Determines how to resize the image when the frame doesn't match the raw image dimensions",
+  editable: true,
+  required: false,
+  defaultValue: "cover",
+  formType: FORM_TYPES.flatArray,
+  propType: PROP_TYPES.STRING,
+  options: ["cover", "contain", "stretch", "repeat", "center"],
   ...overrides,
 });
 
@@ -133,13 +148,14 @@ export const createAspectRatioProp = (overrides = {}) => ({
 });
 
 export const createActionProp = (overrides = {}) => ({
-  group: GROUPS.basic,
   label: "Action",
   description: "Action to execute when button pressed",
   editable: true,
   required: false,
   formType: FORM_TYPES.action,
+  propType: PROP_TYPES.STRING,
   defaultValue: null,
+  group: GROUPS.basic,
   ...overrides,
 });
 
@@ -167,7 +183,7 @@ export const createTextStyle = (overrides = {}) => ({
   ...overrides,
 });
 
-export const createNumColumnsType = (overrides) => ({
+export const createNumColumnsType = (overrides = {}) => ({
   label: "Number of Columns",
   description: "Number of Columns",
   group: GROUPS.uncategorized,
@@ -176,6 +192,18 @@ export const createNumColumnsType = (overrides) => ({
   defaultValue: 1,
   editable: false,
   required: false,
+  ...overrides,
+});
+
+export const createColorProp = (overrides = {}) => ({
+  group: GROUPS.basic,
+  label: "Color",
+  description: "Select or create a color",
+  editable: true,
+  required: false,
+  defaultValue: null,
+  formType: FORM_TYPES.color,
+  propType: PROP_TYPES.THEME,
   ...overrides,
 });
 
@@ -212,7 +240,7 @@ export const TEXT_INPUT_PROPS = {
       "Whether fonts should scale to respect Text Size in the user's accessibility settings. (Default: true)",
     editable: true,
     required: false,
-    defaultValue: true,
+    defaultValue: null,
     formType: FORM_TYPES.boolean,
     propType: PROP_TYPES.BOOLEAN,
   },
@@ -223,7 +251,7 @@ export const TEXT_INPUT_PROPS = {
       "Can automatically capitalize sentences, words, and characters (Default: none).",
     editable: true,
     required: false,
-    defaultValue: "none",
+    defaultValue: null,
     options: ["none", "sentences", "words", "characters"],
     formType: FORM_TYPES.flatArray,
     propType: PROP_TYPES.STRING,
@@ -265,7 +293,7 @@ export const TEXT_INPUT_PROPS = {
     description: "Hides the system context menu (Default: false)",
     editable: true,
     required: false,
-    defaultValue: false,
+    defaultValue: null,
     formType: FORM_TYPES.boolean,
     propType: PROP_TYPES.BOOLEAN,
   },
@@ -296,7 +324,7 @@ export const TEXT_INPUT_PROPS = {
     description: "Determines the color of the keyboard.(iOS Only)",
     editable: true,
     required: false,
-    defaultValue: "default",
+    defaultValue: null,
     options: ["default", "light", "dark"],
     formType: FORM_TYPES.flatArray,
     propType: PROP_TYPES.STRING,
@@ -307,7 +335,7 @@ export const TEXT_INPUT_PROPS = {
     description: "Determines what keyboard is given to the user.",
     editable: true,
     required: false,
-    defaultValue: "default",
+    defaultValue: null,
     options: [
       "default",
       "email-address",

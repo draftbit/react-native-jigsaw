@@ -1,3 +1,4 @@
+/* Copied from https://github.com/callstack/react-native-paper/blob/main/src/styles/overlay.tsx */
 import color from "color";
 import { Animated } from "react-native";
 import DarkTheme from "./DarkTheme";

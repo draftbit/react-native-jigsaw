@@ -1,4 +1,5 @@
 import { systemWeights } from "react-native-typography";
+import configureFonts from "./fonts";
 
 export default {
   disabledOpacity: 0.5,
@@ -26,6 +27,7 @@ export default {
     placeholder: "#333",
     disabled: "rgba(0, 0, 0, 0.25)",
   },
+  fonts: configureFonts(),
   typography: {
     headline1: {
       ...systemWeights.regular,

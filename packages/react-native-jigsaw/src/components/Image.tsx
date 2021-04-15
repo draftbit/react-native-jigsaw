@@ -9,9 +9,8 @@ import {
 import Config from "./Config";
 import {
   COMPONENT_TYPES,
-  FORM_TYPES,
-  PROP_TYPES,
-  GROUPS,
+  createImageProp,
+  createResizeModeProp,
 } from "../core/component-types";
 
 import AspectRatio from "./AspectRatio";
@@ -101,33 +100,12 @@ export const SEED_DATA = {
   tag: "Image",
   description: "A basic Image Component",
   category: COMPONENT_TYPES.media,
-  supports_list_render: false,
   layout: {
     width: 250,
     height: 250,
   },
   props: {
-    source: {
-      group: GROUPS.data,
-      label: "Image Source",
-      description: "The source of the image",
-      editable: true,
-      required: true,
-      formType: FORM_TYPES.image,
-      propType: PROP_TYPES.ASSET,
-      defaultValue: "https://static.draftbit.com/images/placeholder-image.png",
-    },
-    resizeMode: {
-      group: GROUPS.basic,
-      label: "Resize Mode",
-      description:
-        "Determines how to resize the image when the frame doesn't match the raw image dimensions",
-      editable: true,
-      required: false,
-      defaultValue: "cover",
-      formType: FORM_TYPES.flatArray,
-      propType: PROP_TYPES.STRING,
-      options: ["cover", "contain", "stretch", "repeat", "center"],
-    },
+    source: createImageProp(),
+    resizeMode: createResizeModeProp(),
   },
 };

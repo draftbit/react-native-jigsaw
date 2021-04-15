@@ -1,3 +1,4 @@
+/* Copied from https://github.com/callstack/react-native-paper/blob/main/src/components/Surface.tsx */
 import * as React from "react";
 import {
   Animated,

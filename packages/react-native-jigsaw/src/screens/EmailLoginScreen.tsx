@@ -12,7 +12,7 @@ import {
 import type { ImageSource } from "react-native/Libraries/Image/ImageSource";
 
 import ScreenContainer from "../components/ScreenContainer";
-import Button from "../components/Button";
+import Button from "../components/DeprecatedButton";
 import { withTheme } from "../core/theming";
 import { Theme } from "../types";
 import {

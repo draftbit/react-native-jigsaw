@@ -156,7 +156,7 @@ const Button: React.FC<Props> = ({
     marginHorizontal,
     marginVertical,
     ...innerStyles
-  } = StyleSheet.flatten(style);
+  } = StyleSheet.flatten(style || {});
 
   const margins = {
     margin,

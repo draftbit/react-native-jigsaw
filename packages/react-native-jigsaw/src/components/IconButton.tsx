@@ -7,6 +7,7 @@ import {
   ViewStyle,
   Pressable,
   PressableProps,
+  Platform,
 } from "react-native";
 import Icon from "./Icon";
 import { withTheme } from "../core/theming";
@@ -79,6 +80,12 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
+    ...Platform.select({
+      web: {
+        cursor: "pointer",
+        userSelect: "none",
+      },
+    }),
   },
 });
 

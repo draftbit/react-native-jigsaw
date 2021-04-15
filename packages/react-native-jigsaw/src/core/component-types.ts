@@ -183,6 +183,20 @@ export const createTextStyle = (overrides = {}) => ({
   ...overrides,
 });
 
+export const createNumberProp = (overrides = {}) => ({
+  label: "Number",
+  description: "A number",
+  formType: FORM_TYPES.number,
+  propType: PROP_TYPES.NUMBER,
+  group: GROUPS.data,
+  defaultValue: null,
+  editable: true,
+  required: true,
+  min: 0,
+  step: 1,
+  ...overrides,
+});
+
 export const createNumColumnsType = (overrides = {}) => ({
   label: "Number of Columns",
   description: "Number of Columns",

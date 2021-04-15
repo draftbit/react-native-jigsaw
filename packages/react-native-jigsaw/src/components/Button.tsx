@@ -176,7 +176,6 @@ export { Link };
 
 const styles = StyleSheet.create({
   base: {
-    alignSelf: "flex-start",
     position: "relative",
     flexDirection: "row",
     alignItems: "center",
@@ -209,12 +208,12 @@ const styles = StyleSheet.create({
     ...Platform.select({
       web: {
         marginTop: 1,
-        marginRight: 8,
+        marginRight: 4,
         alignSelf: "center",
       },
       default: {
         marginBottom: 2,
-        marginRight: 8,
+        marginRight: 4,
         alignSelf: "center",
       },
     }),

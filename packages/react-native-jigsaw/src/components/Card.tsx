@@ -101,6 +101,7 @@ type Props = {
   style?: StyleProp<ViewStyle>;
   onPress?: () => void;
   onPressIcon?: () => void;
+  children?: React.ReactNode;
   IconOverride?: typeof Icon;
 };
 
@@ -120,6 +121,7 @@ const Card: React.FC<Props> = ({
   subtitleStyle,
   descriptionStyle,
   theme,
+  children,
   IconOverride = null,
 }) => {
   // Necessary to inject web-renderable Icons in buider.
@@ -163,6 +165,7 @@ const Card: React.FC<Props> = ({
                 <Caption text={description} style={descriptionStyle} />
               </View>
             ) : null}
+            {children}
           </View>
         </View>
         {icon ? (

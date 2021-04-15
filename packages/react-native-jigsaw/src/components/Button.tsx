@@ -277,7 +277,7 @@ export const SEED_DATA = [
     layout: {
       ...LAYOUT,
       backgroundColor: "transparent",
-      color: "black",
+      color: "primary",
       padding: 0,
       minHeight: undefined,
     },

@@ -97,18 +97,6 @@ export const createTextProp = (overrides) => ({
   ...overrides,
 });
 
-export const createColorProp = (overrides = {}) => ({
-  group: GROUPS.basic,
-  label: "Color",
-  description: "Color of the icon",
-  formType: FORM_TYPES.color,
-  propType: PROP_TYPES.THEME,
-  defaultValue: "strong",
-  editable: true,
-  required: true,
-  ...overrides,
-});
-
 export const createImageProp = (overrides = {}) => ({
   label: "Image",
   description: "Image",

@@ -146,15 +146,38 @@ const Button: React.FC<Props> = ({
     },
   ];
 
+  const {
+    margin,
+    marginEnd,
+    marginTop,
+    marginLeft,
+    marginRight,
+    marginBottom,
+    marginHorizontal,
+    marginVertical,
+    ...innerStyles
+  } = StyleSheet.flatten(style);
+
+  const margins = {
+    margin,
+    marginEnd,
+    marginTop,
+    marginLeft,
+    marginRight,
+    marginBottom,
+    marginHorizontal,
+    marginVertical,
+  };
+
   return (
-    <Elevation style={{ elevation, alignSelf: "stretch" }}>
+    <Elevation style={{ elevation, alignSelf: "stretch", ...margins }}>
       <Touchable
         {...rest}
         onPress={onPress}
         accessibilityState={{ disabled }}
         accessibilityRole="button"
         disabled={disabled || loading}
-        style={[styles.button, buttonStyle, style]}
+        style={[styles.button, buttonStyle, innerStyles]}
       >
         <View style={styles.content}>
           {icon && loading !== true ? (
@@ -276,7 +299,6 @@ export const SEED_DATA = [
     name: "Button Outline",
     tag: "Button",
     category: COMPONENT_TYPES.deprecated,
-    preview_image_url: "{CLOUDINARY_URL}/Button_Outline.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -296,7 +318,6 @@ export const SEED_DATA = [
     name: "Button Solid",
     tag: "Button",
     category: COMPONENT_TYPES.deprecated,
-    preview_image_url: "{CLOUDINARY_URL}/Button_Solid.png",
     props: {
       ...SEED_DATA_PROPS,
       type: {

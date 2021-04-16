@@ -2,6 +2,7 @@ import * as React from "react";
 import {
   ActivityIndicator,
   View,
+  Text,
   StyleSheet,
   TouchableHighlightProps,
   StyleProp,
@@ -11,7 +12,6 @@ import {
 import color from "color";
 import Config from "./Config";
 import Icon from "./Icon";
-import Text from "./Text";
 import Touchable from "./Touchable";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
@@ -25,36 +25,33 @@ import {
 import theme from "../styles/DefaultTheme";
 
 /**
- * A floating action button represents the primary action in an application.
+ * A button is component that the user can press to trigger an action.
  *
  * <div class="screenshots">
- *   <img src="screenshots/fab-1.png" />
- *   <img src="screenshots/fab-2.png" />
+ *   <figure>
+ *     <img src="screenshots/button-1.png" />
+ *     <figcaption>Text button</figcaption>
+ *   </figure>
+ *   <figure>
+ *     <img src="screenshots/button-2.png" />
+ *     <figcaption>Outlined button</figcaption>
+ *   </figure>
+ *   <figure>
+ *     <img src="screenshots/button-3.png" />
+ *     <figcaption>Contained button</figcaption>
+ *   </figure>
  * </div>
  *
  * ## Usage
  * ```js
  * import * as React from 'react';
- * import { StyleSheet } from 'react-native';
- * import { FAB } from '@draftbit/ui';
+ * import { Button } from '@draftbit/ui';
  *
  * const MyComponent = () => (
- *   <FAB
- *     style={styles.fab}
- *     type="outline"
- *     icon="add"
- *     onPress={() => console.log('Pressed')}
- *   />
+ *   <Button icon="add-a-photo" type="solid" onPress={() => console.log('Pressed')}>
+ *     Press me
+ *   </Button>
  * );
- *
- * const styles = StyleSheet.create({
- *   fab: {
- *     position: 'absolute',
- *     margin: 16,
- *     right: 0,
- *     bottom: 0,
- *   },
- * })
  *
  * export default MyComponent;
  * ```
@@ -62,44 +59,47 @@ import theme from "../styles/DefaultTheme";
 
 type Props = {
   disabled?: boolean;
-  type?: "solid" | "extended" | "outline" | "fixed" | "standard";
+  type?: "solid" | "outline" | "text";
   loading?: boolean;
   icon?: string;
+  labelColor?: string;
   color?: string;
-  label?: string;
+  children?: React.ReactNode;
   onPress: () => void;
   elevation?: number;
-  theme: typeof theme;
-  IconOverride: typeof Icon;
   style?: StyleProp<ViewStyle>;
+  IconOverride?: typeof Icon;
+  theme: typeof theme;
 } & TouchableHighlightProps;
 
-const FAB: React.FC<Props> = ({
+const Button: React.FC<Props> = ({
   disabled = false,
   type = "solid",
   loading = false,
   icon,
+  labelColor,
   color: colorOverride,
-  label,
+  children,
   onPress,
   elevation = 0,
   style,
-  IconOverride = null,
   theme: { colors, disabledOpacity, roundness, typography },
+  IconOverride = null,
   ...rest
 }) => {
   let backgroundColor, borderColor, textColor, borderWidth;
   const buttonColor = colorOverride || colors.primary;
 
+  // Necessary to inject web-renderable Icons in buider.
   const SelectedIcon = IconOverride || Icon;
 
-  if (type === "standard" || type === "extended" || type === "fixed") {
+  if (type === "solid") {
     backgroundColor = buttonColor;
 
     if (disabled) {
       textColor = color(colors.surface).alpha(disabledOpacity).rgb().string();
     } else {
-      textColor = colors.surface;
+      textColor = labelColor || colors.surface;
     }
   } else {
     backgroundColor = "transparent";
@@ -107,7 +107,7 @@ const FAB: React.FC<Props> = ({
     if (disabled) {
       textColor = color(buttonColor).alpha(disabledOpacity).rgb().string();
     } else {
-      textColor = buttonColor;
+      textColor = labelColor || buttonColor;
     }
   }
 
@@ -123,67 +123,61 @@ const FAB: React.FC<Props> = ({
     borderWidth = 0;
   }
 
-  const buttonStyle: StyleProp<ViewStyle> = {
+  const buttonStyle = {
     backgroundColor,
     borderColor,
     borderWidth,
     borderRadius: roundness,
-    alignItems: "center",
-    justifyContent: "center",
   };
-
-  const buttonStyles: StyleProp<ViewStyle>[] = [styles.button, buttonStyle];
-
-  const contentStyle: StyleProp<ViewStyle>[] = [styles.content];
 
   const textStyle: StyleProp<TextStyle> = {
     textAlign: "center",
     color: textColor,
+    marginVertical: 16,
+    marginHorizontal: 16,
   };
 
-  const iconStyle: StyleProp<ViewStyle>[] = [
+  const iconStyle = [
     styles.icon,
     {
+      marginLeft: 16,
+      marginRight: -8,
       width: Config.buttonIconSize,
     },
   ];
 
-  if (type === "standard" || type === "outline") {
-    buttonStyle.width = Config.FABSize;
-    buttonStyle.height = Config.FABSize;
-    buttonStyle.borderRadius = Config.FABBorderRadius;
+  const {
+    margin,
+    marginEnd,
+    marginTop,
+    marginLeft,
+    marginRight,
+    marginBottom,
+    marginHorizontal,
+    marginVertical,
+    ...innerStyles
+  } = StyleSheet.flatten(style || {});
 
-    contentStyle.push({
-      width: Config.FABSize,
-      height: Config.FABSize,
-    });
-  }
-
-  if (type === "extended" || type === "fixed") {
-    iconStyle.push({
-      marginLeft: 16,
-      marginRight: -8,
-    });
-
-    textStyle.margin = 16;
-  }
-
-  if (type === "fixed") {
-    buttonStyles.push({
-      height: Config.FABFixedHeight,
-      alignSelf: "stretch",
-    });
-  }
+  const margins = {
+    margin,
+    marginEnd,
+    marginTop,
+    marginLeft,
+    marginRight,
+    marginBottom,
+    marginHorizontal,
+    marginVertical,
+  };
 
   return (
-    <Elevation style={[{ elevation }, style]}>
+    <Elevation style={{ elevation, alignSelf: "stretch", ...margins }}>
       <Touchable
         {...rest}
         onPress={onPress}
         accessibilityState={{ disabled }}
         accessibilityRole="button"
         disabled={disabled || loading}
-        style={buttonStyles}
+        style={[styles.button, buttonStyle, innerStyles]}
       >
         <View style={styles.content}>
           {icon && loading !== true ? (
@@ -202,11 +196,9 @@ const FAB: React.FC<Props> = ({
               style={iconStyle}
             />
           ) : null}
-          {label ? (
-            <Text numberOfLines={1} style={[textStyle, typography.button]}>
-              {label}
-            </Text>
-          ) : null}
+          <Text numberOfLines={1} style={[textStyle, typography.button]}>
+            {children}
+          </Text>
         </View>
       </Touchable>
     </Elevation>
@@ -215,6 +207,7 @@ const FAB: React.FC<Props> = ({
 
 const styles = StyleSheet.create({
   button: {
+    minWidth: 64,
     borderStyle: "solid",
   },
   content: {
@@ -223,20 +216,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   icon: {
-    alignItems: "center",
-    justifyContent: "center",
     width: Config.buttonIconSize,
-  },
-  fixed: {
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: 64,
-    borderRadius: 0,
   },
 });
 
-export default withTheme(FAB);
+export default withTheme(Button);
 
 const SEED_DATA_PROPS = {
   icon: {
@@ -246,18 +230,18 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: true,
     formType: FORM_TYPES.icon,
-    propType: PROP_TYPES.ASSET,
+    propType: PROP_TYPES.STRING,
     defaultValue: null,
   },
-  label: {
-    group: GROUPS.basic,
+  children: {
+    group: GROUPS.data,
     label: "Label",
     description: "Button label",
     required: true,
     editable: true,
     formType: FORM_TYPES.string,
     propType: PROP_TYPES.STRING,
-    defaultValue: "GET STARTED",
+    defaultValue: "Get Started",
   },
   color: {
     group: GROUPS.basic,
@@ -269,6 +253,36 @@ const SEED_DATA_PROPS = {
     propType: PROP_TYPES.THEME,
     defaultValue: null,
   },
+  labelColor: {
+    group: GROUPS.basic,
+    label: "Label Color Override",
+    description: "Override the label color of the button",
+    editable: true,
+    required: false,
+    formType: FORM_TYPES.color,
+    propType: PROP_TYPES.THEME,
+    defaultValue: null,
+  },
+  disabled: {
+    group: GROUPS.basic,
+    label: "Disabled",
+    description: "Whether the button should be disabled",
+    editable: true,
+    required: false,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
+    defaultValue: null,
+  },
+  loading: {
+    group: GROUPS.data,
+    label: "Loading",
+    description: "Whether to show a loading indicator",
+    editable: true,
+    required: false,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
+    defaultValue: null,
+  },
   onPress: {
     group: GROUPS.basic,
     label: "Action",
@@ -276,18 +290,15 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
     formType: FORM_TYPES.action,
-    propType: PROP_TYPES.STRING,
     defaultValue: null,
   },
 };
 
 export const SEED_DATA = [
   {
-    name: "FAB Mini",
-    tag: "FAB",
-    category: COMPONENT_TYPES.button,
-    description: "A round, mini FAB",
-    preview_image_url: "{CLOUDINARY_URL}/Button_FABMini.png",
+    name: "Button Outline",
+    tag: "Button",
+    category: COMPONENT_TYPES.deprecated,
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -296,58 +307,17 @@ export const SEED_DATA = [
         description: "Button type",
         editable: false,
         required: true,
-        formType: FORM_TYPES.icon,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "standard",
-      },
-      label: {
-        group: GROUPS.data,
-        label: "Label",
-        description: "Button label",
-        required: false,
-        editable: false,
         formType: FORM_TYPES.string,
         propType: PROP_TYPES.STRING,
-        defaultValue: null,
-      },
-    },
-    layout: {},
-  },
-  {
-    name: "FAB Outline",
-    tag: "FAB",
-    category: COMPONENT_TYPES.button,
-    preview_image_url: "{CLOUDINARY_URL}/Button_FABMini.png",
-    props: {
-      ...SEED_DATA_PROPS,
-      type: {
-        group: GROUPS.uncategorized,
-        label: "Type",
-        description: "Button type",
-        editable: false,
-        required: true,
-        propType: PROP_TYPES.STRING,
-        formType: FORM_TYPES.string,
         defaultValue: "outline",
       },
-      label: {
-        group: GROUPS.uncategorized,
-        label: "Label",
-        description: "Button label",
-        required: false,
-        editable: false,
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: null,
-      },
     },
     layout: {},
   },
   {
-    name: "FAB Extended",
-    tag: "FAB",
-    category: COMPONENT_TYPES.button,
-    preview_image_url: "{CLOUDINARY_URL}/Button_FABExtended.png",
+    name: "Button Solid",
+    tag: "Button",
+    category: COMPONENT_TYPES.deprecated,
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -358,27 +328,7 @@ export const SEED_DATA = [
         required: true,
         formType: FORM_TYPES.string,
         propType: PROP_TYPES.STRING,
-        defaultValue: "extended",
-      },
-    },
-    layout: {},
-  },
-  {
-    name: "FAB Fixed",
-    tag: "FAB",
-    category: COMPONENT_TYPES.button,
-    preview_image_url: "{CLOUDINARY_URL}/Button_FABFixed.png",
-    props: {
-      ...SEED_DATA_PROPS,
-      type: {
-        group: GROUPS.uncategorized,
-        label: "Type",
-        description: "Button type",
-        editable: false,
-        required: true,
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "fixed",
+        defaultValue: "solid",
       },
     },
     layout: {},

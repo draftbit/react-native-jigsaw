@@ -7,7 +7,7 @@ import { Picker as NativePicker } from "@react-native-community/picker";
 import { withTheme } from "../../core/theming";
 
 import Portal from "../Portal/Portal";
-import Button from "../Button";
+import Button from "../DeprecatedButton";
 import TextField from "../TextField";
 import Touchable from "../Touchable";
 import { PickerComponentProps } from "./PickerTypes";

@@ -12,7 +12,7 @@ import {
 import type { ImageSource } from "react-native/Libraries/Image/ImageSource";
 
 import ScreenContainer from "../components/ScreenContainer";
-import Button from "../components/Button";
+import Button from "../components/DeprecatedButton";
 import { withTheme } from "../core/theming";
 import { Theme } from "../types";
 import {
@@ -96,7 +96,7 @@ const EmailLoginScreen = (props: Props) => {
               styles.EmailTextInput,
               {
                 borderColor: theme.colors.divider,
-                borderRadius: theme.borderRadius.global,
+                borderRadius: theme.roundness,
                 color: theme.colors.strong,
                 backgroundColor: theme.colors.background,
               },
@@ -117,7 +117,7 @@ const EmailLoginScreen = (props: Props) => {
               {
                 color: theme.colors.strong,
                 borderColor: theme.colors.divider,
-                borderRadius: theme.borderRadius.global,
+                borderRadius: theme.roundness,
                 backgroundColor: theme.colors.background,
               },
             ])}
@@ -135,7 +135,7 @@ const EmailLoginScreen = (props: Props) => {
           <Button
             style={StyleSheet.flatten([
               styles.LoginButton,
-              { borderRadius: theme.borderRadius.global },
+              { borderRadius: theme.roundness },
             ])}
             type="solid"
             onPress={() =>
@@ -251,7 +251,7 @@ export const SEED_DATA = {
       description: "The source of the main image to show on the screen",
       editable: true,
       required: false,
-      formType: FORM_TYPES.localImage,
+      formType: FORM_TYPES.image,
       propType: PROP_TYPES.ASSET,
       defaultValue: null,
     },

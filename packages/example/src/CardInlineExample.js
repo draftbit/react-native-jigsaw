@@ -10,6 +10,7 @@ function CardInlineExample({ theme }) {
         return (
           <Section key={i} title={`(${numColumns} Column)`}>
             <CardInline
+              elevation={0}
               title="Beautiful West Coast Villa"
               leftDescription="San Diego"
               rightDescription="$100"
@@ -24,6 +25,7 @@ function CardInlineExample({ theme }) {
         return (
           <Section key={i} title={`(${numColumns} Column 1x1 aspectRatio)`}>
             <CardInline
+              elevation={3}
               title="Beautiful West Coast Villa"
               leftDescription="San Diego"
               rightDescription="$100"

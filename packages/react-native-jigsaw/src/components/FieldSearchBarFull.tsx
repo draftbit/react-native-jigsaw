@@ -34,7 +34,7 @@ const FieldSearchBarFull: React.FC<Props> = ({
   icon = "search",
   placeholder = "",
   style,
-  theme: { colors, spacing, typography },
+  theme: { colors, typography },
   onChange: changeOverride,
   onSubmit: submitOverride,
   value,
@@ -62,13 +62,13 @@ const FieldSearchBarFull: React.FC<Props> = ({
   const { lineHeight, ...typeStyles } = typography.body2; // eslint-disable-line @typescript-eslint/no-unused-vars
 
   return (
-    <View style={[{ padding: spacing.large }, styles.container, style]}>
+    <View style={[{ padding: 16 }, styles.container, style]}>
       <Icon
         name={icon}
         size={Config.fieldSearchBarFullIconSize}
         color={focused ? colors.primary : colors.light}
       />
-      <View style={{ marginLeft: spacing.medium, flex: 1 }}>
+      <View style={{ marginLeft: 12, flex: 1 }}>
         <TextInput
           clearButtonMode="while-editing"
           placeholder={placeholder}

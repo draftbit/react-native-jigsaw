@@ -14,13 +14,16 @@ import {
   GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
+  PROP_TYPES,
   createElevationType,
+  createImageProp,
+  createResizeModeProp,
 } from "../core/component-types";
-import theme from "../styles/DefaultTheme";
+import ThemeT from "../styles/DefaultTheme";
 import { ResizeModeType } from "./ResizeMode";
 
 type Props = {
-  theme: typeof theme;
+  theme: typeof ThemeT;
   useThemeGutterPadding: boolean;
   borderColor: string;
   borderWidth: number;
@@ -33,7 +36,6 @@ type Props = {
 };
 
 const Container: React.FC<Props> = ({
-  theme: { spacing },
   useThemeGutterPadding,
   borderColor,
   borderWidth,
@@ -43,6 +45,7 @@ const Container: React.FC<Props> = ({
   elevation,
   style,
   children,
+  theme, // eslint-disable-line @typescript-eslint/no-unused-vars
   ...rest
 }) => {
   const { flexDirection, justifyContent, alignItems, ...styleProp } =
@@ -58,7 +61,7 @@ const Container: React.FC<Props> = ({
 
   const innerStyle: StyleProp<ViewStyle> = {
     flex: 1,
-    paddingHorizontal: useThemeGutterPadding ? spacing.gutters : 0,
+    paddingHorizontal: useThemeGutterPadding ? 16 : 0,
     flexDirection,
     justifyContent,
     alignItems,
@@ -101,7 +104,10 @@ export const SEED_DATA = {
   description: "A container component with gutter padding",
   category: COMPONENT_TYPES.layout,
   supports_list_render: false,
-  layout: {},
+  layout: {
+    width: "100%",
+    height: 250,
+  },
   props: {
     useThemeGutterPadding: {
       group: GROUPS.basic,
@@ -109,30 +115,18 @@ export const SEED_DATA = {
       description:
         "When true, uses the theme gutter spacing as the container's horizontal padding",
       formType: FORM_TYPES.boolean,
-      defaultValue: true,
-      editable: true,
+      propType: PROP_TYPES.BOOLEAN,
+      defaultValue: false,
+      editable: false,
       required: true,
     },
-    backgroundImage: {
-      group: GROUPS.data,
-      label: "Background image",
-      description: "Background image to apply to the container",
-      formType: FORM_TYPES.remoteImage,
-      defaultValue: null,
-      editable: true,
-      required: false,
-    },
-    backgroundImageResizeMode: {
-      group: GROUPS.basic,
-      label: "Background image resize mode",
-      description:
-        "Determines how to resize the background image when the frame doesn't match the raw image dimensions",
-      editable: true,
-      required: false,
-      defaultValue: null,
-      formType: FORM_TYPES.flatArray,
-      options: ["cover", "contain", "stretch", "repeat", "center"],
-    },
+    backgroundImage: createImageProp({
+      label: "Background Image",
+      description: "Apply a custom background image",
+      defaultValue:
+        "https://static.draftbit.com/images/placeholder-image-background.png",
+    }),
+    backgroundImageResizeMode: createResizeModeProp(),
     elevation: createElevationType(0),
   },
 };

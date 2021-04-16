@@ -12,24 +12,18 @@ export const SEED_DATA = {
   tag: "TextInput",
   description: "An input field that allows users to type in data.",
   category: COMPONENT_TYPES.input,
-  preview_image_url:
-    "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/TextInput.png",
   supports_list_render: false,
-  layout: {},
+  layout: {
+    height: 42,
+    borderColor: "#eee",
+    borderWidth: 1,
+    borderRadius: 4,
+    padding: 8,
+  },
   props: {
     ...TEXT_INPUT_PROPS,
-    style: {
-      group: GROUPS.basic,
-      label: "Style",
-      description: "Text Style",
-      editable: false,
-      required: false,
-      formType: FORM_TYPES.typeStyle,
-      propType: PROP_TYPES.THEME,
-      defaultValue: null,
-    },
     clearButtonMode: {
-      group: GROUPS.basic,
+      group: GROUPS.advanced,
       label: "Clear Button Mode",
       description:
         "Enables a button within the textInput to clear the data entered",
@@ -41,7 +35,7 @@ export const SEED_DATA = {
       propType: PROP_TYPES.STRING,
     },
     clearTextOnFocus: {
-      group: GROUPS.basic,
+      group: GROUPS.advanced,
       label: "Clear Text on Focus",
       description:
         "If true, clears the text field automatically when its focused.",
@@ -52,7 +46,7 @@ export const SEED_DATA = {
       propType: PROP_TYPES.BOOLEAN,
     },
     enablesReturnKeyAutomatically: {
-      group: GROUPS.basic,
+      group: GROUPS.advanced,
       label: "Enables Return Key Automatically",
       description:
         "If true, the keyboard disables the return key when there is no text and automatically enables it when there is (Default: false)",
@@ -63,7 +57,7 @@ export const SEED_DATA = {
       propType: PROP_TYPES.BOOLEAN,
     },
     keyboardAppearance: {
-      group: GROUPS.basic,
+      group: GROUPS.advanced,
       label: "Keyboard Appearance",
       description: "Determines color of the keyboard on iOS",
       editable: true,
@@ -99,7 +93,7 @@ export const SEED_DATA = {
       propType: PROP_TYPES.NUMBER,
     },
     scrollEnabled: {
-      group: GROUPS.basic,
+      group: GROUPS.advanced,
       label: "Scroll Enabled",
       description:
         "If false, scrolling of the input will be disabled. Only works when Multiple Lines is true",
@@ -110,7 +104,7 @@ export const SEED_DATA = {
       propType: PROP_TYPES.BOOLEAN,
     },
     spellcheck: {
-      group: GROUPS.basic,
+      group: GROUPS.advanced,
       label: "Disable Spell Check",
       description:
         "If false, disables spell-check style (red underlines). Default comes from Auto Correct",
@@ -172,7 +166,7 @@ export const SEED_DATA = {
       propType: PROP_TYPES.STRING,
     },
     underlineColorAndroid: {
-      group: GROUPS.basic,
+      group: GROUPS.advanced,
       label: "Underline color",
       description:
         "(Android Only) The color of the underline(the line underneath the text when finished typing.",

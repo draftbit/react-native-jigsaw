@@ -1,3 +1,4 @@
+/* Copied from https://github.com/callstack/react-native-paper/blob/main/src/components/Surface.tsx */
 import * as React from "react";
 import {
   Animated,
@@ -8,6 +9,7 @@ import {
   View,
 } from "react-native";
 import shadow from "../styles/shadow";
+import overlay from "../styles/overlay";
 import { withTheme } from "../core/theming";
 import themeT from "../styles/DefaultTheme";
 
@@ -16,11 +18,10 @@ type Props = {
   theme: typeof themeT;
 } & ViewProps;
 
-/* directly copied from https://github.com/callstack/react-native-paper/blob/main/src/components/Surface.tsx#L62 */
-const Elevation: React.FC<Props> = ({ style, theme, children, ...rest }) => {
-  const { elevation = 4, borderRadius: radius } =
-    StyleSheet.flatten(style) || {};
-  const { colors } = theme;
+const Surface: React.FC<Props> = ({ style, theme, children, ...rest }) => {
+  const { elevation = 3, borderRadius: radius } = (StyleSheet.flatten(style) ||
+    {}) as ViewStyle;
+  const { dark: isDarkTheme, mode, colors } = theme;
   const borderRadius = radius || theme.roundness;
 
   return (
@@ -29,7 +30,10 @@ const Elevation: React.FC<Props> = ({ style, theme, children, ...rest }) => {
       style={[
         {
           borderRadius,
-          backgroundColor: colors.surface,
+          backgroundColor:
+            isDarkTheme && mode === "adaptive"
+              ? overlay(elevation, colors.surface)
+              : colors.surface,
         },
         elevation ? shadow(elevation) : null,
         style,
@@ -40,4 +44,4 @@ const Elevation: React.FC<Props> = ({ style, theme, children, ...rest }) => {
   );
 };
 
-export default withTheme(Elevation);
+export default withTheme(Surface);

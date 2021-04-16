@@ -8,10 +8,16 @@ function FABExample({ theme }) {
   const handlePress = () => {};
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>
-      <Section title="Solid" style={styles.row}>
+      <Section title="Solid">
         <FAB type="standard" icon="add" onPress={handlePress} />
         <FAB type="standard" icon="add" disabled onPress={handlePress} />
-        <FAB type="standard" icon="add" loading onPress={handlePress} />
+        <FAB
+          type="standard"
+          icon="add"
+          loading
+          onPress={handlePress}
+          style={{ margin: 20 }}
+        />
       </Section>
 
       <Section title="Extended" style={styles.row}>

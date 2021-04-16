@@ -16,7 +16,6 @@ export const GROUPS = {
   advanced: "advanced",
   data: "data",
   uncategorized: "uncategorized",
-  style: "style",
   action: "action",
 };
 
@@ -172,7 +171,7 @@ export const createBoolProp = (overrides = {}) => ({
 });
 
 export const createTextStyle = (overrides = {}) => ({
-  group: GROUPS.style,
+  group: GROUPS.basic,
   label: "Text Style",
   description: "Change the font styles of a given component",
   editable: true,

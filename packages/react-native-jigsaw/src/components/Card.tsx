@@ -195,7 +195,8 @@ export const SEED_DATA = {
     title: createTextProp({
       label: "Title",
       description: "Large title text",
-      defaultValue: "Title",
+      // defaultValue: "Title",
+      defaultValue: null,
     }),
     titleStyle: createTextStyle({
       label: "Title Style",
@@ -203,7 +204,8 @@ export const SEED_DATA = {
     subtitle: createTextProp({
       label: "Subtitle",
       description: "Text underneath the title",
-      defaultValue: "Edit me in the props panel on the right",
+      defaultValue: null,
+      // defaultValue: "Edit me in the props panel on the right",
     }),
     subtitleStyle: createTextStyle({
       label: "Subtitle Style",
@@ -211,8 +213,9 @@ export const SEED_DATA = {
     description: createTextProp({
       label: "Description",
       description: "Smallest text underneath subtitle",
-      defaultValue:
-        "This bottom text is optional, but shows up to make your life a little easier!",
+      // defaultValue:
+      // "This bottom text is optional, but shows up to make your life a little easier!",
+      defaultValue: null,
     }),
     descriptionStyle: createTextStyle({
       label: "Description Style",

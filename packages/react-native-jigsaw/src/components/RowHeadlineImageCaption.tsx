@@ -25,7 +25,7 @@ const RowHeadlineImageCaption: React.FC<Props> = ({
   caption,
   image,
   style,
-  theme: { colors, typography, spacing },
+  theme: { colors, typography },
 }) => {
   return (
     <Row
@@ -41,7 +41,7 @@ const RowHeadlineImageCaption: React.FC<Props> = ({
           style={{
             ...typography.caption,
             color: colors.strong,
-            marginLeft: spacing.large,
+            marginLeft: 16,
           }}
         >
           {caption}
@@ -121,7 +121,7 @@ export const SEED_DATA = [
         group: GROUPS.data,
         label: "Image",
         description: "Image to display",
-        formType: FORM_TYPES.remoteImage,
+        formType: FORM_TYPES.image,
         propType: PROP_TYPES.ASSET,
         defaultValue: null,
         editable: true,
@@ -215,7 +215,7 @@ export const SEED_DATA = [
         group: GROUPS.data,
         label: "Image",
         description: "Image to display",
-        formType: FORM_TYPES.remoteImage,
+        formType: FORM_TYPES.image,
         propType: PROP_TYPES.ASSET,
         defaultValue: null,
         editable: true,

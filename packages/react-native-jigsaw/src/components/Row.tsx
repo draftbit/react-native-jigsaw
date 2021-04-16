@@ -38,16 +38,15 @@ const Row: React.FC<Props> = ({
   image,
   right,
   style,
-  theme: { spacing },
 }) => {
   return (
-    <View style={[styles.container, { padding: spacing.large }, style]}>
+    <View style={[styles.container, { padding: 16 }, style]}>
       <View style={styles.leftContainer}>
         {image && (
           <Image
             source={typeof image === "string" ? { uri: image } : image}
             style={{
-              marginRight: spacing.medium,
+              marginRight: 12,
               width: subtitle
                 ? Config.rowMultiLineImageSize
                 : Config.rowSingleLineImageSize,
@@ -75,7 +74,7 @@ const Row: React.FC<Props> = ({
                 subtitleTypeStyle,
                 {
                   color: subtitleColor,
-                  marginTop: spacing.text,
+                  marginTop: 4,
                 },
               ]}
               numberOfLines={multilineSubtitle ? undefined : 1}

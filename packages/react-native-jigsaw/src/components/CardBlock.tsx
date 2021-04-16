@@ -45,7 +45,7 @@ const CardBlock: React.FC<Props> = ({
   aspectRatio = 1.5,
   elevation = 2,
   numColumns = 3,
-  theme: { colors, borderRadius, typography, spacing },
+  theme: { colors, roundness, typography },
   style,
   onPress,
   ...rest
@@ -75,10 +75,10 @@ const CardBlock: React.FC<Props> = ({
   return (
     <Card style={style} onPress={onPress} numColumns={numColumns} {...rest}>
       <View style={{ backgroundColor: colors.background }}>
-        <Elevation style={{ elevation, borderRadius: borderRadius.global }}>
+        <Elevation style={{ elevation, borderRadius: roundness }}>
           <Image
             style={{
-              borderRadius: borderRadius.global,
+              borderRadius: roundness,
               aspectRatio,
             }}
             source={typeof image === "string" ? { uri: image } : image}
@@ -91,7 +91,7 @@ const CardBlock: React.FC<Props> = ({
               flexDirection: "row",
               alignItems: "center",
               justifyContent: titleJustification,
-              marginTop: numColumns === 3 ? spacing.large : spacing.medium,
+              marginTop: numColumns === 3 ? 16 : 12,
             }}
           >
             <Text
@@ -111,7 +111,7 @@ const CardBlock: React.FC<Props> = ({
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
-              marginTop: numColumns === 3 ? spacing.text : spacing.text / 2,
+              marginTop: numColumns === 3 ? 4 : 4 / 2,
             }}
           >
             <Text
@@ -139,7 +139,7 @@ const SEED_DATA_PROPS = {
     group: GROUPS.data,
     label: "Image",
     description: "Image",
-    formType: FORM_TYPES.remoteImage,
+    formType: FORM_TYPES.image,
     propType: PROP_TYPES.ASSET,
     defaultValue: null,
     editable: true,

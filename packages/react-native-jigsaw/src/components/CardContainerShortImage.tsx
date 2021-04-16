@@ -39,7 +39,7 @@ const CardContainerShortImage: React.FC<Props> = ({
   mode = "left",
   aspectRatio = 1,
   elevation = 2,
-  theme: { colors, borderRadius, typography, spacing },
+  theme: { colors, roundness, typography },
   style,
   onPress,
   ...rest
@@ -49,7 +49,7 @@ const CardContainerShortImage: React.FC<Props> = ({
       <Elevation
         style={{
           elevation,
-          borderRadius: borderRadius.global,
+          borderRadius: roundness,
         }}
       >
         <View
@@ -57,7 +57,7 @@ const CardContainerShortImage: React.FC<Props> = ({
             overflow: "hidden",
             flexDirection: "row",
             justifyContent: mode === "right" ? "space-between" : "flex-start",
-            borderRadius: borderRadius.global,
+            borderRadius: roundness,
           }}
         >
           {mode === "left" && (
@@ -69,7 +69,7 @@ const CardContainerShortImage: React.FC<Props> = ({
           )}
           <View
             style={{
-              padding: spacing.large,
+              padding: 16,
               backgroundColor: colors.surface,
               flex: 1,
             }}
@@ -85,7 +85,7 @@ const CardContainerShortImage: React.FC<Props> = ({
                 numberOfLines={1}
                 style={[
                   typography.body2,
-                  { color: colors.medium, marginTop: spacing.text },
+                  { color: colors.medium, marginTop: 4 },
                 ]}
               >
                 {subtitle}
@@ -121,7 +121,7 @@ export const SEED_DATA = [
         group: GROUPS.data,
         label: "Image",
         description: "Image",
-        formType: FORM_TYPES.remoteImage,
+        formType: FORM_TYPES.image,
         propType: PROP_TYPES.ASSET,
         defaultValue: null,
         editable: true,
@@ -185,7 +185,7 @@ export const SEED_DATA = [
         group: GROUPS.data,
         label: "Image",
         description: "Image",
-        formType: FORM_TYPES.remoteImage,
+        formType: FORM_TYPES.image,
         propType: PROP_TYPES.ASSET,
         defaultValue: null,
         editable: true,

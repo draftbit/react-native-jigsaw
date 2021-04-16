@@ -10,25 +10,19 @@ function ContainerExample({ theme }) {
   return (
     <ExampleContainer style={{ backgroundColor: theme.colors.background }}>
       <Section title="Container with no theme gutter padding)">
-        <Container style={{ paddingVertical: theme.spacing.large }}>
+        <Container style={{ paddingVertical: 16 }}>
           <Text>Container without theme gutter padding</Text>
         </Container>
       </Section>
 
       <Section title="Container with theme gutter padding)">
-        <Container
-          useThemeGutterPadding
-          style={{ paddingVertical: theme.spacing.large }}
-        >
+        <Container useThemeGutterPadding style={{ paddingVertical: 16 }}>
           <Text>Container with theme gutter padding</Text>
         </Container>
       </Section>
 
       <Section title="Container with background color">
-        <Container
-          backgroundColor="#ff0000"
-          style={{ paddingVertical: theme.spacing.large }}
-        >
+        <Container backgroundColor="#ff0000" style={{ paddingVertical: 16 }}>
           <Text>Container with background color</Text>
         </Container>
       </Section>
@@ -37,7 +31,7 @@ function ContainerExample({ theme }) {
         <Container
           backgroundImage={IMAGE}
           style={{
-            paddingVertical: theme.spacing.large,
+            paddingVertical: 16,
             height: 300,
           }}
         >
@@ -50,7 +44,7 @@ function ContainerExample({ theme }) {
           backgroundImage={IMAGE}
           backgroundImageResizeMode="cover"
           style={{
-            paddingVertical: theme.spacing.large,
+            paddingVertical: 16,
             width: 300,
             height: 300,
           }}
@@ -64,7 +58,7 @@ function ContainerExample({ theme }) {
           backgroundImage={IMAGE}
           backgroundImageResizeMode="contain"
           style={{
-            paddingVertical: theme.spacing.large,
+            paddingVertical: 16,
             width: 300,
             height: 300,
           }}
@@ -76,7 +70,7 @@ function ContainerExample({ theme }) {
       <Section title="Container with random borderColor">
         <Container
           style={{
-            paddingVertical: theme.spacing.large,
+            paddingVertical: 16,
             borderColor: "#39ff14",
             borderWidth: 10,
           }}

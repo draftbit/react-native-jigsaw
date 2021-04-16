@@ -43,7 +43,7 @@ export const SEED_DATA = {
       editable: true,
       required: false,
       defaultValue: null,
-      formType: FORM_TYPES.localImage,
+      formType: FORM_TYPES.image,
       propType: PROP_TYPES.ASSET,
     },
     resizeMode: {

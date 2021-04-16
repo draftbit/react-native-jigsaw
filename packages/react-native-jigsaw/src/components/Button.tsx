@@ -1,310 +1,286 @@
 import * as React from "react";
 import {
-  ActivityIndicator,
-  View,
   Text,
+  Pressable,
+  Platform,
   StyleSheet,
-  TouchableHighlightProps,
-  StyleProp,
-  ViewStyle,
   TextStyle,
+  PressableProps,
+  ActivityIndicator,
 } from "react-native";
-import color from "color";
-import Config from "./Config";
+
 import Icon from "./Icon";
-import Touchable from "./Touchable";
-import Elevation from "./Elevation";
+import Theme from "../styles/DefaultTheme";
 import { withTheme } from "../core/theming";
 
 import {
-  GROUPS,
-  FORM_TYPES,
-  PROP_TYPES,
   COMPONENT_TYPES,
+  createIconProp,
+  createBoolProp,
+  createTextProp,
+  createActionProp,
 } from "../core/component-types";
-import theme from "../styles/DefaultTheme";
 
-/**
- * A button is component that the user can press to trigger an action.
- *
- * <div class="screenshots">
- *   <figure>
- *     <img src="screenshots/button-1.png" />
- *     <figcaption>Text button</figcaption>
- *   </figure>
- *   <figure>
- *     <img src="screenshots/button-2.png" />
- *     <figcaption>Outlined button</figcaption>
- *   </figure>
- *   <figure>
- *     <img src="screenshots/button-3.png" />
- *     <figcaption>Contained button</figcaption>
- *   </figure>
- * </div>
- *
- * ## Usage
- * ```js
- * import * as React from 'react';
- * import { Button } from '@draftbit/ui';
- *
- * const MyComponent = () => (
- *   <Button icon="add-a-photo" type="solid" onPress={() => console.log('Pressed')}>
- *     Press me
- *   </Button>
- * );
- *
- * export default MyComponent;
- * ```
- */
+const CONSTANTS = {
+  baseHeight: 42,
+  borderRadius: 4,
+  padding: 8,
+  icon: 24,
+};
+
+type BaseProps = {
+  title: string;
+  disabled: boolean;
+  loading: boolean;
+  style?: TextStyle;
+  onPress: () => void;
+  icon?: string;
+  IconOverride?: typeof Icon | null;
+} & PressableProps;
 
 type Props = {
-  disabled?: boolean;
-  type?: "solid" | "outline" | "text";
-  loading?: boolean;
-  icon?: string;
-  labelColor?: string;
-  color?: string;
-  children?: React.ReactNode;
+  title: string;
+  disabled: boolean;
+  loading: boolean;
+  style?: TextStyle;
   onPress: () => void;
-  elevation?: number;
-  style?: StyleProp<ViewStyle>;
-  theme: typeof theme;
-} & TouchableHighlightProps;
+  icon?: string;
+  IconOverride?: typeof Icon | null;
+  theme: typeof Theme;
+} & PressableProps;
 
-const Button: React.FC<Props> = ({
-  disabled = false,
-  type = "solid",
-  loading = false,
-  icon,
-  labelColor,
-  color: colorOverride,
-  children,
+function Base({
+  title,
   onPress,
-  elevation = 0,
+  loading,
+  disabled,
   style,
-  theme: { colors, disabledOpacity, borderRadius, spacing, typography },
-  ...rest
-}) => {
-  let backgroundColor, borderColor, textColor, borderWidth;
-  const buttonColor = colorOverride || colors.primary;
+  icon,
+  IconOverride = null,
+  ...props
+}: BaseProps): JSX.Element {
+  const {
+    color,
+    fontFamily,
+    fontWeight,
+    fontSize,
+    lineHeight,
+    letterSpacing,
+    textTransform,
+    textAlign,
+    textDecorationLine,
+    textDecorationColor,
+    textDecorationStyle,
+    ...buttonStyles
+  } = StyleSheet.flatten(style || ({} as TextStyle));
 
-  if (type === "solid") {
-    backgroundColor = buttonColor;
-
-    if (disabled) {
-      textColor = color(colors.surface).alpha(disabledOpacity).rgb().string();
-    } else {
-      textColor = labelColor || colors.surface;
-    }
-  } else {
-    backgroundColor = "transparent";
-
-    if (disabled) {
-      textColor = color(buttonColor).alpha(disabledOpacity).rgb().string();
-    } else {
-      textColor = labelColor || buttonColor;
-    }
-  }
-
-  if (type === "outline") {
-    if (disabled) {
-      borderColor = color(buttonColor).alpha(disabledOpacity).rgb().string();
-    } else {
-      borderColor = buttonColor;
-    }
-    borderWidth = StyleSheet.hairlineWidth;
-  } else {
-    borderColor = "transparent";
-    borderWidth = 0;
-  }
-
-  const buttonStyle = {
-    backgroundColor,
-    borderColor,
-    borderWidth,
-    borderRadius: borderRadius.button,
+  const titleStyles: TextStyle = {
+    color,
+    fontFamily,
+    fontWeight,
+    fontSize,
+    lineHeight,
+    letterSpacing,
+    textTransform,
+    textAlign,
+    textDecorationLine,
+    textDecorationColor,
+    textDecorationStyle,
   };
 
-  const textStyle: StyleProp<TextStyle> = {
-    textAlign: "center",
-    color: textColor,
-    marginVertical: spacing.large,
-    marginHorizontal: spacing.large,
-  };
-
-  const iconStyle = [
-    styles.icon,
-    {
-      marginLeft: spacing.large,
-      marginRight: -8,
-      width: Config.buttonIconSize,
-    },
-  ];
+  // Necessary to inject web-renderable Icons in buider.
+  const SelectedIcon = IconOverride || Icon;
 
   return (
-    <Elevation style={{ elevation, alignSelf: "stretch" }}>
-      <Touchable
-        {...rest}
-        onPress={onPress}
-        accessibilityState={{ disabled }}
-        accessibilityRole="button"
-        disabled={disabled || loading}
-        style={[styles.button, buttonStyle, style]}
-      >
-        <View style={styles.content}>
-          {icon && loading !== true ? (
-            <View style={iconStyle}>
-              <Icon
-                name={icon}
-                size={Config.buttonIconSize}
-                color={textColor}
-              />
-            </View>
-          ) : null}
-          {loading ? (
-            <ActivityIndicator
-              size="small"
-              color={textColor}
-              style={iconStyle}
-            />
-          ) : null}
-          <Text numberOfLines={1} style={[textStyle, typography.button]}>
-            {children}
-          </Text>
-        </View>
-      </Touchable>
-    </Elevation>
+    <Pressable
+      onPress={onPress}
+      disabled={disabled || loading}
+      style={({ pressed }) => {
+        return [
+          styles.base,
+          {
+            opacity: pressed || disabled ? 0.75 : 1,
+          },
+          buttonStyles,
+        ];
+      }}
+      {...props}
+    >
+      {loading ? (
+        <ActivityIndicator size="small" color={color} style={styles.loading} />
+      ) : null}
+      {icon && !loading ? (
+        <SelectedIcon
+          name={icon}
+          color={color as string}
+          style={styles.icon}
+          size={CONSTANTS.icon}
+        />
+      ) : null}
+      <Text style={titleStyles}>{title}</Text>
+    </Pressable>
+  );
+}
+
+const Solid = ({ style, theme, ...props }: Props): JSX.Element => {
+  return (
+    <Base
+      style={[
+        {
+          color: "#FFF",
+          borderRadius: theme.roundness,
+          backgroundColor: theme.colors.primary,
+        },
+        style,
+      ]}
+      {...props}
+    />
   );
 };
 
+const ButtonSolid: any = withTheme(Solid);
+export { ButtonSolid };
+
+const Outline = ({ style, theme, ...props }: Props): JSX.Element => {
+  return (
+    <Base
+      style={[
+        styles.outline,
+        {
+          borderRadius: theme.roundness,
+          borderColor: theme.colors.primary,
+          color: theme.colors.primary,
+        },
+        style,
+      ]}
+      {...props}
+    />
+  );
+};
+
+const ButtonOutline: any = withTheme(Outline);
+export { ButtonOutline };
+
+export const BaseLink = ({ style, theme, ...props }: Props): JSX.Element => {
+  return (
+    <Base
+      style={[styles.bare, style, { color: theme.colors.primary }]}
+      hitSlop={8}
+      {...props}
+    />
+  );
+};
+
+const Link: any = withTheme(BaseLink);
+export { Link };
+
 const styles = StyleSheet.create({
-  button: {
-    minWidth: 64,
-    borderStyle: "solid",
-  },
-  content: {
+  base: {
+    position: "relative",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    minHeight: CONSTANTS.baseHeight,
+    paddingHorizontal: 12,
+    fontFamily: "System",
+    fontWeight: "700",
+    ...Platform.select({
+      web: {
+        cursor: "pointer",
+        userSelect: "none",
+      },
+    }),
+  },
+  outline: {
+    backgroundColor: "transparent",
+    borderWidth: 1,
+  },
+  bare: {
+    backgroundColor: "transparent",
+    alignSelf: "flex-start",
+    padding: 0,
+    minHeight: undefined,
+  },
+  loading: {
+    marginRight: 6,
   },
   icon: {
-    width: Config.buttonIconSize,
+    ...Platform.select({
+      web: {
+        marginTop: 1,
+        marginRight: 4,
+        alignSelf: "center",
+      },
+      default: {
+        marginBottom: 2,
+        marginRight: 4,
+        alignSelf: "center",
+      },
+    }),
   },
 });
 
-export default withTheme(Button);
-
 const SEED_DATA_PROPS = {
-  icon: {
-    group: GROUPS.basic,
-    label: "Icon Name",
-    description: "Name of the icon",
-    editable: true,
-    required: true,
-    formType: FORM_TYPES.icon,
-    propType: PROP_TYPES.STRING,
-    defaultValue: null,
-  },
-  children: {
-    group: GROUPS.data,
+  icon: createIconProp(),
+  title: createTextProp({
     label: "Label",
-    description: "Button label",
-    required: true,
-    editable: true,
-    formType: FORM_TYPES.string,
-    propType: PROP_TYPES.STRING,
+    description: "Button Label",
     defaultValue: "Get Started",
-  },
-  color: {
-    group: GROUPS.basic,
-    label: "Color Override",
-    description: "Override the background color of the button",
-    editable: true,
-    required: false,
-    formType: FORM_TYPES.color,
-    propType: PROP_TYPES.THEME,
-    defaultValue: null,
-  },
-  labelColor: {
-    group: GROUPS.basic,
-    label: "Label Color Override",
-    description: "Override the label color of the button",
-    editable: true,
-    required: false,
-    formType: FORM_TYPES.color,
-    propType: PROP_TYPES.THEME,
-    defaultValue: null,
-  },
-  disabled: {
-    group: GROUPS.basic,
+  }),
+  disabled: createBoolProp({
     label: "Disabled",
     description: "Whether the button should be disabled",
-    editable: true,
-    required: false,
-    formType: FORM_TYPES.boolean,
-    propType: PROP_TYPES.BOOLEAN,
-    defaultValue: null,
-  },
-  loading: {
-    group: GROUPS.data,
+  }),
+  loading: createBoolProp({
     label: "Loading",
     description: "Whether to show a loading indicator",
-    editable: true,
-    required: false,
-    formType: FORM_TYPES.boolean,
-    propType: PROP_TYPES.BOOLEAN,
-    defaultValue: null,
-  },
-  onPress: {
-    group: GROUPS.basic,
-    label: "Action",
-    description: "Action to execute when button pressed",
-    editable: true,
-    required: false,
-    formType: FORM_TYPES.action,
-    defaultValue: null,
-  },
+  }),
+  onPress: createActionProp(),
+};
+
+const LAYOUT = {
+  flexDirection: "row",
+  alignItems: "center",
+  backgroundColor: "transparent",
+  justifyContent: "center",
+  borderRadius: 8,
+  minHeight: 42,
+  fontFamily: "system-700",
 };
 
 export const SEED_DATA = [
   {
     name: "Button Outline",
-    tag: "Button",
+    tag: "ButtonOutline",
     category: COMPONENT_TYPES.button,
-    preview_image_url: "{CLOUDINARY_URL}/Button_Outline.png",
-    props: {
-      ...SEED_DATA_PROPS,
-      type: {
-        group: GROUPS.uncategorized,
-        label: "Type",
-        description: "Button type",
-        editable: false,
-        required: true,
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "outline",
-      },
+    layout: {
+      ...LAYOUT,
+      backgroundColor: "transparent",
+      borderWidth: 1,
     },
-    layout: {},
+    props: SEED_DATA_PROPS,
   },
   {
     name: "Button Solid",
-    tag: "Button",
+    tag: "ButtonSolid",
     category: COMPONENT_TYPES.button,
-    preview_image_url: "{CLOUDINARY_URL}/Button_Solid.png",
-    props: {
-      ...SEED_DATA_PROPS,
-      type: {
-        group: GROUPS.uncategorized,
-        label: "Type",
-        description: "Button type",
-        editable: false,
-        required: true,
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "solid",
-      },
+    layout: {
+      ...LAYOUT,
+      backgroundColor: "primary",
     },
-    layout: {},
+    props: SEED_DATA_PROPS,
+  },
+  {
+    name: "Link",
+    tag: "Link",
+    category: COMPONENT_TYPES.button,
+    layout: {
+      ...LAYOUT,
+      backgroundColor: "transparent",
+      color: "primary",
+      padding: 0,
+      minHeight: undefined,
+    },
+    props: SEED_DATA_PROPS,
   },
 ];

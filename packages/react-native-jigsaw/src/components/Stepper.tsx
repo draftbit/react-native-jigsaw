@@ -102,7 +102,7 @@ export const SEED_DATA = [
     name: "Stepper",
     tag: "Stepper",
     description: "A component used to control the quantity of something",
-    category: COMPONENT_TYPES.field,
+    category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Control_Stepper.png",
     supports_list_render: false,
     props: {

@@ -202,7 +202,7 @@ export const SEED_DATA = [
     name: "Progress Bar",
     tag: "ProgressBar",
     description: "A horizontal bar used to show completed progress",
-    category: COMPONENT_TYPES.formControl,
+    category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Status_Progress.png",
     supports_list_render: false,
     props: {

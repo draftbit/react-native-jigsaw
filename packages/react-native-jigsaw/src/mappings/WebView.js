@@ -12,7 +12,7 @@ export const SEED_DATA = {
   doc_link: "https://docs.expo.io/versions/latest/sdk/video/",
   code_link:
     "https://github.com/expo/expo/blob/master/packages/expo-av/src/Video.tsx",
-  category: COMPONENT_TYPES.media,
+  category: COMPONENT_TYPES.deprecated,
   layout: {
     flexGrow: 1,
     flexShrink: 1,

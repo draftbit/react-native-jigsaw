@@ -283,7 +283,7 @@ const SEED_DATA_PROPS = {
 
 export const SEED_DATA = [
   {
-    name: "FAB Mini",
+    name: "FAB",
     tag: "FAB",
     category: COMPONENT_TYPES.button,
     description: "A round, mini FAB",
@@ -316,7 +316,7 @@ export const SEED_DATA = [
   {
     name: "FAB Outline",
     tag: "FAB",
-    category: COMPONENT_TYPES.button,
+    category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Button_FABMini.png",
     props: {
       ...SEED_DATA_PROPS,
@@ -346,7 +346,7 @@ export const SEED_DATA = [
   {
     name: "FAB Extended",
     tag: "FAB",
-    category: COMPONENT_TYPES.button,
+    category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Button_FABExtended.png",
     props: {
       ...SEED_DATA_PROPS,
@@ -366,7 +366,7 @@ export const SEED_DATA = [
   {
     name: "FAB Fixed",
     tag: "FAB",
-    category: COMPONENT_TYPES.button,
+    category: COMPONENT_TYPES.deprecated,
     preview_image_url: "{CLOUDINARY_URL}/Button_FABFixed.png",
     props: {
       ...SEED_DATA_PROPS,

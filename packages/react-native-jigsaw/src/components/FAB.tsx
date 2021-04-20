@@ -285,7 +285,7 @@ export const SEED_DATA = [
   {
     name: "FAB",
     tag: "FAB",
-    category: COMPONENT_TYPES.button,
+    category: COMPONENT_TYPES.deprecated,
     description: "A round, mini FAB",
     preview_image_url: "{CLOUDINARY_URL}/Button_FABMini.png",
     props: {

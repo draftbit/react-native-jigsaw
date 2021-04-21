@@ -16,6 +16,16 @@ const SCREEN_PATH = path.join(SRC_PATH, "screens");
 const IGNORED_FILES = [
   "Query.js", // doesn't work at all
   "LinearGradient.js", // missing gradient UI
+  "EmailLoginScreen.tsx",
+  "RowHeadlineImageCaption.tsx",
+  "RowHeadlineImageIcon.tsx",
+  "Stepper.tsx",
+  "Slider.tsx",
+  "Header.tsx",
+  "HeaderLarge.tsx",
+  "HeaderOverline.tsx",
+  "HeaderMedium.tsx",
+  "WebView.tsx",
 ];
 
 const ERROR_FILES = [];

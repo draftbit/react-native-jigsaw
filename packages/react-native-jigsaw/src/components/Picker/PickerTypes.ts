@@ -8,7 +8,7 @@ interface PickerOption {
 }
 
 export interface PickerComponentProps extends TextFieldProps {
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle> & { height?: number };
   options: PickerOption[];
   placeholder?: string;
   selectedValue: string;

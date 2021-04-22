@@ -51,7 +51,7 @@ jobs:
           [[ $(jq '.components | length' mock-backend.json) > 0 ]] || exit 1;
         working-directory: packages/react-native-jigsaw
 
-      - name: Release next NPM package
+      - name: Release next to NPM
         id: release_candidate_version
         if: github.event_name == 'pull_request'
         run: |
@@ -62,13 +62,19 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         working-directory: packages/react-native-jigsaw
 
-      - name: Release NPM package
+      - name: Release to NPM
         if: github.event_name != 'pull_request'
         run: |
           npm config set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
+        working-directory: packages/react-native-jigsaw
+
+      - name: Release to Snack
+        run: |
+          export version=$(jq -r .version package.json);
+          curl "https://snackager.expo.io/bundle/@draftbit/ui@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
         working-directory: packages/react-native-jigsaw
 
       - name: Add comment to PR

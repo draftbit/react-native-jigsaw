@@ -7,7 +7,7 @@ type Props = {
   disabled?: boolean;
   children: React.ReactNode;
   style?: ViewStyle;
-  onPress: () => void;
+  onPress?: () => void;
 } & PressableProps;
 
 export default function Touchable({

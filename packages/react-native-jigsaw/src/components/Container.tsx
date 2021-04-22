@@ -60,7 +60,6 @@ const Container: React.FC<Props> = ({
   };
 
   const innerStyle: StyleProp<ViewStyle> = {
-    flex: 1,
     paddingHorizontal: useThemeGutterPadding ? 16 : 0,
     flexDirection,
     justifyContent,

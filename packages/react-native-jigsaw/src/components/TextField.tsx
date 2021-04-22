@@ -44,7 +44,7 @@ export type Props = {
   rightIconName?: string;
   assistiveText?: string;
   multiline?: boolean;
-  style?: StyleProp<ViewStyle> & { height?: number; width?: number };
+  style?: StyleProp<ViewStyle> & { height?: number };
   theme: typeof theme;
   render?: (
     props: TextInputProps & { ref: (c: NativeTextInput) => void }
@@ -402,12 +402,7 @@ class TextField extends React.Component<Props> {
         {leftIconName && leftIconMode === "outset" ? (
           <Icon {...leftIconProps} style={leftIconStyle} />
         ) : null}
-        <View
-          style={[
-            containerStyle,
-            style ? { height: style.height, width: style.width } : {},
-          ]}
-        >
+        <View style={[containerStyle, style ? { height: style.height } : {}]}>
           {type === "underline" ? (
             // When type === 'flat', render an underline
             <Animated.View

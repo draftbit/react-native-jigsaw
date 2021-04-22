@@ -9,6 +9,12 @@ export const PROP_TYPES = {
   THEME: "THEME",
 };
 
+export const PLATFORMS = {
+  ios: "ios",
+  android: "android",
+  web: "web",
+};
+
 export const GROUPS = {
   accessibility: "accessibility",
   basic: "basic",
@@ -104,6 +110,18 @@ export const createImageProp = (overrides = {}) => ({
   formType: FORM_TYPES.sourceUrl,
   propType: PROP_TYPES.OBJECT,
   defaultValue: "https://static.draftbit.com/images/placeholder-image.png",
+  editable: true,
+  required: true,
+  ...overrides,
+});
+
+export const createSourceProp = (overrides = {}) => ({
+  label: "Website URL",
+  description: "The URL for the website",
+  defaultValue: "https://draftbit.com",
+  group: GROUPS.data,
+  formType: FORM_TYPES.sourceUrl,
+  propType: PROP_TYPES.OBJECT,
   editable: true,
   required: true,
   ...overrides,

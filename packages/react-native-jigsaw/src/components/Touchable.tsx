@@ -1,50 +1,49 @@
 import React from "react";
-import {
-  View,
-  TouchableOpacity as Touchable,
-  TouchableOpacityProps,
-} from "react-native";
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { Pressable, ViewStyle, PressableProps } from "react-native";
 
-export default class extends React.Component<TouchableOpacityProps> {
-  render() {
-    const { children, ...props } = this.props;
+import { COMPONENT_TYPES, createActionProp } from "../core/component-types";
 
-    return (
-      <Touchable {...props}>
-        <View>{children}</View>
-      </Touchable>
-    );
-  }
+type Props = {
+  disabled?: boolean;
+  children: React.ReactNode;
+  style?: ViewStyle;
+  onPress?: () => void;
+} & PressableProps;
+
+export default function Touchable({
+  children,
+  disabled,
+  onPress,
+  style,
+  ...props
+}: Props) {
+  return (
+    <Pressable
+      onPress={onPress}
+      disabled={disabled}
+      hitSlop={8}
+      style={({ pressed }) => {
+        return [
+          {
+            opacity: pressed || disabled ? 0.75 : 1,
+          },
+          style,
+        ];
+      }}
+      {...props}
+    >
+      {children}
+    </Pressable>
+  );
 }
 
 export const SEED_DATA = {
   name: "Touchable",
   tag: "Touchable",
-  description:
-    "Provides a way to capture tapping gestures, and displays feedback when a gesture is recognized",
-  category: COMPONENT_TYPES.input,
-  supports_list_render: false,
+  description: "Simple button with no styles",
+  category: COMPONENT_TYPES.button,
   layout: {},
   props: {
-    onPress: {
-      group: GROUPS.basic,
-      label: "Action",
-      description: "Action to execute when touchable pressed",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.action,
-      defaultValue: null,
-    },
-    hitSlop: {
-      group: GROUPS.advanced,
-      label: "Hit Slop",
-      description:
-        "Makes the Touchable easier to press by expanding the touchable area a specified number of points, without having to change the layout of the Touchable (e.g. by adding padding)",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.position,
-      defaultValue: null,
-    },
+    onPress: createActionProp(),
   },
 };

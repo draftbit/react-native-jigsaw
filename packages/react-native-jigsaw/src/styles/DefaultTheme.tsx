@@ -1,7 +1,7 @@
 import { systemWeights } from "react-native-typography";
 import configureFonts from "./fonts";
 
-export default {
+const DefaultTheme = {
   disabledOpacity: 0.5,
   roundness: 8,
   dark: false,
@@ -109,3 +109,6 @@ export default {
     },
   },
 };
+
+export default DefaultTheme;
+export type Theme = typeof DefaultTheme;

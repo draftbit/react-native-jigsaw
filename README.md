@@ -40,6 +40,9 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 
 ## Adding components
 
+- Make sure `{...props}` as the last argument to be able to override any extras
+- Make sure `style` and `children` destructured. example: `{style, children, ...props}`
+- Make sure to include a testID if necessary
 
 ### Primitives (Text, View)
 

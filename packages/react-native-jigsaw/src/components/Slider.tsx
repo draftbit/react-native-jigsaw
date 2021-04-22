@@ -79,7 +79,7 @@ export const SEED_DATA = {
   name: "Slider",
   tag: "Slider",
   description: "A component used to set a value in a range",
-  category: COMPONENT_TYPES.input,
+  category: COMPONENT_TYPES.deprecated,
   preview_image_url: "{CLOUDINARY_URL}/Control_Slider.png",
   supports_list_render: false,
   props: {

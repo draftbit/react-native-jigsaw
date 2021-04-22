@@ -53,7 +53,7 @@ export default withTheme(FieldRadioButton);
 export const SEED_DATA = {
   name: "Field Radio Button",
   tag: "FieldRadioButton",
-  category: COMPONENT_TYPES.field,
+  category: COMPONENT_TYPES.deprecated,
   preview_image_url: "{CLOUDINARY_URL}/Field_Radio.png",
   props: {
     title: {

@@ -72,7 +72,7 @@ export const SEED_DATA = {
   name: "Progress Circle",
   tag: "ProgressCircle",
   description: "A circle used to show completed progress",
-  category: COMPONENT_TYPES.formControl,
+  category: COMPONENT_TYPES.deprecated,
   preview_image_url: "{CLOUDINARY_URL}/Status_Progress.png",
   supports_list_render: false,
   props: {

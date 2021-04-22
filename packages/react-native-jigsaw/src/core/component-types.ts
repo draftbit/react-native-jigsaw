@@ -9,6 +9,12 @@ export const PROP_TYPES = {
   THEME: "THEME",
 };
 
+export const PLATFORMS = {
+  ios: "ios",
+  android: "android",
+  web: "web",
+};
+
 export const GROUPS = {
   accessibility: "accessibility",
   basic: "basic",
@@ -109,6 +115,18 @@ export const createImageProp = (overrides = {}) => ({
   ...overrides,
 });
 
+export const createSourceProp = (overrides = {}) => ({
+  label: "Website URL",
+  description: "The URL for the website",
+  defaultValue: "https://draftbit.com",
+  group: GROUPS.data,
+  formType: FORM_TYPES.sourceUrl,
+  propType: PROP_TYPES.OBJECT,
+  editable: true,
+  required: true,
+  ...overrides,
+});
+
 export const createResizeModeProp = (overrides = {}) => ({
   group: GROUPS.basic,
   label: "Resize Mode",
@@ -120,6 +138,19 @@ export const createResizeModeProp = (overrides = {}) => ({
   formType: FORM_TYPES.flatArray,
   propType: PROP_TYPES.STRING,
   options: ["cover", "contain", "stretch", "repeat", "center"],
+  ...overrides,
+});
+
+export const createHitslopProp = (overrides = {}) => ({
+  label: "Hit Slop",
+  description:
+    "Makes the Touchable easier to press by expanding the touchable area a specified number of points, without having to change the layout of the Touchable (e.g. by adding padding)",
+  group: GROUPS.advanced,
+  editable: true,
+  required: false,
+  formType: FORM_TYPES.position,
+  propType: PROP_TYPES.OBJECT,
+  defaultValue: null /* 8 */,
   ...overrides,
 });
 

@@ -73,7 +73,7 @@ export const SEED_DATA = [
     tag: "FieldCheckbox",
     description: "A row with left aligned checkbox and body",
     preview_image_url: "{CLOUDINARY_URL}/Field_Checkbox.png",
-    category: COMPONENT_TYPES.field,
+    category: COMPONENT_TYPES.deprecated,
     supports_list_render: true,
     props: {
       title: {

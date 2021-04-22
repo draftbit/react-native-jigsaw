@@ -164,7 +164,7 @@ export { ButtonOutline };
 export const BaseLink = ({ style, theme, ...props }: Props): JSX.Element => {
   return (
     <Base
-      style={[styles.bare, style, { color: theme.colors.primary }]}
+      style={[styles.bare, { color: theme.colors.primary }, style]}
       hitSlop={8}
       {...props}
     />
@@ -239,12 +239,8 @@ const SEED_DATA_PROPS = {
 };
 
 const LAYOUT = {
-  flexDirection: "row",
-  alignItems: "center",
   backgroundColor: "transparent",
-  justifyContent: "center",
   borderRadius: 8,
-  minHeight: 42,
   fontFamily: "system-700",
 };
 

@@ -80,7 +80,7 @@ export const SEED_DATA = {
   name: "Progress Indicator",
   tag: "ProgressIndicator",
   description: "A component used to show current Step in a process",
-  category: COMPONENT_TYPES.formControl,
+  category: COMPONENT_TYPES.deprecated,
   preview_image_url: "{CLOUDINARY_URL}/Control_Slider.png",
   supports_list_render: false,
   layout: {},

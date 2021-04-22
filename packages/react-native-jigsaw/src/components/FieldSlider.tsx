@@ -67,7 +67,7 @@ export const SEED_DATA = {
   tag: "FieldSlider",
   description:
     "A component used to set a value in a range, along with a title and label text",
-  category: COMPONENT_TYPES.field,
+  category: COMPONENT_TYPES.deprecated,
   preview_image_url: "{CLOUDINARY_URL}/Field_Slider.png",
   supports_list_render: false,
   props: {

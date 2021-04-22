@@ -122,8 +122,7 @@ export const SEED_DATA = {
     backgroundImage: createImageProp({
       label: "Background Image",
       description: "Apply a custom background image",
-      defaultValue:
-        "https://static.draftbit.com/images/placeholder-image-background.png",
+      defaultValue: null,
     }),
     backgroundImageResizeMode: createResizeModeProp(),
     elevation: createElevationType(0),

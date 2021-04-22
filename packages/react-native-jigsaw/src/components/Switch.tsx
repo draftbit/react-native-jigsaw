@@ -3,7 +3,6 @@ import { Switch as NativeSwitch, Platform, SwitchProps } from "react-native";
 import { withTheme } from "../core/theming";
 import {
   COMPONENT_TYPES,
-  createStateValue,
   createBoolProp,
   createColorProp,
 } from "../core/component-types";
@@ -18,7 +17,7 @@ type Props = {
 } & SwitchProps;
 
 const Switch: React.FC<Props> = ({
-  value,
+  value = false,
   disabled,
   onValueChange,
   color,
@@ -26,22 +25,30 @@ const Switch: React.FC<Props> = ({
   style,
   ...props
 }) => {
+  let [checked, setChecked] = React.useState(value);
   let thumbColor;
   let checkedColor = color || theme.colors.primary;
+
   if (Platform.OS !== "ios") {
     thumbColor = theme.colors.surface;
   }
+
   return (
     <NativeSwitch
       {...props}
-      value={value}
+      value={checked}
       disabled={disabled}
       trackColor={{ false: "", true: checkedColor }}
       //@ts-ignore
       activeTrackColor={checkedColor}
       activeThumbColor={thumbColor}
       thumbColor={thumbColor}
-      onValueChange={disabled ? undefined : onValueChange}
+      onValueChange={(boolValue) => {
+        if (!disabled) {
+          setChecked(boolValue);
+          onValueChange && onValueChange(boolValue);
+        }
+      }}
       style={[
         {
           opacity:
@@ -65,10 +72,10 @@ export const SEED_DATA = {
       label: "Disabled",
       description: "Boolean to handle disabling the switch",
     }),
-    color: createColorProp(),
-    fieldName: createStateValue({
-      defaultValue: "enabled",
-      handlerPropName: "onValueChange",
+    value: createBoolProp({
+      label: "Value",
+      description: "Boolean value",
     }),
+    color: createColorProp(),
   },
 };

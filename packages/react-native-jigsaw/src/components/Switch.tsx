@@ -66,7 +66,7 @@ export const SEED_DATA = {
       description: "Boolean to handle disabling the switch",
     }),
     color: createColorProp(),
-    value: createStateValue({
+    fieldName: createStateValue({
       defaultValue: "enabled",
       handlerPropName: "onValueChange",
     }),

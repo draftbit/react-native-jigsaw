@@ -9,6 +9,12 @@ export const PROP_TYPES = {
   THEME: "THEME",
 };
 
+export enum Platform {
+  "IOS",
+  "ANDROID",
+  "WEB",
+}
+
 export const GROUPS = {
   accessibility: "accessibility",
   basic: "basic",
@@ -232,10 +238,10 @@ export const FIELD_NAME = {
   required: false,
 };
 
-export const createStateValue = (overrides = {}) => {
+export const createStateValue = (overrides = {}) => ({
   ...FIELD_NAME,
-  ...overrides
-}
+  ...overrides,
+});
 
 export const TEXT_INPUT_PROPS = {
   allowFontScaling: {

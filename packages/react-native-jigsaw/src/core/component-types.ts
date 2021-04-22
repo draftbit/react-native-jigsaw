@@ -109,6 +109,18 @@ export const createImageProp = (overrides = {}) => ({
   ...overrides,
 });
 
+export const createSourceProp = (overrides = {}) => ({
+  label: "Website URL",
+  description: "The URL for the website",
+  defaultValue: "https://draftbit.com",
+  group: GROUPS.data,
+  formType: FORM_TYPES.sourceUrl,
+  propType: PROP_TYPES.OBJECT,
+  editable: true,
+  required: true,
+  ...overrides,
+});
+
 export const createResizeModeProp = (overrides = {}) => ({
   group: GROUPS.basic,
   label: "Resize Mode",

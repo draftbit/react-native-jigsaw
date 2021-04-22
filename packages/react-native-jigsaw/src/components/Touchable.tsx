@@ -41,7 +41,7 @@ export const SEED_DATA = {
   name: "Touchable",
   tag: "Touchable",
   description: "Simple button with no styles",
-  category: COMPONENT_TYPES.input,
+  category: COMPONENT_TYPES.button,
   layout: {},
   props: {
     onPress: createActionProp(),

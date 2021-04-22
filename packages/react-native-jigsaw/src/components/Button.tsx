@@ -239,10 +239,7 @@ const SEED_DATA_PROPS = {
 };
 
 const LAYOUT = {
-  flexDirection: "row",
-  alignItems: "center",
   backgroundColor: "transparent",
-  justifyContent: "center",
   borderRadius: 8,
   fontFamily: "system-700",
 };

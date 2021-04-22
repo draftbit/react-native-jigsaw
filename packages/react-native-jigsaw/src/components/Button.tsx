@@ -244,7 +244,6 @@ const LAYOUT = {
   backgroundColor: "transparent",
   justifyContent: "center",
   borderRadius: 8,
-  minHeight: 42,
   fontFamily: "system-700",
 };
 

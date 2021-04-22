@@ -9,6 +9,12 @@ export const PROP_TYPES = {
   THEME: "THEME",
 };
 
+export const PLATFORMS = {
+  ios: "ios",
+  android: "android",
+  web: "web",
+};
+
 export const GROUPS = {
   accessibility: "accessibility",
   basic: "basic",

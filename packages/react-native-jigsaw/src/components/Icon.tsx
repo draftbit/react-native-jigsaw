@@ -37,7 +37,9 @@ const Icon: React.FC<Props> = ({ name, color, size, style, ...rest }) => {
     const IconSet = VectorIcons[iconSet];
 
     return (
-      <IconSet {...rest} name={name} color={color} size={size} style={style} />
+      <View style={[styles.container, { width: size, height: size }, style]}>
+        <IconSet {...rest} name={name} color={color} size={size} />
+      </View>
     );
   } else if (
     (typeof name === "object" &&
@@ -61,6 +63,7 @@ const Icon: React.FC<Props> = ({ name, color, size, style, ...rest }) => {
       />
     );
   }
+
   return (
     <View
       {...rest}
@@ -78,8 +81,6 @@ const Icon: React.FC<Props> = ({ name, color, size, style, ...rest }) => {
   );
 };
 
-export default Icon;
-
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
@@ -87,6 +88,8 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
 });
+
+export default Icon;
 
 export const SEED_DATA = {
   name: "Icon",

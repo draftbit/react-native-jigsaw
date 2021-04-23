@@ -54,7 +54,7 @@ export const SEED_DATA = {
   name: "Star Rating",
   tag: "StarRating",
   description: "A star rating component",
-  category: COMPONENT_TYPES.basic,
+  category: COMPONENT_TYPES.deprecated,
   props: {
     starSize: createNumberProp({
       label: "Star size",

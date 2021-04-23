@@ -10,9 +10,10 @@ import {
 
 import {
   COMPONENT_TYPES,
-  FORM_TYPES,
   GROUPS,
-  PROP_TYPES,
+  createNumberProp,
+  createColorProp,
+  createIconProp,
 } from "../core/component-types";
 
 // This must use require to work in both web as a published project and in Snack
@@ -96,43 +97,24 @@ export const SEED_DATA = {
   tag: "Icon",
   description: "An icon",
   category: COMPONENT_TYPES.basic,
-  preview_image_url: "{CLOUDINARY_URL}/Icon.png",
-  supports_list_render: false,
+  layout: {},
   props: {
-    name: {
-      group: GROUPS.data,
-      label: "Name",
-      description: "Name of the icon",
-      formType: FORM_TYPES.icon,
-      propType: PROP_TYPES.STRING,
+    name: createIconProp({
       defaultValue: "FontAwesome/photo",
-      editable: true,
       required: true,
-    },
-    color: {
-      group: GROUPS.basic,
-      label: "Color",
-      description: "Color of the icon",
-      formType: FORM_TYPES.color,
-      propType: PROP_TYPES.THEME,
+    }),
+    color: createColorProp({
       defaultValue: "strong",
-      editable: true,
-      required: true,
-    },
-    size: {
+    }),
+    size: createNumberProp({
       group: GROUPS.basic,
       label: "Size",
-      description: "Width and height of the icon",
-      formType: FORM_TYPES.number,
-      propType: PROP_TYPES.NUMBER,
+      description: "Width and height of your icon",
       defaultValue: 24,
       min: 16,
       max: 128,
       step: 1,
       precision: 0,
-      editable: true,
-      required: true,
-    },
+    }),
   },
-  layout: {},
 };

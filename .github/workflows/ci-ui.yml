@@ -74,6 +74,7 @@ jobs:
       - name: Release to Snack
         run: |
           export version=$(jq -r .version package.json);
+          sleep 10
           curl "https://snackager.expo.io/bundle/@draftbit/ui@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
         working-directory: packages/react-native-jigsaw
 

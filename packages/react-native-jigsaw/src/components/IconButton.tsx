@@ -12,15 +12,14 @@ import {
 import Icon from "./Icon";
 import { withTheme } from "../core/theming";
 import {
-  FORM_TYPES,
   COMPONENT_TYPES,
   GROUPS,
-  PROP_TYPES,
   createIconProp,
   createActionProp,
   createColorProp,
+  createNumberProp,
 } from "../core/component-types";
-import Theme from "../styles/DefaultTheme";
+import type { Theme } from "../styles/DefaultTheme";
 
 type Props = {
   icon?: string;
@@ -29,7 +28,7 @@ type Props = {
   disabled?: boolean;
   loading?: boolean;
   onPress: () => void;
-  theme: typeof Theme;
+  theme: Theme;
   style?: StyleProp<ViewStyle>;
   IconOverride?: typeof Icon;
 } & PressableProps;
@@ -60,6 +59,8 @@ const IconButton: React.FC<Props> = ({
           styles.container,
           {
             opacity: pressed || disabled ? 0.75 : 1,
+            width: size,
+            height: size,
           },
           style,
         ];
@@ -98,18 +99,17 @@ export const SEED_DATA = {
   layout: {},
   props: {
     icon: createIconProp(),
-    onPress: createActionProp(),
-    size: {
-      group: GROUPS.basic,
-      label: "Icon Size",
-      description: "Size of icon",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.flatArray,
-      propType: PROP_TYPES.NUMBER,
-      defaultValue: 32,
-      options: [12, 16, 24, 32, 48, 64],
-    },
     color: createColorProp(),
+    onPress: createActionProp(),
+    size: createNumberProp({
+      group: GROUPS.basic,
+      label: "Size",
+      description: "Width and height of your icon",
+      defaultValue: 32,
+      min: 16,
+      max: 128,
+      step: 1,
+      precision: 0,
+    }),
   },
 };

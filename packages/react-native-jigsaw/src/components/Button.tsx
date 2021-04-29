@@ -222,7 +222,10 @@ const styles = StyleSheet.create({
 });
 
 const SEED_DATA_PROPS = {
-  icon: createIconProp(),
+  icon: createIconProp({
+    defaultValue: null,
+    required: false,
+  }),
   title: createTextProp({
     label: "Label",
     description: "Button Label",

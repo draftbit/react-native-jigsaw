@@ -61,6 +61,8 @@ const IconButton: React.FC<Props> = ({
             opacity: pressed || disabled ? 0.75 : 1,
             width: size,
             height: size,
+            alignItems: "center",
+            justifyContent: "center",
           },
           style,
         ];
@@ -69,7 +71,7 @@ const IconButton: React.FC<Props> = ({
     >
       <View>
         {icon && !loading ? (
-          <SelectedIcon name={icon} size={size} color={iconColor} />
+          <SelectedIcon name={icon} size={size - 2} color={iconColor} />
         ) : null}
         {loading ? <ActivityIndicator size="small" color={iconColor} /> : null}
       </View>

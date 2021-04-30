@@ -6,6 +6,7 @@ import {
   ViewProps,
   StyleProp,
   ImageStyle,
+  Platform,
 } from "react-native";
 
 import {
@@ -87,6 +88,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     overflow: "hidden",
+    ...Platform.select({
+      web: {
+        cursor: "pointer",
+        userSelect: "none",
+      },
+    }),
   },
 });
 
@@ -99,13 +106,8 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.basic,
   layout: {},
   props: {
-    name: createIconProp({
-      defaultValue: "FontAwesome/photo",
-      required: true,
-    }),
-    color: createColorProp({
-      defaultValue: "strong",
-    }),
+    name: createIconProp(),
+    color: createColorProp(),
     size: createNumberProp({
       group: GROUPS.basic,
       label: "Size",

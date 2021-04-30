@@ -11,7 +11,12 @@ export default function ButtonExample() {
         <IconButton style={buttonStyle} size={24} icon="brightness-6" />
         <IconButton style={buttonStyle} icon="brightness-7" />
         <IconButton style={buttonStyle} icon="file-download" loading />
-        <IconButton style={buttonStyle} icon="file-download" disabled />
+        <IconButton
+          size={32}
+          style={buttonStyle}
+          icon="FontAwesome/photo"
+          disabled
+        />
       </Section>
 
       <Section title="Button (solid)" style={styles.row}>

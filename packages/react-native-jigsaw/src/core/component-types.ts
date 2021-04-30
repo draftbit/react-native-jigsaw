@@ -159,9 +159,9 @@ export const createIconProp = (overrides = {}) => ({
   description: "Displays an icon of your choice",
   formType: FORM_TYPES.icon,
   propType: PROP_TYPES.STRING /* OR ASSET TODO TEST ME */,
-  defaultValue: null,
+  defaultValue: "FontAwesome/photo",
+  required: true,
   editable: true,
-  required: false,
   group: GROUPS.basic,
   ...overrides,
 });

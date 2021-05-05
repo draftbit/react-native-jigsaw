@@ -3,11 +3,10 @@ import { withTheme } from "../core/theming";
 import themeT from "../styles/DefaultTheme";
 import { colorTypes } from "../types";
 import { StyleProp, StyleSheet, ViewStyle } from "react-native";
-import Touchable from "./Touchable";
-import Icon from "./Icon";
+import IconButton from "./IconButton";
 
 type Props = {
-  icon: string | number | { uri: string };
+  icon: string;
   status?: "checked" | "unchecked";
   onPress?: () => void;
   disabled?: boolean;
@@ -38,7 +37,15 @@ const ToggleButton: React.FC<Props> = ({
   theme: { colors },
 }) => {
   return (
-    <Touchable
+    <IconButton
+      icon={icon}
+      size={iconSize}
+      color={status === "unchecked" ? colors[colorSecondary] : colors[color]}
+      onPress={onPress}
+      disabled={disabled}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityState={{ disabled }}
+      accessibilityRole="button"
       style={[
         styles.mainContainer,
         {
@@ -50,26 +57,13 @@ const ToggleButton: React.FC<Props> = ({
         },
         style,
       ]}
-      onPress={onPress}
-      disabled={disabled}
-      accessibilityLabel={accessibilityLabel}
-      accessibilityState={{ disabled }}
-      accessibilityRole="button"
-    >
-      <Icon
-        name={icon}
-        size={iconSize}
-        color={status === "unchecked" ? colors[colorSecondary] : colors[color]}
-      />
-    </Touchable>
+    />
   );
 };
 
 const styles = StyleSheet.create({
   mainContainer: {
     borderWidth: 1,
-    justifyContent: "center",
-    alignItems: "center",
   },
 });
 

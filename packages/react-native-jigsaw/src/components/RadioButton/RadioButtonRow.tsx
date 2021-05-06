@@ -56,6 +56,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
     onValueChange,
     direction: parentDirection,
   } = useRadioButtonGroupContext();
+
   const handlePress = () => {
     onPress(value);
     onValueChange(value);
@@ -101,6 +102,7 @@ const styles = StyleSheet.create({
     paddingStart: 20,
     minHeight: 50,
     paddingEnd: 20,
+    flex: 1,
   },
   label: {
     flex: 3,

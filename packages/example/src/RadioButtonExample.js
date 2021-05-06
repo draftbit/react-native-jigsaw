@@ -86,7 +86,8 @@ const RadioButtonGroupExample = ({
           value={selected}
           containerStyle={{
             borderWidth: 1,
-            borderColor: 'gray'
+            borderColor: 'gray',
+            marginVertical: 15
           }}>
 
           <RadioButton.Row label={
@@ -98,6 +99,35 @@ const RadioButtonGroupExample = ({
           <RadioButton.Row label={
             <Icon size={35} name="Ionicons/moon" />
           } value="3" />
+        </RadioButton.Group>
+
+        <RadioButton.Group
+          direction="vertical"
+          onValueChange={handleSelect}
+          value={selected}
+          containerStyle={{
+            borderWidth: 1,
+            borderColor: 'gray'
+          }}>
+
+          <Text>With custom selected/unselected icons</Text>
+
+          <RadioButton.Row
+            selectedIcon="AntDesign/checksquare"
+            unselectedIcon="AntDesign/checksquareo"
+            label="First"
+            value="1" />
+          <RadioButton.Row
+            selectedIcon="AntDesign/checksquare"
+            unselectedIcon="AntDesign/checksquareo"
+            label="Second"
+            value="2" />
+          <RadioButton.Row
+            selectedIcon="AntDesign/checksquare"
+            unselectedIcon="AntDesign/checksquareo"
+            label="Third"
+            value="3" />
+
         </RadioButton.Group>
       </Section>
 

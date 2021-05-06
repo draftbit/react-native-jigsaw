@@ -62,9 +62,9 @@ const RadioButtonGroupExample = ({
           onValueChange={handleSelect}
           value={selected}
         >
-          <RadioButton.Row size={35} label="First" value="1" />
-          <RadioButton.Row size={35} label="Second" value="2" />
-          <RadioButton.Row size={35} label="Third" value="3" />
+          <RadioButton.Row label="First" value="1" />
+          <RadioButton.Row label="Second" value="2" />
+          <RadioButton.Row label="Third" value="3" />
         </RadioButton.Group>
       </Section>
 
@@ -92,7 +92,6 @@ const RadioButtonGroupExample = ({
           <RadioButton.Row label={
             <Icon size={50} name="file-download" />
           } value="1" />
-
           <RadioButton.Row label={
             <Icon size={50} name="FontAwesome5/adjust" />
           } value="2" />

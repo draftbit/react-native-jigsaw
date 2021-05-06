@@ -90,13 +90,13 @@ const RadioButtonGroupExample = ({
           }}>
 
           <RadioButton.Row label={
-            <Icon size={50} name="file-download" />
+            <Icon size={35} name="file-download" />
           } value="1" />
           <RadioButton.Row label={
-            <Icon size={50} name="FontAwesome5/adjust" />
+            <Icon size={35} name="FontAwesome5/adjust" />
           } value="2" />
           <RadioButton.Row label={
-            <Icon size={50} name="Ionicons/moon" />
+            <Icon size={35} name="Ionicons/moon" />
           } value="3" />
         </RadioButton.Group>
       </Section>

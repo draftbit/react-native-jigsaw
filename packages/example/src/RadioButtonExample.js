@@ -1,86 +1,121 @@
 import * as React from "react";
-import { RadioButtonGroup, RadioButtonFieldGroup } from "@draftbit/ui";
+import { Icon, RadioButton, Row, RadioButtonFieldGroup } from "@draftbit/ui";
 import Section, { Container } from "./Section";
+import { Text, View } from "react-native";
+import { withTheme } from "@draftbit/ui";
 
-export default function RadioButtonGroupExample() {
-  const [selected, onSelect] = React.useState("First");
+const LoneRadioButtonWrapper = ({
+  label,
+  children
+}) => (
+  <View style={{
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }}>
+    <View style={{
+      marginBottom: 10
+    }}>
+      <Text>{label}</Text>
+    </View>
+    <View>
+      {children}
+    </View>
 
+  </View>
+)
+
+const RadioButtonGroupExample = ({
+  theme
+}) => {
+  const [selected, onSelect] = React.useState("1");
   const handleSelect = (value) => onSelect(value);
   return (
     <Container>
+
+      <Section title="Lone radio buttons">
+        <Row>
+          <LoneRadioButtonWrapper label="Selected">
+            <RadioButton selected />
+          </LoneRadioButtonWrapper>
+          <LoneRadioButtonWrapper label="Unselected">
+            <RadioButton />
+          </LoneRadioButtonWrapper>
+          <LoneRadioButtonWrapper label="Disabled">
+            <RadioButton selected disabled />
+          </LoneRadioButtonWrapper>
+          <LoneRadioButtonWrapper label="Custom color">
+            <RadioButton
+              selected
+              color={theme.colors.error}
+            />
+          </LoneRadioButtonWrapper>
+        </Row>
+      </Section>
+
       <Section title="RadioButtonGroup (horizontal)">
-        <RadioButtonGroup
+        <RadioButton.Group
           direction="horizontal"
-          options={[
-            { label: "First", icon: "check" },
-            { label: "Second", icon: "check" },
-            { label: "Third", icon: "check" },
-            { label: "Fourth", icon: "check" },
-          ]}
-          borderRadius={10}
-          inactiveColor="divider"
-          activeColor="primary"
-          iconSize={16}
-          contentColor="surface"
-          borderColor="light"
+          onValueChange={handleSelect}
           value={selected}
-          onSelect={handleSelect}
-        />
+        >
+          <RadioButton.Row size={35} label="First" value="1" />
+          <RadioButton.Row size={35} label="Second" value="2" />
+          <RadioButton.Row size={35} label="Third" value="3" />
+        </RadioButton.Group>
       </Section>
 
       <Section title="RadioButtonGroup (vertical)">
-        <RadioButtonGroup
+        <RadioButton.Group
           direction="vertical"
-          options={[
-            { label: "First", icon: "check" },
-            { label: "Second" },
-            { label: "Third" },
-            { label: "Fourth" },
-          ]}
-          optionSpacing={10}
-          borderRadius={100}
-          inactiveColor="divider"
-          activeColor="primary"
-          iconSize={15}
-          contentColor="surface"
-          value={selected}
-          onSelect={handleSelect}
-        />
+          onValueChange={handleSelect}
+          value={selected}>
+          <RadioButton.Row label="First" value="1" />
+          <RadioButton.Row label="Second" value="2" />
+          <RadioButton.Row direction="row-reverse" label="Third (reversed)" value="3" />
+        </RadioButton.Group>
       </Section>
 
-      <Section title="RadioButtonGroup (with optionSpacing)">
-        <RadioButtonGroup
-          direction="horizontal"
-          options={[
-            { label: "First", icon: "check" },
-            { label: "Second" },
-            { label: "Third" },
-            { label: "Fourth" },
-          ]}
-          optionSpacing={8}
-          borderRadius={10}
-          inactiveColor="divider"
-          activeColor="primary"
-          iconSize={15}
-          contentColor="surface"
+      <Section title="Custom style radio buttons">
+        <RadioButton.Group
+          direction="vertical"
+          onValueChange={handleSelect}
           value={selected}
-          onSelect={handleSelect}
-        />
+          containerStyle={{
+            borderWidth: 1,
+            borderColor: 'gray'
+          }}>
+
+          <RadioButton.Row label={
+            <Icon size={50} name="file-download" />
+          } value="1" />
+
+          <RadioButton.Row label={
+            <Icon size={50} name="FontAwesome5/adjust" />
+          } value="2" />
+          <RadioButton.Row label={
+            <Icon size={50} name="Ionicons/moon" />
+          } value="3" />
+        </RadioButton.Group>
       </Section>
 
       <Section title="RadioButtonFieldGroup">
         <RadioButtonFieldGroup
-          label={"Test"}
-          options={[
-            { key: "First", value: "First" },
-            { key: "Second", value: "Second" },
-            { key: "Third", value: "Third" },
-            { key: "Fourth", value: "Fourth" },
-          ]}
-          onSelect={handleSelect}
+          label="Select a value"
+          onValueChange={handleSelect}
           value={selected}
-        />
+        >
+          <RadioButton.Row size={35} label="First" value="1" />
+          <RadioButton.Row size={35} label="Second" value="2" />
+          <RadioButton.Row size={35} label="Third" value="3" />
+        </RadioButtonFieldGroup>
+
       </Section>
     </Container>
   );
 }
+
+export default withTheme(RadioButtonGroupExample)

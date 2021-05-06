@@ -1,144 +1,56 @@
 import * as React from "react";
-import { withTheme } from "../core/theming";
-import {
-  View,
-  Text,
-  StyleSheet,
-  StyleProp,
-  TextStyle,
-  ViewStyle,
-} from "react-native";
-import Icon from "./Icon";
-import Touchable from "./Touchable";
+import { View, StyleProp, ViewStyle } from "react-native";
 import {
   GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
   PROP_TYPES,
   FIELD_NAME,
-} from "../core/component-types";
-import themeT from "../styles/DefaultTheme";
-import { colorTypes } from "../types";
+} from "../../core/component-types";
+import themeT from "../../styles/DefaultTheme";
+import { radioButtonGroupContext } from "./context";
 
-interface RadioButtonOption {
-  label: string;
-  icon?: string;
+export interface RadioButtonGroupProps {
+  direction?: "horizontal" | "vertical";
+  optionSpacing?: number;
+  containerStyle?: StyleProp<ViewStyle>;
+  value: string;
+  onValueChange?: (value: string) => void;
+  theme: typeof themeT;
+  children: React.ReactNode;
 }
 
-type Props = {
-  direction?: "horizontal" | "vertical";
-  options?: RadioButtonOption[];
-  activeColor?: colorTypes;
-  inactiveColor?: colorTypes;
-  labelStyle?: StyleProp<TextStyle>;
-  iconSize: number;
-  contentColor?: colorTypes;
-  unselectedContentColor?: colorTypes;
-  borderRadius?: number;
-  optionSpacing?: number;
-  borderColor?: colorTypes;
-  style?: StyleProp<ViewStyle>;
-  value: string;
-  onSelect?: (label: string) => void;
-  theme: typeof themeT;
-};
-const RadioButtonGroup: React.FC<Props> = ({
-  direction = "horizontal",
-  options = [],
-  activeColor,
-  inactiveColor,
-  labelStyle,
-  iconSize,
-  contentColor,
-  unselectedContentColor,
-  borderRadius,
-  optionSpacing,
-  borderColor,
-  style,
-  value,
-  theme: { colors },
-  onSelect = () => {},
-}) => {
-  const marginHorizontal =
-    direction === "horizontal" && optionSpacing ? optionSpacing / 2 : 0;
-  const marginVertical =
-    direction === "vertical" && optionSpacing ? optionSpacing / 2 : 0;
+const { Provider } = radioButtonGroupContext;
 
-  const containerStyle: StyleProp<ViewStyle> = {
-    flexDirection: direction === "vertical" ? "column" : "row",
-    borderRadius: optionSpacing ? 0 : borderRadius,
-    overflow: "hidden",
-  };
+const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
+  direction = "horizontal",
+  value,
+  onValueChange = () => {},
+  containerStyle,
+  children,
+}) => {
+  const _containerStyle: StyleProp<ViewStyle> = [
+    {
+      flexDirection: direction === "vertical" ? "column" : "row",
+      overflow: "hidden",
+    },
+    containerStyle,
+  ];
 
   if (direction !== "vertical") {
-    containerStyle.alignItems = "center";
+    _containerStyle.push({
+      alignItems: "center",
+    });
   }
 
   return (
-    <View style={[containerStyle, style]}>
-      {options.map((option, index) => {
-        const selected = option.label === value;
-        const textColor = selected ? contentColor : unselectedContentColor;
-        return (
-          <Touchable
-            key={index}
-            onPress={() => onSelect(option.label)}
-            style={{ flex: 1 }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: selected ? activeColor : inactiveColor,
-                height: style
-                  ? (style as ViewStyle).height
-                    ? (style as ViewStyle).height
-                    : 50
-                  : 50,
-                borderLeftWidth:
-                  borderColor && index !== 0 ? StyleSheet.hairlineWidth : 0,
-                borderRightWidth:
-                  borderColor && index !== options.length - 1
-                    ? StyleSheet.hairlineWidth
-                    : 0,
-                borderColor: borderColor || colors.divider,
-                borderRadius: optionSpacing ? borderRadius : 0,
-                marginLeft: marginHorizontal,
-                marginRight: marginHorizontal,
-                marginTop: marginVertical,
-                marginBottom: marginVertical,
-              }}
-            >
-              {option.icon ? (
-                <Icon
-                  style={{ paddingEnd: 5 }}
-                  name={option.icon}
-                  size={iconSize}
-                  color={textColor}
-                />
-              ) : null}
-              {option.label ? (
-                <Text
-                  style={[
-                    labelStyle,
-                    {
-                      color: textColor,
-                    },
-                  ]}
-                >
-                  {option.label}
-                </Text>
-              ) : null}
-            </View>
-          </Touchable>
-        );
-      })}
-    </View>
+    <Provider value={{ value, onValueChange }}>
+      <View style={_containerStyle}>{children}</View>
+    </Provider>
   );
 };
 
-export default withTheme(RadioButtonGroup);
+export default RadioButtonGroup;
 
 export const SEED_DATA = {
   name: "Radio Button Group",
@@ -281,7 +193,7 @@ export const SEED_DATA = {
     fieldName: {
       ...FIELD_NAME,
       defaultValue: "radioButtonValue",
-      handlerPropName: "onSelect",
+      handlerPropName: "onValueChange",
     },
   },
   layout: {},

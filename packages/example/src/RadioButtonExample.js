@@ -64,7 +64,7 @@ const RadioButtonGroupExample = ({
         >
           <RadioButton.Row label="First" value="1" />
           <RadioButton.Row label="Second" value="2" />
-          <RadioButton.Row label="Third" value="3" />
+          <RadioButton.Row label="Third" direction="row-reverse" value="3" />
         </RadioButton.Group>
       </Section>
 
@@ -101,6 +101,8 @@ const RadioButtonGroupExample = ({
           } value="3" />
         </RadioButton.Group>
 
+        <Text>With custom selected/unselected icons</Text>
+
         <RadioButton.Group
           direction="vertical"
           onValueChange={handleSelect}
@@ -110,7 +112,6 @@ const RadioButtonGroupExample = ({
             borderColor: 'gray'
           }}>
 
-          <Text>With custom selected/unselected icons</Text>
 
           <RadioButton.Row
             selectedIcon="AntDesign/checksquare"

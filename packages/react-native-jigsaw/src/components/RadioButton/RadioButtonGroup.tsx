@@ -44,7 +44,7 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   }
 
   return (
-    <Provider value={{ value, onValueChange }}>
+    <Provider value={{ value, onValueChange, direction }}>
       <View style={_containerStyle}>{children}</View>
     </Provider>
   );

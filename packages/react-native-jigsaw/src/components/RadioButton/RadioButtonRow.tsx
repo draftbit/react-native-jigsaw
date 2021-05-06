@@ -19,6 +19,19 @@ export interface RadioButtonRowProps extends Omit<RadioButtonProps, "onPress"> {
   direction?: "row" | "row-reverse";
 }
 
+const getRadioButtonAlignment = (
+  parentDirection: string,
+  direction: string
+) => {
+  if (parentDirection === "horizontal") {
+    return direction === "row" ? "flex-start" : "flex-end";
+  } else if (direction === "row-reverse") {
+    return "flex-start";
+  } else {
+    return "flex-end";
+  }
+};
+
 const renderLabel = (value: string | React.ReactNode) => {
   if (typeof value === "string") {
     return <Text>{value}</Text>;
@@ -38,7 +51,11 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
   direction = "row",
   ...other
 }) => {
-  const { value: contextValue, onValueChange } = useRadioButtonGroupContext();
+  const {
+    value: contextValue,
+    onValueChange,
+    direction: parentDirection,
+  } = useRadioButtonGroupContext();
   const handlePress = () => {
     onPress(value);
     onValueChange(value);
@@ -63,7 +80,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
       <View
         style={{
           flex: 1,
-          alignItems: direction === "row" ? "flex-end" : "flex-start",
+          alignItems: getRadioButtonAlignment(parentDirection, direction),
         }}
       >
         <RadioButton

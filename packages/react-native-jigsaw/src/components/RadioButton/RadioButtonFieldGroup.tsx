@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleProp, TextStyle } from "react-native";
+import { View, StyleProp, TextStyle, ViewStyle } from "react-native";
 import Text from "../Text";
 import { withTheme } from "../../core/theming";
 import { RadioButtonGroupProps } from "./RadioButtonGroup";
@@ -7,7 +7,8 @@ import RadioButton from ".";
 
 interface Props extends RadioButtonGroupProps {
   label?: string;
-  labelStyle: StyleProp<TextStyle>;
+  labelStyle?: StyleProp<TextStyle>;
+  style?: StyleProp<ViewStyle>;
 }
 
 const RadioButtonFieldGroup: React.FC<Props> = ({
@@ -15,10 +16,11 @@ const RadioButtonFieldGroup: React.FC<Props> = ({
   children,
   theme,
   labelStyle,
+  style,
   ...other
 }) => {
   return (
-    <View>
+    <View style={style}>
       <Text
         style={[
           {

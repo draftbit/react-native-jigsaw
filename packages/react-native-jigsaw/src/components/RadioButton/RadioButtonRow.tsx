@@ -4,17 +4,27 @@ import {
   ViewStyle,
   StyleSheet,
   TouchableOpacity,
+  TextStyle,
 } from "react-native";
-import RadioButton, { RadioButtonProps } from "./RadioButton";
+import RadioButton, {
+  SEED_DATA as RADIO_BUTTON_SEED_DATA,
+  RadioButtonProps,
+} from "./RadioButton";
 import { View } from "react-native";
 import Text from "../Text";
 import { useRadioButtonGroupContext } from "./context";
+import {
+  createTextProp,
+  createTextStyle,
+  FORM_TYPES,
+} from "../../core/component-types";
 
 export interface RadioButtonRowProps extends Omit<RadioButtonProps, "onPress"> {
   label: string | React.ReactNode;
   value: string;
   labelContainerStyle: StyleProp<ViewStyle>;
   radioButtonStyle?: StyleProp<ViewStyle>;
+  labelStyle?: StyleProp<TextStyle>;
   onPress?: (value: string) => void;
   direction?: "row" | "row-reverse";
 }
@@ -32,9 +42,12 @@ const getRadioButtonAlignment = (
   }
 };
 
-const renderLabel = (value: string | React.ReactNode) => {
+const renderLabel = (
+  value: string | React.ReactNode,
+  labelStyle: StyleProp<TextStyle>
+) => {
   if (typeof value === "string") {
-    return <Text>{value}</Text>;
+    return <Text style={labelStyle}>{value}</Text>;
   } else {
     return <>{value}</>;
   }
@@ -47,6 +60,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
   style,
   selected,
   labelContainerStyle,
+  labelStyle,
   radioButtonStyle,
   direction = "row",
   ...other
@@ -76,7 +90,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
           labelContainerStyle,
         ]}
       >
-        {renderLabel(label)}
+        {renderLabel(label, labelStyle)}
       </View>
       <View
         style={{
@@ -108,5 +122,35 @@ const styles = StyleSheet.create({
     flex: 3,
   },
 });
+
+export const SEED_DATA = {
+  ...RADIO_BUTTON_SEED_DATA,
+  name: "Radio Button Row",
+  tag: "RadioButton.Row",
+  label: createTextProp({
+    label: "Label",
+    description: "Label to show with the radio button",
+    required: true,
+    defaultValue: null,
+  }),
+  labelStyle: createTextStyle({
+    label: "Label Style",
+    description: "Change the styles of the label",
+    required: false,
+  }),
+  direction: createTextProp({
+    label: "Direction",
+    description:
+      "Whether the radio button will appear on the left or on the right",
+    formType: FORM_TYPES.flatArray,
+    defaultValue: "row",
+    options: ["row", "row-reverse"],
+  }),
+  value: createTextProp({
+    label: "Value",
+    description: "Value of the radio button",
+    required: true,
+  }),
+};
 
 export default RadioButtonRow;

@@ -252,6 +252,25 @@ export const createColorProp = (overrides = {}) => ({
   ...overrides,
 });
 
+export const createIconSizeProp = (overrides = {}) => ({
+  group: GROUPS.basic,
+  label: "Icon Size",
+  description: "Size of icon",
+  editable: true,
+  required: false,
+  formType: FORM_TYPES.flatArray,
+  propType: PROP_TYPES.NUMBER,
+  defaultValue: 32,
+  options: [12, 16, 24, 32, 48, 64],
+  ...overrides,
+});
+
+export const createFieldNameProp = (overrides = {}) => ({
+  ...FIELD_NAME,
+  handlerPropName: "onPress",
+  ...overrides,
+});
+
 export const BORDER_RADIUS_MODE = {
   label: "Border radius",
   description:

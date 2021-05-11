@@ -1,26 +1,23 @@
 import * as React from "react";
 import { withTheme } from "../core/theming";
-import themeT from "../styles/DefaultTheme";
+import type { Theme } from "../styles/DefaultTheme";
 import { colorTypes } from "../types";
 import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import IconButton from "./IconButton";
 import {
   COMPONENT_TYPES,
-  GROUPS,
   createIconProp,
-  FORM_TYPES,
-  PROP_TYPES,
   createBoolProp,
-  createTextProp,
   createColorProp,
   createNumberProp,
   createActionProp,
-  FIELD_NAME,
+  createFieldNameProp,
+  createIconSizeProp,
 } from "../core/component-types";
 
 type Props = {
   icon: string;
-  status?: "checked" | "unchecked";
+  toggled?: boolean;
   onPress?: () => void;
   disabled?: boolean;
   color?: colorTypes;
@@ -30,13 +27,12 @@ type Props = {
   width?: number;
   height?: number;
   style?: StyleProp<ViewStyle>;
-  accessibilityLabel?: string;
-  theme: typeof themeT;
+  theme: Theme;
 };
 
 const ToggleButton: React.FC<Props> = ({
   icon,
-  status = "unchecked",
+  toggled = false,
   onPress = () => {},
   disabled = false,
   color = "primary",
@@ -45,27 +41,23 @@ const ToggleButton: React.FC<Props> = ({
   iconSize = 25,
   width = 50,
   height = 50,
-  style,
-  accessibilityLabel = "toggle button",
   theme: { colors },
+  style,
+  ...rest
 }) => {
   return (
     <IconButton
       icon={icon}
       size={iconSize}
-      color={status === "unchecked" ? colors[colorSecondary] : colors[color]}
+      color={toggled ? colors[color] : colors[colorSecondary]}
       onPress={onPress}
       disabled={disabled}
-      accessibilityLabel={accessibilityLabel}
-      accessibilityState={{ disabled }}
-      accessibilityRole="button"
       style={[
         styles.mainContainer,
         {
           width,
           height,
-          backgroundColor:
-            status === "unchecked" ? colors[color] : colors[colorSecondary],
+          backgroundColor: toggled ? colors[colorSecondary] : colors[color],
           borderColor: colors[borderColor],
         },
         style,
@@ -91,12 +83,10 @@ export const SEED_DATA = {
     icon: createIconProp({
       required: true,
     }),
-    fieldName: {
-      ...FIELD_NAME,
-      defaultValue: "unchecked",
-      valuePropName: "status",
-      handlerPropName: "onPress",
-    },
+    fieldName: createFieldNameProp({
+      defaultValue: false,
+      valuePropName: "toggled",
+    }),
     onPress: createActionProp(),
     disabled: createBoolProp({
       label: "Disabled",
@@ -109,17 +99,7 @@ export const SEED_DATA = {
     borderColor: createColorProp({
       label: "Border Color",
     }),
-    iconSize: {
-      group: GROUPS.basic,
-      label: "Icon Size",
-      description: "Size of icon",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.flatArray,
-      propType: PROP_TYPES.NUMBER,
-      defaultValue: 32,
-      options: [12, 16, 24, 32, 48, 64],
-    },
+    iconSize: createIconSizeProp(),
     width: createNumberProp({
       label: "Width",
       description: "Width",
@@ -129,11 +109,6 @@ export const SEED_DATA = {
       label: "Height",
       description: "Height",
       defaultValue: 50,
-    }),
-    accessibilityLabel: createTextProp({
-      label: "Accessibility Label",
-      description:
-        "Overrides the text that's read by the screen reader when the user interacts with the element. By default, the label is constructed by traversing all the children and accumulating all the Text nodes separated by space.",
     }),
   },
 };

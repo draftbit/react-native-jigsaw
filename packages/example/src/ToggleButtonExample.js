@@ -3,13 +3,9 @@ import { ToggleButton } from "@draftbit/ui";
 import Section, { Container, styles } from "./Section";
 
 export default function ToggleButtonExample() {
-  const [checked, setChecked] = React.useState("unchecked");
-  const toggleChecked = () => {
-    if (checked === "unchecked") {
-      setChecked("checked");
-    } else {
-      setChecked("unchecked");
-    }
+  const [toggled, setToggled] = React.useState(false);
+  const toggle = () => {
+    setToggled(!toggled);
   };
   return (
     <Container>
@@ -17,16 +13,16 @@ export default function ToggleButtonExample() {
         <ToggleButton
           style={{ margin: 5 }}
           icon="brightness-5"
-          status={checked}
-          onPress={toggleChecked}
+          toggled={toggled}
+          onPress={toggle}
         />
         <ToggleButton
           style={{ margin: 5 }}
           icon="file-download"
           width={70}
           height={70}
-          status={checked}
-          onPress={toggleChecked}
+          toggled={toggled}
+          onPress={toggle}
         />
       </Section>
     </Container>

@@ -16,6 +16,7 @@ export function Center({
   children,
   bgColor,
   style,
+  ...rest
 }: {
   width: number;
   height: number;
@@ -35,6 +36,7 @@ export function Center({
         },
         style,
       ]}
+      {...rest}
     >
       {children}
     </View>
@@ -45,6 +47,7 @@ export function Circle({
   size = 50,
   bgColor,
   children,
+  ...rest
 }: {
   size: number;
   bgColor: string;
@@ -57,6 +60,7 @@ export function Circle({
       height={size}
       bgColor={bgColor}
       style={{ backgroundColor: bgColor, borderRadius, overflow: "hidden" }}
+      {...rest}
     >
       {children}
     </Center>
@@ -67,13 +71,14 @@ export function Square({
   size = 50,
   bgColor,
   children,
+  ...rest
 }: {
   size: number;
   bgColor: string;
   children: React.ReactNode;
 }) {
   return (
-    <Center width={size} height={size} bgColor={bgColor}>
+    <Center width={size} height={size} bgColor={bgColor} {...rest}>
       {children}
     </Center>
   );
@@ -83,6 +88,7 @@ export function Row({
   justifyContent,
   alignItems,
   children,
+  ...rest
 }: {
   alignItems: ViewStyleProp.alignItems;
   justifyContent: ViewStyleProp.justifyContent;
@@ -95,6 +101,7 @@ export function Row({
         flexDirection: "row",
         justifyContent: justifyContent,
       }}
+      {...rest}
     >
       {children}
     </View>
@@ -107,6 +114,7 @@ export function Spacer({
   bottom = 8,
   left = 8,
   children,
+  ...rest
 }: {
   top?: number;
   right?: number;
@@ -122,6 +130,7 @@ export function Spacer({
         paddingLeft: left,
         paddingBottom: bottom,
       }}
+      {...rest}
     >
       {children}
     </View>
@@ -132,12 +141,17 @@ export function Stack({
   children,
   justifyContent = "flex-start",
   alignItems = "flex-start",
+  ...rest
 }: {
   justifyContent: ViewStyleProp.justifyContent;
   alignItems: ViewStyleProp.alignItems;
   children: React.ReactNode;
 }) {
-  return <View style={{ justifyContent, alignItems }}>{children}</View>;
+  return (
+    <View style={{ justifyContent, alignItems }} {...rest}>
+      {children}
+    </View>
+  );
 }
 
 export const SEED_DATA = [

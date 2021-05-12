@@ -62,6 +62,7 @@ const ToggleButton: React.FC<Props> = ({
         },
         style,
       ]}
+      {...rest}
     />
   );
 };
@@ -83,6 +84,7 @@ export const SEED_DATA = {
     icon: createIconProp({
       required: true,
     }),
+    iconSize: createIconSizeProp(),
     fieldName: createFieldNameProp({
       defaultValue: false,
       valuePropName: "toggled",
@@ -99,7 +101,6 @@ export const SEED_DATA = {
     borderColor: createColorProp({
       label: "Border Color",
     }),
-    iconSize: createIconSizeProp(),
     width: createNumberProp({
       label: "Width",
       description: "Width",

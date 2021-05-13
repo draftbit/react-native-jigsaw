@@ -12,7 +12,7 @@ import {
 } from "../../core/component-types";
 import Config from "../Config";
 import IconButton from "../IconButton";
-import themeT from "../../styles/DefaultTheme";
+import type { Theme } from "../../styles/DefaultTheme";
 
 export type RadioButtonProps = {
   selected: boolean;
@@ -20,7 +20,7 @@ export type RadioButtonProps = {
   color?: string;
   unselectedColor?: string;
   onPress?: () => void;
-  theme: typeof themeT;
+  theme: Theme;
   style?: StyleProp<ViewStyle>;
   size?: number;
   selectedIcon?: string;
@@ -33,19 +33,22 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   color,
   unselectedColor,
   onPress = () => {},
-  style,
   size = Config.radioButtonSize,
   selectedIcon = "MaterialIcons/radio-button-checked",
   unselectedIcon = "MaterialIcons/radio-button-unchecked",
+  theme,
+  style,
+  ...rest
 }) => {
   return (
     <IconButton
-      style={style}
       icon={selected ? selectedIcon : unselectedIcon}
       color={selected ? color : unselectedColor}
       disabled={disabled}
       onPress={onPress}
       size={size}
+      style={style}
+      {...rest}
     />
   );
 };
@@ -56,7 +59,6 @@ export const SEED_DATA = {
   name: "Radio Button",
   tag: "RadioButton",
   category: COMPONENT_TYPES.button,
-  preview_image_url: "{CLOUDINARY_URL}/Control_Radio.png",
   props: {
     selected: createBoolProp({
       label: "Selected",

@@ -17,7 +17,7 @@ const RadioButtonFieldGroup: React.FC<Props> = ({
   theme,
   labelStyle,
   style,
-  ...other
+  ...rest
 }) => {
   return (
     <View style={style}>
@@ -32,7 +32,7 @@ const RadioButtonFieldGroup: React.FC<Props> = ({
       >
         {label}
       </Text>
-      <RadioButton.Group theme={theme} {...other}>
+      <RadioButton.Group theme={theme} {...rest}>
         {children}
       </RadioButton.Group>
     </View>

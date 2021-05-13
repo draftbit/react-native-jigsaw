@@ -3,14 +3,13 @@ import {
   StyleProp,
   ViewStyle,
   StyleSheet,
-  TouchableOpacity,
   TextStyle,
+  View,
 } from "react-native";
 import RadioButton, {
   SEED_DATA as RADIO_BUTTON_SEED_DATA,
   RadioButtonProps,
 } from "./RadioButton";
-import { View } from "react-native";
 import Text from "../Text";
 import { useRadioButtonGroupContext } from "./context";
 import {
@@ -18,6 +17,13 @@ import {
   createTextStyle,
   FORM_TYPES,
 } from "../../core/component-types";
+import { Direction as GroupDirection } from "./context";
+import Touchable from "../Touchable";
+
+export enum Direction {
+  Row = "row",
+  RowReverse = "row-reverse",
+}
 
 export interface RadioButtonRowProps extends Omit<RadioButtonProps, "onPress"> {
   label: string | React.ReactNode;
@@ -26,16 +32,16 @@ export interface RadioButtonRowProps extends Omit<RadioButtonProps, "onPress"> {
   radioButtonStyle?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
   onPress?: (value: string) => void;
-  direction?: "row" | "row-reverse";
+  direction?: Direction;
 }
 
 const getRadioButtonAlignment = (
-  parentDirection: string,
-  direction: string
+  parentDirection: GroupDirection,
+  direction: Direction
 ) => {
-  if (parentDirection === "horizontal") {
-    return direction === "row" ? "flex-start" : "flex-end";
-  } else if (direction === "row-reverse") {
+  if (parentDirection === GroupDirection.Horizontal) {
+    return direction === Direction.Row ? "flex-start" : "flex-end";
+  } else if (direction === Direction.RowReverse) {
     return "flex-start";
   } else {
     return "flex-end";
@@ -57,13 +63,13 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
   label,
   value,
   onPress = () => {},
-  style,
   selected,
   labelContainerStyle,
   labelStyle,
   radioButtonStyle,
-  direction = "row",
-  ...other
+  direction = Direction.Row,
+  style,
+  ...rest
 }) => {
   const {
     value: contextValue,
@@ -77,7 +83,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
   };
 
   return (
-    <TouchableOpacity
+    <Touchable
       onPress={handlePress}
       style={[styles.mainParent, { flexDirection: direction }, style]}
     >
@@ -85,7 +91,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
         style={[
           styles.label,
           {
-            alignItems: direction === "row" ? "flex-start" : "flex-end",
+            alignItems: direction === Direction.Row ? "flex-start" : "flex-end",
           },
           labelContainerStyle,
         ]}
@@ -102,10 +108,10 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
           selected={contextValue === value}
           onPress={handlePress}
           style={radioButtonStyle}
-          {...other}
+          {...rest}
         />
       </View>
-    </TouchableOpacity>
+    </Touchable>
   );
 };
 

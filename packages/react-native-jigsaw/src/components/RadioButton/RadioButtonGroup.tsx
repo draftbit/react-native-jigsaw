@@ -5,24 +5,22 @@ import {
   FORM_TYPES,
   FIELD_NAME,
   createTextProp,
-  createTextStyle,
 } from "../../core/component-types";
-import themeT from "../../styles/DefaultTheme";
-import { radioButtonGroupContext } from "./context";
-
+import type { Theme } from "../../styles/DefaultTheme";
+import { radioButtonGroupContext, Direction } from "./context";
 export interface RadioButtonGroupProps {
-  direction?: "horizontal" | "vertical";
+  direction?: Direction;
   style?: StyleProp<ViewStyle>;
   value: string;
-  onValueChange?: (value: string) => void;
-  theme: typeof themeT;
+  onValueChange: (value: string) => void;
+  theme: Theme;
   children: React.ReactNode;
 }
 
 const { Provider } = radioButtonGroupContext;
 
 const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
-  direction = "horizontal",
+  direction = Direction.Horizontal,
   value,
   onValueChange = () => {},
   style,
@@ -30,13 +28,13 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
 }) => {
   const _containerStyle: StyleProp<ViewStyle> = [
     {
-      flexDirection: direction === "vertical" ? "column" : "row",
+      flexDirection: direction === Direction.Horizontal ? "row" : "column",
       overflow: "hidden",
     },
     style,
   ];
 
-  if (direction !== "vertical") {
+  if (direction !== Direction.Vertical) {
     _containerStyle.push({
       alignItems: "center",
     });
@@ -55,7 +53,6 @@ export const SEED_DATA = {
   name: "Radio Button Group",
   tag: "RadioButton.Group",
   category: COMPONENT_TYPES.button,
-  preview_image_url: "{CLOUDINARY_URL}/Control_Radio.png",
   props: {
     direction: createTextProp({
       label: "Horizontal/Vertical",

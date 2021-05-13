@@ -1,24 +1,14 @@
 import * as React from "react";
-import { Icon, RadioButton, Row, RadioButtonFieldGroup } from "@draftbit/ui";
+import { Icon, RadioButton, Row, RadioButtonFieldGroup, withTheme } from "@draftbit/ui";
 import Section, { Container } from "./Section";
-import { Text, View } from "react-native";
-import { withTheme } from "@draftbit/ui";
+import { Text, View, StyleSheet } from "react-native";
 
 const LoneRadioButtonWrapper = ({
   label,
   children
 }) => (
-  <View style={{
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center'
-  }}>
-    <View style={{
-      marginBottom: 10
-    }}>
+  <View style={styles.radioButtonWrapper}>
+    <View style={styles.radioButtonLabel}>
       <Text>{label}</Text>
     </View>
     <View>
@@ -84,7 +74,7 @@ const RadioButtonGroupExample = ({
           direction="vertical"
           onValueChange={handleSelect}
           value={selected}
-          containerStyle={{
+          style={{
             borderWidth: 1,
             borderColor: 'gray',
             marginVertical: 15
@@ -107,7 +97,7 @@ const RadioButtonGroupExample = ({
           direction="vertical"
           onValueChange={handleSelect}
           value={selected}
-          containerStyle={{
+          style={{
             borderWidth: 1,
             borderColor: 'gray'
           }}>
@@ -115,17 +105,17 @@ const RadioButtonGroupExample = ({
 
           <RadioButton.Row
             selectedIcon="AntDesign/checksquare"
-            unselectedIcon="AntDesign/checksquareo"
+            unselectedIcon="MaterialCommunityIcons/checkbox-blank-outline"
             label="First"
             value="1" />
           <RadioButton.Row
             selectedIcon="AntDesign/checksquare"
-            unselectedIcon="AntDesign/checksquareo"
+            unselectedIcon="MaterialCommunityIcons/checkbox-blank-outline"
             label="Second"
             value="2" />
           <RadioButton.Row
             selectedIcon="AntDesign/checksquare"
-            unselectedIcon="AntDesign/checksquareo"
+            unselectedIcon="MaterialCommunityIcons/checkbox-blank-outline"
             label="Third"
             value="3" />
 
@@ -147,5 +137,19 @@ const RadioButtonGroupExample = ({
     </Container>
   );
 }
+
+const styles = StyleSheet.create({
+  radioButtonWrapper: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  radioButtonLabel: {
+    marginBottom: 10
+  }
+})
 
 export default withTheme(RadioButtonGroupExample)

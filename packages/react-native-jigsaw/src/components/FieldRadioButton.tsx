@@ -3,7 +3,7 @@ import Color from "color";
 import { View, Text } from "react-native";
 import { withTheme } from "../core/theming";
 import Touchable from "./Touchable";
-import RadioButton from "./RadioButton";
+import RadioButton from "./RadioButton/RadioButton";
 
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
 import themeT from "../styles/DefaultTheme";
@@ -34,7 +34,12 @@ const FieldRadioButton: React.FC<Props> = ({
   return (
     <Touchable onPress={() => onPress()} disabled={disabled}>
       <View style={{ flexDirection: "row" }}>
-        <RadioButton color={color} selected={selected} disabled={disabled} />
+        <RadioButton
+          theme={theme}
+          color={color}
+          selected={selected}
+          disabled={disabled}
+        />
         <Text
           style={[
             theme.typography.body1,

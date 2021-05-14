@@ -4,7 +4,6 @@ import {
   RadioButton,
   Row,
   RadioButtonFieldGroup,
-  withTheme,
 } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 import { Text, View, StyleSheet } from "react-native";

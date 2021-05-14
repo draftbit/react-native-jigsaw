@@ -1,48 +1,42 @@
 import * as React from "react";
-import { Icon, RadioButton, Row, RadioButtonFieldGroup, withTheme } from "@draftbit/ui";
+import {
+  Icon,
+  RadioButton,
+  Row,
+  RadioButtonFieldGroup,
+  withTheme,
+} from "@draftbit/ui";
 import Section, { Container } from "./Section";
 import { Text, View, StyleSheet } from "react-native";
 
-const SingleRadioButtonWrapper = ({
-  label,
-  children
-}) => (
+const SingleRadioButtonWrapper = ({ label, children }) => (
   <View style={styles.radioButtonWrapper}>
     <View style={styles.radioButtonLabel}>
       <Text>{label}</Text>
     </View>
-    <View>
-      {children}
-    </View>
-
+    <View>{children}</View>
   </View>
-)
+);
 
-const RadioButtonGroupExample = ({
-  theme
-}) => {
+const RadioButtonGroupExample = ({ theme }) => {
   const [selected, onSelect] = React.useState("1");
   const handleSelect = (value) => onSelect(value);
   return (
     <Container>
-
       <Section title="Single Radio Buttons">
         <Row>
-          <LoneRadioButtonWrapper label="Selected">
+          <SingleRadioButtonWrapper label="Selected">
             <RadioButton selected />
-          </LoneRadioButtonWrapper>
-          <LoneRadioButtonWrapper label="Unselected">
+          </SingleRadioButtonWrapper>
+          <SingleRadioButtonWrapper label="Unselected">
             <RadioButton />
-          </LoneRadioButtonWrapper>
-          <LoneRadioButtonWrapper label="Disabled">
+          </SingleRadioButtonWrapper>
+          <SingleRadioButtonWrapper label="Disabled">
             <RadioButton selected disabled />
-          </LoneRadioButtonWrapper>
-          <LoneRadioButtonWrapper label="Custom color">
-            <RadioButton
-              selected
-              color={theme.colors.error}
-            />
-          </LoneRadioButtonWrapper>
+          </SingleRadioButtonWrapper>
+          <SingleRadioButtonWrapper label="Custom color">
+            <RadioButton selected color={theme.colors.error} />
+          </SingleRadioButtonWrapper>
         </Row>
       </Section>
 
@@ -62,10 +56,15 @@ const RadioButtonGroupExample = ({
         <RadioButton.Group
           direction="vertical"
           onValueChange={handleSelect}
-          value={selected}>
+          value={selected}
+        >
           <RadioButton.Row label="First" value="1" />
           <RadioButton.Row label="Second" value="2" />
-          <RadioButton.Row direction="row-reverse" label="Third (reversed)" value="3" />
+          <RadioButton.Row
+            direction="row-reverse"
+            label="Third (reversed)"
+            value="3"
+          />
         </RadioButton.Group>
       </Section>
 
@@ -76,19 +75,22 @@ const RadioButtonGroupExample = ({
           value={selected}
           style={{
             borderWidth: 1,
-            borderColor: 'gray',
-            marginVertical: 15
-          }}>
-
-          <RadioButton.Row label={
-            <Icon size={35} name="file-download" />
-          } value="1" />
-          <RadioButton.Row label={
-            <Icon size={35} name="FontAwesome5/adjust" />
-          } value="2" />
-          <RadioButton.Row label={
-            <Icon size={35} name="Ionicons/moon" />
-          } value="3" />
+            borderColor: "gray",
+            marginVertical: 15,
+          }}
+        >
+          <RadioButton.Row
+            label={<Icon size={35} name="file-download" />}
+            value="1"
+          />
+          <RadioButton.Row
+            label={<Icon size={35} name="FontAwesome5/adjust" />}
+            value="2"
+          />
+          <RadioButton.Row
+            label={<Icon size={35} name="Ionicons/moon" />}
+            value="3"
+          />
         </RadioButton.Group>
 
         <Text>With custom selected/unselected icons</Text>
@@ -99,26 +101,27 @@ const RadioButtonGroupExample = ({
           value={selected}
           style={{
             borderWidth: 1,
-            borderColor: 'gray'
-          }}>
-
-
+            borderColor: "gray",
+          }}
+        >
           <RadioButton.Row
             selectedIcon="AntDesign/checksquare"
             unselectedIcon="MaterialCommunityIcons/checkbox-blank-outline"
             label="First"
-            value="1" />
+            value="1"
+          />
           <RadioButton.Row
             selectedIcon="AntDesign/checksquare"
             unselectedIcon="MaterialCommunityIcons/checkbox-blank-outline"
             label="Second"
-            value="2" />
+            value="2"
+          />
           <RadioButton.Row
             selectedIcon="AntDesign/checksquare"
             unselectedIcon="MaterialCommunityIcons/checkbox-blank-outline"
             label="Third"
-            value="3" />
-
+            value="3"
+          />
         </RadioButton.Group>
       </Section>
 
@@ -132,24 +135,23 @@ const RadioButtonGroupExample = ({
           <RadioButton.Row size={35} label="Second" value="2" />
           <RadioButton.Row size={35} label="Third" value="3" />
         </RadioButtonFieldGroup>
-
       </Section>
     </Container>
   );
-}
+};
 
 const styles = StyleSheet.create({
   radioButtonWrapper: {
     flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center'
+    display: "flex",
+    flexDirection: "column",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
   },
   radioButtonLabel: {
-    marginBottom: 10
-  }
-})
+    marginBottom: 10,
+  },
+});
 
-export default withTheme(RadioButtonGroupExample)
+export default withTheme(RadioButtonGroupExample);

@@ -1,10 +1,5 @@
 import * as React from "react";
-import {
-  Icon,
-  RadioButton,
-  Row,
-  RadioButtonFieldGroup,
-} from "@draftbit/ui";
+import { Icon, RadioButton, Row, RadioButtonFieldGroup } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 import { Text, View, StyleSheet } from "react-native";
 

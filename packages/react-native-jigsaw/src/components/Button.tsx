@@ -117,7 +117,7 @@ function Base({
           size={CONSTANTS.icon}
         />
       ) : null}
-      <Text style={titleStyles}>{title}</Text>
+      <Text style={[styles.title, titleStyles]}>{title}</Text>
     </Pressable>
   );
 }
@@ -164,7 +164,7 @@ export { ButtonOutline };
 export const BaseLink = ({ style, theme, ...props }: Props): JSX.Element => {
   return (
     <Base
-      style={[styles.bare, style, { color: theme.colors.primary }]}
+      style={[styles.bare, { color: theme.colors.primary }, style]}
       hitSlop={8}
       {...props}
     />
@@ -179,7 +179,6 @@ const styles = StyleSheet.create({
     position: "relative",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
     minHeight: CONSTANTS.baseHeight,
     paddingHorizontal: 12,
     fontFamily: "System",
@@ -197,7 +196,6 @@ const styles = StyleSheet.create({
   },
   bare: {
     backgroundColor: "transparent",
-    alignSelf: "flex-start",
     padding: 0,
     minHeight: undefined,
   },
@@ -218,10 +216,16 @@ const styles = StyleSheet.create({
       },
     }),
   },
+  title: {
+    flex: 1,
+  },
 });
 
 const SEED_DATA_PROPS = {
-  icon: createIconProp(),
+  icon: createIconProp({
+    defaultValue: null,
+    required: false,
+  }),
   title: createTextProp({
     label: "Label",
     description: "Button Label",
@@ -239,12 +243,8 @@ const SEED_DATA_PROPS = {
 };
 
 const LAYOUT = {
-  flexDirection: "row",
-  alignItems: "center",
   backgroundColor: "transparent",
-  justifyContent: "center",
   borderRadius: 8,
-  minHeight: 42,
   fontFamily: "system-700",
 };
 
@@ -257,6 +257,7 @@ export const SEED_DATA = [
       ...LAYOUT,
       backgroundColor: "transparent",
       borderWidth: 1,
+      textAlign: "center",
     },
     props: SEED_DATA_PROPS,
   },
@@ -267,6 +268,7 @@ export const SEED_DATA = [
     layout: {
       ...LAYOUT,
       backgroundColor: "primary",
+      textAlign: "center",
     },
     props: SEED_DATA_PROPS,
   },

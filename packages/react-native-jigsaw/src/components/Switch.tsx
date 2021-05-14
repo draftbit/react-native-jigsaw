@@ -59,7 +59,7 @@ export default withTheme(Switch);
 export const SEED_DATA = {
   name: "Switch",
   tag: "Switch",
-  category: COMPONENT_TYPES.input,
+  category: COMPONENT_TYPES.deprecated,
   preview_image_url: "{CLOUDINARY_URL}/Control_Toggle.png",
   props: {
     disabled: {

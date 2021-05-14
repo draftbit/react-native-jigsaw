@@ -9,6 +9,12 @@ export const PROP_TYPES = {
   THEME: "THEME",
 };
 
+export const PLATFORMS = {
+  ios: "ios",
+  android: "android",
+  web: "web",
+};
+
 export const GROUPS = {
   accessibility: "accessibility",
   basic: "basic",
@@ -109,6 +115,18 @@ export const createImageProp = (overrides = {}) => ({
   ...overrides,
 });
 
+export const createSourceProp = (overrides = {}) => ({
+  label: "Website URL",
+  description: "The URL for the website",
+  defaultValue: "https://draftbit.com",
+  group: GROUPS.data,
+  formType: FORM_TYPES.sourceUrl,
+  propType: PROP_TYPES.OBJECT,
+  editable: true,
+  required: true,
+  ...overrides,
+});
+
 export const createResizeModeProp = (overrides = {}) => ({
   group: GROUPS.basic,
   label: "Resize Mode",
@@ -123,14 +141,27 @@ export const createResizeModeProp = (overrides = {}) => ({
   ...overrides,
 });
 
+export const createHitslopProp = (overrides = {}) => ({
+  label: "Hit Slop",
+  description:
+    "Makes the Touchable easier to press by expanding the touchable area a specified number of points, without having to change the layout of the Touchable (e.g. by adding padding)",
+  group: GROUPS.advanced,
+  editable: true,
+  required: false,
+  formType: FORM_TYPES.position,
+  propType: PROP_TYPES.OBJECT,
+  defaultValue: null /* 8 */,
+  ...overrides,
+});
+
 export const createIconProp = (overrides = {}) => ({
   label: "Icon",
   description: "Displays an icon of your choice",
   formType: FORM_TYPES.icon,
   propType: PROP_TYPES.STRING /* OR ASSET TODO TEST ME */,
-  defaultValue: null,
+  defaultValue: "FontAwesome/photo",
+  required: true,
   editable: true,
-  required: false,
   group: GROUPS.basic,
   ...overrides,
 });
@@ -183,6 +214,20 @@ export const createTextStyle = (overrides = {}) => ({
   ...overrides,
 });
 
+export const createNumberProp = (overrides = {}) => ({
+  label: "Number",
+  description: "A number",
+  formType: FORM_TYPES.number,
+  propType: PROP_TYPES.NUMBER,
+  group: GROUPS.data,
+  defaultValue: null,
+  editable: true,
+  required: true,
+  min: 0,
+  step: 1,
+  ...overrides,
+});
+
 export const createNumColumnsType = (overrides = {}) => ({
   label: "Number of Columns",
   description: "Number of Columns",
@@ -204,6 +249,25 @@ export const createColorProp = (overrides = {}) => ({
   defaultValue: null,
   formType: FORM_TYPES.color,
   propType: PROP_TYPES.THEME,
+  ...overrides,
+});
+
+export const createIconSizeProp = (overrides = {}) => ({
+  group: GROUPS.basic,
+  label: "Icon Size",
+  description: "Size of icon",
+  editable: true,
+  required: false,
+  formType: FORM_TYPES.flatArray,
+  propType: PROP_TYPES.NUMBER,
+  defaultValue: 32,
+  options: [12, 16, 24, 32, 48, 64],
+  ...overrides,
+});
+
+export const createFieldNameProp = (overrides = {}) => ({
+  ...FIELD_NAME,
+  handlerPropName: "onPress",
   ...overrides,
 });
 

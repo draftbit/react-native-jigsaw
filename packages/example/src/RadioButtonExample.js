@@ -3,7 +3,7 @@ import { Icon, RadioButton, Row, RadioButtonFieldGroup, withTheme } from "@draft
 import Section, { Container } from "./Section";
 import { Text, View, StyleSheet } from "react-native";
 
-const LoneRadioButtonWrapper = ({
+const SingleRadioButtonWrapper = ({
   label,
   children
 }) => (
@@ -26,7 +26,7 @@ const RadioButtonGroupExample = ({
   return (
     <Container>
 
-      <Section title="Lone radio buttons">
+      <Section title="Single Radio Buttons">
         <Row>
           <LoneRadioButtonWrapper label="Selected">
             <RadioButton selected />

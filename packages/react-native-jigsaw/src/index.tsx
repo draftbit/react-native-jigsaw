@@ -74,6 +74,8 @@ export { default as Stepper } from "./components/Stepper";
 export { default as StarRating } from "./components/StarRating";
 export { default as Switch } from "./components/Switch";
 
+export { default as ToggleButton } from "./components/ToggleButton";
+
 export { default as TextField } from "./components/TextField";
 export { default as Touchable } from "./components/Touchable";
 

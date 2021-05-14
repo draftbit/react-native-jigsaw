@@ -12,7 +12,6 @@ import {
 } from "../../core/component-types";
 import Config from "../Config";
 import IconButton from "../IconButton";
-import type { Theme } from "../../styles/DefaultTheme";
 
 export type RadioButtonProps = {
   selected: boolean;
@@ -20,7 +19,6 @@ export type RadioButtonProps = {
   color?: string;
   unselectedColor?: string;
   onPress?: () => void;
-  theme: Theme;
   style?: StyleProp<ViewStyle>;
   size?: number;
   selectedIcon?: string;
@@ -36,7 +34,6 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   size = Config.radioButtonSize,
   selectedIcon = "MaterialIcons/radio-button-checked",
   unselectedIcon = "MaterialIcons/radio-button-unchecked",
-  theme,
   style,
   ...rest
 }) => {

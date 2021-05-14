@@ -63,7 +63,6 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
   label,
   value,
   onPress = () => {},
-  selected,
   labelContainerStyle,
   labelStyle,
   radioButtonStyle,
@@ -105,10 +104,11 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
         }}
       >
         <RadioButton
-          selected={contextValue === value}
           onPress={handlePress}
           style={radioButtonStyle}
           {...rest}
+          /* Must stay below rest */
+          selected={contextValue === value}
         />
       </View>
     </Touchable>

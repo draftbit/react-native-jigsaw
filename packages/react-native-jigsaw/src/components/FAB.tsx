@@ -1,386 +1,134 @@
 import * as React from "react";
 import {
-  ActivityIndicator,
   View,
   StyleSheet,
-  TouchableHighlightProps,
+  Pressable,
+  ActivityIndicator,
   StyleProp,
   ViewStyle,
-  TextStyle,
+  PressableProps,
+  Platform,
 } from "react-native";
-import color from "color";
-import Config from "./Config";
-import Icon from "./Icon";
-import Text from "./Text";
-import Touchable from "./Touchable";
-import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";
+import Icon from "./Icon";
+import type { Theme } from "../styles/DefaultTheme";
 
 import {
-  GROUPS,
-  FORM_TYPES,
-  PROP_TYPES,
   COMPONENT_TYPES,
+  createIconProp,
+  createActionProp,
 } from "../core/component-types";
-import theme from "../styles/DefaultTheme";
-
-/**
- * A floating action button represents the primary action in an application.
- *
- * <div class="screenshots">
- *   <img src="screenshots/fab-1.png" />
- *   <img src="screenshots/fab-2.png" />
- * </div>
- *
- * ## Usage
- * ```js
- * import * as React from 'react';
- * import { StyleSheet } from 'react-native';
- * import { FAB } from '@draftbit/ui';
- *
- * const MyComponent = () => (
- *   <FAB
- *     style={styles.fab}
- *     type="outline"
- *     icon="add"
- *     onPress={() => console.log('Pressed')}
- *   />
- * );
- *
- * const styles = StyleSheet.create({
- *   fab: {
- *     position: 'absolute',
- *     margin: 16,
- *     right: 0,
- *     bottom: 0,
- *   },
- * })
- *
- * export default MyComponent;
- * ```
- */
 
 type Props = {
   disabled?: boolean;
-  type?: "solid" | "extended" | "outline" | "fixed" | "standard";
   loading?: boolean;
-  icon?: string;
-  color?: string;
-  label?: string;
+  size?: number;
+  bgColor?: string;
+  iconColor?: string;
+  iconName?: string;
   onPress: () => void;
-  elevation?: number;
-  theme: typeof theme;
+  theme: Theme;
   IconOverride: typeof Icon;
   style?: StyleProp<ViewStyle>;
-} & TouchableHighlightProps;
+} & PressableProps;
 
 const FAB: React.FC<Props> = ({
-  disabled = false,
-  type = "solid",
-  loading = false,
-  icon,
-  color: colorOverride,
-  label,
   onPress,
-  elevation = 0,
+  disabled,
+  loading,
+  iconName = "MaterialIcons/add",
   style,
+  theme,
+  size = 50,
   IconOverride = null,
-  theme: { colors, disabledOpacity, roundness, typography },
-  ...rest
+  ...props
 }) => {
-  let backgroundColor, borderColor, textColor, borderWidth;
-  const buttonColor = colorOverride || colors.primary;
+  const { backgroundColor: bgColor, color: fgColor } = StyleSheet.flatten(
+    style || {}
+  );
 
   const SelectedIcon = IconOverride || Icon;
 
-  if (type === "standard" || type === "extended" || type === "fixed") {
-    backgroundColor = buttonColor;
-
-    if (disabled) {
-      textColor = color(colors.surface).alpha(disabledOpacity).rgb().string();
-    } else {
-      textColor = colors.surface;
-    }
-  } else {
-    backgroundColor = "transparent";
-
-    if (disabled) {
-      textColor = color(buttonColor).alpha(disabledOpacity).rgb().string();
-    } else {
-      textColor = buttonColor;
-    }
-  }
-
-  if (type === "outline") {
-    if (disabled) {
-      borderColor = color(buttonColor).alpha(disabledOpacity).rgb().string();
-    } else {
-      borderColor = buttonColor;
-    }
-    borderWidth = StyleSheet.hairlineWidth;
-  } else {
-    borderColor = "transparent";
-    borderWidth = 0;
-  }
-
-  const buttonStyle: StyleProp<ViewStyle> = {
-    backgroundColor,
-    borderColor,
-    borderWidth,
-    borderRadius: roundness,
-    alignItems: "center",
-    justifyContent: "center",
-  };
-
-  const buttonStyles: StyleProp<ViewStyle>[] = [styles.button, buttonStyle];
-
-  const contentStyle: StyleProp<ViewStyle>[] = [styles.content];
-
-  const textStyle: StyleProp<TextStyle> = {
-    textAlign: "center",
-    color: textColor,
-  };
-
-  const iconStyle: StyleProp<ViewStyle>[] = [
-    styles.icon,
-    {
-      width: Config.buttonIconSize,
-    },
-  ];
-
-  if (type === "standard" || type === "outline") {
-    buttonStyle.width = Config.FABSize;
-    buttonStyle.height = Config.FABSize;
-    buttonStyle.borderRadius = Config.FABBorderRadius;
-
-    contentStyle.push({
-      width: Config.FABSize,
-      height: Config.FABSize,
-    });
-  }
-
-  if (type === "extended" || type === "fixed") {
-    iconStyle.push({
-      marginLeft: 16,
-      marginRight: -8,
-    });
-
-    textStyle.margin = 16;
-  }
-
-  if (type === "fixed") {
-    buttonStyles.push({
-      height: Config.FABFixedHeight,
-      alignSelf: "stretch",
-    });
-  }
+  const backgroundColor = bgColor || theme.colors.primary;
+  const color = fgColor || "#FFF";
 
   return (
-    <Elevation style={[{ elevation }, style]}>
-      <Touchable
-        {...rest}
+    <View
+      style={[
+        {
+          width: size,
+          height: size,
+          borderRadius: size / 2,
+          overflow: "hidden",
+        },
+        style,
+      ]}
+    >
+      <Pressable
         onPress={onPress}
-        accessibilityState={{ disabled }}
-        accessibilityRole="button"
-        disabled={disabled || loading}
-        style={buttonStyles}
+        disabled={loading || disabled}
+        android_ripple={{
+          color: "#333",
+          radius: size / 4,
+        }}
+        style={({ pressed }) => {
+          return [
+            styles.button,
+            {
+              opacity: pressed || disabled ? 0.75 : 1,
+              width: size,
+              height: size,
+              borderRadius: size / 2,
+              backgroundColor,
+            },
+          ];
+        }}
+        {...props}
       >
-        <View style={styles.content}>
-          {icon && loading !== true ? (
-            <View style={iconStyle}>
-              <SelectedIcon
-                name={icon}
-                size={Config.buttonIconSize}
-                color={textColor}
-              />
-            </View>
-          ) : null}
+        <View>
           {loading ? (
-            <ActivityIndicator
-              size="small"
-              color={textColor}
-              style={iconStyle}
-            />
-          ) : null}
-          {label ? (
-            <Text numberOfLines={1} style={[textStyle, typography.button]}>
-              {label}
-            </Text>
-          ) : null}
+            <ActivityIndicator size="small" color={color} />
+          ) : (
+            <SelectedIcon name={iconName} size={28} color={color} />
+          )}
         </View>
-      </Touchable>
-    </Elevation>
+      </Pressable>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   button: {
-    borderStyle: "solid",
-  },
-  content: {
-    flexDirection: "row",
-    alignItems: "center",
+    backgroundColor: "#5a45ff",
+    color: "#FFF",
     justifyContent: "center",
-  },
-  icon: {
     alignItems: "center",
-    justifyContent: "center",
-    width: Config.buttonIconSize,
-  },
-  fixed: {
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: 64,
-    borderRadius: 0,
+    ...Platform.select({
+      web: {
+        cursor: "pointer",
+        userSelect: "none",
+      },
+    }),
   },
 });
 
 export default withTheme(FAB);
 
-const SEED_DATA_PROPS = {
-  icon: {
-    group: GROUPS.basic,
-    label: "Icon Name",
-    description: "Name of the icon",
-    editable: true,
-    required: true,
-    formType: FORM_TYPES.icon,
-    propType: PROP_TYPES.ASSET,
-    defaultValue: null,
-  },
-  label: {
-    group: GROUPS.basic,
-    label: "Label",
-    description: "Button label",
-    required: true,
-    editable: true,
-    formType: FORM_TYPES.string,
-    propType: PROP_TYPES.STRING,
-    defaultValue: "GET STARTED",
-  },
-  color: {
-    group: GROUPS.basic,
-    label: "Color Override",
-    description: "Override the background color of the button",
-    editable: true,
-    required: false,
-    formType: FORM_TYPES.color,
-    propType: PROP_TYPES.THEME,
-    defaultValue: null,
-  },
-  onPress: {
-    group: GROUPS.basic,
-    label: "Action",
-    description: "Action to execute when button pressed",
-    editable: true,
-    required: false,
-    formType: FORM_TYPES.action,
-    propType: PROP_TYPES.STRING,
-    defaultValue: null,
-  },
-};
-
 export const SEED_DATA = [
   {
     name: "FAB",
     tag: "FAB",
-    category: COMPONENT_TYPES.deprecated,
+    category: COMPONENT_TYPES.button,
     description: "A round, mini FAB",
-    preview_image_url: "{CLOUDINARY_URL}/Button_FABMini.png",
-    props: {
-      ...SEED_DATA_PROPS,
-      type: {
-        group: GROUPS.uncategorized,
-        label: "Type",
-        description: "Button type",
-        editable: false,
-        required: true,
-        formType: FORM_TYPES.icon,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "standard",
-      },
-      label: {
-        group: GROUPS.data,
-        label: "Label",
-        description: "Button label",
-        required: false,
-        editable: false,
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: null,
-      },
+    layout: {
+      backgroundColor: "primary",
+      color: "#FFF",
     },
-    layout: {},
-  },
-  {
-    name: "FAB Outline",
-    tag: "FAB",
-    category: COMPONENT_TYPES.deprecated,
-    preview_image_url: "{CLOUDINARY_URL}/Button_FABMini.png",
     props: {
-      ...SEED_DATA_PROPS,
-      type: {
-        group: GROUPS.uncategorized,
-        label: "Type",
-        description: "Button type",
-        editable: false,
-        required: true,
-        propType: PROP_TYPES.STRING,
-        formType: FORM_TYPES.string,
-        defaultValue: "outline",
-      },
-      label: {
-        group: GROUPS.uncategorized,
-        label: "Label",
-        description: "Button label",
-        required: false,
-        editable: false,
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: null,
-      },
+      onPress: createActionProp(),
+      icon: createIconProp({
+        defaultValue: "MaterialIcons/add",
+      }),
     },
-    layout: {},
-  },
-  {
-    name: "FAB Extended",
-    tag: "FAB",
-    category: COMPONENT_TYPES.deprecated,
-    preview_image_url: "{CLOUDINARY_URL}/Button_FABExtended.png",
-    props: {
-      ...SEED_DATA_PROPS,
-      type: {
-        group: GROUPS.uncategorized,
-        label: "Type",
-        description: "Button type",
-        editable: false,
-        required: true,
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "extended",
-      },
-    },
-    layout: {},
-  },
-  {
-    name: "FAB Fixed",
-    tag: "FAB",
-    category: COMPONENT_TYPES.deprecated,
-    preview_image_url: "{CLOUDINARY_URL}/Button_FABFixed.png",
-    props: {
-      ...SEED_DATA_PROPS,
-      type: {
-        group: GROUPS.uncategorized,
-        label: "Type",
-        description: "Button type",
-        editable: false,
-        required: true,
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "fixed",
-      },
-    },
-    layout: {},
   },
 ];

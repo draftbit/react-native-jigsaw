@@ -1,4 +1,5 @@
 import * as React from "react";
+import { withTheme } from "../core/theming";
 import {
   ScrollView,
   View,
@@ -16,18 +17,31 @@ type Props = {
   data?: any[];
   children?: React.ReactNode;
   style?: StyleProp<ViewStyle>;
+  dotColor?: string;
 };
 
-function Pager({ index, length }: { index: number; length: number }) {
+function Pager({
+  color,
+  index,
+  length,
+}: {
+  color: string;
+  index: number;
+  length: number;
+}) {
   return (
     <View style={styles.pager}>
       {Array.from({ length }).map((_, i) => {
         const current = index === i;
         const opacity = current ? 1 : 0.5;
-        const size = current ? 12 : 8;
+        const size = current ? 10 : 8;
         return (
           <View
-            style={[styles.bullet, { opacity, width: size, height: size }]}
+            key={i}
+            style={[
+              styles.bullet,
+              { backgroundColor: color, opacity, width: size, height: size },
+            ]}
           />
         );
       })}
@@ -35,7 +49,13 @@ function Pager({ index, length }: { index: number; length: number }) {
   );
 }
 
-function Carousel({ data, children, style, ...rest }: Props) {
+function Carousel({
+  data,
+  children,
+  dotColor = "strong",
+  style,
+  ...rest
+}: Props) {
   const [index, setIndex] = React.useState(0);
 
   const length = React.Children.count(children);
@@ -47,7 +67,7 @@ function Carousel({ data, children, style, ...rest }: Props) {
     <View style={[styles.container, style]}>
       <ScrollView
         pagingEnabled
-        horizontal={true}
+        horizontal
         decelerationRate="fast"
         scrollEventThrottle={200}
         showsHorizontalScrollIndicator={false}
@@ -59,12 +79,13 @@ function Carousel({ data, children, style, ...rest }: Props) {
         {...rest}
       >
         {slides.length > 0
-          ? slides.map((item) => {
+          ? slides.map((item, i) => {
               return (
                 <Image
+                  key={i}
                   resizeMode="cover"
                   source={typeof item === "string" ? { uri: item } : item}
-                  style={{ height: 200, width: slideWidth }}
+                  style={[{ height: "100%", width: slideWidth }]}
                 />
               );
             })
@@ -80,21 +101,21 @@ function Carousel({ data, children, style, ...rest }: Props) {
           );
         })}
       </ScrollView>
-      <Pager index={index} length={itemsLength} />
+      <Pager color={dotColor} index={index} length={itemsLength} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    height: 250,
     position: "relative",
     width: screenWidth,
-    height: 500,
     backgroundColor: "#eee",
   },
   pager: {
     position: "absolute",
-    bottom: 10,
+    bottom: 12,
     left: 0,
     right: 0,
     flexDirection: "row",
@@ -103,14 +124,14 @@ const styles = StyleSheet.create({
   },
   bullet: {
     marginHorizontal: 2,
-    width: 12,
-    height: 12,
-    borderRadius: 24,
-    backgroundColor: "#FFF",
+    width: 10,
+    height: 10,
+    borderRadius: 20,
+    backgroundColor: "#000",
   },
 });
 
-export default Carousel;
+export default withTheme(Carousel);
 
 export const SEED_DATA = [
   {
@@ -118,11 +139,7 @@ export const SEED_DATA = [
     tag: "Carousel",
     category: COMPONENT_TYPES.blocks,
     description: "A horizontal scrolling carousel of images",
-    preview_image_url: "{CLOUDINARY_URL}/Carousel.png",
-    supports_list_render: false,
-    layout: {
-      height: 250,
-    },
+    layout: {},
     resizeMode: createResizeModeProp(),
   },
 ];

@@ -1,5 +1,11 @@
 import * as React from "react";
-import { Icon, RadioButton, Row, RadioButtonFieldGroup } from "@draftbit/ui";
+import {
+  Icon,
+  RadioButton,
+  Row,
+  RadioButtonFieldGroup,
+  withTheme,
+} from "@draftbit/ui";
 import Section, { Container } from "./Section";
 import { Text, View, StyleSheet } from "react-native";
 
@@ -12,7 +18,7 @@ const SingleRadioButtonWrapper = ({ label, children }) => (
   </View>
 );
 
-const RadioButtonGroupExample = () => {
+const RadioButtonGroupExample = ({ theme }) => {
   const [selected, onSelect] = React.useState("1");
   const handleSelect = (value) => onSelect(value);
   return (
@@ -29,7 +35,7 @@ const RadioButtonGroupExample = () => {
             <RadioButton selected disabled />
           </SingleRadioButtonWrapper>
           <SingleRadioButtonWrapper label="Custom color">
-            <RadioButton selected color="error" />
+            <RadioButton selected color={theme.colors.error} />
           </SingleRadioButtonWrapper>
         </Row>
       </Section>
@@ -148,4 +154,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RadioButtonGroupExample;
+export default withTheme(RadioButtonGroupExample);

@@ -26,22 +26,22 @@ const Switch: React.FC<Props> = ({
   ...props
 }) => {
   let [checked, setChecked] = React.useState(value);
-  let thumbColor;
-  let checkedColor = color || theme.colors.primary;
+  let thumbColor = "#FFF";
+  const checkedColor = color || theme.colors.primary;
+  const uncheckedColor = "#ddd";
 
-  if (Platform.OS !== "ios") {
-    thumbColor = theme.colors.surface;
-  }
+  React.useEffect(() => {
+    if (value !== checked) {
+      setChecked(value);
+    }
+  }, [value, checked]);
 
   return (
     <NativeSwitch
       {...props}
       value={checked}
       disabled={disabled}
-      trackColor={{ false: "", true: checkedColor }}
-      //@ts-ignore
-      activeTrackColor={checkedColor}
-      activeThumbColor={thumbColor}
+      trackColor={{ false: uncheckedColor, true: checkedColor }}
       thumbColor={thumbColor}
       onValueChange={(boolValue) => {
         if (!disabled) {

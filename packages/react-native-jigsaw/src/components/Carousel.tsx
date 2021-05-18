@@ -60,8 +60,11 @@ function Carousel({
 
   const length = React.Children.count(children);
   const itemsLength = (data?.length ?? 0) + length;
-  const slideWidth = screenWidth;
   const slides = Array.isArray(data) ? data : [];
+
+  const { width, height } = StyleSheet.flatten(style || {});
+  const slideWidth = width || screenWidth;
+  const slideHeight = height || 250;
 
   return (
     <View style={[styles.container, style]}>
@@ -72,8 +75,9 @@ function Carousel({
         scrollEventThrottle={200}
         showsHorizontalScrollIndicator={false}
         onScroll={({ nativeEvent }) => {
+          const layoutWidth = nativeEvent.layoutMeasurement.width;
           const offset = nativeEvent.contentOffset.x;
-          const currentIndex = Math.ceil(offset / slideWidth);
+          const currentIndex = Math.ceil(offset / layoutWidth);
           setIndex(currentIndex);
         }}
         {...rest}
@@ -85,7 +89,7 @@ function Carousel({
                   key={i}
                   resizeMode="cover"
                   source={typeof item === "string" ? { uri: item } : item}
-                  style={[{ height: "100%", width: slideWidth }]}
+                  style={[{ width: slideWidth, height: slideHeight }]}
                 />
               );
             })

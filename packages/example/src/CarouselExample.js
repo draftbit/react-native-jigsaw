@@ -19,11 +19,11 @@ function CarouselExample({ theme }) {
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>
       <Section title="No Fixed Width (Remote Images)">
-        <Carousel images={REMOTE_IMAGES} dotColor={theme.colors.background} />
+        <Carousel data={REMOTE_IMAGES} dotColor={theme.colors.background} />
       </Section>
       <Section title="Fixed Width (Local Images)">
         <Carousel
-          images={LOCAL_IMAGES}
+          data={LOCAL_IMAGES}
           dotColor={theme.colors.background}
           style={{ height: 400, width: 250 }}
         />

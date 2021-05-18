@@ -54,16 +54,19 @@ const FAB: React.FC<Props> = ({
 
   return (
     <View
-      style={{
-        width: size,
-        height: size,
-        borderRadius: size / 2,
-        overflow: "hidden",
-      }}
+      style={[
+        {
+          width: size,
+          height: size,
+          borderRadius: size / 2,
+          overflow: "hidden",
+        },
+        style,
+      ]}
     >
       <Pressable
         onPress={onPress}
-        disabled={disabled}
+        disabled={loading || disabled}
         android_ripple={{
           color: "#333",
           radius: size / 4,
@@ -72,19 +75,18 @@ const FAB: React.FC<Props> = ({
           return [
             styles.button,
             {
-              opacity: pressed ? 0.75 : 1,
+              opacity: pressed || disabled ? 0.75 : 1,
               width: size,
               height: size,
               borderRadius: size / 2,
               backgroundColor,
             },
-            style,
           ];
         }}
         {...props}
       >
         <View>
-          {!loading ? (
+          {loading ? (
             <ActivityIndicator size="small" color={color} />
           ) : (
             <SelectedIcon name={iconName} size={28} color={color} />

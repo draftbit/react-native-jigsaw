@@ -1,46 +1,232 @@
 import React from "react";
+import {
+  StyleSheet,
+  View,
+  ImageSourcePropType,
+  StyleProp,
+  ViewStyle,
+  TextStyle,
+  Pressable,
+} from "react-native";
+import Image from "./Image";
+import Surface from "./Surface";
+import Icon from "./Icon";
+import { Title, Subtitle, Caption } from "./Typography";
+
 import { withTheme } from "../core/theming";
-import Touchable from "./Touchable";
-import { StyleProp, ViewStyle } from "react-native";
-import theme from "../styles/DefaultTheme";
+import type { Theme } from "../styles/DefaultTheme";
+import Config from "./Config";
+
+import {
+  COMPONENT_TYPES,
+  createElevationType,
+  createTextProp,
+  createImageProp,
+  createIconProp,
+  createAspectRatioProp,
+  createActionProp,
+  createBoolProp,
+  createTextStyle,
+} from "../core/component-types";
+
+const ICON_SIZE = Config.cardIconSize;
+const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
+const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
+const ICON_ELEVATION = Config.cardIconElevation;
+
+export const TopRightCircleIcon = withTheme(
+  ({
+    icon,
+    theme,
+    onPress,
+    IconOverride,
+  }: {
+    icon: string;
+    theme: Theme;
+    onPress?: () => void;
+    IconOverride: typeof Icon;
+  }) => {
+    return (
+      <Surface
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          elevation: ICON_ELEVATION,
+          position: "absolute",
+          top: 12,
+          right: 12,
+          width: ICON_CONTAINER_SIZE,
+          height: ICON_CONTAINER_SIZE,
+          padding: ICON_CONTAINER_PADDING,
+          borderRadius: ICON_CONTAINER_SIZE,
+          backgroundColor: "rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <Pressable
+          disabled={!onPress}
+          onPress={onPress}
+          style={({ pressed }) => {
+            return [
+              {
+                opacity: pressed ? 0.8 : 1,
+              },
+            ];
+          }}
+        >
+          <IconOverride
+            name={icon}
+            size={ICON_SIZE}
+            color={theme.colors.surface}
+          />
+        </Pressable>
+      </Surface>
+    );
+  }
+);
 
 type Props = {
+  image?: string | ImageSourcePropType;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  textCentered: boolean;
+  icon?: string;
+  aspectRatio?: number;
+  elevation?: number;
   numColumns?: number;
-  children?: React.ReactNode;
-  onPress?: () => void;
+  theme: Theme;
+  titleStyle?: StyleProp<TextStyle>;
+  subtitleStyle?: StyleProp<TextStyle>;
+  descriptionStyle?: StyleProp<TextStyle>;
   style?: StyleProp<ViewStyle>;
-  theme: typeof theme;
-};
-
-const getWidth = (numColumns: number) => {
-  switch (numColumns) {
-    case 1:
-      return "33%";
-    case 2:
-      return "50%";
-    default:
-      return "100%";
-  }
+  onPress?: () => void;
+  onPressIcon?: () => void;
+  children?: React.ReactNode;
+  IconOverride?: typeof Icon;
 };
 
 const Card: React.FC<Props> = ({
-  numColumns = 3,
-  children,
-  onPress,
+  image = Config.cardImageUrl,
+  title,
+  subtitle,
+  description,
+  textCentered,
+  icon,
+  aspectRatio = 1.5,
+  elevation = 2,
   style,
-  ...rest
+  onPress,
+  onPressIcon,
+  titleStyle,
+  subtitleStyle,
+  descriptionStyle,
+  theme,
+  children,
+  IconOverride = null,
 }) => {
-  const width = getWidth(numColumns);
+  // Necessary to inject web-renderable Icons in buider.
+  const SelectedIcon = IconOverride || Icon;
+
+  const { backgroundColor: bgColor, padding, ...styles } = StyleSheet.flatten(
+    style || {}
+  );
+
+  const backgroundColor = bgColor ? bgColor : theme.colors.surface;
+  const innerPadding = padding ? padding : 12;
+
   return (
-    <Touchable
-      disabled={!onPress}
-      onPress={onPress}
-      style={[style, { width }]}
-      {...rest}
-    >
-      {children}
-    </Touchable>
+    <Surface style={[{ elevation, backgroundColor }, styles]}>
+      <Pressable
+        disabled={!onPress}
+        onPress={onPress}
+        style={({ pressed }) => {
+          return [
+            {
+              opacity: pressed ? 0.8 : 1,
+            },
+          ];
+        }}
+      >
+        <Image
+          style={{ aspectRatio }}
+          source={typeof image === "string" ? { uri: image } : image}
+          resizeMode="cover"
+        />
+        <View style={{ padding: innerPadding }}>
+          <View style={{ alignItems: textCentered ? "center" : "flex-start" }}>
+            {title || (title && title !== "") ? (
+              <Title text={title} style={titleStyle} />
+            ) : null}
+            {subtitle || (subtitle && subtitle !== "") ? (
+              <Subtitle text={subtitle} style={subtitleStyle} />
+            ) : null}
+            {description || (description && description !== "") ? (
+              <View style={{ marginTop: 4 }}>
+                <Caption text={description} style={descriptionStyle} />
+              </View>
+            ) : null}
+            {children}
+          </View>
+        </View>
+        {icon ? (
+          <TopRightCircleIcon
+            IconOverride={SelectedIcon}
+            icon={icon}
+            onPress={onPressIcon}
+          />
+        ) : null}
+      </Pressable>
+    </Surface>
   );
 };
 
 export default withTheme(Card);
+
+export const SEED_DATA = {
+  name: "Card",
+  tag: "Card",
+  description: "A card you can customize however you'd like",
+  category: COMPONENT_TYPES.card,
+  props: {
+    elevation: createElevationType(3),
+    image: createImageProp(),
+    onPress: createActionProp(),
+    onPressIcon: createActionProp(),
+    title: createTextProp({
+      label: "Title",
+      description: "Large title text",
+      // defaultValue: "Title",
+      defaultValue: null,
+    }),
+    titleStyle: createTextStyle({
+      label: "Title Style",
+    }),
+    subtitle: createTextProp({
+      label: "Subtitle",
+      description: "Text underneath the title",
+      defaultValue: null,
+      // defaultValue: "Edit me in the props panel on the right",
+    }),
+    subtitleStyle: createTextStyle({
+      label: "Subtitle Style",
+    }),
+    description: createTextProp({
+      label: "Description",
+      description: "Smallest text underneath subtitle",
+      // defaultValue:
+      // "This bottom text is optional, but shows up to make your life a little easier!",
+      defaultValue: null,
+    }),
+    descriptionStyle: createTextStyle({
+      label: "Description Style",
+    }),
+    icon: createIconProp(),
+    aspectRatio: createAspectRatioProp({
+      defaultValue: 1.5,
+    }),
+    textCentered: createBoolProp({
+      label: "Centered Text",
+      description: "Places your title and subtitle in the center",
+    }),
+  },
+};

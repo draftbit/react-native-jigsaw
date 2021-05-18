@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, FlatList } from "react-native";
-import { CardInline, Spacer, withTheme } from "@draftbit/ui";
+import { Card, Spacer, withTheme } from "@draftbit/ui";
 import { Container } from "./Section";
 
 const getData = () => {
@@ -43,7 +43,7 @@ const getData = () => {
   ];
 };
 
-function CardInlineExample({ theme }) {
+function CardExample({ theme }) {
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>
       <FlatList
@@ -54,11 +54,13 @@ function CardInlineExample({ theme }) {
         renderItem={({ item }) => {
           return (
             <View style={{ width: 240, marginRight: 8 }} key={item.key}>
-              <CardInline
+              <Card
                 icon="MaterialCommunityIcons/heart"
                 title={item.title}
+                description={item.subtitle}
                 image={item.imageUrl}
                 aspectRatio={5 / 3}
+                textCentered
               />
             </View>
           );
@@ -74,8 +76,9 @@ function CardInlineExample({ theme }) {
           return (
             <View style={{ flex: 1 / 2 }} key={item.key}>
               <Spacer all={4}>
-                <CardInline
+                <Card
                   title={item.title}
+                  description={item.subtitle}
                   aspectRatio={3 / 2}
                   image={item.imageUrl}
                 />
@@ -91,12 +94,12 @@ function CardInlineExample({ theme }) {
         renderItem={({ item }) => {
           return (
             <View style={{ flex: 1, padding: 4 }} key={item.key}>
-              <CardInline
+              <Card
                 title={item.title}
                 subtitle={item.subtitle}
+                description={item.description}
                 image={item.imageUrl}
                 aspectRatio={3}
-                style={{ justifyContent: "center", alignItems: "center" }}
               />
             </View>
           );
@@ -106,4 +109,4 @@ function CardInlineExample({ theme }) {
   );
 }
 
-export default withTheme(CardInlineExample);
+export default withTheme(CardExample);

@@ -1,195 +1,141 @@
-import React, { useState } from "react";
+import * as React from "react";
+import { withTheme } from "../core/theming";
 import {
   ScrollView,
   View,
   StyleSheet,
-  Image,
   Dimensions,
-  ImageSourcePropType,
   StyleProp,
   ViewStyle,
-  NativeSyntheticEvent,
-  NativeScrollEvent,
-  ImageStyle,
-  Platform,
 } from "react-native";
-import Elevation from "./Elevation";
-import { withTheme } from "../core/theming";
+import Image from "./Image";
 import {
-  GROUPS,
   COMPONENT_TYPES,
-  FORM_TYPES,
-  PROP_TYPES,
+  createResizeModeProp,
+  createColorProp,
 } from "../core/component-types";
-import Config from "./Config";
-import theme from "../styles/DefaultTheme";
-import { ResizeModeType } from "./ResizeMode";
 
 const screenWidth = Dimensions.get("window").width;
 
-type ImageT = string | ImageSourcePropType;
-
 type Props = {
-  images: ImageT[];
-  aspectRatio?: number;
-  swiperPalette?: "surface" | "non-sruface";
-  resizeMode?: ResizeModeType;
-  dotColor?: string;
-  theme: typeof theme;
+  data?: any[];
+  children?: React.ReactNode;
   style?: StyleProp<ViewStyle>;
+  dotColor?: string;
 };
 
-const Carousel: React.FC<Props> = ({
-  images = [
-    Config.placeholderImageURL,
-    Config.placeholderImageURL,
-    Config.placeholderImageURL,
-    Config.placeholderImageURL,
-    Config.placeholderImageURL,
-    Config.placeholderImageURL,
-    Config.placeholderImageURL,
-  ],
-  aspectRatio,
-  swiperPalette,
-  resizeMode = "cover",
-  dotColor,
-  theme: { colors },
-  style = { height: screenWidth * 0.5 },
+function Pager({
+  color,
+  index,
+  length,
+}: {
+  color: string;
+  index: number;
+  length: number;
+}) {
+  return (
+    <View style={styles.pager}>
+      {Array.from({ length }).map((_, i) => {
+        const current = index === i;
+        const opacity = current ? 1 : 0.5;
+        const size = current ? 10 : 8;
+        return (
+          <View
+            key={i}
+            style={[
+              styles.bullet,
+              { backgroundColor: color, opacity, width: size, height: size },
+            ]}
+          />
+        );
+      })}
+    </View>
+  );
+}
+
+function Carousel({
+  data,
+  children,
+  dotColor = "strong",
+  style,
   ...rest
-}) => {
-  const [scrollOffset, setScrollOffset] = useState(0);
-  const [width, setWidth] = useState(0);
+}: Props) {
+  const [index, setIndex] = React.useState(0);
 
-  const handleScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
-    setScrollOffset(e.nativeEvent.contentOffset.x);
-  };
+  const length = React.Children.count(children);
+  const itemsLength = (data?.length ?? 0) + length;
+  const slides = Array.isArray(data) ? data : [];
 
-  const onPageLayout = () => {
-    const s = style as ViewStyle;
-    if (s.width) {
-      setWidth(typeof s.width === "string" ? +s.width : s.width);
-    } else {
-      setWidth(screenWidth);
-    }
-  };
+  const { width, height } = StyleSheet.flatten(style || {});
+  const slideWidth = width || screenWidth;
+  const slideHeight = height || 250;
 
   return (
-    <View
-      style={[styles.container, { aspectRatio, width }, style]}
-      onLayout={onPageLayout}
-      {...rest}
-    >
+    <View style={[styles.container, style]}>
       <ScrollView
-        onScroll={handleScroll}
-        horizontal
         pagingEnabled
-        showsHorizontalScrollIndicator={Platform.OS === "web"}
-        scrollEventThrottle={16}
+        horizontal
+        decelerationRate="fast"
+        scrollEventThrottle={200}
+        showsHorizontalScrollIndicator={false}
+        onScroll={({ nativeEvent }) => {
+          const layoutWidth = nativeEvent.layoutMeasurement.width;
+          const offset = nativeEvent.contentOffset.x;
+          const currentIndex = Math.ceil(offset / layoutWidth);
+          setIndex(currentIndex);
+        }}
+        {...rest}
       >
-        {images.map((image: ImageT, index: number) => {
-          const imageStyle: StyleProp<ImageStyle> = { width };
-          if (aspectRatio) {
-            imageStyle.aspectRatio = aspectRatio;
-          } else {
-            imageStyle.flex = 1;
-          }
-
+        {slides.length > 0
+          ? slides.map((item, i) => {
+              return (
+                <Image
+                  key={i}
+                  resizeMode="cover"
+                  source={typeof item === "string" ? { uri: item } : item}
+                  style={[{ width: slideWidth, height: slideHeight }]}
+                />
+              );
+            })
+          : null}
+        {React.Children.map(children, (child: any) => {
+          const s = child?.props?.style || {};
           return (
-            <View style={[styles.slidingPanel, { width }]} key={index}>
-              <Image
-                source={typeof image === "string" ? { uri: image } : image}
-                resizeMode={resizeMode}
-                style={{
-                  width,
-                  flex: 1,
-                  aspectRatio,
-                  height: (style as ViewStyle).height,
-                }}
-              />
+            <View style={{ width: slideWidth }}>
+              {React.cloneElement(child, {
+                style: { ...s, width: slideWidth },
+              })}
             </View>
           );
         })}
       </ScrollView>
-      <View style={[styles.swipeNavWrapper, { bottom: 16 }]}>
-        <View style={styles.swipeNav}>
-          {Array.from({ length: images.length }, (_, i) => {
-            const calculatedIndex = scrollOffset / width;
-            const activeDot =
-              calculatedIndex >= i - 0.5 && calculatedIndex < i + 0.5;
-
-            let backgroundColor;
-            if (dotColor) {
-              backgroundColor = dotColor;
-            } else {
-              if (swiperPalette === "surface") {
-                if (activeDot) {
-                  backgroundColor = colors.strong;
-                } else {
-                  backgroundColor = colors.light;
-                }
-              } else {
-                if (activeDot) {
-                  backgroundColor = colors.background;
-                } else {
-                  backgroundColor = colors.surface;
-                }
-              }
-            }
-
-            return (
-              <Elevation
-                key={i}
-                style={[
-                  {
-                    backgroundColor,
-                    marginHorizontal: 8 / 2,
-                  },
-                  styles.dot,
-                  activeDot ? styles.activeDot : null,
-                ]}
-              />
-            );
-          })}
-        </View>
-      </View>
+      <Pager color={dotColor} index={index} length={itemsLength} />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
-    alignSelf: "stretch",
+    height: 250,
+    position: "relative",
+    width: screenWidth,
+    backgroundColor: "#eee",
   },
-  slidingPanel: {
-    alignItems: "center",
-    justifyContent: "center",
-    flex: 1,
-  },
-  swipeNavWrapper: {
+  pager: {
     position: "absolute",
-    justifyContent: "center",
-    alignItems: "center",
+    bottom: 12,
     left: 0,
     right: 0,
-  },
-  swipeNav: {
-    flex: 1,
     flexDirection: "row",
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center",
   },
-  dot: {
-    opacity: 0.5,
-    width: Config.swiperInactiveDotSize,
-    height: Config.swiperInactiveDotSize,
-    borderRadius: Config.swiperInactiveDotSize,
-  },
-  activeDot: {
-    opacity: 1,
-    elevation: 1,
-    width: Config.swiperActiveDotSize,
-    height: Config.swiperActiveDotSize,
-    borderRadius: Config.swiperActiveDotSize,
+  bullet: {
+    marginHorizontal: 2,
+    width: 10,
+    height: 10,
+    borderRadius: 20,
+    backgroundColor: "#000",
   },
 });
 
@@ -201,44 +147,12 @@ export const SEED_DATA = [
     tag: "Carousel",
     category: COMPONENT_TYPES.blocks,
     description: "A horizontal scrolling carousel of images",
-    preview_image_url: "{CLOUDINARY_URL}/Carousel.png",
-    supports_list_render: false,
-    layout: {
-      height: 250,
-    },
+    layout: {},
     props: {
-      images: {
-        group: GROUPS.data,
-        label: "Images",
-        description: "A series of images to display in the carousel",
-        editable: true,
-        required: false,
-        formType: FORM_TYPES.imageArray,
-        propType: PROP_TYPES.ASSET,
-        defaultValue: null,
-      },
-      resizeMode: {
-        group: GROUPS.basic,
-        label: "Resize Mode",
-        description:
-          "Determines how to resize the images when the frame doesn't match the raw image dimensions",
-        editable: true,
-        required: false,
-        defaultValue: "cover",
-        formType: FORM_TYPES.flatArray,
-        propType: PROP_TYPES.STRING,
-        options: ["cover", "contain", "stretch", "repeat", "center"],
-      },
-      dotColor: {
-        group: GROUPS.basic,
-        label: "Dot Color",
-        description: "Color of the carousel's dots",
-        editable: true,
-        required: true,
-        defaultValue: "strong",
-        formType: FORM_TYPES.color,
-        propType: PROP_TYPES.THEME,
-      },
+      resizeMode: createResizeModeProp(),
+      dotColor: createColorProp({
+        label: "Dot color",
+      }),
     },
   },
 ];

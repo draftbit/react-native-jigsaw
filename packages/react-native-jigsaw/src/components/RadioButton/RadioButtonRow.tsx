@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TextStyle,
   View,
+  Platform,
 } from "react-native";
 import RadioButton, {
   SEED_DATA as RADIO_BUTTON_SEED_DATA,
@@ -36,7 +37,7 @@ export interface RadioButtonRowProps extends Omit<RadioButtonProps, "onPress"> {
 }
 
 const getRadioButtonAlignment = (
-  parentDirection: GroupDirection,
+  parentDirection: GroupDirection | undefined,
   direction: Direction
 ) => {
   if (parentDirection === GroupDirection.Horizontal) {
@@ -67,6 +68,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
   labelStyle,
   radioButtonStyle,
   direction = Direction.Row,
+  selected,
   style,
   ...rest
 }) => {
@@ -78,7 +80,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
 
   const handlePress = () => {
     onPress(value);
-    onValueChange(value);
+    onValueChange && onValueChange(value);
   };
 
   return (
@@ -104,11 +106,10 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
         }}
       >
         <RadioButton
+          selected={selected || contextValue === value}
           onPress={handlePress}
           style={radioButtonStyle}
           {...rest}
-          /* Must stay below rest */
-          selected={contextValue === value}
         />
       </View>
     </Touchable>
@@ -123,6 +124,12 @@ const styles = StyleSheet.create({
     minHeight: 50,
     paddingEnd: 20,
     flex: 1,
+    ...Platform.select({
+      web: {
+        cursor: "pointer",
+        userSelect: "none",
+      },
+    }),
   },
   label: {
     flex: 3,

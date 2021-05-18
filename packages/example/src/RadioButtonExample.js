@@ -25,18 +25,18 @@ const RadioButtonGroupExample = ({ theme }) => {
     <Container>
       <Section title="Single Radio Buttons">
         <Row>
-          <LoneRadioButtonWrapper label="Selected">
+          <SingleRadioButtonWrapper label="Selected">
             <RadioButton selected />
-          </LoneRadioButtonWrapper>
-          <LoneRadioButtonWrapper label="Unselected">
+          </SingleRadioButtonWrapper>
+          <SingleRadioButtonWrapper label="Unselected">
             <RadioButton />
-          </LoneRadioButtonWrapper>
-          <LoneRadioButtonWrapper label="Disabled">
+          </SingleRadioButtonWrapper>
+          <SingleRadioButtonWrapper label="Disabled">
             <RadioButton selected disabled />
-          </LoneRadioButtonWrapper>
-          <LoneRadioButtonWrapper label="Custom color">
+          </SingleRadioButtonWrapper>
+          <SingleRadioButtonWrapper label="Custom color">
             <RadioButton selected color={theme.colors.error} />
-          </LoneRadioButtonWrapper>
+          </SingleRadioButtonWrapper>
         </Row>
       </Section>
 

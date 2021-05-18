@@ -1,114 +1,81 @@
 import * as React from "react";
 import {
   StyleSheet,
-  ScrollView,
+  ScrollView as NativeScrollView,
   View,
   StyleProp,
-  SafeAreaView,
   ViewStyle,
 } from "react-native";
-
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { withTheme } from "../core/theming";
-import Config from "./Config";
-import themeT from "../styles/DefaultTheme";
-type Props = {
-  children?: React.ReactNode;
+import type { Theme } from "../styles/DefaultTheme";
+
+function ScrollView({
+  children,
+  style,
+}: {
+  children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
-  theme: typeof themeT;
-  hasSafeArea?: boolean;
-  scrollable?: boolean;
+}) {
+  return (
+    <NativeScrollView
+      contentContainerStyle={[
+        {
+          flexGrow: 1,
+        },
+        style,
+      ]}
+    >
+      {children}
+    </NativeScrollView>
+  );
+}
+
+type Props = {
+  hasSafeArea: boolean;
+  scrollable: boolean;
+  hasBottomSafeArea?: boolean;
+  hasTopSafeArea?: boolean;
+  theme: Theme;
+  style?: StyleProp<ViewStyle>;
+  children?: React.ReactNode;
 };
 
-class ScreenContainer extends React.Component<Props> {
-  renderScrollableSafeAreaView(themeStyles: ViewStyle) {
-    const { children, style } = this.props;
-    return (
-      <SafeAreaView
-        style={[
-          styles.container,
-          {
-            backgroundColor: themeStyles.backgroundColor,
-            paddingTop: Config.topSafeAreaViewHeight,
-          },
-        ]}
-      >
-        <ScrollView
-          style={themeStyles}
-          contentContainerStyle={[
-            {
-              flexGrow: 1,
-            },
-            style,
-          ]}
-        >
-          {children}
-        </ScrollView>
-      </SafeAreaView>
-    );
-  }
+function ScreenContainer({
+  hasSafeArea = true,
+  scrollable = true,
+  hasBottomSafeArea,
+  hasTopSafeArea,
+  theme,
+  style,
+  children,
+  ...rest
+}: Props) {
+  const insets = useSafeAreaInsets();
+  const paddingTop = hasSafeArea || hasTopSafeArea ? insets.top : 0;
+  const paddingBottom = hasSafeArea || hasBottomSafeArea ? insets.bottom : 0;
+  const backgroundColor = theme.colors.background;
 
-  renderSafeAreaView(themeStyle: ViewStyle) {
-    const { children, style } = this.props;
-    return (
-      <SafeAreaView
-        style={[
-          styles.container,
-          {
-            backgroundColor: themeStyle.backgroundColor,
-            paddingTop: Config.topSafeAreaViewHeight,
-          },
-        ]}
-      >
-        <View style={[styles.container, themeStyle, style]}>{children}</View>
-      </SafeAreaView>
-    );
-  }
-
-  renderScrollView(themeStyles: ViewStyle) {
-    const { children, style } = this.props;
-    return (
-      <ScrollView
-        style={[themeStyles]}
-        contentContainerStyle={[
-          {
-            flexGrow: 1,
-          },
-          style,
-        ]}
-      >
-        {children}
-      </ScrollView>
-    );
-  }
-
-  renderView(themeStyles: ViewStyle) {
-    const { children, style } = this.props;
-    return (
-      <View style={[styles.container, themeStyles, style]}>{children}</View>
-    );
-  }
-
-  render() {
-    const { theme, hasSafeArea, scrollable } = this.props;
-
-    const themeStyles = {
-      backgroundColor: theme.colors.background,
-    };
-
-    if (scrollable && hasSafeArea) {
-      return this.renderScrollableSafeAreaView(themeStyles);
-    }
-
-    if (hasSafeArea) {
-      return this.renderSafeAreaView(themeStyles);
-    }
-
-    if (scrollable) {
-      return this.renderScrollView(themeStyles);
-    }
-
-    return this.renderView(themeStyles);
-  }
+  return (
+    <View
+      style={[
+        styles.container,
+        {
+          paddingTop,
+          paddingBottom,
+          backgroundColor,
+        },
+        style,
+      ]}
+      {...rest}
+    >
+      {scrollable ? (
+        <ScrollView style={style}>{children}</ScrollView>
+      ) : (
+        children
+      )}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

@@ -9,7 +9,11 @@ import {
   ViewStyle,
 } from "react-native";
 import Image from "./Image";
-import { COMPONENT_TYPES, createResizeModeProp } from "../core/component-types";
+import {
+  COMPONENT_TYPES,
+  createResizeModeProp,
+  createColorProp,
+} from "../core/component-types";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -144,6 +148,11 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.blocks,
     description: "A horizontal scrolling carousel of images",
     layout: {},
-    resizeMode: createResizeModeProp(),
+    props: {
+      resizeMode: createResizeModeProp(),
+      dotColor: createColorProp({
+        label: "Dot color",
+      }),
+    },
   },
 ];

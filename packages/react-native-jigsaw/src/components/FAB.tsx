@@ -45,7 +45,7 @@ const FAB: React.FC<Props> = ({
 }) => {
   const { backgroundColor: bgColor, color: fgColor } = StyleSheet.flatten(
     style || {}
-  );
+  ) as ViewStyle;
 
   const SelectedIcon = IconOverride || Icon;
 

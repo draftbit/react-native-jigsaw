@@ -40,6 +40,9 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 
 ## Adding components
 
+- Make sure `{...props}` as the last argument to be able to override any extras
+- Make sure `style` and `children` destructured. example: `{style, children, ...props}`
+- Make sure to include a testID if necessary
 
 ### Primitives (Text, View)
 
@@ -70,3 +73,11 @@ defaultValue: "highQuality",
 ## License
 
 MIT
+
+## Contributing
+- Any color should be passed down via theme prop:
+```
+// NOT dotColor="#5a45ff" b/c that isn't theme powered
+// Learn more here https://callstack.github.io/react-native-paper/theming.html
+<Carousel dotColor={theme.colors.strong}>
+```

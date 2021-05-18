@@ -16,6 +16,7 @@ export function Center({
   children,
   bgColor,
   style,
+  ...rest
 }: {
   width: number;
   height: number;
@@ -35,6 +36,7 @@ export function Center({
         },
         style,
       ]}
+      {...rest}
     >
       {children}
     </View>
@@ -45,10 +47,13 @@ export function Circle({
   size = 50,
   bgColor,
   children,
+  style,
+  ...rest
 }: {
   size: number;
   bgColor: string;
   children: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
 }) {
   const borderRadius = 1000;
   return (
@@ -56,7 +61,11 @@ export function Circle({
       width={size}
       height={size}
       bgColor={bgColor}
-      style={{ backgroundColor: bgColor, borderRadius, overflow: "hidden" }}
+      style={[
+        style,
+        { backgroundColor: bgColor, borderRadius, overflow: "hidden" },
+      ]}
+      {...rest}
     >
       {children}
     </Center>
@@ -67,13 +76,22 @@ export function Square({
   size = 50,
   bgColor,
   children,
+  style,
+  ...rest
 }: {
   size: number;
   bgColor: string;
   children: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
 }) {
   return (
-    <Center width={size} height={size} bgColor={bgColor}>
+    <Center
+      style={style}
+      width={size}
+      height={size}
+      bgColor={bgColor}
+      {...rest}
+    >
       {children}
     </Center>
   );
@@ -83,18 +101,25 @@ export function Row({
   justifyContent,
   alignItems,
   children,
+  style,
+  ...rest
 }: {
   alignItems: ViewStyleProp.alignItems;
   justifyContent: ViewStyleProp.justifyContent;
   children: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
 }) {
   return (
     <View
-      style={{
-        alignItems,
-        flexDirection: "row",
-        justifyContent: justifyContent,
-      }}
+      style={[
+        style, // style goes first b/c we can't override these
+        {
+          alignItems,
+          flexDirection: "row",
+          justifyContent: justifyContent,
+        },
+      ]}
+      {...rest}
     >
       {children}
     </View>
@@ -107,21 +132,28 @@ export function Spacer({
   bottom = 8,
   left = 8,
   children,
+  style,
+  ...rest
 }: {
   top?: number;
   right?: number;
   left?: number;
   bottom?: number;
   children: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
 }) {
   return (
     <View
-      style={{
-        paddingRight: right,
-        paddingTop: top,
-        paddingLeft: left,
-        paddingBottom: bottom,
-      }}
+      style={[
+        style,
+        {
+          paddingRight: right,
+          paddingTop: top,
+          paddingLeft: left,
+          paddingBottom: bottom,
+        },
+      ]}
+      {...rest}
     >
       {children}
     </View>
@@ -132,12 +164,20 @@ export function Stack({
   children,
   justifyContent = "flex-start",
   alignItems = "flex-start",
+  style,
+  ...rest
 }: {
   justifyContent: ViewStyleProp.justifyContent;
   alignItems: ViewStyleProp.alignItems;
   children: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
 }) {
-  return <View style={{ justifyContent, alignItems }}>{children}</View>;
+  return (
+    // style must go first since we don't want justifyContent, alignItems overridden
+    <View style={[style, { justifyContent, alignItems }]} {...rest}>
+      {children}
+    </View>
+  );
 }
 
 export const SEED_DATA = [

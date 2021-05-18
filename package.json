@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "react-native-jigsaw",
-  "version": "0.0.0-this-is-not-publishable",
+  "version": "0.0.0",
   "description": "Root package.json for workspaces",
   "scripts": {
     "lint": "eslint --ext .js,.ts,.tsx .",

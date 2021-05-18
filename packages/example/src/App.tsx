@@ -33,6 +33,7 @@ import ControllerExample from "./ControllerExample";
 import DatePickerExample from "./DatePickerExample";
 
 import FABExample from "./FABExample";
+import ToggleButtonExample from "./ToggleButtonExample";
 import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
 
 import HeaderExample from "./HeaderExample";
@@ -66,6 +67,7 @@ const ROUTES = {
   FAB: FABExample,
   RadioButton: RadioButtonExample,
   Card: CardExample,
+  ToggleButton: ToggleButtonExample,
   CardBlock: CardBlockExample,
   CardInline: CardInlineExample,
   CardContainerShortImage: CardContainerShortImageExample,

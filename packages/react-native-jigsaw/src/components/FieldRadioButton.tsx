@@ -3,18 +3,19 @@ import Color from "color";
 import { View, Text } from "react-native";
 import { withTheme } from "../core/theming";
 import Touchable from "./Touchable";
-import RadioButton from "./RadioButton";
+import RadioButton from "./RadioButton/RadioButton";
 
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-import themeT from "../styles/DefaultTheme";
+import type { Theme } from "../styles/DefaultTheme";
+import { colorTypes } from "../types";
 
 type Props = {
   onPress?: () => void;
   title?: string;
   selected: boolean;
   disabled?: boolean;
-  color: string;
-  theme: typeof themeT;
+  color: colorTypes;
+  theme: Theme;
 };
 
 const FieldRadioButton: React.FC<Props> = ({
@@ -53,8 +54,7 @@ export default withTheme(FieldRadioButton);
 export const SEED_DATA = {
   name: "Field Radio Button",
   tag: "FieldRadioButton",
-  category: COMPONENT_TYPES.field,
-  preview_image_url: "{CLOUDINARY_URL}/Field_Radio.png",
+  category: COMPONENT_TYPES.deprecated,
   props: {
     title: {
       group: GROUPS.data,

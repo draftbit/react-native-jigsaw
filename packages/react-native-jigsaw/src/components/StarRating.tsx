@@ -2,13 +2,15 @@ import * as React from "react";
 import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
 import Icon from "./Icon";
 import { withTheme } from "../core/theming";
-import theme from "../styles/DefaultTheme";
+import Theme from "../styles/DefaultTheme";
+
+import { COMPONENT_TYPES, createNumberProp } from "../core/component-types";
 
 type Props = {
   starSize?: number;
   maxStars?: number;
   rating?: number;
-  theme: typeof theme;
+  theme: typeof Theme;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -47,3 +49,35 @@ const styles = StyleSheet.create({
 });
 
 export default withTheme(StarRating);
+
+export const SEED_DATA = {
+  name: "Star Rating",
+  tag: "StarRating",
+  description: "A star rating component",
+  category: COMPONENT_TYPES.deprecated,
+  props: {
+    starSize: createNumberProp({
+      label: "Star size",
+      description: "Size of each individual star",
+      defaultValue: 16,
+      min: 8,
+      max: 36,
+      step: 1,
+    }),
+    maxStars: createNumberProp({
+      label: "Max Stars",
+      description: "The max number of stars",
+      defaultValue: 5,
+      min: 0,
+      max: 10,
+      step: 1,
+    }),
+    rating: createNumberProp({
+      label: "Rating",
+      description: "The number of stars that should be colored in",
+      min: 0,
+      max: 10,
+      step: 1,
+    }),
+  },
+};

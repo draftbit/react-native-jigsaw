@@ -6,13 +6,15 @@ import {
   ViewProps,
   StyleProp,
   ImageStyle,
+  Platform,
 } from "react-native";
 
 import {
   COMPONENT_TYPES,
-  FORM_TYPES,
   GROUPS,
-  PROP_TYPES,
+  createNumberProp,
+  createColorProp,
+  createIconProp,
 } from "../core/component-types";
 
 // This must use require to work in both web as a published project and in Snack
@@ -37,7 +39,9 @@ const Icon: React.FC<Props> = ({ name, color, size, style, ...rest }) => {
     const IconSet = VectorIcons[iconSet];
 
     return (
-      <IconSet {...rest} name={name} color={color} size={size} style={style} />
+      <View style={[styles.container, { width: size, height: size }, style]}>
+        <IconSet {...rest} name={name} color={color} size={size} />
+      </View>
     );
   } else if (
     (typeof name === "object" &&
@@ -61,6 +65,7 @@ const Icon: React.FC<Props> = ({ name, color, size, style, ...rest }) => {
       />
     );
   }
+
   return (
     <View
       {...rest}
@@ -78,58 +83,40 @@ const Icon: React.FC<Props> = ({ name, color, size, style, ...rest }) => {
   );
 };
 
-export default Icon;
-
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
     overflow: "hidden",
+    ...Platform.select({
+      web: {
+        cursor: "pointer",
+        userSelect: "none",
+      },
+    }),
   },
 });
+
+export default Icon;
 
 export const SEED_DATA = {
   name: "Icon",
   tag: "Icon",
   description: "An icon",
   category: COMPONENT_TYPES.basic,
-  preview_image_url: "{CLOUDINARY_URL}/Icon.png",
-  supports_list_render: false,
+  layout: {},
   props: {
-    name: {
-      group: GROUPS.data,
-      label: "Name",
-      description: "Name of the icon",
-      formType: FORM_TYPES.icon,
-      propType: PROP_TYPES.STRING,
-      defaultValue: "FontAwesome/photo",
-      editable: true,
-      required: true,
-    },
-    color: {
-      group: GROUPS.basic,
-      label: "Color",
-      description: "Color of the icon",
-      formType: FORM_TYPES.color,
-      propType: PROP_TYPES.THEME,
-      defaultValue: "strong",
-      editable: true,
-      required: true,
-    },
-    size: {
+    name: createIconProp(),
+    color: createColorProp(),
+    size: createNumberProp({
       group: GROUPS.basic,
       label: "Size",
-      description: "Width and height of the icon",
-      formType: FORM_TYPES.number,
-      propType: PROP_TYPES.NUMBER,
+      description: "Width and height of your icon",
       defaultValue: 24,
       min: 16,
       max: 128,
       step: 1,
       precision: 0,
-      editable: true,
-      required: true,
-    },
+    }),
   },
-  layout: {},
 };

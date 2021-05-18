@@ -29,7 +29,7 @@ export default function Checkbox(props: Props) {
 export const SEED_DATA = {
   name: "Checkbox",
   tag: "Checkbox",
-  category: COMPONENT_TYPES.input,
+  category: COMPONENT_TYPES.deprecated,
   layout: null,
   props: {
     disabled: {

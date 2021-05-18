@@ -6,15 +6,16 @@ import Touchable from "./Touchable";
 import RadioButton from "./RadioButton/RadioButton";
 
 import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
-import themeT from "../styles/DefaultTheme";
+import type { Theme } from "../styles/DefaultTheme";
+import { colorTypes } from "../types";
 
 type Props = {
   onPress?: () => void;
   title?: string;
   selected: boolean;
   disabled?: boolean;
-  color: string;
-  theme: typeof themeT;
+  color: colorTypes;
+  theme: Theme;
 };
 
 const FieldRadioButton: React.FC<Props> = ({
@@ -34,12 +35,7 @@ const FieldRadioButton: React.FC<Props> = ({
   return (
     <Touchable onPress={() => onPress()} disabled={disabled}>
       <View style={{ flexDirection: "row" }}>
-        <RadioButton
-          theme={theme}
-          color={color}
-          selected={selected}
-          disabled={disabled}
-        />
+        <RadioButton color={color} selected={selected} disabled={disabled} />
         <Text
           style={[
             theme.typography.body1,
@@ -59,7 +55,6 @@ export const SEED_DATA = {
   name: "Field Radio Button",
   tag: "FieldRadioButton",
   category: COMPONENT_TYPES.deprecated,
-  preview_image_url: "{CLOUDINARY_URL}/Field_Radio.png",
   props: {
     title: {
       group: GROUPS.data,

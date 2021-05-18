@@ -7,13 +7,13 @@ export enum Direction {
 interface RadioButtonGroupContext {
   onValueChange: (value: string) => void;
   value: string;
-  direction: Direction;
+  direction?: Direction;
 }
 
 export const radioButtonGroupContext = createContext<RadioButtonGroupContext>({
   onValueChange: () => {},
   value: "",
-  direction: Direction.Horizontal,
+  direction: undefined,
 });
 
 export function useRadioButtonGroupContext() {

@@ -30,6 +30,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14.x
+
+      - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile
+        working-directory: packages/react-native-jigsaw
+
       - name: Type check
         run: yarn typescript
         working-directory: packages/react-native-jigsaw

@@ -1,4 +1,4 @@
-name: Build, Test and Publish @draftbit/ui
+name: draftbit/ui
 
 on:
   push:

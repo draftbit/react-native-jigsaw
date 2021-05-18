@@ -6,7 +6,6 @@ import {
   ActivityIndicator,
   StyleProp,
   ViewStyle,
-  TextStyle,
   PressableProps,
   Platform,
 } from "react-native";
@@ -18,6 +17,7 @@ import {
   COMPONENT_TYPES,
   createIconProp,
   createActionProp,
+  createColorProp,
 } from "../core/component-types";
 
 type Props = {
@@ -123,6 +123,14 @@ export const SEED_DATA = [
       onPress: createActionProp(),
       icon: createIconProp({
         defaultValue: "MaterialIcons/add",
+      }),
+      iconColor: createColorProp({
+        label: "Icon color",
+        defaultValue: null,
+      }),
+      bgColor: createColorProp({
+        label: "Bg color",
+        defaultValue: null,
       }),
     },
   },

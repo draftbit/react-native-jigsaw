@@ -296,6 +296,11 @@ export const FIELD_NAME = {
   required: false,
 };
 
+export const createStateValue = (overrides = {}) => ({
+  ...FIELD_NAME,
+  ...overrides,
+});
+
 export const TEXT_INPUT_PROPS = {
   allowFontScaling: {
     group: GROUPS.advanced,

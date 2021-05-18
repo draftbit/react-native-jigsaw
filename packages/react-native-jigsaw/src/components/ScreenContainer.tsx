@@ -1,17 +1,16 @@
 import * as React from "react";
 import {
   StyleSheet,
-  ScrollView,
+  ScrollView as NativeScrollView,
   View,
   StyleProp,
   ViewStyle,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-
 import { withTheme } from "../core/theming";
 import type { Theme } from "../styles/DefaultTheme";
 
-function SV({
+function ScrollView({
   children,
   style,
 }: {
@@ -19,7 +18,7 @@ function SV({
   style?: StyleProp<ViewStyle>;
 }) {
   return (
-    <ScrollView
+    <NativeScrollView
       contentContainerStyle={[
         {
           flexGrow: 1,
@@ -28,13 +27,15 @@ function SV({
       ]}
     >
       {children}
-    </ScrollView>
+    </NativeScrollView>
   );
 }
 
 type Props = {
   hasSafeArea: boolean;
   scrollable: boolean;
+  hasBottomSafeArea?: boolean;
+  hasTopSafeArea?: boolean;
   theme: Theme;
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
@@ -43,14 +44,16 @@ type Props = {
 function ScreenContainer({
   hasSafeArea = true,
   scrollable = true,
+  hasBottomSafeArea,
+  hasTopSafeArea,
   theme,
   style,
   children,
   ...rest
 }: Props) {
   const insets = useSafeAreaInsets();
-  const paddingTop = hasSafeArea ? insets.top : 0;
-  const paddingBottom = hasSafeArea ? insets.bottom : 0;
+  const paddingTop = hasSafeArea || hasTopSafeArea ? insets.top : 0;
+  const paddingBottom = hasSafeArea || hasBottomSafeArea ? insets.bottom : 0;
   const backgroundColor = theme.colors.background;
 
   return (
@@ -66,7 +69,11 @@ function ScreenContainer({
       ]}
       {...rest}
     >
-      {scrollable ? <SV style={style}>{children}</SV> : children}
+      {scrollable ? (
+        <ScrollView style={style}>{children}</ScrollView>
+      ) : (
+        children
+      )}
     </View>
   );
 }

@@ -14,7 +14,7 @@ import Icon from "./Icon";
 import { Title, Subtitle, Caption } from "./Typography";
 
 import { withTheme } from "../core/theming";
-import ThemeT from "../styles/DefaultTheme";
+import type { Theme } from "../styles/DefaultTheme";
 import Config from "./Config";
 
 import {
@@ -42,7 +42,7 @@ export const TopRightCircleIcon = withTheme(
     IconOverride,
   }: {
     icon: string;
-    theme: typeof ThemeT;
+    theme: Theme;
     onPress?: () => void;
     IconOverride: typeof Icon;
   }) => {
@@ -94,7 +94,7 @@ type Props = {
   aspectRatio?: number;
   elevation?: number;
   numColumns?: number;
-  theme: typeof ThemeT;
+  theme: Theme;
   titleStyle?: StyleProp<TextStyle>;
   subtitleStyle?: StyleProp<TextStyle>;
   descriptionStyle?: StyleProp<TextStyle>;

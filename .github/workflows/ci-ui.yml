@@ -8,15 +8,39 @@ on:
     types: [assigned, opened, synchronize, reopened]
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile
+        working-directory: packages/react-native-jigsaw
+
+      - name: Lint
+        run: yarn lint
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: Type check
+        run: yarn typescript
+        working-directory: packages/react-native-jigsaw
+
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v1
         with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
+          node-version: 14.x
 
       # https://github.com/actions/cache/blob/main/examples.md#node---yarn
       - name: Restore node_modules cache
@@ -34,9 +58,6 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile
         working-directory: packages/react-native-jigsaw
-
-      - name: Lint
-        run: yarn lint
 
       - name: Build
         run: yarn build

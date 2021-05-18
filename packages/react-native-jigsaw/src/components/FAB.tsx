@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   StyleProp,
   ViewStyle,
+  TextStyle,
   PressableProps,
   Platform,
 } from "react-native";
@@ -39,18 +40,16 @@ const FAB: React.FC<Props> = ({
   iconName = "MaterialIcons/add",
   style,
   theme,
+  iconColor,
+  bgColor,
   size = 50,
   IconOverride = null,
   ...props
 }) => {
-  const { backgroundColor: bgColor, color: fgColor } = StyleSheet.flatten(
-    style || {}
-  ) as ViewStyle;
-
   const SelectedIcon = IconOverride || Icon;
 
   const backgroundColor = bgColor || theme.colors.primary;
-  const color = fgColor || "#FFF";
+  const color = iconColor || "#FFF";
 
   return (
     <View
@@ -89,7 +88,7 @@ const FAB: React.FC<Props> = ({
           {loading ? (
             <ActivityIndicator size="small" color={color} />
           ) : (
-            <SelectedIcon name={iconName} size={28} color={color} />
+            <SelectedIcon name={iconName} size={28} color={iconColor} />
           )}
         </View>
       </Pressable>
@@ -100,7 +99,6 @@ const FAB: React.FC<Props> = ({
 const styles = StyleSheet.create({
   button: {
     backgroundColor: "#5a45ff",
-    color: "#FFF",
     justifyContent: "center",
     alignItems: "center",
     ...Platform.select({
@@ -120,10 +118,7 @@ export const SEED_DATA = [
     tag: "FAB",
     category: COMPONENT_TYPES.button,
     description: "A round, mini FAB",
-    layout: {
-      backgroundColor: "primary",
-      color: "#FFF",
-    },
+    layout: {},
     props: {
       onPress: createActionProp(),
       icon: createIconProp({

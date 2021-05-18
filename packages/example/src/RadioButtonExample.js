@@ -1,11 +1,5 @@
 import * as React from "react";
-import {
-  Icon,
-  RadioButton,
-  Row,
-  RadioButtonFieldGroup,
-  withTheme,
-} from "@draftbit/ui";
+import { Icon, RadioButton, Row, RadioButtonFieldGroup } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 import { Text, View, StyleSheet } from "react-native";
 
@@ -18,25 +12,25 @@ const SingleRadioButtonWrapper = ({ label, children }) => (
   </View>
 );
 
-const RadioButtonGroupExample = ({ theme }) => {
+const RadioButtonGroupExample = () => {
   const [selected, onSelect] = React.useState("1");
   const handleSelect = (value) => onSelect(value);
   return (
     <Container>
       <Section title="Single Radio Buttons">
         <Row>
-          <LoneRadioButtonWrapper label="Selected">
+          <SingleRadioButtonWrapper label="Selected">
             <RadioButton selected />
-          </LoneRadioButtonWrapper>
-          <LoneRadioButtonWrapper label="Unselected">
+          </SingleRadioButtonWrapper>
+          <SingleRadioButtonWrapper label="Unselected">
             <RadioButton />
-          </LoneRadioButtonWrapper>
-          <LoneRadioButtonWrapper label="Disabled">
+          </SingleRadioButtonWrapper>
+          <SingleRadioButtonWrapper label="Disabled">
             <RadioButton selected disabled />
-          </LoneRadioButtonWrapper>
-          <LoneRadioButtonWrapper label="Custom color">
-            <RadioButton selected color={theme.colors.error} />
-          </LoneRadioButtonWrapper>
+          </SingleRadioButtonWrapper>
+          <SingleRadioButtonWrapper label="Custom color">
+            <RadioButton selected color="error" />
+          </SingleRadioButtonWrapper>
         </Row>
       </Section>
 
@@ -154,4 +148,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(RadioButtonGroupExample);
+export default RadioButtonGroupExample;

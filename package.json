@@ -7,17 +7,27 @@
     "lint": "eslint --ext .js,.ts,.tsx .",
     "postinstall": "expo-yarn-workspaces check-workspace-dependencies"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "example"
+    ],
+    "nohoist": [
+      "**/react-native",
+      "**/react-native/**",
+      "**/react-native-web",
+      "**/react-native-web/**"
+    ]
+  },
   "devDependencies": {
-    "expo-yarn-workspaces": "1.2.1",
     "@commitlint/config-conventional": "^8.3.4",
     "commitlint": "^8.3.5",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "expo-yarn-workspaces": "1.2.1",
     "husky": "^4.2.5",
+    "lerna": "^4.0.0",
     "prettier": "^2.0.5"
   },
   "husky": {

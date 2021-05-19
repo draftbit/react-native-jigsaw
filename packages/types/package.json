@@ -1,0 +1,53 @@
+{
+  "name": "@draftbit/types",
+  "version": "40.29.3",
+  "description": "Shared constants and types between native and core components",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/typescript/src/index.d.ts",
+  "react-native": "src/index.ts",
+  "source": "src/index.ts",
+  "files": [
+    "src",
+    "lib"
+  ],
+  "scripts": {
+    "prepare": "bob build",
+    "clean": "rimraf lib",
+    "clean:modules": "rimraf node_modules"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/draftbit/react-native-jigsaw",
+    "directory": "packages/types"
+  },
+  "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/draftbit/react-native-jigsaw/issues"
+  },
+  "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
+  "@react-native-community/bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json",
+          "tsc": "../../node_modules/typescript/bin/tsc"
+        }
+      ]
+    ]
+  }
+}

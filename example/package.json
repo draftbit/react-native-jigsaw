@@ -1,7 +1,7 @@
 {
   "name": "@draftbit/example",
   "description": "Example app for @draftbit/ui",
-  "version": "0.2.0",
+  "version": "40.29.3",
   "private": true,
   "main": "__generated__/AppEntry.js",
   "scripts": {

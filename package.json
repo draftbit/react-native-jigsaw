@@ -1,11 +1,23 @@
 {
-  "private": true,
   "name": "react-native-jigsaw",
-  "version": "0.0.0",
   "description": "Root package.json for workspaces",
+  "private": true,
+  "license": "MIT",
+  "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "postinstall": "expo-yarn-workspaces check-workspace-dependencies"
+    "postinstall": "expo-yarn-workspaces check-workspace-dependencies",
+    "example": "yarn --cwd example",
+    "bootstrap": "lerna bootstrap",
+    "crosslink": "lerna link",
+    "build": "lerna run prepare",
+    "version:expo": "lerna version major --no-push",
+    "version:major": "lerna version minor --no-push",
+    "version:minor": "lerna version patch --no-push",
+    "version:patch": "echo \"No patch versions: See root README.md\""
   },
   "workspaces": {
     "packages": [
@@ -13,6 +25,8 @@
       "example"
     ],
     "nohoist": [
+      "**/expo",
+      "**/expo/**",
       "**/react-native",
       "**/react-native/**",
       "**/react-native-web",
@@ -20,63 +34,7 @@
     ]
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^8.3.4",
-    "commitlint": "^8.3.5",
-    "eslint": "^7.2.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
     "expo-yarn-workspaces": "1.2.1",
-    "husky": "^4.2.5",
-    "lerna": "^4.0.0",
-    "prettier": "^2.0.5"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "yarn lint"
-    }
-  },
-  "eslintConfig": {
-    "extends": [
-      "@react-native-community",
-      "prettier"
-    ],
-    "rules": {
-      "react-native/no-inline-styles": "off",
-      "prettier/prettier": [
-        "error",
-        {
-          "quoteProps": "consistent",
-          "semi": true,
-          "singleQuote": false,
-          "tabWidth": 2,
-          "trailingComma": "es5",
-          "useTabs": false
-        }
-      ]
-    }
-  },
-  "eslintIgnore": [
-    "scripts",
-    "example/web-build",
-    "node_modules/",
-    "lib/",
-    "__generated__"
-  ],
-  "prettier": {
-    "quoteProps": "consistent",
-    "semi": true,
-    "singleQuote": false,
-    "tabWidth": 2,
-    "trailingComma": "es5",
-    "useTabs": false
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx,md,scss,css,json}": [
-      "prettier --write"
-    ]
+    "lerna": "^4.0.0"
   }
 }

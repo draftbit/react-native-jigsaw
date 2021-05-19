@@ -16,7 +16,7 @@ import {
   PROP_TYPES,
   FIELD_NAME,
 } from "@draftbit/types";
-import Icon from "./Icon";
+import { Icon } from "@draftbit/native";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 

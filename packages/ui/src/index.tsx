@@ -1,4 +1,4 @@
-export {AudioPlayer} from "@draftbit/native";
+export {AudioPlayer, Icon} from "@draftbit/native";
 
 export {withTheme, ThemeProvider} from "./core/theming";
 export {default as Provider} from "./core/Provider";
@@ -14,7 +14,6 @@ export {default as Carousel} from "./components/Carousel";
 export {default as Container} from "./components/Container";
 export {default as FAB} from "./components/FAB";
 export {default as Image} from "./components/Image";
-export {default as Icon} from "./components/Icon";
 export {default as IconButton} from "./components/IconButton";
 
 export {

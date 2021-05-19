@@ -10,7 +10,7 @@ import {
   Platform,
 } from "react-native";
 import { withTheme } from "../core/theming";
-import Icon from "./Icon";
+import { Icon } from "@draftbit/native";
 import type { Theme } from "../styles/DefaultTheme";
 
 import {

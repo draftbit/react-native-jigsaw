@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { withTheme } from "../core/theming";
 import Divider from "./Divider";
-import Icon from "./Icon";
+import { Icon } from "@draftbit/native";
 import Touchable from "./Touchable";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";

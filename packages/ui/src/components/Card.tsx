@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import Image from "./Image";
 import Surface from "./Surface";
-import Icon from "./Icon";
+import { Icon } from "@draftbit/native";
 import { Title, Subtitle, Caption } from "./Typography";
 
 import { withTheme } from "../core/theming";

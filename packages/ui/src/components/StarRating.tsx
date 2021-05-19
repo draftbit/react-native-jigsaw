@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
-import Icon from "./Icon";
+import { Icon } from "@draftbit/native";
 import { withTheme } from "../core/theming";
 import Theme from "../styles/DefaultTheme";
 

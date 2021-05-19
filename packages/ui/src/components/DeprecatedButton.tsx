@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import color from "color";
 import Config from "./Config";
-import Icon from "./Icon";
+import { Icon } from "@draftbit/native";
 import Touchable from "./Touchable";
 import Elevation from "./Elevation";
 import { withTheme } from "../core/theming";

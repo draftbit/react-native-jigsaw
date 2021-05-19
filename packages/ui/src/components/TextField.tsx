@@ -25,7 +25,7 @@ import {
   TEXT_INPUT_PROPS,
 } from "@draftbit/types";
 
-import Icon from "./Icon";
+import { Icon } from "@draftbit/native";
 import theme from "../styles/DefaultTheme";
 
 const AnimatedText = Animated.createAnimatedComponent(Text);

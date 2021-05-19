@@ -7,7 +7,7 @@ import {
   PROP_TYPES,
 } from "@draftbit/types";
 import Row from "./Row";
-import Icon from "./Icon";
+import { Icon } from "@draftbit/native";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 import { StyleProp, ViewStyle } from "react-native";

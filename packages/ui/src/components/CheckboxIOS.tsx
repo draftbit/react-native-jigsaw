@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, TouchableHighlightProps } from "react-native";
-import Icon from "./Icon";
+import { Icon } from "@draftbit/native";
 import Touchable from "./Touchable";
 import { withTheme } from "../core/theming";
 import themeT from "../styles/DefaultTheme";

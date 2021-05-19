@@ -9,7 +9,7 @@ import {
   PressableProps,
   Platform,
 } from "react-native";
-import Icon from "./Icon";
+import { Icon } from "@draftbit/native";
 import { withTheme } from "../core/theming";
 import {
   COMPONENT_TYPES,

@@ -10,7 +10,7 @@ import color from "color";
 import Image from "./Image";
 import Card from "./DeprecatedCardWrapper";
 import Elevation from "./Elevation";
-import Icon from "./Icon";
+import { Icon } from "@draftbit/native";
 import { withTheme } from "../core/theming";
 import {
   GROUPS,

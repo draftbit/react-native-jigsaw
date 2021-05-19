@@ -9,7 +9,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 
-import Icon from "./Icon";
+import { Icon } from "@draftbit/native";
 import Theme from "../styles/DefaultTheme";
 import { withTheme } from "../core/theming";
 

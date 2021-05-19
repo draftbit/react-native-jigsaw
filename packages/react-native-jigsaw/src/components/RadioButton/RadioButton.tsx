@@ -56,6 +56,7 @@ export const SEED_DATA = {
   name: "Radio Button",
   tag: "RadioButton",
   category: COMPONENT_TYPES.button,
+  layout: {},
   props: {
     selected: createBoolProp({
       label: "Selected",
@@ -80,7 +81,7 @@ export const SEED_DATA = {
     size: createNumberProp({
       label: "Size",
       description: "Specifies the size of the button",
-      defaultValue: Config.radioButtonSize,
+      defaultValue: null,
     }),
     selectedIcon: createIconProp({
       label: "Selected Icon",

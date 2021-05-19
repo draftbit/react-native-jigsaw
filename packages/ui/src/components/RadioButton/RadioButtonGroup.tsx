@@ -51,7 +51,7 @@ export default RadioButtonGroup;
 
 export const SEED_DATA = {
   name: "Radio Button Group",
-  tag: "RadioButton.Group",
+  tag: "RadioButtonGroup",
   category: COMPONENT_TYPES.button,
   props: {
     direction: createTextProp({

@@ -2,8 +2,7 @@ import React from "react";
 import { View, StyleProp, TextStyle, ViewStyle } from "react-native";
 import Text from "../Text";
 import { withTheme } from "../../core/theming";
-import { RadioButtonGroupProps } from "./RadioButtonGroup";
-import RadioButton from ".";
+import RadioButtonGroup, { RadioButtonGroupProps } from "./RadioButtonGroup";
 
 interface Props extends RadioButtonGroupProps {
   label?: string;
@@ -32,9 +31,9 @@ const RadioButtonFieldGroup: React.FC<Props> = ({
       >
         {label}
       </Text>
-      <RadioButton.Group theme={theme} {...rest}>
+      <RadioButtonGroup theme={theme} {...rest}>
         {children}
-      </RadioButton.Group>
+      </RadioButtonGroup>
     </View>
   );
 };

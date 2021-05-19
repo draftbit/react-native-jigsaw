@@ -25,7 +25,11 @@ export {
   Spacer,
 } from "./components/Layout";
 
-export { default as RadioButton } from "./components/RadioButton";
+export {
+  default as RadioButton,
+  RadioButtonGroup,
+  RadioButtonRow,
+} from "./components/RadioButton";
 export { default as RadioButtonFieldGroup } from "./components/RadioButton/RadioButtonFieldGroup";
 
 export { default as ScreenContainer } from "./components/ScreenContainer";

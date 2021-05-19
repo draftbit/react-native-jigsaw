@@ -13,4 +13,6 @@ const RadioButton: React.FC<RadioButtonProps> &
   Row: RadioButtonRow,
 });
 
+export { RadioButtonGroup, RadioButtonRow };
+
 export default RadioButton;

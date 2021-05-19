@@ -56,7 +56,10 @@ export const SEED_DATA = {
   name: "Radio Button",
   tag: "RadioButton",
   category: COMPONENT_TYPES.button,
-  layout: {},
+  layout: {
+    width: 24,
+    height: 24,
+  },
   props: {
     selected: createBoolProp({
       label: "Selected",
@@ -93,9 +96,5 @@ export const SEED_DATA = {
       description: "Icon to show when the radio button is unselected",
       defaultValue: "MaterialIcons/radio-button-unchecked",
     }),
-  },
-  layout: {
-    width: 24,
-    height: 24,
   },
 };

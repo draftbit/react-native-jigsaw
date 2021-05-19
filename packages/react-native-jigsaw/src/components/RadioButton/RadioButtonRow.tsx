@@ -7,16 +7,14 @@ import {
   View,
   Platform,
 } from "react-native";
-import RadioButton, {
-  SEED_DATA as RADIO_BUTTON_SEED_DATA,
-  RadioButtonProps,
-} from "./RadioButton";
+import RadioButton, { RadioButtonProps } from "./RadioButton";
 import Text from "../Text";
 import { useRadioButtonGroupContext } from "./context";
 import {
   createTextProp,
   createTextStyle,
   FORM_TYPES,
+  COMPONENT_TYPES,
 } from "../../core/component-types";
 import { Direction as GroupDirection } from "./context";
 import Touchable from "../Touchable";
@@ -136,34 +134,37 @@ const styles = StyleSheet.create({
   },
 });
 
-export const SEED_DATA = {
-  ...RADIO_BUTTON_SEED_DATA,
-  name: "Radio Button Row",
-  tag: "RadioButton.Row",
-  label: createTextProp({
-    label: "Label",
-    description: "Label to show with the radio button",
-    required: true,
-    defaultValue: null,
-  }),
-  labelStyle: createTextStyle({
-    label: "Label Style",
-    description: "Change the styles of the label",
-    required: false,
-  }),
-  direction: createTextProp({
-    label: "Direction",
-    description:
-      "Whether the radio button will appear on the left or on the right",
-    formType: FORM_TYPES.flatArray,
-    defaultValue: "row",
-    options: ["row", "row-reverse"],
-  }),
-  value: createTextProp({
-    label: "Value",
-    description: "Value of the radio button",
-    required: true,
-  }),
-};
-
 export default RadioButtonRow;
+
+export const SEED_DATA = {
+  name: "Radio Button Row",
+  tag: "RadioButtonRow",
+  category: COMPONENT_TYPES.container,
+  layout: {},
+  props: {
+    label: createTextProp({
+      label: "Label",
+      description: "Label to show with the radio button",
+      required: true,
+      defaultValue: null,
+    }),
+    labelStyle: createTextStyle({
+      label: "Label Style",
+      description: "Change the styles of the label",
+      required: false,
+    }),
+    direction: createTextProp({
+      label: "Direction",
+      description:
+        "Whether the radio button will appear on the left or on the right",
+      formType: FORM_TYPES.flatArray,
+      defaultValue: "row",
+      options: ["row", "row-reverse"],
+    }),
+    value: createTextProp({
+      label: "Value",
+      description: "Value of the radio button",
+      required: true,
+    }),
+  },
+};

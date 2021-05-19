@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const PROP_TYPES = {
   STRING: "STRING",
   ARRAY: "ARRAY",
@@ -8,6 +9,12 @@ export const PROP_TYPES = {
   THEME: "THEME",
 };
 
+export const PLATFORMS = {
+  ios: "ios",
+  android: "android",
+  web: "web",
+};
+
 export const GROUPS = {
   accessibility: "accessibility",
   basic: "basic",
@@ -15,6 +22,7 @@ export const GROUPS = {
   advanced: "advanced",
   data: "data",
   uncategorized: "uncategorized",
+  action: "action",
 };
 
 export const FORM_TYPES = {
@@ -31,9 +39,8 @@ export const FORM_TYPES = {
   typeStyle: "typeStyle",
   component: "component",
   geolocation: "geolocation",
-  localImage: "localImage",
-  remoteImage: "remoteImage",
-  localImageArray: "localImageArray",
+  image: "image",
+  imageArray: "imageArray",
   icon: "icon",
   style: "style",
   function: "function",
@@ -63,6 +70,7 @@ export const COMPONENT_TYPES = {
   blocks: "blocks",
   deprecated: "deprecated",
   screen: "screen",
+  codeComponent: "codeComponent",
 };
 
 const ELEVATION_TYPE = {
@@ -77,12 +85,149 @@ const ELEVATION_TYPE = {
   group: GROUPS.basic,
 };
 
-export const createElevationType = (defaultValue: any) => ({
+export const createElevationType = (defaultValue) => ({
   ...ELEVATION_TYPE,
   defaultValue,
 });
 
-export const createNumColumnsType = (overrides: any) => ({
+export const createTextProp = (overrides) => ({
+  label: "Text",
+  description: "Text you can customize however you'd like",
+  formType: FORM_TYPES.string,
+  propType: PROP_TYPES.STRING,
+  defaultValue: "Beautiful West Coast Villa",
+  editable: true,
+  required: false,
+  group: GROUPS.data,
+  ...overrides,
+});
+
+export const createImageProp = (overrides = {}) => ({
+  label: "Image",
+  description: "Image",
+  group: GROUPS.data,
+  formType: FORM_TYPES.sourceUrl,
+  propType: PROP_TYPES.OBJECT,
+  defaultValue: "https://static.draftbit.com/images/placeholder-image.png",
+  editable: true,
+  required: true,
+  ...overrides,
+});
+
+export const createSourceProp = (overrides = {}) => ({
+  label: "Website URL",
+  description: "The URL for the website",
+  defaultValue: "https://draftbit.com",
+  group: GROUPS.data,
+  formType: FORM_TYPES.sourceUrl,
+  propType: PROP_TYPES.OBJECT,
+  editable: true,
+  required: true,
+  ...overrides,
+});
+
+export const createResizeModeProp = (overrides = {}) => ({
+  group: GROUPS.basic,
+  label: "Resize Mode",
+  description:
+    "Determines how to resize the image when the frame doesn't match the raw image dimensions",
+  editable: true,
+  required: false,
+  defaultValue: "cover",
+  formType: FORM_TYPES.flatArray,
+  propType: PROP_TYPES.STRING,
+  options: ["cover", "contain", "stretch", "repeat", "center"],
+  ...overrides,
+});
+
+export const createHitslopProp = (overrides = {}) => ({
+  label: "Hit Slop",
+  description:
+    "Makes the Touchable easier to press by expanding the touchable area a specified number of points, without having to change the layout of the Touchable (e.g. by adding padding)",
+  group: GROUPS.advanced,
+  editable: true,
+  required: false,
+  formType: FORM_TYPES.position,
+  propType: PROP_TYPES.OBJECT,
+  defaultValue: null /* 8 */,
+  ...overrides,
+});
+
+export const createIconProp = (overrides = {}) => ({
+  label: "Icon",
+  description: "Displays an icon of your choice",
+  formType: FORM_TYPES.icon,
+  propType: PROP_TYPES.STRING /* OR ASSET TODO TEST ME */,
+  defaultValue: "FontAwesome/photo",
+  required: true,
+  editable: true,
+  group: GROUPS.basic,
+  ...overrides,
+});
+
+export const createAspectRatioProp = (overrides = {}) => ({
+  label: "Aspect ratio",
+  description: "Aspect ratio of the image",
+  formType: FORM_TYPES.aspectRatio,
+  propType: PROP_TYPES.NUMBER,
+  defaultValue: 1.5,
+  editable: true,
+  required: false,
+  group: GROUPS.basic,
+  ...overrides,
+});
+
+export const createActionProp = (overrides = {}) => ({
+  label: "Action",
+  description: "Action to execute when button pressed",
+  group: GROUPS.action,
+  formType: FORM_TYPES.action,
+  propType: PROP_TYPES.STRING,
+  defaultValue: null,
+  editable: true,
+  required: false,
+  ...overrides,
+});
+
+export const createBoolProp = (overrides = {}) => ({
+  label: "Centered Text",
+  description: "Whether to center the text",
+  formType: FORM_TYPES.boolean,
+  propType: PROP_TYPES.BOOLEAN,
+  defaultValue: false,
+  editable: true,
+  required: false,
+  group: GROUPS.basic,
+  ...overrides,
+});
+
+export const createTextStyle = (overrides = {}) => ({
+  group: GROUPS.basic,
+  label: "Text Style",
+  description: "Change the font styles of a given component",
+  editable: true,
+  required: true,
+  formType: FORM_TYPES.typeStyle,
+  propType: PROP_TYPES.THEME,
+  defaultValue: null,
+  ...overrides,
+});
+
+export const createNumberProp = (overrides = {}) => ({
+  label: "Number",
+  description: "A number",
+  formType: FORM_TYPES.number,
+  propType: PROP_TYPES.NUMBER,
+  group: GROUPS.data,
+  defaultValue: null,
+  editable: true,
+  required: true,
+  min: 0,
+  step: 1,
+  ...overrides,
+});
+
+export const createNumColumnsType = (overrides = {}) => ({
   label: "Number of Columns",
   description: "Number of Columns",
   group: GROUPS.uncategorized,
@@ -91,6 +236,37 @@ export const createNumColumnsType = (overrides: any) => ({
   defaultValue: 1,
   editable: false,
   required: false,
+  ...overrides,
+});
+
+export const createColorProp = (overrides = {}) => ({
+  group: GROUPS.basic,
+  label: "Color",
+  description: "Select or create a color",
+  editable: true,
+  required: false,
+  defaultValue: null,
+  formType: FORM_TYPES.color,
+  propType: PROP_TYPES.THEME,
+  ...overrides,
+});
+
+export const createIconSizeProp = (overrides = {}) => ({
+  group: GROUPS.basic,
+  label: "Icon Size",
+  description: "Size of icon",
+  editable: true,
+  required: false,
+  formType: FORM_TYPES.flatArray,
+  propType: PROP_TYPES.NUMBER,
+  defaultValue: 32,
+  options: [12, 16, 24, 32, 48, 64],
+  ...overrides,
+});
+
+export const createFieldNameProp = (overrides = {}) => ({
+  ...FIELD_NAME,
+  handlerPropName: "onPress",
   ...overrides,
 });
 
@@ -119,32 +295,37 @@ export const FIELD_NAME = {
   required: false,
 };
 
+export const createStateValue = (overrides = {}) => ({
+  ...FIELD_NAME,
+  ...overrides,
+});
+
 export const TEXT_INPUT_PROPS = {
   allowFontScaling: {
-    group: GROUPS.basic,
+    group: GROUPS.advanced,
     label: "Allow Font Scaling",
     description:
       "Whether fonts should scale to respect Text Size in the user's accessibility settings. (Default: true)",
     editable: true,
     required: false,
-    defaultValue: true,
+    defaultValue: null,
     formType: FORM_TYPES.boolean,
     propType: PROP_TYPES.BOOLEAN,
   },
   autoCapitalize: {
-    group: GROUPS.basic,
+    group: GROUPS.advanced,
     label: "Auto Capitalize",
     description:
       "Can automatically capitalize sentences, words, and characters (Default: none).",
     editable: true,
     required: false,
-    defaultValue: "none",
+    defaultValue: null,
     options: ["none", "sentences", "words", "characters"],
     formType: FORM_TYPES.flatArray,
     propType: PROP_TYPES.STRING,
   },
   autoCorrect: {
-    group: GROUPS.basic,
+    group: GROUPS.advanced,
     label: "Auto Correct",
     description: "Enables auto correction",
     editable: true,
@@ -180,7 +361,7 @@ export const TEXT_INPUT_PROPS = {
     description: "Hides the system context menu (Default: false)",
     editable: true,
     required: false,
-    defaultValue: false,
+    defaultValue: null,
     formType: FORM_TYPES.boolean,
     propType: PROP_TYPES.BOOLEAN,
   },
@@ -196,7 +377,7 @@ export const TEXT_INPUT_PROPS = {
     propType: PROP_TYPES.STRING,
   },
   editable: {
-    group: GROUPS.basic,
+    group: GROUPS.advanced,
     label: "Editable",
     description: "If false, the text is not editable",
     editable: true,
@@ -211,7 +392,7 @@ export const TEXT_INPUT_PROPS = {
     description: "Determines the color of the keyboard.(iOS Only)",
     editable: true,
     required: false,
-    defaultValue: "default",
+    defaultValue: null,
     options: ["default", "light", "dark"],
     formType: FORM_TYPES.flatArray,
     propType: PROP_TYPES.STRING,
@@ -222,7 +403,7 @@ export const TEXT_INPUT_PROPS = {
     description: "Determines what keyboard is given to the user.",
     editable: true,
     required: false,
-    defaultValue: "default",
+    defaultValue: null,
     options: [
       "default",
       "email-address",
@@ -260,7 +441,7 @@ export const TEXT_INPUT_PROPS = {
     description: "The text that is shown on load when no value is available.",
     editable: true,
     required: false,
-    defaultValue: null,
+    defaultValue: "Change my fieldname to email or password on the right side",
     formType: FORM_TYPES.string,
     propType: PROP_TYPES.STRING,
   },
@@ -312,7 +493,7 @@ export const TEXT_INPUT_PROPS = {
   },
   secureTextEntry: {
     group: GROUPS.basic,
-    label: "Password Field",
+    label: "Password Input?",
     description:
       "Hides the characters with a *, useful for passwords and other sensitive information.",
     editable: true,

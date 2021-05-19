@@ -23,16 +23,8 @@
   },
   "workspaces": {
     "packages": [
-      "packages/*",
-      "example"
-    ],
-    "nohoist": [
-      "**/expo",
-      "**/expo/**",
-      "**/react-native",
-      "**/react-native/**",
-      "**/react-native-web",
-      "**/react-native-web/**"
+      "example",
+      "packages/*"
     ]
   },
   "devDependencies": {

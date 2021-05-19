@@ -14,6 +14,8 @@
     "bootstrap": "lerna bootstrap",
     "crosslink": "lerna link",
     "build": "lerna run prepare",
+    "upload:run": "node ./scripts/collector.js",
+    "upload:test": "bash ./scripts/test-collector.bash",
     "version:expo": "lerna version major --no-push",
     "version:major": "lerna version minor --no-push",
     "version:minor": "lerna version patch --no-push",

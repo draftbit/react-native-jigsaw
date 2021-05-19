@@ -1,56 +1,53 @@
 require("dotenv").config();
 const fs = require("fs");
-const path = require("path");
 const glob = require("glob");
 const fetch = require("node-fetch");
 const { promisify } = require("util");
 const parser = require("./parser");
-
 const globAsync = promisify(glob);
 
-const SRC_PATH = path.join(__dirname, "..", "src");
-const COMPONENT_PATH = path.join(SRC_PATH, "components");
-const MAPPING_PATH = path.join(SRC_PATH, "mappings");
-const SCREEN_PATH = path.join(SRC_PATH, "screens");
+const {
+  NATIVE_PATH,
+  COMPONENT_PATH,
+  SCREEN_PATH,
+  MAPPING_PATH,
+} = require("./paths");
 
 const IGNORED_FILES = [
   "Query.js", // doesn't work at all
   "LinearGradient.js", // missing gradient UI
-  "EmailLoginScreen.tsx",
-  "RowHeadlineImageCaption.tsx",
-  "RowHeadlineImageIcon.tsx",
-  "Stepper.tsx",
-  "Slider.tsx",
-  "Header.tsx",
-  "HeaderLarge.tsx",
-  "HeaderOverline.tsx",
-  "HeaderMedium.tsx",
-  "WebView.tsx",
 ];
 
 const ERROR_FILES = [];
 const COMPLETED_FILES = [];
 
 async function main() {
-  console.log("Running on", getUrl(), "[warnings surpressed]");
+  console.log("Running on", getUrl());
+
+  const nativeFiles = await globAsync(`${NATIVE_PATH}/**/*.tsx`);
   const componentFiles = await globAsync(`${COMPONENT_PATH}/**/*.tsx`);
   const screenFiles = await globAsync(`${SCREEN_PATH}/**/*.tsx`);
   const mappingFiles = await globAsync(`${MAPPING_PATH}/**/*.js`);
-  const files = [...componentFiles, ...screenFiles, ...mappingFiles].filter(
-    (file) => {
-      const name = file.split("/").pop();
 
-      if (
-        name.includes("web") ||
-        name.includes("ios") ||
-        name.includes("android")
-      ) {
-        return false;
-      }
+  const files = [
+    ...nativeFiles,
+    ...componentFiles,
+    ...screenFiles,
+    ...mappingFiles,
+  ].filter((file) => {
+    const name = file.split("/").pop();
 
-      return !IGNORED_FILES.includes(name);
+    if (
+      name.includes("web") ||
+      name.includes("ios") ||
+      name.includes("android")
+    ) {
+      console.log(`Ignoring... ${name}`);
+      return false;
     }
-  );
+
+    return !IGNORED_FILES.includes(name);
+  });
 
   for (const file of files) {
     const [name, category] = file.split("/").reverse();
@@ -75,6 +72,7 @@ function getUrl() {
   const LOCAL_API_URL = "http://localhost:3001";
   const STAGING_API_URL = "https://api.stagingbit.com";
   const PRODUCTION_API_URL = "https://api.draftbit.com";
+
   switch (process.env.target) {
     case "staging":
       return STAGING_API_URL;

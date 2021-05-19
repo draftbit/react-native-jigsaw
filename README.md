@@ -1,78 +1,95 @@
 # react-native-jigsaw
 
-[Draftbit's](https://draftbit.com) component library used inside our Builder. It's based on [React Native Paper](https://github.com/callstack/react-native-paper) but allows us to extend and empower our users with more features ⚡️
+This is a monorepo containing the packages comprising `@draftbit/ui`,
+[Draftbit's](https://draftbit.com) component library used inside our Builder.
 
-## Differences between React Native Paper and Jigsaw
-
-- Embedded themes. Jigsaw has a very robust theming system that is directly integrated into our builder. React Native Paper is based on Material Design where ours is more generalized for both iOS and Android. That doesn't make it any better or worse, it just means ours is directly integrated into our product and by controlling the library we can make changes as often as we need
-
-- Different components & use cases. React Native Paper is really great for building Material-style apps where we use Jigsaw to build any type of app. You'll find a different series of components for different use cases
-
-We love React Native Paper and even plan on supporting it one day as a different component library, Jigsaw just allows us to deeply embed components, props, themes directly into the Draftbit platform
-
-## Differences between @draftbit/ui and @draftbit/web
-
-@draftbit/web is only used for our internal builder. Because we're using `@expo/vector-icons` and React Native's way of compiling files, this isn't compatible inside create-react-app. The fix is to publish a separate `@draftbit/web` file with Icon.web.tsx being the Icon.tsx file and Icon.native.tsx being the Icon.tsx file.
-
-Both icon files live inside `files/` top level, next to `src`.
-
-## Installation
-
-```sh
-npm install @draftbit/ui
-```
-
-## Publishing
-
-After your last commit, run `npm version`. Probably minor or patch. We only run major for major Expo releases.
-
-Then run:
-
-```sh
-yarn publish:both
-```
-
-If that doesn't work, you can manually run the script that lives inside `publish.sh`. Either directly: `./publish.sh` or by copying the steps within that file
+See [the `ui` package readme](./packages/ui#readme) for details.
 
 ## Contributing
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+Quickstart:
 
-## Adding components
-
-- Make sure `{...props}` as the last argument to be able to override any extras
-- Make sure `style` and `children` destructured. example: `{style, children, ...props}`
-- Make sure to include a testID if necessary
-
-### Primitives (Text, View)
-
-Most of the primitives should already be here. If a component with no actual logic needs to be added, you can add that into `src/mappings` (see that folder for an example)
-
-### Custom Components
-
-All components live inside `src/components/MyComponent.ts`. Add your component, add the required `SEED_DATA` and you should be good to go!
-
-## Seed Data
-
-Seed data is how we know what to render and support inside the product. It takes on this format. `src/core/component-types.js` will show you the different GROUPS, PROP_TYPES, FORM_TYPES, and other fields you might need.
-
-```js
-group: GROUPS.advanced,
-name: "textBreakStrategy",
-label: "textBreakStrategy",
-description:
-"Set text break strategy on Android API Level 23+, possible values are simple, highQuality, balanced The default value is highQuality.",
-options: ["simple", "highQuality", "balanced"],
-editable: true,
-required: false,
-formType: FORM_TYPES.flatArray,
-propType: PROP_TYPES.STRING,
-defaultValue: "highQuality",
+```sh
+git clone https://github.com/draftbit/react-native-jigsaw && cd react-native-jigsaw
+yarn install
+yarn example start
+# Open example project in ios/web/android using metro bundler that opened in
+# your browser
+# Edit files in `packages/core` or `packages/native`
 ```
+
+Any changes in the `packages/` typescript files should be automatically picked
+up by the Metro bundler and reflected in the example application.
+
+Please read the [contributing guide](CONTRIBUTING.md) before making
+a pull-request and to understand the full development flow
+
+## Linking
+
+If you want to dynamically link these packages into a project using `yarn link`,
+make sure to run `yarn watch <packagename>` from the root folder so that lerna
+can properly cross link everything, then `yarn link` from the particular package
+directory (not the root!) you are interested in.
+
+So if using `@draftbit/core` in a create-react-app, this would look like:
+
+```console
+# In react-native-jigsaw/
+$ yarn install
+$ yarn watch core
+
+# In ./packages/core/
+$ yarn link
+
+# In create-react-app project root
+$ <shutdown any running create-react-app dev mode>
+$ yarn add @draftbit/core # only if this is the first time using it
+$ yarn install
+$ yarn link @draftbit/core
+$ yarn start
+```
+
+You should be able to make changes inside `core/`, have nodemon pick them up and
+rebuild, then have create-react-app pick that up and rebuild.
+
+## Publishing
+
+Pre-Release:
+
+- Every pull request will cause a prerelease version to be published on npm.
+  You can use these versions to test you changes without having to worry about
+  linking packages.
+
+Release Process:
+
+- We release master, meaning a pull-request containing substantive changes
+  should not alter any version information.
+
+- When master is ready for release, create a new branch and run a `yarn
+  version:XXXX` command from the root, as appropriate. Lerna will update all
+  the package.json files with the next version, and create and tag a commit.
+
+  - **NOTE:** We follow a modified semver: EXPO_VERSION.MAJOR.MINOR.
+
+- Push the branch and tag to github, and open a pull-request for the new
+  version.
+
+- When the pull-request is approved and merged to master, a github action
+  & lerna will automatically publish all packages to npm with the new version.
+
+- If auto-publication fails, say because npm is down, contributors can also run
+  `yarn lerna publish from-package` from an up-to-date master branch. Lerna
+  will automatically inspect the registry and the versions on master and
+  publish only the appropriate packages.
+
+## Plug
+
+Sound cool? [We're hiring!](https://draftbit.com/jobs).
 
 ## License
 
 MIT
+
 
 ## Contributing
 - Any color should be passed down via theme prop:

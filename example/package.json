@@ -9,10 +9,10 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "start": "expo start",
-    "eject": "expo eject",
     "test": "jest",
     "postinstall": "expo-yarn-workspaces postinstall",
-    "example": "yarn --cwd example"
+    "example": "yarn --cwd example",
+    "clean:modules": "rimraf node_modules"
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.0",
@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
-    "@babel/runtime": "^7.11.2"
+    "@babel/runtime": "^7.11.2",
+    "@types/react-native": "~0.63.2"
   }
 }

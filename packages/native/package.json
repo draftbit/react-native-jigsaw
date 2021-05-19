@@ -36,7 +36,6 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/core": "40.29.3",
     "@draftbit/types": "40.29.3",
     "@expo/vector-icons": "^12.0.2",
     "@react-native-community/slider": "~3.0.3",

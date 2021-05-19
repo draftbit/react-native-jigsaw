@@ -1,0 +1,88 @@
+name: Build, Test and Publish @draftbit/ui
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+
+      # With lerna/workspaces, the cache is at the monorepo level.
+      - name: Restore node_modules cache
+        uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit`
+        with:
+          path: "node_modules"
+          key: node_modules-${{ hashFiles('yarn.lock') }}
+
+      - name: Install Dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile
+
+      - name: Type Check
+        run: yarn typescript
+
+      - name: Lint
+        run: yarn lint && yarn prettier --check .
+
+      - name: Test Files
+        run: yarn test
+
+      - name: Test Collector
+        run: yarn upload:test
+
+      - name: Build
+        run: yarn build
+
+      - name: Release next packages
+        if: github.event_name == 'pull_request'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
+        run: |
+          # Publishes pre-release versions of any changed packages
+          yarn lerna publish \
+            --dist-tag next \
+            --ignore-scripts \
+            --canary \
+            --preid $(git rev-parse --short=6 HEAD) \
+            --yes \
+            --no-verify-access
+
+      - name: Release packages
+        if: github.event_name != 'pull_request'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
+        run: |
+          # Only publishes when finding a new `lerna version` was pushed to
+          # the branch. But for purposes of _this_ action, that means master.
+          # You have to manually run lerna version locally and get that PR
+          # merged before this does anything.
+          yarn lerna publish from-git \
+            --ignore-scripts \
+            --yes \
+            --no-verify-access
+
+      - name: Add comment to pull request
+        if: github.event_name == 'pull_request'
+        env:
+          URL: ${{ github.event.pull_request.comments_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION=$(npm view @draftbit/ui dist-tags.next);
+          curl -X POST $URL \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            --data "{ \"body\": \"Published version: [@draftbit/ui@$VERSION](https://www.npmjs.com/package/@draftbit/ui/v/$VERSION)\" }"

@@ -26,7 +26,7 @@ export {
 } from "./components/Layout";
 
 export {
-  RadioButton,
+  default as RadioButton,
   SingleRadioButton,
   RadioButtonGroup,
   RadioButtonRow,

@@ -16,8 +16,9 @@
     "draftbit-ui.podspec"
   ],
   "scripts": {
-    "typescript": "tsc --noEmit",
-    "build": "bob build"
+    "prepare": "bob build",
+    "clean": "rimraf lib",
+    "clean:modules": "rimraf node_modules"
   },
   "keywords": [
     "react-native",

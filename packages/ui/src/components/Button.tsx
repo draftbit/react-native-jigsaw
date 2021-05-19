@@ -19,7 +19,7 @@ import {
   createBoolProp,
   createTextProp,
   createActionProp,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 const CONSTANTS = {
   baseHeight: 42,

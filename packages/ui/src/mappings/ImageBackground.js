@@ -6,7 +6,7 @@ import {
   createImageProp,
   createResizeModeProp,
   createColorProp,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "Image Background",

@@ -4,7 +4,7 @@ import {
   PROP_TYPES,
   GROUPS,
   createNumColumnsType,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "List",

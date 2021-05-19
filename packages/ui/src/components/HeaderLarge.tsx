@@ -1,6 +1,6 @@
 import * as React from "react";
 import { withTheme } from "../core/theming";
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "@draftbit/types";
 import Header from "./Header";
 import theme from "../styles/DefaultTheme";
 import { StyleProp, ViewStyle } from "react-native";

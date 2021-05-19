@@ -15,7 +15,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   FIELD_NAME,
-} from "../core/component-types";
+} from "@draftbit/types";
 import Icon from "./Icon";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";

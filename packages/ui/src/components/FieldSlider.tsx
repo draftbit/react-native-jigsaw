@@ -8,7 +8,7 @@ import {
   FORM_TYPES,
   COMPONENT_TYPES,
   FIELD_NAME,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 type Props = {
   title?: string;

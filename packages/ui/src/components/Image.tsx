@@ -11,7 +11,7 @@ import {
   COMPONENT_TYPES,
   createImageProp,
   createResizeModeProp,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 import AspectRatio from "./AspectRatio";
 

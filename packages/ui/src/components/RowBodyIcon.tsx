@@ -5,7 +5,7 @@ import {
   FORM_TYPES,
   GROUPS,
   PROP_TYPES,
-} from "../core/component-types";
+} from "@draftbit/types";
 import Row from "./Row";
 import Icon from "./Icon";
 import Config from "./Config";

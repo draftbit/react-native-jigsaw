@@ -21,7 +21,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   COMPONENT_TYPES,
-} from "../core/component-types";
+} from "@draftbit/types";
 import theme from "../styles/DefaultTheme";
 
 /**

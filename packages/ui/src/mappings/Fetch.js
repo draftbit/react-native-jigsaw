@@ -1,4 +1,4 @@
-import { COMPONENT_TYPES } from "../core/component-types";
+import { COMPONENT_TYPES } from "@draftbit/types";
 /* TODO remove, still used inside the builder in a weird way */
 export const SEED_DATA = {
   name: "Fetch",

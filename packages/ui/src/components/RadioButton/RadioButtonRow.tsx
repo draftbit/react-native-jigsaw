@@ -15,7 +15,7 @@ import {
   createTextStyle,
   FORM_TYPES,
   COMPONENT_TYPES,
-} from "../../core/component-types";
+} from "@draftbit/types";
 import { Direction as GroupDirection } from "./context";
 import Touchable from "../Touchable";
 

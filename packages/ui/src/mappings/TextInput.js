@@ -5,7 +5,7 @@ import {
   PROP_TYPES,
   FIELD_NAME,
   TEXT_INPUT_PROPS,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "TextInput",

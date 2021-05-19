@@ -4,7 +4,7 @@ import {
   COMPONENT_TYPES,
   FORM_TYPES,
   FIELD_NAME,
-} from "../core/component-types";
+} from "@draftbit/types";
 import Row from "./Row";
 import Switch from "./Switch";
 import theme from "../styles/DefaultTheme";

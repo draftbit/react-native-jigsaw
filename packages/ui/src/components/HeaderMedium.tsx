@@ -5,7 +5,7 @@ import {
   COMPONENT_TYPES,
   FORM_TYPES,
   PROP_TYPES,
-} from "../core/component-types";
+} from "@draftbit/types";
 import Header from "./Header";
 import theme from "../styles/DefaultTheme";
 import { StyleProp, ViewStyle } from "react-native";

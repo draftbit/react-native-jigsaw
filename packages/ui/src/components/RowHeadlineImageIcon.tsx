@@ -1,6 +1,6 @@
 import * as React from "react";
 import { withTheme } from "../core/theming";
-import { COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { COMPONENT_TYPES, FORM_TYPES } from "@draftbit/types";
 
 import Row from "./Row";
 import Icon from "./Icon";

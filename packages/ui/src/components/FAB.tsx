@@ -18,7 +18,7 @@ import {
   createIconProp,
   createActionProp,
   createColorProp,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 type Props = {
   disabled?: boolean;

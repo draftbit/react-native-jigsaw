@@ -5,7 +5,7 @@ import {
   FORM_TYPES,
   FIELD_NAME,
   createTextProp,
-} from "../../core/component-types";
+} from "@draftbit/types";
 import type { Theme } from "../../styles/DefaultTheme";
 import { radioButtonGroupContext, Direction } from "./context";
 export interface RadioButtonGroupProps {

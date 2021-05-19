@@ -3,7 +3,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   GROUPS,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "Keyboard Avoiding View",

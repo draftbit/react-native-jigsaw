@@ -13,7 +13,7 @@ import {
   createActionProp,
   createFieldNameProp,
   createIconSizeProp,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 type Props = {
   icon: string;

@@ -8,7 +8,7 @@ import {
   COMPONENT_TYPES,
   FIELD_NAME,
   PROP_TYPES,
-} from "../core/component-types";
+} from "@draftbit/types";
 import { StyleProp, ViewStyle } from "react-native";
 import themeT from "../styles/DefaultTheme";
 import { colorTypes } from "../types";

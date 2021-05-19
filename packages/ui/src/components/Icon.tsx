@@ -15,7 +15,7 @@ import {
   createNumberProp,
   createColorProp,
   createIconProp,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 // This must use require to work in both web as a published project and in Snack
 const VectorIcons = require("@expo/vector-icons");

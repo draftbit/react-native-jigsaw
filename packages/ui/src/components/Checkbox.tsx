@@ -9,7 +9,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   FIELD_NAME,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 type Props = {
   status?: "checked" | "indeterminate" | "unchecked";

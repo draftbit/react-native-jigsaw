@@ -4,7 +4,7 @@ import {
   PROP_TYPES,
   FIELD_NAME,
   GROUPS,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 const SEED_DATA_PROPS = {
   label: {

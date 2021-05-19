@@ -19,7 +19,7 @@ import {
   COMPONENT_TYPES,
   createElevationType,
   createNumColumnsType,
-} from "../core/component-types";
+} from "@draftbit/types";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 import { justificationType } from "./Justification";

@@ -13,7 +13,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   createImageProp,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 interface Props {
   source?: string | ImageSourcePropType;

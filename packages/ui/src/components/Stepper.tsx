@@ -8,7 +8,7 @@ import {
   PROP_TYPES,
   FIELD_NAME,
   BORDER_RADIUS_MODE,
-} from "../core/component-types";
+} from "@draftbit/types";
 import IconButton from "./IconButton";
 import theme from "../styles/DefaultTheme";
 import type Icon from "./Icon";

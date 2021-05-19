@@ -6,7 +6,7 @@ import {
   COMPONENT_TYPES,
   FORM_TYPES,
   PROP_TYPES,
-} from "../core/component-types";
+} from "@draftbit/types";
 import themeT from "../styles/DefaultTheme";
 
 type Props = {

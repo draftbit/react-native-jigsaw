@@ -1,7 +1,7 @@
 import React from "react";
 import { Pressable, ViewStyle, PressableProps } from "react-native";
 
-import { COMPONENT_TYPES, createActionProp } from "../core/component-types";
+import { COMPONENT_TYPES, createActionProp } from "@draftbit/types";
 
 type Props = {
   disabled?: boolean;

@@ -2,7 +2,7 @@ import {
   PLATFORMS,
   COMPONENT_TYPES,
   createSourceProp,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "Web View",

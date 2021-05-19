@@ -5,7 +5,7 @@ import {
   COMPONENT_TYPES,
   createBoolProp,
   createColorProp,
-} from "../core/component-types";
+} from "@draftbit/types";
 import themeT from "../styles/DefaultTheme";
 
 type Props = {

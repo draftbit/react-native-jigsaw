@@ -13,7 +13,7 @@ import {
   COMPONENT_TYPES,
   createResizeModeProp,
   createColorProp,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 const screenWidth = Dimensions.get("window").width;
 

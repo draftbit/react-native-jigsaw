@@ -4,7 +4,7 @@ import {
   FORM_TYPES,
   GROUPS,
   PROP_TYPES,
-} from "../core/component-types";
+} from "@draftbit/types";
 import { Text, StyleProp, ViewStyle, TextStyle } from "react-native";
 import AnimatedCircularProgress from "./AnimatedCircularProgress";
 import { withTheme } from "../core/theming";

@@ -12,7 +12,7 @@ import {
   COMPONENT_TYPES,
   FORM_TYPES,
   PROP_TYPES,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 function formatDuration(duration: number) {
   if (duration === 0 || duration === 1) return "00:00";

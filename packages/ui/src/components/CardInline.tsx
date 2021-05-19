@@ -21,7 +21,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   createElevationType,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 type Props = {
   image?: string | ImageSourcePropType;

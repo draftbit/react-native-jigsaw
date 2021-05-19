@@ -6,7 +6,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   FIELD_NAME,
-} from "../core/component-types";
+} from "@draftbit/types";
 import { StyleSheet, View, Text } from "react-native";
 import Touchable from "./Touchable";
 import Checkbox from "./Checkbox";

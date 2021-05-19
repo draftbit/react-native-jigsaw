@@ -1,4 +1,4 @@
-import { COMPONENT_TYPES } from "../core/component-types";
+import { COMPONENT_TYPES } from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "Custom Code",

@@ -19,7 +19,7 @@ import {
   PROP_TYPES,
   COMPONENT_TYPES,
   createElevationType,
-} from "../core/component-types";
+} from "@draftbit/types";
 import Config from "./Config";
 import theme from "../styles/DefaultTheme";
 

@@ -4,7 +4,7 @@ import Icon from "./Icon";
 import { withTheme } from "../core/theming";
 import Theme from "../styles/DefaultTheme";
 
-import { COMPONENT_TYPES, createNumberProp } from "../core/component-types";
+import { COMPONENT_TYPES, createNumberProp } from "@draftbit/types";
 
 type Props = {
   starSize?: number;

@@ -1,4 +1,4 @@
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "../core/component-types";
+import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "Linear Gradient",

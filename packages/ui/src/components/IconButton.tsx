@@ -18,7 +18,7 @@ import {
   createActionProp,
   createColorProp,
   createNumberProp,
-} from "../core/component-types";
+} from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 
 type Props = {

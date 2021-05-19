@@ -18,7 +18,7 @@ import {
   createElevationType,
   createImageProp,
   createResizeModeProp,
-} from "../core/component-types";
+} from "@draftbit/types";
 import ThemeT from "../styles/DefaultTheme";
 import { ResizeModeType } from "./ResizeMode";
 

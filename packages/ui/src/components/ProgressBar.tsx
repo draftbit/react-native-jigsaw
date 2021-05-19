@@ -14,7 +14,7 @@ import {
   FORM_TYPES,
   GROUPS,
   PROP_TYPES,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 const INDETERMINATE_WIDTH_FACTOR = 0.3;
 const BAR_WIDTH_ZERO_POSITION =

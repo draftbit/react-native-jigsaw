@@ -27,7 +27,7 @@ import {
   createActionProp,
   createBoolProp,
   createTextStyle,
-} from "../core/component-types";
+} from "@draftbit/types";
 
 const ICON_SIZE = Config.cardIconSize;
 const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;

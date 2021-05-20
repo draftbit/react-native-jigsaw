@@ -58,6 +58,7 @@ import {
   DrawerActions,
 } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import CheckboxExample from "./CheckboxExample";
 
 const ROUTES = {
   Layout: LayoutExample,
@@ -73,6 +74,7 @@ const ROUTES = {
   CardContainerShortImage: CardContainerShortImageExample,
   CardContainer: CardContainerExample,
   CardContainerRating: CardContainerRatingExample,
+  CheckBox: CheckboxExample,
   Carousel: CarouselExample,
   Container: ContainerExample,
   Controllers: ControllerExample,
@@ -89,7 +91,7 @@ const ROUTES = {
   Slider: SliderExample,
   Switch: SwitchExample,
   Stepper: StepperExample,
-  TextField: TextFieldExample,
+  TextField: TextFieldExample
 };
 
 let customFonts = {

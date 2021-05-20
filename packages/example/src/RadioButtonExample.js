@@ -2,8 +2,6 @@ import * as React from "react";
 import {
   Icon,
   RadioButton,
-  RadioButtonRow,
-  RadioButtonGroup,
   Row,
   RadioButtonFieldGroup,
   withTheme,
@@ -43,35 +41,35 @@ const RadioButtonGroupExample = ({ theme }) => {
       </Section>
 
       <Section title="RadioButtonGroup (horizontal)">
-        <RadioButtonGroup
+        <RadioButton.Group
           direction="horizontal"
           onValueChange={handleSelect}
           value={selected}
         >
-          <RadioButtonRow label="First" value="1" />
-          <RadioButtonRow label="Second" value="2" />
-          <RadioButtonRow label="Third" value="3" />
-        </RadioButtonGroup>
+          <RadioButton.Row label="First" value="1" />
+          <RadioButton.Row label="Second" value="2" />
+          <RadioButton.Row label="Third" value="3" />
+        </RadioButton.Group>
       </Section>
 
       <Section title="RadioButtonGroup (vertical)">
-        <RadioButtonGroup
+        <RadioButton.Group
           direction="vertical"
           onValueChange={handleSelect}
           value={selected}
         >
-          <RadioButtonRow label="First" value="1" />
-          <RadioButtonRow label="Second" value="2" />
-          <RadioButtonRow
+          <RadioButton.Row label="First" value="1" />
+          <RadioButton.Row label="Second" value="2" />
+          <RadioButton.Row
             direction="row-reverse"
             label="Third (reversed)"
             value="3"
           />
-        </RadioButtonGroup>
+        </RadioButton.Group>
       </Section>
 
       <Section title="Custom style radio buttons">
-        <RadioButtonGroup
+        <RadioButton.Group
           direction="vertical"
           onValueChange={handleSelect}
           value={selected}
@@ -81,23 +79,23 @@ const RadioButtonGroupExample = ({ theme }) => {
             marginVertical: 15,
           }}
         >
-          <RadioButtonRow
+          <RadioButton.Row
             label={<Icon size={35} name="file-download" />}
             value="1"
           />
-          <RadioButtonRow
+          <RadioButton.Row
             label={<Icon size={35} name="FontAwesome5/adjust" />}
             value="2"
           />
-          <RadioButtonRow
+          <RadioButton.Row
             label={<Icon size={35} name="Ionicons/moon" />}
             value="3"
           />
-        </RadioButtonGroup>
+        </RadioButton.Group>
 
         <Text>With custom selected/unselected icons</Text>
 
-        <RadioButtonGroup
+        <RadioButton.Group
           direction="vertical"
           onValueChange={handleSelect}
           value={selected}
@@ -106,25 +104,25 @@ const RadioButtonGroupExample = ({ theme }) => {
             borderColor: "gray",
           }}
         >
-          <RadioButtonRow
+          <RadioButton.Row
             selectedIcon="AntDesign/checksquare"
             unselectedIcon="MaterialCommunityIcons/checkbox-blank-outline"
             label="First"
             value="1"
           />
-          <RadioButtonRow
+          <RadioButton.Row
             selectedIcon="AntDesign/checksquare"
             unselectedIcon="MaterialCommunityIcons/checkbox-blank-outline"
             label="Second"
             value="2"
           />
-          <RadioButtonRow
+          <RadioButton.Row
             selectedIcon="AntDesign/checksquare"
             unselectedIcon="MaterialCommunityIcons/checkbox-blank-outline"
             label="Third"
             value="3"
           />
-        </RadioButtonGroup>
+        </RadioButton.Group>
       </Section>
 
       <Section title="RadioButtonFieldGroup">
@@ -133,9 +131,9 @@ const RadioButtonGroupExample = ({ theme }) => {
           onValueChange={handleSelect}
           value={selected}
         >
-          <RadioButtonRow size={35} label="First" value="1" />
-          <RadioButtonRow size={35} label="Second" value="2" />
-          <RadioButtonRow size={35} label="Third" value="3" />
+          <RadioButton.Row size={35} label="First" value="1" />
+          <RadioButton.Row size={35} label="Second" value="2" />
+          <RadioButton.Row size={35} label="Third" value="3" />
         </RadioButtonFieldGroup>
       </Section>
     </Container>

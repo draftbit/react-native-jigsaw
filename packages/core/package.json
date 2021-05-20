@@ -1,7 +1,7 @@
 {
-  "name": "@draftbit/ui",
+  "name": "@draftbit/core",
   "version": "40.29.5",
-  "description": "Draftbit UI Library",
+  "description": "Core (non-native) Components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
   "types": "lib/typescript/src/index.d.ts",
@@ -12,11 +12,7 @@
     "lib",
     "!**/__tests__",
     "!**/__fixtures__",
-    "!**/__mocks__",
-    "android",
-    "ios",
-    "cpp",
-    "draftbit-ui.podspec"
+    "!**/__mocks__"
   ],
   "scripts": {
     "prepare": "bob build",
@@ -35,7 +31,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/draftbit/react-native-jigsaw",
-    "directory": "packages/ui"
+    "directory": "packages/core"
   },
   "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
   "license": "MIT",
@@ -44,16 +40,38 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/core": "40.29.5",
-    "@draftbit/native": "40.29.5"
+    "@draftbit/types": "40.29.5",
+    "@draftbit/react-theme-provider": "^2.1.1",
+    "@date-io/date-fns": "^1.3.13",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/pickers": "^3.2.10",
+    "@react-native-community/slider": "~3.0.3",
+    "color": "^3.1.2",
+    "date-fns": "^2.16.1",
+    "dateformat": "^3.0.3",
+    "react-native-safe-area-context": "3.1.9",
+    "react-native-typography": "^1.4.1"
   },
   "devDependencies": {
+    "@react-native-community/datetimepicker": "~3.0.0",
+    "@react-native-community/picker": "~1.6.6",
+    "@types/color": "^3.0.1",
+    "@types/dateformat": "^3.0.1",
+    "@types/react": "^16.9.36",
+    "@types/react-native": "^0.63.40",
     "expo-yarn-workspaces": "^1.5.1",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "~0.63.2",
+    "react-native-builder-bob": "^0.18.1",
     "typescript": "~4.2.3"
   },
   "peerDependencies": {
+    "@react-native-community/datetimepicker": "~3.0.0",
+    "@react-native-community/picker": "~1.6.6",
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-svg": "~12.1.0"
   },
   "react-native-builder-bob": {
     "source": "src",

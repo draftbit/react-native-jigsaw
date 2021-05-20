@@ -1,8 +1,13 @@
-import { Checkbox, CheckboxGroup, CheckboxRow, Row, withTheme } from "@draftbit/ui";
+import {
+  Checkbox,
+  CheckboxGroup,
+  CheckboxRow,
+  Row,
+  withTheme,
+} from "@draftbit/ui";
 import * as React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Section, { Container } from "./Section";
-
 
 const SingleCheckboxWrapper = ({ label, children }) => (
   <View style={styles.checkboxWrapper}>
@@ -13,29 +18,27 @@ const SingleCheckboxWrapper = ({ label, children }) => (
   </View>
 );
 
-const CheckboxExample = ({
-  theme
-}) => {
-
+const CheckboxExample = ({ theme }) => {
   const [checked, setChecked] = React.useState(true);
   const [selectedValues, setSelectedValues] = React.useState([]);
 
   const handleValueSelected = (value, selected) => {
-    console.log(value, selected)
+    console.log(value, selected);
     if (selected) {
-      setSelectedValues(prevState => [...prevState, value])
+      setSelectedValues((prevState) => [...prevState, value]);
     } else {
-      setSelectedValues(prevState => prevState.filter(val => val !== value))
+      setSelectedValues((prevState) =>
+        prevState.filter((val) => val !== value)
+      );
     }
-  }
+  };
 
-  const handlePress = () => setChecked(prevState => !prevState);
+  const handlePress = () => setChecked((prevState) => !prevState);
 
   return (
     <Container>
       <Section title="Single Checkbox">
         <Row>
-
           <SingleCheckboxWrapper label="Common">
             <Checkbox
               status={checked ? "checked" : "unchecked"}
@@ -59,21 +62,19 @@ const CheckboxExample = ({
             />
           </SingleCheckboxWrapper>
           <SingleCheckboxWrapper label="Indeterminate">
-            <Checkbox
-              status="indeterminate"
-            />
+            <Checkbox status="indeterminate" />
           </SingleCheckboxWrapper>
           <SingleCheckboxWrapper label="Disabled">
-            <Checkbox
-              status="checked"
-              disabled
-            />
+            <Checkbox status="checked" disabled />
           </SingleCheckboxWrapper>
         </Row>
       </Section>
 
       <Section title="Checkbox Group (horizontal)">
-        <CheckboxGroup values={selectedValues} onValueChange={handleValueSelected}>
+        <CheckboxGroup
+          values={selectedValues}
+          onValueChange={handleValueSelected}
+        >
           <CheckboxRow label="First" value="1" />
           <CheckboxRow label="Second" value="2" />
           <CheckboxRow label="Third" value="3" />
@@ -81,18 +82,25 @@ const CheckboxExample = ({
       </Section>
 
       <Section title="Checkbox Group (vertical)">
-        <CheckboxGroup direction="vertical" values={selectedValues} onValueChange={handleValueSelected}>
+        <CheckboxGroup
+          direction="vertical"
+          values={selectedValues}
+          onValueChange={handleValueSelected}
+        >
           <CheckboxRow label="First" value="1" />
           <CheckboxRow label="Second" value="2" />
-          <CheckboxRow direction="row-reverse" label="Third (reversed)" value="3" />
+          <CheckboxRow
+            direction="row-reverse"
+            label="Third (reversed)"
+            value="3"
+          />
           <CheckboxRow label="Always selected" value="4" status="checked" />
           <CheckboxRow label="Disabled" disabled />
         </CheckboxGroup>
       </Section>
     </Container>
-  )
-
-}
+  );
+};
 
 const styles = StyleSheet.create({
   checkboxWrapper: {
@@ -105,7 +113,7 @@ const styles = StyleSheet.create({
   },
   checkboxLabel: {
     margin: 10,
-    flex: 1
+    flex: 1,
   },
 });
 

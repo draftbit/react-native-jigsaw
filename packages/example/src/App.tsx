@@ -91,7 +91,7 @@ const ROUTES = {
   Slider: SliderExample,
   Switch: SwitchExample,
   Stepper: StepperExample,
-  TextField: TextFieldExample
+  TextField: TextFieldExample,
 };
 
 let customFonts = {

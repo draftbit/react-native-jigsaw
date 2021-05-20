@@ -35,12 +35,6 @@ jobs:
       - name: Type Check
         run: yarn typescript
 
-      - name: Lint
-        run: yarn lint && yarn prettier --check .
-
-      - name: Test Files
-        run: yarn test
-
       - name: Test Collector
         run: yarn upload:test
 

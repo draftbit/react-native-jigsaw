@@ -11,7 +11,7 @@ import {
 } from "@draftbit/types";
 import IconButton from "./IconButton";
 import theme from "../styles/DefaultTheme";
-import type Icon from "./Icon";
+import {Icon} from "@draftbit/native";
 
 type Props = {
   value?: number;

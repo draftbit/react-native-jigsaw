@@ -1,8 +1,8 @@
 import * as React from "react";
 import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
-import { Icon } from "@draftbit/native";
 import { withTheme } from "../theming";
-import Theme from "../styles/DefaultTheme";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
 
 import { COMPONENT_TYPES, createNumberProp } from "@draftbit/types";
 
@@ -10,15 +10,16 @@ type Props = {
   starSize?: number;
   maxStars?: number;
   rating?: number;
-  theme: typeof Theme;
+  theme: Theme;
   style?: StyleProp<ViewStyle>;
-};
+} & IconSlot;
 
 const StarRating: React.FC<Props> = ({
+  Icon,
   starSize = 16,
   maxStars = 5,
   rating = 0,
-  theme: { colors },
+  theme,
   style,
 }) => {
   const ratingRounded = Math.round(rating * 2) / 2;
@@ -34,7 +35,9 @@ const StarRating: React.FC<Props> = ({
               : "MaterialIcons/star"
           }
           size={starSize}
-          color={ratingRounded > i ? colors.primary : colors.divider}
+          color={
+            ratingRounded > i ? theme.colors.primary : theme.colors.divider
+          }
         />
       ))}
     </View>

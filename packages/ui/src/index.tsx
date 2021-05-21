@@ -44,11 +44,11 @@ import {
   ButtonSolid as BaseButtonSolid,
   ButtonOutline as BaseButtonOutline,
   Link as BaseLink,
-  CardContainer as BaseCardContainer,
-  CardContainerRating as BaseCardContainerRating,
+  // CardContainer as BaseCardContainer,
+  // CardContainerRating as BaseCardContainerRating,
   DatePicker as BaseDatePicker,
   FAB as BaseFab,
-  FieldSearchBarFull as BaseFieldSearchBarFull,
+  // FieldSearchBarFull as BaseFieldSearchBarFull,
   IconButton as BaseIconButton,
   Picker as BasePickerComponent,
   StarRating as BaseStarRating,
@@ -69,13 +69,7 @@ export const FAB = injectIcon(BaseFab, Icon);
 export const ButtonSolid = injectIcon(BaseButtonSolid, Icon);
 export const ButtonOutline = injectIcon(BaseButtonOutline, Icon);
 export const Link = injectIcon(BaseLink, Icon);
-export const FieldSearchBarFull = injectIcon(BaseFieldSearchBarFull, Icon);
-export const Stepper = injectIcon(BaseStepper, Icon);
-export const Checkbox = injectIcon(BaseCheckbox, Icon);
 export const StarRating = injectIcon(BaseStarRating, Icon);
 export const AvatarEdit = injectIcon(BaseAvatarEdit, Icon);
 export const TextField = injectIcon(BaseTextField, Icon);
 export const DatePicker = injectIcon(BaseDatePicker, Icon);
-export const CardContainerRating = injectIcon(BaseCardContainerRating, Icon);
-export const CardContainer = injectIcon(BaseCardContainer, Icon);
-export const Picker = injectIcon(BasePickerComponent, Icon);

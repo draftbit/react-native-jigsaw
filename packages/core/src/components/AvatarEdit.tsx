@@ -1,6 +1,5 @@
 import * as React from "react";
 import { View, ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
-import { Icon } from "@draftbit/native";
 import Touchable from "./Touchable";
 import CircleImage from "./CircleImage";
 import { withTheme } from "../theming";
@@ -11,28 +10,30 @@ import {
   FORM_TYPES,
   PROP_TYPES,
 } from "@draftbit/types";
-import theme from "../styles/DefaultTheme";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
 
 type Props = {
   image: string | ImageSourcePropType;
   size?: number;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
-  theme: typeof theme;
-};
+  theme: Theme;
+} & IconSlot;
 
 const AvatarEdit: React.FC<Props> = ({
+  Icon,
   image,
   size = 80,
   onPress = () => {},
   style,
-  theme: { colors },
+  theme,
   ...rest
 }) => {
   const colorStyles = {
-    editBackgroundColor: colors.primary,
-    editIconColor: colors.surface,
-    editBorderColor: colors.surface,
+    editBackgroundColor: theme.colors.primary,
+    editIconColor: theme.colors.surface,
+    editBorderColor: theme.colors.surface,
   };
 
   const dimensions = {

@@ -24,9 +24,8 @@ import {
   FIELD_NAME,
   TEXT_INPUT_PROPS,
 } from "@draftbit/types";
-
-import { Icon } from "@draftbit/native";
-import theme from "../styles/DefaultTheme";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
 
@@ -45,11 +44,12 @@ export type Props = {
   assistiveText?: string;
   multiline?: boolean;
   style?: StyleProp<ViewStyle> & { height?: number };
-  theme: typeof theme;
+  theme: Theme;
   render?: (
     props: TextInputProps & { ref: (c: NativeTextInput) => void }
   ) => React.ReactNode;
-} & TextInputProps;
+} & TextInputProps &
+  IconSlot;
 
 interface State {
   labeled: Animated.Value;
@@ -220,6 +220,7 @@ class TextField extends React.Component<Props> {
 
   render() {
     const {
+      Icon,
       type = "underline",
       disabled = false,
       label,

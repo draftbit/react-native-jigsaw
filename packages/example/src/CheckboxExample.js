@@ -23,7 +23,6 @@ const CheckboxExample = ({ theme }) => {
   const [selectedValues, setSelectedValues] = React.useState([]);
 
   const handleValueSelected = (value, selected) => {
-    console.log(value, selected);
     if (selected) {
       setSelectedValues((prevState) => [...prevState, value]);
     } else {

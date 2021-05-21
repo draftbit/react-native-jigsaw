@@ -49,6 +49,7 @@ import {
   Link as BaseLink,
   CardContainer as BaseCardContainer,
   CardContainerRating as BaseCardContainerRating,
+  Checkbox as BaseCheckbox,
   DatePicker as BaseDatePicker,
   FAB as BaseFab,
   FieldSearchBarFull as BaseFieldSearchBarFull,
@@ -74,6 +75,7 @@ export const ButtonSolid = injectIcon(BaseButtonSolid, Icon);
 export const Card = injectIcon(BaseCard, Icon);
 export const CardContainer = injectIcon(BaseCardContainer, Icon);
 export const CardContainerRating = injectIcon(BaseCardContainerRating, Icon);
+export const Checkbox = injectIcon(BaseCheckbox, Icon);
 export const DatePicker = injectIcon(BaseDatePicker, Icon);
 export const FAB = injectIcon(BaseFab, Icon);
 export const FieldSearchBarFull = injectIcon(BaseFieldSearchBarFull, Icon);

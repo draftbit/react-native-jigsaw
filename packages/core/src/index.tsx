@@ -8,6 +8,7 @@ export { default as Avatar } from "./components/CircleImage";
 export { default as AvatarEdit } from "./components/AvatarEdit";
 export { default as Card } from "./components/Card";
 export { default as Carousel } from "./components/Carousel";
+export { default as Checkbox } from "./components/Checkbox";
 export { default as CircleImage } from "./components/CircleImage";
 export { default as Container } from "./components/Container";
 export { default as Divider } from "./components/Divider";

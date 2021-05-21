@@ -32,6 +32,12 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile
 
+      - name: Type Check
+        run: yarn typescript
+
+      - name: Lint
+        run: yarn lint && yarn prettier --check .
+
       - name: Test Collector
         run: yarn upload:test
 

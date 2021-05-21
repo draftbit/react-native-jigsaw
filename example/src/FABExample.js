@@ -1,11 +1,9 @@
 import * as React from "react";
 import { View } from "react-native";
 import { withTheme, FAB } from "@draftbit/ui";
-import Section, { Container, styles } from "./Section";
+import { Container } from "./Section";
 
 function FABExample({ theme }) {
-  // const [elevation, setElevation] = React.useState(0);
-
   const handlePress = () => {};
   return (
     <Container

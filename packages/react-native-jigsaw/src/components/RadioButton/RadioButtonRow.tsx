@@ -68,6 +68,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
   direction = Direction.Row,
   selected,
   style,
+  disabled,
   ...rest
 }) => {
   const {
@@ -85,6 +86,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
     <Touchable
       onPress={handlePress}
       style={[styles.mainParent, { flexDirection: direction }, style]}
+      disabled={disabled}
     >
       <View
         style={[
@@ -107,6 +109,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
           selected={selected || contextValue === value}
           onPress={handlePress}
           style={radioButtonStyle}
+          disabled={disabled}
           {...rest}
         />
       </View>

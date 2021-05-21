@@ -19,11 +19,11 @@ import {
   createImageProp,
   createResizeModeProp,
 } from "@draftbit/types";
-import ThemeT from "../styles/DefaultTheme";
+import type { Theme } from "../styles/DefaultTheme";
 import { ResizeModeType } from "./ResizeMode";
 
 type Props = {
-  theme: typeof ThemeT;
+  theme: Theme;
   useThemeGutterPadding: boolean;
   borderColor: string;
   borderWidth: number;

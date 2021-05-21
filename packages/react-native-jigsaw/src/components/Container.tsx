@@ -48,8 +48,17 @@ const Container: React.FC<Props> = ({
   theme, // eslint-disable-line @typescript-eslint/no-unused-vars
   ...rest
 }) => {
-  const { flexDirection, justifyContent, alignItems, ...styleProp } =
-    StyleSheet.flatten(style) || {};
+  const {
+    flex,
+    flexGrow,
+    flexWrap,
+    flexBasis,
+    flexShrink,
+    flexDirection,
+    justifyContent,
+    alignItems,
+    ...styleProp
+  } = StyleSheet.flatten(style) || {};
 
   const containerStyle: StyleProp<ViewStyle> = {
     backgroundColor,
@@ -61,6 +70,11 @@ const Container: React.FC<Props> = ({
 
   const innerStyle: StyleProp<ViewStyle> = {
     paddingHorizontal: useThemeGutterPadding ? 16 : 0,
+    flex,
+    flexGrow,
+    flexWrap,
+    flexBasis,
+    flexShrink,
     flexDirection,
     justifyContent,
     alignItems,

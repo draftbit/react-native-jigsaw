@@ -11,7 +11,6 @@ import {
 } from "react-native";
 import color from "color";
 import Config from "./Config";
-import { Icon } from "@draftbit/native";
 import Touchable from "./Touchable";
 import Elevation from "./Elevation";
 import { withTheme } from "../theming";
@@ -22,7 +21,8 @@ import {
   PROP_TYPES,
   COMPONENT_TYPES,
 } from "@draftbit/types";
-import theme from "../styles/DefaultTheme";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
 
 /**
  * A button is component that the user can press to trigger an action.
@@ -68,15 +68,16 @@ type Props = {
   onPress: () => void;
   elevation?: number;
   style?: StyleProp<ViewStyle>;
-  IconOverride?: typeof Icon;
-  theme: typeof theme;
-} & TouchableHighlightProps;
+  theme: Theme;
+} & TouchableHighlightProps &
+  IconSlot;
 
 const Button: React.FC<Props> = ({
+  Icon,
+  icon,
   disabled = false,
   type = "solid",
   loading = false,
-  icon,
   labelColor,
   color: colorOverride,
   children,
@@ -84,14 +85,10 @@ const Button: React.FC<Props> = ({
   elevation = 0,
   style,
   theme: { colors, disabledOpacity, roundness, typography },
-  IconOverride = null,
   ...rest
 }) => {
   let backgroundColor, borderColor, textColor, borderWidth;
   const buttonColor = colorOverride || colors.primary;
-
-  // Necessary to inject web-renderable Icons in buider.
-  const SelectedIcon = IconOverride || Icon;
 
   if (type === "solid") {
     backgroundColor = buttonColor;
@@ -182,7 +179,7 @@ const Button: React.FC<Props> = ({
         <View style={styles.content}>
           {icon && loading !== true ? (
             <View style={iconStyle}>
-              <SelectedIcon
+              <Icon
                 name={icon}
                 size={Config.buttonIconSize}
                 color={textColor}

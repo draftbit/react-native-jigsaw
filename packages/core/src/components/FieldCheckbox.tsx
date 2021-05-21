@@ -7,12 +7,14 @@ import {
   PROP_TYPES,
   FIELD_NAME,
 } from "@draftbit/types";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
+
 import { StyleSheet, View, Text } from "react-native";
 import Touchable from "./Touchable";
 import Checkbox from "./Checkbox";
 
 import color from "color";
-import theme from "../styles/DefaultTheme";
 
 type Props = {
   title?: string;
@@ -20,10 +22,11 @@ type Props = {
   onPress?: () => void;
   color: string;
   disabled?: boolean;
-  theme: typeof theme;
-};
+  theme: Theme;
+} & IconSlot;
 
 const FieldCheckbox: React.FC<Props> = ({
+  Icon,
   title,
   status,
   onPress,
@@ -41,6 +44,7 @@ const FieldCheckbox: React.FC<Props> = ({
     <Touchable onPress={onPress} disabled={disabled}>
       <View style={styles.container}>
         <Checkbox
+          Icon={Icon}
           status={status}
           disabled={disabled}
           color={checkboxColor}

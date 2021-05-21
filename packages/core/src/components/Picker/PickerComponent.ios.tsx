@@ -11,8 +11,10 @@ import Button from "../DeprecatedButton";
 import TextField from "../TextField";
 import Touchable from "../Touchable";
 import { PickerComponentProps } from "./PickerTypes";
+import type { IconSlot } from "../../interfaces/Icon";
 
-const Picker: React.FC<PickerComponentProps> = ({
+const Picker: React.FC<PickerComponentProps & IconSlot> = ({
+  Icon,
   style,
   options,
   placeholder,
@@ -49,6 +51,7 @@ const Picker: React.FC<PickerComponentProps> = ({
           <View style={[styles.picker, { backgroundColor: colors.divider }]}>
             <SafeAreaView style={styles.pickerContainer}>
               <Button
+                Icon={Icon}
                 type="text"
                 onPress={toggleVisibility}
                 style={styles.closeButton}
@@ -61,7 +64,7 @@ const Picker: React.FC<PickerComponentProps> = ({
                   onValueChange(value.toString(), index)
                 }
               >
-                {options.map((o) => (
+                {options.map((o: any) => (
                   <NativePicker.Item
                     label={o.label}
                     value={o.value}

@@ -6,10 +6,11 @@ import {
   GROUPS,
   PROP_TYPES,
 } from "@draftbit/types";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
+
 import Row from "./Row";
-import { Icon } from "@draftbit/native";
 import Config from "./Config";
-import theme from "../styles/DefaultTheme";
 import { StyleProp, ViewStyle } from "react-native";
 
 type Props = {
@@ -17,10 +18,11 @@ type Props = {
   subtitle?: string;
   icon: string;
   style?: StyleProp<ViewStyle>;
-  theme: typeof theme;
-};
+  theme: Theme;
+} & IconSlot;
 
 const RowBodyIcon: React.FC<Props> = ({
+  Icon,
   title,
   subtitle,
   icon,

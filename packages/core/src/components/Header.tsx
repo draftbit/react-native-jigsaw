@@ -9,10 +9,11 @@ import {
 } from "react-native";
 import { withTheme } from "../theming";
 import Divider from "./Divider";
-import { Icon } from "@draftbit/native";
 import Touchable from "./Touchable";
 import Config from "./Config";
-import theme from "../styles/DefaultTheme";
+
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
 
 type Props = {
   titleTypeStyle?: StyleProp<TextStyle>;
@@ -23,10 +24,11 @@ type Props = {
   icon: string;
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
-  theme: typeof theme;
-};
+  theme: Theme;
+} & IconSlot;
 
 const Header: React.FC<Props> = ({
+  Icon,
   titleTypeStyle,
   titleColor,
   title,

@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import color from "color";
 import Config from "./Config";
-import { Icon } from "@draftbit/native";
 import Text from "./Text";
 import Touchable from "./Touchable";
 import Elevation from "./Elevation";
@@ -22,7 +21,8 @@ import {
   PROP_TYPES,
   COMPONENT_TYPES,
 } from "@draftbit/types";
-import theme from "../styles/DefaultTheme";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
 
 /**
  * A floating action button represents the primary action in an application.
@@ -69,29 +69,27 @@ type Props = {
   label?: string;
   onPress: () => void;
   elevation?: number;
-  theme: typeof theme;
-  IconOverride: typeof Icon;
+  theme: Theme;
   style?: StyleProp<ViewStyle>;
-} & TouchableHighlightProps;
+} & TouchableHighlightProps &
+  IconSlot;
 
 const FAB: React.FC<Props> = ({
+  Icon,
+  icon,
   disabled = false,
   type = "solid",
   loading = false,
-  icon,
   color: colorOverride,
   label,
   onPress,
   elevation = 0,
   style,
-  IconOverride = null,
   theme: { colors, disabledOpacity, roundness, typography },
   ...rest
 }) => {
   let backgroundColor, borderColor, textColor, borderWidth;
   const buttonColor = colorOverride || colors.primary;
-
-  const SelectedIcon = IconOverride || Icon;
 
   if (type === "standard" || type === "extended" || type === "fixed") {
     backgroundColor = buttonColor;
@@ -188,7 +186,7 @@ const FAB: React.FC<Props> = ({
         <View style={styles.content}>
           {icon && loading !== true ? (
             <View style={iconStyle}>
-              <SelectedIcon
+              <Icon
                 name={icon}
                 size={Config.buttonIconSize}
                 color={textColor}

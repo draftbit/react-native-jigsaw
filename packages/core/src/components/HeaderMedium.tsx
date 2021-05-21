@@ -6,8 +6,10 @@ import {
   FORM_TYPES,
   PROP_TYPES,
 } from "@draftbit/types";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
+
 import Header from "./Header";
-import theme from "../styles/DefaultTheme";
 import { StyleProp, ViewStyle } from "react-native";
 
 type Props = {
@@ -16,10 +18,11 @@ type Props = {
   icon: string;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
-  theme: typeof theme;
-};
+  theme: Theme;
+} & IconSlot;
 
 const HeaderMedium: React.FC<Props> = ({
+  Icon,
   title,
   buttonText,
   icon,
@@ -29,6 +32,7 @@ const HeaderMedium: React.FC<Props> = ({
 }) => {
   return (
     <Header
+      Icon={Icon}
       titleTypeStyle={typography.headline6}
       titleColor={colors.strong}
       title={title}

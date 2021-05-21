@@ -10,13 +10,15 @@ import {
   PROP_TYPES,
   FIELD_NAME,
 } from "@draftbit/types";
+import type { IconSlot } from "../interfaces/Icon";
 
 type Props = {
   status?: "checked" | "indeterminate" | "unchecked";
   disabled?: boolean;
   onPress?: () => void;
   color?: string;
-} & TouchableOpacityProps;
+} & TouchableOpacityProps &
+  IconSlot;
 
 export default function Checkbox(props: Props) {
   return Platform.OS === "ios" ? (

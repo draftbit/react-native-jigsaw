@@ -1,11 +1,11 @@
 import * as React from "react";
 import { withTheme } from "../theming";
 import { COMPONENT_TYPES, FORM_TYPES } from "@draftbit/types";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
 
 import Row from "./Row";
-import { Icon } from "@draftbit/native";
 import Config from "./Config";
-import theme from "../styles/DefaultTheme";
 import { ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
 
 type Props = {
@@ -15,15 +15,16 @@ type Props = {
   multilineSubtitle?: boolean;
   icon: string;
   style?: StyleProp<ViewStyle>;
-  theme: typeof theme;
-};
+  theme: Theme;
+} & IconSlot;
 
 const RowHeadlineImageIcon: React.FC<Props> = ({
+  Icon,
+  icon,
   title,
   image,
   subtitle,
   multilineSubtitle = false,
-  icon,
   style,
   theme: { colors, typography },
 }) => {

@@ -9,12 +9,14 @@ import Portal from "../Portal/Portal";
 import Button from "../DeprecatedButton";
 import TextField, { Props as TextFieldProps } from "../TextField";
 import Touchable from "../Touchable";
-import theme from "../../styles/DefaultTheme";
 import DateTimePicker from "./DatePickerComponent";
+
+import type { Theme } from "../../styles/DefaultTheme";
+import type { IconSlot } from "../../interfaces/Icon";
 
 type Props = {
   style?: StyleProp<ViewStyle>;
-  theme: typeof theme;
+  theme: Theme;
   // initialDate?: string;
   // locale?: string;
   // minuteInterval?: number;
@@ -26,7 +28,8 @@ type Props = {
   onDateChange?: (data?: any) => void;
   disabled?: boolean;
   mode?: "date" | "time" | "datetime";
-} & TextFieldProps;
+} & TextFieldProps &
+  IconSlot;
 
 const MONTHS = [
   "January",
@@ -44,6 +47,7 @@ const MONTHS = [
 ];
 
 const DatePicker: React.FC<Props> = ({
+  Icon,
   style,
   theme: { colors },
   date = new Date(),
@@ -117,6 +121,7 @@ const DatePicker: React.FC<Props> = ({
             >
               {Platform.OS === "ios" && (
                 <Button
+                  Icon={Icon}
                   type="text"
                   onPress={toggleVisibility}
                   style={styles.closeButton}

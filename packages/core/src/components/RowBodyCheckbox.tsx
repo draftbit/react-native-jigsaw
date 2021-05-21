@@ -1,9 +1,11 @@
 import * as React from "react";
 import { withTheme } from "../theming";
 import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "@draftbit/types";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
+
 import Row from "./Row";
 import Checkbox from "./Checkbox";
-import theme from "../styles/DefaultTheme";
 import { StyleProp, ViewStyle } from "react-native";
 
 type Props = {
@@ -13,10 +15,11 @@ type Props = {
   status?: "checked" | "indeterminate" | "unchecked";
   onPress?: () => void;
   color?: string;
-  theme: typeof theme;
-};
+  theme: Theme;
+} & IconSlot;
 
 const RowBodyCheckbox: React.FC<Props> = ({
+  Icon,
   title,
   subtitle,
   style,
@@ -33,7 +36,9 @@ const RowBodyCheckbox: React.FC<Props> = ({
       subtitleColor={colors.light}
       title={title}
       subtitle={subtitle}
-      right={() => <Checkbox status={status} color={color} onPress={onPress} />}
+      right={() => (
+        <Checkbox Icon={Icon} status={status} color={color} onPress={onPress} />
+      )}
       style={style}
     />
   );

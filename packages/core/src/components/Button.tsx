@@ -9,8 +9,6 @@ import {
   ActivityIndicator,
 } from "react-native";
 
-import { Icon } from "@draftbit/native";
-import Theme from "../styles/DefaultTheme";
 import { withTheme } from "../theming";
 
 import {
@@ -20,6 +18,8 @@ import {
   createTextProp,
   createActionProp,
 } from "@draftbit/types";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
 
 const CONSTANTS = {
   baseHeight: 42,
@@ -35,8 +35,8 @@ type BaseProps = {
   style?: TextStyle;
   onPress: () => void;
   icon?: string;
-  IconOverride?: typeof Icon | null;
-} & PressableProps;
+} & PressableProps &
+  IconSlot;
 
 type Props = {
   title: string;
@@ -45,18 +45,18 @@ type Props = {
   style?: TextStyle;
   onPress: () => void;
   icon?: string;
-  IconOverride?: typeof Icon | null;
-  theme: typeof Theme;
-} & PressableProps;
+  theme: Theme;
+} & PressableProps &
+  IconSlot;
 
 function Base({
+  Icon,
+  icon,
   title,
   onPress,
   loading,
   disabled,
   style,
-  icon,
-  IconOverride = null,
   ...props
 }: BaseProps): JSX.Element {
   const {
@@ -88,9 +88,6 @@ function Base({
     textDecorationStyle,
   };
 
-  // Necessary to inject web-renderable Icons in buider.
-  const SelectedIcon = IconOverride || Icon;
-
   return (
     <Pressable
       onPress={onPress}
@@ -110,7 +107,7 @@ function Base({
         <ActivityIndicator size="small" color={color} style={styles.loading} />
       ) : null}
       {icon && !loading ? (
-        <SelectedIcon
+        <Icon
           name={icon}
           color={color as string}
           style={styles.icon}

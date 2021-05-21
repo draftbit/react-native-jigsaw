@@ -1,19 +1,22 @@
 import * as React from "react";
 import { View, TouchableHighlightProps } from "react-native";
-import { Icon } from "@draftbit/native";
 import Touchable from "./Touchable";
 import { withTheme } from "../theming";
-import themeT from "../styles/DefaultTheme";
+
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
 
 type Props = {
   status?: "checked" | "indeterminate" | "unchecked";
   disabled?: boolean;
   onPress?: () => void;
-  theme: typeof themeT;
+  theme: Theme;
   color?: string;
-} & TouchableHighlightProps;
+} & TouchableHighlightProps &
+  IconSlot;
 
 const CheckboxIOS: React.FC<Props> = ({
+  Icon,
   status = "unchecked",
   disabled = false,
   onPress = () => {},

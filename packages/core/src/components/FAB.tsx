@@ -10,8 +10,8 @@ import {
   Platform,
 } from "react-native";
 import { withTheme } from "../theming";
-import { Icon } from "@draftbit/native";
 import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
 
 import {
   COMPONENT_TYPES,
@@ -29,9 +29,9 @@ type Props = {
   iconName?: string;
   onPress: () => void;
   theme: Theme;
-  IconOverride: typeof Icon;
   style?: StyleProp<ViewStyle>;
-} & PressableProps;
+} & PressableProps &
+  IconSlot;
 
 const FAB: React.FC<Props> = ({
   onPress,
@@ -43,11 +43,9 @@ const FAB: React.FC<Props> = ({
   iconColor,
   bgColor,
   size = 50,
-  IconOverride = null,
+  Icon,
   ...props
 }) => {
-  const SelectedIcon = IconOverride || Icon;
-
   const backgroundColor = bgColor || theme.colors.primary;
   const color = iconColor || "#FFF";
 
@@ -88,7 +86,7 @@ const FAB: React.FC<Props> = ({
           {loading ? (
             <ActivityIndicator size="small" color={color} />
           ) : (
-            <SelectedIcon name={iconName} size={28} color={iconColor} />
+            <Icon name={iconName} size={28} color={iconColor} />
           )}
         </View>
       </Pressable>

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
-import { colorTypes } from "../types";
+import { colorTypes } from "@draftbit/types";
 import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import IconButton from "./IconButton";
 import {

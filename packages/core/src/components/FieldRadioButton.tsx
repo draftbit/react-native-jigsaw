@@ -5,9 +5,13 @@ import { withTheme } from "../theming";
 import Touchable from "./Touchable";
 import RadioButton from "./RadioButton/RadioButton";
 
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "@draftbit/types";
+import {
+  GROUPS,
+  COMPONENT_TYPES,
+  FORM_TYPES,
+  colorTypes,
+} from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
-import { colorTypes } from "../types";
 
 type Props = {
   onPress?: () => void;

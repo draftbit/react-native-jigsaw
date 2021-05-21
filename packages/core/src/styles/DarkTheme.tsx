@@ -1,6 +1,7 @@
+// @ts-nocheck
 import color from "color";
 import DefaultTheme from "./DefaultTheme";
-import type { Theme } from "../types";
+import type { Theme } from "./DefaultTheme";
 
 const white = "#FFF";
 const black = "#000";
@@ -13,7 +14,6 @@ const DarkTheme: Theme = {
   colors: {
     ...DefaultTheme.colors,
     primary: "#BB86FC",
-    accent: "#03dac6",
     background: "#121212",
     surface: "#121212",
     error: "#CF6679",

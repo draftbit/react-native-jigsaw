@@ -9,7 +9,7 @@ import { Text, StyleProp, ViewStyle, TextStyle } from "react-native";
 import AnimatedCircularProgress from "./AnimatedCircularProgress";
 import { withTheme } from "../theming";
 import themeT from "../styles/DefaultTheme";
-import { colorTypes } from "../types";
+import { colorTypes } from "@draftbit/types";
 
 type Props = {
   progress?: number;

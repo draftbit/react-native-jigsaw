@@ -65,8 +65,7 @@ Release Process:
 - We release master, meaning a pull-request containing substantive changes
   should not alter any version information.
 
-- When master is ready for release, create a new branch and run a `yarn
-  version:XXXX` command from the root, as appropriate. Lerna will update all
+- When master is ready for release, create a new branch and run a `yarn version:XXXX` command from the root, as appropriate. Lerna will update all
   the package.json files with the next version, and create and tag a commit.
 
   - **NOTE:** We follow a modified semver: EXPO_VERSION.MAJOR.MINOR.
@@ -90,9 +89,10 @@ Sound cool? [We're hiring!](https://draftbit.com/jobs).
 
 MIT
 
-
 ## Contributing
+
 - Any color should be passed down via theme prop:
+
 ```
 // NOT dotColor="#5a45ff" b/c that isn't theme powered
 // Learn more here https://callstack.github.io/react-native-paper/theming.html

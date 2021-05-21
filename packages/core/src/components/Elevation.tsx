@@ -9,11 +9,11 @@ import {
 } from "react-native";
 import shadow from "../styles/shadow";
 import { withTheme } from "../theming";
-import themeT from "../styles/DefaultTheme";
+import type { Theme } from "../styles/DefaultTheme";
 
 type Props = {
   style?: StyleProp<ViewStyle>;
-  theme: typeof themeT;
+  theme: Theme;
 } & ViewProps;
 
 /* directly copied from https://github.com/callstack/react-native-paper/blob/main/src/components/Surface.tsx#L62 */

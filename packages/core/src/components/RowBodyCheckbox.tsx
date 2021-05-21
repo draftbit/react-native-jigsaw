@@ -1,10 +1,6 @@
 import * as React from "react";
 import { withTheme } from "../theming";
-import {
-  COMPONENT_TYPES,
-  FORM_TYPES,
-  FIELD_NAME,
-} from "@draftbit/types";
+import { COMPONENT_TYPES, FORM_TYPES, FIELD_NAME } from "@draftbit/types";
 import Row from "./Row";
 import Checkbox from "./Checkbox";
 import theme from "../styles/DefaultTheme";

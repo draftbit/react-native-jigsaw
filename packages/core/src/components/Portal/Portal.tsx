@@ -2,7 +2,7 @@ import * as React from "react";
 import PortalConsumer from "./PortalConsumer";
 import PortalHost, { PortalContext, PortalMethods } from "./PortalHost";
 import { ThemeProvider, withTheme } from "../../theming";
-import { Theme } from "../../types";
+import type { Theme } from "../../styles/DefaultTheme";
 
 type Props = {
   /**

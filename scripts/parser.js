@@ -1,5 +1,5 @@
-const {promises: fs} = require("fs");
-const {COMPONENT_TYPES_PATH} = require("./paths");
+const { promises: fs } = require("fs");
+const { COMPONENT_TYPES_PATH } = require("./paths");
 
 const IDENTIFIERS = {
   es6Export: {
@@ -21,7 +21,7 @@ const IDENTIFIERS = {
 };
 
 async function loadFile(file) {
-  const res = await fs.readFile(file, {encoding: "utf-8"});
+  const res = await fs.readFile(file, { encoding: "utf-8" });
   return res;
 }
 

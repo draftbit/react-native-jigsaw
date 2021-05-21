@@ -9,7 +9,6 @@ import {
   PressableProps,
   Platform,
 } from "react-native";
-import { Icon } from "@draftbit/native";
 import { withTheme } from "../theming";
 import {
   COMPONENT_TYPES,
@@ -20,6 +19,7 @@ import {
   createNumberProp,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
 
 type Props = {
   icon?: string;
@@ -30,25 +30,22 @@ type Props = {
   onPress: () => void;
   theme: Theme;
   style?: StyleProp<ViewStyle>;
-  IconOverride?: typeof Icon;
-} & PressableProps;
+} & PressableProps &
+  IconSlot;
 
 const IconButton: React.FC<Props> = ({
+  Icon,
   icon,
   color: customColor,
   size = 32,
   disabled = false,
   loading = false,
-  IconOverride = null,
   onPress,
   theme,
   style,
   ...props
 }) => {
   const iconColor = customColor || theme.colors.primary;
-
-  // Necessary to inject web-renderable Icons in buider.
-  const SelectedIcon = IconOverride || Icon;
 
   return (
     <Pressable
@@ -71,7 +68,7 @@ const IconButton: React.FC<Props> = ({
     >
       <View>
         {icon && !loading ? (
-          <SelectedIcon name={icon} size={size - 2} color={iconColor} />
+          <Icon name={icon} size={size - 2} color={iconColor} />
         ) : null}
         {loading ? <ActivityIndicator size="small" color={iconColor} /> : null}
       </View>

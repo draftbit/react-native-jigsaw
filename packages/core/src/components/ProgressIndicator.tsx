@@ -8,7 +8,7 @@ import {
   PROP_TYPES,
 } from "@draftbit/types";
 import themeT from "../styles/DefaultTheme";
-import { colorTypes } from "../types";
+import { colorTypes } from "@draftbit/types";
 
 type Props = {
   numberOfSteps: number;

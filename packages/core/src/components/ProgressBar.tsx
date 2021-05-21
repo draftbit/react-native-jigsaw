@@ -118,10 +118,8 @@ export default class ProgressBar extends Component<Props, State> {
   };
 
   animate() {
-    const {
-      useNativeDriver = false,
-      indeterminateAnimationDuration = 1000,
-    } = this.props;
+    const { useNativeDriver = false, indeterminateAnimationDuration = 1000 } =
+      this.props;
     this.state.animationValue.setValue(0);
     Animated.timing(this.state.animationValue, {
       toValue: 1,

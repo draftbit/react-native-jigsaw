@@ -127,9 +127,11 @@ const Card: React.FC<Props> = ({
   // Necessary to inject web-renderable Icons in buider.
   const SelectedIcon = IconOverride || Icon;
 
-  const { backgroundColor: bgColor, padding, ...styles } = StyleSheet.flatten(
-    style || {}
-  );
+  const {
+    backgroundColor: bgColor,
+    padding,
+    ...styles
+  } = StyleSheet.flatten(style || {});
 
   const backgroundColor = bgColor ? bgColor : theme.colors.surface;
   const innerPadding = padding ? padding : 12;

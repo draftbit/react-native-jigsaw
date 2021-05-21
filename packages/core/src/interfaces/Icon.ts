@@ -22,8 +22,7 @@ export interface IconSlot {
   Icon: IconI;
 }
 
-export const injectIcon = <P extends IconSlot>(
-  Component: React.ComponentType<P>,
-  Icon: IconI
-) => (props: Subtract<P, IconSlot>) =>
-  React.createElement(Component, { ...(props as P), Icon });
+export const injectIcon =
+  <P extends IconSlot>(Component: React.ComponentType<P>, Icon: IconI) =>
+  (props: Subtract<P, IconSlot>) =>
+    React.createElement(Component, { ...(props as P), Icon });

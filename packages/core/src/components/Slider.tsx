@@ -11,7 +11,7 @@ import {
 } from "@draftbit/types";
 import { StyleProp, ViewStyle } from "react-native";
 import themeT from "../styles/DefaultTheme";
-import { colorTypes } from "../types";
+import { colorTypes } from "@draftbit/types";
 
 export type Props = {
   style?: StyleProp<ViewStyle>;

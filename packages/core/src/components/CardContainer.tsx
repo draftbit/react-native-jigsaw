@@ -10,7 +10,6 @@ import color from "color";
 import Image from "./Image";
 import Card from "./DeprecatedCardWrapper";
 import Elevation from "./Elevation";
-import { Icon } from "@draftbit/native";
 import { withTheme } from "../theming";
 import {
   GROUPS,
@@ -20,8 +19,10 @@ import {
   createElevationType,
   createNumColumnsType,
 } from "@draftbit/types";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
+
 import Config from "./Config";
-import theme from "../styles/DefaultTheme";
 import { justificationType } from "./Justification";
 
 const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
@@ -37,18 +38,19 @@ type Props = {
   aspectRatio?: number;
   elevation?: number;
   numColumns?: number;
-  theme: typeof theme;
+  theme: Theme;
   style?: StyleProp<ViewStyle>;
   onPress: () => void;
-};
+} & IconSlot;
 
 const CardContainer: React.FC<Props> = ({
+  Icon,
+  icon,
   image = Config.cardImageUrl,
   title,
   leftDescription,
   rightDescription,
   textCentered,
-  icon,
   aspectRatio = 1.5,
   elevation = 2,
   numColumns = 3,

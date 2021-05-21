@@ -21,12 +21,14 @@ export {
   Touchable,
   withTheme,
   RadioButtonFieldGroup,
-  RadioButtonRow,
   RadioButtonGroup,
   /* Deprecated, needs fixing */
+  CardInline,
   CardBlock,
   FieldSlider,
-  Slider, // ProgressBar, // ProgressCircle, // ProgressIndicator, // RowBodySwitch, // RowHeadlineImageCaption,
+  Slider,
+  ProgressBar,
+  ProgressCircle, // // ProgressIndicator, // // RowBodySwitch, // // RowHeadlineImageCaption,
 } from "@draftbit/core";
 
 /**
@@ -37,15 +39,14 @@ export {
  */
 
 import {
-  // CardContainerShortImage,
-  // CardInline,
   injectIcon,
   AvatarEdit as BaseAvatarEdit,
   ButtonSolid as BaseButtonSolid,
   ButtonOutline as BaseButtonOutline,
+  Card as BaseCard,
   Link as BaseLink,
-  // CardContainer as BaseCardContainer,
-  // CardContainerRating as BaseCardContainerRating,
+  CardContainer as BaseCardContainer,
+  CardContainerRating as BaseCardContainerRating,
   DatePicker as BaseDatePicker,
   FAB as BaseFab,
   FieldSearchBarFull as BaseFieldSearchBarFull,
@@ -54,6 +55,7 @@ import {
   StarRating as BaseStarRating,
   TextField as BaseTextField,
   RadioButton as BaseRadioButton,
+  RadioButtonRow as BaseRadioButtonRow,
   ToggleButton as BaseToggleButton,
   Stepper as BaseStepper,
 } from "@draftbit/core";
@@ -71,5 +73,9 @@ export const ToggleButton = injectIcon(BaseToggleButton, Icon);
 export const FieldSearchBarFull = injectIcon(BaseFieldSearchBarFull, Icon);
 export const StarRating = injectIcon(BaseStarRating, Icon);
 export const Stepper = injectIcon(BaseStepper, Icon);
+export const Card = injectIcon(BaseCard, Icon);
+export const CardContainer = injectIcon(BaseCardContainer, Icon);
+export const CardContainerRating = injectIcon(BaseCardContainerRating, Icon);
 
 export const RadioButton = injectIcon(BaseRadioButton, Icon);
+export const RadioButtonRow = injectIcon(BaseRadioButtonRow, Icon);

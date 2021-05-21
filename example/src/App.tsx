@@ -26,10 +26,10 @@ import RadioButtonExample from "./RadioButtonExample";
 
 import CardExample from "./CardExample";
 import CardBlockExample from "./CardBlockExample";
-// import CardInlineExample from "./CardInlineExample";
+import CardInlineExample from "./CardInlineExample";
 // import CardContainerShortImageExample from "./CardContainerShortImageExample";
-// import CardContainerExample from "./CardContainerExample";
-// import CardContainerRatingExample from "./CardContainerRatingExample";
+import CardContainerExample from "./CardContainerExample";
+import CardContainerRatingExample from "./CardContainerRatingExample";
 
 import CarouselExample from "./CarouselExample";
 import ContainerExample from "./ContainerExample";
@@ -66,10 +66,9 @@ const ROUTES = {
   Card: CardExample,
   ToggleButton: ToggleButtonExample,
   CardBlock: CardBlockExample,
-  // CardInline: CardInlineExample,
-  // CardContainerShortImage: CardContainerShortImageExample,
-  // CardContainer: CardContainerExample,
-  // CardContainerRating: CardContainerRatingExample,
+  CardInline: CardInlineExample,
+  CardContainer: CardContainerExample,
+  CardContainerRating: CardContainerRatingExample,
   Carousel: CarouselExample,
   Container: ContainerExample,
   // Controllers: ControllerExample,

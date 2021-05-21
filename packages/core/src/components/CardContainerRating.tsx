@@ -44,11 +44,12 @@ type Props = {
 } & IconSlot;
 
 const CardContainerRating: React.FC<Props> = ({
+  Icon,
+  icon,
   image = Config.cardImageUrl,
   title,
   leftDescription,
   rightDescription,
-  icon,
   rating,
   aspectRatio = 1.5,
   elevation = 2,
@@ -56,7 +57,6 @@ const CardContainerRating: React.FC<Props> = ({
   theme: { colors, roundness, typography },
   style,
   onPress,
-  Icon,
   ...rest
 }) => {
   let titleStyle, rightDescriptionStyle;

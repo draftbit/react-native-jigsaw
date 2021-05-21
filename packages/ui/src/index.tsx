@@ -22,6 +22,7 @@ export {
   ThemeProvider,
   Touchable,
   withTheme,
+  useAuthState,
   /* Deprecated, needs fixing */
   CardBlock,
   CardInline,

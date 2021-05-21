@@ -1,6 +1,5 @@
 import * as React from "react";
 import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
 import { colorTypes } from "@draftbit/types";
 import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import IconButton from "./IconButton";
@@ -14,6 +13,8 @@ import {
   createFieldNameProp,
   createIconSizeProp,
 } from "@draftbit/types";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
 
 type Props = {
   icon: string;
@@ -28,9 +29,10 @@ type Props = {
   height?: number;
   style?: StyleProp<ViewStyle>;
   theme: Theme;
-};
+} & IconSlot;
 
 const ToggleButton: React.FC<Props> = ({
+  Icon,
   icon,
   toggled = false,
   onPress = () => {},
@@ -47,6 +49,7 @@ const ToggleButton: React.FC<Props> = ({
 }) => {
   return (
     <IconButton
+      Icon={Icon}
       icon={icon}
       size={iconSize}
       color={toggled ? colors[color] : colors[colorSecondary]}

@@ -9,21 +9,21 @@ import {
   FIELD_NAME,
   BORDER_RADIUS_MODE,
 } from "@draftbit/types";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
+
 import IconButton from "./IconButton";
-import theme from "../styles/DefaultTheme";
-import { Icon } from "@draftbit/native";
 
 type Props = {
   value?: number;
-  theme: typeof theme;
+  theme: Theme;
   style?: StyleProp<ViewStyle>;
   onChange?: (value: number) => void;
   iconSize?: number;
   iconColor?: string;
   borderRadius?: number;
   typeStyle?: StyleProp<TextStyle>;
-  IconOverride?: typeof Icon;
-};
+} & IconSlot;
 
 const Stepper: React.FC<Props> = ({
   value = 0,
@@ -33,7 +33,7 @@ const Stepper: React.FC<Props> = ({
   iconSize = 24,
   iconColor = colors.strong,
   borderRadius = theme.roundness,
-  IconOverride,
+  Icon,
   typeStyle,
 }) => {
   const [stateValue, setStateValue] = React.useState(value);
@@ -68,7 +68,7 @@ const Stepper: React.FC<Props> = ({
         size={iconSize}
         color={iconColor}
         disabled={value ? value === 0 : stateValue === 0}
-        IconOverride={IconOverride}
+        Icon={Icon}
       />
       <Text
         style={[

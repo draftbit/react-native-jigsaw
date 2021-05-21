@@ -1,6 +1,9 @@
 import * as React from "react";
 import { StyleProp, ViewStyle } from "react-native";
 
+import Config from "../Config";
+import IconButton from "../IconButton";
+
 import {
   GROUPS,
   COMPONENT_TYPES,
@@ -10,8 +13,7 @@ import {
   createNumberProp,
   createIconProp,
 } from "@draftbit/types";
-import Config from "../Config";
-import IconButton from "../IconButton";
+import type { IconSlot } from "../interfaces/Icon";
 
 export type RadioButtonProps = {
   selected: boolean;
@@ -23,7 +25,7 @@ export type RadioButtonProps = {
   size?: number;
   selectedIcon?: string;
   unselectedIcon?: string;
-};
+} & IconSlot;
 
 const RadioButton: React.FC<RadioButtonProps> = ({
   selected,
@@ -35,10 +37,12 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   selectedIcon = "MaterialIcons/radio-button-checked",
   unselectedIcon = "MaterialIcons/radio-button-unchecked",
   style,
+  Icon,
   ...rest
 }) => {
   return (
     <IconButton
+      Icon={Icon}
       icon={selected ? selectedIcon : unselectedIcon}
       color={selected ? color : unselectedColor}
       disabled={disabled}

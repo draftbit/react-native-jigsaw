@@ -55,6 +55,7 @@ const Container: React.FC<Props> = ({
     flexBasis,
     flexShrink,
     flexDirection,
+    alignContent,
     justifyContent,
     alignItems,
     ...styleProp
@@ -76,6 +77,7 @@ const Container: React.FC<Props> = ({
     flexBasis,
     flexShrink,
     flexDirection,
+    alignContent,
     justifyContent,
     alignItems,
   };

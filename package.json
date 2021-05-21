@@ -20,7 +20,8 @@
     "version:expo": "lerna version major --no-push",
     "version:major": "lerna version minor --no-push",
     "version:minor": "lerna version patch --no-push",
-    "version:patch": "echo \"No patch versions: See root README.md\""
+    "version:patch": "echo \"No patch versions: See root README.md\"",
+    "prepare": "husky install"
   },
   "workspaces": {
     "packages": [
@@ -35,9 +36,11 @@
     "dotenv": "^9.0.2",
     "eslint": "^7.26.0",
     "expo-yarn-workspaces": "1.2.1",
+    "husky": ">=6",
     "jest": "^26.6.3",
     "json-server": "^0.16.3",
     "lerna": "^4.0.0",
+    "lint-staged": ">=10",
     "node-fetch": "^2.6.1",
     "prettier": "^2.3.0",
     "rimraf": "^3.0.2",
@@ -53,6 +56,25 @@
       "react": {
         "version": "16"
       }
+    },
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "rules": {
+      "react-native/no-inline-styles": "off",
+      "prettier/prettier": [
+        "error",
+        {
+          "quoteProps": "consistent",
+          "semi": true,
+          "singleQuote": false,
+          "tabWidth": 2,
+          "trailingComma": "es5",
+          "useTabs": false,
+          "bracketSpacing": true
+        }
+      ]
     }
   },
   "eslintIgnore": [
@@ -61,5 +83,18 @@
     "node_modules/",
     "lib/",
     "__generated__"
-  ]
+  ],
+  "prettier": {
+    "quoteProps": "consistent",
+    "semi": true,
+    "singleQuote": false,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false,
+    "bracketSpacing": true
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,jsx}": "eslint --cache --fix",
+    "*.{js,ts,tsx,json,mcss,md}": "prettier --write"
+  }
 }

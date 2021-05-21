@@ -16,3 +16,4 @@ lerna.json
 completed.json
 errors.json
 components.json
+example/node_modules

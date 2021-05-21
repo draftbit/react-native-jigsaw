@@ -59,6 +59,7 @@ const renderLabel = (
 };
 
 const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
+  Icon,
   label,
   value,
   onPress = () => {},
@@ -104,6 +105,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
         }}
       >
         <RadioButton
+          Icon={Icon}
           selected={selected || contextValue === value}
           onPress={handlePress}
           style={radioButtonStyle}

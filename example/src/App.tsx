@@ -1,3 +1,9 @@
+import {
+  NavigationContainer,
+  useNavigation,
+  DrawerActions,
+} from "@react-navigation/native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import "react-native-gesture-handler";
 import * as React from "react";
 import {
@@ -19,16 +25,15 @@ import ButtonExample from "./ButtonExample";
 import RadioButtonExample from "./RadioButtonExample";
 
 import CardExample from "./CardExample";
-
 import CardBlockExample from "./CardBlockExample";
-import CardInlineExample from "./CardInlineExample";
-import CardContainerShortImageExample from "./CardContainerShortImageExample";
-import CardContainerExample from "./CardContainerExample";
-import CardContainerRatingExample from "./CardContainerRatingExample";
+// import CardInlineExample from "./CardInlineExample";
+// import CardContainerShortImageExample from "./CardContainerShortImageExample";
+// import CardContainerExample from "./CardContainerExample";
+// import CardContainerRatingExample from "./CardContainerRatingExample";
 
 import CarouselExample from "./CarouselExample";
 import ContainerExample from "./ContainerExample";
-import ControllerExample from "./ControllerExample";
+// import ControllerExample from "./ControllerExample";
 
 import DatePickerExample from "./DatePickerExample";
 
@@ -36,28 +41,20 @@ import FABExample from "./FABExample";
 import ToggleButtonExample from "./ToggleButtonExample";
 import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
 
-import HeaderExample from "./HeaderExample";
+// import HeaderExample from "./HeaderExample";
 import LayoutExample from "./LayoutExample";
 
-import PickerExample from "./PickerExample";
+// import PickerExample from "./PickerExample";
 
-import ProgressExample from "./ProgressExample";
-
-import RowExample from "./RowExample";
+// import ProgressIndicatorExample from "./ProgressIndicatorExample.js";
+// import ProgressExample from "./ProgressExample";
+// import RowExample from "./RowExample";
 
 import SliderExample from "./SliderExample";
 import SwitchExample from "./SwitchExample";
 import StepperExample from "./StepperExample";
 
 import TextFieldExample from "./TextFieldExample";
-
-import ProgressIndicatorExample from "./ProgressIndicatorExample.js";
-import {
-  NavigationContainer,
-  useNavigation,
-  DrawerActions,
-} from "@react-navigation/native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const ROUTES = {
   Layout: LayoutExample,
@@ -69,22 +66,22 @@ const ROUTES = {
   Card: CardExample,
   ToggleButton: ToggleButtonExample,
   CardBlock: CardBlockExample,
-  CardInline: CardInlineExample,
-  CardContainerShortImage: CardContainerShortImageExample,
-  CardContainer: CardContainerExample,
-  CardContainerRating: CardContainerRatingExample,
+  // CardInline: CardInlineExample,
+  // CardContainerShortImage: CardContainerShortImageExample,
+  // CardContainer: CardContainerExample,
+  // CardContainerRating: CardContainerRatingExample,
   Carousel: CarouselExample,
   Container: ContainerExample,
-  Controllers: ControllerExample,
+  // Controllers: ControllerExample,
   DatePicker: DatePickerExample,
   FieldSearchBarFull: FieldSearchBarFullExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
-  Header: HeaderExample,
-  Picker: PickerExample,
-  ProgressBar: ProgressExample,
-  ProgressIndicator: ProgressIndicatorExample,
+  // Header: HeaderExample,
+  // Picker: PickerExample,
+  // ProgressBar: ProgressExample,
+  // ProgressIndicator: ProgressIndicatorExample,
   // TODO fix Row (spacing problem)
-  Row: RowExample,
+  // Row: RowExample,
   // TODO (componentWillReceieveProps insider slider component)
   Slider: SliderExample,
   Switch: SwitchExample,

@@ -11,11 +11,11 @@ import {
 import shadow from "../styles/shadow";
 import overlay from "../styles/overlay";
 import { withTheme } from "../theming";
-import themeT from "../styles/DefaultTheme";
+import type { Theme } from "../styles/DefaultTheme";
 
 type Props = {
   style?: StyleProp<ViewStyle>;
-  theme: typeof themeT;
+  theme: Theme;
 } & ViewProps;
 
 const Surface: React.FC<Props> = ({ style, theme, children, ...rest }) => {

@@ -10,11 +10,9 @@ import {
 } from "react-native";
 import Image from "./Image";
 import Surface from "./Surface";
-import { Icon } from "@draftbit/native";
 import { Title, Subtitle, Caption } from "./Typography";
 
 import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
 import Config from "./Config";
 
 import {
@@ -28,6 +26,8 @@ import {
   createBoolProp,
   createTextStyle,
 } from "@draftbit/types";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
 
 const ICON_SIZE = Config.cardIconSize;
 const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
@@ -36,16 +36,15 @@ const ICON_ELEVATION = Config.cardIconElevation;
 
 export const TopRightCircleIcon = withTheme(
   ({
+    Icon,
     icon,
     theme,
     onPress,
-    IconOverride,
   }: {
     icon: string;
     theme: Theme;
     onPress?: () => void;
-    IconOverride: typeof Icon;
-  }) => {
+  } & IconSlot) => {
     return (
       <Surface
         style={{
@@ -73,11 +72,7 @@ export const TopRightCircleIcon = withTheme(
             ];
           }}
         >
-          <IconOverride
-            name={icon}
-            size={ICON_SIZE}
-            color={theme.colors.surface}
-          />
+          <Icon name={icon} size={ICON_SIZE} color={theme.colors.surface} />
         </Pressable>
       </Surface>
     );
@@ -102,10 +97,10 @@ type Props = {
   onPress?: () => void;
   onPressIcon?: () => void;
   children?: React.ReactNode;
-  IconOverride?: typeof Icon;
-};
+} & IconSlot;
 
 const Card: React.FC<Props> = ({
+  Icon,
   image = Config.cardImageUrl,
   title,
   subtitle,
@@ -122,11 +117,7 @@ const Card: React.FC<Props> = ({
   descriptionStyle,
   theme,
   children,
-  IconOverride = null,
 }) => {
-  // Necessary to inject web-renderable Icons in buider.
-  const SelectedIcon = IconOverride || Icon;
-
   const {
     backgroundColor: bgColor,
     padding,
@@ -171,11 +162,7 @@ const Card: React.FC<Props> = ({
           </View>
         </View>
         {icon ? (
-          <TopRightCircleIcon
-            IconOverride={SelectedIcon}
-            icon={icon}
-            onPress={onPressIcon}
-          />
+          <TopRightCircleIcon Icon={Icon} icon={icon} onPress={onPressIcon} />
         ) : null}
       </Pressable>
     </Surface>

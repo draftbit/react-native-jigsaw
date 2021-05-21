@@ -1,35 +1,33 @@
+import { Icon } from "@draftbit/native";
+export { AudioPlayer, Icon } from "@draftbit/native";
 export {
+  Switch,
+  Avatar,
+  CircleImage,
   Center,
   Circle,
-  CircleImage,
-  Square,
   Row,
-  Stack,
   Spacer,
-  Avatar,
-  CardBlock,
-  // CardContainerShortImage,
-  CardInline,
+  Square,
+  Stack,
+  Divider,
+  Surface,
   Carousel,
   Container,
   DefaultTheme,
-  Divider,
-  // FieldSlider,
-  ProgressBar,
-  ProgressCircle,
-  ProgressIndicator,
   Provider,
-  // RowBodySwitch,
-  // RowHeadlineImageCaption,
   ScreenContainer,
-  Slider,
-  Switch,
   ThemeProvider,
   Touchable,
   withTheme,
+  RadioButtonFieldGroup,
+  RadioButtonRow,
+  RadioButtonGroup,
+  /* Deprecated, needs fixing */
+  CardBlock,
+  FieldSlider,
+  Slider, // ProgressBar, // ProgressCircle, // ProgressIndicator, // RowBodySwitch, // RowHeadlineImageCaption,
 } from "@draftbit/core";
-
-export { AudioPlayer, Icon } from "@draftbit/native";
 
 /**
  * Components with Injected Dependencies
@@ -39,6 +37,8 @@ export { AudioPlayer, Icon } from "@draftbit/native";
  */
 
 import {
+  // CardContainerShortImage,
+  // CardInline,
   injectIcon,
   AvatarEdit as BaseAvatarEdit,
   ButtonSolid as BaseButtonSolid,
@@ -48,20 +48,14 @@ import {
   // CardContainerRating as BaseCardContainerRating,
   DatePicker as BaseDatePicker,
   FAB as BaseFab,
-  // FieldSearchBarFull as BaseFieldSearchBarFull,
+  FieldSearchBarFull as BaseFieldSearchBarFull,
   IconButton as BaseIconButton,
-  // Picker as BasePickerComponent,
+  Picker as BasePicker,
   StarRating as BaseStarRating,
   TextField as BaseTextField,
-} from "@draftbit/core";
-
-import { Icon } from "@draftbit/native";
-
-export {
-  RadioButton,
-  RadioButtonFieldGroup,
-  RadioButtonRow,
-  RadioButtonGroup,
+  RadioButton as BaseRadioButton,
+  ToggleButton as BaseToggleButton,
+  Stepper as BaseStepper,
 } from "@draftbit/core";
 
 export const IconButton = injectIcon(BaseIconButton, Icon);
@@ -69,7 +63,13 @@ export const FAB = injectIcon(BaseFab, Icon);
 export const ButtonSolid = injectIcon(BaseButtonSolid, Icon);
 export const ButtonOutline = injectIcon(BaseButtonOutline, Icon);
 export const Link = injectIcon(BaseLink, Icon);
-export const StarRating = injectIcon(BaseStarRating, Icon);
-export const AvatarEdit = injectIcon(BaseAvatarEdit, Icon);
 export const TextField = injectIcon(BaseTextField, Icon);
+export const AvatarEdit = injectIcon(BaseAvatarEdit, Icon);
 export const DatePicker = injectIcon(BaseDatePicker, Icon);
+export const Picker = injectIcon(BasePicker, Icon);
+export const ToggleButton = injectIcon(BaseToggleButton, Icon);
+export const FieldSearchBarFull = injectIcon(BaseFieldSearchBarFull, Icon);
+export const StarRating = injectIcon(BaseStarRating, Icon);
+export const Stepper = injectIcon(BaseStepper, Icon);
+
+export const RadioButton = injectIcon(BaseRadioButton, Icon);

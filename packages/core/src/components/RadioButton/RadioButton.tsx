@@ -28,6 +28,7 @@ export type RadioButtonProps = {
 } & IconSlot;
 
 const RadioButton: React.FC<RadioButtonProps> = ({
+  Icon,
   selected,
   disabled = false,
   color,
@@ -37,7 +38,6 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   selectedIcon = "MaterialIcons/radio-button-checked",
   unselectedIcon = "MaterialIcons/radio-button-unchecked",
   style,
-  Icon,
   ...rest
 }) => {
   return (

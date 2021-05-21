@@ -26,6 +26,7 @@ type Props = {
 } & IconSlot;
 
 const Stepper: React.FC<Props> = ({
+  Icon,
   value = 0,
   style,
   onChange,
@@ -33,7 +34,6 @@ const Stepper: React.FC<Props> = ({
   iconSize = 24,
   iconColor = colors.strong,
   borderRadius = roundness,
-  Icon,
   typeStyle,
 }) => {
   const [stateValue, setStateValue] = React.useState(value);
@@ -63,12 +63,12 @@ const Stepper: React.FC<Props> = ({
       ]}
     >
       <IconButton
+        Icon={Icon}
         icon="MaterialIcons/remove"
         onPress={handleMinus}
         size={iconSize}
         color={iconColor}
         disabled={value ? value === 0 : stateValue === 0}
-        Icon={Icon}
       />
       <Text
         style={[
@@ -85,11 +85,11 @@ const Stepper: React.FC<Props> = ({
         {value || stateValue}
       </Text>
       <IconButton
+        Icon={Icon}
         icon="MaterialIcons/add"
         onPress={handlePlus}
         size={iconSize}
         color={iconColor}
-        Icon={Icon}
       />
     </View>
   );

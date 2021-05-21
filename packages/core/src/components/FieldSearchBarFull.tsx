@@ -16,21 +16,22 @@ import {
   PROP_TYPES,
   FIELD_NAME,
 } from "@draftbit/types";
-import { Icon } from "@draftbit/native";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
 import Config from "./Config";
-import theme from "../styles/DefaultTheme";
 
 type Props = {
   icon?: string;
   placeholder?: string;
   style?: StyleProp<ViewStyle>;
-  theme: typeof theme;
+  theme: Theme;
   onChange: (text: string) => void;
   onSubmit?: (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
   value: string;
-};
+} & IconSlot;
 
 const FieldSearchBarFull: React.FC<Props> = ({
+  Icon,
   icon = "search",
   placeholder = "",
   style,

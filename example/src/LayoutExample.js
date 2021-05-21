@@ -1,7 +1,17 @@
 import * as React from "react";
 import { View } from "react-native";
-import { Row, withTheme } from "@draftbit/ui";
-import Section, { Container } from "./Section";
+import {
+  StarRating,
+  Surface,
+  ScreenContainer,
+  Divider,
+  Stack,
+  Row,
+  Center,
+  Circle,
+  withTheme,
+} from "@draftbit/ui";
+import Section from "./Section";
 
 function Box({ width = 50, height = 50 }) {
   return (
@@ -11,7 +21,16 @@ function Box({ width = 50, height = 50 }) {
 
 function LayoutExample({ theme }) {
   return (
-    <Container style={{ backgroundColor: theme.colors.background }}>
+    <ScreenContainer hasSafeArea={false} scrollable={false}>
+      <Section title="StarRating">
+        <StarRating rating={3.5} />
+        <StarRating />
+        <StarRating
+          starSize={24}
+          maxStars={10}
+          style={{ backgroundColor: "orange", margin: 12 }}
+        />
+      </Section>
       <Section title="Row">
         <Row>
           <Box />
@@ -19,7 +38,29 @@ function LayoutExample({ theme }) {
           <Box />
         </Row>
       </Section>
-    </Container>
+      <Divider />
+      <Section title="Center">
+        <Center>
+          <Box />
+          <Box />
+          <Box />
+        </Center>
+      </Section>
+      <Divider />
+      <Section title="Stack">
+        <Stack>
+          <Box />
+          <Box />
+          <Box />
+        </Stack>
+      </Section>
+      <Divider />
+      <Surface>
+        <Section title="Circle">
+          <Circle />
+        </Section>
+      </Surface>
+    </ScreenContainer>
   );
 }
 

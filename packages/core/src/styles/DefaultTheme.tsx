@@ -16,7 +16,7 @@ const DefaultTheme = {
     surface: "rgba(255, 255, 255, 1)",
     background: "rgba(251, 252, 253, 1)",
     error: "rgba(255, 69, 100, 1)",
-    divider: "rgba(234, 237, 242, 1)",
+    divider: "rgba(200, 200, 200, 1)",
     strong: "rgba(18, 20, 44, 1)",
     medium: "rgba(70, 78, 88, 1)",
     strongInverse: "rgba(255, 255, 255, 1)",

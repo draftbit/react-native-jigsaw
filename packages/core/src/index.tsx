@@ -1,5 +1,4 @@
 export { injectIcon } from "./interfaces/Icon";
-export { AudioPlayer, Icon } from "@draftbit/native";
 
 export { withTheme, ThemeProvider } from "./theming";
 export { default as Provider } from "./Provider";

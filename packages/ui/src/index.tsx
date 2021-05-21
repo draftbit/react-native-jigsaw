@@ -1,34 +1,36 @@
 import { Icon } from "@draftbit/native";
 export { AudioPlayer, Icon } from "@draftbit/native";
 export {
-  Switch,
   Avatar,
-  CircleImage,
+  Carousel,
   Center,
   Circle,
+  CircleImage,
+  Container,
+  DefaultTheme,
+  Divider,
+  Provider,
+  RadioButtonFieldGroup,
+  RadioButtonGroup,
   Row,
+  ScreenContainer,
   Spacer,
   Square,
   Stack,
-  Divider,
   Surface,
-  Carousel,
-  Container,
-  DefaultTheme,
-  Provider,
-  ScreenContainer,
+  Switch,
   ThemeProvider,
   Touchable,
   withTheme,
-  RadioButtonFieldGroup,
-  RadioButtonGroup,
   /* Deprecated, needs fixing */
-  CardInline,
   CardBlock,
+  CardInline,
   FieldSlider,
-  Slider,
   ProgressBar,
-  ProgressCircle, // // ProgressIndicator, // // RowBodySwitch, // // RowHeadlineImageCaption,
+  ProgressCircle,
+  RowBodySwitch,
+  RowHeadlineImageCaption,
+  Slider,
 } from "@draftbit/core";
 
 /**
@@ -58,24 +60,35 @@ import {
   RadioButtonRow as BaseRadioButtonRow,
   ToggleButton as BaseToggleButton,
   Stepper as BaseStepper,
+  HeaderLarge as BaseHeaderLarge,
+  HeaderMedium as BaseHeaderMedium,
+  HeaderOverline as BaseHeaderOverline,
+  RowBodyCheckbox as BaseRowBodyCheckbox,
+  RowBodyIcon as BaseRowBodyIcon,
+  RowHeadlineImageIcon as BaseRowHeadlineImageIcon,
 } from "@draftbit/core";
 
-export const IconButton = injectIcon(BaseIconButton, Icon);
-export const FAB = injectIcon(BaseFab, Icon);
-export const ButtonSolid = injectIcon(BaseButtonSolid, Icon);
-export const ButtonOutline = injectIcon(BaseButtonOutline, Icon);
-export const Link = injectIcon(BaseLink, Icon);
-export const TextField = injectIcon(BaseTextField, Icon);
 export const AvatarEdit = injectIcon(BaseAvatarEdit, Icon);
-export const DatePicker = injectIcon(BaseDatePicker, Icon);
-export const Picker = injectIcon(BasePicker, Icon);
-export const ToggleButton = injectIcon(BaseToggleButton, Icon);
-export const FieldSearchBarFull = injectIcon(BaseFieldSearchBarFull, Icon);
-export const StarRating = injectIcon(BaseStarRating, Icon);
-export const Stepper = injectIcon(BaseStepper, Icon);
+export const ButtonOutline = injectIcon(BaseButtonOutline, Icon);
+export const ButtonSolid = injectIcon(BaseButtonSolid, Icon);
 export const Card = injectIcon(BaseCard, Icon);
 export const CardContainer = injectIcon(BaseCardContainer, Icon);
 export const CardContainerRating = injectIcon(BaseCardContainerRating, Icon);
-
+export const DatePicker = injectIcon(BaseDatePicker, Icon);
+export const FAB = injectIcon(BaseFab, Icon);
+export const FieldSearchBarFull = injectIcon(BaseFieldSearchBarFull, Icon);
+export const HeaderLarge = injectIcon(BaseHeaderLarge, Icon);
+export const HeaderMedium = injectIcon(BaseHeaderMedium, Icon);
+export const HeaderOverline = injectIcon(BaseHeaderOverline, Icon);
+export const IconButton = injectIcon(BaseIconButton, Icon);
+export const Link = injectIcon(BaseLink, Icon);
+export const Picker = injectIcon(BasePicker, Icon);
 export const RadioButton = injectIcon(BaseRadioButton, Icon);
 export const RadioButtonRow = injectIcon(BaseRadioButtonRow, Icon);
+export const RowBodyIcon = injectIcon(BaseRowBodyIcon, Icon);
+export const RowBodyCheckbox = injectIcon(BaseRowBodyCheckbox, Icon);
+export const RowHeadlineImageIcon = injectIcon(BaseRowHeadlineImageIcon, Icon);
+export const StarRating = injectIcon(BaseStarRating, Icon);
+export const Stepper = injectIcon(BaseStepper, Icon);
+export const TextField = injectIcon(BaseTextField, Icon);
+export const ToggleButton = injectIcon(BaseToggleButton, Icon);

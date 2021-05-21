@@ -13,7 +13,7 @@ import {
   createNumberProp,
   createIconProp,
 } from "@draftbit/types";
-import type { IconSlot } from "../interfaces/Icon";
+import type { IconSlot } from "../../interfaces/Icon";
 
 export type RadioButtonProps = {
   selected: boolean;

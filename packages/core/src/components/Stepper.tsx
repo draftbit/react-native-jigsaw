@@ -29,10 +29,10 @@ const Stepper: React.FC<Props> = ({
   value = 0,
   style,
   onChange,
-  theme: { colors, typography },
+  theme: { colors, typography, roundness },
   iconSize = 24,
   iconColor = colors.strong,
-  borderRadius = theme.roundness,
+  borderRadius = roundness,
   Icon,
   typeStyle,
 }) => {
@@ -89,7 +89,7 @@ const Stepper: React.FC<Props> = ({
         onPress={handlePlus}
         size={iconSize}
         color={iconColor}
-        IconOverride={IconOverride}
+        Icon={Icon}
       />
     </View>
   );

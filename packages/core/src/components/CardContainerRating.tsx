@@ -131,6 +131,7 @@ const CardContainerRating: React.FC<Props> = ({
               }}
             >
               <StarRating
+                Icon={Icon}
                 starSize={numColumns === 1 ? 10 : 16}
                 rating={rating}
               />

@@ -70,7 +70,7 @@ const ROUTES = {
   CardInline: CardInlineExample,
   CardContainer: CardContainerExample,
   CardContainerRating: CardContainerRatingExample,
-  CheckBox: CheckboxExample,
+  Checkbox: CheckboxExample,
   Carousel: CarouselExample,
   Container: ContainerExample,
   // Controllers: ControllerExample,

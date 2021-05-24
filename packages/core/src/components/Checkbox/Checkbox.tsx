@@ -17,9 +17,10 @@ import {
   FORM_TYPES,
   GROUPS,
   createColorProp,
-} from "../../core/component-types";
-import { useTheme } from "../../core/theming";
-import Icon from "../Icon";
+} from "@draftbit/types";
+import { useTheme } from "../../theming";
+import type { IconSlot } from "../interfaces/Icon";
+
 import Touchable from "../Touchable";
 
 const ANIMATION_DURATION = 100;
@@ -44,96 +45,98 @@ export interface CheckboxProps {
   style?: StyleProp<ViewStyle>;
 }
 
-const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps> = ({
-  status = CheckboxStatus.Unchecked,
-  disabled = false,
-  onPress = () => {},
-  color,
-  uncheckedColor,
-  indeterminateColor,
-  checkedIcon = "MaterialCommunityIcons/checkbox-marked",
-  uncheckedIcon = "MaterialCommunityIcons/checkbox-blank-outline",
-  indeterminateIcon = "AntDesign/minussquareo",
-  size = 29,
-  style,
-  ...rest
-}) => {
-  const { current: scaleAnim } = React.useRef<Animated.Value>(
-    new Animated.Value(1)
-  );
-  const isFirstRendering = React.useRef<boolean>(true);
-  const { colors } = useTheme();
+const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
+  ({
+    Icon,
+    status = CheckboxStatus.Unchecked,
+    disabled = false,
+    onPress = () => {},
+    color,
+    uncheckedColor,
+    indeterminateColor,
+    checkedIcon = "MaterialCommunityIcons/checkbox-marked",
+    uncheckedIcon = "MaterialCommunityIcons/checkbox-blank-outline",
+    indeterminateIcon = "AntDesign/minussquareo",
+    size = 29,
+    style,
+    ...rest
+  }) => {
+    const { current: scaleAnim } = React.useRef<Animated.Value>(
+      new Animated.Value(1)
+    );
+    const isFirstRendering = React.useRef<boolean>(true);
+    const { colors } = useTheme();
 
-  const colorsMap = {
-    [CheckboxStatus.Checked]: color || colors.primary,
-    [CheckboxStatus.Unchecked]: uncheckedColor || colors.primary,
-    [CheckboxStatus.Indeterminate]: indeterminateColor || colors.light,
-  };
+    const colorsMap = {
+      [CheckboxStatus.Checked]: color || colors.primary,
+      [CheckboxStatus.Unchecked]: uncheckedColor || colors.primary,
+      [CheckboxStatus.Indeterminate]: indeterminateColor || colors.light,
+    };
 
-  const iconsMap = {
-    [CheckboxStatus.Checked]: checkedIcon,
-    [CheckboxStatus.Unchecked]: uncheckedIcon,
-    [CheckboxStatus.Indeterminate]: indeterminateIcon,
-  };
+    const iconsMap = {
+      [CheckboxStatus.Checked]: checkedIcon,
+      [CheckboxStatus.Unchecked]: uncheckedIcon,
+      [CheckboxStatus.Indeterminate]: indeterminateIcon,
+    };
 
-  const checkboxColor = colorsMap[status];
-  const borderWidth = scaleAnim.interpolate({
-    inputRange: [0.8, 1],
-    outputRange: [7, 0],
-  });
+    const checkboxColor = colorsMap[status];
+    const borderWidth = scaleAnim.interpolate({
+      inputRange: [0.8, 1],
+      outputRange: [7, 0],
+    });
 
-  React.useEffect(() => {
-    // Do not run animation on very first rendering
-    if (isFirstRendering.current) {
-      isFirstRendering.current = false;
-      return;
-    }
-    const checked = status === CheckboxStatus.Checked;
-    Animated.sequence([
-      Animated.timing(scaleAnim, {
-        toValue: 0.85,
-        duration: checked ? ANIMATION_DURATION : 0,
-        useNativeDriver: false,
-      }),
-      Animated.timing(scaleAnim, {
-        toValue: 1,
-        duration: checked ? ANIMATION_DURATION : ANIMATION_DURATION * 1.75,
-        useNativeDriver: false,
-      }),
-    ]).start();
-  }, [status, scaleAnim]);
+    React.useEffect(() => {
+      // Do not run animation on very first rendering
+      if (isFirstRendering.current) {
+        isFirstRendering.current = false;
+        return;
+      }
+      const checked = status === CheckboxStatus.Checked;
+      Animated.sequence([
+        Animated.timing(scaleAnim, {
+          toValue: 0.85,
+          duration: checked ? ANIMATION_DURATION : 0,
+          useNativeDriver: false,
+        }),
+        Animated.timing(scaleAnim, {
+          toValue: 1,
+          duration: checked ? ANIMATION_DURATION : ANIMATION_DURATION * 1.75,
+          useNativeDriver: false,
+        }),
+      ]).start();
+    }, [status, scaleAnim]);
 
-  return (
-    <Touchable
-      {...rest}
-      onPress={onPress}
-      disabled={disabled}
-      accessibilityState={{ disabled }}
-      accessibilityRole="button"
-      accessibilityLiveRegion="polite"
-      style={[styles.container, style]}
-    >
-      <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
-        <Icon
-          style={styles.icon}
-          name={iconsMap[status]}
-          size={size}
-          color={checkboxColor}
-        />
-        <View style={[StyleSheet.absoluteFill, styles.fillContainer]}>
-          <Animated.View
-            style={[
-              styles.fill,
-              { opacity: disabled ? 0.5 : 1 },
-              { borderColor: checkboxColor },
-              { borderWidth },
-            ]}
+    return (
+      <Touchable
+        {...rest}
+        onPress={onPress}
+        disabled={disabled}
+        accessibilityState={{ disabled }}
+        accessibilityRole="button"
+        accessibilityLiveRegion="polite"
+        style={[styles.container, style]}
+      >
+        <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
+          <Icon
+            style={styles.icon}
+            name={iconsMap[status]}
+            size={size}
+            color={checkboxColor}
           />
-        </View>
-      </Animated.View>
-    </Touchable>
-  );
-};
+          <View style={[StyleSheet.absoluteFill, styles.fillContainer]}>
+            <Animated.View
+              style={[
+                styles.fill,
+                { opacity: disabled ? 0.5 : 1 },
+                { borderColor: checkboxColor },
+                { borderWidth },
+              ]}
+            />
+          </View>
+        </Animated.View>
+      </Touchable>
+    );
+  };
 
 const styles = StyleSheet.create({
   container: {

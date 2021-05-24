@@ -6,7 +6,7 @@ import {
   createTextProp,
   PROP_TYPES,
   createFieldNameProp,
-} from "../../core/component-types";
+} from "@draftbit/types";
 import type { Theme } from "../../styles/DefaultTheme";
 import { checkboxGroupContext, Direction } from "./context";
 

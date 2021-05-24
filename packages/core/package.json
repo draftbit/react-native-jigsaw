@@ -1,0 +1,89 @@
+{
+  "name": "@draftbit/core",
+  "version": "40.31.7",
+  "description": "Core (non-native) Components",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/typescript/src/index.d.ts",
+  "react-native": "src/index.tsx",
+  "source": "src/index.tsx",
+  "files": [
+    "src",
+    "lib",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
+  ],
+  "scripts": {
+    "prepare": "bob build",
+    "clean": "rimraf lib",
+    "clean:modules": "rimraf node_modules"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/draftbit/react-native-jigsaw",
+    "directory": "packages/core"
+  },
+  "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/draftbit/react-native-jigsaw/issues"
+  },
+  "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
+  "dependencies": {
+    "@date-io/date-fns": "^1.3.13",
+    "@draftbit/react-theme-provider": "^2.1.1",
+    "@draftbit/types": "^40.31.3",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/pickers": "^3.2.10",
+    "@react-native-community/slider": "~3.0.3",
+    "color": "^3.1.2",
+    "date-fns": "^2.16.1",
+    "dateformat": "^3.0.3",
+    "react-native-safe-area-context": "3.1.9",
+    "react-native-typography": "^1.4.1"
+  },
+  "devDependencies": {
+    "@react-native-community/datetimepicker": "~3.0.0",
+    "@react-native-community/picker": "~1.6.6",
+    "@types/color": "^3.0.1",
+    "@types/dateformat": "^3.0.1",
+    "@types/react": "^16.9.36",
+    "@types/react-native": "^0.63.40",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "~0.63.2",
+    "react-native-builder-bob": "^0.18.1",
+    "typescript": "~4.2.3"
+  },
+  "peerDependencies": {
+    "@react-native-community/datetimepicker": "~3.0.0",
+    "@react-native-community/picker": "~1.6.6",
+    "react": "*",
+    "react-native": "*",
+    "react-native-svg": "~12.1.0"
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json",
+          "tsc": "../../node_modules/typescript/bin/tsc"
+        }
+      ]
+    ]
+  }
+}

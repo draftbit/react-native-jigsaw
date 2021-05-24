@@ -1,0 +1,19 @@
+node_modules/
+coverage/
+dist/
+lib/
+web-build/
+web-report/
+
+# Lerna writes to this file on version updates.
+lerna.json
+
+.expo/
+.yarn/
+.vscode/
+
+# Logs
+completed.json
+errors.json
+components.json
+example/node_modules

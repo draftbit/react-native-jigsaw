@@ -1,0 +1,73 @@
+{
+  "name": "@draftbit/ui",
+  "version": "40.31.7",
+  "description": "Draftbit UI Library",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/typescript/src/index.d.ts",
+  "react-native": "src/index.tsx",
+  "source": "src/index.tsx",
+  "files": [
+    "src",
+    "lib",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "android",
+    "ios",
+    "cpp",
+    "draftbit-ui.podspec"
+  ],
+  "scripts": {
+    "prepare": "bob build",
+    "clean": "rimraf lib",
+    "clean:modules": "rimraf node_modules",
+    "postinstall": "expo-yarn-workspaces postinstall"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/draftbit/react-native-jigsaw",
+    "directory": "packages/ui"
+  },
+  "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/draftbit/react-native-jigsaw/issues"
+  },
+  "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
+  "dependencies": {
+    "@draftbit/core": "^40.31.7",
+    "@draftbit/native": "^40.31.3"
+  },
+  "devDependencies": {
+    "expo-yarn-workspaces": "^1.5.1",
+    "typescript": "~4.2.3"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json",
+          "tsc": "../../node_modules/typescript/bin/tsc"
+        }
+      ]
+    ]
+  }
+}

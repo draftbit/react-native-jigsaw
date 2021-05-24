@@ -1,36 +1,71 @@
 {
-  "private": true,
   "name": "react-native-jigsaw",
-  "version": "0.0.0",
   "description": "Root package.json for workspaces",
+  "private": true,
+  "license": "MIT",
+  "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "postinstall": "expo-yarn-workspaces check-workspace-dependencies"
+    "postinstall": "expo-yarn-workspaces check-workspace-dependencies",
+    "example": "yarn --cwd example",
+    "bootstrap": "lerna bootstrap",
+    "crosslink": "lerna link",
+    "format": "prettier --write .",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "build": "lerna run prepare",
+    "release": "lerna publish",
+    "build:clean": "lerna run clean",
+    "clean:modules": "lerna run clean:modules && rm -rf node_modules",
+    "typescript": "tsc --noEmit --composite false",
+    "upload:run": "node ./scripts/collector.js",
+    "upload:test": "bash ./scripts/test-collector.bash",
+    "version:expo": "lerna version major --no-push",
+    "version:major": "lerna version minor --no-push",
+    "version:minor": "lerna version patch --no-push",
+    "version:patch": "echo \"No patch versions: See root README.md\"",
+    "prepare": "husky install"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "example",
+      "packages/*"
+    ]
+  },
   "devDependencies": {
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@types/jest": "^26.0.23",
+    "babel-jest": "^26.6.3",
+    "dotenv": "^9.0.2",
+    "eslint": "^7.26.0",
     "expo-yarn-workspaces": "1.2.1",
-    "@commitlint/config-conventional": "^8.3.4",
-    "commitlint": "^8.3.5",
-    "eslint": "^7.2.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.2.5",
-    "prettier": "^2.0.5"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "yarn lint"
-    }
+    "husky": ">=6",
+    "jest": "^26.6.3",
+    "json-server": "^0.16.3",
+    "lerna": "^4.0.0",
+    "lint-staged": ">=10",
+    "node-fetch": "^2.6.1",
+    "prettier": "^2.3.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.2.4",
+    "utility-types": "^3.10.0"
   },
   "eslintConfig": {
     "extends": [
       "@react-native-community",
       "prettier"
     ],
+    "settings": {
+      "react": {
+        "version": "16"
+      }
+    },
+    "env": {
+      "browser": true,
+      "node": true
+    },
     "rules": {
       "react-native/no-inline-styles": "off",
       "prettier/prettier": [
@@ -41,7 +76,8 @@
           "singleQuote": false,
           "tabWidth": 2,
           "trailingComma": "es5",
-          "useTabs": false
+          "useTabs": false,
+          "bracketSpacing": true
         }
       ]
     }
@@ -59,14 +95,11 @@
     "singleQuote": false,
     "tabWidth": 2,
     "trailingComma": "es5",
-    "useTabs": false
-  },
-  "publishConfig": {
-    "access": "public"
+    "useTabs": false,
+    "bracketSpacing": true
   },
   "lint-staged": {
-    "*.{js,ts,tsx,md,scss,css,json}": [
-      "prettier --write"
-    ]
+    "*.{js,ts,tsx,jsx}": "eslint --cache --fix",
+    "*.{js,ts,tsx,json,mcss,md}": "prettier --write"
   }
 }

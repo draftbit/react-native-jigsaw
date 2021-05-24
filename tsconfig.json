@@ -1,27 +1,17 @@
 {
-  "exclude": [
-    "example",
-    "node_modules",
-    "glyphmaps",
-    "scripts",
-    "lib"
-  ],
+  "exclude": ["example/**"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@draftbit/ui": [
-        "packages/react-native-jigsaw/src/index"
-      ]
+      "@draftbit/*": ["packages/*/src"]
     },
+    "composite": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
+    "lib": ["esnext", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,

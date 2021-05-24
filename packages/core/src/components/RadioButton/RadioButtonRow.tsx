@@ -16,6 +16,7 @@ import {
   FORM_TYPES,
   COMPONENT_TYPES,
 } from "@draftbit/types";
+import type { IconSlot } from "../../interfaces/Icon";
 import { Direction as GroupDirection } from "./context";
 import Touchable from "../Touchable";
 
@@ -58,7 +59,7 @@ const renderLabel = (
   }
 };
 
-const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
+const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
   Icon,
   label,
   value,

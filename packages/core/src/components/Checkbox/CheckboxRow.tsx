@@ -16,6 +16,7 @@ import {
   FORM_TYPES,
   COMPONENT_TYPES,
 } from "@draftbit/types";
+import type { IconSlot } from "../../interfaces/Icon";
 import { Direction as GroupDirection } from "./context";
 import Touchable from "../Touchable";
 
@@ -58,7 +59,8 @@ const renderLabel = (
   }
 };
 
-const CheckboxRow: React.FC<CheckboxRowProps> = ({
+const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
+  Icon,
   label,
   value,
   onPress = () => {},
@@ -111,6 +113,7 @@ const CheckboxRow: React.FC<CheckboxRowProps> = ({
         }}
       >
         <Checkbox
+          Icon={Icon}
           status={
             status || selectedValues.includes(value)
               ? CheckboxStatus.Checked

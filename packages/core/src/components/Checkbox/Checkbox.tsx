@@ -19,7 +19,7 @@ import {
   createColorProp,
 } from "@draftbit/types";
 import { useTheme } from "../../theming";
-import type { IconSlot } from "../interfaces/Icon";
+import type { IconSlot } from "../../interfaces/Icon";
 
 import Touchable from "../Touchable";
 

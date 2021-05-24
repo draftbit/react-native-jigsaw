@@ -54,7 +54,6 @@ export { default as HeaderOverline } from "./components/HeaderOverline";
 export { default as Picker } from "./components/Picker/Picker";
 export { default as ProgressBar } from "./components/ProgressBar";
 export { default as ProgressCircle } from "./components/ProgressCircle";
-export { default as RowBodyCheckbox } from "./components/RowBodyCheckbox";
 export { default as RowBodyIcon } from "./components/RowBodyIcon";
 export { default as RowBodySwitch } from "./components/RowBodySwitch";
 export { default as RowHeadlineImageCaption } from "./components/RowHeadlineImageCaption";

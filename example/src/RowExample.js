@@ -4,7 +4,6 @@ import {
   RowHeadlineImageCaption,
   RowBodyIcon,
   withTheme,
-  RowBodyCheckbox,
   RowBodySwitch,
 } from "@draftbit/ui";
 import Section, { Container } from "./Section";
@@ -158,16 +157,6 @@ function RowExample({ theme }) {
           subtitle="Subtitle that is quite long so that it won't fit on a single line"
           icon="check"
         />
-      </Section>
-      <Section title="RowBodyCheckbox with title and subtitle">
-        <RowBodyCheckbox
-          title="Headline"
-          subtitle="subtitle"
-          status="checked"
-        />
-      </Section>
-      <Section title="RowBodyCheckbox with title only">
-        <RowBodyCheckbox title="Headline" status="checked" />
       </Section>
       <Section title="RowBodySwitch with title and subtitle">
         <RowBodySwitch title="Headline" subtitle="subtitle" value={true} />

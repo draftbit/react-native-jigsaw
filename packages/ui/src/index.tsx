@@ -7,6 +7,7 @@ export {
   Circle,
   CircleImage,
   Container,
+  CheckboxGroup,
   DefaultTheme,
   Divider,
   Provider,
@@ -51,6 +52,7 @@ import {
   CardContainer as BaseCardContainer,
   CardContainerRating as BaseCardContainerRating,
   Checkbox as BaseCheckbox,
+  CheckboxRow as BaseCheckboxRow,
   DatePicker as BaseDatePicker,
   FAB as BaseFab,
   FieldSearchBarFull as BaseFieldSearchBarFull,
@@ -65,7 +67,6 @@ import {
   HeaderLarge as BaseHeaderLarge,
   HeaderMedium as BaseHeaderMedium,
   HeaderOverline as BaseHeaderOverline,
-  RowBodyCheckbox as BaseRowBodyCheckbox,
   RowBodyIcon as BaseRowBodyIcon,
   RowHeadlineImageIcon as BaseRowHeadlineImageIcon,
 } from "@draftbit/core";
@@ -77,6 +78,7 @@ export const Card = injectIcon(BaseCard, Icon);
 export const CardContainer = injectIcon(BaseCardContainer, Icon);
 export const CardContainerRating = injectIcon(BaseCardContainerRating, Icon);
 export const Checkbox = injectIcon(BaseCheckbox, Icon);
+export const CheckboxRow = injectIcon(BaseCheckboxRow, Icon);
 export const DatePicker = injectIcon(BaseDatePicker, Icon);
 export const FAB = injectIcon(BaseFab, Icon);
 export const FieldSearchBarFull = injectIcon(BaseFieldSearchBarFull, Icon);
@@ -89,7 +91,6 @@ export const Picker = injectIcon(BasePicker, Icon);
 export const RadioButton = injectIcon(BaseRadioButton, Icon);
 export const RadioButtonRow = injectIcon(BaseRadioButtonRow, Icon);
 export const RowBodyIcon = injectIcon(BaseRowBodyIcon, Icon);
-export const RowBodyCheckbox = injectIcon(BaseRowBodyCheckbox, Icon);
 export const RowHeadlineImageIcon = injectIcon(BaseRowHeadlineImageIcon, Icon);
 export const StarRating = injectIcon(BaseStarRating, Icon);
 export const Stepper = injectIcon(BaseStepper, Icon);

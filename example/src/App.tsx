@@ -55,6 +55,7 @@ import SwitchExample from "./SwitchExample";
 import StepperExample from "./StepperExample";
 
 import TextFieldExample from "./TextFieldExample";
+import CheckboxExample from "./CheckboxExample";
 
 const ROUTES = {
   Layout: LayoutExample,
@@ -69,6 +70,7 @@ const ROUTES = {
   CardInline: CardInlineExample,
   CardContainer: CardContainerExample,
   CardContainerRating: CardContainerRatingExample,
+  CheckBox: CheckboxExample,
   Carousel: CarouselExample,
   Container: ContainerExample,
   // Controllers: ControllerExample,

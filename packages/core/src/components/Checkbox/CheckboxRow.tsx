@@ -7,15 +7,15 @@ import {
   View,
   Platform,
 } from "react-native";
-import RadioButton, { RadioButtonProps } from "./RadioButton";
+import Checkbox, { CheckboxProps, CheckboxStatus } from "./Checkbox";
 import Text from "../Text";
-import { useRadioButtonGroupContext } from "./context";
+import { useCheckboxGroupContext } from "./context";
 import {
   createTextProp,
   createTextStyle,
   FORM_TYPES,
   COMPONENT_TYPES,
-} from "@draftbit/types";
+} from "../../core/component-types";
 import { Direction as GroupDirection } from "./context";
 import Touchable from "../Touchable";
 
@@ -24,17 +24,17 @@ export enum Direction {
   RowReverse = "row-reverse",
 }
 
-export interface RadioButtonRowProps extends Omit<RadioButtonProps, "onPress"> {
+export interface CheckboxRowProps extends Omit<CheckboxProps, "onPress"> {
   label: string | React.ReactNode;
   value: string;
   labelContainerStyle: StyleProp<ViewStyle>;
-  radioButtonStyle?: StyleProp<ViewStyle>;
+  checkboxStyle?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
   onPress?: (value: string) => void;
   direction?: Direction;
 }
 
-const getRadioButtonAlignment = (
+const getCheckboxAlignment = (
   parentDirection: GroupDirection | undefined,
   direction: Direction
 ) => {
@@ -58,29 +58,33 @@ const renderLabel = (
   }
 };
 
-const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
-  Icon,
+const CheckboxRow: React.FC<CheckboxRowProps> = ({
   label,
   value,
   onPress = () => {},
   labelContainerStyle,
   labelStyle,
-  radioButtonStyle,
+  checkboxStyle,
   direction = Direction.Row,
-  selected,
+  status,
   disabled,
   style,
   ...rest
 }) => {
   const {
-    value: contextValue,
+    values: selectedValues,
     onValueChange,
     direction: parentDirection,
-  } = useRadioButtonGroupContext();
+  } = useCheckboxGroupContext();
+
+  const isChecked =
+    status === CheckboxStatus.Checked || selectedValues.includes(value);
 
   const handlePress = () => {
-    onPress(value);
-    onValueChange && onValueChange(value);
+    if (!disabled) {
+      onPress(value);
+      onValueChange && onValueChange(value, !isChecked);
+    }
   };
 
   return (
@@ -103,14 +107,18 @@ const RadioButtonRow: React.FC<RadioButtonRowProps> = ({
       <View
         style={{
           flex: 1,
-          alignItems: getRadioButtonAlignment(parentDirection, direction),
+          alignItems: getCheckboxAlignment(parentDirection, direction),
         }}
       >
-        <RadioButton
-          Icon={Icon}
-          selected={selected || contextValue === value}
+        <Checkbox
+          status={
+            status || selectedValues.includes(value)
+              ? CheckboxStatus.Checked
+              : CheckboxStatus.Unchecked
+          }
           onPress={handlePress}
-          style={radioButtonStyle}
+          style={checkboxStyle}
+          disabled={disabled}
           {...rest}
         />
       </View>
@@ -138,17 +146,17 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RadioButtonRow;
+export default CheckboxRow;
 
 export const SEED_DATA = {
-  name: "Radio Button Row",
-  tag: "RadioButtonRow",
+  name: "Checkbox Row",
+  tag: "CheckboxRow",
   category: COMPONENT_TYPES.container,
   layout: {},
   props: {
     label: createTextProp({
       label: "Label",
-      description: "Label to show with the radio button",
+      description: "Label to show with the checkbox",
       required: true,
       defaultValue: null,
     }),
@@ -160,14 +168,14 @@ export const SEED_DATA = {
     direction: createTextProp({
       label: "Direction",
       description:
-        "Whether the radio button will appear on the left or on the right",
+        "Whether the checkbox will appear on the left or on the right",
       formType: FORM_TYPES.flatArray,
       defaultValue: "row",
       options: ["row", "row-reverse"],
     }),
-    value: createTextProp({
+    values: createTextProp({
       label: "Value",
-      description: "Value of the radio button",
+      description: "Value of the checkbox",
       required: true,
     }),
   },

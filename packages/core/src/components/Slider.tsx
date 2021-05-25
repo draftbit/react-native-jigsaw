@@ -1,77 +1,95 @@
 import * as React from "react";
-import ReactNativeSlider from "@react-native-community/slider";
+import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import NativeSlider from "@react-native-community/slider";
 
-import { withTheme } from "../theming";
 import {
-  GROUPS,
-  FORM_TYPES,
   COMPONENT_TYPES,
-  FIELD_NAME,
-  PROP_TYPES,
+  colorTypes,
+  createNumberProp,
+  createColorProp,
+  createFieldNameProp,
 } from "@draftbit/types";
-import { StyleProp, ViewStyle } from "react-native";
-import themeT from "../styles/DefaultTheme";
-import { colorTypes } from "@draftbit/types";
+import { withTheme } from "../theming";
+import type { Theme } from "../styles/DefaultTheme";
+import type { IconSlot } from "../interfaces/Icon";
 
 export type Props = {
   style?: StyleProp<ViewStyle>;
   value?: number;
   minimumTrackTintColor: colorTypes;
   maximumTrackTintColor: colorTypes;
-  thumbTintColor: colorTypes;
-  disabledThumbTintColor?: colorTypes;
+  leftIcon?: string;
+  rightIcon?: string;
+  leftIconColor?: colorTypes;
+  rightIconColor?: colorTypes;
+  thumbTintColor?: colorTypes;
+  tapToSeek?: boolean;
   minimumValue: number;
   maximumValue: number;
-  //thumbTouchSize: number;
   step: number;
-  disabled?: boolean;
   onValueChange?: (value: number) => void;
-  theme: typeof themeT;
-  //trackBorderRadius?: number;
-  //thumbBorderRadius?: number;
-  //thumbSize: number;
-};
+  theme: Theme;
+} & IconSlot;
 
-const Slider: React.FC<Props> = ({
-  style = { height: 4 },
+function Slider({
+  Icon,
+  leftIcon = "Ionicons/sunny-outline",
+  rightIcon = "Ionicons/sunny",
+  leftIconColor = "primary",
+  rightIconColor = "primary",
   value,
   minimumTrackTintColor = "light",
   maximumTrackTintColor = "primary",
   thumbTintColor = "primary",
-  disabledThumbTintColor = "strong",
   minimumValue = 0,
-  maximumValue = 10,
+  maximumValue = 100,
+  tapToSeek,
   step = 1,
-  disabled = false,
   onValueChange = () => {},
-
-  ...props
-}) => {
-  const [internalValue, setInternalValue] = React.useState(0);
+  style,
+  theme,
+  ...rest
+}: Props) {
+  const minTrackColor = theme.colors[minimumTrackTintColor];
+  const maxTrackColor = theme.colors[maximumTrackTintColor];
+  const thumbColor = theme.colors[thumbTintColor];
 
   return (
-    <ReactNativeSlider
-      {...props}
-      disabled={disabled}
-      value={disabled ? 0 : value || internalValue}
-      minimumValue={minimumValue}
-      maximumValue={maximumValue}
-      minimumTrackTintColor={minimumTrackTintColor}
-      maximumTrackTintColor={maximumTrackTintColor}
-      thumbTintColor={
-        disabled && disabledThumbTintColor
-          ? disabledThumbTintColor
-          : thumbTintColor
-      }
-      onValueChange={(newValue: number) => {
-        onValueChange(newValue);
-        setInternalValue(newValue);
-      }}
-      style={disabled ? [style, { opacity: 0.6 }] : style}
-      step={step}
-    />
+    <View style={[styles.container, style]}>
+      {leftIcon ? (
+        <Icon color={leftIconColor} name={leftIcon} size={24} />
+      ) : null}
+      <NativeSlider
+        value={value}
+        step={step}
+        minimumValue={minimumValue}
+        maximumValue={maximumValue}
+        tapToSeek={tapToSeek}
+        minimumTrackTintColor={minTrackColor}
+        maximumTrackTintColor={maxTrackColor}
+        thumbTintColor={thumbColor}
+        onSlidingComplete={onValueChange}
+        style={styles.slider}
+        {...rest}
+      />
+      {rightIcon ? (
+        <Icon color={rightIconColor} name={rightIcon} size={24} />
+      ) : null}
+    </View>
   );
-};
+}
+
+const styles = StyleSheet.create({
+  container: {
+    height: 40,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  slider: {
+    flex: 1,
+    marginHorizontal: 12,
+  },
+});
 
 export default withTheme(Slider);
 
@@ -79,155 +97,38 @@ export const SEED_DATA = {
   name: "Slider",
   tag: "Slider",
   description: "A component used to set a value in a range",
-  category: COMPONENT_TYPES.deprecated,
-  preview_image_url: "{CLOUDINARY_URL}/Control_Slider.png",
-  supports_list_render: false,
+  category: COMPONENT_TYPES.basic,
+  layout: {},
   props: {
-    disabled: {
-      group: GROUPS.data,
-      label: "Disabled",
-      description: "Whether the slider is disabled",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.boolean,
-      defaultValue: null,
-    },
-    maximumValue: {
-      group: GROUPS.basic,
-      label: "Maximum value",
-      description: "The maximum value of the slider",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.number,
-      min: 0,
-      max: 1000000,
-      step: 1,
-      precision: 0,
-      defaultValue: 10,
-    },
-    minimumValue: {
-      group: GROUPS.basic,
-      label: "Minimum value",
-      description: "The minimum value of the slider",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.number,
-      min: -1000000,
-      max: 1000000,
-      step: 1,
-      precision: 0,
+    fieldName: createFieldNameProp({
       defaultValue: 0,
-    },
-    step: {
-      group: GROUPS.basic,
+      handlerPropName: "onValueChange",
+    }),
+    minimumValue: createNumberProp({
+      label: "Min Value",
+      min: 0,
+      max: 1000,
+    }),
+    maximumValue: createNumberProp({
+      label: "Max Value",
+      min: 1,
+      max: 10000,
+    }),
+    step: createNumberProp({
       label: "Step",
-      description: "The amount the value should change per step",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.number,
       min: 0,
       max: 100,
       step: 0.01,
       precision: 2,
+    }),
+    minimumTrackTintColor: createColorProp({
       defaultValue: null,
-    },
-    fieldName: {
-      ...FIELD_NAME,
-      defaultValue: "sliderValue",
-      handlerPropName: "onValueChange",
-    },
-    maximumTrackTintColor: {
-      group: GROUPS.basic,
-      label: "Maximum Color",
-      description: "Color of the track from the right of the thumb",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.color,
-      propType: PROP_TYPES.THEME,
-      defaultValue: "primary",
-    },
-    minimumTrackTintColor: {
-      group: GROUPS.basic,
-      label: "Minimum Color",
-      description: "Color of the track from the left of the thumb",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.color,
-      propType: PROP_TYPES.THEME,
-      defaultValue: "light",
-    },
-    thumbTintColor: {
-      group: GROUPS.basic,
-      label: "Thumb Tint Color",
-      description: "Color of the thumb",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.color,
-      propType: PROP_TYPES.THEME,
-      defaultValue: "primary",
-    },
-    disabledThumbTintColor: {
-      group: GROUPS.basic,
-      label: "Disabled Thumb Tint Color",
-      description: "Color of the thumb when the slider is disabled",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.color,
-      propType: PROP_TYPES.THEME,
-      defaultValue: "strong",
-    },
-    thumbTouchSize: {
-      group: GROUPS.advanced,
-      label: "Hit Slop",
-      description: "The size of the hit slop",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.number,
-      min: 0,
-      max: 100,
-      step: 1,
-      precision: 2,
-      defaultValue: 4,
-    },
-    trackBorderRadius: {
-      group: GROUPS.basic,
-      label: "Track Border Radius",
-      description: "The border radius for the track ",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.number,
-      min: 0,
-      max: 50,
-      step: 1,
-      precision: 0,
-      defaultValue: 4,
-    },
-    thumbBorderRadius: {
-      group: GROUPS.basic,
-      label: "Thumb Border Radius",
-      description: "The border radius for the thumb",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.number,
-      min: 0,
-      max: 50,
-      step: 1,
-      precision: 0,
-      defaultValue: 4,
-    },
-    thumbSize: {
-      group: GROUPS.basic,
-      label: "Thumb Size",
-      description: "Size of the thumb",
-      editable: true,
-      required: false,
-      formType: FORM_TYPES.number,
-      min: 0,
-      max: 100,
-      step: 1,
-      precision: 2,
-      defaultValue: 8,
-    },
+    }),
+    maximumTrackTintColor: createColorProp({
+      defaultValue: null,
+    }),
+    thumbTintColor: createColorProp({
+      defaultValue: null,
+    }),
   },
-  layout: {},
 };

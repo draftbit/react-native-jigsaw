@@ -101,5 +101,8 @@
   "lint-staged": {
     "*.{js,ts,tsx,jsx}": "eslint --cache --fix",
     "*.{js,ts,tsx,json,mcss,md}": "prettier --write"
+  },
+  "engines": {
+    "node": ">=16"
   }
 }

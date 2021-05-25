@@ -16,4 +16,7 @@ lerna.json
 completed.json
 errors.json
 components.json
+
+# Example
 example/node_modules
+example/__generated__

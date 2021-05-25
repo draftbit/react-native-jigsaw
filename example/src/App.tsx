@@ -59,7 +59,6 @@ import CheckboxExample from "./CheckboxExample";
 import WebViewExample from "./WebViewExample";
 
 const ROUTES = {
-  WebView: WebViewExample,
   Layout: LayoutExample,
   CircleImage: CircleImageExample,
   Icon: IconExample,
@@ -90,6 +89,7 @@ const ROUTES = {
   Switch: SwitchExample,
   Stepper: StepperExample,
   TextField: TextFieldExample,
+  WebView: WebViewExample,
 };
 
 let customFonts = {

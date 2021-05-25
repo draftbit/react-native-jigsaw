@@ -1,5 +1,7 @@
 # react-native-jigsaw
 
+Draftbit's specialized component library. Loosely based on React Native Paper, this allows you to incorporate your components into the Draftbit platform. You're also welcome to use this library however you'd like in a typical Expo/React Native project
+
 This is a monorepo containing the packages comprising `@draftbit/ui`,
 [Draftbit's](https://draftbit.com) component library used inside our Builder.
 

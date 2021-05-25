@@ -28,6 +28,8 @@ This is a lerna/monorepo setup that is split up into types, native, core and ui 
 - packages/native: Native components that rely on expo/react-native modules likes `expo-av` and `@expo/vector-icons`. This houses our AudioPlayer and Icon components because the current version requires modifications to work well on Web
 - packages/types: Shared typescript types and SEED_DATA types which is how we build the translation layer for Draftbit
 
+** Chances are, you'll spend most of your time in `packages/core` **
+
 ### SEED_DATA
 
 You'll notice that most components will have `SEED_DATA` at the bottom of their files. This is how we incorporate components and props into Draftbit's property panel.

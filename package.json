@@ -17,7 +17,7 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "build": "lerna run prepare",
     "release": "lerna publish",
-    "build:clean": "lerna run clean",
+    "clean": "lerna run clean",
     "clean:modules": "lerna run clean:modules && rm -rf node_modules",
     "typescript": "tsc --noEmit --composite false",
     "upload:run": "node ./scripts/collector.js",
@@ -28,19 +28,17 @@
     "version:patch": "echo \"No patch versions: See root README.md\"",
     "prepare": "husky install"
   },
-  "workspaces": {
-    "packages": [
-      "example",
-      "packages/*"
-    ]
-  },
+  "workspaces": [
+    "example",
+    "packages/*"
+  ],
   "devDependencies": {
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/jest": "^26.0.23",
     "babel-jest": "^26.6.3",
     "dotenv": "^9.0.2",
     "eslint": "^7.26.0",
-    "expo-yarn-workspaces": "1.2.1",
+    "expo-yarn-workspaces": "^1.5.1",
     "husky": ">=6",
     "jest": "^26.6.3",
     "json-server": "^0.16.3",
@@ -101,5 +99,8 @@
   "lint-staged": {
     "*.{js,ts,tsx,jsx}": "eslint --cache --fix",
     "*.{js,ts,tsx,json,mcss,md}": "prettier --write"
+  },
+  "engines": {
+    "node": "^14"
   }
 }

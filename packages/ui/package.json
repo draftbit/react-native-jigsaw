@@ -21,8 +21,7 @@
   "scripts": {
     "prepare": "bob build",
     "clean": "rimraf lib",
-    "clean:modules": "rimraf node_modules",
-    "postinstall": "expo-yarn-workspaces postinstall"
+    "clean:modules": "rimraf node_modules"
   },
   "keywords": [
     "react-native",
@@ -46,10 +45,6 @@
   "dependencies": {
     "@draftbit/core": "^40.31.7",
     "@draftbit/native": "^40.31.3"
-  },
-  "devDependencies": {
-    "expo-yarn-workspaces": "^1.5.1",
-    "typescript": "~4.2.3"
   },
   "peerDependencies": {
     "react": "*",

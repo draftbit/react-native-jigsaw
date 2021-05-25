@@ -35,11 +35,11 @@ function Slider({
   Icon,
   leftIcon = "Ionicons/sunny-outline",
   rightIcon = "Ionicons/sunny",
-  leftIconColor = "primary",
-  rightIconColor = "primary",
+  leftIconColor = "light",
+  rightIconColor = "light",
   value,
-  minimumTrackTintColor = "light",
-  maximumTrackTintColor = "primary",
+  minimumTrackTintColor = "primary",
+  maximumTrackTintColor = "light",
   thumbTintColor = "primary",
   minimumValue = 0,
   maximumValue = 100,
@@ -54,10 +54,13 @@ function Slider({
   const maxTrackColor = theme.colors[maximumTrackTintColor];
   const thumbColor = theme.colors[thumbTintColor];
 
+  const leftIconThemeColor = theme.colors[leftIconColor];
+  const rightIconThemeColor = theme.colors[rightIconColor];
+
   return (
     <View style={[styles.container, style]}>
       {leftIcon ? (
-        <Icon color={leftIconColor} name={leftIcon} size={24} />
+        <Icon color={leftIconThemeColor} name={leftIcon} size={24} />
       ) : null}
       <NativeSlider
         value={value}
@@ -73,7 +76,7 @@ function Slider({
         {...rest}
       />
       {rightIcon ? (
-        <Icon color={rightIconColor} name={rightIcon} size={24} />
+        <Icon color={rightIconThemeColor} name={rightIcon} size={24} />
       ) : null}
     </View>
   );

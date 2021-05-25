@@ -5,17 +5,12 @@ This is a monorepo containing the packages comprising `@draftbit/ui`,
 
 See [the `ui` package readme](./packages/ui#readme) for details.
 
-## Contributing
-
-Quickstart:
+## Quickstart:
 
 ```sh
 git clone https://github.com/draftbit/react-native-jigsaw && cd react-native-jigsaw
-yarn install
-yarn example start
-# Open example project in ios/web/android using metro bundler that opened in
-# your browser
-# Edit files in `packages/core` or `packages/native`
+yarn && yarn bootstrap && yarn build
+yarn example start -c --web
 ```
 
 Any changes in the `packages/` typescript files should be automatically picked

@@ -39,7 +39,8 @@
     "@draftbit/types": "^40.32.0",
     "@expo/vector-icons": "^12.0.2",
     "@react-native-community/slider": "~3.0.3",
-    "expo-av": "^8.7.0"
+    "expo-av": "^8.7.0",
+    "react-native-webview": "^11.6.2"
   },
   "peerDependencies": {
     "@expo/vector-icons": "^12.0.2",

@@ -56,8 +56,10 @@ import StepperExample from "./StepperExample";
 
 import TextFieldExample from "./TextFieldExample";
 import CheckboxExample from "./CheckboxExample";
+import WebViewExample from "./WebViewExample";
 
 const ROUTES = {
+  WebView: WebViewExample,
   Layout: LayoutExample,
   CircleImage: CircleImageExample,
   Icon: IconExample,

@@ -28,12 +28,10 @@
     "version:patch": "echo \"No patch versions: See root README.md\"",
     "prepare": "husky install"
   },
-  "workspaces": {
-    "packages": [
-      "example",
-      "packages/*"
-    ]
-  },
+  "workspaces": [
+    "example",
+    "packages/*"
+  ],
   "devDependencies": {
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/jest": "^26.0.23",

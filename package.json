@@ -17,7 +17,7 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "build": "lerna run prepare",
     "release": "lerna publish",
-    "build:clean": "lerna run clean",
+    "clean": "lerna run clean",
     "clean:modules": "lerna run clean:modules && rm -rf node_modules",
     "typescript": "tsc --noEmit --composite false",
     "upload:run": "node ./scripts/collector.js",

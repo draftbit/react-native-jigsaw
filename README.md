@@ -38,6 +38,30 @@ The object at the bottom maps one to one to what the UI will look like in the pa
 
 ![Draftbit Properties Panel](./images/view-properties-panel.png)
 
+Here's an example of what the SEED_DATA prop would look like:
+
+```js
+  source: createImageProp(),
+  pointerEvents: {
+    group: GROUPS.advanced,
+    name: "pointerEvents",
+    label: "pointerEvents",
+    description: "Pointer events"
+    options: ["auto", "none", "box-none", "box-only"],
+    editable: true,
+    required: false,
+    formType: FORM_TYPES.flatArray,
+    propType: PROP_TYPES.STRING,
+    defaultValue: "auto",
+  },
+```
+
+#### Objects vs. Functions for SEED_DATA
+
+Our legacy implementation included an object, like you see `pointerEvents` above. Moving forward, everything should be a function, like `createImageProp()`. The reason is that its easier to maintain and update across the board when features change inside the builder.
+
+If you're having doubts, use a function. If that function doesn't exist, create it! All the functions live inside [packages/types/src/component-types](https://github.com/draftbit/react-native-jigsaw/blob/master/packages/types/src/component-types.ts)
+
 ## Linking
 
 If you want to dynamically link these packages into a project using `yarn link`,

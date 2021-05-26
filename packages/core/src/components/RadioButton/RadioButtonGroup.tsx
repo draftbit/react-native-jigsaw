@@ -25,13 +25,13 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   onValueChange = () => {},
   style,
   children,
+  ...rest
 }) => {
   const _containerStyle: StyleProp<ViewStyle> = [
     {
       flexDirection: direction === Direction.Horizontal ? "row" : "column",
       overflow: "hidden",
     },
-    style,
   ];
 
   if (direction !== Direction.Vertical) {
@@ -41,9 +41,11 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   }
 
   return (
-    <Provider value={{ value, onValueChange, direction }}>
-      <View style={_containerStyle}>{children}</View>
-    </Provider>
+    <View style={style} {...rest}>
+      <Provider value={{ value, onValueChange, direction }}>
+        <View style={_containerStyle}>{children}</View>
+      </Provider>
+    </View>
   );
 };
 
@@ -53,6 +55,9 @@ export const SEED_DATA = {
   name: "Radio Button Group",
   tag: "RadioButtonGroup",
   category: COMPONENT_TYPES.button,
+  layout: {
+    minHeight: 40,
+  },
   props: {
     direction: createTextProp({
       label: "Horizontal/Vertical",
@@ -71,5 +76,4 @@ export const SEED_DATA = {
       handlerPropName: "onValueChange",
     },
   },
-  layout: {},
 };

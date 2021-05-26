@@ -28,13 +28,13 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   onValueChange = () => {},
   style,
   children,
+  ...rest
 }) => {
   const _containerStyle: StyleProp<ViewStyle> = [
     {
       flexDirection: direction === Direction.Horizontal ? "row" : "column",
       overflow: "hidden",
     },
-    style,
   ];
 
   if (direction !== Direction.Vertical) {
@@ -44,9 +44,11 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   }
 
   return (
-    <Provider value={{ values, onValueChange, direction }}>
-      <View style={_containerStyle}>{children}</View>
-    </Provider>
+    <View style={style} {...rest}>
+      <Provider value={{ values, onValueChange, direction }}>
+        <View style={_containerStyle}>{children}</View>
+      </Provider>
+    </View>
   );
 };
 
@@ -56,7 +58,9 @@ export const SEED_DATA = {
   name: "Checkbox Group",
   tag: "CheckboxGroup",
   category: COMPONENT_TYPES.button,
-  layout: {},
+  layout: {
+    minHeight: 40,
+  },
   props: {
     direction: createDirectionProp(),
     values: createTextProp({

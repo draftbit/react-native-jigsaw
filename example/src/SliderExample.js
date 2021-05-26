@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Slider, FieldSlider, withTheme } from "@draftbit/ui";
+import { Text } from "react-native";
+import { Slider, withTheme } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
 function SliderExample({ theme }) {
@@ -8,52 +9,22 @@ function SliderExample({ theme }) {
 
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>
-      <Section title="Active">
-        <Slider
-          style={{ height: 4 }}
-          maximumTrackTintColor="primary"
-          minimumTrackTintColor="light"
-          thumbTintColor="primary"
-          value={value}
-          minimumValue={0}
-          maximumValue={10}
-          step={1}
-          onValueChange={handleChange}
-        />
+      <Section title="Uncontrolled">
+        <Slider onValueChange={console.log} />
       </Section>
 
-      <Section title="Disabled">
+      <Section title="Controlled">
         <Slider
-          disabled={true}
-          style={{ height: 10 }}
-          maximumTrackTintColor="primary"
-          minimumTrackTintColor="light"
-          thumbTintColor="primary"
-          disabledThumbTintColor="strong"
-          thumbBorderRadius={20}
-          value={value}
-          minimumValue={0}
-          maximumValue={10}
-          step={1}
-          onValueChange={handleChange}
-        />
-      </Section>
-
-      <Section title="Field Slider with a Title">
-        <FieldSlider
-          title="This is my title"
-          minimumLabel="0"
-          maximumLabel="10"
-          style={{ height: 6 }}
+          step={10}
           maximumTrackTintColor="primary"
           minimumTrackTintColor="light"
           thumbTintColor="primary"
           value={value}
           minimumValue={0}
-          maximumValue={10}
-          step={1}
+          maximumValue={100}
           onValueChange={handleChange}
         />
+        <Text>{value}</Text>
       </Section>
     </Container>
   );

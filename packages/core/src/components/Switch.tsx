@@ -6,7 +6,6 @@ import {
   createBoolProp,
   createColorProp,
   createFieldNameProp,
-  colorTypes,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 
@@ -15,10 +14,10 @@ type Props = {
   disabled?: boolean;
   onValueChange?: (value: boolean) => void;
   theme: Theme;
-  activeTrackColor: colorTypes;
-  inactiveTrackColor: colorTypes;
-  activeThumbColor: colorTypes;
-  inactiveThumbColor: colorTypes;
+  activeTrackColor: string;
+  inactiveTrackColor: string;
+  activeThumbColor: string;
+  inactiveThumbColor: string;
 } & SwitchProps;
 
 function Switch({
@@ -33,11 +32,11 @@ function Switch({
   style,
   ...rest
 }: Props) {
-  const activeTrackThemeColor = theme.colors[activeTrackColor];
-  const inactiveTrackThemeColor = theme.colors[inactiveTrackColor];
+  const activeTrackThemeColor = activeTrackColor || theme.colors.primary;
+  const inactiveTrackThemeColor = inactiveTrackColor || "#EEE";
 
-  const activeThumbThemeColor = theme.colors[activeThumbColor];
-  const inactiveThumbThemeColor = theme.colors[inactiveThumbColor];
+  const activeThumbThemeColor = activeThumbColor || "#FFF";
+  const inactiveThumbThemeColor = inactiveThumbColor || "#FFF";
 
   const [checked, setChecked] = React.useState(value);
   React.useEffect(() => {
@@ -92,13 +91,13 @@ export const SEED_DATA = {
       label: "Active Track Color",
     }),
     inactiveTrackColor: createColorProp({
-      label: "Active Track Color",
+      label: "Inactive Track Color",
     }),
     activeThumbColor: createColorProp({
       label: "Active Thumb Color",
     }),
     inactiveThumbColor: createColorProp({
-      label: "Active Thumb Color",
+      label: "Inactive Thumb Color",
     }),
   },
 };

@@ -29,7 +29,6 @@ export {
   CardInline,
   ProgressBar,
   ProgressCircle,
-  RowBodySwitch,
   RowHeadlineImageCaption,
 } from "@draftbit/core";
 

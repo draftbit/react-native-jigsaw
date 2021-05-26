@@ -28,14 +28,14 @@ export default function ButtonExample() {
         />
         <ButtonSolid style={buttonStyle} title="Solid Button" loading={true} />
         <ButtonSolid style={buttonStyle} title="Solid Button" disabled={true} />
-        <ButtonSolid
-          title="Hello World"
-          style={{
-            width: "100%",
-            backgroundColor: "orange",
-          }}
-        />
       </Section>
+      <ButtonSolid
+        title="Custom button options"
+        style={{
+          textAlign: "left",
+          backgroundColor: "orange",
+        }}
+      />
 
       <Section title="Button (outline)" style={styles.row}>
         <ButtonOutline style={buttonStyle} title="Outline Button" />

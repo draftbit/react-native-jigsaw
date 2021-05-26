@@ -184,6 +184,7 @@ const styles = StyleSheet.create({
     position: "relative",
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
     minHeight: CONSTANTS.baseHeight,
     paddingHorizontal: 12,
     fontFamily: "System",

@@ -13,7 +13,7 @@ import { useRadioButtonGroupContext } from "./context";
 import {
   createTextProp,
   createTextStyle,
-  FORM_TYPES,
+  createTextEnumProp,
   COMPONENT_TYPES,
 } from "@draftbit/types";
 import type { IconSlot } from "../../interfaces/Icon";
@@ -89,6 +89,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
       onPress={handlePress}
       style={[styles.mainParent, { flexDirection: direction }, style]}
       disabled={disabled}
+      {...rest}
     >
       <View
         style={[
@@ -112,7 +113,6 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
           selected={selected || contextValue === value}
           onPress={handlePress}
           style={radioButtonStyle}
-          {...rest}
         />
       </View>
     </Touchable>
@@ -151,24 +151,24 @@ export const SEED_DATA = {
       label: "Label",
       description: "Label to show with the radio button",
       required: true,
-      defaultValue: null,
+      defaultValue: "First Option",
     }),
     labelStyle: createTextStyle({
       label: "Label Style",
       description: "Change the styles of the label",
       required: false,
+      editable: false,
     }),
-    direction: createTextProp({
+    direction: createTextEnumProp({
       label: "Direction",
       description:
-        "Whether the radio button will appear on the left or on the right",
-      formType: FORM_TYPES.flatArray,
-      defaultValue: "row",
+        "Whether the checkbox will appear on the left or on the right",
       options: ["row", "row-reverse"],
     }),
     value: createTextProp({
       label: "Value",
       description: "Value of the radio button",
+      defaultValue: null,
       required: true,
     }),
   },

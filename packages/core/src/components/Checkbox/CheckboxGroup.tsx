@@ -65,6 +65,7 @@ export const SEED_DATA = {
       label: "Values",
       description: "Currently selected values of the checkbox group",
       required: true,
+      defaultValue: null,
     }),
     fieldName: createFieldNameProp({
       handlerPropName: "onValueChange",

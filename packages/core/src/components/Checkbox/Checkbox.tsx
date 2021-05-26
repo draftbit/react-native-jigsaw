@@ -13,10 +13,9 @@ import {
   createBoolProp,
   createIconProp,
   createNumberProp,
-  createTextProp,
-  FORM_TYPES,
-  GROUPS,
+  createTextEnumProp,
   createColorProp,
+  GROUPS,
 } from "@draftbit/types";
 import { useTheme } from "../../theming";
 import type { IconSlot } from "../../interfaces/Icon";
@@ -171,11 +170,9 @@ export const SEED_DATA = {
     height: 24,
   },
   props: {
-    status: createTextProp({
+    status: createTextEnumProp({
       label: "Status",
       description: "Current status of the checkbox",
-      required: true,
-      formType: FORM_TYPES.flatArray,
       options: ["checked", "unchecked", "indeterminate"],
       defaultValue: null,
     }),

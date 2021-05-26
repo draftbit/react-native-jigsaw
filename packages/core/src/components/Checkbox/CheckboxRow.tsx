@@ -161,12 +161,13 @@ export const SEED_DATA = {
       label: "Label",
       description: "Label to show with the checkbox",
       required: true,
-      defaultValue: null,
+      defaultValue: "First Option",
     }),
     labelStyle: createTextStyle({
       label: "Label Style",
       description: "Change the styles of the label",
       required: false,
+      editable: false,
     }),
     direction: createTextEnumProp({
       label: "Direction",

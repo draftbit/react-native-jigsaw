@@ -4,7 +4,6 @@ import NativeSlider from "@react-native-community/slider";
 
 import {
   COMPONENT_TYPES,
-  colorTypes,
   createNumberProp,
   createColorProp,
   createFieldNameProp,
@@ -16,13 +15,13 @@ import type { IconSlot } from "../interfaces/Icon";
 export type Props = {
   style?: StyleProp<ViewStyle>;
   value?: number;
-  minimumTrackTintColor: colorTypes;
-  maximumTrackTintColor: colorTypes;
+  minimumTrackTintColor: string;
+  maximumTrackTintColor: string;
   leftIcon?: string;
   rightIcon?: string;
-  leftIconColor?: colorTypes;
-  rightIconColor?: colorTypes;
-  thumbTintColor?: colorTypes;
+  leftIconColor?: string;
+  rightIconColor?: string;
+  thumbTintColor?: string;
   tapToSeek?: boolean;
   minimumValue: number;
   maximumValue: number;
@@ -35,12 +34,12 @@ function Slider({
   Icon,
   leftIcon = "Ionicons/sunny-outline",
   rightIcon = "Ionicons/sunny",
-  leftIconColor = "light",
-  rightIconColor = "light",
+  leftIconColor,
+  rightIconColor,
   value,
-  minimumTrackTintColor = "primary",
-  maximumTrackTintColor = "light",
-  thumbTintColor = "primary",
+  minimumTrackTintColor,
+  maximumTrackTintColor,
+  thumbTintColor,
   minimumValue = 0,
   maximumValue = 100,
   tapToSeek,
@@ -50,12 +49,12 @@ function Slider({
   theme,
   ...rest
 }: Props) {
-  const minTrackColor = theme.colors[minimumTrackTintColor];
-  const maxTrackColor = theme.colors[maximumTrackTintColor];
-  const thumbColor = theme.colors[thumbTintColor];
+  const minTrackColor = minimumTrackTintColor || theme.colors.primary;
+  const maxTrackColor = maximumTrackTintColor || theme.colors.light;
+  const thumbColor = thumbTintColor || theme.colors.primary;
 
-  const leftIconThemeColor = theme.colors[leftIconColor];
-  const rightIconThemeColor = theme.colors[rightIconColor];
+  const leftIconThemeColor = leftIconColor || theme.colors.light;
+  const rightIconThemeColor = rightIconColor || theme.colors.light;
 
   return (
     <View style={[styles.container, style]}>

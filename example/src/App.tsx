@@ -6,16 +6,9 @@ import {
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import "react-native-gesture-handler";
 import * as React from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
-import { Provider, DefaultTheme } from "@draftbit/ui";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { Provider, DefaultTheme, ScreenContainer } from "@draftbit/ui";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 
@@ -59,20 +52,20 @@ import CheckboxExample from "./CheckboxExample";
 
 const ROUTES = {
   Layout: LayoutExample,
-  CircleImage: CircleImageExample,
   Icon: IconExample,
   Button: ButtonExample,
   FAB: FABExample,
   RadioButton: RadioButtonExample,
+  Checkbox: CheckboxExample,
   Card: CardExample,
   ToggleButton: ToggleButtonExample,
   CardBlock: CardBlockExample,
   CardInline: CardInlineExample,
   CardContainer: CardContainerExample,
   CardContainerRating: CardContainerRatingExample,
-  Checkbox: CheckboxExample,
   Carousel: CarouselExample,
   Container: ContainerExample,
+  CircleImage: CircleImageExample,
   // Controllers: ControllerExample,
   DatePicker: DatePickerExample,
   FieldSearchBarFull: FieldSearchBarFullExample,
@@ -103,7 +96,11 @@ function Example({ title, children }) {
   const navigation = useNavigation();
 
   return (
-    <SafeAreaView insets={["top", "bottom"]} style={exampleStyles.mainParent}>
+    <ScreenContainer
+      hasTopSafeArea={true}
+      hasBottomSafeArea={true}
+      scrollable={false}
+    >
       <View style={exampleStyles.headerStyle}>
         <TouchableOpacity
           style={exampleStyles.menuButtonStyle}
@@ -117,9 +114,10 @@ function Example({ title, children }) {
 
         <Text style={[exampleStyles.headerTextStyle]}>{title}</Text>
       </View>
-
-      <ScrollView>{children}</ScrollView>
-    </SafeAreaView>
+      <ScreenContainer scrollable={true} hasSafeArea={false}>
+        {children}
+      </ScreenContainer>
+    </ScreenContainer>
   );
 }
 

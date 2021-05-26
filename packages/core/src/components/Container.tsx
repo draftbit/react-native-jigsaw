@@ -119,7 +119,6 @@ export const SEED_DATA = {
   description: "A container component with gutter padding",
   category: COMPONENT_TYPES.layout,
   layout: {
-    width: "100%",
     height: 250,
   },
   props: {

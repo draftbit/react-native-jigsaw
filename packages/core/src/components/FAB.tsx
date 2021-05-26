@@ -86,7 +86,7 @@ const FAB: React.FC<Props> = ({
           {loading ? (
             <ActivityIndicator size="small" color={color} />
           ) : (
-            <Icon name={iconName} size={28} color={iconColor} />
+            <Icon name={iconName} size={28} color={color} />
           )}
         </View>
       </Pressable>
@@ -120,7 +120,7 @@ export const SEED_DATA = [
     props: {
       onPress: createActionProp(),
       icon: createIconProp({
-        defaultValue: "MaterialIcons/add",
+        defaultValue: null,
       }),
       iconColor: createColorProp({
         label: "Icon color",

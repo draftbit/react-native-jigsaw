@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "40.33.2",
+  "version": "40.33.3",
   "description": "Draftbit UI Library",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -43,8 +43,8 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/core": "^40.33.2",
-    "@draftbit/native": "^40.33.2"
+    "@draftbit/core": "^40.33.3",
+    "@draftbit/native": "^40.33.3"
   },
   "peerDependencies": {
     "react": "*",

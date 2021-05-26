@@ -39,16 +39,18 @@ const NativeWebView: React.FC<Props> = ({ source, style }) => {
   );
 };
 
-const BrowserWebView: React.FC<Props> = ({ source, style }) =>
-  React.createElement("iframe", {
-    style: StyleSheet.flatten(style),
-    height: style?.height,
-    width: style?.width,
+const BrowserWebView: React.FC<Props> = ({ source, style }) => {
+  const flatStyles = StyleSheet.flatten(style);
+  return React.createElement("iframe", {
+    style: flatStyles,
+    height: flatStyles?.height,
+    width: flatStyles?.width,
     src: (source as WebViewSourceUri)?.uri,
     srcDoc: (source as WebViewSourceHtml)?.html,
     allowFullScreen: true,
     seamless: true,
   });
+};
 
 export default Platform.select({
   native: NativeWebView,

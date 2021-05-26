@@ -59,7 +59,7 @@ function Slider({
   const rightIconThemeColor = rightIconColor || theme.colors.light;
 
   return (
-    <View style={[styles.container, style]}>
+    <View style={[styles.container, style]} {...rest}>
       {leftIcon ? (
         <Icon color={leftIconThemeColor} name={leftIcon} size={24} />
       ) : null}
@@ -74,7 +74,6 @@ function Slider({
         thumbTintColor={thumbColor}
         onSlidingComplete={onValueChange}
         style={styles.slider}
-        {...rest}
       />
       {rightIcon ? (
         <Icon color={rightIconThemeColor} name={rightIcon} size={24} />

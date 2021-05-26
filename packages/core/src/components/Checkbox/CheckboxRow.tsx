@@ -13,7 +13,7 @@ import { useCheckboxGroupContext } from "./context";
 import {
   createTextProp,
   createTextStyle,
-  FORM_TYPES,
+  createTextEnumProp,
   COMPONENT_TYPES,
 } from "@draftbit/types";
 import type { IconSlot } from "../../interfaces/Icon";
@@ -61,7 +61,7 @@ const renderLabel = (
 
 const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   Icon,
-  label,
+  label = "Label",
   value,
   onPress = () => {},
   labelContainerStyle,
@@ -94,6 +94,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
       onPress={handlePress}
       style={[styles.mainParent, { flexDirection: direction }, style]}
       disabled={disabled}
+      {...rest}
     >
       <View
         style={[
@@ -122,7 +123,6 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
           onPress={handlePress}
           style={checkboxStyle}
           disabled={disabled}
-          {...rest}
         />
       </View>
     </Touchable>
@@ -168,17 +168,16 @@ export const SEED_DATA = {
       description: "Change the styles of the label",
       required: false,
     }),
-    direction: createTextProp({
+    direction: createTextEnumProp({
       label: "Direction",
       description:
         "Whether the checkbox will appear on the left or on the right",
-      formType: FORM_TYPES.flatArray,
-      defaultValue: "row",
       options: ["row", "row-reverse"],
     }),
     values: createTextProp({
       label: "Value",
       description: "Value of the checkbox",
+      defaultValue: null,
       required: true,
     }),
   },

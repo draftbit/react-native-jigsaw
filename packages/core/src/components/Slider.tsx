@@ -109,6 +109,7 @@ export const SEED_DATA = {
       defaultValue: 0,
       handlerPropName: "onValueChange",
     }),
+    value: createNumberProp(),
     minimumValue: createNumberProp({
       group: GROUPS.basic,
       label: "Min Value",

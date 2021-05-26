@@ -252,6 +252,17 @@ export const createTextEnumProp = (overrides = {}) => ({
   ...overrides,
 });
 
+export const createDirectionProp = (overrides = {}) =>
+  createTextEnumProp({
+    label: "Direction",
+    description:
+      "Whether the checkbox rows should be shown horizontally or vertically",
+    formType: FORM_TYPES.flatArray,
+    defaultValue: "horizontal",
+    options: ["horizontal", "vertical"],
+    ...overrides,
+  });
+
 export const createIconSizeProp = (overrides = {}) => ({
   group: GROUPS.basic,
   label: "Icon Size",

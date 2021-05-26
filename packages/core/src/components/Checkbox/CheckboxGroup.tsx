@@ -6,6 +6,7 @@ import {
   createTextProp,
   PROP_TYPES,
   createFieldNameProp,
+  createDirectionProp,
 } from "@draftbit/types";
 import type { Theme } from "../../styles/DefaultTheme";
 import { checkboxGroupContext, Direction } from "./context";
@@ -55,15 +56,9 @@ export const SEED_DATA = {
   name: "Checkbox Group",
   tag: "CheckboxGroup",
   category: COMPONENT_TYPES.button,
+  layout: {},
   props: {
-    direction: createTextProp({
-      label: "Horizontal/Vertical",
-      description:
-        "Whether the checkbox rows should be shown horizontally or vertically",
-      formType: FORM_TYPES.flatArray,
-      defaultValue: "horizontal",
-      options: ["horizontal", "vertical"],
-    }),
+    direction: createDirectionProp(),
     values: createTextProp({
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.ARRAY,
@@ -75,5 +70,4 @@ export const SEED_DATA = {
       handlerPropName: "onValueChange",
     }),
   },
-  layout: {},
 };

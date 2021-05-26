@@ -4,9 +4,11 @@ import NativeSlider from "@react-native-community/slider";
 
 import {
   COMPONENT_TYPES,
+  GROUPS,
   createNumberProp,
   createColorProp,
   createFieldNameProp,
+  createIconProp,
 } from "@draftbit/types";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
@@ -32,8 +34,8 @@ export type Props = {
 
 function Slider({
   Icon,
-  leftIcon = "Ionicons/sunny-outline",
-  rightIcon = "Ionicons/sunny",
+  leftIcon,
+  rightIcon,
   leftIconColor,
   rightIconColor,
   value,
@@ -107,29 +109,43 @@ export const SEED_DATA = {
       handlerPropName: "onValueChange",
     }),
     minimumValue: createNumberProp({
+      group: GROUPS.basic,
       label: "Min Value",
       min: 0,
       max: 1000,
     }),
     maximumValue: createNumberProp({
+      group: GROUPS.basic,
       label: "Max Value",
       min: 1,
       max: 10000,
     }),
     step: createNumberProp({
+      group: GROUPS.basic,
       label: "Step",
       min: 0,
       max: 100,
       step: 0.01,
       precision: 2,
     }),
+    leftIcon: createIconProp({
+      label: "Left Icon",
+      defaultValue: "Ionicons/sunny-outline",
+    }),
+    rightIcon: createIconProp({
+      label: "Right Icon",
+      defaultValue: "Ionicons/sunny",
+    }),
     minimumTrackTintColor: createColorProp({
+      label: "Min Track Color",
       defaultValue: null,
     }),
     maximumTrackTintColor: createColorProp({
+      label: "Max Track Color",
       defaultValue: null,
     }),
     thumbTintColor: createColorProp({
+      label: "Thumb Color",
       defaultValue: null,
     }),
   },

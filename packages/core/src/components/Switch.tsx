@@ -3,6 +3,7 @@ import { Switch as NativeSwitch, SwitchProps } from "react-native";
 import { withTheme } from "../theming";
 import {
   COMPONENT_TYPES,
+  GROUPS,
   createBoolProp,
   createColorProp,
   createFieldNameProp,
@@ -78,10 +79,12 @@ export const SEED_DATA = {
     disabled: createBoolProp({
       label: "Disabled",
       description: "Boolean to handle disabling the switch",
+      group: GROUPS.data,
     }),
     value: createBoolProp({
       label: "Value",
       description: "Boolean value",
+      group: GROUPS.data,
     }),
     fieldName: createFieldNameProp({
       defaultValue: false,

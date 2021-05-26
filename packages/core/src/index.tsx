@@ -47,7 +47,6 @@ export { default as CardContainer } from "./components/CardContainer";
 export { default as CardContainerRating } from "./components/CardContainerRating";
 export { default as CardInline } from "./components/CardInline";
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
-export { default as FieldSlider } from "./components/FieldSlider";
 export { default as HeaderLarge } from "./components/HeaderLarge";
 export { default as HeaderMedium } from "./components/HeaderMedium";
 export { default as HeaderOverline } from "./components/HeaderOverline";

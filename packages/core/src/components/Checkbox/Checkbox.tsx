@@ -160,6 +160,8 @@ const styles = StyleSheet.create({
   },
 });
 
+export default Checkbox;
+
 export const SEED_DATA = {
   name: "Checkbox",
   tag: "Checkbox",
@@ -219,5 +221,3 @@ export const SEED_DATA = {
     }),
   },
 };
-
-export default Checkbox;

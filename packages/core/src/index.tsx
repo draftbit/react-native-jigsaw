@@ -55,7 +55,6 @@ export { default as Picker } from "./components/Picker/Picker";
 export { default as ProgressBar } from "./components/ProgressBar";
 export { default as ProgressCircle } from "./components/ProgressCircle";
 export { default as RowBodyIcon } from "./components/RowBodyIcon";
-export { default as RowBodySwitch } from "./components/RowBodySwitch";
 export { default as RowHeadlineImageCaption } from "./components/RowHeadlineImageCaption";
 export { default as RowHeadlineImageIcon } from "./components/RowHeadlineImageIcon";
 export { default as Slider } from "./components/Slider";

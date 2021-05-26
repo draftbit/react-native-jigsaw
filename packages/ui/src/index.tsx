@@ -30,7 +30,6 @@ export {
   FieldSlider,
   ProgressBar,
   ProgressCircle,
-  RowBodySwitch,
   RowHeadlineImageCaption,
   Slider,
 } from "@draftbit/core";

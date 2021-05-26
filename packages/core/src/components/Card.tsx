@@ -180,7 +180,9 @@ export const SEED_DATA = {
     elevation: createElevationType(3),
     image: createImageProp(),
     onPress: createActionProp(),
-    onPressIcon: createActionProp(),
+    onPressIcon: createActionProp({
+      handlerPropName: "onPressIcon",
+    }),
     title: createTextProp({
       label: "Title",
       description: "Large title text",

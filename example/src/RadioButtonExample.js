@@ -7,8 +7,9 @@ import {
   Row,
   RadioButtonFieldGroup,
   withTheme,
+  ScreenContainer,
 } from "@draftbit/ui";
-import Section, { Container } from "./Section";
+import Section from "./Section";
 import { Text, View, StyleSheet } from "react-native";
 
 const SingleRadioButtonWrapper = ({ label, children }) => (
@@ -24,7 +25,7 @@ const RadioButtonGroupExample = ({ theme }) => {
   const [selected, onSelect] = React.useState("1");
   const handleSelect = (value) => onSelect(value);
   return (
-    <Container>
+    <ScreenContainer hasSafeArea={false} scrollable={true}>
       <Section title="Single Radio Buttons">
         <Row>
           <SingleRadioButtonWrapper label="Selected">
@@ -138,7 +139,7 @@ const RadioButtonGroupExample = ({ theme }) => {
           <RadioButtonRow size={35} label="Third" value="3" />
         </RadioButtonFieldGroup>
       </Section>
-    </Container>
+    </ScreenContainer>
   );
 };
 

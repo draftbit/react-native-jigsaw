@@ -33,12 +33,9 @@ export {
   /* Deprecated, needs fixing */
   CardBlock,
   CardInline,
-  FieldSlider,
   ProgressBar,
   ProgressCircle,
-  RowBodySwitch,
   RowHeadlineImageCaption,
-  Slider,
 } from "@draftbit/core";
 
 /**
@@ -75,6 +72,7 @@ import {
   HeaderOverline as BaseHeaderOverline,
   RowBodyIcon as BaseRowBodyIcon,
   RowHeadlineImageIcon as BaseRowHeadlineImageIcon,
+  Slider as BaseSlider,
 } from "@draftbit/core";
 
 export const AvatarEdit = injectIcon(BaseAvatarEdit, Icon);
@@ -102,3 +100,5 @@ export const StarRating = injectIcon(BaseStarRating, Icon);
 export const Stepper = injectIcon(BaseStepper, Icon);
 export const TextField = injectIcon(BaseTextField, Icon);
 export const ToggleButton = injectIcon(BaseToggleButton, Icon);
+
+export const Slider = injectIcon(BaseSlider, Icon);

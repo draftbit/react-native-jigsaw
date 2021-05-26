@@ -41,7 +41,7 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   }
 
   return (
-    <View style={style} {...rest}>
+    <View style={[{ minHeight: 40 }, style]} {...rest}>
       <Provider value={{ value, onValueChange, direction }}>
         <View style={_containerStyle}>{children}</View>
       </Provider>
@@ -55,9 +55,7 @@ export const SEED_DATA = {
   name: "Radio Button Group",
   tag: "RadioButtonGroup",
   category: COMPONENT_TYPES.button,
-  layout: {
-    minHeight: 40,
-  },
+  layout: {},
   props: {
     direction: createTextProp({
       label: "Horizontal/Vertical",

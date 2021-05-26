@@ -44,7 +44,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   }
 
   return (
-    <View style={style} {...rest}>
+    <View style={[{ minHeight: 40 }, style]} {...rest}>
       <Provider value={{ values, onValueChange, direction }}>
         <View style={_containerStyle}>{children}</View>
       </Provider>
@@ -58,9 +58,7 @@ export const SEED_DATA = {
   name: "Checkbox Group",
   tag: "CheckboxGroup",
   category: COMPONENT_TYPES.button,
-  layout: {
-    minHeight: 40,
-  },
+  layout: {},
   props: {
     direction: createDirectionProp(),
     values: createTextProp({

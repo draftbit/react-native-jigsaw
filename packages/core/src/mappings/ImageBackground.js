@@ -21,7 +21,10 @@ export const SEED_DATA = {
     height: "100%",
   },
   props: {
-    source: createImageProp(),
+    source: createImageProp({
+      defaultValue:
+        "https://static.draftbit.com/images/placeholder-image-background.png",
+    }),
     resizeMode: createResizeModeProp(),
     backgroundColor: createColorProp({
       label: "Background Color",

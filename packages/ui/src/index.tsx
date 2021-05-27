@@ -20,6 +20,7 @@ export {
   Stack,
   Surface,
   Switch,
+  SwitchRow,
   ThemeProvider,
   Touchable,
   withTheme,

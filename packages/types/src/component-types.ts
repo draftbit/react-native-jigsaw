@@ -263,6 +263,15 @@ export const createDirectionProp = (overrides = {}) =>
     ...overrides,
   });
 
+export const createRowDirectionProp = (overrides = {}) =>
+  createTextEnumProp({
+    label: "Direction",
+    description: "Whether the element will appear on the left or right",
+    formType: FORM_TYPES.flatArray,
+    options: ["row", "row-reverse"],
+    ...overrides,
+  });
+
 export const createIconSizeProp = (overrides = {}) => ({
   group: GROUPS.basic,
   label: "Icon Size",

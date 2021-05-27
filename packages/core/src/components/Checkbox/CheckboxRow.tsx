@@ -13,7 +13,7 @@ import { useCheckboxGroupContext } from "./context";
 import {
   createTextProp,
   createTextStyle,
-  createTextEnumProp,
+  createRowDirectionProp,
   COMPONENT_TYPES,
 } from "@draftbit/types";
 import type { IconSlot } from "../../interfaces/Icon";
@@ -169,12 +169,7 @@ export const SEED_DATA = {
       required: false,
       editable: false,
     }),
-    direction: createTextEnumProp({
-      label: "Direction",
-      description:
-        "Whether the checkbox will appear on the left or on the right",
-      options: ["row", "row-reverse"],
-    }),
+    direction: createRowDirectionProp(),
     values: createTextProp({
       label: "Value",
       description: "Value of the checkbox",

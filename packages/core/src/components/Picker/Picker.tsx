@@ -156,7 +156,7 @@ export const SEED_DATA = [
     name: "Picker - Solid",
     tag: "Picker",
     description: "A picker with a solid border",
-    category: COMPONENT_TYPES.field,
+    category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/Picker.png",
     supports_list_render: false,
     props: {
@@ -176,7 +176,7 @@ export const SEED_DATA = [
     name: "Picker - Underline",
     tag: "Picker",
     description: "A picker with an underline",
-    category: COMPONENT_TYPES.field,
+    category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/Picker.png",
     supports_list_render: false,
     props: {

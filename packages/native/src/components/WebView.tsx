@@ -61,7 +61,7 @@ export const SEED_DATA = {
   name: "WebView",
   tag: "WebView",
   description: "Render web content inside a view",
-  category: COMPONENT_TYPES.container,
+  category: COMPONENT_TYPES.media,
   layout: { flex: 1 },
   props: {
     source: createSourceProp({

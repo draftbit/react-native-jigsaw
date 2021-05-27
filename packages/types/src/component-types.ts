@@ -60,17 +60,10 @@ export const COMPONENT_TYPES = {
   input: "input",
   data: "data",
   card: "card",
-  header: "header",
   button: "button",
-  image: "image",
-  field: "field",
-  formControl: "formControl",
   row: "row",
   container: "container",
-  blocks: "blocks",
   deprecated: "deprecated",
-  screen: "screen",
-  codeComponent: "codeComponent",
 };
 
 const ELEVATION_TYPE = {

@@ -655,7 +655,7 @@ export const SEED_DATA = [
     name: "Text Field - Solid",
     tag: "TextField",
     description: "A text input with a solid border",
-    category: COMPONENT_TYPES.field,
+    category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/Textfield.png",
     supports_list_render: false,
     props: {
@@ -686,7 +686,7 @@ export const SEED_DATA = [
     name: "Text Field - Underline",
     tag: "TextField",
     description: "A text input with an underline",
-    category: COMPONENT_TYPES.field,
+    category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/Textfield.png",
     supports_list_render: false,
     props: {
@@ -717,7 +717,7 @@ export const SEED_DATA = [
     name: "Text Area - Solid",
     tag: "TextField",
     description: "A text area with a solid border",
-    category: COMPONENT_TYPES.field,
+    category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/TextArea.png",
     supports_list_render: false,
     props: {
@@ -745,7 +745,7 @@ export const SEED_DATA = [
     name: "Text Area - Underline",
     tag: "TextField",
     description: "A text area with an underline",
-    category: COMPONENT_TYPES.field,
+    category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/TextArea.png",
     supports_list_render: false,
     props: {

@@ -145,7 +145,7 @@ export const SEED_DATA = [
   {
     name: "Carousel",
     tag: "Carousel",
-    category: COMPONENT_TYPES.blocks,
+    category: COMPONENT_TYPES.media,
     description: "A horizontal scrolling carousel of images",
     layout: {},
     props: {

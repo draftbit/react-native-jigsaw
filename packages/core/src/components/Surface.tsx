@@ -38,6 +38,7 @@ const Surface: React.FC<Props> = ({
       {...rest}
       style={[
         {
+          minHeight: 40,
           borderRadius,
           backgroundColor:
             isDarkTheme && mode === "adaptive"
@@ -60,9 +61,7 @@ export const SEED_DATA = {
   tag: "Surface",
   description: "An elevated container",
   category: COMPONENT_TYPES.layout,
-  layout: {
-    height: 100,
-  },
+  layout: {},
   props: {
     elevation: createElevationType(0),
   },

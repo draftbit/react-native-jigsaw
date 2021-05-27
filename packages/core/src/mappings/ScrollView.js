@@ -10,6 +10,9 @@ export const SEED_DATA = {
   tag: "ScrollView",
   description: "A basic ScrollView component",
   category: COMPONENT_TYPES.layout,
+  layout: {
+    flex: 1,
+  },
   props: {
     horizontal: {
       group: GROUPS.basic,

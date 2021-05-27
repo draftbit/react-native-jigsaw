@@ -67,7 +67,7 @@ export const SEED_DATA = [
     tag: "RowHeadlineImageIcon",
     description:
       "A row with left aligned headline text and a right aligned icon",
-    category: COMPONENT_TYPES.deprecated,
+    category: COMPONENT_TYPES.row,
     preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_HeadlineIcon.png",
     supports_list_render: true,
     props: {
@@ -93,7 +93,7 @@ export const SEED_DATA = [
     tag: "RowHeadlineImageIcon",
     description:
       "A row with left aligned image and headline text and a right aligned icon",
-    category: COMPONENT_TYPES.deprecated,
+    category: COMPONENT_TYPES.row,
     preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_HeadlineIconImage.png",
     supports_list_render: true,
     props: {
@@ -126,7 +126,7 @@ export const SEED_DATA = [
     tag: "RowHeadlineImageIcon",
     description:
       "A row with left aligned headline text and subtitle text and a right aligned icon",
-    category: COMPONENT_TYPES.deprecated,
+    category: COMPONENT_TYPES.row,
     preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_HeadlineIcon.png",
     supports_list_render: true,
     props: {
@@ -159,7 +159,7 @@ export const SEED_DATA = [
     tag: "RowHeadlineImageIcon",
     description:
       "A row with left aligned headline text and subtitle text and a right aligned icon",
-    category: COMPONENT_TYPES.deprecated,
+    category: COMPONENT_TYPES.row,
     preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_HeadlineImageIcon.png",
     supports_list_render: true,
     props: {
@@ -199,7 +199,7 @@ export const SEED_DATA = [
     tag: "RowHeadlineImageIcon",
     description:
       "A row with left aligned headline text and multiline subtitle text and a right aligned icon",
-    category: COMPONENT_TYPES.deprecated,
+    category: COMPONENT_TYPES.row,
     preview_image_url: "{CLOUDINARY_URL}/Row_Multiline_HeadlineIcon.png",
     supports_list_render: true,
     props: {
@@ -238,7 +238,7 @@ export const SEED_DATA = [
     tag: "RowHeadlineImageIcon",
     description:
       "A row with left aligned image, headline text, and multiline subtitle text, and a right aligned icon",
-    category: COMPONENT_TYPES.deprecated,
+    category: COMPONENT_TYPES.row,
     preview_image_url: "{CLOUDINARY_URL}/Row_Multiline_HeadlineImageIcon.png",
     supports_list_render: true,
     props: {

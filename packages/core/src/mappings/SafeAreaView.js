@@ -9,7 +9,7 @@ export const SEED_DATA = {
   name: "SafeAreaView",
   tag: "SafeAreaView",
   description: "A basic View that handles safe area",
-  category: COMPONENT_TYPES.container,
+  category: COMPONENT_TYPES.deprecated,
   props: {
     edges: {
       group: GROUPS.basic,

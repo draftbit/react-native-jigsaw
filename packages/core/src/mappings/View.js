@@ -11,7 +11,7 @@ export const SEED_DATA = {
   description: "A basic View component",
   category: COMPONENT_TYPES.basic,
   layout: {
-    height: 250,
+    height: 50,
   },
   props: {
     accessible: {

@@ -23,7 +23,7 @@ export interface CheckboxGroupProps {
 const { Provider } = checkboxGroupContext;
 
 const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
-  direction = Direction.Horizontal,
+  direction = Direction.Vertical,
   values,
   onValueChange = () => {},
   style,

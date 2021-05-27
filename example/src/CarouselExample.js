@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Image } from "react-native";
 import { Carousel, withTheme } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
@@ -18,6 +19,18 @@ const LOCAL_IMAGES = [
 function CarouselExample({ theme }) {
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>
+      <Section title="Images as children">
+        <Carousel dotColor={theme.colors.error}>
+          <Image
+            source={{ uri: REMOTE_IMAGES[0] }}
+            style={{ width: 250, height: 250 }}
+          />
+          <Image
+            source={{ uri: REMOTE_IMAGES[0] }}
+            style={{ width: 250, height: 250 }}
+          />
+        </Carousel>
+      </Section>
       <Section title="No Fixed Width (Remote Images)">
         <Carousel data={REMOTE_IMAGES} dotColor={theme.colors.background} />
       </Section>

@@ -158,7 +158,7 @@ export default CheckboxRow;
 export const SEED_DATA = {
   name: "Checkbox Row",
   tag: "CheckboxRow",
-  category: COMPONENT_TYPES.container,
+  category: COMPONENT_TYPES.button,
   layout: {},
   props: {
     label: createTextProp({

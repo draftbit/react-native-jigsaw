@@ -20,7 +20,7 @@ export interface RadioButtonGroupProps {
 const { Provider } = radioButtonGroupContext;
 
 const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
-  direction = Direction.Horizontal,
+  direction = Direction.Vertical,
   value,
   onValueChange = () => {},
   style,

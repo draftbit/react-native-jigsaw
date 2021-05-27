@@ -20,6 +20,7 @@ export default function FormRow({
   label,
   style,
   onPress,
+  ...rest
 }: Props) {
   const { textStyles, viewStyles } = extractStyles(style);
   return (
@@ -27,6 +28,7 @@ export default function FormRow({
       disabled={disabled}
       onPress={onPress}
       style={[styles.row, { flexDirection: direction }, viewStyles]}
+      {...rest}
     >
       <Text style={textStyles}>{label}</Text>
       {children}

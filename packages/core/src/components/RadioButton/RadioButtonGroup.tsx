@@ -2,8 +2,8 @@ import * as React from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
 import {
   COMPONENT_TYPES,
-  FORM_TYPES,
-  FIELD_NAME,
+  createFieldNameProp,
+  createDirectionProp,
   createTextProp,
 } from "@draftbit/types";
 import type { Theme } from "../../styles/DefaultTheme";
@@ -57,21 +57,15 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.button,
   layout: {},
   props: {
-    direction: createTextProp({
-      label: "Horizontal/Vertical",
-      description: "Whether the buttons should be Horizontal or Vertical",
-      formType: FORM_TYPES.flatArray,
-      defaultValue: "horizontal",
-      options: ["horizontal", "vertical"],
-    }),
+    direction: createDirectionProp(),
     value: createTextProp({
       label: "value",
       description: "Currently selected value of the radio button group",
+      defaultValue: null,
       required: true,
     }),
-    fieldName: {
-      ...FIELD_NAME,
+    fieldName: createFieldNameProp({
       handlerPropName: "onValueChange",
-    },
+    }),
   },
 };

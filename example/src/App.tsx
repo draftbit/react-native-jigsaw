@@ -49,6 +49,7 @@ import StepperExample from "./StepperExample";
 
 import TextFieldExample from "./TextFieldExample";
 import CheckboxExample from "./CheckboxExample";
+import WebViewExample from "./WebViewExample";
 
 const ROUTES = {
   Layout: LayoutExample,
@@ -81,6 +82,7 @@ const ROUTES = {
   Switch: SwitchExample,
   Stepper: StepperExample,
   TextField: TextFieldExample,
+  WebView: WebViewExample,
 };
 
 let customFonts = {

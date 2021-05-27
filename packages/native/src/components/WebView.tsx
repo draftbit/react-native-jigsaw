@@ -62,7 +62,10 @@ export const SEED_DATA = {
   tag: "WebView",
   description: "Render web content inside a view",
   category: COMPONENT_TYPES.container,
+  layout: { flex: 1 },
   props: {
-    source: createSourceProp(),
+    source: createSourceProp({
+      defaultValue: "https://reactnative.dev",
+    }),
   },
 };

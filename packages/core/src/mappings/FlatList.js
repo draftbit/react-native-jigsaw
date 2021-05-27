@@ -11,6 +11,9 @@ export const SEED_DATA = {
   tag: "FlatList",
   description: "A basic List component",
   category: COMPONENT_TYPES.data,
+  layout: {
+    flex: 1,
+  },
   props: {
     horizontal: {
       group: GROUPS.basic,

@@ -21,7 +21,9 @@ export const SEED_DATA = {
     height: "100%",
   },
   props: {
-    source: createImageProp(),
+    source: createImageProp({
+      defaultValue: null,
+    }),
     resizeMode: createResizeModeProp(),
     backgroundColor: createColorProp({
       label: "Background Color",

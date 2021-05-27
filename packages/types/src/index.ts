@@ -24,6 +24,11 @@ export type Fonts = {
   thin: Font;
 };
 
+export enum RowDirection {
+  Row = "row",
+  RowReverse = "row-reverse",
+}
+
 export type colorTypes =
   | "primary"
   | "secondary"

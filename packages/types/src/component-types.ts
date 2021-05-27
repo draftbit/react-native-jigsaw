@@ -60,17 +60,11 @@ export const COMPONENT_TYPES = {
   input: "input",
   data: "data",
   card: "card",
-  header: "header",
   button: "button",
-  image: "image",
-  field: "field",
-  formControl: "formControl",
   row: "row",
+  header: "header",
   container: "container",
-  blocks: "blocks",
   deprecated: "deprecated",
-  screen: "screen",
-  codeComponent: "codeComponent",
 };
 
 const ELEVATION_TYPE = {
@@ -258,8 +252,17 @@ export const createDirectionProp = (overrides = {}) =>
     description:
       "Whether the checkbox rows should be shown horizontally or vertically",
     formType: FORM_TYPES.flatArray,
-    defaultValue: "horizontal",
+    defaultValue: null,
     options: ["horizontal", "vertical"],
+    ...overrides,
+  });
+
+export const createRowDirectionProp = (overrides = {}) =>
+  createTextEnumProp({
+    label: "Direction",
+    description: "Whether the element will appear on the left or right",
+    formType: FORM_TYPES.flatArray,
+    options: ["row", "row-reverse"],
     ...overrides,
   });
 

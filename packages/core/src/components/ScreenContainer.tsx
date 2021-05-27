@@ -2,11 +2,11 @@ import * as React from "react";
 import {
   StyleSheet,
   ScrollView as NativeScrollView,
-  View,
   StyleProp,
   ViewStyle,
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
+import type { Edge } from "react-native-safe-area-context";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 
@@ -51,18 +51,23 @@ function ScreenContainer({
   children,
   ...rest
 }: Props) {
-  const insets = useSafeAreaInsets();
-  const paddingTop = hasSafeArea || hasTopSafeArea ? insets.top : 0;
-  const paddingBottom = hasSafeArea || hasBottomSafeArea ? insets.bottom : 0;
   const backgroundColor = theme.colors.background;
 
+  const edges: Edge[] = ["left", "right"];
+  if (hasSafeArea || hasTopSafeArea) {
+    edges.push("top");
+  }
+
+  if (hasSafeArea || hasBottomSafeArea) {
+    edges.push("bottom");
+  }
+
   return (
-    <View
+    <SafeAreaView
+      edges={edges}
       style={[
         styles.container,
         {
-          paddingTop,
-          paddingBottom,
           backgroundColor,
         },
         style,
@@ -74,7 +79,7 @@ function ScreenContainer({
       ) : (
         children
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 

@@ -1,12 +1,21 @@
 import * as React from "react";
-import { Switch as NativeSwitch, SwitchProps } from "react-native";
+import {
+  Switch as NativeSwitch,
+  SwitchProps,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import { withTheme } from "../theming";
+import FormRow from "./FormRow";
 import {
   COMPONENT_TYPES,
   GROUPS,
   createBoolProp,
   createColorProp,
   createFieldNameProp,
+  createTextProp,
+  createRowDirectionProp,
+  RowDirection,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 
@@ -68,39 +77,139 @@ function Switch({
   );
 }
 
+type RowProps = {
+  label: string;
+  direction: RowDirection;
+  style?: StyleProp<ViewStyle>;
+};
+
+function Row({
+  label = "Label",
+  direction = RowDirection.Row,
+  style,
+  value = false,
+  disabled,
+  onValueChange,
+  activeTrackColor,
+  inactiveTrackColor,
+  activeThumbColor,
+  inactiveThumbColor,
+  theme,
+  ...rest
+}: Props & RowProps) {
+  const [checked, setChecked] = React.useState(value);
+
+  React.useEffect(() => {
+    if (value !== checked) {
+      setChecked(value);
+    }
+  }, [value, checked]);
+
+  return (
+    <FormRow
+      disabled={disabled}
+      onPress={() => {
+        setChecked(!checked);
+        onValueChange && onValueChange(!checked);
+      }}
+      label={label}
+      direction={direction}
+      style={style}
+      {...rest}
+    >
+      <Switch
+        theme={theme}
+        value={checked}
+        disabled={disabled}
+        onValueChange={onValueChange}
+        activeTrackColor={activeTrackColor}
+        inactiveTrackColor={inactiveTrackColor}
+        activeThumbColor={activeThumbColor}
+        inactiveThumbColor={inactiveThumbColor}
+      />
+    </FormRow>
+  );
+}
+
+const SwitchRow = withTheme(Row);
+export { SwitchRow };
+
 export default withTheme(Switch);
 
-export const SEED_DATA = {
-  name: "Switch",
-  tag: "Switch",
-  category: COMPONENT_TYPES.basic,
-  layout: {},
-  props: {
-    disabled: createBoolProp({
-      label: "Disabled",
-      description: "Boolean to handle disabling the switch",
-      group: GROUPS.data,
-    }),
-    value: createBoolProp({
-      label: "Value",
-      description: "Boolean value",
-      group: GROUPS.data,
-    }),
-    fieldName: createFieldNameProp({
-      defaultValue: false,
-      valuePropName: "switchValue",
-    }),
-    activeTrackColor: createColorProp({
-      label: "Active Track Color",
-    }),
-    inactiveTrackColor: createColorProp({
-      label: "Inactive Track Color",
-    }),
-    activeThumbColor: createColorProp({
-      label: "Active Thumb Color",
-    }),
-    inactiveThumbColor: createColorProp({
-      label: "Inactive Thumb Color",
-    }),
+export const SEED_DATA = [
+  {
+    name: "Switch",
+    tag: "Switch",
+    category: COMPONENT_TYPES.input,
+    layout: {},
+    props: {
+      disabled: createBoolProp({
+        label: "Disabled",
+        description: "Boolean to handle disabling the switch",
+        group: GROUPS.data,
+      }),
+      value: createBoolProp({
+        label: "Value",
+        description: "Boolean value",
+        group: GROUPS.data,
+      }),
+      fieldName: createFieldNameProp({
+        defaultValue: false,
+        valuePropName: "switchValue",
+      }),
+      activeTrackColor: createColorProp({
+        label: "Active Track Color",
+      }),
+      inactiveTrackColor: createColorProp({
+        label: "Inactive Track Color",
+      }),
+      activeThumbColor: createColorProp({
+        label: "Active Thumb Color",
+      }),
+      inactiveThumbColor: createColorProp({
+        label: "Inactive Thumb Color",
+      }),
+    },
   },
-};
+  {
+    name: "Switch Row",
+    tag: "SwitchRow",
+    category: COMPONENT_TYPES.input,
+    layout: {},
+    props: {
+      label: createTextProp({
+        label: "Label",
+        description: "Label to show with the checkbox",
+        required: true,
+        defaultValue: "First Option",
+      }),
+      direction: createRowDirectionProp(),
+      disabled: createBoolProp({
+        label: "Disabled",
+        description: "Boolean to handle disabling the switch",
+        group: GROUPS.data,
+      }),
+      value: createBoolProp({
+        label: "Value",
+        description: "Boolean value",
+        group: GROUPS.data,
+      }),
+      fieldName: createFieldNameProp({
+        defaultValue: false,
+        valuePropName: "switchValue",
+      }),
+      activeTrackColor: createColorProp({
+        label: "Active Track Color",
+      }),
+      inactiveTrackColor: createColorProp({
+        label: "Inactive Track Color",
+      }),
+      activeThumbColor: createColorProp({
+        label: "Active Thumb Color",
+      }),
+      inactiveThumbColor: createColorProp({
+        label: "Inactive Thumb Color",
+      }),
+    },
+  },
+];

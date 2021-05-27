@@ -5,6 +5,7 @@ export {
   MapView,
   MapMarker,
   MapCallout,
+  WebView,
 } from "@draftbit/native";
 export {
   Avatar,
@@ -26,6 +27,7 @@ export {
   Stack,
   Surface,
   Switch,
+  SwitchRow,
   ThemeProvider,
   Touchable,
   withTheme,
@@ -48,6 +50,7 @@ export {
 import {
   injectIcon,
   AvatarEdit as BaseAvatarEdit,
+  Button as BaseDeprecatedButton,
   ButtonSolid as BaseButtonSolid,
   ButtonOutline as BaseButtonOutline,
   Card as BaseCard,
@@ -76,6 +79,7 @@ import {
 } from "@draftbit/core";
 
 export const AvatarEdit = injectIcon(BaseAvatarEdit, Icon);
+export const Button = injectIcon(BaseDeprecatedButton, Icon);
 export const ButtonOutline = injectIcon(BaseButtonOutline, Icon);
 export const ButtonSolid = injectIcon(BaseButtonSolid, Icon);
 export const Card = injectIcon(BaseCard, Icon);

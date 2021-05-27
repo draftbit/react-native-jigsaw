@@ -19,7 +19,7 @@ export { default as Image } from "./components/Image";
 export { default as ScreenContainer } from "./components/ScreenContainer";
 export { default as StarRating } from "./components/StarRating";
 export { default as Surface } from "./components/Surface";
-export { default as Switch } from "./components/Switch";
+export { default as Switch, SwitchRow } from "./components/Switch";
 export { default as TextField } from "./components/TextField";
 export { default as ToggleButton } from "./components/ToggleButton";
 export { default as Touchable } from "./components/Touchable";
@@ -40,7 +40,7 @@ export {
   RadioButtonFieldGroup,
 } from "./components/RadioButton/index";
 
-/* Deprecated: Fix or Delete */
+/* Deprecated: Fix or Delete  */
 export { default as Button } from "./components/DeprecatedButton";
 export { default as CardBlock } from "./components/CardBlock";
 export { default as CardContainer } from "./components/CardContainer";

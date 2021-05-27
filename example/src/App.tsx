@@ -8,7 +8,10 @@ import "react-native-gesture-handler";
 import * as React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { Provider, DefaultTheme, ScreenContainer } from "@draftbit/ui";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import {
+  SafeAreaProvider,
+  initialWindowMetrics,
+} from "react-native-safe-area-context";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 
@@ -50,6 +53,7 @@ import StepperExample from "./StepperExample";
 import TextFieldExample from "./TextFieldExample";
 import CheckboxExample from "./CheckboxExample";
 import MapViewExample from "./MapViewExample";
+import WebViewExample from "./WebViewExample";
 
 const ROUTES = {
   Layout: LayoutExample,
@@ -83,6 +87,7 @@ const ROUTES = {
   Switch: SwitchExample,
   Stepper: StepperExample,
   TextField: TextFieldExample,
+  WebView: WebViewExample,
 };
 
 let customFonts = {
@@ -157,7 +162,7 @@ export default function App() {
 
   return (
     <Provider theme={DefaultTheme}>
-      <SafeAreaProvider>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
         <Examples />
       </SafeAreaProvider>
     </Provider>
@@ -185,7 +190,6 @@ const exampleStyles = StyleSheet.create({
     },
     shadowOpacity: 0.29,
     shadowRadius: 4.65,
-
     elevation: 7,
   },
   menuButtonStyle: {

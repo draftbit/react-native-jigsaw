@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/core",
-  "version": "40.33.6",
+  "version": "40.36.1",
   "description": "Core (non-native) Components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -41,14 +41,13 @@
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
     "@draftbit/react-theme-provider": "^2.1.1",
-    "@draftbit/types": "^40.33.3",
+    "@draftbit/types": "^40.36.1",
     "@material-ui/core": "^4.11.0",
     "@material-ui/pickers": "^3.2.10",
     "@react-native-community/slider": "^4.0.0-rc.3",
     "color": "^3.1.2",
     "date-fns": "^2.16.1",
     "dateformat": "^3.0.3",
-    "react-native-safe-area-context": "3.1.9",
     "react-native-typography": "^1.4.1"
   },
   "devDependencies": {

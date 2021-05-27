@@ -159,7 +159,7 @@ export const SEED_DATA = [
     name: "Date Picker - Solid",
     tag: "DatePicker",
     description: "A date picker with a solid border",
-    category: COMPONENT_TYPES.field,
+    category: COMPONENT_TYPES.input,
     layout: null,
     props: {
       ...SEED_DATA_PROPS,
@@ -179,7 +179,7 @@ export const SEED_DATA = [
     name: "Date Picker - Underline",
     tag: "DatePicker",
     description: "A date picker with an underline",
-    category: COMPONENT_TYPES.field,
+    category: COMPONENT_TYPES.input,
     layout: null,
     props: {
       ...SEED_DATA_PROPS,

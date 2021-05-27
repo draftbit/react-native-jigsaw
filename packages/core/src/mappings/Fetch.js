@@ -6,5 +6,8 @@ export const SEED_DATA = {
   description:
     "Rest API Declarative Fetch component. Uses react-request internally",
   category: COMPONENT_TYPES.data,
+  layout: {
+    minHeight: 40,
+  },
   props: {},
 };

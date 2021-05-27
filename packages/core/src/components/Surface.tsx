@@ -12,27 +12,37 @@ import shadow from "../styles/shadow";
 import overlay from "../styles/overlay";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
+import { COMPONENT_TYPES, createElevationType } from "@draftbit/types";
 
 type Props = {
+  elevation?: number;
   style?: StyleProp<ViewStyle>;
   theme: Theme;
 } & ViewProps;
 
-const Surface: React.FC<Props> = ({ style, theme, children, ...rest }) => {
-  const { elevation = 3, borderRadius: radius } = (StyleSheet.flatten(style) ||
-    {}) as ViewStyle;
+const Surface: React.FC<Props> = ({
+  elevation,
+  style,
+  theme,
+  children,
+  ...rest
+}) => {
+  const { elevation: styleElevation = 3, borderRadius: radius } =
+    (StyleSheet.flatten(style) || {}) as ViewStyle;
   const { dark: isDarkTheme, mode, colors } = theme;
   const borderRadius = radius || theme.roundness;
+  const ele = elevation || styleElevation;
 
   return (
     <Animated.View
       {...rest}
       style={[
         {
+          minHeight: 40,
           borderRadius,
           backgroundColor:
             isDarkTheme && mode === "adaptive"
-              ? overlay(elevation, colors.surface)
+              ? overlay(ele, colors.surface)
               : colors.surface,
         },
         elevation ? shadow(elevation) : null,
@@ -45,3 +55,14 @@ const Surface: React.FC<Props> = ({ style, theme, children, ...rest }) => {
 };
 
 export default withTheme(Surface);
+
+export const SEED_DATA = {
+  name: "Surface",
+  tag: "Surface",
+  description: "An elevated container",
+  category: COMPONENT_TYPES.layout,
+  layout: {},
+  props: {
+    elevation: createElevationType(0),
+  },
+};

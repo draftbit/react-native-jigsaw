@@ -102,7 +102,7 @@ export const SEED_DATA = {
   name: "Slider",
   tag: "Slider",
   description: "A component used to set a value in a range",
-  category: COMPONENT_TYPES.basic,
+  category: COMPONENT_TYPES.input,
   layout: {},
   props: {
     fieldName: createFieldNameProp({

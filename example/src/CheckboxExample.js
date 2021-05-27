@@ -75,7 +75,7 @@ const CheckboxExample = ({ theme }) => {
           values={selectedValues}
           onValueChange={handleValueSelected}
         >
-          <CheckboxRow label="First" value="1" />
+          <CheckboxRow label="First" value="1" style={{ fontSize: 32 }} />
           <CheckboxRow label="Second" value="2" />
           <CheckboxRow label="Third" value="3" />
         </CheckboxGroup>

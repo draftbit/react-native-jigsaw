@@ -19,6 +19,7 @@ import {
 import type { IconSlot } from "../../interfaces/Icon";
 import { Direction as GroupDirection } from "./context";
 import Touchable from "../Touchable";
+import { extractStyles } from "../../utilities";
 
 export enum Direction {
   Row = "row",
@@ -50,10 +51,11 @@ const getCheckboxAlignment = (
 
 const renderLabel = (
   value: string | React.ReactNode,
-  labelStyle: StyleProp<TextStyle>
+  labelStyle: StyleProp<TextStyle>,
+  textStyle: StyleProp<TextStyle>
 ) => {
   if (typeof value === "string") {
-    return <Text style={labelStyle}>{value}</Text>;
+    return <Text style={[labelStyle, textStyle]}>{value}</Text>;
   } else {
     return <>{value}</>;
   }
@@ -89,10 +91,12 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
     }
   };
 
+  const { textStyles, viewStyles } = extractStyles(style);
+
   return (
     <Touchable
       onPress={handlePress}
-      style={[styles.mainParent, { flexDirection: direction }, style]}
+      style={[styles.mainParent, { flexDirection: direction }, viewStyles]}
       disabled={disabled}
       {...rest}
     >
@@ -105,7 +109,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
           labelContainerStyle,
         ]}
       >
-        {renderLabel(label, labelStyle)}
+        {renderLabel(label, labelStyle, textStyles)}
       </View>
       <View
         style={{

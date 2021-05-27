@@ -12,13 +12,13 @@ import Text from "../Text";
 import { useRadioButtonGroupContext } from "./context";
 import {
   createTextProp,
-  createTextStyle,
   createTextEnumProp,
   COMPONENT_TYPES,
 } from "@draftbit/types";
 import type { IconSlot } from "../../interfaces/Icon";
 import { Direction as GroupDirection } from "./context";
 import Touchable from "../Touchable";
+import { extractStyles } from "../../utilities";
 
 export enum Direction {
   Row = "row",
@@ -50,10 +50,11 @@ const getRadioButtonAlignment = (
 
 const renderLabel = (
   value: string | React.ReactNode,
-  labelStyle: StyleProp<TextStyle>
+  labelStyle: StyleProp<TextStyle>,
+  textStyle: StyleProp<TextStyle>
 ) => {
   if (typeof value === "string") {
-    return <Text style={labelStyle}>{value}</Text>;
+    return <Text style={[labelStyle, textStyle]}>{value}</Text>;
   } else {
     return <>{value}</>;
   }
@@ -84,10 +85,12 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
     onValueChange && onValueChange(value);
   };
 
+  const { textStyles, viewStyles } = extractStyles(style);
+
   return (
     <Touchable
       onPress={handlePress}
-      style={[styles.mainParent, { flexDirection: direction }, style]}
+      style={[styles.mainParent, { flexDirection: direction }, viewStyles]}
       disabled={disabled}
       {...rest}
     >
@@ -100,7 +103,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
           labelContainerStyle,
         ]}
       >
-        {renderLabel(label, labelStyle)}
+        {renderLabel(label, labelStyle, textStyles)}
       </View>
       <View
         style={{
@@ -152,12 +155,6 @@ export const SEED_DATA = {
       description: "Label to show with the radio button",
       required: true,
       defaultValue: "First Option",
-    }),
-    labelStyle: createTextStyle({
-      label: "Label Style",
-      description: "Change the styles of the label",
-      required: false,
-      editable: false,
     }),
     direction: createTextEnumProp({
       label: "Direction",

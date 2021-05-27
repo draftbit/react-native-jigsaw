@@ -116,7 +116,7 @@ export const createImageProp = (overrides = {}) => ({
 
 export const createSourceProp = (overrides = {}) => ({
   label: "Website URL",
-  description: "The URL for the website",
+  description: "A normal URL",
   defaultValue: "https://draftbit.com",
   group: GROUPS.data,
   formType: FORM_TYPES.sourceUrl,
@@ -174,18 +174,6 @@ export const createAspectRatioProp = (overrides = {}) => ({
   editable: true,
   required: false,
   group: GROUPS.basic,
-  ...overrides,
-});
-
-export const createActionProp = (overrides = {}) => ({
-  label: "Action",
-  description: "Action to execute when button pressed",
-  group: GROUPS.action,
-  formType: FORM_TYPES.action,
-  propType: PROP_TYPES.STRING,
-  defaultValue: null,
-  editable: true,
-  required: false,
   ...overrides,
 });
 
@@ -251,6 +239,39 @@ export const createColorProp = (overrides = {}) => ({
   ...overrides,
 });
 
+export const createTextEnumProp = (overrides = {}) => ({
+  group: GROUPS.basic,
+  label: "Enum",
+  description: "Enum",
+  editable: true,
+  required: false,
+  formType: FORM_TYPES.flatArray,
+  propType: PROP_TYPES.STRING,
+  defaultValue: null,
+  options: [],
+  ...overrides,
+});
+
+export const createDirectionProp = (overrides = {}) =>
+  createTextEnumProp({
+    label: "Direction",
+    description:
+      "Whether the checkbox rows should be shown horizontally or vertically",
+    formType: FORM_TYPES.flatArray,
+    defaultValue: "horizontal",
+    options: ["horizontal", "vertical"],
+    ...overrides,
+  });
+
+export const createRowDirectionProp = (overrides = {}) =>
+  createTextEnumProp({
+    label: "Direction",
+    description: "Whether the element will appear on the left or right",
+    formType: FORM_TYPES.flatArray,
+    options: ["row", "row-reverse"],
+    ...overrides,
+  });
+
 export const createIconSizeProp = (overrides = {}) => ({
   group: GROUPS.basic,
   label: "Icon Size",
@@ -261,12 +282,6 @@ export const createIconSizeProp = (overrides = {}) => ({
   propType: PROP_TYPES.NUMBER,
   defaultValue: 32,
   options: [12, 16, 24, 32, 48, 64],
-  ...overrides,
-});
-
-export const createFieldNameProp = (overrides = {}) => ({
-  ...FIELD_NAME,
-  handlerPropName: "onPress",
   ...overrides,
 });
 
@@ -294,6 +309,15 @@ export const FIELD_NAME = {
   editable: true,
   required: false,
 };
+
+export const createFieldNameProp = (overrides = {}) => ({
+  ...FIELD_NAME,
+  handlerPropName: "onPress",
+  ...overrides,
+});
+
+export const createActionProp = (overrides = {}) =>
+  createFieldNameProp(overrides);
 
 export const createStateValue = (overrides = {}) => ({
   ...FIELD_NAME,

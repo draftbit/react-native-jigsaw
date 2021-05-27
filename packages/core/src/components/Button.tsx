@@ -88,6 +88,14 @@ function Base({
     textDecorationStyle,
   };
 
+  if (textAlign === "left") {
+    buttonStyles.justifyContent = "flex-start";
+  }
+
+  if (textAlign === "right") {
+    buttonStyles.justifyContent = "flex-end";
+  }
+
   return (
     <Pressable
       onPress={onPress}
@@ -114,7 +122,7 @@ function Base({
           size={CONSTANTS.icon}
         />
       ) : null}
-      <Text style={[styles.title, titleStyles]}>{title}</Text>
+      <Text style={titleStyles}>{title}</Text>
     </Pressable>
   );
 }
@@ -176,6 +184,7 @@ const styles = StyleSheet.create({
     position: "relative",
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
     minHeight: CONSTANTS.baseHeight,
     paddingHorizontal: 12,
     fontFamily: "System",
@@ -212,9 +221,6 @@ const styles = StyleSheet.create({
         alignSelf: "center",
       },
     }),
-  },
-  title: {
-    flex: 1,
   },
 });
 

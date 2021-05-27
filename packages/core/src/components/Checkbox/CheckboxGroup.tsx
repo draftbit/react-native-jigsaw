@@ -6,6 +6,7 @@ import {
   createTextProp,
   PROP_TYPES,
   createFieldNameProp,
+  createDirectionProp,
 } from "@draftbit/types";
 import type { Theme } from "../../styles/DefaultTheme";
 import { checkboxGroupContext, Direction } from "./context";
@@ -27,13 +28,13 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   onValueChange = () => {},
   style,
   children,
+  ...rest
 }) => {
   const _containerStyle: StyleProp<ViewStyle> = [
     {
       flexDirection: direction === Direction.Horizontal ? "row" : "column",
       overflow: "hidden",
     },
-    style,
   ];
 
   if (direction !== Direction.Vertical) {
@@ -43,9 +44,11 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   }
 
   return (
-    <Provider value={{ values, onValueChange, direction }}>
-      <View style={_containerStyle}>{children}</View>
-    </Provider>
+    <View style={[{ minHeight: 40 }, style]} {...rest}>
+      <Provider value={{ values, onValueChange, direction }}>
+        <View style={_containerStyle}>{children}</View>
+      </Provider>
+    </View>
   );
 };
 
@@ -55,25 +58,19 @@ export const SEED_DATA = {
   name: "Checkbox Group",
   tag: "CheckboxGroup",
   category: COMPONENT_TYPES.button,
+  layout: {},
   props: {
-    direction: createTextProp({
-      label: "Horizontal/Vertical",
-      description:
-        "Whether the checkbox rows should be shown horizontally or vertically",
-      formType: FORM_TYPES.flatArray,
-      defaultValue: "horizontal",
-      options: ["horizontal", "vertical"],
-    }),
+    direction: createDirectionProp(),
     values: createTextProp({
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.ARRAY,
       label: "Values",
       description: "Currently selected values of the checkbox group",
       required: true,
+      defaultValue: null,
     }),
     fieldName: createFieldNameProp({
       handlerPropName: "onValueChange",
     }),
   },
-  layout: {},
 };

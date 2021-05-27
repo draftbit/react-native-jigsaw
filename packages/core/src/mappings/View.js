@@ -10,6 +10,9 @@ export const SEED_DATA = {
   tag: "View",
   description: "A basic View component",
   category: COMPONENT_TYPES.basic,
+  layout: {
+    height: 250,
+  },
   props: {
     accessible: {
       group: GROUPS.accessibility,

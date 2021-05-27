@@ -13,7 +13,7 @@ import { useCheckboxGroupContext } from "./context";
 import {
   createTextProp,
   createTextStyle,
-  FORM_TYPES,
+  createRowDirectionProp,
   COMPONENT_TYPES,
 } from "@draftbit/types";
 import type { IconSlot } from "../../interfaces/Icon";
@@ -61,7 +61,7 @@ const renderLabel = (
 
 const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   Icon,
-  label,
+  label = "Label",
   value,
   onPress = () => {},
   labelContainerStyle,
@@ -80,7 +80,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   } = useCheckboxGroupContext();
 
   const isChecked =
-    status === CheckboxStatus.Checked || selectedValues.includes(value);
+    status === CheckboxStatus.Checked || (selectedValues ?? []).includes(value);
 
   const handlePress = () => {
     if (!disabled) {
@@ -94,6 +94,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
       onPress={handlePress}
       style={[styles.mainParent, { flexDirection: direction }, style]}
       disabled={disabled}
+      {...rest}
     >
       <View
         style={[
@@ -122,7 +123,6 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
           onPress={handlePress}
           style={checkboxStyle}
           disabled={disabled}
-          {...rest}
         />
       </View>
     </Touchable>
@@ -161,24 +161,19 @@ export const SEED_DATA = {
       label: "Label",
       description: "Label to show with the checkbox",
       required: true,
-      defaultValue: null,
+      defaultValue: "First Option",
     }),
     labelStyle: createTextStyle({
       label: "Label Style",
       description: "Change the styles of the label",
       required: false,
+      editable: false,
     }),
-    direction: createTextProp({
-      label: "Direction",
-      description:
-        "Whether the checkbox will appear on the left or on the right",
-      formType: FORM_TYPES.flatArray,
-      defaultValue: "row",
-      options: ["row", "row-reverse"],
-    }),
+    direction: createRowDirectionProp(),
     values: createTextProp({
       label: "Value",
       description: "Value of the checkbox",
+      defaultValue: null,
       required: true,
     }),
   },

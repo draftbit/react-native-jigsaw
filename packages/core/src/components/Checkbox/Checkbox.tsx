@@ -13,10 +13,9 @@ import {
   createBoolProp,
   createIconProp,
   createNumberProp,
-  createTextProp,
-  FORM_TYPES,
-  GROUPS,
+  createTextEnumProp,
   createColorProp,
+  GROUPS,
 } from "@draftbit/types";
 import { useTheme } from "../../theming";
 import type { IconSlot } from "../../interfaces/Icon";
@@ -160,6 +159,8 @@ const styles = StyleSheet.create({
   },
 });
 
+export default Checkbox;
+
 export const SEED_DATA = {
   name: "Checkbox",
   tag: "Checkbox",
@@ -169,28 +170,26 @@ export const SEED_DATA = {
     height: 24,
   },
   props: {
-    status: createTextProp({
+    status: createTextEnumProp({
       label: "Status",
       description: "Current status of the checkbox",
-      required: true,
-      formType: FORM_TYPES.flatArray,
       options: ["checked", "unchecked", "indeterminate"],
-      defaultValue: "unchecked",
+      defaultValue: null,
     }),
     color: createColorProp({
       group: GROUPS.basic,
       description: "Color for the button (used when the checkbox is checked)",
-      defaultValue: "primary",
+      defaultValue: null,
     }),
     uncheckedColor: createColorProp({
       label: "Unselected Color",
       description: "Color for the button when the checkbox is unchecked",
-      defaultValue: "primary",
+      defaultValue: null,
     }),
     indeterminateColor: createColorProp({
       label: "Unselected Color",
       description: "Color for the button when the checkbox is indeterminate",
-      defaultValue: "primary",
+      defaultValue: null,
     }),
     disabled: createBoolProp({
       label: "Disabled",
@@ -200,24 +199,22 @@ export const SEED_DATA = {
     size: createNumberProp({
       label: "Size",
       description: "Specifies the size of the icon",
-      defaultValue: 29,
+      defaultValue: null,
     }),
     checkedIcon: createIconProp({
       label: "Checked Icon",
       description: 'Icon to show when the checkbox status is "checked"',
-      defaultValue: "MaterialCommunityIcons/checkbox-marked",
+      defaultValue: null,
     }),
     uncheckedIcon: createIconProp({
       label: "Unchecked Icon",
       description: 'Icon to show when the checkbox status is "unchecked"',
-      defaultValue: "MaterialCommunityIcons/checkbox-blank-outline",
+      defaultValue: null,
     }),
     indeterminateIcon: createIconProp({
       label: "Indeterminate Icon",
       description: 'Icon to show when the checkbox status is "indeterminate"',
-      defaultValue: "AntDesign/minussquareo",
+      defaultValue: null,
     }),
   },
 };
-
-export default Checkbox;

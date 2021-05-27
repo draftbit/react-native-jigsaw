@@ -1,35 +1,54 @@
 import * as React from "react";
-import { Switch as NativeSwitch, Platform, SwitchProps } from "react-native";
+import {
+  Switch as NativeSwitch,
+  SwitchProps,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import { withTheme } from "../theming";
+import FormRow from "./FormRow";
 import {
   COMPONENT_TYPES,
+  GROUPS,
   createBoolProp,
   createColorProp,
+  createFieldNameProp,
+  createTextProp,
+  createRowDirectionProp,
+  RowDirection,
 } from "@draftbit/types";
-import themeT from "../styles/DefaultTheme";
+import type { Theme } from "../styles/DefaultTheme";
 
 type Props = {
   value: boolean;
   disabled?: boolean;
   onValueChange?: (value: boolean) => void;
-  color?: string;
-  theme: typeof themeT;
+  theme: Theme;
+  activeTrackColor: string;
+  inactiveTrackColor: string;
+  activeThumbColor: string;
+  inactiveThumbColor: string;
 } & SwitchProps;
 
-const Switch: React.FC<Props> = ({
+function Switch({
   value = false,
   disabled,
   onValueChange,
-  color,
+  activeTrackColor,
+  inactiveTrackColor,
+  activeThumbColor,
+  inactiveThumbColor,
   theme,
   style,
-  ...props
-}) => {
-  let [checked, setChecked] = React.useState(value);
-  let thumbColor = "#FFF";
-  const checkedColor = color || theme.colors.primary;
-  const uncheckedColor = "#ddd";
+  ...rest
+}: Props) {
+  const activeTrackThemeColor = activeTrackColor || theme.colors.primary;
+  const inactiveTrackThemeColor = inactiveTrackColor || "#EEE";
 
+  const activeThumbThemeColor = activeThumbColor || "#FFF";
+  const inactiveThumbThemeColor = inactiveThumbColor || "#FFF";
+
+  const [checked, setChecked] = React.useState(value);
   React.useEffect(() => {
     if (value !== checked) {
       setChecked(value);
@@ -38,44 +57,141 @@ const Switch: React.FC<Props> = ({
 
   return (
     <NativeSwitch
-      {...props}
       value={checked}
       disabled={disabled}
-      trackColor={{ false: uncheckedColor, true: checkedColor }}
-      thumbColor={thumbColor}
-      onValueChange={(boolValue) => {
-        if (!disabled) {
-          setChecked(boolValue);
-          onValueChange && onValueChange(boolValue);
-        }
+      trackColor={{
+        false: inactiveTrackThemeColor,
+        true: activeTrackThemeColor,
       }}
-      style={[
-        {
-          opacity:
-            disabled && Platform.OS !== "ios" ? theme.disabledOpacity : 1,
-        },
-        style,
-      ]}
+      thumbColor={value ? activeThumbThemeColor : inactiveThumbThemeColor}
+      // @ts-ignore react-native-web only
+      activeThumbColor={activeThumbThemeColor}
+      ios_backgroundColor={inactiveTrackThemeColor}
+      style={style}
+      onValueChange={(bool) => {
+        setChecked(bool);
+        onValueChange && onValueChange(bool);
+      }}
+      {...rest}
     />
   );
+}
+
+type RowProps = {
+  label: string;
+  direction: RowDirection;
+  style?: StyleProp<ViewStyle>;
 };
+
+function Row({
+  label = "Label",
+  direction = RowDirection.Row,
+  style,
+  value,
+  disabled,
+  onValueChange,
+  activeTrackColor,
+  inactiveTrackColor,
+  activeThumbColor,
+  inactiveThumbColor,
+  theme,
+  ...rest
+}: Props & RowProps) {
+  return (
+    <FormRow label={label} direction={direction} style={style} {...rest}>
+      <Switch
+        theme={theme}
+        value={value}
+        disabled={disabled}
+        onValueChange={onValueChange}
+        activeTrackColor={activeTrackColor}
+        inactiveTrackColor={inactiveTrackColor}
+        activeThumbColor={activeThumbColor}
+        inactiveThumbColor={inactiveThumbColor}
+      />
+    </FormRow>
+  );
+}
+
+const SwitchRow = withTheme(Row);
+export { SwitchRow };
 
 export default withTheme(Switch);
 
-export const SEED_DATA = {
-  name: "Switch",
-  tag: "Switch",
-  category: COMPONENT_TYPES.basic,
-  layout: {},
-  props: {
-    disabled: createBoolProp({
-      label: "Disabled",
-      description: "Boolean to handle disabling the switch",
-    }),
-    value: createBoolProp({
-      label: "Value",
-      description: "Boolean value",
-    }),
-    color: createColorProp(),
+export const SEED_DATA = [
+  {
+    name: "Switch",
+    tag: "Switch",
+    category: COMPONENT_TYPES.basic,
+    layout: {},
+    props: {
+      disabled: createBoolProp({
+        label: "Disabled",
+        description: "Boolean to handle disabling the switch",
+        group: GROUPS.data,
+      }),
+      value: createBoolProp({
+        label: "Value",
+        description: "Boolean value",
+        group: GROUPS.data,
+      }),
+      fieldName: createFieldNameProp({
+        defaultValue: false,
+        valuePropName: "switchValue",
+      }),
+      activeTrackColor: createColorProp({
+        label: "Active Track Color",
+      }),
+      inactiveTrackColor: createColorProp({
+        label: "Inactive Track Color",
+      }),
+      activeThumbColor: createColorProp({
+        label: "Active Thumb Color",
+      }),
+      inactiveThumbColor: createColorProp({
+        label: "Inactive Thumb Color",
+      }),
+    },
   },
-};
+  {
+    name: "Switch Row",
+    tag: "SwitchRow",
+    category: COMPONENT_TYPES.basic,
+    layout: {},
+    props: {
+      label: createTextProp({
+        label: "Label",
+        description: "Label to show with the checkbox",
+        required: true,
+        defaultValue: "First Option",
+      }),
+      direction: createRowDirectionProp(),
+      disabled: createBoolProp({
+        label: "Disabled",
+        description: "Boolean to handle disabling the switch",
+        group: GROUPS.data,
+      }),
+      value: createBoolProp({
+        label: "Value",
+        description: "Boolean value",
+        group: GROUPS.data,
+      }),
+      fieldName: createFieldNameProp({
+        defaultValue: false,
+        valuePropName: "switchValue",
+      }),
+      activeTrackColor: createColorProp({
+        label: "Active Track Color",
+      }),
+      inactiveTrackColor: createColorProp({
+        label: "Inactive Track Color",
+      }),
+      activeThumbColor: createColorProp({
+        label: "Active Thumb Color",
+      }),
+      inactiveThumbColor: createColorProp({
+        label: "Inactive Thumb Color",
+      }),
+    },
+  },
+];

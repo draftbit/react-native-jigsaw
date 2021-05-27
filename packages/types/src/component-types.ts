@@ -252,7 +252,7 @@ export const createDirectionProp = (overrides = {}) =>
     description:
       "Whether the checkbox rows should be shown horizontally or vertically",
     formType: FORM_TYPES.flatArray,
-    defaultValue: "horizontal",
+    defaultValue: null,
     options: ["horizontal", "vertical"],
     ...overrides,
   });

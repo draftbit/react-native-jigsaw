@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/core",
-  "version": "40.34.5",
+  "version": "40.35.0",
   "description": "Core (non-native) Components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",

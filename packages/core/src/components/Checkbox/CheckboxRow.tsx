@@ -79,8 +79,8 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
     direction: parentDirection,
   } = useCheckboxGroupContext();
 
-  const isChecked =
-    status === CheckboxStatus.Checked || (selectedValues ?? []).includes(value);
+  const values = Array.isArray(selectedValues) ? selectedValues : [];
+  const isChecked = status === CheckboxStatus.Checked || values.includes(value);
 
   const handlePress = () => {
     if (!disabled) {
@@ -116,7 +116,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
         <Checkbox
           Icon={Icon}
           status={
-            status || selectedValues.includes(value)
+            status || values.includes(value)
               ? CheckboxStatus.Checked
               : CheckboxStatus.Unchecked
           }

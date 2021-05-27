@@ -102,9 +102,8 @@ export const SEED_DATA = [
     name: "Stepper",
     tag: "Stepper",
     description: "A component used to control the quantity of something",
-    category: COMPONENT_TYPES.deprecated,
-    preview_image_url: "{CLOUDINARY_URL}/Control_Stepper.png",
-    supports_list_render: false,
+    category: COMPONENT_TYPES.button,
+    layout: {},
     props: {
       fieldName: {
         ...FIELD_NAME,
@@ -137,6 +136,5 @@ export const SEED_DATA = [
         ...BORDER_RADIUS_MODE,
       },
     },
-    layout: {},
   },
 ];

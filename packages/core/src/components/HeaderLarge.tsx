@@ -46,7 +46,7 @@ export const SEED_DATA = [
     tag: "HeaderLarge",
     description:
       "A large header with an optional touchable right aligned text and icon.",
-    category: COMPONENT_TYPES.deprecated,
+    category: COMPONENT_TYPES.header,
     preview_image_url: "{CLOUDINARY_URL}/Header_HeadlineLargeIconText.png",
     supports_list_render: false,
     props: {

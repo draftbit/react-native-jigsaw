@@ -113,7 +113,7 @@ export const SEED_DATA = [
     tag: "CardContainerShortImage",
     description:
       "An elevated card with a left aligned image and a title and subtitle",
-    category: COMPONENT_TYPES.deprecated,
+    category: COMPONENT_TYPES.card,
     preview_image_url: "{CLOUDINARY_URL}/Card_ContainerShortLeftImage.png",
     supports_list_render: true,
     props: {
@@ -177,7 +177,7 @@ export const SEED_DATA = [
     tag: "CardContainerShortImage",
     description:
       "An elevated card with a right aligned image and a title and subtitle",
-    category: COMPONENT_TYPES.deprecated,
+    category: COMPONENT_TYPES.card,
     preview_image_url: "{CLOUDINARY_URL}/Card_ContainerShortRightImage.png",
     supports_list_render: true,
     props: {

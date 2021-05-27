@@ -71,7 +71,7 @@ function Carousel({
   const slideHeight = height || 250;
 
   return (
-    <View style={[styles.container, style]}>
+    <View style={[styles.container, style]} {...rest}>
       <ScrollView
         pagingEnabled
         horizontal
@@ -84,7 +84,6 @@ function Carousel({
           const currentIndex = Math.ceil(offset / layoutWidth);
           setIndex(currentIndex);
         }}
-        {...rest}
       >
         {slides.length > 0
           ? slides.map((item, i) => {

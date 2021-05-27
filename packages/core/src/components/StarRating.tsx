@@ -21,11 +21,12 @@ const StarRating: React.FC<Props> = ({
   rating = 0,
   theme,
   style,
+  ...rest
 }) => {
   const ratingRounded = Math.round(rating * 2) / 2;
 
   return (
-    <View style={[styles.containerStyle, style]}>
+    <View style={[styles.container, style]} {...rest}>
       {[...Array(maxStars)].map((_, i) => (
         <Icon
           key={i}
@@ -45,7 +46,7 @@ const StarRating: React.FC<Props> = ({
 };
 
 const styles = StyleSheet.create({
-  containerStyle: {
+  container: {
     flexDirection: "row",
     alignItems: "center",
   },

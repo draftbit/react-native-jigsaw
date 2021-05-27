@@ -62,6 +62,7 @@ export const COMPONENT_TYPES = {
   card: "card",
   button: "button",
   row: "row",
+  header: "header",
   container: "container",
   deprecated: "deprecated",
 };

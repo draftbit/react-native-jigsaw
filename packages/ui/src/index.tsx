@@ -69,6 +69,8 @@ import {
   RowBodyIcon as BaseRowBodyIcon,
   RowHeadlineImageIcon as BaseRowHeadlineImageIcon,
   Slider as BaseSlider,
+  AccordionGroup as BaseAccordionGroup,
+  AccordionItem as BaseAccordionItem,
 } from "@draftbit/core";
 
 export const AvatarEdit = injectIcon(BaseAvatarEdit, Icon);
@@ -97,5 +99,6 @@ export const StarRating = injectIcon(BaseStarRating, Icon);
 export const Stepper = injectIcon(BaseStepper, Icon);
 export const TextField = injectIcon(BaseTextField, Icon);
 export const ToggleButton = injectIcon(BaseToggleButton, Icon);
-
 export const Slider = injectIcon(BaseSlider, Icon);
+export const AccordionGroup = injectIcon(BaseAccordionGroup, Icon);
+export const AccordionItem = injectIcon(BaseAccordionItem, Icon);

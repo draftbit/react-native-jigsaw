@@ -1,22 +1,36 @@
 import * as React from "react";
-import { Text, StyleProp, ViewStyle, StyleSheet, View } from "react-native";
+import { Text, StyleProp, ViewStyle, StyleSheet } from "react-native";
 import { RowDirection } from "@draftbit/types";
 import { extractStyles } from "../utilities";
+import Touchable from "./Touchable";
 
 type Props = {
+  disabled?: boolean;
   label: string;
   direction: RowDirection;
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
+  onPress: () => void;
 };
 
-export default function FormRow({ direction, children, label, style }: Props) {
+export default function FormRow({
+  disabled,
+  direction,
+  children,
+  label,
+  style,
+  onPress,
+}: Props) {
   const { textStyles, viewStyles } = extractStyles(style);
   return (
-    <View style={[styles.row, { flexDirection: direction }, viewStyles]}>
+    <Touchable
+      disabled={disabled}
+      onPress={onPress}
+      style={[styles.row, { flexDirection: direction }, viewStyles]}
+    >
       <Text style={textStyles}>{label}</Text>
       {children}
-    </View>
+    </Touchable>
   );
 }
 

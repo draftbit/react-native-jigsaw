@@ -87,7 +87,7 @@ function Row({
   label = "Label",
   direction = RowDirection.Row,
   style,
-  value,
+  value = false,
   disabled,
   onValueChange,
   activeTrackColor,
@@ -97,11 +97,29 @@ function Row({
   theme,
   ...rest
 }: Props & RowProps) {
+  const [checked, setChecked] = React.useState(value);
+
+  React.useEffect(() => {
+    if (value !== checked) {
+      setChecked(value);
+    }
+  }, [value, checked]);
+
   return (
-    <FormRow label={label} direction={direction} style={style} {...rest}>
+    <FormRow
+      disabled={disabled}
+      onPress={() => {
+        setChecked(!checked);
+        onValueChange && onValueChange(!checked);
+      }}
+      label={label}
+      direction={direction}
+      style={style}
+      {...rest}
+    >
       <Switch
         theme={theme}
-        value={value}
+        value={checked}
         disabled={disabled}
         onValueChange={onValueChange}
         activeTrackColor={activeTrackColor}

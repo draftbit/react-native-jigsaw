@@ -59,7 +59,7 @@ export default RadioButton;
 export const SEED_DATA = {
   name: "Radio Button",
   tag: "RadioButton",
-  category: COMPONENT_TYPES.button,
+  category: COMPONENT_TYPES.deprecated,
   layout: {
     width: 24,
     height: 24,

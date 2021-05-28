@@ -58,7 +58,7 @@ export default CheckboxGroup;
 export const SEED_DATA = {
   name: "Checkbox Group",
   tag: "CheckboxGroup",
-  category: COMPONENT_TYPES.button,
+  category: COMPONENT_TYPES.input,
   layout: {},
   props: {
     direction: createDirectionProp(),

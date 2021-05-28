@@ -164,7 +164,7 @@ export default Checkbox;
 export const SEED_DATA = {
   name: "Checkbox",
   tag: "Checkbox",
-  category: COMPONENT_TYPES.button,
+  category: COMPONENT_TYPES.input,
   layout: {
     width: 24,
     height: 24,

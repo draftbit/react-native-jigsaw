@@ -204,7 +204,6 @@ export const createNumberProp = (overrides = {}) => ({
   defaultValue: null,
   editable: true,
   required: true,
-  min: 0,
   step: 1,
   ...overrides,
 });

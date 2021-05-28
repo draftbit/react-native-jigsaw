@@ -1,6 +1,8 @@
 import * as React from "react";
 import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
 import NativeSlider from "@react-native-community/slider";
+import isNumber from "lodash.isnumber";
+import toNumber from "lodash.tonumber";
 
 import {
   COMPONENT_TYPES,
@@ -32,10 +34,31 @@ export type Props = {
   theme: Theme;
 } & IconSlot;
 
+function maybeParseValue(value: any) {
+  if (value === undefined) {
+    return null;
+  }
+
+  if (isNumber(value)) {
+    return value;
+  }
+
+  try {
+    const maybe = toNumber(value);
+    if (isNumber(maybe)) {
+      return maybe;
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
 function Slider({
   Icon,
-  leftIcon,
-  rightIcon,
+  leftIcon = "Ionicons/sunny",
+  rightIcon = "Ionicons/sunny-outline",
   leftIconColor,
   rightIconColor,
   value,
@@ -58,13 +81,15 @@ function Slider({
   const leftIconThemeColor = leftIconColor || theme.colors.light;
   const rightIconThemeColor = rightIconColor || theme.colors.light;
 
+  const parsedValue = maybeParseValue(value);
+
   return (
     <View style={[styles.container, style]} {...rest}>
       {leftIcon ? (
         <Icon color={leftIconThemeColor} name={leftIcon} size={24} />
       ) : null}
       <NativeSlider
-        value={value}
+        value={parsedValue}
         step={step}
         minimumValue={minimumValue}
         maximumValue={maximumValue}
@@ -108,6 +133,7 @@ export const SEED_DATA = {
     fieldName: createFieldNameProp({
       defaultValue: 0,
       handlerPropName: "onValueChange",
+      valuePropName: "sliderValue",
     }),
     value: createNumberProp({
       label: "Value",
@@ -134,11 +160,11 @@ export const SEED_DATA = {
     }),
     leftIcon: createIconProp({
       label: "Left Icon",
-      defaultValue: "Ionicons/sunny-outline",
+      defaultValue: null,
     }),
     rightIcon: createIconProp({
       label: "Right Icon",
-      defaultValue: "Ionicons/sunny",
+      defaultValue: null,
     }),
     minimumTrackTintColor: createColorProp({
       label: "Min Track Color",

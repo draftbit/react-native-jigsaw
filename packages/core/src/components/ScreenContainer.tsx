@@ -4,6 +4,7 @@ import {
   ScrollView as NativeScrollView,
   StyleProp,
   ViewStyle,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import type { Edge } from "react-native-safe-area-context";
@@ -70,15 +71,16 @@ function ScreenContainer({
         {
           backgroundColor,
         },
-        style,
       ]}
       {...rest}
     >
-      {scrollable ? (
-        <ScrollView style={style}>{children}</ScrollView>
-      ) : (
-        children
-      )}
+      <View style={[styles.container, { backgroundColor }, style]}>
+        {scrollable ? (
+          <ScrollView style={style}>{children}</ScrollView>
+        ) : (
+          children
+        )}
+      </View>
     </SafeAreaView>
   );
 }

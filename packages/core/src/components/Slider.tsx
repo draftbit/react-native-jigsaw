@@ -36,7 +36,7 @@ export type Props = {
 
 function maybeParseValue(value: any) {
   if (value === undefined) {
-    return null;
+    return undefined;
   }
 
   if (isNumber(value)) {
@@ -49,10 +49,10 @@ function maybeParseValue(value: any) {
       return maybe;
     }
   } catch {
-    return null;
+    return undefined;
   }
 
-  return null;
+  return undefined;
 }
 
 function Slider({

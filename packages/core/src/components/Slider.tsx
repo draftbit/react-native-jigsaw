@@ -57,8 +57,8 @@ function maybeParseValue(value: any) {
 
 function Slider({
   Icon,
-  leftIcon = "Ionicons/sunny",
-  rightIcon = "Ionicons/sunny-outline",
+  leftIcon = "Ionicons/sunny-outline",
+  rightIcon = "Ionicons/sunny",
   leftIconColor,
   rightIconColor,
   value,

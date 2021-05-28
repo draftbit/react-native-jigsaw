@@ -16,16 +16,16 @@ function SliderExample({ theme }) {
       <Section title="Controlled">
         <Slider
           step={10}
-          maximumTrackTintColor="primary"
-          minimumTrackTintColor="light"
-          thumbTintColor="primary"
+          maximumTrackTintColor={theme.colors.light}
+          minimumTrackTintColor={theme.colors.primary}
+          thumbTintColor={theme.colors.primary}
           value={value}
           minimumValue={0}
           maximumValue={100}
           onValueChange={handleChange}
           style={{ width: 200 }}
         />
-        <Text>{value}</Text>
+        <Text style={{ fontSize: 24, marginTop: 24 }}>Value: {value}</Text>
       </Section>
     </Container>
   );

@@ -66,6 +66,8 @@ export const SEED_DATA = {
     }),
     fieldName: createFieldNameProp({
       handlerPropName: "onValueChange",
+      valuePropName: "radioButtonGroupValue",
+      defaultValue: "radioButtonGroupValue",
     }),
   },
 };

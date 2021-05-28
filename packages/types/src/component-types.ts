@@ -297,7 +297,7 @@ export const FIELD_NAME = {
     "The name of the field within the screen that will store this component's value",
   formType: FORM_TYPES.fieldName,
   propType: PROP_TYPES.STRING,
-  defaultValue: null,
+  defaultValue: "value",
   valuePropName: "value",
   handlerPropName: "onChange",
   editable: true,
@@ -310,8 +310,17 @@ export const createFieldNameProp = (overrides = {}) => ({
   ...overrides,
 });
 
-export const createActionProp = (overrides = {}) =>
-  createFieldNameProp(overrides);
+export const createActionProp = (overrides = {}) => ({
+  label: "Action",
+  description: "Action to execute when button pressed",
+  editable: true,
+  required: false,
+  formType: FORM_TYPES.action,
+  propType: PROP_TYPES.STRING,
+  defaultValue: null,
+  group: GROUPS.basic,
+  ...overrides,
+});
 
 export const createStateValue = (overrides = {}) => ({
   ...FIELD_NAME,

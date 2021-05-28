@@ -156,6 +156,7 @@ export const SEED_DATA = [
       fieldName: createFieldNameProp({
         defaultValue: false,
         valuePropName: "switchValue",
+        handlerPropName: "onValueChange",
       }),
       activeTrackColor: createColorProp({
         label: "Active Track Color",
@@ -197,6 +198,7 @@ export const SEED_DATA = [
       fieldName: createFieldNameProp({
         defaultValue: false,
         valuePropName: "switchValue",
+        handlerPropName: "onValueChange",
       }),
       activeTrackColor: createColorProp({
         label: "Active Track Color",

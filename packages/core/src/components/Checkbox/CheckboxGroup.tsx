@@ -1,6 +1,7 @@
 import * as React from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
 import {
+  GROUPS,
   COMPONENT_TYPES,
   FORM_TYPES,
   createTextProp,
@@ -62,6 +63,7 @@ export const SEED_DATA = {
   props: {
     direction: createDirectionProp(),
     values: createTextProp({
+      GROUP: GROUPS.data,
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.ARRAY,
       label: "Values",
@@ -71,6 +73,8 @@ export const SEED_DATA = {
     }),
     fieldName: createFieldNameProp({
       handlerPropName: "onValueChange",
+      valuePropName: "checkboxGroupValue",
+      defaultValue: "checkboxGroupValue",
     }),
   },
 };

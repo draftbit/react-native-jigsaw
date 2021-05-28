@@ -96,7 +96,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   return (
     <Touchable
       onPress={handlePress}
-      style={[styles.mainParent, { flexDirection: direction }, viewStyles]}
+      style={[styles.container, { flexDirection: direction }, viewStyles]}
       disabled={disabled}
       {...rest}
     >
@@ -134,13 +134,12 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
 };
 
 const styles = StyleSheet.create({
-  mainParent: {
+  container: {
     alignItems: "center",
     justifyContent: "space-around",
     paddingStart: 20,
     minHeight: 50,
     paddingEnd: 20,
-    flex: 1,
     ...Platform.select({
       web: {
         cursor: "pointer",

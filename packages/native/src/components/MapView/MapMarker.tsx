@@ -6,8 +6,9 @@ import {
   createNumberProp,
   createTextProp,
 } from "@draftbit/types";
-import { StyleProp, ViewStyle } from "react-native";
-import { Marker } from "react-native-maps";
+import { Platform, StyleProp, ViewStyle } from "react-native";
+import { LatLng, Marker } from "react-native-maps";
+import { Marker as WebMarker } from "@react-google-maps/api";
 
 export interface MapMarkerProps {
   latitude: number;
@@ -44,13 +45,64 @@ const MapMarker: React.FC<MapMarkerProps> = ({
   </Marker>
 );
 
-export default MapMarker;
+interface IMarkerContext {
+  calloutOpened: boolean;
+  position: LatLng | undefined;
+  toggleCallout: (value: boolean) => void;
+}
+
+export const markerContext = React.createContext<IMarkerContext>({
+  calloutOpened: false,
+  position: undefined,
+  toggleCallout: () => {},
+});
+
+const BrowserMarker: React.FC<MapMarkerProps> = ({
+  latitude,
+  longitude,
+  title,
+  description,
+  children,
+}) => {
+  const { Provider } = markerContext;
+  const [calloutOpened, toggleCallout] = React.useState(false);
+  const handleMarkerClick = () => toggleCallout(true);
+  return (
+    <Provider
+      value={{
+        calloutOpened,
+        toggleCallout: (value) => toggleCallout(value),
+        position: {
+          latitude,
+          longitude,
+        },
+      }}
+    >
+      <WebMarker
+        position={{
+          lat: latitude,
+          lng: longitude,
+        }}
+        title={description}
+        label={title}
+        onClick={handleMarkerClick}
+      >
+        {children}
+      </WebMarker>
+    </Provider>
+  );
+};
+
+export default Platform.select({
+  native: MapMarker,
+  default: BrowserMarker,
+});
 
 export const SEED_DATA = {
   name: "Map View",
   tag: "MapView",
   description: "A map view",
-  category: COMPONENT_TYPES.blocks,
+  category: COMPONENT_TYPES.button,
   layout: {},
   props: {
     latitude: createNumberProp({

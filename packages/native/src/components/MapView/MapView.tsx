@@ -6,9 +6,16 @@ import {
   createNumberProp,
   createTextProp,
 } from "@draftbit/types";
-import { StyleProp, Text, View, ViewStyle } from "react-native";
+import {
+  Platform,
+  StyleProp,
+  StyleSheet,
+  Text,
+  View,
+  ViewStyle,
+} from "react-native";
 import NativeMapView, { PROVIDER_GOOGLE, MapTypes } from "react-native-maps";
-
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
 export interface MapViewProps {
   apiKey: string;
   provider?: "google" | null;
@@ -26,6 +33,12 @@ export interface MapViewProps {
   loadingIndicatorColor?: string;
   style?: StyleProp<ViewStyle>;
 }
+
+const NoApiKey = () => (
+  <View>
+    <Text>You need to pass an API key in order for MapView to work.</Text>
+  </View>
+);
 
 const MapView: React.FC<MapViewProps> = ({
   provider = PROVIDER_GOOGLE,
@@ -46,11 +59,7 @@ const MapView: React.FC<MapViewProps> = ({
   children,
 }) => {
   if (!apiKey) {
-    return (
-      <View>
-        <Text>You need to pass an API key in order for MapView to work.</Text>
-      </View>
-    );
+    return <NoApiKey />;
   }
 
   return (
@@ -77,7 +86,45 @@ const MapView: React.FC<MapViewProps> = ({
   );
 };
 
-export default MapView;
+const BrowserMapView: React.FC<MapViewProps> = ({
+  apiKey,
+  latitude,
+  longitude,
+  rotateEnabled = true,
+  scrollEnabled = true,
+  mapType = "standard",
+  style,
+  children,
+}) => {
+  if (!apiKey) {
+    return <NoApiKey />;
+  }
+
+  return (
+    <LoadScript googleMapsApiKey={apiKey}>
+      <GoogleMap
+        mapContainerStyle={StyleSheet.flatten(style) as React.CSSProperties}
+        center={{
+          lat: latitude,
+          lng: longitude,
+        }}
+        mapTypeId={mapType}
+        zoom={8}
+        options={{
+          scrollWheel: scrollEnabled,
+          rotateControl: rotateEnabled,
+        }}
+      >
+        {children}
+      </GoogleMap>
+    </LoadScript>
+  );
+};
+
+export default Platform.select({
+  native: MapView,
+  default: BrowserMapView,
+});
 
 export const SEED_DATA = {
   name: "Map View",

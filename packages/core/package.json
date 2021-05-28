@@ -48,6 +48,8 @@
     "color": "^3.1.2",
     "date-fns": "^2.16.1",
     "dateformat": "^3.0.3",
+    "lodash.isnumber": "^3.0.3",
+    "lodash.tonumber": "^4.0.3",
     "react-native-typography": "^1.4.1"
   },
   "devDependencies": {

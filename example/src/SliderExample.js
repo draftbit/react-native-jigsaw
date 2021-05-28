@@ -23,6 +23,7 @@ function SliderExample({ theme }) {
           minimumValue={0}
           maximumValue={100}
           onValueChange={handleChange}
+          style={{ width: 200 }}
         />
         <Text>{value}</Text>
       </Section>

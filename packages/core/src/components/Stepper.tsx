@@ -102,7 +102,7 @@ export const SEED_DATA = [
     name: "Stepper",
     tag: "Stepper",
     description: "A component used to control the quantity of something",
-    category: COMPONENT_TYPES.input,
+    category: COMPONENT_TYPES.deprecated,
     layout: {},
     props: {
       fieldName: {

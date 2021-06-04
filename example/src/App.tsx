@@ -53,6 +53,7 @@ import StepperExample from "./StepperExample";
 import TextFieldExample from "./TextFieldExample";
 import CheckboxExample from "./CheckboxExample";
 import WebViewExample from "./WebViewExample";
+import AccordionExample from "./AccordionExample";
 
 const ROUTES = {
   Layout: LayoutExample,
@@ -63,6 +64,7 @@ const ROUTES = {
   Checkbox: CheckboxExample,
   Card: CardExample,
   ToggleButton: ToggleButtonExample,
+  Accordion: AccordionExample,
   CardBlock: CardBlockExample,
   CardInline: CardInlineExample,
   CardContainer: CardContainerExample,

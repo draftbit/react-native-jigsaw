@@ -153,8 +153,8 @@ async function uploadToSnack() {
   snack.updateFiles(assets);
   await snack.getStateAsync();
 
-  const { id, url } = await snack.saveAsync();
-  return { id, url };
+  const { id } = await snack.saveAsync();
+  return `https://snack.expo.io/${id}`;
 }
 
 uploadToSnack().then(console.log);

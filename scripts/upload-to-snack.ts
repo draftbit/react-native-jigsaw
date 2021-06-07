@@ -149,7 +149,7 @@ async function uploadToSnack() {
     },
   });
 
-  console.log("uploading assets...", assets);
+  console.log("uploading assets...");
   snack.updateFiles(assets);
   await snack.getStateAsync();
 

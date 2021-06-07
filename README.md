@@ -21,6 +21,12 @@ up by the Metro bundler and reflected in the example application.
 Please read the [contributing guide](CONTRIBUTING.md) before making
 a pull-request and to understand the full development flow
 
+## Uploading Example to Snack:
+
+```
+yarn example:snack
+```
+
 ## Overview
 
 This is a lerna/monorepo setup that is split up into types, native, core and ui packages.

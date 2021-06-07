@@ -159,7 +159,7 @@ async function uploadToSnack() {
 function getSnackSpecificDependencies() {
   return {
     "expo-constants": "~9.3.3",
-    "@draftbit/ui": "~40.36.2",
+    "@draftbit/ui": `~${UI_VERSION}`,
     "@react-navigation/native": "*",
     "react-native-reanimated": "~1.13.0",
     "react-native-screens": "~2.15.2",

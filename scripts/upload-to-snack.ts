@@ -122,7 +122,6 @@ async function getAllFiles() {
 }
 
 async function uploadToSnack() {
-  console.log("fetching local files & assets");
   const files = await getAllFiles();
   const assets = await getAssets();
   const modules = getSnackSpecificDependencies();
@@ -138,7 +137,6 @@ async function uploadToSnack() {
     {}
   );
 
-  console.log("creating snack object");
   const snack = new Snack({
     name: `draftbit/ui-${UI_VERSION}`,
     sdkVersion: "40.0.0",
@@ -149,7 +147,6 @@ async function uploadToSnack() {
     },
   });
 
-  console.log("uploading assets...");
   snack.updateFiles(assets);
   await snack.getStateAsync();
 
@@ -157,8 +154,8 @@ async function uploadToSnack() {
   return `https://snack.expo.io/${id}`;
 }
 
-uploadToSnack().then(console.log);
-
+// NOTE: Dependencies come from saving a Snack inside Draftbit and copying and pasting the package.json. If you get an error,
+// just replace the version with an asterik
 function getSnackSpecificDependencies() {
   return {
     "expo-constants": "~9.3.3",
@@ -195,3 +192,5 @@ function getSnackSpecificDependencies() {
     "@react-native-async-storage/async-storage": "*",
   };
 }
+
+uploadToSnack().then(console.log);

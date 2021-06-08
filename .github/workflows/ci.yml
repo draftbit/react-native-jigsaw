@@ -72,6 +72,13 @@ jobs:
             --yes \
             --no-verify-access
 
+      - name: Release to Snack
+        run: |
+          export version=$(jq -r .version package.json);
+          sleep 10
+          curl "https://snackager.expo.io/bundle/@draftbit/ui@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
+        working-directory: packages/ui
+
       - name: Add comment to pull request
         if: github.event_name == 'pull_request'
         env:
@@ -83,10 +90,3 @@ jobs:
             -H "Content-Type: application/json" \
             -H "Authorization: token $GITHUB_TOKEN" \
             --data "{ \"body\": \"Published version: [@draftbit/ui@$VERSION](https://www.npmjs.com/package/@draftbit/ui/v/$VERSION)\" }"
-
-      - name: Release to Snack
-        run: |
-          export version=$(jq -r .version package.json);
-          sleep 10
-          curl "https://snackager.expo.io/bundle/@draftbit/ui@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
-        working-directory: packages/ui

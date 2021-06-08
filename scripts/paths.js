@@ -15,6 +15,8 @@ const COMPONENT_TYPES_PATH = path.join(
   "component-types.ts"
 );
 
+const EXAMPLE_ROOT = path.join(__dirname, "..", "example");
+
 module.exports = {
   NATIVE_ROOT,
   NATIVE_COMPONENTS,
@@ -23,4 +25,5 @@ module.exports = {
   MAPPING_PATH,
   SCREEN_PATH,
   COMPONENT_TYPES_PATH,
+  EXAMPLE_ROOT,
 };

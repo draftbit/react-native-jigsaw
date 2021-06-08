@@ -8,6 +8,7 @@ const PATHS = require("./paths");
 const UI_VERSION = uiPackageJson.version;
 const APP_JS_PATH = path.join(PATHS.EXAMPLE_ROOT, "App.js");
 const APP_SRC_PATH = path.join(PATHS.EXAMPLE_ROOT, "src");
+// NOTE: If you feel like getting image/font uploads working via nodejs, uncomment this
 // const APP_FONTS = path.join(PATHS.EXAMPLE_ROOT, "src", "assets", "fonts");
 // const APP_IMAGES = path.join(PATHS.EXAMPLE_ROOT, "src", "assets", "images");
 

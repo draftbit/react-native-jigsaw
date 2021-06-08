@@ -4,7 +4,11 @@ import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
 
-import { GROUPS, COMPONENT_TYPES, createNumberProp } from "@draftbit/types";
+import {
+  COMPONENT_TYPES,
+  createStaticNumberProp,
+  createNumberProp,
+} from "@draftbit/types";
 
 type Props = {
   starSize?: number;
@@ -60,8 +64,7 @@ export const SEED_DATA = {
   description: "A star rating component",
   category: COMPONENT_TYPES.basic,
   props: {
-    starSize: createNumberProp({
-      group: GROUPS.basic,
+    starSize: createStaticNumberProp({
       label: "Star size",
       description: "Size of each individual star",
       defaultValue: 16,
@@ -69,9 +72,8 @@ export const SEED_DATA = {
       max: 36,
       step: 1,
     }),
-    maxStars: createNumberProp({
-      group: GROUPS.basic,
-      label: "Max Stars",
+    maxStars: createStaticNumberProp({
+      label: "Max stars",
       description: "The max number of stars",
       defaultValue: 5,
       min: 0,

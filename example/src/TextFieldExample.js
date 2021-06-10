@@ -111,7 +111,7 @@ export default function TextFieldExample() {
           />
 
           <TextField
-            label="Underline input with right icon"
+            // label="Underline input with right icon"
             rightIconName="add"
             placeholder="Type something"
             value={value}
@@ -122,6 +122,7 @@ export default function TextFieldExample() {
             label="Underline textarea"
             onChangeText={(textareaText) => this.setState({ textareaText })}
             multiline
+            disabled
             value={value}
           />
 

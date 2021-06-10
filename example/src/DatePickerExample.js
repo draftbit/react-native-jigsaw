@@ -10,22 +10,25 @@ function DatePickerExample({ theme }) {
     <Container style={{ backgroundColor: theme.colors.background }}>
       <Section title="Underline">
         <DatePicker
-          label="Date"
+          label="Date (without date prop)"
           placeholder="Select a date..."
-          date={date}
+          leftIconMode={"inset"}
+          leftIconName={"add"}
           onDateChange={handleChange}
         />
 
         <DatePicker
-          label="Date"
+          leftIconName={"add"}
+          leftIconMode={"outset"}
+          label={"Date (with wrong type date prop)"}
+          rightIconName={"add"}
+          date={"abc"}
           placeholder="Select a date..."
-          error
-          date={date}
           onDateChange={handleChange}
         />
 
         <DatePicker
-          label="Date"
+          label="Date (disabled)"
           placeholder="Select a date..."
           disabled
           date={date}
@@ -35,25 +38,30 @@ function DatePickerExample({ theme }) {
 
       <Section title="Solid">
         <DatePicker
-          label="Date"
+          label="Date (with leftIconMode = 'outset')"
           placeholder="Select a date..."
           type="solid"
+          leftIconName={"add"}
+          leftIconMode={"outset"}
           date={date}
           onDateChange={handleChange}
         />
 
         <DatePicker
-          label="Formatted Time"
+          label="Formatted Time (with leftIconMode = 'inset')"
           mode="time"
           placeholder="Select a time..."
           format="h:MM TT"
           type="solid"
+          rightIconName={"add"}
+          leftIconMode={"inset"}
+          leftIconName={"add"}
           date={date}
           onDateChange={handleChange}
         />
 
         <DatePicker
-          label="Date Time"
+          label="Date Time ('with no icons')"
           mode="datetime"
           placeholder="Select a datetime..."
           type="solid"
@@ -62,7 +70,7 @@ function DatePickerExample({ theme }) {
         />
 
         <DatePicker
-          label="Date"
+          label="Date (disabled)"
           placeholder="Select a date..."
           type="solid"
           disabled
@@ -74,7 +82,6 @@ function DatePickerExample({ theme }) {
           label="Date"
           placeholder="Select a date..."
           type="solid"
-          error
           date={date}
           onDateChange={handleChange}
         />

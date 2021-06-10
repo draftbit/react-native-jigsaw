@@ -208,6 +208,12 @@ export const createNumberProp = (overrides = {}) => ({
   ...overrides,
 });
 
+export const createStaticNumberProp = (overrides = {}) =>
+  createNumberProp({
+    group: GROUPS.basic,
+    ...overrides,
+  });
+
 export const createNumColumnsType = (overrides = {}) => ({
   label: "Number of Columns",
   description: "Number of Columns",

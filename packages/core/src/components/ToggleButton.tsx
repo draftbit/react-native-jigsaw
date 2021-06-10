@@ -8,7 +8,7 @@ import {
   createIconProp,
   createBoolProp,
   createColorProp,
-  createNumberProp,
+  createStaticNumberProp,
   createActionProp,
   createFieldNameProp,
   createIconSizeProp,
@@ -104,12 +104,12 @@ export const SEED_DATA = {
     borderColor: createColorProp({
       label: "Border Color",
     }),
-    width: createNumberProp({
+    width: createStaticNumberProp({
       label: "Width",
       description: "Width",
       defaultValue: 50,
     }),
-    height: createNumberProp({
+    height: createStaticNumberProp({
       label: "Height",
       description: "Height",
       defaultValue: 50,

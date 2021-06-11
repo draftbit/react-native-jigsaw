@@ -23,7 +23,7 @@ import {
   createIconProp,
   createAspectRatioProp,
   createActionProp,
-  createBoolProp,
+  createStaticBoolProp,
   createTextStyle,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
@@ -215,7 +215,7 @@ export const SEED_DATA = {
     aspectRatio: createAspectRatioProp({
       defaultValue: 1.5,
     }),
-    textCentered: createBoolProp({
+    textCentered: createStaticBoolProp({
       label: "Centered Text",
       description: "Places your title and subtitle in the center",
     }),

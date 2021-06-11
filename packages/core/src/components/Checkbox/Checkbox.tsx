@@ -12,7 +12,7 @@ import {
   createActionProp,
   createBoolProp,
   createIconProp,
-  createNumberProp,
+  createStaticNumberProp,
   createTextEnumProp,
   createColorProp,
   GROUPS,
@@ -196,7 +196,7 @@ export const SEED_DATA = {
       description: "Whether the checkbox is disabled",
     }),
     onPress: createActionProp(),
-    size: createNumberProp({
+    size: createStaticNumberProp({
       label: "Size",
       description: "Specifies the size of the icon",
       defaultValue: null,

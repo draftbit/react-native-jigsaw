@@ -16,7 +16,7 @@ import {
   createNumberProp,
   createIconProp,
   createTextProp,
-  createBoolProp,
+  createStaticBoolProp,
   createColorProp,
 } from "@draftbit/types";
 
@@ -171,10 +171,9 @@ export const SEED_DATA = {
     label: createTextProp({
       label: "Accordion label",
     }),
-    expanded: createBoolProp({
+    expanded: createStaticBoolProp({
       label: "Whether the AccordionGroup should be expanded or not",
     }),
-
     icon: createIconProp(),
   },
 };

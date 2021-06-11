@@ -1,6 +1,6 @@
 import {
   COMPONENT_TYPES,
-  createBoolProp,
+  createStaticBoolProp,
   createSourceProp,
   createResizeModeProp,
   createNumberProp,
@@ -22,7 +22,7 @@ export const SEED_DATA = {
       label: "Video url",
       defaultValue: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
     }),
-    usePoster: createBoolProp({
+    usePoster: createStaticBoolProp({
       label: "Use Thumbnail",
       description: "Thumbnail for the video",
     }),
@@ -31,19 +31,19 @@ export const SEED_DATA = {
       description: "Source",
     }),
     resizeMode: createResizeModeProp(),
-    isMuted: createBoolProp({
+    isMuted: createStaticBoolProp({
       label: "Mute Audio",
       description: "To mute the audio of the video.",
     }),
-    useNativeControls: createBoolProp({
+    useNativeControls: createStaticBoolProp({
       label: "Use Native Controls",
       description: "Allow users to have the option to pause or play the video",
     }),
-    shouldPlay: createBoolProp({
+    shouldPlay: createStaticBoolProp({
       label: "Play on Load",
       description: "Allows the video play on loading",
     }),
-    isLooping: createBoolProp({
+    isLooping: createStaticBoolProp({
       label: "Allow Looping",
       description: "Allows the video to loop",
     }),

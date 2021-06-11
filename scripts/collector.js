@@ -21,33 +21,47 @@ const IGNORED_FILES = [
 const ERROR_FILES = [];
 const COMPLETED_FILES = [];
 
-async function main() {
+async function main(list) {
   console.log("Running on", getUrl());
+
+  if (list) {
+    console.log("ONLY running", JSON.stringify(list));
+  }
 
   const nativeFiles = await globAsync(`${NATIVE_PATH}/**/*.tsx`);
   const componentFiles = await globAsync(`${COMPONENT_PATH}/**/*.tsx`);
   const screenFiles = await globAsync(`${SCREEN_PATH}/**/*.tsx`);
   const mappingFiles = await globAsync(`${MAPPING_PATH}/**/*.js`);
 
-  const files = [
-    ...nativeFiles,
-    ...componentFiles,
-    ...screenFiles,
-    ...mappingFiles,
-  ].filter((file) => {
-    const name = file.split("/").pop();
-
-    if (
-      name.includes("web") ||
-      name.includes("ios") ||
-      name.includes("android")
-    ) {
-      console.log(`Ignoring... ${name}`);
-      return false;
+  const components = list.map((file) => {
+    if (!file.includes("ts")) {
+      throw Error("Must include extension: tsx or js");
     }
 
-    return !IGNORED_FILES.includes(name);
+    return `${COMPONENT_PATH}/${file}`;
   });
+
+  const files = Array.isArray(components)
+    ? components
+    : [
+        ...nativeFiles,
+        ...componentFiles,
+        ...screenFiles,
+        ...mappingFiles,
+      ].filter((file) => {
+        const name = file.split("/").pop();
+
+        if (
+          name.includes("web") ||
+          name.includes("ios") ||
+          name.includes("android")
+        ) {
+          console.log(`Ignoring... ${name}`);
+          return false;
+        }
+
+        return !IGNORED_FILES.includes(name);
+      });
 
   for (const file of files) {
     const [name, category] = file.split("/").reverse();
@@ -91,4 +105,4 @@ async function uploadComponent(component) {
   });
 }
 
-main();
+main(process.argv.slice(2));

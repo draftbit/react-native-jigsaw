@@ -43,8 +43,8 @@ type Props = {
 };
 
 function ScreenContainer({
-  hasSafeArea = true,
-  scrollable = true,
+  hasSafeArea = false,
+  scrollable = false,
   hasBottomSafeArea,
   hasTopSafeArea,
   theme,

@@ -15,7 +15,18 @@ export const SEED_DATA = {
   preview_image_url:
     "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/TextInput.png",
   supports_list_render: false,
-  layout: {},
+  layout: {
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: "divider",
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingTop: 8,
+    paddingBottom: 8,
+    borderRadius: 8,
+  },
   props: {
     ...TEXT_INPUT_PROPS,
     style: {

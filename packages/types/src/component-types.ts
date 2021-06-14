@@ -23,6 +23,7 @@ export const GROUPS = {
   data: "data",
   uncategorized: "uncategorized",
   action: "action",
+  style: "style",
 };
 
 export const FORM_TYPES = {
@@ -233,7 +234,7 @@ export const createNumColumnsType = (overrides = {}) => ({
 });
 
 export const createColorProp = (overrides = {}) => ({
-  group: GROUPS.basic,
+  group: GROUPS.style,
   label: "Color",
   description: "Select or create a color",
   editable: true,
@@ -290,7 +291,8 @@ export const createIconSizeProp = (overrides = {}) => ({
   ...overrides,
 });
 
-export const BORDER_RADIUS_MODE = {
+export const createBorderRadiusProp = (overrides = {}) => ({
+  group: GROUPS.style,
   label: "Border radius",
   description:
     "Border radius of the element - either None, Global (using theme global border radius), or Round (must specify a width and height on component)",
@@ -299,7 +301,8 @@ export const BORDER_RADIUS_MODE = {
   defaultValue: null,
   editable: true,
   required: true,
-};
+  ...overrides,
+});
 
 export const FIELD_NAME = {
   group: GROUPS.basic,

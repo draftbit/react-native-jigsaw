@@ -3,11 +3,9 @@ import { View, Text, StyleProp, ViewStyle, TextStyle } from "react-native";
 import { withTheme } from "../theming";
 import {
   COMPONENT_TYPES,
-  FORM_TYPES,
-  GROUPS,
-  PROP_TYPES,
-  FIELD_NAME,
-  BORDER_RADIUS_MODE,
+  createIconSizeProp,
+  createColorProp,
+  createFieldNameProp,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -105,36 +103,13 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.input,
     layout: {},
     props: {
-      fieldName: {
-        ...FIELD_NAME,
+      fieldName: createFieldNameProp({
         defaultValue: "stepperValue",
-      },
-      iconSize: {
-        group: GROUPS.basic,
-        label: "Current Icon Size",
-        description: "The size of the icons",
-        editable: true,
-        required: false,
-        min: 0,
-        max: 60,
-        step: 1,
-        formType: FORM_TYPES.number,
-        propType: PROP_TYPES.NUMBER,
-        defaultValue: 24,
-      },
-      iconColor: {
-        group: GROUPS.basic,
-        label: "Current Icon Color",
-        description: "The color of the icons",
-        editable: true,
-        required: false,
-        formType: FORM_TYPES.color,
-        propType: PROP_TYPES.THEME,
-        defaultValue: "strong",
-      },
-      borderRadius: {
-        ...BORDER_RADIUS_MODE,
-      },
+        handlerPropName: "onChange",
+        valuePropName: "stepperValue",
+      }),
+      iconSize: createIconSizeProp({ defaultValue: 24 }),
+      iconColor: createColorProp({ defaultValue: "strong" }),
     },
   },
 ];

@@ -291,7 +291,7 @@ export const createIconSizeProp = (overrides = {}) => ({
   ...overrides,
 });
 
-export const BORDER_RADIUS_MODE = {
+export const createBorderRadiusProp = (overrides = {}) => ({
   group: GROUPS.style,
   label: "Border radius",
   description:
@@ -301,10 +301,6 @@ export const BORDER_RADIUS_MODE = {
   defaultValue: null,
   editable: true,
   required: true,
-};
-
-export const createBorderRadiusProp = (overrides = {}) => ({
-  ...BORDER_RADIUS_MODE,
   ...overrides,
 });
 

@@ -7,7 +7,11 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.layout,
   layout: {},
   props: {
-    horizontal: createStaticBoolProp({ defaultValue: false }),
+    horizontal: createStaticBoolProp({
+      label: "Horizontal",
+      description: "Render your list horizontally",
+      defaultValue: false,
+    }),
     showsHorizontalScrollIndicator: createStaticBoolProp({
       label: "Show Horizontal Scroll Indicator",
       description:

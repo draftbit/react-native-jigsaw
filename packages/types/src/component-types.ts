@@ -184,6 +184,12 @@ export const createBoolProp = (overrides = {}) => ({
   ...overrides,
 });
 
+export const createStaticBoolProp = (overrides = {}) =>
+  createBoolProp({
+    group: GROUPS.basic,
+    ...overrides,
+  });
+
 export const createTextStyle = (overrides = {}) => ({
   group: GROUPS.basic,
   label: "Text Style",

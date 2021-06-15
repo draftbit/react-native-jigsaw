@@ -224,7 +224,7 @@ export const createStaticNumberProp = (overrides = {}) =>
 export const createNumColumnsType = (overrides = {}) => ({
   label: "Number of Columns",
   description: "Number of Columns",
-  group: GROUPS.uncategorized,
+  group: GROUPS.basic,
   formType: FORM_TYPES.number,
   propType: PROP_TYPES.NUMBER,
   defaultValue: 1,

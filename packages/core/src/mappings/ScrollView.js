@@ -1,7 +1,7 @@
 import { COMPONENT_TYPES, createStaticBoolProp } from "@draftbit/types";
 
 export const SEED_DATA = {
-  name: "ScrollView",
+  name: "Scroll View",
   tag: "ScrollView",
   description: "A basic ScrollView component",
   category: COMPONENT_TYPES.layout,

@@ -1,9 +1,7 @@
 import {
   COMPONENT_TYPES,
-  FORM_TYPES,
-  PROP_TYPES,
-  GROUPS,
   createNumColumnsType,
+  createStaticBoolProp,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -15,21 +13,12 @@ export const SEED_DATA = {
     flex: 1,
   },
   props: {
-    horizontal: {
-      group: GROUPS.basic,
+    horizontal: createStaticBoolProp({
       label: "Horizontal",
       description: "Render list horizontally",
-      editable: true,
-      required: true,
-      formType: FORM_TYPES.boolean,
-      propType: PROP_TYPES.BOOLEAN,
-      defaultValue: false,
-    },
+    }),
     numColumns: createNumColumnsType({
-      group: GROUPS.basic,
       editable: true,
-      required: true,
-      description: "Number of columns (vertical list only)",
     }),
   },
 };

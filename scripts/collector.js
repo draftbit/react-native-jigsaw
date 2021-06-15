@@ -21,10 +21,10 @@ const IGNORED_FILES = [
 const ERROR_FILES = [];
 const COMPLETED_FILES = [];
 
-async function main(list) {
+async function main(list = []) {
   console.log("Running on", getUrl());
 
-  if (list) {
+  if (Array.isArray(list) && list.length > 0) {
     console.log("ONLY running", JSON.stringify(list));
   }
 
@@ -41,27 +41,28 @@ async function main(list) {
     return `${COMPONENT_PATH}/${file}`;
   });
 
-  const files = Array.isArray(components)
-    ? components
-    : [
-        ...nativeFiles,
-        ...componentFiles,
-        ...screenFiles,
-        ...mappingFiles,
-      ].filter((file) => {
-        const name = file.split("/").pop();
+  const files =
+    components.length > 0
+      ? components
+      : [
+          ...nativeFiles,
+          ...componentFiles,
+          ...screenFiles,
+          ...mappingFiles,
+        ].filter((file) => {
+          const name = file.split("/").pop();
 
-        if (
-          name.includes("web") ||
-          name.includes("ios") ||
-          name.includes("android")
-        ) {
-          console.log(`Ignoring... ${name}`);
-          return false;
-        }
+          if (
+            name.includes("web") ||
+            name.includes("ios") ||
+            name.includes("android")
+          ) {
+            console.log(`Ignoring... ${name}`);
+            return false;
+          }
 
-        return !IGNORED_FILES.includes(name);
-      });
+          return !IGNORED_FILES.includes(name);
+        });
 
   for (const file of files) {
     const [name, category] = file.split("/").reverse();

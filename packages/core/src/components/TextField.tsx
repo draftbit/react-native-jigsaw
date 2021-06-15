@@ -661,6 +661,8 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
+        label: "Type",
+        description: "Type",
         group: GROUPS.uncategorized,
         formType: FORM_TYPES.string,
         propType: PROP_TYPES.STRING,
@@ -692,6 +694,8 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
+        label: "Type",
+        description: "Type",
         group: GROUPS.uncategorized,
         formType: FORM_TYPES.string,
         propType: PROP_TYPES.STRING,
@@ -723,6 +727,8 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
+        label: "Type",
+        description: "Type",
         group: GROUPS.uncategorized,
         formType: FORM_TYPES.string,
         propType: PROP_TYPES.STRING,
@@ -731,6 +737,8 @@ export const SEED_DATA = [
         required: false,
       },
       multiline: {
+        label: "Multiline",
+        description: "Multiline",
         group: GROUPS.uncategorized,
         formType: FORM_TYPES.boolean,
         propType: PROP_TYPES.BOOLEAN,
@@ -751,6 +759,8 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       type: {
+        label: "Type",
+        description: "Type",
         group: GROUPS.uncategorized,
         formType: FORM_TYPES.string,
         propType: PROP_TYPES.STRING,
@@ -759,6 +769,8 @@ export const SEED_DATA = [
         required: false,
       },
       multiline: {
+        label: "Multiline",
+        description: "Multiline",
         group: GROUPS.uncategorized,
         formType: FORM_TYPES.boolean,
         propType: PROP_TYPES.BOOLEAN,

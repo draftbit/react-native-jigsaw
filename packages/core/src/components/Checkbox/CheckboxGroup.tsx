@@ -63,7 +63,7 @@ export const SEED_DATA = {
   props: {
     direction: createDirectionProp(),
     values: createTextProp({
-      GROUP: GROUPS.data,
+      group: GROUPS.data,
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.ARRAY,
       label: "Values",

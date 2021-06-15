@@ -9,15 +9,25 @@ const IMAGE =
 function ContainerExample({ theme }) {
   return (
     <ExampleContainer style={{ backgroundColor: theme.colors.background }}>
-      <Section title="Container with no theme gutter padding)">
+      <Section title="Container with no theme gutter padding">
         <Container style={{ paddingVertical: 16 }}>
           <Text>Container without theme gutter padding</Text>
         </Container>
       </Section>
 
-      <Section title="Container with theme gutter padding)">
+      <Section title="Container with theme gutter padding">
         <Container useThemeGutterPadding style={{ paddingVertical: 16 }}>
           <Text>Container with theme gutter padding</Text>
+        </Container>
+      </Section>
+
+      <Section title="Container with elevation">
+        <Container
+          elevation={2}
+          useThemeGutterPadding
+          style={{ paddingVertical: 16 }}
+        >
+          <Text>Container with elevation</Text>
         </Container>
       </Section>
 
@@ -31,7 +41,7 @@ function ContainerExample({ theme }) {
         <Container
           backgroundImage={IMAGE}
           style={{
-            paddingVertical: 16,
+            paddingVertical: 24,
             height: 300,
           }}
         >
@@ -58,12 +68,12 @@ function ContainerExample({ theme }) {
           backgroundImage={IMAGE}
           backgroundImageResizeMode="contain"
           style={{
-            paddingVertical: 16,
+            paddingVertical: 12,
             width: 300,
             height: 300,
           }}
         >
-          <Text>Container with background image and resize mode cover</Text>
+          <Text>Container with background image and resize mode contain</Text>
         </Container>
       </Section>
 

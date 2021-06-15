@@ -58,19 +58,21 @@ const Container: React.FC<Props> = ({
     alignContent,
     justifyContent,
     alignItems,
+    borderRadius = 0,
+    padding,
+    paddingBottom,
+    paddingEnd,
+    paddingRight,
+    paddingHorizontal,
+    paddingLeft,
+    paddingStart,
+    paddingTop,
+    paddingVertical,
     ...styleProp
   } = StyleSheet.flatten(style) || {};
 
-  const containerStyle: StyleProp<ViewStyle> = {
-    backgroundColor,
-    borderColor,
-    borderWidth,
-    width: "100%",
-    ...styleProp,
-  };
-
   const innerStyle: StyleProp<ViewStyle> = {
-    paddingHorizontal: useThemeGutterPadding ? 16 : 0,
+    paddingHorizontal: paddingHorizontal || useThemeGutterPadding ? 16 : 0,
     flex,
     flexGrow,
     flexWrap,
@@ -80,6 +82,23 @@ const Container: React.FC<Props> = ({
     alignContent,
     justifyContent,
     alignItems,
+    padding,
+    paddingBottom,
+    paddingEnd,
+    paddingRight,
+    paddingLeft,
+    paddingStart,
+    paddingTop,
+    paddingVertical,
+  };
+
+  const containerStyle: StyleProp<ViewStyle> = {
+    backgroundColor,
+    borderColor,
+    borderWidth,
+    width: "100%",
+    borderRadius,
+    ...styleProp,
   };
 
   const Wrap = elevation ? Elevation : View;
@@ -89,7 +108,7 @@ const Container: React.FC<Props> = ({
   }
 
   return (
-    <Wrap style={[containerStyle, style]} {...rest}>
+    <Wrap style={containerStyle} {...rest}>
       {backgroundImage ? (
         <ImageBackground
           source={

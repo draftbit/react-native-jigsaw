@@ -140,7 +140,7 @@ export const SEED_DATA = [
   {
     name: "Switch",
     tag: "Switch",
-    category: COMPONENT_TYPES.input,
+    category: COMPONENT_TYPES.deprecated,
     layout: {},
     props: {
       disabled: createBoolProp({
@@ -173,7 +173,7 @@ export const SEED_DATA = [
   {
     name: "Switch Row",
     tag: "SwitchRow",
-    category: COMPONENT_TYPES.input,
+    category: COMPONENT_TYPES.deprecated,
     layout: {},
     props: {
       label: createTextProp({

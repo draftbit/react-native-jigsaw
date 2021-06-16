@@ -147,7 +147,7 @@ export default RadioButtonRow;
 export const SEED_DATA = {
   name: "Radio Button Row",
   tag: "RadioButtonRow",
-  category: COMPONENT_TYPES.input,
+  category: COMPONENT_TYPES.deprecated,
   layout: {},
   props: {
     label: createTextProp({

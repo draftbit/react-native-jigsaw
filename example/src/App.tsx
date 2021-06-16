@@ -52,6 +52,7 @@ import StepperExample from "./StepperExample";
 
 import TextFieldExample from "./TextFieldExample";
 import CheckboxExample from "./CheckboxExample";
+import MapViewExample from "./MapViewExample";
 import WebViewExample from "./WebViewExample";
 import AccordionExample from "./AccordionExample";
 
@@ -75,6 +76,7 @@ const ROUTES = {
   // Controllers: ControllerExample,
   DatePicker: DatePickerExample,
   FieldSearchBarFull: FieldSearchBarFullExample,
+  MapView: MapViewExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
   // Header: HeaderExample,
   // Picker: PickerExample,

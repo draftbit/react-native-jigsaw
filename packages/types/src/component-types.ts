@@ -173,8 +173,8 @@ export const createAspectRatioProp = (overrides = {}) => ({
 });
 
 export const createBoolProp = (overrides = {}) => ({
-  label: "Centered Text",
-  description: "Whether to center the text",
+  label: "Enabled",
+  description: "Enabled",
   formType: FORM_TYPES.boolean,
   propType: PROP_TYPES.BOOLEAN,
   defaultValue: false,
@@ -186,6 +186,7 @@ export const createBoolProp = (overrides = {}) => ({
 
 export const createStaticBoolProp = (overrides = {}) =>
   createBoolProp({
+    label: "Centered Text",
     group: GROUPS.basic,
     ...overrides,
   });
@@ -333,11 +334,6 @@ export const createActionProp = (overrides = {}) => ({
   propType: PROP_TYPES.STRING,
   defaultValue: null,
   group: GROUPS.basic,
-  ...overrides,
-});
-
-export const createStateValue = (overrides = {}) => ({
-  ...FIELD_NAME,
   ...overrides,
 });
 

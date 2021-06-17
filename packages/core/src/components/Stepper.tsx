@@ -105,8 +105,8 @@ export const SEED_DATA = [
     props: {
       fieldName: createFieldNameProp({
         defaultValue: "stepperValue",
-        handlerPropName: "onChange",
         valuePropName: "stepperValue",
+        handlerPropName: "onChange",
       }),
       iconSize: createIconSizeProp({ defaultValue: 24 }),
       iconColor: createColorProp({ defaultValue: "strong" }),

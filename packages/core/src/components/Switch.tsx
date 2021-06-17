@@ -9,7 +9,6 @@ import { withTheme } from "../theming";
 import FormRow from "./FormRow";
 import {
   COMPONENT_TYPES,
-  GROUPS,
   createBoolProp,
   createColorProp,
   createFieldNameProp,
@@ -143,18 +142,18 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.input,
     layout: {},
     props: {
-      disabled: createBoolProp({
-        label: "Disabled",
-        description: "Boolean to handle disabling the switch",
+      fieldName: createFieldNameProp({
+        defaultValue: false,
+        valuePropName: "value",
+        handlerPropName: "onValueChange",
       }),
       value: createBoolProp({
         label: "Value",
-        description: "Boolean value",
-      }),
-      fieldName: createFieldNameProp({
         defaultValue: false,
-        valuePropName: "switchValue",
-        handlerPropName: "onValueChange",
+      }),
+      disabled: createBoolProp({
+        label: "Disabled",
+        description: "Boolean to handle disabling the switch",
       }),
       activeTrackColor: createColorProp({
         label: "Active Track Color",
@@ -175,7 +174,28 @@ export const SEED_DATA = [
     tag: "SwitchRow",
     category: COMPONENT_TYPES.input,
     layout: {},
+    state: {
+      onChange: {
+        propName: "onValueChange",
+        variableName: "value",
+      },
+      hook: {
+        valuePrefix: "switchValue",
+        setterPrefix: "setSwitchValue",
+        defaultValue: false,
+        type: "boolean",
+      },
+    },
     props: {
+      fieldName: createFieldNameProp({
+        defaultValue: "switchValue",
+        valuePropName: "value",
+        handlerPropName: "onValueChange",
+      }),
+      value: createBoolProp({
+        label: "Value",
+        defaultValue: false,
+      }),
       label: createTextProp({
         label: "Label",
         description: "Label to show with the checkbox",
@@ -186,17 +206,6 @@ export const SEED_DATA = [
       disabled: createBoolProp({
         label: "Disabled",
         description: "Boolean to handle disabling the switch",
-        group: GROUPS.data,
-      }),
-      value: createBoolProp({
-        label: "Value",
-        description: "Boolean value",
-        group: GROUPS.data,
-      }),
-      fieldName: createFieldNameProp({
-        defaultValue: false,
-        valuePropName: "switchValue",
-        handlerPropName: "onValueChange",
       }),
       activeTrackColor: createColorProp({
         label: "Active Track Color",

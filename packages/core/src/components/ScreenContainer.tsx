@@ -11,6 +11,8 @@ import type { Edge } from "react-native-safe-area-context";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 
+import { COMPONENT_TYPES, createStaticBoolProp } from "@draftbit/types";
+
 function ScrollView({
   children,
   style,
@@ -92,3 +94,24 @@ const styles = StyleSheet.create({
 });
 
 export default withTheme(ScreenContainer);
+
+export const SEED_DATA = {
+  name: "Screen Container",
+  tag: "ScreenContainer",
+  description: "The top most container on your screen",
+  category: COMPONENT_TYPES.layout,
+  layout: { flex: 1 },
+  props: {
+    scrollable: createStaticBoolProp({
+      label: "Scrollable?",
+      description: "Makes your screen scrollable",
+      defaultValue: false,
+    }),
+    hasSafeArea: createStaticBoolProp({
+      label: "Notch padding?",
+      description:
+        "Puts your info below the notch. Typically only needed outside of navigation.",
+      defaultValue: false,
+    }),
+  },
+};

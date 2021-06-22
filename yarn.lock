@@ -13551,6 +13551,13 @@ react-native-iphone-x-helper@^1.3.0:
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
   integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
 
+react-native-modal-datetime-picker@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-modal-datetime-picker/-/react-native-modal-datetime-picker-10.0.0.tgz#1a424c0ed277ab76621542af4efa4f357ed2a740"
+  integrity sha512-uKi1K3nUWJ1UWssLsDt8s7KpfFFlZ0MaP91wf3rFG07woscVu70m1Db0f1v6s3YY01UW+q+8ZD+Y2Hp3o+UCvQ==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-native-reanimated@~1.13.0:
   version "1.13.3"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.13.3.tgz#fb0e1d582c8866015140f2159e147ffe6e798a3a"

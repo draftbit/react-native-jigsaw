@@ -190,6 +190,7 @@ const SEED_DATA_PROPS = {
     label: "Title centered",
     description: "Whether to center the title",
     formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
     defaultValue: false,
     editable: true,
     required: false,

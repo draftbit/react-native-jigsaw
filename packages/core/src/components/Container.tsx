@@ -117,7 +117,7 @@ export const SEED_DATA = {
   name: "Container",
   tag: "Container",
   description: "A container component with gutter padding",
-  category: COMPONENT_TYPES.layout,
+  category: COMPONENT_TYPES.deprecated,
   layout: {
     height: 250,
   },

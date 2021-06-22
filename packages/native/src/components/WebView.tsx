@@ -58,7 +58,7 @@ export default Platform.select({
 });
 
 export const SEED_DATA = {
-  name: "WebView",
+  name: "Web View",
   tag: "WebView",
   description: "Render web content inside a view",
   category: COMPONENT_TYPES.media,

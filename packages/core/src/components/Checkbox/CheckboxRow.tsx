@@ -14,6 +14,7 @@ import {
   createTextProp,
   createTextStyle,
   createRowDirectionProp,
+  createFieldNameProp,
   COMPONENT_TYPES,
 } from "@draftbit/types";
 import type { IconSlot } from "../../interfaces/Icon";
@@ -159,7 +160,9 @@ export const SEED_DATA = {
   name: "Checkbox Row",
   tag: "CheckboxRow",
   category: COMPONENT_TYPES.input,
-  layout: {},
+  layout: {
+    minHeight: 50,
+  },
   props: {
     label: createTextProp({
       label: "Label",
@@ -174,11 +177,10 @@ export const SEED_DATA = {
       editable: false,
     }),
     direction: createRowDirectionProp(),
-    values: createTextProp({
-      label: "Value",
-      description: "Value of the checkbox",
-      defaultValue: null,
-      required: true,
+    fieldName: createFieldNameProp({
+      defaultValue: "unchecked",
+      valuePropName: "status",
+      handlerPropName: "onPress",
     }),
   },
 };

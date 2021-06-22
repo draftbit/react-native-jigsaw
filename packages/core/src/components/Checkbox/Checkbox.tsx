@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  Animated,
   View,
   StyleSheet,
   TouchableHighlightProps,
@@ -13,16 +12,14 @@ import {
   createBoolProp,
   createIconProp,
   createStaticNumberProp,
-  createTextEnumProp,
   createColorProp,
+  createFieldNameProp,
   GROUPS,
 } from "@draftbit/types";
 import { useTheme } from "../../theming";
 import type { IconSlot } from "../../interfaces/Icon";
 
 import Touchable from "../Touchable";
-
-const ANIMATION_DURATION = 100;
 
 export enum CheckboxStatus {
   Checked = "checked",
@@ -60,10 +57,6 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     style,
     ...rest
   }) => {
-    const { current: scaleAnim } = React.useRef<Animated.Value>(
-      new Animated.Value(1)
-    );
-    const isFirstRendering = React.useRef<boolean>(true);
     const { colors } = useTheme();
 
     const colorsMap = {
@@ -79,31 +72,6 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     };
 
     const checkboxColor = colorsMap[status];
-    const borderWidth = scaleAnim.interpolate({
-      inputRange: [0.8, 1],
-      outputRange: [7, 0],
-    });
-
-    React.useEffect(() => {
-      // Do not run animation on very first rendering
-      if (isFirstRendering.current) {
-        isFirstRendering.current = false;
-        return;
-      }
-      const checked = status === CheckboxStatus.Checked;
-      Animated.sequence([
-        Animated.timing(scaleAnim, {
-          toValue: 0.85,
-          duration: checked ? ANIMATION_DURATION : 0,
-          useNativeDriver: false,
-        }),
-        Animated.timing(scaleAnim, {
-          toValue: 1,
-          duration: checked ? ANIMATION_DURATION : ANIMATION_DURATION * 1.75,
-          useNativeDriver: false,
-        }),
-      ]).start();
-    }, [status, scaleAnim]);
 
     return (
       <Touchable
@@ -115,24 +83,21 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
         accessibilityLiveRegion="polite"
         style={[styles.container, style]}
       >
-        <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
-          <Icon
-            style={styles.icon}
-            name={iconsMap[status]}
-            size={size}
-            color={checkboxColor}
+        <Icon
+          style={styles.icon}
+          name={iconsMap[status]}
+          size={size}
+          color={checkboxColor}
+        />
+        <View style={[StyleSheet.absoluteFill, styles.fillContainer]}>
+          <View
+            style={[
+              styles.fill,
+              { opacity: disabled ? 0.5 : 1 },
+              { borderColor: checkboxColor },
+            ]}
           />
-          <View style={[StyleSheet.absoluteFill, styles.fillContainer]}>
-            <Animated.View
-              style={[
-                styles.fill,
-                { opacity: disabled ? 0.5 : 1 },
-                { borderColor: checkboxColor },
-                { borderWidth },
-              ]}
-            />
-          </View>
-        </Animated.View>
+        </View>
       </Touchable>
     );
   };
@@ -170,11 +135,10 @@ export const SEED_DATA = {
     height: 24,
   },
   props: {
-    status: createTextEnumProp({
-      label: "Status",
-      description: "Current status of the checkbox",
-      options: ["checked", "unchecked", "indeterminate"],
-      defaultValue: null,
+    fieldName: createFieldNameProp({
+      defaultValue: "unchecked",
+      valuePropName: "status",
+      handlerPropName: "onPress",
     }),
     color: createColorProp({
       group: GROUPS.basic,

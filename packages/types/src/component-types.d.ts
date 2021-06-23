@@ -160,6 +160,16 @@ export declare const createBoolProp: (overrides?: {}) => {
   required: boolean;
   group: string;
 };
+export declare const createStaticBoolProp: (overrides?: {}) => {
+  label: string;
+  description: string;
+  formType: string;
+  propType: string;
+  defaultValue: boolean;
+  editable: boolean;
+  required: boolean;
+  group: string;
+};
 export declare const createTextStyle: (overrides?: {}) => {
   group: string;
   label: string;

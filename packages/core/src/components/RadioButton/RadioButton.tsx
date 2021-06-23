@@ -3,15 +3,16 @@ import { StyleProp, ViewStyle } from "react-native";
 
 import Config from "../Config";
 import IconButton from "../IconButton";
+import { useRadioButtonGroupContext } from "./context";
 
 import {
   GROUPS,
   COMPONENT_TYPES,
   createBoolProp,
   createColorProp,
-  createActionProp,
   createNumberProp,
   createIconProp,
+  createTextProp,
 } from "@draftbit/types";
 import type { IconSlot } from "../../interfaces/Icon";
 
@@ -19,8 +20,8 @@ export type RadioButtonProps = {
   selected: boolean;
   disabled?: boolean;
   color?: string;
+  value: string;
   unselectedColor?: string;
-  onPress?: () => void;
   style?: StyleProp<ViewStyle>;
   size?: number;
   selectedIcon?: string;
@@ -29,24 +30,32 @@ export type RadioButtonProps = {
 
 const RadioButton: React.FC<RadioButtonProps> = ({
   Icon,
-  selected,
   disabled = false,
   color,
+  value,
   unselectedColor,
-  onPress = () => {},
   size = Config.radioButtonSize,
   selectedIcon = "MaterialIcons/radio-button-checked",
   unselectedIcon = "MaterialIcons/radio-button-unchecked",
   style,
   ...rest
 }) => {
+  console.log("value", value);
+  const { value: contextValue, onValueChange } = useRadioButtonGroupContext();
+
+  const handlePress = () => {
+    onValueChange && onValueChange(value);
+  };
+
+  const selected = contextValue === value;
+
   return (
     <IconButton
       Icon={Icon}
       icon={selected ? selectedIcon : unselectedIcon}
       color={selected ? color : unselectedColor}
       disabled={disabled}
-      onPress={onPress}
+      onPress={handlePress}
       size={size}
       style={style}
       {...rest}
@@ -61,9 +70,10 @@ export const SEED_DATA = {
   tag: "RadioButton",
   category: COMPONENT_TYPES.input,
   props: {
-    selected: createBoolProp({
-      label: "Selected",
-      description: "Whether the radio button is selected",
+    value: createTextProp({
+      label: "value",
+      description: "Value of the radio button",
+      defaultValue: null,
       required: true,
     }),
     color: createColorProp({
@@ -80,7 +90,6 @@ export const SEED_DATA = {
       label: "Disabled",
       description: "Whether radio button is disabled",
     }),
-    onPress: createActionProp(),
     size: createNumberProp({
       group: GROUPS.basic,
       label: "Size",

@@ -20,8 +20,9 @@ export type RadioButtonProps = {
   selected: boolean;
   disabled?: boolean;
   color?: string;
-  value: string;
+  value?: string;
   unselectedColor?: string;
+  onPress?: () => void;
   style?: StyleProp<ViewStyle>;
   size?: number;
   selectedIcon?: string;
@@ -34,17 +35,21 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   color,
   value,
   unselectedColor,
+  onPress = () => {},
   size = Config.radioButtonSize,
   selectedIcon = "MaterialIcons/radio-button-checked",
   unselectedIcon = "MaterialIcons/radio-button-unchecked",
   style,
   ...rest
 }) => {
-  console.log("value", value);
   const { value: contextValue, onValueChange } = useRadioButtonGroupContext();
 
   const handlePress = () => {
-    onValueChange && onValueChange(value);
+    onPress && onPress();
+
+    if (onValueChange && value) {
+      onValueChange(value);
+    }
   };
 
   const selected = contextValue === value;

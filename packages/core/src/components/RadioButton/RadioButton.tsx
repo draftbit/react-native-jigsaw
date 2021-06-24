@@ -17,11 +17,10 @@ import {
 import type { IconSlot } from "../../interfaces/Icon";
 
 export type RadioButtonProps = {
-  selected: boolean;
+  selected?: boolean;
   disabled?: boolean;
   color?: string;
   value?: string;
-  selected?: boolean;
   unselectedColor?: string;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;

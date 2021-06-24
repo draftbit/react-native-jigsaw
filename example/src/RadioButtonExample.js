@@ -4,7 +4,6 @@ import {
   RadioButton,
   RadioButtonRow,
   RadioButtonGroup,
-  Row,
   RadioButtonFieldGroup,
   withTheme,
   ScreenContainer,
@@ -27,20 +26,24 @@ const RadioButtonGroupExample = ({ theme }) => {
   return (
     <ScreenContainer hasSafeArea={false} scrollable={true}>
       <Section title="Single Radio Buttons">
-        <Row>
-          <SingleRadioButtonWrapper label="Selected">
-            <RadioButton selected />
+        <RadioButtonGroup
+          direction="horizontal"
+          onValueChange={handleSelect}
+          value={selected}
+        >
+          <SingleRadioButtonWrapper>
+            <RadioButton value="1" />
           </SingleRadioButtonWrapper>
-          <SingleRadioButtonWrapper label="Unselected">
-            <RadioButton />
+          <SingleRadioButtonWrapper>
+            <RadioButton value="2" />
           </SingleRadioButtonWrapper>
           <SingleRadioButtonWrapper label="Disabled">
-            <RadioButton selected disabled />
+            <RadioButton value="3" disabled />
           </SingleRadioButtonWrapper>
           <SingleRadioButtonWrapper label="Custom color">
-            <RadioButton selected color={theme.colors.error} />
+            <RadioButton value="4" color={theme.colors.error} />
           </SingleRadioButtonWrapper>
-        </Row>
+        </RadioButtonGroup>
       </Section>
 
       <Section title="RadioButtonGroup (horizontal)">

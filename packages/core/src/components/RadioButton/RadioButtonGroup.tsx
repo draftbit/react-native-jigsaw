@@ -4,7 +4,6 @@ import {
   COMPONENT_TYPES,
   createFieldNameProp,
   createDirectionProp,
-  createTextProp,
 } from "@draftbit/types";
 import type { Theme } from "../../styles/DefaultTheme";
 import { radioButtonGroupContext, Direction } from "./context";
@@ -58,16 +57,10 @@ export const SEED_DATA = {
   layout: {},
   props: {
     direction: createDirectionProp(),
-    value: createTextProp({
-      label: "value",
-      description: "Currently selected value of the radio button group",
-      defaultValue: null,
-      required: true,
-    }),
     fieldName: createFieldNameProp({
       handlerPropName: "onValueChange",
-      valuePropName: "radioButtonGroupValue",
-      defaultValue: "radioButtonGroupValue",
+      valuePropName: "value",
+      defaultValue: "value",
     }),
   },
 };

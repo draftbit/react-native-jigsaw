@@ -17,7 +17,7 @@ import {
 import type { IconSlot } from "../../interfaces/Icon";
 
 export type RadioButtonProps = {
-  selected: boolean;
+  selected?: boolean;
   disabled?: boolean;
   color?: string;
   value?: string;
@@ -34,6 +34,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   disabled = false,
   color,
   value,
+  selected,
   unselectedColor,
   onPress = () => {},
   size = Config.radioButtonSize,
@@ -52,13 +53,14 @@ const RadioButton: React.FC<RadioButtonProps> = ({
     }
   };
 
-  const selected = contextValue === value;
+  const isSelected =
+    selected || (contextValue != null && contextValue === value);
 
   return (
     <IconButton
       Icon={Icon}
-      icon={selected ? selectedIcon : unselectedIcon}
-      color={selected ? color : unselectedColor}
+      icon={isSelected ? selectedIcon : unselectedIcon}
+      color={isSelected ? color : unselectedColor}
       disabled={disabled}
       onPress={handlePress}
       size={size}

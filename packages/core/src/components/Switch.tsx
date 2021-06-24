@@ -147,14 +147,10 @@ export const SEED_DATA = [
         label: "Disabled",
         description: "Boolean to handle disabling the switch",
       }),
-      value: createBoolProp({
-        label: "Value",
-        description: "Boolean value",
-      }),
       fieldName: createFieldNameProp({
-        defaultValue: false,
-        valuePropName: "switchValue",
         handlerPropName: "onValueChange",
+        valuePropName: "value",
+        defaultValue: "switchValue",
       }),
       activeTrackColor: createColorProp({
         label: "Active Track Color",
@@ -188,15 +184,10 @@ export const SEED_DATA = [
         description: "Boolean to handle disabling the switch",
         group: GROUPS.data,
       }),
-      value: createBoolProp({
-        label: "Value",
-        description: "Boolean value",
-        group: GROUPS.data,
-      }),
       fieldName: createFieldNameProp({
-        defaultValue: false,
-        valuePropName: "switchValue",
         handlerPropName: "onValueChange",
+        valuePropName: "value",
+        defaultValue: "switchValue",
       }),
       activeTrackColor: createColorProp({
         label: "Active Track Color",

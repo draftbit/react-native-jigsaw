@@ -119,7 +119,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
       >
         <RadioButton
           Icon={Icon}
-          selected={selected || contextValue === value}
+          selected={selected || (contextValue != null && contextValue === value)}
           color={color}
           unselectedColor={unselectedColor}
           onPress={handlePress}

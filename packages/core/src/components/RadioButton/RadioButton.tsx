@@ -89,6 +89,7 @@ export const SEED_DATA = {
       defaultValue: "primary",
     }),
     unselectedColor: createColorProp({
+      group: GROUPS.basic,
       label: "Unselected Color",
       description: "Unselected Color for the button",
       defaultValue: "primary",

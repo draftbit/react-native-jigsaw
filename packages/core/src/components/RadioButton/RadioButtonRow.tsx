@@ -14,6 +14,8 @@ import {
   createTextProp,
   createTextEnumProp,
   COMPONENT_TYPES,
+  createColorProp,
+  GROUPS,
 } from "@draftbit/types";
 import type { IconSlot } from "../../interfaces/Icon";
 import { Direction as GroupDirection } from "./context";
@@ -28,6 +30,8 @@ export enum Direction {
 export interface RadioButtonRowProps extends Omit<RadioButtonProps, "onPress"> {
   label: string | React.ReactNode;
   value: string;
+  color?: string;
+  unselectedColor?: string;
   labelContainerStyle: StyleProp<ViewStyle>;
   radioButtonStyle?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
@@ -64,6 +68,8 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
   Icon,
   label,
   value,
+  color,
+  unselectedColor,
   onPress = () => {},
   labelContainerStyle,
   labelStyle,
@@ -114,6 +120,8 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
         <RadioButton
           Icon={Icon}
           selected={selected || contextValue === value}
+          color={color}
+          unselectedColor={unselectedColor}
           onPress={handlePress}
           style={radioButtonStyle}
         />
@@ -167,6 +175,17 @@ export const SEED_DATA = {
       description: "Value of the radio button",
       defaultValue: null,
       required: true,
+    }),
+    color: createColorProp({
+      group: GROUPS.basic,
+      description: "Color for the button",
+      defaultValue: "primary",
+    }),
+    unselectedColor: createColorProp({
+      group: GROUPS.basic,
+      label: "Unselected Color",
+      description: "Unselected Color for the button",
+      defaultValue: "primary",
     }),
   },
 };

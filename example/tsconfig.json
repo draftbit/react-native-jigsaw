@@ -10,5 +10,6 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "moduleResolution": "node"
-  }
+  },
+  "extends": "expo/tsconfig.base"
 }

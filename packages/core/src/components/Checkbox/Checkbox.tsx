@@ -52,7 +52,7 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     checkedIcon = "MaterialCommunityIcons/checkbox-marked",
     uncheckedIcon = "MaterialCommunityIcons/checkbox-blank-outline",
     indeterminateIcon = "AntDesign/minussquareo",
-    size = 29,
+    size = 24,
     style,
     ...rest
   }) => {
@@ -104,9 +104,6 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
 const styles = StyleSheet.create({
   container: {
     borderRadius: 18,
-    width: 36,
-    height: 36,
-    padding: 6,
   },
   fillContainer: {
     alignItems: "center",
@@ -129,10 +126,6 @@ export const SEED_DATA = {
   name: "Checkbox",
   tag: "Checkbox",
   category: COMPONENT_TYPES.input,
-  layout: {
-    width: 24,
-    height: 24,
-  },
   props: {
     fieldName: createFieldNameProp({
       defaultValue: "checkboxValue",

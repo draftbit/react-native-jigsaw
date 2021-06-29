@@ -67,6 +67,13 @@ const CheckboxExample = ({ theme }) => {
           <SingleCheckboxWrapper label="Disabled">
             <Checkbox status="checked" disabled />
           </SingleCheckboxWrapper>
+          <SingleCheckboxWrapper label="Large">
+            <Checkbox
+              status={checked ? "checked" : "unchecked"}
+              onPress={handlePress}
+              size={72}
+            />
+          </SingleCheckboxWrapper>
         </Row>
       </Section>
 

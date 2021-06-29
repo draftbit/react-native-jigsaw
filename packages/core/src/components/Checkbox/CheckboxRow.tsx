@@ -159,7 +159,7 @@ export default CheckboxRow;
 export const SEED_DATA = {
   name: "Checkbox Row",
   tag: "CheckboxRow",
-  category: COMPONENT_TYPES.input,
+  category: COMPONENT_TYPES.deprecated,
   layout: {
     minHeight: 50,
   },

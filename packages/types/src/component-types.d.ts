@@ -340,6 +340,16 @@ export declare const TEXT_INPUT_PROPS: {
     formType: string;
     propType: string;
   };
+  disabled: {
+    group: string;
+    label: string;
+    description: string;
+    editable: boolean;
+    required: boolean;
+    defaultValue: null;
+    formType: string;
+    propType: string;
+  };
   editable: {
     group: string;
     label: string;

@@ -623,17 +623,6 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
   },
-  disabled: {
-    group: GROUPS.basic,
-    label: "Disabled",
-    description:
-      "Whether the input should be disabled. Will prevent input and show a greyed out state.",
-    formType: FORM_TYPES.boolean,
-    propType: PROP_TYPES.BOOLEAN,
-    defaultValue: null,
-    editable: true,
-    required: false,
-  },
   error: {
     group: GROUPS.data,
     label: "Error",

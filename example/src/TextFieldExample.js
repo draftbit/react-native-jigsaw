@@ -67,6 +67,18 @@ export default function TextFieldExample() {
             value={value}
             onChangeText={handleChange}
           />
+          <TextField
+            type="solid"
+            label="Solid input with custom styles"
+            value={value}
+            onChangeText={handleChange}
+            style={{
+              padding: 10,
+              borderColor: "red",
+              borderWidth: 2,
+              backgroundColor: "green",
+            }}
+          />
         </Section>
 
         <Section title="Underline">
@@ -127,6 +139,18 @@ export default function TextFieldExample() {
           />
 
           <TextField label="Disabled underline input" disabled />
+
+          <TextField
+            label="Underline input with custom styles"
+            value={value}
+            onChangeText={handleChange}
+            style={{
+              padding: 10,
+              borderColor: "red",
+              borderWidth: 2,
+              backgroundColor: "green",
+            }}
+          />
         </Section>
       </Container>
     </KeyboardAvoidingView>

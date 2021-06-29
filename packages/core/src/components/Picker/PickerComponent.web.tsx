@@ -1,6 +1,7 @@
 import * as React from "react";
 import { View, StyleSheet, Picker as NativePicker } from "react-native";
 import { withTheme } from "../../theming";
+import { extractStyles } from "../../utilities";
 
 import TextField from "../TextField";
 import Touchable from "../Touchable";
@@ -15,6 +16,16 @@ const Picker: React.FC<PickerComponentProps> = ({
   onValueChange: onValueChangeOverride = () => {},
   ...props
 }) => {
+  const {
+    viewStyles: {
+      borderRadius, // eslint-disable-line @typescript-eslint/no-unused-vars
+      borderWidth, // eslint-disable-line @typescript-eslint/no-unused-vars
+      borderColor, // eslint-disable-line @typescript-eslint/no-unused-vars
+      backgroundColor, // eslint-disable-line @typescript-eslint/no-unused-vars
+      ...viewStyles
+    },
+  } = extractStyles(style);
+
   const textField = React.useRef<typeof TextField | undefined>(undefined);
 
   const onValueChange = (itemValue: string, itemIndex: number) => {
@@ -33,7 +44,7 @@ const Picker: React.FC<PickerComponentProps> = ({
     <Touchable
       disabled={disabled}
       onPress={toggleFocus}
-      style={[styles.container, style]}
+      style={[styles.container, viewStyles]}
     >
       <View>
         <NativePicker
@@ -64,6 +75,7 @@ const Picker: React.FC<PickerComponentProps> = ({
             // @ts-ignore
             ref={textField} // cannot determine if ref is of correct type due to component being wrapped in a withTheme()
             disabled={disabled}
+            style={style}
           />
         </View>
       </View>

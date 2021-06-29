@@ -114,7 +114,6 @@ export function Row({
       style={[
         style, // style goes first b/c we can't override these
         {
-          minHeight: 40,
           alignItems,
           flexDirection: "row",
           justifyContent: justifyContent,
@@ -175,10 +174,7 @@ export function Stack({
 }) {
   return (
     // style must go first since we don't want justifyContent, alignItems overridden
-    <View
-      style={[style, { minHeight: 40, justifyContent, alignItems }]}
-      {...rest}
-    >
+    <View style={[style, { justifyContent, alignItems }]} {...rest}>
       {children}
     </View>
   );

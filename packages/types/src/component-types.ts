@@ -417,6 +417,17 @@ export const TEXT_INPUT_PROPS = {
     formType: FORM_TYPES.string,
     propType: PROP_TYPES.STRING,
   },
+  disabled: {
+    group: GROUPS.basic,
+    label: "Disabled",
+    description:
+      "Whether the input should be disabled. Will prevent input and show a greyed out state.",
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
+    defaultValue: null,
+    editable: true,
+    required: false,
+  },
   editable: {
     group: GROUPS.advanced,
     label: "Editable",

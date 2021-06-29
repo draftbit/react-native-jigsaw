@@ -73,17 +73,6 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
     },
-    keyboardAppearance: {
-      group: GROUPS.basic,
-      label: "Keyboard Appearance",
-      description: "Determines color of the keyboard on iOS",
-      editable: true,
-      required: false,
-      defaultValue: null,
-      options: ["default", "light", "dark"],
-      formType: FORM_TYPES.flatArray,
-      propType: PROP_TYPES.STRING,
-    },
     multiline: {
       group: GROUPS.basic,
       label: "Multiple Lines",

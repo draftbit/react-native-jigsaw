@@ -40,7 +40,7 @@ import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
 // import HeaderExample from "./HeaderExample";
 import LayoutExample from "./LayoutExample";
 
-// import PickerExample from "./PickerExample";
+import PickerExample from "./PickerExample";
 
 // import ProgressIndicatorExample from "./ProgressIndicatorExample.js";
 // import ProgressExample from "./ProgressExample";
@@ -77,7 +77,7 @@ const ROUTES = {
   FieldSearchBarFull: FieldSearchBarFullExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
   // Header: HeaderExample,
-  // Picker: PickerExample,
+  Picker: PickerExample,
   // ProgressBar: ProgressExample,
   // ProgressIndicator: ProgressIndicatorExample,
   // TODO fix Row (spacing problem)

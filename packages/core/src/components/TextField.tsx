@@ -398,23 +398,56 @@ class TextField extends React.Component<Props> {
       type === "solid" ? { marginHorizontal: 12 } : {},
     ];
 
+    const {
+      backgroundColor: bgColor,
+      padding,
+      paddingTop,
+      paddingBottom,
+      paddingLeft,
+      paddingRight,
+      borderRadius,
+      borderWidth,
+      borderColor: borderCol,
+      ...styleProp
+    } = StyleSheet.flatten(style || {}) as ViewStyle & { height?: number };
+
     return (
-      <View style={[styles.container, style]}>
+      <View style={[styles.container, styleProp]}>
         {leftIconName && leftIconMode === "outset" ? (
           <Icon {...leftIconProps} style={leftIconStyle} />
         ) : null}
-        <View style={[containerStyle, style ? { height: style.height } : {}]}>
+        <View
+          style={[
+            containerStyle,
+            style
+              ? {
+                  ...(style.height ? { height: style.height } : {}),
+                  ...(bgColor ? { backgroundColor: bgColor } : {}),
+                  ...(padding ? { padding } : {}),
+                  ...(paddingTop ? { paddingTop } : {}),
+                  ...(paddingBottom ? { paddingBottom } : {}),
+                  ...(paddingLeft ? { paddingLeft } : {}),
+                  ...(paddingRight ? { paddingRight } : {}),
+                  ...(borderRadius ? { borderRadius } : {}),
+                  ...(borderWidth ? { borderWidth } : {}),
+                  ...(borderCol ? { borderColor: borderCol } : {}),
+                }
+              : {},
+          ]}
+        >
           {type === "underline" ? (
             // When type === 'flat', render an underline
             <Animated.View
               style={[
                 styles.underline,
                 {
-                  backgroundColor: error
-                    ? colors.error
-                    : this.state.focused
-                    ? activeColor
-                    : underlineColor,
+                  backgroundColor:
+                    bgColor ||
+                    (error
+                      ? colors.error
+                      : this.state.focused
+                      ? activeColor
+                      : underlineColor),
                   // Underlines is thinner when input is not focused
                   transform: [{ scaleY: this.state.focused ? 1 : 0.5 }],
                 },

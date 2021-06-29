@@ -55,6 +55,26 @@ function PickerExample({ theme }) {
         />
       </Section>
 
+      <Section title="Picker - Underline (custom styles)">
+        <Picker
+          label="Make"
+          placeholder="Select a make..."
+          options={[
+            { value: "Audi", label: "Audi" },
+            { value: "BMW", label: "BMW" },
+            { value: "Cadillac", label: "Cadillac" },
+            { value: "Dodge", label: "Dodge" },
+          ]}
+          disabled
+          value={value}
+          onValueChange={handleChange}
+          style={{
+            backgroundColor: "red",
+            padding: 16,
+          }}
+        />
+      </Section>
+
       <Section title="Picker - Solid">
         <Picker
           label="Make"
@@ -102,6 +122,28 @@ function PickerExample({ theme }) {
           error
           value={value}
           onValueChange={handleChange}
+        />
+      </Section>
+
+      <Section title="Picker - Solid (custom styles)">
+        <Picker
+          label="Make"
+          placeholder="Select a make..."
+          type="solid"
+          options={[
+            { value: "Audi", label: "Audi" },
+            { value: "BMW", label: "BMW" },
+            { value: "Cadillac", label: "Cadillac" },
+            { value: "Dodge", label: "Dodge" },
+          ]}
+          value={value}
+          onValueChange={handleChange}
+          style={{
+            backgroundColor: "red",
+            borderWidth: 2,
+            borderColor: "green",
+            padding: 16,
+          }}
         />
       </Section>
     </Container>

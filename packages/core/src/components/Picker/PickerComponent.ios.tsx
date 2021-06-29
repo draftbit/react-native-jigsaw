@@ -11,6 +11,7 @@ import Button from "../DeprecatedButton";
 import TextField from "../TextField";
 import Touchable from "../Touchable";
 import { PickerComponentProps } from "./PickerTypes";
+import { extractStyles } from "../../utilities";
 import type { IconSlot } from "../../interfaces/Icon";
 
 const Picker: React.FC<PickerComponentProps & IconSlot> = ({
@@ -24,6 +25,16 @@ const Picker: React.FC<PickerComponentProps & IconSlot> = ({
   theme: { colors },
   ...props
 }) => {
+  const {
+    viewStyles: {
+      borderRadius, // eslint-disable-line @typescript-eslint/no-unused-vars
+      borderWidth, // eslint-disable-line @typescript-eslint/no-unused-vars
+      borderColor, // eslint-disable-line @typescript-eslint/no-unused-vars
+      backgroundColor, // eslint-disable-line @typescript-eslint/no-unused-vars
+      ...viewStyles
+    },
+  } = extractStyles(style);
+
   const textField = React.useRef<typeof TextField | undefined>(undefined);
   const [pickerVisible, setIsPickerVisible] = React.useState(false);
 
@@ -34,7 +45,7 @@ const Picker: React.FC<PickerComponentProps & IconSlot> = ({
   };
 
   return (
-    <View style={[styles.container, style]}>
+    <View style={[styles.container, viewStyles]}>
       <Touchable disabled={disabled} onPress={toggleVisibility}>
         <TextField
           {...props}
@@ -44,6 +55,7 @@ const Picker: React.FC<PickerComponentProps & IconSlot> = ({
           ref={textField} // cannot determine if ref is of correct type due to component being wrapped in a withTheme()
           disabled={disabled}
           pointerEvents="none"
+          style={style}
         />
       </Touchable>
       {pickerVisible && (

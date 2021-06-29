@@ -70,29 +70,6 @@ const SEED_DATA_PROPS = {
     required: false,
     group: GROUPS.basic,
   },
-  initialDate: {
-    label: "Initial Date",
-    description:
-      "Optionally set an initial date to make your forms easier to work with",
-    formType: FORM_TYPES.date,
-    propType: PROP_TYPES.STRING,
-    defaultValue: null,
-    editable: true,
-    required: false,
-    group: GROUPS.basic,
-  },
-  options: {
-    label: "Options",
-    description:
-      "Array of picker options. An array of objects containing a label and value.",
-    editable: true,
-    required: false,
-    formType: FORM_TYPES.array,
-    propType: PROP_TYPES.OBJECT,
-    defaultValue: null,
-    options: [],
-    group: GROUPS.data,
-  },
   disabled: {
     label: "Disabled",
     description:

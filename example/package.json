@@ -18,7 +18,7 @@
     "@draftbit/ui": "^40.36.10",
     "@expo/vector-icons": "^12.0.0",
     "@react-native-community/datetimepicker": "3.2.0",
-    "@react-native-picker/picker": "1.9.11",
+    "@react-native-community/picker": "~1.6.6",
     "@react-navigation/drawer": "^5.7.7",
     "@react-navigation/native": "^5.4.2",
     "expo": "^41.0.0",

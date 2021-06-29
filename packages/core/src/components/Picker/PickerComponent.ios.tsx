@@ -2,7 +2,7 @@ import * as React from "react";
 import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { Picker as NativePicker } from "@react-native-picker/picker";
+import { Picker as NativePicker } from "@react-native-community/picker";
 
 import { withTheme } from "../../theming";
 

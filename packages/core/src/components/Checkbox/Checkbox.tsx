@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import {
   COMPONENT_TYPES,
-  createActionProp,
   createBoolProp,
   createIconProp,
   createStaticNumberProp,
@@ -136,7 +135,7 @@ export const SEED_DATA = {
   },
   props: {
     fieldName: createFieldNameProp({
-      defaultValue: "unchecked",
+      defaultValue: "checkboxValue",
       valuePropName: "status",
       handlerPropName: "onPress",
     }),
@@ -159,7 +158,6 @@ export const SEED_DATA = {
       label: "Disabled",
       description: "Whether the checkbox is disabled",
     }),
-    onPress: createActionProp(),
     size: createStaticNumberProp({
       label: "Size",
       description: "Specifies the size of the icon",

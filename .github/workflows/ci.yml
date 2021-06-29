@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - expo-v40
   pull_request:
     types: [assigned, opened, synchronize, reopened]
 

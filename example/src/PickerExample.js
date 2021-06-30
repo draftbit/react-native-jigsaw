@@ -157,7 +157,7 @@ function PickerExample({ theme }) {
         />
       </Section>
 
-      <Section title="Picker - Solid">
+      <Section title="Picker - Solid with string options">
         <Picker
           label="Make"
           placeholder="Select a make..."

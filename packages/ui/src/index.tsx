@@ -21,6 +21,7 @@ export {
   Surface,
   Switch,
   SwitchRow,
+  TextInput,
   ThemeProvider,
   Touchable,
   withTheme,

@@ -19,6 +19,7 @@ import { useTheme } from "../../theming";
 import type { IconSlot } from "../../interfaces/Icon";
 
 import Touchable from "../Touchable";
+import { usePrevious } from "../../hooks";
 
 export enum CheckboxStatus {
   Checked = "checked",
@@ -29,13 +30,14 @@ export enum CheckboxStatus {
 export interface CheckboxProps {
   status?: CheckboxStatus;
   disabled?: boolean;
-  onPress?: () => void;
+  onPress?: (checked: boolean) => void;
   color?: string;
   uncheckedColor?: string;
   indeterminateColor?: string;
   checkedIcon?: string;
   uncheckedIcon?: string;
   indeterminateIcon?: string;
+  initialValue?: boolean;
   size?: number;
   style?: StyleProp<ViewStyle>;
 }
@@ -49,6 +51,7 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     color,
     uncheckedColor,
     indeterminateColor,
+    initialValue,
     checkedIcon = "MaterialCommunityIcons/checkbox-marked",
     uncheckedIcon = "MaterialCommunityIcons/checkbox-blank-outline",
     indeterminateIcon = "AntDesign/minussquareo",
@@ -56,6 +59,12 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     style,
     ...rest
   }) => {
+    const previousInitialValue = usePrevious(initialValue);
+    React.useEffect(() => {
+      if (initialValue !== previousInitialValue) {
+        onPress(initialValue);
+      }
+    }, [initialValue, previousInitialValue, onPress]);
     const { colors } = useTheme();
 
     const colorsMap = {
@@ -75,7 +84,7 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     return (
       <Touchable
         {...rest}
-        onPress={onPress}
+        onPress={() => onPress(status === "unchecked" ? true : false)}
         disabled={disabled}
         accessibilityState={{ disabled }}
         accessibilityRole="button"

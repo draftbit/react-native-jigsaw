@@ -2,7 +2,7 @@ import * as React from "react";
 import { withTheme } from "../../theming";
 //@ts-ignore
 import PickerComponent from "./PickerComponent"; //unable to find file due to using .android/.web/.ios
-import { PickerComponentProps } from "./PickerTypes";
+import { PickerComponentProps, PickerOption } from "./PickerTypes";
 
 import {
   GROUPS,
@@ -11,29 +11,73 @@ import {
   PROP_TYPES,
   FIELD_NAME,
 } from "@draftbit/types";
+import { usePrevious } from "../../hooks";
 
-type Props = {
+type Props = PickerComponentProps & {
   placeholder?: string;
   value: string;
-} & PickerComponentProps;
+  options: PickerOption[] | string[];
+};
+
+function normalizeOptions(options: Props["options"]): PickerOption[] {
+  if (options.length === 0) {
+    return [];
+  }
+
+  if (typeof options[0] === "string") {
+    return (options as string[]).map((option) => ({
+      label: option,
+      value: option,
+    }));
+  }
+
+  if (options[0].label && options[0].value) {
+    return options as PickerOption[];
+  }
+
+  throw new Error(
+    'Picker options must be either an array of strings or array of { "label": string; "value": string; } objects.'
+  );
+}
 
 const Picker: React.FC<Props> = ({
   options = [],
   placeholder,
   onValueChange: onValueChangeOverride,
   value,
+  initialValue,
   ...props
 }) => {
-  const onValueChange = (itemValue: string, itemIndex: number) => {
-    if (placeholder && itemIndex === 0) {
-      return;
+  const onValueChange = React.useCallback(
+    (itemValue: string, itemIndex: number) => {
+      if (placeholder && itemIndex === 0) {
+        return;
+      }
+      onValueChangeOverride && onValueChangeOverride(itemValue, itemIndex);
+    },
+    [placeholder, onValueChangeOverride]
+  );
+
+  const normalizedOptions = normalizeOptions(options);
+
+  const previousInitialValue = usePrevious(initialValue);
+  React.useEffect(() => {
+    if (initialValue !== previousInitialValue) {
+      const index = normalizedOptions.findIndex(
+        (opt) => opt.value === initialValue
+      );
+
+      if (index == null) {
+        return;
+      }
+
+      onValueChange(initialValue, index);
     }
-    onValueChangeOverride && onValueChangeOverride(itemValue, itemIndex);
-  };
+  }, [initialValue, previousInitialValue, normalizedOptions, onValueChange]);
 
   const pickerOptions = placeholder
-    ? [{ value: placeholder, label: placeholder }, ...options]
-    : options;
+    ? [{ value: placeholder, label: placeholder }, ...normalizedOptions]
+    : normalizedOptions;
 
   return (
     <PickerComponent

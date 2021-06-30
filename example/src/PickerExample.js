@@ -4,6 +4,7 @@ import Section, { Container } from "./Section";
 
 function PickerExample({ theme }) {
   const [value, setValue] = React.useState("Audi");
+  const [value2, setValue2] = React.useState("Audi");
   const handleChange = (v) => setValue(v);
 
   return (
@@ -72,6 +73,32 @@ function PickerExample({ theme }) {
             backgroundColor: "red",
             padding: 16,
           }}
+        />
+      </Section>
+
+      <Section title="Picker - Underline with string options">
+        <Picker
+          label="Make"
+          placeholder="Select a make..."
+          options={["Audi", "BMW", "Cadillac", "Dodge"]}
+          value={value}
+          onValueChange={handleChange}
+        />
+      </Section>
+
+      <Section title="Picker - Underline with initial value">
+        <Picker
+          label="Make"
+          placeholder="Select a make..."
+          options={[
+            { value: "Audi", label: "Audi" },
+            { value: "BMW", label: "BMW" },
+            { value: "Cadillac", label: "Cadillac" },
+            { value: "Dodge", label: "Dodge" },
+          ]}
+          value={value2}
+          onValueChange={(v) => setValue2(v)}
+          initialValue="Dodge"
         />
       </Section>
 
@@ -144,6 +171,17 @@ function PickerExample({ theme }) {
             borderColor: "green",
             padding: 16,
           }}
+        />
+      </Section>
+
+      <Section title="Picker - Solid with string options">
+        <Picker
+          label="Make"
+          placeholder="Select a make..."
+          type="solid"
+          options={["Audi", "BMW", "Cadillac", "Dodge"]}
+          value={value}
+          onValueChange={handleChange}
         />
       </Section>
     </Container>

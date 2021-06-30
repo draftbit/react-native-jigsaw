@@ -15,11 +15,13 @@ import {
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
+import { usePrevious } from "../hooks";
 
 type Props = {
   icon: string;
   toggled?: boolean;
-  onPress?: () => void;
+  onPress?: (toggled: boolean) => void;
+  initialValue?: boolean;
   disabled?: boolean;
   color?: colorTypes;
   colorSecondary?: colorTypes;
@@ -36,6 +38,7 @@ const ToggleButton: React.FC<Props> = ({
   icon,
   toggled = false,
   onPress = () => {},
+  initialValue,
   disabled = false,
   color = "primary",
   colorSecondary = "surface",
@@ -47,13 +50,20 @@ const ToggleButton: React.FC<Props> = ({
   style,
   ...rest
 }) => {
+  const previousInitialValue = usePrevious(initialValue);
+  React.useEffect(() => {
+    if (initialValue !== previousInitialValue) {
+      onPress(initialValue);
+    }
+  }, [initialValue, previousInitialValue, onPress]);
+
   return (
     <IconButton
       Icon={Icon}
       icon={icon}
       size={iconSize}
       color={toggled ? colors[color] : colors[colorSecondary]}
-      onPress={onPress}
+      onPress={() => onPress(!toggled)}
       disabled={disabled}
       style={[
         styles.mainContainer,

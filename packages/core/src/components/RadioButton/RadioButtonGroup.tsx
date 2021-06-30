@@ -7,11 +7,13 @@ import {
 } from "@draftbit/types";
 import type { Theme } from "../../styles/DefaultTheme";
 import { radioButtonGroupContext, Direction } from "./context";
+import { usePrevious } from "../../hooks";
 export interface RadioButtonGroupProps {
   direction?: Direction;
   style?: StyleProp<ViewStyle>;
   value: string;
   onValueChange: (value: string) => void;
+  initialValue?: string;
   theme: Theme;
   children: React.ReactNode;
 }
@@ -22,10 +24,18 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   direction = Direction.Vertical,
   value,
   onValueChange = () => {},
+  initialValue,
   style,
   children,
   ...rest
 }) => {
+  const previousInitialValue = usePrevious(initialValue);
+  React.useEffect(() => {
+    if (initialValue !== previousInitialValue) {
+      onValueChange(initialValue);
+    }
+  }, [initialValue, previousInitialValue, onValueChange]);
+
   const _containerStyle: StyleProp<ViewStyle> = [
     {
       flexDirection: direction === Direction.Horizontal ? "row" : "column",

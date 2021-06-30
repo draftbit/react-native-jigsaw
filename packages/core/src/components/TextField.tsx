@@ -192,7 +192,7 @@ class TextField extends React.Component<Props, State> {
       return;
     }
 
-    // this.setState({ value });
+    this.setState({ value: value as string });
     this.props.onChangeText && this.props.onChangeText(value);
   };
 

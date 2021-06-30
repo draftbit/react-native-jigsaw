@@ -21,6 +21,7 @@ const SingleCheckboxWrapper = ({ label, children }) => (
 
 const CheckboxExample = ({ theme }) => {
   const [checked, setChecked] = React.useState(true);
+  const [checked2, setChecked2] = React.useState(true);
   const [selectedValues, setSelectedValues] = React.useState([]);
 
   const handleValueSelected = (value, selected) => {
@@ -33,7 +34,7 @@ const CheckboxExample = ({ theme }) => {
     }
   };
 
-  const handlePress = () => setChecked((prevState) => !prevState);
+  const handlePress = (value) => setChecked(() => value);
 
   return (
     <ScreenContainer hasSafeArea={false} scrollable={true}>
@@ -72,6 +73,13 @@ const CheckboxExample = ({ theme }) => {
               status={checked ? "checked" : "unchecked"}
               onPress={handlePress}
               size={72}
+            />
+          </SingleCheckboxWrapper>
+          <SingleCheckboxWrapper label="Initial value">
+            <Checkbox
+              status={checked2 ? "checked" : "unchecked"}
+              onPress={(checked) => setChecked2(checked)}
+              initialValue={false}
             />
           </SingleCheckboxWrapper>
         </Row>

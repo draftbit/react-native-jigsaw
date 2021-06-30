@@ -31,7 +31,7 @@ export const SEED_DATA = {
     posterSource: createSourceProp({
       label: "Thumbnail Source",
       description: "The optional image to display over the video while it is loading.",
-      defaultValue: "https://static.draftbit.com/videos/intro-to-draftbit.png,
+      defaultValue: "https://static.draftbit.com/videos/intro-to-draftbit.png",
     }),
     resizeMode: createResizeModeProp(),
     isMuted: createStaticBoolProp({

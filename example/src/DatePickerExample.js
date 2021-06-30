@@ -95,7 +95,7 @@ function DatePickerExample({ theme }) {
           placeholder="Select a date..."
           type="solid"
           date={date2}
-          onDateChange={(date) => setDate2(date)}
+          onDateChange={(d) => setDate2(d)}
           initialValue={FOUR_YEARS_AGO}
         />
       </Section>

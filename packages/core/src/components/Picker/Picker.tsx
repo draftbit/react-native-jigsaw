@@ -22,6 +22,7 @@ const Picker: React.FC<Props> = ({
   placeholder,
   onValueChange: onValueChangeOverride,
   value,
+  initialValue,
   ...props
 }) => {
   const onValueChange = (itemValue: string, itemIndex: number) => {
@@ -30,6 +31,18 @@ const Picker: React.FC<Props> = ({
     }
     onValueChangeOverride && onValueChangeOverride(itemValue, itemIndex);
   };
+
+  React.useEffect(() => {
+    if (initialValue != null) {
+      const index = options.findIndex((opt) => opt.value === initialValue);
+
+      if (index == null) {
+        return;
+      }
+
+      onValueChange(initialValue, index);
+    }
+  }, [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const pickerOptions = placeholder
     ? [{ value: placeholder, label: placeholder }, ...options]

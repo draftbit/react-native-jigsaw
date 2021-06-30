@@ -28,6 +28,7 @@ type Props = {
   onChange: (text: string) => void;
   onSubmit?: (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
   value: string;
+  initialValue?: string;
 } & IconSlot;
 
 const FieldSearchBarFull: React.FC<Props> = ({
@@ -39,6 +40,7 @@ const FieldSearchBarFull: React.FC<Props> = ({
   onChange: changeOverride,
   onSubmit: submitOverride,
   value,
+  initialValue,
 }) => {
   const [focused, setIsFocused] = React.useState(false);
 
@@ -49,6 +51,12 @@ const FieldSearchBarFull: React.FC<Props> = ({
   const onChange = (text: string) => {
     changeOverride && changeOverride(text);
   };
+
+  React.useEffect(() => {
+    if (initialValue != null) {
+      onChange(initialValue);
+    }
+  }, [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const onFocus = () => {
     setIsFocused(true);

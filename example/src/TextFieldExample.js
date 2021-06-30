@@ -5,6 +5,8 @@ import Section, { Container } from "./Section";
 
 export default function TextFieldExample() {
   const [value, setText] = React.useState("Change me!");
+  const [value2, setText2] = React.useState("Change me!");
+  const [value3, setText3] = React.useState("Change me!");
   const handleChange = (text) => setText(text);
 
   return (
@@ -79,6 +81,13 @@ export default function TextFieldExample() {
               backgroundColor: "green",
             }}
           />
+          <TextField
+            type="solid"
+            label="Solid input with initial value"
+            value={value2}
+            onChangeText={(text) => setText2(text)}
+            initialValue="Hello world!!!!!"
+          />
         </Section>
 
         <Section title="Underline">
@@ -150,6 +159,13 @@ export default function TextFieldExample() {
               borderWidth: 2,
               backgroundColor: "green",
             }}
+          />
+          <TextField
+            type="underline"
+            label="Underline input with initial value"
+            value={value3}
+            onChangeText={(text) => setText3(text)}
+            initialValue="Hello world!!!!!"
           />
         </Section>
       </Container>

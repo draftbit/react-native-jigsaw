@@ -51,6 +51,7 @@ import SwitchExample from "./SwitchExample";
 import StepperExample from "./StepperExample";
 
 import TextFieldExample from "./TextFieldExample";
+import TextInputExample from "./TextInputExample";
 import CheckboxExample from "./CheckboxExample";
 import WebViewExample from "./WebViewExample";
 import AccordionExample from "./AccordionExample";
@@ -87,6 +88,7 @@ const ROUTES = {
   Switch: SwitchExample,
   Stepper: StepperExample,
   TextField: TextFieldExample,
+  TextInput: TextInputExample,
   WebView: WebViewExample,
 };
 

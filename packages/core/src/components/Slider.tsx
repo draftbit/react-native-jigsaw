@@ -19,6 +19,7 @@ import type { IconSlot } from "../interfaces/Icon";
 export type Props = {
   style?: StyleProp<ViewStyle>;
   value?: number;
+  initialValue?: number;
   minimumTrackTintColor: string;
   maximumTrackTintColor: string;
   leftIcon?: string;
@@ -57,11 +58,12 @@ function maybeParseValue(value: any) {
 
 function Slider({
   Icon,
-  leftIcon = "Ionicons/sunny-outline",
-  rightIcon = "Ionicons/sunny",
+  leftIcon,
+  rightIcon,
   leftIconColor,
   rightIconColor,
   value,
+  initialValue,
   minimumTrackTintColor,
   maximumTrackTintColor,
   thumbTintColor,
@@ -74,6 +76,12 @@ function Slider({
   theme,
   ...rest
 }: Props) {
+  React.useEffect(() => {
+    if (initialValue != null) {
+      onValueChange(initialValue);
+    }
+  }, [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const minTrackColor = minimumTrackTintColor || theme.colors.primary;
   const maxTrackColor = maximumTrackTintColor || theme.colors.light;
   const thumbColor = thumbTintColor || theme.colors.primary;
@@ -131,12 +139,9 @@ export const SEED_DATA = {
   layout: {},
   props: {
     fieldName: createFieldNameProp({
-      defaultValue: 0,
+      defaultValue: "sliderValue",
       handlerPropName: "onValueChange",
-      valuePropName: "sliderValue",
-    }),
-    value: createNumberProp({
-      label: "Value",
+      valuePropName: "value",
     }),
     minimumValue: createNumberProp({
       group: GROUPS.basic,

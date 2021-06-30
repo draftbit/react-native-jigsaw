@@ -12,6 +12,7 @@ export interface RadioButtonGroupProps {
   style?: StyleProp<ViewStyle>;
   value: string;
   onValueChange: (value: string) => void;
+  initialValue?: string;
   theme: Theme;
   children: React.ReactNode;
 }
@@ -22,10 +23,17 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   direction = Direction.Vertical,
   value,
   onValueChange = () => {},
+  initialValue,
   style,
   children,
   ...rest
 }) => {
+  React.useEffect(() => {
+    if (initialValue != null) {
+      onValueChange(initialValue);
+    }
+  }, [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const _containerStyle: StyleProp<ViewStyle> = [
     {
       flexDirection: direction === Direction.Horizontal ? "row" : "column",

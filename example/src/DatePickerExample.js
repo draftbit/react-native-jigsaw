@@ -2,8 +2,12 @@ import * as React from "react";
 import { DatePicker, withTheme } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
+const FOUR_YEARS_AGO = new Date();
+FOUR_YEARS_AGO.setFullYear(FOUR_YEARS_AGO.getFullYear() - 4);
+
 function DatePickerExample({ theme }) {
   const [date, setDate] = React.useState(new Date());
+  const [date2, setDate2] = React.useState(new Date());
   const handleChange = (d) => setDate(d);
 
   return (
@@ -84,6 +88,15 @@ function DatePickerExample({ theme }) {
           type="solid"
           date={date}
           onDateChange={handleChange}
+        />
+
+        <DatePicker
+          label="Date with initial value"
+          placeholder="Select a date..."
+          type="solid"
+          date={date2}
+          onDateChange={(date) => setDate2(date)}
+          initialValue={FOUR_YEARS_AGO}
         />
       </Section>
     </Container>

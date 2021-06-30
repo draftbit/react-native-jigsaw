@@ -18,13 +18,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import dateFormat from "dateformat";
 import { withTheme } from "../../theming";
-import {
-  COMPONENT_TYPES,
-  createActionProp,
-  createBoolProp,
-  createTextProp,
-  TEXT_INPUT_PROPS,
-} from "@draftbit/types";
 import Portal from "../Portal/Portal";
 import Button from "../DeprecatedButton";
 import Touchable from "../Touchable";
@@ -50,7 +43,8 @@ type Props = {
   // type?: string;
   date?: Date;
   format?: string;
-  onDateChange?: (data?: any) => void;
+  onDateChange?: (data?: Date) => void;
+  initialValue?: Date;
   disabled?: boolean;
   mode?: "date" | "time" | "datetime";
   type?: "solid" | "underline";
@@ -83,6 +77,7 @@ const DatePicker: React.FC<Props> = ({
   theme: { colors, typography, roundness, disabledOpacity },
   date,
   onDateChange = () => {},
+  initialValue,
   disabled = false,
   mode = "date",
   format,
@@ -105,6 +100,13 @@ const DatePicker: React.FC<Props> = ({
     measured: Boolean;
     width: number;
   }>({ measured: false, width: 0 });
+
+  React.useEffect(() => {
+    if (initialValue != null) {
+      setValue(initialValue);
+      onDateChange(initialValue);
+    }
+  }, [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getValidDate = (): Date => {
     if (!value) {
@@ -561,39 +563,3 @@ const styles = StyleSheet.create({
 });
 
 export default withTheme(DatePicker);
-
-export const SEED_DATA = {
-  name: "Date Picker",
-  tag: "DatePicker",
-  description:
-    "A picker to take date or time or both as input with types: underline and solid",
-  category: COMPONENT_TYPES.input,
-  props: {
-    ...TEXT_INPUT_PROPS,
-    format: createTextProp({ label: "format" }),
-    onDateChange: createActionProp({}),
-    disabled: createBoolProp({
-      label: "disabled",
-      description: "whether to disable the date picker or not",
-    }),
-    mode: createTextProp({
-      label: "mode",
-      description: "date or time or datetime",
-      defaultValue: "date",
-    }),
-    type: createTextProp({
-      label: "type",
-      description: "solid or underline",
-      defaultValue: "underline",
-    }),
-    label: createTextProp({ label: "label" }),
-    placeholder: createTextProp({ label: "placeholder" }),
-    leftIconName: createTextProp({ label: "Left icon name" }),
-    leftIconMode: createTextProp({
-      label: "Left icon mode",
-      description: "inset or outset",
-      defaultValue: "inset",
-    }),
-    rightIconName: createTextProp({ label: "Right icon name" }),
-  },
-};

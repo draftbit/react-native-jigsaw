@@ -155,18 +155,18 @@ const styles = StyleSheet.create({
 export const SEED_DATA = {
   name: "Audio Player",
   tag: "AudioPlayer",
-  description: "Given a URL, plays sounds!",
+  description: "Given a source URL, plays sounds & audio!",
   category: COMPONENT_TYPES.media,
   layout: {},
   props: {
     source: {
       group: GROUPS.data,
-      label: "URL",
-      description: "The url of the sound",
+      label: "Source",
+      description: "The source URL for the audio file.",
       editable: true,
       required: true,
       defaultValue:
-        "https://hwcdn.libsyn.com/p/9/e/2/9e224ffb4f3625c8/Nerdist_644_-_Ted_Melfi.mp3?c_id=8473543&cs_id=8473543&destination_id=18174&expiration=1607628092&hwt=f8327d4f551ec81f902e666647dc76f5",
+        "https://static.draftbit.com/audio/intro-to-draftbit-audio.mp3",
       formType: FORM_TYPES.sourceUrl,
       propType: PROP_TYPES.OBJECT,
     },

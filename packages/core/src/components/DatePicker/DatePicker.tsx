@@ -43,7 +43,8 @@ type Props = {
   // type?: string;
   date?: Date;
   format?: string;
-  onDateChange?: (data?: any) => void;
+  onDateChange?: (data?: Date) => void;
+  initialValue?: Date;
   disabled?: boolean;
   mode?: "date" | "time" | "datetime";
   type?: "solid" | "underline";
@@ -76,6 +77,7 @@ const DatePicker: React.FC<Props> = ({
   theme: { colors, typography, roundness, disabledOpacity },
   date,
   onDateChange = () => {},
+  initialValue,
   disabled = false,
   mode = "date",
   format,
@@ -98,6 +100,13 @@ const DatePicker: React.FC<Props> = ({
     measured: Boolean;
     width: number;
   }>({ measured: false, width: 0 });
+
+  React.useEffect(() => {
+    if (initialValue != null) {
+      setValue(initialValue);
+      onDateChange(initialValue);
+    }
+  }, [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getValidDate = (): Date => {
     if (!value) {

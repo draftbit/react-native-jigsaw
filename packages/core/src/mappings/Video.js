@@ -11,8 +11,7 @@ export const SEED_DATA = {
   tag: "Video",
   description: "Given a URL, display a video",
   doc_link: "https://docs.expo.io/versions/latest/sdk/video/",
-  code_link:
-    "https://github.com/expo/expo/blob/master/packages/expo-av/src/Video.tsx",
+  code_link: "https://github.com/expo/expo/blob/master/packages/expo-av/src/Video.tsx",
   category: COMPONENT_TYPES.media,
   layout: {
     height: 215,
@@ -59,8 +58,7 @@ export const SEED_DATA = {
     }),
     rate: createNumberProp({
       label: "Playback Rate",
-      description:
-        "The playback rate of the media. This value must be between 0.0 and 32.0 (Default: 1)",
+      description: "The playback rate of the media. This value must be between 0.0 and 32.0 (Default: 1)",
       min: 0,
       max: 32,
       step: 0.25,
@@ -68,8 +66,7 @@ export const SEED_DATA = {
     }),
     volume: createNumberProp({
       label: "Volume",
-      description:
-        "The volume of the audio for this media. This value must be between 0.0 (silence) and 1.0 (maximum volume). (Default: .5)",
+      description: "The volume of the audio for this media. This value must be between 0.0 (silence) and 1.0 (maximum volume). (Default: .5)",
       min: 0,
       max: 1,
       step: 0.1,

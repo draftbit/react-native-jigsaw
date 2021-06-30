@@ -35,11 +35,15 @@ const ICON_SIZE = 24;
 
 export type Props = {
   type?: "solid" | "underline";
+  initialValue?: string;
   disabled?: boolean;
   label?: string;
   error?: boolean;
   leftIconName?: string;
   leftIconMode?: "inset" | "outset";
+  onChangeText: (
+    text: string | NativeSyntheticEvent<TextInputChangeEventData>
+  ) => void;
   rightIconName?: string;
   assistiveText?: string;
   multiline?: boolean;
@@ -55,7 +59,6 @@ interface State {
   labeled: Animated.Value;
   focused?: boolean;
   placeholder?: string | undefined;
-  defaultValue?: string | undefined;
   labelLayout: {
     measured: boolean;
     width: number;
@@ -63,7 +66,7 @@ interface State {
   value?: string;
 }
 
-class TextField extends React.Component<Props> {
+class TextField extends React.Component<Props, State> {
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     return {
       value:
@@ -77,7 +80,6 @@ class TextField extends React.Component<Props> {
     labeled: new Animated.Value(this.props.value || this.props.error ? 0 : 1),
     focused: false,
     placeholder: this.props.error ? this.props.placeholder : "",
-    defaultValue: this.props.value,
     labelLayout: {
       measured: false,
       width: 0,
@@ -85,6 +87,10 @@ class TextField extends React.Component<Props> {
   };
 
   componentDidMount() {
+    if (this.props.initialValue) {
+      this._handleChangeText(this.props.initialValue);
+    }
+
     if (this.props.placeholder) {
       this._minmizeLabel();
     }
@@ -180,14 +186,14 @@ class TextField extends React.Component<Props> {
   };
 
   _handleChangeText = (
-    value: NativeSyntheticEvent<TextInputChangeEventData>
+    value: NativeSyntheticEvent<TextInputChangeEventData> | string
   ) => {
     if (this.props.disabled) {
       return;
     }
 
-    this.setState({ value });
-    this.props.onChange && this.props.onChange(value);
+    // this.setState({ value });
+    this.props.onChangeText && this.props.onChangeText(value);
   };
 
   toggleFocus() {
@@ -542,6 +548,7 @@ class TextField extends React.Component<Props> {
             underlineColorAndroid: "transparent",
             style: inputStyles,
             ...rest,
+            value: this.state.value,
           })}
         </View>
         {rightIconName ? (

@@ -17,6 +17,7 @@ type Props = {
   theme: Theme;
   style?: StyleProp<ViewStyle>;
   onChange?: (value: number) => void;
+  initialValue?: number;
   iconSize?: number;
   iconColor?: string;
   borderRadius?: number;
@@ -28,6 +29,7 @@ const Stepper: React.FC<Props> = ({
   value = 0,
   style,
   onChange,
+  initialValue,
   theme: { colors, typography, roundness },
   iconSize = 24,
   iconColor = colors.strong,
@@ -35,6 +37,13 @@ const Stepper: React.FC<Props> = ({
   typeStyle,
 }) => {
   const [stateValue, setStateValue] = React.useState(value);
+
+  React.useEffect(() => {
+    if (initialValue != null) {
+      setStateValue(initialValue);
+      onChange && onChange(initialValue);
+    }
+  }, [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleMinus = () => {
     if (value || value === 0) {

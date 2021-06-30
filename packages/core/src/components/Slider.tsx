@@ -19,6 +19,7 @@ import type { IconSlot } from "../interfaces/Icon";
 export type Props = {
   style?: StyleProp<ViewStyle>;
   value?: number;
+  initialValue?: number;
   minimumTrackTintColor: string;
   maximumTrackTintColor: string;
   leftIcon?: string;
@@ -62,6 +63,7 @@ function Slider({
   leftIconColor,
   rightIconColor,
   value,
+  initialValue,
   minimumTrackTintColor,
   maximumTrackTintColor,
   thumbTintColor,
@@ -74,6 +76,12 @@ function Slider({
   theme,
   ...rest
 }: Props) {
+  React.useEffect(() => {
+    if (initialValue != null) {
+      onValueChange(initialValue);
+    }
+  }, [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const minTrackColor = minimumTrackTintColor || theme.colors.primary;
   const maxTrackColor = maximumTrackTintColor || theme.colors.light;
   const thumbColor = thumbTintColor || theme.colors.primary;

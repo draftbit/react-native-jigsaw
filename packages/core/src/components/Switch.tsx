@@ -18,6 +18,7 @@ import {
   RowDirection,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
+import { usePrevious } from "../hooks";
 
 type Props = {
   value: boolean;
@@ -57,12 +58,13 @@ function Switch({
     }
   }, [value, checked]);
 
+  const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {
-    if (initialValue != null) {
+    if (initialValue !== previousInitialValue) {
       setChecked(initialValue);
       onValueChange && onValueChange(initialValue);
     }
-  }, [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [initialValue, previousInitialValue, setChecked, onValueChange]);
 
   return (
     <NativeSwitch

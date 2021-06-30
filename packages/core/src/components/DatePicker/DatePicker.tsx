@@ -25,6 +25,7 @@ import DateTimePicker from "./DatePickerComponent";
 
 import type { Theme } from "../../styles/DefaultTheme";
 import type { IconSlot } from "../../interfaces/Icon";
+import { usePrevious } from "../../hooks";
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
 
@@ -101,12 +102,13 @@ const DatePicker: React.FC<Props> = ({
     width: number;
   }>({ measured: false, width: 0 });
 
+  const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {
-    if (initialValue != null) {
+    if (initialValue !== previousInitialValue) {
       setValue(initialValue);
       onDateChange(initialValue);
     }
-  }, [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [initialValue, previousInitialValue, setValue, onDateChange]);
 
   const getValidDate = (): Date => {
     if (!value) {

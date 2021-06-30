@@ -34,7 +34,7 @@ const CheckboxExample = ({ theme }) => {
     }
   };
 
-  const handlePress = (value) => setChecked(() => value);
+  const handlePress = (value) => setChecked(value);
 
   return (
     <ScreenContainer hasSafeArea={false} scrollable={true}>

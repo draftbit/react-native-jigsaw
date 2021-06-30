@@ -162,7 +162,7 @@ function PickerExample({ theme }) {
           label="Make"
           placeholder="Select a make..."
           type="solid"
-          options={[2, "BMW", "Cadillac", "Dodge"]}
+          options={["Audi", "BMW", "Cadillac", "Dodge"]}
           value={value}
           onValueChange={handleChange}
         />

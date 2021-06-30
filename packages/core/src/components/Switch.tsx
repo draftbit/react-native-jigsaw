@@ -23,6 +23,7 @@ type Props = {
   value: boolean;
   disabled?: boolean;
   onValueChange?: (value: boolean) => void;
+  initialValue?: boolean;
   theme: Theme;
   activeTrackColor: string;
   inactiveTrackColor: string;
@@ -32,6 +33,7 @@ type Props = {
 
 function Switch({
   value = false,
+  initialValue,
   disabled,
   onValueChange,
   activeTrackColor,
@@ -54,6 +56,13 @@ function Switch({
       setChecked(value);
     }
   }, [value, checked]);
+
+  React.useEffect(() => {
+    if (initialValue != null) {
+      setChecked(initialValue);
+      onValueChange && onValueChange(initialValue);
+    }
+  }, [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <NativeSwitch

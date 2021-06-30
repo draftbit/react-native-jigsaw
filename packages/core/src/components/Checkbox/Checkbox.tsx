@@ -19,6 +19,7 @@ import { useTheme } from "../../theming";
 import type { IconSlot } from "../../interfaces/Icon";
 
 import Touchable from "../Touchable";
+import { usePrevious } from "../../hooks";
 
 export enum CheckboxStatus {
   Checked = "checked",
@@ -58,11 +59,12 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     style,
     ...rest
   }) => {
+    const previousInitialValue = usePrevious(initialValue);
     React.useEffect(() => {
-      if (initialValue != null) {
+      if (initialValue !== previousInitialValue) {
         onPress(initialValue);
       }
-    }, [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [initialValue, previousInitialValue, onPress]);
     const { colors } = useTheme();
 
     const colorsMap = {

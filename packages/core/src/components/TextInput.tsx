@@ -1,5 +1,6 @@
 import React from "react";
 import { TextInput as NativeTextInput } from "react-native";
+import { usePrevious } from "../hooks";
 
 interface Props {
   initialValue?: string;
@@ -11,7 +12,12 @@ const TextInput: React.FC<Props> = ({
   onChangeText,
   ...props
 }) => {
-  React.useEffect(() => onChangeText(initialValue), [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
+  const previousInitialValue = usePrevious(initialValue);
+  React.useEffect(() => {
+    if (initialValue !== previousInitialValue) {
+      onChangeText(initialValue);
+    }
+  }, [initialValue, previousInitialValue, onChangeText]);
 
   return <NativeTextInput onChangeText={onChangeText} {...props} />;
 };

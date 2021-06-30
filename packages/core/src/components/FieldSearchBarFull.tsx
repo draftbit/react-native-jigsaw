@@ -19,6 +19,7 @@ import {
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
 import Config from "./Config";
+import { usePrevious } from "../hooks";
 
 type Props = {
   icon?: string;
@@ -48,15 +49,19 @@ const FieldSearchBarFull: React.FC<Props> = ({
     setIsFocused(false);
   };
 
-  const onChange = (text: string) => {
-    changeOverride && changeOverride(text);
-  };
+  const onChange = React.useCallback(
+    (text: string) => {
+      changeOverride && changeOverride(text);
+    },
+    [changeOverride]
+  );
 
+  const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {
-    if (initialValue != null) {
+    if (initialValue !== previousInitialValue) {
       onChange(initialValue);
     }
-  }, [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [initialValue, previousInitialValue, onChange]);
 
   const onFocus = () => {
     setIsFocused(true);

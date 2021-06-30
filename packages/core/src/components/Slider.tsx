@@ -15,6 +15,7 @@ import {
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
+import { usePrevious } from "../hooks";
 
 export type Props = {
   style?: StyleProp<ViewStyle>;
@@ -76,11 +77,12 @@ function Slider({
   theme,
   ...rest
 }: Props) {
+  const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {
-    if (initialValue != null) {
+    if (initialValue !== previousInitialValue) {
       onValueChange(initialValue);
     }
-  }, [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [initialValue, previousInitialValue, onValueChange]);
 
   const minTrackColor = minimumTrackTintColor || theme.colors.primary;
   const maxTrackColor = maximumTrackTintColor || theme.colors.light;

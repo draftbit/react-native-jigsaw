@@ -7,6 +7,7 @@ import {
 } from "@draftbit/types";
 import type { Theme } from "../../styles/DefaultTheme";
 import { radioButtonGroupContext, Direction } from "./context";
+import { usePrevious } from "../../hooks";
 export interface RadioButtonGroupProps {
   direction?: Direction;
   style?: StyleProp<ViewStyle>;
@@ -28,11 +29,12 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   children,
   ...rest
 }) => {
+  const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {
-    if (initialValue != null) {
+    if (initialValue !== previousInitialValue) {
       onValueChange(initialValue);
     }
-  }, [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [initialValue, previousInitialValue, onValueChange]);
 
   const _containerStyle: StyleProp<ViewStyle> = [
     {

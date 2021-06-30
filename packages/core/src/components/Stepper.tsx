@@ -11,6 +11,7 @@ import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
 
 import IconButton from "./IconButton";
+import { usePrevious } from "../hooks";
 
 type Props = {
   value?: number;
@@ -38,12 +39,13 @@ const Stepper: React.FC<Props> = ({
 }) => {
   const [stateValue, setStateValue] = React.useState(value);
 
+  const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {
-    if (initialValue != null) {
+    if (initialValue !== previousInitialValue) {
       setStateValue(initialValue);
       onChange && onChange(initialValue);
     }
-  }, [initialValue]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [initialValue, previousInitialValue, onChange, setStateValue]);
 
   const handleMinus = () => {
     if (value || value === 0) {

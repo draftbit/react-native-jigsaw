@@ -75,6 +75,16 @@ function PickerExample({ theme }) {
         />
       </Section>
 
+      <Section title="Picker - Underline with string options">
+        <Picker
+          label="Make"
+          placeholder="Select a make..."
+          options={["Audi", "BMW", "Cadillac", "Dodge"]}
+          value={value}
+          onValueChange={handleChange}
+        />
+      </Section>
+
       <Section title="Picker - Solid">
         <Picker
           label="Make"
@@ -144,6 +154,17 @@ function PickerExample({ theme }) {
             borderColor: "green",
             padding: 16,
           }}
+        />
+      </Section>
+
+      <Section title="Picker - Solid">
+        <Picker
+          label="Make"
+          placeholder="Select a make..."
+          type="solid"
+          options={[2, "BMW", "Cadillac", "Dodge"]}
+          value={value}
+          onValueChange={handleChange}
         />
       </Section>
     </Container>

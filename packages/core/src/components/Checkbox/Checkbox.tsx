@@ -89,7 +89,7 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
         accessibilityState={{ disabled }}
         accessibilityRole="button"
         accessibilityLiveRegion="polite"
-        style={[styles.container, style]}
+        style={[styles.container, style, { width: size, height: size }]}
       >
         <Icon
           style={styles.icon}

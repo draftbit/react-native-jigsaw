@@ -2,7 +2,7 @@ import { ViewStyle } from "react-native";
 import { StyleProp } from "react-native";
 import { Props as TextFieldProps } from "../TextField";
 
-interface PickerOption {
+export interface PickerOption {
   value: string;
   label: string;
 }

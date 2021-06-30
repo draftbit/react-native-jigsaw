@@ -2,7 +2,7 @@ import * as React from "react";
 import { withTheme } from "../../theming";
 //@ts-ignore
 import PickerComponent from "./PickerComponent"; //unable to find file due to using .android/.web/.ios
-import { PickerComponentProps } from "./PickerTypes";
+import { PickerComponentProps, PickerOption } from "./PickerTypes";
 
 import {
   GROUPS,
@@ -12,10 +12,32 @@ import {
   FIELD_NAME,
 } from "@draftbit/types";
 
-type Props = {
+type Props = PickerComponentProps & {
   placeholder?: string;
   value: string;
-} & PickerComponentProps;
+  options: PickerOption[] | string[];
+};
+
+function normalizeOptions(options: Props["options"]): PickerOption[] {
+  if (options.length === 0) {
+    return [];
+  }
+
+  if (typeof options[0] === "string") {
+    return (options as string[]).map((option) => ({
+      label: option,
+      value: option,
+    }));
+  }
+
+  if (options[0].label && options[0].value) {
+    return options as PickerOption[];
+  }
+
+  throw new Error(
+    'Picker options must be either an array of strings or array of { "label": string; "value": string; } objects.'
+  );
+}
 
 const Picker: React.FC<Props> = ({
   options = [],
@@ -31,9 +53,11 @@ const Picker: React.FC<Props> = ({
     onValueChangeOverride && onValueChangeOverride(itemValue, itemIndex);
   };
 
+  const normalizedOptions = normalizeOptions(options);
+
   const pickerOptions = placeholder
-    ? [{ value: placeholder, label: placeholder }, ...options]
-    : options;
+    ? [{ value: placeholder, label: placeholder }, ...normalizedOptions]
+    : normalizedOptions;
 
   return (
     <PickerComponent

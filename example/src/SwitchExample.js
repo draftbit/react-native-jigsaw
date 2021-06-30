@@ -4,6 +4,7 @@ import Section, { Container } from "./Section";
 
 function SwitchExample({ theme }) {
   const [value, toggle] = React.useState(false);
+  const [value2, setValue2] = React.useState(false);
   const handleChange = (v) => toggle(v);
 
   return (
@@ -22,6 +23,14 @@ function SwitchExample({ theme }) {
             fontSize: 24,
             fontWeight: "bold",
           }}
+        />
+      </Section>
+      <Section title="Enabled with initialValue">
+        <Switch
+          value={value2}
+          disabled={false}
+          initialValue={true}
+          onValueChange={(v) => setValue2(v)}
         />
       </Section>
     </Container>

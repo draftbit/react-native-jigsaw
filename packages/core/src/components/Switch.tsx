@@ -18,11 +18,13 @@ import {
   RowDirection,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
+import { usePrevious } from "../hooks";
 
 type Props = {
   value: boolean;
   disabled?: boolean;
   onValueChange?: (value: boolean) => void;
+  initialValue?: boolean;
   theme: Theme;
   activeTrackColor: string;
   inactiveTrackColor: string;
@@ -32,6 +34,7 @@ type Props = {
 
 function Switch({
   value = false,
+  initialValue,
   disabled,
   onValueChange,
   activeTrackColor,
@@ -54,6 +57,14 @@ function Switch({
       setChecked(value);
     }
   }, [value, checked]);
+
+  const previousInitialValue = usePrevious(initialValue);
+  React.useEffect(() => {
+    if (initialValue !== previousInitialValue) {
+      setChecked(initialValue);
+      onValueChange && onValueChange(initialValue);
+    }
+  }, [initialValue, previousInitialValue, setChecked, onValueChange]);
 
   return (
     <NativeSwitch

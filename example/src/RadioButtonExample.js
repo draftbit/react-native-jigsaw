@@ -22,6 +22,7 @@ const SingleRadioButtonWrapper = ({ label, children }) => (
 
 const RadioButtonGroupExample = ({ theme }) => {
   const [selected, onSelect] = React.useState("1");
+  const [selected2, onSelect2] = React.useState("1");
   const handleSelect = (value) => onSelect(value);
   return (
     <ScreenContainer hasSafeArea={false} scrollable={true}>
@@ -141,6 +142,28 @@ const RadioButtonGroupExample = ({ theme }) => {
           <RadioButtonRow size={35} label="Second" value="2" />
           <RadioButtonRow size={35} label="Third" value="3" />
         </RadioButtonFieldGroup>
+      </Section>
+
+      <Section title="Single Radio Buttons with initial value">
+        <RadioButtonGroup
+          direction="horizontal"
+          onValueChange={(v) => onSelect2(v)}
+          value={selected2}
+          initialValue="2"
+        >
+          <SingleRadioButtonWrapper>
+            <RadioButton value="1" />
+          </SingleRadioButtonWrapper>
+          <SingleRadioButtonWrapper>
+            <RadioButton value="2" />
+          </SingleRadioButtonWrapper>
+          <SingleRadioButtonWrapper label="Disabled">
+            <RadioButton value="3" disabled />
+          </SingleRadioButtonWrapper>
+          <SingleRadioButtonWrapper label="Custom color">
+            <RadioButton value="4" color={theme.colors.error} />
+          </SingleRadioButtonWrapper>
+        </RadioButtonGroup>
       </Section>
     </ScreenContainer>
   );

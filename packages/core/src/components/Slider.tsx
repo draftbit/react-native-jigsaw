@@ -15,10 +15,12 @@ import {
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
+import { usePrevious } from "../hooks";
 
 export type Props = {
   style?: StyleProp<ViewStyle>;
   value?: number;
+  initialValue?: number;
   minimumTrackTintColor: string;
   maximumTrackTintColor: string;
   leftIcon?: string;
@@ -62,6 +64,7 @@ function Slider({
   leftIconColor,
   rightIconColor,
   value,
+  initialValue,
   minimumTrackTintColor,
   maximumTrackTintColor,
   thumbTintColor,
@@ -74,6 +77,13 @@ function Slider({
   theme,
   ...rest
 }: Props) {
+  const previousInitialValue = usePrevious(initialValue);
+  React.useEffect(() => {
+    if (initialValue !== previousInitialValue) {
+      onValueChange(initialValue);
+    }
+  }, [initialValue, previousInitialValue, onValueChange]);
+
   const minTrackColor = minimumTrackTintColor || theme.colors.primary;
   const maxTrackColor = maximumTrackTintColor || theme.colors.light;
   const thumbColor = thumbTintColor || theme.colors.primary;

@@ -11,6 +11,7 @@ import {
   PROP_TYPES,
   FIELD_NAME,
 } from "@draftbit/types";
+import { usePrevious } from "../../hooks";
 
 type Props = PickerComponentProps & {
   placeholder?: string;
@@ -44,16 +45,35 @@ const Picker: React.FC<Props> = ({
   placeholder,
   onValueChange: onValueChangeOverride,
   value,
+  initialValue,
   ...props
 }) => {
-  const onValueChange = (itemValue: string, itemIndex: number) => {
-    if (placeholder && itemIndex === 0) {
-      return;
-    }
-    onValueChangeOverride && onValueChangeOverride(itemValue, itemIndex);
-  };
+  const onValueChange = React.useCallback(
+    (itemValue: string, itemIndex: number) => {
+      if (placeholder && itemIndex === 0) {
+        return;
+      }
+      onValueChangeOverride && onValueChangeOverride(itemValue, itemIndex);
+    },
+    [placeholder, onValueChangeOverride]
+  );
 
   const normalizedOptions = normalizeOptions(options);
+
+  const previousInitialValue = usePrevious(initialValue);
+  React.useEffect(() => {
+    if (initialValue !== previousInitialValue) {
+      const index = normalizedOptions.findIndex(
+        (opt) => opt.value === initialValue
+      );
+
+      if (index == null) {
+        return;
+      }
+
+      onValueChange(initialValue, index);
+    }
+  }, [initialValue, previousInitialValue, normalizedOptions, onValueChange]);
 
   const pickerOptions = placeholder
     ? [{ value: placeholder, label: placeholder }, ...normalizedOptions]

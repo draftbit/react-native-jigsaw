@@ -57,8 +57,8 @@ function maybeParseValue(value: any) {
 
 function Slider({
   Icon,
-  leftIcon = "Ionicons/sunny-outline",
-  rightIcon = "Ionicons/sunny",
+  leftIcon,
+  rightIcon,
   leftIconColor,
   rightIconColor,
   value,
@@ -131,12 +131,9 @@ export const SEED_DATA = {
   layout: {},
   props: {
     fieldName: createFieldNameProp({
-      defaultValue: 0,
+      defaultValue: "sliderValue",
       handlerPropName: "onValueChange",
-      valuePropName: "sliderValue",
-    }),
-    value: createNumberProp({
-      label: "Value",
+      valuePropName: "value",
     }),
     minimumValue: createNumberProp({
       group: GROUPS.basic,

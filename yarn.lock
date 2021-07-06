@@ -1370,6 +1370,10 @@
     deepmerge "^3.2.0"
     hoist-non-react-statics "^3.3.0"
 
+"@draftbit/ui@git://github.com/gunjankothari/react-native-jigsaw":
+  version "0.0.0"
+  resolved "git://github.com/gunjankothari/react-native-jigsaw#800aee05c14526e71a7df2727106e67883c07636"
+
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
   resolved "https://registry.yarnpkg.com/@egjs/hammerjs/-/hammerjs-2.0.17.tgz#5dc02af75a6a06e4c2db0202cae38c9263895124"

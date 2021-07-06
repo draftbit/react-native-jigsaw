@@ -1,5 +1,11 @@
 import * as React from "react";
-import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import {
+  View,
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+  Pressable,
+} from "react-native";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -16,6 +22,7 @@ type Props = {
   rating?: number;
   theme: Theme;
   style?: StyleProp<ViewStyle>;
+  onPress?: (newValue: number) => void;
 } & IconSlot;
 
 const StarRating: React.FC<Props> = ({
@@ -25,6 +32,7 @@ const StarRating: React.FC<Props> = ({
   rating = 0,
   theme,
   style,
+  onPress,
   ...rest
 }) => {
   const ratingRounded = Math.round(rating * 2) / 2;
@@ -32,18 +40,29 @@ const StarRating: React.FC<Props> = ({
   return (
     <View style={[styles.container, style]} {...rest}>
       {[...Array(maxStars)].map((_, i) => (
-        <Icon
-          key={i}
-          name={
-            ratingRounded - i === 0.5
-              ? "MaterialIcons/star-half"
-              : "MaterialIcons/star"
-          }
-          size={starSize}
-          color={
-            ratingRounded > i ? theme.colors.primary : theme.colors.divider
-          }
-        />
+        <View key={i} style={{ display: "flex" }}>
+          <Icon
+            name={
+              ratingRounded - i === 0.5
+                ? "MaterialIcons/star-half"
+                : "MaterialIcons/star"
+            }
+            size={starSize}
+            color={
+              ratingRounded > i ? theme.colors.primary : theme.colors.divider
+            }
+          />
+          <View style={styles.touchContainer}>
+            <Pressable
+              style={{ flex: 1, height: "100%", width: "50%" }}
+              onPress={() => !!onPress && onPress(i + 0.5)}
+            />
+            <Pressable
+              style={{ flex: 1, height: "100%", width: "50%" }}
+              onPress={() => !!onPress && onPress(i + 1)}
+            />
+          </View>
+        </View>
       ))}
     </View>
   );
@@ -53,6 +72,16 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
+  },
+  touchContainer: {
+    display: "flex",
+    flexDirection: "row",
+    position: "absolute",
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+    zIndex: 111,
   },
 });
 

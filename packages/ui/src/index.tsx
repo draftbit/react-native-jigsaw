@@ -32,6 +32,8 @@ export {
   ProgressBar,
   ProgressCircle,
   RowHeadlineImageCaption,
+  ActionSheet,
+  ActionSheetItem,
 } from "@draftbit/core";
 
 /**
@@ -72,6 +74,8 @@ import {
   Slider as BaseSlider,
   AccordionGroup as BaseAccordionGroup,
   AccordionItem as BaseAccordionItem,
+  // ActionSheet as BaseActionSheet,
+  // ActionSheetItem as BaseActionSheetItem
 } from "@draftbit/core";
 
 export const AvatarEdit = injectIcon(BaseAvatarEdit, Icon);
@@ -103,3 +107,5 @@ export const ToggleButton = injectIcon(BaseToggleButton, Icon);
 export const Slider = injectIcon(BaseSlider, Icon);
 export const AccordionGroup = injectIcon(BaseAccordionGroup, Icon);
 export const AccordionItem = injectIcon(BaseAccordionItem, Icon);
+// export const ActionSheet = injectIcon(BaseActionSheet, Icon);
+// export const ActionSheetItem = injectIcon(BaseActionSheetItem, Icon);

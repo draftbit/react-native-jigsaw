@@ -413,6 +413,10 @@ class TextField extends React.Component<Props, State> {
       paddingRight,
       borderRadius,
       borderWidth,
+      borderTopWidth,
+      borderRightWidth,
+      borderBottomWidth,
+      borderLeftWidth,
       borderColor: borderCol,
       ...styleProp
     } = StyleSheet.flatten(style || {}) as ViewStyle & { height?: number };
@@ -436,6 +440,10 @@ class TextField extends React.Component<Props, State> {
                   ...(paddingRight ? { paddingRight } : {}),
                   ...(borderRadius ? { borderRadius } : {}),
                   ...(borderWidth ? { borderWidth } : {}),
+                  ...(borderTopWidth ? { borderTopWidth } : {}),
+                  ...(borderRightWidth ? { borderRightWidth } : {}),
+                  ...(borderBottomWidth ? { borderBottomWidth } : {}),
+                  ...(borderLeftWidth ? { borderLeftWidth } : {}),
                   ...(borderCol ? { borderColor: borderCol } : {}),
                 }
               : {},

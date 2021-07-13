@@ -143,16 +143,19 @@ export const SEED_DATA = {
     }),
     color: createColorProp({
       group: GROUPS.basic,
+      label: "Color",
       description: "Color for the button (used when the checkbox is checked)",
       defaultValue: null,
     }),
     uncheckedColor: createColorProp({
+      group: GROUPS.basic,
       label: "Unselected Color",
       description: "Color for the button when the checkbox is unchecked",
       defaultValue: null,
     }),
     indeterminateColor: createColorProp({
-      label: "Unselected Color",
+      group: GROUPS.basic,
+      label: "Indeterminate Color",
       description: "Color for the button when the checkbox is indeterminate",
       defaultValue: null,
     }),

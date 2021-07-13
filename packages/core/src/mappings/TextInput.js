@@ -8,7 +8,7 @@ import {
 } from "@draftbit/types";
 
 export const SEED_DATA = {
-  name: "TextInput",
+  name: "Text Input",
   tag: "TextInput",
   description: "An input field that allows users to type in data.",
   category: COMPONENT_TYPES.input,

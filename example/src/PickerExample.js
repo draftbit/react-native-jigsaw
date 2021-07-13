@@ -167,7 +167,10 @@ function PickerExample({ theme }) {
           onValueChange={handleChange}
           style={{
             backgroundColor: "red",
-            borderWidth: 2,
+            borderTopWidth: 2,
+            borderRightWidth: 2,
+            borderBottomWidth: 2,
+            borderLeftWidth: 2,
             borderColor: "green",
             padding: 16,
           }}

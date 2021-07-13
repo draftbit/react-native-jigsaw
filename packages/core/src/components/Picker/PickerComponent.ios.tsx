@@ -29,6 +29,10 @@ const Picker: React.FC<PickerComponentProps & IconSlot> = ({
     viewStyles: {
       borderRadius, // eslint-disable-line @typescript-eslint/no-unused-vars
       borderWidth, // eslint-disable-line @typescript-eslint/no-unused-vars
+      borderTopWidth, // eslint-disable-line @typescript-eslint/no-unused-vars
+      borderRightWidth, // eslint-disable-line @typescript-eslint/no-unused-vars
+      borderBottomWidth, // eslint-disable-line @typescript-eslint/no-unused-vars
+      borderLeftWidth, // eslint-disable-line @typescript-eslint/no-unused-vars
       borderColor, // eslint-disable-line @typescript-eslint/no-unused-vars
       backgroundColor, // eslint-disable-line @typescript-eslint/no-unused-vars
       ...viewStyles

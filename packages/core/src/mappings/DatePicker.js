@@ -133,41 +133,22 @@ const SEED_DATA_PROPS = {
 
 export const SEED_DATA = [
   {
-    name: "Date Picker - Solid",
+    name: "Date Picker",
     tag: "DatePicker",
-    description: "A date picker with a solid border",
+    description: "A component used to select a date from a visual calendar",
     category: COMPONENT_TYPES.input,
     layout: null,
     props: {
       ...SEED_DATA_PROPS,
       type: {
-        label: "Type",
+        label: "Appearance",
         description: "Type of Datepicker",
-        formType: FORM_TYPES.string,
+        formType: FORM_TYPES.flatArray,
         propType: PROP_TYPES.STRING,
         defaultValue: "solid",
-        editable: false,
-        required: false,
-        group: GROUPS.basic,
-      },
-    },
-  },
-  {
-    name: "Date Picker - Underline",
-    tag: "DatePicker",
-    description: "A date picker with an underline",
-    category: COMPONENT_TYPES.input,
-    layout: null,
-    props: {
-      ...SEED_DATA_PROPS,
-      type: {
-        label: "Type",
-        description: "Type of Datepicker",
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "underline",
-        editable: false,
-        required: false,
+        options: ["solid", "underline"],
+        editable: true,
+        required: true,
         group: GROUPS.basic,
       },
     },

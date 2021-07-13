@@ -197,9 +197,9 @@ const SEED_DATA_PROPS = {
 
 export const SEED_DATA = [
   {
-    name: "Picker - Solid",
+    name: "Picker",
     tag: "Picker",
-    description: "A picker with a solid border",
+    description: "A component used to pick a value from a set of options",
     category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/Picker.png",
     supports_list_render: false,
@@ -207,13 +207,14 @@ export const SEED_DATA = [
       ...SEED_DATA_PROPS,
       type: {
         label: "Type",
-        description: "Type",
-        group: GROUPS.uncategorized,
-        formType: FORM_TYPES.string,
+        description: "Type of Picker",
+        formType: FORM_TYPES.flatArray,
         propType: PROP_TYPES.STRING,
         defaultValue: "solid",
-        editable: false,
-        required: false,
+        options: ["solid", "underline"],
+        editable: true,
+        required: true,
+        group: GROUPS.basic,
       },
     },
     layout: {},

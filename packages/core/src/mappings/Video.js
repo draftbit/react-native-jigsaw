@@ -19,33 +19,38 @@ export const SEED_DATA = {
   },
   props: {
     source: createSourceProp({
-      label: "Video url",
-      defaultValue: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+      label: "Source",
+      description: "The source of the video data to display.",
+      defaultValue: "http://static.draftbit.com/videos/intro-to-draftbit.mp4",
     }),
     usePoster: createStaticBoolProp({
-      label: "Use Thumbnail",
-      description: "Thumbnail for the video",
+      label: "Thumbnail",
+      description: "Show a thumbnail before the video starts.",
+      defaultValue: true,
     }),
     posterSource: createSourceProp({
-      label: "Poster Source",
-      description: "Source",
+      label: "Thumbnail Source",
+      description:
+        "The optional image to display over the video while it is loading.",
+      defaultValue: "https://static.draftbit.com/videos/intro-to-draftbit.png",
     }),
     resizeMode: createResizeModeProp(),
     isMuted: createStaticBoolProp({
       label: "Mute Audio",
-      description: "To mute the audio of the video.",
+      description: "Mute the audio of the video.",
     }),
     useNativeControls: createStaticBoolProp({
       label: "Use Native Controls",
-      description: "Allow users to have the option to pause or play the video",
+      description:
+        "Display the playback controls, allowing users to play or pause the video.",
     }),
     shouldPlay: createStaticBoolProp({
-      label: "Play on Load",
-      description: "Allows the video play on loading",
+      label: "Play Automatically",
+      description: "Start playing the video after loading is finished.",
     }),
     isLooping: createStaticBoolProp({
-      label: "Allow Looping",
-      description: "Allows the video to loop",
+      label: "Loop Video",
+      description: "Automatically replay the video.",
     }),
     positionMillis: createNumberProp({
       label: "Starting Point",

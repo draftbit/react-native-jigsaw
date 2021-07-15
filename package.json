@@ -14,7 +14,7 @@
     "bootstrap": "lerna bootstrap",
     "crosslink": "lerna link",
     "format": "prettier --write .",
-    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "lint": "eslint \"**/*.{ts,tsx}\"",
     "build": "lerna run prepare",
     "release": "lerna publish",
     "example:snack": "ts-node --transpile-only scripts/upload-to-snack.ts",

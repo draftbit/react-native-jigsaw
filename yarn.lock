@@ -1793,7 +1793,7 @@
   dependencies:
     cross-spawn "^6.0.5"
 
-"@expo/vector-icons@^12.0.2", "@expo/vector-icons@^12.0.4":
+"@expo/vector-icons@^12.0.4":
   version "12.0.5"
   resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-12.0.5.tgz#bc508ad05fb7e9a3e008704977cfec6c18aa7728"
   integrity sha512-zWvHBmkpbi1KrPma6Y+r/bsGI6MjbM1MBSe6W9A4uYMLhNI5NR4JtTnqxhf7g1XdpaDtBdv5aOWKEx4d5rxnhg==
@@ -7674,7 +7674,7 @@ expo-splash-screen@~0.11.2:
     "@expo/configure-splash-screen" "0.5.0"
     "@expo/prebuild-config" "^2.0.0"
 
-expo-yarn-workspaces@^1.5.1:
+expo-yarn-workspaces@^1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/expo-yarn-workspaces/-/expo-yarn-workspaces-1.5.2.tgz#93b68a10d9f1271eab37d2df642458d7c304aea8"
   integrity sha512-+qD5tdB4g4L4I1sxdHpLwP2CJc+ipM/kDA9YrDCDWHS9JbKQQCwnJTXR44kKMpgd2FlSJUAzLFhohzliEvNixw==

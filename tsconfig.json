@@ -34,5 +34,6 @@
     "compilerOptions": {
       "module": "commonjs"
     }
-  }
+  },
+  "extends": "expo/tsconfig.base"
 }

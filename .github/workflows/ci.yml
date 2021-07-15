@@ -36,7 +36,7 @@ jobs:
         run: yarn typescript
 
       - name: Lint
-        run: yarn lint && yarn prettier --check .
+        run: yarn lint
 
       - name: Test Collector
         run: yarn upload:test

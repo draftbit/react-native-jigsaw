@@ -50,7 +50,7 @@ export function applyStyles(
   stylesToApply: StyleProp<any> | undefined
 ) {
   if (!stylesToApply) {
-    return;
+    return StyleSheet.flatten(baseStyles);
   }
 
   const flattenedStyles = StyleSheet.flatten(baseStyles);

@@ -71,14 +71,37 @@ export default function TextFieldExample() {
           />
           <TextField
             type="solid"
-            label="Solid input with custom styles"
+            label="Solid input with custom border/background styles"
             value={value}
             onChangeText={handleChange}
             style={{
-              padding: 10,
               borderColor: "red",
               borderWidth: 2,
               backgroundColor: "green",
+            }}
+          />
+          <TextField
+            type="solid"
+            label="Solid input with custom font styles"
+            value={value}
+            onChangeText={handleChange}
+            placeholderTextColor="green"
+            style={{
+              fontSize: 30,
+              color: "red",
+              fontFamily: "Calibri",
+            }}
+          />
+          <TextField
+            type="solid"
+            label="Solid input with custom padding"
+            value={value}
+            onChangeText={handleChange}
+            style={{
+              paddingTop: 25,
+              paddingRight: 25,
+              paddingBottom: 25,
+              paddingLeft: 25,
             }}
           />
           <TextField
@@ -150,7 +173,7 @@ export default function TextFieldExample() {
           <TextField label="Disabled underline input" disabled />
 
           <TextField
-            label="Underline input with custom styles"
+            label="Underline input with custom border/background styles"
             value={value}
             onChangeText={handleChange}
             style={{

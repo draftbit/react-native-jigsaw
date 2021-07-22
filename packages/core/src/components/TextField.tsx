@@ -26,6 +26,7 @@ import {
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
+import { applyStyles, extractStyles } from "../utilities";
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
 
@@ -272,6 +273,10 @@ class TextField extends React.Component<Props, State> {
       backgroundColor = colors.background;
     }
 
+    if (rest.placeholderTextColor) {
+      placeholderColor = rest.placeholderTextColor;
+    }
+
     const { lineHeight, ...subtitle1 } = typography.subtitle1;
 
     inputStyle = {
@@ -398,11 +403,15 @@ class TextField extends React.Component<Props, State> {
       ],
     };
 
-    const inputStyles = [
-      styles.input,
-      inputStyle,
-      type === "solid" ? { marginHorizontal: 12 } : {},
-    ];
+    const { textStyles } = extractStyles(style);
+    const inputStyles = applyStyles(
+      [
+        styles.input,
+        inputStyle,
+        type === "solid" ? { marginHorizontal: 12 } : {},
+      ],
+      textStyles
+    );
 
     const {
       backgroundColor: bgColor,
@@ -427,27 +436,22 @@ class TextField extends React.Component<Props, State> {
           <Icon {...leftIconProps} style={leftIconStyle} />
         ) : null}
         <View
-          style={[
-            containerStyle,
-            style
-              ? {
-                  ...(style.height ? { height: style.height } : {}),
-                  ...(bgColor ? { backgroundColor: bgColor } : {}),
-                  ...(padding ? { padding } : {}),
-                  ...(paddingTop ? { paddingTop } : {}),
-                  ...(paddingBottom ? { paddingBottom } : {}),
-                  ...(paddingLeft ? { paddingLeft } : {}),
-                  ...(paddingRight ? { paddingRight } : {}),
-                  ...(borderRadius ? { borderRadius } : {}),
-                  ...(borderWidth ? { borderWidth } : {}),
-                  ...(borderTopWidth ? { borderTopWidth } : {}),
-                  ...(borderRightWidth ? { borderRightWidth } : {}),
-                  ...(borderBottomWidth ? { borderBottomWidth } : {}),
-                  ...(borderLeftWidth ? { borderLeftWidth } : {}),
-                  ...(borderCol ? { borderColor: borderCol } : {}),
-                }
-              : {},
-          ]}
+          style={applyStyles([containerStyle], {
+            height: style?.height,
+            backgroundColor: bgColor,
+            padding,
+            paddingTop,
+            paddingBottom,
+            paddingLeft,
+            paddingRight,
+            borderRadius,
+            borderWidth,
+            borderTopWidth,
+            borderRightWidth,
+            borderBottomWidth,
+            borderLeftWidth,
+            borderColor: borderCol,
+          })}
         >
           {type === "underline" ? (
             // When type === 'flat', render an underline
@@ -501,7 +505,7 @@ class TextField extends React.Component<Props, State> {
                   type === "solid" ? { paddingHorizontal: 12 } : {},
                   labelStyle,
                   {
-                    color: colors.light,
+                    color: placeholderColor,
                     opacity: this.state.labeled.interpolate({
                       inputRange: [0, 1],
                       outputRange: [hasActiveOutline ? 1 : 0, 0],

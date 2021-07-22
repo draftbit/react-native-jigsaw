@@ -3799,6 +3799,13 @@
   dependencies:
     "@types/lodash" "*"
 
+"@types/lodash.omit@^4.5.6":
+  version "4.5.6"
+  resolved "https://registry.yarnpkg.com/@types/lodash.omit/-/lodash.omit-4.5.6.tgz#f2a9518259e481a48ff7ec423420fa8fd58933e2"
+  integrity sha512-KXPpOSNX2h0DAG2w7ajpk7TXvWF28ZHs5nJhOJyP0BQHkehgr948RVsToItMme6oi0XJkp19CbuNXkIX8FiBlQ==
+  dependencies:
+    "@types/lodash" "*"
+
 "@types/lodash.tonumber@^4.0.6":
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/@types/lodash.tonumber/-/lodash.tonumber-4.0.6.tgz#9f0f4b851ac037ecfdfda8acad5cfbcca832bf96"

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import omit from "lodash.omit";
 
 import { Picker as NativePicker } from "@react-native-picker/picker";
 
@@ -35,6 +36,11 @@ const Picker: React.FC<PickerComponentProps & IconSlot> = ({
       borderLeftWidth, // eslint-disable-line @typescript-eslint/no-unused-vars
       borderColor, // eslint-disable-line @typescript-eslint/no-unused-vars
       backgroundColor, // eslint-disable-line @typescript-eslint/no-unused-vars
+      padding, // eslint-disable-line @typescript-eslint/no-unused-vars
+      paddingTop, // eslint-disable-line @typescript-eslint/no-unused-vars
+      paddingRight, // eslint-disable-line @typescript-eslint/no-unused-vars
+      paddingBottom, // eslint-disable-line @typescript-eslint/no-unused-vars
+      paddingLeft, // eslint-disable-line @typescript-eslint/no-unused-vars
       ...viewStyles
     },
   } = extractStyles(style);
@@ -59,7 +65,13 @@ const Picker: React.FC<PickerComponentProps & IconSlot> = ({
           ref={textField} // cannot determine if ref is of correct type due to component being wrapped in a withTheme()
           disabled={disabled}
           pointerEvents="none"
-          style={style}
+          style={omit(style, [
+            "margin",
+            "marginTop",
+            "marginRight",
+            "marginBottom",
+            "marginLeft",
+          ])}
         />
       </Touchable>
       {pickerVisible && (

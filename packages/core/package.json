@@ -49,6 +49,7 @@
     "date-fns": "^2.16.1",
     "dateformat": "^3.0.3",
     "lodash.isnumber": "^3.0.3",
+    "lodash.omit": "^4.5.0",
     "lodash.tonumber": "^4.0.3",
     "react-native-modal-datetime-picker": "^10.0.0",
     "react-native-typography": "^1.4.1"
@@ -59,6 +60,7 @@
     "@types/color": "^3.0.1",
     "@types/dateformat": "^3.0.1",
     "@types/lodash.isnumber": "^3.0.6",
+    "@types/lodash.omit": "^4.5.6",
     "@types/lodash.tonumber": "^4.0.6",
     "@types/react": "^16.9.36",
     "@types/react-native": "^0.63.40",

@@ -405,11 +405,11 @@ class TextField extends React.Component<Props, State> {
 
     const { textStyles } = extractStyles(style);
     const inputStyles = applyStyles(
-      StyleSheet.flatten([
+      [
         styles.input,
         inputStyle,
         type === "solid" ? { marginHorizontal: 12 } : {},
-      ]),
+      ],
       textStyles
     );
 
@@ -436,7 +436,7 @@ class TextField extends React.Component<Props, State> {
           <Icon {...leftIconProps} style={leftIconStyle} />
         ) : null}
         <View
-          style={applyStyles(StyleSheet.flatten(containerStyle), {
+          style={applyStyles(containerStyle, {
             height: style?.height,
             backgroundColor: bgColor,
             padding,

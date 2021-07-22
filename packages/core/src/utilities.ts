@@ -46,11 +46,13 @@ export function applyStyles(
     return;
   }
 
+  const flattenedStyles = StyleSheet.flatten(baseStyles);
+
   for (const [key, value] of Object.entries(stylesToApply)) {
     if (value != null) {
-      baseStyles[key] = value;
+      flattenedStyles[key] = value;
     }
   }
 
-  return baseStyles;
+  return flattenedStyles;
 }

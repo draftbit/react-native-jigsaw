@@ -190,6 +190,7 @@ function PickerExample({ theme }) {
           ]}
           value={value}
           onValueChange={handleChange}
+          placeholderTextColor="green"
           style={{
             fontSize: 30,
             color: "red",

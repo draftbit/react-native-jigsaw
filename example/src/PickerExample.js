@@ -177,6 +177,27 @@ function PickerExample({ theme }) {
         />
       </Section>
 
+      <Section title="Picker - Solid (custom font)">
+        <Picker
+          label="Make"
+          placeholder="Select a make..."
+          type="solid"
+          options={[
+            { value: "Audi", label: "Audi" },
+            { value: "BMW", label: "BMW" },
+            { value: "Cadillac", label: "Cadillac" },
+            { value: "Dodge", label: "Dodge" },
+          ]}
+          value={value}
+          onValueChange={handleChange}
+          style={{
+            fontSize: 30,
+            color: "red",
+            fontFamily: "Calibri",
+          }}
+        />
+      </Section>
+
       <Section title="Picker - Solid with string options">
         <Picker
           label="Make"

@@ -75,7 +75,6 @@ export default function TextFieldExample() {
             value={value}
             onChangeText={handleChange}
             style={{
-              padding: 10,
               borderColor: "red",
               borderWidth: 2,
               backgroundColor: "green",
@@ -91,6 +90,18 @@ export default function TextFieldExample() {
               fontSize: 30,
               color: "red",
               fontFamily: "Calibri",
+            }}
+          />
+          <TextField
+            type="solid"
+            label="Solid input with custom padding"
+            value={value}
+            onChangeText={handleChange}
+            style={{
+              paddingTop: 25,
+              paddingRight: 25,
+              paddingBottom: 25,
+              paddingLeft: 25,
             }}
           />
           <TextField

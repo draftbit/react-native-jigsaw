@@ -172,7 +172,6 @@ function PickerExample({ theme }) {
             borderBottomWidth: 2,
             borderLeftWidth: 2,
             borderColor: "green",
-            padding: 16,
           }}
         />
       </Section>
@@ -195,6 +194,50 @@ function PickerExample({ theme }) {
             fontSize: 30,
             color: "red",
             fontFamily: "Calibri",
+          }}
+        />
+      </Section>
+
+      <Section title="Picker - Solid (custom padding)">
+        <Picker
+          label="Make"
+          placeholder="Select a make..."
+          type="solid"
+          options={[
+            { value: "Audi", label: "Audi" },
+            { value: "BMW", label: "BMW" },
+            { value: "Cadillac", label: "Cadillac" },
+            { value: "Dodge", label: "Dodge" },
+          ]}
+          value={value}
+          onValueChange={handleChange}
+          style={{
+            paddingTop: 25,
+            paddingRight: 25,
+            paddingBottom: 25,
+            paddingLeft: 25,
+          }}
+        />
+      </Section>
+
+      <Section title="Picker - Solid (custom margin)">
+        <Picker
+          label="Make"
+          placeholder="Select a make..."
+          type="solid"
+          options={[
+            { value: "Audi", label: "Audi" },
+            { value: "BMW", label: "BMW" },
+            { value: "Cadillac", label: "Cadillac" },
+            { value: "Dodge", label: "Dodge" },
+          ]}
+          value={value}
+          onValueChange={handleChange}
+          style={{
+            marginTop: 25,
+            marginRight: 25,
+            marginBottom: 25,
+            marginLeft: 25,
           }}
         />
       </Section>

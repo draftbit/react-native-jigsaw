@@ -39,8 +39,6 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   const _containerStyle: StyleProp<ViewStyle> = [
     {
       flexDirection: direction === Direction.Horizontal ? "row" : "column",
-      overflow: "hidden",
-      flex: 1,
     },
   ];
 

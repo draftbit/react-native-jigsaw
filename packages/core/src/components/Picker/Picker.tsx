@@ -9,7 +9,8 @@ import {
   COMPONENT_TYPES,
   FORM_TYPES,
   PROP_TYPES,
-  FIELD_NAME,
+  createActionProp,
+  createFieldNameProp,
 } from "@draftbit/types";
 import { usePrevious } from "../../hooks";
 
@@ -93,6 +94,12 @@ const Picker: React.FC<Props> = ({
 export default withTheme(Picker);
 
 const SEED_DATA_PROPS = {
+  onValueChange: createActionProp(),
+  fieldName: createFieldNameProp({
+    handlerPropName: "onValueChange",
+    valuePropName: "value",
+    defaultValue: "pickerValue",
+  }),
   label: {
     group: GROUPS.data,
     label: "Label",
@@ -188,11 +195,6 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
   },
-  fieldName: {
-    ...FIELD_NAME,
-    defaultValue: "pickerValue",
-    handlerPropName: "onValueChange",
-  },
 };
 
 export const SEED_DATA = [
@@ -201,8 +203,7 @@ export const SEED_DATA = [
     tag: "Picker",
     description: "A component used to pick a value from a set of options",
     category: COMPONENT_TYPES.input,
-    preview_image_url: "{CLOUDINARY_URL}/Picker.png",
-    supports_list_render: false,
+    layout: {},
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -217,15 +218,13 @@ export const SEED_DATA = [
         group: GROUPS.basic,
       },
     },
-    layout: {},
   },
   {
     name: "Picker - Underline",
     tag: "Picker",
     description: "A picker with an underline",
     category: COMPONENT_TYPES.input,
-    preview_image_url: "{CLOUDINARY_URL}/Picker.png",
-    supports_list_render: false,
+    layout: {},
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -239,6 +238,5 @@ export const SEED_DATA = [
         required: false,
       },
     },
-    layout: {},
   },
 ];

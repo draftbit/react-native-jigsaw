@@ -8,6 +8,7 @@ import { useRadioButtonGroupContext } from "./context";
 import {
   GROUPS,
   COMPONENT_TYPES,
+  createActionProp,
   createBoolProp,
   createColorProp,
   createNumberProp,
@@ -77,6 +78,7 @@ export const SEED_DATA = {
   tag: "RadioButton",
   category: COMPONENT_TYPES.input,
   props: {
+    onPress: createActionProp(),
     value: createTextProp({
       label: "Value",
       description: "Value of the radio button",

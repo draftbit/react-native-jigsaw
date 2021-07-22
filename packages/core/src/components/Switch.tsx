@@ -12,6 +12,7 @@ import {
   GROUPS,
   createBoolProp,
   createColorProp,
+  createActionProp,
   createFieldNameProp,
   createTextProp,
   createRowDirectionProp,
@@ -154,14 +155,15 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.input,
     layout: {},
     props: {
-      disabled: createBoolProp({
-        label: "Disabled",
-        description: "Boolean to handle disabling the switch",
-      }),
+      onValueChange: createActionProp(),
       fieldName: createFieldNameProp({
         handlerPropName: "onValueChange",
         valuePropName: "value",
         defaultValue: "switchValue",
+      }),
+      disabled: createBoolProp({
+        label: "Disabled",
+        description: "Boolean to handle disabling the switch",
       }),
       activeTrackColor: createColorProp({
         label: "Active Track Color",
@@ -183,6 +185,12 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.input,
     layout: {},
     props: {
+      onValueChange: createActionProp(),
+      fieldName: createFieldNameProp({
+        handlerPropName: "onValueChange",
+        valuePropName: "value",
+        defaultValue: "switchValue",
+      }),
       label: createTextProp({
         label: "Label",
         description: "Label to show with the checkbox",
@@ -194,11 +202,6 @@ export const SEED_DATA = [
         label: "Disabled",
         description: "Boolean to handle disabling the switch",
         group: GROUPS.data,
-      }),
-      fieldName: createFieldNameProp({
-        handlerPropName: "onValueChange",
-        valuePropName: "value",
-        defaultValue: "switchValue",
       }),
       activeTrackColor: createColorProp({
         label: "Active Track Color",

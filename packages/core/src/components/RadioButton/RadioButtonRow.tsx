@@ -11,10 +11,11 @@ import RadioButton, { RadioButtonProps } from "./RadioButton";
 import Text from "../Text";
 import { useRadioButtonGroupContext } from "./context";
 import {
+  createActionProp,
   createTextProp,
   createTextEnumProp,
-  COMPONENT_TYPES,
   createColorProp,
+  COMPONENT_TYPES,
   GROUPS,
 } from "@draftbit/types";
 import type { IconSlot } from "../../interfaces/Icon";
@@ -160,6 +161,7 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.input,
   layout: {},
   props: {
+    onPress: createActionProp(),
     label: createTextProp({
       label: "Label",
       description: "Label to show with the radio button",

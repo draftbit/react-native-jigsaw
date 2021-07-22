@@ -12,6 +12,7 @@ import {
   createIconProp,
   createStaticNumberProp,
   createColorProp,
+  createActionProp,
   createFieldNameProp,
   GROUPS,
 } from "@draftbit/types";
@@ -136,6 +137,7 @@ export const SEED_DATA = {
   tag: "Checkbox",
   category: COMPONENT_TYPES.input,
   props: {
+    onPress: createActionProp(),
     fieldName: createFieldNameProp({
       defaultValue: "checkboxValue",
       valuePropName: "status",

@@ -436,7 +436,7 @@ class TextField extends React.Component<Props, State> {
           <Icon {...leftIconProps} style={leftIconStyle} />
         ) : null}
         <View
-          style={applyStyles(containerStyle, {
+          style={applyStyles([containerStyle], {
             height: style?.height,
             backgroundColor: bgColor,
             padding,

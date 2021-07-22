@@ -46,7 +46,7 @@ export function extractStyles(style: StyleProp<any>) {
  * `const mergedStyles = StyleSheet.flatten([{ color: "red" }, { color: undefined }])`
  */
 export function applyStyles(
-  baseStyles: StyleProp<any>,
+  baseStyles: Array<StyleProp<any>>,
   stylesToApply: StyleProp<any> | undefined
 ) {
   if (!stylesToApply) {

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, StyleSheet, StyleProp } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import omit from "lodash.omit";
 
@@ -54,14 +54,6 @@ const Picker: React.FC<PickerComponentProps & IconSlot> = ({
     textField.current.toggleFocus(); // cannot determine if method exists due to component being wrapped in a withTheme()
   };
 
-  const stylesWithoutMargin = omit(style ? StyleSheet.flatten(style) : {}, [
-    "margin",
-    "marginTop",
-    "marginRight",
-    "marginBottom",
-    "marginLeft",
-  ]) as StyleProp<View> & { height?: number };
-
   return (
     <View style={[styles.container, viewStyles]}>
       <Touchable disabled={disabled} onPress={toggleVisibility}>
@@ -73,7 +65,13 @@ const Picker: React.FC<PickerComponentProps & IconSlot> = ({
           ref={textField} // cannot determine if ref is of correct type due to component being wrapped in a withTheme()
           disabled={disabled}
           pointerEvents="none"
-          style={stylesWithoutMargin}
+          style={omit(style, [
+            "margin",
+            "marginTop",
+            "marginRight",
+            "marginBottom",
+            "marginLeft",
+          ])}
         />
       </Touchable>
       {pickerVisible && (

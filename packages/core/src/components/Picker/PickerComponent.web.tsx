@@ -50,6 +50,16 @@ const Picker: React.FC<PickerComponentProps> = ({
     }
   };
 
+  const stylesWithoutMargin =
+    style &&
+    omit(StyleSheet.flatten(style), [
+      "margin",
+      "marginTop",
+      "marginRight",
+      "marginBottom",
+      "marginLeft",
+    ]);
+
   return (
     <Touchable
       disabled={disabled}
@@ -85,13 +95,8 @@ const Picker: React.FC<PickerComponentProps> = ({
             // @ts-ignore
             ref={textField} // cannot determine if ref is of correct type due to component being wrapped in a withTheme()
             disabled={disabled}
-            style={omit(style, [
-              "margin",
-              "marginTop",
-              "marginRight",
-              "marginBottom",
-              "marginLeft",
-            ])}
+            // @ts-expect-error
+            style={stylesWithoutMargin}
           />
         </View>
       </View>

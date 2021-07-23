@@ -54,6 +54,16 @@ const Picker: React.FC<PickerComponentProps & IconSlot> = ({
     textField.current.toggleFocus(); // cannot determine if method exists due to component being wrapped in a withTheme()
   };
 
+  const stylesWithoutMargin =
+    style &&
+    omit(StyleSheet.flatten(style), [
+      "margin",
+      "marginTop",
+      "marginRight",
+      "marginBottom",
+      "marginLeft",
+    ]);
+
   return (
     <View style={[styles.container, viewStyles]}>
       <Touchable disabled={disabled} onPress={toggleVisibility}>
@@ -65,13 +75,8 @@ const Picker: React.FC<PickerComponentProps & IconSlot> = ({
           ref={textField} // cannot determine if ref is of correct type due to component being wrapped in a withTheme()
           disabled={disabled}
           pointerEvents="none"
-          style={omit(style, [
-            "margin",
-            "marginTop",
-            "marginRight",
-            "marginBottom",
-            "marginLeft",
-          ])}
+          // @ts-expect-error
+          style={stylesWithoutMargin}
         />
       </Touchable>
       {pickerVisible && (

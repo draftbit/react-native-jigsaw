@@ -1,10 +1,5 @@
 import * as React from "react";
-import {
-  View,
-  StyleSheet,
-  Picker as NativePicker,
-  StyleProp,
-} from "react-native";
+import { View, StyleSheet, Picker as NativePicker } from "react-native";
 import omit from "lodash.omit";
 import { withTheme } from "../../theming";
 import { extractStyles } from "../../utilities";
@@ -55,14 +50,6 @@ const Picker: React.FC<PickerComponentProps> = ({
     }
   };
 
-  const stylesWithoutMargin = omit(style ? StyleSheet.flatten(style) : {}, [
-    "margin",
-    "marginTop",
-    "marginRight",
-    "marginBottom",
-    "marginLeft",
-  ]) as StyleProp<View> & { height?: number };
-
   return (
     <Touchable
       disabled={disabled}
@@ -98,7 +85,13 @@ const Picker: React.FC<PickerComponentProps> = ({
             // @ts-ignore
             ref={textField} // cannot determine if ref is of correct type due to component being wrapped in a withTheme()
             disabled={disabled}
-            style={stylesWithoutMargin}
+            style={omit(style, [
+              "margin",
+              "marginTop",
+              "marginRight",
+              "marginBottom",
+              "marginLeft",
+            ])}
           />
         </View>
       </View>

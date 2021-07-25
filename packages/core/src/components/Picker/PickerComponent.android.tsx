@@ -1,5 +1,6 @@
 import * as React from "react";
 import { View, StyleSheet } from "react-native";
+import omit from "lodash.omit";
 import { withTheme } from "../../theming";
 import { Picker as NativePicker } from "@react-native-picker/picker";
 import { extractStyles } from "../../utilities";
@@ -27,6 +28,11 @@ const Picker: React.FC<PickerComponentProps> = ({
       borderLeftWidth, // eslint-disable-line @typescript-eslint/no-unused-vars
       borderColor, // eslint-disable-line @typescript-eslint/no-unused-vars
       backgroundColor, // eslint-disable-line @typescript-eslint/no-unused-vars
+      padding, // eslint-disable-line @typescript-eslint/no-unused-vars
+      paddingTop, // eslint-disable-line @typescript-eslint/no-unused-vars
+      paddingRight, // eslint-disable-line @typescript-eslint/no-unused-vars
+      paddingBottom, // eslint-disable-line @typescript-eslint/no-unused-vars
+      paddingLeft, // eslint-disable-line @typescript-eslint/no-unused-vars
       ...viewStyles
     },
   } = extractStyles(style);
@@ -44,6 +50,16 @@ const Picker: React.FC<PickerComponentProps> = ({
       textField.current.toggleFocus(); // cannot determine if method exists due to component being wrapped in a withTheme()
     }
   };
+
+  const stylesWithoutMargin =
+    style &&
+    omit(StyleSheet.flatten(style), [
+      "margin",
+      "marginTop",
+      "marginRight",
+      "marginBottom",
+      "marginLeft",
+    ]);
 
   return (
     <Touchable
@@ -79,7 +95,8 @@ const Picker: React.FC<PickerComponentProps> = ({
             // @ts-ignore
             ref={textField} // cannot determine if ref is of correct type due to component being wrapped in a withTheme()
             disabled={disabled}
-            style={style}
+            // @ts-expect-error
+            style={stylesWithoutMargin}
           />
         </View>
       </View>

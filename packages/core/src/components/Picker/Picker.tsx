@@ -120,6 +120,16 @@ const SEED_DATA_PROPS = {
     editable: true,
     required: false,
   },
+  placeholderTextColor: {
+    group: GROUPS.basic,
+    label: "Placeholder Text Color",
+    description: "The color of the placeholder text.",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    formType: FORM_TYPES.color,
+    propType: PROP_TYPES.STRING,
+  },
   assistiveText: {
     group: GROUPS.basic,
     label: "Assistive text",

@@ -56,12 +56,15 @@ import CheckboxExample from "./CheckboxExample";
 import WebViewExample from "./WebViewExample";
 import AccordionExample from "./AccordionExample";
 
+import ActionSheetExample from "./ActionSheetExample";
+
 const ROUTES = {
   Layout: LayoutExample,
   Icon: IconExample,
   Button: ButtonExample,
   FAB: FABExample,
   RadioButton: RadioButtonExample,
+  ActionSheet: ActionSheetExample,
   Checkbox: CheckboxExample,
   Card: CardExample,
   ToggleButton: ToggleButtonExample,

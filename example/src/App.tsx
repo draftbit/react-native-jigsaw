@@ -56,6 +56,8 @@ import CheckboxExample from "./CheckboxExample";
 import WebViewExample from "./WebViewExample";
 import AccordionExample from "./AccordionExample";
 
+import StarRatingExample from "./StarRatingExample";
+
 const ROUTES = {
   Layout: LayoutExample,
   Icon: IconExample,
@@ -87,6 +89,7 @@ const ROUTES = {
   Slider: SliderExample,
   Switch: SwitchExample,
   Stepper: StepperExample,
+  StarRating: StarRatingExample,
   TextField: TextFieldExample,
   TextInput: TextInputExample,
   WebView: WebViewExample,

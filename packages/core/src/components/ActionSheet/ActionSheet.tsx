@@ -3,6 +3,13 @@ import { View, StyleSheet, StyleProp, TextStyle } from "react-native";
 import ActionSheetItem from "./ActionSheetItem";
 import Portal from "../Portal/Portal";
 import Touchable from "../Touchable";
+import {
+  COMPONENT_TYPES,
+  createColorProp,
+  createStaticBoolProp,
+  createTextProp,
+  createTextStyle,
+} from "@draftbit/types";
 
 interface Props {
   children: React.ReactNode;
@@ -10,7 +17,7 @@ interface Props {
   showCancel?: boolean;
   cancelLabel?: string;
   cancelLabelStyle?: StyleProp<TextStyle>;
-  cancelButtonStyle?: StyleProp<TextStyle>;
+  cancelButtonColor?: string;
   onCancelPress?: () => {};
   onClose: () => void;
 }
@@ -19,7 +26,7 @@ const ActionSheet = ({
   visible,
   showCancel = true,
   cancelLabelStyle,
-  cancelButtonStyle,
+  cancelButtonColor,
   children,
   cancelLabel = "Cancel",
   onClose,
@@ -38,7 +45,7 @@ const ActionSheet = ({
                   { color: "#FF453A", fontWeight: "bold" },
                   cancelLabelStyle,
                 ]}
-                buttonStyle={cancelButtonStyle}
+                buttonColor={cancelButtonColor}
                 onPress={onCancelPress}
               >
                 {cancelLabel}
@@ -84,5 +91,30 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
 });
+
+export const SEED_DATA = {
+  name: "Action Sheet",
+  tag: "ActionSheet",
+  description: "Action Sheet container",
+  category: COMPONENT_TYPES.container,
+  props: {
+    visible: createStaticBoolProp({
+      label: "Show Action Sheet",
+    }),
+    showCancel: createStaticBoolProp({
+      label: "Whether the ActionSheet should show cancel button or not",
+    }),
+    cancelLabel: createTextProp({
+      label: "Accordion label",
+      defaultValue: "Cancel",
+    }),
+    cancelLabelStyle: createTextStyle({
+      label: "Cancel Label Style",
+    }),
+    cancelButtonColor: createColorProp({
+      label: "Cancel Button Color",
+    }),
+  },
+};
 
 export default ActionSheet;

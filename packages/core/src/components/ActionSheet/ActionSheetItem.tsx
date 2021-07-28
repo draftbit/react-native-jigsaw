@@ -7,24 +7,30 @@ import {
   TextStyle,
   TouchableHighlight,
 } from "react-native";
+import {
+  COMPONENT_TYPES,
+  createTextStyle,
+  createColorProp,
+} from "@draftbit/types";
 
 type Props = {
   children: string;
   labelStyle?: StyleProp<TextStyle>;
-  buttonStyle?: StyleProp<TextStyle>;
+  buttonColor?: string;
+
   onPress?: () => void;
 };
 
 const ActionSheetItem: React.FC<Props> = ({
   children,
   labelStyle,
-  buttonStyle,
+  buttonColor = "#F1F1F1",
   onPress,
 }) => {
   return (
     <TouchableHighlight
       underlayColor={"#FFFFFF"}
-      style={[styles.wrapper, buttonStyle]}
+      style={[styles.wrapper, { backgroundColor: buttonColor }]}
       onPress={onPress}
     >
       <View>
@@ -54,5 +60,21 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
 });
+
+export const SEED_DATA = {
+  name: "Action Sheet",
+  tag: "ActionSheet",
+  description: "Action Sheet container",
+  category: COMPONENT_TYPES.container,
+  props: {
+    buttonColor: createColorProp({
+      label: "Button Color",
+      defaultValue: "#F1F1F1",
+    }),
+    labelStyle: createTextStyle({
+      label: "Label Style",
+    }),
+  },
+};
 
 export default ActionSheetItem;

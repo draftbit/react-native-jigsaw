@@ -139,7 +139,7 @@ function Examples() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="ActionSheet"
+        initialRouteName="CircleImage"
         drawerContentOptions={{
           activeTintColor: "rgba(90, 69, 255, 1)",
         }}

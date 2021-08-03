@@ -110,26 +110,24 @@ const styles = StyleSheet.create({
 
 export default withTheme(FAB);
 
-export const SEED_DATA = [
-  {
-    name: "FAB",
-    tag: "FAB",
-    category: COMPONENT_TYPES.button,
-    description: "A round, mini FAB",
-    layout: {},
-    props: {
-      onPress: createActionProp(),
-      icon: createIconProp({
-        defaultValue: null,
-      }),
-      iconColor: createColorProp({
-        label: "Icon color",
-        defaultValue: null,
-      }),
-      bgColor: createColorProp({
-        label: "Bg color",
-        defaultValue: null,
-      }),
-    },
+export const SEED_DATA = {
+  name: "FAB",
+  tag: "FAB",
+  category: COMPONENT_TYPES.button,
+  description: "A round, mini FAB",
+  layout: {},
+  props: {
+    onPress: createActionProp(),
+    icon: createIconProp({
+      defaultValue: null,
+    }),
+    iconColor: createColorProp({
+      label: "Icon color",
+      defaultValue: null,
+    }),
+    bgColor: createColorProp({
+      label: "Bg color",
+      defaultValue: null,
+    }),
   },
-];
+};

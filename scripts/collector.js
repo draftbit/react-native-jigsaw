@@ -103,6 +103,9 @@ async function uploadComponent(component) {
   await fetch(`${url}/components`, {
     method: "POST",
     body: component,
+    headers: {
+      Authorization: process.env.COLLECTOR_SCRIPT_TOKEN,
+    },
   });
 }
 

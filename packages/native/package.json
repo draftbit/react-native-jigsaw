@@ -38,8 +38,10 @@
   "dependencies": {
     "@draftbit/types": "^42.0.1",
     "@expo/vector-icons": "^12.0.4",
+    "@react-google-maps/api": "^2.2.0",
     "@react-native-community/slider": "^4.0.0-rc.3",
     "expo-av": "^9.2.3",
+    "react-native-maps": "^0.28.0",
     "react-native-webview": "^11.6.5"
   },
   "peerDependencies": {

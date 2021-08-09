@@ -52,6 +52,7 @@ import StepperExample from "./StepperExample";
 
 import TextFieldExample from "./TextFieldExample";
 import TextInputExample from "./TextInputExample";
+import MapViewExample from "./MapViewExample";
 import CheckboxExample from "./CheckboxExample";
 import WebViewExample from "./WebViewExample";
 import AccordionExample from "./AccordionExample";
@@ -69,6 +70,7 @@ const ROUTES = {
   CardBlock: CardBlockExample,
   CardInline: CardInlineExample,
   CardContainer: CardContainerExample,
+  MapView: MapViewExample,
   CardContainerRating: CardContainerRatingExample,
   Carousel: CarouselExample,
   Container: ContainerExample,

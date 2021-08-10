@@ -12,7 +12,7 @@ const MapCallout: React.FC<CalloutProps> = ({
   showTooltip,
   children,
 }) => (
-  <Callout tooltip={showTooltip} onPress={onPress}>
+  <Callout tooltip={!showTooltip} onPress={onPress}>
     {children}
   </Callout>
 );

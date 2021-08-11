@@ -13,7 +13,7 @@ import type { IconSlot } from "../interfaces/Icon";
 import {
   COMPONENT_TYPES,
   createStaticNumberProp,
-  createNumberProp,
+  createFieldNameProp,
 } from "@draftbit/types";
 
 type Props = {
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     right: 0,
     left: 0,
     bottom: 0,
-    zIndex: 111,
+    zIndex: 1,
   },
 });
 
@@ -101,17 +101,15 @@ export const SEED_DATA = {
       max: 36,
       step: 1,
     }),
+    fieldName: createFieldNameProp({
+      defaultValue: "ratingValue", // this is the name of the variable declared on the screen in Draftbit
+      handlerPropName: "onPress", // the change handler prop in this component
+      valuePropName: "rating", // the value prop in this component
+    }),
     maxStars: createStaticNumberProp({
       label: "Max stars",
       description: "The max number of stars",
-      defaultValue: 5,
-      min: 0,
-      max: 10,
-      step: 1,
-    }),
-    rating: createNumberProp({
-      label: "Rating",
-      description: "The number of stars that should be colored in",
+      defaultValue: 10,
       min: 0,
       max: 10,
       step: 1,

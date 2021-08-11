@@ -11,6 +11,7 @@ import {
   COMPONENT_TYPES,
   createTextStyle,
   createColorProp,
+  createActionProp,
 } from "@draftbit/types";
 
 type Props = {
@@ -62,10 +63,10 @@ const styles = StyleSheet.create({
 });
 
 export const SEED_DATA = {
-  name: "Action Sheet",
-  tag: "ActionSheet",
-  description: "Action Sheet container",
-  category: COMPONENT_TYPES.container,
+  name: "Action Sheet Item",
+  tag: "ActionSheetItem",
+  description: "Action Sheet item",
+  category: COMPONENT_TYPES.button,
   props: {
     buttonColor: createColorProp({
       label: "Button Color",
@@ -74,6 +75,7 @@ export const SEED_DATA = {
     labelStyle: createTextStyle({
       label: "Label Style",
     }),
+    onPress: createActionProp(),
   },
 };
 

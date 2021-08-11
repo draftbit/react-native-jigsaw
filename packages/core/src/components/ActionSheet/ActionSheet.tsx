@@ -102,7 +102,8 @@ export const SEED_DATA = {
       label: "Show Action Sheet",
     }),
     showCancel: createStaticBoolProp({
-      label: "Whether the ActionSheet should show cancel button or not",
+      label: "Show cancel",
+      description: "Whether the ActionSheet should show cancel button or not",
     }),
     cancelLabel: createTextProp({
       label: "Accordion label",

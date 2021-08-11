@@ -14,12 +14,14 @@ import {
   COMPONENT_TYPES,
   createStaticNumberProp,
   createFieldNameProp,
+  createStaticBoolProp,
 } from "@draftbit/types";
 
 type Props = {
   starSize?: number;
   maxStars?: number;
   rating?: number;
+  isEditable?: boolean;
   theme: Theme;
   style?: StyleProp<ViewStyle>;
   onPress?: (newValue: number) => void;
@@ -30,12 +32,27 @@ const StarRating: React.FC<Props> = ({
   starSize = 16,
   maxStars = 5,
   rating = 0,
+  isEditable = false,
   theme,
   style,
   onPress,
   ...rest
 }) => {
-  const ratingRounded = Math.round(rating * 2) / 2;
+  const [localRating, setLocalRating] = React.useState(rating);
+
+  React.useEffect(() => {
+    setLocalRating(rating);
+  }, [rating]);
+
+  const ratingHandler = React.useCallback(
+    (r) => {
+      setLocalRating(r);
+      !!onPress && onPress(r);
+    },
+    [onPress]
+  );
+
+  const ratingRounded = Math.round(localRating * 2) / 2;
 
   return (
     <View style={[styles.container, style]} {...rest}>
@@ -52,16 +69,18 @@ const StarRating: React.FC<Props> = ({
               ratingRounded > i ? theme.colors.primary : theme.colors.divider
             }
           />
-          <View style={styles.touchContainer}>
-            <Pressable
-              style={{ flex: 1, height: "100%", width: "50%" }}
-              onPress={() => !!onPress && onPress(i + 0.5)}
-            />
-            <Pressable
-              style={{ flex: 1, height: "100%", width: "50%" }}
-              onPress={() => !!onPress && onPress(i + 1)}
-            />
-          </View>
+          {isEditable && (
+            <View style={styles.touchContainer}>
+              <Pressable
+                style={styles.pressable}
+                onPress={() => ratingHandler(i + 0.5)}
+              />
+              <Pressable
+                style={styles.pressable}
+                onPress={() => ratingHandler(i + 1)}
+              />
+            </View>
+          )}
         </View>
       ))}
     </View>
@@ -82,6 +101,11 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     zIndex: 1,
+  },
+  pressable: {
+    flex: 1,
+    height: "100%",
+    width: "50%",
   },
 });
 
@@ -109,10 +133,16 @@ export const SEED_DATA = {
     maxStars: createStaticNumberProp({
       label: "Max stars",
       description: "The max number of stars",
-      defaultValue: 10,
+      defaultValue: 5,
       min: 0,
       max: 10,
       step: 1,
+    }),
+    rating: createStaticNumberProp({
+      label: "Rating",
+    }),
+    isEditable: createStaticBoolProp({
+      label: "Editable",
     }),
   },
 };

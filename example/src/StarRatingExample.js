@@ -11,12 +11,7 @@ function StarRatingExample({ theme }) {
         <StarRating rating={3.5} />
       </Section>
       <Section title="Star Rating Interactive">
-        <StarRating
-          maxStars={10}
-          starSize={48}
-          rating={rating}
-          onPress={(value) => setRating(value)}
-        />
+        <StarRating maxStars={10} starSize={48} isEditable={true} rating={4} />
       </Section>
     </Container>
   );

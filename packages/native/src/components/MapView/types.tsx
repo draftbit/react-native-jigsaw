@@ -30,7 +30,9 @@ export interface MapViewProps {
 }
 
 export interface CalloutProps {
-  anchor: MarkerProps;
+  title?: string;
+  description?: string;
+  anchor: MarkerProps | null;
   onPress?: (event?: MapEvent<{ action: "callout-press" }>) => void;
   showTooltip?: boolean;
 }

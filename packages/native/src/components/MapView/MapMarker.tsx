@@ -1,7 +1,10 @@
 import * as React from "react";
-import { LatLng } from "react-native-maps";
+import { View, Text, StyleSheet } from "react-native";
+import { LatLng, MarkerProps } from "react-native-maps";
 import { MapMarkerProps } from "./types";
-import { Marker as WebMarker, MarkerProps } from "@react-google-maps/api";
+import { Marker as WebMarker } from "@react-google-maps/api";
+import MapCallout from "./MapCallout";
+
 interface IMarkerContext {
   pinColor?: string | undefined;
   calloutOpened: boolean;
@@ -29,13 +32,34 @@ const MapMarker: React.FC<MapMarkerProps> = ({
   const [marker, setMarker] = React.useState<MarkerProps | null>(null);
   const handleMarkerClick = () => toggleCallout(true);
   const handleOnLoad = (m: MarkerProps) => setMarker(m);
-  const mappedChildren = React.Children.map(children, (child, index) => {
-    return React.cloneElement(child as React.ReactElement, {
-      index,
-      anchor: marker,
+  let mappedChildren;
+  if (!children) {
+    if (title || description) {
+      mappedChildren = (
+        <MapCallout showTooltip anchor={marker}>
+          <View style={style.tooltip}>
+            {title && <Text style={style.title}>{title}</Text>}
+            {description && (
+              <Text style={style.description}>{description}</Text>
+            )}
+          </View>
+        </MapCallout>
+      );
+    }
+  } else {
+    mappedChildren = React.Children.map(children, (child, index) => {
+      return React.cloneElement(child as React.ReactElement, {
+        index,
+        anchor: marker,
+      });
     });
-  });
-
+  }
+  // const mappedChildren = React.Children.map(children, (child, index) => {
+  //   return React.cloneElement(child as React.ReactElement, {
+  //     index,
+  //     anchor: marker,
+  //   });
+  // });
   return (
     <Provider
       value={{
@@ -53,8 +77,6 @@ const MapMarker: React.FC<MapMarkerProps> = ({
           lat: latitude,
           lng: longitude,
         }}
-        title={description}
-        label={title}
         onClick={handleMarkerClick}
         onLoad={handleOnLoad}
         icon={{
@@ -71,5 +93,19 @@ const MapMarker: React.FC<MapMarkerProps> = ({
     </Provider>
   );
 };
+
+const style = StyleSheet.create({
+  tooltip: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  title: {
+    fontWeight: "600",
+    textAlign: "center",
+  },
+  description: {
+    textAlign: "center",
+  },
+});
 
 export default MapMarker;

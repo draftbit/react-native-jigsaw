@@ -17,8 +17,8 @@ const MapViewExample = ({ theme }) => (
         latitude={40.741895}
         longitude={-73.989308}
         pinColor={theme.colors.primary}
-        title="Draftbit"
-        description="A simple MapView example"
+        title="hi how are ya"
+        description="this is some long text thats optional"
       />
       <MapMarker
         latitude={40.741895}

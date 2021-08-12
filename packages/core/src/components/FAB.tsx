@@ -118,7 +118,7 @@ export const SEED_DATA = {
   layout: {},
   props: {
     onPress: createActionProp(),
-    icon: createIconProp({
+    iconName: createIconProp({
       defaultValue: null,
     }),
     iconColor: createColorProp({

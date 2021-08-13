@@ -126,7 +126,7 @@ export const SEED_DATA = {
       defaultValue: null,
     }),
     bgColor: createColorProp({
-      label: "Bg color",
+      label: "Background color",
       defaultValue: null,
     }),
   },

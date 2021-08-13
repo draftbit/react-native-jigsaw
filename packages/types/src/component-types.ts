@@ -234,7 +234,7 @@ export const createNumColumnsType = (overrides = {}) => ({
 });
 
 export const createColorProp = (overrides = {}) => ({
-  group: GROUPS.style,
+  group: GROUPS.basic,
   label: "Color",
   description: "Select or create a color",
   editable: true,

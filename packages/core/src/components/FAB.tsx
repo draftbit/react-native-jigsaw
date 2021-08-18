@@ -46,8 +46,14 @@ const FAB: React.FC<Props> = ({
   Icon,
   ...props
 }) => {
+  let { position, ...styleProp } = StyleSheet.flatten<any>(style) || {};
+
   const backgroundColor = bgColor || theme.colors.primary;
   const color = iconColor || "#FFF";
+
+  if (position === "absolute" && Platform.OS === "web") {
+    position = "fixed";
+  }
 
   return (
     <View
@@ -57,8 +63,9 @@ const FAB: React.FC<Props> = ({
           height: size,
           borderRadius: size / 2,
           overflow: "hidden",
+          position: position,
         },
-        style,
+        styleProp,
       ]}
     >
       <Pressable

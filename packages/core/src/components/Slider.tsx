@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
   },
   slider: {
     flex: 1,
+    marginHorizontal: 12,
   },
 });
 

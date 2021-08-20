@@ -45,7 +45,6 @@ const AccordionGroup = ({
   children,
   expanded: expandedProp,
   theme,
-  ...rest
 }: Props) => {
   const [expanded, setExpanded] = React.useState<boolean>(
     expandedProp || false
@@ -60,20 +59,25 @@ const AccordionGroup = ({
   const expandedInternal = expandedProp !== undefined ? expandedProp : expanded;
 
   const expandedColor = openColor || theme.colors.primary;
-  const collapsedColor = closedColor || theme.colors.divider;
+  const collapsedColor = closedColor || theme.colors.primary;
 
   const labelColor = expanded ? expandedColor : collapsedColor;
 
   return (
-    <View {...rest}>
+    <>
       <Pressable
-        style={[styles.container, style]}
+        style={[style]}
         onPress={handlePressAction}
         accessibilityRole="button"
       >
-        <View style={[styles.row, { backgroundColor: caretColor }]}>
+        <View style={styles.row}>
           {icon ? (
-            <Icon name={icon} size={iconSize} color={labelColor} />
+            <Icon
+              name={icon}
+              size={iconSize}
+              color={labelColor}
+              style={styles.icon}
+            />
           ) : null}
           <View style={[styles.item, styles.content]}>
             <Text
@@ -96,7 +100,7 @@ const AccordionGroup = ({
                   ? "MaterialIcons/keyboard-arrow-up"
                   : "MaterialIcons/keyboard-arrow-down"
               }
-              color={labelColor}
+              color={caretColor}
               size={24}
             />
           </View>
@@ -110,39 +114,34 @@ const AccordionGroup = ({
               !child.props.right
             ) {
               return React.cloneElement(child, {
-                style: [styles.child, child.props.style],
+                style: child.props.style,
               });
             }
 
             return child;
           })
         : null}
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 8,
-  },
   row: {
     flexDirection: "row",
     alignItems: "center",
   },
-
   label: {
     fontSize: 16,
   },
-
   item: {
     margin: 8,
-  },
-  child: {
-    paddingLeft: 64,
   },
   content: {
     flex: 1,
     justifyContent: "center",
+  },
+  icon: {
+    marginLeft: 8,
   },
 });
 
@@ -155,24 +154,24 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.container,
   props: {
     openColor: createColorProp({
-      label: "Color when expanded",
+      label: "Open text color",
     }),
     closedColor: createColorProp({
-      label: "Color when collapsed",
+      label: "Closed text Color",
     }),
     caretColor: createColorProp({
-      label: "Color of caret",
+      label: "Caret color",
     }),
-
     iconSize: createNumberProp({
+      label: "Icon size",
       defaultValue: 24,
     }),
-
     label: createTextProp({
-      label: "Accordion label",
+      label: "Label",
     }),
     expanded: createStaticBoolProp({
-      label: "Whether the AccordionGroup should be expanded or not",
+      label: "Expanded",
+      description: "Whether the AccordionGroup should be expanded or not",
     }),
     icon: createIconProp(),
   },

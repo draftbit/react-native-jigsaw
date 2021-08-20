@@ -1,6 +1,6 @@
 import * as React from "react";
 import { withTheme } from "../theming";
-import { colorTypes } from "@draftbit/types";
+import { colorTypes, GROUPS } from "@draftbit/types";
 import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import IconButton from "./IconButton";
 import {
@@ -106,13 +106,18 @@ export const SEED_DATA = {
     disabled: createBoolProp({
       label: "Disabled",
       description: "Whether the button should be disabled",
+      group: GROUPS.basic,
     }),
-    color: createColorProp(),
+    color: createColorProp({
+      group: GROUPS.basic,
+    }),
     colorSecondary: createColorProp({
       label: "Secondary Color",
+      group: GROUPS.basic,
     }),
     borderColor: createColorProp({
       label: "Border Color",
+      group: GROUPS.basic,
     }),
     width: createStaticNumberProp({
       label: "Width",

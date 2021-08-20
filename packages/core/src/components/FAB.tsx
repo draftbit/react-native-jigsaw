@@ -18,6 +18,9 @@ import {
   createIconProp,
   createActionProp,
   createColorProp,
+  GROUPS,
+  createBoolProp,
+  createIconSizeProp,
 } from "@draftbit/types";
 
 type Props = {
@@ -118,16 +121,29 @@ export const SEED_DATA = {
   layout: {},
   props: {
     onPress: createActionProp(),
+    disabled: createBoolProp({
+      label: "Disabled",
+      group: GROUPS.basic,
+    }),
+    loading: createBoolProp({
+      label: "Loading",
+      group: GROUPS.basic,
+    }),
     iconName: createIconProp({
+      label: "Icon",
       defaultValue: null,
+      group: GROUPS.basic,
     }),
     iconColor: createColorProp({
       label: "Icon color",
       defaultValue: null,
+      group: GROUPS.basic,
     }),
     bgColor: createColorProp({
       label: "Background color",
       defaultValue: null,
+      group: GROUPS.basic,
     }),
+    iconSize: createIconSizeProp(),
   },
 };

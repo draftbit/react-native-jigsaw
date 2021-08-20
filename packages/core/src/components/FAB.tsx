@@ -111,10 +111,10 @@ const styles = StyleSheet.create({
 export default withTheme(FAB);
 
 export const SEED_DATA = {
-  name: "FAB",
+  name: "Icon FAB",
   tag: "FAB",
   category: COMPONENT_TYPES.button,
-  description: "A round, mini FAB",
+  description: "A mini round icon FAB",
   layout: {},
   props: {
     onPress: createActionProp(),

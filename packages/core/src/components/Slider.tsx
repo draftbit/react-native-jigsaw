@@ -122,8 +122,6 @@ const styles = StyleSheet.create({
     height: 40,
     flexDirection: "row",
     alignItems: "center",
-    marginLeft: 12,
-    marginRight: 12,
   },
   slider: {
     flex: 1,

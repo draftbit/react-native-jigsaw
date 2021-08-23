@@ -122,8 +122,6 @@ const styles = StyleSheet.create({
     height: 40,
     flexDirection: "row",
     alignItems: "center",
-    marginLeft: 12,
-    marginRight: 12,
   },
   slider: {
     flex: 1,
@@ -138,7 +136,10 @@ export const SEED_DATA = {
   tag: "Slider",
   description: "A component used to set a value in a range",
   category: COMPONENT_TYPES.input,
-  layout: {},
+  layout: {
+    marginLeft: 12,
+    marginRight: 12,
+  },
   props: {
     fieldName: createFieldNameProp({
       defaultValue: "sliderValue",

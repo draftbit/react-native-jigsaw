@@ -56,6 +56,7 @@ import CheckboxExample from "./CheckboxExample";
 import WebViewExample from "./WebViewExample";
 import AccordionExample from "./AccordionExample";
 
+import ActionSheetExample from "./ActionSheetExample";
 import StarRatingExample from "./StarRatingExample";
 
 const ROUTES = {
@@ -64,6 +65,7 @@ const ROUTES = {
   Button: ButtonExample,
   FAB: FABExample,
   RadioButton: RadioButtonExample,
+  ActionSheet: ActionSheetExample,
   Checkbox: CheckboxExample,
   Card: CardExample,
   ToggleButton: ToggleButtonExample,

@@ -32,6 +32,8 @@ export {
   ProgressBar,
   ProgressCircle,
   RowHeadlineImageCaption,
+  ActionSheet,
+  ActionSheetItem,
 } from "@draftbit/core";
 
 /**

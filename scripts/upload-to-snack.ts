@@ -159,7 +159,7 @@ async function uploadToSnack() {
 // just replace the version with an asterik
 function getSnackSpecificDependencies() {
   return {
-    "expo-constants": "~9.3.3",
+    "expo-constants": "~10.1.3",
     "@draftbit/ui": `~${UI_VERSION}`,
     "@react-navigation/native": "*",
     "react-native-reanimated": "*",

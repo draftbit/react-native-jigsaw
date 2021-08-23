@@ -26,6 +26,7 @@ import {
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
+import { applyStyles, extractStyles } from "../utilities";
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
 
@@ -272,6 +273,10 @@ class TextField extends React.Component<Props, State> {
       backgroundColor = colors.background;
     }
 
+    if (rest.placeholderTextColor) {
+      placeholderColor = rest.placeholderTextColor;
+    }
+
     const { lineHeight, ...subtitle1 } = typography.subtitle1;
 
     inputStyle = {
@@ -398,11 +403,15 @@ class TextField extends React.Component<Props, State> {
       ],
     };
 
-    const inputStyles = [
-      styles.input,
-      inputStyle,
-      type === "solid" ? { marginHorizontal: 12 } : {},
-    ];
+    const { textStyles } = extractStyles(style);
+    const inputStyles = applyStyles(
+      [
+        styles.input,
+        inputStyle,
+        type === "solid" ? { marginHorizontal: 12 } : {},
+      ],
+      textStyles
+    );
 
     const {
       backgroundColor: bgColor,
@@ -413,6 +422,10 @@ class TextField extends React.Component<Props, State> {
       paddingRight,
       borderRadius,
       borderWidth,
+      borderTopWidth,
+      borderRightWidth,
+      borderBottomWidth,
+      borderLeftWidth,
       borderColor: borderCol,
       ...styleProp
     } = StyleSheet.flatten(style || {}) as ViewStyle & { height?: number };
@@ -423,23 +436,22 @@ class TextField extends React.Component<Props, State> {
           <Icon {...leftIconProps} style={leftIconStyle} />
         ) : null}
         <View
-          style={[
-            containerStyle,
-            style
-              ? {
-                  ...(style.height ? { height: style.height } : {}),
-                  ...(bgColor ? { backgroundColor: bgColor } : {}),
-                  ...(padding ? { padding } : {}),
-                  ...(paddingTop ? { paddingTop } : {}),
-                  ...(paddingBottom ? { paddingBottom } : {}),
-                  ...(paddingLeft ? { paddingLeft } : {}),
-                  ...(paddingRight ? { paddingRight } : {}),
-                  ...(borderRadius ? { borderRadius } : {}),
-                  ...(borderWidth ? { borderWidth } : {}),
-                  ...(borderCol ? { borderColor: borderCol } : {}),
-                }
-              : {},
-          ]}
+          style={applyStyles([containerStyle], {
+            height: style?.height,
+            backgroundColor: bgColor,
+            padding,
+            paddingTop,
+            paddingBottom,
+            paddingLeft,
+            paddingRight,
+            borderRadius,
+            borderWidth,
+            borderTopWidth,
+            borderRightWidth,
+            borderBottomWidth,
+            borderLeftWidth,
+            borderColor: borderCol,
+          })}
         >
           {type === "underline" ? (
             // When type === 'flat', render an underline
@@ -493,7 +505,7 @@ class TextField extends React.Component<Props, State> {
                   type === "solid" ? { paddingHorizontal: 12 } : {},
                   labelStyle,
                   {
-                    color: colors.light,
+                    color: placeholderColor,
                     opacity: this.state.labeled.interpolate({
                       inputRange: [0, 1],
                       outputRange: [hasActiveOutline ? 1 : 0, 0],
@@ -681,23 +693,24 @@ const SEED_DATA_PROPS = {
 
 export const SEED_DATA = [
   {
-    name: "Text Field - Solid",
+    name: "Text Field",
     tag: "TextField",
-    description: "A text input with a solid border",
+    description: "A text input with a solid border or underline",
     category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/Textfield.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,
       type: {
-        label: "Type",
-        description: "Type",
-        group: GROUPS.uncategorized,
-        formType: FORM_TYPES.string,
+        label: "Appearance",
+        description: "Type of Datepicker",
+        formType: FORM_TYPES.flatArray,
         propType: PROP_TYPES.STRING,
         defaultValue: "solid",
-        editable: false,
-        required: false,
+        options: ["solid", "underline"],
+        editable: true,
+        required: true,
+        group: GROUPS.basic,
       },
       secureTextEntry: {
         group: GROUPS.basic,
@@ -714,88 +727,24 @@ export const SEED_DATA = [
     layout: {},
   },
   {
-    name: "Text Field - Underline",
+    name: "Text Area",
     tag: "TextField",
-    description: "A text input with an underline",
-    category: COMPONENT_TYPES.input,
-    preview_image_url: "{CLOUDINARY_URL}/Textfield.png",
-    supports_list_render: false,
-    props: {
-      ...SEED_DATA_PROPS,
-      type: {
-        label: "Type",
-        description: "Type",
-        group: GROUPS.uncategorized,
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "underline",
-        editable: false,
-        required: false,
-      },
-      secureTextEntry: {
-        group: GROUPS.basic,
-        label: "Password field",
-        description:
-          "If true, this turns the field into a password field, hiding the text",
-        formType: FORM_TYPES.boolean,
-        propType: PROP_TYPES.BOOLEAN,
-        defaultValue: null,
-        editable: true,
-        required: false,
-      },
-    },
-    layout: {},
-  },
-  {
-    name: "Text Area - Solid",
-    tag: "TextField",
-    description: "A text area with a solid border",
+    description: "A text area with a solid border or underline",
     category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/TextArea.png",
     supports_list_render: false,
     props: {
       ...SEED_DATA_PROPS,
       type: {
-        label: "Type",
-        description: "Type",
-        group: GROUPS.uncategorized,
-        formType: FORM_TYPES.string,
+        label: "Appearance",
+        description: "Type of Datepicker",
+        formType: FORM_TYPES.flatArray,
         propType: PROP_TYPES.STRING,
         defaultValue: "solid",
-        editable: false,
-        required: false,
-      },
-      multiline: {
-        label: "Multiline",
-        description: "Multiline",
-        group: GROUPS.uncategorized,
-        formType: FORM_TYPES.boolean,
-        propType: PROP_TYPES.BOOLEAN,
-        defaultValue: true,
-        editable: false,
-        required: false,
-      },
-    },
-    layout: {},
-  },
-  {
-    name: "Text Area - Underline",
-    tag: "TextField",
-    description: "A text area with an underline",
-    category: COMPONENT_TYPES.input,
-    preview_image_url: "{CLOUDINARY_URL}/TextArea.png",
-    supports_list_render: false,
-    props: {
-      ...SEED_DATA_PROPS,
-      type: {
-        label: "Type",
-        description: "Type",
-        group: GROUPS.uncategorized,
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "underline",
-        editable: false,
-        required: false,
+        options: ["solid", "underline"],
+        editable: true,
+        required: true,
+        group: GROUPS.basic,
       },
       multiline: {
         label: "Multiline",

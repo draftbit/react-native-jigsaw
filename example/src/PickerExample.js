@@ -167,9 +167,77 @@ function PickerExample({ theme }) {
           onValueChange={handleChange}
           style={{
             backgroundColor: "red",
-            borderWidth: 2,
+            borderTopWidth: 2,
+            borderRightWidth: 2,
+            borderBottomWidth: 2,
+            borderLeftWidth: 2,
             borderColor: "green",
-            padding: 16,
+          }}
+        />
+      </Section>
+
+      <Section title="Picker - Solid (custom font)">
+        <Picker
+          label="Make"
+          placeholder="Select a make..."
+          type="solid"
+          options={[
+            { value: "Audi", label: "Audi" },
+            { value: "BMW", label: "BMW" },
+            { value: "Cadillac", label: "Cadillac" },
+            { value: "Dodge", label: "Dodge" },
+          ]}
+          value={value}
+          onValueChange={handleChange}
+          placeholderTextColor="green"
+          style={{
+            fontSize: 30,
+            color: "red",
+            fontFamily: "Calibri",
+          }}
+        />
+      </Section>
+
+      <Section title="Picker - Solid (custom padding)">
+        <Picker
+          label="Make"
+          placeholder="Select a make..."
+          type="solid"
+          options={[
+            { value: "Audi", label: "Audi" },
+            { value: "BMW", label: "BMW" },
+            { value: "Cadillac", label: "Cadillac" },
+            { value: "Dodge", label: "Dodge" },
+          ]}
+          value={value}
+          onValueChange={handleChange}
+          style={{
+            paddingTop: 25,
+            paddingRight: 25,
+            paddingBottom: 25,
+            paddingLeft: 25,
+          }}
+        />
+      </Section>
+
+      <Section title="Picker - Solid (custom margin)">
+        <Picker
+          label="Make"
+          placeholder="Select a make..."
+          type="solid"
+          options={[
+            { value: "Audi", label: "Audi" },
+            { value: "BMW", label: "BMW" },
+            { value: "Cadillac", label: "Cadillac" },
+            { value: "Dodge", label: "Dodge" },
+          ]}
+          value={value}
+          onValueChange={handleChange}
+          style={{
+            marginTop: 25,
+            marginRight: 25,
+            marginBottom: 25,
+            marginLeft: 25,
           }}
         />
       </Section>

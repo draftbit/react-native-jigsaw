@@ -17,6 +17,7 @@ import {
   createBoolProp,
   createTextProp,
   createActionProp,
+  GROUPS,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -235,10 +236,12 @@ const SEED_DATA_PROPS = {
     defaultValue: "Get Started",
   }),
   disabled: createBoolProp({
+    group: GROUPS.basic,
     label: "Disabled",
     description: "Whether the button should be disabled",
   }),
   loading: createBoolProp({
+    group: GROUPS.basic,
     label: "Loading",
     description: "Whether to show a loading indicator",
   }),

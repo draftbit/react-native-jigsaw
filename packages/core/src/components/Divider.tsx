@@ -12,23 +12,23 @@ import theme from "../styles/DefaultTheme";
 type Props = {
   style?: StyleProp<ViewStyle>;
   color?: string;
-  height?: number;
   theme: typeof theme;
 };
 
 const Divider: React.FC<Props> = ({
   style,
   color,
-  height,
   theme: { colors },
   ...rest
 }) => {
   return (
     <View
       style={[
-        { backgroundColor: color || colors.divider },
+        {
+          backgroundColor: color || colors.divider,
+          height: StyleSheet.hairlineWidth,
+        },
         style,
-        { height: height || StyleSheet.hairlineWidth },
       ]}
       {...rest}
     />
@@ -55,21 +55,6 @@ export const SEED_DATA = [
         defaultValue: "divider",
         formType: FORM_TYPES.color,
         propType: PROP_TYPES.THEME,
-      },
-      height: {
-        group: GROUPS.basic,
-        label: "Height",
-        description:
-          "The height (thickness) of the divider. If not provided, defaults to StyleSheet.hairlineWidth.",
-        editable: true,
-        required: false,
-        formType: FORM_TYPES.number,
-        propType: PROP_TYPES.NUMBER,
-        defaultValue: 1,
-        min: 1,
-        max: 50,
-        step: 1,
-        precision: 0,
       },
     },
     layout: {

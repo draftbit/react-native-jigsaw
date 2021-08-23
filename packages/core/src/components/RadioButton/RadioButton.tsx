@@ -78,7 +78,7 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.input,
   props: {
     value: createTextProp({
-      label: "value",
+      label: "Value",
       description: "Value of the radio button",
       defaultValue: null,
       required: true,

@@ -34,7 +34,7 @@ async function main(list = []) {
   const mappingFiles = await globAsync(`${MAPPING_PATH}/**/*.js`);
 
   const components = list.map((file) => {
-    if (!file.includes("ts")) {
+    if (!file.includes("ts") && !file.includes("js")) {
       throw Error("Must include extension: tsx or js");
     }
 
@@ -103,6 +103,9 @@ async function uploadComponent(component) {
   await fetch(`${url}/components`, {
     method: "POST",
     body: component,
+    headers: {
+      Authorization: process.env.COLLECTOR_SCRIPT_TOKEN,
+    },
   });
 }
 

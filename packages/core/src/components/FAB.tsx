@@ -18,6 +18,9 @@ import {
   createIconProp,
   createActionProp,
   createColorProp,
+  GROUPS,
+  createBoolProp,
+  createIconSizeProp,
 } from "@draftbit/types";
 
 type Props = {
@@ -111,23 +114,36 @@ const styles = StyleSheet.create({
 export default withTheme(FAB);
 
 export const SEED_DATA = {
-  name: "FAB",
+  name: "Icon FAB",
   tag: "FAB",
   category: COMPONENT_TYPES.button,
-  description: "A round, mini FAB",
+  description: "A mini round icon FAB",
   layout: {},
   props: {
     onPress: createActionProp(),
+    disabled: createBoolProp({
+      label: "Disabled",
+      group: GROUPS.basic,
+    }),
+    loading: createBoolProp({
+      label: "Loading",
+      group: GROUPS.basic,
+    }),
     iconName: createIconProp({
+      label: "Icon",
       defaultValue: null,
+      group: GROUPS.basic,
     }),
     iconColor: createColorProp({
       label: "Icon color",
       defaultValue: null,
+      group: GROUPS.basic,
     }),
     bgColor: createColorProp({
-      label: "Bg color",
+      label: "Background color",
       defaultValue: null,
+      group: GROUPS.basic,
     }),
+    iconSize: createIconSizeProp(),
   },
 };

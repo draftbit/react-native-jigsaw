@@ -1,5 +1,11 @@
 import * as React from "react";
-import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import {
+  View,
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+  Pressable,
+} from "react-native";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -7,15 +13,18 @@ import type { IconSlot } from "../interfaces/Icon";
 import {
   COMPONENT_TYPES,
   createStaticNumberProp,
-  createNumberProp,
+  createFieldNameProp,
+  createStaticBoolProp,
 } from "@draftbit/types";
 
 type Props = {
   starSize?: number;
   maxStars?: number;
   rating?: number;
+  isEditable?: boolean;
   theme: Theme;
   style?: StyleProp<ViewStyle>;
+  onPress?: (newValue: number) => void;
 } & IconSlot;
 
 const StarRating: React.FC<Props> = ({
@@ -23,27 +32,56 @@ const StarRating: React.FC<Props> = ({
   starSize = 16,
   maxStars = 5,
   rating = 0,
+  isEditable = false,
   theme,
   style,
+  onPress,
   ...rest
 }) => {
-  const ratingRounded = Math.round(rating * 2) / 2;
+  const [localRating, setLocalRating] = React.useState(rating);
+
+  React.useEffect(() => {
+    setLocalRating(rating);
+  }, [rating]);
+
+  const ratingHandler = React.useCallback(
+    (r) => {
+      setLocalRating(r);
+      !!onPress && onPress(r);
+    },
+    [onPress]
+  );
+
+  const ratingRounded = Math.round(localRating * 2) / 2;
 
   return (
     <View style={[styles.container, style]} {...rest}>
       {[...Array(maxStars)].map((_, i) => (
-        <Icon
-          key={i}
-          name={
-            ratingRounded - i === 0.5
-              ? "MaterialIcons/star-half"
-              : "MaterialIcons/star"
-          }
-          size={starSize}
-          color={
-            ratingRounded > i ? theme.colors.primary : theme.colors.divider
-          }
-        />
+        <View key={i} style={{ display: "flex" }}>
+          <Icon
+            name={
+              ratingRounded - i === 0.5
+                ? "MaterialIcons/star-half"
+                : "MaterialIcons/star"
+            }
+            size={starSize}
+            color={
+              ratingRounded > i ? theme.colors.primary : theme.colors.divider
+            }
+          />
+          {isEditable && (
+            <View style={styles.touchContainer}>
+              <Pressable
+                style={styles.pressable}
+                onPress={() => ratingHandler(i + 0.5)}
+              />
+              <Pressable
+                style={styles.pressable}
+                onPress={() => ratingHandler(i + 1)}
+              />
+            </View>
+          )}
+        </View>
       ))}
     </View>
   );
@@ -54,6 +92,21 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  touchContainer: {
+    display: "flex",
+    flexDirection: "row",
+    position: "absolute",
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+    zIndex: 1,
+  },
+  pressable: {
+    flex: 1,
+    height: "100%",
+    width: "50%",
+  },
 });
 
 export default withTheme(StarRating);
@@ -62,7 +115,7 @@ export const SEED_DATA = {
   name: "Star Rating",
   tag: "StarRating",
   description: "A star rating component",
-  category: COMPONENT_TYPES.basic,
+  category: COMPONENT_TYPES.button,
   props: {
     starSize: createStaticNumberProp({
       label: "Star size",
@@ -72,6 +125,11 @@ export const SEED_DATA = {
       max: 36,
       step: 1,
     }),
+    fieldName: createFieldNameProp({
+      defaultValue: "ratingValue", // this is the name of the variable declared on the screen in Draftbit
+      handlerPropName: "onPress", // the change handler prop in this component
+      valuePropName: "rating", // the value prop in this component
+    }),
     maxStars: createStaticNumberProp({
       label: "Max stars",
       description: "The max number of stars",
@@ -80,12 +138,11 @@ export const SEED_DATA = {
       max: 10,
       step: 1,
     }),
-    rating: createNumberProp({
+    rating: createStaticNumberProp({
       label: "Rating",
-      description: "The number of stars that should be colored in",
-      min: 0,
-      max: 10,
-      step: 1,
+    }),
+    isEditable: createStaticBoolProp({
+      label: "Editable",
     }),
   },
 };

@@ -17,6 +17,7 @@ import {
   createActionProp,
   createColorProp,
   createNumberProp,
+  createBoolProp,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -98,7 +99,14 @@ export const SEED_DATA = {
   layout: {},
   props: {
     icon: createIconProp(),
-    color: createColorProp(),
+    color: createColorProp({
+      label: "Color",
+      group: GROUPS.basic,
+    }),
+    disabled: createBoolProp({
+      label: "Disabled",
+      group: GROUPS.basic,
+    }),
     onPress: createActionProp(),
     size: createNumberProp({
       group: GROUPS.basic,

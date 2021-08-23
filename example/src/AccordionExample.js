@@ -5,6 +5,12 @@ import Section, { Container } from "./Section";
 function AccordionExample({ theme }) {
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>
+      <Section title="Basic accordion with no additional styles">
+        <AccordionGroup label={"Basic"}>
+          <AccordionItem icon="insert-drive-file" label={"First file"} />
+          <AccordionItem label={"Second file without icon"} />
+        </AccordionGroup>
+      </Section>
       <Section title="Expandable Accordion group with Accordion Items">
         <AccordionGroup
           openColor={theme.colors.primary}

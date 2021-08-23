@@ -92,6 +92,8 @@ const styles = StyleSheet.create({
   },
 });
 
+export default ActionSheet;
+
 export const SEED_DATA = {
   name: "Action Sheet",
   tag: "ActionSheet",
@@ -117,5 +119,3 @@ export const SEED_DATA = {
     }),
   },
 };
-
-export default ActionSheet;

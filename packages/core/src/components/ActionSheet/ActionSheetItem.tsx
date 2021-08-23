@@ -62,6 +62,8 @@ const styles = StyleSheet.create({
   },
 });
 
+export default ActionSheetItem;
+
 export const SEED_DATA = {
   name: "Action Sheet Item",
   tag: "ActionSheetItem",
@@ -78,5 +80,3 @@ export const SEED_DATA = {
     onPress: createActionProp(),
   },
 };
-
-export default ActionSheetItem;

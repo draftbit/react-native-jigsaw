@@ -12,6 +12,7 @@ import {
   createTextStyle,
   createColorProp,
   createActionProp,
+  createTextProp,
 } from "@draftbit/types";
 
 type Props = {
@@ -72,11 +73,14 @@ export const SEED_DATA = {
   props: {
     buttonColor: createColorProp({
       label: "Button Color",
-      defaultValue: "#F1F1F1",
+      defaultValue: "surface",
     }),
     labelStyle: createTextStyle({
       label: "Label Style",
     }),
     onPress: createActionProp(),
+    children: createTextProp({
+      label: "Label",
+    }),
   },
 };

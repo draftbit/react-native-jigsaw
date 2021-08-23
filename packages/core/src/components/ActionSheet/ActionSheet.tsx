@@ -106,7 +106,7 @@ export const SEED_DATA = {
       description: "Whether the ActionSheet should show cancel button or not",
     }),
     cancelLabel: createTextProp({
-      label: "Accordion label",
+      label: "Cancel label",
       defaultValue: "Cancel",
     }),
     cancelLabelStyle: createTextStyle({

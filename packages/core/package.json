@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/core",
-  "version": "42.0.7",
+  "version": "42.1.0",
   "description": "Core (non-native) Components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -41,7 +41,7 @@
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
     "@draftbit/react-theme-provider": "^2.1.1",
-    "@draftbit/types": "^42.0.1",
+    "@draftbit/types": "^42.1.0",
     "@material-ui/core": "^4.11.0",
     "@material-ui/pickers": "^3.2.10",
     "@react-native-community/slider": "^4.0.0-rc.3",

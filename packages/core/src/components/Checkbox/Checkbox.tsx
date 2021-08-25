@@ -14,6 +14,7 @@ import {
   createColorProp,
   createFieldNameProp,
   GROUPS,
+  Triggers,
 } from "@draftbit/types";
 import { useTheme } from "../../theming";
 import type { IconSlot } from "../../interfaces/Icon";
@@ -26,6 +27,8 @@ export enum CheckboxStatus {
   Unchecked = "unchecked",
   Indeterminate = "indeterminate",
 }
+
+console.log(Triggers);
 
 export interface CheckboxProps {
   status?: CheckboxStatus;
@@ -135,11 +138,21 @@ export const SEED_DATA = {
   name: "Checkbox",
   tag: "Checkbox",
   category: COMPONENT_TYPES.input,
+  triggers: ["ON_PRESS"],
+  screenStates: [
+    {
+      trigger: "ON_PRESS",
+      valueName: "checkboxValue",
+      propName: "status",
+      initialValue: false,
+      initialValueType: "BOOLEAN",
+    },
+  ],
   props: {
     fieldName: createFieldNameProp({
-      defaultValue: "checkboxValue",
-      valuePropName: "status",
-      handlerPropName: "onPress",
+      defaultValue: "checkboxValue", //
+      valuePropName: "status", //
+      handlerPropName: "onPress", //
     }),
     color: createColorProp({
       group: GROUPS.basic,

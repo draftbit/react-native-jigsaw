@@ -122,7 +122,7 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/Field_SearchBar_Full.png",
     supports_list_render: false,
-    triggers: [Triggers.OnChange],
+    triggers: [Triggers.OnChange], // TODO Triggers.OnSubmit for multiple triggers
     props: {
       icon: {
         group: GROUPS.basic,

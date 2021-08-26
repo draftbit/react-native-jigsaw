@@ -10,6 +10,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   FIELD_NAME,
+  Triggers,
 } from "@draftbit/types";
 import { usePrevious } from "../../hooks";
 
@@ -205,7 +206,7 @@ const SEED_DATA_PROPS = {
   },
 };
 
-const SEED_DATA_TRIGGERS = ["ON_VALUE_CHANGE"];
+const SEED_DATA_TRIGGERS = [Triggers.OnValueChange];
 export const SEED_DATA = [
   {
     name: "Picker",

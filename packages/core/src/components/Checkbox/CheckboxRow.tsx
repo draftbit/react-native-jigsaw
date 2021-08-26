@@ -6,7 +6,6 @@ import {
   TextStyle,
   View,
   Platform,
-  Triggers,
 } from "react-native";
 import Checkbox, { CheckboxProps, CheckboxStatus } from "./Checkbox";
 import Text from "../Text";
@@ -17,6 +16,7 @@ import {
   createRowDirectionProp,
   createFieldNameProp,
   COMPONENT_TYPES,
+  Triggers,
 } from "@draftbit/types";
 import type { IconSlot } from "../../interfaces/Icon";
 import { Direction as GroupDirection } from "./context";

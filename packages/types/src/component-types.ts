@@ -2,11 +2,14 @@
 // Make sure enum exists @draftbit
 export const Triggers = {
   OnPress: "ON_PRESS",
-  OnPressIcon: "ON_PRESS_ICON",
   OnValueChange: "ON_VALUE_CHANGE",
   OnDateChange: "ON_DATE_CHANGE",
   OnChange: "ON_CHANGE",
   OnChangeText: "ON_CHANGE_TEXT",
+  OnRefresh: "ON_REFRESH",
+  OnBlur: "ON_BLUR",
+  OnSwipe: "ON_SWIPE",
+  OnSelect: "ON_SELECT",
 };
 
 export const PROP_TYPES = {

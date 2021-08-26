@@ -17,7 +17,7 @@ import {
   createBoolProp,
   createTextProp,
   GROUPS,
-  // Triggers,
+  Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const SEED_DATA_TRIGGERS = ["ON_PRESS"];
+const SEED_DATA_TRIGGERS = [Triggers.OnPress];
 const SEED_DATA_PROPS = {
   icon: createIconProp({
     defaultValue: null,

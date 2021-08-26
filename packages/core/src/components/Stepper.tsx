@@ -6,6 +6,7 @@ import {
   createIconSizeProp,
   createColorProp,
   createFieldNameProp,
+  Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -113,7 +114,7 @@ export const SEED_DATA = [
     description: "A component used to control the quantity of something",
     category: COMPONENT_TYPES.input,
     layout: {},
-    triggers: ["ON_CHANGE"],
+    triggers: [Triggers.OnChange],
     props: {
       fieldName: createFieldNameProp({
         defaultValue: "stepperValue",

@@ -4,6 +4,7 @@ import {
   COMPONENT_TYPES,
   createFieldNameProp,
   createDirectionProp,
+  Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../../styles/DefaultTheme";
 import { radioButtonGroupContext, Direction } from "./context";
@@ -64,7 +65,7 @@ export const SEED_DATA = {
   tag: "RadioButtonGroup",
   category: COMPONENT_TYPES.input,
   layout: {},
-  triggers: ["ON_VALUE_CHANGE"],
+  triggers: [Triggers.OnValueChange],
   props: {
     direction: createDirectionProp(),
     fieldName: createFieldNameProp({

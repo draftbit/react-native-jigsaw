@@ -4,6 +4,7 @@ import {
   PROP_TYPES,
   FIELD_NAME,
   GROUPS,
+  Triggers,
 } from "@draftbit/types";
 
 const SEED_DATA_PROPS = {
@@ -138,7 +139,7 @@ export const SEED_DATA = [
     description: "A component used to select a date from a visual calendar",
     category: COMPONENT_TYPES.input,
     layout: null,
-    triggers: ["ON_DATE_CHANGE"],
+    triggers: [Triggers.OnDateChange],
     props: {
       ...SEED_DATA_PROPS,
       type: {

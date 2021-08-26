@@ -6,6 +6,7 @@ import {
   TextStyle,
   View,
   Platform,
+  Triggers,
 } from "react-native";
 import Checkbox, { CheckboxProps, CheckboxStatus } from "./Checkbox";
 import Text from "../Text";
@@ -163,7 +164,7 @@ export const SEED_DATA = {
   layout: {
     minHeight: 50,
   },
-  triggers: ["ON_PRESS"],
+  triggers: [Triggers.OnPress],
   props: {
     label: createTextProp({
       label: "Label",

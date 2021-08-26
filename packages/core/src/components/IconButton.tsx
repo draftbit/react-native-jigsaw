@@ -17,7 +17,7 @@ import {
   createColorProp,
   createNumberProp,
   createBoolProp,
-  // Triggers,
+  Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -97,7 +97,7 @@ export const SEED_DATA = {
   tag: "IconButton",
   category: COMPONENT_TYPES.button,
   layout: {},
-  triggers: ["ON_PRESS"],
+  triggers: [Triggers.OnPress],
   props: {
     icon: createIconProp(),
     color: createColorProp({

@@ -11,7 +11,7 @@ import {
   createColorProp,
   createFieldNameProp,
   createIconProp,
-  // Triggers,
+  Triggers,
 } from "@draftbit/types";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
@@ -141,8 +141,7 @@ export const SEED_DATA = {
     marginLeft: 12,
     marginRight: 12,
   },
-  triggers: ["ON_VALUE_CHANGE"],
-  // triggers: [Triggers.OnValueChange],
+  triggers: [Triggers.OnValueChange],
   props: {
     fieldName: createFieldNameProp({
       defaultValue: "sliderValue",

@@ -8,6 +8,7 @@ import {
   PROP_TYPES,
   createFieldNameProp,
   createDirectionProp,
+  Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../../styles/DefaultTheme";
 import { checkboxGroupContext, Direction } from "./context";
@@ -60,7 +61,7 @@ export const SEED_DATA = {
   tag: "CheckboxGroup",
   category: COMPONENT_TYPES.deprecated,
   layout: {},
-  triggers: ["ON_VALUE_CHANGE"],
+  triggers: [Triggers.OnValueChange],
   props: {
     direction: createDirectionProp(),
     values: createTextProp({

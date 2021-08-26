@@ -20,7 +20,7 @@ import {
   GROUPS,
   createBoolProp,
   createIconSizeProp,
-  // Triggers,
+  Triggers,
 } from "@draftbit/types";
 
 type Props = {
@@ -119,7 +119,7 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.button,
   description: "A mini round icon FAB",
   layout: {},
-  triggers: ["ON_PRESS"],
+  triggers: [Triggers.OnPress],
   props: {
     disabled: createBoolProp({
       label: "Disabled",

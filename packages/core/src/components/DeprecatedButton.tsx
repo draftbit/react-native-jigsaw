@@ -20,6 +20,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   COMPONENT_TYPES,
+  Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -280,15 +281,6 @@ const SEED_DATA_PROPS = {
     propType: PROP_TYPES.BOOLEAN,
     defaultValue: null,
   },
-  onPress: {
-    group: GROUPS.basic,
-    label: "Action",
-    description: "Action to execute when button pressed",
-    editable: true,
-    required: false,
-    formType: FORM_TYPES.action,
-    defaultValue: null,
-  },
 };
 
 export const SEED_DATA = [
@@ -296,6 +288,7 @@ export const SEED_DATA = [
     name: "Button Outline",
     tag: "Button",
     category: COMPONENT_TYPES.deprecated,
+    triggers: [Triggers.OnPress],
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -315,6 +308,7 @@ export const SEED_DATA = [
     name: "Button Solid",
     tag: "Button",
     category: COMPONENT_TYPES.deprecated,
+    triggers: [Triggers.OnPress],
     props: {
       ...SEED_DATA_PROPS,
       type: {

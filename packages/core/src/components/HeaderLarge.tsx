@@ -1,6 +1,11 @@
 import * as React from "react";
 import { withTheme } from "../theming";
-import { GROUPS, COMPONENT_TYPES, FORM_TYPES } from "@draftbit/types";
+import {
+  COMPONENT_TYPES,
+  createIconProp,
+  createTextProp,
+  Triggers,
+} from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
 import Header from "./Header";
@@ -47,46 +52,23 @@ export const SEED_DATA = [
     description:
       "A large header with an optional touchable right aligned text and icon.",
     category: COMPONENT_TYPES.header,
-    preview_image_url: "{CLOUDINARY_URL}/Header_HeadlineLargeIconText.png",
-    supports_list_render: false,
+    layout: {},
+    triggers: [Triggers.OnPress],
     props: {
-      title: {
-        group: GROUPS.data,
+      title: createTextProp({
         label: "Title",
         description: "Text to display",
-        formType: FORM_TYPES.string,
         defaultValue: "Title",
-        editable: true,
-        required: false,
-      },
-      buttonText: {
-        group: GROUPS.data,
+      }),
+      buttonText: createTextProp({
         label: "Button text",
         description: "Right aligned button text to display",
-        formType: FORM_TYPES.string,
         defaultValue: "See All",
-        editable: true,
-        required: false,
-      },
-      icon: {
-        group: GROUPS.basic,
-        label: "Icon",
-        description: "Name of icon to display",
-        formType: FORM_TYPES.icon,
+      }),
+      icon: createIconProp({
         defaultValue: null,
-        editable: true,
         required: false,
-      },
-      onPress: {
-        group: GROUPS.basic,
-        label: "Action",
-        description: "Action to execute when button pressed",
-        editable: true,
-        required: false,
-        formType: FORM_TYPES.action,
-        defaultValue: null,
-      },
+      }),
     },
-    layout: {},
   },
 ];

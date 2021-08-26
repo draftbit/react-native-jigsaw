@@ -22,9 +22,9 @@ import {
   createImageProp,
   createIconProp,
   createAspectRatioProp,
-  createActionProp,
   createStaticBoolProp,
   createTextStyle,
+  Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -176,13 +176,10 @@ export const SEED_DATA = {
   tag: "Card",
   description: "A card you can customize however you'd like",
   category: COMPONENT_TYPES.card,
+  triggers: [Triggers.OnPress, Triggers.OnPressIcon],
   props: {
     elevation: createElevationType(3),
     image: createImageProp(),
-    onPress: createActionProp(),
-    onPressIcon: createActionProp({
-      handlerPropName: "onPressIcon",
-    }),
     title: createTextProp({
       label: "Title",
       description: "Large title text",

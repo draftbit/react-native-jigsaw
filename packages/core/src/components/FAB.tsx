@@ -16,11 +16,11 @@ import type { IconSlot } from "../interfaces/Icon";
 import {
   COMPONENT_TYPES,
   createIconProp,
-  createActionProp,
   createColorProp,
   GROUPS,
   createBoolProp,
   createIconSizeProp,
+  Triggers,
 } from "@draftbit/types";
 
 type Props = {
@@ -119,8 +119,8 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.button,
   description: "A mini round icon FAB",
   layout: {},
+  triggers: [Triggers.OnPress],
   props: {
-    onPress: createActionProp(),
     disabled: createBoolProp({
       label: "Disabled",
       group: GROUPS.basic,

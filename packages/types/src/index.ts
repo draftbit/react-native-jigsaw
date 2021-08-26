@@ -89,33 +89,42 @@ export type EllipsizeProp = "head" | "middle" | "tail" | "clip";
 //   ON_SELECT = "ON_SELECT",
 // }
 
-const OnPress = {
-  trigger: "ON_PRESS",
-  name: "On Press",
-  description: "When Presesd",
-};
+// const OnPress = {
+//   trigger: "ON_PRESS",
+//   name: "On Press",
+//   description: "When Presesd",
+// };
 
-const OnValueChange = {
-  trigger: "ON_VALUE_CHANGE",
-  name: "On Value Change",
-  description: "Value Change",
-};
+// const OnValueChange = {
+//   trigger: "ON_VALUE_CHANGE",
+//   name: "On Value Change",
+//   description: "Value Change",
+// };
 
-const OnDateChange = {
-  trigger: "ON_DATE_CHANGE",
-  name: "On Date Change",
-  description: "",
-};
+// const OnDateChange = {
+//   trigger: "ON_DATE_CHANGE",
+//   name: "On Date Change",
+//   description: "",
+// };
 
-const OnChange = {
-  trigger: "ON_CHANGE",
-  name: "On Change",
-  description: "",
-};
+// const OnChange = {
+//   trigger: "ON_CHANGE",
+//   name: "On Change",
+//   description: "",
+// };
+
+// export const Triggers = {
+//   OnPress,
+//   OnValueChange,
+//   OnDateChange,
+//   OnChange,
+// };
 
 export const Triggers = {
-  OnPress,
-  OnValueChange,
-  OnDateChange,
-  OnChange,
+  OnPress: "ON_PRESS",
+  OnPressIcon: "ON_PRESS_ICON",
+  OnValueChange: "ON_VALUE_CHANGE",
+  OnDateChange: "ON_DATE_CHANGE",
+  OnChange: "ON_CHANGE",
+  OnChangeText: "ON_CHANGE_TEXT",
 };

@@ -28,8 +28,6 @@ export enum CheckboxStatus {
   Indeterminate = "indeterminate",
 }
 
-console.log(Triggers);
-
 export interface CheckboxProps {
   status?: CheckboxStatus;
   disabled?: boolean;
@@ -138,21 +136,12 @@ export const SEED_DATA = {
   name: "Checkbox",
   tag: "Checkbox",
   category: COMPONENT_TYPES.input,
-  triggers: ["ON_PRESS"],
-  screenStates: [
-    {
-      trigger: "ON_PRESS",
-      valueName: "checkboxValue",
-      propName: "status",
-      initialValue: false,
-      initialValueType: "BOOLEAN",
-    },
-  ],
+  triggers: [Triggers.OnPress],
   props: {
     fieldName: createFieldNameProp({
-      defaultValue: "checkboxValue", //
-      valuePropName: "status", //
-      handlerPropName: "onPress", //
+      defaultValue: "checkboxValue",
+      valuePropName: "status",
+      handlerPropName: "onPress",
     }),
     color: createColorProp({
       group: GROUPS.basic,

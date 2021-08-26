@@ -11,8 +11,8 @@ import {
   COMPONENT_TYPES,
   createTextStyle,
   createColorProp,
-  createActionProp,
   createTextProp,
+  Triggers,
 } from "@draftbit/types";
 
 type Props = {
@@ -70,6 +70,7 @@ export const SEED_DATA = {
   tag: "ActionSheetItem",
   description: "Action Sheet item",
   category: COMPONENT_TYPES.button,
+  triggesr: [Triggers.OnPress],
   props: {
     buttonColor: createColorProp({
       label: "Button Color",
@@ -78,7 +79,6 @@ export const SEED_DATA = {
     labelStyle: createTextStyle({
       label: "Label Style",
     }),
-    onPress: createActionProp(),
     children: createTextProp({
       label: "Label",
     }),

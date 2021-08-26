@@ -9,9 +9,9 @@ import {
   createBoolProp,
   createColorProp,
   createStaticNumberProp,
-  createActionProp,
   createFieldNameProp,
   createIconSizeProp,
+  Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -93,6 +93,7 @@ export const SEED_DATA = {
   tag: "ToggleButton",
   category: COMPONENT_TYPES.button,
   layout: {},
+  triggers: [Triggers.OnPress],
   props: {
     icon: createIconProp({
       required: true,
@@ -102,7 +103,6 @@ export const SEED_DATA = {
       defaultValue: false,
       valuePropName: "toggled",
     }),
-    onPress: createActionProp(),
     disabled: createBoolProp({
       label: "Disabled",
       description: "Whether the button should be disabled",

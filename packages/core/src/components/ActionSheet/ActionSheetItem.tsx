@@ -12,7 +12,7 @@ import {
   createTextStyle,
   createColorProp,
   createTextProp,
-  Triggers,
+  // Triggers,
 } from "@draftbit/types";
 
 type Props = {
@@ -70,7 +70,7 @@ export const SEED_DATA = {
   tag: "ActionSheetItem",
   description: "Action Sheet item",
   category: COMPONENT_TYPES.button,
-  triggesr: [Triggers.OnPress],
+  triggesr: ["ON_PRESS"],
   props: {
     buttonColor: createColorProp({
       label: "Button Color",

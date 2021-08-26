@@ -24,7 +24,7 @@ import {
   createAspectRatioProp,
   createStaticBoolProp,
   createTextStyle,
-  Triggers,
+  // Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -176,7 +176,7 @@ export const SEED_DATA = {
   tag: "Card",
   description: "A card you can customize however you'd like",
   category: COMPONENT_TYPES.card,
-  triggers: [Triggers.OnPress, Triggers.OnPressIcon],
+  triggers: ["ON_PRESS"], // ON_PRESS_ICON
   props: {
     elevation: createElevationType(3),
     image: createImageProp(),

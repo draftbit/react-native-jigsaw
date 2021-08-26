@@ -70,7 +70,7 @@ export const SEED_DATA = {
   tag: "ActionSheetItem",
   description: "Action Sheet item",
   category: COMPONENT_TYPES.button,
-  triggesr: ["ON_PRESS"],
+  triggers: ["ON_PRESS"],
   props: {
     buttonColor: createColorProp({
       label: "Button Color",

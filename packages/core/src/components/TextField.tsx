@@ -691,6 +691,7 @@ const SEED_DATA_PROPS = {
   },
 };
 
+const SEED_DATA_TRIGGERS = ["ON_CHANGE_TEXT"];
 export const SEED_DATA = [
   {
     name: "Text Field",
@@ -699,6 +700,7 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/Textfield.png",
     supports_list_render: false,
+    triggers: SEED_DATA_TRIGGERS,
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -733,6 +735,7 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/TextArea.png",
     supports_list_render: false,
+    triggers: SEED_DATA_TRIGGERS,
     props: {
       ...SEED_DATA_PROPS,
       type: {

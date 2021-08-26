@@ -11,7 +11,7 @@ import {
   createStaticNumberProp,
   createFieldNameProp,
   createIconSizeProp,
-  Triggers,
+  // Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -93,7 +93,7 @@ export const SEED_DATA = {
   tag: "ToggleButton",
   category: COMPONENT_TYPES.button,
   layout: {},
-  triggers: [Triggers.OnPress],
+  triggers: ["ON_PRESS"],
   props: {
     icon: createIconProp({
       required: true,

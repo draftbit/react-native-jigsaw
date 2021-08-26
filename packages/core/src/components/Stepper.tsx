@@ -113,6 +113,7 @@ export const SEED_DATA = [
     description: "A component used to control the quantity of something",
     category: COMPONENT_TYPES.input,
     layout: {},
+    triggers: ["ON_CHANGE"],
     props: {
       fieldName: createFieldNameProp({
         defaultValue: "stepperValue",

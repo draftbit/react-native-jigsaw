@@ -116,6 +116,7 @@ export const SEED_DATA = {
   tag: "StarRating",
   description: "A star rating component",
   category: COMPONENT_TYPES.button,
+  triggers: ["ON_PRESS"],
   props: {
     starSize: createStaticNumberProp({
       label: "Star size",

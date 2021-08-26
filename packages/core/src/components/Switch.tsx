@@ -149,13 +149,14 @@ export { SwitchRow };
 
 export default withTheme(Switch);
 
+const SEED_DATA_TRIGGERS = ["ON_VALUE_CHANGE"];
 export const SEED_DATA = [
   {
     name: "Switch",
     tag: "Switch",
     category: COMPONENT_TYPES.input,
     layout: {},
-    triggers: ["ON_VALUE_CHANGE"],
+    triggers: SEED_DATA_TRIGGERS,
     props: {
       disabled: createBoolProp({
         label: "Disabled",
@@ -185,7 +186,7 @@ export const SEED_DATA = [
     tag: "SwitchRow",
     category: COMPONENT_TYPES.input,
     layout: {},
-    triggers: ["ON_VALUE_CHANGE"],
+    triggers: SEED_DATA_TRIGGERS,
     props: {
       label: createTextProp({
         label: "Label",

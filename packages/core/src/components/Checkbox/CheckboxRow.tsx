@@ -163,6 +163,7 @@ export const SEED_DATA = {
   layout: {
     minHeight: 50,
   },
+  triggers: ["ON_PRESS"],
   props: {
     label: createTextProp({
       label: "Label",

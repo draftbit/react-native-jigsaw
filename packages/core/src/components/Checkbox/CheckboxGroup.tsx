@@ -60,6 +60,7 @@ export const SEED_DATA = {
   tag: "CheckboxGroup",
   category: COMPONENT_TYPES.deprecated,
   layout: {},
+  triggers: ["ON_VALUE_CHANGE"],
   props: {
     direction: createDirectionProp(),
     values: createTextProp({

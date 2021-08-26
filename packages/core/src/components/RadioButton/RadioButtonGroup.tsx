@@ -64,6 +64,7 @@ export const SEED_DATA = {
   tag: "RadioButtonGroup",
   category: COMPONENT_TYPES.input,
   layout: {},
+  triggers: ["ON_VALUE_CHANGE"],
   props: {
     direction: createDirectionProp(),
     fieldName: createFieldNameProp({

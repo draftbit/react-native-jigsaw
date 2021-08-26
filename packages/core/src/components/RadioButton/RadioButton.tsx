@@ -13,6 +13,7 @@ import {
   createNumberProp,
   createIconProp,
   createTextProp,
+  Triggers,
 } from "@draftbit/types";
 import type { IconSlot } from "../../interfaces/Icon";
 
@@ -76,6 +77,7 @@ export const SEED_DATA = {
   name: "Radio Button",
   tag: "RadioButton",
   category: COMPONENT_TYPES.input,
+  triggers: [Triggers.OnPress],
   props: {
     value: createTextProp({
       label: "Value",

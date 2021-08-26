@@ -18,12 +18,12 @@ const ActionSheet = ({ visible = false, onClose, children }: Props) => {
         <View style={styles.groupWrapper}>
           <View style={styles.group}>
             {React.Children.toArray(children).filter(
-              (child) => child?.type?.name !== "ActionSheetCancel"
+              (child: any) => child?.type?.name !== "ActionSheetCancel"
             )}
           </View>
           <View style={styles.group}>
             {React.Children.toArray(children).filter(
-              (child) => child?.type?.name === "ActionSheetCancel"
+              (child: any) => child.type.name === "ActionSheetCancel"
             )}
           </View>
         </View>

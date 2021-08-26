@@ -138,6 +138,7 @@ export const SEED_DATA = [
     description: "A component used to select a date from a visual calendar",
     category: COMPONENT_TYPES.input,
     layout: null,
+    triggers: ["ON_DATE_CHANGE"],
     props: {
       ...SEED_DATA_PROPS,
       type: {

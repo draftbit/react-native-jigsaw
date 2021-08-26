@@ -5,7 +5,7 @@ import {
   PROP_TYPES,
   FIELD_NAME,
   TEXT_INPUT_PROPS,
-  Triggers,
+  // Triggers,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -28,7 +28,8 @@ export const SEED_DATA = {
     paddingBottom: 8,
     borderRadius: 8,
   },
-  triggers: [Triggers.OnChangeText],
+  triggers: ["ON_VALUE_CHANGE"],
+  // triggers: [Triggers.OnChangeText],
   props: {
     ...TEXT_INPUT_PROPS,
     style: {

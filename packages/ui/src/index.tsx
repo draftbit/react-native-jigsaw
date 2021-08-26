@@ -34,6 +34,7 @@ export {
   RowHeadlineImageCaption,
   ActionSheet,
   ActionSheetItem,
+  ActionSheetCancel,
 } from "@draftbit/core";
 
 /**

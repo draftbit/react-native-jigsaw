@@ -2,6 +2,7 @@ import React from "react";
 import {
   ActionSheet,
   ActionSheetItem,
+  ActionSheetCancel,
   ButtonSolid,
   withTheme,
 } from "@draftbit/ui";
@@ -25,24 +26,21 @@ function ActionSheetExample({ theme }) {
         <ActionSheet
           visible={visible}
           cancelLabelStyle={{ fontWeight: "bold" }}
-          onCancelPress={hideActionSheet}
+          // onCancelPress={hideActionSheet}
           onClose={hideActionSheet}
         >
           <ActionSheetItem
-            labelStyle={{ fontSize: 12, fontWeight: "300", color: "grey" }}
-          >
-            This Action Sheet doesn't only allow to give option but also allows
-            you to show some long text message like this.
-          </ActionSheetItem>
+            style={{ fontSize: 12, fontWeight: "300", color: "grey" }}
+            label="This Action Sheet doesn't only allow to give option but also allows
+            you to show some long text message like this."
+          />
           <ActionSheetItem
-            labelStyle={{ color: theme.colors.error }}
+            style={{ color: theme.colors.error }}
             onPress={hideActionSheet}
-          >
-            Delete Draft
-          </ActionSheetItem>
-          <ActionSheetItem onPress={hideActionSheet}>
-            Save Draft
-          </ActionSheetItem>
+            label=" Delete Draft"
+          />
+          <ActionSheetItem onPress={hideActionSheet} label="Save Draft" />
+          <ActionSheetCancel onPress={hideActionSheet} />
         </ActionSheet>
       </Section>
     </Container>

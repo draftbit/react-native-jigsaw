@@ -1,57 +1,31 @@
 import React from "react";
-import { View, StyleSheet, StyleProp, TextStyle } from "react-native";
-import ActionSheetItem from "./ActionSheetItem";
+import { View, StyleSheet } from "react-native";
 import Portal from "../Portal/Portal";
 import Touchable from "../Touchable";
-import {
-  COMPONENT_TYPES,
-  createColorProp,
-  createStaticBoolProp,
-  createTextProp,
-  createTextStyle,
-} from "@draftbit/types";
+import { COMPONENT_TYPES, createStaticBoolProp, GROUPS } from "@draftbit/types";
 
 interface Props {
-  children: React.ReactNode;
   visible: boolean;
-  showCancel?: boolean;
-  cancelLabel?: string;
-  cancelLabelStyle?: StyleProp<TextStyle>;
-  cancelButtonColor?: string;
-  onCancelPress?: () => {};
   onClose: () => void;
+  children: React.ReactNode;
 }
 
-const ActionSheet = ({
-  visible,
-  showCancel = true,
-  cancelLabelStyle,
-  cancelButtonColor,
-  children,
-  cancelLabel = "Cancel",
-  onClose,
-  onCancelPress,
-}: Props) => {
+const ActionSheet = ({ visible = false, onClose, children }: Props) => {
   return visible ? (
     <Portal>
       <Touchable style={styles.wrapper} onPress={onClose}>
         <View style={styles.overlay} />
         <View style={styles.groupWrapper}>
-          <View style={styles.group}>{children}</View>
-          {showCancel && (
-            <View style={styles.group}>
-              <ActionSheetItem
-                labelStyle={[
-                  { color: "#FF453A", fontWeight: "bold" },
-                  cancelLabelStyle,
-                ]}
-                buttonColor={cancelButtonColor}
-                onPress={onCancelPress}
-              >
-                {cancelLabel}
-              </ActionSheetItem>
-            </View>
-          )}
+          <View style={styles.group}>
+            {React.Children.toArray(children).filter(
+              (child) => child?.type?.name !== "ActionSheetCancel"
+            )}
+          </View>
+          <View style={styles.group}>
+            {React.Children.toArray(children).filter(
+              (child) => child?.type?.name === "ActionSheetCancel"
+            )}
+          </View>
         </View>
       </Touchable>
     </Portal>
@@ -101,21 +75,8 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.container,
   props: {
     visible: createStaticBoolProp({
+      group: GROUPS.basic,
       label: "Show Action Sheet",
-    }),
-    showCancel: createStaticBoolProp({
-      label: "Show cancel",
-      description: "Whether the ActionSheet should show cancel button or not",
-    }),
-    cancelLabel: createTextProp({
-      label: "Cancel label",
-      defaultValue: "Cancel",
-    }),
-    cancelLabelStyle: createTextStyle({
-      label: "Cancel Label Style",
-    }),
-    cancelButtonColor: createColorProp({
-      label: "Cancel Button Color",
     }),
   },
 };

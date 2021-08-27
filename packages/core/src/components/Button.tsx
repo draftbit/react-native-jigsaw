@@ -17,6 +17,7 @@ import {
   createBoolProp,
   createTextProp,
   GROUPS,
+  createActionProp,
   Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
@@ -227,6 +228,7 @@ const styles = StyleSheet.create({
 
 const SEED_DATA_TRIGGERS = [Triggers.OnPress];
 const SEED_DATA_PROPS = {
+  onPress: createActionProp(),
   icon: createIconProp({
     defaultValue: null,
     required: false,

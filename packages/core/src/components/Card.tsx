@@ -24,6 +24,7 @@ import {
   createAspectRatioProp,
   createStaticBoolProp,
   createTextStyle,
+  createActionProp,
   Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
@@ -178,6 +179,10 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.card,
   triggers: [Triggers.OnPress], //TODO: when we support multiple triggers, add Triggers.OnPressIcon
   props: {
+    onPress: createActionProp(),
+    onPressIcon: createActionProp({
+      handlerPropName: "onPressIcon",
+    }),
     elevation: createElevationType(3),
     image: createImageProp(),
     title: createTextProp({

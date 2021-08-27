@@ -20,6 +20,7 @@ import {
   GROUPS,
   createBoolProp,
   createIconSizeProp,
+  createActionProp,
   Triggers,
 } from "@draftbit/types";
 
@@ -121,6 +122,7 @@ export const SEED_DATA = {
   layout: {},
   triggers: [Triggers.OnPress],
   props: {
+    onPress: createActionProp(),
     disabled: createBoolProp({
       label: "Disabled",
       group: GROUPS.basic,

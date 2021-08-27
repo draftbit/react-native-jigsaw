@@ -1,7 +1,7 @@
 import React from "react";
 import { Pressable, ViewStyle, PressableProps } from "react-native";
 
-import { COMPONENT_TYPES, Triggers } from "@draftbit/types";
+import { COMPONENT_TYPES, createActionProp, Triggers } from "@draftbit/types";
 
 type Props = {
   disabled?: boolean;
@@ -44,5 +44,7 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.button,
   layout: {},
   triggers: [Triggers.OnPress],
-  props: {},
+  props: {
+    onPress: createActionProp(),
+  },
 };

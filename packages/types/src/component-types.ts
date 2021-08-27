@@ -337,8 +337,15 @@ export const createFieldNameProp = (overrides = {}) => ({
   ...overrides,
 });
 
-export const createStateValue = (overrides = {}) => ({
-  ...FIELD_NAME,
+export const createActionProp = (overrides = {}) => ({
+  label: "Action",
+  description: "Action to execute when button pressed",
+  editable: true,
+  required: false,
+  formType: FORM_TYPES.action,
+  propType: PROP_TYPES.STRING,
+  defaultValue: null,
+  group: GROUPS.basic,
   ...overrides,
 });
 

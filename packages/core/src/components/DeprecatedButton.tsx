@@ -20,6 +20,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   COMPONENT_TYPES,
+  createActionProp,
   Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
@@ -221,6 +222,7 @@ const styles = StyleSheet.create({
 export default withTheme(Button);
 
 const SEED_DATA_PROPS = {
+  onPress: createActionProp(),
   icon: {
     group: GROUPS.basic,
     label: "Icon Name",

@@ -12,6 +12,7 @@ import {
   createActionProp,
   createTextProp,
   GROUPS,
+  Triggers,
 } from "@draftbit/types";
 import { extractStyles } from "../../utilities";
 
@@ -63,6 +64,7 @@ export const SEED_DATA = {
   tag: "ActionSheetItem",
   description: "Action Sheet item",
   category: COMPONENT_TYPES.button,
+  triggers: [Triggers.OnPress],
   props: {
     onPress: createActionProp(),
     label: createTextProp({

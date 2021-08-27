@@ -4,6 +4,7 @@ import {
   COMPONENT_TYPES,
   createIconProp,
   createTextProp,
+  createActionProp,
   Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
@@ -55,6 +56,7 @@ export const SEED_DATA = [
     layout: {},
     triggers: [Triggers.OnPress],
     props: {
+      onPress: createActionProp(),
       title: createTextProp({
         label: "Title",
         description: "Text to display",

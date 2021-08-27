@@ -17,6 +17,7 @@ import {
   createColorProp,
   createNumberProp,
   createBoolProp,
+  createActionProp,
   Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
@@ -99,6 +100,7 @@ export const SEED_DATA = {
   layout: {},
   triggers: [Triggers.OnPress],
   props: {
+    onPress: createActionProp(),
     icon: createIconProp(),
     color: createColorProp({
       label: "Color",

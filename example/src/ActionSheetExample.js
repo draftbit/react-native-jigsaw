@@ -31,7 +31,7 @@ function ActionSheetExample({ theme }) {
         >
           <ActionSheetItem
             style={{ fontSize: 12, fontWeight: "300", color: "grey" }}
-            label="This Action Sheet doesn't only allow to give option but also allows
+            label="This Action Sheet not only allows you to provide an option but also allows
             you to show some long text message like this."
           />
           <ActionSheetItem

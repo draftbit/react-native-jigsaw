@@ -46,7 +46,7 @@ export const SEED_DATA = {
     label: createTextProp({
       group: GROUPS.basic,
       label: "Label",
-      defaultValue: "Option",
+      defaultValue: "Cancel",
     }),
   },
 };

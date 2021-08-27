@@ -25,7 +25,11 @@ export { default as TextInput } from "./components/TextInput";
 export { default as ToggleButton } from "./components/ToggleButton";
 export { default as Touchable } from "./components/Touchable";
 export { AccordionGroup, AccordionItem } from "./components/Accordion";
-export { ActionSheet, ActionSheetItem } from "./components/ActionSheet";
+export {
+  ActionSheet,
+  ActionSheetItem,
+  ActionSheetCancel,
+} from "./components/ActionSheet";
 
 export {
   Center,

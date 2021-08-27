@@ -1,43 +1,35 @@
 import React from "react";
 import {
   Text,
-  View,
   StyleSheet,
   StyleProp,
-  TextStyle,
   TouchableHighlight,
+  ViewStyle,
+  TextStyle,
 } from "react-native";
 import {
   COMPONENT_TYPES,
-  createTextStyle,
-  createColorProp,
   createActionProp,
   createTextProp,
+  GROUPS,
 } from "@draftbit/types";
+import { extractStyles } from "../../utilities";
 
 type Props = {
-  children: string;
-  labelStyle?: StyleProp<TextStyle>;
-  buttonColor?: string;
-
+  label: string;
+  style?: StyleProp<ViewStyle | TextStyle>;
   onPress?: () => void;
 };
 
-const ActionSheetItem: React.FC<Props> = ({
-  children,
-  labelStyle,
-  buttonColor = "#F1F1F1",
-  onPress,
-}) => {
+const ActionSheetItem: React.FC<Props> = ({ label, style, onPress }) => {
+  const { textStyles, viewStyles } = extractStyles(style);
   return (
     <TouchableHighlight
       underlayColor={"#FFFFFF"}
-      style={[styles.wrapper, { backgroundColor: buttonColor }]}
+      style={[styles.wrapper, viewStyles]}
       onPress={onPress}
     >
-      <View>
-        <Text style={[styles.label, labelStyle]}>{children}</Text>
-      </View>
+      <Text style={{ ...styles.label, ...textStyles }}>{label}</Text>
     </TouchableHighlight>
   );
 };
@@ -60,6 +52,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     paddingHorizontal: 20,
     paddingVertical: 10,
+    alignSelf: "center",
   },
 });
 
@@ -71,16 +64,11 @@ export const SEED_DATA = {
   description: "Action Sheet item",
   category: COMPONENT_TYPES.button,
   props: {
-    buttonColor: createColorProp({
-      label: "Button Color",
-      defaultValue: "surface",
-    }),
-    labelStyle: createTextStyle({
-      label: "Label Style",
-    }),
     onPress: createActionProp(),
-    children: createTextProp({
+    label: createTextProp({
+      group: GROUPS.basic,
       label: "Label",
+      defaultValue: "Option",
     }),
   },
 };

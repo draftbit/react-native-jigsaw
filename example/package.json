@@ -1,7 +1,7 @@
 {
   "name": "@draftbit/example",
   "description": "Example app for @draftbit/ui",
-  "version": "42.1.0",
+  "version": "42.1.1",
   "private": true,
   "main": "__generated__/AppEntry.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "clean:modules": "rimraf node_modules"
   },
   "dependencies": {
-    "@draftbit/ui": "^42.1.0",
+    "@draftbit/ui": "^42.1.1",
     "@expo/vector-icons": "^12.0.4",
     "@react-native-community/datetimepicker": "3.5.2",
     "@react-native-picker/picker": "1.16.1",

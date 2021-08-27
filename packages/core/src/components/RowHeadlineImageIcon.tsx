@@ -1,12 +1,6 @@
 import * as React from "react";
 import { withTheme } from "../theming";
-import {
-  COMPONENT_TYPES,
-  createIconProp,
-  createTextProp,
-  createImageProp,
-  createStaticBoolProp,
-} from "@draftbit/types";
+import { COMPONENT_TYPES, FORM_TYPES } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
 
@@ -66,26 +60,6 @@ const RowHeadlineImageIcon: React.FC<Props> = ({
 };
 
 export default withTheme(RowHeadlineImageIcon);
-const SEED_DATA_PROPS = {
-  title: createTextProp({
-    label: "Title",
-    description: "Headline text to display",
-  }),
-  icon: createIconProp({
-    defaultValue: null,
-  }),
-};
-
-const IMAGE_PROP = createImageProp();
-const MULTILINE_PROP = createStaticBoolProp({
-  defaultValue: true,
-  editable: false,
-});
-const SUBTITLE_PROP = createTextProp({
-  label: "Subtitle",
-  description: "Subtitle text to display",
-  defaultValue: "San Diego",
-});
 
 export const SEED_DATA = [
   {
@@ -94,10 +68,25 @@ export const SEED_DATA = [
     description:
       "A row with left aligned headline text and a right aligned icon",
     category: COMPONENT_TYPES.row,
-    layout: {},
+    preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_HeadlineIcon.png",
+    supports_list_render: true,
     props: {
-      ...SEED_DATA_PROPS,
+      title: {
+        label: "Title",
+        description: "Headline text to display",
+        formType: FORM_TYPES.string,
+        defaultValue: "Beautiful West Coast Villa",
+        editable: true,
+      },
+      icon: {
+        label: "Icon",
+        description: "Icon to display",
+        formType: FORM_TYPES.icon,
+        defaultValue: null,
+        editable: true,
+      },
     },
+    layout: {},
   },
   {
     name: "Row Single Line Headline Icon Image",
@@ -105,11 +94,32 @@ export const SEED_DATA = [
     description:
       "A row with left aligned image and headline text and a right aligned icon",
     category: COMPONENT_TYPES.row,
-    layout: {},
+    preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_HeadlineIconImage.png",
+    supports_list_render: true,
     props: {
-      ...SEED_DATA_PROPS,
-      image: IMAGE_PROP,
+      title: {
+        label: "Title",
+        description: "Headline text to display",
+        formType: FORM_TYPES.string,
+        defaultValue: "Beautiful West Coast Villa",
+        editable: true,
+      },
+      icon: {
+        label: "Icon",
+        description: "Icon to display",
+        formType: FORM_TYPES.icon,
+        defaultValue: null,
+        editable: true,
+      },
+      image: {
+        label: "Image",
+        description: "Image to display",
+        formType: FORM_TYPES.image,
+        defaultValue: null,
+        editable: true,
+      },
     },
+    layout: {},
   },
   {
     name: "Row Double Line Headline Icon",
@@ -117,11 +127,32 @@ export const SEED_DATA = [
     description:
       "A row with left aligned headline text and subtitle text and a right aligned icon",
     category: COMPONENT_TYPES.row,
-    layout: {},
+    preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_HeadlineIcon.png",
+    supports_list_render: true,
     props: {
-      ...SEED_DATA_PROPS,
-      subtitle: SUBTITLE_PROP,
+      title: {
+        label: "Title",
+        description: "Headline text to display",
+        formType: FORM_TYPES.string,
+        defaultValue: "Beautiful West Coast Villa",
+        editable: true,
+      },
+      subtitle: {
+        label: "Subtitle",
+        description: "Subtitle text to display",
+        formType: FORM_TYPES.string,
+        defaultValue: "San Diego",
+        editable: true,
+      },
+      icon: {
+        label: "Icon",
+        description: "Icon to display",
+        formType: FORM_TYPES.icon,
+        defaultValue: null,
+        editable: true,
+      },
     },
+    layout: {},
   },
   {
     name: "Row Double Line Headline Image Icon",
@@ -129,12 +160,39 @@ export const SEED_DATA = [
     description:
       "A row with left aligned headline text and subtitle text and a right aligned icon",
     category: COMPONENT_TYPES.row,
-    layout: {},
+    preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_HeadlineImageIcon.png",
+    supports_list_render: true,
     props: {
-      ...SEED_DATA_PROPS,
-      image: IMAGE_PROP,
-      subtitle: SUBTITLE_PROP,
+      title: {
+        label: "Title",
+        description: "Headline text to display",
+        formType: FORM_TYPES.string,
+        defaultValue: "Beautiful West Coast Villa",
+        editable: true,
+      },
+      subtitle: {
+        label: "Subtitle",
+        description: "Subtitle text to display",
+        formType: FORM_TYPES.string,
+        defaultValue: "San Diego",
+        editable: true,
+      },
+      icon: {
+        label: "Icon",
+        description: "Icon to display",
+        formType: FORM_TYPES.icon,
+        defaultValue: null,
+        editable: true,
+      },
+      image: {
+        label: "Image",
+        description: "Image to display",
+        formType: FORM_TYPES.image,
+        defaultValue: null,
+        editable: true,
+      },
     },
+    layout: {},
   },
   {
     name: "Row Multiline Headline Icon",
@@ -142,17 +200,38 @@ export const SEED_DATA = [
     description:
       "A row with left aligned headline text and multiline subtitle text and a right aligned icon",
     category: COMPONENT_TYPES.row,
-    layout: {},
+    preview_image_url: "{CLOUDINARY_URL}/Row_Multiline_HeadlineIcon.png",
+    supports_list_render: true,
     props: {
-      ...SEED_DATA_PROPS,
-      multilineSubtitle: MULTILINE_PROP,
-      subtitle: createTextProp({
+      title: {
+        label: "Title",
+        description: "Headline text to display",
+        formType: FORM_TYPES.string,
+        defaultValue: "Beautiful West Coast Villa",
+        editable: true,
+      },
+      subtitle: {
         label: "Subtitle",
         description: "Subtitle text to display",
-        defaultValue:
+        formType: FORM_TYPES.string,
+        value:
           "San Diego is a city on the Pacific coast of California known for its beaches, parks and warm climate",
-      }),
+        editable: true,
+      },
+      icon: {
+        label: "Icon",
+        description: "Icon to display",
+        formType: FORM_TYPES.icon,
+        defaultValue: null,
+        editable: true,
+      },
+      multilineSubtitle: {
+        formType: FORM_TYPES.boolean,
+        defaultValue: true,
+        editable: false,
+      },
     },
+    layout: {},
   },
   {
     name: "Row Multiline Headline Image Icon",
@@ -160,17 +239,44 @@ export const SEED_DATA = [
     description:
       "A row with left aligned image, headline text, and multiline subtitle text, and a right aligned icon",
     category: COMPONENT_TYPES.row,
-    layout: {},
+    preview_image_url: "{CLOUDINARY_URL}/Row_Multiline_HeadlineImageIcon.png",
+    supports_list_render: true,
     props: {
-      ...SEED_DATA_PROPS,
-      image: IMAGE_PROP,
-      multilineSubtitle: MULTILINE_PROP,
-      subtitle: createTextProp({
+      title: {
+        label: "Title",
+        description: "Headline text to display",
+        formType: FORM_TYPES.string,
+        defaultValue: "Beautiful West Coast Villa",
+        editable: true,
+      },
+      subtitle: {
         label: "Subtitle",
         description: "Subtitle text to display",
-        defaultValue:
+        formType: FORM_TYPES.string,
+        value:
           "San Diego is a city on the Pacific coast of California known for its beaches, parks and warm climate",
-      }),
+        editable: true,
+      },
+      icon: {
+        label: "Icon",
+        description: "Icon to display",
+        formType: FORM_TYPES.icon,
+        defaultValue: null,
+        editable: true,
+      },
+      image: {
+        label: "Image",
+        description: "Image to display",
+        formType: FORM_TYPES.image,
+        defaultValue: null,
+        editable: true,
+      },
+      multilineSubtitle: {
+        formType: FORM_TYPES.boolean,
+        defaultValue: true,
+        editable: false,
+      },
     },
+    layout: {},
   },
 ];

@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
 export default withTheme(FAB);
 
 export const SEED_DATA = {
-  name: "Icon FAB",
+  name: "FAB",
   tag: "FAB",
   category: COMPONENT_TYPES.button,
   description: "A mini round icon FAB",

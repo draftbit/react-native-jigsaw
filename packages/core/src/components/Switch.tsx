@@ -16,6 +16,7 @@ import {
   createTextProp,
   createRowDirectionProp,
   RowDirection,
+  Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import { usePrevious } from "../hooks";
@@ -148,12 +149,14 @@ export { SwitchRow };
 
 export default withTheme(Switch);
 
+const SEED_DATA_TRIGGERS = [Triggers.OnValueChange];
 export const SEED_DATA = [
   {
     name: "Switch",
     tag: "Switch",
     category: COMPONENT_TYPES.input,
     layout: {},
+    triggers: SEED_DATA_TRIGGERS,
     props: {
       disabled: createBoolProp({
         label: "Disabled",
@@ -183,6 +186,7 @@ export const SEED_DATA = [
     tag: "SwitchRow",
     category: COMPONENT_TYPES.input,
     layout: {},
+    triggers: SEED_DATA_TRIGGERS,
     props: {
       label: createTextProp({
         label: "Label",

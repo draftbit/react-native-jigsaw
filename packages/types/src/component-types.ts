@@ -1,4 +1,17 @@
 // @ts-nocheck
+// Make sure enum exists @draftbit
+export const Triggers = {
+  OnPress: "ON_PRESS",
+  OnValueChange: "ON_VALUE_CHANGE",
+  OnDateChange: "ON_DATE_CHANGE",
+  OnChange: "ON_CHANGE",
+  OnChangeText: "ON_CHANGE_TEXT",
+  OnRefresh: "ON_REFRESH",
+  OnBlur: "ON_BLUR",
+  OnSwipe: "ON_SWIPE",
+  OnSelect: "ON_SELECT",
+};
+
 export const PROP_TYPES = {
   STRING: "STRING",
   ARRAY: "ARRAY",
@@ -333,11 +346,6 @@ export const createActionProp = (overrides = {}) => ({
   propType: PROP_TYPES.STRING,
   defaultValue: null,
   group: GROUPS.basic,
-  ...overrides,
-});
-
-export const createStateValue = (overrides = {}) => ({
-  ...FIELD_NAME,
   ...overrides,
 });
 

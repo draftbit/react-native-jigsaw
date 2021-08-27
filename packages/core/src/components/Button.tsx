@@ -16,8 +16,9 @@ import {
   createIconProp,
   createBoolProp,
   createTextProp,
-  createActionProp,
   GROUPS,
+  createActionProp,
+  Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -225,7 +226,9 @@ const styles = StyleSheet.create({
   },
 });
 
+const SEED_DATA_TRIGGERS = [Triggers.OnPress];
 const SEED_DATA_PROPS = {
+  onPress: createActionProp(),
   icon: createIconProp({
     defaultValue: null,
     required: false,
@@ -245,7 +248,6 @@ const SEED_DATA_PROPS = {
     label: "Loading",
     description: "Whether to show a loading indicator",
   }),
-  onPress: createActionProp(),
 };
 
 const LAYOUT = {
@@ -265,6 +267,7 @@ export const SEED_DATA = [
       borderWidth: 1,
       textAlign: "center",
     },
+    triggers: SEED_DATA_TRIGGERS,
     props: SEED_DATA_PROPS,
   },
   {
@@ -276,6 +279,7 @@ export const SEED_DATA = [
       backgroundColor: "primary",
       textAlign: "center",
     },
+    triggers: SEED_DATA_TRIGGERS,
     props: SEED_DATA_PROPS,
   },
   {
@@ -289,6 +293,7 @@ export const SEED_DATA = [
       padding: 0,
       minHeight: undefined,
     },
+    triggers: SEED_DATA_TRIGGERS,
     props: SEED_DATA_PROPS,
   },
 ];

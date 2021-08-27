@@ -15,6 +15,7 @@ import {
   createStaticNumberProp,
   createFieldNameProp,
   createStaticBoolProp,
+  Triggers,
 } from "@draftbit/types";
 
 type Props = {
@@ -116,6 +117,7 @@ export const SEED_DATA = {
   tag: "StarRating",
   description: "A star rating component",
   category: COMPONENT_TYPES.button,
+  triggers: [Triggers.OnPress],
   props: {
     starSize: createStaticNumberProp({
       label: "Star size",

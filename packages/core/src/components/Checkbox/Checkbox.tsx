@@ -14,6 +14,7 @@ import {
   createColorProp,
   createFieldNameProp,
   GROUPS,
+  Triggers,
 } from "@draftbit/types";
 import { useTheme } from "../../theming";
 import type { IconSlot } from "../../interfaces/Icon";
@@ -135,6 +136,7 @@ export const SEED_DATA = {
   name: "Checkbox",
   tag: "Checkbox",
   category: COMPONENT_TYPES.input,
+  triggers: [Triggers.OnPress],
   props: {
     fieldName: createFieldNameProp({
       defaultValue: "checkboxValue",

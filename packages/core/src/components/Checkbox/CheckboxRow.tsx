@@ -16,6 +16,7 @@ import {
   createRowDirectionProp,
   createFieldNameProp,
   COMPONENT_TYPES,
+  Triggers,
 } from "@draftbit/types";
 import type { IconSlot } from "../../interfaces/Icon";
 import { Direction as GroupDirection } from "./context";
@@ -163,6 +164,7 @@ export const SEED_DATA = {
   layout: {
     minHeight: 50,
   },
+  triggers: [Triggers.OnPress],
   props: {
     label: createTextProp({
       label: "Label",

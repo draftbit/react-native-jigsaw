@@ -228,6 +228,7 @@ export const SEED_DATA = [
         propType: PROP_TYPES.STRING,
         defaultValue: null,
         editable: true,
+        required: true,
       },
       numColumns: createNumColumnsType({
         defaultValue: 2,
@@ -250,6 +251,7 @@ export const SEED_DATA = [
         propType: PROP_TYPES.STRING,
         defaultValue: null,
         editable: true,
+        required: true,
       },
       numColumns: createNumColumnsType({
         defaultValue: 3,

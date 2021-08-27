@@ -140,16 +140,6 @@ export declare const createAspectRatioProp: (overrides?: {}) => {
   required: boolean;
   group: string;
 };
-export declare const createActionProp: (overrides?: {}) => {
-  label: string;
-  description: string;
-  group: string;
-  formType: string;
-  propType: string;
-  defaultValue: null;
-  editable: boolean;
-  required: boolean;
-};
 export declare const createBoolProp: (overrides?: {}) => {
   label: string;
   description: string;

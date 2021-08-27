@@ -37,7 +37,7 @@ function ActionSheetExample({ theme }) {
           <ActionSheetItem
             style={{ color: theme.colors.error }}
             onPress={hideActionSheet}
-            label=" Delete Draft"
+            label="Delete Draft"
           />
           <ActionSheetItem onPress={hideActionSheet} label="Save Draft" />
           <ActionSheetCancel onPress={hideActionSheet} />

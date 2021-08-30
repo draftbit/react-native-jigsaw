@@ -37,9 +37,9 @@ const ActionSheetCancel: React.FC<Props> = ({
 export default ActionSheetCancel;
 
 export const SEED_DATA = {
-  name: "Action Sheet Item",
-  tag: "ActionSheetItem",
-  description: "Action Sheet item",
+  name: "Action Sheet Cancel",
+  tag: "ActionSheetCancel",
+  description: "Action Sheet cancel",
   category: COMPONENT_TYPES.button,
   props: {
     onPress: createActionProp(),

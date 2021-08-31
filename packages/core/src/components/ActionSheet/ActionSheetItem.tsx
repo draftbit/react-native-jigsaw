@@ -65,6 +65,9 @@ export const SEED_DATA = {
   description: "Action Sheet item",
   category: COMPONENT_TYPES.button,
   triggers: [Triggers.OnPress],
+  layout: {
+    textAlign: "center",
+  },
   props: {
     onPress: createActionProp(),
     label: createTextProp({

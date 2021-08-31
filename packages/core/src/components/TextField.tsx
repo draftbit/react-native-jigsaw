@@ -68,7 +68,7 @@ interface State {
   value?: string;
 }
 
-class TextField extends React.Component<Props, State> {
+class StyledTextField extends React.Component<Props, State> {
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     return {
       value:
@@ -595,7 +595,7 @@ class TextField extends React.Component<Props, State> {
   }
 }
 
-export default withTheme(TextField);
+export default withTheme(StyledTextField);
 
 const styles = StyleSheet.create({
   container: {
@@ -695,8 +695,8 @@ const SEED_DATA_PROPS = {
 const SEED_DATA_TRIGGERS = [Triggers.OnChangeText];
 export const SEED_DATA = [
   {
-    name: "Text Field",
-    tag: "TextField",
+    name: "Styled Text Field",
+    tag: "StyledTextField",
     description: "A text input with a solid border or underline",
     category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/Textfield.png",
@@ -730,8 +730,8 @@ export const SEED_DATA = [
     layout: {},
   },
   {
-    name: "Text Area",
-    tag: "TextField",
+    name: "StyledText Area",
+    tag: "StyledTextField",
     description: "A text area with a solid border or underline",
     category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/TextArea.png",

@@ -30,7 +30,7 @@ const ActionSheetItem: React.FC<Props> = ({ label, style, onPress }) => {
       style={[styles.wrapper, viewStyles]}
       onPress={onPress}
     >
-      <Text style={{ ...styles.label, ...textStyles }}>{label}</Text>
+      <Text style={[styles.label, textStyles]}>{label}</Text>
     </TouchableHighlight>
   );
 };

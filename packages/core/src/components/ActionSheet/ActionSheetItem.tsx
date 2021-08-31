@@ -30,7 +30,7 @@ const ActionSheetItem: React.FC<Props> = ({ label, style, onPress }) => {
       style={[styles.wrapper, viewStyles]}
       onPress={onPress}
     >
-      <Text style={{ ...styles.label, ...textStyles }}>{label}</Text>
+      <Text style={[styles.label, textStyles]}>{label}</Text>
     </TouchableHighlight>
   );
 };
@@ -65,6 +65,9 @@ export const SEED_DATA = {
   description: "Action Sheet item",
   category: COMPONENT_TYPES.button,
   triggers: [Triggers.OnPress],
+  layout: {
+    textAlign: "center",
+  },
   props: {
     onPress: createActionProp(),
     label: createTextProp({

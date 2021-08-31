@@ -5,6 +5,7 @@ import {
   createActionProp,
   createTextProp,
   GROUPS,
+  Triggers,
 } from "@draftbit/types";
 import ActionSheetItem from "./ActionSheetItem";
 
@@ -41,6 +42,7 @@ export const SEED_DATA = {
   tag: "ActionSheetCancel",
   description: "Action Sheet cancel",
   category: COMPONENT_TYPES.button,
+  triggers: [Triggers.OnPress],
   props: {
     onPress: createActionProp(),
     label: createTextProp({

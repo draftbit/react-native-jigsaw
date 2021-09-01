@@ -22,6 +22,7 @@ export {
   Switch,
   SwitchRow,
   TextInput,
+  NumberInput,
   ThemeProvider,
   Touchable,
   withTheme,

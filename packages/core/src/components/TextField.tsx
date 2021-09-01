@@ -26,6 +26,7 @@ import {
   Triggers,
   createColorProp,
   createNumberProp,
+  GROUPS,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -774,6 +775,7 @@ export const SEED_DATA = [
         label: "Number of Lines",
         description: "Number of Lines for Multiline Field",
         defaultValue: 4,
+        group: GROUPS.basic,
       }),
     },
     layout: {},

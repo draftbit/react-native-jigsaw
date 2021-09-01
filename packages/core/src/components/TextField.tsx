@@ -730,7 +730,7 @@ export const SEED_DATA = [
     layout: {},
   },
   {
-    name: "StyledText Area",
+    name: "Styled Text Area",
     tag: "StyledTextField",
     description: "A text area with a solid border or underline",
     category: COMPONENT_TYPES.input,

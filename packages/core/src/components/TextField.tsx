@@ -26,7 +26,6 @@ import {
   Triggers,
   createColorProp,
   createNumberProp,
-  GROUPS,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -764,7 +763,7 @@ export const SEED_DATA = [
       multiline: {
         label: "Multiline",
         description: "Multiline",
-        group: GROUPS.basic,
+        group: GROUPS.uncategorized,
         formType: FORM_TYPES.boolean,
         propType: PROP_TYPES.BOOLEAN,
         defaultValue: true,

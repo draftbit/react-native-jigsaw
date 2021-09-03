@@ -11,7 +11,14 @@ function StarRatingExample({ theme }) {
         <StarRating rating={3.5} />
       </Section>
       <Section title="Star Rating Interactive">
-        <StarRating maxStars={10} starSize={48} isEditable={true} rating={4} />
+        <StarRating
+          maxStars={10}
+          starSize={48}
+          isEditable={true}
+          rating={4}
+          activeColor="#ff0000"
+          backgroundColor="#000000"
+        />
       </Section>
     </Container>
   );

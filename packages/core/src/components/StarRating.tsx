@@ -16,6 +16,7 @@ import {
   createFieldNameProp,
   createStaticBoolProp,
   Triggers,
+  createColorProp,
 } from "@draftbit/types";
 
 type Props = {
@@ -23,6 +24,8 @@ type Props = {
   maxStars?: number;
   rating?: number;
   isEditable?: boolean;
+  activeColor?: string;
+  backgroundColor?: string;
   theme: Theme;
   style?: StyleProp<ViewStyle>;
   onPress?: (newValue: number) => void;
@@ -34,6 +37,8 @@ const StarRating: React.FC<Props> = ({
   maxStars = 5,
   rating = 0,
   isEditable = false,
+  activeColor,
+  backgroundColor,
   theme,
   style,
   onPress,
@@ -67,7 +72,9 @@ const StarRating: React.FC<Props> = ({
             }
             size={starSize}
             color={
-              ratingRounded > i ? theme.colors.primary : theme.colors.divider
+              ratingRounded > i
+                ? activeColor || theme.colors.primary
+                : backgroundColor || theme.colors.divider
             }
           />
           {isEditable && (
@@ -145,6 +152,12 @@ export const SEED_DATA = {
     }),
     isEditable: createStaticBoolProp({
       label: "Editable",
+    }),
+    activeColor: createColorProp({
+      label: "Active Color",
+    }),
+    backgroundColor: createColorProp({
+      label: "Background Color",
     }),
   },
 };

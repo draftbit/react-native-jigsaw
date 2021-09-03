@@ -25,7 +25,7 @@ type Props = {
   rating?: number;
   isEditable?: boolean;
   activeColor?: string;
-  backgroundColor?: string;
+  inactiveColor?: string;
   theme: Theme;
   style?: StyleProp<ViewStyle>;
   onPress?: (newValue: number) => void;
@@ -38,7 +38,7 @@ const StarRating: React.FC<Props> = ({
   rating = 0,
   isEditable = false,
   activeColor,
-  backgroundColor,
+  inactiveColor,
   theme,
   style,
   onPress,
@@ -74,7 +74,7 @@ const StarRating: React.FC<Props> = ({
             color={
               ratingRounded > i
                 ? activeColor || theme.colors.primary
-                : backgroundColor || theme.colors.divider
+                : inactiveColor || theme.colors.divider
             }
           />
           {isEditable && (
@@ -156,7 +156,7 @@ export const SEED_DATA = {
     activeColor: createColorProp({
       label: "Active Color",
     }),
-    backgroundColor: createColorProp({
+    inactiveColor: createColorProp({
       label: "Background Color",
     }),
   },

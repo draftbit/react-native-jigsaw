@@ -30,6 +30,7 @@ export {
   ActionSheetItem,
   ActionSheetCancel,
 } from "./components/ActionSheet";
+export { Swiper, SwiperItem } from "./components/Swiper";
 
 export {
   Center,

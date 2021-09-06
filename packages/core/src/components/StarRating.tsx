@@ -157,7 +157,7 @@ export const SEED_DATA = {
       label: "Active Color",
     }),
     inactiveColor: createColorProp({
-      label: "Background Color",
+      label: "Inactive Color",
     }),
   },
 };

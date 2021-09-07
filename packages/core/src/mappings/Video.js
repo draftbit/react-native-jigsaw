@@ -4,6 +4,7 @@ import {
   createSourceProp,
   createResizeModeProp,
   createNumberProp,
+  GROUPS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -26,13 +27,14 @@ export const SEED_DATA = {
     usePoster: createStaticBoolProp({
       label: "Thumbnail",
       description: "Show a thumbnail before the video starts.",
-      defaultValue: true,
+      defaultValue: false,
     }),
     posterSource: createSourceProp({
       label: "Thumbnail Source",
       description:
         "The optional image to display over the video while it is loading.",
       defaultValue: "https://static.draftbit.com/videos/intro-to-draftbit.png",
+      group: GROUPS.basic,
     }),
     resizeMode: createResizeModeProp(),
     isMuted: createStaticBoolProp({
@@ -43,6 +45,7 @@ export const SEED_DATA = {
       label: "Use Native Controls",
       description:
         "Display the playback controls, allowing users to play or pause the video.",
+      defaultValue: true,
     }),
     shouldPlay: createStaticBoolProp({
       label: "Play Automatically",
@@ -58,6 +61,7 @@ export const SEED_DATA = {
       min: 0,
       step: 0.01,
       precision: 2,
+      group: GROUPS.basic,
     }),
     rate: createNumberProp({
       label: "Playback Rate",
@@ -67,6 +71,7 @@ export const SEED_DATA = {
       max: 32,
       step: 0.25,
       precision: 2,
+      group: GROUPS.basic,
     }),
     volume: createNumberProp({
       label: "Volume",
@@ -76,6 +81,7 @@ export const SEED_DATA = {
       max: 1,
       step: 0.1,
       precision: 1,
+      group: GROUPS.basic,
     }),
   },
 };

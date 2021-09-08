@@ -72,9 +72,7 @@ const StarRating: React.FC<Props> = ({
             }
             size={starSize}
             color={
-              ratingRounded > i
-                ? activeColor || theme.colors.primary
-                : inactiveColor || theme.colors.divider
+              ratingRounded > i ? activeColor : inactiveColor
             }
           />
           {isEditable && (

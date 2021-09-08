@@ -724,6 +724,7 @@ export const SEED_DATA = [
       },
       underlineColor: createColorProp({
         label: "Underline Color",
+        defaultValue: "light",
       }),
       secureTextEntry: {
         group: GROUPS.basic,

@@ -276,7 +276,7 @@ class TextField extends React.Component<Props, State> {
     } else {
       activeColor = error ? colors.error : colors.primary;
       placeholderColor = borderColor = colors.light;
-      underlineColor = underlineColorProp || colors.light;
+      underlineColor = underlineColorProp;
       backgroundColor = colors.background;
     }
 

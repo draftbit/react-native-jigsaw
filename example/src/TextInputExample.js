@@ -31,7 +31,7 @@ export default function TextInputExample() {
             initialValue="I'm an initial value!"
           />
           <NumberInput
-            placeholder="Input with initial value"
+            placeholder="Number input with initial value"
             value={number}
             onChangeText={(num) => setNumber(num)}
             initialValue="1"

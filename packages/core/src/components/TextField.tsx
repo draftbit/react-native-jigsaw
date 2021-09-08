@@ -314,8 +314,8 @@ class TextField extends React.Component<Props, State> {
         borderRadius: roundness,
         borderColor: hasActiveOutline ? activeColor : borderColor,
         borderWidth: 1,
-        paddingTop: this.state.labeled ? 16 * 1.5 : 16,
-        paddingBottom: this.state.labeled ? 16 * 0.5 : 16,
+        paddingTop: label ? 16 * 1.5 : 16,
+        paddingBottom: label ? 16 * 0.5 : 16,
         opacity: disabled ? disabledOpacity : 1,
         backgroundColor,
       };

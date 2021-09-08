@@ -61,12 +61,19 @@ function Switch({
 
   const booleanInitialValue = Boolean(initialValue);
   const previousInitialValue = usePrevious(booleanInitialValue);
+
   React.useEffect(() => {
-    if (booleanInitialValue !== previousInitialValue) {
+    if (initialValue != null && booleanInitialValue !== previousInitialValue) {
       setChecked(booleanInitialValue);
       onValueChange && onValueChange(booleanInitialValue);
     }
-  }, [booleanInitialValue, previousInitialValue, setChecked, onValueChange]);
+  }, [
+    initialValue,
+    booleanInitialValue,
+    previousInitialValue,
+    setChecked,
+    onValueChange,
+  ]);
 
   return (
     <NativeSwitch

@@ -153,9 +153,11 @@ export const SEED_DATA = {
     }),
     activeColor: createColorProp({
       label: "Active Color",
+      defaultValue: "primary",
     }),
     inactiveColor: createColorProp({
       label: "Inactive Color",
+      defaultValue: "divider",
     }),
   },
 };

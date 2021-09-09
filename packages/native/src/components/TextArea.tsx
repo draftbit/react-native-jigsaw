@@ -1,5 +1,6 @@
 import {
   COMPONENT_TYPES,
+  FIELD_NAME,
   FORM_TYPES,
   GROUPS,
   PROP_TYPES,
@@ -52,6 +53,11 @@ export const SEED_DATA = {
       defaultValue: 4,
       editable: true,
       required: false,
+    },
+    fieldName: {
+      ...FIELD_NAME,
+      defaultValue: "textInputValue",
+      handlerPropName: "onChangeText",
     },
   },
 };

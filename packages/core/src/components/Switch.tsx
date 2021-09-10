@@ -7,17 +7,7 @@ import {
 } from "react-native";
 import { withTheme } from "../theming";
 import FormRow from "./FormRow";
-import {
-  COMPONENT_TYPES,
-  GROUPS,
-  createBoolProp,
-  createColorProp,
-  createFieldNameProp,
-  createTextProp,
-  createRowDirectionProp,
-  RowDirection,
-  Triggers,
-} from "@draftbit/types";
+import { RowDirection } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import { usePrevious } from "../hooks";
 
@@ -153,77 +143,7 @@ function Row({
 
 const SwitchRow = withTheme(Row);
 export { SwitchRow };
-
 export default withTheme(Switch);
 
-const SEED_DATA_TRIGGERS = [Triggers.OnValueChange];
-export const SEED_DATA = [
-  {
-    name: "Switch",
-    tag: "Switch",
-    category: COMPONENT_TYPES.input,
-    layout: {},
-    triggers: SEED_DATA_TRIGGERS,
-    props: {
-      disabled: createBoolProp({
-        label: "Disabled",
-        description: "Boolean to handle disabling the switch",
-      }),
-      fieldName: createFieldNameProp({
-        handlerPropName: "onValueChange",
-        valuePropName: "value",
-        defaultValue: "switchValue",
-      }),
-      activeTrackColor: createColorProp({
-        label: "Active Track Color",
-      }),
-      inactiveTrackColor: createColorProp({
-        label: "Inactive Track Color",
-      }),
-      activeThumbColor: createColorProp({
-        label: "Active Thumb Color",
-      }),
-      inactiveThumbColor: createColorProp({
-        label: "Inactive Thumb Color",
-      }),
-    },
-  },
-  {
-    name: "Switch Row",
-    tag: "SwitchRow",
-    category: COMPONENT_TYPES.input,
-    layout: {},
-    triggers: SEED_DATA_TRIGGERS,
-    props: {
-      label: createTextProp({
-        label: "Label",
-        description: "Label to show with the checkbox",
-        required: true,
-        defaultValue: "First Option",
-      }),
-      direction: createRowDirectionProp(),
-      disabled: createBoolProp({
-        label: "Disabled",
-        description: "Boolean to handle disabling the switch",
-        group: GROUPS.data,
-      }),
-      fieldName: createFieldNameProp({
-        handlerPropName: "onValueChange",
-        valuePropName: "value",
-        defaultValue: "switchValue",
-      }),
-      activeTrackColor: createColorProp({
-        label: "Active Track Color",
-      }),
-      inactiveTrackColor: createColorProp({
-        label: "Inactive Track Color",
-      }),
-      activeThumbColor: createColorProp({
-        label: "Active Thumb Color",
-      }),
-      inactiveThumbColor: createColorProp({
-        label: "Inactive Thumb Color",
-      }),
-    },
-  },
-];
+/* README: SEED_DATA lives inside mappings/Switch.js since there were weird issues taking place with sourceMaps being
+ * generated */

@@ -2,6 +2,13 @@ import * as React from "react";
 import { Picker, withTheme } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
+const OPTIONS = [
+  { value: "AudiValue", label: "Audi" },
+  { value: "BMWValue", label: "BMW" },
+  { value: "CadillacValue", label: "Cadillac" },
+  { value: "DodgeValue", label: "Dodge" },
+];
+
 function PickerExample({ theme }) {
   const [value, setValue] = React.useState("Audi");
   const [value2, setValue2] = React.useState("Audi");
@@ -13,12 +20,7 @@ function PickerExample({ theme }) {
         <Picker
           label="Make"
           placeholder="Select a make..."
-          options={[
-            { value: "Audi", label: "Audi" },
-            { value: "BMW", label: "BMW" },
-            { value: "Cadillac", label: "Cadillac" },
-            { value: "Dodge", label: "Dodge" },
-          ]}
+          options={OPTIONS}
           value={value}
           onValueChange={handleChange}
         />
@@ -28,12 +30,7 @@ function PickerExample({ theme }) {
         <Picker
           label="Make"
           placeholder="Select a make..."
-          options={[
-            { value: "Audi", label: "Audi" },
-            { value: "BMW", label: "BMW" },
-            { value: "Cadillac", label: "Cadillac" },
-            { value: "Dodge", label: "Dodge" },
-          ]}
+          options={OPTIONS}
           disabled
           value={value}
           onValueChange={handleChange}
@@ -44,12 +41,7 @@ function PickerExample({ theme }) {
         <Picker
           label="Make"
           placeholder="Select a make..."
-          options={[
-            { value: "Audi", label: "Audi" },
-            { value: "BMW", label: "BMW" },
-            { value: "Cadillac", label: "Cadillac" },
-            { value: "Dodge", label: "Dodge" },
-          ]}
+          options={OPTIONS}
           error
           value={value}
           onValueChange={handleChange}
@@ -60,12 +52,7 @@ function PickerExample({ theme }) {
         <Picker
           label="Make"
           placeholder="Select a make..."
-          options={[
-            { value: "Audi", label: "Audi" },
-            { value: "BMW", label: "BMW" },
-            { value: "Cadillac", label: "Cadillac" },
-            { value: "Dodge", label: "Dodge" },
-          ]}
+          options={OPTIONS}
           disabled
           value={value}
           onValueChange={handleChange}
@@ -90,12 +77,7 @@ function PickerExample({ theme }) {
         <Picker
           label="Make"
           placeholder="Select a make..."
-          options={[
-            { value: "Audi", label: "Audi" },
-            { value: "BMW", label: "BMW" },
-            { value: "Cadillac", label: "Cadillac" },
-            { value: "Dodge", label: "Dodge" },
-          ]}
+          options={OPTIONS}
           value={value2}
           onValueChange={(v) => setValue2(v)}
           initialValue="Dodge"
@@ -107,12 +89,7 @@ function PickerExample({ theme }) {
           label="Make"
           placeholder="Select a make..."
           type="solid"
-          options={[
-            { value: "Audi", label: "Audi" },
-            { value: "BMW", label: "BMW" },
-            { value: "Cadillac", label: "Cadillac" },
-            { value: "Dodge", label: "Dodge" },
-          ]}
+          options={OPTIONS}
           value={value}
           onValueChange={handleChange}
         />
@@ -123,12 +100,7 @@ function PickerExample({ theme }) {
           label="Make"
           placeholder="Select a make..."
           type="solid"
-          options={[
-            { value: "Audi", label: "Audi" },
-            { value: "BMW", label: "BMW" },
-            { value: "Cadillac", label: "Cadillac" },
-            { value: "Dodge", label: "Dodge" },
-          ]}
+          options={OPTIONS}
           disabled
           value={value}
           onValueChange={handleChange}
@@ -140,12 +112,7 @@ function PickerExample({ theme }) {
           label="Make"
           placeholder="Select a make..."
           type="solid"
-          options={[
-            { value: "Audi", label: "Audi" },
-            { value: "BMW", label: "BMW" },
-            { value: "Cadillac", label: "Cadillac" },
-            { value: "Dodge", label: "Dodge" },
-          ]}
+          options={OPTIONS}
           error
           value={value}
           onValueChange={handleChange}
@@ -157,12 +124,7 @@ function PickerExample({ theme }) {
           label="Make"
           placeholder="Select a make..."
           type="solid"
-          options={[
-            { value: "Audi", label: "Audi" },
-            { value: "BMW", label: "BMW" },
-            { value: "Cadillac", label: "Cadillac" },
-            { value: "Dodge", label: "Dodge" },
-          ]}
+          options={OPTIONS}
           value={value}
           onValueChange={handleChange}
           style={{
@@ -181,12 +143,7 @@ function PickerExample({ theme }) {
           label="Make"
           placeholder="Select a make..."
           type="solid"
-          options={[
-            { value: "Audi", label: "Audi" },
-            { value: "BMW", label: "BMW" },
-            { value: "Cadillac", label: "Cadillac" },
-            { value: "Dodge", label: "Dodge" },
-          ]}
+          options={OPTIONS}
           value={value}
           onValueChange={handleChange}
           placeholderTextColor="green"
@@ -203,12 +160,7 @@ function PickerExample({ theme }) {
           label="Make"
           placeholder="Select a make..."
           type="solid"
-          options={[
-            { value: "Audi", label: "Audi" },
-            { value: "BMW", label: "BMW" },
-            { value: "Cadillac", label: "Cadillac" },
-            { value: "Dodge", label: "Dodge" },
-          ]}
+          options={OPTIONS}
           value={value}
           onValueChange={handleChange}
           style={{
@@ -225,12 +177,7 @@ function PickerExample({ theme }) {
           label="Make"
           placeholder="Select a make..."
           type="solid"
-          options={[
-            { value: "Audi", label: "Audi" },
-            { value: "BMW", label: "BMW" },
-            { value: "Cadillac", label: "Cadillac" },
-            { value: "Dodge", label: "Dodge" },
-          ]}
+          options={OPTIONS}
           value={value}
           onValueChange={handleChange}
           style={{

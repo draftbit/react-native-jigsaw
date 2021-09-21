@@ -196,10 +196,7 @@ export const SEED_DATA = {
       handlerPropName: "onPress",
     }),
     color: createColorProp({
-      group: GROUPS.basic,
-      label: "Color",
       description: "Color for the button (used when the checkbox is checked)",
-      defaultValue: null,
     }),
     uncheckedColor: createColorProp({
       group: GROUPS.basic,

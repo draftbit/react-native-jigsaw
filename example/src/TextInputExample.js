@@ -1,11 +1,12 @@
 import * as React from "react";
 import { KeyboardAvoidingView } from "react-native";
-import { TextInput } from "@draftbit/ui";
+import { TextInput, NumberInput } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
 export default function TextInputExample() {
   const [value, setText] = React.useState("Change me!");
   const [value2, setText2] = React.useState("Change me!");
+  const [number, setNumber] = React.useState(0);
   const handleChange = (text) => setText(text);
 
   return (
@@ -28,6 +29,12 @@ export default function TextInputExample() {
             value={value2}
             onChangeText={(text) => setText2(text)}
             initialValue="I'm an initial value!"
+          />
+          <NumberInput
+            placeholder="Number input with initial value"
+            value={number}
+            onChangeText={(num) => setNumber(num)}
+            initialValue="1"
           />
         </Section>
       </Container>

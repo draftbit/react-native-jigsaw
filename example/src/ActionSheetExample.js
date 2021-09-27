@@ -23,12 +23,7 @@ function ActionSheetExample({ theme }) {
     <Container style={{ backgroundColor: theme.colors.background }}>
       <Section title="Action Sheet">
         <ButtonSolid title="Open Action Sheet" onPress={showActionSheet} />
-        <ActionSheet
-          visible={visible}
-          cancelLabelStyle={{ fontWeight: "bold" }}
-          // onCancelPress={hideActionSheet}
-          onClose={hideActionSheet}
-        >
+        <ActionSheet visible={visible} onClose={hideActionSheet}>
           <ActionSheetItem
             style={{ fontSize: 12, fontWeight: "300", color: "grey" }}
             label="This Action Sheet not only allows you to provide an option but also allows

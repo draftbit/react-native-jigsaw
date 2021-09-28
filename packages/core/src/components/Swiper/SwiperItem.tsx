@@ -5,8 +5,6 @@ import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
 

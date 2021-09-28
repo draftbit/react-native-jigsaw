@@ -17,6 +17,7 @@ import {
   createFieldNameProp,
   COMPONENT_TYPES,
   Triggers,
+  createColorProp,
 } from "@draftbit/types";
 import type { IconSlot } from "../../interfaces/Icon";
 import { Direction as GroupDirection } from "./context";
@@ -36,6 +37,9 @@ export interface CheckboxRowProps extends Omit<CheckboxProps, "onPress"> {
   labelStyle?: StyleProp<TextStyle>;
   onPress?: (value: string) => void;
   direction?: Direction;
+  color: string;
+  unselectedColor: string;
+  indeterminateColor: string;
 }
 
 const getCheckboxAlignment = (
@@ -75,6 +79,9 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   status,
   disabled,
   style,
+  color,
+  uncheckedColor,
+  indeterminateColor,
   ...rest
 }) => {
   const {
@@ -129,6 +136,9 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
           onPress={handlePress}
           style={checkboxStyle}
           disabled={disabled}
+          color={color}
+          uncheckedColor={uncheckedColor}
+          indeterminateColor={indeterminateColor}
         />
       </View>
     </Touchable>
@@ -160,7 +170,7 @@ export default CheckboxRow;
 export const SEED_DATA = {
   name: "Checkbox Row",
   tag: "CheckboxRow",
-  category: COMPONENT_TYPES.deprecated,
+  category: COMPONENT_TYPES.input,
   layout: {
     minHeight: 50,
   },
@@ -183,6 +193,17 @@ export const SEED_DATA = {
       defaultValue: "unchecked",
       valuePropName: "status",
       handlerPropName: "onPress",
+    }),
+    color: createColorProp({
+      description: "Color for the button (used when the checkbox is checked)",
+    }),
+    uncheckedColor: createColorProp({
+      label: "Unselected Color",
+      description: "Color for the button when the checkbox is unchecked",
+    }),
+    indeterminateColor: createColorProp({
+      label: "Indeterminate Color",
+      description: "Color for the button when the checkbox is indeterminate",
     }),
   },
 };

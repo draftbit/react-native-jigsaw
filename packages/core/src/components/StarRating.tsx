@@ -39,7 +39,6 @@ const StarRating: React.FC<Props> = ({
   isEditable = false,
   activeColor,
   inactiveColor,
-  theme,
   style,
   onPress,
   ...rest
@@ -71,9 +70,7 @@ const StarRating: React.FC<Props> = ({
                 : "MaterialIcons/star"
             }
             size={starSize}
-            color={
-              ratingRounded > i ? activeColor : inactiveColor
-            }
+            color={ratingRounded > i ? activeColor : inactiveColor}
           />
           {isEditable && (
             <View style={styles.touchContainer}>

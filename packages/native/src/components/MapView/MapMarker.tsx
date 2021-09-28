@@ -35,6 +35,7 @@ const MapMarker: React.FC<MapMarkerProps> = ({
       anchor: marker,
     });
   });
+
   return (
     <Provider
       value={{

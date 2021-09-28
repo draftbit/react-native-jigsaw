@@ -17,7 +17,6 @@ import {
   createFieldNameProp,
   COMPONENT_TYPES,
   Triggers,
-  GROUPS,
   createColorProp,
 } from "@draftbit/types";
 import type { IconSlot } from "../../interfaces/Icon";
@@ -199,16 +198,12 @@ export const SEED_DATA = {
       description: "Color for the button (used when the checkbox is checked)",
     }),
     uncheckedColor: createColorProp({
-      group: GROUPS.basic,
       label: "Unselected Color",
       description: "Color for the button when the checkbox is unchecked",
-      defaultValue: null,
     }),
     indeterminateColor: createColorProp({
-      group: GROUPS.basic,
       label: "Indeterminate Color",
       description: "Color for the button when the checkbox is indeterminate",
-      defaultValue: null,
     }),
   },
 };

@@ -4,11 +4,12 @@ import Section, { Container } from "./Section";
 
 const FOUR_YEARS_AGO = new Date();
 FOUR_YEARS_AGO.setFullYear(FOUR_YEARS_AGO.getFullYear() - 4);
+const DATE_STRING = "Mon Sep 27 2021 12:59:17 GMT-0500 (Central Daylight Time)";
 
 function DatePickerExample({ theme }) {
   const [date, setDate] = React.useState(new Date());
   const [date2, setDate2] = React.useState(new Date());
-  const handleChange = (d) => setDate(d);
+  const [date3, setDate3] = React.useState(new Date());
 
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>
@@ -18,7 +19,7 @@ function DatePickerExample({ theme }) {
           placeholder="Select a date..."
           leftIconMode={"inset"}
           leftIconName={"add"}
-          onDateChange={handleChange}
+          onDateChange={setDate}
         />
 
         <DatePicker
@@ -28,7 +29,7 @@ function DatePickerExample({ theme }) {
           rightIconName={"add"}
           date={"abc"}
           placeholder="Select a date..."
-          onDateChange={handleChange}
+          onDateChange={setDate}
         />
 
         <DatePicker
@@ -36,7 +37,7 @@ function DatePickerExample({ theme }) {
           placeholder="Select a date..."
           disabled
           date={date}
-          onDateChange={handleChange}
+          onDateChange={setDate}
         />
       </Section>
 
@@ -48,7 +49,7 @@ function DatePickerExample({ theme }) {
           leftIconName={"add"}
           leftIconMode={"outset"}
           date={date}
-          onDateChange={handleChange}
+          onDateChange={setDate}
         />
 
         <DatePicker
@@ -61,7 +62,7 @@ function DatePickerExample({ theme }) {
           leftIconMode={"inset"}
           leftIconName={"add"}
           date={date}
-          onDateChange={handleChange}
+          onDateChange={setDate}
         />
 
         <DatePicker
@@ -70,7 +71,7 @@ function DatePickerExample({ theme }) {
           placeholder="Select a datetime..."
           type="solid"
           date={date}
-          onDateChange={handleChange}
+          onDateChange={setDate}
         />
 
         <DatePicker
@@ -79,7 +80,7 @@ function DatePickerExample({ theme }) {
           type="solid"
           disabled
           date={date}
-          onDateChange={handleChange}
+          onDateChange={setDate}
         />
 
         <DatePicker
@@ -87,7 +88,7 @@ function DatePickerExample({ theme }) {
           placeholder="Select a date..."
           type="solid"
           date={date}
-          onDateChange={handleChange}
+          onDateChange={setDate}
         />
 
         <DatePicker
@@ -95,8 +96,17 @@ function DatePickerExample({ theme }) {
           placeholder="Select a date..."
           type="solid"
           date={date2}
-          onDateChange={(d) => setDate2(d)}
+          onDateChange={setDate2}
           initialValue={FOUR_YEARS_AGO}
+        />
+
+        <DatePicker
+          label="Date with initial value (parsed from string)"
+          placeholder="Select a date..."
+          type="solid"
+          date={date3}
+          onDateChange={setDate3}
+          initialValue={new Date(DATE_STRING)}
         />
       </Section>
     </Container>

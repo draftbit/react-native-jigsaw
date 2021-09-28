@@ -104,7 +104,13 @@ const DatePicker: React.FC<Props> = ({
 
   const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {
-    if (initialValue !== previousInitialValue) {
+    const initialValueStr = initialValue ? initialValue.toString() : "";
+    const previousInitialValueStr = previousInitialValue
+      ? // This weirdly complains about being possibly undefined despite being inside a ternary
+        // @ts-ignore
+        previousInitialValue.toString()
+      : "";
+    if (initialValueStr !== previousInitialValueStr) {
       setValue(initialValue);
       onDateChange(initialValue);
     }

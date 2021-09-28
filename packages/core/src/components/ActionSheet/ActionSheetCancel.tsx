@@ -3,6 +3,7 @@ import { StyleProp, ViewStyle, TextStyle } from "react-native";
 import {
   COMPONENT_TYPES,
   createActionProp,
+  createColorProp,
   createTextProp,
   GROUPS,
   Triggers,
@@ -11,25 +12,22 @@ import ActionSheetItem from "./ActionSheetItem";
 
 type Props = {
   label: string;
+  color: string;
   style?: StyleProp<ViewStyle | TextStyle>;
   onPress?: () => void;
 };
 
 const ActionSheetCancel: React.FC<Props> = ({
   label = "Cancel",
+  color,
   style,
   onPress,
 }) => {
   return (
     <ActionSheetItem
       label={label}
-      style={[
-        style,
-        {
-          color: "#FF453A",
-          fontWeight: "bold",
-        },
-      ]}
+      color={color || "#FF453A"}
+      style={[style]}
       onPress={onPress}
     />
   );
@@ -49,6 +47,9 @@ export const SEED_DATA = {
       group: GROUPS.basic,
       label: "Label",
       defaultValue: "Cancel",
+    }),
+    color: createColorProp({
+      label: "Font Color",
     }),
   },
 };

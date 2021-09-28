@@ -3,13 +3,14 @@ import {
   Text,
   StyleSheet,
   StyleProp,
-  TouchableHighlight,
+  TouchableOpacity,
   ViewStyle,
   TextStyle,
 } from "react-native";
 import {
   COMPONENT_TYPES,
   createActionProp,
+  createColorProp,
   createTextProp,
   GROUPS,
   Triggers,
@@ -18,20 +19,21 @@ import { extractStyles } from "../../utilities";
 
 type Props = {
   label: string;
+  color: string;
   style?: StyleProp<ViewStyle | TextStyle>;
   onPress?: () => void;
 };
 
-const ActionSheetItem: React.FC<Props> = ({ label, style, onPress }) => {
+const ActionSheetItem: React.FC<Props> = ({ label, style, color, onPress }) => {
   const { textStyles, viewStyles } = extractStyles(style);
   return (
-    <TouchableHighlight
-      underlayColor={"#FFFFFF"}
+    <TouchableOpacity
+      activeOpacity={0.7}
       style={[styles.wrapper, viewStyles]}
       onPress={onPress}
     >
-      <Text style={[styles.label, textStyles]}>{label}</Text>
-    </TouchableHighlight>
+      <Text style={[styles.label, textStyles, { color }]}>{label}</Text>
+    </TouchableOpacity>
   );
 };
 
@@ -74,6 +76,9 @@ export const SEED_DATA = {
       group: GROUPS.basic,
       label: "Label",
       defaultValue: "Option",
+    }),
+    color: createColorProp({
+      label: "Font Color",
     }),
   },
 };

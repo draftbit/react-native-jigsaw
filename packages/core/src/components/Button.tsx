@@ -168,19 +168,6 @@ const Outline = ({ style, theme, ...props }: Props): JSX.Element => {
 const ButtonOutline: any = withTheme(Outline);
 export { ButtonOutline };
 
-export const BaseLink = ({ style, theme, ...props }: Props): JSX.Element => {
-  return (
-    <Base
-      style={[styles.bare, { color: theme.colors.primary }, style]}
-      hitSlop={8}
-      {...props}
-    />
-  );
-};
-
-const Link: any = withTheme(BaseLink);
-export { Link };
-
 const styles = StyleSheet.create({
   base: {
     position: "relative",
@@ -278,20 +265,6 @@ export const SEED_DATA = [
       ...LAYOUT,
       backgroundColor: "primary",
       textAlign: "center",
-    },
-    triggers: SEED_DATA_TRIGGERS,
-    props: SEED_DATA_PROPS,
-  },
-  {
-    name: "Link",
-    tag: "Link",
-    category: COMPONENT_TYPES.button,
-    layout: {
-      ...LAYOUT,
-      backgroundColor: "transparent",
-      color: "primary",
-      padding: 0,
-      minHeight: undefined,
     },
     triggers: SEED_DATA_TRIGGERS,
     props: SEED_DATA_PROPS,

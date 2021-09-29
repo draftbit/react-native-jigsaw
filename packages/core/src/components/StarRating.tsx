@@ -17,6 +17,7 @@ import {
   createStaticBoolProp,
   Triggers,
   createColorProp,
+  GROUPS,
 } from "@draftbit/types";
 
 type Props = {
@@ -143,6 +144,7 @@ export const SEED_DATA = {
       step: 1,
     }),
     rating: createStaticNumberProp({
+      group: GROUPS.data,
       label: "Rating",
     }),
     isEditable: createStaticBoolProp({

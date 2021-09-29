@@ -17,6 +17,7 @@ function SwiperExample({ theme }) {
         <Swiper
           vertical={false}
           loop={true}
+          timeout={3}
           style={{ width: "100%", height: 300 }}
         >
           <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>

@@ -75,7 +75,7 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.container,
   props: {
     visible: createStaticBoolProp({
-      group: GROUPS.basic,
+      group: GROUPS.data,
       label: "Show Action Sheet",
     }),
   },

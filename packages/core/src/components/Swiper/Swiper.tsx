@@ -6,15 +6,8 @@ import {
   GROUPS,
 } from "@draftbit/types";
 import React from "react";
-import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import { View, StyleProp, ViewStyle } from "react-native";
 import SwiperComponent from "react-native-web-swiper";
-
-const styles = StyleSheet.create({
-  wrapper: {
-    height: 300,
-    width: "100%",
-  },
-});
 
 export interface SwiperProps {
   vertical?: boolean;
@@ -39,7 +32,7 @@ const Swiper = ({
   children,
   style,
 }: SwiperProps) => (
-  <View style={[styles.wrapper, style]}>
+  <View style={style}>
     <SwiperComponent
       from={from}
       loop={loop}

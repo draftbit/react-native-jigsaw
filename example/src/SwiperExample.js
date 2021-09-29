@@ -14,7 +14,11 @@ function SwiperExample({ theme }) {
   return (
     <Container>
       <Section title="Swiper Example">
-        <Swiper vertical={false} loop={true}>
+        <Swiper
+          vertical={false}
+          loop={true}
+          style={{ width: "100%", height: 300 }}
+        >
           <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
             <Text>Test Slide 1</Text>
           </SwiperItem>
@@ -26,8 +30,8 @@ function SwiperExample({ theme }) {
           </SwiperItem>
         </Swiper>
       </Section>
-      <Section title="Swiper Example" style={{ width: 300, height: 300 }}>
-        <Swiper vertical={true}>
+      <Section title="Swiper Example">
+        <Swiper vertical={true} style={{ width: "100%", height: 300 }}>
           <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
             <Text>Test Slide 1</Text>
           </SwiperItem>

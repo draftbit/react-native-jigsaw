@@ -225,11 +225,6 @@ export const SEED_DATA = [
     props: {
       ...NUMBER_INPUT_PROPS,
       ...COMMON_NATIVE_INPUT_PROPS,
-      defaultValue: {
-        ...NUMBER_INPUT_PROPS.defaultValue,
-        group: GROUPS.data,
-        label: "Initial Value",
-      },
     },
   },
 ];

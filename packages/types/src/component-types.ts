@@ -414,17 +414,6 @@ export const TEXT_INPUT_PROPS = {
     formType: FORM_TYPES.boolean,
     propType: PROP_TYPES.BOOLEAN,
   },
-  defaultValue: {
-    group: GROUPS.basic,
-    label: "Default Value",
-    description:
-      "The value that of the text-input initially, not a placeholder but the value that the textInput is taking in.",
-    editable: true,
-    required: false,
-    defaultValue: null,
-    formType: FORM_TYPES.string,
-    propType: PROP_TYPES.STRING,
-  },
   disabled: {
     group: GROUPS.basic,
     label: "Disabled",
@@ -627,17 +616,6 @@ export const NUMBER_INPUT_PROPS = {
     defaultValue: null,
     formType: FORM_TYPES.boolean,
     propType: PROP_TYPES.BOOLEAN,
-  },
-  defaultValue: {
-    group: GROUPS.basic,
-    label: "Default Value",
-    description:
-      "The value that of the text-input initially, not a placeholder but the value that the textInput is taking in.",
-    editable: true,
-    required: false,
-    defaultValue: null,
-    formType: FORM_TYPES.string,
-    propType: PROP_TYPES.STRING,
   },
   disabled: {
     group: GROUPS.basic,

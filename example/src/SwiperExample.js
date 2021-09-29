@@ -13,7 +13,7 @@ const style = StyleSheet.create({
 function SwiperExample({ theme }) {
   return (
     <Container>
-      <Section title="Swiper Example" style={{ width: 300, height: 300 }}>
+      <Section title="Swiper Example">
         <Swiper vertical={false} loop={true}>
           <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
             <Text>Test Slide 1</Text>

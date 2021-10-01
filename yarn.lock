@@ -3552,7 +3552,7 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-plugin/-/eslint-plugin-1.1.0.tgz#e42b1bef12d2415411519fd528e64b593b1363dc"
   integrity sha512-W/J0fNYVO01tioHjvYWQ9m6RgndVtbElzYozBq1ZPrHO/iCzlqoySHl4gO/fpCl9QEFjvJfjPgtPMTMlsoq5DQ==
 
-"@react-native-community/slider@^4.0.0-rc.3":
+"@react-native-community/slider@4.0.0-rc.3":
   version "4.0.0-rc.3"
   resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-4.0.0-rc.3.tgz#4e2b09e4e31c75e3fd61ad6068fe438835cfb30c"
   integrity sha512-OFW4NSk86hhkAEqsC7n1qrBCxl83+Im73F/E5oxrj/fsGW+pUR92yWMCEigEaAdTzsw22r1/snBO74FtAQbl6g==
@@ -7597,7 +7597,7 @@ expo-asset@~8.3.2:
     path-browserify "^1.0.0"
     url-parse "^1.4.4"
 
-expo-av@^9.2.3:
+expo-av@9.2.3:
   version "9.2.3"
   resolved "https://registry.yarnpkg.com/expo-av/-/expo-av-9.2.3.tgz#aa54da9c0bc1c3eb0251c1da17f5123f15d4f82f"
   integrity sha512-If6+JqB2mqMKJxHgN8UAx75CWH4kPAzx2EyP+MFmcPVpcSBJZ/Fj+EfI+GJnk3tHPSB2Eld1IFEYOIJCkN/26Q==
@@ -13954,6 +13954,13 @@ react-native-unimodules@~0.14.5:
     unimodules-app-loader "~2.2.0"
     unimodules-task-manager-interface "~6.2.0"
 
+react-native-web-swiper@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-web-swiper/-/react-native-web-swiper-2.2.1.tgz#48d53e0ecf86d3fcd49f63ef7894db4beaa3b6f2"
+  integrity sha512-7q8BCdoCt91dw0fXhdTJ5S61NxOARAQX/F3x3sr5DJg9eGG4DoOSqLgJKFJl/7Z5GJasHbvKchC+SxgvtZVZvA==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-native-web@~0.13.12:
   version "0.13.18"
   resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.13.18.tgz#964f058a16521a3b9a31b091415edfef5b6ef305"
@@ -13969,7 +13976,7 @@ react-native-web@~0.13.12:
     prop-types "^15.6.0"
     react-timer-mixin "^0.13.4"
 
-react-native-webview@^11.6.5:
+react-native-webview@11.6.5:
   version "11.6.5"
   resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-11.6.5.tgz#34e86a342c6a2cbcf109db98f639f7bb8f055da2"
   integrity sha512-5U+hI8snkCrFeDy+bUTszwhzcJIenaaOy3ubhY77HZq7R0pFIZzRYWkT0YXe1ymRYW9mSU96nr6S0AVDk8qkMw==
@@ -15788,9 +15795,9 @@ tmp@^0.0.33:
     os-tmpdir "~1.0.2"
 
 tmpl@1.0.x:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
-  integrity sha1-I2QN17QtAEM5ERQIIOXPRA5SHdE=
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.5.tgz#8683e0b902bb9c20c4f726e3c0b69f36518c07cc"
+  integrity sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw==
 
 to-arraybuffer@^1.0.0:
   version "1.0.1"

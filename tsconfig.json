@@ -5,6 +5,9 @@
     "paths": {
       "@draftbit/*": ["packages/*/src"]
     },
+    "sourceMap": false,
+    "inlineSources": false,
+    "inlineSourceMap": false,
     "composite": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

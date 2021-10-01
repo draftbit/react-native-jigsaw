@@ -60,6 +60,7 @@ import ActionSheetExample from "./ActionSheetExample";
 import StarRatingExample from "./StarRatingExample";
 
 import TextAreaExample from "./TextAreaExample";
+import SwiperExample from "./SwiperExample";
 
 const ROUTES = {
   Layout: LayoutExample,
@@ -94,6 +95,7 @@ const ROUTES = {
   Switch: SwitchExample,
   Stepper: StepperExample,
   StarRating: StarRatingExample,
+  Swiper: SwiperExample,
   TextField: TextFieldExample,
   TextInput: TextInputExample,
   TextArea: TextAreaExample,
@@ -142,7 +144,7 @@ function Examples() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="CircleImage"
+        initialRouteName="Layout"
         drawerContentOptions={{
           activeTintColor: "rgba(90, 69, 255, 1)",
         }}

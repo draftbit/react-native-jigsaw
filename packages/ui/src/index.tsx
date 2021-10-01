@@ -22,6 +22,7 @@ export {
   Switch,
   SwitchRow,
   TextInput,
+  NumberInput,
   ThemeProvider,
   Touchable,
   withTheme,
@@ -35,6 +36,8 @@ export {
   ActionSheet,
   ActionSheetItem,
   ActionSheetCancel,
+  Swiper,
+  SwiperItem,
 } from "@draftbit/core";
 
 /**

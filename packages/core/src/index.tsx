@@ -3,7 +3,8 @@ export { withTheme, ThemeProvider } from "./theming";
 export { default as Provider } from "./Provider";
 export { default as DefaultTheme } from "./styles/DefaultTheme";
 
-export { ButtonSolid, ButtonOutline, Link } from "./components/Button";
+export { Link } from "./components/Text";
+export { ButtonSolid, ButtonOutline } from "./components/Button";
 export { default as Avatar } from "./components/CircleImage";
 export { default as AvatarEdit } from "./components/AvatarEdit";
 export { default as Card } from "./components/Card";
@@ -16,6 +17,7 @@ export { default as FAB } from "./components/FAB";
 export { default as FieldSearchBarFull } from "./components/FieldSearchBarFull";
 export { default as IconButton } from "./components/IconButton";
 export { default as Image } from "./components/Image";
+export { default as NumberInput } from "./components/NumberInput";
 export { default as ScreenContainer } from "./components/ScreenContainer";
 export { default as StarRating } from "./components/StarRating";
 export { default as Surface } from "./components/Surface";
@@ -30,6 +32,7 @@ export {
   ActionSheetItem,
   ActionSheetCancel,
 } from "./components/ActionSheet";
+export { Swiper, SwiperItem } from "./components/Swiper";
 
 export {
   Center,

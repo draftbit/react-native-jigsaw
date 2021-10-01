@@ -33,7 +33,7 @@ export const SEED_DATA = {
     showTooltip: createBoolProp({
       label: "Show Tooltip",
       description:
-        'If false, a default "tooltip" bubble window will be drawn around this callout's children. If true, the child views can fully customize their appearance, including any "bubble"-like styles',
+        'If false, a default "tooltip" bubble window will be drawn around this callout\'s children. If true, the child views can fully customize their appearance, including any "bubble"-like styles',
       defaultValue: false,
     }),
   },

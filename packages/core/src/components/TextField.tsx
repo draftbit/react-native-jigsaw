@@ -703,7 +703,7 @@ const SEED_DATA_PROPS = {
 const SEED_DATA_TRIGGERS = [Triggers.OnChangeText];
 export const SEED_DATA = [
   {
-    name: "Text Field",
+    name: "Styled Text Field",
     tag: "TextField",
     description: "A text input with a solid border or underline",
     category: COMPONENT_TYPES.input,
@@ -742,7 +742,7 @@ export const SEED_DATA = [
     layout: {},
   },
   {
-    name: "Text Area",
+    name: "Styled Text Area",
     tag: "TextField",
     description: "A text area with a solid border or underline",
     category: COMPONENT_TYPES.input,

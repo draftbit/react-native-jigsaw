@@ -11,7 +11,7 @@ import {
 export const SEED_DATA = {
   name: "Text Area",
   tag: "TextInput",
-  description: "Render Text Area",
+  description: "An input field that allows for multiple lines.",
   category: COMPONENT_TYPES.basic,
   layout: { flex: 1 },
   triggers: [Triggers.OnChangeText],

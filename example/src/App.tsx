@@ -59,7 +59,6 @@ import AccordionExample from "./AccordionExample";
 import ActionSheetExample from "./ActionSheetExample";
 import StarRatingExample from "./StarRatingExample";
 
-import TextAreaExample from "./TextAreaExample";
 import SwiperExample from "./SwiperExample";
 
 const ROUTES = {
@@ -98,7 +97,6 @@ const ROUTES = {
   Swiper: SwiperExample,
   TextField: TextFieldExample,
   TextInput: TextInputExample,
-  TextArea: TextAreaExample,
   WebView: WebViewExample,
 };
 

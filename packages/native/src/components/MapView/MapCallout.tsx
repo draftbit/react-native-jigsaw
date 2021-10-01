@@ -12,9 +12,8 @@ const MapCallout: React.FC<CalloutProps> = ({
   const { toggleCallout, position, calloutOpened } =
     React.useContext(markerContext);
   const handleClose = () => toggleCallout(false);
-  const handlePress = () => onPress();
   return calloutOpened ? (
-    <TouchableOpacity onPress={handlePress}>
+    <TouchableOpacity onPress={onPress}>
       <InfoWindow
         anchor={anchor}
         position={{

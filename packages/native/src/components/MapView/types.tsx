@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from "react-native";
-import { MapEvent, MapTypes, MarkerProps } from "react-native-maps";
+import { MapTypes, MarkerProps } from "react-native-maps";
 
 export interface MapMarkerProps {
   latitude: number;
@@ -33,6 +33,6 @@ export interface CalloutProps {
   title?: string;
   description?: string;
   anchor: MarkerProps | null;
-  onPress?: (event?: MapEvent<{ action: "callout-press" }>) => void;
+  onPress: (event: any) => void;
   showTooltip?: boolean;
 }

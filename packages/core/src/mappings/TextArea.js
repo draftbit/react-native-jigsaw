@@ -1,37 +1,20 @@
 import {
-  COMPONENT_TYPES,
-  FIELD_NAME,
-  FORM_TYPES,
   GROUPS,
+  COMPONENT_TYPES,
+  FORM_TYPES,
   PROP_TYPES,
+  FIELD_NAME,
   TEXT_INPUT_PROPS,
+  Triggers,
 } from "@draftbit/types";
-import * as React from "react";
-import { TextInput, StyleSheet } from "react-native";
-
-const TextArea: React.FC<any> = ({ numberOfLines = 4, style, ...props }) => {
-  return (
-    <TextInput
-      {...props}
-      style={[styles.input, style]}
-      numberOfLines={numberOfLines}
-    />
-  );
-};
-
-const styles = StyleSheet.create({
-  input: {
-    borderWidth: 1,
-    padding: 10,
-  },
-});
 
 export const SEED_DATA = {
   name: "Text Area",
-  tag: "TextArea",
+  tag: "TextInput",
   description: "Render Text Area",
   category: COMPONENT_TYPES.basic,
   layout: { flex: 1 },
+  triggers: [Triggers.OnChangeText],
   props: {
     ...TEXT_INPUT_PROPS,
     multiline: {
@@ -61,5 +44,3 @@ export const SEED_DATA = {
     },
   },
 };
-
-export default TextArea;

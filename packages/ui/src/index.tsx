@@ -1,5 +1,5 @@
 import { Icon } from "@draftbit/native";
-export { AudioPlayer, Icon, WebView, TextArea } from "@draftbit/native";
+export { AudioPlayer, Icon, WebView } from "@draftbit/native";
 export {
   Avatar,
   Carousel,

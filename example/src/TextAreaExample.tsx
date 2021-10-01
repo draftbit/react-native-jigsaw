@@ -7,12 +7,7 @@ const TextAreaExample = () => {
   return (
     <Container style={{}}>
       <Section title="Text Area" style={{}}>
-        <TextArea
-          onChangeText={onChangeText}
-          value={text}
-          keyboardType="numeric"
-          multiline={false}
-        />
+        <TextArea onChangeText={onChangeText} value={text} multiline={true} />
       </Section>
     </Container>
   );

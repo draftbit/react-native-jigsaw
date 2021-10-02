@@ -62,7 +62,8 @@ const Picker: React.FC<PickerComponentProps> = ({
 
   const selectedLabel =
     selectedValue &&
-    (options.find((opt) => opt.value === selectedValue)?.label ??
+    (options.find((opt) => opt.value.toString() === selectedValue.toString())
+      ?.label ??
       selectedValue);
 
   return (

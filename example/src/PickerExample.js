@@ -12,7 +12,7 @@ const OPTIONS = [
 function PickerExample({ theme }) {
   const [value, setValue] = React.useState("Audi");
   const [value2, setValue2] = React.useState("Audi");
-  const handleChange = (v) => setValue(v);
+  const [value3, setValue3] = React.useState(1);
 
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>
@@ -22,7 +22,7 @@ function PickerExample({ theme }) {
           placeholder="Select a make..."
           options={OPTIONS}
           value={value}
-          onValueChange={handleChange}
+          onValueChange={setValue}
         />
       </Section>
 
@@ -33,7 +33,7 @@ function PickerExample({ theme }) {
           options={OPTIONS}
           disabled
           value={value}
-          onValueChange={handleChange}
+          onValueChange={setValue}
         />
       </Section>
 
@@ -44,7 +44,7 @@ function PickerExample({ theme }) {
           options={OPTIONS}
           error
           value={value}
-          onValueChange={handleChange}
+          onValueChange={setValue}
         />
       </Section>
 
@@ -55,7 +55,7 @@ function PickerExample({ theme }) {
           options={OPTIONS}
           disabled
           value={value}
-          onValueChange={handleChange}
+          onValueChange={setValue}
           style={{
             backgroundColor: "red",
             padding: 16,
@@ -69,7 +69,7 @@ function PickerExample({ theme }) {
           placeholder="Select a make..."
           options={["Audi", "BMW", "Cadillac", "Dodge"]}
           value={value}
-          onValueChange={handleChange}
+          onValueChange={setValue}
         />
       </Section>
 
@@ -91,7 +91,7 @@ function PickerExample({ theme }) {
           type="solid"
           options={OPTIONS}
           value={value}
-          onValueChange={handleChange}
+          onValueChange={setValue}
         />
       </Section>
 
@@ -103,7 +103,7 @@ function PickerExample({ theme }) {
           options={OPTIONS}
           disabled
           value={value}
-          onValueChange={handleChange}
+          onValueChange={setValue}
         />
       </Section>
 
@@ -115,7 +115,7 @@ function PickerExample({ theme }) {
           options={OPTIONS}
           error
           value={value}
-          onValueChange={handleChange}
+          onValueChange={setValue}
         />
       </Section>
 
@@ -126,7 +126,7 @@ function PickerExample({ theme }) {
           type="solid"
           options={OPTIONS}
           value={value}
-          onValueChange={handleChange}
+          onValueChange={setValue}
           style={{
             backgroundColor: "red",
             borderTopWidth: 2,
@@ -145,7 +145,7 @@ function PickerExample({ theme }) {
           type="solid"
           options={OPTIONS}
           value={value}
-          onValueChange={handleChange}
+          onValueChange={setValue}
           placeholderTextColor="green"
           style={{
             fontSize: 30,
@@ -162,7 +162,7 @@ function PickerExample({ theme }) {
           type="solid"
           options={OPTIONS}
           value={value}
-          onValueChange={handleChange}
+          onValueChange={setValue}
           style={{
             paddingTop: 25,
             paddingRight: 25,
@@ -179,7 +179,7 @@ function PickerExample({ theme }) {
           type="solid"
           options={OPTIONS}
           value={value}
-          onValueChange={handleChange}
+          onValueChange={setValue}
           style={{
             marginTop: 25,
             marginRight: 25,
@@ -196,7 +196,21 @@ function PickerExample({ theme }) {
           type="solid"
           options={["Audi", "BMW", "Cadillac", "Dodge"]}
           value={value}
-          onValueChange={handleChange}
+          onValueChange={setValue}
+        />
+      </Section>
+
+      <Section title="Picker - Solid with numeric values">
+        <Picker
+          label="Number"
+          placeholder="Select a make..."
+          type="solid"
+          options={[
+            { value: 1, label: "One" },
+            { value: 2, label: "Two" },
+          ]}
+          value={value3}
+          onValueChange={setValue3}
         />
       </Section>
     </Container>

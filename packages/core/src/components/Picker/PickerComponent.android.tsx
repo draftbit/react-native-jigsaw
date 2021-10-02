@@ -61,6 +61,11 @@ const Picker: React.FC<PickerComponentProps> = ({
       "marginLeft",
     ]);
 
+  const selectedLabel =
+    selectedValue &&
+    (options.find((opt) => opt.value === selectedValue)?.label ??
+      selectedValue);
+
   return (
     <Touchable
       disabled={disabled}
@@ -90,7 +95,7 @@ const Picker: React.FC<PickerComponentProps> = ({
         <View pointerEvents="none">
           <TextField
             {...props}
-            value={selectedValue}
+            value={selectedLabel}
             placeholder={placeholder}
             // @ts-ignore
             ref={textField} // cannot determine if ref is of correct type due to component being wrapped in a withTheme()

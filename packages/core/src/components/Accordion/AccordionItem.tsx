@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
     alignItems: "center",
+    paddingLeft: 8,
   },
-
   item: {
     marginVertical: 6,
     paddingLeft: 8,
@@ -89,7 +89,7 @@ export const SEED_DATA = {
       label: "Item label",
     }),
     iconColor: createColorProp({
-      label: "Color for Icon",
+      label: "Icon color",
     }),
   },
 };

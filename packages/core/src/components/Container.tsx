@@ -58,6 +58,13 @@ const Container: React.FC<Props> = ({
     alignContent,
     justifyContent,
     alignItems,
+    padding,
+    paddingTop,
+    paddingBottom,
+    paddingLeft,
+    paddingRight,
+    paddingVertical,
+    paddingHorizontal,
     ...styleProp
   } = StyleSheet.flatten(style) || {};
 
@@ -70,7 +77,6 @@ const Container: React.FC<Props> = ({
   };
 
   const innerStyle: StyleProp<ViewStyle> = {
-    paddingHorizontal: useThemeGutterPadding ? 16 : 0,
     flex,
     flexGrow,
     flexWrap,
@@ -80,6 +86,13 @@ const Container: React.FC<Props> = ({
     alignContent,
     justifyContent,
     alignItems,
+    padding,
+    paddingTop,
+    paddingBottom,
+    paddingLeft,
+    paddingRight,
+    paddingVertical,
+    paddingHorizontal: paddingHorizontal || useThemeGutterPadding ? 16 : 0,
   };
 
   const Wrap = elevation ? Elevation : View;

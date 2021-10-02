@@ -14,9 +14,11 @@ import {
   COMPONENT_TYPES,
   GROUPS,
   createIconProp,
-  createActionProp,
   createColorProp,
   createNumberProp,
+  createBoolProp,
+  createActionProp,
+  Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -96,10 +98,18 @@ export const SEED_DATA = {
   tag: "IconButton",
   category: COMPONENT_TYPES.button,
   layout: {},
+  triggers: [Triggers.OnPress],
   props: {
-    icon: createIconProp(),
-    color: createColorProp(),
     onPress: createActionProp(),
+    icon: createIconProp(),
+    color: createColorProp({
+      label: "Color",
+      group: GROUPS.basic,
+    }),
+    disabled: createBoolProp({
+      label: "Disabled",
+      group: GROUPS.basic,
+    }),
     size: createNumberProp({
       group: GROUPS.basic,
       label: "Size",

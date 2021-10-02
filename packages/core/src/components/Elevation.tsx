@@ -21,7 +21,7 @@ const Elevation: React.FC<Props> = ({ style, theme, children, ...rest }) => {
   const { elevation = 4, borderRadius: radius } =
     StyleSheet.flatten(style) || {};
   const { colors } = theme;
-  const borderRadius = radius || theme.roundness;
+  const borderRadius = radius;
 
   return (
     <Animated.View

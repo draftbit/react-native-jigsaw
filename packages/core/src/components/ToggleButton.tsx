@@ -1,6 +1,6 @@
 import * as React from "react";
 import { withTheme } from "../theming";
-import { colorTypes } from "@draftbit/types";
+import { colorTypes, GROUPS } from "@draftbit/types";
 import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import IconButton from "./IconButton";
 import {
@@ -9,9 +9,10 @@ import {
   createBoolProp,
   createColorProp,
   createStaticNumberProp,
-  createActionProp,
   createFieldNameProp,
   createIconSizeProp,
+  createActionProp,
+  Triggers,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -93,7 +94,9 @@ export const SEED_DATA = {
   tag: "ToggleButton",
   category: COMPONENT_TYPES.button,
   layout: {},
+  triggers: [Triggers.OnPress],
   props: {
+    onPress: createActionProp(),
     icon: createIconProp({
       required: true,
     }),
@@ -102,17 +105,21 @@ export const SEED_DATA = {
       defaultValue: false,
       valuePropName: "toggled",
     }),
-    onPress: createActionProp(),
     disabled: createBoolProp({
       label: "Disabled",
       description: "Whether the button should be disabled",
+      group: GROUPS.basic,
     }),
-    color: createColorProp(),
+    color: createColorProp({
+      group: GROUPS.basic,
+    }),
     colorSecondary: createColorProp({
       label: "Secondary Color",
+      group: GROUPS.basic,
     }),
     borderColor: createColorProp({
       label: "Border Color",
+      group: GROUPS.basic,
     }),
     width: createStaticNumberProp({
       label: "Width",

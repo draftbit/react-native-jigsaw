@@ -57,12 +57,18 @@ import CheckboxExample from "./CheckboxExample";
 import WebViewExample from "./WebViewExample";
 import AccordionExample from "./AccordionExample";
 
+import ActionSheetExample from "./ActionSheetExample";
+import StarRatingExample from "./StarRatingExample";
+
+import SwiperExample from "./SwiperExample";
+
 const ROUTES = {
   Layout: LayoutExample,
   Icon: IconExample,
   Button: ButtonExample,
   FAB: FABExample,
   RadioButton: RadioButtonExample,
+  ActionSheet: ActionSheetExample,
   Checkbox: CheckboxExample,
   Card: CardExample,
   ToggleButton: ToggleButtonExample,
@@ -89,6 +95,8 @@ const ROUTES = {
   Slider: SliderExample,
   Switch: SwitchExample,
   Stepper: StepperExample,
+  StarRating: StarRatingExample,
+  Swiper: SwiperExample,
   TextField: TextFieldExample,
   TextInput: TextInputExample,
   WebView: WebViewExample,
@@ -136,7 +144,7 @@ function Examples() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="CircleImage"
+        initialRouteName="Layout"
         drawerContentOptions={{
           activeTintColor: "rgba(90, 69, 255, 1)",
         }}

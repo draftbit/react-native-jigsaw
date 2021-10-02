@@ -29,6 +29,7 @@ export {
   Switch,
   SwitchRow,
   TextInput,
+  NumberInput,
   ThemeProvider,
   Touchable,
   withTheme,
@@ -39,6 +40,11 @@ export {
   ProgressBar,
   ProgressCircle,
   RowHeadlineImageCaption,
+  ActionSheet,
+  ActionSheetItem,
+  ActionSheetCancel,
+  Swiper,
+  SwiperItem,
 } from "@draftbit/core";
 
 /**

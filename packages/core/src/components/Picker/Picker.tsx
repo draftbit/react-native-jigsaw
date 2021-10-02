@@ -10,6 +10,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   FIELD_NAME,
+  Triggers,
 } from "@draftbit/types";
 import { usePrevious } from "../../hooks";
 
@@ -205,6 +206,7 @@ const SEED_DATA_PROPS = {
   },
 };
 
+const SEED_DATA_TRIGGERS = [Triggers.OnValueChange];
 export const SEED_DATA = [
   {
     name: "Picker",
@@ -213,6 +215,7 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/Picker.png",
     supports_list_render: false,
+    triggers: SEED_DATA_TRIGGERS,
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -236,6 +239,7 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/Picker.png",
     supports_list_render: false,
+    triggers: SEED_DATA_TRIGGERS,
     props: {
       ...SEED_DATA_PROPS,
       type: {

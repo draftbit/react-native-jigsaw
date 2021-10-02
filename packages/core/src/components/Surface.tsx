@@ -27,10 +27,10 @@ const Surface: React.FC<Props> = ({
   children,
   ...rest
 }) => {
-  const { elevation: styleElevation = 3, borderRadius: radius } =
+  const { elevation: styleElevation = 3, borderRadius: radius = 0 } =
     (StyleSheet.flatten(style) || {}) as ViewStyle;
   const { dark: isDarkTheme, mode, colors } = theme;
-  const borderRadius = radius || theme.roundness;
+  const borderRadius = radius;
   const ele = elevation || styleElevation;
 
   return (

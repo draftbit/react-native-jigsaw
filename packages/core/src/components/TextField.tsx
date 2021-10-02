@@ -23,6 +23,10 @@ import {
   PROP_TYPES,
   FIELD_NAME,
   TEXT_INPUT_PROPS,
+  Triggers,
+  createColorProp,
+  createNumberProp,
+  createFieldNameProp,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -48,6 +52,8 @@ export type Props = {
   rightIconName?: string;
   assistiveText?: string;
   multiline?: boolean;
+  numberOfLines: number;
+  underlineColor?: string;
   style?: StyleProp<ViewStyle> & { height?: number };
   theme: Theme;
   render?: (
@@ -236,7 +242,9 @@ class TextField extends React.Component<Props, State> {
       leftIconMode,
       rightIconName,
       assistiveText,
+      underlineColor: underlineColorProp,
       multiline = false,
+      numberOfLines = 4,
       style,
       theme: { colors, typography, roundness, disabledOpacity },
       render = (props) => <NativeTextInput {...props} />,
@@ -269,7 +277,7 @@ class TextField extends React.Component<Props, State> {
     } else {
       activeColor = error ? colors.error : colors.primary;
       placeholderColor = borderColor = colors.light;
-      underlineColor = colors.light;
+      underlineColor = underlineColorProp;
       backgroundColor = colors.background;
     }
 
@@ -313,8 +321,8 @@ class TextField extends React.Component<Props, State> {
         borderRadius: roundness,
         borderColor: hasActiveOutline ? activeColor : borderColor,
         borderWidth: 1,
-        paddingTop: this.state.labeled ? 16 * 1.5 : 16,
-        paddingBottom: this.state.labeled ? 16 * 0.5 : 16,
+        paddingTop: label ? 16 * 1.5 : 16,
+        paddingBottom: label ? 16 * 0.5 : 16,
         opacity: disabled ? disabledOpacity : 1,
         backgroundColor,
       };
@@ -555,6 +563,7 @@ class TextField extends React.Component<Props, State> {
             editable: !disabled,
             selectionColor: activeColor,
             multiline,
+            numberOfLines,
             onFocus: this._handleFocus,
             onBlur: this._handleBlur,
             underlineColorAndroid: "transparent",
@@ -691,14 +700,16 @@ const SEED_DATA_PROPS = {
   },
 };
 
+const SEED_DATA_TRIGGERS = [Triggers.OnChangeText];
 export const SEED_DATA = [
   {
-    name: "Text Field",
+    name: "Styled Text Field",
     tag: "TextField",
     description: "A text input with a solid border or underline",
     category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/Textfield.png",
     supports_list_render: false,
+    triggers: SEED_DATA_TRIGGERS,
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -712,6 +723,10 @@ export const SEED_DATA = [
         required: true,
         group: GROUPS.basic,
       },
+      underlineColor: createColorProp({
+        label: "Underline Color",
+        defaultValue: "light",
+      }),
       secureTextEntry: {
         group: GROUPS.basic,
         label: "Password field",
@@ -727,12 +742,13 @@ export const SEED_DATA = [
     layout: {},
   },
   {
-    name: "Text Area",
+    name: "Styled Text Area",
     tag: "TextField",
     description: "A text area with a solid border or underline",
     category: COMPONENT_TYPES.input,
     preview_image_url: "{CLOUDINARY_URL}/TextArea.png",
     supports_list_render: false,
+    triggers: SEED_DATA_TRIGGERS,
     props: {
       ...SEED_DATA_PROPS,
       type: {
@@ -756,6 +772,15 @@ export const SEED_DATA = [
         editable: false,
         required: false,
       },
+      numberOfLines: createNumberProp({
+        label: "Number of Lines",
+        description: "Number of Lines for Multiline Field",
+        defaultValue: 4,
+        group: GROUPS.basic,
+      }),
+      fieldName: createFieldNameProp({
+        defaultValue: "textAreaValue",
+      }),
     },
     layout: {},
   },

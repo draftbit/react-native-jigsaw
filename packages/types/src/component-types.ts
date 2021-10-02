@@ -1,4 +1,17 @@
 // @ts-nocheck
+// Make sure enum exists @draftbit
+export const Triggers = {
+  OnPress: "ON_PRESS",
+  OnValueChange: "ON_VALUE_CHANGE",
+  OnDateChange: "ON_DATE_CHANGE",
+  OnChange: "ON_CHANGE",
+  OnChangeText: "ON_CHANGE_TEXT",
+  OnRefresh: "ON_REFRESH",
+  OnBlur: "ON_BLUR",
+  OnSwipe: "ON_SWIPE",
+  OnSelect: "ON_SELECT",
+};
+
 export const PROP_TYPES = {
   STRING: "STRING",
   ARRAY: "ARRAY",
@@ -234,7 +247,7 @@ export const createNumColumnsType = (overrides = {}) => ({
 });
 
 export const createColorProp = (overrides = {}) => ({
-  group: GROUPS.style,
+  group: GROUPS.basic,
   label: "Color",
   description: "Select or create a color",
   editable: true,
@@ -336,11 +349,6 @@ export const createActionProp = (overrides = {}) => ({
   ...overrides,
 });
 
-export const createStateValue = (overrides = {}) => ({
-  ...FIELD_NAME,
-  ...overrides,
-});
-
 export const TEXT_INPUT_PROPS = {
   allowFontScaling: {
     group: GROUPS.advanced,
@@ -405,17 +413,6 @@ export const TEXT_INPUT_PROPS = {
     defaultValue: null,
     formType: FORM_TYPES.boolean,
     propType: PROP_TYPES.BOOLEAN,
-  },
-  defaultValue: {
-    group: GROUPS.basic,
-    label: "Default Value",
-    description:
-      "The value that of the text-input initially, not a placeholder but the value that the textInput is taking in.",
-    editable: true,
-    required: false,
-    defaultValue: null,
-    formType: FORM_TYPES.string,
-    propType: PROP_TYPES.STRING,
   },
   disabled: {
     group: GROUPS.basic,
@@ -553,6 +550,184 @@ export const TEXT_INPUT_PROPS = {
     defaultValue: null,
     formType: FORM_TYPES.boolean,
     propType: PROP_TYPES.BOOLEAN,
+  },
+  selectionColor: {
+    group: GROUPS.advanced,
+    label: "Selection Color",
+    description: "Color of the highlighted portion when selecting.",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    formType: FORM_TYPES.color,
+    propType: PROP_TYPES.STRING,
+  },
+  selectTextOnFocus: {
+    group: GROUPS.advanced,
+    label: "Select Text on Focus",
+    description:
+      "If true, all the text will automatically be selected on focus",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
+  },
+};
+
+export const NUMBER_INPUT_PROPS = {
+  allowFontScaling: {
+    group: GROUPS.advanced,
+    label: "Allow Font Scaling",
+    description:
+      "Whether fonts should scale to respect Text Size in the user's accessibility settings. (Default: true)",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
+  },
+  autoFocus: {
+    group: GROUPS.basic,
+    label: "Auto Focus",
+    description: "Focuses the input on load in and brings up the keyboard",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
+  },
+  caretHidden: {
+    group: GROUPS.advanced,
+    label: "Hide Caret",
+    description:
+      "Hides the caret(the line small line underneath each showing where you're editing/typing",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
+  },
+  contextMenuHidden: {
+    group: GROUPS.advanced,
+    label: "Hide Context Menu",
+    description: "Hides the system context menu (Default: false)",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
+  },
+  disabled: {
+    group: GROUPS.basic,
+    label: "Disabled",
+    description:
+      "Whether the input should be disabled. Will prevent input and show a greyed out state.",
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
+    defaultValue: null,
+    editable: true,
+    required: false,
+  },
+  editable: {
+    group: GROUPS.advanced,
+    label: "Editable",
+    description: "If false, the text is not editable",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
+  },
+  keyboardAppearance: {
+    group: GROUPS.advanced,
+    label: "Keyboard Appearance",
+    description: "Determines the color of the keyboard.(iOS Only)",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    options: ["default", "light", "dark"],
+    formType: FORM_TYPES.flatArray,
+    propType: PROP_TYPES.STRING,
+  },
+  keyboardType: {
+    group: GROUPS.advanced,
+    label: "Keyboard Type",
+    description: "Determines what keyboard is given to the user.",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    options: ["numeric", "numbers-and-punctuation", "number-pad"],
+    formType: FORM_TYPES.flatArray,
+    propType: PROP_TYPES.STRING,
+  },
+  maxLength: {
+    group: GROUPS.basic,
+    label: "Max Length",
+    description: "Limits the input to a set number of characters.",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    min: 0,
+    step: 1,
+    precision: 0,
+    formType: FORM_TYPES.number,
+    propType: PROP_TYPES.NUMBER,
+  },
+  placeholder: {
+    group: GROUPS.basic,
+    label: "Placeholder Text",
+    description: "The text that is shown on load when no value is available.",
+    editable: true,
+    required: false,
+    defaultValue: "Change my fieldname to email or password on the right side",
+    formType: FORM_TYPES.string,
+    propType: PROP_TYPES.STRING,
+  },
+  placeholderTextColor: {
+    group: GROUPS.basic,
+    label: "Placeholder Text Color",
+    description: "The color of the placeholder text.",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    formType: FORM_TYPES.color,
+    propType: PROP_TYPES.STRING,
+  },
+  returnKeyLabel: {
+    group: GROUPS.advanced,
+    label: "Return Key Label",
+    description:
+      "(Android Only) Sets the label on the return key (use this instead of rewturnKeyType)",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    formType: FORM_TYPES.string,
+    propType: PROP_TYPES.STRING,
+  },
+  returnKeyType: {
+    group: GROUPS.advanced,
+    label: "Return Key Type",
+    description: "Determines how the return key should look like",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    options: [
+      "done",
+      "go",
+      "next",
+      "search",
+      "send",
+      "none",
+      "previous",
+      "default",
+      "emergency-call",
+      "google",
+      "join",
+      "route",
+      "yahoo",
+    ],
+    formType: FORM_TYPES.flatArray,
+    propType: PROP_TYPES.STRING,
   },
   selectionColor: {
     group: GROUPS.advanced,

@@ -54,12 +54,6 @@ const MapMarker: React.FC<MapMarkerProps> = ({
       });
     });
   }
-  // const mappedChildren = React.Children.map(children, (child, index) => {
-  //   return React.cloneElement(child as React.ReactElement, {
-  //     index,
-  //     anchor: marker,
-  //   });
-  // });
   return (
     <Provider
       value={{

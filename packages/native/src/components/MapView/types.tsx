@@ -33,6 +33,6 @@ export interface CalloutProps {
   title?: string;
   description?: string;
   anchor: MarkerProps | null;
-  onPress: (event: any) => void;
+  onPress?: (event: any) => void;
   showTooltip?: boolean;
 }

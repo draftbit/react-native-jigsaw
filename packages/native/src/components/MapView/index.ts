@@ -1,5 +1,5 @@
 //@ts-ignore
-export { default as MapView } from "./MapView123123";
+export { default as MapView } from "./MapView";
 //@ts-ignore
 export { default as MapMarker } from "./MapMarker";
 //@ts-ignore

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { TouchableOpacity } from "react-native";
 import { InfoWindow } from "@react-google-maps/api";
-import { markerContext } from "./MapMarker";
+import { markerContext } from "./MapMarker.web";
 import { CalloutProps } from "./types";
 
 const MapCallout: React.FC<CalloutProps> = ({

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { LatLng, MarkerProps } from "react-native-maps";
 import { MapMarkerProps } from "./types";
 import { Marker as WebMarker } from "@react-google-maps/api";
-import MapCallout from "./MapCallout";
+import MapCallout from "./MapCallout.web";
 
 interface IMarkerContext {
   pinColor?: string | undefined;

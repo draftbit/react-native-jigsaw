@@ -58,7 +58,7 @@
   },
   "devDependencies": {
     "@react-native-community/datetimepicker": "~3.0.0",
-    "@react-native-picker/picker": "^1.9.11",
+    "@react-native-picker/picker": "^2.1.0",
     "@types/color": "^3.0.1",
     "@types/dateformat": "^3.0.1",
     "@types/lodash.isnumber": "^3.0.6",
@@ -74,7 +74,7 @@
   },
   "peerDependencies": {
     "@react-native-community/datetimepicker": "~3.0.0",
-    "@react-native-picker/picker": "^1.9.11",
+    "@react-native-picker/picker": "^2.1.0",
     "react": "*",
     "react-native": "*",
     "react-native-modal-datetime-picker": "^10.0.0",

@@ -1,5 +1,6 @@
 import * as React from "react";
-import { View, StyleSheet, Picker as NativePicker } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { Picker as NativePicker } from "@react-native-picker/picker";
 import omit from "lodash.omit";
 import { withTheme } from "../../theming";
 import { extractStyles } from "../../utilities";
@@ -62,8 +63,7 @@ const Picker: React.FC<PickerComponentProps> = ({
 
   const selectedLabel =
     selectedValue &&
-    (options.find((opt) => opt.value === selectedValue)?.label ??
-      selectedValue);
+    (options.find((o) => o.value === selectedValue)?.label ?? selectedValue);
 
   return (
     <Touchable
@@ -75,9 +75,7 @@ const Picker: React.FC<PickerComponentProps> = ({
         <NativePicker
           enabled={!disabled}
           selectedValue={selectedValue}
-          onValueChange={(value, index) =>
-            onValueChange(value.toString(), index)
-          }
+          onValueChange={onValueChange}
           style={{
             flex: 1,
             opacity: 0,
@@ -86,6 +84,7 @@ const Picker: React.FC<PickerComponentProps> = ({
             left: 0,
             right: 0,
             bottom: 0,
+            width: "100%",
           }}
         >
           {options.map((o) => (

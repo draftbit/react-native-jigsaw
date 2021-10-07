@@ -32,7 +32,7 @@ export const SEED_DATA = {
     visible: createBoolProp({
       group: GROUPS.data,
       label: "Visible",
-      description: "Should be Visible",
+      description: "Determines whether the modal is visible",
     }),
   },
 };

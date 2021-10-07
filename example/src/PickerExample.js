@@ -68,8 +68,8 @@ function PickerExample({ theme }) {
           label="Make"
           placeholder="Select a make..."
           options={["Audi", "BMW", "Cadillac", "Dodge"]}
-          value={value}
-          onValueChange={setValue}
+          value={value2}
+          onValueChange={setValue2}
         />
       </Section>
 
@@ -78,8 +78,8 @@ function PickerExample({ theme }) {
           label="Make"
           placeholder="Select a make..."
           options={OPTIONS}
-          value={value2}
-          onValueChange={(v) => setValue2(v)}
+          value={value}
+          onValueChange={setValue}
           initialValue="Dodge"
         />
       </Section>
@@ -195,8 +195,8 @@ function PickerExample({ theme }) {
           placeholder="Select a make..."
           type="solid"
           options={["Audi", "BMW", "Cadillac", "Dodge"]}
-          value={value}
-          onValueChange={setValue}
+          value={value2}
+          onValueChange={setValue2}
         />
       </Section>
 

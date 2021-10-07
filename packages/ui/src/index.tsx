@@ -1,12 +1,5 @@
 import { Icon } from "@draftbit/native";
-export {
-  AudioPlayer,
-  Icon,
-  MapView,
-  MapMarker,
-  MapCallout,
-  WebView,
-} from "@draftbit/native";
+export { AudioPlayer, Icon, WebView } from "@draftbit/native";
 export {
   Avatar,
   Carousel,
@@ -45,6 +38,9 @@ export {
   ActionSheetCancel,
   Swiper,
   SwiperItem,
+  MapView,
+  MapMarker,
+  MapCallout,
 } from "@draftbit/core";
 
 /**

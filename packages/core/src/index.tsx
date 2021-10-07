@@ -68,4 +68,5 @@ export { default as RowHeadlineImageCaption } from "./components/RowHeadlineImag
 export { default as RowHeadlineImageIcon } from "./components/RowHeadlineImageIcon";
 export { default as Slider } from "./components/Slider";
 export { default as Stepper } from "./components/Stepper";
+export { default as LinearGradient } from "./components/LinearGradient";
 export { useAuthState } from "./components/useAuthState";

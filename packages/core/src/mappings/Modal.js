@@ -27,7 +27,7 @@ export const SEED_DATA = {
     transparent: createBoolProp({
       group: GROUPS.basic,
       label: "Transparent",
-      description: "Should be Transparent",
+      description: "Determines whether the modal will fill the entire view. Setting this to true will render the modal over a transparent background",
     }),
     visible: createBoolProp({
       group: GROUPS.data,

@@ -16,7 +16,7 @@ export const SEED_DATA = {
       group: GROUPS.advanced,
       name: "animationType",
       label: "animationType",
-      description: "Animatio Type",
+      description: "Animation Type",
       options: ["slide", "fade", "none"],
       editable: false,
       required: false,

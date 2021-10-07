@@ -28,12 +28,17 @@ function normalizeOptions(options: Props["options"]): PickerOption[] {
   if (typeof options[0] === "string") {
     return (options as string[]).map((option) => ({
       label: option,
-      value: option,
+      value: String(option),
     }));
   }
 
   if (options[0].label && options[0].value) {
-    return options as PickerOption[];
+    return options.map((option) => {
+      return {
+        label: option.label,
+        value: String(option.value),
+      };
+    });
   }
 
   throw new Error(
@@ -54,7 +59,8 @@ const Picker: React.FC<Props> = ({
       if (placeholder && itemIndex === 0) {
         return;
       }
-      onValueChangeOverride && onValueChangeOverride(itemValue, itemIndex);
+      onValueChangeOverride &&
+        onValueChangeOverride(String(itemValue), itemIndex);
     },
     [placeholder, onValueChangeOverride]
   );
@@ -63,7 +69,7 @@ const Picker: React.FC<Props> = ({
 
   const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {
-    if (initialValue !== previousInitialValue) {
+    if (String(initialValue) !== String(previousInitialValue)) {
       const index = normalizedOptions.findIndex(
         (opt) => opt.value === initialValue
       );
@@ -72,7 +78,7 @@ const Picker: React.FC<Props> = ({
         return;
       }
 
-      onValueChange(initialValue, index);
+      onValueChange(String(initialValue), index);
     }
   }, [initialValue, previousInitialValue, normalizedOptions, onValueChange]);
 
@@ -83,7 +89,7 @@ const Picker: React.FC<Props> = ({
   return (
     <PickerComponent
       {...props}
-      selectedValue={value}
+      selectedValue={String(value)}
       placeholder={placeholder}
       options={pickerOptions}
       onValueChange={onValueChange}

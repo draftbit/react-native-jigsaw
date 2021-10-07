@@ -64,12 +64,16 @@ const Picker: React.FC<PickerComponentProps & IconSlot> = ({
       "marginLeft",
     ]);
 
+  const selectedLabel =
+    selectedValue &&
+    (options.find((o) => o.value === selectedValue)?.label ?? selectedValue);
+
   return (
     <View style={[styles.container, viewStyles]}>
       <Touchable disabled={disabled} onPress={toggleVisibility}>
         <TextField
           {...props}
-          value={selectedValue}
+          value={String(selectedLabel)}
           placeholder={placeholder}
           // @ts-ignore
           ref={textField} // cannot determine if ref is of correct type due to component being wrapped in a withTheme()
@@ -92,10 +96,9 @@ const Picker: React.FC<PickerComponentProps & IconSlot> = ({
                 Close
               </Button>
               <NativePicker
+                style={{ backgroundColor: "white" }}
                 selectedValue={selectedValue}
-                onValueChange={(value, index) =>
-                  onValueChange(value.toString(), index)
-                }
+                onValueChange={onValueChange}
               >
                 {options.map((o: any) => (
                   <NativePicker.Item
@@ -125,7 +128,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
   },
-  pickerContainer: { flexDirection: "column", width: "100%" },
+  pickerContainer: {
+    backgroundColor: "white",
+    flexDirection: "column",
+    width: "100%",
+  },
   closeButton: {
     alignSelf: "flex-end",
   },

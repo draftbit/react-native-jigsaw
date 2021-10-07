@@ -63,9 +63,7 @@ const Picker: React.FC<PickerComponentProps> = ({
 
   const selectedLabel =
     selectedValue &&
-    (options.find((opt) => opt.value.toString() === selectedValue.toString())
-      ?.label ??
-      selectedValue);
+    (options.find((o) => o.value === selectedValue)?.label ?? selectedValue);
 
   return (
     <Touchable
@@ -77,9 +75,7 @@ const Picker: React.FC<PickerComponentProps> = ({
         <NativePicker
           enabled={!disabled}
           selectedValue={selectedValue}
-          onValueChange={(value, index) =>
-            onValueChange(value.toString(), index)
-          }
+          onValueChange={onValueChange}
           style={{
             opacity: 0,
             position: "absolute",
@@ -87,6 +83,7 @@ const Picker: React.FC<PickerComponentProps> = ({
             left: 0,
             right: 0,
             bottom: 0,
+            width: "100%",
           }}
         >
           {options.map((o) => (

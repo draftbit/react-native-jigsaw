@@ -60,8 +60,10 @@ import ActionSheetExample from "./ActionSheetExample";
 import StarRatingExample from "./StarRatingExample";
 
 import SwiperExample from "./SwiperExample";
+import MarkdownExample from "./MarkdownExample";
 
 const ROUTES = {
+  Markdown: MarkdownExample,
   Layout: LayoutExample,
   Icon: IconExample,
   Button: ButtonExample,

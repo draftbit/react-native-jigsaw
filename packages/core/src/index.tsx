@@ -33,6 +33,7 @@ export {
   ActionSheetCancel,
 } from "./components/ActionSheet";
 export { Swiper, SwiperItem } from "./components/Swiper";
+export { default as Markdown } from "./components/Markdown";
 
 export {
   Center,

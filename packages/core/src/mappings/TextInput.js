@@ -9,7 +9,7 @@ import {
   Triggers,
 } from "@draftbit/types";
 
-export const COMMON_NATIVE_INPUT_PROPS = {
+export const SEED_DATA_PROPS = {
   style: {
     group: GROUPS.basic,
     label: "Style",
@@ -72,108 +72,6 @@ export const COMMON_NATIVE_INPUT_PROPS = {
   },
 };
 
-const NATIVE_INPUT_PROPS = {
-  ...COMMON_NATIVE_INPUT_PROPS,
-  multiline: {
-    group: GROUPS.basic,
-    label: "Multiple Lines",
-    description:
-      "Allows multiple lines of input, useful for situations where the user may be typing in a lot of data.",
-    editable: true,
-    required: false,
-    defaultValue: null,
-    formType: FORM_TYPES.boolean,
-    propType: PROP_TYPES.BOOLEAN,
-  },
-  numberOfLines: {
-    group: GROUPS.basic,
-    label: "Number of Lines",
-    description:
-      "Sets the number of lines for the input (Multiple Lines needs to be true)",
-    editable: true,
-    required: false,
-    defaultValue: null,
-    min: 0,
-    step: 1,
-    precision: 0,
-    formType: FORM_TYPES.number,
-    propType: PROP_TYPES.NUMBER,
-  },
-  scrollEnabled: {
-    group: GROUPS.basic,
-    label: "Scroll Enabled",
-    description:
-      "If false, scrolling of the input will be disabled. Only works when Multiple Lines is true",
-    editable: true,
-    required: false,
-    defaultValue: null,
-    formType: FORM_TYPES.boolean,
-    propType: PROP_TYPES.BOOLEAN,
-  },
-  spellcheck: {
-    group: GROUPS.basic,
-    label: "Disable Spell Check",
-    description:
-      "If false, disables spell-check style (red underlines). Default comes from Auto Correct",
-    editable: true,
-    required: false,
-    defaultValue: null,
-    formType: FORM_TYPES.boolean,
-    propType: PROP_TYPES.BOOLEAN,
-  },
-  textContentType: {
-    group: GROUPS.advanced,
-    label: "Text Content Type",
-    description:
-      "Give the keyboard and system about what it should do with the input. For example, if its an address, autofill from address book",
-    editable: true,
-    required: false,
-    defaultValue: null,
-    options: [
-      "none",
-      "URL",
-      "addressCity",
-      "addressCityAndState",
-      "addressState",
-      "countryName",
-      "creditCardNumber",
-      "emailAddress",
-      "familyName",
-      "fullStreetAddress",
-      "givenName",
-      "jobTitle",
-      "location",
-      "middleName",
-      "name",
-      "namePrefix",
-      "nameSuffix",
-      "nickname",
-      "organizationName",
-      "postalCode",
-      "streetAddressLine1",
-      "streetAddressLine2",
-      "sublocality",
-      "telephoneNumber",
-      "username",
-      "password",
-    ],
-    formType: FORM_TYPES.flatArray,
-    propType: PROP_TYPES.STRING,
-  },
-  textBreakStrategy: {
-    group: GROUPS.advanced,
-    label: "Text Break Strategy",
-    description:
-      "(Android Only) Set the text break strategy. (Default: simple)",
-    editable: true,
-    required: false,
-    defaultValue: null,
-    options: ["simple", "highQuality", "balanced"],
-    formType: FORM_TYPES.flatArray,
-    propType: PROP_TYPES.STRING,
-  },
-};
-
 export const SEED_DATA = [
   {
     name: "Text Input",
@@ -198,7 +96,105 @@ export const SEED_DATA = [
     triggers: [Triggers.OnChangeText],
     props: {
       ...TEXT_INPUT_PROPS,
-      ...NATIVE_INPUT_PROPS,
+      ...SEED_DATA_PROPS,
+      multiline: {
+        group: GROUPS.basic,
+        label: "Multiple Lines",
+        description:
+          "Allows multiple lines of input, useful for situations where the user may be typing in a lot of data.",
+        editable: true,
+        required: false,
+        defaultValue: null,
+        formType: FORM_TYPES.boolean,
+        propType: PROP_TYPES.BOOLEAN,
+      },
+      numberOfLines: {
+        group: GROUPS.basic,
+        label: "Number of Lines",
+        description:
+          "Sets the number of lines for the input (Multiple Lines needs to be true)",
+        editable: true,
+        required: false,
+        defaultValue: null,
+        min: 0,
+        step: 1,
+        precision: 0,
+        formType: FORM_TYPES.number,
+        propType: PROP_TYPES.NUMBER,
+      },
+      scrollEnabled: {
+        group: GROUPS.basic,
+        label: "Scroll Enabled",
+        description:
+          "If false, scrolling of the input will be disabled. Only works when Multiple Lines is true",
+        editable: true,
+        required: false,
+        defaultValue: null,
+        formType: FORM_TYPES.boolean,
+        propType: PROP_TYPES.BOOLEAN,
+      },
+      spellcheck: {
+        group: GROUPS.basic,
+        label: "Disable Spell Check",
+        description:
+          "If false, disables spell-check style (red underlines). Default comes from Auto Correct",
+        editable: true,
+        required: false,
+        defaultValue: null,
+        formType: FORM_TYPES.boolean,
+        propType: PROP_TYPES.BOOLEAN,
+      },
+      textContentType: {
+        group: GROUPS.advanced,
+        label: "Text Content Type",
+        description:
+          "Give the keyboard and system about what it should do with the input. For example, if its an address, autofill from address book",
+        editable: true,
+        required: false,
+        defaultValue: null,
+        options: [
+          "none",
+          "URL",
+          "addressCity",
+          "addressCityAndState",
+          "addressState",
+          "countryName",
+          "creditCardNumber",
+          "emailAddress",
+          "familyName",
+          "fullStreetAddress",
+          "givenName",
+          "jobTitle",
+          "location",
+          "middleName",
+          "name",
+          "namePrefix",
+          "nameSuffix",
+          "nickname",
+          "organizationName",
+          "postalCode",
+          "streetAddressLine1",
+          "streetAddressLine2",
+          "sublocality",
+          "telephoneNumber",
+          "username",
+          "password",
+        ],
+        formType: FORM_TYPES.flatArray,
+        propType: PROP_TYPES.STRING,
+      },
+      textBreakStrategy: {
+        group: GROUPS.advanced,
+        label: "Text Break Strategy",
+        description:
+          "(Android Only) Set the text break strategy. (Default: simple)",
+        editable: true,
+        required: false,
+        defaultValue: null,
+        options: ["simple", "highQuality", "balanced"],
+        formType: FORM_TYPES.flatArray,
+        propType: PROP_TYPES.STRING,
+      },
     },
   },
   {
@@ -224,7 +220,7 @@ export const SEED_DATA = [
     triggers: [Triggers.OnChangeText],
     props: {
       ...NUMBER_INPUT_PROPS,
-      ...COMMON_NATIVE_INPUT_PROPS,
+      ...SEED_DATA_PROPS,
     },
   },
 ];

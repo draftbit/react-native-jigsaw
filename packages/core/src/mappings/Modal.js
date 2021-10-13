@@ -13,7 +13,7 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.container,
   props: {
     animationType: {
-      group: GROUPS.advanced,
+      group: GROUPS.basic,
       name: "animationType",
       label: "animationType",
       description: "Animation Type",
@@ -27,7 +27,8 @@ export const SEED_DATA = {
     transparent: createBoolProp({
       group: GROUPS.basic,
       label: "Transparent",
-      description: "Determines whether the modal will fill the entire view. Setting this to true will render the modal over a transparent background",
+      description:
+        "Determines whether the modal will fill the entire view. Setting this to true will render the modal over a transparent background",
     }),
     visible: createBoolProp({
       group: GROUPS.data,

@@ -60,6 +60,7 @@ import ActionSheetExample from "./ActionSheetExample";
 import StarRatingExample from "./StarRatingExample";
 
 import SwiperExample from "./SwiperExample";
+import MarkdownExample from "./MarkdownExample";
 
 const ROUTES = {
   Layout: LayoutExample,
@@ -98,6 +99,7 @@ const ROUTES = {
   TextField: TextFieldExample,
   TextInput: TextInputExample,
   WebView: WebViewExample,
+  Markdown: MarkdownExample,
 };
 
 let customFonts = {

@@ -39,6 +39,7 @@ export {
   ActionSheetCancel,
   Swiper,
   SwiperItem,
+  Markdown,
 } from "@draftbit/core";
 
 /**

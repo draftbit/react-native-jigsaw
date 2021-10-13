@@ -32,7 +32,7 @@ export const SEED_DATA = {
       description: "Number Of Lines",
       group: GROUPS.basic,
       formType: FORM_TYPES.number,
-      propType: PROP_TYPES.number,
+      propType: PROP_TYPES.NUMBER,
       defaultValue: 4,
       editable: true,
       required: false,

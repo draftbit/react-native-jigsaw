@@ -61,6 +61,8 @@ import StarRatingExample from "./StarRatingExample";
 
 import SwiperExample from "./SwiperExample";
 
+import LinearGradientExample from "./LinearGradientExample";
+
 const ROUTES = {
   Layout: LayoutExample,
   Icon: IconExample,
@@ -98,6 +100,7 @@ const ROUTES = {
   TextField: TextFieldExample,
   TextInput: TextInputExample,
   WebView: WebViewExample,
+  LinearGradient: LinearGradientExample,
 };
 
 let customFonts = {

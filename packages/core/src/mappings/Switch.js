@@ -44,7 +44,10 @@ export const SEED_DATA = [
     name: "Switch Row",
     tag: "SwitchRow",
     category: COMPONENT_TYPES.input,
-    layout: {},
+    layout: {
+      marginLeft: 0,
+      marginRight: 0,
+    },
     triggers: SEED_DATA_TRIGGERS,
     props: {
       label: createTextProp({

@@ -51,7 +51,7 @@ export {
   RadioButtonFieldGroup,
 } from "./components/RadioButton/index";
 
-/* Deprecated: Fix or Delete  */
+/* Deprecated: Fix or Delete!  */
 export { default as Button } from "./components/DeprecatedButton";
 export { default as CardBlock } from "./components/CardBlock";
 export { default as CardContainer } from "./components/CardContainer";

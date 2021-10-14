@@ -1,6 +1,7 @@
 import {
   COMPONENT_TYPES,
   createBoolProp,
+  createColorProp,
   createNumberProp,
   createTextProp,
   GROUPS,
@@ -16,7 +17,11 @@ export interface SwiperProps {
   timeout?: number;
   prevTitle?: string;
   nextTitle?: string;
+  prevTitleColor: string;
+  nextTitleColor: string;
   dotsTouchable?: boolean;
+  // dotColor: string;
+  dotActiveColor: string;
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
 }
@@ -28,7 +33,11 @@ const Swiper = ({
   from = 0,
   prevTitle = "",
   nextTitle = "",
+  prevTitleColor = "red",
+  nextTitleColor = "blue",
   dotsTouchable = true,
+  // dotColor,
+  dotActiveColor,
   children,
   style,
 }: SwiperProps) => (
@@ -38,9 +47,13 @@ const Swiper = ({
       loop={loop}
       timeout={timeout}
       vertical={vertical}
+      // dotColor={dotColor}
+      dotActiveColor={dotActiveColor}
       controlsProps={{
         prevTitle,
         nextTitle,
+        prevTitleStyle: { color: prevTitleColor },
+        nextTitleStyle: { color: nextTitleColor },
         dotsTouchable,
       }}
     >
@@ -88,6 +101,18 @@ export const SEED_DATA = {
       group: GROUPS.basic,
       label: "Next Title",
       defaultValue: "",
+    }),
+    prevTitleColor: createColorProp({
+      label: "Previous Title Color",
+    }),
+    nextTitleColor: createColorProp({
+      label: "Next Title Color",
+    }),
+    // dotColor: createColorProp({
+    //   label: "Dot Color",
+    // }),
+    dotActiveColor: createColorProp({
+      label: "Dot Active Color",
     }),
     dotsTouchable: createBoolProp({
       group: GROUPS.basic,

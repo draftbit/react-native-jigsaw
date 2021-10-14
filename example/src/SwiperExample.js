@@ -17,7 +17,10 @@ function SwiperExample({ theme }) {
         <Swiper
           vertical={false}
           loop={true}
+          prevTitle="Previous"
+          nextTitle="Next"
           style={{ width: "100%", height: 300 }}
+          dotActiveColor="red"
         >
           <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
             <Text>Test Slide 1</Text>

@@ -13,6 +13,8 @@ function FieldSearchBarFullExample({ theme }) {
           placeholder="Type something..."
           value={searchBarValue}
           onChange={(value) => setSearchBarValue(value)}
+          style={{ padding: 16 }}
+          showIcon={false}
         />
         <Text>Value: {searchBarValue}</Text>
 
@@ -21,6 +23,8 @@ function FieldSearchBarFullExample({ theme }) {
           value={searchBarValue2}
           onChange={(value) => setSearchBarValue2(value)}
           initialValue="Replace this with your search"
+          style={{ padding: 16 }}
+          showIcon={true}
         />
       </Section>
     </Container>

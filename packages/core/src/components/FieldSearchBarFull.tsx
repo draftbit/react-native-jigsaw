@@ -16,6 +16,7 @@ import {
   PROP_TYPES,
   FIELD_NAME,
   Triggers,
+  createBoolProp,
 } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
@@ -23,6 +24,7 @@ import Config from "./Config";
 import { usePrevious } from "../hooks";
 
 type Props = {
+  showIcon: boolean;
   icon?: string;
   placeholder?: string;
   style?: StyleProp<ViewStyle>;
@@ -34,6 +36,7 @@ type Props = {
 } & IconSlot;
 
 const FieldSearchBarFull: React.FC<Props> = ({
+  showIcon,
   Icon,
   icon = "search",
   placeholder = "",
@@ -77,13 +80,15 @@ const FieldSearchBarFull: React.FC<Props> = ({
   const { lineHeight, ...typeStyles } = typography.body2; // eslint-disable-line @typescript-eslint/no-unused-vars
 
   return (
-    <View style={[{ padding: 16 }, styles.container, style]}>
-      <Icon
-        name={icon}
-        size={Config.fieldSearchBarFullIconSize}
-        color={focused ? colors.primary : colors.light}
-      />
-      <View style={{ marginLeft: 12, flex: 1 }}>
+    <View style={[styles.container, style]}>
+      {showIcon && (
+        <Icon
+          name={icon}
+          size={Config.fieldSearchBarFullIconSize}
+          color={focused ? colors.primary : colors.light}
+        />
+      )}
+      <View style={{ marginLeft: showIcon ? 12 : 0, flex: 1 }}>
         <TextInput
           clearButtonMode="while-editing"
           placeholder={placeholder}
@@ -123,7 +128,19 @@ export const SEED_DATA = [
     preview_image_url: "{CLOUDINARY_URL}/Field_SearchBar_Full.png",
     supports_list_render: false,
     triggers: [Triggers.OnChange], // TODO Triggers.OnSubmit for multiple triggers
+    layout: {
+      paddingLeft: 16,
+      paddingRight: 16,
+      paddingTop: 16,
+      paddingBottom: 16,
+    },
     props: {
+      showIcon: createBoolProp({
+        group: GROUPS.basic,
+        label: "Show Icon",
+        description: "Whether to show the Icon",
+        defaultValue: true,
+      }),
       icon: {
         group: GROUPS.basic,
         label: "Icon",
@@ -159,6 +176,5 @@ export const SEED_DATA = [
         defaultValue: "searchBarValue",
       },
     },
-    layout: {},
   },
 ];

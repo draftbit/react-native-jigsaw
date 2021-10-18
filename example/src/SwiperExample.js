@@ -20,6 +20,7 @@ function SwiperExample({ theme }) {
           prevTitle="Previous"
           nextTitle="Next"
           style={{ width: "100%", height: 300 }}
+          dotColor="green"
           dotActiveColor="red"
         >
           <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
@@ -34,7 +35,12 @@ function SwiperExample({ theme }) {
         </Swiper>
       </Section>
       <Section title="Swiper Example">
-        <Swiper vertical={true} style={{ width: "100%", height: 300 }}>
+        <Swiper
+          vertical={true}
+          style={{ width: "100%", height: 300 }}
+          dotColor="#86939e"
+          dotActiveColor="#2089dc"
+        >
           <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
             <Text>Test Slide 1</Text>
           </SwiperItem>

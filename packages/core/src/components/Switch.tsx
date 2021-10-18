@@ -15,7 +15,8 @@ type Props = {
   value: boolean;
   disabled?: boolean;
   onValueChange?: (value: boolean) => void;
-  initialValue?: boolean;
+  initialValue?: boolean; // deprecated
+  defaultValue?: boolean;
   theme: Theme;
   activeTrackColor: string;
   inactiveTrackColor: string;
@@ -26,6 +27,7 @@ type Props = {
 function Switch({
   value = false,
   initialValue,
+  defaultValue,
   disabled,
   onValueChange,
   activeTrackColor,
@@ -42,9 +44,9 @@ function Switch({
   const activeThumbThemeColor = activeThumbColor || "#FFF";
   const inactiveThumbThemeColor = inactiveThumbColor || "#FFF";
 
-  const [checked, setChecked] = React.useState(value);
+  const [checked, setChecked] = React.useState(value || defaultValue);
   React.useEffect(() => {
-    if (value !== checked) {
+    if (value != null && value !== checked) {
       setChecked(value);
     }
   }, [value, checked]);

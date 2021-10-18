@@ -12,7 +12,7 @@ import type { Theme } from "../styles/DefaultTheme";
 import { usePrevious } from "../hooks";
 
 type Props = {
-  value: boolean;
+  value?: boolean;
   disabled?: boolean;
   onValueChange?: (value: boolean) => void;
   initialValue?: boolean; // deprecated
@@ -25,7 +25,7 @@ type Props = {
 } & SwitchProps;
 
 function Switch({
-  value = false,
+  value,
   initialValue,
   defaultValue,
   disabled,

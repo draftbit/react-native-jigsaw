@@ -98,7 +98,7 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
           ? CheckboxStatus.Checked
           : CheckboxStatus.Unchecked
       );
-      onPress(internalValue === CheckboxStatus.Unchecked ? true : false);
+      onPress(internalValue === CheckboxStatus.Unchecked);
     };
 
     return (

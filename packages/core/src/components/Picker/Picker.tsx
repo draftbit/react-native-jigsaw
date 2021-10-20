@@ -16,7 +16,7 @@ import { usePrevious } from "../../hooks";
 
 type Props = PickerComponentProps & {
   placeholder?: string;
-  value: string;
+  value?: string;
   options: PickerOption[] | string[];
 };
 
@@ -52,8 +52,17 @@ const Picker: React.FC<Props> = ({
   onValueChange: onValueChangeOverride,
   value,
   initialValue,
+  defaultValue,
   ...props
 }) => {
+  const [internalValue, setIntervalValue] = React.useState<string | undefined>(
+    value || defaultValue
+  );
+
+  React.useEffect(() => {
+    setIntervalValue(value);
+  }, [value]);
+
   const onValueChange = React.useCallback(
     (itemValue: string, itemIndex: number) => {
       if (placeholder && itemIndex === 0) {
@@ -86,13 +95,20 @@ const Picker: React.FC<Props> = ({
     ? [{ value: placeholder, label: placeholder }, ...normalizedOptions]
     : normalizedOptions;
 
+  const handleValueChange = (newValue: string, itemIndex: number) => {
+    setIntervalValue(newValue);
+    if (onValueChange) {
+      onValueChange(newValue, itemIndex);
+    }
+  };
+
   return (
     <PickerComponent
       {...props}
-      selectedValue={String(value)}
+      selectedValue={String(internalValue)}
       placeholder={placeholder}
       options={pickerOptions}
-      onValueChange={onValueChange}
+      onValueChange={handleValueChange}
     />
   );
 };

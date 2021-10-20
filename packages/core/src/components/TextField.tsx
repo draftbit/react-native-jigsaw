@@ -41,6 +41,7 @@ const ICON_SIZE = 24;
 export type Props = {
   type?: "solid" | "underline";
   initialValue?: string;
+  defaultValue?: string;
   disabled?: boolean;
   label?: string;
   error?: boolean;
@@ -94,7 +95,10 @@ class TextField extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    if (this.props.initialValue) {
+    if (this.props.defaultValue) {
+      this._handleChangeText(this.props.defaultValue);
+    } else if (this.props.initialValue) {
+      // deprecated
       this._handleChangeText(this.props.initialValue);
     }
 

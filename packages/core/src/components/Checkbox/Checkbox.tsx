@@ -62,12 +62,12 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     style,
     ...rest
   }) => {
-    const [value, setValue] = React.useState<CheckboxStatus>(
+    const [internalValue, setInternalValue] = React.useState<CheckboxStatus>(
       status || defaultValue
     );
 
     React.useEffect(() => {
-      setValue(status);
+      setInternalValue(status);
     }, [status]);
 
     const previousInitialValue = usePrevious(initialValue);
@@ -93,12 +93,12 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     const checkboxColor = colorsMap[status];
 
     const handlePress = () => {
-      setValue(
-        value === CheckboxStatus.Unchecked
+      setInternalValue(
+        internalValue === CheckboxStatus.Unchecked
           ? CheckboxStatus.Checked
           : CheckboxStatus.Unchecked
       );
-      onPress(value === CheckboxStatus.Unchecked ? true : false);
+      onPress(internalValue === CheckboxStatus.Unchecked ? true : false);
     };
 
     return (
@@ -113,7 +113,7 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
       >
         <Icon
           style={styles.icon}
-          name={iconsMap[value]}
+          name={iconsMap[internalValue]}
           size={size}
           color={checkboxColor}
         />

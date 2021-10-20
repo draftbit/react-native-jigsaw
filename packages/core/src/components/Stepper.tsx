@@ -19,7 +19,8 @@ type Props = {
   theme: Theme;
   style?: StyleProp<ViewStyle>;
   onChange?: (value: number) => void;
-  initialValue?: number;
+  initialValue?: number; // deprecated
+  defaultValue?: number;
   iconSize?: number;
   iconColor?: string;
   borderRadius?: number;
@@ -32,13 +33,20 @@ const Stepper: React.FC<Props> = ({
   style,
   onChange,
   initialValue,
+  defaultValue,
   theme: { colors, typography, roundness },
   iconSize = 24,
   iconColor = colors.strong,
   borderRadius = roundness,
   typeStyle,
 }) => {
-  const [stateValue, setStateValue] = React.useState(value);
+  const [stateValue, setStateValue] = React.useState(
+    value || defaultValue || 0
+  );
+
+  React.useEffect(() => {
+    setStateValue(value);
+  }, [value]);
 
   const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {

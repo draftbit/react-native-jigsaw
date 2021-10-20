@@ -45,6 +45,11 @@ function Switch({
   const inactiveThumbThemeColor = inactiveThumbColor || "#FFF";
 
   const [checked, setChecked] = React.useState(value || defaultValue);
+
+  React.useEffect(() => {
+    setChecked(value);
+  }, [value]);
+
   React.useEffect(() => {
     if (value != null && value !== checked) {
       setChecked(value);

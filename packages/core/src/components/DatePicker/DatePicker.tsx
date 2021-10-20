@@ -45,7 +45,8 @@ type Props = {
   date?: Date;
   format?: string;
   onDateChange?: (data?: Date) => void;
-  initialValue?: Date;
+  initialValue?: Date; // deprecated
+  defaultValue?: Date;
   disabled?: boolean;
   mode?: "date" | "time" | "datetime";
   type?: "solid" | "underline";
@@ -79,6 +80,7 @@ const DatePicker: React.FC<Props> = ({
   date,
   onDateChange = () => {},
   initialValue,
+  defaultValue,
   disabled = false,
   mode = "date",
   format,
@@ -90,7 +92,7 @@ const DatePicker: React.FC<Props> = ({
   placeholder,
   ...props
 }) => {
-  const [value, setValue] = React.useState<any>(date);
+  const [value, setValue] = React.useState<any>(date || defaultValue);
   const [pickerVisible, setPickerVisible] = React.useState(false);
   const [labeled] = React.useState<Animated.Value>(
     new Animated.Value(date ? 0 : 1)

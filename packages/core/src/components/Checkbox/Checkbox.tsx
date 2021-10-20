@@ -38,7 +38,8 @@ export interface CheckboxProps {
   checkedIcon?: string;
   uncheckedIcon?: string;
   indeterminateIcon?: string;
-  initialValue?: boolean;
+  initialValue?: boolean; // deprecated
+  defaultValue?: CheckboxStatus;
   size?: number;
   style?: StyleProp<ViewStyle>;
 }
@@ -53,6 +54,7 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     uncheckedColor,
     indeterminateColor,
     initialValue,
+    defaultValue,
     checkedIcon = "MaterialCommunityIcons/checkbox-marked",
     uncheckedIcon = "MaterialCommunityIcons/checkbox-blank-outline",
     indeterminateIcon = "AntDesign/minussquareo",
@@ -60,6 +62,14 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     style,
     ...rest
   }) => {
+    const [value, setValue] = React.useState<CheckboxStatus>(
+      status || defaultValue
+    );
+
+    React.useEffect(() => {
+      setValue(status);
+    }, [status]);
+
     const previousInitialValue = usePrevious(initialValue);
     React.useEffect(() => {
       if (initialValue !== previousInitialValue) {
@@ -82,10 +92,19 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
 
     const checkboxColor = colorsMap[status];
 
+    const handlePress = () => {
+      setValue(
+        value === CheckboxStatus.Unchecked
+          ? CheckboxStatus.Checked
+          : CheckboxStatus.Unchecked
+      );
+      onPress(value === CheckboxStatus.Unchecked ? true : false);
+    };
+
     return (
       <Touchable
         {...rest}
-        onPress={() => onPress(status === "unchecked" ? true : false)}
+        onPress={handlePress}
         disabled={disabled}
         accessibilityState={{ disabled }}
         accessibilityRole="button"
@@ -94,7 +113,7 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
       >
         <Icon
           style={styles.icon}
-          name={iconsMap[status]}
+          name={iconsMap[value]}
           size={size}
           color={checkboxColor}
         />

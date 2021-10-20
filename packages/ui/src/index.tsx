@@ -39,6 +39,7 @@ export {
   ActionSheetCancel,
   Swiper,
   SwiperItem,
+  Youtube,
 } from "@draftbit/core";
 
 /**

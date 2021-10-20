@@ -144,7 +144,7 @@ function Examples() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="Youtube"
+        initialRouteName="Layout"
         drawerContentOptions={{
           activeTintColor: "rgba(90, 69, 255, 1)",
         }}

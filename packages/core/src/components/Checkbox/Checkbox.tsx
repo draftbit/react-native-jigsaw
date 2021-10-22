@@ -38,7 +38,8 @@ export interface CheckboxProps {
   checkedIcon?: string;
   uncheckedIcon?: string;
   indeterminateIcon?: string;
-  initialValue?: boolean;
+  initialValue?: boolean; // deprecated
+  defaultValue?: CheckboxStatus;
   size?: number;
   style?: StyleProp<ViewStyle>;
 }
@@ -46,13 +47,14 @@ export interface CheckboxProps {
 const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
   ({
     Icon,
-    status = CheckboxStatus.Unchecked,
+    status,
     disabled = false,
     onPress = () => {},
     color,
     uncheckedColor,
     indeterminateColor,
     initialValue,
+    defaultValue,
     checkedIcon = "MaterialCommunityIcons/checkbox-marked",
     uncheckedIcon = "MaterialCommunityIcons/checkbox-blank-outline",
     indeterminateIcon = "AntDesign/minussquareo",
@@ -60,6 +62,16 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     style,
     ...rest
   }) => {
+    const [internalValue, setInternalValue] = React.useState<CheckboxStatus>(
+      status || defaultValue || CheckboxStatus.Unchecked
+    );
+
+    React.useEffect(() => {
+      if (status != null) {
+        setInternalValue(status);
+      }
+    }, [status]);
+
     const previousInitialValue = usePrevious(initialValue);
     React.useEffect(() => {
       if (initialValue !== previousInitialValue) {
@@ -80,12 +92,21 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
       [CheckboxStatus.Indeterminate]: indeterminateIcon,
     };
 
-    const checkboxColor = colorsMap[status];
+    const checkboxColor = colorsMap[internalValue];
+
+    const handlePress = () => {
+      setInternalValue(
+        internalValue === CheckboxStatus.Unchecked
+          ? CheckboxStatus.Checked
+          : CheckboxStatus.Unchecked
+      );
+      onPress(internalValue === CheckboxStatus.Unchecked);
+    };
 
     return (
       <Touchable
         {...rest}
-        onPress={() => onPress(status === "unchecked" ? true : false)}
+        onPress={handlePress}
         disabled={disabled}
         accessibilityState={{ disabled }}
         accessibilityRole="button"
@@ -94,7 +115,7 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
       >
         <Icon
           style={styles.icon}
-          name={iconsMap[status]}
+          name={iconsMap[internalValue]}
           size={size}
           color={checkboxColor}
         />

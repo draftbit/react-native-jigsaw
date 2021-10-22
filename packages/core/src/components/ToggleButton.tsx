@@ -22,7 +22,8 @@ type Props = {
   icon: string;
   toggled?: boolean;
   onPress?: (toggled: boolean) => void;
-  initialValue?: boolean;
+  initialValue?: boolean; // deprecated
+  defaultValue?: boolean;
   disabled?: boolean;
   color?: colorTypes;
   colorSecondary?: colorTypes;
@@ -40,6 +41,7 @@ const ToggleButton: React.FC<Props> = ({
   toggled = false,
   onPress = () => {},
   initialValue,
+  defaultValue,
   disabled = false,
   color = "primary",
   colorSecondary = "surface",
@@ -51,6 +53,16 @@ const ToggleButton: React.FC<Props> = ({
   style,
   ...rest
 }) => {
+  const [internalValue, setIntervalValue] = React.useState<boolean>(
+    toggled || defaultValue || false
+  );
+
+  React.useEffect(() => {
+    if (toggled != null) {
+      setIntervalValue(toggled);
+    }
+  }, [toggled]);
+
   const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {
     if (initialValue !== previousInitialValue) {
@@ -58,13 +70,18 @@ const ToggleButton: React.FC<Props> = ({
     }
   }, [initialValue, previousInitialValue, onPress]);
 
+  const handlePress = () => {
+    setIntervalValue(!toggled);
+    onPress(!toggled);
+  };
+
   return (
     <IconButton
       Icon={Icon}
       icon={icon}
       size={iconSize}
-      color={toggled ? colors[color] : colors[colorSecondary]}
-      onPress={() => onPress(!toggled)}
+      color={internalValue ? colors[color] : colors[colorSecondary]}
+      onPress={handlePress}
       disabled={disabled}
       style={[
         styles.mainContainer,

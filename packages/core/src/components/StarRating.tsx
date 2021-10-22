@@ -24,6 +24,7 @@ type Props = {
   starSize?: number;
   maxStars?: number;
   rating?: number;
+  defaultValue?: number;
   isEditable?: boolean;
   activeColor?: string;
   inactiveColor?: string;
@@ -37,6 +38,7 @@ const StarRating: React.FC<Props> = ({
   starSize = 16,
   maxStars = 5,
   rating = 0,
+  defaultValue,
   isEditable = false,
   activeColor,
   inactiveColor,
@@ -44,10 +46,14 @@ const StarRating: React.FC<Props> = ({
   onPress,
   ...rest
 }) => {
-  const [localRating, setLocalRating] = React.useState(rating);
+  const [localRating, setLocalRating] = React.useState<number>(
+    rating || defaultValue || 0
+  );
 
   React.useEffect(() => {
-    setLocalRating(rating);
+    if (rating != null) {
+      setLocalRating(rating);
+    }
   }, [rating]);
 
   const ratingHandler = React.useCallback(

@@ -67,7 +67,9 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     );
 
     React.useEffect(() => {
-      setInternalValue(status);
+      if (status != null) {
+        setInternalValue(status);
+      }
     }, [status]);
 
     const previousInitialValue = usePrevious(initialValue);

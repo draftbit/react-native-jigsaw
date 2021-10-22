@@ -51,7 +51,9 @@ const StarRating: React.FC<Props> = ({
   );
 
   React.useEffect(() => {
-    setLocalRating(rating);
+    if (rating != null) {
+      setLocalRating(rating);
+    }
   }, [rating]);
 
   const ratingHandler = React.useCallback(

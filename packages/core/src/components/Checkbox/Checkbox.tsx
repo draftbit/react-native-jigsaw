@@ -47,7 +47,7 @@ export interface CheckboxProps {
 const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
   ({
     Icon,
-    status = CheckboxStatus.Unchecked,
+    status,
     disabled = false,
     onPress = () => {},
     color,
@@ -63,11 +63,13 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     ...rest
   }) => {
     const [internalValue, setInternalValue] = React.useState<CheckboxStatus>(
-      status || defaultValue
+      status || defaultValue || CheckboxStatus.Unchecked
     );
 
     React.useEffect(() => {
-      setInternalValue(status);
+      if (status != null) {
+        setInternalValue(status);
+      }
     }, [status]);
 
     const previousInitialValue = usePrevious(initialValue);
@@ -90,7 +92,7 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
       [CheckboxStatus.Indeterminate]: indeterminateIcon,
     };
 
-    const checkboxColor = colorsMap[status];
+    const checkboxColor = colorsMap[internalValue];
 
     const handlePress = () => {
       setInternalValue(

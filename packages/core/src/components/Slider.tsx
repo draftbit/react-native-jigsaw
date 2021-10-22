@@ -92,7 +92,9 @@ function Slider({
   );
 
   React.useEffect(() => {
-    setIntervalValue(value);
+    if (value != null) {
+      setIntervalValue(value);
+    }
   }, [value]);
 
   const minTrackColor = minimumTrackTintColor || theme.colors.primary;

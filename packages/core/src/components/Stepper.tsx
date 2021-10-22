@@ -29,7 +29,7 @@ type Props = {
 
 const Stepper: React.FC<Props> = ({
   Icon,
-  value = 0,
+  value,
   style,
   onChange,
   initialValue,
@@ -45,7 +45,9 @@ const Stepper: React.FC<Props> = ({
   );
 
   React.useEffect(() => {
-    setStateValue(value);
+    if (value != null) {
+      setStateValue(value);
+    }
   }, [value]);
 
   const previousInitialValue = usePrevious(initialValue);

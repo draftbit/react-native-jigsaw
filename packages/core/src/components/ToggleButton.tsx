@@ -58,7 +58,9 @@ const ToggleButton: React.FC<Props> = ({
   );
 
   React.useEffect(() => {
-    setIntervalValue(toggled);
+    if (toggled != null) {
+      setIntervalValue(toggled);
+    }
   }, [toggled]);
 
   const previousInitialValue = usePrevious(initialValue);

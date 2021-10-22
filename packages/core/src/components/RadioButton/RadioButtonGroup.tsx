@@ -37,7 +37,9 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   );
 
   React.useEffect(() => {
-    setIntervalValue(value);
+    if (value != null) {
+      setIntervalValue(value);
+    }
   }, [value]);
 
   const previousInitialValue = usePrevious(initialValue);

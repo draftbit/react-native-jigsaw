@@ -29,10 +29,11 @@ type Props = {
   placeholder?: string;
   style?: StyleProp<ViewStyle>;
   theme: Theme;
-  onChange: (text: string) => void;
+  onChange?: (text: string) => void;
   onSubmit?: (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
-  value: string;
-  initialValue?: string;
+  value?: string;
+  initialValue?: string; // deprecated
+  defaultValue?: string;
 } & IconSlot;
 
 const FieldSearchBarFull: React.FC<Props> = ({
@@ -46,12 +47,21 @@ const FieldSearchBarFull: React.FC<Props> = ({
   onSubmit: submitOverride,
   value,
   initialValue,
+  defaultValue,
 }) => {
   const [focused, setIsFocused] = React.useState(false);
 
   const onBlur = () => {
     setIsFocused(false);
   };
+
+  const [internalValue, setIntervalValue] = React.useState<string | undefined>(
+    value || defaultValue
+  );
+
+  React.useEffect(() => {
+    setIntervalValue(value);
+  }, [value]);
 
   const onChange = React.useCallback(
     (text: string) => {
@@ -79,6 +89,13 @@ const FieldSearchBarFull: React.FC<Props> = ({
 
   const { lineHeight, ...typeStyles } = typography.body2; // eslint-disable-line @typescript-eslint/no-unused-vars
 
+  const handleChangeText = (newValue: string) => {
+    setIntervalValue(newValue);
+    if (onChange) {
+      onChange(newValue);
+    }
+  };
+
   return (
     <View style={[styles.container, style]}>
       {showIcon && (
@@ -92,10 +109,10 @@ const FieldSearchBarFull: React.FC<Props> = ({
         <TextInput
           clearButtonMode="while-editing"
           placeholder={placeholder}
-          value={value}
+          value={internalValue}
           onBlur={onBlur}
           onFocus={onFocus}
-          onChangeText={onChange}
+          onChangeText={handleChangeText}
           onSubmitEditing={onSubmit}
           placeholderTextColor={colors.light}
           style={[

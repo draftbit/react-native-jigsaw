@@ -45,6 +45,7 @@ function Switch({
   const inactiveThumbThemeColor = inactiveThumbColor || "#FFF";
 
   const [checked, setChecked] = React.useState(value || defaultValue);
+
   React.useEffect(() => {
     if (value != null && value !== checked) {
       setChecked(value);
@@ -99,7 +100,7 @@ function Row({
   label = "Label",
   direction = RowDirection.Row,
   style,
-  value = false,
+  value,
   disabled,
   onValueChange,
   activeTrackColor,

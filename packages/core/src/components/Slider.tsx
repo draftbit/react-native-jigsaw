@@ -21,7 +21,8 @@ import { usePrevious } from "../hooks";
 export type Props = {
   style?: StyleProp<ViewStyle>;
   value?: number;
-  initialValue?: number;
+  initialValue?: number; // deprecated
+  defaultValue?: number;
   minimumTrackTintColor: string;
   maximumTrackTintColor: string;
   leftIcon?: string;
@@ -66,6 +67,7 @@ function Slider({
   rightIconColor,
   value,
   initialValue,
+  defaultValue,
   minimumTrackTintColor,
   maximumTrackTintColor,
   thumbTintColor,
@@ -85,6 +87,16 @@ function Slider({
     }
   }, [initialValue, previousInitialValue, onValueChange]);
 
+  const [internalValue, setIntervalValue] = React.useState<number | undefined>(
+    value || defaultValue
+  );
+
+  React.useEffect(() => {
+    if (value != null) {
+      setIntervalValue(value);
+    }
+  }, [value]);
+
   const minTrackColor = minimumTrackTintColor || theme.colors.primary;
   const maxTrackColor = maximumTrackTintColor || theme.colors.light;
   const thumbColor = thumbTintColor || theme.colors.primary;
@@ -92,7 +104,12 @@ function Slider({
   const leftIconThemeColor = leftIconColor || theme.colors.light;
   const rightIconThemeColor = rightIconColor || theme.colors.light;
 
-  const parsedValue = maybeParseValue(value);
+  const parsedValue = maybeParseValue(internalValue);
+
+  const handleSlidingComplete = (newValue: number) => {
+    setIntervalValue(newValue);
+    onValueChange(newValue);
+  };
 
   return (
     <View style={[styles.container, style]} {...rest}>
@@ -108,7 +125,7 @@ function Slider({
         minimumTrackTintColor={minTrackColor}
         maximumTrackTintColor={maxTrackColor}
         thumbTintColor={thumbColor}
-        onSlidingComplete={onValueChange}
+        onSlidingComplete={handleSlidingComplete}
         style={styles.slider}
       />
       {rightIcon ? (

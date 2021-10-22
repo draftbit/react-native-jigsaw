@@ -12,9 +12,10 @@ import { usePrevious } from "../../hooks";
 export interface RadioButtonGroupProps {
   direction?: Direction;
   style?: StyleProp<ViewStyle>;
-  value: string;
+  value?: string;
   onValueChange: (value: string) => void;
-  initialValue?: string;
+  initialValue?: string; // deprecated
+  defaultValue?: string;
   theme: Theme;
   children: React.ReactNode;
 }
@@ -26,10 +27,21 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   value,
   onValueChange = () => {},
   initialValue,
+  defaultValue,
   style,
   children,
   ...rest
 }) => {
+  const [internalValue, setIntervalValue] = React.useState<string | undefined>(
+    value || defaultValue
+  );
+
+  React.useEffect(() => {
+    if (value != null) {
+      setIntervalValue(value);
+    }
+  }, [value]);
+
   const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {
     if (initialValue !== previousInitialValue) {
@@ -51,7 +63,13 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
 
   return (
     <View style={[{ minHeight: 40 }, style]} {...rest}>
-      <Provider value={{ value, onValueChange, direction }}>
+      <Provider
+        value={{
+          value: internalValue || "",
+          onValueChange: setIntervalValue,
+          direction,
+        }}
+      >
         <View style={_containerStyle}>{children}</View>
       </Provider>
     </View>

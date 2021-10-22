@@ -100,7 +100,7 @@ function Row({
   label = "Label",
   direction = RowDirection.Row,
   style,
-  value = false,
+  value,
   disabled,
   onValueChange,
   activeTrackColor,

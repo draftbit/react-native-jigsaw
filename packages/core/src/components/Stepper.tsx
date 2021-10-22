@@ -29,7 +29,7 @@ type Props = {
 
 const Stepper: React.FC<Props> = ({
   Icon,
-  value = 0,
+  value,
   style,
   onChange,
   initialValue,

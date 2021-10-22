@@ -4,7 +4,7 @@ import { usePrevious } from "../hooks";
 
 interface Props {
   initialValue?: string;
-  onChangeText: (value?: string) => void;
+  onChangeText?: (value?: string) => void;
 }
 
 const TextInput: React.FC<Props> = ({
@@ -14,7 +14,7 @@ const TextInput: React.FC<Props> = ({
 }) => {
   const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {
-    if (initialValue !== previousInitialValue) {
+    if (initialValue !== previousInitialValue && onChangeText) {
       onChangeText(initialValue);
     }
   }, [initialValue, previousInitialValue, onChangeText]);

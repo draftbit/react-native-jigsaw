@@ -6,16 +6,6 @@ import {
   StyleProp,
   ViewStyle,
 } from "react-native";
-import {
-  COMPONENT_TYPES,
-  createBoolProp,
-  createIconProp,
-  createStaticNumberProp,
-  createColorProp,
-  createFieldNameProp,
-  GROUPS,
-  Triggers,
-} from "@draftbit/types";
 import { useTheme } from "../../theming";
 import type { IconSlot } from "../../interfaces/Icon";
 
@@ -158,59 +148,3 @@ const styles = StyleSheet.create({
 });
 
 export default Checkbox;
-
-export const SEED_DATA = {
-  name: "Checkbox",
-  tag: "Checkbox",
-  category: COMPONENT_TYPES.input,
-  triggers: [Triggers.OnPress],
-  props: {
-    fieldName: createFieldNameProp({
-      defaultValue: "checkboxValue",
-      valuePropName: "status",
-      handlerPropName: "onPress",
-    }),
-    color: createColorProp({
-      group: GROUPS.basic,
-      label: "Color",
-      description: "Color for the button (used when the checkbox is checked)",
-      defaultValue: null,
-    }),
-    uncheckedColor: createColorProp({
-      group: GROUPS.basic,
-      label: "Unselected Color",
-      description: "Color for the button when the checkbox is unchecked",
-      defaultValue: null,
-    }),
-    indeterminateColor: createColorProp({
-      group: GROUPS.basic,
-      label: "Indeterminate Color",
-      description: "Color for the button when the checkbox is indeterminate",
-      defaultValue: null,
-    }),
-    disabled: createBoolProp({
-      label: "Disabled",
-      description: "Whether the checkbox is disabled",
-    }),
-    size: createStaticNumberProp({
-      label: "Size",
-      description: "Specifies the size of the icon",
-      defaultValue: null,
-    }),
-    checkedIcon: createIconProp({
-      label: "Checked Icon",
-      description: 'Icon to show when the checkbox status is "checked"',
-      defaultValue: null,
-    }),
-    uncheckedIcon: createIconProp({
-      label: "Unchecked Icon",
-      description: 'Icon to show when the checkbox status is "unchecked"',
-      defaultValue: null,
-    }),
-    indeterminateIcon: createIconProp({
-      label: "Indeterminate Icon",
-      description: 'Icon to show when the checkbox status is "indeterminate"',
-      defaultValue: null,
-    }),
-  },
-};

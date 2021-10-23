@@ -1,19 +1,8 @@
 import * as React from "react";
 import { withTheme } from "../theming";
-import { colorTypes, GROUPS } from "@draftbit/types";
+import { colorTypes } from "@draftbit/types";
 import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import IconButton from "./IconButton";
-import {
-  COMPONENT_TYPES,
-  createIconProp,
-  createBoolProp,
-  createColorProp,
-  createStaticNumberProp,
-  createFieldNameProp,
-  createIconSizeProp,
-  createActionProp,
-  Triggers,
-} from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
 import { usePrevious } from "../hooks";
@@ -111,48 +100,3 @@ const styles = StyleSheet.create({
 });
 
 export default withTheme(ToggleButton);
-
-export const SEED_DATA = {
-  name: "Toggle Button",
-  tag: "ToggleButton",
-  category: COMPONENT_TYPES.button,
-  layout: {},
-  triggers: [Triggers.OnPress],
-  props: {
-    onPress: createActionProp(),
-    icon: createIconProp({
-      required: true,
-    }),
-    iconSize: createIconSizeProp(),
-    fieldName: createFieldNameProp({
-      defaultValue: false,
-      valuePropName: "toggled",
-    }),
-    disabled: createBoolProp({
-      label: "Disabled",
-      description: "Whether the button should be disabled",
-      group: GROUPS.basic,
-    }),
-    color: createColorProp({
-      group: GROUPS.basic,
-    }),
-    colorSecondary: createColorProp({
-      label: "Secondary Color",
-      group: GROUPS.basic,
-    }),
-    borderColor: createColorProp({
-      label: "Border Color",
-      group: GROUPS.basic,
-    }),
-    width: createStaticNumberProp({
-      label: "Width",
-      description: "Width",
-      defaultValue: 50,
-    }),
-    height: createStaticNumberProp({
-      label: "Height",
-      description: "Height",
-      defaultValue: 50,
-    }),
-  },
-};

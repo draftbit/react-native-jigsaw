@@ -50,6 +50,12 @@ const Stepper: React.FC<Props> = ({
     }
   }, [value]);
 
+  React.useEffect(() => {
+    if (defaultValue != null) {
+      setStateValue(defaultValue);
+    }
+  }, [defaultValue]);
+
   const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {
     if (initialValue !== previousInitialValue) {

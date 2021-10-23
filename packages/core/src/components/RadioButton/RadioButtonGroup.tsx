@@ -32,15 +32,21 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   children,
   ...rest
 }) => {
-  const [internalValue, setIntervalValue] = React.useState<string | undefined>(
+  const [internalValue, setInternalValue] = React.useState<string | undefined>(
     value || defaultValue
   );
 
   React.useEffect(() => {
     if (value != null) {
-      setIntervalValue(value);
+      setInternalValue(value);
     }
   }, [value]);
+
+  React.useEffect(() => {
+    if (defaultValue != null) {
+      setInternalValue(defaultValue);
+    }
+  }, [defaultValue]);
 
   const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {
@@ -66,7 +72,7 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
       <Provider
         value={{
           value: internalValue || "",
-          onValueChange: setIntervalValue,
+          onValueChange: setInternalValue,
           direction,
         }}
       >

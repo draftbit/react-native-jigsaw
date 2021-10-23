@@ -55,13 +55,21 @@ const Picker: React.FC<Props> = ({
   defaultValue,
   ...props
 }) => {
-  const [internalValue, setIntervalValue] = React.useState<string | undefined>(
+  const [internalValue, setInternalValue] = React.useState<string | undefined>(
     value || defaultValue
   );
 
   React.useEffect(() => {
-    setIntervalValue(value);
+    if (value != null) {
+      setInternalValue(value);
+    }
   }, [value]);
+
+  React.useEffect(() => {
+    if (defaultValue != null) {
+      setInternalValue(defaultValue);
+    }
+  }, [defaultValue]);
 
   const onValueChange = React.useCallback(
     (itemValue: string, itemIndex: number) => {
@@ -96,7 +104,7 @@ const Picker: React.FC<Props> = ({
     : normalizedOptions;
 
   const handleValueChange = (newValue: string, itemIndex: number) => {
-    setIntervalValue(newValue);
+    setInternalValue(newValue);
     if (onValueChange) {
       onValueChange(newValue, itemIndex);
     }

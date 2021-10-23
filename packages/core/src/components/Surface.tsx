@@ -12,7 +12,6 @@ import shadow from "../styles/shadow";
 import overlay from "../styles/overlay";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
-import { COMPONENT_TYPES, createElevationType } from "@draftbit/types";
 
 type Props = {
   elevation?: number;
@@ -55,14 +54,3 @@ const Surface: React.FC<Props> = ({
 };
 
 export default withTheme(Surface);
-
-export const SEED_DATA = {
-  name: "Surface",
-  tag: "Surface",
-  description: "An elevated container",
-  category: COMPONENT_TYPES.layout,
-  layout: {},
-  props: {
-    elevation: createElevationType(0),
-  },
-};

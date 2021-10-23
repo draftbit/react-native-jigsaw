@@ -1,11 +1,5 @@
 import * as React from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
-import {
-  COMPONENT_TYPES,
-  createFieldNameProp,
-  createDirectionProp,
-  Triggers,
-} from "@draftbit/types";
 import type { Theme } from "../../styles/DefaultTheme";
 import { radioButtonGroupContext, Direction } from "./context";
 import { usePrevious } from "../../hooks";
@@ -83,19 +77,3 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
 };
 
 export default RadioButtonGroup;
-
-export const SEED_DATA = {
-  name: "Radio Button Group",
-  tag: "RadioButtonGroup",
-  category: COMPONENT_TYPES.input,
-  layout: {},
-  triggers: [Triggers.OnValueChange],
-  props: {
-    direction: createDirectionProp(),
-    fieldName: createFieldNameProp({
-      handlerPropName: "onValueChange",
-      valuePropName: "value",
-      defaultValue: "radioButtonGroupValue",
-    }),
-  },
-};

@@ -87,15 +87,21 @@ function Slider({
     }
   }, [initialValue, previousInitialValue, onValueChange]);
 
-  const [internalValue, setIntervalValue] = React.useState<number | undefined>(
+  const [internalValue, setInternalValue] = React.useState<number | undefined>(
     value || defaultValue
   );
 
   React.useEffect(() => {
     if (value != null) {
-      setIntervalValue(value);
+      setInternalValue(value);
     }
   }, [value]);
+
+  React.useEffect(() => {
+    if (defaultValue != null) {
+      setInternalValue(defaultValue);
+    }
+  }, [defaultValue]);
 
   const minTrackColor = minimumTrackTintColor || theme.colors.primary;
   const maxTrackColor = maximumTrackTintColor || theme.colors.light;
@@ -107,7 +113,7 @@ function Slider({
   const parsedValue = maybeParseValue(internalValue);
 
   const handleSlidingComplete = (newValue: number) => {
-    setIntervalValue(newValue);
+    setInternalValue(newValue);
     onValueChange(newValue);
   };
 

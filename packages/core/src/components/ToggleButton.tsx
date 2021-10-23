@@ -53,15 +53,21 @@ const ToggleButton: React.FC<Props> = ({
   style,
   ...rest
 }) => {
-  const [internalValue, setIntervalValue] = React.useState<boolean>(
+  const [internalValue, setInternalValue] = React.useState<boolean>(
     toggled || defaultValue || false
   );
 
   React.useEffect(() => {
     if (toggled != null) {
-      setIntervalValue(toggled);
+      setInternalValue(toggled);
     }
   }, [toggled]);
+
+  React.useEffect(() => {
+    if (defaultValue != null) {
+      setInternalValue(defaultValue);
+    }
+  }, [defaultValue]);
 
   const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {
@@ -71,7 +77,7 @@ const ToggleButton: React.FC<Props> = ({
   }, [initialValue, previousInitialValue, onPress]);
 
   const handlePress = () => {
-    setIntervalValue(!toggled);
+    setInternalValue(!toggled);
     onPress(!toggled);
   };
 

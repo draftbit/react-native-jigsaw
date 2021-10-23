@@ -55,13 +55,21 @@ const FieldSearchBarFull: React.FC<Props> = ({
     setIsFocused(false);
   };
 
-  const [internalValue, setIntervalValue] = React.useState<string | undefined>(
+  const [internalValue, setInternalValue] = React.useState<string | undefined>(
     value || defaultValue
   );
 
   React.useEffect(() => {
-    setIntervalValue(value);
+    if (value != null) {
+      setInternalValue(value);
+    }
   }, [value]);
+
+  React.useEffect(() => {
+    if (defaultValue != null) {
+      setInternalValue(defaultValue);
+    }
+  }, [defaultValue]);
 
   const onChange = React.useCallback(
     (text: string) => {
@@ -90,7 +98,7 @@ const FieldSearchBarFull: React.FC<Props> = ({
   const { lineHeight, ...typeStyles } = typography.body2; // eslint-disable-line @typescript-eslint/no-unused-vars
 
   const handleChangeText = (newValue: string) => {
-    setIntervalValue(newValue);
+    setInternalValue(newValue);
     if (onChange) {
       onChange(newValue);
     }

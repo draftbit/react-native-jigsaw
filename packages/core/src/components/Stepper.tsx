@@ -1,13 +1,6 @@
 import * as React from "react";
 import { View, Text, StyleProp, ViewStyle, TextStyle } from "react-native";
 import { withTheme } from "../theming";
-import {
-  COMPONENT_TYPES,
-  createIconSizeProp,
-  createColorProp,
-  createFieldNameProp,
-  Triggers,
-} from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
 
@@ -49,6 +42,12 @@ const Stepper: React.FC<Props> = ({
       setStateValue(value);
     }
   }, [value]);
+
+  React.useEffect(() => {
+    if (defaultValue != null) {
+      setStateValue(defaultValue);
+    }
+  }, [defaultValue]);
 
   const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {
@@ -116,23 +115,3 @@ const Stepper: React.FC<Props> = ({
 };
 
 export default withTheme(Stepper);
-
-export const SEED_DATA = [
-  {
-    name: "Stepper",
-    tag: "Stepper",
-    description: "A component used to control the quantity of something",
-    category: COMPONENT_TYPES.input,
-    layout: {},
-    triggers: [Triggers.OnChange],
-    props: {
-      fieldName: createFieldNameProp({
-        defaultValue: "stepperValue",
-        handlerPropName: "onChange",
-        valuePropName: "value",
-      }),
-      iconSize: createIconSizeProp({ defaultValue: 24 }),
-      iconColor: createColorProp({ defaultValue: "strong" }),
-    },
-  },
-];

@@ -1,11 +1,5 @@
 import * as React from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
-import {
-  COMPONENT_TYPES,
-  createFieldNameProp,
-  createDirectionProp,
-  Triggers,
-} from "@draftbit/types";
 import type { Theme } from "../../styles/DefaultTheme";
 import { radioButtonGroupContext, Direction } from "./context";
 import { usePrevious } from "../../hooks";
@@ -32,15 +26,21 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   children,
   ...rest
 }) => {
-  const [internalValue, setIntervalValue] = React.useState<string | undefined>(
+  const [internalValue, setInternalValue] = React.useState<string | undefined>(
     value || defaultValue
   );
 
   React.useEffect(() => {
     if (value != null) {
-      setIntervalValue(value);
+      setInternalValue(value);
     }
   }, [value]);
+
+  React.useEffect(() => {
+    if (defaultValue != null) {
+      setInternalValue(defaultValue);
+    }
+  }, [defaultValue]);
 
   const previousInitialValue = usePrevious(initialValue);
   React.useEffect(() => {
@@ -66,7 +66,7 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
       <Provider
         value={{
           value: internalValue || "",
-          onValueChange: setIntervalValue,
+          onValueChange: setInternalValue,
           direction,
         }}
       >
@@ -77,19 +77,3 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
 };
 
 export default RadioButtonGroup;
-
-export const SEED_DATA = {
-  name: "Radio Button Group",
-  tag: "RadioButtonGroup",
-  category: COMPONENT_TYPES.input,
-  layout: {},
-  triggers: [Triggers.OnValueChange],
-  props: {
-    direction: createDirectionProp(),
-    fieldName: createFieldNameProp({
-      handlerPropName: "onValueChange",
-      valuePropName: "value",
-      defaultValue: "radioButtonGroupValue",
-    }),
-  },
-};

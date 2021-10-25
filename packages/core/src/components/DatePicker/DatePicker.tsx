@@ -93,6 +93,13 @@ const DatePicker: React.FC<Props> = ({
   ...props
 }) => {
   const [value, setValue] = React.useState<any>(date || defaultValue);
+
+  React.useEffect(() => {
+    if (defaultValue != null) {
+      setValue(defaultValue);
+    }
+  }, [defaultValue]);
+
   const [pickerVisible, setPickerVisible] = React.useState(false);
   const [labeled] = React.useState<Animated.Value>(
     new Animated.Value(date ? 0 : 1)

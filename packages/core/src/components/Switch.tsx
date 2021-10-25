@@ -52,6 +52,12 @@ function Switch({
     }
   }, [value, checked]);
 
+  React.useEffect(() => {
+    if (defaultValue != null) {
+      setChecked(defaultValue);
+    }
+  }, [defaultValue]);
+
   const booleanInitialValue = Boolean(initialValue);
   const previousInitialValue = usePrevious(booleanInitialValue);
 

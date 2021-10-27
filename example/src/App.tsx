@@ -60,6 +60,7 @@ import ActionSheetExample from "./ActionSheetExample";
 import StarRatingExample from "./StarRatingExample";
 
 import SwiperExample from "./SwiperExample";
+import BottomSheetExample from "./BottomSheetExample";
 
 const ROUTES = {
   Layout: LayoutExample,
@@ -68,6 +69,7 @@ const ROUTES = {
   FAB: FABExample,
   RadioButton: RadioButtonExample,
   ActionSheet: ActionSheetExample,
+  BottomSheet: BottomSheetExample,
   Checkbox: CheckboxExample,
   Card: CardExample,
   ToggleButton: ToggleButtonExample,
@@ -142,7 +144,7 @@ function Examples() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="Layout"
+        initialRouteName="BottomSheet"
         drawerContentOptions={{
           activeTintColor: "rgba(90, 69, 255, 1)",
         }}

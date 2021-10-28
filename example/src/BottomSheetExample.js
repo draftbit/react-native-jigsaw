@@ -22,9 +22,7 @@ export default function BottomSheetExample() {
 
 const containerStyle = StyleSheet.create({
   contentContainer: {
-    flex: 1,
     alignItems: "center",
     backgroundColor: "#fff",
-    height: "100%",
   },
 });

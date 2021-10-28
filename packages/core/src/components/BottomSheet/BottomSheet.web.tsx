@@ -16,7 +16,10 @@ const BottomSheetComponent: React.FC<BottomSheetProps> = ({
   const bottomSheetRef = React.useRef<any>();
 
   const webStep = React.useMemo(() => step + 1, [step]);
-  const snapPoints = React.useMemo(() => [128, "50%", windowHeight - 300], []);
+  const snapPoints = React.useMemo(
+    () => ["25%", "50%", windowHeight - 200],
+    []
+  );
 
   React.useEffect(() => {
     bottomSheetRef?.current?.snapTo(snapPoints.length - webStep);
@@ -28,27 +31,30 @@ const BottomSheetComponent: React.FC<BottomSheetProps> = ({
   }
 
   return (
-    <ScrollBottomSheet
-      ref={bottomSheetRef}
-      componentType="ScrollView"
-      snapPoints={snapPoints}
-      initialSnapIndex={0}
-      renderHandle={() => (
-        <View style={styles.header}>
-          <View style={styles.panelHandle} />
-        </View>
-      )}
-    >
-      <View
-        style={{
-          ...styles.container,
-          ...viewStyles,
-          backgroundColor: webStep !== -1 ? "grey" : "transparent",
-        }}
+    <View style={styles.container}>
+      <ScrollBottomSheet
+        ref={bottomSheetRef}
+        componentType="ScrollView"
+        snapPoints={snapPoints}
+        initialSnapIndex={0}
+        renderHandle={() => (
+          <View style={styles.header}>
+            <View style={styles.panelHandle} />
+          </View>
+        )}
+        contentContainerStyle={styles.contentContainerStyle}
       >
-        {children}
-      </View>
-    </ScrollBottomSheet>
+        <View
+          style={{
+            ...styles.container,
+            ...viewStyles,
+            backgroundColor: webStep !== -1 ? "grey" : "transparent",
+          }}
+        >
+          {children}
+        </View>
+      </ScrollBottomSheet>
+    </View>
   );
 };
 

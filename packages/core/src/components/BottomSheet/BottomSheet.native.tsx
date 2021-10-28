@@ -1,11 +1,9 @@
 import React, { useCallback, useMemo, useRef } from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
+import { View, StyleSheet } from "react-native";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 
 import { extractStyles } from "../../utilities";
 import { BottomSheetProps } from "./types";
-
-const windowHeight = Dimensions.get("window").height;
 
 const BottomSheetComponent: React.FC<BottomSheetProps> = ({
   style,
@@ -16,7 +14,7 @@ const BottomSheetComponent: React.FC<BottomSheetProps> = ({
   const { viewStyles } = extractStyles(style);
 
   // variables
-  const snapPoints = useMemo(() => [128, "50%", windowHeight - 200], []);
+  const snapPoints = useMemo(() => ["25%", "50%", "90%"], []);
 
   // callbacks
   const handleSheetChanges = useCallback((index: number) => {

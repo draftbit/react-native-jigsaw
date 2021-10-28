@@ -63,12 +63,9 @@ export default BottomSheetComponent;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: "red",
   },
   contentContainerStyle: {
     padding: 16,
-    backgroundColor: "#F3F4F9",
   },
   header: {
     alignItems: "center",

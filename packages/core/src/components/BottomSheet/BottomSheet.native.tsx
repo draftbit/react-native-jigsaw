@@ -52,7 +52,6 @@ export default BottomSheetComponent;
 const containerStyle = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "grey",
   },
   contentContainer: {
     flex: 1,

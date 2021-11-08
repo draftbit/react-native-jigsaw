@@ -117,7 +117,7 @@ function Row({
   theme,
   ...rest
 }: Props & RowProps) {
-  const [checked, setChecked] = React.useState(value || defaultValue);
+  const [checked, setChecked] = React.useState(value != null ? value : defaultValue);
 
   React.useEffect(() => {
     if (value != null) {

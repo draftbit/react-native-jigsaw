@@ -76,7 +76,6 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   labelStyle,
   checkboxStyle,
   direction = Direction.Row,
-  status,
   disabled,
   style,
   color,
@@ -91,7 +90,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   } = useCheckboxGroupContext();
 
   const values = Array.isArray(selectedValues) ? selectedValues : [];
-  const isChecked = status === CheckboxStatus.Checked || values.includes(value);
+  const isChecked = value || values.includes(value);
 
   const handlePress = () => {
     if (!disabled) {
@@ -190,8 +189,8 @@ export const SEED_DATA = {
     }),
     direction: createRowDirectionProp(),
     fieldName: createFieldNameProp({
-      defaultValue: "unchecked",
-      valuePropName: "status",
+      defaultValue: "checkboxValue",
+      valuePropName: "value",
       handlerPropName: "onPress",
     }),
     color: createColorProp({

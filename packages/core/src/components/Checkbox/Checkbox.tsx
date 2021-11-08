@@ -12,24 +12,16 @@ import type { IconSlot } from "../../interfaces/Icon";
 import Touchable from "../Touchable";
 import { usePrevious } from "../../hooks";
 
-export enum CheckboxStatus {
-  Checked = "checked",
-  Unchecked = "unchecked",
-  Indeterminate = "indeterminate",
-}
-
 export interface CheckboxProps {
-  status?: CheckboxStatus;
+  value?: boolean;
   disabled?: boolean;
   onPress?: (checked: boolean) => void;
   color?: string;
   uncheckedColor?: string;
-  indeterminateColor?: string;
   checkedIcon?: string;
   uncheckedIcon?: string;
-  indeterminateIcon?: string;
   initialValue?: boolean; // deprecated
-  defaultValue?: CheckboxStatus;
+  defaultValue?: boolean;
   size?: number;
   style?: StyleProp<ViewStyle>;
 }
@@ -37,30 +29,28 @@ export interface CheckboxProps {
 const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
   ({
     Icon,
-    status,
+    value,
     disabled = false,
     onPress = () => {},
     color,
     uncheckedColor,
-    indeterminateColor,
     initialValue,
     defaultValue,
     checkedIcon = "MaterialCommunityIcons/checkbox-marked",
     uncheckedIcon = "MaterialCommunityIcons/checkbox-blank-outline",
-    indeterminateIcon = "AntDesign/minussquareo",
     size = 24,
     style,
     ...rest
   }) => {
-    const [internalValue, setInternalValue] = React.useState<CheckboxStatus>(
-      status || defaultValue || CheckboxStatus.Unchecked
+    const [internalValue, setInternalValue] = React.useState<boolean>(
+      value || defaultValue || false
     );
 
     React.useEffect(() => {
-      if (status != null) {
-        setInternalValue(status);
+      if (value != null) {
+        setInternalValue(value);
       }
-    }, [status]);
+    }, [value]);
 
     React.useEffect(() => {
       if (defaultValue != null) {
@@ -76,27 +66,13 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     }, [initialValue, previousInitialValue, onPress]);
     const { colors } = useTheme();
 
-    const colorsMap = {
-      [CheckboxStatus.Checked]: color || colors.primary,
-      [CheckboxStatus.Unchecked]: uncheckedColor || colors.primary,
-      [CheckboxStatus.Indeterminate]: indeterminateColor || colors.light,
-    };
-
-    const iconsMap = {
-      [CheckboxStatus.Checked]: checkedIcon,
-      [CheckboxStatus.Unchecked]: uncheckedIcon,
-      [CheckboxStatus.Indeterminate]: indeterminateIcon,
-    };
-
-    const checkboxColor = colorsMap[internalValue];
+    const checkboxColor = internalValue
+      ? color || colors.primary
+      : uncheckedColor || colors.primary;
 
     const handlePress = () => {
-      setInternalValue(
-        internalValue === CheckboxStatus.Unchecked
-          ? CheckboxStatus.Checked
-          : CheckboxStatus.Unchecked
-      );
-      onPress(internalValue === CheckboxStatus.Unchecked);
+      setInternalValue(!internalValue);
+      onPress(!internalValue);
     };
 
     return (
@@ -111,7 +87,7 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
       >
         <Icon
           style={styles.icon}
-          name={iconsMap[internalValue]}
+          name={internalValue ? checkedIcon : uncheckedIcon}
           size={size}
           color={checkboxColor}
         />

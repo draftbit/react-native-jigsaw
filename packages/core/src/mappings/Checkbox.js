@@ -17,7 +17,7 @@ export const SEED_DATA = {
   props: {
     fieldName: createFieldNameProp({
       defaultValue: "checkboxValue",
-      valuePropName: "status",
+      valuePropName: "value",
       handlerPropName: "onPress",
     }),
     color: createColorProp({
@@ -30,12 +30,6 @@ export const SEED_DATA = {
       group: GROUPS.basic,
       label: "Unselected Color",
       description: "Color for the button when the checkbox is unchecked",
-      defaultValue: null,
-    }),
-    indeterminateColor: createColorProp({
-      group: GROUPS.basic,
-      label: "Indeterminate Color",
-      description: "Color for the button when the checkbox is indeterminate",
       defaultValue: null,
     }),
     disabled: createBoolProp({
@@ -55,11 +49,6 @@ export const SEED_DATA = {
     uncheckedIcon: createIconProp({
       label: "Unchecked Icon",
       description: 'Icon to show when the checkbox status is "unchecked"',
-      defaultValue: null,
-    }),
-    indeterminateIcon: createIconProp({
-      label: "Indeterminate Icon",
-      description: 'Icon to show when the checkbox status is "indeterminate"',
       defaultValue: null,
     }),
   },

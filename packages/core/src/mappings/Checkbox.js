@@ -17,7 +17,7 @@ export const SEED_DATA = {
   props: {
     fieldName: createFieldNameProp({
       defaultValue: "checkboxValue",
-      valuePropName: "value",
+      valuePropName: "status",
       handlerPropName: "onPress",
     }),
     color: createColorProp({

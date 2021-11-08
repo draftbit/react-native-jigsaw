@@ -120,10 +120,16 @@ function Row({
   const [checked, setChecked] = React.useState(value || defaultValue);
 
   React.useEffect(() => {
-    if (value !== checked) {
+    if (value != null) {
       setChecked(value);
     }
-  }, [value, checked]);
+  }, [value]);
+
+  React.useEffect(() => {
+    if (defaultValue != null) {
+      setChecked(defaultValue);
+    }
+  }, [defaultValue]);
 
   return (
     <FormRow

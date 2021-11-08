@@ -7,7 +7,7 @@ export enum Direction {
 
 interface CheckboxGroupContext {
   onValueChange: (value: string, selected: boolean) => void;
-  values: boolean[];
+  values: string[];
   direction?: Direction;
 }
 

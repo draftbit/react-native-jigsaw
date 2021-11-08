@@ -13,7 +13,7 @@ import Touchable from "../Touchable";
 import { usePrevious } from "../../hooks";
 
 export interface CheckboxProps {
-  value?: boolean;
+  status?: boolean;
   disabled?: boolean;
   onPress?: (checked: boolean) => void;
   color?: string;
@@ -29,7 +29,7 @@ export interface CheckboxProps {
 const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
   ({
     Icon,
-    value,
+    status,
     disabled = false,
     onPress = () => {},
     color,
@@ -43,14 +43,14 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     ...rest
   }) => {
     const [internalValue, setInternalValue] = React.useState<boolean>(
-      value || defaultValue || false
+      status || defaultValue || false
     );
 
     React.useEffect(() => {
-      if (value != null) {
-        setInternalValue(value);
+      if (status != null) {
+        setInternalValue(status);
       }
-    }, [value]);
+    }, [status]);
 
     React.useEffect(() => {
       if (defaultValue != null) {

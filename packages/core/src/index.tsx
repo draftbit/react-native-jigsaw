@@ -50,6 +50,15 @@ export {
   RadioButtonFieldGroup,
 } from "./components/RadioButton/index";
 
+export {
+  Table,
+  TableRow,
+  TablePaginator,
+  TableHeader,
+  TableCell,
+  TableTitle,
+} from "./components/Table";
+
 /* Deprecated: Fix or Delete!  */
 export { default as Button } from "./components/DeprecatedButton";
 export { default as CardBlock } from "./components/CardBlock";

@@ -39,6 +39,12 @@ export {
   ActionSheetCancel,
   Swiper,
   SwiperItem,
+  Table,
+  TableHeader,
+  TableRow,
+  TablePaginator,
+  TableCell,
+  TableTitle,
 } from "@draftbit/core";
 
 /**

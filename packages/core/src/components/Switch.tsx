@@ -107,6 +107,7 @@ function Row({
   direction = RowDirection.Row,
   style,
   value,
+  defaultValue,
   disabled,
   onValueChange,
   activeTrackColor,
@@ -116,13 +117,21 @@ function Row({
   theme,
   ...rest
 }: Props & RowProps) {
-  const [checked, setChecked] = React.useState(value);
+  const [checked, setChecked] = React.useState(
+    value != null ? value : defaultValue
+  );
 
   React.useEffect(() => {
-    if (value !== checked) {
+    if (value != null) {
       setChecked(value);
     }
-  }, [value, checked]);
+  }, [value]);
+
+  React.useEffect(() => {
+    if (defaultValue != null) {
+      setChecked(defaultValue);
+    }
+  }, [defaultValue]);
 
   return (
     <FormRow

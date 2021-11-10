@@ -12,7 +12,7 @@ export const SEED_DATA = {
   name: "Text Area",
   tag: "TextInput",
   description: "An input field that allows for multiple lines.",
-  category: COMPONENT_TYPES.basic,
+  category: COMPONENT_TYPES.input,
   layout: { flex: 1 },
   triggers: [Triggers.OnChangeText],
   props: {

@@ -82,7 +82,7 @@ export const SEED_DATA = {
   name: "Accordion Item",
   tag: "AccordionItem",
   description: "Item to be used in Accordion",
-  category: COMPONENT_TYPES.row,
+  category: COMPONENT_TYPES.button,
   props: {
     icon: createIconProp(),
     label: createTextProp({

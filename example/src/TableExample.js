@@ -4,7 +4,6 @@ import {
   Table,
   TableHeader,
   TableRow,
-  TablePaginator,
   TableCell,
   TableTitle,
   withTheme,
@@ -67,7 +66,6 @@ function TableExample() {
             </TableCell>
           </TableRow>
         </Table>
-        <TablePaginator />
       </Section>
 
       <Section title="Table Example 2">
@@ -123,7 +121,6 @@ function TableExample() {
             </TableCell>
           </TableRow>
         </Table>
-        <TablePaginator />
       </Section>
     </Container>
   );

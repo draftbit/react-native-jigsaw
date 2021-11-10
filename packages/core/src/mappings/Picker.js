@@ -146,27 +146,4 @@ export const SEED_DATA = [
     },
     layout: {},
   },
-  {
-    name: "Picker - Underline",
-    tag: "Picker",
-    description: "A picker with an underline",
-    category: COMPONENT_TYPES.input,
-    preview_image_url: "{CLOUDINARY_URL}/Picker.png",
-    supports_list_render: false,
-    triggers: SEED_DATA_TRIGGERS,
-    props: {
-      ...SEED_DATA_PROPS,
-      type: {
-        label: "Type",
-        description: "Type",
-        group: GROUPS.uncategorized,
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "underline",
-        editable: false,
-        required: false,
-      },
-    },
-    layout: {},
-  },
 ];

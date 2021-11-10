@@ -62,6 +62,8 @@ import StarRatingExample from "./StarRatingExample";
 import SwiperExample from "./SwiperExample";
 import MarkdownExample from "./MarkdownExample";
 
+import TableExample from "./TableExample";
+
 const ROUTES = {
   Layout: LayoutExample,
   Icon: IconExample,
@@ -100,6 +102,7 @@ const ROUTES = {
   TextInput: TextInputExample,
   WebView: WebViewExample,
   Markdown: MarkdownExample,
+  Table: TableExample,
 };
 
 let customFonts = {

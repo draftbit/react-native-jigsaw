@@ -1,4 +1,6 @@
 import { StyleSheet, StyleProp, TextStyle } from "react-native";
+import omitBy from "lodash/omitBy";
+import isNil from "lodash/isNil";
 
 export function extractStyles(style: StyleProp<any>) {
   const {
@@ -30,7 +32,10 @@ export function extractStyles(style: StyleProp<any>) {
     textDecorationStyle,
   };
 
-  return { viewStyles, textStyles };
+  return {
+    viewStyles: omitBy(viewStyles, isNil),
+    textStyles: omitBy(textStyles, isNil),
+  };
 }
 
 /**

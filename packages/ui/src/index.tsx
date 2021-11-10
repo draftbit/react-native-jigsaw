@@ -40,6 +40,12 @@ export {
   Swiper,
   SwiperItem,
   Markdown,
+  Table,
+  TableHeader,
+  TableRow,
+  TablePaginator,
+  TableCell,
+  TableTitle,
 } from "@draftbit/core";
 
 /**

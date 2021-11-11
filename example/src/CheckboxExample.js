@@ -37,7 +37,6 @@ const CheckboxExample = ({ theme }) => {
 
   const handlePress = (value) => setChecked(value);
   const handleAirtablePress = (value) => {
-    console.log("handling airtable press", value);
     if (value) {
       setAirtableChecked(true);
     } else {

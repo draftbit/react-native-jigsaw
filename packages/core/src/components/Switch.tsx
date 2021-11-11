@@ -44,20 +44,29 @@ function Switch({
 
   const [checked, setChecked] = React.useState(value || defaultValue);
 
+  React.useEffect(() => {
+    if (value != null && value !== checked) {
+      setChecked(value);
+    }
+  }, [value, checked]);
+
+  const booleanDefaultValue = Boolean(defaultValue);
+  const previousDefaultValue = usePrevious(booleanDefaultValue);
+
   // This special logic is to handle weird APIs like Airtable that return
   // true or undefined for a boolean
-  const previousValue = usePrevious(value) as boolean | undefined;
   React.useEffect(() => {
-    if (value !== previousValue) {
-      setChecked(Boolean(value));
+    if (booleanDefaultValue !== previousDefaultValue) {
+      setChecked(booleanDefaultValue);
+      onValueChange && onValueChange(booleanDefaultValue);
     }
-  }, [value, previousValue]);
-
-  React.useEffect(() => {
-    if (defaultValue != null) {
-      setChecked(defaultValue);
-    }
-  }, [defaultValue]);
+  }, [
+    defaultValue,
+    booleanDefaultValue,
+    previousDefaultValue,
+    setChecked,
+    onValueChange,
+  ]);
 
   return (
     <NativeSwitch

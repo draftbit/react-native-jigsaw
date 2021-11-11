@@ -82,10 +82,22 @@ const CheckboxExample = ({ theme }) => {
 
       <Section title="Checkbox and Switch with Airtable-like API (false is undefined)">
         <Row>
-          <Checkbox status={airtableChecked} onPress={handleAirtablePress} />
-          <Checkbox status={airtableChecked} onPress={handleAirtablePress} />
-          <Switch value={airtableChecked} onValueChange={handleAirtablePress} />
-          <Switch value={airtableChecked} onValueChange={handleAirtablePress} />
+          <Checkbox
+            defaultValue={airtableChecked}
+            onPress={handleAirtablePress}
+          />
+          <Checkbox
+            defaultValue={airtableChecked}
+            onPress={handleAirtablePress}
+          />
+          <Switch
+            defaultValue={airtableChecked}
+            onValueChange={handleAirtablePress}
+          />
+          <Switch
+            defaultValue={airtableChecked}
+            onValueChange={handleAirtablePress}
+          />
         </Row>
       </Section>
 

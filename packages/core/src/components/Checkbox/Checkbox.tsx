@@ -44,14 +44,22 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
       status || defaultValue || false
     );
 
+    React.useEffect(() => {
+      if (status != null) {
+        setInternalValue(status);
+      }
+    }, [status]);
+
     // This special logic is to handle weird APIs like Airtable that return
     // true or undefined for a boolean
-    const previousStatus = usePrevious(status) as boolean | undefined;
+    const previousDefaultValue = usePrevious(defaultValue) as
+      | boolean
+      | undefined;
     React.useEffect(() => {
-      if (status !== previousStatus) {
-        setInternalValue(Boolean(status));
+      if (defaultValue !== previousDefaultValue) {
+        setInternalValue(Boolean(defaultValue));
       }
-    }, [status, previousStatus]);
+    }, [defaultValue, previousDefaultValue]);
 
     const { colors } = useTheme();
 

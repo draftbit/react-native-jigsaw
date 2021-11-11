@@ -41,9 +41,7 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
 
   const handleValueChange = (newValue: string) => {
     setInternalValue(newValue);
-    if (onValueChange) {
-      onValueChange(newValue);
-    }
+    onValueChange(newValue);
   };
 
   const _containerStyle: StyleProp<ViewStyle> = [

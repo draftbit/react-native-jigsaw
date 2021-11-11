@@ -36,6 +36,7 @@ const CheckboxExample = ({ theme }) => {
   };
 
   const handlePress = (value) => setChecked(value);
+  // An example to simulate how Airtable returns boolean values: `true` or `undefined`
   const handleAirtablePress = (value) => {
     if (value) {
       setAirtableChecked(true);

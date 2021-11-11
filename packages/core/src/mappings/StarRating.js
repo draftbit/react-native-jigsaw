@@ -26,7 +26,7 @@ export const SEED_DATA = {
     fieldName: createFieldNameProp({
       defaultValue: "ratingValue", // this is the name of the variable declared on the screen in Draftbit
       handlerPropName: "onPress", // the change handler prop in this component
-      valuePropName: "rating", // the value prop in this component
+      valuePropName: "value", // the value prop in this component
     }),
     maxStars: createStaticNumberProp({
       label: "Max stars",

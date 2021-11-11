@@ -13,7 +13,7 @@ import type { IconSlot } from "../interfaces/Icon";
 type Props = {
   starSize?: number;
   maxStars?: number;
-  rating?: number;
+  value?: number;
   defaultValue?: number;
   isEditable?: boolean;
   activeColor?: string;
@@ -27,7 +27,7 @@ const StarRating: React.FC<Props> = ({
   Icon,
   starSize = 16,
   maxStars = 5,
-  rating = 0,
+  value = 0,
   defaultValue,
   isEditable = false,
   activeColor,
@@ -37,14 +37,14 @@ const StarRating: React.FC<Props> = ({
   ...rest
 }) => {
   const [localRating, setLocalRating] = React.useState<number>(
-    rating || defaultValue || 0
+    value || defaultValue || 0
   );
 
   React.useEffect(() => {
-    if (rating != null) {
-      setLocalRating(rating);
+    if (value != null) {
+      setLocalRating(value);
     }
-  }, [rating]);
+  }, [value]);
 
   React.useEffect(() => {
     if (defaultValue != null) {

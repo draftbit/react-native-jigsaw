@@ -31,11 +31,12 @@ export enum Direction {
 
 export interface CheckboxRowProps extends Omit<CheckboxProps, "onPress"> {
   label: string | React.ReactNode;
-  value: string; // A string that this checkbox represents
+  valueString: string; // A string that this checkbox represents
+  value: boolean;
   labelContainerStyle: StyleProp<ViewStyle>;
   checkboxStyle?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
-  onPress?: (status: boolean) => void;
+  onPress?: (value: boolean) => void;
   direction?: Direction;
   color: string;
   unselectedColor: string;
@@ -70,6 +71,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   Icon,
   label = "Label",
   value,
+  valueString,
   onPress = () => {},
   labelContainerStyle,
   labelStyle,
@@ -88,12 +90,12 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   } = useCheckboxGroupContext();
 
   const values = Array.isArray(selectedValues) ? selectedValues : [];
-  const isChecked = status || values.includes(value);
+  const isChecked = value || values.includes(valueString);
 
   const handlePress = () => {
     if (!disabled) {
       onPress(!isChecked);
-      onValueChange && onValueChange(value, !isChecked);
+      onValueChange && onValueChange(valueString, !isChecked);
     }
   };
 
@@ -125,7 +127,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
       >
         <Checkbox
           Icon={Icon}
-          value={values.includes(value)}
+          value={isChecked}
           onPress={handlePress}
           style={checkboxStyle}
           disabled={disabled}

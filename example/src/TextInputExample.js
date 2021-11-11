@@ -1,6 +1,6 @@
 import * as React from "react";
-import { KeyboardAvoidingView } from "react-native";
-import { TextInput, NumberInput } from "@draftbit/ui";
+import { TextInput, KeyboardAvoidingView } from "react-native";
+import { NumberInput } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
 export default function TextInputExample() {

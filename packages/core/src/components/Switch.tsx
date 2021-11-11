@@ -9,6 +9,7 @@ import { withTheme } from "../theming";
 import FormRow from "./FormRow";
 import { RowDirection } from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
+import { usePrevious } from "../hooks";
 
 type Props = {
   value?: boolean;
@@ -43,11 +44,14 @@ function Switch({
 
   const [checked, setChecked] = React.useState(value || defaultValue);
 
+  // This special logic is to handle weird APIs like Airtable that return
+  // true or undefined for a boolean
+  const previousValue = usePrevious(value) as boolean | undefined;
   React.useEffect(() => {
-    if (value != null && value !== checked) {
-      setChecked(value);
+    if (value !== previousValue) {
+      setChecked(Boolean(value));
     }
-  }, [value, checked]);
+  }, [value, previousValue]);
 
   React.useEffect(() => {
     if (defaultValue != null) {

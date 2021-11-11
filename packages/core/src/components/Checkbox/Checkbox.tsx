@@ -10,6 +10,7 @@ import { useTheme } from "../../theming";
 import type { IconSlot } from "../../interfaces/Icon";
 
 import Touchable from "../Touchable";
+import { usePrevious } from "../../hooks";
 
 export interface CheckboxProps {
   status?: boolean;
@@ -43,17 +44,14 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
       status || defaultValue || false
     );
 
+    // This special logic is to handle weird APIs like Airtable that return
+    // true or undefined for a boolean
+    const previousStatus = usePrevious(status) as boolean | undefined;
     React.useEffect(() => {
-      if (status != null) {
-        setInternalValue(status);
+      if (status !== previousStatus) {
+        setInternalValue(Boolean(status));
       }
-    }, [status]);
-
-    React.useEffect(() => {
-      if (defaultValue != null) {
-        setInternalValue(defaultValue);
-      }
-    }, [defaultValue]);
+    }, [status, previousStatus]);
 
     const { colors } = useTheme();
 

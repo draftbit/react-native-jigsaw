@@ -2,6 +2,7 @@ import {
   Checkbox,
   CheckboxGroup,
   CheckboxRow,
+  Switch,
   Row,
   withTheme,
   ScreenContainer,
@@ -21,6 +22,7 @@ const SingleCheckboxWrapper = ({ label, children }) => (
 
 const CheckboxExample = ({ theme }) => {
   const [checked, setChecked] = React.useState(true);
+  const [airtableChecked, setAirtableChecked] = React.useState(false);
   const [selectedValues, setSelectedValues] = React.useState([]);
 
   const handleValueSelected = (value, selected) => {
@@ -34,6 +36,14 @@ const CheckboxExample = ({ theme }) => {
   };
 
   const handlePress = (value) => setChecked(value);
+  const handleAirtablePress = (value) => {
+    console.log("handling airtable press", value);
+    if (value) {
+      setAirtableChecked(true);
+    } else {
+      setAirtableChecked(undefined);
+    }
+  };
 
   return (
     <ScreenContainer hasSafeArea={false} scrollable={true}>
@@ -67,6 +77,15 @@ const CheckboxExample = ({ theme }) => {
           <SingleCheckboxWrapper label="Initial value">
             <Checkbox defaultValue={false} />
           </SingleCheckboxWrapper>
+        </Row>
+      </Section>
+
+      <Section title="Checkbox and Switch with Airtable-like API (false is undefined)">
+        <Row>
+          <Checkbox status={airtableChecked} onPress={handleAirtablePress} />
+          <Checkbox status={airtableChecked} onPress={handleAirtablePress} />
+          <Switch value={airtableChecked} onValueChange={handleAirtablePress} />
+          <Switch value={airtableChecked} onValueChange={handleAirtablePress} />
         </Row>
       </Section>
 

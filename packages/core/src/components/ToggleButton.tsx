@@ -8,7 +8,7 @@ import type { IconSlot } from "../interfaces/Icon";
 
 type Props = {
   icon: string;
-  value?: boolean;
+  toggled?: boolean;
   onPress?: (value: boolean) => void;
   defaultValue?: boolean;
   disabled?: boolean;

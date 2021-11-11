@@ -22,7 +22,7 @@ const SingleCheckboxWrapper = ({ label, children }) => (
 
 const CheckboxExample = ({ theme }) => {
   const [checked, setChecked] = React.useState(true);
-  const [airtableChecked, setAirtableChecked] = React.useState(false);
+  const [airtableChecked, setAirtableChecked] = React.useState(undefined);
   const [selectedValues, setSelectedValues] = React.useState([]);
 
   const handleValueSelected = (value, selected) => {

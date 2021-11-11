@@ -4,8 +4,6 @@ import { withTheme } from "../../theming";
 import PickerComponent from "./PickerComponent"; //unable to find file due to using .android/.web/.ios
 import { PickerComponentProps, PickerOption } from "./PickerTypes";
 
-import { usePrevious } from "../../hooks";
-
 type Props = PickerComponentProps & {
   placeholder?: string;
   value?: string;
@@ -43,7 +41,6 @@ const Picker: React.FC<Props> = ({
   placeholder,
   onValueChange: onValueChangeOverride,
   value,
-  initialValue,
   defaultValue,
   ...props
 }) => {
@@ -75,21 +72,6 @@ const Picker: React.FC<Props> = ({
   );
 
   const normalizedOptions = normalizeOptions(options);
-
-  const previousInitialValue = usePrevious(initialValue);
-  React.useEffect(() => {
-    if (String(initialValue) !== String(previousInitialValue)) {
-      const index = normalizedOptions.findIndex(
-        (opt) => opt.value === initialValue
-      );
-
-      if (index == null) {
-        return;
-      }
-
-      onValueChange(String(initialValue), index);
-    }
-  }, [initialValue, previousInitialValue, normalizedOptions, onValueChange]);
 
   const pickerOptions = placeholder
     ? [{ value: placeholder, label: placeholder }, ...normalizedOptions]

@@ -76,7 +76,7 @@ export const SEED_DATA = {
     fieldName: createFieldNameProp({
       defaultValue: "checkboxGroupValue",
       handlerPropName: "onValueChange",
-      valuePropName: "checkboxGroupValue",
+      valuePropName: "value",
     }),
   },
 };

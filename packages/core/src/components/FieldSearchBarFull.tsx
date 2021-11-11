@@ -12,7 +12,6 @@ import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
 import Config from "./Config";
-import { usePrevious } from "../hooks";
 
 type Props = {
   icon?: string;
@@ -22,7 +21,6 @@ type Props = {
   onChange?: (text: string) => void;
   onSubmit?: (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
   value?: string;
-  initialValue?: string; // deprecated
   defaultValue?: string;
 } & IconSlot;
 
@@ -35,7 +33,6 @@ const FieldSearchBarFull: React.FC<Props> = ({
   onChange: changeOverride,
   onSubmit: submitOverride,
   value,
-  initialValue,
   defaultValue,
 }) => {
   const [focused, setIsFocused] = React.useState(false);
@@ -66,13 +63,6 @@ const FieldSearchBarFull: React.FC<Props> = ({
     },
     [changeOverride]
   );
-
-  const previousInitialValue = usePrevious(initialValue);
-  React.useEffect(() => {
-    if (initialValue !== previousInitialValue) {
-      onChange(initialValue);
-    }
-  }, [initialValue, previousInitialValue, onChange]);
 
   const onFocus = () => {
     setIsFocused(true);

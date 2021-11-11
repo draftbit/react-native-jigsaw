@@ -2,13 +2,11 @@ import * as React from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
 import type { Theme } from "../../styles/DefaultTheme";
 import { radioButtonGroupContext, Direction } from "./context";
-import { usePrevious } from "../../hooks";
 export interface RadioButtonGroupProps {
   direction?: Direction;
   style?: StyleProp<ViewStyle>;
   value?: string;
-  onValueChange: (value: string) => void;
-  initialValue?: string; // deprecated
+  onValueChange?: (value: string) => void;
   defaultValue?: string;
   theme: Theme;
   children: React.ReactNode;
@@ -20,7 +18,6 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   direction = Direction.Vertical,
   value,
   onValueChange = () => {},
-  initialValue,
   defaultValue,
   style,
   children,
@@ -42,12 +39,12 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
     }
   }, [defaultValue]);
 
-  const previousInitialValue = usePrevious(initialValue);
-  React.useEffect(() => {
-    if (initialValue !== previousInitialValue) {
-      onValueChange(initialValue);
+  const handleValueChange = (newValue: string) => {
+    setInternalValue(newValue);
+    if (onValueChange) {
+      onValueChange(newValue);
     }
-  }, [initialValue, previousInitialValue, onValueChange]);
+  };
 
   const _containerStyle: StyleProp<ViewStyle> = [
     {
@@ -66,7 +63,7 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
       <Provider
         value={{
           value: internalValue || "",
-          onValueChange: setInternalValue,
+          onValueChange: handleValueChange,
           direction,
         }}
       >

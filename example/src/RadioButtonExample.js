@@ -149,7 +149,7 @@ const RadioButtonGroupExample = ({ theme }) => {
           direction="horizontal"
           onValueChange={(v) => onSelect2(v)}
           value={selected2}
-          initialValue="2"
+          defaultValue="2"
         >
           <SingleRadioButtonWrapper>
             <RadioButton value="1" />

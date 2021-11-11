@@ -1,29 +1,37 @@
 import React from "react";
 import { TextInput as NativeNumberInput } from "react-native";
-import { usePrevious } from "../hooks";
 
 interface Props {
-  initialValue?: string;
+  defaultValue?: string;
   onChangeText: (value?: number) => void;
 }
 
 const NumberInput: React.FC<Props> = ({
-  initialValue,
+  defaultValue,
   onChangeText,
   ...props
 }) => {
-  const previousInitialValue = usePrevious(initialValue);
+  const [internalValue, setInternalValue] = React.useState(defaultValue);
+
   React.useEffect(() => {
-    if (initialValue !== previousInitialValue) {
-      onChangeText(stringToInteger(initialValue));
+    if (defaultValue != null) {
+      setInternalValue(defaultValue);
     }
-  }, [initialValue, previousInitialValue, onChangeText]);
+  }, [defaultValue]);
+
+  const handleChangeText = (value: string) => {
+    setInternalValue(value);
+    if (onChangeText) {
+      onChangeText(stringToInteger(value));
+    }
+  };
 
   return (
     <NativeNumberInput
       keyboardType="numeric"
-      onChangeText={(val) => onChangeText(stringToInteger(val))}
+      onChangeText={handleChangeText}
       {...props}
+      value={internalValue}
     />
   );
 };

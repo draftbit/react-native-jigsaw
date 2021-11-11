@@ -5,13 +5,11 @@ import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import IconButton from "./IconButton";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
-import { usePrevious } from "../hooks";
 
 type Props = {
   icon: string;
-  toggled?: boolean;
-  onPress?: (toggled: boolean) => void;
-  initialValue?: boolean; // deprecated
+  value?: boolean;
+  onPress?: (value: boolean) => void;
   defaultValue?: boolean;
   disabled?: boolean;
   color?: colorTypes;
@@ -27,9 +25,8 @@ type Props = {
 const ToggleButton: React.FC<Props> = ({
   Icon,
   icon,
-  toggled = false,
+  value = false,
   onPress = () => {},
-  initialValue,
   defaultValue,
   disabled = false,
   color = "primary",
@@ -43,14 +40,14 @@ const ToggleButton: React.FC<Props> = ({
   ...rest
 }) => {
   const [internalValue, setInternalValue] = React.useState<boolean>(
-    toggled || defaultValue || false
+    value || defaultValue || false
   );
 
   React.useEffect(() => {
-    if (toggled != null) {
-      setInternalValue(toggled);
+    if (value != null) {
+      setInternalValue(value);
     }
-  }, [toggled]);
+  }, [value]);
 
   React.useEffect(() => {
     if (defaultValue != null) {
@@ -58,16 +55,9 @@ const ToggleButton: React.FC<Props> = ({
     }
   }, [defaultValue]);
 
-  const previousInitialValue = usePrevious(initialValue);
-  React.useEffect(() => {
-    if (initialValue !== previousInitialValue) {
-      onPress(initialValue);
-    }
-  }, [initialValue, previousInitialValue, onPress]);
-
   const handlePress = () => {
-    setInternalValue(!toggled);
-    onPress(!toggled);
+    setInternalValue(!value);
+    onPress(!value);
   };
 
   return (
@@ -83,7 +73,7 @@ const ToggleButton: React.FC<Props> = ({
         {
           width,
           height,
-          backgroundColor: toggled ? colors[colorSecondary] : colors[color],
+          backgroundColor: value ? colors[colorSecondary] : colors[color],
           borderColor: colors[borderColor],
         },
         style,

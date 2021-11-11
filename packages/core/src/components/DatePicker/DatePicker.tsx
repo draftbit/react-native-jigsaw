@@ -25,7 +25,6 @@ import DateTimePicker from "./DatePickerComponent";
 
 import type { Theme } from "../../styles/DefaultTheme";
 import type { IconSlot } from "../../interfaces/Icon";
-import { usePrevious } from "../../hooks";
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
 
@@ -45,7 +44,6 @@ type Props = {
   date?: Date;
   format?: string;
   onDateChange?: (data?: Date) => void;
-  initialValue?: Date; // deprecated
   defaultValue?: Date;
   disabled?: boolean;
   mode?: "date" | "time" | "datetime";
@@ -79,7 +77,6 @@ const DatePicker: React.FC<Props> = ({
   theme: { colors, typography, roundness, disabledOpacity },
   date,
   onDateChange = () => {},
-  initialValue,
   defaultValue,
   disabled = false,
   mode = "date",
@@ -110,20 +107,6 @@ const DatePicker: React.FC<Props> = ({
     measured: Boolean;
     width: number;
   }>({ measured: false, width: 0 });
-
-  const previousInitialValue = usePrevious(initialValue);
-  React.useEffect(() => {
-    const initialValueStr = initialValue ? initialValue.toString() : "";
-    const previousInitialValueStr = previousInitialValue
-      ? // This weirdly complains about being possibly undefined despite being inside a ternary
-        // @ts-ignore
-        previousInitialValue.toString()
-      : "";
-    if (initialValueStr !== previousInitialValueStr) {
-      setValue(initialValue);
-      onDateChange(initialValue);
-    }
-  }, [initialValue, previousInitialValue, setValue, onDateChange]);
 
   const getValidDate = (): Date => {
     if (!value) {

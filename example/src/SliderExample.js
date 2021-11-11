@@ -42,7 +42,7 @@ function SliderExample({ theme }) {
           minimumValue={0}
           maximumValue={100}
           onValueChange={(v) => setValue2(v)}
-          initialValue={90}
+          defaultValue={90}
           style={{ width: 200, marginLeft: 12, marginRight: 12 }}
         />
         <Text style={{ fontSize: 24, marginTop: 24 }}>Value: {value2}</Text>

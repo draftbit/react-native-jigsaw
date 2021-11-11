@@ -109,7 +109,7 @@ export default function TextFieldExample() {
             label="Solid input with initial value"
             value={value2}
             onChangeText={(text) => setText2(text)}
-            initialValue="Hello world!!!!!"
+            defaultValue="Hello world!!!!!"
           />
         </Section>
 
@@ -188,7 +188,7 @@ export default function TextFieldExample() {
             label="Underline input with initial value"
             value={value3}
             onChangeText={(text) => setText3(text)}
-            initialValue="Hello world!!!!!"
+            defaultValue="Hello world!!!!!"
           />
         </Section>
       </Container>

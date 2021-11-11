@@ -75,7 +75,6 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   labelStyle,
   checkboxStyle,
   direction = Direction.Row,
-  status,
   disabled,
   style,
   color,
@@ -126,7 +125,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
       >
         <Checkbox
           Icon={Icon}
-          status={status || values.includes(value)}
+          value={values.includes(value)}
           onPress={handlePress}
           style={checkboxStyle}
           disabled={disabled}

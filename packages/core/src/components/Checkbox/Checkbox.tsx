@@ -10,17 +10,15 @@ import { useTheme } from "../../theming";
 import type { IconSlot } from "../../interfaces/Icon";
 
 import Touchable from "../Touchable";
-import { usePrevious } from "../../hooks";
 
 export interface CheckboxProps {
-  status?: boolean;
+  value?: boolean;
   disabled?: boolean;
   onPress?: (checked: boolean) => void;
   color?: string;
   uncheckedColor?: string;
   checkedIcon?: string;
   uncheckedIcon?: string;
-  initialValue?: boolean; // deprecated
   defaultValue?: boolean;
   size?: number;
   style?: StyleProp<ViewStyle>;
@@ -29,12 +27,11 @@ export interface CheckboxProps {
 const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
   ({
     Icon,
-    status,
+    value,
     disabled = false,
     onPress = () => {},
     color,
     uncheckedColor,
-    initialValue,
     defaultValue,
     checkedIcon = "MaterialCommunityIcons/checkbox-marked",
     uncheckedIcon = "MaterialCommunityIcons/checkbox-blank-outline",
@@ -43,14 +40,14 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     ...rest
   }) => {
     const [internalValue, setInternalValue] = React.useState<boolean>(
-      status || defaultValue || false
+      value || defaultValue || false
     );
 
     React.useEffect(() => {
-      if (status != null) {
-        setInternalValue(status);
+      if (value != null) {
+        setInternalValue(value);
       }
-    }, [status]);
+    }, [value]);
 
     React.useEffect(() => {
       if (defaultValue != null) {
@@ -58,12 +55,6 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
       }
     }, [defaultValue]);
 
-    const previousInitialValue = usePrevious(initialValue);
-    React.useEffect(() => {
-      if (initialValue !== previousInitialValue) {
-        onPress(initialValue);
-      }
-    }, [initialValue, previousInitialValue, onPress]);
     const { colors } = useTheme();
 
     const checkboxColor = internalValue

@@ -25,7 +25,7 @@ type Props = {
 const ToggleButton: React.FC<Props> = ({
   Icon,
   icon,
-  value = false,
+  toggled = false,
   onPress = () => {},
   defaultValue,
   disabled = false,
@@ -40,14 +40,14 @@ const ToggleButton: React.FC<Props> = ({
   ...rest
 }) => {
   const [internalValue, setInternalValue] = React.useState<boolean>(
-    value || defaultValue || false
+    toggled || defaultValue || false
   );
 
   React.useEffect(() => {
-    if (value != null) {
-      setInternalValue(value);
+    if (toggled != null) {
+      setInternalValue(toggled);
     }
-  }, [value]);
+  }, [toggled]);
 
   React.useEffect(() => {
     if (defaultValue != null) {
@@ -56,8 +56,8 @@ const ToggleButton: React.FC<Props> = ({
   }, [defaultValue]);
 
   const handlePress = () => {
-    setInternalValue(!value);
-    onPress(!value);
+    setInternalValue(!toggled);
+    onPress(!toggled);
   };
 
   return (
@@ -73,7 +73,7 @@ const ToggleButton: React.FC<Props> = ({
         {
           width,
           height,
-          backgroundColor: value ? colors[colorSecondary] : colors[color],
+          backgroundColor: toggled ? colors[colorSecondary] : colors[color],
           borderColor: colors[borderColor],
         },
         style,

@@ -7,7 +7,7 @@ import {
   View,
   Platform,
 } from "react-native";
-import Checkbox, { CheckboxProps, CheckboxStatus } from "./Checkbox";
+import Checkbox, { CheckboxProps } from "./Checkbox";
 import Text from "../Text";
 import { useCheckboxGroupContext } from "./context";
 import {
@@ -31,15 +31,14 @@ export enum Direction {
 
 export interface CheckboxRowProps extends Omit<CheckboxProps, "onPress"> {
   label: string | React.ReactNode;
-  value: string;
+  value: string; // A string that this checkbox represents
   labelContainerStyle: StyleProp<ViewStyle>;
   checkboxStyle?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
-  onPress?: (value: string) => void;
+  onPress?: (value: boolean) => void;
   direction?: Direction;
   color: string;
   unselectedColor: string;
-  indeterminateColor: string;
 }
 
 const getCheckboxAlignment = (
@@ -70,18 +69,17 @@ const renderLabel = (
 const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   Icon,
   label = "Label",
+  status,
   value,
   onPress = () => {},
   labelContainerStyle,
   labelStyle,
   checkboxStyle,
   direction = Direction.Row,
-  status,
   disabled,
   style,
   color,
   uncheckedColor,
-  indeterminateColor,
   ...rest
 }) => {
   const {
@@ -91,11 +89,11 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   } = useCheckboxGroupContext();
 
   const values = Array.isArray(selectedValues) ? selectedValues : [];
-  const isChecked = status === CheckboxStatus.Checked || values.includes(value);
+  const isChecked = status || values.includes(value);
 
   const handlePress = () => {
     if (!disabled) {
-      onPress(value);
+      onPress(!isChecked);
       onValueChange && onValueChange(value, !isChecked);
     }
   };
@@ -128,17 +126,12 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
       >
         <Checkbox
           Icon={Icon}
-          status={
-            status || values.includes(value)
-              ? CheckboxStatus.Checked
-              : CheckboxStatus.Unchecked
-          }
+          status={isChecked}
           onPress={handlePress}
           style={checkboxStyle}
           disabled={disabled}
           color={color}
           uncheckedColor={uncheckedColor}
-          indeterminateColor={indeterminateColor}
         />
       </View>
     </Touchable>
@@ -190,8 +183,8 @@ export const SEED_DATA = {
     }),
     direction: createRowDirectionProp(),
     fieldName: createFieldNameProp({
-      defaultValue: "unchecked",
-      valuePropName: "status",
+      defaultValue: "checkboxValue",
+      valuePropName: "value",
       handlerPropName: "onPress",
     }),
     color: createColorProp({
@@ -200,10 +193,6 @@ export const SEED_DATA = {
     uncheckedColor: createColorProp({
       label: "Unselected Color",
       description: "Color for the button when the checkbox is unchecked",
-    }),
-    indeterminateColor: createColorProp({
-      label: "Indeterminate Color",
-      description: "Color for the button when the checkbox is indeterminate",
     }),
   },
 };

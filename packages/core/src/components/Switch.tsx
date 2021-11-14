@@ -15,7 +15,6 @@ type Props = {
   value?: boolean;
   disabled?: boolean;
   onValueChange?: (value: boolean) => void;
-  initialValue?: boolean; // deprecated
   defaultValue?: boolean;
   theme: Theme;
   activeTrackColor: string;
@@ -26,7 +25,6 @@ type Props = {
 
 function Switch({
   value,
-  initialValue,
   defaultValue,
   disabled,
   onValueChange,
@@ -52,27 +50,14 @@ function Switch({
     }
   }, [value, checked]);
 
+  // This special logic is to handle weird APIs like Airtable that return
+  // true or undefined for a boolean
+  const previousDefaultValue = usePrevious(defaultValue) as boolean | undefined;
   React.useEffect(() => {
-    if (defaultValue != null) {
-      setChecked(defaultValue);
+    if (defaultValue !== previousDefaultValue) {
+      setChecked(Boolean(defaultValue));
     }
-  }, [defaultValue]);
-
-  const booleanInitialValue = Boolean(initialValue);
-  const previousInitialValue = usePrevious(booleanInitialValue);
-
-  React.useEffect(() => {
-    if (initialValue != null && booleanInitialValue !== previousInitialValue) {
-      setChecked(booleanInitialValue);
-      onValueChange && onValueChange(booleanInitialValue);
-    }
-  }, [
-    initialValue,
-    booleanInitialValue,
-    previousInitialValue,
-    setChecked,
-    onValueChange,
-  ]);
+  }, [defaultValue, previousDefaultValue]);
 
   return (
     <NativeSwitch
@@ -107,6 +92,7 @@ function Row({
   direction = RowDirection.Row,
   style,
   value,
+  defaultValue,
   disabled,
   onValueChange,
   activeTrackColor,
@@ -116,13 +102,21 @@ function Row({
   theme,
   ...rest
 }: Props & RowProps) {
-  const [checked, setChecked] = React.useState(value);
+  const [checked, setChecked] = React.useState(
+    value != null ? value : defaultValue
+  );
 
   React.useEffect(() => {
-    if (value !== checked) {
+    if (value != null) {
       setChecked(value);
     }
-  }, [value, checked]);
+  }, [value]);
+
+  React.useEffect(() => {
+    if (defaultValue != null) {
+      setChecked(defaultValue);
+    }
+  }, [defaultValue]);
 
   return (
     <FormRow

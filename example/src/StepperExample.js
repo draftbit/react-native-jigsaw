@@ -21,11 +21,11 @@ function StepperExample({ theme }) {
         <Stepper />
       </Section>
 
-      <Section title="With State and initialValue">
+      <Section title="With State and defaultValue">
         <Stepper
           value={value2}
           onChange={(v) => setValue2(v)}
-          initialValue={100}
+          defaultValue={100}
         />
       </Section>
     </Container>

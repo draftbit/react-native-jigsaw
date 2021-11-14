@@ -2,6 +2,7 @@ import {
   Checkbox,
   CheckboxGroup,
   CheckboxRow,
+  Switch,
   Row,
   withTheme,
   ScreenContainer,
@@ -21,7 +22,7 @@ const SingleCheckboxWrapper = ({ label, children }) => (
 
 const CheckboxExample = ({ theme }) => {
   const [checked, setChecked] = React.useState(true);
-  const [checked2, setChecked2] = React.useState(true);
+  const [airtableChecked, setAirtableChecked] = React.useState(undefined);
   const [selectedValues, setSelectedValues] = React.useState([]);
 
   const handleValueSelected = (value, selected) => {
@@ -35,20 +36,25 @@ const CheckboxExample = ({ theme }) => {
   };
 
   const handlePress = (value) => setChecked(value);
+  // An example to simulate how Airtable returns boolean values: `true` or `undefined`
+  const handleAirtablePress = (value) => {
+    if (value) {
+      setAirtableChecked(true);
+    } else {
+      setAirtableChecked(undefined);
+    }
+  };
 
   return (
     <ScreenContainer hasSafeArea={false} scrollable={true}>
       <Section title="Single Checkbox">
         <Row>
           <SingleCheckboxWrapper label="Common">
-            <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={handlePress}
-            />
+            <Checkbox status={checked} onPress={handlePress} />
           </SingleCheckboxWrapper>
           <SingleCheckboxWrapper label="Custom colors">
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
+              status={checked}
               onPress={handlePress}
               color={theme.colors.secondary}
               uncheckedColor={theme.colors.error}
@@ -56,37 +62,48 @@ const CheckboxExample = ({ theme }) => {
           </SingleCheckboxWrapper>
           <SingleCheckboxWrapper label="Custom icons">
             <Checkbox
-              status={checked ? "checked" : "unchecked"}
+              status={checked}
               onPress={handlePress}
               checkedIcon="Ionicons/notifications"
               uncheckedIcon="Ionicons/notifications-off"
             />
           </SingleCheckboxWrapper>
-          <SingleCheckboxWrapper label="Indeterminate">
-            <Checkbox status="indeterminate" />
-          </SingleCheckboxWrapper>
           <SingleCheckboxWrapper label="Disabled">
-            <Checkbox status="checked" disabled />
+            <Checkbox status={true} disabled />
           </SingleCheckboxWrapper>
           <SingleCheckboxWrapper label="Large">
-            <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              onPress={handlePress}
-              size={72}
-            />
+            <Checkbox status={checked} onPress={handlePress} size={72} />
           </SingleCheckboxWrapper>
           <SingleCheckboxWrapper label="Initial value">
-            <Checkbox
-              status={checked2 ? "checked" : "unchecked"}
-              onPress={(checked) => setChecked2(checked)}
-              initialValue={false}
-            />
+            <Checkbox defaultValue={false} />
           </SingleCheckboxWrapper>
+        </Row>
+      </Section>
+
+      <Section title="Checkbox and Switch with Airtable-like API (false is undefined)">
+        <Row>
+          <Checkbox
+            defaultValue={airtableChecked}
+            onPress={handleAirtablePress}
+          />
+          <Checkbox
+            defaultValue={airtableChecked}
+            onPress={handleAirtablePress}
+          />
+          <Switch
+            defaultValue={airtableChecked}
+            onValueChange={handleAirtablePress}
+          />
+          <Switch
+            defaultValue={airtableChecked}
+            onValueChange={handleAirtablePress}
+          />
         </Row>
       </Section>
 
       <Section title="Checkbox Group (horizontal)">
         <CheckboxGroup
+          direction="horizontal"
           values={selectedValues}
           onValueChange={handleValueSelected}
         >

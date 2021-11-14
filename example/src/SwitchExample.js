@@ -25,11 +25,11 @@ function SwitchExample({ theme }) {
           }}
         />
       </Section>
-      <Section title="Enabled with initialValue">
+      <Section title="Enabled with defaultValue">
         <Switch
           value={value2}
           disabled={false}
-          initialValue={true}
+          defaultValue={true}
           onValueChange={(v) => setValue2(v)}
         />
       </Section>

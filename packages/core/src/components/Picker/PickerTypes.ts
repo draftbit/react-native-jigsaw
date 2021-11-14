@@ -14,6 +14,5 @@ export interface PickerComponentProps extends TextFieldProps {
   selectedValue: string;
   disabled?: boolean;
   onValueChange?: (value: string, index: number) => void;
-  initialValue?: string; // deprecated
   defaultValue?: string;
 }

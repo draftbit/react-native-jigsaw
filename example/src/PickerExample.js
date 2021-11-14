@@ -80,7 +80,7 @@ function PickerExample({ theme }) {
           options={OPTIONS}
           value={value}
           onValueChange={setValue}
-          initialValue="Dodge"
+          defaultValue="Dodge"
         />
       </Section>
 

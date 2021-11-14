@@ -5,14 +5,12 @@ import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
 
 import IconButton from "./IconButton";
-import { usePrevious } from "../hooks";
 
 type Props = {
   value?: number;
   theme: Theme;
   style?: StyleProp<ViewStyle>;
   onChange?: (value: number) => void;
-  initialValue?: number; // deprecated
   defaultValue?: number;
   iconSize?: number;
   iconColor?: string;
@@ -25,7 +23,6 @@ const Stepper: React.FC<Props> = ({
   value,
   style,
   onChange,
-  initialValue,
   defaultValue,
   theme: { colors, typography, roundness },
   iconSize = 24,
@@ -48,14 +45,6 @@ const Stepper: React.FC<Props> = ({
       setStateValue(defaultValue);
     }
   }, [defaultValue]);
-
-  const previousInitialValue = usePrevious(initialValue);
-  React.useEffect(() => {
-    if (initialValue !== previousInitialValue) {
-      setStateValue(initialValue);
-      onChange && onChange(initialValue);
-    }
-  }, [initialValue, previousInitialValue, onChange, setStateValue]);
 
   const handleMinus = () => {
     if (value || value === 0) {

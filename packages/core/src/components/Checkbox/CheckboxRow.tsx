@@ -35,7 +35,7 @@ export interface CheckboxRowProps extends Omit<CheckboxProps, "onPress"> {
   labelContainerStyle: StyleProp<ViewStyle>;
   checkboxStyle?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
-  onPress?: (status: boolean) => void;
+  onPress?: (value: boolean) => void;
   direction?: Direction;
   color: string;
   unselectedColor: string;
@@ -69,13 +69,13 @@ const renderLabel = (
 const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   Icon,
   label = "Label",
+  status,
   value,
   onPress = () => {},
   labelContainerStyle,
   labelStyle,
   checkboxStyle,
   direction = Direction.Row,
-  status,
   disabled,
   style,
   color,
@@ -126,7 +126,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
       >
         <Checkbox
           Icon={Icon}
-          status={status || values.includes(value)}
+          status={isChecked}
           onPress={handlePress}
           style={checkboxStyle}
           disabled={disabled}

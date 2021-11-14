@@ -7,12 +7,10 @@ import toNumber from "lodash.tonumber";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
-import { usePrevious } from "../hooks";
 
 export type Props = {
   style?: StyleProp<ViewStyle>;
   value?: number;
-  initialValue?: number; // deprecated
   defaultValue?: number;
   minimumTrackTintColor: string;
   maximumTrackTintColor: string;
@@ -57,7 +55,6 @@ function Slider({
   leftIconColor,
   rightIconColor,
   value,
-  initialValue,
   defaultValue,
   minimumTrackTintColor,
   maximumTrackTintColor,
@@ -71,13 +68,6 @@ function Slider({
   theme,
   ...rest
 }: Props) {
-  const previousInitialValue = usePrevious(initialValue);
-  React.useEffect(() => {
-    if (initialValue !== previousInitialValue) {
-      onValueChange(initialValue);
-    }
-  }, [initialValue, previousInitialValue, onValueChange]);
-
   const [internalValue, setInternalValue] = React.useState<number | undefined>(
     value || defaultValue
   );

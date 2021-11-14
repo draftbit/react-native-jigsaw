@@ -15,7 +15,6 @@ type Props = {
   value?: boolean;
   disabled?: boolean;
   onValueChange?: (value: boolean) => void;
-  initialValue?: boolean; // deprecated
   defaultValue?: boolean;
   theme: Theme;
   activeTrackColor: string;
@@ -26,7 +25,6 @@ type Props = {
 
 function Switch({
   value,
-  initialValue,
   defaultValue,
   disabled,
   onValueChange,
@@ -52,27 +50,14 @@ function Switch({
     }
   }, [value, checked]);
 
+  // This special logic is to handle weird APIs like Airtable that return
+  // true or undefined for a boolean
+  const previousDefaultValue = usePrevious(defaultValue) as boolean | undefined;
   React.useEffect(() => {
-    if (defaultValue != null) {
-      setChecked(defaultValue);
+    if (defaultValue !== previousDefaultValue) {
+      setChecked(Boolean(defaultValue));
     }
-  }, [defaultValue]);
-
-  const booleanInitialValue = Boolean(initialValue);
-  const previousInitialValue = usePrevious(booleanInitialValue);
-
-  React.useEffect(() => {
-    if (initialValue != null && booleanInitialValue !== previousInitialValue) {
-      setChecked(booleanInitialValue);
-      onValueChange && onValueChange(booleanInitialValue);
-    }
-  }, [
-    initialValue,
-    booleanInitialValue,
-    previousInitialValue,
-    setChecked,
-    onValueChange,
-  ]);
+  }, [defaultValue, previousDefaultValue]);
 
   return (
     <NativeSwitch

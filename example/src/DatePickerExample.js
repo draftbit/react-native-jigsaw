@@ -97,7 +97,7 @@ function DatePickerExample({ theme }) {
           type="solid"
           date={date2}
           onDateChange={setDate2}
-          initialValue={FOUR_YEARS_AGO}
+          defaultValue={FOUR_YEARS_AGO}
         />
 
         <DatePicker
@@ -106,7 +106,7 @@ function DatePickerExample({ theme }) {
           type="solid"
           date={date3}
           onDateChange={setDate3}
-          initialValue={new Date(DATE_STRING)}
+          defaultValue={new Date(DATE_STRING)}
         />
       </Section>
     </Container>

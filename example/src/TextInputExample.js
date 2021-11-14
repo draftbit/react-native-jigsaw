@@ -1,6 +1,6 @@
 import * as React from "react";
-import { KeyboardAvoidingView } from "react-native";
-import { TextInput, NumberInput } from "@draftbit/ui";
+import { TextInput, KeyboardAvoidingView } from "react-native";
+import { NumberInput } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
 export default function TextInputExample() {
@@ -28,13 +28,13 @@ export default function TextInputExample() {
             placeholder="Input with initial value"
             value={value2}
             onChangeText={(text) => setText2(text)}
-            initialValue="I'm an initial value!"
+            defaultValue="I'm an initial value!"
           />
           <NumberInput
             placeholder="Number input with initial value"
             value={number}
             onChangeText={(num) => setNumber(num)}
-            initialValue="1"
+            defaultValue="1"
           />
         </Section>
       </Container>

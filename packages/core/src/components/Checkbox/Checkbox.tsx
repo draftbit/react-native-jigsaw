@@ -20,7 +20,6 @@ export interface CheckboxProps {
   uncheckedColor?: string;
   checkedIcon?: string;
   uncheckedIcon?: string;
-  initialValue?: boolean; // deprecated
   defaultValue?: boolean;
   size?: number;
   style?: StyleProp<ViewStyle>;
@@ -34,7 +33,6 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     onPress = () => {},
     color,
     uncheckedColor,
-    initialValue,
     defaultValue,
     checkedIcon = "MaterialCommunityIcons/checkbox-marked",
     uncheckedIcon = "MaterialCommunityIcons/checkbox-blank-outline",
@@ -52,18 +50,17 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
       }
     }, [status]);
 
+    // This special logic is to handle weird APIs like Airtable that return
+    // true or undefined for a boolean
+    const previousDefaultValue = usePrevious(defaultValue) as
+      | boolean
+      | undefined;
     React.useEffect(() => {
-      if (defaultValue != null) {
-        setInternalValue(defaultValue);
+      if (defaultValue !== previousDefaultValue) {
+        setInternalValue(Boolean(defaultValue));
       }
-    }, [defaultValue]);
+    }, [defaultValue, previousDefaultValue]);
 
-    const previousInitialValue = usePrevious(initialValue);
-    React.useEffect(() => {
-      if (initialValue !== previousInitialValue) {
-        onPress(initialValue);
-      }
-    }, [initialValue, previousInitialValue, onPress]);
     const { colors } = useTheme();
 
     const checkboxColor = internalValue

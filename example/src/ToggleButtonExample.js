@@ -6,8 +6,8 @@ import Section, { Container, styles } from "./Section";
 export default function ToggleButtonExample() {
   const [toggled, setToggled] = React.useState(false);
   const [toggled2, setToggled2] = React.useState(false);
-  const toggle = (toggled) => {
-    setToggled(toggled);
+  const toggle = (value) => {
+    setToggled(value);
   };
   return (
     <Container>
@@ -33,8 +33,8 @@ export default function ToggleButtonExample() {
           width={70}
           height={70}
           toggled={toggled2}
-          onPress={(toggled) => setToggled2(toggled)}
-          initialValue={true}
+          onPress={(value) => setToggled2(value)}
+          defaultValue={true}
         />
       </Section>
     </Container>

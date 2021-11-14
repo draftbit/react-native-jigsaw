@@ -5,13 +5,11 @@ import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import IconButton from "./IconButton";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
-import { usePrevious } from "../hooks";
 
 type Props = {
   icon: string;
   toggled?: boolean;
-  onPress?: (toggled: boolean) => void;
-  initialValue?: boolean; // deprecated
+  onPress?: (value: boolean) => void;
   defaultValue?: boolean;
   disabled?: boolean;
   color?: colorTypes;
@@ -29,7 +27,6 @@ const ToggleButton: React.FC<Props> = ({
   icon,
   toggled = false,
   onPress = () => {},
-  initialValue,
   defaultValue,
   disabled = false,
   color = "primary",
@@ -57,13 +54,6 @@ const ToggleButton: React.FC<Props> = ({
       setInternalValue(defaultValue);
     }
   }, [defaultValue]);
-
-  const previousInitialValue = usePrevious(initialValue);
-  React.useEffect(() => {
-    if (initialValue !== previousInitialValue) {
-      onPress(initialValue);
-    }
-  }, [initialValue, previousInitialValue, onPress]);
 
   const handlePress = () => {
     setInternalValue(!toggled);

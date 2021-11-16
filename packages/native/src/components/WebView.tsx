@@ -7,8 +7,6 @@ import {
   WebViewSourceUri,
 } from "react-native-webview/lib/WebViewTypes";
 
-import { COMPONENT_TYPES, createSourceProp } from "@draftbit/types";
-
 // Auto-height fix (if this is not present, scrolling on Android does not work)
 const injectFirst = `
   window.ReactNativeWebView.postMessage(
@@ -56,16 +54,3 @@ export default Platform.select({
   native: NativeWebView,
   default: BrowserWebView,
 });
-
-export const SEED_DATA = {
-  name: "Web View",
-  tag: "WebView",
-  description: "Render web content inside a view",
-  category: COMPONENT_TYPES.media,
-  layout: { flex: 1 },
-  props: {
-    source: createSourceProp({
-      defaultValue: "https://reactnative.dev",
-    }),
-  },
-};

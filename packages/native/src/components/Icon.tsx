@@ -9,14 +9,6 @@ import {
   Platform,
 } from "react-native";
 
-import {
-  COMPONENT_TYPES,
-  GROUPS,
-  createNumberProp,
-  createColorProp,
-  createIconProp,
-} from "@draftbit/types";
-
 // This must use require to work in both web as a published project and in Snack
 const VectorIcons = require("@expo/vector-icons");
 
@@ -98,25 +90,3 @@ const styles = StyleSheet.create({
 });
 
 export default Icon;
-
-export const SEED_DATA = {
-  name: "Icon",
-  tag: "Icon",
-  description: "An icon",
-  category: COMPONENT_TYPES.basic,
-  layout: {},
-  props: {
-    name: createIconProp(),
-    color: createColorProp(),
-    size: createNumberProp({
-      group: GROUPS.basic,
-      label: "Size",
-      description: "Width and height of your icon",
-      defaultValue: 24,
-      min: 16,
-      max: 128,
-      step: 1,
-      precision: 0,
-    }),
-  },
-};

@@ -81,6 +81,7 @@ const Picker: React.FC<PickerComponentProps & IconSlot> = ({
           pointerEvents="none"
           // @ts-expect-error
           style={stylesWithoutMargin}
+          Icon={Icon}
         />
       </Touchable>
       {pickerVisible && (

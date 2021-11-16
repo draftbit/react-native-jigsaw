@@ -9,7 +9,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "postinstall": "expo-yarn-workspaces check-workspace-dependencies",
+    "postinstall": "yarn-deduplicate && expo-yarn-workspaces check-workspace-dependencies",
     "example": "yarn --cwd example",
     "bootstrap": "lerna bootstrap",
     "crosslink": "lerna link",
@@ -40,7 +40,7 @@
     "dotenv": "^9.0.2",
     "eslint": "^7.26.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "expo-yarn-workspaces": "^1.5.2",
+    "expo-yarn-workspaces": "*",
     "husky": ">=6",
     "jest": "^26.6.3",
     "json-server": "^0.16.3",
@@ -51,8 +51,9 @@
     "rimraf": "^3.0.2",
     "snack-sdk": "^3.4.1",
     "ts-node": "^10.0.0",
-    "typescript": "^4.2.4",
-    "utility-types": "^3.10.0"
+    "typescript": "~4.3.5",
+    "utility-types": "^3.10.0",
+    "yarn-deduplicate": "^3.1.0"
   },
   "eslintConfig": {
     "extends": [
@@ -105,7 +106,7 @@
     "*.{js,ts,tsx,json,mcss,md}": "prettier --write"
   },
   "engines": {
-    "node": "^14"
+    "node": "^16"
   },
   "version": "0.0.0"
 }

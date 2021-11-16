@@ -46,10 +46,6 @@
     "@draftbit/core": "^42.5.1",
     "@draftbit/native": "^42.3.1"
   },
-  "peerDependencies": {
-    "react": "*",
-    "react-native": "*"
-  },
   "react-native-builder-bob": {
     "source": "src",
     "output": "lib",

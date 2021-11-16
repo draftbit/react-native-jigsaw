@@ -17,7 +17,7 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          node-version: 16.13
+          node-version: 14.x
           registry-url: https://registry.npmjs.org/
 
       # With lerna/workspaces, the cache is at the monorepo level.
@@ -86,9 +86,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           UI_VERSION=$(npm view @draftbit/ui dist-tags.next);
-          CORE_VERSION=$(npm view @draftbit/core dist-tags.next);
-          URL="https://www.npmjs.com/package"
+          URL="https://www.npmjs.com/package/@draftbit"
           curl -X POST $URL \
             -H "Content-Type: application/json" \
             -H "Authorization: token $GITHUB_TOKEN" \
-            --data "{ \"body\": \"[@draftbit/ui@$UI_VERSION]($URL/ui/v/$UI_VERSION) [@draftbit/core@$CORE_VERSION]($URL/core/v/$CORE_VERSION)\" }"
+            --data "{ \"body\": \"[@draftbit/ui@$UI_VERSION]($URL/ui/v/$UI_VERSION)\" }"

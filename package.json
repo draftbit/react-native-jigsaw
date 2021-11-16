@@ -106,7 +106,7 @@
     "*.{js,ts,tsx,json,mcss,md}": "prettier --write"
   },
   "engines": {
-    "node": "^16"
+    "node": "16.13"
   },
   "version": "0.0.0"
 }

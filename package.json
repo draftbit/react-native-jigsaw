@@ -50,6 +50,7 @@
     "lint-staged": ">=10",
     "node-fetch": "^2.6.1",
     "prettier": "^2.3.0",
+    "react-native-builder-bob": "^0.18.2",
     "rimraf": "^3.0.2",
     "snack-sdk": "^3.4.1",
     "ts-node": "^10.0.0",

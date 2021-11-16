@@ -2,7 +2,6 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import Portal from "../Portal/Portal";
 import Touchable from "../Touchable";
-import { COMPONENT_TYPES, createStaticBoolProp, GROUPS } from "@draftbit/types";
 
 interface Props {
   visible: boolean;
@@ -67,16 +66,3 @@ const styles = StyleSheet.create({
 });
 
 export default ActionSheet;
-
-export const SEED_DATA = {
-  name: "Action Sheet",
-  tag: "ActionSheet",
-  description: "Action Sheet container",
-  category: COMPONENT_TYPES.container,
-  props: {
-    visible: createStaticBoolProp({
-      group: GROUPS.data,
-      label: "Show Action Sheet",
-    }),
-  },
-};

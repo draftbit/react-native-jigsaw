@@ -9,12 +9,6 @@ import {
 
 import Text from "../Text";
 import type { IconSlot } from "../../interfaces/Icon";
-import {
-  COMPONENT_TYPES,
-  createIconProp,
-  createTextProp,
-  createColorProp,
-} from "@draftbit/types";
 import { extractStyles } from "../../utilities";
 import { withTheme } from "../../theming";
 import type { Theme } from "../../styles/DefaultTheme";
@@ -77,19 +71,3 @@ const styles = StyleSheet.create({
 });
 
 export default withTheme(AccordionItem);
-
-export const SEED_DATA = {
-  name: "Accordion Item",
-  tag: "AccordionItem",
-  description: "Item to be used in Accordion",
-  category: COMPONENT_TYPES.button,
-  props: {
-    icon: createIconProp(),
-    label: createTextProp({
-      label: "Item label",
-    }),
-    iconColor: createColorProp({
-      label: "Icon color",
-    }),
-  },
-};

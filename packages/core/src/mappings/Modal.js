@@ -43,7 +43,7 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.STRING,
-      defaultValue: "none",
+      defaultValue: null,
     },
   },
 };

@@ -85,8 +85,10 @@ jobs:
           URL: ${{ github.event.pull_request.comments_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          VERSION=$(npm view @draftbit/ui dist-tags.next);
+          UI_VERSION=$(npm view @draftbit/ui dist-tags.next);
+          CORE_VERSION=$(npm view @draftbit/core dist-tags.next);
+          URL="https://www.npmjs.com/package"
           curl -X POST $URL \
             -H "Content-Type: application/json" \
             -H "Authorization: token $GITHUB_TOKEN" \
-            --data "{ \"body\": \"Published version: [@draftbit/ui@$VERSION](https://www.npmjs.com/package/@draftbit/ui/v/$VERSION)\" }"
+            --data "{ \"body\": \"[@draftbit/ui@$UI_VERSION]($URL/ui/v/$UI_VERSION) [@draftbit/core@$CORE_VERSION]($URL/core/v/$CORE_VERSION)\" }"

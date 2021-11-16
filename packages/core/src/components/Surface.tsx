@@ -6,7 +6,6 @@ import {
   ViewProps,
   StyleProp,
   ViewStyle,
-  View,
 } from "react-native";
 import shadow from "../styles/shadow";
 import overlay from "../styles/overlay";
@@ -48,7 +47,7 @@ const Surface: React.FC<Props> = ({
         style,
       ]}
     >
-      <View style={{ overflow: "hidden", borderRadius }}>{children}</View>
+      {children}
     </Animated.View>
   );
 };

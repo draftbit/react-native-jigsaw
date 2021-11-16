@@ -23,6 +23,7 @@ function PickerExample({ theme }) {
           options={OPTIONS}
           value={value}
           onValueChange={setValue}
+          rightIconName={"AntDesign/caretright"}
         />
       </Section>
 

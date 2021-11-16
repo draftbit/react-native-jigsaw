@@ -150,7 +150,7 @@ function PickerExample({ theme }) {
           style={{
             fontSize: 30,
             color: "red",
-            fontFamily: "Calibri",
+            fontFamily: "Courier New",
           }}
         />
       </Section>

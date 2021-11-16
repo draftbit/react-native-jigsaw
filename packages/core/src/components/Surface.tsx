@@ -37,7 +37,6 @@ const Surface: React.FC<Props> = ({
       {...rest}
       style={[
         {
-          minHeight: 40,
           borderRadius,
           backgroundColor:
             isDarkTheme && mode === "adaptive"

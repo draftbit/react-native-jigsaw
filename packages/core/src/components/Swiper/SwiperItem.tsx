@@ -1,4 +1,3 @@
-import { COMPONENT_TYPES } from "@draftbit/types";
 import React from "react";
 import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
 
@@ -18,11 +17,3 @@ const SwiperItem = ({ children, style }: SwiperProps) => (
 );
 
 export default SwiperItem;
-
-export const SEED_DATA = {
-  name: "Swiper Item",
-  tag: "SwiperItem",
-  description: "Swiper item",
-  category: COMPONENT_TYPES.button,
-  props: {},
-};

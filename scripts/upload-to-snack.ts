@@ -185,7 +185,7 @@ function getSnackSpecificDependencies() {
     "react-native-typography": "1.4.1",
     "@react-navigation/bottom-tabs": "*",
     "@react-native-picker/picker": "^2.1.0",
-    "@react-native-community/slider": "4.0.0-rc.3",
+    "@react-native-community/slider": "4.1.7",
     "@react-native-community/datetimepicker": "3.2.0",
     "react-native-gesture-handler": "*",
     "@react-native-community/masked-view": "0.1.10",

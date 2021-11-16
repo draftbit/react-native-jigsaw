@@ -56,6 +56,14 @@
     "react-native-typography": "^1.4.1",
     "react-native-web-swiper": "^2.2.1"
   },
+  "devDependencies": {
+    "@react-native-picker/picker": "^2.1.0",
+    "@types/color": "^3.0.1",
+    "@types/dateformat": "^3.0.1",
+    "@types/lodash.isnumber": "^3.0.6",
+    "@types/lodash.omit": "^4.5.6",
+    "@types/lodash.tonumber": "^4.0.6"
+  },
   "react-native-builder-bob": {
     "source": "src",
     "output": "lib",

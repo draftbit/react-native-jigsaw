@@ -5,7 +5,9 @@ export const SEED_DATA = {
   tag: "Surface",
   description: "An elevated container",
   category: COMPONENT_TYPES.layout,
-  layout: {},
+  layout: {
+    minHeight: 40,
+  },
   props: {
     elevation: createElevationType(0),
   },

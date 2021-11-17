@@ -3,6 +3,9 @@ import * as React from "react";
 import NativeMapView from "./ReactNativeMaps";
 import { MapViewProps } from "@draftbit/types";
 
+// Dynamically import from ./ReactNativeMaps so that we don't
+// require react-native-maps unless we're in native.
+
 const MapView: React.FC<MapViewProps> = ({
   provider,
   latitude,

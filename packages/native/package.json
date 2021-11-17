@@ -43,9 +43,6 @@
     "react-native-maps": "^0.28.0",
     "react-native-webview": "11.13.0"
   },
-  "peerDependencies": {
-    "react-native-maps": "^0.28.0"
-  },
   "react-native-builder-bob": {
     "source": "src",
     "output": "lib",

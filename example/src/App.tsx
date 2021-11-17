@@ -61,6 +61,7 @@ import StarRatingExample from "./StarRatingExample";
 
 import SwiperExample from "./SwiperExample";
 import YoutubeExample from "./YoutubeExample";
+import MapViewExample from "./MapViewExample";
 
 const ROUTES = {
   Layout: LayoutExample,
@@ -100,6 +101,7 @@ const ROUTES = {
   TextInput: TextInputExample,
   WebView: WebViewExample,
   Youtube: YoutubeExample,
+  MapView: MapViewExample,
 };
 
 let customFonts = {

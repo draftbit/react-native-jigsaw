@@ -3,6 +3,7 @@ import { Platform } from "react-native";
 let GoogleMap, InfoWindow, Marker, LoadScript;
 
 // Importing @react-google-maps/api when using @draftbit/ui on Native Snack causes errors
+// .web and .native files are not sufficient for this problem
 if (Platform.OS === "web") {
   GoogleMap = require("@react-google-maps/api").GoogleMap;
   InfoWindow = require("@react-google-maps/api").InfoWindow;

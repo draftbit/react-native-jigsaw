@@ -1,5 +1,6 @@
 import type { ComponentType, ComponentPropsWithoutRef } from "react";
 export * from "./component-types";
+export * from "./mapTypes";
 
 export type Font = {
   fontFamily: string;

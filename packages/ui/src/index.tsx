@@ -1,3 +1,4 @@
+import { Platform } from "react-native";
 import { Icon } from "@draftbit/native";
 export { AudioPlayer, Icon, WebView } from "@draftbit/native";
 
@@ -40,9 +41,11 @@ export {
   SwiperItem,
 } from "@draftbit/core";
 
-// Import the appropriate version of the map components based on the current platform
-//@ts-ignore
-export { MapCallout, MapMarker, MapView } from "./Maps/Maps";
+const { MapCallout, MapMarker, MapView } = Platform.select({
+  web: () => require("@draftbit/core"),
+  default: () => require("@draftbit/native"),
+})();
+export { MapCallout, MapMarker, MapView };
 
 /**
  * Components with Injected Dependencies

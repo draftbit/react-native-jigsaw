@@ -1,6 +1,5 @@
 import * as React from "react";
-// @ts-ignore
-import { GoogleMap, LoadScript } from "./ReactGoogleMaps";
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import NoApiKey from "./NoApiKey";
 import { MapViewProps } from "@draftbit/types";
 import { StyleSheet } from "react-native";
@@ -20,9 +19,7 @@ const MapView: React.FC<MapViewProps> = ({
   }
 
   return (
-    // @ts-ignore
     <LoadScript googleMapsApiKey={apiKey}>
-      {/* @ts-ignore */}
       <GoogleMap
         mapContainerStyle={StyleSheet.flatten(style) as React.CSSProperties}
         center={{
@@ -37,9 +34,7 @@ const MapView: React.FC<MapViewProps> = ({
         }}
       >
         {children}
-        {/* @ts-ignore */}
       </GoogleMap>
-      {/* @ts-ignore */}
     </LoadScript>
   );
 };

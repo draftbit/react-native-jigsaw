@@ -1,7 +1,6 @@
 import * as React from "react";
 import { TouchableOpacity } from "react-native";
-// @ts-ignore
-import { InfoWindow } from "./ReactGoogleMaps";
+import { InfoWindow } from "@react-google-maps/api";
 import { markerContext } from "./MapMarker";
 import { MapCalloutProps } from "@draftbit/types";
 
@@ -15,7 +14,6 @@ const MapCallout: React.FC<MapCalloutProps> = ({
   const handleClose = () => toggleCallout(false);
   return calloutOpened ? (
     <TouchableOpacity onPress={onPress}>
-      {/* @ts-ignore */}
       <InfoWindow
         anchor={anchor}
         position={{
@@ -25,7 +23,6 @@ const MapCallout: React.FC<MapCalloutProps> = ({
         onCloseClick={handleClose}
       >
         {children}
-        {/* @ts-ignore */}
       </InfoWindow>
     </TouchableOpacity>
   ) : null;

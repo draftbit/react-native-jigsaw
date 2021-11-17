@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Callout } from "react-native-maps";
+// @ts-ignore
+import { Callout } from "./ReactNativeMaps";
 import { MapCalloutProps } from "@draftbit/types";
 
 const MapCallout: React.FC<MapCalloutProps> = ({
@@ -7,8 +8,10 @@ const MapCallout: React.FC<MapCalloutProps> = ({
   showTooltip,
   children,
 }) => (
+  // @ts-ignore
   <Callout tooltip={!showTooltip} onPress={onPress}>
     {children}
+    {/* @ts-ignore */}
   </Callout>
 );
 

@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Marker } from "react-native-maps";
+// @ts-ignore
+import { Marker } from "./ReactNativeMaps";
 import { MapMarkerProps } from "@draftbit/types";
 
 const MapMarker: React.FC<MapMarkerProps> = ({
@@ -12,6 +13,7 @@ const MapMarker: React.FC<MapMarkerProps> = ({
   style,
   children,
 }) => (
+  // @ts-ignore
   <Marker
     coordinate={{
       latitude,
@@ -24,6 +26,7 @@ const MapMarker: React.FC<MapMarkerProps> = ({
     style={style}
   >
     {children}
+    {/* @ts-ignore */}
   </Marker>
 );
 

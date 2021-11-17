@@ -1,6 +1,10 @@
 import * as React from "react";
-import NativeMapView from "react-native-maps";
+// @ts-ignore
+import NativeMapView from "./ReactNativeMaps";
 import { MapViewProps } from "@draftbit/types";
+
+// Dynamically import from ./ReactNativeMaps so that we don't
+// require react-native-maps unless we're in native.
 
 const MapView: React.FC<MapViewProps> = ({
   provider,
@@ -20,6 +24,7 @@ const MapView: React.FC<MapViewProps> = ({
   children,
 }) => {
   return (
+    // @ts-ignore
     <NativeMapView
       provider={provider}
       mapType={mapType}
@@ -39,6 +44,7 @@ const MapView: React.FC<MapViewProps> = ({
       style={style}
     >
       {children}
+      {/* @ts-ignore */}
     </NativeMapView>
   );
 };

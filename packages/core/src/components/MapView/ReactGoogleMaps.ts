@@ -1,6 +1,9 @@
 import { Platform } from "react-native";
 
-let GoogleMap, InfoWindow, Marker, LoadScript;
+let GoogleMap: React.ElementType | undefined,
+  InfoWindow: React.ElementType | undefined,
+  Marker: React.ElementType | undefined,
+  LoadScript: React.ElementType | undefined;
 
 // Importing @react-google-maps/api when using @draftbit/ui on Native Snack causes errors
 // .web and .native files are not sufficient for this problem

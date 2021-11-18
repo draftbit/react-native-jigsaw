@@ -1,7 +1,6 @@
 import * as React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { MapMarkerProps } from "@draftbit/types";
-// @ts-ignore
 import { Marker as WebMarker } from "./ReactGoogleMaps";
 import { MapCallout } from "./index";
 
@@ -34,10 +33,14 @@ const MapMarker: React.FC<MapMarkerProps> = ({
 }) => {
   const { Provider } = markerContext;
   const [calloutOpened, toggleCallout] = React.useState(false);
-  // @ts-ignore
-  const [marker, setMarker] = React.useState<WebMarker | null>(null);
+  const [marker, setMarker] = React.useState<typeof WebMarker | null>(null);
   const handleMarkerClick = () => toggleCallout(true);
   const handleOnLoad = (m: any) => setMarker(m);
+
+  if (!WebMarker) {
+    return null;
+  }
+
   let mappedChildren;
   if (!children) {
     if (title || description) {
@@ -72,7 +75,6 @@ const MapMarker: React.FC<MapMarkerProps> = ({
         },
       }}
     >
-      {/* @ts-ignore */}
       <WebMarker
         position={{
           lat: latitude,
@@ -90,7 +92,6 @@ const MapMarker: React.FC<MapMarkerProps> = ({
         }}
       >
         {mappedChildren}
-        {/* @ts-ignore */}
       </WebMarker>
     </Provider>
   );

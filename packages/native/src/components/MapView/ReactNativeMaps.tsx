@@ -1,6 +1,8 @@
 import { Platform } from "react-native";
 
-let MapView, Callout, Marker;
+let MapView: React.ElementType | undefined,
+  Callout: React.ElementType | undefined,
+  Marker: React.ElementType | undefined;
 
 // Importing react-native-maps when using @draftbit/ui on Web Snack causes errors
 // .web and .native files are not sufficient for this problem

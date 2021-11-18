@@ -5,6 +5,7 @@ import {
   createTextProp,
   createStaticBoolProp,
   createColorProp,
+  GROUPS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -32,6 +33,7 @@ export const SEED_DATA = {
     expanded: createStaticBoolProp({
       label: "Expanded",
       description: "Whether the AccordionGroup should be expanded or not",
+      group: GROUPS.data,
     }),
     icon: createIconProp(),
   },

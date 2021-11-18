@@ -97,21 +97,7 @@ const AccordionGroup = ({
           </View>
         </View>
       </Pressable>
-      {expandedInternal
-        ? React.Children.map(children, (child) => {
-            if (
-              React.isValidElement(child) &&
-              !child.props.left &&
-              !child.props.right
-            ) {
-              return React.cloneElement(child, {
-                style: child.props.style,
-              });
-            }
-
-            return child;
-          })
-        : null}
+      {expandedInternal ? children : null}
     </>
   );
 };

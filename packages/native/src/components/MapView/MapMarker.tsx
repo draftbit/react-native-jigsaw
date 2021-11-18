@@ -1,5 +1,4 @@
 import * as React from "react";
-// @ts-ignore
 import { Marker } from "./ReactNativeMaps";
 import { MapMarkerProps } from "@draftbit/types";
 
@@ -12,22 +11,26 @@ const MapMarker: React.FC<MapMarkerProps> = ({
   flat,
   style,
   children,
-}) => (
-  // @ts-ignore
-  <Marker
-    coordinate={{
-      latitude,
-      longitude,
-    }}
-    title={title}
-    description={description}
-    flat={flat}
-    pinColor={pinColor}
-    style={style}
-  >
-    {children}
-    {/* @ts-ignore */}
-  </Marker>
-);
+}) => {
+  if (!Marker) {
+    return null;
+  }
+
+  return (
+    <Marker
+      coordinate={{
+        latitude,
+        longitude,
+      }}
+      title={title}
+      description={description}
+      flat={flat}
+      pinColor={pinColor}
+      style={style}
+    >
+      {children}
+    </Marker>
+  );
+};
 
 export default MapMarker;

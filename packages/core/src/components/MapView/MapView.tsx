@@ -1,5 +1,4 @@
 import * as React from "react";
-// @ts-ignore
 import { GoogleMap, LoadScript } from "./ReactGoogleMaps";
 import NoApiKey from "./NoApiKey";
 import { MapViewProps } from "@draftbit/types";
@@ -15,14 +14,16 @@ const MapView: React.FC<MapViewProps> = ({
   style,
   children,
 }) => {
+  if (!LoadScript || !GoogleMap) {
+    return null;
+  }
+
   if (!apiKey) {
     return <NoApiKey />;
   }
 
   return (
-    // @ts-ignore
     <LoadScript googleMapsApiKey={apiKey}>
-      {/* @ts-ignore */}
       <GoogleMap
         mapContainerStyle={StyleSheet.flatten(style) as React.CSSProperties}
         center={{
@@ -37,9 +38,7 @@ const MapView: React.FC<MapViewProps> = ({
         }}
       >
         {children}
-        {/* @ts-ignore */}
       </GoogleMap>
-      {/* @ts-ignore */}
     </LoadScript>
   );
 };

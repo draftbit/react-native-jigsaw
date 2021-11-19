@@ -42,3 +42,5 @@ const stringToInteger = (str: string | undefined): number => {
 };
 
 export default NumberInput;
+
+// comment to try to fix sourcemap issue

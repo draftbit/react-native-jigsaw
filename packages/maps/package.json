@@ -35,9 +35,6 @@
     "url": "https://github.com/draftbit/react-native-jigsaw/issues"
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
-  "dependencies": {
-    "react-native-maps": "^0.28.0"
-  },
   "react-native-builder-bob": {
     "source": "src",
     "output": "lib",

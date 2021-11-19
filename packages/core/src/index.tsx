@@ -68,3 +68,4 @@ export { default as RowHeadlineImageIcon } from "./components/RowHeadlineImageIc
 export { default as Slider } from "./components/Slider";
 export { default as Stepper } from "./components/Stepper";
 export { useAuthState } from "./components/useAuthState";
+export { default as Youtube } from "./components/Youtube";

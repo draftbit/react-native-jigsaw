@@ -40,7 +40,6 @@
     "@expo/vector-icons": "^12.0.0",
     "@react-native-community/slider": "4.1.7",
     "expo-av": "~10.1.3",
-    "react-native-maps": "^0.28.0",
     "react-native-webview": "11.13.0"
   },
   "react-native-builder-bob": {

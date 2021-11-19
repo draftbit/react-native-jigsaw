@@ -40,10 +40,6 @@ export {
   SwiperItem,
 } from "@draftbit/core";
 
-// Import the appropriate version of the map components based on the current platform
-//@ts-ignore
-export { MapCallout, MapMarker, MapView } from "./Maps/Maps";
-
 /**
  * Components with Injected Dependencies
  *

@@ -10,15 +10,6 @@ import {
 import Checkbox, { CheckboxProps } from "./Checkbox";
 import Text from "../Text";
 import { useCheckboxGroupContext } from "./context";
-import {
-  createTextProp,
-  createTextStyle,
-  createRowDirectionProp,
-  createFieldNameProp,
-  COMPONENT_TYPES,
-  Triggers,
-  createColorProp,
-} from "@draftbit/types";
 import type { IconSlot } from "../../interfaces/Icon";
 import { Direction as GroupDirection } from "./context";
 import Touchable from "../Touchable";
@@ -35,7 +26,7 @@ export interface CheckboxRowProps extends Omit<CheckboxProps, "onPress"> {
   labelContainerStyle: StyleProp<ViewStyle>;
   checkboxStyle?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
-  onPress?: (status: boolean) => void;
+  onPress?: (value: boolean) => void;
   direction?: Direction;
   color: string;
   unselectedColor: string;
@@ -69,13 +60,13 @@ const renderLabel = (
 const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   Icon,
   label = "Label",
+  status,
   value,
   onPress = () => {},
   labelContainerStyle,
   labelStyle,
   checkboxStyle,
   direction = Direction.Row,
-  status,
   disabled,
   style,
   color,
@@ -126,7 +117,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
       >
         <Checkbox
           Icon={Icon}
-          status={status || values.includes(value)}
+          status={isChecked}
           onPress={handlePress}
           style={checkboxStyle}
           disabled={disabled}
@@ -159,40 +150,3 @@ const styles = StyleSheet.create({
 });
 
 export default CheckboxRow;
-
-export const SEED_DATA = {
-  name: "Checkbox Row",
-  tag: "CheckboxRow",
-  category: COMPONENT_TYPES.input,
-  layout: {
-    minHeight: 50,
-  },
-  triggers: [Triggers.OnPress],
-  props: {
-    label: createTextProp({
-      label: "Label",
-      description: "Label to show with the checkbox",
-      required: true,
-      defaultValue: "First Option",
-    }),
-    labelStyle: createTextStyle({
-      label: "Label Style",
-      description: "Change the styles of the label",
-      required: false,
-      editable: false,
-    }),
-    direction: createRowDirectionProp(),
-    fieldName: createFieldNameProp({
-      defaultValue: "checkboxValue",
-      valuePropName: "value",
-      handlerPropName: "onPress",
-    }),
-    color: createColorProp({
-      description: "Color for the button (used when the checkbox is checked)",
-    }),
-    uncheckedColor: createColorProp({
-      label: "Unselected Color",
-      description: "Color for the button when the checkbox is unchecked",
-    }),
-  },
-};

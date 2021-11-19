@@ -22,7 +22,7 @@ function FieldSearchBarFullExample({ theme }) {
           placeholder="Example with initial value"
           value={searchBarValue2}
           onChange={(value) => setSearchBarValue2(value)}
-          initialValue="Replace this with your search"
+          defaultValue="Replace this with your search"
           style={{ padding: 16 }}
           showIcon={true}
         />

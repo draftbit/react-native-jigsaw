@@ -6,12 +6,7 @@ const { promisify } = require("util");
 const parser = require("./parser");
 const globAsync = promisify(glob);
 
-const {
-  NATIVE_PATH,
-  COMPONENT_PATH,
-  SCREEN_PATH,
-  MAPPING_PATH,
-} = require("./paths");
+const { MAPPING_PATH } = require("./paths");
 
 const IGNORED_FILES = [
   "Query.js", // doesn't work at all
@@ -28,41 +23,22 @@ async function main(list = []) {
     console.log("ONLY running", JSON.stringify(list));
   }
 
-  const nativeFiles = await globAsync(`${NATIVE_PATH}/**/*.tsx`);
-  const componentFiles = await globAsync(`${COMPONENT_PATH}/**/*.tsx`);
-  const screenFiles = await globAsync(`${SCREEN_PATH}/**/*.tsx`);
-  const mappingFiles = await globAsync(`${MAPPING_PATH}/**/*.js`);
+  const mappingFiles = await globAsync(`${MAPPING_PATH}/**/*.ts`);
 
-  const components = list.map((file) => {
-    if (!file.includes("ts") && !file.includes("js")) {
-      throw Error("Must include extension: tsx or js");
+  const files = mappingFiles.filter((file) => {
+    const name = file.split("/").pop();
+
+    if (
+      name.includes("web") ||
+      name.includes("ios") ||
+      name.includes("android")
+    ) {
+      console.log(`Ignoring... ${name}`);
+      return false;
     }
 
-    return `${COMPONENT_PATH}/${file}`;
+    return !IGNORED_FILES.includes(name);
   });
-
-  const files =
-    components.length > 0
-      ? components
-      : [
-          ...nativeFiles,
-          ...componentFiles,
-          ...screenFiles,
-          ...mappingFiles,
-        ].filter((file) => {
-          const name = file.split("/").pop();
-
-          if (
-            name.includes("web") ||
-            name.includes("ios") ||
-            name.includes("android")
-          ) {
-            console.log(`Ignoring... ${name}`);
-            return false;
-          }
-
-          return !IGNORED_FILES.includes(name);
-        });
 
   for (const file of files) {
     const [name, category] = file.split("/").reverse();

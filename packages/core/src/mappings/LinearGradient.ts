@@ -17,7 +17,7 @@ export const SEED_DATA = {
       editable: true,
       required: true,
       defaultValue: null,
-      formType: FORM_TYPES.gradient,
+      formType: FORM_TYPES.color,
     },
   },
 };

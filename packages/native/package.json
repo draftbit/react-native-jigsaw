@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/native",
-  "version": "43.1.1",
+  "version": "43.2.0",
   "description": "Draftbit UI Components that Depend on Native Components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -36,11 +36,10 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/types": "^43.1.0",
+    "@draftbit/types": "^43.2.0",
     "@expo/vector-icons": "^12.0.0",
     "@react-native-community/slider": "4.1.7",
     "expo-av": "~10.1.3",
-    "react-native-maps": "^0.28.0",
     "react-native-webview": "11.13.0"
   },
   "react-native-builder-bob": {

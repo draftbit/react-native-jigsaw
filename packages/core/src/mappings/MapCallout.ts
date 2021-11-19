@@ -10,7 +10,7 @@ export const SEED_DATA = {
   tag: "MapCallout",
   description:
     "An info window to display on top of a marker when it is clicked",
-  category: COMPONENT_TYPES.container,
+  category: COMPONENT_TYPES.deprecated,
   layout: {},
   props: {
     onPress: createActionProp({

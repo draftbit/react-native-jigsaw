@@ -11,7 +11,7 @@ export const SEED_DATA = {
   name: "Map Marker",
   tag: "MapMarker",
   description: "A marker to show inside map view",
-  category: COMPONENT_TYPES.button,
+  category: COMPONENT_TYPES.deprecated,
   layout: {},
   props: {
     latitude: createNumberProp({

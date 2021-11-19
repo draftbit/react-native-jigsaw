@@ -1,6 +1,6 @@
 import React from "react";
 import { useWindowDimensions } from "react-native";
-// import TabViewItem from "./TabViewItem";
+import TabViewItem from "./TabViewItem";
 import { TabView, SceneMap } from "react-native-tab-view";
 
 interface TabViewProps {
@@ -28,10 +28,7 @@ const TabViewComponent = ({ children }: TabViewProps) => {
       [key: string]: React.ComponentType;
     } = {};
     React.Children.toArray(children)
-      .filter((child: any) => {
-        console.log({ child });
-        return child.type.name === "TabViewItem";
-      })
+      .filter((child: any) => child.type === TabViewItem)
       .forEach((child: any) => {
         if (child?.props?.id) {
           newRoutes.push({

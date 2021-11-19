@@ -14,11 +14,10 @@ export const SEED_DATA = {
   props: {
     animationType: {
       group: GROUPS.basic,
-      name: "animationType",
-      label: "animationType",
+      label: "Animation Type",
       description: "Animation Type",
       options: ["slide", "fade", "none"],
-      editable: false,
+      editable: true,
       required: false,
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.STRING,
@@ -35,5 +34,16 @@ export const SEED_DATA = {
       label: "Visible",
       description: "Determines whether the modal is visible",
     }),
+    presentationStyle: {
+      group: GROUPS.basic,
+      label: "Presentation Style",
+      description: "Presentation Style",
+      options: ["fullScreen", "pageSheet", "formSheet", "overFullScreen"],
+      editable: true,
+      required: false,
+      formType: FORM_TYPES.flatArray,
+      propType: PROP_TYPES.STRING,
+      defaultValue: null,
+    },
   },
 };

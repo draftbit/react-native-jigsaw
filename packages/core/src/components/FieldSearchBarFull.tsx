@@ -14,6 +14,7 @@ import type { IconSlot } from "../interfaces/Icon";
 import Config from "./Config";
 
 type Props = {
+  showIcon: boolean;
   icon?: string;
   placeholder?: string;
   style?: StyleProp<ViewStyle>;
@@ -25,6 +26,7 @@ type Props = {
 } & IconSlot;
 
 const FieldSearchBarFull: React.FC<Props> = ({
+  showIcon,
   Icon,
   icon = "search",
   placeholder = "",
@@ -84,13 +86,15 @@ const FieldSearchBarFull: React.FC<Props> = ({
   };
 
   return (
-    <View style={[{ padding: 16 }, styles.container, style]}>
-      <Icon
-        name={icon}
-        size={Config.fieldSearchBarFullIconSize}
-        color={focused ? colors.primary : colors.light}
-      />
-      <View style={{ marginLeft: 12, flex: 1 }}>
+    <View style={[styles.container, style]}>
+      {showIcon && (
+        <Icon
+          name={icon}
+          size={Config.fieldSearchBarFullIconSize}
+          color={focused ? colors.primary : colors.light}
+        />
+      )}
+      <View style={{ marginLeft: showIcon ? 12 : 0, flex: 1 }}>
         <TextInput
           clearButtonMode="while-editing"
           placeholder={placeholder}

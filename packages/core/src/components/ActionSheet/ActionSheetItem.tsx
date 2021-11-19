@@ -7,14 +7,6 @@ import {
   ViewStyle,
   TextStyle,
 } from "react-native";
-import {
-  COMPONENT_TYPES,
-  createActionProp,
-  createColorProp,
-  createTextProp,
-  GROUPS,
-  Triggers,
-} from "@draftbit/types";
 import { extractStyles } from "../../utilities";
 
 type Props = {
@@ -60,25 +52,3 @@ const styles = StyleSheet.create({
 });
 
 export default ActionSheetItem;
-
-export const SEED_DATA = {
-  name: "Action Sheet Item",
-  tag: "ActionSheetItem",
-  description: "Action Sheet item",
-  category: COMPONENT_TYPES.button,
-  triggers: [Triggers.OnPress],
-  layout: {
-    textAlign: "center",
-  },
-  props: {
-    onPress: createActionProp(),
-    label: createTextProp({
-      group: GROUPS.basic,
-      label: "Label",
-      defaultValue: "Option",
-    }),
-    color: createColorProp({
-      label: "Font Color",
-    }),
-  },
-};

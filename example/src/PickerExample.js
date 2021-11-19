@@ -23,6 +23,7 @@ function PickerExample({ theme }) {
           options={OPTIONS}
           value={value}
           onValueChange={setValue}
+          rightIconName={"AntDesign/caretright"}
         />
       </Section>
 
@@ -150,7 +151,7 @@ function PickerExample({ theme }) {
           style={{
             fontSize: 30,
             color: "red",
-            fontFamily: "Calibri",
+            fontFamily: "Courier New",
           }}
         />
       </Section>

@@ -1,8 +1,6 @@
 import React from "react";
 import { Pressable, ViewStyle, PressableProps } from "react-native";
 
-import { COMPONENT_TYPES, createActionProp, Triggers } from "@draftbit/types";
-
 type Props = {
   disabled?: boolean;
   children: React.ReactNode;
@@ -36,15 +34,3 @@ export default function Touchable({
     </Pressable>
   );
 }
-
-export const SEED_DATA = {
-  name: "Touchable",
-  tag: "Touchable",
-  description: "Simple button with no styles",
-  category: COMPONENT_TYPES.button,
-  layout: {},
-  triggers: [Triggers.OnPress],
-  props: {
-    onPress: createActionProp(),
-  },
-};

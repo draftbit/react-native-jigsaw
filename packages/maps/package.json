@@ -12,7 +12,7 @@
     "lib"
   ],
   "scripts": {
-    "prepare": "bob build",
+    "postinstall": "echo 'README: maps aren't hooked up'",
     "clean": "rimraf lib",
     "clean:modules": "rimraf node_modules"
   },
@@ -34,20 +34,5 @@
   "bugs": {
     "url": "https://github.com/draftbit/react-native-jigsaw/issues"
   },
-  "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
-  "react-native-builder-bob": {
-    "source": "src",
-    "output": "lib",
-    "targets": [
-      "commonjs",
-      "module",
-      [
-        "typescript",
-        {
-          "project": "tsconfig.build.json",
-          "tsc": "../../node_modules/typescript/bin/tsc"
-        }
-      ]
-    ]
-  }
+  "homepage": "https://github.com/draftbit/react-native-jigsaw#readme"
 }

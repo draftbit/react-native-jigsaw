@@ -8,10 +8,10 @@ import {
 } from "@draftbit/types";
 
 export const SEED_DATA = {
-  name: "Accordion Group",
+  name: "Accordion",
   tag: "AccordionGroup",
   description: "An expandable container containing components",
-  category: COMPONENT_TYPES.deprecated,
+  category: COMPONENT_TYPES.container,
   props: {
     openColor: createColorProp({
       label: "Open text color",

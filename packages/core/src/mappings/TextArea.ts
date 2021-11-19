@@ -17,6 +17,11 @@ export const SEED_DATA = {
   triggers: [Triggers.OnChangeText],
   props: {
     ...TEXT_INPUT_PROPS,
+    placeholder: {
+      ...TEXT_INPUT_PROPS.placeholder,
+      defaultValue:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    },
     multiline: {
       label: "Multiline",
       description: "Multiline",

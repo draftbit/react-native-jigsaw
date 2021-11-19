@@ -38,6 +38,8 @@ export {
   ActionSheetCancel,
   Swiper,
   SwiperItem,
+  TabView,
+  TabViewItem,
 } from "@draftbit/core";
 
 // Import the appropriate version of the map components based on the current platform

@@ -221,6 +221,10 @@ export const SEED_DATA = [
     props: {
       ...NUMBER_INPUT_PROPS,
       ...SEED_DATA_PROPS,
+      placeholder: {
+        ...NUMBER_INPUT_PROPS.placeholder,
+        defaultValue: "Input a number… ",
+      },
     },
   },
 ];

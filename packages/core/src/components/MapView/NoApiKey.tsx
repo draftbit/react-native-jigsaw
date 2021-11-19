@@ -3,8 +3,10 @@ import { Text, View } from "react-native";
 
 const NoApiKey = () => (
   <View>
-    <Text>
-      You need to pass an API key in order for MapView to work on Web.
+    <Text style={{ textAlign: "center" }}>
+      To use maps on the Web, you need to provide a Google Maps API key, which
+      can be obtained at
+      https://developers.google.com/maps/documentation/javascript/get-api-key.
     </Text>
   </View>
 );

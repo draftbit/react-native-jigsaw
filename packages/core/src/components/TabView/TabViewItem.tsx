@@ -1,5 +1,4 @@
 import React from "react";
-
 interface TabViewItemProps {
   title: string;
   id: string;
@@ -8,7 +7,7 @@ interface TabViewItemProps {
 
 const TabViewItem = ({ title, id, children }: TabViewItemProps) => {
   console.log({ title, id });
-  return <>{children}</>;
+  return children;
 };
 
 export default TabViewItem;

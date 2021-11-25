@@ -60,7 +60,6 @@ import ActionSheetExample from "./ActionSheetExample";
 import StarRatingExample from "./StarRatingExample";
 
 import SwiperExample from "./SwiperExample";
-import MapViewExample from "./MapViewExample";
 import TabViewExample from "./TabViewExample";
 
 const ROUTES = {
@@ -100,7 +99,6 @@ const ROUTES = {
   TextField: TextFieldExample,
   TextInput: TextInputExample,
   WebView: WebViewExample,
-  MapView: MapViewExample,
   TabView: TabViewExample,
 };
 

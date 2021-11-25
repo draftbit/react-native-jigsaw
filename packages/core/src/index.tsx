@@ -32,7 +32,6 @@ export {
   ActionSheetCancel,
 } from "./components/ActionSheet";
 export { Swiper, SwiperItem } from "./components/Swiper";
-export { MapView, MapMarker, MapCallout } from "./components/MapView";
 export { TabView, TabViewItem } from "./components/TabView";
 
 export {

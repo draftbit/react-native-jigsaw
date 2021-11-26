@@ -1,15 +1,40 @@
 import * as React from "react";
-import { Animated, View, TouchableOpacity, StyleSheet } from "react-native";
-import { TabView, SceneMap } from "react-native-tab-view";
-import Constants from "expo-constants";
+import { StyleProp, TextStyle, ViewStyle } from "react-native";
+import { TabView, TabBar, SceneMap } from "react-native-tab-view";
 
+// import { withTheme } from "../../theming";
 import TabViewItem from "./TabViewItem";
+import type { IconSlot } from "../../interfaces/Icon";
 
-interface TabViewProps {
+type TabBarPosition = "top" | "bottom";
+type KeyboardDismissMode = "none" | "auto" | "on-drag";
+
+type TabViewProps = {
+  tabBarPosition?: TabBarPosition;
+  keyboardDismissMode?: KeyboardDismissMode;
+  swipeEnabled?: boolean;
+  scrollEnabled?: boolean;
+  activeColor?: string;
+  inactiveColor?: string;
+  pressColor?: string;
+  indicatorColor?: string;
+  style?: StyleProp<TextStyle | ViewStyle>;
   children: React.ReactNode;
-}
+} & IconSlot;
 
-export default ({ children }: TabViewProps) => {
+const TabViewComponent = ({
+  Icon,
+  tabBarPosition,
+  keyboardDismissMode,
+  swipeEnabled,
+  scrollEnabled,
+  activeColor,
+  inactiveColor,
+  pressColor,
+  indicatorColor,
+  style,
+  children,
+}: TabViewProps) => {
   const [index, setIndex] = React.useState(0);
   const [routes, setRoutes] = React.useState([]);
   const [tabScenes, setTabScenes] = React.useState({});
@@ -24,7 +49,7 @@ export default ({ children }: TabViewProps) => {
         if (child?.props?.id) {
           newRoutes.push({
             key: child?.props?.id,
-            title: child?.props?.title,
+            ...child?.props,
           });
           scenes[child?.props?.id] = () => child;
         }
@@ -34,33 +59,25 @@ export default ({ children }: TabViewProps) => {
     setTabScenes(scenes);
   }, [children]);
 
-  const _handleIndexChange = (i: any) => setIndex(i);
+  const indexChangeHandler = (i: any) => setIndex(i);
 
-  const _renderTabBar = (props: any) => {
-    const inputRange = props.navigationState.routes.map(
-      (__: any, i: number) => i
-    );
-
+  const renderTabBar = (props: any) => {
+    console.log(props);
     return (
-      <View style={styles.tabBar}>
-        {props.navigationState.routes.map((route: any, i: number) => {
-          const opacity = props.position.interpolate({
-            inputRange,
-            outputRange: inputRange.map((inputIndex: any) =>
-              inputIndex === i ? 1 : 0.5
-            ),
-          });
-
-          return (
-            <TouchableOpacity
-              style={styles.tabItem}
-              onPress={() => setIndex(i)}
-            >
-              <Animated.Text style={{ opacity }}>{route.title}</Animated.Text>
-            </TouchableOpacity>
-          );
-        })}
-      </View>
+      <TabBar
+        {...props}
+        activeColor={activeColor}
+        inactiveColor={inactiveColor}
+        pressColor={pressColor}
+        scrollEnabled={scrollEnabled}
+        indicatorStyle={{ backgroundColor: indicatorColor }}
+        renderIcon={({ route, color }) =>
+          route?.icon ? (
+            <Icon name={route.icon} color={color} size={36} />
+          ) : null
+        }
+        style={style}
+      />
     );
   };
 
@@ -68,23 +85,13 @@ export default ({ children }: TabViewProps) => {
     <TabView
       navigationState={{ index, routes }}
       renderScene={SceneMap(tabScenes)}
-      renderTabBar={_renderTabBar}
-      onIndexChange={_handleIndexChange}
+      renderTabBar={renderTabBar}
+      onIndexChange={indexChangeHandler}
+      tabBarPosition={tabBarPosition}
+      keyboardDismissMode={keyboardDismissMode}
+      swipeEnabled={swipeEnabled}
     />
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  tabBar: {
-    flexDirection: "row",
-    paddingTop: Constants.statusBarHeight,
-  },
-  tabItem: {
-    flex: 1,
-    alignItems: "center",
-    padding: 16,
-  },
-});
+export default TabViewComponent;

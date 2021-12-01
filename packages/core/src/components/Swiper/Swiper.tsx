@@ -35,25 +35,14 @@ const SwiperComponent = ({
   style,
 }: SwiperProps) => {
   const computedChildren = React.useMemo(() => {
-    const newChildren: any[] = [];
+    let newChildren: any[] = [];
     React.Children.toArray(children).forEach((child: any) => {
-      // console.log({
-      //   child,
-      //   type: child.type,
-      //   flatList: FlatList,
-      //   isFlatlist: FlatList === child.type,
-      // });
       if (child.type === FlatList) {
-        // console.log({
-        //   childrenOfChildren: React.Children.toArray(child.props.children),
-        // });
-        return React.Children.toArray(child.props.children).forEach(
-          (listChild: any) => {
-            newChildren.push(listChild);
-          }
+        newChildren = newChildren.concat(
+          ...child.props?.data?.map(child.props.renderItem)
         );
       } else {
-        return newChildren.push(child);
+        newChildren.push(child);
       }
     });
     return newChildren;

@@ -16,10 +16,10 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight || 0,
   },
   item: {
+    flex: 1,
     backgroundColor: "#f9c2ff",
     padding: 20,
     marginVertical: 8,
-    marginHorizontal: 16,
   },
   title: {
     fontSize: 32,
@@ -48,40 +48,30 @@ const Item = ({ title }) => (
 );
 
 function SwiperExample({ theme }) {
-  const renderItem = ({ item }) => <Item title={item.title} />;
+  const renderItem = (item) => <Item title={item.title} />;
+
   return (
     <Container>
       <Section title="Swiper Example">
         <Swiper
           vertical={true}
           loop={false}
-          showsButtons={true}
-          showPagination={false}
+          showsButtons={false}
+          showsPagination={true}
           style={{ width: "100%", height: 300 }}
           autoplay={true}
           autoplayTimeout={5}
           autoplayDirection={false}
         >
-          <FlatList keyExtractor={(item) => item.id}>
-            {DATA.map(({ title }) => (
-              <View style={styles.item}>
-                <Text style={styles.title}>{title}</Text>
-              </View>
-            ))}
-          </FlatList>
-          <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
-            <Text>Test Slide 1</Text>
-          </SwiperItem>
-          <SwiperItem style={[style.item, { backgroundColor: "#d6d3fd" }]}>
-            <Text>Test Slide 2</Text>
-          </SwiperItem>
-          <SwiperItem style={[style.item, { backgroundColor: "#c9fdd9" }]}>
-            <Text>Test Slide 3</Text>
-          </SwiperItem>
+          <FlatList
+            keyExtractor={(item) => item.id}
+            renderItem={renderItem}
+            data={DATA}
+          />
         </Swiper>
       </Section>
       <Section title="Swiper Example">
-        <Swiper vertical={true} style={{ width: "100%", height: 300 }}>
+        <Swiper vertical={false} style={{ width: "100%", height: 300 }}>
           <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
             <Text>Test Slide 1</Text>
           </SwiperItem>

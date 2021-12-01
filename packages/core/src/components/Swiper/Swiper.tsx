@@ -1,45 +1,54 @@
 import React from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
-import SwiperComponent from "react-native-web-swiper";
+import Swiper from "react-native-swiper/src";
+
+console.log({ Swiper });
 
 export interface SwiperProps {
   vertical?: boolean;
   loop?: boolean;
-  from?: number;
-  timeout?: number;
-  prevTitle?: string;
-  nextTitle?: string;
-  dotsTouchable?: boolean;
+  index?: number;
+  showsButtons?: boolean;
+  autoplay?: boolean;
+  autoplayTimeout?: number;
+  autoplayDirection?: boolean;
+  showsPagination?: boolean;
+  dotColor?: string;
+  activeDotColor?: string;
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
 }
 
-const Swiper = ({
-  vertical = false,
+const SwiperComponent = ({
+  vertical = true,
   loop = false,
-  timeout = 0,
-  from = 0,
-  prevTitle = "",
-  nextTitle = "",
-  dotsTouchable = true,
+  index = 0,
+  showsButtons = true,
+  autoplay = false,
+  autoplayTimeout = 2.5,
+  autoplayDirection = true,
+  showsPagination = false,
+  dotColor,
+  activeDotColor,
   children,
   style,
 }: SwiperProps) => (
   <View style={style}>
-    <SwiperComponent
-      from={from}
+    <Swiper
+      index={index}
+      showsButtons={showsButtons}
       loop={loop}
-      timeout={timeout}
-      vertical={vertical}
-      controlsProps={{
-        prevTitle,
-        nextTitle,
-        dotsTouchable,
-      }}
+      horizontal={!vertical}
+      autoplay={autoplay}
+      autoplayTimeout={autoplayTimeout}
+      autoplayDirection={autoplayDirection}
+      showsPagination={showsPagination}
+      dotColor={dotColor}
+      activeDotColor={activeDotColor}
     >
       {children}
-    </SwiperComponent>
+    </Swiper>
   </View>
 );
 
-export default Swiper;
+export default SwiperComponent;

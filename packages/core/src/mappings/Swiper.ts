@@ -1,8 +1,8 @@
 import {
   COMPONENT_TYPES,
-  createBoolProp,
   createNumberProp,
   createTextProp,
+  createStaticBoolProp,
   GROUPS,
 } from "@draftbit/types";
 
@@ -16,38 +16,55 @@ export const SEED_DATA = {
     width: "100%",
   },
   props: {
-    from: createNumberProp({
-      group: GROUPS.basic,
-      label: "Initial Slide",
-    }),
-    loop: createBoolProp({
-      group: GROUPS.basic,
-      label: "Loop",
-    }),
-    timeout: createNumberProp({
-      group: GROUPS.basic,
-      label: "Timeout",
-      defaultValue: 0,
-    }),
-    vertical: createBoolProp({
-      group: GROUPS.basic,
+    vertical: createStaticBoolProp({
       label: "Vertical",
+      description: "Whether to swipe vertical",
       defaultValue: false,
     }),
-    prevTitle: createTextProp({
-      group: GROUPS.basic,
-      label: "Previous Title",
-      defaultValue: "",
+    loop: createStaticBoolProp({
+      label: "Loop",
+      description: "Whether to loop through slides",
+      defaultValue: false,
     }),
-    nextTitle: createTextProp({
-      group: GROUPS.basic,
-      label: "Next Title",
-      defaultValue: "",
+    index: createNumberProp({
+      label: "Initial Slide",
+      description: "Initial Slide index",
+      defaultValue: 0,
     }),
-    dotsTouchable: createBoolProp({
-      group: GROUPS.basic,
-      label: "Dots Touchable",
+    showsButtons: createStaticBoolProp({
+      label: "Show Buttons",
+      description: "",
       defaultValue: true,
+    }),
+    autoplay: createStaticBoolProp({
+      label: "Autoplay",
+      description: "Autoplay slides",
+      defaultValue: false,
+    }),
+    autoplayTimeout: createNumberProp({
+      label: "Autoplay Timeout",
+      description: "Slide autoplay timeout.",
+      defaultValue: 2.5,
+    }),
+    autoplayDirection: createStaticBoolProp({
+      label: "Autoplay Reverse",
+      description: "Whether to autoplay reverse?",
+      defaultValue: true,
+    }),
+    showsPagination: createStaticBoolProp({
+      label: "Show Pagination",
+      description: "Show pagination",
+      defaultValue: true,
+    }),
+    dotColor: createTextProp({
+      group: GROUPS.basic,
+      label: "Dot Color",
+      description: "Dot color",
+    }),
+    activeDotColor: createTextProp({
+      group: GROUPS.basic,
+      label: "Active Dot Color",
+      description: "Active dot color",
     }),
   },
 };

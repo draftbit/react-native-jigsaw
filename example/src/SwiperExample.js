@@ -17,7 +17,12 @@ function SwiperExample({ theme }) {
         <Swiper
           vertical={false}
           loop={true}
+          showsButtons={true}
+          showPagination={false}
           style={{ width: "100%", height: 300 }}
+          autoplay={true}
+          autoplayTimeout={1}
+          autoplayDirection={false}
         >
           <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
             <Text>Test Slide 1</Text>

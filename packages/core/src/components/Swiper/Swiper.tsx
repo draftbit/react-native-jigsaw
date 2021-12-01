@@ -3,8 +3,6 @@ import { FlatList } from "react-native";
 import { View, StyleProp, ViewStyle } from "react-native";
 import Swiper from "react-native-swiper/src/";
 
-console.log({ Swiper });
-
 export interface SwiperProps {
   vertical?: boolean;
   loop?: boolean;

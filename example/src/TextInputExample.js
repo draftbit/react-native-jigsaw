@@ -31,18 +31,12 @@ export default function TextInputExample() {
             defaultValue="I'm an initial value!"
           />
           <NumberInput
-            placeholder="Number input with initial value"
+            placeholder="Number input using value"
             value={number}
             onChangeText={(num) => setNumber(num)}
           />
           <NumberInput
             placeholder="Number input using defaultValue"
-            value={number === 0 ? undefined : number}
-            onChangeText={(num) => setNumber(num)}
-            defaultValue={1}
-          />
-          <NumberInput
-            placeholder="Number input using defaultValue, no value"
             onChangeText={(num) => setNumber(num)}
             defaultValue={1}
           />

@@ -1,44 +1,59 @@
 import React from "react";
-import { TextInput as NativeNumberInput } from "react-native";
+import { TextInput } from "react-native";
 
 interface Props {
-  defaultValue?: string;
+  value?: number;
+  defaultValue?: number;
   onChangeText: (value?: number) => void;
 }
 
+const getValue = (
+  valueFromProp: number | undefined,
+  defaultValue: number | undefined
+) => {
+  let value = valueFromProp ?? defaultValue;
+  if (typeof value !== "number" || Number.isNaN(value)) {
+    value = 0;
+  }
+  return value;
+};
+
 const NumberInput: React.FC<Props> = ({
-  defaultValue,
   onChangeText,
+  value: valueFromProp,
+  defaultValue,
   ...props
 }) => {
-  const [internalValue, setInternalValue] = React.useState(defaultValue);
-
+  const value = getValue(valueFromProp, defaultValue);
+  const [isDecimal, setIsDecimal] = React.useState(!Number.isInteger(value));
   React.useEffect(() => {
-    if (defaultValue != null) {
-      setInternalValue(defaultValue);
-    }
-  }, [defaultValue]);
+    const newValue = getValue(valueFromProp, defaultValue);
+    setIsDecimal(newValue.toString().includes("."));
+  }, [valueFromProp, defaultValue]);
 
-  const handleChangeText = (value: string) => {
-    setInternalValue(value);
+  const handleChangeText = (newValue: string) => {
     if (onChangeText) {
-      onChangeText(stringToInteger(value));
+      const parsedNumber = parseFloat(newValue);
+      const number = isNaN(parsedNumber) ? 0 : parsedNumber;
+      setIsDecimal(newValue.includes("."));
+      onChangeText(number);
     }
   };
 
+  let strValue: string = value.toString();
+  if (isDecimal && !strValue.includes(".")) {
+    strValue = `${strValue}.`;
+  }
+
   return (
-    <NativeNumberInput
+    <TextInput
       keyboardType="numeric"
-      onChangeText={handleChangeText}
       {...props}
-      value={internalValue}
+      value={valueFromProp !== undefined ? strValue : undefined}
+      defaultValue={defaultValue !== undefined ? strValue : undefined}
+      onChangeText={handleChangeText}
     />
   );
-};
-
-const stringToInteger = (str: string | undefined): number => {
-  const number = parseFloat(str as string);
-  return isNaN(number) ? 0 : number;
 };
 
 export default NumberInput;

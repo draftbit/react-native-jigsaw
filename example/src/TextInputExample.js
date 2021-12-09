@@ -1,7 +1,7 @@
 import * as React from "react";
 import { TextInput, KeyboardAvoidingView } from "react-native";
-import { NumberInput } from "@draftbit/ui";
-import Section, { Container } from "./Section";
+import { NumberInput, ButtonSolid } from "@draftbit/ui";
+import Section, { Container, styles } from "./Section";
 
 export default function TextInputExample() {
   const [value, setText] = React.useState("Change me!");
@@ -34,7 +34,22 @@ export default function TextInputExample() {
             placeholder="Number input with initial value"
             value={number}
             onChangeText={(num) => setNumber(num)}
-            defaultValue="1"
+          />
+          <NumberInput
+            placeholder="Number input using defaultValue"
+            value={number === 0 ? undefined : number}
+            onChangeText={(num) => setNumber(num)}
+            defaultValue={1}
+          />
+          <NumberInput
+            placeholder="Number input using defaultValue, no value"
+            onChangeText={(num) => setNumber(num)}
+            defaultValue={1}
+          />
+          <ButtonSolid
+            style={[styles.button]}
+            title="Reset Number"
+            onPress={(_) => setNumber(0)}
           />
         </Section>
       </Container>

@@ -7,29 +7,20 @@ interface Props {
   onChangeText: (value?: number) => void;
 }
 
-const getValue = (
-  valueFromProp: number | undefined,
-  defaultValue: number | undefined
-) => {
-  let value = valueFromProp ?? defaultValue;
-  if (typeof value !== "number" || Number.isNaN(value)) {
-    value = 0;
-  }
-  return value;
-};
-
 const NumberInput: React.FC<Props> = ({
   onChangeText,
-  value: valueFromProp,
+  value,
   defaultValue,
   ...props
 }) => {
-  const value = getValue(valueFromProp, defaultValue);
-  const [isDecimal, setIsDecimal] = React.useState(!Number.isInteger(value));
+  const [isDecimal, setIsDecimal] = React.useState(
+    value && !Number.isInteger(value)
+  );
   React.useEffect(() => {
-    const newValue = getValue(valueFromProp, defaultValue);
-    setIsDecimal(newValue.toString().includes("."));
-  }, [valueFromProp, defaultValue]);
+    if (value) {
+      setIsDecimal(value.toString().includes("."));
+    }
+  }, [value]);
 
   const handleChangeText = (newValue: string) => {
     if (onChangeText) {
@@ -40,17 +31,20 @@ const NumberInput: React.FC<Props> = ({
     }
   };
 
-  let strValue: string = value.toString();
-  if (isDecimal && !strValue.includes(".")) {
-    strValue = `${strValue}.`;
+  let strValue;
+  if (value != undefined) {
+    strValue = value.toString();
+    if (isDecimal && !strValue.includes(".")) {
+      strValue = `${strValue}.`;
+    }
   }
 
   return (
     <TextInput
       keyboardType="numeric"
       {...props}
-      value={valueFromProp !== undefined ? strValue : undefined}
-      defaultValue={defaultValue !== undefined ? strValue : undefined}
+      value={strValue}
+      defaultValue={defaultValue?.toString()}
       onChangeText={handleChangeText}
     />
   );

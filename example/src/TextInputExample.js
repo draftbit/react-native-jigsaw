@@ -36,6 +36,11 @@ export default function TextInputExample() {
             onChangeText={(num) => setNumber(num)}
           />
           <NumberInput
+            placeholder="Number input using value (2)"
+            value={number}
+            onChangeText={(num) => setNumber(num)}
+          />
+          <NumberInput
             placeholder="Number input using defaultValue"
             onChangeText={(num) => setNumber(num)}
             defaultValue={1}

@@ -20,7 +20,12 @@ function CarouselExample({ theme }) {
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>
       <Section title="Images as children">
-        <Carousel dotColor={theme.colors.error}>
+        <Carousel
+          dotColor={theme.colors.error}
+          style={{
+            height: 500,
+          }}
+        >
           <Image
             source={{ uri: REMOTE_IMAGES[0] }}
             style={{ width: 250, height: 250 }}

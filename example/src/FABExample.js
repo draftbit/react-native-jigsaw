@@ -9,7 +9,7 @@ function FABExample({ theme }) {
     <Container
       style={{ flexDirection: "row", backgroundColor: theme.colors.background }}
     >
-      <FAB icon="add" onPress={handlePress} />
+      <FAB icon="add" onPress={handlePress} size={32} />
       <FAB icon="add" disabled onPress={handlePress} />
       <View style={{ backgroundColor: "yellow" }}>
         <FAB icon="add" loading onPress={handlePress} style={{ margin: 20 }} />

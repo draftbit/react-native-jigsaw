@@ -60,6 +60,7 @@ import ActionSheetExample from "./ActionSheetExample";
 import StarRatingExample from "./StarRatingExample";
 
 import SwiperExample from "./SwiperExample";
+import KeyboardAwareScrollView from "./KeyboardAwareScrollViewExample";
 
 const ROUTES = {
   Layout: LayoutExample,
@@ -98,6 +99,7 @@ const ROUTES = {
   TextField: TextFieldExample,
   TextInput: TextInputExample,
   WebView: WebViewExample,
+  KeyboardAwareScrollView: KeyboardAwareScrollView,
 };
 
 let customFonts = {
@@ -142,7 +144,7 @@ function Examples() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="Layout"
+        initialRouteName="KeyboardAwareScrollView"
         drawerContentOptions={{
           activeTintColor: "rgba(90, 69, 255, 1)",
         }}

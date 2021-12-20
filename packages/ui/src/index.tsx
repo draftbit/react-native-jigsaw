@@ -38,6 +38,7 @@ export {
   ActionSheetCancel,
   Swiper,
   SwiperItem,
+  KeyboardAwareScrollView,
 } from "@draftbit/core";
 
 /**

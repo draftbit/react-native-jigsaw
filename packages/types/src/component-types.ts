@@ -490,7 +490,7 @@ export const TEXT_INPUT_PROPS = {
     description: "The text that is shown on load when no value is available.",
     editable: true,
     required: false,
-    defaultValue: "Lorem ipsum",
+    defaultValue: "Enter a value…",
     formType: FORM_TYPES.string,
     propType: PROP_TYPES.STRING,
   },

@@ -1,17 +1,32 @@
 import * as React from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  TouchableHighlight,
-  Platform,
-} from "react-native";
+import { Platform, StyleSheet, Text, View } from "react-native";
+import { TouchableHighlight } from "react-native";
 import { Audio } from "expo-av";
 import { AntDesign } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
-
+import { Container } from "./Section";
 import type { AVPlaybackSource, AVPlaybackStatus } from "expo-av/build/AV";
 import type { Sound } from "expo-av/build/Audio/Sound";
+
+export default function AudioExample() {
+  return (
+    <Container style={styles.container1}>
+      <Text style={styles.text}>Local: </Text>
+      <AudioPlayer source={require("./assets/sound.mp3")} />
+      <View style={{ marginTop: 30 }}>
+        <Text style={styles.text}>
+          URL:
+          https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3
+        </Text>
+        <AudioPlayer
+          source={{
+            uri: "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3",
+          }}
+        />
+      </View>
+    </Container>
+  );
+}
 
 function formatDuration(duration: number) {
   if (duration === 0 || duration === 1) return "00:00";
@@ -31,7 +46,7 @@ function formatDuration(duration: number) {
   return renderedMinutes + ":" + renderedSeconds;
 }
 
-export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
+function AudioPlayer({ source }: { source: AVPlaybackSource }) {
   const [sound, setSound] = React.useState<Sound>();
   const [playing, setPlay] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
@@ -163,7 +178,6 @@ export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
 }
 
 const styles = StyleSheet.create({
-  r8: { marginRight: 8 },
   container: {
     backgroundColor: "#eee",
     paddingHorizontal: 16,
@@ -172,4 +186,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  container1: { flex: 1 },
+  text: { marginBottom: 12 },
 });

@@ -60,9 +60,13 @@ import ActionSheetExample from "./ActionSheetExample";
 import StarRatingExample from "./StarRatingExample";
 
 import SwiperExample from "./SwiperExample";
+import AudioExample from "./AudioExample";
+import AudioRaw from "./AudioRaw";
 
 const ROUTES = {
   Layout: LayoutExample,
+  // Audio: AudioExample,
+  AudioUpdated: AudioRaw,
   Icon: IconExample,
   Button: ButtonExample,
   FAB: FABExample,

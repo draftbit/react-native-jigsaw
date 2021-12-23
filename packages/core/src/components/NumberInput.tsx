@@ -32,7 +32,7 @@ const NumberInput: React.FC<Props> = ({
   };
 
   let strValue;
-  if (value != undefined) {
+  if (value !== undefined) {
     strValue = value.toString();
     if (isDecimal && !strValue.includes(".")) {
       strValue = `${strValue}.`;

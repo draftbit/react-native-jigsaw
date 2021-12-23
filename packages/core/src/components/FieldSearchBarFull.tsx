@@ -7,7 +7,6 @@ import {
   ViewStyle,
   NativeSyntheticEvent,
   TextInputSubmitEditingEventData,
-  Platform,
 } from "react-native";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
@@ -99,14 +98,6 @@ const FieldSearchBarFull: React.FC<Props> = ({
       }
     : { borderWidth: border || 1, borderColor: borderColor || "#e4e4e4" };
 
-  const inputWebStyle =
-    Platform.OS === "web"
-      ? {
-          outlineColor: "transparent",
-          outlineWidth: 0,
-        }
-      : {};
-
   return (
     <View style={[styles.container, borderStyle, style]}>
       {showIcon && (
@@ -128,6 +119,7 @@ const FieldSearchBarFull: React.FC<Props> = ({
           value={internalValue}
           onBlur={onBlur}
           onFocus={onFocus}
+          focusable={false}
           onChangeText={handleChangeText}
           onSubmitEditing={onSubmit}
           placeholderTextColor={colors.light}
@@ -135,8 +127,10 @@ const FieldSearchBarFull: React.FC<Props> = ({
             {
               color: colors.medium,
               height: 44,
+              borderWidth: 0,
+              borderLeftWidth: 0,
             },
-            inputWebStyle,
+            styles.input,
             typeStyles,
           ]}
         />
@@ -150,6 +144,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  input: {},
 });
 
 export default withTheme(FieldSearchBarFull);

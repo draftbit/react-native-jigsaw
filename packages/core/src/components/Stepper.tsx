@@ -12,10 +12,13 @@ type Props = {
   style?: StyleProp<ViewStyle>;
   onChange?: (value: number) => void;
   defaultValue?: number;
+  minValue?: number;
+  maxValue?: number;
   iconSize?: number;
   iconColor?: string;
   borderRadius?: number;
   typeStyle?: StyleProp<TextStyle>;
+  step?: number;
 } & IconSlot;
 
 const Stepper: React.FC<Props> = ({
@@ -24,11 +27,14 @@ const Stepper: React.FC<Props> = ({
   style,
   onChange,
   defaultValue,
+  minValue,
+  maxValue,
   theme: { colors, typography, roundness },
   iconSize = 24,
   iconColor = colors.strong,
   borderRadius = roundness,
   typeStyle,
+  step = 1,
 }) => {
   const [stateValue, setStateValue] = React.useState(
     value || defaultValue || 0
@@ -48,17 +54,27 @@ const Stepper: React.FC<Props> = ({
 
   const handleMinus = () => {
     if (value || value === 0) {
-      onChange && onChange(value - 1);
+      if (
+        (minValue !== undefined && value - step >= minValue) ||
+        minValue === undefined
+      ) {
+        onChange && onChange(value - step);
+      }
     } else {
-      setStateValue(stateValue - 1);
+      setStateValue(stateValue - step);
     }
   };
 
   const handlePlus = () => {
     if (value || value === 0) {
-      onChange && onChange(value + 1);
+      if (
+        (maxValue !== undefined && value <= maxValue - step) ||
+        maxValue === undefined
+      ) {
+        onChange && onChange(value + step);
+      }
     } else {
-      setStateValue(stateValue + 1);
+      setStateValue(stateValue + step);
     }
   };
 

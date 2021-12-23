@@ -10,7 +10,9 @@ export const SEED_DATA = [
     tag: "Carousel",
     category: COMPONENT_TYPES.media,
     description: "A horizontal scrolling carousel of images",
-    layout: {},
+    layout: {
+      height: 250,
+    },
     props: {
       resizeMode: createResizeModeProp(),
       dotColor: createColorProp({

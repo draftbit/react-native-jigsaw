@@ -16,7 +16,6 @@ export default function ToggleButtonExample() {
           style={{ margin: 5 }}
           icon="brightness-5"
           toggled={toggled}
-          onPress={toggle}
         />
         <ToggleButton
           style={{ margin: 5 }}
@@ -24,7 +23,6 @@ export default function ToggleButtonExample() {
           width={70}
           height={70}
           toggled={toggled}
-          onPress={toggle}
         />
         <Text>with initial value</Text>
         <ToggleButton
@@ -33,7 +31,6 @@ export default function ToggleButtonExample() {
           width={70}
           height={70}
           toggled={toggled2}
-          onPress={(value) => setToggled2(value)}
           defaultValue={true}
         />
       </Section>

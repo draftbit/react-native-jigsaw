@@ -7,6 +7,7 @@ import {
   ViewStyle,
   NativeSyntheticEvent,
   TextInputSubmitEditingEventData,
+  Platform,
 } from "react-native";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
@@ -23,6 +24,9 @@ type Props = {
   onSubmit?: (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
   value?: string;
   defaultValue?: string;
+  border?: number;
+  borderColor?: string;
+  borderFocusColor?: string;
 } & IconSlot;
 
 const FieldSearchBarFull: React.FC<Props> = ({
@@ -36,6 +40,9 @@ const FieldSearchBarFull: React.FC<Props> = ({
   onSubmit: submitOverride,
   value,
   defaultValue,
+  border = 1,
+  borderColor = "#ccc",
+  borderFocusColor,
 }) => {
   const [focused, setIsFocused] = React.useState(false);
 
@@ -85,8 +92,23 @@ const FieldSearchBarFull: React.FC<Props> = ({
     }
   };
 
+  const borderStyle = focused
+    ? {
+        borderWidth: border || 1,
+        borderColor: borderFocusColor || colors.primary,
+      }
+    : { borderWidth: border || 1, borderColor: borderColor || "#e4e4e4" };
+
+  const inputWebStyle =
+    Platform.OS === "web"
+      ? {
+          outlineColor: "transparent",
+          outlineWidth: 0,
+        }
+      : {};
+
   return (
-    <View style={[styles.container, style]}>
+    <View style={[styles.container, borderStyle, style]}>
       {showIcon && (
         <Icon
           name={icon}
@@ -94,7 +116,12 @@ const FieldSearchBarFull: React.FC<Props> = ({
           color={focused ? colors.primary : colors.light}
         />
       )}
-      <View style={{ marginLeft: showIcon ? 12 : 0, flex: 1 }}>
+      <View
+        style={{
+          marginLeft: showIcon ? 12 : 0,
+          flex: 1,
+        }}
+      >
         <TextInput
           clearButtonMode="while-editing"
           placeholder={placeholder}
@@ -107,7 +134,9 @@ const FieldSearchBarFull: React.FC<Props> = ({
           style={[
             {
               color: colors.medium,
+              height: 44,
             },
+            inputWebStyle,
             typeStyles,
           ]}
         />

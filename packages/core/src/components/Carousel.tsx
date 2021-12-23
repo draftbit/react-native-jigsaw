@@ -110,9 +110,6 @@ function Carousel({
 
 const styles = StyleSheet.create({
   container: {
-    height: 250,
-    position: "relative",
-    width: screenWidth,
     backgroundColor: "#eee",
   },
   pager: {

@@ -1,44 +1,53 @@
 import React from "react";
-import { TextInput as NativeNumberInput } from "react-native";
+import { TextInput } from "react-native";
 
 interface Props {
-  defaultValue?: string;
+  value?: number;
+  defaultValue?: number;
   onChangeText: (value?: number) => void;
 }
 
 const NumberInput: React.FC<Props> = ({
-  defaultValue,
   onChangeText,
+  value,
+  defaultValue,
   ...props
 }) => {
-  const [internalValue, setInternalValue] = React.useState(defaultValue);
-
+  const [isDecimal, setIsDecimal] = React.useState(
+    value && !Number.isInteger(value)
+  );
   React.useEffect(() => {
-    if (defaultValue != null) {
-      setInternalValue(defaultValue);
+    if (value) {
+      setIsDecimal(value.toString().includes("."));
     }
-  }, [defaultValue]);
+  }, [value]);
 
-  const handleChangeText = (value: string) => {
-    setInternalValue(value);
+  const handleChangeText = (newValue: string) => {
     if (onChangeText) {
-      onChangeText(stringToInteger(value));
+      const parsedNumber = parseFloat(newValue);
+      const number = isNaN(parsedNumber) ? 0 : parsedNumber;
+      setIsDecimal(newValue.includes("."));
+      onChangeText(number);
     }
   };
 
+  let strValue;
+  if (value != undefined) {
+    strValue = value.toString();
+    if (isDecimal && !strValue.includes(".")) {
+      strValue = `${strValue}.`;
+    }
+  }
+
   return (
-    <NativeNumberInput
+    <TextInput
       keyboardType="numeric"
-      onChangeText={handleChangeText}
       {...props}
-      value={internalValue}
+      value={strValue}
+      defaultValue={defaultValue?.toString()}
+      onChangeText={handleChangeText}
     />
   );
-};
-
-const stringToInteger = (str: string | undefined): number => {
-  const number = parseFloat(str as string);
-  return isNaN(number) ? 0 : number;
 };
 
 export default NumberInput;

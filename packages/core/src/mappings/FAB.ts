@@ -41,6 +41,6 @@ export const SEED_DATA = {
       defaultValue: null,
       group: GROUPS.basic,
     }),
-    iconSize: createIconSizeProp(),
+    size: createIconSizeProp(),
   },
 };

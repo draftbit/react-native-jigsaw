@@ -187,8 +187,14 @@ class TextField extends React.Component<Props, State> {
       return;
     }
 
-    this.setState({ value: value as string });
-    this.props.onChangeText && this.props.onChangeText(value);
+    if (typeof value === "string") {
+      this.setState({ value });
+      this.props.onChangeText && this.props.onChangeText(value);
+    } else {
+      this.setState({ value: value.nativeEvent.text });
+      this.props.onChangeText &&
+        this.props.onChangeText(value.nativeEvent.text);
+    }
   };
 
   toggleFocus() {

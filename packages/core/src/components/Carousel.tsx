@@ -61,12 +61,27 @@ function Carousel({
   const itemsLength = (data?.length ?? 0) + length;
   const slides = Array.isArray(data) ? data : [];
 
-  const { width, height } = StyleSheet.flatten(style || {});
-  const slideWidth = width || screenWidth;
+  const { height, marginLeft, marginRight } = StyleSheet.flatten(style || {});
   const slideHeight = height || 250;
 
+  const containerWidth =
+    screenWidth -
+    (marginLeft ? Number(marginLeft) : 0) -
+    (marginRight ? Number(marginRight) : 0);
+
   return (
-    <View style={[styles.container, style]} {...rest}>
+    <View
+      style={[
+        styles.container,
+        {
+          width: containerWidth,
+          height: slideHeight,
+          maxWidth: containerWidth,
+        },
+        style,
+      ]}
+      {...rest}
+    >
       <ScrollView
         pagingEnabled
         horizontal
@@ -87,7 +102,7 @@ function Carousel({
                   key={i}
                   resizeMode="cover"
                   source={typeof item === "string" ? { uri: item } : item}
-                  style={[{ width: slideWidth, height: slideHeight }]}
+                  style={[{ width: containerWidth, height: slideHeight }]}
                 />
               );
             })
@@ -95,9 +110,9 @@ function Carousel({
         {React.Children.map(children, (child: any) => {
           const s = child?.props?.style || {};
           return (
-            <View style={{ width: slideWidth }}>
+            <View style={{ width: containerWidth }}>
               {React.cloneElement(child, {
-                style: { ...s, width: slideWidth },
+                style: { ...s, width: containerWidth, height: slideHeight },
               })}
             </View>
           );
@@ -110,7 +125,7 @@ function Carousel({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#eee",
+    backgroundColor: "#eeeeee",
   },
   pager: {
     position: "absolute",

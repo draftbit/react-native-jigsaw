@@ -43,7 +43,7 @@ function CarouselExample({ theme }) {
         <Carousel
           data={LOCAL_IMAGES}
           dotColor={theme.colors.background}
-          style={{ height: 400, width: 250 }}
+          style={{ height: 200, width: 275, marginLeft: 50 }}
         />
       </Section>
     </Container>

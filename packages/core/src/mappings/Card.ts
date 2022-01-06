@@ -15,7 +15,7 @@ export const SEED_DATA = {
   name: "Card",
   tag: "Card",
   description: "A card you can customize however you'd like",
-  category: COMPONENT_TYPES.card,
+  category: COMPONENT_TYPES.media,
   triggers: [Triggers.OnPress, Triggers.OnPressIcon],
   props: {
     onPress: createActionProp(),

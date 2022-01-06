@@ -34,7 +34,6 @@ import ContainerExample from "./ContainerExample";
 import DatePickerExample from "./DatePickerExample";
 
 import FABExample from "./FABExample";
-import ToggleButtonExample from "./ToggleButtonExample";
 import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
 
 // import HeaderExample from "./HeaderExample";
@@ -70,7 +69,6 @@ const ROUTES = {
   ActionSheet: ActionSheetExample,
   Checkbox: CheckboxExample,
   Card: CardExample,
-  ToggleButton: ToggleButtonExample,
   Accordion: AccordionExample,
   CardBlock: CardBlockExample,
   CardInline: CardInlineExample,

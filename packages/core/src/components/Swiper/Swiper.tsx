@@ -9,7 +9,11 @@ export interface SwiperProps {
   timeout?: number;
   prevTitle?: string;
   nextTitle?: string;
+  prevTitleColor?: string;
+  nextTitleColor?: string;
   dotsTouchable?: boolean;
+  dotColor?: string;
+  dotActiveColor?: string;
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
 }
@@ -21,7 +25,11 @@ const Swiper = ({
   from = 0,
   prevTitle = "",
   nextTitle = "",
+  prevTitleColor,
+  nextTitleColor,
   dotsTouchable = true,
+  dotColor,
+  dotActiveColor,
   children,
   style,
 }: SwiperProps) => (
@@ -34,7 +42,15 @@ const Swiper = ({
       controlsProps={{
         prevTitle,
         nextTitle,
+        prevTitleStyle: { color: prevTitleColor },
+        nextTitleStyle: { color: nextTitleColor },
         dotsTouchable,
+        ...(dotColor
+          ? { dotProps: { badgeStyle: { backgroundColor: dotColor } } }
+          : {}),
+        ...(dotActiveColor
+          ? { dotActiveStyle: { backgroundColor: dotActiveColor } }
+          : {}),
       }}
     >
       {children}

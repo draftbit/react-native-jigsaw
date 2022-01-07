@@ -682,7 +682,7 @@ export const NUMBER_INPUT_PROPS = {
     description: "The text that is shown on load when no value is available.",
     editable: true,
     required: false,
-    defaultValue: "0",
+    defaultValue: "Input a number...",
     formType: FORM_TYPES.string,
     propType: PROP_TYPES.STRING,
   },

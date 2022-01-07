@@ -69,6 +69,7 @@ import {
   RadioButton as BaseRadioButton,
   RadioButtonRow as BaseRadioButtonRow,
   Stepper as BaseStepper,
+  ToggleButton as BaseToggleButton,
   HeaderLarge as BaseHeaderLarge,
   HeaderMedium as BaseHeaderMedium,
   HeaderOverline as BaseHeaderOverline,
@@ -104,6 +105,7 @@ export const RowHeadlineImageIcon = injectIcon(BaseRowHeadlineImageIcon, Icon);
 export const StarRating = injectIcon(BaseStarRating, Icon);
 export const Stepper = injectIcon(BaseStepper, Icon);
 export const TextField = injectIcon(BaseTextField, Icon);
+export const ToggleButton = injectIcon(BaseToggleButton, Icon);
 export const Slider = injectIcon(BaseSlider, Icon);
 export const AccordionGroup = injectIcon(BaseAccordionGroup, Icon);
 export const AccordionItem = injectIcon(BaseAccordionItem, Icon);

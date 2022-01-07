@@ -77,9 +77,13 @@ const FAB: React.FC<Props> = ({
       >
         <View>
           {loading ? (
-            <ActivityIndicator size="small" color={color} />
+            <ActivityIndicator
+              style={size > 50 ? { marginTop: 2, marginLeft: 2 } : undefined}
+              size={size <= 50 ? "small" : "large"}
+              color={color}
+            />
           ) : (
-            <Icon name={iconName} size={28} color={color} />
+            <Icon name={iconName} size={size} color={color} />
           )}
         </View>
       </Pressable>

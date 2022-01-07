@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Text } from "react-native";
 import { AccordionGroup, withTheme, AccordionItem } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
@@ -50,6 +51,15 @@ function AccordionExample({ theme }) {
             style={{ fontSize: 20, color: theme.colors.primary }}
             iconColor={theme.colors.medium}
           />
+        </AccordionGroup>
+      </Section>
+      <Section title="Accordion with text inside">
+        <AccordionGroup
+          label={"Basic"}
+          caretColor="purple"
+          style={{ padding: 8 }}
+        >
+          <Text>Hello!</Text>
         </AccordionGroup>
       </Section>
     </Container>

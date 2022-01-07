@@ -12,6 +12,13 @@ export const SEED_DATA = {
   tag: "AccordionGroup",
   description: "An expandable container containing components",
   category: COMPONENT_TYPES.container,
+  layout: {
+    paddingTop: 8,
+    paddingRight: 8,
+    paddingBottom: 8,
+    paddingLeft: 8,
+    fontSize: 16,
+  },
   props: {
     openColor: createColorProp({
       label: "Open text color",

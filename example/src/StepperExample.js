@@ -5,7 +5,6 @@ import Section, { Container } from "./Section";
 function StepperExample({ theme }) {
   const [value, setValue] = React.useState(0);
   const [value2, setValue2] = React.useState(0);
-  // const [value3, setValue3] = React.useState(0);
   const [value4, setValue4] = React.useState(0);
   const handleChange = (v) => setValue(v);
 

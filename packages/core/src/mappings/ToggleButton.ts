@@ -14,7 +14,7 @@ import {
 export const SEED_DATA = {
   name: "Toggle Button",
   tag: "ToggleButton",
-  category: COMPONENT_TYPES.button,
+  category: COMPONENT_TYPES.deprecated,
   layout: {},
   triggers: [Triggers.OnPress],
   props: {

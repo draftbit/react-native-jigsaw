@@ -10,6 +10,9 @@ export const Triggers = {
   OnBlur: "ON_BLUR",
   OnSwipe: "ON_SWIPE",
   OnSelect: "ON_SELECT",
+  OnCheck: "ON_CHECK",
+  OnUncheck: "ON_UNCHECK",
+  OnPressIcon: "ON_PRESS_ICON",
 };
 
 export const PROP_TYPES = {
@@ -679,7 +682,7 @@ export const NUMBER_INPUT_PROPS = {
     description: "The text that is shown on load when no value is available.",
     editable: true,
     required: false,
-    defaultValue: "0",
+    defaultValue: "Input a number...",
     formType: FORM_TYPES.string,
     propType: PROP_TYPES.STRING,
   },

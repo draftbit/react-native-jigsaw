@@ -9,8 +9,8 @@ export interface SwiperProps {
   timeout?: number;
   prevTitle?: string;
   nextTitle?: string;
-  prevTitleColor: string;
-  nextTitleColor: string;
+  prevTitleColor?: string;
+  nextTitleColor?: string;
   dotsTouchable?: boolean;
   dotColor?: string;
   dotActiveColor?: string;
@@ -25,8 +25,8 @@ const Swiper = ({
   from = 0,
   prevTitle = "",
   nextTitle = "",
-  prevTitleColor = "red",
-  nextTitleColor = "blue",
+  prevTitleColor,
+  nextTitleColor,
   dotsTouchable = true,
   dotColor,
   dotActiveColor,
@@ -45,8 +45,12 @@ const Swiper = ({
         prevTitleStyle: { color: prevTitleColor },
         nextTitleStyle: { color: nextTitleColor },
         dotsTouchable,
-        dotActiveStyle: { backgroundColor: dotActiveColor },
-        dotProps: { badgeStyle: { backgroundColor: dotColor } },
+        ...(dotColor
+          ? { dotProps: { badgeStyle: { backgroundColor: dotColor } } }
+          : {}),
+        ...(dotActiveColor
+          ? { dotActiveStyle: { backgroundColor: dotActiveColor } }
+          : {}),
       }}
     >
       {children}

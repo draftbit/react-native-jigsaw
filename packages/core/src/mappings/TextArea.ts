@@ -24,8 +24,6 @@ export const SEED_DATA = {
     paddingTop: 8,
     paddingBottom: 8,
     borderRadius: 8,
-    textAlignVertical: "top",
-    minHeight: 100,
   },
   triggers: [Triggers.OnChangeText],
   props: {

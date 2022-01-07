@@ -10,6 +10,9 @@ export const Triggers = {
   OnBlur: "ON_BLUR",
   OnSwipe: "ON_SWIPE",
   OnSelect: "ON_SELECT",
+  OnCheck: "ON_CHECK",
+  OnUncheck: "ON_UNCHECK",
+  OnPressIcon: "ON_PRESS_ICON",
 };
 
 export const PROP_TYPES = {

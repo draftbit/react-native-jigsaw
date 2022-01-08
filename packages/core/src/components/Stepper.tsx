@@ -84,7 +84,8 @@ const Stepper: React.FC<Props> = ({
         onPress={handleMinus}
         size={iconSize}
         color={iconColor}
-        disabled={stateValue === 0}
+        disabled={stateValue === min}
+        style={stateValue === min ? { opacity: 0.5 } : {}}
       />
       <Text
         style={[
@@ -106,6 +107,8 @@ const Stepper: React.FC<Props> = ({
         onPress={handlePlus}
         size={iconSize}
         color={iconColor}
+        disabled={stateValue === max}
+        style={stateValue === max ? { opacity: 0.5 } : {}}
       />
     </View>
   );

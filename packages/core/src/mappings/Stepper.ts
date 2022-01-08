@@ -26,7 +26,6 @@ export const SEED_DATA = [
       min: createStaticNumberProp({
         label: "Minimum",
         description: "Minimum Number",
-        defaultValue: 0,
       }),
       max: createStaticNumberProp({
         label: "Maximum",

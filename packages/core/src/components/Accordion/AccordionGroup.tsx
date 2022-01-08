@@ -62,7 +62,14 @@ const AccordionGroup = ({
         onPress={handlePressAction}
         accessibilityRole="button"
       >
-        {icon ? <Icon name={icon} size={iconSize} color={labelColor} /> : null}
+        {icon ? (
+          <Icon
+            name={icon}
+            size={iconSize}
+            color={labelColor}
+            style={styles.icon}
+          />
+        ) : null}
         <View style={styles.content}>
           <Text
             selectable={false}
@@ -96,15 +103,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  label: {
-    fontSize: 16,
-  },
   content: {
     flex: 1,
     justifyContent: "center",
   },
   icon: {
-    marginLeft: 8,
+    marginRight: 8,
   },
 });
 

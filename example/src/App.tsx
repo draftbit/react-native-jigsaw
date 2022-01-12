@@ -60,6 +60,8 @@ import StarRatingExample from "./StarRatingExample";
 
 import SwiperExample from "./SwiperExample";
 
+import LinearGradientExample from "./LinearGradientExample";
+
 const ROUTES = {
   Layout: LayoutExample,
   Icon: IconExample,
@@ -80,6 +82,7 @@ const ROUTES = {
   // Controllers: ControllerExample,
   DatePicker: DatePickerExample,
   FieldSearchBarFull: FieldSearchBarFullExample,
+  LinearGradient: LinearGradientExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
   // Header: HeaderExample,
   Picker: PickerExample,

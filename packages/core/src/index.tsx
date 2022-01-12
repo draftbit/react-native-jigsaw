@@ -26,6 +26,7 @@ export { default as TextField } from "./components/TextField";
 export { default as ToggleButton } from "./components/ToggleButton";
 export { default as Touchable } from "./components/Touchable";
 export { AccordionGroup, AccordionItem } from "./components/Accordion";
+export { default as LinearGradient } from "./components/LinearGradient";
 export {
   ActionSheet,
   ActionSheetItem,

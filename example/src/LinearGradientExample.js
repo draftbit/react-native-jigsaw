@@ -3,7 +3,7 @@ import { Text } from "react-native";
 import { ScreenContainer, withTheme, LinearGradient } from "@draftbit/ui";
 import Section from "./Section";
 
-function LinearGradientExample({ theme }) {
+function LinearGradientExample() {
   return (
     <ScreenContainer hasSafeArea={false} scrollable={false}>
       <Section title="Linear Gradient">

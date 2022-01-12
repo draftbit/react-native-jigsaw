@@ -9,31 +9,31 @@ import {
   PROP_TYPES,
 } from "@draftbit/types";
 
-type Props = {
+type LinearGradientComponentProps = {
   color1: string;
   color2: string;
-  color3: string;
+  color3?: string;
   startX: number;
   startY: number;
   endX: number;
   endY: number;
-  children?: any;
+  children?: React.ReactNode;
   style?: StyleProp<ViewStyle>;
 };
 
-const LinearGradientComp = ({
+const LinearGradientComponent = ({
   children,
   color1,
   color2,
-  color3,
+  color3 = undefined,
   startX = 0,
   startY = 0,
   endX = 100,
-  endY = 100,
+  endY = 0,
   style,
-}: Props) => {
+}: LinearGradientComponentProps) => {
   const { viewStyles } = extractStyles(style);
-  const colors = [color1, color2, color3].filter((color: string) => !!color);
+  const colors = [color1, color2, color3].filter((color) => color) as string[];
   const start = { x: startX / 100, y: startY / 100 };
   const end = { x: endX / 100, y: endY / 100 };
   return (
@@ -43,7 +43,7 @@ const LinearGradientComp = ({
   );
 };
 
-export default LinearGradientComp;
+export default LinearGradientComponent;
 
 export const SEED_DATA = {
   name: "LinearGradient",

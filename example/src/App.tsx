@@ -82,6 +82,7 @@ const ROUTES = {
   // Controllers: ControllerExample,
   DatePicker: DatePickerExample,
   FieldSearchBarFull: FieldSearchBarFullExample,
+  LinearGradient: LinearGradientExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
   // Header: HeaderExample,
   Picker: PickerExample,
@@ -98,7 +99,6 @@ const ROUTES = {
   TextField: TextFieldExample,
   TextInput: TextInputExample,
   WebView: WebViewExample,
-  LinearGradient: LinearGradientExample,
 };
 
 let customFonts = {

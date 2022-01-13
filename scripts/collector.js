@@ -10,7 +10,6 @@ const { MAPPING_PATH } = require("./paths");
 
 const IGNORED_FILES = [
   "Query.js", // doesn't work at all
-  "LinearGradient.js", // missing gradient UI
 ];
 
 const ERROR_FILES = [];

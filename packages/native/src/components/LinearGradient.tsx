@@ -29,7 +29,7 @@ const LinearGradientComponent = ({
   const start = { x: startX / 100, y: startY / 100 };
   const end = { x: endX / 100, y: endY / 100 };
   return (
-    <LinearGradient {...{ colors, start, end, style }}>
+    <LinearGradient colors={colors} start={start} end={end} style={style}>
       {children}
     </LinearGradient>
   );

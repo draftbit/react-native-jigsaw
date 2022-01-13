@@ -1,7 +1,6 @@
 import * as React from "react";
 import { StyleProp, ViewStyle } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { extractStyles } from "../utilities";
 
 type LinearGradientComponentProps = {
   color1: string;
@@ -24,9 +23,8 @@ const LinearGradientComponent = ({
   startY = 0,
   endX = 100,
   endY = 100,
-  style: propStyle,
+  style,
 }: LinearGradientComponentProps) => {
-  const { viewStyles: style } = extractStyles(propStyle);
   const colors = [color1, color2, color3].filter((color) => color) as string[];
   const start = { x: startX / 100, y: startY / 100 };
   const end = { x: endX / 100, y: endY / 100 };

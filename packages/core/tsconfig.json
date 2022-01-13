@@ -1,6 +1,5 @@
 {
   "extends": "../../tsconfig.json",
-  "target": "es6",
   "references": [{ "path": "../types" }],
   "compilerOptions": {
     "outDir": "./lib/typescript"

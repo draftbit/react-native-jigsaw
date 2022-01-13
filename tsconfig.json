@@ -35,7 +35,7 @@
   },
   "ts-node": {
     "compilerOptions": {
-      "module": "commonjs"
+      "module": "es6"
     }
   }
 }

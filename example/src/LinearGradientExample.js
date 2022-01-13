@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Text } from "react-native";
-import { ScreenContainer, withTheme, LinearGradient } from "@draftbit/ui";
+import { ScreenContainer, withTheme } from "@draftbit/ui";
+import { LinearGradient } from "@draftbit/native";
 import Section from "./Section";
 
 function LinearGradientExample() {

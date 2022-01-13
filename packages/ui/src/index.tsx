@@ -38,7 +38,6 @@ export {
   ActionSheetCancel,
   Swiper,
   SwiperItem,
-  LinearGradient,
 } from "@draftbit/core";
 
 /**

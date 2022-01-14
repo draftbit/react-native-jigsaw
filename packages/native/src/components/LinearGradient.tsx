@@ -16,8 +16,8 @@ type LinearGradientComponentProps = {
 
 const LinearGradientComponent = ({
   children,
-  color1,
-  color2,
+  color1 = "rgba(90, 69, 255, 1)",
+  color2 = "rgba(251, 252, 253, 1)",
   color3 = undefined,
   startX = 0,
   startY = 0,

@@ -73,11 +73,11 @@ export const SEED_DATA = {
     }),
     color2: createColorProp({
       label: "Color 2",
-      defaultValue: "rgba(251, 252, 253, 1)",
+      defaultValue: "secondary",
     }),
     color1: createColorProp({
       label: "Color 1",
-      defaultValue: "rgba(90, 69, 255, 1)",
+      defaultValue: "primary",
     }),
   },
 };

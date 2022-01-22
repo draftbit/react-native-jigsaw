@@ -48,7 +48,7 @@
     "json-server": "^0.16.3",
     "lerna": "^4.0.0",
     "lint-staged": ">=10",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.1.1",
     "prettier": "^2.3.0",
     "react-native-builder-bob": "^0.18.2",
     "rimraf": "^3.0.2",

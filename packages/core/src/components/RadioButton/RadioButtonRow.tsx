@@ -13,7 +13,7 @@ import { useRadioButtonGroupContext } from "./context";
 import type { IconSlot } from "../../interfaces/Icon";
 import { Direction as GroupDirection } from "./context";
 import Touchable from "../Touchable";
-import { extractStyles, getRealValue } from "../../utilities";
+import { extractStyles, getValueForRadioButton } from "../../utilities";
 
 export enum Direction {
   Row = "row",
@@ -22,7 +22,7 @@ export enum Direction {
 
 export interface RadioButtonRowProps extends Omit<RadioButtonProps, "onPress"> {
   label: string | React.ReactNode;
-  value: string; // A string (or number that will be parsed String(number)) that this radio button row represents when selected
+  value: string | number; // A string (or number that will be parsed String(number)) that this radio button row represents when selected
   color?: string;
   unselectedColor?: string;
   labelContainerStyle: StyleProp<ViewStyle>;
@@ -79,8 +79,8 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
     direction: parentDirection,
   } = useRadioButtonGroupContext();
 
-  const realValue = getRealValue(value);
-  const realContextValue = getRealValue(contextValue);
+  const realValue = getValueForRadioButton(value);
+  const realContextValue = getValueForRadioButton(contextValue);
   const isSelected =
     selected ??
     (realContextValue && realValue && realContextValue === realValue);

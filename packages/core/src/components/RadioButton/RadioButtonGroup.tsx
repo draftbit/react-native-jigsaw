@@ -1,7 +1,7 @@
 import * as React from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
 import type { Theme } from "../../styles/DefaultTheme";
-import { getRealValue } from "../../utilities";
+import { getValueForRadioButton } from "../../utilities";
 import { radioButtonGroupContext, Direction } from "./context";
 export interface RadioButtonGroupProps {
   direction?: Direction;
@@ -29,7 +29,7 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   >();
 
   React.useEffect(() => {
-    const realValue = getRealValue(value);
+    const realValue = getValueForRadioButton(value);
 
     if (realValue) {
       setInternalValue(realValue);
@@ -37,19 +37,19 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   }, [value]);
 
   React.useEffect(() => {
-    const realDefaultValue = getRealValue(defaultValue);
+    const realDefaultValue = getValueForRadioButton(defaultValue);
 
     if (realDefaultValue) {
       setInternalValue(realDefaultValue);
     }
   }, [defaultValue]);
 
-  const handleValueChange = (newValue: any) => {
-    const realNewValue = getRealValue(newValue);
+  const handleValueChange = (newValue?: string | number) => {
+    const realNewValue = getValueForRadioButton(newValue);
 
     if (realNewValue) {
-      setInternalValue(newValue);
-      onValueChange?.(newValue);
+      setInternalValue(realNewValue);
+      onValueChange?.(realNewValue);
     }
   };
 

@@ -6,7 +6,7 @@ export interface RadioButtonGroupProps {
   direction?: Direction;
   style?: StyleProp<ViewStyle>;
   value?: string;
-  onValueChange?: (value: string) => void;
+  onValueChange?: (value: string | number) => void;
   defaultValue?: string;
   theme: Theme;
   children: React.ReactNode;
@@ -28,13 +28,13 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   );
 
   React.useEffect(() => {
-    if (value != null) {
+    if (value !== null) {
       setInternalValue(value);
     }
   }, [value]);
 
   React.useEffect(() => {
-    if (defaultValue != null) {
+    if (defaultValue !== null) {
       setInternalValue(defaultValue);
     }
   }, [defaultValue]);
@@ -60,7 +60,8 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
     <View style={[{ minHeight: 40 }, style]} {...rest}>
       <Provider
         value={{
-          value: internalValue || "",
+          // @ts-ignore
+          value: internalValue === 0 ? 0 : internalValue || "",
           onValueChange: handleValueChange,
           direction,
         }}

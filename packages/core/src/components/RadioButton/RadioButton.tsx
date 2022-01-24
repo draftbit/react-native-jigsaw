@@ -27,7 +27,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   value,
   selected,
   unselectedColor,
-  onPress = () => {},
+  onPress,
   size = Config.radioButtonSize,
   selectedIcon = "MaterialIcons/radio-button-checked",
   unselectedIcon = "MaterialIcons/radio-button-unchecked",
@@ -36,16 +36,16 @@ const RadioButton: React.FC<RadioButtonProps> = ({
 }) => {
   const { value: contextValue, onValueChange } = useRadioButtonGroupContext();
 
-  const handlePress = () => {
-    onPress && onPress();
+  // @ts-expect-error
+  const valueExists = value === 0 || value;
 
-    if (onValueChange && value) {
-      onValueChange(value);
-    }
+  const handlePress = () => {
+    onPress?.();
+    valueExists && onValueChange(value);
   };
 
   const isSelected =
-    selected || (contextValue != null && contextValue === value);
+    selected || (contextValue !== null && contextValue === value);
 
   return (
     <IconButton

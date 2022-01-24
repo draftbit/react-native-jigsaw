@@ -50,10 +50,12 @@ const renderLabel = (
   labelStyle: StyleProp<TextStyle>,
   textStyle: StyleProp<TextStyle>
 ) => {
-  console.log({ label, labelStyle, textStyle });
-
   if (typeof label === "string") {
-    return <Text style={[textStyle, labelStyle]}>{label}</Text>;
+    return (
+      <Text style={[labelStyle, textStyle] /* NOTE order right? */}>
+        {label}
+      </Text>
+    );
   } else {
     return <>{label}</>;
   }
@@ -88,8 +90,6 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
     (realContextValue && realValue && realContextValue === realValue);
 
   const handlePress = () => {
-    console.log("RadioButtonRow:realValue", realValue);
-
     if (realValue) {
       onPress?.(realValue);
       onValueChange?.(realValue);
@@ -101,7 +101,11 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
   return (
     <Touchable
       onPress={handlePress}
-      style={[styles.mainParent, { flexDirection: direction }, viewStyles]}
+      style={[
+        styles.mainParent,
+        { flexDirection: direction },
+        viewStyles /* NOTE order right? */,
+      ]}
       disabled={disabled}
       {...rest}
     >

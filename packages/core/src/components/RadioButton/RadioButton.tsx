@@ -43,11 +43,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
     selected ??
     (realContextValue && realValue && realContextValue === realValue);
 
-  console.log({ realValue, realContextValue, isSelected });
-
   const handlePress = () => {
-    console.log("RadioButton:realValue", realValue);
-
     if (realValue) {
       onPress?.(realValue);
       onValueChange?.(realValue);

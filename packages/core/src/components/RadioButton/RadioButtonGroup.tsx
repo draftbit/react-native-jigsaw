@@ -18,7 +18,7 @@ const { Provider } = radioButtonGroupContext;
 const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   direction = Direction.Vertical,
   value,
-  onValueChange = () => {},
+  onValueChange,
   defaultValue,
   style,
   children,
@@ -48,8 +48,6 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
     const realNewValue = getRealValue(newValue);
 
     if (realNewValue) {
-      console.log("RadioButtonGroup:realValue", realNewValue);
-
       setInternalValue(newValue);
       onValueChange?.(newValue);
     }

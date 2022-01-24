@@ -65,7 +65,8 @@ export function applyStyles(
 }
 
 export function getRealValue(value: any) {
-  console.log("getRealValue", value);
+  // console.log("getRealValue typeof", typeof value);
+  // console.log("getRealValue value", value);
   switch (typeof value) {
     case "string":
       return value;

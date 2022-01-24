@@ -1,4 +1,5 @@
 import { StyleSheet, StyleProp, TextStyle } from "react-native";
+import { isString, isNumber } from "lodash";
 
 export function extractStyles(style: StyleProp<any>) {
   const {
@@ -64,15 +65,9 @@ export function applyStyles(
   return flattenedStyles;
 }
 
-export function getRealValue(value: any) {
-  // console.log("getRealValue typeof", typeof value);
-  // console.log("getRealValue value", value);
-  switch (typeof value) {
-    case "string":
-      return value;
-    case "number":
-      return String(value);
-    default:
-      return undefined;
-  }
+export function getRealValue(value: string | number | undefined) {
+  if (isString(value)) return value;
+  else if (isNumber(value)) return String(value);
+  else if (!value) return undefined;
+  else throw new Error(`Invalid value: ${value}`);
 }

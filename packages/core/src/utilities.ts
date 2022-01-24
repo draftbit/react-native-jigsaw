@@ -63,3 +63,15 @@ export function applyStyles(
 
   return flattenedStyles;
 }
+
+export function getRealValue(value: any) {
+  console.log("getRealValue", value);
+  switch (typeof value) {
+    case "string":
+      return value;
+    case "number":
+      return String(value);
+    default:
+      return undefined;
+  }
+}

@@ -13,7 +13,7 @@ import { useRadioButtonGroupContext } from "./context";
 import type { IconSlot } from "../../interfaces/Icon";
 import { Direction as GroupDirection } from "./context";
 import Touchable from "../Touchable";
-import { extractStyles } from "../../utilities";
+import { extractStyles, getRealValue } from "../../utilities";
 
 export enum Direction {
   Row = "row",
@@ -22,7 +22,7 @@ export enum Direction {
 
 export interface RadioButtonRowProps extends Omit<RadioButtonProps, "onPress"> {
   label: string | React.ReactNode;
-  value: string; // A string that this radio button row represents when selected
+  value?: string; // A string (or JS number to be parsed to String) that this radio button row represents when selected
   color?: string;
   unselectedColor?: string;
   labelContainerStyle: StyleProp<ViewStyle>;
@@ -46,14 +46,16 @@ const getRadioButtonAlignment = (
 };
 
 const renderLabel = (
-  value: string | React.ReactNode,
+  label: string | React.ReactNode,
   labelStyle: StyleProp<TextStyle>,
   textStyle: StyleProp<TextStyle>
 ) => {
-  if (typeof value === "string") {
-    return <Text style={[labelStyle, textStyle]}>{value}</Text>;
+  console.log({ label, labelStyle, textStyle });
+
+  if (typeof label === "string") {
+    return <Text style={[textStyle, labelStyle]}>{label}</Text>;
   } else {
-    return <>{value}</>;
+    return <>{label}</>;
   }
 };
 
@@ -63,7 +65,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
   value,
   color,
   unselectedColor,
-  onPress = () => {},
+  onPress,
   labelContainerStyle,
   labelStyle,
   radioButtonStyle,
@@ -79,9 +81,19 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
     direction: parentDirection,
   } = useRadioButtonGroupContext();
 
+  const realValue = getRealValue(value);
+  const realContextValue = getRealValue(contextValue);
+  const isSelected =
+    selected ??
+    (realContextValue && realValue && realContextValue === realValue);
+
   const handlePress = () => {
-    onPress(value);
-    onValueChange && onValueChange(value);
+    console.log("RadioButtonRow:realValue", realValue);
+
+    if (realValue) {
+      onPress?.(realValue);
+      onValueChange?.(realValue);
+    }
   };
 
   const { textStyles, viewStyles } = extractStyles(style);
@@ -112,12 +124,10 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
       >
         <RadioButton
           Icon={Icon}
-          selected={
-            selected || (contextValue != null && contextValue === value)
-          }
+          selected={isSelected ? true : false}
+          value={realValue}
           color={color}
           unselectedColor={unselectedColor}
-          onPress={handlePress}
           style={radioButtonStyle}
         />
       </View>

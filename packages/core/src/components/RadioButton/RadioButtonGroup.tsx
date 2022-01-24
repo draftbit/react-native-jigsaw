@@ -1,13 +1,14 @@
 import * as React from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
 import type { Theme } from "../../styles/DefaultTheme";
+import { getRealValue } from "../../utilities";
 import { radioButtonGroupContext, Direction } from "./context";
 export interface RadioButtonGroupProps {
   direction?: Direction;
   style?: StyleProp<ViewStyle>;
   value?: string;
-  onValueChange?: (value: string | number) => void;
-  defaultValue?: string;
+  onValueChange?: (value: string) => void;
+  defaultValue?: string | number;
   theme: Theme;
   children: React.ReactNode;
 }
@@ -23,25 +24,35 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   children,
   ...rest
 }) => {
-  const [internalValue, setInternalValue] = React.useState<string | undefined>(
-    value || defaultValue
-  );
+  const [internalValue, setInternalValue] = React.useState<
+    string | undefined
+  >();
 
   React.useEffect(() => {
-    if (value !== null) {
-      setInternalValue(value);
+    const realValue = getRealValue(value);
+
+    if (realValue) {
+      setInternalValue(realValue);
     }
   }, [value]);
 
   React.useEffect(() => {
-    if (defaultValue !== null) {
-      setInternalValue(defaultValue);
+    const realDefaultValue = getRealValue(defaultValue);
+
+    if (realDefaultValue) {
+      setInternalValue(realDefaultValue);
     }
   }, [defaultValue]);
 
-  const handleValueChange = (newValue: string) => {
-    setInternalValue(newValue);
-    onValueChange(newValue);
+  const handleValueChange = (newValue: any) => {
+    const realNewValue = getRealValue(newValue);
+
+    if (realNewValue) {
+      console.log("RadioButtonGroup:realValue", realNewValue);
+
+      setInternalValue(newValue);
+      onValueChange?.(newValue);
+    }
   };
 
   const _containerStyle: StyleProp<ViewStyle> = [
@@ -60,8 +71,7 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
     <View style={[{ minHeight: 40 }, style]} {...rest}>
       <Provider
         value={{
-          // @ts-ignore
-          value: internalValue === 0 ? 0 : internalValue || "",
+          value: internalValue || "",
           onValueChange: handleValueChange,
           direction,
         }}

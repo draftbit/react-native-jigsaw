@@ -3,6 +3,7 @@ import { StyleProp, ViewStyle } from "react-native";
 
 import Config from "../Config";
 import IconButton from "../IconButton";
+import { getRealValue } from "../../utilities";
 import { useRadioButtonGroupContext } from "./context";
 
 import type { IconSlot } from "../../interfaces/Icon";
@@ -13,7 +14,7 @@ export type RadioButtonProps = {
   color?: string;
   value?: string;
   unselectedColor?: string;
-  onPress?: () => void;
+  onPress?: (value: string) => void;
   style?: StyleProp<ViewStyle>;
   size?: number;
   selectedIcon?: string;
@@ -36,16 +37,22 @@ const RadioButton: React.FC<RadioButtonProps> = ({
 }) => {
   const { value: contextValue, onValueChange } = useRadioButtonGroupContext();
 
-  // @ts-expect-error
-  const valueExists = value === 0 || value;
+  const realValue = getRealValue(value);
+  const realContextValue = getRealValue(contextValue);
+  const isSelected =
+    selected ??
+    (realContextValue && realValue && realContextValue === realValue);
+
+  console.log({ realValue, realContextValue, isSelected });
 
   const handlePress = () => {
-    onPress?.();
-    valueExists && onValueChange(value);
-  };
+    console.log("RadioButton:realValue", realValue);
 
-  const isSelected =
-    selected || (contextValue !== null && contextValue === value);
+    if (realValue) {
+      onPress?.(realValue);
+      onValueChange?.(realValue);
+    }
+  };
 
   return (
     <IconButton

@@ -22,7 +22,7 @@ export enum Direction {
 
 export interface RadioButtonRowProps extends Omit<RadioButtonProps, "onPress"> {
   label: string | React.ReactNode;
-  value?: string; // A string (or JS number to be parsed to String) that this radio button row represents when selected
+  value: string; // A string (or number that will be parsed String(number)) that this radio button row represents when selected
   color?: string;
   unselectedColor?: string;
   labelContainerStyle: StyleProp<ViewStyle>;
@@ -51,11 +51,7 @@ const renderLabel = (
   textStyle: StyleProp<TextStyle>
 ) => {
   if (typeof label === "string") {
-    return (
-      <Text style={[labelStyle, textStyle] /* NOTE order right? */}>
-        {label}
-      </Text>
-    );
+    return <Text style={[labelStyle, textStyle]}>{label}</Text>;
   } else {
     return <>{label}</>;
   }
@@ -101,11 +97,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
   return (
     <Touchable
       onPress={handlePress}
-      style={[
-        styles.mainParent,
-        { flexDirection: direction },
-        viewStyles /* NOTE order right? */,
-      ]}
+      style={[styles.mainParent, { flexDirection: direction }, viewStyles]}
       disabled={disabled}
       {...rest}
     >

@@ -60,7 +60,7 @@ const renderLabel = (
 const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
   Icon,
   label,
-  value,
+  value = "",
   color,
   unselectedColor,
   onPress,
@@ -81,15 +81,11 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
 
   const realValue = getValueForRadioButton(value);
   const realContextValue = getValueForRadioButton(contextValue);
-  const isSelected =
-    selected ??
-    (realContextValue && realValue && realContextValue === realValue);
+  const isSelected = selected ?? realContextValue === realValue;
 
   const handlePress = () => {
-    if (realValue) {
-      onPress?.(realValue);
-      onValueChange?.(realValue);
-    }
+    onPress?.(realValue);
+    onValueChange?.(realValue);
   };
 
   const { textStyles, viewStyles } = extractStyles(style);

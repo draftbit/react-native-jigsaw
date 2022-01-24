@@ -21,7 +21,7 @@ const SingleRadioButtonWrapper = ({ label, children }) => (
 );
 
 const RadioButtonGroupExample = ({ theme }) => {
-  const [selected, onSelect] = React.useState("1");
+  const [selected, onSelect] = React.useState("0");
   const [selected2, onSelect2] = React.useState("1");
   const handleSelect = (value) => onSelect(value);
   return (

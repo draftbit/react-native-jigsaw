@@ -65,13 +65,11 @@ export function applyStyles(
   return flattenedStyles;
 }
 
-export function getValueForRadioButton(value?: string | number) {
+export function getValueForRadioButton(value: string | number) {
   if (isString(value)) {
     return value;
   } else if (isNumber(value)) {
     return String(value);
-  } else if (value === undefined) {
-    return undefined;
   } else {
     throw new Error(`Invalid value: ${value}`);
   }

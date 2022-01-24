@@ -6,7 +6,7 @@ import { radioButtonGroupContext, Direction } from "./context";
 export interface RadioButtonGroupProps {
   direction?: Direction;
   style?: StyleProp<ViewStyle>;
-  value?: string;
+  value: string;
   onValueChange?: (value: string) => void;
   defaultValue?: string | number;
   theme: Theme;
@@ -17,40 +17,32 @@ const { Provider } = radioButtonGroupContext;
 
 const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   direction = Direction.Vertical,
-  value,
+  value = "",
   onValueChange,
-  defaultValue,
+  defaultValue = "",
   style,
   children,
   ...rest
 }) => {
-  const [internalValue, setInternalValue] = React.useState<
-    string | undefined
-  >();
+  const [internalValue, setInternalValue] = React.useState<string>("");
 
   React.useEffect(() => {
     const realValue = getValueForRadioButton(value);
 
-    if (realValue) {
-      setInternalValue(realValue);
-    }
+    setInternalValue(realValue);
   }, [value]);
 
   React.useEffect(() => {
     const realDefaultValue = getValueForRadioButton(defaultValue);
 
-    if (realDefaultValue) {
-      setInternalValue(realDefaultValue);
-    }
+    setInternalValue(realDefaultValue);
   }, [defaultValue]);
 
-  const handleValueChange = (newValue?: string | number) => {
+  const handleValueChange = (newValue: string | number) => {
     const realNewValue = getValueForRadioButton(newValue);
 
-    if (realNewValue) {
-      setInternalValue(realNewValue);
-      onValueChange?.(realNewValue);
-    }
+    setInternalValue(realNewValue);
+    onValueChange?.(realNewValue);
   };
 
   const _containerStyle: StyleProp<ViewStyle> = [
@@ -69,7 +61,7 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
     <View style={[{ minHeight: 40 }, style]} {...rest}>
       <Provider
         value={{
-          value: internalValue || "",
+          value: internalValue ?? "",
           onValueChange: handleValueChange,
           direction,
         }}

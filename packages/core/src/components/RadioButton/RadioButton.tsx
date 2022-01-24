@@ -12,7 +12,7 @@ export type RadioButtonProps = {
   selected?: boolean;
   disabled?: boolean;
   color?: string;
-  value?: string | number;
+  value: string | number;
   unselectedColor?: string;
   onPress?: (value: string) => void;
   style?: StyleProp<ViewStyle>;
@@ -25,7 +25,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   Icon,
   disabled = false,
   color,
-  value,
+  value = "",
   selected,
   unselectedColor,
   onPress,
@@ -39,15 +39,11 @@ const RadioButton: React.FC<RadioButtonProps> = ({
 
   const realValue = getValueForRadioButton(value);
   const realContextValue = getValueForRadioButton(contextValue);
-  const isSelected =
-    selected ??
-    (realContextValue && realValue && realContextValue === realValue);
+  const isSelected = selected ?? realContextValue === realValue;
 
   const handlePress = () => {
-    if (realValue) {
-      onPress?.(realValue);
-      onValueChange?.(realValue);
-    }
+    onPress?.(realValue);
+    onValueChange?.(realValue);
   };
 
   return (

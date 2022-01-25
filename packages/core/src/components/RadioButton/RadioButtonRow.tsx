@@ -46,14 +46,14 @@ const getRadioButtonAlignment = (
 };
 
 const renderLabel = (
-  label: string | React.ReactNode,
+  value: string | React.ReactNode,
   labelStyle: StyleProp<TextStyle>,
   textStyle: StyleProp<TextStyle>
 ) => {
-  if (typeof label === "string") {
-    return <Text style={[labelStyle, textStyle]}>{label}</Text>;
+  if (typeof value === "string") {
+    return <Text style={[labelStyle, textStyle]}>{value}</Text>;
   } else {
-    return <>{label}</>;
+    return <>{value}</>;
   }
 };
 
@@ -116,7 +116,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
       >
         <RadioButton
           Icon={Icon}
-          selected={isSelected ? true : false}
+          selected={isSelected}
           value={realValue}
           color={color}
           unselectedColor={unselectedColor}

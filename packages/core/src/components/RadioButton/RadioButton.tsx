@@ -12,9 +12,9 @@ export type RadioButtonProps = {
   selected?: boolean;
   disabled?: boolean;
   color?: string;
-  value: string | number;
+  value?: string | number;
   unselectedColor?: string;
-  onPress?: (value: string) => void;
+  onPress?: (value?: string) => void;
   style?: StyleProp<ViewStyle>;
   size?: number;
   selectedIcon?: string;

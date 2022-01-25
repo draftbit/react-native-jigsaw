@@ -54,9 +54,9 @@ const RadioButtonGroupExample = ({ theme }) => {
           value={selected}
         >
           <RadioButtonRow label="Zero" value={0} />
-          <RadioButtonRow label="1st" value={1} />
+          <RadioButtonRow label="1st" value={"1"} />
           <RadioButtonRow label="2nd" value={2} />
-          <RadioButtonRow label="3rd" value={3} />
+          <RadioButtonRow label="3rd" value={"3"} />
         </RadioButtonGroup>
       </Section>
 

@@ -61,7 +61,7 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
     <View style={[{ minHeight: 40 }, style]} {...rest}>
       <Provider
         value={{
-          value: internalValue ?? "",
+          value: internalValue || "",
           onValueChange: handleValueChange,
           direction,
         }}

@@ -16,7 +16,7 @@ export const SEED_DATA = {
   tag: "Card",
   description: "A card you can customize however you'd like",
   category: COMPONENT_TYPES.card,
-  triggers: [Triggers.OnPress], //TODO: when we support multiple triggers, add Triggers.OnPressIcon
+  triggers: [Triggers.OnPress, Triggers.OnPressIcon],
   props: {
     onPress: createActionProp(),
     onPressIcon: createActionProp({

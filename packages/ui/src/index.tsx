@@ -1,5 +1,5 @@
 import { Icon } from "@draftbit/native";
-export { AudioPlayer, Icon, WebView } from "@draftbit/native";
+export { AudioPlayer, Icon, LinearGradient, WebView } from "@draftbit/native";
 
 export {
   Avatar,
@@ -74,8 +74,8 @@ import {
   TextField as BaseTextField,
   RadioButton as BaseRadioButton,
   RadioButtonRow as BaseRadioButtonRow,
-  ToggleButton as BaseToggleButton,
   Stepper as BaseStepper,
+  ToggleButton as BaseToggleButton,
   HeaderLarge as BaseHeaderLarge,
   HeaderMedium as BaseHeaderMedium,
   HeaderOverline as BaseHeaderOverline,

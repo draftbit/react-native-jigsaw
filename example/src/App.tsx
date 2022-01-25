@@ -34,7 +34,6 @@ import ContainerExample from "./ContainerExample";
 import DatePickerExample from "./DatePickerExample";
 
 import FABExample from "./FABExample";
-import ToggleButtonExample from "./ToggleButtonExample";
 import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
 
 // import HeaderExample from "./HeaderExample";
@@ -62,6 +61,8 @@ import StarRatingExample from "./StarRatingExample";
 import SwiperExample from "./SwiperExample";
 import TableExample from "./TableExample";
 
+import LinearGradientExample from "./LinearGradientExample";
+
 const ROUTES = {
   Layout: LayoutExample,
   Icon: IconExample,
@@ -71,7 +72,6 @@ const ROUTES = {
   ActionSheet: ActionSheetExample,
   Checkbox: CheckboxExample,
   Card: CardExample,
-  ToggleButton: ToggleButtonExample,
   Accordion: AccordionExample,
   CardBlock: CardBlockExample,
   CardInline: CardInlineExample,
@@ -83,6 +83,7 @@ const ROUTES = {
   // Controllers: ControllerExample,
   DatePicker: DatePickerExample,
   FieldSearchBarFull: FieldSearchBarFullExample,
+  LinearGradient: LinearGradientExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
   // Header: HeaderExample,
   Picker: PickerExample,

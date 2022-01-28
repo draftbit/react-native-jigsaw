@@ -31,7 +31,7 @@ export const SEED_DATA = {
     }),
     direction: createRowDirectionProp(),
     fieldName: createFieldNameProp({
-      defaultValue: "checkboxValue",
+      defaultValue: "checkboxRowValue",
       valuePropName: "value",
       handlerPropName: "onPress",
     }),

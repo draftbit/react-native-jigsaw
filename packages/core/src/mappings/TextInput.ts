@@ -7,6 +7,7 @@ import {
   TEXT_INPUT_PROPS,
   NUMBER_INPUT_PROPS,
   Triggers,
+  createFieldNameProp,
 } from "@draftbit/types";
 
 export const SEED_DATA_PROPS = {
@@ -219,8 +220,13 @@ export const SEED_DATA = [
     },
     triggers: [Triggers.OnChangeText],
     props: {
-      ...NUMBER_INPUT_PROPS,
       ...SEED_DATA_PROPS,
+      ...NUMBER_INPUT_PROPS,
+      fieldName: createFieldNameProp({
+        defaultValue: "numberInputValue",
+        valuePropName: "value",
+        handlerPropName: "onChangeText",
+      }),
     },
   },
 ];

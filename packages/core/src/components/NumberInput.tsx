@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { TextInput } from "react-native";
-import { isString, isNumber } from "lodash";
+import { isString, isNumber, isNaN } from "lodash";
 
 interface Props {
   value?: number | string;
@@ -14,49 +14,42 @@ const NumberInput: React.FC<Props> = ({
   defaultValue,
   ...props
 }) => {
-  const [isDecimal, setIsDecimal] = useState(value && !Number.isInteger(value));
-  const [internalValue, setInternalValue] = useState(0);
-
-  const realValue = value != null ? value : internalValue;
-
-  const formatValueToString = useCallback(
-    (valueToStringify?: number | string) => {
-      if (valueToStringify != null) {
-        if (
-          isString(valueToStringify) &&
-          /^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/.test(valueToStringify)
-        ) {
-          return valueToStringify;
-        } else if (isNumber(valueToStringify)) {
-          return valueToStringify.toString();
+  const formatValueToStringNumber = useCallback(
+    (valueToFormat?: number | string, currentStringNumberValue?: string) => {
+      if (valueToFormat != null) {
+        if (isString(valueToFormat)) {
+          if (/^0[1-9]$/.test(valueToFormat)) {
+            return valueToFormat.slice(1);
+          } else if (
+            currentStringNumberValue?.includes(".") &&
+            valueToFormat === currentStringNumberValue + "."
+          ) {
+            return currentStringNumberValue;
+          } else if (/^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/.test(valueToFormat)) {
+            return valueToFormat;
+          }
+        } else if (isNumber(valueToFormat) && !isNaN(valueToFormat)) {
+          return valueToFormat.toString();
         }
       }
 
-      return "";
+      return "0";
     },
     []
   );
 
-  useEffect(() => {
-    setIsDecimal(formatValueToString(realValue).includes("."));
-  }, [realValue, formatValueToString]);
-
-  const formatDisplayValue = (displayValue?: number | string) => {
-    let stringValue = formatValueToString(displayValue);
-
-    if (isDecimal && !stringValue.includes(".")) {
-      stringValue = `${stringValue}.`;
-    }
-
-    return stringValue;
-  };
+  const [stringNumberValue, setStringNumberValue] = useState(
+    formatValueToStringNumber(value)
+  );
 
   const handleChangeText = (newValue: string) => {
-    const parsedNumber = parseFloat(newValue);
-    const number = isNaN(parsedNumber) ? 0 : parsedNumber;
+    const newStringNumberValue = formatValueToStringNumber(
+      newValue,
+      stringNumberValue
+    );
+    const number = parseFloat(newStringNumberValue);
 
-    setIsDecimal(newValue.includes("."));
-    setInternalValue(number);
+    setStringNumberValue(newStringNumberValue);
     onChangeText?.(number);
   };
 
@@ -64,8 +57,8 @@ const NumberInput: React.FC<Props> = ({
     <TextInput
       keyboardType="numeric"
       {...props}
-      value={formatDisplayValue(realValue)}
-      defaultValue={formatDisplayValue(defaultValue)}
+      value={stringNumberValue}
+      defaultValue={formatValueToStringNumber(defaultValue)}
       onChangeText={handleChangeText}
     />
   );

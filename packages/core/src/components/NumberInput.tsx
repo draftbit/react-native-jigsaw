@@ -10,11 +10,14 @@ interface Props {
 
 const NumberInput: React.FC<Props> = ({
   onChangeText,
-  value = "",
-  defaultValue = "",
+  value,
+  defaultValue,
   ...props
 }) => {
   const [isDecimal, setIsDecimal] = useState(value && !Number.isInteger(value));
+  const [internalValue, setInternalValue] = useState(0);
+
+  const realValue = value != null ? value : internalValue;
 
   const formatValueToString = useCallback(
     (valueToStringify?: number | string) => {
@@ -23,7 +26,6 @@ const NumberInput: React.FC<Props> = ({
           isString(valueToStringify) &&
           /^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/.test(valueToStringify)
         ) {
-          console.log("is string", value);
           return valueToStringify;
         } else if (isNumber(valueToStringify)) {
           return valueToStringify.toString();
@@ -32,17 +34,15 @@ const NumberInput: React.FC<Props> = ({
 
       return "";
     },
-    [value]
+    []
   );
 
   useEffect(() => {
-    if (value) {
-      setIsDecimal(formatValueToString(value).includes("."));
-    }
-  }, [value, formatValueToString]);
+    setIsDecimal(formatValueToString(realValue).includes("."));
+  }, [realValue, formatValueToString]);
 
-  const makeFinalValue = (valueToMakeFinal?: number | string) => {
-    let stringValue = formatValueToString(valueToMakeFinal);
+  const formatDisplayValue = (displayValue?: number | string) => {
+    let stringValue = formatValueToString(displayValue);
 
     if (isDecimal && !stringValue.includes(".")) {
       stringValue = `${stringValue}.`;
@@ -56,6 +56,7 @@ const NumberInput: React.FC<Props> = ({
     const number = isNaN(parsedNumber) ? 0 : parsedNumber;
 
     setIsDecimal(newValue.includes("."));
+    setInternalValue(number);
     onChangeText?.(number);
   };
 
@@ -63,8 +64,8 @@ const NumberInput: React.FC<Props> = ({
     <TextInput
       keyboardType="numeric"
       {...props}
-      value={makeFinalValue(value)}
-      defaultValue={makeFinalValue(defaultValue)}
+      value={formatDisplayValue(realValue)}
+      defaultValue={formatDisplayValue(defaultValue)}
       onChangeText={handleChangeText}
     />
   );

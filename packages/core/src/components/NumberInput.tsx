@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { FC, useCallback, useState } from "react";
 import { TextInput } from "react-native";
 import { isString, isNumber, isNaN } from "lodash";
 
@@ -8,7 +8,7 @@ interface Props {
   onChangeText?: (value?: number) => void;
 }
 
-const NumberInput: React.FC<Props> = ({
+const NumberInput: FC<Props> = ({
   onChangeText,
   value,
   defaultValue,
@@ -20,13 +20,10 @@ const NumberInput: React.FC<Props> = ({
         if (isString(valueToFormat)) {
           if (/^0[1-9]$/.test(valueToFormat)) {
             return valueToFormat.slice(1);
-          } else if (
-            currentStringNumberValue?.includes(".") &&
-            valueToFormat === currentStringNumberValue + "."
-          ) {
-            return currentStringNumberValue;
           } else if (/^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/.test(valueToFormat)) {
             return valueToFormat;
+          } else if (currentStringNumberValue) {
+            return currentStringNumberValue;
           }
         } else if (isNumber(valueToFormat) && !isNaN(valueToFormat)) {
           return valueToFormat.toString();

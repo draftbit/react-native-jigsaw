@@ -1,55 +1,64 @@
-import React from "react";
+import React, { FC, useCallback, useState } from "react";
 import { TextInput } from "react-native";
+import { isString, isNumber, isNaN } from "lodash";
 
 interface Props {
-  value?: number;
-  defaultValue?: number;
-  onChangeText: (value?: number) => void;
+  value?: number | string;
+  defaultValue?: number | string;
+  onChangeText?: (value?: number) => void;
 }
 
-const NumberInput: React.FC<Props> = ({
+const NumberInput: FC<Props> = ({
   onChangeText,
   value,
   defaultValue,
   ...props
 }) => {
-  const [isDecimal, setIsDecimal] = React.useState(
-    value && !Number.isInteger(value)
+  const formatValueToStringNumber = useCallback(
+    (valueToFormat?: number | string, currentStringNumberValue?: string) => {
+      if (valueToFormat != null) {
+        if (isString(valueToFormat)) {
+          if (/^0[1-9]$/.test(valueToFormat)) {
+            return valueToFormat.slice(1);
+          } else if (/^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/.test(valueToFormat)) {
+            return valueToFormat;
+          } else if (currentStringNumberValue) {
+            return currentStringNumberValue;
+          }
+        } else if (isNumber(valueToFormat) && !isNaN(valueToFormat)) {
+          return valueToFormat.toString();
+        }
+      }
+
+      return "0";
+    },
+    []
   );
-  React.useEffect(() => {
-    if (value) {
-      setIsDecimal(value.toString().includes("."));
-    }
-  }, [value]);
+
+  const [stringNumberValue, setStringNumberValue] = useState(
+    formatValueToStringNumber(value)
+  );
 
   const handleChangeText = (newValue: string) => {
-    if (onChangeText) {
-      const parsedNumber = parseFloat(newValue);
-      const number = isNaN(parsedNumber) ? 0 : parsedNumber;
-      setIsDecimal(newValue.includes("."));
-      onChangeText(number);
-    }
-  };
+    const newStringNumberValue = formatValueToStringNumber(
+      newValue,
+      stringNumberValue
+    );
+    const number = parseFloat(newStringNumberValue);
 
-  let strValue;
-  if (value != undefined) {
-    strValue = value.toString();
-    if (isDecimal && !strValue.includes(".")) {
-      strValue = `${strValue}.`;
-    }
-  }
+    setStringNumberValue(newStringNumberValue);
+    onChangeText?.(number);
+  };
 
   return (
     <TextInput
       keyboardType="numeric"
       {...props}
-      value={strValue}
-      defaultValue={defaultValue?.toString()}
+      value={stringNumberValue}
+      defaultValue={formatValueToStringNumber(defaultValue)}
       onChangeText={handleChangeText}
     />
   );
 };
 
 export default NumberInput;
-
-// comment to try to fix sourcemap issue

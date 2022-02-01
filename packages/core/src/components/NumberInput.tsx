@@ -36,7 +36,7 @@ const NumberInput: FC<Props> = ({
   };
 
   const [currentStringNumberValue, setCurrentStringNumberValue] = useState(
-    formatValueToStringNumber(value)
+    formatValueToStringNumber("0")
   );
 
   const handleChangeText = (newValue: string) => {
@@ -64,7 +64,7 @@ const NumberInput: FC<Props> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // set new value if different from current value
+  // set new (or original) value if different from current (or initialized "0") value
   useEffect(() => {
     const nextStringNumberValue = formatValueToStringNumber(
       value,

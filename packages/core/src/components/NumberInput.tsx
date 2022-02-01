@@ -17,7 +17,7 @@ const NumberInput: FC<Props> = ({
   const formatValueToStringNumber = useCallback(
     (valueToFormat?: number | string, currentStringNumberValue?: string) => {
       if (valueToFormat != null) {
-        if (isString(valueToFormat)) {
+        if (isString(valueToFormat) && valueToFormat !== "") {
           if (/^0[1-9]$/.test(valueToFormat)) {
             return valueToFormat.slice(1);
           } else if (/^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/.test(valueToFormat)) {

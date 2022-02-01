@@ -50,6 +50,8 @@ const NumberInput: FC<Props> = ({
     onChangeText?.(number);
   };
 
+  /* set currentStringNumberValue directly to defaultValue if it exists on load
+  ( no need to use TextInput's defaultValue because its value is always controlled & set ) */
   useEffect(() => {
     const defaultStringNumberValue = formatValueToStringNumber(
       defaultValue,
@@ -62,6 +64,7 @@ const NumberInput: FC<Props> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // set new value if different from current value
   useEffect(() => {
     const nextStringNumberValue = formatValueToStringNumber(
       value,

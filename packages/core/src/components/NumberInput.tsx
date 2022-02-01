@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { TextInput } from "react-native";
 import { isString, isNumber, isNaN } from "lodash";
 
@@ -14,49 +14,72 @@ const NumberInput: FC<Props> = ({
   defaultValue,
   ...props
 }) => {
-  const formatValueToStringNumber = useCallback(
-    (valueToFormat?: number | string, currentStringNumberValue?: string) => {
-      if (valueToFormat != null) {
-        if (isString(valueToFormat) && valueToFormat !== "") {
-          if (/^0[1-9]$/.test(valueToFormat)) {
-            return valueToFormat.slice(1);
-          } else if (/^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/.test(valueToFormat)) {
-            return valueToFormat;
-          } else if (currentStringNumberValue) {
-            return currentStringNumberValue;
-          }
-        } else if (isNumber(valueToFormat) && !isNaN(valueToFormat)) {
-          return valueToFormat.toString();
+  const formatValueToStringNumber = (
+    valueToFormat?: number | string,
+    currentStringNumberValue?: string
+  ) => {
+    if (valueToFormat != null) {
+      if (isString(valueToFormat) && valueToFormat !== "") {
+        if (/^0[1-9]$/.test(valueToFormat)) {
+          return valueToFormat.slice(1);
+        } else if (/^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/.test(valueToFormat)) {
+          return valueToFormat;
+        } else if (currentStringNumberValue) {
+          return currentStringNumberValue;
         }
+      } else if (isNumber(valueToFormat) && !isNaN(valueToFormat)) {
+        return valueToFormat.toString();
       }
+    }
 
-      return "0";
-    },
-    []
-  );
+    return "0";
+  };
 
-  const [stringNumberValue, setStringNumberValue] = useState(
+  const [currentStringNumberValue, setCurrentStringNumberValue] = useState(
     formatValueToStringNumber(value)
   );
 
   const handleChangeText = (newValue: string) => {
     const newStringNumberValue = formatValueToStringNumber(
       newValue,
-      stringNumberValue
+      currentStringNumberValue
     );
     const number = parseFloat(newStringNumberValue);
 
-    setStringNumberValue(newStringNumberValue);
+    setCurrentStringNumberValue(newStringNumberValue);
     onChangeText?.(number);
   };
+
+  useEffect(() => {
+    const defaultStringNumberValue = formatValueToStringNumber(
+      defaultValue,
+      currentStringNumberValue
+    );
+
+    if (currentStringNumberValue !== defaultStringNumberValue) {
+      setCurrentStringNumberValue(defaultStringNumberValue);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const nextStringNumberValue = formatValueToStringNumber(
+      value,
+      currentStringNumberValue
+    );
+
+    if (currentStringNumberValue !== nextStringNumberValue) {
+      handleChangeText(nextStringNumberValue);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
 
   return (
     <TextInput
       keyboardType="numeric"
-      {...props}
-      value={stringNumberValue}
-      defaultValue={formatValueToStringNumber(defaultValue)}
+      value={currentStringNumberValue}
       onChangeText={handleChangeText}
+      {...props}
     />
   );
 };

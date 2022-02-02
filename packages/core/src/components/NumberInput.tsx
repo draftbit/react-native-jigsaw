@@ -52,7 +52,7 @@ const NumberInput: FC<Props> = ({
     onChangeText?.(number);
   };
 
-  // run handleChangeText with value prop only when value prop changes (and first render to set currentStringNumberValue)
+  // run handleChangeText with value prop only when value prop changes (and first render to reset currentStringNumberValue)
   useEffect(() => {
     const nextStringNumberValue = formatValueToStringNumber(value);
 

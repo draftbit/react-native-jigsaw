@@ -14,17 +14,16 @@ const NumberInput: FC<Props> = ({
   defaultValue,
   ...props
 }) => {
-  const formatValueToStringNumber = (
-    valueToFormat?: number | string,
-    currentStringNumberValue?: string
-  ) => {
+  const [currentStringNumberValue, setCurrentStringNumberValue] = useState("0");
+
+  const formatValueToStringNumber = (valueToFormat?: number | string) => {
     if (valueToFormat != null) {
       if (isString(valueToFormat) && valueToFormat !== "") {
         if (/^0[1-9]$/.test(valueToFormat)) {
           return valueToFormat.slice(1);
         } else if (/^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/.test(valueToFormat)) {
           return valueToFormat;
-        } else if (currentStringNumberValue) {
+        } else {
           return currentStringNumberValue;
         }
       } else if (isNumber(valueToFormat) && !isNaN(valueToFormat)) {
@@ -35,28 +34,9 @@ const NumberInput: FC<Props> = ({
     return "0";
   };
 
-  const [currentStringNumberValue, setCurrentStringNumberValue] = useState(
-    formatValueToStringNumber("0")
-  );
-
-  const handleChangeText = (newValue: string) => {
-    const newStringNumberValue = formatValueToStringNumber(
-      newValue,
-      currentStringNumberValue
-    );
-    const number = parseFloat(newStringNumberValue);
-
-    setCurrentStringNumberValue(newStringNumberValue);
-    onChangeText?.(number);
-  };
-
-  /* set currentStringNumberValue directly to defaultValue if it exists on load
-  ( no need to use TextInput's defaultValue because its value is always controlled & set ) */
+  // set currentStringNumberValue as defaultValue prop if there is a differnce on first render only
   useEffect(() => {
-    const defaultStringNumberValue = formatValueToStringNumber(
-      defaultValue,
-      currentStringNumberValue
-    );
+    const defaultStringNumberValue = formatValueToStringNumber(defaultValue);
 
     if (currentStringNumberValue !== defaultStringNumberValue) {
       setCurrentStringNumberValue(defaultStringNumberValue);
@@ -64,12 +44,17 @@ const NumberInput: FC<Props> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // set new (or original) value if different from current (or initialized "0") value
+  const handleChangeText = (newValue: string) => {
+    const newStringNumberValue = formatValueToStringNumber(newValue);
+    const number = parseFloat(newStringNumberValue);
+
+    setCurrentStringNumberValue(newStringNumberValue);
+    onChangeText?.(number);
+  };
+
+  // run handleChangeText with value prop only when value prop changes (and first render to reset currentStringNumberValue)
   useEffect(() => {
-    const nextStringNumberValue = formatValueToStringNumber(
-      value,
-      currentStringNumberValue
-    );
+    const nextStringNumberValue = formatValueToStringNumber(value);
 
     if (currentStringNumberValue !== nextStringNumberValue) {
       handleChangeText(nextStringNumberValue);

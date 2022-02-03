@@ -110,11 +110,14 @@ let customFonts = {
 
 const Drawer = createDrawerNavigator();
 
-function Example({ title, children }) {
+type ExampleProps = { title: string; children: React.ReactNode };
+
+function Example({ title, children }: ExampleProps) {
   const navigation = useNavigation();
 
   return (
     <ScreenContainer
+      hasSafeArea={true}
       hasTopSafeArea={true}
       hasBottomSafeArea={true}
       scrollable={false}
@@ -153,7 +156,7 @@ function Examples() {
             <Drawer.Screen key={key} name={key}>
               {() => (
                 <Example title={key}>
-                  <Screen />
+                  <Screen theme={{}} />
                 </Example>
               )}
             </Drawer.Screen>

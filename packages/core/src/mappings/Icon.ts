@@ -13,7 +13,10 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.basic,
   layout: {},
   props: {
-    name: createIconProp(),
+    name: {
+      ...createIconProp(),
+      group: GROUPS.data,
+    },
     color: createColorProp(),
     size: createNumberProp({
       group: GROUPS.basic,

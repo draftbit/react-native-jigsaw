@@ -74,10 +74,10 @@ const AccordionGroup = ({
           <Text
             selectable={false}
             style={[
+              textStyles,
               {
                 color: labelColor,
               },
-              textStyles,
             ]}
           >
             {label}

@@ -1,13 +1,14 @@
 import * as React from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
 import type { Theme } from "../../styles/DefaultTheme";
+import { getValueForRadioButton } from "../../utilities";
 import { radioButtonGroupContext, Direction } from "./context";
 export interface RadioButtonGroupProps {
   direction?: Direction;
   style?: StyleProp<ViewStyle>;
-  value?: string;
+  value: string;
   onValueChange?: (value: string) => void;
-  defaultValue?: string;
+  defaultValue?: string | number;
   theme: Theme;
   children: React.ReactNode;
 }
@@ -16,32 +17,32 @@ const { Provider } = radioButtonGroupContext;
 
 const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({
   direction = Direction.Vertical,
-  value,
-  onValueChange = () => {},
-  defaultValue,
+  value = "",
+  onValueChange,
+  defaultValue = "",
   style,
   children,
   ...rest
 }) => {
-  const [internalValue, setInternalValue] = React.useState<string | undefined>(
-    value || defaultValue
-  );
+  const [internalValue, setInternalValue] = React.useState<string>("");
 
   React.useEffect(() => {
-    if (value != null) {
-      setInternalValue(value);
-    }
+    const realValue = getValueForRadioButton(value);
+
+    setInternalValue(realValue);
   }, [value]);
 
   React.useEffect(() => {
-    if (defaultValue != null) {
-      setInternalValue(defaultValue);
-    }
+    const realDefaultValue = getValueForRadioButton(defaultValue);
+
+    setInternalValue(realDefaultValue);
   }, [defaultValue]);
 
-  const handleValueChange = (newValue: string) => {
-    setInternalValue(newValue);
-    onValueChange(newValue);
+  const handleValueChange = (newValue: string | number) => {
+    const realNewValue = getValueForRadioButton(newValue);
+
+    setInternalValue(realNewValue);
+    onValueChange?.(realNewValue);
   };
 
   const _containerStyle: StyleProp<ViewStyle> = [

@@ -3,6 +3,7 @@ import {
   createIconSizeProp,
   createColorProp,
   createFieldNameProp,
+  createStaticNumberProp,
   Triggers,
 } from "@draftbit/types";
 
@@ -22,6 +23,14 @@ export const SEED_DATA = [
       }),
       iconSize: createIconSizeProp({ defaultValue: 24 }),
       iconColor: createColorProp({ defaultValue: "strong" }),
+      min: createStaticNumberProp({
+        label: "Minimum",
+        description: "Minimum Number",
+      }),
+      max: createStaticNumberProp({
+        label: "Maximum",
+        description: "Maximum Number",
+      }),
     },
   },
 ];

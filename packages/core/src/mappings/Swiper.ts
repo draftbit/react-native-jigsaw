@@ -3,6 +3,7 @@ import {
   createBoolProp,
   createNumberProp,
   createTextProp,
+  createColorProp,
   GROUPS,
 } from "@draftbit/types";
 
@@ -43,6 +44,20 @@ export const SEED_DATA = {
       group: GROUPS.basic,
       label: "Next Title",
       defaultValue: "",
+    }),
+    prevTitleColor: createColorProp({
+      label: "Previous Title Color",
+    }),
+    nextTitleColor: createColorProp({
+      label: "Next Title Color",
+    }),
+    dotColor: createColorProp({
+      label: "Dot Color",
+      defaultValue: "light",
+    }),
+    dotActiveColor: createColorProp({
+      label: "Dot Active Color",
+      defaultValue: "primary",
     }),
     dotsTouchable: createBoolProp({
       group: GROUPS.basic,

@@ -5,9 +5,12 @@ import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
 
 import IconButton from "./IconButton";
+import isNumber from "lodash.isnumber";
 
 type Props = {
   value?: number;
+  min?: number;
+  max?: number;
   theme: Theme;
   style?: StyleProp<ViewStyle>;
   onChange?: (value: number) => void;
@@ -21,6 +24,8 @@ type Props = {
 const Stepper: React.FC<Props> = ({
   Icon,
   value,
+  min,
+  max,
   style,
   onChange,
   defaultValue,
@@ -35,32 +40,35 @@ const Stepper: React.FC<Props> = ({
   );
 
   React.useEffect(() => {
-    if (value != null) {
-      setStateValue(value);
+    if (value || value === 0) {
+      onChange && onChange(stateValue);
     }
-  }, [value]);
+  }, [onChange, stateValue, value]);
 
   React.useEffect(() => {
-    if (defaultValue != null) {
-      setStateValue(defaultValue);
+    let newValue = value || defaultValue || 0;
+    if (isNumber(max) && newValue > max) {
+      newValue = max;
     }
-  }, [defaultValue]);
+    if (isNumber(min) && newValue < min) {
+      newValue = min;
+    }
+    setStateValue(newValue);
+  }, [defaultValue, value, min, max]);
 
-  const handleMinus = () => {
-    if (value || value === 0) {
-      onChange && onChange(value - 1);
-    } else {
-      setStateValue(stateValue - 1);
+  const handleMinus = React.useCallback(() => {
+    if (isNumber(min) && value === min) {
+      return;
     }
-  };
+    setStateValue(stateValue - 1);
+  }, [min, stateValue, value]);
 
-  const handlePlus = () => {
-    if (value || value === 0) {
-      onChange && onChange(value + 1);
-    } else {
-      setStateValue(stateValue + 1);
+  const handlePlus = React.useCallback(() => {
+    if (isNumber(max) && value === max) {
+      return;
     }
-  };
+    setStateValue(stateValue + 1);
+  }, [max, stateValue, value]);
 
   return (
     <View
@@ -76,7 +84,8 @@ const Stepper: React.FC<Props> = ({
         onPress={handleMinus}
         size={iconSize}
         color={iconColor}
-        disabled={value ? value === 0 : stateValue === 0}
+        disabled={stateValue === min}
+        style={stateValue === min ? { opacity: 0.5 } : {}}
       />
       <Text
         style={[
@@ -98,6 +107,8 @@ const Stepper: React.FC<Props> = ({
         onPress={handlePlus}
         size={iconSize}
         color={iconColor}
+        disabled={stateValue === max}
+        style={stateValue === max ? { opacity: 0.5 } : {}}
       />
     </View>
   );

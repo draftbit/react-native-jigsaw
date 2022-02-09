@@ -13,7 +13,7 @@ import { useRadioButtonGroupContext } from "./context";
 import type { IconSlot } from "../../interfaces/Icon";
 import { Direction as GroupDirection } from "./context";
 import Touchable from "../Touchable";
-import { extractStyles } from "../../utilities";
+import { extractStyles, getValueForRadioButton } from "../../utilities";
 
 export enum Direction {
   Row = "row",
@@ -22,7 +22,7 @@ export enum Direction {
 
 export interface RadioButtonRowProps extends Omit<RadioButtonProps, "onPress"> {
   label: string | React.ReactNode;
-  value: string; // A string that this radio button row represents when selected
+  value: string | number; // A string (or number that will be parsed String(number)) that this radio button row represents when selected
   color?: string;
   unselectedColor?: string;
   labelContainerStyle: StyleProp<ViewStyle>;
@@ -60,10 +60,10 @@ const renderLabel = (
 const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
   Icon,
   label,
-  value,
+  value = "",
   color,
   unselectedColor,
-  onPress = () => {},
+  onPress,
   labelContainerStyle,
   labelStyle,
   radioButtonStyle,
@@ -79,9 +79,13 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
     direction: parentDirection,
   } = useRadioButtonGroupContext();
 
+  const realValue = getValueForRadioButton(value);
+  const realContextValue = getValueForRadioButton(contextValue);
+  const isSelected = selected ?? realContextValue === realValue;
+
   const handlePress = () => {
-    onPress(value);
-    onValueChange && onValueChange(value);
+    onPress?.(realValue);
+    onValueChange?.(realValue);
   };
 
   const { textStyles, viewStyles } = extractStyles(style);
@@ -112,12 +116,10 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
       >
         <RadioButton
           Icon={Icon}
-          selected={
-            selected || (contextValue != null && contextValue === value)
-          }
+          selected={isSelected}
+          value={realValue}
           color={color}
           unselectedColor={unselectedColor}
-          onPress={handlePress}
           style={radioButtonStyle}
         />
       </View>

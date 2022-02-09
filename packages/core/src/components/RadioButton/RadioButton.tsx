@@ -3,6 +3,7 @@ import { StyleProp, ViewStyle } from "react-native";
 
 import Config from "../Config";
 import IconButton from "../IconButton";
+import { getValueForRadioButton } from "../../utilities";
 import { useRadioButtonGroupContext } from "./context";
 
 import type { IconSlot } from "../../interfaces/Icon";
@@ -11,9 +12,9 @@ export type RadioButtonProps = {
   selected?: boolean;
   disabled?: boolean;
   color?: string;
-  value?: string;
+  value?: string | number;
   unselectedColor?: string;
-  onPress?: () => void;
+  onPress?: (value?: string) => void;
   style?: StyleProp<ViewStyle>;
   size?: number;
   selectedIcon?: string;
@@ -24,10 +25,10 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   Icon,
   disabled = false,
   color,
-  value,
+  value = "",
   selected,
   unselectedColor,
-  onPress = () => {},
+  onPress,
   size = Config.radioButtonSize,
   selectedIcon = "MaterialIcons/radio-button-checked",
   unselectedIcon = "MaterialIcons/radio-button-unchecked",
@@ -36,16 +37,14 @@ const RadioButton: React.FC<RadioButtonProps> = ({
 }) => {
   const { value: contextValue, onValueChange } = useRadioButtonGroupContext();
 
+  const realValue = getValueForRadioButton(value);
+  const realContextValue = getValueForRadioButton(contextValue);
+  const isSelected = selected ?? realContextValue === realValue;
+
   const handlePress = () => {
-    onPress && onPress();
-
-    if (onValueChange && value) {
-      onValueChange(value);
-    }
+    onPress?.(realValue);
+    onValueChange?.(realValue);
   };
-
-  const isSelected =
-    selected || (contextValue != null && contextValue === value);
 
   return (
     <IconButton

@@ -7,32 +7,32 @@ import {
   View,
   Platform,
 } from "react-native";
-import RadioButton, { RadioButtonProps } from "./RadioButton";
+import Checkbox, { CheckboxProps } from "./Checkbox";
 import Text from "../Text";
-import { useRadioButtonGroupContext } from "./context";
+import { useCheckboxGroupContext } from "./context";
 import type { IconSlot } from "../../interfaces/Icon";
 import { Direction as GroupDirection } from "./context";
 import Touchable from "../Touchable";
-import { extractStyles, getValueForRadioButton } from "../../utilities";
+import { extractStyles } from "../../utilities";
 
 export enum Direction {
   Row = "row",
   RowReverse = "row-reverse",
 }
 
-export interface RadioButtonRowProps extends Omit<RadioButtonProps, "onPress"> {
+export interface CheckboxGroupRowProps extends Omit<CheckboxProps, "onPress"> {
   label: string | React.ReactNode;
-  value: string | number; // A string (or number that will be parsed String(number)) that this radio button row represents when selected
-  color?: string;
-  unselectedColor?: string;
+  value: string; // A string that this checkbox represents
   labelContainerStyle: StyleProp<ViewStyle>;
-  radioButtonStyle?: StyleProp<ViewStyle>;
+  checkboxStyle?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
-  onPress?: (value: string) => void;
+  onPress?: (value: boolean) => void;
   direction?: Direction;
+  color: string;
+  unselectedColor: string;
 }
 
-const getRadioButtonAlignment = (
+const getCheckboxAlignment = (
   parentDirection: GroupDirection | undefined,
   direction: Direction
 ) => {
@@ -57,35 +57,36 @@ const renderLabel = (
   }
 };
 
-const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
+const CheckboxGroupRow: React.FC<CheckboxGroupRowProps & IconSlot> = ({
   Icon,
-  label,
-  value = "",
-  color,
-  unselectedColor,
+  label = "Label",
+  status,
+  value,
   onPress,
   labelContainerStyle,
   labelStyle,
-  radioButtonStyle,
+  checkboxStyle,
   direction = Direction.Row,
-  selected,
   disabled,
   style,
+  color,
+  uncheckedColor,
   ...rest
 }) => {
   const {
-    value: contextValue,
+    values: selectedValues,
     onValueChange,
     direction: parentDirection,
-  } = useRadioButtonGroupContext();
+  } = useCheckboxGroupContext();
 
-  const realValue = getValueForRadioButton(value);
-  const realContextValue = getValueForRadioButton(contextValue);
-  const isSelected = selected ?? realContextValue === realValue;
+  const values = Array.isArray(selectedValues) ? selectedValues : [];
+  const isChecked = status || values.includes(value);
 
   const handlePress = () => {
-    onPress?.(realValue);
-    onValueChange?.(realValue);
+    if (!disabled) {
+      onPress?.(!isChecked);
+      onValueChange?.(value, !isChecked);
+    }
   };
 
   const { textStyles, viewStyles } = extractStyles(style);
@@ -111,16 +112,17 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
       <View
         style={{
           flex: 1,
-          alignItems: getRadioButtonAlignment(parentDirection, direction),
+          alignItems: getCheckboxAlignment(parentDirection, direction),
         }}
       >
-        <RadioButton
+        <Checkbox
           Icon={Icon}
-          selected={isSelected}
-          value={realValue}
+          status={isChecked}
+          onPress={handlePress}
+          style={checkboxStyle}
+          disabled={disabled}
           color={color}
-          unselectedColor={unselectedColor}
-          style={radioButtonStyle}
+          uncheckedColor={uncheckedColor}
         />
       </View>
     </Touchable>
@@ -147,4 +149,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RadioButtonRow;
+export default CheckboxGroupRow;

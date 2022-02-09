@@ -102,11 +102,17 @@ const CheckboxExample = ({ theme }) => {
           uncheckedColor={"dodgerblue"}
           color={"hotpink"}
         />
+
         <CheckboxRow
           label="Second"
           direction="row-reverse"
           style={{ fontSize: 32 }}
-          onPress={setChecked}
+          onPress={(value) => {
+            console.log("I'm", value);
+            setChecked(value);
+          }}
+          onCheck={() => console.log("I'm checked!!!")}
+          onUncheck={() => console.log("I'm unchecked!!!")}
           status={checked}
         />
       </Section>

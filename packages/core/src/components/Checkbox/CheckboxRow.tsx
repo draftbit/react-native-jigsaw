@@ -7,85 +7,93 @@ import {
   View,
   Platform,
 } from "react-native";
-import Checkbox, { CheckboxProps } from "./Checkbox";
-import Text from "../Text";
-import { useCheckboxGroupContext } from "./context";
+import { isString } from "lodash";
+
 import type { IconSlot } from "../../interfaces/Icon";
-import { Direction as GroupDirection } from "./context";
-import Touchable from "../Touchable";
 import { extractStyles } from "../../utilities";
+import { usePrevious } from "../../hooks";
+import Text from "../Text";
+import Touchable from "../Touchable";
+import Checkbox, { CheckboxProps } from "./Checkbox";
 
 export enum Direction {
   Row = "row",
   RowReverse = "row-reverse",
 }
 
-export interface CheckboxRowProps extends Omit<CheckboxProps, "onPress"> {
+export interface CheckboxRowProps extends CheckboxProps {
   label: string | React.ReactNode;
-  value: string; // A string that this checkbox represents
+  labelStyle?: StyleProp<TextStyle>;
   labelContainerStyle: StyleProp<ViewStyle>;
   checkboxStyle?: StyleProp<ViewStyle>;
-  labelStyle?: StyleProp<TextStyle>;
-  onPress?: (value: boolean) => void;
   direction?: Direction;
-  color: string;
-  unselectedColor: string;
 }
-
-const getCheckboxAlignment = (
-  parentDirection: GroupDirection | undefined,
-  direction: Direction
-) => {
-  if (parentDirection === GroupDirection.Horizontal) {
-    return direction === Direction.Row ? "flex-start" : "flex-end";
-  } else if (direction === Direction.RowReverse) {
-    return "flex-start";
-  } else {
-    return "flex-end";
-  }
-};
 
 const renderLabel = (
   value: string | React.ReactNode,
   labelStyle: StyleProp<TextStyle>,
   textStyle: StyleProp<TextStyle>
 ) => {
-  if (typeof value === "string") {
-    return <Text style={[labelStyle, textStyle]}>{value}</Text>;
+  if (isString(value)) {
+    return <Text style={[textStyle, labelStyle]}>{value}</Text>;
   } else {
     return <>{value}</>;
   }
 };
 
 const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
-  Icon,
   label = "Label",
-  status,
-  value,
-  onPress = () => {},
-  labelContainerStyle,
   labelStyle,
+  labelContainerStyle,
   checkboxStyle,
   direction = Direction.Row,
-  disabled,
-  style,
+  Icon,
+  status,
+  disabled = false,
+  onPress,
+  onCheck,
+  onUncheck,
   color,
   uncheckedColor,
+  defaultValue,
+  checkedIcon,
+  uncheckedIcon,
+  size,
+  style,
   ...rest
 }) => {
-  const {
-    values: selectedValues,
-    onValueChange,
-    direction: parentDirection,
-  } = useCheckboxGroupContext();
+  const [internalValue, setInternalValue] = React.useState<boolean>(
+    status || defaultValue || false
+  );
 
-  const values = Array.isArray(selectedValues) ? selectedValues : [];
-  const isChecked = status || values.includes(value);
+  React.useEffect(() => {
+    if (status != null) {
+      setInternalValue(status);
+    }
+  }, [status]);
+
+  // This special logic is to handle weird APIs like Airtable that return
+  // true or undefined for a boolean
+  const previousDefaultValue = usePrevious(defaultValue) as boolean | undefined;
+
+  React.useEffect(() => {
+    if (defaultValue !== previousDefaultValue) {
+      setInternalValue(Boolean(defaultValue));
+    }
+  }, [defaultValue, previousDefaultValue]);
 
   const handlePress = () => {
-    if (!disabled) {
-      onPress(!isChecked);
-      onValueChange && onValueChange(value, !isChecked);
+    const newValue = !internalValue;
+
+    setInternalValue(newValue);
+    onPress?.(newValue);
+
+    if (newValue) {
+      onCheck?.();
+    }
+
+    if (!newValue) {
+      onUncheck?.();
     }
   };
 
@@ -94,7 +102,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   return (
     <Touchable
       onPress={handlePress}
-      style={[styles.mainParent, { flexDirection: direction }, viewStyles]}
+      style={[viewStyles, styles.mainParent, { flexDirection: direction }]}
       disabled={disabled}
       {...rest}
     >
@@ -107,24 +115,20 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
           labelContainerStyle,
         ]}
       >
-        {renderLabel(label, labelStyle, textStyles)}
+        {renderLabel(label, textStyles, labelStyle)}
       </View>
-      <View
-        style={{
-          flex: 1,
-          alignItems: getCheckboxAlignment(parentDirection, direction),
-        }}
-      >
-        <Checkbox
-          Icon={Icon}
-          status={isChecked}
-          onPress={handlePress}
-          style={checkboxStyle}
-          disabled={disabled}
-          color={color}
-          uncheckedColor={uncheckedColor}
-        />
-      </View>
+
+      <Checkbox
+        Icon={Icon}
+        status={internalValue}
+        style={checkboxStyle}
+        disabled={disabled}
+        color={color}
+        uncheckedColor={uncheckedColor}
+        checkedIcon={checkedIcon}
+        uncheckedIcon={uncheckedIcon}
+        size={size}
+      />
     </Touchable>
   );
 };

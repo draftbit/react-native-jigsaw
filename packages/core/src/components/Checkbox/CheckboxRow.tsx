@@ -123,6 +123,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
         status={internalValue}
         style={checkboxStyle}
         disabled={disabled}
+        onPress={handlePress}
         color={color}
         uncheckedColor={uncheckedColor}
         checkedIcon={checkedIcon}

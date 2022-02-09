@@ -84,13 +84,8 @@ const CheckboxGroupRow: React.FC<CheckboxGroupRowProps & IconSlot> = ({
 
   const handlePress = () => {
     if (!disabled) {
-      console.log("isChecked BEFORE", isChecked);
-      console.log("value", value);
-
       onPress?.(!isChecked);
       onValueChange?.(value, !isChecked);
-
-      console.log("isChecked AFTER", isChecked);
     }
   };
 

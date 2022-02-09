@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     paddingStart: 20,
     minHeight: 50,
     paddingEnd: 20,
-    flex: 1,
+    display: "flex",
     ...Platform.select({
       web: {
         cursor: "pointer",

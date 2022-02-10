@@ -44,6 +44,23 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     style,
     ...rest
   }) => {
+    console.log("Checbox prop", {
+      Icon,
+      status,
+      disabled,
+      onPress,
+      onCheck,
+      onUncheck,
+      color,
+      uncheckedColor,
+      defaultValue,
+      checkedIcon,
+      uncheckedIcon,
+      size,
+      style,
+      rest: { ...rest },
+    });
+
     const [internalValue, setInternalValue] = React.useState<boolean>(
       status || defaultValue || false
     );

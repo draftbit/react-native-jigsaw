@@ -59,6 +59,20 @@ const Container: React.FC<Props> = ({
     ...styleProp
   } = StyleSheet.flatten(style) || {};
 
+  console.log("Container props", {
+    useThemeGutterPadding,
+    borderColor,
+    borderWidth,
+    backgroundColor,
+    backgroundImage,
+    backgroundImageResizeMode,
+    elevation,
+    style,
+    children,
+    theme,
+    rest: { ...rest },
+  });
+
   const containerStyle: StyleProp<ViewStyle> = {
     backgroundColor,
     borderColor,

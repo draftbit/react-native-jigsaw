@@ -226,6 +226,8 @@ class TextField extends React.Component<Props, State> {
   }
 
   render() {
+    console.log("TextFielf props", this.props);
+
     const {
       Icon,
       type = "underline",

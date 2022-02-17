@@ -56,15 +56,15 @@ function ScreenContainer({
       {scrollable ? (
         <ScrollView
           contentContainerStyle={[
+            styles.scrollViewContainer,
             { backgroundColor },
             style,
-            styles.scrollViewContainer,
           ]}
         >
           {children}
         </ScrollView>
       ) : (
-        <View style={[{ backgroundColor }, style, styles.container]}>
+        <View style={[styles.container, { backgroundColor }, style]}>
           {children}
         </View>
       )}

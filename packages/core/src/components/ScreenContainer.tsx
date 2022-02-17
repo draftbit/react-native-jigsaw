@@ -1,7 +1,7 @@
 import * as React from "react";
 import {
   StyleSheet,
-  ScrollView as NativeScrollView,
+  ScrollView,
   StyleProp,
   ViewStyle,
   View,
@@ -10,27 +10,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import type { Edge } from "react-native-safe-area-context";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
-
-function ScrollView({
-  children,
-  style,
-}: {
-  children: React.ReactNode;
-  style?: StyleProp<ViewStyle>;
-}) {
-  return (
-    <NativeScrollView
-      contentContainerStyle={[
-        {
-          flexGrow: 1,
-        },
-        style,
-      ]}
-    >
-      {children}
-    </NativeScrollView>
-  );
-}
 
 type Props = {
   hasSafeArea: boolean;
@@ -74,13 +53,21 @@ function ScreenContainer({
       ]}
       {...rest}
     >
-      <View style={[styles.container, { backgroundColor }, style]}>
-        {scrollable ? (
-          <ScrollView style={style}>{children}</ScrollView>
-        ) : (
-          children
-        )}
-      </View>
+      {scrollable ? (
+        <ScrollView
+          contentContainerStyle={[
+            { backgroundColor },
+            style,
+            styles.scrollViewContainer,
+          ]}
+        >
+          {children}
+        </ScrollView>
+      ) : (
+        <View style={[{ backgroundColor }, style, styles.container]}>
+          {children}
+        </View>
+      )}
     </SafeAreaView>
   );
 }
@@ -88,6 +75,10 @@ function ScreenContainer({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  scrollViewContainer: {
+    flexGrow: 1,
+    flex: undefined,
   },
 });
 

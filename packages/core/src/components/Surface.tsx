@@ -15,7 +15,7 @@ import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 
 type Props = {
-  elevation: number;
+  elevation?: number;
   style?: StyleProp<ViewStyle>;
   theme: Theme;
 } & ViewProps;

@@ -6,6 +6,8 @@ import {
   ViewProps,
   StyleProp,
   ViewStyle,
+  View,
+  Platform,
 } from "react-native";
 import shadow from "../styles/shadow";
 import overlay from "../styles/overlay";
@@ -13,40 +15,60 @@ import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 
 type Props = {
-  elevation?: number;
+  elevation: number;
   style?: StyleProp<ViewStyle>;
   theme: Theme;
 } & ViewProps;
 
 const Surface: React.FC<Props> = ({
-  elevation,
+  elevation: propElevation,
   style,
   theme,
   children,
   ...rest
 }) => {
-  const { elevation: styleElevation = 3, borderRadius: radius = 0 } =
-    (StyleSheet.flatten(style) || {}) as ViewStyle;
+  const {
+    elevation: styleElevation = 3,
+    borderRadius,
+    overflow,
+    height,
+    width,
+  } = (StyleSheet.flatten(style) || {}) as ViewStyle;
+
   const { dark: isDarkTheme, mode, colors } = theme;
-  const borderRadius = radius;
-  const ele = elevation || styleElevation;
+
+  const elevation = propElevation || styleElevation;
+
+  const evalationStyles = elevation ? shadow(elevation) : {};
 
   return (
     <Animated.View
       {...rest}
       style={[
+        style,
         {
-          borderRadius,
           backgroundColor:
             isDarkTheme && mode === "adaptive"
-              ? overlay(ele, colors.surface)
+              ? overlay(elevation, colors.surface)
               : colors.surface,
+          overflow: Platform.OS === "web" ? "hidden" : "visible",
+          elevation,
+          ...evalationStyles,
         },
-        elevation ? shadow(elevation) : null,
-        style,
       ]}
     >
-      {children}
+      <View
+        style={[
+          {
+            overflow,
+            borderRadius,
+            height,
+            width,
+          },
+        ]}
+      >
+        {children}
+      </View>
     </Animated.View>
   );
 };

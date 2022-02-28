@@ -62,6 +62,8 @@ import SwiperExample from "./SwiperExample";
 
 import LinearGradientExample from "./LinearGradientExample";
 
+import SurfaceExample from "./SurfaceExample";
+
 const ROUTES = {
   Layout: LayoutExample,
   Icon: IconExample,
@@ -95,6 +97,7 @@ const ROUTES = {
   Switch: SwitchExample,
   Stepper: StepperExample,
   StarRating: StarRatingExample,
+  Surface: SurfaceExample,
   Swiper: SwiperExample,
   TextField: TextFieldExample,
   TextInput: TextInputExample,

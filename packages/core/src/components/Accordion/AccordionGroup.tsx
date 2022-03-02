@@ -12,48 +12,71 @@ import type { IconSlot } from "../../interfaces/Icon";
 import type { Theme } from "../../styles/DefaultTheme";
 import { extractStyles } from "../../utilities";
 
-type Props = {
-  openColor: string;
-  closedColor: string;
-  caretColor: string;
-  icon?: string;
-  iconSize: number;
-  style?: StyleProp<TextStyle>;
-  children: React.ReactNode;
-  label: string;
+//  label: createTextProp({
+//       label: "Label",
+//     }),
+//     expanded: createStaticBoolProp({
+//       label: "Expanded",
+//       description:
+//         "Whether the AccordionGroup should be initaially expanded or not",
+//     }),
+//     openColor: createColorProp({
+//       label: "Open text color",
+//     }),
+//     closedColor: createColorProp({
+//       label: "Closed text color",
+//     }),
+//     caretColor: createColorProp({
+//       label: "Caret color",
+//     }),
+//     caretSize: createNumberProp({
+//       label: "Caret size",
+//       defaultValue: 24,
+//     }),
+//     icon: createIconProp(),
+//     iconSize: createNumberProp({
+//       label: "Icon size",
+//       defaultValue: 24,
+//     }),
+
+type AccordionGroupProps = {
+  label?: string;
   expanded?: boolean;
+  openColor?: string;
+  closedColor?: string;
+  caretColor?: string;
+  caretSize?: number;
+  icon?: string;
+  iconSize?: number;
+  style?: StyleProp<TextStyle>;
+  children?: React.ReactNode;
   theme: Theme;
 } & IconSlot;
 
 const AccordionGroup = ({
-  Icon,
+  label,
+  expanded: expandedProp = false,
   openColor,
   closedColor,
-  caretColor,
+  caretColor: caretColorProp,
+  caretSize = 24,
   icon,
   iconSize = 24,
   style,
-  label,
   children,
-  expanded: expandedProp,
   theme,
-}: Props) => {
-  const [expanded, setExpanded] = React.useState<boolean>(
-    expandedProp || false
-  );
+  Icon,
+}: AccordionGroupProps) => {
+  const [expanded, setExpanded] = React.useState<boolean>(expandedProp);
+  const { textStyles, viewStyles } = extractStyles(style);
+  const expandedColor = openColor || theme.colors.primary;
+  const collapsedColor = closedColor || theme.colors.primary;
+  const labelColor = expanded ? expandedColor : collapsedColor;
+  const caretColor = caretColorProp || labelColor;
 
   const handlePressAction = () => {
     setExpanded(!expanded);
   };
-
-  const expandedInternal = expandedProp !== undefined ? expandedProp : expanded;
-
-  const expandedColor = openColor || theme.colors.primary;
-  const collapsedColor = closedColor || theme.colors.primary;
-
-  const labelColor = expanded ? expandedColor : collapsedColor;
-
-  const { textStyles, viewStyles } = extractStyles(style);
 
   return (
     <>
@@ -90,10 +113,10 @@ const AccordionGroup = ({
               : "MaterialIcons/keyboard-arrow-down"
           }
           color={caretColor}
-          size={24}
+          size={caretSize}
         />
       </Pressable>
-      {expandedInternal ? children : null}
+      {expanded ? children : null}
     </>
   );
 };

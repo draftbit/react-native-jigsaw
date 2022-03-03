@@ -12,33 +12,6 @@ import type { IconSlot } from "../../interfaces/Icon";
 import type { Theme } from "../../styles/DefaultTheme";
 import { extractStyles } from "../../utilities";
 
-//  label: createTextProp({
-//       label: "Label",
-//     }),
-//     expanded: createStaticBoolProp({
-//       label: "Expanded",
-//       description:
-//         "Whether the AccordionGroup should be initaially expanded or not",
-//     }),
-//     openColor: createColorProp({
-//       label: "Open text color",
-//     }),
-//     closedColor: createColorProp({
-//       label: "Closed text color",
-//     }),
-//     caretColor: createColorProp({
-//       label: "Caret color",
-//     }),
-//     caretSize: createNumberProp({
-//       label: "Caret size",
-//       defaultValue: 24,
-//     }),
-//     icon: createIconProp(),
-//     iconSize: createNumberProp({
-//       label: "Icon size",
-//       defaultValue: 24,
-//     }),
-
 type AccordionGroupProps = {
   label?: string;
   expanded?: boolean;

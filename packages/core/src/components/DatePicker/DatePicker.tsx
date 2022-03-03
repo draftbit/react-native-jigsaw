@@ -543,7 +543,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 0,
   },
-  pickerContainer: { flexDirection: "column", width: "100%" },
+  pickerContainer: { flexDirection: "column", width: "100%", zIndex: 100 },
   closeButton: {
     alignSelf: "flex-end",
   },

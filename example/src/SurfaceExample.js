@@ -6,7 +6,7 @@ import Section, { Container } from "./Section";
 function SurfaceExample({ theme }) {
   return (
     <Container style={{ backgroundColor: theme.colors.background }}>
-      <Section title="overflow: 'hidden'">
+      <Section title="overflow: 'hidden', backgroundColor: 'pink'">
         <Surface
           style={{
             aspectRatio: 2 / 3,
@@ -16,6 +16,7 @@ function SurfaceExample({ theme }) {
             margin: 20,
             borderRadius: 20,
             overflow: "hidden",
+            backgroundColor: "pink",
           }}
           elevation={10}
         >

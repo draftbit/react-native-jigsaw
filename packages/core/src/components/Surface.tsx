@@ -29,6 +29,7 @@ const Surface: React.FC<Props> = ({
 }) => {
   const {
     elevation: styleElevation = 3,
+    backgroundColor,
     borderRadius,
     overflow,
     height,
@@ -41,17 +42,27 @@ const Surface: React.FC<Props> = ({
 
   const evalationStyles = elevation ? shadow(elevation) : {};
 
+  const getBackgroundColor = () => {
+    if (backgroundColor) {
+      return backgroundColor;
+    } else if (isDarkTheme && mode === "adaptive") {
+      return overlay(elevation, colors.surface);
+    } else {
+      return colors.surface;
+    }
+  };
+
   return (
     <Animated.View
       {...rest}
       style={[
         style,
         {
-          backgroundColor:
-            isDarkTheme && mode === "adaptive"
-              ? overlay(elevation, colors.surface)
-              : colors.surface,
-          overflow: Platform.OS === "web" ? "hidden" : "visible",
+          backgroundColor: getBackgroundColor(),
+          overflow:
+            Platform.OS === "web" && overflow === "hidden"
+              ? "hidden"
+              : "visible",
           elevation,
           ...evalationStyles,
         },

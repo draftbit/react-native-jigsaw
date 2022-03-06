@@ -14,18 +14,18 @@ import type { Theme } from "../styles/DefaultTheme";
 type Props = {
   hasSafeArea: boolean;
   scrollable: boolean;
-  hasBottomSafeArea?: boolean;
-  hasTopSafeArea?: boolean;
+  hasBottomSafeArea: boolean;
+  hasTopSafeArea: boolean;
   theme: Theme;
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
 };
 
 function ScreenContainer({
-  hasSafeArea = false,
+  hasSafeArea,
   scrollable = false,
-  hasBottomSafeArea,
-  hasTopSafeArea,
+  hasBottomSafeArea = false,
+  hasTopSafeArea = false,
   theme,
   style,
   children,

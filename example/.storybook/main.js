@@ -1,0 +1,53 @@
+const {
+  withStorybookModuleFederation,
+} = require("storybook-module-federation");
+const deps = require("../package.json").dependencies;
+
+const moduleFederationConfig = {
+  name: "remote",
+  filename: "remoteEntry.js",
+  exposes: {
+    "./LinearGradient": require.resolve("../components/LinearGradient.tsx"),
+    "./Video": require.resolve("../components/Video.tsx"),
+  },
+  shared: {
+    ...deps,
+    "react": {
+      singleton: true,
+      requiredVersion: deps.react,
+    },
+    "react-dom": {
+      singleton: true,
+      requiredVersion: deps["react-dom"],
+    },
+  },
+};
+
+const storybookConfig = {
+  core: {
+    builder: "webpack5",
+  },
+  stories: [
+    "../components/**/*.stories.mdx",
+    "../components/**/*.stories.@(js|jsx|ts|tsx)",
+  ],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    {
+      name: "@storybook/addon-react-native-web",
+      options: {
+        modulesToTranspile: [
+          "react-native-reanimated",
+          "react-native-vector-icons",
+        ],
+        babelPlugins: ["react-native-reanimated/plugin"],
+      },
+    },
+  ],
+  framework: "@storybook/react",
+};
+
+module.exports = withStorybookModuleFederation(moduleFederationConfig)(
+  storybookConfig
+);

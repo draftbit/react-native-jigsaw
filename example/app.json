@@ -1,22 +1,30 @@
 {
-  "name": "@draftbit/ui-example",
-  "displayName": "Ui Example",
   "expo": {
     "name": "@draftbit/ui-example",
     "slug": "draftbit-ui-example",
-    "description": "Example app for @draftbit/ui",
-    "privacy": "public",
-    "version": "1.0.0",
-    "platforms": ["ios", "android", "web"],
-    "icon": "./src/assets/images/icon.png",
+    "version": "0.0.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
     "splash": {
-      "image": "./src/assets/images/splash.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#5a45ff"
+      "backgroundColor": "#ffffff"
     },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
-    "assetBundlePatterns": ["**/*"]
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
   }
 }

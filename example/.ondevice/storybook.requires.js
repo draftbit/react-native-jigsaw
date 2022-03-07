@@ -30,6 +30,7 @@ const getStories = () => {
   return [
     require("../stories/Accordian.stories.tsx"),
     require("../stories/LinearGradient.stories.tsx"),
+    require("../stories/Surface.stories.tsx"),
     require("../stories/Video.stories.tsx"),
   ];
 };

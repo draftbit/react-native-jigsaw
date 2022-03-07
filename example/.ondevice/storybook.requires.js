@@ -28,8 +28,9 @@ argsEnhancers.forEach((enhancer) => addArgsEnhancer(enhancer));
 
 const getStories = () => {
   return [
-    require("../components/LineraGradient.stories.tsx"),
-    require("../components/Video.stories.tsx"),
+    require("../stories/Accordian.stories.tsx"),
+    require("../stories/LinearGradient.stories.tsx"),
+    require("../stories/Video.stories.tsx"),
   ];
 };
 

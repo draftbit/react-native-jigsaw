@@ -2,7 +2,7 @@ import React from "react";
 import { Text } from "react-native";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import { LinearGradient } from "./LinearGradient";
+import { LinearGradient } from "@draftbit/ui";
 
 export default {
   title: "LinearGradient",

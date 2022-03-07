@@ -1,19 +1,22 @@
-const { createMetroConfiguration } = require("expo-yarn-workspaces");
+const { getDefaultConfig } = require("expo/metro-config");
+const path = require("path");
 
-const defaultConfig = createMetroConfiguration(__dirname);
+const workspaceRoot = path.resolve(__dirname, "../");
 
-defaultConfig.resolver.resolverMainFields = [
-  "sbmodern",
-  ...defaultConfig.resolver.resolverMainFields,
+const projectRoot = __dirname;
+
+const config = getDefaultConfig(projectRoot);
+
+config.watchFolders = [workspaceRoot, "./.ondevice"];
+
+config.resolver.nodeModulesPaths = [
+  path.resolve(projectRoot, "node_modules"),
+  path.resolve(workspaceRoot, "node_modules"),
 ];
 
-defaultConfig.transformer.getTransformOptions = async () => ({
-  transform: {
-    experimentalImportSupport: false,
-    inlineRequires: false,
-  },
-});
+config.resolver.resolverMainFields = [
+  "sbmodern",
+  ...config.resolver.resolverMainFields,
+];
 
-defaultConfig.watchFolders = [...defaultConfig.watchFolders, "./.ondevice"];
-
-module.exports = defaultConfig;
+module.exports = config;

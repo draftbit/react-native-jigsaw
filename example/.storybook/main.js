@@ -7,8 +7,10 @@ const moduleFederationConfig = {
   name: "remote",
   filename: "remoteEntry.js",
   exposes: {
-    "./LinearGradient": require.resolve("../components/LinearGradient.tsx"),
-    "./Video": require.resolve("../components/Video.tsx"),
+    "./LinearGradient": require.resolve(
+      "../../packages/native/src/components/LinearGradient.tsx"
+    ),
+    "./Video": require.resolve("../stories/Video.tsx"), // NOTE create native module
   },
   shared: {
     ...deps,
@@ -28,8 +30,8 @@ const storybookConfig = {
     builder: "webpack5",
   },
   stories: [
-    "../components/**/*.stories.mdx",
-    "../components/**/*.stories.@(js|jsx|ts|tsx)",
+    "../stories/**/*.stories.mdx",
+    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-links",

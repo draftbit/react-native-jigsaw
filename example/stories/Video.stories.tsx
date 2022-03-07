@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Platform } from "react-native";
 import { ComponentStory, ComponentMeta } from "@storybook/react-native";
-import { Video } from "./Video";
+
+import { Video } from "expo-av";
 
 export default {
   title: "Video",

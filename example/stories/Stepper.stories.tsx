@@ -1,7 +1,7 @@
 import React from "react";
 // import { Text, View, ImageBackground } from "react-native";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Provider, DefaultTheme, Stepper } from "@draftbit/ui";
+import { Stepper } from "@draftbit/ui";
 
 export default {
   title: "Stepper",
@@ -9,9 +9,7 @@ export default {
 } as ComponentMeta<typeof Stepper>;
 
 export const Basic: ComponentStory<typeof Stepper> = (args) => (
-  <Provider theme={DefaultTheme}>
-    <Stepper {...args} />
-  </Provider>
+  <Stepper {...args} />
 );
 
 Basic.args = {

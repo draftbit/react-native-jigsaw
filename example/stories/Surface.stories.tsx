@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, ImageBackground } from "react-native";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Provider, DefaultTheme, Surface } from "@draftbit/ui";
+import { Surface } from "@draftbit/ui";
 
 export default {
   title: "Surface",
@@ -9,27 +9,25 @@ export default {
 } as ComponentMeta<typeof Surface>;
 
 export const Basic: ComponentStory<typeof Surface> = (args) => (
-  <Provider theme={DefaultTheme}>
-    <Surface {...args}>
-      <ImageBackground
-        source={require("../assets/icon.png")}
-        style={{
-          aspectRatio: 1 / 1,
-          height: 200,
-        }}
-        resizeMode={"cover"}
-      />
+  <Surface {...args}>
+    <ImageBackground
+      source={require("../assets/icon.png")}
+      style={{
+        aspectRatio: 1 / 1,
+        height: 200,
+      }}
+      resizeMode={"cover"}
+    />
 
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-        }}
-      >
-        <Text style={{ textAlign: "center" }}>Bro</Text>
-      </View>
-    </Surface>
-  </Provider>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+      }}
+    >
+      <Text style={{ textAlign: "center" }}>Bro</Text>
+    </View>
+  </Surface>
 );
 
 Basic.args = {

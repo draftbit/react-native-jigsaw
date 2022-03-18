@@ -45,6 +45,7 @@ const storybookConfig = {
         ],
         babelPlugins: ["react-native-reanimated/plugin"],
       },
+      projectRoot: require("path").resolve(__dirname, "../../"),
     },
   ],
   framework: "@storybook/react",

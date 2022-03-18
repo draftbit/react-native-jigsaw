@@ -3,7 +3,7 @@
   "description": "Example app for @draftbit/ui",
   "version": "43.4.17",
   "private": true,
-  "main": "__generated__/AppEntry.js",
+  "main": "index.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -15,7 +15,6 @@
     "storybook-watcher": "sb-rn-watcher --config-path .ondevice",
     "storybook": "start-storybook -p 2999",
     "build-storybook": "build-storybook",
-    "postinstall": "expo-yarn-workspaces postinstall",
     "example": "yarn --cwd example",
     "clean:modules": "rimraf node_modules"
   },

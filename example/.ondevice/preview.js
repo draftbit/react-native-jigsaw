@@ -1,6 +1,15 @@
 import { withBackgrounds } from "@storybook/addon-ondevice-backgrounds";
 
-export const decorators = [withBackgrounds];
+import { Provider, DefaultTheme } from "@draftbit/ui";
+
+export const decorators = [
+  withBackgrounds,
+  (Story) => (
+    <Provider theme={DefaultTheme}>
+      <Story />
+    </Provider>
+  ),
+];
 
 export const parameters = {
   backgrounds: [

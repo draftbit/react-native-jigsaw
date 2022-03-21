@@ -23,7 +23,7 @@ export const SEED_DATA = {
       label: "Size",
       description: "Width and height of your icon",
       defaultValue: 24,
-      min: 16,
+      min: 1,
       max: 128,
       step: 1,
       precision: 0,

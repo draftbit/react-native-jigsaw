@@ -11,26 +11,26 @@ import type { Edge } from "react-native-safe-area-context";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 
-type Props = {
-  hasSafeArea: boolean;
+type ScreenContainerProps = {
   scrollable: boolean;
-  hasBottomSafeArea?: boolean;
-  hasTopSafeArea?: boolean;
+  hasSafeArea: boolean;
+  hasTopSafeArea: boolean;
+  hasBottomSafeArea: boolean;
   theme: Theme;
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
 };
 
 function ScreenContainer({
-  hasSafeArea = false,
   scrollable = false,
-  hasBottomSafeArea,
-  hasTopSafeArea,
+  hasSafeArea = false,
+  hasBottomSafeArea = false,
+  hasTopSafeArea = false,
   theme,
   style,
   children,
   ...rest
-}: Props) {
+}: ScreenContainerProps) {
   const backgroundColor = theme.colors.background;
 
   const edges: Edge[] = ["left", "right"];

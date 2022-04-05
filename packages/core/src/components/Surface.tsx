@@ -6,9 +6,8 @@ import {
   ViewProps,
   StyleProp,
   ViewStyle,
-  View,
-  Platform,
 } from "react-native";
+
 import shadow from "../styles/shadow";
 import overlay from "../styles/overlay";
 import { withTheme } from "../theming";
@@ -30,10 +29,7 @@ const Surface: React.FC<Props> = ({
   const {
     elevation: styleElevation = 3,
     backgroundColor,
-    borderRadius,
-    overflow,
-    height,
-    width,
+    ...restStyle
   } = (StyleSheet.flatten(style) || {}) as ViewStyle;
 
   const { dark: isDarkTheme, mode, colors } = theme;
@@ -56,30 +52,15 @@ const Surface: React.FC<Props> = ({
     <Animated.View
       {...rest}
       style={[
-        style,
         {
           backgroundColor: getBackgroundColor(),
-          overflow:
-            Platform.OS === "web" && overflow === "hidden"
-              ? "hidden"
-              : "visible",
           elevation,
           ...evalationStyles,
+          ...restStyle,
         },
       ]}
     >
-      <View
-        style={[
-          {
-            overflow,
-            borderRadius,
-            height,
-            width,
-          },
-        ]}
-      >
-        {children}
-      </View>
+      {children}
     </Animated.View>
   );
 };

@@ -39,6 +39,7 @@ const NativeWebView: React.FC<WebViewProps> = ({
         allowsInlineMediaPlayback: true,
         domStorageEnabled: true,
         javaScriptEnabled: true,
+        mediaCapturePermissionGrantType: "grant",
         mediaPlaybackRequiresUserAction: false,
         startInLoadingState: true,
       }

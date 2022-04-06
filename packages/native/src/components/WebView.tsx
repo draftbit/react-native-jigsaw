@@ -105,7 +105,7 @@ const NativeWebView: React.FC<WebViewProps> = ({
         />
       );
     }
-    
+
     if (
       (!cameraPermissions?.granted && cameraPermissions?.canAskAgain) ||
       (!microphonePermissions?.granted && microphonePermissions?.canAskAgain)
@@ -117,7 +117,7 @@ const NativeWebView: React.FC<WebViewProps> = ({
         />
       );
     }
-    
+
     if (
       (cameraPermissions?.status === "denied" &&
         cameraPermissions?.canAskAgain === false) ||
@@ -130,7 +130,7 @@ const NativeWebView: React.FC<WebViewProps> = ({
         </Text>
       );
     }
-    
+
     return <ActivityIndicator />;
   };
 

@@ -104,7 +104,9 @@ const NativeWebView: React.FC<WebViewProps> = ({
           {...videoChatProps}
         />
       );
-    } else if (
+    }
+    
+    if (
       (!cameraPermissions?.granted && cameraPermissions?.canAskAgain) ||
       (!microphonePermissions?.granted && microphonePermissions?.canAskAgain)
     ) {
@@ -114,7 +116,9 @@ const NativeWebView: React.FC<WebViewProps> = ({
           onPress={getAndSetCameraAndMicrophonePermissions}
         />
       );
-    } else if (
+    }
+    
+    if (
       (cameraPermissions?.status === "denied" &&
         cameraPermissions?.canAskAgain === false) ||
       (microphonePermissions?.status === "denied" &&
@@ -125,9 +129,9 @@ const NativeWebView: React.FC<WebViewProps> = ({
           {"Set the missing Audio and/or Video permissions in System Settings"}
         </Text>
       );
-    } else {
-      return <ActivityIndicator />;
     }
+    
+    return <ActivityIndicator />;
   };
 
   useEffect(() => {

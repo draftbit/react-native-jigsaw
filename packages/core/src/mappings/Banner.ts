@@ -24,14 +24,17 @@ export const SEED_DATA = {
       group: GROUPS.basic,
       label: "Initially visible",
       description: "Whether the banner should be visible",
+      defaultValue: true,
     }),
     dismissable: createBoolProp({
       group: GROUPS.basic,
       label: "Dismissable",
       description: "Whether the banner should be able to be closed",
+      defaultValue: true,
     }),
     buttonColor: createColorProp({
       label: "Button color",
+      defaultValue: "primary",
     }),
   },
 };

@@ -4,6 +4,7 @@ export { default as Provider } from "./Provider";
 export { default as DefaultTheme } from "./styles/DefaultTheme";
 
 export { Link } from "./components/Text";
+export { default as Banner } from "./components/Banner";
 export { ButtonSolid, ButtonOutline } from "./components/Button";
 export { default as Avatar } from "./components/CircleImage";
 export { default as AvatarEdit } from "./components/AvatarEdit";

@@ -20,6 +20,7 @@ const DEFAULT_MAX_WIDTH = 960;
 type Props = {
   initiallyVisible: boolean;
   dismissable: boolean;
+  buttonColor?: string;
   icon?: string;
   content: string;
   contentStyle?: StyleProp<ViewStyle>;
@@ -45,6 +46,7 @@ type NativeEvent = {
 const Banner: React.FC<Props> = ({
   initiallyVisible,
   icon,
+  buttonColor,
   content,
   contentStyle,
   dismissable,
@@ -151,7 +153,7 @@ const Banner: React.FC<Props> = ({
           {dismissable ? (
             <View style={styles.actions}>
               <Button
-                color={theme.colors.primary}
+                color={buttonColor || theme.colors.primary}
                 title="Close"
                 onPress={() => setVisible(false)}
               />

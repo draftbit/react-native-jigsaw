@@ -44,5 +44,10 @@ export const SEED_DATA = {
       label: "Enable On Android",
       description: "Enable Android Support",
     }),
+    showsVerticalScrollIndicator: createStaticBoolProp({
+      label: "Shows Vertical Scroll Indicator",
+      description: "Show or hide the vertical scroll indicator",
+      defaultValue: true,
+    }),
   },
 };

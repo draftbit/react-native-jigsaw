@@ -22,7 +22,7 @@ type Props = {
   dismissable: boolean;
   buttonColor?: string;
   icon?: string;
-  content: string;
+  content?: string;
   contentStyle?: StyleProp<ViewStyle>;
   style?: StyleProp<ViewStyle>;
   ref?: React.RefObject<View>;
@@ -44,12 +44,12 @@ type NativeEvent = {
 };
 
 const Banner: React.FC<Props> = ({
-  initiallyVisible,
+  initiallyVisible = true,
+  dismissable = true,
   icon,
   buttonColor,
   content,
   contentStyle,
-  dismissable,
   style,
   theme,
   Icon,

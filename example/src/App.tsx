@@ -17,6 +17,7 @@ import * as Font from "expo-font";
 
 import CircleImageExample from "./CircleImageExample";
 import IconExample from "./IconExample";
+import BannerExample from "./BannerExample";
 import ButtonExample from "./ButtonExample";
 import RadioButtonExample from "./RadioButtonExample";
 
@@ -67,6 +68,7 @@ import SurfaceExample from "./SurfaceExample";
 const ROUTES = {
   Layout: LayoutExample,
   Icon: IconExample,
+  Banner: BannerExample,
   Button: ButtonExample,
   FAB: FABExample,
   RadioButton: RadioButtonExample,

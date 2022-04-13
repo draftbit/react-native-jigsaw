@@ -14,7 +14,6 @@ const MapView: React.FC<MapViewProps> = ({
   style,
   children,
 }) => {
-  console.log("web maps!");
   if (!LoadScript || !GoogleMap) {
     return null;
   }

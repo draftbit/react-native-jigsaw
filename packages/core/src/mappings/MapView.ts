@@ -136,11 +136,8 @@ export const SEED_DATA = {
       description: "Color of the background to show while the map is loading",
     }),
     apiKey: createTextProp({
-      label: "API Key (PWA only)",
-      description: "Your API Key",
-      required: false,
-      defaultValue: null,
-      group: GROUPS.basic,
+      defaultValue: process.env.GOOGLE_MAPS_API_KEY,
+      editable: false,
     }),
   },
 };

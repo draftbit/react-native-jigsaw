@@ -35,12 +35,14 @@ export const SEED_DATA = {
       description: "The latitude delta for the map's initial region",
       required: false,
       precision: 4,
+      defaultValue: 1,
     }),
     longitudeDelta: createNumberProp({
       label: "Initial Longitude Delta",
       description: "The longitude delta for the map's initial region",
       required: false,
       precision: 4,
+      defaultValue: 1,
     }),
     latitude: createNumberProp({
       label: "Initial Latitude",
@@ -49,6 +51,7 @@ export const SEED_DATA = {
       precision: 6,
       min: -90,
       max: 90,
+      defaultValue: 37.40241,
     }),
     longitude: createNumberProp({
       label: "Initial Longitude",
@@ -57,6 +60,7 @@ export const SEED_DATA = {
       precision: 6,
       min: -180,
       max: 180,
+      defaultValue: -122.12125,
     }),
     mapType: {
       label: "Map Type",

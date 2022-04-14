@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/web-maps",
-  "version": "43.6.0-alpha.4",
+  "version": "43.5.0",
   "description": "Web Map Components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/types": "^43.6.0-alpha.4",
+    "@draftbit/types": "^43.5.0",
     "@react-google-maps/api": "^2.5.0"
   },
   "react-native-builder-bob": {

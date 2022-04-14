@@ -1,11 +1,3 @@
 # `@draftbit/web-maps`
 
-> TODO: description
-
-## Usage
-
-```
-const maps = require('@draftbit/web-maps');
-
-// TODO: DEMONSTRATE API
-```
+`MapView`, `MapMarker`, and `MapCallout` components, powered by `@react-google-maps/api`. For use on web.

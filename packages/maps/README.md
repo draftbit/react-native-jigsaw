@@ -1,11 +1,3 @@
 # `@draftbit/maps`
 
-> TODO: description
-
-## Usage
-
-```
-const maps = require('@draftbit/maps');
-
-// TODO: DEMONSTRATE API
-```
+`MapView`, `MapMarker`, and `MapCallout` components, powered by `react-native-maps`. For use on iOS and Android.

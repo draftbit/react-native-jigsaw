@@ -8,9 +8,10 @@ import {
 export const SEED_DATA = {
   name: "Map Callout",
   tag: "MapCallout",
+  packageName: "@draftbit/maps",
   description:
     "An info window to display on top of a marker when it is clicked",
-  category: COMPONENT_TYPES.deprecated,
+  category: COMPONENT_TYPES.media,
   layout: {},
   props: {
     onPress: createActionProp({

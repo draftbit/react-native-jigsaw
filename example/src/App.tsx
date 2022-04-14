@@ -40,6 +40,8 @@ import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
 // import HeaderExample from "./HeaderExample";
 import LayoutExample from "./LayoutExample";
 
+import MapViewExample from "./MapViewExample";
+
 import PickerExample from "./PickerExample";
 
 // import ProgressIndicatorExample from "./ProgressIndicatorExample.js";
@@ -87,6 +89,7 @@ const ROUTES = {
   DatePicker: DatePickerExample,
   FieldSearchBarFull: FieldSearchBarFullExample,
   LinearGradient: LinearGradientExample,
+  MapView: MapViewExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
   // Header: HeaderExample,
   Picker: PickerExample,

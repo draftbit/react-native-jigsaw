@@ -8,11 +8,9 @@ const MapViewExample = ({ theme }) => (
     <MapView
       showsCompass={true}
       style={styles.map}
-      apiKey="myApiKey"
-      latitudeDelta={0.0922}
-      longitudeDelta={0.0421}
       latitude={40.741895}
       longitude={-73.989308}
+      zoom={16}
     >
       <MapMarker
         latitude={40.741895}

@@ -23,6 +23,7 @@ export interface MapViewProps {
   provider?: "google" | null;
   latitudeDelta?: number;
   longitudeDelta?: number;
+  zoom?: number;
   latitude?: number;
   longitude?: number;
   mapType?: MapTypes;

@@ -8,6 +8,7 @@ const MapView: React.FC<MapViewProps> = ({
   apiKey,
   latitude,
   longitude,
+  zoom,
   rotateEnabled = true,
   scrollEnabled = true,
   mapType = "standard",
@@ -31,7 +32,7 @@ const MapView: React.FC<MapViewProps> = ({
           lng: longitude || 0,
         }}
         mapTypeId={mapType}
-        zoom={14}
+        zoom={zoom}
         options={{
           scrollwheel: scrollEnabled,
           rotateControl: rotateEnabled,

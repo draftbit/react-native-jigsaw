@@ -3,6 +3,7 @@ import {
   createBoolProp,
   createColorProp,
   createNumberProp,
+  createTextProp,
   GROUPS,
   FORM_TYPES,
   PROP_TYPES,
@@ -130,6 +131,12 @@ export const SEED_DATA = {
     loadingBackgroundColor: createColorProp({
       label: "Loading Background Color",
       description: "Color of the background to show while the map is loading",
+    }),
+    apiKey: createTextProp({
+      label: "API Key (PWA only)",
+      description: "Your API Key",
+      required: false,
+      defaultValue: null,
     }),
   },
 };

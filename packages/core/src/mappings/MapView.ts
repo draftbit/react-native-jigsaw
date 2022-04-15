@@ -3,6 +3,7 @@ import {
   createBoolProp,
   createColorProp,
   createNumberProp,
+  createTextProp,
   GROUPS,
   FORM_TYPES,
   PROP_TYPES,
@@ -54,6 +55,7 @@ export const SEED_DATA = {
       required: false,
       precision: 4,
       defaultValue: 1,
+      group: GROUPS.basic,
     }),
     longitudeDelta: createNumberProp({
       label: "Init Longitude Delta",
@@ -61,6 +63,7 @@ export const SEED_DATA = {
       required: false,
       precision: 4,
       defaultValue: 1,
+      group: GROUPS.basic,
     }),
     zoom: createNumberProp({
       label: "Initial Zoom (Web)",
@@ -69,6 +72,7 @@ export const SEED_DATA = {
       precision: 0,
       step: 1,
       defaultValue: 8,
+      group: GROUPS.basic,
     }),
     mapType: {
       label: "Map Type",
@@ -128,8 +132,12 @@ export const SEED_DATA = {
       description: "Color of the loading indicator",
     }),
     loadingBackgroundColor: createColorProp({
-      label: "Loading Background Color",
+      label: "Loading BG Color",
       description: "Color of the background to show while the map is loading",
+    }),
+    apiKey: createTextProp({
+      defaultValue: process.env.GOOGLE_MAPS_API_KEY,
+      editable: false,
     }),
   },
 };

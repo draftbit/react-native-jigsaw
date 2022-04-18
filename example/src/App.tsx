@@ -17,6 +17,7 @@ import * as Font from "expo-font";
 
 import CircleImageExample from "./CircleImageExample";
 import IconExample from "./IconExample";
+import BannerExample from "./BannerExample";
 import ButtonExample from "./ButtonExample";
 import RadioButtonExample from "./RadioButtonExample";
 
@@ -38,6 +39,8 @@ import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
 
 // import HeaderExample from "./HeaderExample";
 import LayoutExample from "./LayoutExample";
+
+import MapViewExample from "./MapViewExample";
 
 import PickerExample from "./PickerExample";
 
@@ -67,6 +70,7 @@ import SurfaceExample from "./SurfaceExample";
 const ROUTES = {
   Layout: LayoutExample,
   Icon: IconExample,
+  Banner: BannerExample,
   Button: ButtonExample,
   FAB: FABExample,
   RadioButton: RadioButtonExample,
@@ -85,6 +89,7 @@ const ROUTES = {
   DatePicker: DatePickerExample,
   FieldSearchBarFull: FieldSearchBarFullExample,
   LinearGradient: LinearGradientExample,
+  MapView: MapViewExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
   // Header: HeaderExample,
   Picker: PickerExample,

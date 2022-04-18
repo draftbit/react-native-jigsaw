@@ -161,7 +161,7 @@ export const SEED_DATA = {
       required: false,
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.STRING,
-      defaultValue: "auto",
+      defaultValue: null,
     },
     removeClippedSubviews: {
       group: GROUPS.advanced,

@@ -1,6 +1,5 @@
 import {
   COMPONENT_TYPES,
-  createImageProp,
   createStaticBoolProp,
   createSourceProp,
   createResizeModeProp,
@@ -30,7 +29,7 @@ export const SEED_DATA = {
       description: "Show a thumbnail before the video starts.",
       defaultValue: false,
     }),
-    posterSource: createImageProp({
+    posterSource: createSourceProp({
       label: "Thumbnail Source",
       description:
         "The optional image to display over the video while it is loading.",

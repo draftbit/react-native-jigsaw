@@ -45,7 +45,7 @@ export const BaseLink = ({
   return (
     <Text
       hitSlop={8}
-      style={[{ color: theme.colors.primary, alignSelf: "flex-start" }, style]}
+      style={[{ color: theme.colors.primary }, style]}
       theme={theme}
       {...props}
     >

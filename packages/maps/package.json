@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/maps",
-  "version": "43.6.2",
+  "version": "43.6.3",
   "description": "Map Components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",

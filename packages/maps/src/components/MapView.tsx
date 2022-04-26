@@ -45,9 +45,10 @@ const MapView: React.FC<MapViewProps> = ({
       rotateEnabled={rotateEnabled}
       zoomEnabled={zoomEnabled}
       initialCamera={{
-        zoom,
         altitude: zoomToAltitude(zoom || 1),
+        heading: 0,
         pitch: 0,
+        zoom,
         center: {
           latitude,
           longitude,

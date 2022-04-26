@@ -5,12 +5,23 @@ import { MapViewProps } from "@draftbit/types";
 // Dynamically import from ./ReactNativeMaps so that we don't
 // require react-native-maps unless we're in native.
 
+// Approximates a conversion of zoom level to altitude,
+// since different platforms require different values.
+// https://stackoverflow.com/a/37142662
+function zoomToAltitude(zoom: number) {
+  const A = 40487.57;
+  const B = 0.00007096758;
+  const C = 91610.74;
+  const D = -40467.74;
+
+  return C * Math.pow((A - D) / (zoom - D) - 1, 1 / B);
+}
+
 const MapView: React.FC<MapViewProps> = ({
   provider,
   latitude,
-  latitudeDelta,
   longitude,
-  longitudeDelta,
+  zoom,
   showsCompass = false,
   rotateEnabled = true,
   zoomEnabled = true,
@@ -33,11 +44,14 @@ const MapView: React.FC<MapViewProps> = ({
       showsCompass={showsCompass}
       rotateEnabled={rotateEnabled}
       zoomEnabled={zoomEnabled}
-      initialRegion={{
-        latitude: latitude as number,
-        longitude: longitude as number,
-        latitudeDelta: latitudeDelta as number,
-        longitudeDelta: longitudeDelta as number,
+      initialCamera={{
+        zoom,
+        altitude: zoomToAltitude(zoom || 1),
+        pitch: 0,
+        center: {
+          latitude,
+          longitude,
+        },
       }}
       loadingEnabled={loadingEnabled}
       scrollEnabled={scrollEnabled}

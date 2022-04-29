@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/maps",
-  "version": "43.6.3",
+  "version": "43.7.0",
   "description": "Map Components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -40,7 +40,7 @@
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
     "@draftbit/types": "^43.6.0",
-    "@draftbit/web-maps": "^43.6.3",
+    "@draftbit/web-maps": "^43.7.0",
     "react-native-maps": "0.28.0"
   },
   "react-native-builder-bob": {

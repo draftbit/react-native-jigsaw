@@ -20,6 +20,23 @@ class MapView extends React.Component<MapViewProps, State> {
     };
   }
 
+  componentDidUpdate(prevProps: MapViewProps) {
+    if (
+      prevProps.latitude != null &&
+      prevProps.longitude != null &&
+      this.props.latitude != null &&
+      this.props.longitude != null &&
+      (prevProps.latitude !== this.props.latitude ||
+        prevProps.longitude !== this.props.longitude)
+    ) {
+      this.setState({
+        lat: this.props.latitude,
+        lng: this.props.longitude,
+        zoom: this.props.zoom,
+      });
+    }
+  }
+
   animateToLocation({
     latitude,
     longitude,

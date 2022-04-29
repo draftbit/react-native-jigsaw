@@ -17,52 +17,82 @@ function zoomToAltitude(zoom: number) {
   return C * Math.pow((A - D) / (zoom - D) - 1, 1 / B);
 }
 
-const MapView: React.FC<MapViewProps> = ({
-  provider,
-  latitude,
-  longitude,
-  zoom,
-  showsCompass = false,
-  rotateEnabled = true,
-  zoomEnabled = true,
-  loadingEnabled = true,
-  scrollEnabled = true,
-  loadingBackgroundColor,
-  loadingIndicatorColor,
-  mapType = "standard",
-  style,
-  children,
-}) => {
-  if (!NativeMapView) {
-    return null;
+class MapView extends React.Component<MapViewProps> {
+  private mapRef: React.RefObject<any>;
+  constructor(props: MapViewProps) {
+    super(props);
+    this.mapRef = React.createRef();
   }
 
-  return (
-    <NativeMapView
-      provider={provider}
-      mapType={mapType}
-      showsCompass={showsCompass}
-      rotateEnabled={rotateEnabled}
-      zoomEnabled={zoomEnabled}
-      initialCamera={{
-        altitude: zoomToAltitude(zoom || 1),
-        heading: 0,
-        pitch: 0,
-        zoom,
-        center: {
-          latitude,
-          longitude,
-        },
-      }}
-      loadingEnabled={loadingEnabled}
-      scrollEnabled={scrollEnabled}
-      loadingBackgroundColor={loadingBackgroundColor}
-      loadingIndicatorColor={loadingIndicatorColor}
-      style={style}
-    >
-      {children}
-    </NativeMapView>
-  );
-};
+  animateToLocation({
+    latitude,
+    longitude,
+    zoom,
+  }: {
+    latitude: number;
+    longitude: number;
+    zoom?: number;
+  }) {
+    this.mapRef.current.animateCamera({
+      altitude: zoomToAltitude(zoom || 1),
+      zoom,
+      center: {
+        latitude,
+        longitude,
+      },
+    });
+  }
+
+  render() {
+    const {
+      provider,
+      latitude,
+      longitude,
+      zoom,
+      showsCompass = false,
+      rotateEnabled = true,
+      zoomEnabled = true,
+      loadingEnabled = true,
+      scrollEnabled = true,
+      loadingBackgroundColor,
+      loadingIndicatorColor,
+      mapType = "standard",
+      style,
+      children,
+    } = this.props;
+
+    if (!NativeMapView) {
+      return null;
+    }
+
+    return (
+      <NativeMapView
+        ref={this.mapRef}
+        provider={provider}
+        mapType={mapType}
+        showsCompass={showsCompass}
+        rotateEnabled={rotateEnabled}
+        zoomEnabled={zoomEnabled}
+        initialCamera={{
+          altitude: zoomToAltitude(zoom || 1),
+          heading: 0,
+          pitch: 0,
+          zoom,
+          center: {
+            latitude,
+            longitude,
+          },
+        }}
+        loadingEnabled={loadingEnabled}
+        scrollEnabled={scrollEnabled}
+        loadingBackgroundColor={loadingBackgroundColor}
+        loadingIndicatorColor={loadingIndicatorColor}
+        style={style}
+      >
+        {children}
+      </NativeMapView>
+    );
+  }
+}
 
 export default MapView;

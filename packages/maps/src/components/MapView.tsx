@@ -50,14 +50,19 @@ class MapView extends React.Component<MapViewProps> {
     longitude: number;
     zoom?: number;
   }) {
-    this.mapRef.current.animateCamera({
-      altitude: zoomToAltitude(zoom || 1),
-      zoom,
+    const args: { [key: string]: number | object } = {
       center: {
         latitude,
         longitude,
       },
-    });
+    };
+
+    if (zoom) {
+      args.altitude = zoomToAltitude(zoom || 1);
+      args.zoom = zoom;
+    }
+
+    this.mapRef.current.animateCamera(args);
   }
 
   render() {

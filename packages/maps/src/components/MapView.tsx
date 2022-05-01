@@ -50,7 +50,11 @@ class MapView extends React.Component<MapViewProps> {
     longitude: number;
     zoom?: number;
   }) {
-    const args: { [key: string]: number | object } = {
+    const args: {
+      center: { latitude: number; longitude: number };
+      altitude?: number;
+      zoom?: number;
+    } = {
       center: {
         latitude,
         longitude,

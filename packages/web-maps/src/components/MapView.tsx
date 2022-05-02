@@ -46,7 +46,16 @@ class MapView extends React.Component<MapViewProps, State> {
     longitude: number;
     zoom?: number;
   }) {
-    this.setState({ lat: latitude, lng: longitude, zoom });
+    const args: { lat: number; lng: number; zoom?: number } = {
+      lat: latitude,
+      lng: longitude,
+    };
+
+    if (zoom) {
+      args.zoom = zoom;
+    }
+
+    this.setState(args);
   }
 
   render() {

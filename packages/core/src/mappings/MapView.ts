@@ -16,8 +16,7 @@ export const SEED_DATA = {
   description: "A map view",
   category: COMPONENT_TYPES.media,
   layout: {
-    height: "100%",
-    width: "100%",
+    flex: 1,
   },
   props: {
     provider: {

@@ -1,5 +1,6 @@
 import * as React from "react";
-import { GoogleMap, LoadScript } from "./ReactGoogleMaps";
+import * as Location from "expo-location";
+import { GoogleMap, Marker, LoadScript } from "./ReactGoogleMaps";
 import NoApiKey from "./NoApiKey";
 import { MapViewProps } from "@draftbit/types";
 import { StyleSheet } from "react-native";
@@ -8,6 +9,15 @@ type State = {
   lat: number;
   lng: number;
   zoom?: number;
+  userLocation?: {
+    latitude: number;
+    longitude: number;
+    altitude: number | null;
+    accuracy: number | null;
+    altitudeAccuracy: number | null;
+    heading: number | null;
+    speed: number | null;
+  };
 };
 
 class MapView extends React.Component<MapViewProps, State> {
@@ -18,6 +28,22 @@ class MapView extends React.Component<MapViewProps, State> {
       lng: props.longitude || 0,
       zoom: props.zoom,
     };
+  }
+
+  componentDidMount() {
+    (async () => {
+      if (!this.props.showUserLocation) {
+        return;
+      }
+
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      this.setState({ userLocation: location.coords });
+    })();
   }
 
   componentDidUpdate(prevProps: MapViewProps) {
@@ -64,13 +90,14 @@ class MapView extends React.Component<MapViewProps, State> {
       rotateEnabled = true,
       scrollEnabled = true,
       mapType = "standard",
+      moveMapToUser,
       style,
       children,
     } = this.props;
 
-    const { lat, lng, zoom } = this.state;
+    const { lat, lng, userLocation, zoom } = this.state;
 
-    if (!LoadScript || !GoogleMap) {
+    if (!LoadScript || !GoogleMap || !Marker) {
       return null;
     }
 
@@ -78,14 +105,19 @@ class MapView extends React.Component<MapViewProps, State> {
       return <NoApiKey />;
     }
 
+    const center =
+      userLocation && moveMapToUser
+        ? {
+            lat: userLocation.latitude,
+            lng: userLocation.longitude,
+          }
+        : { lat, lng };
+
     return (
       <LoadScript googleMapsApiKey={apiKey}>
         <GoogleMap
           mapContainerStyle={StyleSheet.flatten(style) as React.CSSProperties}
-          center={{
-            lat,
-            lng,
-          }}
+          center={center}
           mapTypeId={mapType}
           zoom={zoom}
           options={{
@@ -93,6 +125,23 @@ class MapView extends React.Component<MapViewProps, State> {
             rotateControl: rotateEnabled,
           }}
         >
+          {userLocation ? (
+            <Marker
+              title="Your Location"
+              position={{
+                lat: userLocation.latitude,
+                lng: userLocation.longitude,
+              }}
+              icon={{
+                path: "M12,20a8,8 0 1,0 16,0a8,8 0 1,0 -16,0",
+                fillColor: "#0000ff",
+                fillOpacity: 1,
+                strokeColor: "#fff",
+                strokeWidth: 4,
+                strokeOpacity: 1,
+              }}
+            />
+          ) : null}
           {children}
         </GoogleMap>
       </LoadScript>

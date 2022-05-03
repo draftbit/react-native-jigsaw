@@ -34,6 +34,8 @@ export interface MapViewProps {
   loadingEnabled?: boolean;
   loadingBackgroundColor?: string;
   loadingIndicatorColor?: string;
+  showUserLocation?: boolean;
+  moveMapToUser?: boolean;
   style?: StyleProp<ViewStyle>;
 }
 

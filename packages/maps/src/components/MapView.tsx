@@ -1,5 +1,7 @@
 import * as React from "react";
-import NativeMapView from "./ReactNativeMaps";
+import * as Location from "expo-location";
+import Svg, { Ellipse } from "react-native-svg";
+import NativeMapView, { Marker } from "./ReactNativeMaps";
 import { MapViewProps } from "@draftbit/types";
 
 // Dynamically import from ./ReactNativeMaps so that we don't
@@ -17,11 +19,40 @@ function zoomToAltitude(zoom: number) {
   return C * Math.pow((A - D) / (zoom - D) - 1, 1 / B);
 }
 
-class MapView extends React.Component<MapViewProps> {
+type State = {
+  userLocation?: {
+    latitude: number;
+    longitude: number;
+    altitude: number | null;
+    accuracy: number | null;
+    altitudeAccuracy: number | null;
+    heading: number | null;
+    speed: number | null;
+  };
+};
+
+class MapView extends React.Component<MapViewProps, State> {
   private mapRef: React.RefObject<any>;
   constructor(props: MapViewProps) {
     super(props);
+    this.state = {};
     this.mapRef = React.createRef();
+  }
+
+  componentDidMount() {
+    (async () => {
+      if (!this.props.showUserLocation) {
+        return;
+      }
+
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      this.setState({ userLocation: location.coords });
+    })();
   }
 
   componentDidUpdate(prevProps: MapViewProps) {
@@ -83,13 +114,24 @@ class MapView extends React.Component<MapViewProps> {
       loadingBackgroundColor,
       loadingIndicatorColor,
       mapType = "standard",
+      moveMapToUser,
       style,
       children,
     } = this.props;
 
-    if (!NativeMapView) {
+    const { userLocation } = this.state;
+
+    if (!NativeMapView || !Marker) {
       return null;
     }
+
+    const region =
+      userLocation && moveMapToUser
+        ? {
+            latitude: userLocation.latitude,
+            longitude: userLocation.longitude,
+          }
+        : null;
 
     return (
       <NativeMapView
@@ -99,6 +141,7 @@ class MapView extends React.Component<MapViewProps> {
         showsCompass={showsCompass}
         rotateEnabled={rotateEnabled}
         zoomEnabled={zoomEnabled}
+        region={region}
         initialCamera={{
           altitude: zoomToAltitude(zoom || 1),
           heading: 0,
@@ -115,6 +158,27 @@ class MapView extends React.Component<MapViewProps> {
         loadingIndicatorColor={loadingIndicatorColor}
         style={style}
       >
+        {userLocation ? (
+          <Marker
+            title="Your Location"
+            coordinate={{
+              latitude: userLocation.latitude,
+              longitude: userLocation.longitude,
+            }}
+          >
+            <Svg height={40} width={40}>
+              <Ellipse
+                cx="20"
+                cy="20"
+                rx="8"
+                ry="8"
+                fill="blue"
+                stroke="#fff"
+                strokeWidth="2"
+              />
+            </Svg>
+          </Marker>
+        ) : null}
         {children}
       </NativeMapView>
     );

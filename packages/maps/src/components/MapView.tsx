@@ -172,7 +172,7 @@ class MapView extends React.Component<MapViewProps, State> {
                 cy="20"
                 rx="8"
                 ry="8"
-                fill="blue"
+                fill="#387af4"
                 stroke="#fff"
                 strokeWidth="2"
               />

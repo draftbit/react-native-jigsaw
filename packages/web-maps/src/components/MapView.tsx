@@ -134,7 +134,7 @@ class MapView extends React.Component<MapViewProps, State> {
               }}
               icon={{
                 path: "M12,20a8,8 0 1,0 16,0a8,8 0 1,0 -16,0",
-                fillColor: "#0000ff",
+                fillColor: "#387af4",
                 fillOpacity: 1,
                 strokeColor: "#fff",
                 strokeWidth: 4,

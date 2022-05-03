@@ -15,8 +15,8 @@
     "clean:modules": "rimraf node_modules"
   },
   "dependencies": {
-    "@draftbit/maps": "^43.7.1",
-    "@draftbit/ui": "^43.7.1",
+    "@draftbit/maps": "^44.0.0",
+    "@draftbit/ui": "^44.0.0",
     "@expo/vector-icons": "^12.0.0",
     "@react-native-community/datetimepicker": "4.0.0",
     "@react-native-picker/picker": "2.2.1",

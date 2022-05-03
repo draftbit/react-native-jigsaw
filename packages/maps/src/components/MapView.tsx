@@ -45,13 +45,13 @@ class MapView extends React.Component<MapViewProps, State> {
         return;
       }
 
-      let { status } = await Location.requestForegroundPermissionsAsync();
+      const { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
         return;
       }
 
-      let location = await Location.getCurrentPositionAsync({});
-      this.setState({ userLocation: location.coords });
+      const { coords } = await Location.getCurrentPositionAsync({});
+      this.setState({ userLocation: coords });
     })();
   }
 

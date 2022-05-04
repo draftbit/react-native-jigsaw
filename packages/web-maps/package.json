@@ -42,9 +42,6 @@
     "@draftbit/types": "^44.0.3",
     "@react-google-maps/api": "^2.10.2"
   },
-  "peerDependencies": {
-    "expo-location": "~13.0.4"
-  },
   "react-native-builder-bob": {
     "source": "src",
     "output": "lib",

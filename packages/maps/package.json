@@ -43,6 +43,9 @@
     "@draftbit/web-maps": "^44.0.1",
     "react-native-maps": "0.29.4"
   },
+  "peerDependencies": {
+    "expo-location": "~13.0.4"
+  },
   "react-native-builder-bob": {
     "source": "src",
     "output": "lib",

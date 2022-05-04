@@ -125,6 +125,7 @@ export const SEED_DATA = {
       description: "Whether to request and show the user's location on the map",
       required: false,
       defaultValue: null,
+      group: GROUPS.basic,
     }),
     moveMapToUser: createBoolProp({
       label: "Move Map to User",
@@ -132,6 +133,7 @@ export const SEED_DATA = {
         "Whether to set the map region to the user's location. Overrides latitude and longitude.",
       required: false,
       defaultValue: null,
+      group: GROUPS.basic,
     }),
     apiKey: createTextProp({
       defaultValue: process.env.GOOGLE_MAPS_API_KEY,

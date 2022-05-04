@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as Location from "expo-location";
 import { GoogleMap, Marker, LoadScript } from "./ReactGoogleMaps";
 import NoApiKey from "./NoApiKey";
 import { MapViewProps } from "@draftbit/types";
@@ -36,16 +35,16 @@ class MapView extends React.Component<MapViewProps, State> {
         return;
       }
 
-      const { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        return;
-      }
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const { coords } = position;
 
-      const { coords } = await Location.getCurrentPositionAsync({});
-      this.setState({ userLocation: coords });
+          this.setState({ userLocation: coords });
 
-      if (this.props.moveMapToUser) {
-        this.setState({ lat: coords.latitude, lng: coords.longitude });
+          if (this.props.moveMapToUser) {
+            this.setState({ lat: coords.latitude, lng: coords.longitude });
+          }
+        });
       }
     })();
   }

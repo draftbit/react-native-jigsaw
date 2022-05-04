@@ -40,7 +40,7 @@
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
     "@draftbit/types": "^43.6.0",
-    "@react-google-maps/api": "^2.5.0"
+    "@react-google-maps/api": "^2.10.2"
   },
   "peerDependencies": {
     "expo-location": "~13.0.4"

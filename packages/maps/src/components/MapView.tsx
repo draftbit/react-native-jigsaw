@@ -125,13 +125,22 @@ class MapView extends React.Component<MapViewProps, State> {
       return null;
     }
 
-    const region =
-      userLocation && moveMapToUser
-        ? {
-            latitude: userLocation.latitude,
-            longitude: userLocation.longitude,
-          }
-        : null;
+    const camera = {
+      altitude: zoomToAltitude(zoom || 1),
+      heading: 0,
+      pitch: 0,
+      zoom,
+      center:
+        userLocation && moveMapToUser
+          ? {
+              latitude: userLocation.latitude,
+              longitude: userLocation.longitude,
+            }
+          : {
+              latitude,
+              longitude,
+            },
+    };
 
     return (
       <NativeMapView
@@ -141,17 +150,7 @@ class MapView extends React.Component<MapViewProps, State> {
         showsCompass={showsCompass}
         rotateEnabled={rotateEnabled}
         zoomEnabled={zoomEnabled}
-        region={region}
-        initialCamera={{
-          altitude: zoomToAltitude(zoom || 1),
-          heading: 0,
-          pitch: 0,
-          zoom,
-          center: {
-            latitude,
-            longitude,
-          },
-        }}
+        camera={camera}
         loadingEnabled={loadingEnabled}
         scrollEnabled={scrollEnabled}
         loadingBackgroundColor={loadingBackgroundColor}

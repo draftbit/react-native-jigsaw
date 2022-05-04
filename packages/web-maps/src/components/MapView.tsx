@@ -43,19 +43,29 @@ class MapView extends React.Component<MapViewProps, State> {
 
       const { coords } = await Location.getCurrentPositionAsync({});
       this.setState({ userLocation: coords });
+
+      if (this.props.moveMapToUser) {
+        this.setState({ lat: coords.latitude, lng: coords.longitude });
+      }
     })();
   }
 
-  static getDerivedStateFromProps(props: MapViewProps, state: State) {
-    if (state.lat !== props.latitude || state.lng !== props.longitude) {
-      return {
-        lat: props.latitude,
-        lng: props.longitude,
-        zoom: props.zoom,
-      };
+  componentDidUpdate(prevProps: MapViewProps) {
+    if (
+      prevProps.latitude != null &&
+      prevProps.longitude != null &&
+      this.props.latitude != null &&
+      this.props.longitude != null &&
+      (prevProps.latitude !== this.props.latitude ||
+        prevProps.longitude !== this.props.longitude)
+    ) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({
+        lat: this.props.latitude,
+        lng: this.props.longitude,
+        zoom: this.props.zoom,
+      });
     }
-
-    return null;
   }
 
   animateToLocation({
@@ -85,7 +95,6 @@ class MapView extends React.Component<MapViewProps, State> {
       rotateEnabled = true,
       scrollEnabled = true,
       mapType = "standard",
-      moveMapToUser,
       style,
       children,
     } = this.props;
@@ -100,19 +109,14 @@ class MapView extends React.Component<MapViewProps, State> {
       return <NoApiKey />;
     }
 
-    const center =
-      userLocation && moveMapToUser
-        ? {
-            lat: userLocation.latitude,
-            lng: userLocation.longitude,
-          }
-        : { lat, lng };
-
     return (
       <LoadScript googleMapsApiKey={apiKey}>
         <GoogleMap
           mapContainerStyle={StyleSheet.flatten(style) as React.CSSProperties}
-          center={center}
+          center={{
+            lat,
+            lng,
+          }}
           mapTypeId={mapType}
           zoom={zoom}
           options={{

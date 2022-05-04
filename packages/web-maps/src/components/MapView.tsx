@@ -43,6 +43,10 @@ class MapView extends React.Component<MapViewProps, State> {
 
       const { coords } = await Location.getCurrentPositionAsync({});
       this.setState({ userLocation: coords });
+
+      if (this.props.moveMapToUser) {
+        this.setState({ lat: coords.latitude, lng: coords.longitude });
+      }
     })();
   }
 
@@ -55,6 +59,7 @@ class MapView extends React.Component<MapViewProps, State> {
       (prevProps.latitude !== this.props.latitude ||
         prevProps.longitude !== this.props.longitude)
     ) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         lat: this.props.latitude,
         lng: this.props.longitude,
@@ -90,7 +95,6 @@ class MapView extends React.Component<MapViewProps, State> {
       rotateEnabled = true,
       scrollEnabled = true,
       mapType = "standard",
-      moveMapToUser,
       style,
       children,
     } = this.props;
@@ -105,19 +109,14 @@ class MapView extends React.Component<MapViewProps, State> {
       return <NoApiKey />;
     }
 
-    const center =
-      userLocation && moveMapToUser
-        ? {
-            lat: userLocation.latitude,
-            lng: userLocation.longitude,
-          }
-        : { lat, lng };
-
     return (
       <LoadScript googleMapsApiKey={apiKey}>
         <GoogleMap
           mapContainerStyle={StyleSheet.flatten(style) as React.CSSProperties}
-          center={center}
+          center={{
+            lat,
+            lng,
+          }}
           mapTypeId={mapType}
           zoom={zoom}
           options={{

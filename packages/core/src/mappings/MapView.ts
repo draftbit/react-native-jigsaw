@@ -135,8 +135,8 @@ export const SEED_DATA = {
       defaultValue: null,
       group: GROUPS.basic,
     }),
-    showPointsOfInterest: createBoolProp({
-      label: "Show Points of Interest",
+    showsPointsOfInterest: createBoolProp({
+      label: "Shows Points of Interest",
       description: "Whether to show points of interest on the map.",
       required: false,
       defaultValue: true,

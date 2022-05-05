@@ -31,7 +31,7 @@ class MapView extends React.Component<MapViewProps, State> {
 
   componentDidMount() {
     (async () => {
-      if (!this.props.showUserLocation) {
+      if (!this.props.showsUserLocation) {
         return;
       }
 
@@ -41,7 +41,7 @@ class MapView extends React.Component<MapViewProps, State> {
 
           this.setState({ userLocation: coords });
 
-          if (this.props.moveMapToUser) {
+          if (this.props.followsUserLocation) {
             this.setState({ lat: coords.latitude, lng: coords.longitude });
           }
         });

@@ -1,6 +1,4 @@
 import * as React from "react";
-import * as Location from "expo-location";
-import Svg, { Ellipse } from "react-native-svg";
 import NativeMapView, { Marker } from "./ReactNativeMaps";
 import { MapViewProps } from "@draftbit/types";
 
@@ -19,40 +17,12 @@ function zoomToAltitude(zoom: number) {
   return C * Math.pow((A - D) / (zoom - D) - 1, 1 / B);
 }
 
-type State = {
-  userLocation?: {
-    latitude: number;
-    longitude: number;
-    altitude: number | null;
-    accuracy: number | null;
-    altitudeAccuracy: number | null;
-    heading: number | null;
-    speed: number | null;
-  };
-};
-
-class MapView extends React.Component<MapViewProps, State> {
+class MapView extends React.Component<MapViewProps> {
   private mapRef: React.RefObject<any>;
   constructor(props: MapViewProps) {
     super(props);
     this.state = {};
     this.mapRef = React.createRef();
-  }
-
-  componentDidMount() {
-    (async () => {
-      if (!this.props.showUserLocation) {
-        return;
-      }
-
-      const { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        return;
-      }
-
-      const { coords } = await Location.getCurrentPositionAsync({});
-      this.setState({ userLocation: coords });
-    })();
   }
 
   componentDidUpdate(prevProps: MapViewProps) {
@@ -114,12 +84,12 @@ class MapView extends React.Component<MapViewProps, State> {
       loadingBackgroundColor,
       loadingIndicatorColor,
       mapType = "standard",
-      moveMapToUser,
+      showsUserLocation,
+      followsUserLocation,
+      showsPointsOfInterest,
       style,
       children,
     } = this.props;
-
-    const { userLocation } = this.state;
 
     if (!NativeMapView || !Marker) {
       return null;
@@ -130,16 +100,10 @@ class MapView extends React.Component<MapViewProps, State> {
       heading: 0,
       pitch: 0,
       zoom,
-      center:
-        userLocation && moveMapToUser
-          ? {
-              latitude: userLocation.latitude,
-              longitude: userLocation.longitude,
-            }
-          : {
-              latitude,
-              longitude,
-            },
+      center: {
+        latitude,
+        longitude,
+      },
     };
 
     return (
@@ -153,31 +117,13 @@ class MapView extends React.Component<MapViewProps, State> {
         camera={camera}
         loadingEnabled={loadingEnabled}
         scrollEnabled={scrollEnabled}
+        showsUserLocation={showsUserLocation}
+        followsUserLocation={followsUserLocation}
+        showsPointsOfInterest={showsPointsOfInterest}
         loadingBackgroundColor={loadingBackgroundColor}
         loadingIndicatorColor={loadingIndicatorColor}
         style={style}
       >
-        {userLocation ? (
-          <Marker
-            title="Your Location"
-            coordinate={{
-              latitude: userLocation.latitude,
-              longitude: userLocation.longitude,
-            }}
-          >
-            <Svg height={40} width={40}>
-              <Ellipse
-                cx="20"
-                cy="20"
-                rx="8"
-                ry="8"
-                fill="#387af4"
-                stroke="#fff"
-                strokeWidth="2"
-              />
-            </Svg>
-          </Marker>
-        ) : null}
         {children}
       </NativeMapView>
     );

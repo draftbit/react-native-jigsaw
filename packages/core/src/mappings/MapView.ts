@@ -120,19 +120,26 @@ export const SEED_DATA = {
       label: "Loading BG Color",
       description: "Color of the background to show while the map is loading",
     }),
-    showUserLocation: createBoolProp({
-      label: "Show User Location",
-      description: "Whether to request and show the user's location on the map",
+    showsUserLocation: createBoolProp({
+      label: "Shows User Location",
+      description: "Whether to show the user's location on the map",
       required: false,
       defaultValue: null,
       group: GROUPS.basic,
     }),
-    moveMapToUser: createBoolProp({
-      label: "Move Map to User",
+    followsUserLocation: createBoolProp({
+      label: "Follows User Location (iOS only)",
       description:
-        "Whether to set the map region to the user's location. Overrides latitude and longitude.",
+        "Whether to set the map region to follow the user's location",
       required: false,
       defaultValue: null,
+      group: GROUPS.basic,
+    }),
+    showPointsOfInterest: createBoolProp({
+      label: "Show Points of Interest",
+      description: "Whether to show points of interest on the map.",
+      required: false,
+      defaultValue: true,
       group: GROUPS.basic,
     }),
     apiKey: createTextProp({

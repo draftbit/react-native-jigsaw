@@ -41,10 +41,7 @@
   "dependencies": {
     "@draftbit/types": "^44.0.3",
     "@draftbit/web-maps": "^44.0.4",
-    "react-native-maps": "0.28.0"
-  },
-  "peerDependencies": {
-    "expo-location": "~13.0.4"
+    "react-native-maps": "0.29.4"
   },
   "react-native-builder-bob": {
     "source": "src",

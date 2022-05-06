@@ -88,7 +88,7 @@ class MapView extends React.Component<MapViewProps<any>> {
       followsUserLocation,
       showsPointsOfInterest,
       style,
-      data,
+      markersData,
       renderItem,
       keyExtractor,
       children,
@@ -127,8 +127,8 @@ class MapView extends React.Component<MapViewProps<any>> {
         loadingIndicatorColor={loadingIndicatorColor}
         style={style}
       >
-        {data && renderItem
-          ? data.map((item, index) =>
+        {markersData && renderItem
+          ? markersData.map((item, index) =>
               React.cloneElement(renderItem({ item, index }), {
                 key: keyExtractor ? keyExtractor(item, index) : index,
               })

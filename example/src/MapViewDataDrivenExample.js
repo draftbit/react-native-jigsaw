@@ -29,7 +29,7 @@ const MapViewDataDrivenExample = ({ theme }) => {
         longitude={-116.524}
         zoom={12}
         apiKey={"AIzaSyC53v7BvSuA1yv7Hwf1rC_9kpHMmmYJJhU"}
-        data={data}
+        markersData={data}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <MapMarker

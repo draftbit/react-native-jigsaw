@@ -95,7 +95,7 @@ class MapView extends React.Component<MapViewProps<any>, State> {
       scrollEnabled = true,
       mapType = "standard",
       style,
-      data,
+      markersData,
       renderItem,
       keyExtractor,
       children,
@@ -143,8 +143,8 @@ class MapView extends React.Component<MapViewProps<any>, State> {
               }}
             />
           ) : null}
-          {data && renderItem
-            ? data.map((item, index) =>
+          {markersData && renderItem
+            ? markersData.map((item, index) =>
                 React.cloneElement(renderItem({ item, index }), {
                   key: keyExtractor ? keyExtractor(item, index) : index,
                 })

@@ -38,7 +38,7 @@ export interface MapViewProps<TMarkerData> {
   followsUserLocation?: boolean;
   showsPointsOfInterest?: boolean;
   style?: StyleProp<ViewStyle>;
-  data?: Array<TMarkerData>;
+  markersData?: Array<TMarkerData>;
   keyExtractor: (item: TMarkerData, index: number) => string;
   renderItem?: ({
     item,

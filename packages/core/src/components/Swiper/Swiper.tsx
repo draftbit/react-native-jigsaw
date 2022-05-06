@@ -60,11 +60,18 @@ const Swiper = ({
       }}
     >
       {data && renderItem
-        ? data.map((item, index) =>
-            React.cloneElement(renderItem({ item, index }), {
-              key: keyExtractor ? keyExtractor(item, index) : index,
-            })
-          )
+        ? data.map((item, index) => {
+            const component = renderItem({ item, index });
+
+            if (!component) {
+              return null;
+            }
+
+            const key = keyExtractor ? keyExtractor(item, index) : index;
+            return React.cloneElement(component, {
+              key,
+            });
+          })
         : children}
     </SwiperComponent>
   </View>

@@ -41,6 +41,7 @@ import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
 import LayoutExample from "./LayoutExample";
 
 import MapViewExample from "./MapViewExample";
+import MapViewDataDrivenExample from "./MapViewDataDrivenExample";
 
 import PickerExample from "./PickerExample";
 
@@ -90,6 +91,7 @@ const ROUTES = {
   FieldSearchBarFull: FieldSearchBarFullExample,
   LinearGradient: LinearGradientExample,
   MapView: MapViewExample,
+  MapViewDataDriven: MapViewDataDrivenExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
   // Header: HeaderExample,
   Picker: PickerExample,

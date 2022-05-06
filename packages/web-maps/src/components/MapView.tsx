@@ -19,8 +19,8 @@ type State = {
   };
 };
 
-class MapView extends React.Component<MapViewProps, State> {
-  constructor(props: MapViewProps) {
+class MapView extends React.Component<MapViewProps<any>, State> {
+  constructor(props: MapViewProps<any>) {
     super(props);
     this.state = {
       lat: props.latitude || 0,
@@ -49,7 +49,7 @@ class MapView extends React.Component<MapViewProps, State> {
     })();
   }
 
-  componentDidUpdate(prevProps: MapViewProps) {
+  componentDidUpdate(prevProps: MapViewProps<any>) {
     if (
       prevProps.latitude != null &&
       prevProps.longitude != null &&
@@ -95,6 +95,9 @@ class MapView extends React.Component<MapViewProps, State> {
       scrollEnabled = true,
       mapType = "standard",
       style,
+      markersData,
+      renderItem,
+      keyExtractor,
       children,
     } = this.props;
 
@@ -140,7 +143,13 @@ class MapView extends React.Component<MapViewProps, State> {
               }}
             />
           ) : null}
-          {children}
+          {markersData && renderItem
+            ? markersData.map((item, index) =>
+                React.cloneElement(renderItem({ item, index }), {
+                  key: keyExtractor ? keyExtractor(item, index) : index,
+                })
+              )
+            : children}
         </GoogleMap>
       </LoadScript>
     );

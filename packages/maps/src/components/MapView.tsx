@@ -17,15 +17,15 @@ function zoomToAltitude(zoom: number) {
   return C * Math.pow((A - D) / (zoom - D) - 1, 1 / B);
 }
 
-class MapView extends React.Component<MapViewProps> {
+class MapView extends React.Component<MapViewProps<any>> {
   private mapRef: React.RefObject<any>;
-  constructor(props: MapViewProps) {
+  constructor(props: MapViewProps<any>) {
     super(props);
     this.state = {};
     this.mapRef = React.createRef();
   }
 
-  componentDidUpdate(prevProps: MapViewProps) {
+  componentDidUpdate(prevProps: MapViewProps<any>) {
     if (
       prevProps.latitude != null &&
       prevProps.longitude != null &&
@@ -88,6 +88,9 @@ class MapView extends React.Component<MapViewProps> {
       followsUserLocation,
       showsPointsOfInterest,
       style,
+      markersData,
+      renderItem,
+      keyExtractor,
       children,
     } = this.props;
 
@@ -124,7 +127,13 @@ class MapView extends React.Component<MapViewProps> {
         loadingIndicatorColor={loadingIndicatorColor}
         style={style}
       >
-        {children}
+        {markersData && renderItem
+          ? markersData.map((item, index) =>
+              React.cloneElement(renderItem({ item, index }), {
+                key: keyExtractor ? keyExtractor(item, index) : index,
+              })
+            )
+          : children}
       </NativeMapView>
     );
   }

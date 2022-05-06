@@ -128,11 +128,18 @@ class MapView extends React.Component<MapViewProps<any>> {
         style={style}
       >
         {markersData && renderItem
-          ? markersData.map((item, index) =>
-              React.cloneElement(renderItem({ item, index }), {
-                key: keyExtractor ? keyExtractor(item, index) : index,
-              })
-            )
+          ? markersData.map((item, index) => {
+              const component = renderItem({ item, index });
+
+              if (!component) {
+                return null;
+              }
+
+              const key = keyExtractor ? keyExtractor(item, index) : index;
+              return React.cloneElement(component, {
+                key,
+              });
+            })
           : children}
       </NativeMapView>
     );

@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/web-maps",
-  "version": "44.1.0",
+  "version": "44.1.1",
   "description": "Web Map Components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",

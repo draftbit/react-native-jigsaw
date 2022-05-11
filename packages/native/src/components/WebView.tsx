@@ -90,6 +90,16 @@ const NativeWebView: React.FC<WebViewProps> = ({
     );
   };
 
+  const getFinalWidth = () => {
+    if (typeof style?.width === "number") {
+      return style.width;
+    } else if (typeof style?.width === "string" && style.width.includes("%")) {
+      return width * (Number(style.width.replace("%", "")) / 100);
+    } else {
+      return width;
+    }
+  };
+
   const selectComponent = () => {
     if (
       !optimizeVideoChat ||
@@ -98,7 +108,7 @@ const NativeWebView: React.FC<WebViewProps> = ({
       return (
         <WebView
           source={source}
-          style={[{ width: optimizeVideoChat ? width : undefined }, style]}
+          style={{ ...style, width: getFinalWidth() }}
           injectedJavaScript={injectFirst}
           onMessage={onMessage}
           {...videoChatProps}

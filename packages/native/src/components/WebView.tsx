@@ -37,8 +37,6 @@ const NativeWebView: React.FC<WebViewProps> = ({
 }) => {
   const [height, setHeight] = useState(0);
 
-  const { width } = Dimensions.get("window");
-
   const [cameraPermissions, setCameraPermissions] =
     useState<null | PermissionResponse>(null);
 
@@ -91,6 +89,8 @@ const NativeWebView: React.FC<WebViewProps> = ({
   };
 
   const getFinalWidth = () => {
+    const { width } = Dimensions.get("window");
+
     if (typeof style?.width === "number") {
       return style.width;
     } else if (typeof style?.width === "string" && style.width.includes("%")) {

@@ -36,9 +36,9 @@ export const SEED_DATA = {
         "Lets the user enable or disable automatic resetScrollToCoords",
     }),
     keyboardOpeningTime: createStaticNumberProp({
-      label: "Keyboard Opening Time",
+      label: "Opening Time",
       description:
-        "Sets the delay time before scrolling to new position, default is 250",
+        "Sets the delay time before scrolling to new position after keyboard opening, default is 250",
     }),
     enableOnAndroid: createStaticBoolProp({
       label: "Enable On Android",

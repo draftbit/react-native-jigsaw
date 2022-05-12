@@ -31,6 +31,7 @@ const AccordionItem = ({
   ...rest
 }: Props) => {
   const { textStyles, viewStyles } = extractStyles(style);
+
   return (
     <Pressable style={[styles.container, viewStyles]} {...rest}>
       <View style={styles.row}>

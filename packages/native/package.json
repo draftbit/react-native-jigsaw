@@ -41,7 +41,7 @@
     "@react-native-community/datetimepicker": "4.0.0",
     "@react-native-community/slider": "4.1.7",
     "expo-av": "~10.2.0",
-    "expo-camera": "^12.1.2",
+    "expo-camera": "~12.1.2",
     "expo-linear-gradient": "^11.0.3",
     "react-native-svg": "12.1.1",
     "react-native-webview": "11.15.0"

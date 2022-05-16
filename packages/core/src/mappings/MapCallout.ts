@@ -3,6 +3,7 @@ import {
   createActionProp,
   createBoolProp,
   GROUPS,
+  Triggers,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -12,6 +13,7 @@ export const SEED_DATA = {
   description:
     "An info window to display on top of a marker when it is clicked",
   category: COMPONENT_TYPES.media,
+  triggers: [Triggers.OnPress],
   layout: {},
   props: {
     onPress: createActionProp({

@@ -22,8 +22,8 @@ const MapMarker: React.FC<MapMarkerProps> = ({
         latitude,
         longitude,
       }}
-      title={title}
-      description={description}
+      title={title != null ? String(title) : undefined}
+      description={description != null ? String(description) : undefined}
       flat={flat}
       pinColor={pinColor}
       style={style}

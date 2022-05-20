@@ -101,6 +101,8 @@ function PickerExample({ theme }) {
           options={OPTIONS}
           value={value}
           onValueChange={setValue}
+          iconColor="purple"
+          iconSize={12}
           leftIconName={"AntDesign/caretleft"}
           leftIconMode="outset"
         />
@@ -167,7 +169,7 @@ function PickerExample({ theme }) {
         />
       </Section>
 
-      <Section title="Picker - Solid (custom padding)">
+      <Section title="Picker - Solid (font height width padding)">
         <Picker
           label="Make"
           placeholder="Select a make..."
@@ -176,10 +178,10 @@ function PickerExample({ theme }) {
           value={value}
           onValueChange={setValue}
           style={{
-            paddingTop: 25,
-            paddingRight: 25,
-            paddingBottom: 25,
-            paddingLeft: 25,
+            fontSize: 46,
+            height: 300,
+            width: 300,
+            paddingTop: 100,
           }}
         />
       </Section>

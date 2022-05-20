@@ -6,6 +6,7 @@ import {
   Platform,
   ViewStyle,
   StyleProp,
+  Dimensions,
 } from "react-native";
 import { omit, pick, pickBy, identity } from "lodash";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -25,6 +26,7 @@ export interface PickerOption {
 }
 
 export type PickerProps = {
+  error?: any;
   placeholder?: string;
   disabled?: boolean;
   style?: StyleProp<ViewStyle> & { height?: number };
@@ -77,8 +79,10 @@ function normalizeOptions(options: PickerProps["options"]): PickerOption[] {
 
 const unstyledColor = "rgba(165, 173, 183, 1)";
 const disabledColor = "rgb(240, 240, 240)";
+const errorColor = "rgba(255, 69, 100, 1)";
 
 const Picker: React.FC<PickerProps> = ({
+  error,
   options = [],
   onValueChange,
   defaultValue,
@@ -162,6 +166,7 @@ const Picker: React.FC<PickerProps> = ({
       borderStyle: "solid",
     },
     ...pick(viewStyles, borders),
+    ...(error ? { borderColor: errorColor } : {}),
     ...(disabled
       ? { borderColor: "transparent", backgroundColor: disabledColor }
       : {}),
@@ -171,12 +176,18 @@ const Picker: React.FC<PickerProps> = ({
 
   const marginStyles = pick(viewStyles, margins);
 
+  const maxHeight =
+    viewStyles?.maxHeight && viewStyles.maxHeight !== "100%"
+      ? viewStyles.maxHeight
+      : Dimensions.get("window").height;
+
   const stylesWithoutBordersAndMargins = {
     ...{
       height: 60,
       width: "100%",
     },
     ...omit(viewStyles, [...borders, ...margins]),
+    ...{ maxHeight },
   };
 
   const selectedLabel =
@@ -207,8 +218,8 @@ const Picker: React.FC<PickerProps> = ({
       color={disabled ? unstyledColor : iconColor}
       size={iconSize}
       style={{
-        marginRight: 8,
-        marginLeft: -6,
+        marginRight: 4,
+        marginLeft: 4,
       }}
     />
   ) : null;
@@ -219,7 +230,7 @@ const Picker: React.FC<PickerProps> = ({
       color={disabled ? unstyledColor : iconColor}
       size={iconSize}
       style={{
-        marginRight: -6,
+        marginRight: -10,
         marginLeft: 8,
       }}
     />

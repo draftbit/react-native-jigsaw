@@ -18,6 +18,7 @@ function PickerExample({ theme }) {
     <Container style={{ backgroundColor: theme.colors.background }}>
       <Section title="Picker - Underline">
         <Picker
+          type="underline"
           label="Make"
           placeholder="Select a make..."
           options={OPTIONS}
@@ -31,6 +32,7 @@ function PickerExample({ theme }) {
 
       <Section title="Picker - Underline (Disabled)">
         <Picker
+          type="underline"
           label="Make"
           placeholder="Select a make..."
           options={OPTIONS}
@@ -42,6 +44,7 @@ function PickerExample({ theme }) {
 
       <Section title="Picker - Underline (Error)">
         <Picker
+          type="underline"
           label="Make"
           placeholder="Select a make..."
           options={OPTIONS}
@@ -53,6 +56,7 @@ function PickerExample({ theme }) {
 
       <Section title="Picker - Underline (custom styles)">
         <Picker
+          type="underline"
           label="Make"
           placeholder="Select a make..."
           options={OPTIONS}
@@ -68,6 +72,7 @@ function PickerExample({ theme }) {
 
       <Section title="Picker - Underline with string options">
         <Picker
+          type="underline"
           label="Make"
           placeholder="Select a make..."
           options={["Audi", "BMW", "Cadillac", "Dodge"]}
@@ -78,6 +83,7 @@ function PickerExample({ theme }) {
 
       <Section title="Picker - Underline with initial value">
         <Picker
+          type="underline"
           label="Make"
           placeholder="Select a make..."
           options={OPTIONS}

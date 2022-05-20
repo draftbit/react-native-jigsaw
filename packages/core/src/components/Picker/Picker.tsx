@@ -34,6 +34,8 @@ export type PickerProps = {
   defaultValue?: string;
   assistiveText?: string;
   label?: string;
+  iconColor?: string;
+  iconSize?: number;
   leftIconMode?: "inset" | "outset";
   leftIconName?: string;
   placeholderTextColor?: string;
@@ -73,6 +75,9 @@ function normalizeOptions(options: PickerProps["options"]): PickerOption[] {
   );
 }
 
+const unstyledColor = "rgba(165, 173, 183, 1)";
+const disabledColor = "rgb(240, 240, 240)";
+
 const Picker: React.FC<PickerProps> = ({
   options = [],
   onValueChange,
@@ -85,11 +90,13 @@ const Picker: React.FC<PickerProps> = ({
   theme,
   assistiveText,
   label,
+  iconColor = unstyledColor,
+  iconSize = 24,
   leftIconMode = "inset",
   leftIconName,
-  placeholderTextColor,
+  placeholderTextColor = unstyledColor,
   rightIconName,
-  type,
+  type = "solid",
 }) => {
   const [internalValue, setInternalValue] = React.useState<string | undefined>(
     value || defaultValue
@@ -134,6 +141,7 @@ const Picker: React.FC<PickerProps> = ({
     "borderLeftWidth",
     "borderColor",
     "borderStyle",
+    "backgroundColor",
   ];
 
   const borderStyles = {
@@ -150,10 +158,13 @@ const Picker: React.FC<PickerProps> = ({
           }
         : {}),
       borderBottomWidth: 1,
-      borderColor: colors.light,
+      borderColor: unstyledColor,
       borderStyle: "solid",
     },
     ...pick(viewStyles, borders),
+    ...(disabled
+      ? { borderColor: "transparent", backgroundColor: disabledColor }
+      : {}),
   };
 
   const margins = ["marginLeft", "marginRight", "marginTop", "marginBottom"];
@@ -179,7 +190,7 @@ const Picker: React.FC<PickerProps> = ({
     <Text
       style={{
         textAlign: textStyles.textAlign,
-        color: colors.light,
+        color: unstyledColor,
         fontSize: 12,
         paddingBottom: 4,
       }}
@@ -193,7 +204,8 @@ const Picker: React.FC<PickerProps> = ({
   const leftIcon = leftIconName ? (
     <Icon
       name={leftIconName}
-      size={24}
+      color={disabled ? unstyledColor : iconColor}
+      size={iconSize}
       style={{
         marginRight: 8,
         marginLeft: -6,
@@ -204,7 +216,8 @@ const Picker: React.FC<PickerProps> = ({
   const rightIcon = rightIconName ? (
     <Icon
       name={rightIconName}
-      size={24}
+      color={disabled ? unstyledColor : iconColor}
+      size={iconSize}
       style={{
         marginRight: -6,
         marginLeft: 8,
@@ -219,7 +232,7 @@ const Picker: React.FC<PickerProps> = ({
   const paddingLeft =
     leftIconOutset &&
     (!textAlign || textAlign === "left" || textAlign === "justify")
-      ? 28 // icon size + 4
+      ? iconSize + 4
       : 0;
 
   const assistiveTextLabel = assistiveText ? (
@@ -228,7 +241,7 @@ const Picker: React.FC<PickerProps> = ({
         textAlign,
         width,
         paddingLeft,
-        color: colors.light,
+        color: unstyledColor,
         fontSize: 12,
         paddingTop: 4,
       }}
@@ -238,12 +251,11 @@ const Picker: React.FC<PickerProps> = ({
   ) : null;
 
   const primaryTextStyle = {
-    color: colors.light,
+    color: unstyledColor,
     fontSize: 14,
     ...pickBy(textStyles, identity),
-    ...(placeholder === internalValue
-      ? { color: placeholderTextColor ?? colors.light }
-      : {}),
+    ...(placeholder === internalValue ? { color: placeholderTextColor } : {}),
+    ...(disabled ? { color: unstyledColor } : {}),
   };
 
   const handleValueChange = (newValue: string, itemIndex: number) => {

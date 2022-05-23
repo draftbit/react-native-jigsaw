@@ -7,7 +7,7 @@ import {
   ViewStyle,
   StyleProp,
 } from "react-native";
-import { omit, pick, pickBy, identity } from "lodash";
+import { omit, pickBy, identity, isObject } from "lodash";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Picker as NativePicker } from "@react-native-picker/picker";
 
@@ -17,7 +17,12 @@ import Button from "../DeprecatedButton";
 import Touchable from "../Touchable";
 import type { Theme } from "../../styles/DefaultTheme";
 import type { IconSlot } from "../../interfaces/Icon";
-import { extractStyles } from "../../utilities";
+import {
+  extractStyles,
+  extractBorderAndMarginStyles,
+  borderStyleNames,
+  marginStyleNames,
+} from "../../utilities";
 
 export interface PickerOption {
   value: string;
@@ -59,7 +64,7 @@ function normalizeOptions(options: PickerProps["options"]): PickerOption[] {
   }
 
   if (
-    typeof options[0] === "object" &&
+    isObject(options[0]) &&
     options[0].value !== null &&
     options[0].label !== null
   ) {
@@ -99,7 +104,7 @@ const Picker: React.FC<PickerProps> = ({
   leftIconName,
   placeholderTextColor = unstyledColor,
   rightIconName,
-  type = "underline",
+  type = "solid",
 }) => {
   const [internalValue, setInternalValue] = React.useState<string | undefined>(
     value || defaultValue
@@ -128,24 +133,12 @@ const Picker: React.FC<PickerProps> = ({
     ? [{ value: placeholder, label: placeholder }, ...normalizedOptions]
     : normalizedOptions;
 
-  const { viewStyles, textStyles } = extractStyles(style);
-
   const { colors } = theme;
 
-  const borders = [
-    "borderRadius",
-    "borderTopLeftRadius",
-    "borderTopRightRadius",
-    "borderBottomRightRadius",
-    "borderBottomLeftRadius",
-    "borderTopWidth",
-    "borderRightWidth",
-    "borderBottomWidth",
-    "borderLeftWidth",
-    "borderColor",
-    "borderStyle",
-    "backgroundColor",
-  ];
+  const { viewStyles, textStyles } = extractStyles(style);
+
+  const { marginStyles, borderStyles: extractedBorderStyles } =
+    extractBorderAndMarginStyles(viewStyles, ["backgroundColor"]);
 
   const borderStyles = {
     ...{
@@ -164,16 +157,13 @@ const Picker: React.FC<PickerProps> = ({
       borderColor: unstyledColor,
       borderStyle: "solid",
     },
-    ...pick(viewStyles, borders),
+    // ...pick(viewStyles, borders),
+    ...pickBy(extractedBorderStyles, identity),
     ...(error ? { borderColor: errorColor } : {}),
     ...(disabled
       ? { borderColor: "transparent", backgroundColor: disabledColor }
       : {}),
   };
-
-  const margins = ["marginLeft", "marginRight", "marginTop", "marginBottom"];
-
-  const marginStyles = pick(viewStyles, margins);
 
   const platform = Platform.OS;
 
@@ -183,7 +173,11 @@ const Picker: React.FC<PickerProps> = ({
       width: "100%",
       flex: platform === "web" ? undefined : 1,
     },
-    ...omit(viewStyles, [...borders, ...margins]),
+    ...omit(viewStyles, [
+      ...borderStyleNames,
+      ...marginStyleNames,
+      "backgroundColor",
+    ]),
   };
 
   const selectedLabel =

@@ -1,5 +1,5 @@
 import { StyleSheet, StyleProp, TextStyle } from "react-native";
-import { isString, isNumber } from "lodash";
+import { isString, isNumber, pick } from "lodash";
 
 export function extractStyles(style: StyleProp<any>) {
   const {
@@ -32,6 +32,47 @@ export function extractStyles(style: StyleProp<any>) {
   };
 
   return { viewStyles, textStyles };
+}
+
+export const borderStyleNames = [
+  "borderRadius",
+  "borderTopLeftRadius",
+  "borderTopRightRadius",
+  "borderBottomRightRadius",
+  "borderBottomLeftRadius",
+  "borderTopWidth",
+  "borderRightWidth",
+  "borderBottomWidth",
+  "borderLeftWidth",
+  "borderColor",
+  "borderStyle",
+];
+
+export const marginStyleNames = [
+  "marginLeft",
+  "marginRight",
+  "marginTop",
+  "marginBottom",
+];
+
+export function extractBorderAndMarginStyles(
+  style: StyleProp<any>,
+  additionalBorderStyles?: string[],
+  additionalMarginStyles?: string[]
+) {
+  const flatStyle = StyleSheet.flatten(style || {});
+
+  const borderStyles = pick(flatStyle, [
+    ...borderStyleNames,
+    ...(additionalBorderStyles ? additionalBorderStyles : []),
+  ]);
+
+  const marginStyles = pick(flatStyle, [
+    ...marginStyleNames,
+    ...(additionalMarginStyles ? additionalMarginStyles : []),
+  ]);
+
+  return { borderStyles, marginStyles };
 }
 
 /**

@@ -1,5 +1,5 @@
 import { StyleSheet, StyleProp, TextStyle } from "react-native";
-import { isString, isNumber, pick } from "lodash";
+import { isString, isNumber, pick, pickBy, identity } from "lodash";
 
 export function extractStyles(style: StyleProp<any>) {
   const {
@@ -36,23 +36,40 @@ export function extractStyles(style: StyleProp<any>) {
 
 export const borderStyleNames = [
   "borderRadius",
+  "borderBottomColor",
+  "borderBottomEndRadius",
+  "borderBottomLeftRadius",
+  "borderBottomRightRadius",
+  "borderBottomStartRadius",
+  "borderBottomWidth",
+  "borderColor",
+  "borderEndColor",
+  "borderLeftColor",
+  "borderLeftWidth",
+  "borderRadius",
+  "borderRightColor",
+  "borderRightWidth",
+  "borderStartColor",
+  "borderStyle",
+  "borderTopColor",
+  "borderTopEndRadius",
   "borderTopLeftRadius",
   "borderTopRightRadius",
-  "borderBottomRightRadius",
-  "borderBottomLeftRadius",
+  "borderTopStartRadius",
   "borderTopWidth",
-  "borderRightWidth",
-  "borderBottomWidth",
-  "borderLeftWidth",
-  "borderColor",
-  "borderStyle",
+  "borderWidth",
 ];
 
 export const marginStyleNames = [
+  "margin",
+  "marginBottom",
+  "marginEnd",
+  "marginHorizontal",
   "marginLeft",
   "marginRight",
+  "marginStart",
   "marginTop",
-  "marginBottom",
+  "marginVertical",
 ];
 
 export function extractBorderAndMarginStyles(
@@ -62,15 +79,21 @@ export function extractBorderAndMarginStyles(
 ) {
   const flatStyle = StyleSheet.flatten(style || {});
 
-  const borderStyles = pick(flatStyle, [
-    ...borderStyleNames,
-    ...(additionalBorderStyles ? additionalBorderStyles : []),
-  ]);
+  const borderStyles = pickBy(
+    pick(flatStyle, [
+      ...borderStyleNames,
+      ...(additionalBorderStyles ? additionalBorderStyles : []),
+    ]),
+    identity
+  );
 
-  const marginStyles = pick(flatStyle, [
-    ...marginStyleNames,
-    ...(additionalMarginStyles ? additionalMarginStyles : []),
-  ]);
+  const marginStyles = pickBy(
+    pick(flatStyle, [
+      ...marginStyleNames,
+      ...(additionalMarginStyles ? additionalMarginStyles : []),
+    ]),
+    identity
+  );
 
   return { borderStyles, marginStyles };
 }

@@ -157,8 +157,7 @@ const Picker: React.FC<PickerProps> = ({
       borderColor: unstyledColor,
       borderStyle: "solid",
     },
-    // ...pick(viewStyles, borders),
-    ...pickBy(extractedBorderStyles, identity),
+    ...extractedBorderStyles,
     ...(error ? { borderColor: errorColor } : {}),
     ...(disabled
       ? { borderColor: "transparent", backgroundColor: disabledColor }

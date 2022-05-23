@@ -6,7 +6,6 @@ import {
   Platform,
   ViewStyle,
   StyleProp,
-  Dimensions,
 } from "react-native";
 import { omit, pick, pickBy, identity } from "lodash";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -100,7 +99,7 @@ const Picker: React.FC<PickerProps> = ({
   leftIconName,
   placeholderTextColor = unstyledColor,
   rightIconName,
-  type = "solid",
+  type = "underline",
 }) => {
   const [internalValue, setInternalValue] = React.useState<string | undefined>(
     value || defaultValue
@@ -176,18 +175,15 @@ const Picker: React.FC<PickerProps> = ({
 
   const marginStyles = pick(viewStyles, margins);
 
-  const maxHeight =
-    viewStyles?.maxHeight && viewStyles.maxHeight !== "100%"
-      ? viewStyles.maxHeight
-      : Dimensions.get("window").height;
+  const platform = Platform.OS;
 
   const stylesWithoutBordersAndMargins = {
     ...{
       height: 60,
       width: "100%",
+      flex: platform === "web" ? undefined : 1,
     },
     ...omit(viewStyles, [...borders, ...margins]),
-    ...{ maxHeight },
   };
 
   const selectedLabel =
@@ -236,7 +232,7 @@ const Picker: React.FC<PickerProps> = ({
     />
   ) : null;
 
-  const width = stylesWithoutBordersAndMargins?.width ?? undefined;
+  const width = stylesWithoutBordersAndMargins?.width;
 
   const textAlign = textStyles?.textAlign;
 
@@ -291,8 +287,7 @@ const Picker: React.FC<PickerProps> = ({
           style={[
             styles.outsetContainer,
             stylesWithoutBordersAndMargins,
-            // @ts-expect-error ... rejects border-related { key: undefined }
-            !leftIconOutset && borderStyles, // set border if Icon is inset
+            !leftIconOutset ? (borderStyles as PickerProps["style"]) : {},
           ]}
         >
           {leftIcon}
@@ -301,8 +296,7 @@ const Picker: React.FC<PickerProps> = ({
           <View
             style={[
               styles.insetContainer,
-              // @ts-expect-error ... rejects border-related { key: undefined }
-              leftIconOutset && borderStyles, // set border if Icon is outset
+              leftIconOutset ? (borderStyles as PickerProps["style"]) : {},
             ]}
           >
             {/* primaryTextContainer */}
@@ -321,7 +315,7 @@ const Picker: React.FC<PickerProps> = ({
       </Touchable>
 
       {/* iosPicker */}
-      {Platform.OS === "ios" && pickerVisible ? (
+      {platform === "ios" && pickerVisible ? (
         <Portal>
           <View
             style={[
@@ -360,7 +354,7 @@ const Picker: React.FC<PickerProps> = ({
       ) : null}
 
       {/* nonIosPicker */}
-      {Platform.OS !== "ios" ? (
+      {platform !== "ios" ? (
         <NativePicker
           enabled={!disabled}
           selectedValue={internalValue}
@@ -383,8 +377,13 @@ const Picker: React.FC<PickerProps> = ({
 export default withTheme(Picker);
 
 const styles = StyleSheet.create({
-  marginsContainer: { alignSelf: "stretch" },
-  touchableContainer: { alignSelf: "stretch", alignItems: "center" },
+  marginsContainer: {
+    alignSelf: "stretch",
+  },
+  touchableContainer: {
+    alignSelf: "stretch",
+    alignItems: "center",
+  },
   outsetContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -399,7 +398,9 @@ const styles = StyleSheet.create({
     paddingLeft: 12,
     paddingRight: 12,
   },
-  primaryTextContainer: { flex: 1 },
+  primaryTextContainer: {
+    flex: 1,
+  },
   iosPicker: {
     position: "absolute",
     bottom: 0,
@@ -413,8 +414,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     width: "100%",
   },
-  iosButton: { alignSelf: "flex-end" },
-  iosNativePicker: { backgroundColor: "white" },
+  iosButton: {
+    alignSelf: "flex-end",
+  },
+  iosNativePicker: {
+    backgroundColor: "white",
+  },
   nonIosPicker: {
     opacity: 0,
     position: "absolute",

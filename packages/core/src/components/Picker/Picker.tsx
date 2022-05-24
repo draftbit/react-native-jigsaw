@@ -170,7 +170,6 @@ const Picker: React.FC<PickerProps> = ({
     ...{
       height: 60,
       width: "100%",
-      flex: platform === "web" ? undefined : 1,
     },
     ...omit(viewStyles, [
       ...borderStyleNames,

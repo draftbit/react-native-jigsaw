@@ -154,7 +154,7 @@ const Picker: React.FC<PickerProps> = ({
           }
         : {}),
       borderBottomWidth: 1,
-      borderColor: unstyledColor,
+      borderColor: "red",
       borderStyle: "solid",
     },
     ...extractedBorderStyles,

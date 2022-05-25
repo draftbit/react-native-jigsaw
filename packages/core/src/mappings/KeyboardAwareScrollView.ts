@@ -2,6 +2,7 @@ import {
   COMPONENT_TYPES,
   createStaticBoolProp,
   createStaticNumberProp,
+  createTextEnumProp,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -48,6 +49,13 @@ export const SEED_DATA = {
       label: "Shows Vertical Scroll Indicator",
       description: "Show or hide the vertical scroll indicator",
       defaultValue: true,
+    }),
+    keyboardShouldPersistTaps: createTextEnumProp({
+      label: "Allow Touch Events With Open Keyboard",
+      description:
+        "Allows touch events on visible components to be processed while the keyboard is open",
+      defaultValue: "never",
+      options: ["never", "always"],
     }),
   },
 };

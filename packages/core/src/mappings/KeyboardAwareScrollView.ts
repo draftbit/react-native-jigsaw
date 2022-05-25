@@ -51,7 +51,7 @@ export const SEED_DATA = {
       defaultValue: true,
     }),
     keyboardShouldPersistTaps: createTextEnumProp({
-      label: "Allow Touch Events With Open Keyboard",
+      label: "Allow Touch Events",
       description:
         "Allows touch events on visible components to be processed while the keyboard is open",
       defaultValue: "never",

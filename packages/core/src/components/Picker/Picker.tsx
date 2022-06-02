@@ -6,6 +6,7 @@ import {
   Platform,
   ViewStyle,
   StyleProp,
+  Dimensions,
 } from "react-native";
 import { omit, pickBy, identity, isObject } from "lodash";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -81,6 +82,8 @@ function normalizeOptions(options: PickerProps["options"]): PickerOption[] {
   );
 }
 
+const { width: deviceWidth, height: deviceHeight } = Dimensions.get("screen");
+const isIos = Platform.OS === "ios";
 const unstyledColor = "rgba(165, 173, 183, 1)";
 const disabledColor = "rgb(240, 240, 240)";
 const errorColor = "rgba(255, 69, 100, 1)";
@@ -106,14 +109,17 @@ const Picker: React.FC<PickerProps> = ({
   rightIconName,
   type = "solid",
 }) => {
+  const androidPickerRef = React.useRef<any | undefined>(undefined);
+
   const [internalValue, setInternalValue] = React.useState<string | undefined>(
     value || defaultValue
   );
 
-  const [pickerVisible, togglePickerVisible] = React.useReducer(
-    (state) => !state,
-    false
-  );
+  const [pickerVisible, setPickerVisible] = React.useState(false);
+
+  const togglePickerVisible = () => {
+    setPickerVisible(!pickerVisible);
+  };
 
   React.useEffect(() => {
     if (value != null) {
@@ -126,6 +132,12 @@ const Picker: React.FC<PickerProps> = ({
       setInternalValue(defaultValue);
     }
   }, [defaultValue]);
+
+  React.useEffect(() => {
+    if (pickerVisible && androidPickerRef.current) {
+      androidPickerRef?.current?.focus();
+    }
+  }, [pickerVisible, androidPickerRef]);
 
   const normalizedOptions = normalizeOptions(options);
 
@@ -192,8 +204,6 @@ const Picker: React.FC<PickerProps> = ({
     height: 60,
     ...extractedMarginStyles,
   };
-
-  const platform = Platform.OS;
 
   const stylesWithoutBordersAndMargins = omit(viewStyles, [
     ...borderStyleNames,
@@ -335,7 +345,7 @@ const Picker: React.FC<PickerProps> = ({
       </Touchable>
 
       {/* iosPicker */}
-      {platform === "ios" && pickerVisible ? (
+      {isIos && pickerVisible ? (
         <Portal>
           <View
             style={[
@@ -374,12 +384,14 @@ const Picker: React.FC<PickerProps> = ({
       ) : null}
 
       {/* nonIosPicker */}
-      {platform !== "ios" ? (
+      {!isIos && pickerVisible ? (
         <NativePicker
-          enabled={!disabled}
+          enabled={pickerVisible}
           selectedValue={internalValue}
           onValueChange={handleValueChange}
           style={styles.nonIosPicker}
+          ref={androidPickerRef}
+          onBlur={() => setPickerVisible(false)}
         >
           {(pickerOptions as unknown as PickerOption[]).map((option) => (
             <NativePicker.Item
@@ -400,6 +412,8 @@ const styles = StyleSheet.create({
   marginsContainer: {
     alignSelf: "stretch",
     alignItems: "center",
+    width: "100%",
+    maxWidth: deviceWidth,
   },
   touchableContainer: {
     flex: 1,
@@ -436,11 +450,15 @@ const styles = StyleSheet.create({
     right: 0,
     flexDirection: "row",
     justifyContent: "center",
+    width: "100%",
+    maxWidth: deviceWidth,
+    maxHeight: deviceHeight,
   },
   iosSafeArea: {
     backgroundColor: "white",
     flexDirection: "column",
     width: "100%",
+    maxWidth: deviceWidth,
   },
   iosButton: {
     alignSelf: "flex-end",
@@ -456,5 +474,7 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     width: "100%",
+    maxWidth: deviceWidth,
+    maxHeight: deviceHeight,
   },
 });

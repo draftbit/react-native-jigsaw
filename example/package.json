@@ -1,7 +1,7 @@
 {
   "name": "@draftbit/example",
   "description": "Example app for @draftbit/ui",
-  "version": "44.1.11",
+  "version": "44.1.12",
   "private": true,
   "main": "__generated__/AppEntry.js",
   "scripts": {
@@ -15,8 +15,8 @@
     "clean:modules": "rimraf node_modules"
   },
   "dependencies": {
-    "@draftbit/maps": "^44.1.9",
-    "@draftbit/ui": "^44.1.11",
+    "@draftbit/maps": "^44.1.12",
+    "@draftbit/ui": "^44.1.12",
     "@react-navigation/drawer": "^5.7.7",
     "@react-navigation/native": "^5.4.2",
     "expo": "^44.0.0",

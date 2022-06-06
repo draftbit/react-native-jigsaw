@@ -3,18 +3,18 @@ import {
   View,
   StyleSheet,
   Text,
-  Platform,
+  // Platform,
   ViewStyle,
   StyleProp,
   Dimensions,
 } from "react-native";
 import { omit, pickBy, identity, isObject } from "lodash";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Picker as NativePicker } from "@react-native-picker/picker";
+// import { SafeAreaView } from "react-native-safe-area-context";
+// import { Picker as NativePicker } from "@react-native-picker/picker";
 
 import { withTheme } from "../../theming";
-import Portal from "../Portal/Portal";
-import Button from "../DeprecatedButton";
+// import Portal from "../Portal/Portal";
+// import Button from "../DeprecatedButton";
 import Touchable from "../Touchable";
 import type { Theme } from "../../styles/DefaultTheme";
 import type { IconSlot } from "../../interfaces/Icon";
@@ -24,6 +24,8 @@ import {
   borderStyleNames,
   marginStyleNames,
 } from "../../utilities";
+// @ts-expect-error
+import { PickerComponent } from "./PickerComponent";
 
 export interface PickerOption {
   value: string;
@@ -83,7 +85,7 @@ function normalizeOptions(options: PickerProps["options"]): PickerOption[] {
 }
 
 const { width: deviceWidth, height: deviceHeight } = Dimensions.get("screen");
-const isIos = Platform.OS === "ios";
+// const isIos = Platform.OS === "ios";
 const unstyledColor = "rgba(165, 173, 183, 1)";
 const disabledColor = "rgb(240, 240, 240)";
 const errorColor = "rgba(255, 69, 100, 1)";
@@ -98,7 +100,7 @@ const Picker: React.FC<PickerProps> = ({
   placeholder,
   value,
   disabled = false,
-  theme,
+  // theme,
   assistiveText,
   label,
   iconColor = unstyledColor,
@@ -145,7 +147,7 @@ const Picker: React.FC<PickerProps> = ({
     ? [{ value: placeholder, label: placeholder }, ...normalizedOptions]
     : normalizedOptions;
 
-  const { colors } = theme;
+  // const { colors } = theme;
 
   const { viewStyles, textStyles } = extractStyles(style);
 
@@ -344,8 +346,21 @@ const Picker: React.FC<PickerProps> = ({
         {assistiveTextLabel}
       </Touchable>
 
+      {pickerVisible ? (
+        <PickerComponent
+          {...{
+            Icon,
+            androidPickerRef,
+            togglePickerVisible,
+            pickerOptions,
+            internalValue,
+            handleValueChange,
+          }}
+        />
+      ) : null}
+
       {/* iosPicker */}
-      {isIos && pickerVisible ? (
+      {/* isIos && pickerVisible ? (
         <Portal>
           <View
             style={[
@@ -381,10 +396,10 @@ const Picker: React.FC<PickerProps> = ({
             </SafeAreaView>
           </View>
         </Portal>
-      ) : null}
+      ) : null */}
 
       {/* nonIosPicker */}
-      {!isIos && pickerVisible ? (
+      {/* !isIos && pickerVisible ? (
         <NativePicker
           enabled={pickerVisible}
           selectedValue={internalValue}
@@ -401,7 +416,7 @@ const Picker: React.FC<PickerProps> = ({
             />
           ))}
         </NativePicker>
-      ) : null}
+      ) : null */}
     </View>
   );
 };

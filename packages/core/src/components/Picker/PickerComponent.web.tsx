@@ -19,8 +19,6 @@ interface PickerComponentProps {
 }
 
 export const PickerComponent: React.FC<PickerComponentProps> = ({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  Icon,
   androidPickerRef,
   togglePickerVisible,
   pickerOptions,

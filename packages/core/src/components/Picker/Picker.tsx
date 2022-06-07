@@ -137,32 +137,8 @@ const Picker: React.FC<PickerProps> = ({
 
   const { viewStyles, textStyles } = extractStyles(style);
 
-  const additionalBorderStyles = ["backgroundColor"];
-
-  const additionalMarginStyles = [
-    "bottom",
-    "height",
-    "left",
-    "maxHeight",
-    "maxWidth",
-    "minHeight",
-    "minWidth",
-    "overflow",
-    "position",
-    "right",
-    "top",
-    "width",
-    "zIndex",
-  ];
-
-  const {
-    borderStyles: extractedBorderStyles,
-    marginStyles: extractedMarginStyles,
-  } = extractBorderAndMarginStyles(
-    viewStyles,
-    additionalBorderStyles,
-    additionalMarginStyles
-  );
+  const { marginStyles, borderStyles: extractedBorderStyles } =
+    extractBorderAndMarginStyles(viewStyles, ["backgroundColor"]);
 
   const borderStyles = {
     ...{
@@ -188,19 +164,20 @@ const Picker: React.FC<PickerProps> = ({
       : {}),
   };
 
-  const marginStyles = {
-    height: 60,
-    ...extractedMarginStyles,
-  };
-
   const platform = Platform.OS;
 
-  const stylesWithoutBordersAndMargins = omit(viewStyles, [
-    ...borderStyleNames,
-    ...marginStyleNames,
-    ...additionalBorderStyles,
-    ...additionalMarginStyles,
-  ]);
+  const stylesWithoutBordersAndMargins = {
+    ...{
+      height: 60,
+      width: "100%",
+      flex: platform === "web" ? undefined : 1,
+    },
+    ...omit(viewStyles, [
+      ...borderStyleNames,
+      ...marginStyleNames,
+      "backgroundColor",
+    ]),
+  };
 
   const selectedLabel =
     internalValue &&
@@ -248,26 +225,22 @@ const Picker: React.FC<PickerProps> = ({
     />
   ) : null;
 
+  const width = stylesWithoutBordersAndMargins?.width;
+
   const textAlign = textStyles?.textAlign;
 
-  const calculateLeftPadding = () => {
-    if (leftIconOutset) {
-      if (textAlign === "center") {
-        return iconSize - Math.abs(8 - iconSize);
-      }
-
-      return iconSize + 8;
-    }
-
-    return 0;
-  };
+  const paddingLeft =
+    leftIconOutset &&
+    (!textAlign || textAlign === "left" || textAlign === "justify")
+      ? iconSize + 4
+      : 0;
 
   const assistiveTextLabel = assistiveText ? (
     <Text
       style={{
         textAlign,
-        width: "100%",
-        paddingLeft: calculateLeftPadding(),
+        width,
+        paddingLeft,
         color: unstyledColor,
         fontSize: 12,
         paddingTop: 4,
@@ -399,19 +372,12 @@ export default withTheme(Picker);
 const styles = StyleSheet.create({
   marginsContainer: {
     alignSelf: "stretch",
-    alignItems: "center",
   },
   touchableContainer: {
-    flex: 1,
-    height: "100%",
-    width: "100%",
     alignSelf: "stretch",
     alignItems: "center",
   },
   outsetContainer: {
-    flex: 1,
-    height: "100%",
-    width: "100%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -419,7 +385,6 @@ const styles = StyleSheet.create({
   insetContainer: {
     flex: 1,
     height: "100%",
-    width: "100%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",

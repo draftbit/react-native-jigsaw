@@ -346,18 +346,20 @@ const Picker: React.FC<PickerProps> = ({
         {assistiveTextLabel}
       </Touchable>
 
-      {pickerVisible ? (
-        <PickerComponent
-          {...{
-            Icon,
-            androidPickerRef,
-            togglePickerVisible,
-            pickerOptions,
-            internalValue,
-            handleValueChange,
-          }}
-        />
-      ) : null}
+      <View>
+        {pickerVisible ? (
+          <PickerComponent
+            {...{
+              Icon,
+              androidPickerRef,
+              togglePickerVisible,
+              pickerOptions,
+              internalValue,
+              handleValueChange,
+            }}
+          />
+        ) : null}
+      </View>
 
       {/* iosPicker */}
       {/* isIos && pickerVisible ? (

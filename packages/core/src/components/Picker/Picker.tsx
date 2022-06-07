@@ -438,6 +438,7 @@ const styles = StyleSheet.create({
     width: "100%",
     alignSelf: "stretch",
     alignItems: "center",
+    backgroundColor: "pink", // TODO
   },
   outsetContainer: {
     flex: 1,

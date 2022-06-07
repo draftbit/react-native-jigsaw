@@ -66,21 +66,24 @@ const styles = StyleSheet.create({
     right: 0,
     flexDirection: "row",
     justifyContent: "center",
-    width: "100%",
+    width: deviceWidth, // TODO
     maxWidth: deviceWidth,
     maxHeight: deviceHeight,
-    backgroundColor: "rgba(234, 237, 242, 1)",
+    backgroundColor: "green", // TODO
+    // backgroundColor: "rgba(255, 255, 255, 1)",
   },
   iosSafeArea: {
-    backgroundColor: "white",
+    backgroundColor: "yellow",
+    // backgroundColor: "white",// TODO
     flexDirection: "column",
-    width: "100%",
+    width: deviceWidth,
     maxWidth: deviceWidth,
   },
   iosButton: {
     alignSelf: "flex-end",
   },
   iosNativePicker: {
-    backgroundColor: "white",
+    //backgroundColor: "white",// TODO
+    backgroundColor: "red",
   },
 });

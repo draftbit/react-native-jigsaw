@@ -1,13 +1,13 @@
 import * as React from "react";
-import { StyleSheet, Dimensions } from "react-native";
+import { /* StyleSheet, Dimensions, View, */ Text } from "react-native";
 
-import { Picker as NativePicker } from "@react-native-picker/picker";
+// import { Picker as NativePicker } from "@react-native-picker/picker";
 
 import type { IconSlot } from "../../interfaces/Icon";
 
 import { PickerOption } from "./Picker";
 
-const { width: deviceWidth, height: deviceHeight } = Dimensions.get("screen");
+// const { width: deviceWidth, height: deviceHeight } = Dimensions.get("screen");
 
 interface PickerComponentProps {
   Icon: IconSlot["Icon"];
@@ -18,42 +18,20 @@ interface PickerComponentProps {
   handleValueChange: (newValue: string, itemIndex: number) => void;
 }
 
-export const PickerComponent: React.FC<PickerComponentProps> = ({
-  androidPickerRef,
-  togglePickerVisible,
-  pickerOptions,
-  internalValue,
-  handleValueChange,
-}) => {
-  return (
-    <NativePicker
-      selectedValue={internalValue}
-      onValueChange={handleValueChange}
-      style={styles.nonIosPicker}
-      ref={androidPickerRef}
-      onBlur={togglePickerVisible}
-    >
-      {(pickerOptions as unknown as PickerOption[]).map((option) => (
-        <NativePicker.Item
-          label={option.label}
-          value={option.value}
-          key={option.value}
-        />
-      ))}
-    </NativePicker>
-  );
+export const PickerComponent: React.FC<PickerComponentProps> = () => {
+  return <Text>android</Text>;
 };
 
-const styles = StyleSheet.create({
-  nonIosPicker: {
-    opacity: 0,
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    width: "100%",
-    maxWidth: deviceWidth,
-    maxHeight: deviceHeight,
-  },
-});
+// const styles = StyleSheet.create({
+//   nonIosPicker: {
+//     opacity: 0,
+//     position: "absolute",
+//     top: 0,
+//     left: 0,
+//     right: 0,
+//     bottom: 0,
+//     width: "100%",
+//     maxWidth: deviceWidth,
+//     maxHeight: deviceHeight,
+//   },
+// });

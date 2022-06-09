@@ -1,5 +1,5 @@
 import { StyleSheet, StyleProp, TextStyle } from "react-native";
-import { isString, isNumber } from "lodash";
+import { isString, isNumber, pick, pickBy, identity } from "lodash";
 
 export function extractStyles(style: StyleProp<any>) {
   const {
@@ -32,6 +32,70 @@ export function extractStyles(style: StyleProp<any>) {
   };
 
   return { viewStyles, textStyles };
+}
+
+export const borderStyleNames = [
+  "borderRadius",
+  "borderBottomColor",
+  "borderBottomEndRadius",
+  "borderBottomLeftRadius",
+  "borderBottomRightRadius",
+  "borderBottomStartRadius",
+  "borderBottomWidth",
+  "borderColor",
+  "borderEndColor",
+  "borderLeftColor",
+  "borderLeftWidth",
+  "borderRadius",
+  "borderRightColor",
+  "borderRightWidth",
+  "borderStartColor",
+  "borderStyle",
+  "borderTopColor",
+  "borderTopEndRadius",
+  "borderTopLeftRadius",
+  "borderTopRightRadius",
+  "borderTopStartRadius",
+  "borderTopWidth",
+  "borderWidth",
+];
+
+export const marginStyleNames = [
+  "margin",
+  "marginBottom",
+  "marginEnd",
+  "marginHorizontal",
+  "marginLeft",
+  "marginRight",
+  "marginStart",
+  "marginTop",
+  "marginVertical",
+];
+
+export function extractBorderAndMarginStyles(
+  style: StyleProp<any>,
+  additionalBorderStyles?: string[],
+  additionalMarginStyles?: string[]
+) {
+  const flatStyle = StyleSheet.flatten(style || {});
+
+  const borderStyles = pickBy(
+    pick(flatStyle, [
+      ...borderStyleNames,
+      ...(additionalBorderStyles ? additionalBorderStyles : []),
+    ]),
+    identity
+  );
+
+  const marginStyles = pickBy(
+    pick(flatStyle, [
+      ...marginStyleNames,
+      ...(additionalMarginStyles ? additionalMarginStyles : []),
+    ]),
+    identity
+  );
+
+  return { borderStyles, marginStyles };
 }
 
 /**

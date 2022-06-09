@@ -2892,14 +2892,12 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-plugin/-/eslint-plugin-1.1.0.tgz#e42b1bef12d2415411519fd528e64b593b1363dc"
   integrity sha512-W/J0fNYVO01tioHjvYWQ9m6RgndVtbElzYozBq1ZPrHO/iCzlqoySHl4gO/fpCl9QEFjvJfjPgtPMTMlsoq5DQ==
 
-"@react-native-community/slider@4.1.7":
-  version "4.1.7"
-  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-4.1.7.tgz#b2c4e9547dcdcbcf3d0a0cda8545abcfdc089859"
-  integrity sha512-zVcxi3chX/Je/3lo8jI/83VpY6DL2h+JWNV8sg6rkxjRTau/8DfM/e98RymH0ujejBkuYX342IKNnxOHRK6KbQ==
-  dependencies:
-    flow-bin "0.113.0"
+"@react-native-community/slider@4.1.12":
+  version "4.1.12"
+  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-4.1.12.tgz#279ff7bbe487af92ad95ec758a029a54569e2a62"
+  integrity sha512-CiuLZ2orueBiWHYxfaJF57jQY6HY2Q3z5pdAE4MKH8EqIImr/jgDJrJ/UxOVZHK1Ng9P+XlGIKfVIcuWZ6guuA==
 
-"@react-native-picker/picker@^2.1.0":
+"@react-native-picker/picker@2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-2.2.1.tgz#32b9f540d8e88a73d8856f73cca88251cecb9614"
   integrity sha512-EC7yv22QLHlTfnbC1ez9IUdXTOh1W31x96Oir0PfskSGFFJMWWdLTg4VrcE2DsGLzbfjjkBk123c173vf2a5MQ==
@@ -7309,11 +7307,6 @@ flatted@^3.1.0:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.4.tgz#28d9969ea90661b5134259f312ab6aa7929ac5e2"
   integrity sha512-8/sOawo8tJ4QOBX8YlQBMxL8+RLZfxMQOif9o0KUKTNTjMYElWPE0r/m5VNFxTRd0NSw8qSy8dajrwX4RYI1Hw==
-
-flow-bin@0.113.0:
-  version "0.113.0"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.113.0.tgz#6457d250dbc6f71ca51e75f00a96d23cde5d987a"
-  integrity sha512-76uE2LGNe50wm+Jup8Np4FBcMbyy5V2iE+K25PPIYLaEMGHrL1jnQfP9L0hTzA5oh2ZJlexRLMlaPqIYIKH9nw==
 
 flow-parser@0.*:
   version "0.164.0"
@@ -12937,10 +12930,10 @@ react-native-typography@^1.4.1:
   resolved "https://registry.yarnpkg.com/react-native-typography/-/react-native-typography-1.4.1.tgz#2d05cb5935a2f7fdb6b43bbde93d60f1324578e3"
   integrity sha512-dc9Zfs4jUdq4ygx4/KwO6jKTERBu6cRrfPJGntw/pA+D6BMjlWfMNuhZ/69vf4Zpsnt9s4AGe+Z/V1QFYaCXAA==
 
-react-native-web-swiper@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-web-swiper/-/react-native-web-swiper-2.2.1.tgz#48d53e0ecf86d3fcd49f63ef7894db4beaa3b6f2"
-  integrity sha512-7q8BCdoCt91dw0fXhdTJ5S61NxOARAQX/F3x3sr5DJg9eGG4DoOSqLgJKFJl/7Z5GJasHbvKchC+SxgvtZVZvA==
+react-native-web-swiper@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/react-native-web-swiper/-/react-native-web-swiper-2.2.3.tgz#acc232f0ae47392e1d93549b9b00dde2d0663b82"
+  integrity sha512-wNdTsu96dTbtNSaMly7YtDYj2PDxgSk9pjE84HDRwXyAaqvr/W8bcUvpmxrxxvyQfNZ7Qo19Z0P4aRgSqAoBGQ==
   dependencies:
     prop-types "^15.6.2"
 

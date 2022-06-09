@@ -39,7 +39,7 @@
     "@draftbit/types": "^44.1.12",
     "@expo/vector-icons": "^13.0.0",
     "@react-native-community/datetimepicker": "4.0.0",
-    "@react-native-community/slider": "4.1.7",
+    "@react-native-community/slider": "4.1.12",
     "expo-av": "~10.2.0",
     "expo-camera": "~12.1.2",
     "expo-linear-gradient": "^11.0.3",

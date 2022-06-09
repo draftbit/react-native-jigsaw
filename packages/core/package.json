@@ -44,8 +44,8 @@
     "@draftbit/types": "^44.1.12",
     "@material-ui/core": "^4.11.0",
     "@material-ui/pickers": "^3.2.10",
-    "@react-native-community/slider": "4.1.7",
-    "@react-native-picker/picker": "^2.1.0",
+    "@react-native-community/slider": "4.1.12",
+    "@react-native-picker/picker": "2.2.1",
     "color": "^3.1.2",
     "date-fns": "^2.16.1",
     "dateformat": "^3.0.3",
@@ -54,7 +54,7 @@
     "lodash.tonumber": "^4.0.3",
     "react-native-modal-datetime-picker": "^13.0.0",
     "react-native-typography": "^1.4.1",
-    "react-native-web-swiper": "^2.2.1"
+    "react-native-web-swiper": "^2.2.3"
   },
   "devDependencies": {
     "@react-native-picker/picker": "^2.1.0",

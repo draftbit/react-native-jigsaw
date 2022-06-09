@@ -57,7 +57,6 @@
     "react-native-web-swiper": "^2.2.3"
   },
   "devDependencies": {
-    "@react-native-picker/picker": "^2.1.0",
     "@types/color": "^3.0.1",
     "@types/dateformat": "^3.0.1",
     "@types/lodash.isnumber": "^3.0.6",

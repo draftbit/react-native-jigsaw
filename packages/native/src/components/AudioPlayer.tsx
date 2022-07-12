@@ -39,6 +39,13 @@ export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
         setSliderPositionMillis(status.positionMillis);
       }
     }
+    
+    if (status.didJustFinish) {
+      sound.unloadAsync();
+      setSound(undefined);
+      setPlay(false);
+      setSliderPositionMillis(0);
+    }
   };
 
   const setOnPlaybackStatusUpdate = () => {

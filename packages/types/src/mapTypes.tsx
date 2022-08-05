@@ -18,11 +18,12 @@ export interface MapMarkerProps {
   style?: StyleProp<ViewStyle>;
 }
 
-export interface MapViewProps {
+export interface MapViewProps<TMarkerData> {
   apiKey: string;
   provider?: "google" | null;
   latitudeDelta?: number;
   longitudeDelta?: number;
+  zoom?: number;
   latitude?: number;
   longitude?: number;
   mapType?: MapTypes;
@@ -33,7 +34,19 @@ export interface MapViewProps {
   loadingEnabled?: boolean;
   loadingBackgroundColor?: string;
   loadingIndicatorColor?: string;
+  showsUserLocation?: boolean;
+  followsUserLocation?: boolean;
+  showsPointsOfInterest?: boolean;
   style?: StyleProp<ViewStyle>;
+  markersData?: Array<TMarkerData>;
+  keyExtractor: (item: TMarkerData, index: number) => string;
+  renderItem?: ({
+    item,
+    index,
+  }: {
+    item: TMarkerData;
+    index: number;
+  }) => JSX.Element;
 }
 
 export interface MapCalloutProps {

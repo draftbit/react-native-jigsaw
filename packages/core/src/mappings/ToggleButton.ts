@@ -14,7 +14,7 @@ import {
 export const SEED_DATA = {
   name: "Toggle Button",
   tag: "ToggleButton",
-  category: COMPONENT_TYPES.button,
+  category: COMPONENT_TYPES.deprecated,
   layout: {},
   triggers: [Triggers.OnPress],
   props: {
@@ -52,11 +52,6 @@ export const SEED_DATA = {
       label: "Height",
       description: "Height",
       defaultValue: 50,
-    }),
-    toggled: createBoolProp({
-      label: "Toggled",
-      description: "Whether the button should show the toggled state",
-      defaultValue: false,
     }),
   },
 };

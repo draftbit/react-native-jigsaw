@@ -1,83 +1,75 @@
-import * as React from "react";
+import React, { FC, useEffect, useState } from "react";
 import { View, Text, StyleProp, ViewStyle, TextStyle } from "react-native";
+import { isNumber } from "lodash";
+
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
-
 import IconButton from "./IconButton";
 
 type Props = {
+  min: number;
+  max: number;
   value?: number;
-  theme: Theme;
-  style?: StyleProp<ViewStyle>;
-  onChange?: (value: number) => void;
   defaultValue?: number;
-  iconSize?: number;
-  iconColor?: string;
-  borderRadius?: number;
+  style?: StyleProp<ViewStyle>;
   typeStyle?: StyleProp<TextStyle>;
+  iconSize: number;
+  iconColor?: string;
+  onChange?: (value: number) => void;
+  theme: Theme;
 } & IconSlot;
 
-const Stepper: React.FC<Props> = ({
-  Icon,
-  value,
-  style,
-  onChange,
+const Stepper: FC<Props> = ({
+  min = -Infinity,
+  max = Infinity,
+  value: valueProp,
   defaultValue,
-  theme: { colors, typography, roundness },
-  iconSize = 24,
-  iconColor = colors.strong,
-  borderRadius = roundness,
+  style,
   typeStyle,
+  iconSize = 24,
+  iconColor,
+  onChange,
+  theme: { colors, typography },
+  Icon,
 }) => {
-  const [stateValue, setStateValue] = React.useState(
-    value || defaultValue || 0
-  );
+  const [value, setValue] = useState(defaultValue ?? 0);
 
-  React.useEffect(() => {
-    if (value != null) {
-      setStateValue(value);
-    }
-  }, [value]);
+  const isValidValue = (valueArg: number) => valueArg >= min && valueArg <= max;
 
-  React.useEffect(() => {
-    if (defaultValue != null) {
-      setStateValue(defaultValue);
-    }
-  }, [defaultValue]);
+  const handlePlusOrMinus = (type: "plus" | "minus") => {
+    const newValue = type === "plus" ? value + 1 : value - 1;
 
-  const handleMinus = () => {
-    if (value || value === 0) {
-      onChange && onChange(value - 1);
-    } else {
-      setStateValue(stateValue - 1);
+    if (isValidValue(newValue)) {
+      setValue(newValue);
+      onChange?.(newValue);
     }
   };
 
-  const handlePlus = () => {
-    if (value || value === 0) {
-      onChange && onChange(value + 1);
-    } else {
-      setStateValue(stateValue + 1);
+  useEffect(() => {
+    if (
+      valueProp != null &&
+      isNumber(valueProp) &&
+      valueProp !== value &&
+      isValidValue(valueProp)
+    ) {
+      setValue(valueProp);
     }
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [valueProp]);
 
   return (
-    <View
-      style={[
-        { flexDirection: "row" },
-        style,
-        borderRadius ? { borderRadius } : {},
-      ]}
-    >
+    <View style={[{ flexDirection: "row" }, style]}>
       <IconButton
         Icon={Icon}
         icon="MaterialIcons/remove"
-        onPress={handleMinus}
+        onPress={() => handlePlusOrMinus("minus")}
         size={iconSize}
         color={iconColor}
-        disabled={value ? value === 0 : stateValue === 0}
+        disabled={value === min}
+        style={{ opacity: value === min ? 0.5 : 1 }}
       />
+
       <Text
         style={[
           typography.body1,
@@ -90,14 +82,17 @@ const Stepper: React.FC<Props> = ({
           typeStyle,
         ]}
       >
-        {value || stateValue}
+        {value}
       </Text>
+
       <IconButton
         Icon={Icon}
         icon="MaterialIcons/add"
-        onPress={handlePlus}
+        onPress={() => handlePlusOrMinus("plus")}
         size={iconSize}
         color={iconColor}
+        disabled={value === max}
+        style={{ opacity: value === max ? 0.5 : 1 }}
       />
     </View>
   );

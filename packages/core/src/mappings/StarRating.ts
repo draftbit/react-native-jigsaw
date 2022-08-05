@@ -5,7 +5,6 @@ import {
   createStaticBoolProp,
   Triggers,
   createColorProp,
-  GROUPS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -35,10 +34,6 @@ export const SEED_DATA = {
       min: 0,
       max: 10,
       step: 1,
-    }),
-    rating: createStaticNumberProp({
-      group: GROUPS.data,
-      label: "Rating",
     }),
     isEditable: createStaticBoolProp({
       label: "Editable",

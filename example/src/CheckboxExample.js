@@ -1,6 +1,5 @@
 import {
   Checkbox,
-  CheckboxGroup,
   CheckboxRow,
   Switch,
   Row,
@@ -23,17 +22,6 @@ const SingleCheckboxWrapper = ({ label, children }) => (
 const CheckboxExample = ({ theme }) => {
   const [checked, setChecked] = React.useState(true);
   const [airtableChecked, setAirtableChecked] = React.useState(undefined);
-  const [selectedValues, setSelectedValues] = React.useState([]);
-
-  const handleValueSelected = (value, selected) => {
-    if (selected) {
-      setSelectedValues((prevState) => [...prevState, value]);
-    } else {
-      setSelectedValues((prevState) =>
-        prevState.filter((val) => val !== value)
-      );
-    }
-  };
 
   const handlePress = (value) => setChecked(value);
   // An example to simulate how Airtable returns boolean values: `true` or `undefined`
@@ -101,34 +89,32 @@ const CheckboxExample = ({ theme }) => {
         </Row>
       </Section>
 
-      <Section title="Checkbox Group (horizontal)">
-        <CheckboxGroup
-          direction="horizontal"
-          values={selectedValues}
-          onValueChange={handleValueSelected}
-        >
-          <CheckboxRow label="First" value="1" style={{ fontSize: 32 }} />
-          <CheckboxRow label="Second" value="2" />
-          <CheckboxRow label="Third" value="3" />
-        </CheckboxGroup>
-      </Section>
+      <Section title="CheckboxRow">
+        <CheckboxRow
+          label="First"
+          direction="row"
+          style={{ fontSize: 32 }}
+          onPress={setChecked}
+          status={checked}
+          size={72}
+          checkedIcon="Ionicons/notifications"
+          uncheckedIcon="Ionicons/notifications-off"
+          uncheckedColor={"dodgerblue"}
+          color={"hotpink"}
+        />
 
-      <Section title="Checkbox Group (vertical)">
-        <CheckboxGroup
-          direction="vertical"
-          values={selectedValues}
-          onValueChange={handleValueSelected}
-        >
-          <CheckboxRow label="First" value="1" />
-          <CheckboxRow label="Second" value="2" />
-          <CheckboxRow
-            direction="row-reverse"
-            label="Third (reversed)"
-            value="3"
-          />
-          <CheckboxRow label="Always selected" value="4" status="checked" />
-          <CheckboxRow label="Disabled" disabled />
-        </CheckboxGroup>
+        <CheckboxRow
+          label="Second"
+          direction="row-reverse"
+          style={{ fontSize: 32 }}
+          onPress={(value) => {
+            console.log("I'm", value);
+            setChecked(value);
+          }}
+          onCheck={() => console.log("I'm checked!!!")}
+          onUncheck={() => console.log("I'm unchecked!!!")}
+          status={checked}
+        />
       </Section>
     </ScreenContainer>
   );

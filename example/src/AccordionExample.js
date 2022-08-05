@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Text } from "react-native";
 import { AccordionGroup, withTheme, AccordionItem } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
@@ -33,7 +34,7 @@ function AccordionExample({ theme }) {
           />
         </AccordionGroup>
       </Section>
-      <Section title="Always Expanded Accordion group">
+      <Section title="Expanded Accordion group">
         <AccordionGroup
           openColor={theme.colors.primary}
           closedColor={theme.colors.secondary}
@@ -45,11 +46,27 @@ function AccordionExample({ theme }) {
           expanded={true}
         >
           <AccordionItem
-            label={"I am always visible"}
+            label={"I am visible when you first see this screen"}
             icon={"star"}
             style={{ fontSize: 20, color: theme.colors.primary }}
             iconColor={theme.colors.medium}
           />
+        </AccordionGroup>
+      </Section>
+      <Section title="Accordion with text inside already open">
+        <AccordionGroup
+          label={"Basic"}
+          caretColor="black"
+          openColor="red"
+          closedColor="green"
+          style={{ padding: 8 }}
+          expanded={true}
+          icon={"star"}
+          iconSize={50}
+          caretSize={50}
+        >
+          <Text>Hello!</Text>
+          <Text>Is it me your looking for?</Text>
         </AccordionGroup>
       </Section>
     </Container>

@@ -17,6 +17,7 @@ import * as Font from "expo-font";
 
 import CircleImageExample from "./CircleImageExample";
 import IconExample from "./IconExample";
+import BannerExample from "./BannerExample";
 import ButtonExample from "./ButtonExample";
 import RadioButtonExample from "./RadioButtonExample";
 
@@ -34,11 +35,13 @@ import ContainerExample from "./ContainerExample";
 import DatePickerExample from "./DatePickerExample";
 
 import FABExample from "./FABExample";
-import ToggleButtonExample from "./ToggleButtonExample";
 import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
 
 // import HeaderExample from "./HeaderExample";
 import LayoutExample from "./LayoutExample";
+
+import MapViewExample from "./MapViewExample";
+import MapViewDataDrivenExample from "./MapViewDataDrivenExample";
 
 import PickerExample from "./PickerExample";
 
@@ -62,16 +65,20 @@ import StarRatingExample from "./StarRatingExample";
 import SwiperExample from "./SwiperExample";
 import MarkdownExample from "./MarkdownExample";
 
+import LinearGradientExample from "./LinearGradientExample";
+
+import SurfaceExample from "./SurfaceExample";
+
 const ROUTES = {
   Layout: LayoutExample,
   Icon: IconExample,
+  Banner: BannerExample,
   Button: ButtonExample,
   FAB: FABExample,
   RadioButton: RadioButtonExample,
   ActionSheet: ActionSheetExample,
   Checkbox: CheckboxExample,
   Card: CardExample,
-  ToggleButton: ToggleButtonExample,
   Accordion: AccordionExample,
   CardBlock: CardBlockExample,
   CardInline: CardInlineExample,
@@ -83,6 +90,9 @@ const ROUTES = {
   // Controllers: ControllerExample,
   DatePicker: DatePickerExample,
   FieldSearchBarFull: FieldSearchBarFullExample,
+  LinearGradient: LinearGradientExample,
+  MapView: MapViewExample,
+  MapViewDataDriven: MapViewDataDrivenExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
   // Header: HeaderExample,
   Picker: PickerExample,
@@ -95,6 +105,7 @@ const ROUTES = {
   Switch: SwitchExample,
   Stepper: StepperExample,
   StarRating: StarRatingExample,
+  Surface: SurfaceExample,
   Swiper: SwiperExample,
   TextField: TextFieldExample,
   TextInput: TextInputExample,
@@ -111,11 +122,14 @@ let customFonts = {
 
 const Drawer = createDrawerNavigator();
 
-function Example({ title, children }) {
+type ExampleProps = { title: string; children: React.ReactNode };
+
+function Example({ title, children }: ExampleProps) {
   const navigation = useNavigation();
 
   return (
     <ScreenContainer
+      hasSafeArea={true}
       hasTopSafeArea={true}
       hasBottomSafeArea={true}
       scrollable={false}
@@ -154,7 +168,7 @@ function Examples() {
             <Drawer.Screen key={key} name={key}>
               {() => (
                 <Example title={key}>
-                  <Screen />
+                  <Screen theme={{}} />
                 </Example>
               )}
             </Drawer.Screen>

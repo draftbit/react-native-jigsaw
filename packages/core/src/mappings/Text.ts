@@ -5,19 +5,10 @@ import {
   PROP_TYPES,
   Triggers,
   createActionProp,
+  createTextProp,
 } from "@draftbit/types";
 
 const SEED_DATA_PROPS = {
-  children: {
-    group: GROUPS.data,
-    label: "Text",
-    description: "Text",
-    editable: true,
-    required: true,
-    formType: FORM_TYPES.string,
-    propType: PROP_TYPES.STRING,
-    defaultValue: "Double click me to edit 👀",
-  },
   accessibilityLabel: {
     group: GROUPS.accessibility,
     name: "accessibilityLabel",
@@ -232,6 +223,16 @@ export const SEED_DATA = [
     },
     props: {
       ...SEED_DATA_PROPS,
+      children: {
+        group: GROUPS.data,
+        label: "Text",
+        description: "Text",
+        editable: true,
+        required: true,
+        formType: FORM_TYPES.string,
+        propType: PROP_TYPES.STRING,
+        defaultValue: "Double click me to edit 👀",
+      },
     },
   },
   {
@@ -245,6 +246,11 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       onPress: createActionProp(),
+      title: createTextProp({
+        label: "Title",
+        description: "Link title",
+        defaultValue: "Get Started",
+      }),
     },
   },
 ];

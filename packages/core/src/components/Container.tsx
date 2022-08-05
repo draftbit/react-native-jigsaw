@@ -88,9 +88,7 @@ const Container: React.FC<Props> = ({
 
   const Wrap = elevation ? Elevation : View;
 
-  if (elevation) {
-    containerStyle.elevation = elevation;
-  }
+  if (elevation) containerStyle.elevation = elevation;
 
   return (
     <Wrap style={[containerStyle, style]} {...rest}>

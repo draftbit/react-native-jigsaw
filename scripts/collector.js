@@ -10,7 +10,6 @@ const { MAPPING_PATH } = require("./paths");
 
 const IGNORED_FILES = [
   "Query.js", // doesn't work at all
-  "LinearGradient.js", // missing gradient UI
 ];
 
 const ERROR_FILES = [];
@@ -37,8 +36,14 @@ async function main(list = []) {
       return false;
     }
 
-    return !IGNORED_FILES.includes(name);
+    if (list.length > 0) {
+      return list.includes(name);
+    } else {
+      return !IGNORED_FILES.includes(name);
+    }
   });
+
+  console.log("Num files:", files.length);
 
   for (const file of files) {
     const [name, category] = file.split("/").reverse();

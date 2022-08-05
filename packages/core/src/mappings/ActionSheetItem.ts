@@ -25,6 +25,7 @@ export const SEED_DATA = {
     }),
     color: createColorProp({
       label: "Font Color",
+      defaultValue: "strong",
     }),
   },
 };

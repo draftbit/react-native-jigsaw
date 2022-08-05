@@ -13,7 +13,7 @@ export const SEED_DATA = {
   name: "Checkbox",
   tag: "Checkbox",
   category: COMPONENT_TYPES.input,
-  triggers: [Triggers.OnPress],
+  triggers: [Triggers.OnPress, Triggers.OnCheck, Triggers.OnUncheck],
   props: {
     fieldName: createFieldNameProp({
       defaultValue: "checkboxValue",

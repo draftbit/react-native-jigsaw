@@ -4,6 +4,7 @@ export { default as Provider } from "./Provider";
 export { default as DefaultTheme } from "./styles/DefaultTheme";
 
 export { Link } from "./components/Text";
+export { default as Banner } from "./components/Banner";
 export { ButtonSolid, ButtonOutline } from "./components/Button";
 export { default as Avatar } from "./components/CircleImage";
 export { default as AvatarEdit } from "./components/AvatarEdit";
@@ -69,3 +70,5 @@ export { default as Slider } from "./components/Slider";
 export { default as Stepper } from "./components/Stepper";
 export { useAuthState } from "./components/useAuthState";
 export { default as Youtube } from "./components/Youtube";
+
+// a comment to fix sourcemap comment issue

@@ -16,6 +16,8 @@ export interface CheckboxProps {
   status?: boolean;
   disabled?: boolean;
   onPress?: (checked: boolean) => void;
+  onCheck?: () => void;
+  onUncheck?: () => void;
   color?: string;
   uncheckedColor?: string;
   checkedIcon?: string;
@@ -30,7 +32,9 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     Icon,
     status,
     disabled = false,
-    onPress = () => {},
+    onPress,
+    onCheck,
+    onUncheck,
     color,
     uncheckedColor,
     defaultValue,
@@ -55,6 +59,7 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     const previousDefaultValue = usePrevious(defaultValue) as
       | boolean
       | undefined;
+
     React.useEffect(() => {
       if (defaultValue !== previousDefaultValue) {
         setInternalValue(Boolean(defaultValue));
@@ -68,8 +73,18 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
       : uncheckedColor || colors.primary;
 
     const handlePress = () => {
-      setInternalValue(!internalValue);
-      onPress(!internalValue);
+      const newValue = !internalValue;
+
+      setInternalValue(newValue);
+      onPress?.(newValue);
+
+      if (newValue) {
+        onCheck?.();
+      }
+
+      if (!newValue) {
+        onUncheck?.();
+      }
     };
 
     return (

@@ -359,6 +359,7 @@ class TextField extends React.Component<Props, State> {
           : leftIconMode === "outset"
           ? 16
           : 0,
+      marginLeft: leftIconMode === "inset" && type === "solid" ? 16 : 0,
     };
 
     const labelStyle = {
@@ -536,13 +537,13 @@ class TextField extends React.Component<Props, State> {
           ) : null}
 
           {leftIconName && leftIconMode === "inset" ? (
-            <Icon
-              {...leftIconProps}
+            <View
               style={{
-                ...leftIconStyle,
-                marginLeft: type === "solid" ? 16 : 0,
+                justifyContent: type === "solid" ? "center" : undefined,
               }}
-            />
+            >
+              <Icon {...leftIconProps} style={leftIconStyle} />
+            </View>
           ) : null}
 
           {render({

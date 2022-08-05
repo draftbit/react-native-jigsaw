@@ -10,8 +10,9 @@ import {
 export const SEED_DATA = {
   name: "Map Marker",
   tag: "MapMarker",
+  packageName: "@draftbit/maps",
   description: "A marker to show inside map view",
-  category: COMPONENT_TYPES.deprecated,
+  category: COMPONENT_TYPES.media,
   layout: {},
   props: {
     latitude: createNumberProp({

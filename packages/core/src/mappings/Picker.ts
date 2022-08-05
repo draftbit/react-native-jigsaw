@@ -5,6 +5,8 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   FIELD_NAME,
+  createIconSizeProp,
+  createColorProp,
 } from "@draftbit/types";
 
 const SEED_DATA_PROPS = {
@@ -143,6 +145,8 @@ export const SEED_DATA = [
         required: true,
         group: GROUPS.basic,
       },
+      iconSize: createIconSizeProp({ defaultValue: 24 }),
+      iconColor: createColorProp({ label: "Icon Color" }),
     },
     layout: {},
   },

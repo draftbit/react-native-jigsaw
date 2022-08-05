@@ -8,7 +8,7 @@ export const SEED_DATA = [
   {
     name: "Carousel",
     tag: "Carousel",
-    category: COMPONENT_TYPES.media,
+    category: COMPONENT_TYPES.deprecated,
     description: "A horizontal scrolling carousel of images",
     layout: {
       height: 250,

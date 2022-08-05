@@ -6,7 +6,7 @@ import Section, { Container, styles } from "./Section";
 export default function TextInputExample() {
   const [value, setText] = React.useState("Change me!");
   const [value2, setText2] = React.useState("Change me!");
-  const [number, setNumber] = React.useState(0);
+  const [number, setNumber] = React.useState(123);
   const handleChange = (text) => setText(text);
 
   return (

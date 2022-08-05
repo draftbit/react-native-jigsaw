@@ -1,6 +1,5 @@
 import { StyleSheet, StyleProp, TextStyle } from "react-native";
-import omitBy from "lodash/omitBy";
-import isNil from "lodash/isNil";
+import { isString, isNumber, pick, pickBy, identity, omitBy, isNil } from "lodash";
 
 export function extractStyles(style: StyleProp<any>) {
   const {
@@ -38,6 +37,70 @@ export function extractStyles(style: StyleProp<any>) {
   };
 }
 
+export const borderStyleNames = [
+  "borderRadius",
+  "borderBottomColor",
+  "borderBottomEndRadius",
+  "borderBottomLeftRadius",
+  "borderBottomRightRadius",
+  "borderBottomStartRadius",
+  "borderBottomWidth",
+  "borderColor",
+  "borderEndColor",
+  "borderLeftColor",
+  "borderLeftWidth",
+  "borderRadius",
+  "borderRightColor",
+  "borderRightWidth",
+  "borderStartColor",
+  "borderStyle",
+  "borderTopColor",
+  "borderTopEndRadius",
+  "borderTopLeftRadius",
+  "borderTopRightRadius",
+  "borderTopStartRadius",
+  "borderTopWidth",
+  "borderWidth",
+];
+
+export const marginStyleNames = [
+  "margin",
+  "marginBottom",
+  "marginEnd",
+  "marginHorizontal",
+  "marginLeft",
+  "marginRight",
+  "marginStart",
+  "marginTop",
+  "marginVertical",
+];
+
+export function extractBorderAndMarginStyles(
+  style: StyleProp<any>,
+  additionalBorderStyles?: string[],
+  additionalMarginStyles?: string[]
+) {
+  const flatStyle = StyleSheet.flatten(style || {});
+
+  const borderStyles = pickBy(
+    pick(flatStyle, [
+      ...borderStyleNames,
+      ...(additionalBorderStyles ? additionalBorderStyles : []),
+    ]),
+    identity
+  );
+
+  const marginStyles = pickBy(
+    pick(flatStyle, [
+      ...marginStyleNames,
+      ...(additionalMarginStyles ? additionalMarginStyles : []),
+    ]),
+    identity
+  );
+
+  return { borderStyles, marginStyles };
+}
+
 /**
  * Merges a style object on top of another style object. In React Native,
  * keys with undefined values in a style object will still override styles
@@ -67,4 +130,14 @@ export function applyStyles(
   }
 
   return flattenedStyles;
+}
+
+export function getValueForRadioButton(value: string | number) {
+  if (isString(value)) {
+    return value;
+  } else if (isNumber(value)) {
+    return String(value);
+  } else {
+    throw new Error(`Invalid value: ${value}`);
+  }
 }

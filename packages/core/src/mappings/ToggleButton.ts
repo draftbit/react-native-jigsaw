@@ -53,10 +53,5 @@ export const SEED_DATA = {
       description: "Height",
       defaultValue: 50,
     }),
-    toggled: createBoolProp({
-      label: "Toggled",
-      description: "Whether the button should show the toggled state",
-      defaultValue: false,
-    }),
   },
 };

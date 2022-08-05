@@ -21,7 +21,7 @@ const SingleRadioButtonWrapper = ({ label, children }) => (
 );
 
 const RadioButtonGroupExample = ({ theme }) => {
-  const [selected, onSelect] = React.useState("1");
+  const [selected, onSelect] = React.useState("0");
   const [selected2, onSelect2] = React.useState("1");
   const handleSelect = (value) => onSelect(value);
   return (
@@ -53,9 +53,10 @@ const RadioButtonGroupExample = ({ theme }) => {
           onValueChange={handleSelect}
           value={selected}
         >
-          <RadioButtonRow label="First" value="1" />
-          <RadioButtonRow label="Second" value="2" />
-          <RadioButtonRow label="Third" value="3" />
+          <RadioButtonRow label="Zero" value={0} />
+          <RadioButtonRow label="1st" value={"1"} />
+          <RadioButtonRow label="2nd" value={2} />
+          <RadioButtonRow label="3rd" value={"3"} />
         </RadioButtonGroup>
       </Section>
 

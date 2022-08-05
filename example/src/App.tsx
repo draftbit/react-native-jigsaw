@@ -17,6 +17,7 @@ import * as Font from "expo-font";
 
 import CircleImageExample from "./CircleImageExample";
 import IconExample from "./IconExample";
+import BannerExample from "./BannerExample";
 import ButtonExample from "./ButtonExample";
 import RadioButtonExample from "./RadioButtonExample";
 
@@ -38,6 +39,9 @@ import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
 
 // import HeaderExample from "./HeaderExample";
 import LayoutExample from "./LayoutExample";
+
+import MapViewExample from "./MapViewExample";
+import MapViewDataDrivenExample from "./MapViewDataDrivenExample";
 
 import PickerExample from "./PickerExample";
 
@@ -63,9 +67,12 @@ import TableExample from "./TableExample";
 
 import LinearGradientExample from "./LinearGradientExample";
 
+import SurfaceExample from "./SurfaceExample";
+
 const ROUTES = {
   Layout: LayoutExample,
   Icon: IconExample,
+  Banner: BannerExample,
   Button: ButtonExample,
   FAB: FABExample,
   RadioButton: RadioButtonExample,
@@ -84,6 +91,8 @@ const ROUTES = {
   DatePicker: DatePickerExample,
   FieldSearchBarFull: FieldSearchBarFullExample,
   LinearGradient: LinearGradientExample,
+  MapView: MapViewExample,
+  MapViewDataDriven: MapViewDataDrivenExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
   // Header: HeaderExample,
   Picker: PickerExample,
@@ -96,6 +105,7 @@ const ROUTES = {
   Switch: SwitchExample,
   Stepper: StepperExample,
   StarRating: StarRatingExample,
+  Surface: SurfaceExample,
   Swiper: SwiperExample,
   TextField: TextFieldExample,
   TextInput: TextInputExample,
@@ -112,11 +122,14 @@ let customFonts = {
 
 const Drawer = createDrawerNavigator();
 
-function Example({ title, children }) {
+type ExampleProps = { title: string; children: React.ReactNode };
+
+function Example({ title, children }: ExampleProps) {
   const navigation = useNavigation();
 
   return (
     <ScreenContainer
+      hasSafeArea={true}
       hasTopSafeArea={true}
       hasBottomSafeArea={true}
       scrollable={false}
@@ -155,7 +168,7 @@ function Examples() {
             <Drawer.Screen key={key} name={key}>
               {() => (
                 <Example title={key}>
-                  <Screen />
+                  <Screen theme={{}} />
                 </Example>
               )}
             </Drawer.Screen>

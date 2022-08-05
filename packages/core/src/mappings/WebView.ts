@@ -1,4 +1,8 @@
-import { COMPONENT_TYPES, createSourceProp } from "@draftbit/types";
+import {
+  COMPONENT_TYPES,
+  createSourceProp,
+  createStaticBoolProp,
+} from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "Web View",
@@ -9,6 +13,12 @@ export const SEED_DATA = {
   props: {
     source: createSourceProp({
       defaultValue: "https://reactnative.dev",
+    }),
+    optimizeVideoChat: createStaticBoolProp({
+      defaultValue: false,
+      label: "Optimize Video Chat",
+      description:
+        "Allows for a better experience from web hosted video chat services",
     }),
   },
 };

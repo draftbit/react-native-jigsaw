@@ -488,7 +488,7 @@ export const TEXT_INPUT_PROPS = {
     propType: PROP_TYPES.NUMBER,
   },
   placeholder: {
-    group: GROUPS.basic,
+    group: GROUPS.data,
     label: "Placeholder Text",
     description: "The text that is shown on load when no value is available.",
     editable: true,

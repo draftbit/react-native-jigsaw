@@ -32,7 +32,7 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     Icon,
     status,
     disabled = false,
-    onPress = () => {},
+    onPress,
     onCheck,
     onUncheck,
     color,
@@ -59,6 +59,7 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
     const previousDefaultValue = usePrevious(defaultValue) as
       | boolean
       | undefined;
+
     React.useEffect(() => {
       if (defaultValue !== previousDefaultValue) {
         setInternalValue(Boolean(defaultValue));
@@ -73,15 +74,16 @@ const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
 
     const handlePress = () => {
       const newValue = !internalValue;
-      setInternalValue(newValue);
-      onPress(newValue);
 
-      if (onCheck && newValue) {
-        onCheck();
+      setInternalValue(newValue);
+      onPress?.(newValue);
+
+      if (newValue) {
+        onCheck?.();
       }
 
-      if (onUncheck && !newValue) {
-        onUncheck();
+      if (!newValue) {
+        onUncheck?.();
       }
     };
 

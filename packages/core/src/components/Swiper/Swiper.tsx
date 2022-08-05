@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
 import SwiperComponent from "react-native-web-swiper";
 
-export interface SwiperProps {
+export interface SwiperProps<T> {
   vertical?: boolean;
   loop?: boolean;
   from?: number;
@@ -15,6 +15,9 @@ export interface SwiperProps {
   dotColor?: string;
   dotActiveColor?: string;
   children: React.ReactNode;
+  data?: Array<T>;
+  keyExtractor: (item: T, index: number) => string;
+  renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
   style?: StyleProp<ViewStyle>;
 }
 
@@ -30,9 +33,12 @@ const Swiper = ({
   dotsTouchable = true,
   dotColor,
   dotActiveColor,
+  data,
+  keyExtractor,
+  renderItem,
   children,
   style,
-}: SwiperProps) => (
+}: SwiperProps<any>) => (
   <View style={style}>
     <SwiperComponent
       from={from}
@@ -53,7 +59,20 @@ const Swiper = ({
           : {}),
       }}
     >
-      {children}
+      {data && renderItem
+        ? data.map((item, index) => {
+            const component = renderItem({ item, index });
+
+            if (!component) {
+              return null;
+            }
+
+            const key = keyExtractor ? keyExtractor(item, index) : index;
+            return React.cloneElement(component, {
+              key,
+            });
+          })
+        : children}
     </SwiperComponent>
   </View>
 );

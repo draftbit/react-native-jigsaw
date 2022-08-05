@@ -28,6 +28,7 @@ const LinearGradientComponent = ({
   const colors = [color1, color2, color3].filter((color) => color) as string[];
   const start = { x: startX / 100, y: startY / 100 };
   const end = { x: endX / 100, y: endY / 100 };
+
   return (
     <LinearGradient colors={colors} start={start} end={end} style={style}>
       {children}

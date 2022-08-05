@@ -77,6 +77,7 @@ jobs:
           export version=$(jq -r .version package.json);
           sleep 10
           curl "https://snackager.expo.io/bundle/@draftbit/ui@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
+          curl "https://snackager.expo.io/bundle/@draftbit/maps@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
         working-directory: packages/ui
 
       - name: Add comment to pull request

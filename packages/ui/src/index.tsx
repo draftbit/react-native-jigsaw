@@ -52,6 +52,7 @@ export {
 import {
   injectIcon,
   AvatarEdit as BaseAvatarEdit,
+  Banner as BaseBanner,
   Button as BaseDeprecatedButton,
   ButtonSolid as BaseButtonSolid,
   ButtonOutline as BaseButtonOutline,
@@ -83,6 +84,7 @@ import {
 } from "@draftbit/core";
 
 export const AvatarEdit = injectIcon(BaseAvatarEdit, Icon);
+export const Banner = injectIcon(BaseBanner, Icon);
 export const Button = injectIcon(BaseDeprecatedButton, Icon);
 export const ButtonOutline = injectIcon(BaseButtonOutline, Icon);
 export const ButtonSolid = injectIcon(BaseButtonSolid, Icon);
@@ -111,3 +113,5 @@ export const ToggleButton = injectIcon(BaseToggleButton, Icon);
 export const Slider = injectIcon(BaseSlider, Icon);
 export const AccordionGroup = injectIcon(BaseAccordionGroup, Icon);
 export const AccordionItem = injectIcon(BaseAccordionItem, Icon);
+
+// a comment to fix sourcemap comment issue

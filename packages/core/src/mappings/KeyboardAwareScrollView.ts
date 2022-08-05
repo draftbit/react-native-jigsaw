@@ -2,6 +2,7 @@ import {
   COMPONENT_TYPES,
   createStaticBoolProp,
   createStaticNumberProp,
+  createTextEnumProp,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -36,13 +37,25 @@ export const SEED_DATA = {
         "Lets the user enable or disable automatic resetScrollToCoords",
     }),
     keyboardOpeningTime: createStaticNumberProp({
-      label: "Keyboard Opening Time",
+      label: "Opening Time",
       description:
-        "Sets the delay time before scrolling to new position, default is 250",
+        "Sets the delay time before scrolling to new position after keyboard opening, default is 250",
     }),
     enableOnAndroid: createStaticBoolProp({
       label: "Enable On Android",
       description: "Enable Android Support",
+    }),
+    showsVerticalScrollIndicator: createStaticBoolProp({
+      label: "Shows Vertical Scroll Indicator",
+      description: "Show or hide the vertical scroll indicator",
+      defaultValue: true,
+    }),
+    keyboardShouldPersistTaps: createTextEnumProp({
+      label: "Allow Touch Events",
+      description:
+        "Allows touch events on visible components to be processed while the keyboard is open",
+      defaultValue: "never",
+      options: ["never", "always"],
     }),
   },
 };

@@ -25,7 +25,7 @@ export const SEED_DATA = {
       defaultValue: "http://static.draftbit.com/videos/intro-to-draftbit.mp4",
     }),
     usePoster: createStaticBoolProp({
-      label: "Thumbnail",
+      label: "Use Thumbnail",
       description: "Show a thumbnail before the video starts.",
       defaultValue: false,
     }),
@@ -33,8 +33,8 @@ export const SEED_DATA = {
       label: "Thumbnail Source",
       description:
         "The optional image to display over the video while it is loading.",
-      defaultValue: "https://static.draftbit.com/videos/intro-to-draftbit.png",
-      group: GROUPS.basic,
+      defaultValue: null,
+      required: false,
     }),
     resizeMode: createResizeModeProp(),
     isMuted: createStaticBoolProp({

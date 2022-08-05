@@ -1,7 +1,7 @@
 import * as React from "react";
 import {
   StyleSheet,
-  ScrollView as NativeScrollView,
+  ScrollView,
   StyleProp,
   ViewStyle,
   View,
@@ -11,47 +11,26 @@ import type { Edge } from "react-native-safe-area-context";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 
-function ScrollView({
-  children,
-  style,
-}: {
-  children: React.ReactNode;
-  style?: StyleProp<ViewStyle>;
-}) {
-  return (
-    <NativeScrollView
-      contentContainerStyle={[
-        {
-          flexGrow: 1,
-        },
-        style,
-      ]}
-    >
-      {children}
-    </NativeScrollView>
-  );
-}
-
-type Props = {
-  hasSafeArea: boolean;
+type ScreenContainerProps = {
   scrollable: boolean;
-  hasBottomSafeArea?: boolean;
-  hasTopSafeArea?: boolean;
+  hasSafeArea: boolean;
+  hasTopSafeArea: boolean;
+  hasBottomSafeArea: boolean;
   theme: Theme;
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
 };
 
 function ScreenContainer({
-  hasSafeArea = false,
   scrollable = false,
-  hasBottomSafeArea,
-  hasTopSafeArea,
+  hasSafeArea = false,
+  hasBottomSafeArea = false,
+  hasTopSafeArea = false,
   theme,
   style,
   children,
   ...rest
-}: Props) {
+}: ScreenContainerProps) {
   const backgroundColor = theme.colors.background;
 
   const edges: Edge[] = ["left", "right"];
@@ -74,13 +53,21 @@ function ScreenContainer({
       ]}
       {...rest}
     >
-      <View style={[styles.container, { backgroundColor }, style]}>
-        {scrollable ? (
-          <ScrollView style={style}>{children}</ScrollView>
-        ) : (
-          children
-        )}
-      </View>
+      {scrollable ? (
+        <ScrollView
+          contentContainerStyle={[
+            styles.scrollViewContainer,
+            { backgroundColor },
+            style,
+          ]}
+        >
+          {children}
+        </ScrollView>
+      ) : (
+        <View style={[styles.container, { backgroundColor }, style]}>
+          {children}
+        </View>
+      )}
     </SafeAreaView>
   );
 }
@@ -88,6 +75,10 @@ function ScreenContainer({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  scrollViewContainer: {
+    flexGrow: 1,
+    flex: undefined,
   },
 });
 

@@ -38,13 +38,13 @@
   "dependencies": {
     "@draftbit/types": "^44.1.12",
     "@expo/vector-icons": "^13.0.0",
-    "@react-native-community/datetimepicker": "4.0.0",
-    "@react-native-community/slider": "4.1.12",
-    "expo-av": "~10.2.0",
-    "expo-camera": "~12.1.2",
-    "expo-linear-gradient": "^11.0.3",
-    "react-native-svg": "12.1.1",
-    "react-native-webview": "11.15.0"
+    "@react-native-community/datetimepicker": "6.2.0",
+    "@react-native-community/slider": "4.2.3",
+    "expo-av": "~12.0.3",
+    "expo-camera": "~12.3.0",
+    "expo-linear-gradient": "^11.4.0",
+    "react-native-svg": "12.3.0",
+    "react-native-webview": "11.23.0"
   },
   "react-native-builder-bob": {
     "source": "src",

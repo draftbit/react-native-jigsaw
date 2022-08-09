@@ -2,12 +2,14 @@ import * as React from "react";
 import { SVG } from "@draftbit/ui";
 import Section, { Container, styles } from "./Section";
 
-export default function ButtonExample() {
+export default function SvgExample() {
   return (
     <Container>
       <Section title="Svg" style={styles.row}>
         <SVG
-          uri={require("./assets/images/example.svg")}
+          source={
+            "https://upload.wikimedia.org/wikipedia/commons/3/30/Vector-based_example.svg"
+          }
           style={{
             width: 200,
             height: 200,

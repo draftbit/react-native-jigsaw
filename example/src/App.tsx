@@ -63,6 +63,7 @@ import ActionSheetExample from "./ActionSheetExample";
 import StarRatingExample from "./StarRatingExample";
 
 import SwiperExample from "./SwiperExample";
+import SvgExample from "./SvgExample";
 
 import LinearGradientExample from "./LinearGradientExample";
 
@@ -106,6 +107,7 @@ const ROUTES = {
   StarRating: StarRatingExample,
   Surface: SurfaceExample,
   Swiper: SwiperExample,
+  Svg: SvgExample,
   TextField: TextFieldExample,
   TextInput: TextInputExample,
   WebView: WebViewExample,

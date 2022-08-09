@@ -1,7 +1,4 @@
-import {
-  COMPONENT_TYPES,
-  createSvgProp,
-} from "@draftbit/types";
+import { COMPONENT_TYPES, createSvgProp } from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "SVG",

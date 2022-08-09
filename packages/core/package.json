@@ -55,7 +55,7 @@
     "react-native-modal-datetime-picker": "^13.0.0",
     "react-native-typography": "^1.4.1",
     "react-native-web-swiper": "^2.2.3",
-    "react-native-svg": "^12.4.3",
+    "react-native-svg": "^12.4.3"
   },
   "devDependencies": {
     "@types/color": "^3.0.1",

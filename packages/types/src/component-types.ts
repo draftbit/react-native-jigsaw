@@ -125,6 +125,18 @@ export const createImageProp = (overrides = {}) => ({
   ...overrides,
 });
 
+export const createSvgProp = (overrides = {}) => ({
+  label: "SVG",
+  description: "SVG",
+  group: GROUPS.data,
+  formType: FORM_TYPES.sourceUrl,
+  propType: PROP_TYPES.OBJECT,
+  defaultValue: "https://static.draftbit.com/images/placeholder-svg.svg",
+  editable: true,
+  required: true,
+  ...overrides,
+});
+
 export const createSourceProp = (overrides = {}) => ({
   label: "Website URL",
   description: "A normal URL",

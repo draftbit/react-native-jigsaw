@@ -2,10 +2,10 @@ import * as React from "react";
 import { SVG } from "@draftbit/ui";
 import Section, { Container, styles } from "./Section";
 
-export default function SvgExample() {
+export default function SVGExample() {
   return (
     <Container>
-      <Section title="Svg" style={styles.row}>
+      <Section title="SVG" style={styles.row}>
         <SVG
           source={
             "https://upload.wikimedia.org/wikipedia/commons/3/30/Vector-based_example.svg"

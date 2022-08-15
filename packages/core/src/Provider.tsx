@@ -12,6 +12,7 @@ export default class Provider extends React.Component<Props> {
   render() {
     return (
       <PortalHost>
+        {/* @ts-ignore */}
         <ThemeProvider theme={this.props.theme}>
           {this.props.children}
         </ThemeProvider>

@@ -13,7 +13,7 @@ type Props = {
   theme: typeof theme;
 };
 
-const RowHeadlineImageCaption: React.FC<Props> = ({
+const RowHeadlineImageCaption: React.FC<React.PropsWithChildren<Props>> = ({
   title,
   subtitle,
   caption,

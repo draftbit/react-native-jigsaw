@@ -17,7 +17,7 @@ type Props = {
   theme: Theme;
 } & IconSlot;
 
-const RowHeadlineImageIcon: React.FC<Props> = ({
+const RowHeadlineImageIcon: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   icon,
   title,

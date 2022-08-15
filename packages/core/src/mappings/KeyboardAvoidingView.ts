@@ -9,10 +9,10 @@ export const SEED_DATA = {
   name: "Keyboard Avoiding View",
   tag: "KeyboardAvoidingView",
   description: "View that moves out of the way of the virtual keyboard. ",
-  category: COMPONENT_TYPES.deprecated,
+  category: COMPONENT_TYPES.layout,
   props: {
     enabled: {
-      label: "Enable",
+      label: "Enabled",
       description: "Enable the keyboard avoiding view",
       editable: true,
       required: true,

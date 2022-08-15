@@ -41,7 +41,7 @@
   "dependencies": {
     "@draftbit/types": "^46.0.0",
     "@draftbit/web-maps": "^46.0.0",
-    "react-native-maps": "0.29.4"
+    "react-native-maps": "0.31.1"
   },
   "react-native-builder-bob": {
     "source": "src",

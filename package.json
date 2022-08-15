@@ -88,6 +88,9 @@
       ]
     }
   },
+  "resolutions": {
+    "@expo/webpack-config": "^0.17.2"
+  },
   "eslintIgnore": [
     "scripts",
     "example/web-build",

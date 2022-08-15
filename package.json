@@ -42,7 +42,7 @@
     "dotenv": "^9.0.2",
     "eslint": "^7.26.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "expo-yarn-workspaces": "*",
+    "expo-yarn-workspaces": "^2.0.0",
     "husky": ">=6",
     "jest": "^26.6.3",
     "json-server": "^0.16.3",

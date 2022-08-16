@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/native",
-  "version": "46.0.0",
+  "version": "46.0.1",
   "description": "Draftbit UI Components that Depend on Native Components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",

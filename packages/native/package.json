@@ -1,20 +1,24 @@
 {
   "name": "@draftbit/native",
   "version": "46.0.1",
-  "description": "Draftbit UI Components that Depend on Native Components",
-  "main": "lib/commonjs/index.js",
-  "module": "lib/module/index.js",
-  "types": "lib/typescript/src/index.d.ts",
+  "description": "Draftbit UI components that depend on Expo's native modules",
+  "main": "build/native.js",
+  "types": "build/native.d.ts",
   "react-native": "src/index.tsx",
   "source": "src/index.tsx",
   "files": [
     "src",
-    "lib"
+    "build"
   ],
+  "sideEffects": false,
   "scripts": {
-    "prepare": "bob build",
-    "clean": "rimraf lib",
-    "clean:modules": "rimraf node_modules"
+    "clean:modules": "rimraf node_modules",
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
   },
   "keywords": [
     "react-native",
@@ -46,19 +50,7 @@
     "react-native-svg": "12.3.0",
     "react-native-webview": "11.23.0"
   },
-  "react-native-builder-bob": {
-    "source": "src",
-    "output": "lib",
-    "targets": [
-      "commonjs",
-      "module",
-      [
-        "typescript",
-        {
-          "project": "tsconfig.build.json",
-          "tsc": "../../node_modules/typescript/bin/tsc"
-        }
-      ]
-    ]
+  "devDependencies": {
+    "expo-module-scripts": "^2.1.0"
   }
 }

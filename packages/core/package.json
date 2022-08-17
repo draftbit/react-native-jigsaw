@@ -2,22 +2,23 @@
   "name": "@draftbit/core",
   "version": "46.0.1",
   "description": "Core (non-native) Components",
-  "main": "lib/commonjs/index.js",
-  "module": "lib/module/index.js",
-  "types": "lib/typescript/src/index.d.ts",
+  "main": "build/core.js",
+  "types": "build/core.d.ts",
   "react-native": "src/index.tsx",
   "source": "src/index.tsx",
   "files": [
     "src",
-    "lib",
-    "!**/__tests__",
-    "!**/__fixtures__",
-    "!**/__mocks__"
+    "build"
   ],
+  "sideEffects": false,
   "scripts": {
-    "prepare": "bob build",
-    "clean": "rimraf lib",
-    "clean:modules": "rimraf node_modules"
+    "clean:modules": "rimraf node_modules",
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
   },
   "keywords": [
     "react-native",
@@ -61,21 +62,7 @@
     "@types/dateformat": "^3.0.1",
     "@types/lodash.isnumber": "^3.0.6",
     "@types/lodash.omit": "^4.5.6",
-    "@types/lodash.tonumber": "^4.0.6"
-  },
-  "react-native-builder-bob": {
-    "source": "src",
-    "output": "lib",
-    "targets": [
-      "commonjs",
-      "module",
-      [
-        "typescript",
-        {
-          "project": "tsconfig.build.json",
-          "tsc": "../../node_modules/typescript/bin/tsc"
-        }
-      ]
-    ]
+    "@types/lodash.tonumber": "^4.0.6",
+    "expo-module-scripts": "^2.1.0"
   }
 }

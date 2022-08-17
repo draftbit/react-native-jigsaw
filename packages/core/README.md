@@ -1,32 +1,29 @@
 # @draftbit/core
 
-This module contains web-compatible components used by @draftbit/ui.
+Core (non-native) Components
 
-You should look @ `@draftbit/ui` if you are just looking to use these components
-in your own projects.
+# API documentation
 
-This module is consumed by the `ui` module, which injects native dependencies
-and re-export the components with those dependencies included for react-native
-projects.
+- [Documentation for the main branch](https://github.com/expo/expo/blob/main/docs/pages/versions/unversioned/sdk/@draftbit/core.md)
+- [Documentation for the latest stable release](https://docs.expo.dev/versions/latest/sdk/@draftbit/core/)
 
-It is possible, but not advised, to directly consume components from this module
-in your own web projects. You will have to inject your own compatible
-dependencies. This is how this project is consumed internally by Draftbit to
-power our builder experience. See the `interfaces` folder to see what you'll
-need to implement yourself.
+# Installation in managed Expo projects
 
-## Contributing
+For [managed](https://docs.expo.dev/versions/latest/introduction/managed-vs-bare/) Expo projects, please follow the installation instructions in the [API documentation for the latest stable release](#api-documentation). If you follow the link and there is no documentation available then this library is not yet usable within managed projects &mdash; it is likely to be included in an upcoming Expo SDK release.
 
-If you're looking to contribute to components in `@draftbit/ui` this is usually
-the module you're looking for. Checkout [@draftbit/native](../native/) if you
-need to add a module with a native dependency. But please open a PR to discuss
-first. It's possible! There's just some gotcha's we should talk through before
-you start.
+# Installation in bare React Native projects
 
-### Note on Dependencies
+For bare React Native projects, you must ensure that you have [installed and configured the `expo` package](https://docs.expo.dev/bare/installing-expo-modules/) before continuing.
 
-`@draftbit/native` can (and should) depend on this module when composing
-components to create higher-order functionality, and to share interfaces. This
-module should _never_ depend on `@draftbit/native`, directly or otherwise, as
-that will break non-Expo toolchains that expect to be able use `@draftbit/core`
-directly.
+### Add the package to your npm dependencies
+
+```
+npm install @draftbit/core
+```
+
+
+
+
+# Contributing
+
+Contributions are very welcome! Please refer to guidelines described in the [contributing guide]( https://github.com/expo/expo#contributing).

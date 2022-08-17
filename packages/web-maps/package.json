@@ -2,11 +2,11 @@
   "name": "@draftbit/web-maps",
   "version": "46.0.1",
   "description": "Web Map Components",
-  "main": "lib/commonjs/index.js",
-  "module": "lib/module/index.js",
-  "types": "lib/typescript/src/index.d.ts",
+  "main": "build/web-maps.js",
+  "types": "build/web-maps.d.ts",
   "react-native": "src/index.tsx",
   "source": "src/index.tsx",
+  "sideEffects": false,
   "files": [
     "src",
     "lib",
@@ -15,9 +15,13 @@
     "!**/__mocks__"
   ],
   "scripts": {
-    "prepare": "bob build",
-    "clean": "rimraf lib",
-    "clean:modules": "rimraf node_modules"
+    "clean:modules": "rimraf node_modules",
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
   },
   "keywords": [
     "react-native",
@@ -27,34 +31,19 @@
   "publishConfig": {
     "access": "public"
   },
+  "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/draftbit/react-native-jigsaw",
     "directory": "packages/web-maps"
   },
-  "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/draftbit/react-native-jigsaw/issues"
   },
-  "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
+  "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
+  "license": "MIT",
   "dependencies": {
     "@draftbit/types": "^46.0.0",
     "@react-google-maps/api": "^2.10.2"
-  },
-  "react-native-builder-bob": {
-    "source": "src",
-    "output": "lib",
-    "targets": [
-      "commonjs",
-      "module",
-      [
-        "typescript",
-        {
-          "project": "tsconfig.build.json",
-          "tsc": "../../node_modules/typescript/bin/tsc"
-        }
-      ]
-    ]
   }
 }

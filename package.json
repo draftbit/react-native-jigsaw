@@ -5,6 +5,14 @@
   "description": "Root package.json for workspaces",
   "license": "MIT",
   "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
+  "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
+  "bugs": {
+    "url": "https://github.com/draftbit/react-native-jigsaw/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/draftbit/react-native-jigsaw"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -14,7 +22,6 @@
     "example": "yarn --cwd example",
     "bootstrap": "lerna bootstrap",
     "crosslink": "lerna link",
-    "format": "prettier --write .",
     "lint": "eslint \"**/*.{ts,tsx}\"",
     "build": "lerna run prepare",
     "release": "lerna publish",
@@ -36,12 +43,9 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@react-native-community/eslint-config": "^2.0.0",
     "@types/jest": "^26.0.23",
     "babel-jest": "^26.6.3",
     "dotenv": "^9.0.2",
-    "eslint": "^7.26.0",
-    "eslint-plugin-prettier": "^3.4.0",
     "expo-yarn-workspaces": "^2.0.0",
     "husky": ">=6",
     "jest": "^26.6.3",
@@ -49,7 +53,6 @@
     "lerna": "^4.0.0",
     "lint-staged": ">=10",
     "node-fetch": "^2.6.1",
-    "prettier": "^2.3.0",
     "react-native-builder-bob": "^0.18.2",
     "rimraf": "^3.0.2",
     "ts-node": "^10.0.0",
@@ -57,54 +60,8 @@
     "utility-types": "^3.10.0",
     "yarn-deduplicate": "^3.1.0"
   },
-  "eslintConfig": {
-    "extends": [
-      "@react-native-community",
-      "prettier"
-    ],
-    "settings": {
-      "react": {
-        "version": "18"
-      }
-    },
-    "env": {
-      "browser": true,
-      "node": true
-    },
-    "rules": {
-      "react-native/no-inline-styles": "off",
-      "prettier/prettier": [
-        "error",
-        {
-          "quoteProps": "consistent",
-          "semi": true,
-          "singleQuote": false,
-          "tabWidth": 2,
-          "trailingComma": "es5",
-          "useTabs": false,
-          "bracketSpacing": true
-        }
-      ]
-    }
-  },
   "resolutions": {
-    "@expo/webpack-config": "^0.17.2"
-  },
-  "eslintIgnore": [
-    "scripts",
-    "example/web-build",
-    "node_modules/",
-    "lib/",
-    "__generated__"
-  ],
-  "prettier": {
-    "quoteProps": "consistent",
-    "semi": true,
-    "singleQuote": false,
-    "tabWidth": 2,
-    "trailingComma": "es5",
-    "useTabs": false,
-    "bracketSpacing": true
+    "@expo/webpack-config": "0.17.2"
   },
   "lint-staged": {
     "*.{js,ts,tsx,jsx}": "eslint --cache --fix",

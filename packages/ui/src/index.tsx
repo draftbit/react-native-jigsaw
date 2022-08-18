@@ -1,5 +1,6 @@
 import { Icon } from "@draftbit/native";
-export { AudioPlayer, Icon, LinearGradient, WebView } from "@draftbit/native";
+export { AudioPlayer, Icon, LinearGradient } from "@draftbit/native";
+export { WebView } from "@draftbit/web-view";
 
 export {
   Avatar,

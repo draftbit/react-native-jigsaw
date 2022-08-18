@@ -1,4 +1,4 @@
-# @draftbit/native
+# @draftbit/web-view
 
 Draftbit components with native dependencies that are incompatable with non-expo
 build systems, such as `expo-av` or `@expo/vector-icons`.

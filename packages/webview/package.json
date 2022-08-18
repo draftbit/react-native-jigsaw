@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "expo-camera": "~12.1.2",
+    "expo-camera": "~12.3.0",
     "react-native-webview": "11.23.0"
   },
   "react-native-builder-bob": {

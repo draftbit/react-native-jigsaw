@@ -23,7 +23,7 @@ type Props = {
   onPress?: (newValue: number) => void;
 } & IconSlot;
 
-const StarRating: React.FC<Props> = ({
+const StarRating: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   starSize = 16,
   maxStars = 5,
@@ -53,7 +53,7 @@ const StarRating: React.FC<Props> = ({
   }, [defaultValue]);
 
   const ratingHandler = React.useCallback(
-    (r) => {
+    (r: number) => {
       setLocalRating(r);
       !!onPress && onPress(r);
     },

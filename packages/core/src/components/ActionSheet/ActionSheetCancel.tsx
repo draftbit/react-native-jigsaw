@@ -9,7 +9,7 @@ type Props = {
   onPress?: () => void;
 };
 
-const ActionSheetCancel: React.FC<Props> = ({
+const ActionSheetCancel: React.FC<React.PropsWithChildren<Props>> = ({
   label = "Cancel",
   color,
   style,

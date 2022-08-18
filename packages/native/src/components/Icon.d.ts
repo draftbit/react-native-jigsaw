@@ -11,5 +11,5 @@ declare type Props = {
   size: number;
   style?: StyleProp<ImageStyle>;
 } & ViewProps;
-declare const Icon: React.FC<Props>;
+declare const Icon: React.FC<React.PropsWithChildren<Props>>;
 export default Icon;

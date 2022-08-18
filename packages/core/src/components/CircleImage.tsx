@@ -12,7 +12,7 @@ interface Props {
   style?: StyleProp<ImageStyle>;
 }
 
-const CircleImage: React.FC<Props> = ({
+const CircleImage: React.FC<React.PropsWithChildren<Props>> = ({
   source = Config.placeholderImageURL,
   size = 60,
   style,

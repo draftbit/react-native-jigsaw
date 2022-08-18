@@ -15,7 +15,7 @@ type Props = {
   theme: Theme;
 } & IconSlot;
 
-const AvatarEdit: React.FC<Props> = ({
+const AvatarEdit: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   image,
   size = 80,

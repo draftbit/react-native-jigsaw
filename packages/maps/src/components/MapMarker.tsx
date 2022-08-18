@@ -2,7 +2,7 @@ import * as React from "react";
 import { Marker } from "./ReactNativeMaps";
 import { MapMarkerProps } from "@draftbit/types";
 
-const MapMarker: React.FC<MapMarkerProps> = ({
+const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
   latitude,
   longitude,
   title,

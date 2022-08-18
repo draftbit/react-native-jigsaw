@@ -16,7 +16,12 @@ type Props = {
   onPress?: () => void;
 };
 
-const ActionSheetItem: React.FC<Props> = ({ label, style, color, onPress }) => {
+const ActionSheetItem: React.FC<React.PropsWithChildren<Props>> = ({
+  label,
+  style,
+  color,
+  onPress,
+}) => {
   const { textStyles, viewStyles } = extractStyles(style);
   return (
     <TouchableOpacity

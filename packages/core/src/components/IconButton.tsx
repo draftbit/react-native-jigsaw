@@ -25,7 +25,7 @@ type Props = {
 } & PressableProps &
   IconSlot;
 
-const IconButton: React.FC<Props> = ({
+const IconButton: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   icon,
   color: customColor,

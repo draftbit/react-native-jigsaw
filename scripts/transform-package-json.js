@@ -21,7 +21,7 @@ type Props = {
   style?: StyleProp<ImageStyle>;
 } & ViewProps;
 
-const Icon: React.FC<Props> = ({ _name, _color, _size, _style }) => {
+const Icon: React.FC<React.PropsWithChildren<Props>> = ({ _name, _color, _size, _style }) => {
   return null;
 };
 

@@ -21,7 +21,7 @@ type Props = {
   theme: typeof themeT;
 };
 
-const ProgressIndicator: React.FC<Props> = ({
+const ProgressIndicator: React.FC<React.PropsWithChildren<Props>> = ({
   numberOfSteps,
   currentStep,
   currentStepStrokeWidth = 3,

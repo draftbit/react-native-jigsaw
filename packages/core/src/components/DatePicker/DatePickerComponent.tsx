@@ -4,7 +4,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { DatePickerComponentProps as Props } from "./DatePickerComponentType";
 
-const DatePickerComponent: React.FC<Props> = ({
+const DatePickerComponent: React.FC<React.PropsWithChildren<Props>> = ({
   value,
   onChange,
   mode,

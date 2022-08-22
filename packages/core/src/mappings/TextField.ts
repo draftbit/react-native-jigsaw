@@ -4,7 +4,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   FIELD_NAME,
-  TEXT_INPUT_PROPS,
+  TEXT_FIELD_PROPS,
   Triggers,
   createColorProp,
   createNumberProp,
@@ -12,7 +12,7 @@ import {
 } from "@draftbit/types";
 
 const SEED_DATA_PROPS = {
-  ...TEXT_INPUT_PROPS,
+  ...TEXT_FIELD_PROPS,
   label: {
     group: GROUPS.data,
     label: "Label",
@@ -134,7 +134,7 @@ export const SEED_DATA = [
     props: {
       ...SEED_DATA_PROPS,
       placeholder: {
-        ...TEXT_INPUT_PROPS.placeholder,
+        ...TEXT_FIELD_PROPS.placeholder,
         defaultValue:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
       },

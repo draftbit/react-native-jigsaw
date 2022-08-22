@@ -20,7 +20,7 @@ export default function TextInputExample() {
           />
           <TextInput
             placeholder="Disabled input"
-            disabled={true}
+            editable={false}
             value={value}
             onChangeText={handleChange}
           />
@@ -30,6 +30,7 @@ export default function TextInputExample() {
             onChangeText={(text) => setText2(text)}
             defaultValue="I'm an initial value!"
           />
+
           <NumberInput
             placeholder="Number input using value"
             value={number}
@@ -45,6 +46,13 @@ export default function TextInputExample() {
             onChangeText={(num) => setNumber(num)}
             defaultValue={1}
           />
+          <NumberInput
+            placeholder="Disabled number input"
+            onChangeText={(num) => setNumber(num)}
+            defaultValue={1}
+            editable={false}
+          />
+
           <ButtonSolid
             style={[styles.button]}
             title="Reset Number"

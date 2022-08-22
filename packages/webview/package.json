@@ -1,7 +1,7 @@
 {
-  "name": "@draftbit/native",
-  "version": "46.0.2",
-  "description": "Draftbit UI Components that Depend on Native Components",
+  "name": "@draftbit/webview",
+  "version": "46.0.1",
+  "description": "Wrapper around react-native-webview",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
   "types": "lib/typescript/src/index.d.ts",
@@ -9,7 +9,10 @@
   "source": "src/index.tsx",
   "files": [
     "src",
-    "lib"
+    "lib",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
   ],
   "scripts": {
     "prepare": "bob build",
@@ -27,7 +30,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/draftbit/react-native-jigsaw",
-    "directory": "packages/native"
+    "directory": "packages/web-maps"
   },
   "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
   "license": "MIT",
@@ -36,14 +39,7 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/types": "^46.0.0",
-    "@expo/vector-icons": "^13.0.0",
-    "@react-native-community/datetimepicker": "4.0.0",
-    "@react-native-community/slider": "4.1.12",
-    "expo-av": "~12.0.4",
-    "expo-camera": "~12.3.0",
-    "expo-linear-gradient": "~11.4.0",
-    "react-native-svg": "12.3.0"
+    "react-native-webview": "11.23.0"
   },
   "react-native-builder-bob": {
     "source": "src",

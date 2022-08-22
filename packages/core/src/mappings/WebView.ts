@@ -7,6 +7,7 @@ import {
 export const SEED_DATA = {
   name: "Web View",
   tag: "WebView",
+  packageName: "@draftbit/webview",
   description: "Render web content inside a view",
   category: COMPONENT_TYPES.media,
   layout: { flex: 1 },

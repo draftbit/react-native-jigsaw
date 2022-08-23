@@ -25,7 +25,7 @@ type Props = {
   defaultValue?: string;
 } & IconSlot;
 
-const FieldSearchBarFull: React.FC<Props> = ({
+const FieldSearchBarFull: React.FC<React.PropsWithChildren<Props>> = ({
   showIcon,
   Icon,
   icon = "search",

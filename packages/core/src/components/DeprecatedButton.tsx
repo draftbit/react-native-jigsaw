@@ -66,7 +66,7 @@ type Props = {
 } & TouchableHighlightProps &
   IconSlot;
 
-const Button: React.FC<Props> = ({
+const Button: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   icon,
   disabled = false,

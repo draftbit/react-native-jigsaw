@@ -15,7 +15,7 @@ type Props = {
   theme: Theme;
 } & IconSlot;
 
-const RowBodyIcon: React.FC<Props> = ({
+const RowBodyIcon: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   title,
   subtitle,

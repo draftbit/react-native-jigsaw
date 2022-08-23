@@ -34,7 +34,13 @@ function upgradeDependencies(nativeModules, packageJson) {
 }
 
 const main = async () => {
-  const expoSdkModules = await fetchBundledNativeModules("46");
+  if (process.argv.length !== 3) {
+    console.log("Missing argument. node scripts/upgrade.js 46 <--");
+    process.exit(1);
+  }
+
+  const version = process.argv.slice(2)[0];
+  const expoSdkModules = await fetchBundledNativeModules(version);
   const folders = [
     "example",
     "packages/core",

@@ -1,10 +1,11 @@
 {
-  "exclude": ["example/**"],
+  "exclude": ["example/**/*", "lib/**/*"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@draftbit/*": ["packages/*/src"]
     },
+    "declarationMap": false,
     "sourceMap": false,
     "inlineSources": false,
     "inlineSourceMap": false,
@@ -14,7 +15,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": ["esnext", "dom"],
+    "lib": ["es2017", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,

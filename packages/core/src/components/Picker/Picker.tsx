@@ -212,12 +212,12 @@ const Picker: React.FC<PickerProps> = ({
     ...additionalMarginStyles,
   ]);
 
+  const optionExists = internalValue
+    ? pickerOptions.find((option) => option.value === internalValue)
+    : { label: null };
+
   const selectedLabel =
-    internalValue &&
-    ((pickerOptions as unknown as PickerOption[]).find(
-      (option) => option.value === internalValue
-    )?.label ??
-      internalValue);
+    optionExists && optionExists.label ? optionExists.label : placeholder;
 
   const labelText = label ? (
     <Text
@@ -333,9 +333,7 @@ const Picker: React.FC<PickerProps> = ({
             <View style={styles.primaryTextContainer}>
               {labelText}
 
-              <Text style={primaryTextStyle}>
-                {String(selectedLabel ?? placeholder)}
-              </Text>
+              <Text style={primaryTextStyle}>{String(selectedLabel)}</Text>
             </View>
 
             {rightIcon}

@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "react-native-builder-bob": {
+    "declarationMap": false,
     "source": "src",
     "output": "lib",
     "targets": [

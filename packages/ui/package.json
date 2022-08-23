@@ -47,6 +47,7 @@
     "@draftbit/native": "^46.1.0"
   },
   "react-native-builder-bob": {
+    "declarationMap": false,
     "source": "src",
     "output": "lib",
     "targets": [

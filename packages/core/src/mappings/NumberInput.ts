@@ -7,34 +7,12 @@ import {
   Triggers,
 } from "@draftbit/types";
 
-const TEXT_AREA_PROPS = {
+const NUMBER_INPUT_PROPS = {
   allowFontScaling: {
     group: GROUPS.advanced,
     label: "Allow Font Scaling",
     description:
       "Whether fonts should scale to respect Text Size in the user's accessibility settings. (Default: true)",
-    editable: true,
-    required: false,
-    defaultValue: null,
-    formType: FORM_TYPES.boolean,
-    propType: PROP_TYPES.BOOLEAN,
-  },
-  autoCapitalize: {
-    group: GROUPS.advanced,
-    label: "Auto Capitalize",
-    description:
-      "Can automatically capitalize sentences, words, and characters (Default: none).",
-    editable: true,
-    required: false,
-    defaultValue: null,
-    options: ["none", "sentences", "words", "characters"],
-    formType: FORM_TYPES.flatArray,
-    propType: PROP_TYPES.STRING,
-  },
-  autoCorrect: {
-    group: GROUPS.advanced,
-    label: "Auto Correct",
-    description: "Enables auto correction",
     editable: true,
     required: false,
     defaultValue: null,
@@ -100,21 +78,7 @@ const TEXT_AREA_PROPS = {
     editable: true,
     required: false,
     defaultValue: null,
-    options: [
-      "default",
-      "email-address",
-      "numeric",
-      "phone-pad",
-      "ascii-capable",
-      "numbers-and-punctuation",
-      "url",
-      "number-pad",
-      "name-phone-pad",
-      "decimal-pad",
-      "twitter",
-      "web-search",
-      "visible-password",
-    ],
+    options: ["numeric", "numbers-and-punctuation", "number-pad"],
     formType: FORM_TYPES.flatArray,
     propType: PROP_TYPES.STRING,
   },
@@ -132,12 +96,12 @@ const TEXT_AREA_PROPS = {
     propType: PROP_TYPES.NUMBER,
   },
   placeholder: {
-    group: GROUPS.data,
+    group: GROUPS.basic,
     label: "Placeholder Text",
     description: "The text that is shown on load when no value is available.",
     editable: true,
     required: false,
-    defaultValue: "Enter a value...",
+    defaultValue: "Enter a number...",
     formType: FORM_TYPES.string,
     propType: PROP_TYPES.STRING,
   },
@@ -187,17 +151,6 @@ const TEXT_AREA_PROPS = {
     formType: FORM_TYPES.flatArray,
     propType: PROP_TYPES.STRING,
   },
-  secureTextEntry: {
-    group: GROUPS.basic,
-    label: "Password Input?",
-    description:
-      "Hides the characters with a *, useful for passwords and other sensitive information.",
-    editable: true,
-    required: false,
-    defaultValue: null,
-    formType: FORM_TYPES.boolean,
-    propType: PROP_TYPES.BOOLEAN,
-  },
   selectionColor: {
     group: GROUPS.advanced,
     label: "Selection Color",
@@ -221,55 +174,94 @@ const TEXT_AREA_PROPS = {
   },
 };
 
-export const SEED_DATA = {
-  name: "Text Area",
-  tag: "TextInput",
-  description: "An input field that allows for multiple lines.",
-  category: COMPONENT_TYPES.input,
-  layout: {
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: "divider",
-    paddingLeft: 8,
-    paddingRight: 8,
-    paddingTop: 8,
-    paddingBottom: 8,
-    borderRadius: 8,
+export const SEED_DATA_PROPS = {
+  style: {
+    group: GROUPS.basic,
+    label: "Style",
+    description: "Text Style",
+    editable: false,
+    required: false,
+    formType: FORM_TYPES.typeStyle,
+    propType: PROP_TYPES.THEME,
+    defaultValue: null,
   },
-  triggers: [Triggers.OnChangeText],
-  props: {
-    ...TEXT_AREA_PROPS,
-    placeholder: {
-      ...TEXT_AREA_PROPS.placeholder,
-      defaultValue:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    },
-    multiline: {
-      label: "Multiline",
-      description: "Multiline",
-      group: GROUPS.uncategorized,
-      formType: FORM_TYPES.boolean,
-      propType: PROP_TYPES.BOOLEAN,
-      defaultValue: true,
-      editable: true,
-      required: false,
-    },
-    numberOfLines: {
-      label: "Number Of Lines",
-      description: "Number Of Lines",
-      group: GROUPS.basic,
-      formType: FORM_TYPES.number,
-      propType: PROP_TYPES.NUMBER,
-      defaultValue: 4,
-      editable: true,
-      required: false,
-    },
-    fieldName: {
-      ...FIELD_NAME,
-      defaultValue: "textInputValue",
-      handlerPropName: "onChangeText",
-    },
+  clearButtonMode: {
+    group: GROUPS.basic,
+    label: "Clear Button Mode",
+    description:
+      "Enables a button within the textInput to clear the data entered",
+    editable: true,
+    required: false,
+    options: ["never", "while-editing", "unless-editing", "always"],
+    defaultValue: null,
+    formType: FORM_TYPES.flatArray,
+    propType: PROP_TYPES.STRING,
+  },
+  clearTextOnFocus: {
+    group: GROUPS.basic,
+    label: "Clear Text on Focus",
+    description:
+      "If true, clears the text field automatically when its focused.",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
+  },
+  enablesReturnKeyAutomatically: {
+    group: GROUPS.basic,
+    label: "Enables Return Key Automatically",
+    description:
+      "If true, the keyboard disables the return key when there is no text and automatically enables it when there is (Default: false)",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
+  },
+  underlineColorAndroid: {
+    group: GROUPS.basic,
+    label: "Underline color",
+    description:
+      "(Android Only) The color of the underline(the line underneath the text when finished typing.",
+    editable: true,
+    required: false,
+    defaultValue: null,
+    formType: FORM_TYPES.color,
+    propType: PROP_TYPES.THEME,
+  },
+  fieldName: {
+    ...FIELD_NAME,
+    defaultValue: "numberInputValue",
+    handlerPropName: "onChangeText",
   },
 };
+
+export const SEED_DATA = [
+  {
+    name: "Number Input",
+    tag: "NumberInput",
+    description: "An input field that allows users to type in data.",
+    category: COMPONENT_TYPES.input,
+    preview_image_url:
+      "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/TextInput.png",
+    supports_list_render: false,
+    layout: {
+      borderLeftWidth: 1,
+      borderRightWidth: 1,
+      borderTopWidth: 1,
+      borderBottomWidth: 1,
+      borderColor: "divider",
+      paddingLeft: 8,
+      paddingRight: 8,
+      paddingTop: 8,
+      paddingBottom: 8,
+      borderRadius: 8,
+    },
+    triggers: [Triggers.OnChangeText],
+    props: {
+      ...SEED_DATA_PROPS,
+      ...NUMBER_INPUT_PROPS,
+    },
+  },
+];

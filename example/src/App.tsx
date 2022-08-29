@@ -55,6 +55,7 @@ import StepperExample from "./StepperExample";
 
 import TextFieldExample from "./TextFieldExample";
 import TextInputExample from "./TextInputExample";
+import NumberInputExample from "./NumberInputExample";
 import CheckboxExample from "./CheckboxExample";
 import WebViewExample from "./WebViewExample";
 import AccordionExample from "./AccordionExample";
@@ -110,6 +111,7 @@ const ROUTES = {
   SVG: SVGExample,
   TextField: TextFieldExample,
   TextInput: TextInputExample,
+  NumberInput: NumberInputExample,
   WebView: WebViewExample,
 };
 

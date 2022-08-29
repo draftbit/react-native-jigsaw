@@ -110,6 +110,17 @@
     "*.{js,ts,tsx,jsx}": "eslint --cache --fix",
     "*.{js,ts,tsx,json,mcss,md}": "prettier --write"
   },
+  "browserslist": {
+    "browsers": [
+      "defaults",
+      "not dead",
+      "not ie <= 11",
+      "not op_mini all",
+      "not android <= 4.4",
+      "not samsung <= 4"
+    ],
+    "node": "16"
+  },
   "engines": {
     "node": "16.x"
   }

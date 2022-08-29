@@ -219,6 +219,17 @@ const TEXT_AREA_PROPS = {
     formType: FORM_TYPES.boolean,
     propType: PROP_TYPES.BOOLEAN,
   },
+  textAlignVertical: {
+    group: GROUPS.advanced,
+    label: "Aligns text on the vertical axis",
+    description: "Move the text around in the given component.",
+    options: ["auto", "top", "bottom", "center"],
+    editable: true,
+    required: false,
+    defaultValue: "top",
+    formType: FORM_TYPES.flatArray,
+    propType: PROP_TYPES.STRING,
+  },
 };
 
 export const SEED_DATA = {

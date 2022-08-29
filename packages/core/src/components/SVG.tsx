@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, StyleProp, ViewStyle } from "react-native";
+import { View, Platform, Image, StyleProp, ViewStyle } from "react-native";
 import { SvgUri } from "react-native-svg";
 
 import Config from "./Config";
@@ -14,9 +14,14 @@ const SVG = ({ source, style }: SVGComponentProps) => {
     source === null || source === undefined ? Config.placeholderSvgURL : source;
 
   return (
-    <View style={style}>
-      <SvgUri width="100%" height="100%" uri={svgSource} />
-    </View>
+    <>
+      {(Platform.OS === "ios" || Platform.OS === "android") && (
+        <View style={style}>
+          <SvgUri width="100%" height="100%" uri={svgSource} />
+        </View>
+      )}
+      {Platform.OS === "web" && <Image style={style} source={svgSource} />}
+    </>
   );
 };
 

@@ -10,8 +10,8 @@ export const SEED_DATA = {
   description: "A basic Image Component",
   category: COMPONENT_TYPES.media,
   layout: {
-    width: 250,
-    height: 250,
+    width: 100,
+    height: 100,
   },
   props: {
     source: createImageProp(),

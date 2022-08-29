@@ -6,8 +6,8 @@ export const SEED_DATA = {
   description: "An SVG component",
   category: COMPONENT_TYPES.media,
   layout: {
-    width: 250,
-    height: 250,
+    width: 100,
+    height: 100,
   },
   props: {
     source: createSvgProp(),

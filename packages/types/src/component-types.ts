@@ -131,7 +131,7 @@ export const createSvgProp = (overrides = {}) => ({
   group: GROUPS.data,
   formType: FORM_TYPES.sourceUrl,
   propType: PROP_TYPES.OBJECT,
-  defaultValue: "https://static.draftbit.com/images/placeholder-svg.svg",
+  defaultValue: "https://static.draftbit.com/images/placeholder-image.svg",
   editable: true,
   required: true,
   ...overrides,

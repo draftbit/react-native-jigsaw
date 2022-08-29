@@ -15,7 +15,12 @@ const SVG = ({ source, style }: SVGComponentProps) => {
 
   return (
     <>
-      {(Platform.OS === "ios" || "android") && (
+      {Platform.OS === "ios" && (
+        <View style={style}>
+          <SvgUri width="100%" height="100%" uri={svgSource} />
+        </View>
+      )}
+      {Platform.OS === "android" && (
         <View style={style}>
           <SvgUri width="100%" height="100%" uri={svgSource} />
         </View>

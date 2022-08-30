@@ -11,5 +11,5 @@ declare type Props = {
   children?: React.ReactNode;
   style?: StyleProp<ViewStyle>;
 };
-declare const LinearGradient: React.FC<Props>;
+declare const LinearGradient: React.FC<React.PropsWithChildren<Props>>;
 export default LinearGradient;

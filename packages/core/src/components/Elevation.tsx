@@ -17,7 +17,12 @@ type Props = {
 } & ViewProps;
 
 /* directly copied from https://github.com/callstack/react-native-paper/blob/main/src/components/Surface.tsx#L62 */
-const Elevation: React.FC<Props> = ({ style, theme, children, ...rest }) => {
+const Elevation: React.FC<React.PropsWithChildren<Props>> = ({
+  style,
+  theme,
+  children,
+  ...rest
+}) => {
   const { elevation = 4, borderRadius: radius } =
     StyleSheet.flatten(style) || {};
   const { colors } = theme;

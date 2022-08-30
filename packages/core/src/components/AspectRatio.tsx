@@ -12,7 +12,7 @@ type Props = {
   style?: StyleProp<ViewStyle>;
 };
 
-const AspectRatio: React.FC<Props> = (props) => {
+const AspectRatio: React.FC<React.PropsWithChildren<Props>> = (props) => {
   const [layout, setLayout] = React.useState<LayoutRectangle | null>(null);
   const { aspectRatio = 1, ...inputStyle } =
     StyleSheet.flatten(props.style) || {};

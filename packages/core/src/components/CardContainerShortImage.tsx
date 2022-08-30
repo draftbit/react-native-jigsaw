@@ -25,7 +25,7 @@ type Props = {
   onPress: () => void;
 };
 
-const CardContainerShortImage: React.FC<Props> = ({
+const CardContainerShortImage: React.FC<React.PropsWithChildren<Props>> = ({
   image = Config.squareImageUrl,
   title,
   subtitle,

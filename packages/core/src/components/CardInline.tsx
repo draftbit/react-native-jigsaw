@@ -29,7 +29,7 @@ type Props = {
   onPress: () => void;
 };
 
-const CardInline: React.FC<Props> = ({
+const CardInline: React.FC<React.PropsWithChildren<Props>> = ({
   image = Config.cardImageUrl,
   title,
   subtitle,

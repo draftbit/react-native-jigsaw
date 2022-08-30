@@ -26,7 +26,7 @@ type Props = {
 } & PressableProps &
   IconSlot;
 
-const FAB: React.FC<Props> = ({
+const FAB: React.FC<React.PropsWithChildren<Props>> = ({
   onPress,
   disabled,
   loading,

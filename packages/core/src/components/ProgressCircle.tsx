@@ -18,7 +18,7 @@ type Props = {
   theme: typeof themeT;
 };
 
-const ProgressCircle: React.FC<Props> = ({
+const ProgressCircle: React.FC<React.PropsWithChildren<Props>> = ({
   progress = 0.5,
   style,
   color = "primary",
@@ -47,6 +47,7 @@ const ProgressCircle: React.FC<Props> = ({
       lineCap={strokeCap}
       style={style}
     >
+      {/* @ts-ignore */}
       {(fill) =>
         showsText ? (
           <Text

@@ -69,7 +69,7 @@ const MONTHS = [
   "December",
 ];
 
-const DatePicker: React.FC<Props> = ({
+const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   style,
   theme: { colors, typography, roundness, disabledOpacity },

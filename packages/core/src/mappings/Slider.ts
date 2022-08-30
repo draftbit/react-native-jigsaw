@@ -6,6 +6,7 @@ import {
   createFieldNameProp,
   createIconProp,
   Triggers,
+  BLOCK_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -13,6 +14,7 @@ export const SEED_DATA = {
   tag: "Slider",
   description: "A component used to set a value in a range",
   category: COMPONENT_TYPES.input,
+  stylesPanelSections: BLOCK_STYLES_SECTIONS,
   layout: {
     marginLeft: 12,
     marginRight: 12,

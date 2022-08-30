@@ -3,6 +3,7 @@ import {
   COMPONENT_TYPES,
   FORM_TYPES,
   PROP_TYPES,
+  CONTAINER_COMPONENT_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -10,6 +11,7 @@ export const SEED_DATA = {
   tag: "View",
   description: "A basic View component",
   category: COMPONENT_TYPES.basic,
+  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   props: {
     accessible: {
       group: GROUPS.accessibility,

@@ -7,6 +7,7 @@ import {
   createFieldNameProp,
   createDirectionProp,
   Triggers,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -15,6 +16,7 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.deprecated,
   layout: {},
   triggers: [Triggers.OnValueChange],
+  stylesPanelSections: [StylesPanelSections.Margins],
   props: {
     direction: createDirectionProp(),
     values: createTextProp({

@@ -3,6 +3,7 @@ import {
   FORM_TYPES,
   GROUPS,
   PROP_TYPES,
+  BLOCK_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -10,6 +11,7 @@ export const SEED_DATA = {
   tag: "ProgressIndicator",
   description: "A component used to show current Step in a process",
   category: COMPONENT_TYPES.deprecated,
+  stylesPanelSections: BLOCK_STYLES_SECTIONS,
   preview_image_url: "{CLOUDINARY_URL}/Control_Slider.png",
   supports_list_render: false,
   layout: {},

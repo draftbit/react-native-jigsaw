@@ -3,6 +3,7 @@ import {
   COMPONENT_TYPES,
   FORM_TYPES,
   PROP_TYPES,
+  BLOCK_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -10,6 +11,7 @@ export const SEED_DATA = {
   tag: "AvatarEdit",
   description: "An avatar with an edit icon in the top right",
   category: COMPONENT_TYPES.deprecated,
+  stylesPanelSections: BLOCK_STYLES_SECTIONS,
   layout: {
     width: 64,
     height: 64,

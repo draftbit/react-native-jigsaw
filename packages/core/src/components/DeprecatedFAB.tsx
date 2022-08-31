@@ -68,7 +68,7 @@ type Props = {
 } & TouchableHighlightProps &
   IconSlot;
 
-const FAB: React.FC<Props> = ({
+const FAB: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   icon,
   disabled = false,

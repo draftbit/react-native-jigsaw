@@ -148,6 +148,7 @@ class CircularProgress extends React.Component<Props> {
     return (
       <View style={style}>
         <Svg width={size + padding} height={size + padding}>
+          {/* @ts-ignore */}
           <G
             rotation={rotation}
             originX={(size + padding) / 2}

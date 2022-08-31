@@ -17,15 +17,17 @@ function zoomToAltitude(zoom: number) {
   return C * Math.pow((A - D) / (zoom - D) - 1, 1 / B);
 }
 
-class MapView extends React.Component<MapViewProps<any>> {
+class MapView extends React.Component<
+  React.PropsWithChildren<MapViewProps<any>>
+> {
   private mapRef: React.RefObject<any>;
-  constructor(props: MapViewProps<any>) {
+  constructor(props: React.PropsWithChildren<MapViewProps<any>>) {
     super(props);
     this.state = {};
     this.mapRef = React.createRef();
   }
 
-  componentDidUpdate(prevProps: MapViewProps<any>) {
+  componentDidUpdate(prevProps: React.PropsWithChildren<MapViewProps<any>>) {
     if (
       prevProps.latitude != null &&
       prevProps.longitude != null &&

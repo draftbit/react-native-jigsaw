@@ -40,6 +40,7 @@ const Swiper = ({
   style,
 }: SwiperProps<any>) => (
   <View style={style}>
+    {/* @ts-ignore */}
     <SwiperComponent
       from={from}
       loop={loop}

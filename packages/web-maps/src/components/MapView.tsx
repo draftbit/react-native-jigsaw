@@ -19,8 +19,11 @@ type State = {
   };
 };
 
-class MapView extends React.Component<MapViewProps<any>, State> {
-  constructor(props: MapViewProps<any>) {
+class MapView extends React.Component<
+  React.PropsWithChildren<MapViewProps<any>>,
+  State
+> {
+  constructor(props: React.PropsWithChildren<MapViewProps<any>>) {
     super(props);
     this.state = {
       lat: props.latitude || 0,
@@ -49,7 +52,7 @@ class MapView extends React.Component<MapViewProps<any>, State> {
     })();
   }
 
-  componentDidUpdate(prevProps: MapViewProps<any>) {
+  componentDidUpdate(prevProps: React.PropsWithChildren<MapViewProps<any>>) {
     if (
       prevProps.latitude != null &&
       prevProps.longitude != null &&

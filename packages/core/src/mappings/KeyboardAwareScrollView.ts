@@ -3,6 +3,7 @@ import {
   createStaticBoolProp,
   createStaticNumberProp,
   createTextEnumProp,
+  CONTAINER_COMPONENT_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -11,6 +12,7 @@ export const SEED_DATA = {
   description:
     "View that moves pushes the content when virtual keyboard is open.",
   category: COMPONENT_TYPES.layout,
+  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   layout: {},
   props: {
     viewIsInsideTabBar: createStaticBoolProp({

@@ -4,6 +4,7 @@ import {
   createNumberProp,
   createColorProp,
   createIconProp,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -11,6 +12,13 @@ export const SEED_DATA = {
   tag: "Icon",
   description: "An icon",
   category: COMPONENT_TYPES.basic,
+  stylesPanelSections: [
+    StylesPanelSections.Size,
+    StylesPanelSections.Margins,
+    StylesPanelSections.Background,
+    StylesPanelSections.Position,
+    StylesPanelSections.Effects,
+  ],
   layout: {},
   props: {
     name: {

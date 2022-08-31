@@ -33,15 +33,15 @@ export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
   const [isDraggingSlider, setIsDraggingSlider] = React.useState(false);
   const [sliderPositionMillis, setSliderPositionMillis] = React.useState(0);
 
-  const onPlaybackStatusUpdate = (status: AVPlaybackStatus) => {
+  const onPlaybackStatusUpdate = async (status: AVPlaybackStatus) => {
     if (status.isLoaded) {
       if (status.isPlaying && !isDraggingSlider) {
         setSliderPositionMillis(status.positionMillis);
       }
     }
-    
+
     if (status.didJustFinish) {
-      sound.unloadAsync();
+      await sound.unloadAsync();
       setSound(undefined);
       setPlay(false);
       setSliderPositionMillis(0);

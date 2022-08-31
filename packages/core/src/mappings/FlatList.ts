@@ -19,6 +19,10 @@ export const SEED_DATA = {
       label: "Horizontal",
       description: "Render list horizontally",
     }),
+    inverted: createStaticBoolProp({
+      label: "Inverted",
+      description: "If true, reverses the direction.",
+    }),
     numColumns: createNumColumnsType({
       editable: true,
     }),

@@ -29,6 +29,16 @@ const SEED_DATA_PROPS = {
     options: ["date", "time", "datetime"],
     group: GROUPS.basic,
   },
+  format: {
+    label: "Format",
+    description: "Create an output format for the date.",
+    editable: true,
+    required: false,
+    formType: FORM_TYPES.string,
+    propType: PROP_TYPES.STRING,
+    defaultValue: null,
+    group: GROUPS.basic,
+  },
   assistiveText: {
     label: "Assistive text",
     description: "Helper text to display below the picker",

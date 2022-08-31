@@ -25,7 +25,9 @@ const SVG = ({ source, style }: SVGComponentProps) => {
           <SvgUri width="100%" height="100%" uri={svgSource} />
         </View>
       )}
-      {Platform.OS === "web" && <Image style={style} source={svgSource} />}
+      {Platform.OS === "web" && (
+        <Image style={style} source={{ uri: svgSource }} />
+      )}
     </>
   );
 };

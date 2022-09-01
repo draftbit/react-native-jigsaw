@@ -42,7 +42,7 @@ interface WebViewProps {
   source: WebViewSourceUri | WebViewSourceHtml;
   style?: ViewStyle;
   optimizeVideoChat?: boolean;
-  // Advancted Builder Props
+  // Advancted Builder Config Props
   mediaPlaybackRequiresUserAction?: boolean;
   startInLoadingState?: boolean;
   javaScriptEnabled?: boolean;
@@ -55,7 +55,8 @@ interface WebViewProps {
   cacheEnabled?: boolean;
   userAgent?: string;
   applicationNameForUserAgent?: string;
-  // For Custom Code Only, see https://github.com/react-native-webview/react-native-webview/blob/master/src/WebViewTypes.ts
+  // For Custom Code Only
+  // See https://github.com/react-native-webview/react-native-webview/blob/master/src/WebViewTypes.ts
   injectedJavaScript?: string;
   onError?: (event: WebViewErrorEvent) => void;
   onLoad?: (event: WebViewNavigationEvent) => void;

@@ -26,6 +26,7 @@ import {
   WebViewHttpErrorEvent,
   WebViewNavigation,
   WebViewScrollEvent,
+  WebViewTerminatedEvent,
   ShouldStartLoadRequest,
 } from "react-native-webview/lib/WebViewTypes";
 import { Camera, PermissionResponse } from "expo-camera";
@@ -65,6 +66,8 @@ interface WebViewProps {
   onMessage?: (event: WebViewMessageEvent) => void;
   onNavigationStateChange?: (event: WebViewNavigation) => void;
   onScroll?: (event: WebViewScrollEvent) => void;
+  onContentProcessDidTerminate?: (event: WebViewTerminatedEvent) => void;
+  onShouldStartLoadWithRequest?: (event: ShouldStartLoadRequest) => boolean;
   originWhitelist?: string[];
   renderLoading?: () => ReactElement;
   renderError?: (
@@ -72,7 +75,6 @@ interface WebViewProps {
     errorCode: number,
     errorDesc: string
   ) => ReactElement; // view to show if there's an error
-  onShouldStartLoadWithRequest?: (event: ShouldStartLoadRequest) => boolean;
   containerStyle?: ViewStyle;
 }
 

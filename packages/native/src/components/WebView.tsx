@@ -26,8 +26,35 @@ const injectFirst = `
 
 interface WebViewProps {
   source: WebViewSourceUri | WebViewSourceHtml;
-  optimizeVideoChat?: boolean;
   style?: ViewStyle;
+  optimizeVideoChat?: boolean;
+  injectedJavaScript?: string;
+  mediaPlaybackRequiresUserAction?: boolean;
+  onError?: function;
+  onLoad?: function;
+  onLoadEnd?: function;
+  onLoadStart?: function;
+  onLoadProgress?: function;
+  onHttpError?: function;
+  onMessage?: function;
+  onNavigationStateChange?: function;
+  onScroll?: function;
+  originWhitelist?: string[];
+  renderLoading?: function;
+  renderError?: function;
+  onShouldStartLoadWithRequest?: function;
+  startInLoadingState?: boolean;
+  containerStyle?: ViewStyle;
+  javaScriptEnabled?: boolean;
+  javaScriptCanOpenWindowsAutomatically?: boolean;
+  userAgent?: string;
+  applicationNameForUserAgent?: string;
+  showsHorizontalScrollIndicator?: boolean;
+  showsVerticalScrollIndicator?: boolean;
+  allowFileAccessFromFileURLs?: boolean;
+  allowUniversalAccessFromFileURLs?: boolean;
+  incognito?: boolean;
+  cacheEnabled?: boolean;
 }
 
 const NativeWebView: React.FC<WebViewProps> = ({

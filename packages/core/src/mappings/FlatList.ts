@@ -2,6 +2,7 @@ import {
   COMPONENT_TYPES,
   createNumColumnsType,
   createStaticBoolProp,
+  CONTAINER_COMPONENT_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -9,6 +10,7 @@ export const SEED_DATA = {
   tag: "FlatList",
   description: "A basic List component",
   category: COMPONENT_TYPES.data,
+  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   layout: {
     flex: 1,
   },

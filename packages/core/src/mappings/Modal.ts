@@ -4,6 +4,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   createBoolProp,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -11,6 +12,7 @@ export const SEED_DATA = {
   tag: "Modal",
   description: "A basic Modal Component",
   category: COMPONENT_TYPES.container,
+  stylesPanelSections: [StylesPanelSections.NoStyles],
   props: {
     animationType: {
       group: GROUPS.basic,

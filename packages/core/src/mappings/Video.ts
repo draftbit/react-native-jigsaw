@@ -5,6 +5,7 @@ import {
   createResizeModeProp,
   createNumberProp,
   GROUPS,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -15,6 +16,13 @@ export const SEED_DATA = {
   code_link:
     "https://github.com/expo/expo/blob/master/packages/expo-av/src/Video.tsx",
   category: COMPONENT_TYPES.media,
+  stylesPanelSections: [
+    StylesPanelSections.Size,
+    StylesPanelSections.Margins,
+    StylesPanelSections.Background,
+    StylesPanelSections.Position,
+    StylesPanelSections.Effects,
+  ],
   layout: {
     height: 215,
   },

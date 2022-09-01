@@ -3,6 +3,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   GROUPS,
+  CONTAINER_COMPONENT_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -10,6 +11,7 @@ export const SEED_DATA = {
   tag: "KeyboardAvoidingView",
   description: "View that moves out of the way of the virtual keyboard. ",
   category: COMPONENT_TYPES.layout,
+  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   props: {
     enabled: {
       label: "Enabled",

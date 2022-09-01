@@ -2,6 +2,7 @@ import {
   COMPONENT_TYPES,
   createSourceProp,
   createStaticBoolProp,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -9,6 +10,11 @@ export const SEED_DATA = {
   tag: "WebView",
   description: "Render web content inside a view",
   category: COMPONENT_TYPES.media,
+  stylesPanelSections: [
+    StylesPanelSections.Size,
+    StylesPanelSections.Margins,
+    StylesPanelSections.Borders,
+  ],
   layout: { flex: 1 },
   props: {
     source: createSourceProp({

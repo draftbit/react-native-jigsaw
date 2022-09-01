@@ -4,12 +4,18 @@ import {
   COMPONENT_TYPES,
   createColorProp,
   GROUPS,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "Radio Button Row",
   tag: "RadioButtonRow",
   category: COMPONENT_TYPES.input,
+  stylesPanelSections: [
+    StylesPanelSections.Typography,
+    StylesPanelSections.Margins,
+    StylesPanelSections.Effects,
+  ],
   layout: {},
   props: {
     label: createTextProp({

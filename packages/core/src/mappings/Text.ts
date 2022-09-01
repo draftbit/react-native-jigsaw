@@ -6,6 +6,7 @@ import {
   Triggers,
   createActionProp,
   createTextProp,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 const SEED_DATA_PROPS = {
@@ -225,6 +226,12 @@ export const SEED_DATA = [
     tag: "Text",
     description: "A basic Text component",
     category: COMPONENT_TYPES.basic,
+    stylesPanelSections: [
+      StylesPanelSections.Typography,
+      StylesPanelSections.LayoutSelectedItem,
+      StylesPanelSections.MarginsAndPaddings,
+      StylesPanelSections.Effects,
+    ],
     layout: {
       color: "strong", // This is translated on collector script run by the extractValueAndType function
     },
@@ -246,6 +253,12 @@ export const SEED_DATA = [
     name: "Link",
     tag: "Link",
     category: COMPONENT_TYPES.button,
+    stylesPanelSections: [
+      StylesPanelSections.Typography,
+      StylesPanelSections.LayoutSelectedItem,
+      StylesPanelSections.MarginsAndPaddings,
+      StylesPanelSections.Effects,
+    ],
     layout: {
       color: "primary",
     },

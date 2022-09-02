@@ -15,6 +15,7 @@ import {
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 
+import AudioPlayerExample from "./AudioPlayerExample";
 import CircleImageExample from "./CircleImageExample";
 import IconExample from "./IconExample";
 import BannerExample from "./BannerExample";
@@ -71,6 +72,7 @@ import LinearGradientExample from "./LinearGradientExample";
 import SurfaceExample from "./SurfaceExample";
 
 const ROUTES = {
+  AudioPlayer: AudioPlayerExample,
   Layout: LayoutExample,
   Icon: IconExample,
   Banner: BannerExample,

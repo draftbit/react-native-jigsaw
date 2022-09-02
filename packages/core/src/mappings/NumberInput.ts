@@ -5,6 +5,7 @@ import {
   PROP_TYPES,
   FIELD_NAME,
   Triggers,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 const NUMBER_INPUT_PROPS = {
@@ -243,6 +244,15 @@ export const SEED_DATA = [
     tag: "NumberInput",
     description: "An input field that allows users to type in data.",
     category: COMPONENT_TYPES.input,
+    stylesPanelSections: [
+      StylesPanelSections.Typography,
+      StylesPanelSections.Background,
+      StylesPanelSections.Size,
+      StylesPanelSections.MarginsAndPaddings,
+      StylesPanelSections.Position,
+      StylesPanelSections.Borders,
+      StylesPanelSections.Effects,
+    ],
     preview_image_url:
       "https://res.cloudinary.com/altos/image/upload/draftbit/Jigsaw/TextInput.png",
     supports_list_render: false,

@@ -5,6 +5,7 @@ import {
   PROP_TYPES,
   FIELD_NAME,
   Triggers,
+  BLOCK_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = [
@@ -13,6 +14,7 @@ export const SEED_DATA = [
     tag: "FieldSearchBarFull",
     description: "A search bar with accompanying search icon and clear button.",
     category: COMPONENT_TYPES.input,
+    stylesPanelSections: BLOCK_STYLES_SECTIONS,
     preview_image_url: "{CLOUDINARY_URL}/Field_SearchBar_Full.png",
     supports_list_render: false,
     triggers: [Triggers.OnChange], // TODO Triggers.OnSubmit for multiple triggers

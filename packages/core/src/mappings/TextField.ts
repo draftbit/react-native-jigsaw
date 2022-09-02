@@ -8,6 +8,7 @@ import {
   createColorProp,
   createNumberProp,
   createFieldNameProp,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 const TEXT_FIELD_PROPS = {
@@ -352,6 +353,15 @@ export const SEED_DATA = [
     tag: "TextField",
     description: "A text area with a solid border or underline",
     category: COMPONENT_TYPES.input,
+    stylesPanelSections: [
+      StylesPanelSections.Typography,
+      StylesPanelSections.Background,
+      StylesPanelSections.Size,
+      StylesPanelSections.MarginsAndPaddings,
+      StylesPanelSections.Position,
+      StylesPanelSections.Borders,
+      StylesPanelSections.Effects,
+    ],
     preview_image_url: "{CLOUDINARY_URL}/TextArea.png",
     supports_list_render: false,
     triggers: SEED_DATA_TRIGGERS,

@@ -9,12 +9,18 @@ import {
   createIconSizeProp,
   createActionProp,
   Triggers,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "Toggle Button",
   tag: "ToggleButton",
   category: COMPONENT_TYPES.deprecated,
+  stylesPanelSections: [
+    StylesPanelSections.Margins,
+    StylesPanelSections.Effects,
+    StylesPanelSections.Position,
+  ],
   layout: {},
   triggers: [Triggers.OnPress],
   props: {

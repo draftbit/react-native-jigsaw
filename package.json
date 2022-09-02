@@ -10,7 +10,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "postinstall": "yarn-deduplicate && expo-yarn-workspaces check-workspace-dependencies",
+    "postinstall": "yarn-deduplicate && expo-yarn-workspaces check-workspace-dependencies && patch-package",
     "example": "yarn --cwd example",
     "bootstrap": "lerna bootstrap",
     "crosslink": "lerna link",
@@ -49,6 +49,8 @@
     "lerna": "^4.0.0",
     "lint-staged": ">=10",
     "node-fetch": "^2.6.1",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.3.0",
     "react-native-builder-bob": "^0.18.2",
     "rimraf": "^3.0.2",

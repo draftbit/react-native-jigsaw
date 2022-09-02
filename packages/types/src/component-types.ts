@@ -15,6 +15,41 @@ export const Triggers = {
   OnPressIcon: "ON_PRESS_ICON",
 };
 
+export const StylesPanelSections = {
+  Background: "Background",
+  Borders: "Borders",
+  Effects: "Effects",
+  LayoutFlexItems: "LayoutFlexItems",
+  LayoutSelectedItem: "LayoutSelectedItem",
+  LayoutContent: "LayoutContent",
+  Margins: "Margins",
+  MarginsAndPaddings: "MarginsAndPaddings",
+  NoStyles: "NoStyles",
+  Position: "Position",
+  Size: "Size",
+  Typography: "Typography",
+};
+
+export const CONTAINER_COMPONENT_STYLES_SECTIONS = [
+  StylesPanelSections.LayoutFlexItems,
+  StylesPanelSections.LayoutSelectedItem,
+  StylesPanelSections.LayoutContent,
+  StylesPanelSections.Background,
+  StylesPanelSections.Size,
+  StylesPanelSections.MarginsAndPaddings,
+  StylesPanelSections.Position,
+  StylesPanelSections.Borders,
+  StylesPanelSections.Effects,
+];
+
+// The Styles Panel sections that most higher order Jigsaw blocks use
+export const BLOCK_STYLES_SECTIONS = [
+  StylesPanelSections.Size,
+  StylesPanelSections.Margins,
+  StylesPanelSections.Position,
+  StylesPanelSections.Effects,
+];
+
 export const PROP_TYPES = {
   STRING: "STRING",
   ARRAY: "ARRAY",

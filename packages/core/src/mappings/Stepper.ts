@@ -5,6 +5,7 @@ import {
   createFieldNameProp,
   createStaticNumberProp,
   Triggers,
+  BLOCK_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = [
@@ -13,6 +14,7 @@ export const SEED_DATA = [
     tag: "Stepper",
     description: "A component used to control the quantity of something",
     category: COMPONENT_TYPES.input,
+    stylesPanelSections: BLOCK_STYLES_SECTIONS,
     layout: {},
     triggers: [Triggers.OnChange],
     props: {

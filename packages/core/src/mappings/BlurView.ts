@@ -3,6 +3,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   GROUPS,
+  CONTAINER_COMPONENT_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -13,6 +14,7 @@ export const SEED_DATA = {
   code_link:
     "https://github.com/expo/expo/blob/master/packages/expo/src/effects/BlurView.d.ts",
   category: COMPONENT_TYPES.layout,
+  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   layout: {
     flexGrow: 1,
     flexShrink: 1,

@@ -17,6 +17,8 @@ import type { IconSlot } from "../interfaces/Icon";
 
 import Config from "./Config";
 
+// Hello! I'm a comment!
+
 const ICON_CONTAINER_SIZE = Config.cardIconSize * 2;
 const ICON_CONTAINER_PADDING = Config.cardIconSize / 2 - 1;
 

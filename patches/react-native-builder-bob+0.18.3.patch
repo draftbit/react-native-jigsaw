@@ -1,0 +1,27 @@
+diff --git a/node_modules/react-native-builder-bob/lib/utils/compile.js b/node_modules/react-native-builder-bob/lib/utils/compile.js
+index c347764..e659408 100644
+--- a/node_modules/react-native-builder-bob/lib/utils/compile.js
++++ b/node_modules/react-native-builder-bob/lib/utils/compile.js
+@@ -54,10 +54,11 @@ async function compile({
+     }
+ 
+     const content = await _fsExtra.default.readFile(filepath, 'utf-8');
++    console.log({ babelrc, configFile })
+     const result = await babel.transformAsync(content, {
+       babelrc: babelrc,
+       configFile: configFile,
+-      sourceMaps: true,
++      sourceMaps: false,
+       filename: filepath,
+       ...(babelrc || configFile ? null : {
+         presets: [[require.resolve('@babel/preset-env'), {
+@@ -79,7 +80,9 @@ async function compile({
+ 
+     let code = result.code;
+ 
++    console.log("no")
+     if (result.map) {
++      console.log("yues")
+       const mapFilename = outputFilename + '.map';
+       code += '\n//# sourceMappingURL=' + _path.default.basename(mapFilename);
+ 

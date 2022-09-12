@@ -47,6 +47,7 @@ class Portal extends React.Component<Props> {
       <PortalContext.Consumer>
         {(manager) => (
           <PortalConsumer manager={manager as PortalMethods}>
+            {/* @ts-ignore */}
             <ThemeProvider theme={theme}>{children}</ThemeProvider>
           </PortalConsumer>
         )}

@@ -3,6 +3,7 @@ import {
   FORM_TYPES,
   GROUPS,
   PROP_TYPES,
+  BLOCK_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -10,6 +11,7 @@ export const SEED_DATA = {
   tag: "ProgressCircle",
   description: "A circle used to show completed progress",
   category: COMPONENT_TYPES.deprecated,
+  stylesPanelSections: BLOCK_STYLES_SECTIONS,
   preview_image_url: "{CLOUDINARY_URL}/Status_Progress.png",
   supports_list_render: false,
   props: {

@@ -1,10 +1,15 @@
-import { COMPONENT_TYPES, createStaticBoolProp } from "@draftbit/types";
+import {
+  COMPONENT_TYPES,
+  createStaticBoolProp,
+  CONTAINER_COMPONENT_STYLES_SECTIONS,
+} from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "Scroll View",
   tag: "ScrollView",
   description: "A basic ScrollView component",
   category: COMPONENT_TYPES.layout,
+  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   layout: {},
   props: {
     horizontal: createStaticBoolProp({

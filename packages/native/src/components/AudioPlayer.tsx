@@ -1,10 +1,9 @@
 import * as React from "react";
 import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
-import { Audio } from "expo-av";
+import { Audio, AVPlaybackStatus, AVPlaybackSource } from "expo-av";
 import { AntDesign } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
 
-import type { AVPlaybackSource, AVPlaybackStatus } from "expo-av/build/AV";
 import type { Sound } from "expo-av/build/Audio/Sound";
 
 function formatDuration(duration: number) {
@@ -33,10 +32,20 @@ export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
   const [isDraggingSlider, setIsDraggingSlider] = React.useState(false);
   const [sliderPositionMillis, setSliderPositionMillis] = React.useState(0);
 
-  const onPlaybackStatusUpdate = (status: AVPlaybackStatus) => {
+  const onPlaybackStatusUpdate = async (status: AVPlaybackStatus) => {
     if (status.isLoaded) {
       if (status.isPlaying && !isDraggingSlider) {
         setSliderPositionMillis(status.positionMillis);
+      }
+
+      if (status.didJustFinish) {
+        setSound(undefined);
+        setPlay(false);
+        setSliderPositionMillis(0);
+
+        if (sound) {
+          await sound.unloadAsync();
+        }
       }
     }
   };

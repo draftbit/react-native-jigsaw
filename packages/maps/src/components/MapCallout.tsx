@@ -2,7 +2,7 @@ import * as React from "react";
 import { Callout } from "./ReactNativeMaps";
 import { MapCalloutProps } from "@draftbit/types";
 
-const MapCallout: React.FC<MapCalloutProps> = ({
+const MapCallout: React.FC<React.PropsWithChildren<MapCalloutProps>> = ({
   onPress,
   showTooltip,
   children,

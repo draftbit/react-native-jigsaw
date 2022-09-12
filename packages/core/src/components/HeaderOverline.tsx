@@ -15,7 +15,7 @@ type Props = {
   theme: Theme;
 } & IconSlot;
 
-const HeaderOverline: React.FC<Props> = ({
+const HeaderOverline: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   title,
   buttonText,

@@ -7,12 +7,14 @@ import {
   createIconProp,
   createTextProp,
   Triggers,
+  BLOCK_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "Radio Button",
   tag: "RadioButton",
   category: COMPONENT_TYPES.input,
+  stylesPanelSections: BLOCK_STYLES_SECTIONS,
   triggers: [Triggers.OnPress],
   props: {
     value: createTextProp({

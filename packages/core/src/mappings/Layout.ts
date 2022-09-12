@@ -3,6 +3,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   COMPONENT_TYPES,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = [
@@ -10,6 +11,7 @@ export const SEED_DATA = [
     name: "Row",
     tag: "Row",
     category: COMPONENT_TYPES.layout,
+    stylesPanelSections: [StylesPanelSections.NoStyles],
     props: {
       justifyContent: {
         label: "Align Horizontally",
@@ -84,6 +86,7 @@ export const SEED_DATA = [
     name: "Stack",
     tag: "Stack",
     category: COMPONENT_TYPES.layout,
+    stylesPanelSections: [StylesPanelSections.NoStyles],
     props: {
       justifyContent: {
         group: GROUPS.style,
@@ -111,6 +114,7 @@ export const SEED_DATA = [
     name: "Center",
     tag: "Center",
     category: COMPONENT_TYPES.layout,
+    stylesPanelSections: [StylesPanelSections.NoStyles],
     props: {
       width: {
         label: "Width",
@@ -148,6 +152,7 @@ export const SEED_DATA = [
     name: "Circle",
     tag: "Circle",
     category: COMPONENT_TYPES.layout,
+    stylesPanelSections: [StylesPanelSections.NoStyles],
     props: {
       size: {
         label: "Size",
@@ -175,6 +180,7 @@ export const SEED_DATA = [
     name: "Square",
     tag: "Square",
     category: COMPONENT_TYPES.layout,
+    stylesPanelSections: [StylesPanelSections.NoStyles],
     props: {
       size: {
         label: "Size",

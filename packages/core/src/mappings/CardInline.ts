@@ -4,6 +4,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   createElevationType,
+  BLOCK_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -12,6 +13,7 @@ export const SEED_DATA = {
   description:
     "An elevated card with image and a title and description overlayed, that takes up the full width of its container.",
   category: COMPONENT_TYPES.card,
+  stylesPanelSections: BLOCK_STYLES_SECTIONS,
   layout: {},
   props: {
     image: {

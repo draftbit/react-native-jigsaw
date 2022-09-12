@@ -4,6 +4,7 @@ import {
   createTextProp,
   createActionProp,
   Triggers,
+  BLOCK_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = [
@@ -13,6 +14,7 @@ export const SEED_DATA = [
     description:
       "A large header with an optional touchable right aligned text and icon.",
     category: COMPONENT_TYPES.header,
+    stylesPanelSections: BLOCK_STYLES_SECTIONS,
     layout: {},
     triggers: [Triggers.OnPress],
     props: {

@@ -7,12 +7,14 @@ import {
   createFieldNameProp,
   GROUPS,
   Triggers,
+  BLOCK_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "Checkbox",
   tag: "Checkbox",
   category: COMPONENT_TYPES.input,
+  stylesPanelSections: BLOCK_STYLES_SECTIONS,
   triggers: [Triggers.OnPress, Triggers.OnCheck, Triggers.OnUncheck],
   props: {
     fieldName: createFieldNameProp({

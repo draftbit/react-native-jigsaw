@@ -28,7 +28,7 @@ type Props = {
   onPress: () => void;
 };
 
-const CardBlock: React.FC<Props> = ({
+const CardBlock: React.FC<React.PropsWithChildren<Props>> = ({
   image = Config.cardImageUrl,
   title,
   leftDescription,

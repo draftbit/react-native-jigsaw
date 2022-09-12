@@ -4,6 +4,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   createImageProp,
+  BLOCK_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -11,6 +12,7 @@ export const SEED_DATA = {
   tag: "CircleImage",
   description: "A circle image",
   category: COMPONENT_TYPES.media,
+  stylesPanelSections: BLOCK_STYLES_SECTIONS,
   props: {
     source: createImageProp(),
     size: {

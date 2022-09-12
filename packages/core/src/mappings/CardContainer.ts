@@ -5,6 +5,7 @@ import {
   COMPONENT_TYPES,
   createElevationType,
   createNumColumnsType,
+  BLOCK_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 const SEED_DATA_PROPS = {
@@ -88,6 +89,7 @@ export const SEED_DATA = [
     description:
       "An elevated card with a title and description, that takes up half of its container.",
     category: COMPONENT_TYPES.card,
+    stylesPanelSections: BLOCK_STYLES_SECTIONS,
     layout: null,
     props: {
       ...SEED_DATA_PROPS,
@@ -102,6 +104,7 @@ export const SEED_DATA = [
     description:
       "An elevated card with a title and description, that takes up its full container.",
     category: COMPONENT_TYPES.card,
+    stylesPanelSections: BLOCK_STYLES_SECTIONS,
     layout: null,
     props: {
       ...SEED_DATA_PROPS,

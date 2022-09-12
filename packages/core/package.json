@@ -53,7 +53,7 @@
     "lodash.omit": "^4.5.0",
     "lodash.tonumber": "^4.0.3",
     "react-native-modal-datetime-picker": "^13.0.0",
-    "react-native-pager-view": "^5.4.9",
+    "react-native-pager-view": "^6.0.0",
     "react-native-tab-view": "^3.1.1",
     "react-native-typography": "^1.4.1",
     "react-native-web-swiper": "^2.2.3"

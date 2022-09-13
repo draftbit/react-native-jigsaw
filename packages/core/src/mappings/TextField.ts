@@ -11,7 +11,7 @@ import {
   StylesPanelSections,
 } from "@draftbit/types";
 
-const TEXT_FIELD_PROPS = {
+const SEED_DATA_PROPS = {
   allowFontScaling: {
     group: GROUPS.advanced,
     label: "Allow Font Scaling",
@@ -152,7 +152,8 @@ const TEXT_FIELD_PROPS = {
     description: "The text that is shown on load when no value is available.",
     editable: true,
     required: false,
-    defaultValue: "Enter a value...",
+    defaultValue:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     formType: FORM_TYPES.string,
     propType: PROP_TYPES.STRING,
   },
@@ -234,10 +235,6 @@ const TEXT_FIELD_PROPS = {
     formType: FORM_TYPES.boolean,
     propType: PROP_TYPES.BOOLEAN,
   },
-};
-
-const SEED_DATA_PROPS = {
-  ...TEXT_FIELD_PROPS,
   label: {
     group: GROUPS.data,
     label: "Label",
@@ -371,11 +368,6 @@ export const SEED_DATA = [
     triggers: SEED_DATA_TRIGGERS,
     props: {
       ...SEED_DATA_PROPS,
-      placeholder: {
-        ...TEXT_FIELD_PROPS.placeholder,
-        defaultValue:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      },
       type: {
         label: "Appearance",
         description: "Type of Datepicker",

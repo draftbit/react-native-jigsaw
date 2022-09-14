@@ -331,6 +331,10 @@ export const SEED_DATA = [
         label: "Underline Color",
         defaultValue: "light",
       }),
+      activeBorderColor: createColorProp({
+        label: "Active Border Color",
+        defaultValue: "primary",
+      }),
       secureTextEntry: {
         group: GROUPS.basic,
         label: "Password field",

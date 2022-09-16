@@ -8,7 +8,6 @@ import {
   ImageSourcePropType,
 } from "react-native";
 import { SvgUri } from "react-native-svg";
-import { withTheme } from "../theming";
 
 import Config from "./Config";
 
@@ -40,4 +39,4 @@ const Svg = ({ source, style }: SvgComponentProps) => {
   );
 };
 
-export default withTheme(Svg);
+export default Svg;

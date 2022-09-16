@@ -2,7 +2,7 @@ import * as React from "react";
 import { SVG } from "@draftbit/ui";
 import Section, { Container, styles } from "./Section";
 
-export default function SVGExample() {
+export default function SvgExample() {
   return (
     <Container>
       <Section title="SVG" style={styles.row}>

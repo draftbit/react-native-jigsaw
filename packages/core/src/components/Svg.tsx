@@ -9,7 +9,7 @@ type SvgComponentProps = {
   style?: StyleProp<ImageStyle>;
 };
 
-const Svg: React.FC<React.PropsWithChildren<Props>> = ({
+const Svg: React.FC<React.PropsWithChildren<SvgComponentProps>> = ({
   source = Config.placeholderSvgURL,
   style,
 }) => {

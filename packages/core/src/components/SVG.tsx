@@ -1,15 +1,23 @@
 import * as React from "react";
-import { View, Platform, Image, StyleProp, ImageStyle } from "react-native";
+import {
+  View,
+  Platform,
+  Image,
+  StyleProp,
+  ImageStyle,
+  ImageSourcePropType,
+} from "react-native";
 import { SvgUri } from "react-native-svg";
+import { withTheme } from "../theming";
 
 import Config from "./Config";
 
-type SVGComponentProps = {
-  source: string;
+type SvgComponentProps = {
+  source: string | ImageSourcePropType;
   style?: StyleProp<ImageStyle>;
 };
 
-const SVG = ({ source, style }: SVGComponentProps) => {
+const Svg = ({ source, style }: SvgComponentProps) => {
   let svgSource =
     source === null || source === undefined ? Config.placeholderSvgURL : source;
 
@@ -32,4 +40,4 @@ const SVG = ({ source, style }: SVGComponentProps) => {
   );
 };
 
-export default SVG;
+export default withTheme(Svg);

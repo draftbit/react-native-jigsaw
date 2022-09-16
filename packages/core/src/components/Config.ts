@@ -60,7 +60,7 @@ export default {
       { width: size.width, height: size.height },
       "image-placeholder_1"
     ),
-  placeholderSvgURL: "https://static.draftbit.com/images/placeholder-svg.svg",
+  placeholderSvgURL: "https://static.draftbit.com/images/placeholder-image.svg",
   squareImageUrl: buildImageUrl({ width: 100, height: 100 }, "Avatar"),
   FABSize: 40,
   FABBorderRadius: 20,

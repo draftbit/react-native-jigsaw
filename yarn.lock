@@ -13286,7 +13286,7 @@ qs@6.7.0:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
-qs@^6.9.4:
+qs@^6.5.1, qs@^6.9.4:
   version "6.11.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.11.0.tgz#fd0d963446f7a65e1367e01abd85429453f0c37a"
   integrity sha512-MvjoMCJwEarSbUYk5O+nmoSzSutSsTwF85zcHPQ9OrlFoZOYIjaqBAJIqIXjptyD5vThxGq52Xu/MaJzRkIk4Q==
@@ -13609,17 +13609,17 @@ react-native-webview@11.23.0:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
 
-react-native-youtube-iframe@^2.1.2:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-youtube-iframe/-/react-native-youtube-iframe-2.2.1.tgz#29b37dcb6b6482d72ef41bc1a2a65314e19c2546"
-  integrity sha512-iNu/VgI30Ax/nIdCNFcihrKqkCAgKALa+hLIhKI7zNhydoB7JN3fqbzCBPBD86QGHbJONbZ9Unpkz9N7hg2DtA==
+react-native-youtube-iframe@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-youtube-iframe/-/react-native-youtube-iframe-2.2.2.tgz#ade1a2e4ead3d539fbb80463f45b59ff1b510b55"
+  integrity sha512-og2KW21kCwAHKcnWoyWWBYC6J2Xtqjjwpghhoy9G6zfwZkr8Ej27BbQIAKM/TheJJUZ5/YUrqsgqAdnFYDx5TQ==
   dependencies:
     events "^3.2.0"
 
-react-native@0.64.3:
-  version "0.64.3"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.64.3.tgz#40db6385963b4b17325f9cc86dd19132394b03fc"
-  integrity sha512-2OEU74U0Ek1/WeBzPbg6XDsCfjF/9fhrNX/5TFgEiBKd5mNc9LOZ/OlMmkb7iues/ZZ/oc51SbEfLRQdcW0fVw==
+react-native@0.69.4:
+  version "0.69.4"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.69.4.tgz#d66f2a117442a9398b065876afdc568b209dc4da"
+  integrity sha512-rqNMialM/T4pHRKWqTIpOxA65B/9kUjtnepxwJqvsdCeMP9Q2YdSx4VASFR9RoEFYcPRU41yGf6EKrChNfns3g==
   dependencies:
     "@jest/create-cache-key-function" "^27.0.1"
     "@react-native-community/cli" "^8.0.4"

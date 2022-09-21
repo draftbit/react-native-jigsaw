@@ -42,6 +42,7 @@ export type Props = {
   multiline?: boolean;
   numberOfLines: number;
   underlineColor?: string;
+  activeBorderColor?: string;
   style?: StyleProp<ViewStyle> & { height?: number };
   theme: Theme;
   render?: (
@@ -237,6 +238,7 @@ class TextField extends React.Component<Props, State> {
       rightIconName,
       assistiveText,
       underlineColor: underlineColorProp,
+      activeBorderColor: activeBorderColorProp,
       multiline = false,
       numberOfLines = 4,
       style,
@@ -269,7 +271,7 @@ class TextField extends React.Component<Props, State> {
       underlineColor = "transparent";
       backgroundColor = colors.divider;
     } else {
-      activeColor = error ? colors.error : colors.primary;
+      activeColor = error ? colors.error : activeBorderColorProp;
       placeholderColor = borderColor = colors.light;
       underlineColor = underlineColorProp;
       backgroundColor = colors.background;

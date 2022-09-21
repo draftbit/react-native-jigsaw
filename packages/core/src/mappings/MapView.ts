@@ -63,6 +63,7 @@ export const SEED_DATA = {
       label: "Map Type",
       description: "The type of map to show",
       group: GROUPS.basic,
+      editable: true,
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.STRING,
       required: false,

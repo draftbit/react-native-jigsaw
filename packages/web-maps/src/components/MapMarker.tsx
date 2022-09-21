@@ -23,7 +23,7 @@ export const markerContext = React.createContext<IMarkerContext>({
   toggleCallout: () => {},
 });
 
-const MapMarker: React.FC<MapMarkerProps> = ({
+const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
   pinColor,
   latitude,
   longitude,

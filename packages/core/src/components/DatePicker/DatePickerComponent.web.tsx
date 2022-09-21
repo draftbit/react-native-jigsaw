@@ -22,10 +22,10 @@ const DatePickerComponent: React.FC<Props & { theme: typeof Theme }> = ({
   const internalTheme = createMuiTheme({
     palette: {
       primary: {
-        main: theme?.colors?.primary ?? Theme.colors.primary,
+        main: theme.colors.primary || Theme.colors.primary,
       },
       secondary: {
-        main: theme?.colors?.secondary ?? Theme.colors.secondary,
+        main: theme.colors.secondary || Theme.colors.secondary,
       },
     },
   });

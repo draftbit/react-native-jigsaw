@@ -19,7 +19,7 @@ type Props = {
   theme: Theme;
 } & ViewProps;
 
-const Surface: React.FC<Props> = ({
+const Surface: React.FC<React.PropsWithChildren<Props>> = ({
   elevation: propElevation,
   style,
   theme,

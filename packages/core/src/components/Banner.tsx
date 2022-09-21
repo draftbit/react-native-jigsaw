@@ -43,7 +43,7 @@ type NativeEvent = {
   };
 };
 
-const Banner: React.FC<Props> = ({
+const Banner: React.FC<React.PropsWithChildren<Props>> = ({
   initiallyVisible = true,
   dismissable = true,
   icon,

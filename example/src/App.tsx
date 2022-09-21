@@ -15,6 +15,7 @@ import {
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 
+import AudioPlayerExample from "./AudioPlayerExample";
 import CircleImageExample from "./CircleImageExample";
 import IconExample from "./IconExample";
 import BannerExample from "./BannerExample";
@@ -55,6 +56,7 @@ import StepperExample from "./StepperExample";
 
 import TextFieldExample from "./TextFieldExample";
 import TextInputExample from "./TextInputExample";
+import NumberInputExample from "./NumberInputExample";
 import CheckboxExample from "./CheckboxExample";
 import WebViewExample from "./WebViewExample";
 import AccordionExample from "./AccordionExample";
@@ -64,12 +66,14 @@ import StarRatingExample from "./StarRatingExample";
 
 import SwiperExample from "./SwiperExample";
 import MarkdownExample from "./MarkdownExample";
+import SVGExample from "./SVGExample";
 
 import LinearGradientExample from "./LinearGradientExample";
 
 import SurfaceExample from "./SurfaceExample";
 
 const ROUTES = {
+  AudioPlayer: AudioPlayerExample,
   Layout: LayoutExample,
   Icon: IconExample,
   Banner: BannerExample,
@@ -107,8 +111,10 @@ const ROUTES = {
   StarRating: StarRatingExample,
   Surface: SurfaceExample,
   Swiper: SwiperExample,
+  SVG: SVGExample,
   TextField: TextFieldExample,
   TextInput: TextInputExample,
+  NumberInput: NumberInputExample,
   WebView: WebViewExample,
   Markdown: MarkdownExample,
 };

@@ -10,7 +10,7 @@ import { ViewProps, StyleProp, ImageStyle } from "react-native";
 import { Subtract } from "utility-types";
 
 type Props = {
-  name: string | number | { uri: string };
+  name: string;
   color?: string;
   size: number;
   style?: StyleProp<ImageStyle>;

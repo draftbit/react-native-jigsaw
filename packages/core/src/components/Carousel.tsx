@@ -17,6 +17,7 @@ type Props = {
   children?: React.ReactNode;
   style?: StyleProp<ViewStyle>;
   dotColor?: string;
+  theme: any;
 };
 
 function Pager({
@@ -54,7 +55,7 @@ function Carousel({
   dotColor = "strong",
   style,
   ...rest
-}: Props) {
+}: React.PropsWithChildren<Props>) {
   const [index, setIndex] = React.useState(0);
 
   const length = React.Children.count(children);

@@ -127,6 +127,10 @@ Release Process:
   will automatically inspect the registry and the versions on master and
   publish only the appropriate packages.
 
+## Upgrade Expo SDK Modules
+
+Run `node scripts/upgrade-expo-sdk-packages.js expo-sdk-version`. Where expo-sdk-version comes from Expo. Expo hosts a file called `bundledNativeModules.json`. You must use the correct version via the url: `https://github.com/expo/expo/blob/sdk-46/packages/expo/bundledNativeModules.json`
+
 ## Plug
 
 Sound cool? [We're hiring!](https://draftbit.com/jobs).

@@ -22,7 +22,7 @@ type Props = {
   theme: Theme;
 } & IconSlot;
 
-const ToggleButton: React.FC<Props> = ({
+const ToggleButton: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   icon,
   toggled = false,

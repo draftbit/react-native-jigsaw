@@ -4,7 +4,7 @@ import { InfoWindow } from "./ReactGoogleMaps";
 import { markerContext } from "./MapMarker";
 import { MapCalloutProps } from "@draftbit/types";
 
-const MapCallout: React.FC<MapCalloutProps> = ({
+const MapCallout: React.FC<React.PropsWithChildren<MapCalloutProps>> = ({
   anchor,
   onPress = () => {},
   children,

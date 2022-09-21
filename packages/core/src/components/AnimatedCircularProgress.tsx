@@ -20,7 +20,7 @@ type Props = {
   onAnimationComplete?: Animated.EndCallback | undefined;
 } & CircularProgressProps;
 
-const AnimatedCircularProgress: React.FC<Props> = ({
+const AnimatedCircularProgress: React.FC<React.PropsWithChildren<Props>> = ({
   duration = 500,
   easing = Easing.out(Easing.ease),
   fill,

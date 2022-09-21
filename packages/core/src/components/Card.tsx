@@ -88,7 +88,7 @@ type Props = {
   children?: React.ReactNode;
 } & IconSlot;
 
-const Card: React.FC<Props> = ({
+const Card: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   image = Config.cardImageUrl,
   title,

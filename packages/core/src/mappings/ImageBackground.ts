@@ -4,6 +4,7 @@ import {
   createResizeModeProp,
   createTextEnumProp,
   createColorProp,
+  CONTAINER_COMPONENT_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -16,6 +17,7 @@ export const SEED_DATA = {
   description:
     "A very simple drop-in replacement for Image that allows you to use an Image as a background.",
   category: COMPONENT_TYPES.media,
+  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   layout: {
     width: "100%",
     height: "100%",

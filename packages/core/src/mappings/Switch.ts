@@ -7,6 +7,8 @@ import {
   createTextProp,
   createRowDirectionProp,
   Triggers,
+  StylesPanelSections,
+  BLOCK_STYLES_SECTIONS,
 } from "@draftbit/types";
 const SEED_DATA_TRIGGERS = [Triggers.OnValueChange];
 export const SEED_DATA = [
@@ -14,6 +16,7 @@ export const SEED_DATA = [
     name: "Switch",
     tag: "Switch",
     category: COMPONENT_TYPES.input,
+    stylesPanelSections: BLOCK_STYLES_SECTIONS,
     layout: {},
     triggers: SEED_DATA_TRIGGERS,
     props: {
@@ -44,6 +47,11 @@ export const SEED_DATA = [
     name: "Switch Row",
     tag: "SwitchRow",
     category: COMPONENT_TYPES.input,
+    stylesPanelSections: [
+      StylesPanelSections.Typography,
+      StylesPanelSections.Margins,
+      StylesPanelSections.Effects,
+    ],
     layout: {
       marginLeft: 0,
       marginRight: 0,

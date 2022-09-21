@@ -10,8 +10,7 @@ export const SEED_DATA = {
   tag: "Youtube",
   description: "Given a VideoId orPlaylist and play Youtube video",
   doc_link: "https://lonelycpp.github.io/react-native-youtube-iframe",
-  code_link:
-    "https://github.com/LonelyCpp/react-native-youtube-iframehttps://github.com/LonelyCpp/react-native-youtube-iframe",
+  code_link: "https://github.com/LonelyCpp/react-native-youtube-iframe",
   category: COMPONENT_TYPES.media,
   stylesPanelSections: [StylesPanelSections.Size],
   layout: {

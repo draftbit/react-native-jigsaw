@@ -21,7 +21,6 @@ const TableTitle = ({
   ...rest
 }: TableCellProps) => {
   const { textStyles, viewStyles } = extractStyles(style);
-
   return (
     <View
       {...rest}

@@ -4,6 +4,7 @@ import {
   createBoolProp,
   createTextProp,
   createNumberProp,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = [
@@ -11,6 +12,14 @@ export const SEED_DATA = [
     name: "Table",
     tag: "Table",
     category: COMPONENT_TYPES.container,
+    stylesPanelSections: [
+      StylesPanelSections.Background,
+      StylesPanelSections.Borders,
+      StylesPanelSections.Size,
+      StylesPanelSections.MarginsAndPaddings,
+      StylesPanelSections.Position,
+      StylesPanelSections.Effects,
+    ],
     layout: {
       width: "100%",
     },
@@ -20,6 +29,14 @@ export const SEED_DATA = [
     name: "Table Row",
     tag: "TableRow",
     category: COMPONENT_TYPES.container,
+    stylesPanelSections: [
+      StylesPanelSections.Background,
+      StylesPanelSections.Borders,
+      StylesPanelSections.Size,
+      StylesPanelSections.MarginsAndPaddings,
+      StylesPanelSections.Position,
+      StylesPanelSections.Effects,
+    ],
     layout: {
       paddingLeft: 16,
       paddingRight: 16,
@@ -38,6 +55,15 @@ export const SEED_DATA = [
       paddingLeft: 8,
       paddingRight: 8,
     },
+    stylesPanelSections: [
+      StylesPanelSections.Typography,
+      StylesPanelSections.Background,
+      StylesPanelSections.Borders,
+      StylesPanelSections.Size,
+      StylesPanelSections.MarginsAndPaddings,
+      StylesPanelSections.Position,
+      StylesPanelSections.Effects,
+    ],
     props: {
       numeric: createBoolProp({
         label: "Is Numeric Cell?",
@@ -55,6 +81,14 @@ export const SEED_DATA = [
     name: "Table Header",
     tag: "TableHeader",
     category: COMPONENT_TYPES.container,
+    stylesPanelSections: [
+      StylesPanelSections.Background,
+      StylesPanelSections.Borders,
+      StylesPanelSections.Size,
+      StylesPanelSections.MarginsAndPaddings,
+      StylesPanelSections.Position,
+      StylesPanelSections.Effects,
+    ],
     layout: {
       paddingLeft: 16,
       paddingRight: 16,
@@ -68,6 +102,15 @@ export const SEED_DATA = [
     name: "Table Title",
     tag: "TableTitle",
     category: COMPONENT_TYPES.container,
+    stylesPanelSections: [
+      StylesPanelSections.Typography,
+      StylesPanelSections.Background,
+      StylesPanelSections.Borders,
+      StylesPanelSections.Size,
+      StylesPanelSections.MarginsAndPaddings,
+      StylesPanelSections.Position,
+      StylesPanelSections.Effects,
+    ],
     layout: {
       fontSize: 14,
       fontWeight: "500",

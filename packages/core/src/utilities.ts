@@ -1,5 +1,13 @@
 import { StyleSheet, StyleProp, TextStyle } from "react-native";
-import { isString, isNumber, pick, pickBy, identity, omitBy, isNil } from "lodash";
+import {
+  isString,
+  isNumber,
+  pick,
+  pickBy,
+  identity,
+  omitBy,
+  isNil,
+} from "lodash";
 
 export function extractStyles(style: StyleProp<any>) {
   const {

@@ -1,4 +1,10 @@
-import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
+import React, {
+  useState,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+  ReactElement,
+} from "react";
 import {
   Button,
   Platform,
@@ -14,6 +20,14 @@ import {
   WebViewMessageEvent,
   WebViewSourceHtml,
   WebViewSourceUri,
+  WebViewNavigationEvent,
+  WebViewProgressEvent,
+  WebViewErrorEvent,
+  WebViewHttpErrorEvent,
+  WebViewNavigation,
+  WebViewScrollEvent,
+  WebViewTerminatedEvent,
+  ShouldStartLoadRequest,
 } from "react-native-webview/lib/WebViewTypes";
 import { Camera, PermissionResponse } from "expo-camera";
 
@@ -26,14 +40,50 @@ const injectFirst = `
 
 interface WebViewProps {
   source: WebViewSourceUri | WebViewSourceHtml;
-  optimizeVideoChat?: boolean;
   style?: ViewStyle;
+  optimizeVideoChat?: boolean;
+  // Advancted Builder Config Props
+  mediaPlaybackRequiresUserAction?: boolean;
+  startInLoadingState?: boolean;
+  javaScriptEnabled?: boolean;
+  javaScriptCanOpenWindowsAutomatically?: boolean;
+  showsHorizontalScrollIndicator?: boolean;
+  showsVerticalScrollIndicator?: boolean;
+  allowFileAccessFromFileURLs?: boolean;
+  allowUniversalAccessFromFileURLs?: boolean;
+  incognito?: boolean;
+  cacheEnabled?: boolean;
+  userAgent?: string;
+  applicationNameForUserAgent?: string;
+  // For Custom Code Only
+  // See https://github.com/react-native-webview/react-native-webview/blob/master/src/WebViewTypes.ts
+  injectedJavaScript?: string;
+  onError?: (event: WebViewErrorEvent) => void;
+  onLoad?: (event: WebViewNavigationEvent) => void;
+  onLoadEnd?: (event: WebViewNavigationEvent | WebViewErrorEvent) => void;
+  onLoadStart?: (event: WebViewNavigationEvent) => void;
+  onLoadProgress?: (event: WebViewProgressEvent) => void;
+  onHttpError?: (event: WebViewHttpErrorEvent) => void;
+  onMessage?: (event: WebViewMessageEvent) => void;
+  onNavigationStateChange?: (event: WebViewNavigation) => void;
+  onScroll?: (event: WebViewScrollEvent) => void;
+  onContentProcessDidTerminate?: (event: WebViewTerminatedEvent) => void;
+  onShouldStartLoadWithRequest?: (event: ShouldStartLoadRequest) => boolean;
+  originWhitelist?: string[];
+  renderLoading?: () => ReactElement;
+  renderError?: (
+    errorDomain: string | undefined,
+    errorCode: number,
+    errorDesc: string
+  ) => ReactElement; // view to show if there's an error
+  containerStyle?: ViewStyle;
 }
 
 const NativeWebView: React.FC<WebViewProps> = ({
   source,
   style,
   optimizeVideoChat,
+  ...otherWebViewProps
 }) => {
   const [height, setHeight] = useState(0);
 
@@ -111,6 +161,7 @@ const NativeWebView: React.FC<WebViewProps> = ({
           style={{ ...style, width: getFinalWidth() }}
           injectedJavaScript={injectFirst}
           onMessage={onMessage}
+          {...otherWebViewProps}
           {...videoChatProps}
         />
       );

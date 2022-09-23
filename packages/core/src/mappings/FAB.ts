@@ -7,12 +7,14 @@ import {
   createIconSizeProp,
   createActionProp,
   Triggers,
+  BLOCK_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "FAB",
   tag: "FAB",
   category: COMPONENT_TYPES.button,
+  stylesPanelSections: BLOCK_STYLES_SECTIONS,
   description: "A mini round icon FAB",
   layout: {},
   triggers: [Triggers.OnPress],

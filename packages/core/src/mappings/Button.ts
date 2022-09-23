@@ -6,6 +6,7 @@ import {
   GROUPS,
   createActionProp,
   Triggers,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 const SEED_DATA_TRIGGERS = [Triggers.OnPress];
@@ -43,6 +44,15 @@ export const SEED_DATA = [
     name: "Button Outline",
     tag: "ButtonOutline",
     category: COMPONENT_TYPES.button,
+    stylesPanelSections: [
+      StylesPanelSections.Typography,
+      StylesPanelSections.Background,
+      StylesPanelSections.Borders,
+      StylesPanelSections.Size,
+      StylesPanelSections.MarginsAndPaddings,
+      StylesPanelSections.Position,
+      StylesPanelSections.Effects,
+    ],
     layout: {
       ...LAYOUT,
       backgroundColor: "transparent",
@@ -56,6 +66,15 @@ export const SEED_DATA = [
     name: "Button Solid",
     tag: "ButtonSolid",
     category: COMPONENT_TYPES.button,
+    stylesPanelSections: [
+      StylesPanelSections.Typography,
+      StylesPanelSections.Background,
+      StylesPanelSections.Borders,
+      StylesPanelSections.Size,
+      StylesPanelSections.MarginsAndPaddings,
+      StylesPanelSections.Position,
+      StylesPanelSections.Effects,
+    ],
     layout: {
       ...LAYOUT,
       backgroundColor: "primary",

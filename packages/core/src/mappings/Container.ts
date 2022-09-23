@@ -6,6 +6,7 @@ import {
   createElevationType,
   createImageProp,
   createResizeModeProp,
+  CONTAINER_COMPONENT_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -13,6 +14,7 @@ export const SEED_DATA = {
   tag: "Container",
   description: "A container component with gutter padding",
   category: COMPONENT_TYPES.deprecated,
+  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   layout: {
     height: 250,
   },

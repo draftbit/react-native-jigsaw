@@ -35,7 +35,7 @@ type Props = {
   onPress: () => void;
 } & IconSlot;
 
-const CardContainer: React.FC<Props> = ({
+const CardContainer: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   icon,
   image = Config.cardImageUrl,

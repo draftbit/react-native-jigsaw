@@ -18,6 +18,7 @@ export default function TextFieldExample() {
             label="Solid input"
             value={value}
             onChangeText={handleChange}
+            activeBorderColor={"orange"}
           />
           <TextField
             type="solid"

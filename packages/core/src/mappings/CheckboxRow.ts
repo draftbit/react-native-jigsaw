@@ -9,12 +9,18 @@ import {
   COMPONENT_TYPES,
   Triggers,
   createColorProp,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "Checkbox Row",
   tag: "CheckboxRow",
   category: COMPONENT_TYPES.input,
+  stylesPanelSections: [
+    StylesPanelSections.Typography,
+    StylesPanelSections.Margins,
+    StylesPanelSections.Effects,
+  ],
   layout: {
     minHeight: 50,
   },

@@ -7,6 +7,7 @@ import {
   FIELD_NAME,
   createIconSizeProp,
   createColorProp,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 const SEED_DATA_PROPS = {
@@ -129,6 +130,15 @@ export const SEED_DATA = [
     tag: "Picker",
     description: "A component used to pick a value from a set of options",
     category: COMPONENT_TYPES.input,
+    stylesPanelSections: [
+      StylesPanelSections.Typography,
+      StylesPanelSections.Background,
+      StylesPanelSections.Size,
+      StylesPanelSections.MarginsAndPaddings,
+      StylesPanelSections.Position,
+      StylesPanelSections.Borders,
+      StylesPanelSections.Effects,
+    ],
     preview_image_url: "{CLOUDINARY_URL}/Picker.png",
     supports_list_render: false,
     triggers: SEED_DATA_TRIGGERS,

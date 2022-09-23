@@ -5,6 +5,7 @@ import {
   createStaticBoolProp,
   Triggers,
   createColorProp,
+  BLOCK_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -12,6 +13,7 @@ export const SEED_DATA = {
   tag: "StarRating",
   description: "A star rating component",
   category: COMPONENT_TYPES.button,
+  stylesPanelSections: BLOCK_STYLES_SECTIONS,
   triggers: [Triggers.OnPress],
   props: {
     starSize: createStaticNumberProp({

@@ -9,7 +9,7 @@ type Props = {
   theme: typeof theme;
 };
 
-const Divider: React.FC<Props> = ({
+const Divider: React.FC<React.PropsWithChildren<Props>> = ({
   style,
   color,
   theme: { colors },

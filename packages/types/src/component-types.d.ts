@@ -89,6 +89,16 @@ export declare const createImageProp: (overrides?: {}) => {
   editable: boolean;
   required: boolean;
 };
+export declare const createSvgProp: (overrides?: {}) => {
+  label: string;
+  description: string;
+  group: string;
+  formType: string;
+  propType: string;
+  defaultValue: string;
+  editable: boolean;
+  required: boolean;
+};
 export declare const createSourceProp: (overrides?: {}) => {
   label: string;
   description: string;

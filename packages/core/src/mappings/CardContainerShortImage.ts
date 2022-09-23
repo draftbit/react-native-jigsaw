@@ -4,6 +4,7 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   createElevationType,
+  BLOCK_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = [
@@ -13,6 +14,7 @@ export const SEED_DATA = [
     description:
       "An elevated card with a left aligned image and a title and subtitle",
     category: COMPONENT_TYPES.card,
+    stylesPanelSections: BLOCK_STYLES_SECTIONS,
     preview_image_url: "{CLOUDINARY_URL}/Card_ContainerShortLeftImage.png",
     supports_list_render: true,
     props: {
@@ -77,6 +79,7 @@ export const SEED_DATA = [
     description:
       "An elevated card with a right aligned image and a title and subtitle",
     category: COMPONENT_TYPES.card,
+    stylesPanelSections: BLOCK_STYLES_SECTIONS,
     preview_image_url: "{CLOUDINARY_URL}/Card_ContainerShortRightImage.png",
     supports_list_render: true,
     props: {

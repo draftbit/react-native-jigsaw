@@ -23,7 +23,7 @@ const getWidth = (numColumns: number) => {
   }
 };
 
-const Card: React.FC<Props> = ({
+const Card: React.FC<React.PropsWithChildren<Props>> = ({
   numColumns = 3,
   children,
   onPress,

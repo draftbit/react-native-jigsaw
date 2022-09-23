@@ -2,6 +2,7 @@ import {
   COMPONENT_TYPES,
   createImageProp,
   createResizeModeProp,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -9,9 +10,15 @@ export const SEED_DATA = {
   tag: "Image",
   description: "A basic Image Component",
   category: COMPONENT_TYPES.media,
+  stylesPanelSections: [
+    StylesPanelSections.Size,
+    StylesPanelSections.Margins,
+    StylesPanelSections.Position,
+    StylesPanelSections.Effects,
+  ],
   layout: {
-    width: 250,
-    height: 250,
+    width: 100,
+    height: 100,
   },
   props: {
     source: createImageProp(),

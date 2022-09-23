@@ -7,6 +7,7 @@ import {
   createBoolProp,
   createActionProp,
   Triggers,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -15,6 +16,11 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.button,
   layout: {},
   triggers: [Triggers.OnPress],
+  stylesPanelSections: [
+    StylesPanelSections.Margins,
+    StylesPanelSections.Effects,
+    StylesPanelSections.Position,
+  ],
   props: {
     onPress: createActionProp(),
     icon: createIconProp(),

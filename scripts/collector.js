@@ -56,6 +56,7 @@ async function main(list = []) {
       if (!error.message.includes("SEED_DATA")) {
         console.log("failed:", name, error);
         ERROR_FILES.push({ file, error: error.message });
+        throw error;
       }
     }
   }
@@ -88,6 +89,10 @@ async function uploadComponent(component) {
       "Content-Type": "application/json",
       "Authorization": process.env.COLLECTOR_SCRIPT_TOKEN,
     },
+  }).then((res) => {
+    if (!res.ok) {
+      throw new Error(res.status);
+    }
   });
 }
 

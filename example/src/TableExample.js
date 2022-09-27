@@ -120,6 +120,16 @@ function TableExample() {
               3000
             </TableCell>
           </TableRow>
+          <TableRow style={styles2.row}>
+            <TableCell style={styles2.cell}>Data 1</TableCell>
+            <TableCell style={styles2.cell}>Data 2</TableCell>
+            <TableCell style={styles2.cell} numeric>
+              30.00
+            </TableCell>
+            <TableCell style={styles2.cell} numeric>
+              3000
+            </TableCell>
+          </TableRow>
         </Table>
       </Section>
     </Container>

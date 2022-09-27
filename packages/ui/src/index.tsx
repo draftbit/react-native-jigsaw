@@ -20,6 +20,7 @@ export {
   Square,
   Stack,
   Surface,
+  Svg,
   Switch,
   SwitchRow,
   NumberInput,

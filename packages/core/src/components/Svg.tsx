@@ -2,7 +2,7 @@ import * as React from "react";
 import { View, Platform, Image } from "react-native";
 import { SvgUri } from "react-native-svg";
 
-const Svg = ({ source, style }) => {
+const Svg = ({ source, style }: { source: any; style: any }) => {
   return (
     <>
       {Platform.OS === "ios" && (

@@ -7,10 +7,10 @@ type SvgComponentProps = {
 };
 
 const SVG: React.FC<React.PropsWithChildren<SvgComponentProps>> = ({
-  svgSource = "https://static.draftbit.com/images/placeholder-image.svg",
+  source = "https://static.draftbit.com/images/placeholder-image.svg",
   style,
 }) => {
-  return <Image style={style} source={{ uri: svgSource }} />;
+  return <Image style={style} source={{ uri: source }} />;
 };
 
 export default SVG;

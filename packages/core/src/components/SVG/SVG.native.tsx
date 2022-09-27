@@ -8,12 +8,12 @@ type SvgComponentProps = {
 };
 
 const SVG: React.FC<React.PropsWithChildren<SvgComponentProps>> = ({
-  svgSource = "https://static.draftbit.com/images/placeholder-image.svg",
+  source = "https://static.draftbit.com/images/placeholder-image.svg",
   style,
 }) => {
   return (
     <View style={style}>
-      <SvgUri width="100%" height="100%" source={{ uri: svgSource }} />
+      <SvgUri width="100%" height="100%" source={{ uri: source }} />
     </View>
   );
 };

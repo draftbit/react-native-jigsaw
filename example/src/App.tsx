@@ -110,7 +110,7 @@ const ROUTES = {
   StarRating: StarRatingExample,
   Surface: SurfaceExample,
   Swiper: SwiperExample,
-  SVG: SvgExample,
+  Svg: SvgExample,
   TextField: TextFieldExample,
   TextInput: TextInputExample,
   NumberInput: NumberInputExample,

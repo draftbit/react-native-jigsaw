@@ -7,9 +7,7 @@ export default function SvgExample() {
     <Container>
       <Section title="SVG" style={styles.row}>
         <Svg
-          source={
-            "https://upload.wikimedia.org/wikipedia/commons/3/30/Vector-based_example.svg"
-          }
+          source="https://upload.wikimedia.org/wikipedia/commons/3/30/Vector-based_example.svg"
           style={{
             width: 200,
             height: 200,

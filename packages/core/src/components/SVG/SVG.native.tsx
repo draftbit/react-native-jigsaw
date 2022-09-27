@@ -1,16 +1,21 @@
 import * as React from "react";
-import { Image, StyleProp, ImageStyle } from "react-native";
+import { View, StyleProp, ViewStyle } from "react-native";
+import { SvgUri } from "react-native-svg";
 
 type SvgComponentProps = {
   source: string;
-  style?: StyleProp<ImageStyle>;
+  style?: StyleProp<ViewStyle>;
 };
 
 const SVG: React.FC<React.PropsWithChildren<SvgComponentProps>> = ({
   svgSource = "https://static.draftbit.com/images/placeholder-image.svg",
   style,
 }) => {
-  return <Image style={style} source={{ uri: svgSource }} />;
+  return (
+    <View style={style}>
+      <SvgUri width="100%" height="100%" source={{ uri: svgSource }} />
+    </View>
+  );
 };
 
 export default SVG;

@@ -162,7 +162,7 @@ export const createImageProp = (overrides = {}) => ({
 
 export const createSvgProp = (overrides = {}) => ({
   label: "SVG",
-  description: "SVG",
+  description: "Simple Vector Graphic (SVG)",
   group: GROUPS.data,
   formType: FORM_TYPES.sourceUrl,
   propType: PROP_TYPES.OBJECT,

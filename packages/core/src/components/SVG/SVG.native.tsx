@@ -13,7 +13,7 @@ const SVG: React.FC<React.PropsWithChildren<SvgComponentProps>> = ({
 }) => {
   return (
     <View style={style}>
-      <SvgUri width="100%" height="100%" source={{ uri: source }} />
+      <SvgUri width="100%" height="100%" uri={source} />
     </View>
   );
 };

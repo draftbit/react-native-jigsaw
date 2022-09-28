@@ -10,117 +10,86 @@ import Text from "../Text";
 import { withTheme } from "../../theming";
 import type { IconSlot } from "../../interfaces/Icon";
 import type { Theme } from "../../styles/DefaultTheme";
+import { extractStyles } from "../../utilities";
 
-import {
-  COMPONENT_TYPES,
-  createNumberProp,
-  createIconProp,
-  createTextProp,
-  createStaticBoolProp,
-  createColorProp,
-} from "@draftbit/types";
-
-type Props = {
-  openColor: string;
-  closedColor: string;
-  caretColor: string;
-  icon?: string;
-  iconSize: number;
-  style?: StyleProp<TextStyle>;
-  children: React.ReactNode;
-  label: string;
+type AccordionGroupProps = {
+  label?: string;
   expanded?: boolean;
+  openColor?: string;
+  closedColor?: string;
+  caretColor?: string;
+  caretSize?: number;
+  icon?: string;
+  iconSize?: number;
+  style?: StyleProp<TextStyle>;
+  children?: React.ReactNode;
   theme: Theme;
 } & IconSlot;
 
 const AccordionGroup = ({
-  Icon,
+  label,
+  expanded: expandedProp = false,
   openColor,
   closedColor,
-  caretColor,
+  caretColor: caretColorProp,
+  caretSize = 24,
   icon,
   iconSize = 24,
   style,
-  label,
   children,
-  expanded: expandedProp,
   theme,
-}: Props) => {
-  const [expanded, setExpanded] = React.useState<boolean>(
-    expandedProp || false
-  );
-
-  const handlePressAction = () => {
-    if (expandedProp === undefined) {
-      setExpanded(!expanded);
-    }
-  };
-
-  const expandedInternal = expandedProp !== undefined ? expandedProp : expanded;
-
+  Icon,
+}: AccordionGroupProps) => {
+  const [expanded, setExpanded] = React.useState<boolean>(expandedProp);
+  const { textStyles, viewStyles } = extractStyles(style);
   const expandedColor = openColor || theme.colors.primary;
   const collapsedColor = closedColor || theme.colors.primary;
-
   const labelColor = expanded ? expandedColor : collapsedColor;
+  const caretColor = caretColorProp || labelColor;
+
+  const handlePressAction = () => {
+    setExpanded(!expanded);
+  };
 
   return (
     <>
       <Pressable
-        style={[style]}
+        style={[styles.row, viewStyles]}
         onPress={handlePressAction}
         accessibilityRole="button"
       >
-        <View style={styles.row}>
-          {icon ? (
-            <Icon
-              name={icon}
-              size={iconSize}
-              color={labelColor}
-              style={styles.icon}
-            />
-          ) : null}
-          <View style={[styles.item, styles.content]}>
-            <Text
-              selectable={false}
-              style={[
-                styles.label,
-                {
-                  color: labelColor,
-                },
-                style,
-              ]}
-            >
-              {label}
-            </Text>
-          </View>
-          <View style={[styles.item]}>
-            <Icon
-              name={
-                expanded
-                  ? "MaterialIcons/keyboard-arrow-up"
-                  : "MaterialIcons/keyboard-arrow-down"
-              }
-              color={caretColor}
-              size={24}
-            />
-          </View>
+        {icon ? (
+          <Icon
+            name={icon}
+            size={iconSize}
+            color={labelColor}
+            style={styles.icon}
+          />
+        ) : null}
+        <View style={styles.content}>
+          <Text
+            selectable={false}
+            style={[
+              textStyles,
+              {
+                color: labelColor,
+              },
+            ]}
+          >
+            {label}
+          </Text>
         </View>
+        <Icon
+          name={
+            expanded
+              ? "MaterialIcons/keyboard-arrow-up"
+              : "MaterialIcons/keyboard-arrow-down"
+          }
+          color={caretColor}
+          size={caretSize}
+        />
       </Pressable>
-      {expandedInternal
-        ? React.Children.map(children, (child) => {
-            if (
-              React.isValidElement(child) &&
-              !child.props.left &&
-              !child.props.right
-            ) {
-              return React.cloneElement(child, {
-                style: child.props.style,
-              });
-            }
-
-            return child;
-          })
-        : null}
+      {expanded ? children : null}
     </>
   );
 };
@@ -130,49 +99,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  label: {
-    fontSize: 16,
-  },
-  item: {
-    margin: 8,
-  },
   content: {
     flex: 1,
     justifyContent: "center",
   },
   icon: {
-    marginLeft: 8,
+    marginRight: 8,
   },
 });
 
 export default withTheme(AccordionGroup);
-
-export const SEED_DATA = {
-  name: "Accordion Group",
-  tag: "AccordionGroup",
-  description: "An expandable container containing components",
-  category: COMPONENT_TYPES.container,
-  props: {
-    openColor: createColorProp({
-      label: "Open text color",
-    }),
-    closedColor: createColorProp({
-      label: "Closed text Color",
-    }),
-    caretColor: createColorProp({
-      label: "Caret color",
-    }),
-    iconSize: createNumberProp({
-      label: "Icon size",
-      defaultValue: 24,
-    }),
-    label: createTextProp({
-      label: "Label",
-    }),
-    expanded: createStaticBoolProp({
-      label: "Expanded",
-      description: "Whether the AccordionGroup should be expanded or not",
-    }),
-    icon: createIconProp(),
-  },
-};

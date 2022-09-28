@@ -16,6 +16,8 @@ export interface CheckboxProps {
   status?: boolean;
   disabled?: boolean;
   onPress?: (checked: boolean) => void;
+  onCheck?: () => void;
+  onUncheck?: () => void;
   color?: string;
   uncheckedColor?: string;
   checkedIcon?: string;
@@ -25,81 +27,93 @@ export interface CheckboxProps {
   style?: StyleProp<ViewStyle>;
 }
 
-const Checkbox: React.FC<CheckboxProps & TouchableHighlightProps & IconSlot> =
-  ({
-    Icon,
-    status,
-    disabled = false,
-    onPress = () => {},
-    color,
-    uncheckedColor,
-    defaultValue,
-    checkedIcon = "MaterialCommunityIcons/checkbox-marked",
-    uncheckedIcon = "MaterialCommunityIcons/checkbox-blank-outline",
-    size = 24,
-    style,
-    ...rest
-  }) => {
-    const [internalValue, setInternalValue] = React.useState<boolean>(
-      status || defaultValue || false
-    );
+const Checkbox: React.FC<
+  CheckboxProps & TouchableHighlightProps & IconSlot
+> = ({
+  Icon,
+  status,
+  disabled = false,
+  onPress,
+  onCheck,
+  onUncheck,
+  color,
+  uncheckedColor,
+  defaultValue,
+  checkedIcon = "MaterialCommunityIcons/checkbox-marked",
+  uncheckedIcon = "MaterialCommunityIcons/checkbox-blank-outline",
+  size = 24,
+  style,
+  ...rest
+}) => {
+  const [internalValue, setInternalValue] = React.useState<boolean>(
+    status || defaultValue || false
+  );
 
-    React.useEffect(() => {
-      if (status != null) {
-        setInternalValue(status);
-      }
-    }, [status]);
+  React.useEffect(() => {
+    if (status != null) {
+      setInternalValue(status);
+    }
+  }, [status]);
 
-    // This special logic is to handle weird APIs like Airtable that return
-    // true or undefined for a boolean
-    const previousDefaultValue = usePrevious(defaultValue) as
-      | boolean
-      | undefined;
-    React.useEffect(() => {
-      if (defaultValue !== previousDefaultValue) {
-        setInternalValue(Boolean(defaultValue));
-      }
-    }, [defaultValue, previousDefaultValue]);
+  // This special logic is to handle weird APIs like Airtable that return
+  // true or undefined for a boolean
+  const previousDefaultValue = usePrevious(defaultValue) as boolean | undefined;
 
-    const { colors } = useTheme();
+  React.useEffect(() => {
+    if (defaultValue !== previousDefaultValue) {
+      setInternalValue(Boolean(defaultValue));
+    }
+  }, [defaultValue, previousDefaultValue]);
 
-    const checkboxColor = internalValue
-      ? color || colors.primary
-      : uncheckedColor || colors.primary;
+  const { colors } = useTheme();
 
-    const handlePress = () => {
-      setInternalValue(!internalValue);
-      onPress(!internalValue);
-    };
+  const checkboxColor = internalValue
+    ? color || colors.primary
+    : uncheckedColor || colors.primary;
 
-    return (
-      <Touchable
-        {...rest}
-        onPress={handlePress}
-        disabled={disabled}
-        accessibilityState={{ disabled }}
-        accessibilityRole="button"
-        accessibilityLiveRegion="polite"
-        style={[styles.container, style, { width: size, height: size }]}
-      >
-        <Icon
-          style={styles.icon}
-          name={internalValue ? checkedIcon : uncheckedIcon}
-          size={size}
-          color={checkboxColor}
-        />
-        <View style={[StyleSheet.absoluteFill, styles.fillContainer]}>
-          <View
-            style={[
-              styles.fill,
-              { opacity: disabled ? 0.5 : 1 },
-              { borderColor: checkboxColor },
-            ]}
-          />
-        </View>
-      </Touchable>
-    );
+  const handlePress = () => {
+    const newValue = !internalValue;
+
+    setInternalValue(newValue);
+    onPress?.(newValue);
+
+    if (newValue) {
+      onCheck?.();
+    }
+
+    if (!newValue) {
+      onUncheck?.();
+    }
   };
+
+  return (
+    <Touchable
+      {...rest}
+      onPress={handlePress}
+      disabled={disabled}
+      accessibilityState={{ disabled }}
+      accessibilityRole="button"
+      accessibilityLiveRegion="polite"
+      style={[styles.container, style, { width: size, height: size }]}
+    >
+      <Icon
+        style={styles.icon}
+        name={internalValue ? checkedIcon : uncheckedIcon}
+        size={size}
+        color={checkboxColor}
+      />
+      <View style={[StyleSheet.absoluteFill, styles.fillContainer]}>
+        <View
+          style={[
+            styles.fill,
+            { opacity: disabled ? 0.5 : 1 },
+            { borderColor: checkboxColor },
+          ]}
+        />
+      </View>
+    </Touchable>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

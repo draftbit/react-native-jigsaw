@@ -18,6 +18,7 @@ export default function TextFieldExample() {
             label="Solid input"
             value={value}
             onChangeText={handleChange}
+            activeBorderColor={"orange"}
           />
           <TextField
             type="solid"
@@ -89,7 +90,7 @@ export default function TextFieldExample() {
             style={{
               fontSize: 30,
               color: "red",
-              fontFamily: "Calibri",
+              fontFamily: "Courier New",
             }}
           />
           <TextField

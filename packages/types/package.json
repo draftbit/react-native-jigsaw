@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/types",
-  "version": "42.2.1",
+  "version": "46.2.4",
   "description": "Shared constants and types between native and core components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "react-native-builder-bob": {
+    "declarationMap": false,
     "source": "src",
     "output": "lib",
     "targets": [

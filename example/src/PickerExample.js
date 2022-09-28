@@ -23,6 +23,9 @@ function PickerExample({ theme }) {
           options={OPTIONS}
           value={value}
           onValueChange={setValue}
+          rightIconName={"AntDesign/caretright"}
+          leftIconName={"AntDesign/caretleft"}
+          leftIconMode="outset"
         />
       </Section>
 
@@ -92,6 +95,8 @@ function PickerExample({ theme }) {
           options={OPTIONS}
           value={value}
           onValueChange={setValue}
+          leftIconName={"AntDesign/caretleft"}
+          leftIconMode="outset"
         />
       </Section>
 
@@ -150,8 +155,9 @@ function PickerExample({ theme }) {
           style={{
             fontSize: 30,
             color: "red",
-            fontFamily: "Calibri",
+            fontFamily: "Courier New",
           }}
+          leftIconName={"AntDesign/caretleft"}
         />
       </Section>
 

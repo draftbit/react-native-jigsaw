@@ -1,44 +1,75 @@
-import React from "react";
-import { TextInput as NativeNumberInput } from "react-native";
+import React, { FC, useEffect, useState } from "react";
+import { TextInput } from "react-native";
+import { isString, isNumber, isNaN } from "lodash";
 
 interface Props {
-  defaultValue?: string;
-  onChangeText: (value?: number) => void;
+  value?: number | string;
+  defaultValue?: number | string;
+  onChangeText?: (value?: number) => void;
 }
 
-const NumberInput: React.FC<Props> = ({
-  defaultValue,
+const NumberInput: FC<Props> = ({
   onChangeText,
+  value,
+  defaultValue,
   ...props
 }) => {
-  const [internalValue, setInternalValue] = React.useState(defaultValue);
+  const [currentStringNumberValue, setCurrentStringNumberValue] = useState("0");
 
-  React.useEffect(() => {
-    if (defaultValue != null) {
-      setInternalValue(defaultValue);
+  const formatValueToStringNumber = (valueToFormat?: number | string) => {
+    if (valueToFormat != null) {
+      if (isString(valueToFormat) && valueToFormat !== "") {
+        if (/^0[1-9]$/.test(valueToFormat)) {
+          return valueToFormat.slice(1);
+        } else if (/^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/.test(valueToFormat)) {
+          return valueToFormat;
+        } else {
+          return currentStringNumberValue;
+        }
+      } else if (isNumber(valueToFormat) && !isNaN(valueToFormat)) {
+        return valueToFormat.toString();
+      }
     }
-  }, [defaultValue]);
 
-  const handleChangeText = (value: string) => {
-    setInternalValue(value);
-    if (onChangeText) {
-      onChangeText(stringToInteger(value));
-    }
+    return "0";
   };
 
+  // set currentStringNumberValue as defaultValue prop if there is a differnce on first render only
+  useEffect(() => {
+    const defaultStringNumberValue = formatValueToStringNumber(defaultValue);
+
+    if (currentStringNumberValue !== defaultStringNumberValue) {
+      setCurrentStringNumberValue(defaultStringNumberValue);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleChangeText = (newValue: string) => {
+    const newStringNumberValue = formatValueToStringNumber(newValue);
+    const number = parseFloat(newStringNumberValue);
+
+    setCurrentStringNumberValue(newStringNumberValue);
+    onChangeText?.(number);
+  };
+
+  // run handleChangeText with value prop only when value prop changes (and first render to reset currentStringNumberValue)
+  useEffect(() => {
+    const nextStringNumberValue = formatValueToStringNumber(value);
+
+    if (currentStringNumberValue !== nextStringNumberValue) {
+      handleChangeText(nextStringNumberValue);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
+
   return (
-    <NativeNumberInput
+    <TextInput
       keyboardType="numeric"
+      value={currentStringNumberValue}
       onChangeText={handleChangeText}
       {...props}
-      value={internalValue}
     />
   );
-};
-
-const stringToInteger = (str: string | undefined): number => {
-  const number = parseFloat(str as string);
-  return isNaN(number) ? 0 : number;
 };
 
 export default NumberInput;

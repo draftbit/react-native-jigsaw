@@ -15,8 +15,10 @@ import {
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 
+import AudioPlayerExample from "./AudioPlayerExample";
 import CircleImageExample from "./CircleImageExample";
 import IconExample from "./IconExample";
+import BannerExample from "./BannerExample";
 import ButtonExample from "./ButtonExample";
 import RadioButtonExample from "./RadioButtonExample";
 
@@ -34,11 +36,13 @@ import ContainerExample from "./ContainerExample";
 import DatePickerExample from "./DatePickerExample";
 
 import FABExample from "./FABExample";
-import ToggleButtonExample from "./ToggleButtonExample";
 import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
 
 // import HeaderExample from "./HeaderExample";
 import LayoutExample from "./LayoutExample";
+
+import MapViewExample from "./MapViewExample";
+import MapViewDataDrivenExample from "./MapViewDataDrivenExample";
 
 import PickerExample from "./PickerExample";
 
@@ -52,6 +56,7 @@ import StepperExample from "./StepperExample";
 
 import TextFieldExample from "./TextFieldExample";
 import TextInputExample from "./TextInputExample";
+import NumberInputExample from "./NumberInputExample";
 import CheckboxExample from "./CheckboxExample";
 import WebViewExample from "./WebViewExample";
 import AccordionExample from "./AccordionExample";
@@ -61,10 +66,17 @@ import StarRatingExample from "./StarRatingExample";
 
 import SwiperExample from "./SwiperExample";
 import BottomSheetExample from "./BottomSheetExample";
+import SVGExample from "./SVGExample";
+
+import LinearGradientExample from "./LinearGradientExample";
+
+import SurfaceExample from "./SurfaceExample";
 
 const ROUTES = {
+  AudioPlayer: AudioPlayerExample,
   Layout: LayoutExample,
   Icon: IconExample,
+  Banner: BannerExample,
   Button: ButtonExample,
   FAB: FABExample,
   RadioButton: RadioButtonExample,
@@ -72,7 +84,6 @@ const ROUTES = {
   BottomSheet: BottomSheetExample,
   Checkbox: CheckboxExample,
   Card: CardExample,
-  ToggleButton: ToggleButtonExample,
   Accordion: AccordionExample,
   CardBlock: CardBlockExample,
   CardInline: CardInlineExample,
@@ -84,6 +95,9 @@ const ROUTES = {
   // Controllers: ControllerExample,
   DatePicker: DatePickerExample,
   FieldSearchBarFull: FieldSearchBarFullExample,
+  LinearGradient: LinearGradientExample,
+  MapView: MapViewExample,
+  MapViewDataDriven: MapViewDataDrivenExample,
   // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
   // Header: HeaderExample,
   Picker: PickerExample,
@@ -96,9 +110,12 @@ const ROUTES = {
   Switch: SwitchExample,
   Stepper: StepperExample,
   StarRating: StarRatingExample,
+  Surface: SurfaceExample,
   Swiper: SwiperExample,
+  SVG: SVGExample,
   TextField: TextFieldExample,
   TextInput: TextInputExample,
+  NumberInput: NumberInputExample,
   WebView: WebViewExample,
 };
 
@@ -111,11 +128,14 @@ let customFonts = {
 
 const Drawer = createDrawerNavigator();
 
-function Example({ title, children }) {
+type ExampleProps = { title: string; children: React.ReactNode };
+
+function Example({ title, children }: ExampleProps) {
   const navigation = useNavigation();
 
   return (
     <ScreenContainer
+      hasSafeArea={true}
       hasTopSafeArea={true}
       hasBottomSafeArea={true}
       scrollable={false}
@@ -154,7 +174,7 @@ function Examples() {
             <Drawer.Screen key={key} name={key}>
               {() => (
                 <Example title={key}>
-                  <Screen />
+                  <Screen theme={{}} />
                 </Example>
               )}
             </Drawer.Screen>

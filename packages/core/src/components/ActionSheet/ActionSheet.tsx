@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import Portal from "../Portal/Portal";
 import Touchable from "../Touchable";
-import { COMPONENT_TYPES, createStaticBoolProp, GROUPS } from "@draftbit/types";
+import ActionSheetCancel from "./ActionSheetCancel";
 
 interface Props {
   visible: boolean;
@@ -18,12 +18,12 @@ const ActionSheet = ({ visible = false, onClose, children }: Props) => {
         <View style={styles.groupWrapper}>
           <View style={styles.group}>
             {React.Children.toArray(children).filter(
-              (child: any) => child?.type?.name !== "ActionSheetCancel"
+              (child: any) => child?.type !== ActionSheetCancel
             )}
           </View>
           <View style={styles.group}>
             {React.Children.toArray(children).filter(
-              (child: any) => child.type.name === "ActionSheetCancel"
+              (child: any) => child.type === ActionSheetCancel
             )}
           </View>
         </View>
@@ -67,16 +67,3 @@ const styles = StyleSheet.create({
 });
 
 export default ActionSheet;
-
-export const SEED_DATA = {
-  name: "Action Sheet",
-  tag: "ActionSheet",
-  description: "Action Sheet container",
-  category: COMPONENT_TYPES.container,
-  props: {
-    visible: createStaticBoolProp({
-      group: GROUPS.data,
-      label: "Show Action Sheet",
-    }),
-  },
-};

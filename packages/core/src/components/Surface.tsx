@@ -6,8 +6,8 @@ import {
   ViewProps,
   StyleProp,
   ViewStyle,
-  View,
 } from "react-native";
+
 import shadow from "../styles/shadow";
 import overlay from "../styles/overlay";
 import { withTheme } from "../theming";
@@ -19,36 +19,48 @@ type Props = {
   theme: Theme;
 } & ViewProps;
 
-const Surface: React.FC<Props> = ({
-  elevation,
+const Surface: React.FC<React.PropsWithChildren<Props>> = ({
+  elevation: propElevation,
   style,
   theme,
   children,
   ...rest
 }) => {
-  const { elevation: styleElevation = 3, borderRadius: radius = 0 } =
-    (StyleSheet.flatten(style) || {}) as ViewStyle;
+  const {
+    elevation: styleElevation = 3,
+    backgroundColor,
+    ...restStyle
+  } = (StyleSheet.flatten(style) || {}) as ViewStyle;
+
   const { dark: isDarkTheme, mode, colors } = theme;
-  const borderRadius = radius;
-  const ele = elevation || styleElevation;
+
+  const elevation = propElevation || styleElevation;
+
+  const evalationStyles = elevation ? shadow(elevation) : {};
+
+  const getBackgroundColor = () => {
+    if (backgroundColor) {
+      return backgroundColor;
+    } else if (isDarkTheme && mode === "adaptive") {
+      return overlay(elevation, colors.surface);
+    } else {
+      return colors.surface;
+    }
+  };
 
   return (
     <Animated.View
       {...rest}
       style={[
         {
-          minHeight: 40,
-          borderRadius,
-          backgroundColor:
-            isDarkTheme && mode === "adaptive"
-              ? overlay(ele, colors.surface)
-              : colors.surface,
+          backgroundColor: getBackgroundColor(),
+          elevation,
+          ...evalationStyles,
+          ...restStyle,
         },
-        elevation ? shadow(elevation) : null,
-        style,
       ]}
     >
-      <View style={{ overflow: "hidden", borderRadius }}>{children}</View>
+      {children}
     </Animated.View>
   );
 };

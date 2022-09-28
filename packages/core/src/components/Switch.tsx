@@ -147,6 +147,3 @@ function Row({
 const SwitchRow = withTheme(Row);
 export { SwitchRow };
 export default withTheme(Switch);
-
-/* README: SEED_DATA lives inside mappings/Switch.js since there were weird issues taking place with sourceMaps being
- * generated */

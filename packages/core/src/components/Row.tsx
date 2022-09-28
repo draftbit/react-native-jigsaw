@@ -27,7 +27,7 @@ type Props = {
   theme: typeof theme;
 };
 
-const Row: React.FC<Props> = ({
+const Row: React.FC<React.PropsWithChildren<Props>> = ({
   titleTypeStyle,
   titleColor,
   subtitleTypeStyle,

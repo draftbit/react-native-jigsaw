@@ -9,11 +9,6 @@ import {
   ViewStyle,
 } from "react-native";
 import Image from "./Image";
-import {
-  COMPONENT_TYPES,
-  createResizeModeProp,
-  createColorProp,
-} from "@draftbit/types";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -22,6 +17,7 @@ type Props = {
   children?: React.ReactNode;
   style?: StyleProp<ViewStyle>;
   dotColor?: string;
+  theme: any;
 };
 
 function Pager({
@@ -59,7 +55,7 @@ function Carousel({
   dotColor = "strong",
   style,
   ...rest
-}: Props) {
+}: React.PropsWithChildren<Props>) {
   const [index, setIndex] = React.useState(0);
 
   const length = React.Children.count(children);
@@ -115,9 +111,6 @@ function Carousel({
 
 const styles = StyleSheet.create({
   container: {
-    height: 250,
-    position: "relative",
-    width: screenWidth,
     backgroundColor: "#eee",
   },
   pager: {
@@ -139,19 +132,3 @@ const styles = StyleSheet.create({
 });
 
 export default withTheme(Carousel);
-
-export const SEED_DATA = [
-  {
-    name: "Carousel",
-    tag: "Carousel",
-    category: COMPONENT_TYPES.media,
-    description: "A horizontal scrolling carousel of images",
-    layout: {},
-    props: {
-      resizeMode: createResizeModeProp(),
-      dotColor: createColorProp({
-        label: "Dot color",
-      }),
-    },
-  },
-];

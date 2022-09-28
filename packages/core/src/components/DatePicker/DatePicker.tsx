@@ -7,7 +7,6 @@ import {
   StyleProp,
   ViewStyle,
   TextStyle,
-  Platform,
   TextInputProps,
   ImageStyle,
   I18nManager,
@@ -19,7 +18,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import dateFormat from "dateformat";
 import { withTheme } from "../../theming";
 import Portal from "../Portal/Portal";
-import Button from "../DeprecatedButton";
 import Touchable from "../Touchable";
 import DateTimePicker from "./DatePickerComponent";
 
@@ -71,7 +69,7 @@ const MONTHS = [
   "December",
 ];
 
-const DatePicker: React.FC<Props> = ({
+const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   style,
   theme: { colors, typography, roundness, disabledOpacity },
@@ -496,24 +494,13 @@ const DatePicker: React.FC<Props> = ({
                 },
               ]}
             >
-              {Platform.OS === "ios" && (
-                <Button
-                  Icon={Icon}
-                  type="text"
-                  onPress={toggleVisibility}
-                  style={styles.closeButton}
-                >
-                  Close
-                </Button>
-              )}
-
               <DateTimePicker
                 value={getValidDate()}
                 mode={mode}
                 isVisible={pickerVisible}
                 toggleVisibility={toggleVisibility}
                 onChange={(_event: any, data: any) => {
-                  Platform.OS === "ios" ? null : toggleVisibility();
+                  toggleVisibility();
                   setValue(data);
                   onDateChange(data);
                 }}
@@ -556,7 +543,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 0,
   },
-  pickerContainer: { flexDirection: "column", width: "100%" },
+  pickerContainer: { flexDirection: "column", width: "100%", zIndex: 100 },
   closeButton: {
     alignSelf: "flex-end",
   },

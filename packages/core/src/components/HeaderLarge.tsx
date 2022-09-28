@@ -1,12 +1,5 @@
 import * as React from "react";
 import { withTheme } from "../theming";
-import {
-  COMPONENT_TYPES,
-  createIconProp,
-  createTextProp,
-  createActionProp,
-  Triggers,
-} from "@draftbit/types";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
 import Header from "./Header";
@@ -21,7 +14,7 @@ type Props = {
   theme: Theme;
 } & IconSlot;
 
-const HeaderLarge: React.FC<Props> = ({
+const HeaderLarge: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   title,
   buttonText,
@@ -45,32 +38,3 @@ const HeaderLarge: React.FC<Props> = ({
 };
 
 export default withTheme(HeaderLarge);
-
-export const SEED_DATA = [
-  {
-    name: "Header Large",
-    tag: "HeaderLarge",
-    description:
-      "A large header with an optional touchable right aligned text and icon.",
-    category: COMPONENT_TYPES.header,
-    layout: {},
-    triggers: [Triggers.OnPress],
-    props: {
-      onPress: createActionProp(),
-      title: createTextProp({
-        label: "Title",
-        description: "Text to display",
-        defaultValue: "Title",
-      }),
-      buttonText: createTextProp({
-        label: "Button text",
-        description: "Right aligned button text to display",
-        defaultValue: "See All",
-      }),
-      icon: createIconProp({
-        defaultValue: null,
-        required: false,
-      }),
-    },
-  },
-];

@@ -4,6 +4,7 @@ export { default as Provider } from "./Provider";
 export { default as DefaultTheme } from "./styles/DefaultTheme";
 
 export { Link } from "./components/Text";
+export { default as Banner } from "./components/Banner";
 export { ButtonSolid, ButtonOutline } from "./components/Button";
 export { default as Avatar } from "./components/CircleImage";
 export { default as AvatarEdit } from "./components/AvatarEdit";
@@ -17,6 +18,7 @@ export { default as FAB } from "./components/FAB";
 export { default as FieldSearchBarFull } from "./components/FieldSearchBarFull";
 export { default as IconButton } from "./components/IconButton";
 export { default as Image } from "./components/Image";
+export { default as SVG } from "./components/SVG";
 export { default as NumberInput } from "./components/NumberInput";
 export { default as ScreenContainer } from "./components/ScreenContainer";
 export { default as StarRating } from "./components/StarRating";
@@ -69,3 +71,5 @@ export { default as RowHeadlineImageIcon } from "./components/RowHeadlineImageIc
 export { default as Slider } from "./components/Slider";
 export { default as Stepper } from "./components/Stepper";
 export { useAuthState } from "./components/useAuthState";
+
+// a comment to fix sourcemap comment issue

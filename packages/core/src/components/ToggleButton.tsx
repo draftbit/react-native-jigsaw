@@ -22,7 +22,7 @@ type Props = {
   theme: Theme;
 } & IconSlot;
 
-const ToggleButton: React.FC<Props> = ({
+const ToggleButton: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   icon,
   toggled = false,
@@ -56,8 +56,8 @@ const ToggleButton: React.FC<Props> = ({
   }, [defaultValue]);
 
   const handlePress = () => {
-    setInternalValue(!toggled);
-    onPress(!toggled);
+    setInternalValue(!internalValue);
+    onPress(!internalValue);
   };
 
   return (
@@ -73,7 +73,9 @@ const ToggleButton: React.FC<Props> = ({
         {
           width,
           height,
-          backgroundColor: toggled ? colors[colorSecondary] : colors[color],
+          backgroundColor: internalValue
+            ? colors[colorSecondary]
+            : colors[color],
           borderColor: colors[borderColor],
         },
         style,

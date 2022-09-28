@@ -9,12 +9,6 @@ import {
 
 import Text from "../Text";
 import type { IconSlot } from "../../interfaces/Icon";
-import {
-  COMPONENT_TYPES,
-  createIconProp,
-  createTextProp,
-  createColorProp,
-} from "@draftbit/types";
 import { extractStyles } from "../../utilities";
 import { withTheme } from "../../theming";
 import type { Theme } from "../../styles/DefaultTheme";
@@ -37,6 +31,7 @@ const AccordionItem = ({
   ...rest
 }: Props) => {
   const { textStyles, viewStyles } = extractStyles(style);
+
   return (
     <Pressable style={[styles.container, viewStyles]} {...rest}>
       <View style={styles.row}>
@@ -77,19 +72,3 @@ const styles = StyleSheet.create({
 });
 
 export default withTheme(AccordionItem);
-
-export const SEED_DATA = {
-  name: "Accordion Item",
-  tag: "AccordionItem",
-  description: "Item to be used in Accordion",
-  category: COMPONENT_TYPES.button,
-  props: {
-    icon: createIconProp(),
-    label: createTextProp({
-      label: "Item label",
-    }),
-    iconColor: createColorProp({
-      label: "Icon color",
-    }),
-  },
-};

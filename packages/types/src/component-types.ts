@@ -160,7 +160,7 @@ export const createImageProp = (overrides = {}) => ({
   ...overrides,
 });
 
-export const createSvgProp = (overrides = {}) => ({
+export const createSVGProp = (overrides = {}) => ({
   label: "SVG",
   description: "Simple Vector Graphic (SVG)",
   group: GROUPS.data,

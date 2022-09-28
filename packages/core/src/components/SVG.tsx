@@ -4,12 +4,12 @@ import { SvgUri } from "react-native-svg";
 
 import Config from "./Config";
 
-type SvgComponentProps = {
+type SVGComponentProps = {
   source: string;
   style?: StyleProp<ImageStyle>;
 };
 
-const SVG: React.FC<React.PropsWithChildren<SvgComponentProps>> = ({
+const SVG: React.FC<React.PropsWithChildren<SVGComponentProps>> = ({
   source = Config.placeholderSvgURL,
   style,
 }) => {

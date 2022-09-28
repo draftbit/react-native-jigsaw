@@ -1,6 +1,6 @@
 import {
   COMPONENT_TYPES,
-  createSvgProp,
+  createSVGProp,
   StylesPanelSections,
 } from "@draftbit/types";
 
@@ -21,6 +21,6 @@ export const SEED_DATA = {
     StylesPanelSections.Effects,
   ],
   props: {
-    source: createSvgProp(),
+    source: createSVGProp(),
   },
 };

@@ -71,6 +71,7 @@ import {
   RadioButton as BaseRadioButton,
   RadioButtonRow as BaseRadioButtonRow,
   Stepper as BaseStepper,
+  Svg as BaseSvg,
   ToggleButton as BaseToggleButton,
   HeaderLarge as BaseHeaderLarge,
   HeaderMedium as BaseHeaderMedium,
@@ -107,10 +108,9 @@ export const RowBodyIcon = injectIcon(BaseRowBodyIcon, Icon);
 export const RowHeadlineImageIcon = injectIcon(BaseRowHeadlineImageIcon, Icon);
 export const StarRating = injectIcon(BaseStarRating, Icon);
 export const Stepper = injectIcon(BaseStepper, Icon);
+export const Svg = injectIcon(BaseSvg, Icon);
 export const TextField = injectIcon(BaseTextField, Icon);
 export const ToggleButton = injectIcon(BaseToggleButton, Icon);
 export const Slider = injectIcon(BaseSlider, Icon);
 export const AccordionGroup = injectIcon(BaseAccordionGroup, Icon);
 export const AccordionItem = injectIcon(BaseAccordionItem, Icon);
-
-// a comment to fix sourcemap comment issue

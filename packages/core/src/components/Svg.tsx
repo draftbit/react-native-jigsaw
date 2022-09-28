@@ -1,8 +1,18 @@
 import * as React from "react";
-import { View, Platform, Image } from "react-native";
+import { View, Platform, Image, StyleProp, ViewStyle } from "react-native";
 import { SvgUri } from "react-native-svg";
 
-const Svg = ({ source, style }: { source: any; style: any }) => {
+import Config from "./Config";
+
+type SvgComponentProps = {
+  source: string;
+  style?: StyleProp<ViewStyle>;
+};
+
+const Svg: React.FC<React.PropsWithChildren<SvgComponentProps>> = ({
+  source = Config.placeholderSvgURL,
+  style,
+}) => {
   return (
     <>
       {Platform.OS === "ios" && (

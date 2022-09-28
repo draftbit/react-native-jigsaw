@@ -8,6 +8,7 @@ export const SEED_DATA = {
   name: "SVG",
   tag: "SVG",
   description: "An SVG component",
+  packageName: "@draftbit/core",
   category: COMPONENT_TYPES.media,
   layout: {
     width: 100,

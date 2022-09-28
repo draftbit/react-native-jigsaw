@@ -1,12 +1,19 @@
 import * as React from "react";
-import { View, Platform, Image, StyleProp, ViewStyle } from "react-native";
+import {
+  View,
+  Platform,
+  Image,
+  StyleProp,
+  ImageStyle,
+  ViewStyle,
+} from "react-native";
 import { SvgUri } from "react-native-svg";
 
 import Config from "./Config";
 
 type SvgComponentProps = {
   source: string;
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle | ImageStyle>;
 };
 
 const Svg: React.FC<React.PropsWithChildren<SvgComponentProps>> = ({

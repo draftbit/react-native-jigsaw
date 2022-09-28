@@ -18,7 +18,7 @@ export { default as FAB } from "./components/FAB";
 export { default as FieldSearchBarFull } from "./components/FieldSearchBarFull";
 export { default as IconButton } from "./components/IconButton";
 export { default as Image } from "./components/Image";
-export { default as Svg } from "./components/Svg";
+export { default as SVG } from "./components/SVG";
 export { default as NumberInput } from "./components/NumberInput";
 export { default as ScreenContainer } from "./components/ScreenContainer";
 export { default as StarRating } from "./components/StarRating";

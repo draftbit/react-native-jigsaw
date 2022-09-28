@@ -9,7 +9,7 @@ type SvgComponentProps = {
   style?: StyleProp<ImageStyle>;
 };
 
-const Svg: React.FC<React.PropsWithChildren<SvgComponentProps>> = ({
+const DSvg: React.FC<React.PropsWithChildren<SvgComponentProps>> = ({
   source = Config.placeholderSvgURL,
   style,
 }) => {
@@ -32,4 +32,4 @@ const Svg: React.FC<React.PropsWithChildren<SvgComponentProps>> = ({
   );
 };
 
-export default Svg;
+export default DSvg;

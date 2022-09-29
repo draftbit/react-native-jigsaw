@@ -12,7 +12,7 @@ export const SEED_DATA = {
   doc_link: "https://lonelycpp.github.io/react-native-youtube-iframe",
   code_link: "https://github.com/LonelyCpp/react-native-youtube-iframe",
   category: COMPONENT_TYPES.media,
-  stylesPanelSections: [StylesPanelSections.Size],
+  stylesPanelSections: [StylesPanelSections.Size, StylesPanelSections.Position],
   layout: {
     height: 250,
   },

@@ -7,7 +7,7 @@ const YoutubeExample = () => {
   return (
     <Container>
       <Section title="Youtube">
-        <Youtube videoId="nwMUpDESXrI" style={{ width: "100%", height: 250 }} />
+        <Youtube videoId="nwMUpDESXrI" style={{ width: "100%", height: 220 }} />
       </Section>
       <Section title="Youtube Playlist">
         <Youtube

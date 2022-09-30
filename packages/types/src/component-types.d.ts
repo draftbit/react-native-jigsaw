@@ -89,7 +89,7 @@ export declare const createImageProp: (overrides?: {}) => {
   editable: boolean;
   required: boolean;
 };
-export declare const createSvgProp: (overrides?: {}) => {
+export declare const createSVGprop: (overrides?: {}) => {
   label: string;
   description: string;
   group: string;

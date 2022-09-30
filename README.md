@@ -122,6 +122,8 @@ Release Process:
 - When the pull-request is approved and merged to master, a github action
   & lerna will automatically publish all packages to npm with the new version.
 
+- Once that is done, create a tag for the version, ie `git tag v46.2.4` and `git push --tags`
+
 - If auto-publication fails, say because npm is down, contributors can also run
   `yarn lerna publish from-package` from an up-to-date master branch. Lerna
   will automatically inspect the registry and the versions on master and

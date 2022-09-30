@@ -66,7 +66,7 @@ import StarRatingExample from "./StarRatingExample";
 
 import SwiperExample from "./SwiperExample";
 import MarkdownExample from "./MarkdownExample";
-import SVGExample from "./SVGExample";
+import SVGExample from "./SvgExample";
 
 import LinearGradientExample from "./LinearGradientExample";
 

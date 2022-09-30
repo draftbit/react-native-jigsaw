@@ -1,4 +1,5 @@
 import * as React from "react";
+// @ts-ignore
 import Markdown from "react-native-markdown-display";
 
 type Props = {
@@ -6,7 +7,14 @@ type Props = {
 };
 
 const MarkdownComponent: React.FC<Props> = ({ content }) => {
-  return <Markdown>{content}</Markdown>;
+  return (
+    <>
+      {
+        // @ts-ignore
+      }
+      <Markdown>{content}</Markdown>
+    </>
+  );
 };
 
 export default MarkdownComponent;

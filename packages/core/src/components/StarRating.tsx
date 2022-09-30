@@ -94,7 +94,6 @@ const StarRating: React.FC<React.PropsWithChildren<Props>> = ({
 };
 
 const styles = StyleSheet.create({
-  //comment!
   container: {
     flexDirection: "row",
     alignItems: "center",

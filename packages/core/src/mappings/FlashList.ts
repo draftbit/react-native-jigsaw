@@ -4,12 +4,14 @@ import {
   createStaticBoolProp,
   createNumberProp,
   CONTAINER_COMPONENT_STYLES_SECTIONS,
+  GROUPS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "FlashList",
   tag: "FlashList",
   description: "Flashlist by Shopify",
+  packageName: "@shopify/flash-list",
   category: COMPONENT_TYPES.data,
   stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   layout: {

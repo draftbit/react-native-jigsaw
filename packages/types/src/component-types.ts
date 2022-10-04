@@ -107,15 +107,16 @@ export const FORM_TYPES = {
 
 export const COMPONENT_TYPES = {
   basic: "basic",
-  media: "media",
-  layout: "layout",
-  input: "input",
-  data: "data",
-  card: "card",
   button: "button",
-  row: "row",
-  header: "header",
+  card: "card",
   container: "container",
+  data: "data",
+  header: "header",
+  input: "input",
+  layout: "layout",
+  maps: "maps",
+  media: "media",
+  row: "row",
   deprecated: "deprecated",
 };
 

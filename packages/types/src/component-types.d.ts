@@ -64,6 +64,7 @@ export declare const COMPONENT_TYPES: {
   container: string;
   blocks: string;
   deprecated: string;
+  maps: string;
   screen: string;
   codeComponent: string;
 };

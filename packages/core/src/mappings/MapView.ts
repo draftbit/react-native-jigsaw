@@ -14,7 +14,7 @@ export const SEED_DATA = {
   tag: "MapView",
   packageName: "@draftbit/maps",
   description: "A map view",
-  category: COMPONENT_TYPES.media,
+  category: COMPONENT_TYPES.maps,
   layout: {
     flex: 1,
   },

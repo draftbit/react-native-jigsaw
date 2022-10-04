@@ -21,11 +21,7 @@ const SEED_DATA_PROPS = {
     description: "Button Label",
     defaultValue: "Get Started",
   }),
-  disabled: createBoolProp({
-    group: GROUPS.basic,
-    label: "Disabled",
-    description: "Whether the button should be disabled",
-  }),
+  disabled: createDisabledProp(),
   loading: createBoolProp({
     group: GROUPS.basic,
     label: "Loading",
@@ -43,7 +39,7 @@ export const SEED_DATA = [
   {
     name: "Button Outline",
     tag: "ButtonOutline",
-    category: COMPONENT_TYPES.button,
+    category: COMPONENT_TYPES.deprecated,
     stylesPanelSections: [
       StylesPanelSections.Typography,
       StylesPanelSections.Background,
@@ -63,7 +59,7 @@ export const SEED_DATA = [
     props: SEED_DATA_PROPS,
   },
   {
-    name: "Button Solid",
+    name: "Button",
     tag: "ButtonSolid",
     category: COMPONENT_TYPES.button,
     stylesPanelSections: [

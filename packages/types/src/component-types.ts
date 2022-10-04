@@ -400,6 +400,18 @@ export const createActionProp = (overrides = {}) => ({
   ...overrides,
 });
 
+export const createDisabledProp = (overrides = {}) => ({
+  label: "Disabled?",
+  description: "When set to true, disables the element. ",
+  group: GROUPS.data,
+  editable: true,
+  required: false,
+  formType: FORM_TYPES.boolean,
+  propType: PROP_TYPES.BOOLEAN,
+  defaultValue: null,
+  ...overrides,
+});
+
 export const createAccessibleProp = (overrides = {}) => ({
   label: "Accessible",
   description:

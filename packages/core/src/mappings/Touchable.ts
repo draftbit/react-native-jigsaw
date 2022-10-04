@@ -6,7 +6,7 @@ import {
 } from "@draftbit/types";
 
 export const SEED_DATA = {
-  name: "Touchable",
+  name: "Pressable",
   tag: "Touchable",
   description: "Simple button with no styles",
   category: COMPONENT_TYPES.button,
@@ -19,5 +19,6 @@ export const SEED_DATA = {
   triggers: [Triggers.OnPress],
   props: {
     onPress: createActionProp(),
+    disabled: createDisabledProp(),
   },
 };

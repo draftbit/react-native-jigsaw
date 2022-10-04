@@ -14,6 +14,7 @@ export const SEED_DATA = {
     StylesPanelSections.Size,
     StylesPanelSections.Margins,
     StylesPanelSections.Position,
+    StylesPanelSections.Borders,
     StylesPanelSections.Effects,
   ],
   layout: {
@@ -23,5 +24,18 @@ export const SEED_DATA = {
   props: {
     source: createImageProp(),
     resizeMode: createResizeModeProp(),
+    blurRadius: {
+      group: GROUPS.basic,
+      name: "blurRadius",
+      label: "Blur Radius",
+      defaultValue: null,
+      description: "The blur radius of the blur filter added to the image.",
+      editable: true,
+      required: false,
+      formType: FORM_TYPES.number,
+      propType: PROP_TYPES.NUMBER,
+      step: 5,
+      precision: 1,
+    },
   },
 };

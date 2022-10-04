@@ -398,3 +398,28 @@ export const createActionProp = (overrides = {}) => ({
   group: GROUPS.basic,
   ...overrides,
 });
+
+export const createAccessibleProp = (overrides = {}) => ({
+  label: "Accessible",
+  description:
+    "When set to true, indicates that the element is an accessibility element. ",
+  group: GROUPS.accessibility,
+  editable: true,
+  required: false,
+  formType: FORM_TYPES.boolean,
+  propType: PROP_TYPES.BOOLEAN,
+  defaultValue: null,
+  ...overrides,
+});
+export const createAccessibilityLabelProp = (overrides = {}) => ({
+  label: "Accessiblility Label",
+  description:
+    "The text that's read by the screen reader when the user interacts with the element.",
+  group: GROUPS.accessibility,
+  editable: true,
+  required: false,
+  formType: FORM_TYPES.string,
+  propType: PROP_TYPES.STRING,
+  defaultValue: null,
+  ...overrides,
+});

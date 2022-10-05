@@ -1,4 +1,8 @@
-import { COMPONENT_TYPES, createSvgProp } from "@draftbit/types";
+import {
+  COMPONENT_TYPES,
+  createSVGProp,
+  StylesPanelSections,
+} from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "SVG",
@@ -9,7 +13,13 @@ export const SEED_DATA = {
     width: 100,
     height: 100,
   },
+  stylesPanelSections: [
+    StylesPanelSections.Size,
+    StylesPanelSections.Margins,
+    StylesPanelSections.Position,
+    StylesPanelSections.Effects,
+  ],
   props: {
-    source: createSvgProp(),
+    source: createSVGProp(),
   },
 };

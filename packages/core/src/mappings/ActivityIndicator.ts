@@ -14,7 +14,7 @@ export const SEED_DATA = {
     "https://docs.expo.io/versions/latest/react-native/activityindicator/",
   code_link:
     "https://github.com/expo/expo/blob/master/ios/versioned-react-native/ABI32_0_0/Libraries/Components/ActivityIndicator/ActivityIndicator.js",
-  category: COMPONENT_TYPES.utilities,
+  category: COMPONENT_TYPES.utility,
   stylesPanelSections: [
     StylesPanelSections.Size,
     StylesPanelSections.Margins,

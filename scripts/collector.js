@@ -56,6 +56,7 @@ async function main(list = []) {
       if (!error.message.includes("SEED_DATA")) {
         console.log("failed:", name, error);
         ERROR_FILES.push({ file, error: error.message });
+        throw error;
       }
     }
   }
@@ -69,13 +70,18 @@ function getUrl() {
   const STAGING_API_URL = "https://api.stagingbit.com";
   const PRODUCTION_API_URL = "https://api.draftbit.com";
 
-  switch (process.env.target) {
+  const target = process.env.target || "";
+  switch (target) {
     case "staging":
       return STAGING_API_URL;
     case "prod":
       return PRODUCTION_API_URL;
-    default:
+    case "":
       return LOCAL_API_URL;
+    default: {
+      console.error(`Invalid target ${target}`);
+      process.exit(1);
+    }
   }
 }
 
@@ -88,6 +94,10 @@ async function uploadComponent(component) {
       "Content-Type": "application/json",
       "Authorization": process.env.COLLECTOR_SCRIPT_TOKEN,
     },
+  }).then((res) => {
+    if (!res.ok) {
+      throw new Error(res.status);
+    }
   });
 }
 

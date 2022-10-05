@@ -3,6 +3,7 @@ import {
   createActionProp,
   Triggers,
   StylesPanelSections,
+  createDisabledProp,
 } from "@draftbit/types";
 
 export const SEED_DATA = {

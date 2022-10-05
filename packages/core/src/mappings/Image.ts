@@ -3,6 +3,9 @@ import {
   createImageProp,
   createResizeModeProp,
   StylesPanelSections,
+  FORM_TYPES,
+  PROP_TYPES,
+  GROUPS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {

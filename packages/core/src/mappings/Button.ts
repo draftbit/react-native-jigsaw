@@ -3,6 +3,7 @@ import {
   createIconProp,
   createBoolProp,
   createTextProp,
+  createDisabledProp,
   GROUPS,
   createActionProp,
   Triggers,

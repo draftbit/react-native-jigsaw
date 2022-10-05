@@ -121,9 +121,9 @@ export const COMPONENT_TYPES = {
   map: "map",
   view: "view",
   /* Deprecated */
-  row: "deprecatedRow",
-  card: "deprecatedCard",
-  header: "deprecatedHeader",
+  deprecatedRow: "deprecatedRow",
+  deprecatedCard: "deprecatedCard",
+  deprecatedHeader: "deprecatedHeader",
   deprecated: "deprecated",
 };
 

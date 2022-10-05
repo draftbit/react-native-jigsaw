@@ -44,31 +44,30 @@ export {
   Spacer,
 } from "./components/Layout";
 
+export { default as DatePicker } from "./components/DatePicker/DatePicker";
+export { default as Picker } from "./components/Picker/Picker";
+export { default as Stepper } from "./components/Stepper";
+export { default as Slider } from "./components/Slider";
+
 export {
   RadioButton,
   RadioButtonGroup,
   RadioButtonRow,
   RadioButtonFieldGroup,
-} from "./components/RadioButton/index";
+} from "./components/RadioButton";
 
 /* Deprecated: Fix or Delete!  */
-export { default as Button } from "./components/DeprecatedButton";
-export { default as CardBlock } from "./components/CardBlock";
-export { default as CardContainer } from "./components/CardContainer";
-export { default as CardContainerRating } from "./components/CardContainerRating";
-export { default as CardInline } from "./components/CardInline";
-export { default as DatePicker } from "./components/DatePicker/DatePicker";
-export { default as HeaderLarge } from "./components/HeaderLarge";
-export { default as HeaderMedium } from "./components/HeaderMedium";
-export { default as HeaderOverline } from "./components/HeaderOverline";
-export { default as Picker } from "./components/Picker/Picker";
-export { default as ProgressBar } from "./components/ProgressBar";
-export { default as ProgressCircle } from "./components/ProgressCircle";
-export { default as RowBodyIcon } from "./components/RowBodyIcon";
-export { default as RowHeadlineImageCaption } from "./components/RowHeadlineImageCaption";
-export { default as RowHeadlineImageIcon } from "./components/RowHeadlineImageIcon";
-export { default as Slider } from "./components/Slider";
-export { default as Stepper } from "./components/Stepper";
-export { useAuthState } from "./components/useAuthState";
-
-// a comment to fix sourcemap comment issue
+// export { default as Button } from "./components/DeprecatedButton";
+// export { default as CardBlock } from "./components/CardBlock";
+// export { default as CardContainer } from "./components/CardContainer";
+// export { default as CardContainerRating } from "./components/CardContainerRating";
+// export { default as CardInline } from "./components/CardInline";
+// export { default as HeaderLarge } from "./components/HeaderLarge";
+// export { default as HeaderMedium } from "./components/HeaderMedium";
+// export { default as HeaderOverline } from "./components/HeaderOverline";
+// export { default as ProgressBar } from "./components/ProgressBar";
+// export { default as ProgressCircle } from "./components/ProgressCircle";
+// xport { default as RowBodyIcon } from "./components/RowBodyIcon";
+// export { default as RowHeadlineImageCaption } from "./components/RowHeadlineImageCaption";
+// export { default as RowHeadlineImageIcon } from "./components/RowHeadlineImageIcon";
+// export { useAuthState } from "./components/useAuthState";

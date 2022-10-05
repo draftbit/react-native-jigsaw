@@ -9,24 +9,24 @@ type SVGComponentProps = {
   style?: StyleProp<ImageStyle>;
 };
 
-const SVG = ({ source, style }: SVGComponentProps) => {
-  let svgSource =
-    source === null || source === undefined ? Config.placeholderSvgURL : source;
-
+const SVG: React.FC<React.PropsWithChildren<SVGComponentProps>> = ({
+  source = Config.placeholderSvgURL,
+  style,
+}) => {
   return (
     <>
       {Platform.OS === "ios" && (
         <View style={style}>
-          <SvgUri width="100%" height="100%" uri={svgSource} />
+          <SvgUri width="100%" height="100%" uri={source} />
         </View>
       )}
       {Platform.OS === "android" && (
         <View style={style}>
-          <SvgUri width="100%" height="100%" uri={svgSource} />
+          <SvgUri width="100%" height="100%" uri={source} />
         </View>
       )}
       {Platform.OS === "web" && (
-        <Image style={style} source={{ uri: svgSource }} />
+        <Image style={style} source={{ uri: source }} />
       )}
     </>
   );

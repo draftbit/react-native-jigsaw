@@ -91,7 +91,7 @@ export const SEED_DATA = [
     tag: "CardContainerRating",
     description:
       "An elevated card with a title and description, that takes up half of its container.",
-    category: COMPONENT_TYPES.deprecated - card,
+    category: COMPONENT_TYPES.deprecatedCard,
     stylesPanelSections: BLOCK_STYLES_SECTIONS,
     preview_image_url: "{CLOUDINARY_URL}/Card_ContainerRating_2col.png",
     supports_list_render: true,
@@ -115,7 +115,7 @@ export const SEED_DATA = [
     tag: "CardContainerRating",
     description:
       "An elevated card with a title and description, that takes up its full container.",
-    category: COMPONENT_TYPES.deprecated - card,
+    category: COMPONENT_TYPES.deprecatedCard,
     stylesPanelSections: BLOCK_STYLES_SECTIONS,
     preview_image_url: "{CLOUDINARY_URL}/Card_ContainerRating_3col.png",
     supports_list_render: true,

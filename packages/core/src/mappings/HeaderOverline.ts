@@ -12,7 +12,7 @@ export const SEED_DATA = [
     tag: "HeaderOverline",
     description:
       "A small header with an optional touchable right aligned text and icon.",
-    category: COMPONENT_TYPES.deprecated - header,
+    category: COMPONENT_TYPES.deprecatedHeader,
     stylesPanelSections: BLOCK_STYLES_SECTIONS,
     preview_image_url: "{CLOUDINARY_URL}/Header_OverlineIconText.png",
     supports_list_render: false,

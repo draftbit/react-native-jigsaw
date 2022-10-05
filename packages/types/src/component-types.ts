@@ -115,7 +115,7 @@ export const COMPONENT_TYPES = {
   container: "container",
   /* New */
   control: "control",
-  utilities: "utilities",
+  utility: "utility",
   actionsheet: "actionsheet",
   swiper: "swiper",
   map: "map",

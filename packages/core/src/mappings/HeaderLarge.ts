@@ -13,7 +13,7 @@ export const SEED_DATA = [
     tag: "HeaderLarge",
     description:
       "A large header with an optional touchable right aligned text and icon.",
-    category: COMPONENT_TYPES.header,
+    category: COMPONENT_TYPES.deprecated - header,
     stylesPanelSections: BLOCK_STYLES_SECTIONS,
     layout: {},
     triggers: [Triggers.OnPress],

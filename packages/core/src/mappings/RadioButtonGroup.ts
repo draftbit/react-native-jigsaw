@@ -9,7 +9,7 @@ import {
 export const SEED_DATA = {
   name: "Radio Button Group",
   tag: "RadioButtonGroup",
-  category: COMPONENT_TYPES.input,
+  category: COMPONENT_TYPES.control,
   stylesPanelSections: [StylesPanelSections.Margins],
   layout: {},
   triggers: [Triggers.OnValueChange],

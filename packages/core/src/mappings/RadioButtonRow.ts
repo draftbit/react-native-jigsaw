@@ -10,7 +10,7 @@ import {
 export const SEED_DATA = {
   name: "Radio Button Row",
   tag: "RadioButtonRow",
-  category: COMPONENT_TYPES.input,
+  category: COMPONENT_TYPES.control,
   stylesPanelSections: [
     StylesPanelSections.Typography,
     StylesPanelSections.Margins,

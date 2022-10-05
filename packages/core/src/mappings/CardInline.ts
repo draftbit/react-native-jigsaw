@@ -12,7 +12,7 @@ export const SEED_DATA = {
   tag: "CardInline",
   description:
     "An elevated card with image and a title and description overlayed, that takes up the full width of its container.",
-  category: COMPONENT_TYPES.card,
+  category: COMPONENT_TYPES.deprecated - card,
   stylesPanelSections: BLOCK_STYLES_SECTIONS,
   layout: {},
   props: {

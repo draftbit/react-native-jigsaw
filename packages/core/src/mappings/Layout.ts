@@ -10,7 +10,7 @@ export const SEED_DATA = [
   {
     name: "Row",
     tag: "Row",
-    category: COMPONENT_TYPES.layout,
+    category: COMPONENT_TYPES.deprecated,
     stylesPanelSections: [StylesPanelSections.NoStyles],
     props: {
       justifyContent: {
@@ -85,7 +85,7 @@ export const SEED_DATA = [
   {
     name: "Stack",
     tag: "Stack",
-    category: COMPONENT_TYPES.layout,
+    category: COMPONENT_TYPES.deprecated,
     stylesPanelSections: [StylesPanelSections.NoStyles],
     props: {
       justifyContent: {

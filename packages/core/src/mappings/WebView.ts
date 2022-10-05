@@ -11,7 +11,7 @@ export const SEED_DATA = {
   name: "Web View",
   tag: "WebView",
   description: "Render web content inside a view",
-  category: COMPONENT_TYPES.media,
+  category: COMPONENT_TYPES.utilities,
   stylesPanelSections: [
     StylesPanelSections.Size,
     StylesPanelSections.Margins,

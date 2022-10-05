@@ -33,7 +33,7 @@ export const SEED_DATA = [
     tag: "RowHeadlineImageIcon",
     description:
       "A row with left aligned headline text and a right aligned icon",
-    category: COMPONENT_TYPES.row,
+    category: COMPONENT_TYPES.deprecated - row,
     layout: {},
     props: {
       ...SEED_DATA_PROPS,
@@ -44,7 +44,7 @@ export const SEED_DATA = [
     tag: "RowHeadlineImageIcon",
     description:
       "A row with left aligned image and headline text and a right aligned icon",
-    category: COMPONENT_TYPES.row,
+    category: COMPONENT_TYPES.deprecated - row,
     layout: {},
     props: {
       ...SEED_DATA_PROPS,
@@ -56,7 +56,7 @@ export const SEED_DATA = [
     tag: "RowHeadlineImageIcon",
     description:
       "A row with left aligned headline text and subtitle text and a right aligned icon",
-    category: COMPONENT_TYPES.row,
+    category: COMPONENT_TYPES.deprecated - row,
     layout: {},
     props: {
       ...SEED_DATA_PROPS,
@@ -68,7 +68,7 @@ export const SEED_DATA = [
     tag: "RowHeadlineImageIcon",
     description:
       "A row with left aligned headline text and subtitle text and a right aligned icon",
-    category: COMPONENT_TYPES.row,
+    category: COMPONENT_TYPES.deprecated - row,
     layout: {},
     props: {
       ...SEED_DATA_PROPS,
@@ -81,7 +81,7 @@ export const SEED_DATA = [
     tag: "RowHeadlineImageIcon",
     description:
       "A row with left aligned headline text and multiline subtitle text and a right aligned icon",
-    category: COMPONENT_TYPES.row,
+    category: COMPONENT_TYPES.deprecated - row,
     layout: {},
     props: {
       ...SEED_DATA_PROPS,
@@ -99,7 +99,7 @@ export const SEED_DATA = [
     tag: "RowHeadlineImageIcon",
     description:
       "A row with left aligned image, headline text, and multiline subtitle text, and a right aligned icon",
-    category: COMPONENT_TYPES.row,
+    category: COMPONENT_TYPES.deprecated - row,
     layout: {},
     props: {
       ...SEED_DATA_PROPS,

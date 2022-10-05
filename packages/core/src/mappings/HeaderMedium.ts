@@ -12,7 +12,7 @@ export const SEED_DATA = [
     tag: "HeaderMedium",
     description:
       "A medium header with an optional touchable right aligned text and icon.",
-    category: COMPONENT_TYPES.header,
+    category: COMPONENT_TYPES.deprecated - header,
     stylesPanelSections: BLOCK_STYLES_SECTIONS,
     preview_image_url: "{CLOUDINARY_URL}/Header_HeadlineMediumIconText.png",
     supports_list_render: false,

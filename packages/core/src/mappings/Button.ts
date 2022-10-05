@@ -43,7 +43,7 @@ export const SEED_DATA = [
   {
     name: "Button Outline",
     tag: "ButtonOutline",
-    category: COMPONENT_TYPES.button,
+    category: COMPONENT_TYPES.deprecated,
     stylesPanelSections: [
       StylesPanelSections.Typography,
       StylesPanelSections.Background,

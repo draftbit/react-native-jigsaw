@@ -111,11 +111,19 @@ export const COMPONENT_TYPES = {
   layout: "layout",
   input: "input",
   data: "data",
-  card: "card",
   button: "button",
-  row: "row",
-  header: "header",
   container: "container",
+  /* New */
+  control: "control",
+  utilities: "utilities",
+  actionsheet: "actionsheet",
+  swiper: "swiper",
+  map: "map",
+  view: "view",
+  /* Deprecated */
+  row: "deprecated-row",
+  card: "deprecated-card",
+  header: "deprecated-header",
   deprecated: "deprecated",
 };
 

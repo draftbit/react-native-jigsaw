@@ -11,7 +11,7 @@ export const SEED_DATA = [
     tag: "RowHeadlineImageCaption",
     description:
       "A row with left aligned headline text and right aligned caption text",
-    category: COMPONENT_TYPES.row,
+    category: COMPONENT_TYPES.deprecated - row,
     preview_image_url: "{CLOUDINARY_URL}/Row_SingleLine_HeadlineCaption.png",
     supports_list_render: true,
     props: {
@@ -43,7 +43,7 @@ export const SEED_DATA = [
     tag: "RowHeadlineImageCaption",
     description:
       "A row with left aligned image and headline text and right aligned caption text",
-    category: COMPONENT_TYPES.row,
+    category: COMPONENT_TYPES.deprecated - row,
     preview_image_url:
       "{CLOUDINARY_URL}/Row_SingleLine_HeadlineImageCaption.png",
     supports_list_render: true,
@@ -86,7 +86,7 @@ export const SEED_DATA = [
     tag: "RowHeadlineImageCaption",
     description:
       "A row with left aligned headline text and subtitle text and right aligned caption text",
-    category: COMPONENT_TYPES.row,
+    category: COMPONENT_TYPES.deprecated - row,
     preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_HeadlineCaption.png",
     supports_list_render: true,
     props: {
@@ -128,7 +128,7 @@ export const SEED_DATA = [
     tag: "RowHeadlineImageCaption",
     description:
       "A row with left aligned image, headline text, and subtitle text, and right aligned caption text",
-    category: COMPONENT_TYPES.row,
+    category: COMPONENT_TYPES.deprecated - row,
     preview_image_url: "{CLOUDINARY_URL}/Row_DoubleLine_HeadlineCaption.png",
     supports_list_render: true,
     props: {

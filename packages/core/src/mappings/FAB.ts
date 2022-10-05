@@ -13,7 +13,7 @@ import {
 export const SEED_DATA = {
   name: "FAB",
   tag: "FAB",
-  category: COMPONENT_TYPES.button,
+  category: COMPONENT_TYPES.deprecated,
   stylesPanelSections: BLOCK_STYLES_SECTIONS,
   description: "A mini round icon FAB",
   layout: {},

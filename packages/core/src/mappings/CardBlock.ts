@@ -78,7 +78,7 @@ export const SEED_DATA = [
     tag: "CardBlock",
     description:
       "An elevated card with a title and description, that takes up one third of its container.",
-    category: COMPONENT_TYPES.deprecatedCard,
+    category: COMPONENT_TYPES.card,
     props: {
       ...SEED_DATA_PROPS,
       numColumns: createNumColumnsType({
@@ -91,7 +91,7 @@ export const SEED_DATA = [
     tag: "CardBlock",
     description:
       "An elevated card with a title and description, that takes up one half of its container.",
-    category: COMPONENT_TYPES.deprecatedCard,
+    category: COMPONENT_TYPES.card,
     props: {
       ...SEED_DATA_PROPS,
       icon: {
@@ -114,7 +114,7 @@ export const SEED_DATA = [
     tag: "CardBlock",
     description:
       "An elevated card with a title and description, that takes up the full width its container.",
-    category: COMPONENT_TYPES.deprecatedCard,
+    category: COMPONENT_TYPES.card,
     stylesPanelSections: BLOCK_STYLES_SECTIONS,
     props: {
       ...SEED_DATA_PROPS,

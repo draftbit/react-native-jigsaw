@@ -12,7 +12,7 @@ export const SEED_DATA = {
   name: "Star Rating",
   tag: "StarRating",
   description: "A star rating component",
-  category: COMPONENT_TYPES.button,
+  category: COMPONENT_TYPES.control,
   stylesPanelSections: BLOCK_STYLES_SECTIONS,
   triggers: [Triggers.OnPress],
   props: {

@@ -11,7 +11,7 @@ export const SEED_DATA = {
   tag: "KeyboardAwareScrollView",
   description:
     "View that moves pushes the content when virtual keyboard is open.",
-  category: COMPONENT_TYPES.layout,
+  category: COMPONENT_TYPES.view,
   stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   layout: {},
   props: {

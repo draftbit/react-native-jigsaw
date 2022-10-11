@@ -12,7 +12,7 @@ export const SEED_DATA = {
   packageName: "@draftbit/maps",
   description:
     "An info window to display on top of a marker when it is clicked",
-  category: COMPONENT_TYPES.media,
+  category: COMPONENT_TYPES.map,
   triggers: [Triggers.OnPress],
   layout: {},
   props: {

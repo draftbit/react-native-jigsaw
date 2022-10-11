@@ -13,7 +13,7 @@ export const SEED_DATA = [
     name: "Search Bar",
     tag: "FieldSearchBarFull",
     description: "A search bar with accompanying search icon and clear button.",
-    category: COMPONENT_TYPES.input,
+    category: COMPONENT_TYPES.deprecated,
     stylesPanelSections: BLOCK_STYLES_SECTIONS,
     preview_image_url: "{CLOUDINARY_URL}/Field_SearchBar_Full.png",
     supports_list_render: false,

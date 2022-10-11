@@ -11,7 +11,7 @@ export const SEED_DATA = {
   name: "Circle Image",
   tag: "CircleImage",
   description: "A circle image",
-  category: COMPONENT_TYPES.media,
+  category: COMPONENT_TYPES.deprecated,
   stylesPanelSections: BLOCK_STYLES_SECTIONS,
   props: {
     source: createImageProp(),

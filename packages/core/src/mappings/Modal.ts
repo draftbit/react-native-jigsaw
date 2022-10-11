@@ -11,7 +11,7 @@ export const SEED_DATA = {
   name: "Modal",
   tag: "Modal",
   description: "A basic Modal Component",
-  category: COMPONENT_TYPES.container,
+  category: COMPONENT_TYPES.layout,
   stylesPanelSections: [StylesPanelSections.NoStyles],
   props: {
     animationType: {

@@ -4,7 +4,7 @@ export const SEED_DATA = {
   name: "Action Sheet",
   tag: "ActionSheet",
   description: "Action Sheet container",
-  category: COMPONENT_TYPES.container,
+  category: COMPONENT_TYPES.actionsheet,
   props: {
     visible: createStaticBoolProp({
       group: GROUPS.data,

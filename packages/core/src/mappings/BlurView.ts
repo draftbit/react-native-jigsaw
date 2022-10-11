@@ -13,7 +13,7 @@ export const SEED_DATA = {
   doc_link: "https://docs.expo.io/versions/latest/sdk/blur-view/",
   code_link:
     "https://github.com/expo/expo/blob/master/packages/expo/src/effects/BlurView.d.ts",
-  category: COMPONENT_TYPES.layout,
+  category: COMPONENT_TYPES.view,
   stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   layout: {
     flexGrow: 1,

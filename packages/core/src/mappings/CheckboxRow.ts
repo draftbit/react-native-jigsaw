@@ -15,7 +15,7 @@ import {
 export const SEED_DATA = {
   name: "Checkbox Row",
   tag: "CheckboxRow",
-  category: COMPONENT_TYPES.input,
+  category: COMPONENT_TYPES.control,
   stylesPanelSections: [
     StylesPanelSections.Typography,
     StylesPanelSections.Margins,

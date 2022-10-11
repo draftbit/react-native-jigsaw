@@ -10,7 +10,7 @@ export const SEED_DATA = {
   name: "Keyboard Avoiding View",
   tag: "KeyboardAvoidingView",
   description: "View that moves out of the way of the virtual keyboard. ",
-  category: COMPONENT_TYPES.layout,
+  category: COMPONENT_TYPES.view,
   stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   props: {
     enabled: {

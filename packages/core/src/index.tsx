@@ -5,7 +5,7 @@ export { default as DefaultTheme } from "./styles/DefaultTheme";
 
 export { Link } from "./components/Text";
 export { default as Banner } from "./components/Banner";
-export { ButtonSolid, ButtonOutline } from "./components/Button";
+export { Button, ButtonSolid, ButtonOutline } from "./components/Button";
 export { default as Avatar } from "./components/CircleImage";
 export { default as AvatarEdit } from "./components/AvatarEdit";
 export { default as Card } from "./components/Card";
@@ -52,7 +52,6 @@ export {
 } from "./components/RadioButton/index";
 
 /* Deprecated: Fix or Delete!  */
-export { default as Button } from "./components/DeprecatedButton";
 export { default as CardBlock } from "./components/CardBlock";
 export { default as CardContainer } from "./components/CardContainer";
 export { default as CardContainerRating } from "./components/CardContainerRating";

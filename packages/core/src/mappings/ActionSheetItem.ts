@@ -11,7 +11,7 @@ export const SEED_DATA = {
   name: "Action Sheet Item",
   tag: "ActionSheetItem",
   description: "Action Sheet item",
-  category: COMPONENT_TYPES.button,
+  category: COMPONENT_TYPES.actionsheet,
   triggers: [Triggers.OnPress],
   layout: {
     textAlign: "center",

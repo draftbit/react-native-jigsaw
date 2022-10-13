@@ -10,7 +10,7 @@ import {
 export const SEED_DATA = {
   name: "Banner",
   tag: "Banner",
-  category: COMPONENT_TYPES.button,
+  category: COMPONENT_TYPES.deprecated,
   props: {
     icon: createIconProp({
       defaultValue: null,

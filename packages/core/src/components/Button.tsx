@@ -139,6 +139,9 @@ const Solid = ({ style, theme, ...props }: Props): JSX.Element => {
 const ButtonSolid: any = withTheme(Solid);
 export { ButtonSolid };
 
+const Button: any = withTheme(Solid);
+export { Button };
+
 const Outline = ({ style, theme, ...props }: Props): JSX.Element => {
   return (
     <Base

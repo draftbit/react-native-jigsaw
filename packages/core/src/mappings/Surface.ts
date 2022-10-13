@@ -8,7 +8,7 @@ export const SEED_DATA = {
   name: "Surface",
   tag: "Surface",
   description: "An elevated container",
-  category: COMPONENT_TYPES.layout,
+  category: COMPONENT_TYPES.container,
   stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   layout: {
     minHeight: 40,

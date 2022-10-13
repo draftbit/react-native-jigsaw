@@ -8,7 +8,7 @@ export const SEED_DATA = {
   name: "Scroll View",
   tag: "ScrollView",
   description: "A basic ScrollView component",
-  category: COMPONENT_TYPES.layout,
+  category: COMPONENT_TYPES.view,
   stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   layout: {},
   props: {

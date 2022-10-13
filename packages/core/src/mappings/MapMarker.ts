@@ -12,7 +12,7 @@ export const SEED_DATA = {
   tag: "MapMarker",
   packageName: "@draftbit/maps",
   description: "A marker to show inside map view",
-  category: COMPONENT_TYPES.media,
+  category: COMPONENT_TYPES.map,
   layout: {},
   props: {
     latitude: createNumberProp({

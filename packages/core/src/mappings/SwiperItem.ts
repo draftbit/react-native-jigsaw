@@ -4,6 +4,6 @@ export const SEED_DATA = {
   name: "Swiper Item",
   tag: "SwiperItem",
   description: "Swiper item",
-  category: COMPONENT_TYPES.button,
+  category: COMPONENT_TYPES.swiper,
   props: {},
 };

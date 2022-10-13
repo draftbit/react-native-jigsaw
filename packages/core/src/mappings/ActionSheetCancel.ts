@@ -11,7 +11,7 @@ export const SEED_DATA = {
   name: "Action Sheet Cancel",
   tag: "ActionSheetCancel",
   description: "Action Sheet cancel",
-  category: COMPONENT_TYPES.button,
+  category: COMPONENT_TYPES.actionsheet,
   triggers: [Triggers.OnPress],
   props: {
     onPress: createActionProp(),

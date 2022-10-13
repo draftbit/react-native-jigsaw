@@ -11,7 +11,7 @@ export const SEED_DATA = {
   name: "Swiper",
   tag: "Swiper",
   description: "Swiper container",
-  category: COMPONENT_TYPES.container,
+  category: COMPONENT_TYPES.swiper,
   layout: {
     height: 300,
     width: "100%",

@@ -13,7 +13,7 @@ import {
 export const SEED_DATA = {
   name: "Radio Button",
   tag: "RadioButton",
-  category: COMPONENT_TYPES.input,
+  category: COMPONENT_TYPES.control,
   stylesPanelSections: BLOCK_STYLES_SECTIONS,
   triggers: [Triggers.OnPress],
   props: {

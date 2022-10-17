@@ -42,6 +42,7 @@
     "@date-io/date-fns": "^1.3.13",
     "@draftbit/react-theme-provider": "^2.1.1",
     "@draftbit/types": "^46.4.3",
+    "@expo/html-elements": "^0.2.0",
     "@material-ui/core": "^4.11.0",
     "@material-ui/pickers": "^3.2.10",
     "@react-native-community/slider": "4.2.3",

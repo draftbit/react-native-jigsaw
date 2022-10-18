@@ -10,10 +10,8 @@ export const SEED_DATA = {
   name: "Activity Indicator",
   tag: "ActivityIndicator",
   description: "Displays a circular loading indicator.",
-  doc_link:
-    "https://docs.expo.io/versions/latest/react-native/activityindicator/",
-  code_link:
-    "https://github.com/expo/expo/blob/master/ios/versioned-react-native/ABI32_0_0/Libraries/Components/ActivityIndicator/ActivityIndicator.js",
+  doc_link: "https://www.npmjs.com/package/@expo/html-elements",
+  code_link: "https://github.com/expo/expo/tree/master/packages/html-elements",
   category: COMPONENT_TYPES.utility,
   stylesPanelSections: [
     StylesPanelSections.Size,

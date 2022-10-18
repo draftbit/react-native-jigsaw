@@ -11,7 +11,8 @@ const SEED_DATA_TRIGGERS = [Triggers.OnValueChange];
 
 const ELEMENT_PROPS = {
   category: COMPONENT_TYPES.element,
-  doc_link: "",
+  doc_link: "https://www.npmjs.com/package/@expo/html-elements",
+  code_link: "https://github.com/expo/expo/tree/master/packages/html-elements",
   stylesPanelSections: BLOCK_STYLES_SECTIONS,
   layout: {
     margin: 0,

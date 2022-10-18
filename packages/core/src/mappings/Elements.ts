@@ -1,6 +1,7 @@
 import {
   BLOCK_STYLES_SECTIONS,
   COMPONENT_TYPES,
+  //   createBoolProp,
   createTextProp,
   FORM_TYPES,
   GROUPS,
@@ -76,21 +77,25 @@ export const SEED_DATA = [
     name: "Paragraph",
     tag: "P",
     ...ELEMENT_PROPS,
-  },
-  {
-    name: "Strong",
-    tag: "Strong",
-    ...ELEMENT_PROPS,
-  },
-  {
-    name: "Strike",
-    tag: "S",
-    ...ELEMENT_PROPS,
-  },
-  {
-    name: "Italic",
-    tag: "I",
-    ...ELEMENT_PROPS,
+    props: {
+      // NOTE - Keeping the props commented until we figure out a way to use this props from draftbit side.
+      // strong: createBoolProp({
+      //     label: "Strong",
+      //     description: "Strong",
+      // }),
+      // strike: createBoolProp({
+      //     label: "Strike",
+      //     description: "Strike through",
+      // }),
+      // italic: createBoolProp({
+      //     label: "Italic",
+      //     description: "Italic Fonts",
+      // }),
+      // bold: createBoolProp({
+      //     label: "Bold",
+      //     description: "Bold",
+      // }),
+    },
   },
   {
     name: "Code",

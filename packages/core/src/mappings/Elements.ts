@@ -11,6 +11,7 @@ const SEED_DATA_TRIGGERS = [Triggers.OnValueChange];
 
 const ELEMENT_PROPS = {
   category: COMPONENT_TYPES.element,
+  doc_link: "",
   stylesPanelSections: BLOCK_STYLES_SECTIONS,
   layout: {
     margin: 0,

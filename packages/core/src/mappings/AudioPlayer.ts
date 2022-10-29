@@ -3,6 +3,9 @@ import {
   COMPONENT_TYPES,
   FORM_TYPES,
   PROP_TYPES,
+  StylesPanelSections,
+  createColorProp,
+  createNumberProp,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -10,7 +13,24 @@ export const SEED_DATA = {
   tag: "AudioPlayer",
   description: "Given a source URL, plays sounds & audio!",
   category: COMPONENT_TYPES.media,
-  layout: {},
+  stylesPanelSections: [
+    StylesPanelSections.Typography,
+    StylesPanelSections.Background,
+    StylesPanelSections.Borders,
+    StylesPanelSections.Size,
+    StylesPanelSections.MarginsAndPaddings,
+    StylesPanelSections.Position,
+  ],
+  layout: {
+    backgroundColor: "#eee",
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 8,
+    paddingBottom: 8,
+    borderRadius: 24,
+    flexDirection: "row",
+    alignItems: "center",
+  },
   props: {
     source: {
       group: GROUPS.data,
@@ -23,5 +43,21 @@ export const SEED_DATA = {
       formType: FORM_TYPES.sourceUrl,
       propType: PROP_TYPES.OBJECT,
     },
+    sliderColor: createColorProp({
+      label: "Thumb Color",
+      defaultValue: "black",
+    }),
+    completedTrackColor: createColorProp({
+      label: "Completed Track Color",
+      defaultValue: "white",
+    }),
+    remainingTrackColor: createColorProp({
+      label: "Remanining Track Color",
+      defaultValue: "#333333",
+    }),
+    trackThumbSize: createNumberProp({
+      label: "Thumb Size",
+      defaultValue: 24,
+    }),
   },
 };

@@ -1,10 +1,25 @@
 import * as React from "react";
-import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
+import {
+  Text,
+  View,
+  TouchableHighlight,
+  StyleProp,
+  StyleSheet,
+} from "react-native";
 import { Audio, AVPlaybackStatus, AVPlaybackSource } from "expo-av";
 import { AntDesign } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
 
 import type { Sound } from "expo-av/build/Audio/Sound";
+
+interface Props {
+  source: AVPlaybackSource;
+  style?: StyleProp<any>;
+  sliderColor?: string;
+  completedTrackColor?: string;
+  remainingTrackColor?: string;
+  trackThumbSize?: number;
+}
 
 function formatDuration(duration: number) {
   if (duration === 0 || duration === 1) return "00:00";
@@ -24,17 +39,58 @@ function formatDuration(duration: number) {
   return renderedMinutes + ":" + renderedSeconds;
 }
 
-export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
+export default function AudioPlayer({
+  source,
+  style = {},
+  sliderColor = "black",
+  completedTrackColor = "black",
+  remainingTrackColor = "black",
+  trackThumbSize = 24,
+}: Props) {
   const [sound, setSound] = React.useState<Sound>();
   const [playing, setPlay] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-  const [durationMillis, setDurationMillis] = React.useState(1);
+  const [durationMillis, setDurationMillis] = React.useState<
+    number | undefined
+  >(1);
   const [isDraggingSlider, setIsDraggingSlider] = React.useState(false);
   const [sliderPositionMillis, setSliderPositionMillis] = React.useState(0);
 
+  const {
+    color,
+    fontFamily,
+    fontWeight,
+    fontSize,
+    lineHeight,
+    letterSpacing,
+    textTransform,
+    textAlign,
+    textDecorationLine,
+    textDecorationColor,
+    textDecorationStyle,
+    ...viewStyles
+  } = StyleSheet.flatten(style || {});
+
+  const textStyles = {
+    color,
+    fontFamily,
+    fontWeight,
+    fontSize,
+    lineHeight,
+    letterSpacing,
+    textTransform,
+    textAlign,
+    textDecorationLine,
+    textDecorationColor,
+    textDecorationStyle,
+  };
+
   const onPlaybackStatusUpdate = async (status: AVPlaybackStatus) => {
     if (status.isLoaded) {
-      if (status.isPlaying && !isDraggingSlider) {
+      if (durationMillis !== status?.durationMillis) {
+        setDurationMillis(status?.durationMillis || 1);
+      }
+      if (status.isPlaying) {
         setSliderPositionMillis(status.positionMillis);
       }
 
@@ -120,19 +176,19 @@ export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
   const iconName = loading ? "loading1" : !sound || !playing ? "play" : "pause";
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, viewStyles]}>
       <TouchableHighlight onPress={playSound} style={{ marginRight: 8 }}>
-        <AntDesign name={iconName} size={24} />
+        <AntDesign name={iconName} size={trackThumbSize} />
       </TouchableHighlight>
-      <Text style={{ marginRight: 8 }}>
-        {formatDuration(sliderPositionMillis || 0)} /{" "}
+      <Text style={{ marginRight: 8, ...textStyles }}>
+        {formatDuration(sliderPositionMillis ?? 0)} /{" "}
         {formatDuration(durationMillis || 0)}
       </Text>
       <Slider
         style={{ flex: 1 }}
-        minimumTrackTintColor="#333"
-        maximumTrackTintColor="#000000"
-        thumbTintColor="black"
+        minimumTrackTintColor={completedTrackColor}
+        maximumTrackTintColor={remainingTrackColor}
+        thumbTintColor={sliderColor}
         minimumValue={0}
         value={sliderPositionMillis}
         maximumValue={durationMillis}
@@ -145,10 +201,6 @@ export default function AudioPlayer({ source }: { source: AVPlaybackSource }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#eee",
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 24,
     flexDirection: "row",
     alignItems: "center",
   },

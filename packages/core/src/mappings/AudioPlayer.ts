@@ -59,5 +59,9 @@ export const SEED_DATA = {
       label: "Thumb Size",
       defaultValue: 24,
     }),
+    playIconColor: createColorProp({
+      label: "Play Icon Color",
+      defaultValue: "black",
+    }),
   },
 };

@@ -9,21 +9,37 @@ export default function AudioPlayerExample() {
       <AudioPlayer
         style={{
           backgroundColor: "#eee",
-          paddingLeft: 16,
-          paddingRight: 16,
+          paddingLeft: 8,
+          paddingRight: 8,
           paddingTop: 8,
           paddingBottom: 8,
           borderRadius: 24,
           marginBottom: 20,
           fontWeight: "bold",
-          height: 80,
+          height: 40,
           width: "80%",
         }}
         source={require("./assets/loop.wav")}
         sliderColor="red"
         completedTrackColor="white"
         remainingTrackColor="#999999"
-        trackThumbSize={18}
+        playSize={18}
+      />
+      <AudioPlayer
+        style={{
+          backgroundColor: "#333",
+          padding: 8,
+          margin: 8,
+          marginBottom: 20,
+          borderRadius: 4,
+          color: "#fff",
+        }}
+        source={require("./assets/loop.wav")}
+        sliderColor="white"
+        completedTrackColor="white"
+        remainingTrackColor="#dedede"
+        playSize={18}
+        playColor="#fff"
       />
       <Text> Remote value </Text>
       <AudioPlayer

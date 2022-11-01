@@ -18,7 +18,8 @@ interface Props {
   sliderColor?: string;
   completedTrackColor?: string;
   remainingTrackColor?: string;
-  trackThumbSize?: number;
+  playSize?: number;
+  playColor?: string;
 }
 
 function formatDuration(duration: number) {
@@ -45,7 +46,8 @@ export default function AudioPlayer({
   sliderColor = "black",
   completedTrackColor = "black",
   remainingTrackColor = "black",
-  trackThumbSize = 24,
+  playSize = 24,
+  playColor = "black",
 }: Props) {
   const [sound, setSound] = React.useState<Sound>();
   const [playing, setPlay] = React.useState(false);
@@ -178,7 +180,7 @@ export default function AudioPlayer({
   return (
     <View style={[styles.container, viewStyles]}>
       <TouchableHighlight onPress={playSound} style={{ marginRight: 8 }}>
-        <AntDesign name={iconName} size={trackThumbSize} />
+        <AntDesign name={iconName} size={playSize} color={playColor} />
       </TouchableHighlight>
       <Text style={{ marginRight: 8, ...textStyles }}>
         {formatDuration(sliderPositionMillis ?? 0)} /{" "}

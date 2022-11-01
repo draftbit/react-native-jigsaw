@@ -52,7 +52,7 @@ export const SEED_DATA = {
       defaultValue: "white",
     }),
     remainingTrackColor: createColorProp({
-      label: "Remanining Track Color",
+      label: "Remaining Track Color",
       defaultValue: "#333333",
     }),
     trackThumbSize: createNumberProp({

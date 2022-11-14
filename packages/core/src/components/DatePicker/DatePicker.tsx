@@ -23,6 +23,7 @@ import DateTimePicker from "./DatePickerComponent";
 
 import type { Theme } from "../../styles/DefaultTheme";
 import type { IconSlot } from "../../interfaces/Icon";
+import { extractStyles } from "../../utilities";
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
 
@@ -347,10 +348,13 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     ],
   };
 
+  const { textStyles } = extractStyles(style);
+
   const inputStyles = [
     styles.input,
     inputStyle,
     type === "solid" ? { marginHorizontal: 12 } : {},
+    textStyles,
   ];
 
   // const render = (props) => <NativeTextInput {...props} />;

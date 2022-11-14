@@ -109,6 +109,17 @@ function DatePickerExample({ theme }) {
           defaultValue={new Date(DATE_STRING)}
         />
       </Section>
+      <Section title="Custom Styling">
+        <DatePicker
+          label="Date with differnt background and font colors"
+          placeholder="Select a date..."
+          date={date3}
+          type="solid"
+          onDateChange={setDate3}
+          defaultValue={new Date(DATE_STRING)}
+          style={{ color: 'red' }}
+        />
+      </Section>
     </Container>
   );
 }

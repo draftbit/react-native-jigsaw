@@ -48,11 +48,11 @@ export const SEED_DATA = {
       defaultValue: "black",
     }),
     completedTrackColor: createColorProp({
-      label: "Completed Track Color",
+      label: "Completed Track",
       defaultValue: "white",
     }),
     remainingTrackColor: createColorProp({
-      label: "Remaining Track Color",
+      label: "Remaining Track",
       defaultValue: "#333333",
     }),
     trackThumbSize: createNumberProp({
@@ -60,7 +60,7 @@ export const SEED_DATA = {
       defaultValue: 24,
     }),
     playIconColor: createColorProp({
-      label: "Play Icon Color",
+      label: "Play Icon",
       defaultValue: "black",
     }),
   },

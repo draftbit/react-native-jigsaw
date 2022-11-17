@@ -8,7 +8,7 @@ import {
 
 export const SEED_DATA = [
   {
-    name: "TabView",
+    name: "Tab View",
     tag: "TabView",
     category: COMPONENT_TYPES.container,
     layout: {},
@@ -58,7 +58,7 @@ export const SEED_DATA = [
     },
   },
   {
-    name: "TabViewItem",
+    name: "Tab View Item",
     tag: "TabViewItem",
     category: COMPONENT_TYPES.container,
     layout: {},

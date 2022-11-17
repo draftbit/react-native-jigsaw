@@ -5,6 +5,7 @@ import {
   FIELD_NAME,
   GROUPS,
   Triggers,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 const SEED_DATA_PROPS = {
@@ -150,6 +151,14 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.input,
     layout: null,
     triggers: [Triggers.OnDateChange],
+    StylesPanelSections: [
+      StylesPanelSections.Background,
+      StylesPanelSections.Borders,
+      StylesPanelSections.MarginsAndPaddings,
+      StylesPanelSections.Position,
+      StylesPanelSections.Size,
+      StylesPanelSections.Typography,
+    ],
     props: {
       ...SEED_DATA_PROPS,
       type: {

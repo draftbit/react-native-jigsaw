@@ -6,7 +6,7 @@ import {
 
 export const SEED_DATA = {
   name: "Bottom Sheet",
-  tag: "BotttomSheet",
+  tag: "BottomSheet",
   category: COMPONENT_TYPES.container,
   stylesPanelSections: [
     StylesPanelSections.Background,

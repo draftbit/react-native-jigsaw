@@ -113,7 +113,6 @@ export const SEED_DATA = [
     ],
     layout: {
       fontSize: 14,
-      fontWeight: "500",
       paddingTop: 16,
       paddingBottom: 16,
       paddingLeft: 8,

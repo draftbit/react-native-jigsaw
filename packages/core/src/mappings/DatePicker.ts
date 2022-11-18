@@ -6,6 +6,8 @@ import {
   GROUPS,
   Triggers,
   StylesPanelSections,
+  createNumberProp,
+  createColorProp,
 } from "@draftbit/types";
 
 const SEED_DATA_PROPS = {
@@ -19,6 +21,12 @@ const SEED_DATA_PROPS = {
     required: true,
     group: GROUPS.data,
   },
+  labelSize: createNumberProp({
+    label: "Label Size"
+  }),
+  labelColor: createColorProp({
+    label: "Label Color"
+  }),
   mode: {
     label: "Mode",
     description: "Choose between date, time and datetime",
@@ -30,6 +38,12 @@ const SEED_DATA_PROPS = {
     options: ["date", "time", "datetime"],
     group: GROUPS.basic,
   },
+  borderColor: createColorProp({
+    label: "Border Color"
+  }),
+  borderColorActive: createColorProp({
+    label: "Border Color"
+  }),
   format: {
     label: "Format",
     description: "Create an output format for the date.",

@@ -111,13 +111,28 @@ function DatePickerExample({ theme }) {
       </Section>
       <Section title="Custom Styling">
         <DatePicker
-          label="Date with differnt background and font colors"
+          label="Date with Border Color and Label Color"
+          labelSize={14}
+          labelColor="red"
           placeholder="Select a date..."
-          date={date3}
+          leftIconMode={"inset"}
+          leftIconName={"add"}
+          onDateChange={setDate}
+          borderColor="blue"
+          borderColorActive="red"
+          style={{ fontFamily: 'monospace' }}
+        />  
+
+        <DatePicker
+          label="Date with Border Color (solid)"
+          placeholder="Select a date..."
           type="solid"
-          onDateChange={setDate3}
-          defaultValue={new Date(DATE_STRING)}
-          style={{ color: 'red' }}
+          leftIconName={"add"}
+          leftIconMode={"outset"}
+          date={date}
+          borderColor="blue"
+          borderColorActive="red"
+          onDateChange={setDate}
         />
       </Section>
     </Container>

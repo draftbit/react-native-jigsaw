@@ -41,6 +41,26 @@ export {
   SwiperItem,
 } from "@draftbit/core";
 
+export {
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  A,
+  P,
+  Code,
+  Pre,
+  Mark,
+  BR,
+  BlockQuote,
+  Time,
+  UL,
+  LI,
+  HR,
+} from "@draftbit/core";
+
 /**
  * Components with Injected Dependencies
  *

@@ -1,10 +1,9 @@
 import {
-  BLOCK_STYLES_SECTIONS,
   COMPONENT_TYPES,
-  //   createBoolProp,
   createTextProp,
   FORM_TYPES,
   GROUPS,
+  StylesPanelSections,
   Triggers,
 } from "@draftbit/types";
 const SEED_DATA_TRIGGERS = [Triggers.OnValueChange];
@@ -13,7 +12,12 @@ const ELEMENT_PROPS = {
   category: COMPONENT_TYPES.element,
   doc_link: "https://www.npmjs.com/package/@expo/html-elements",
   code_link: "https://github.com/expo/expo/tree/master/packages/html-elements",
-  stylesPanelSections: BLOCK_STYLES_SECTIONS,
+  stylesPanelSections: [
+    StylesPanelSections.Typography,
+    StylesPanelSections.LayoutSelectedItem,
+    StylesPanelSections.MarginsAndPaddings,
+    StylesPanelSections.Effects,
+  ],
   layout: {
     margin: 0,
   },
@@ -117,11 +121,6 @@ export const SEED_DATA = [
   {
     name: "BR",
     tag: "BR",
-    ...ELEMENT_PROPS,
-  },
-  {
-    name: "Quote",
-    tag: "Q",
     ...ELEMENT_PROPS,
   },
   {

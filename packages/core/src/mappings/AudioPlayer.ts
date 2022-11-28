@@ -45,15 +45,15 @@ export const SEED_DATA = {
     },
     sliderColor: createColorProp({
       label: "Thumb Color",
-      defaultValue: "black",
+      defaultValue: "strong",
     }),
     completedTrackColor: createColorProp({
       label: "Completed Track Color",
-      defaultValue: "white",
+      defaultValue: "background",
     }),
     remainingTrackColor: createColorProp({
       label: "Remaining Track Color",
-      defaultValue: "#333333",
+      defaultValue: "light",
     }),
     trackThumbSize: createNumberProp({
       label: "Thumb Size",
@@ -61,7 +61,7 @@ export const SEED_DATA = {
     }),
     playIconColor: createColorProp({
       label: "Play Icon Color",
-      defaultValue: "black",
+      defaultValue: "strong",
     }),
   },
 };

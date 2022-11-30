@@ -61,7 +61,6 @@ class MapView extends React.Component<
       (prevProps.latitude !== this.props.latitude ||
         prevProps.longitude !== this.props.longitude)
     ) {
-      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         lat: this.props.latitude,
         lng: this.props.longitude,

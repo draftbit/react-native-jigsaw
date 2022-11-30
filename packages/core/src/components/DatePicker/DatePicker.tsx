@@ -222,8 +222,11 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
 
   const MINIMIZED_LABEL_Y_OFFSET = -(typography.caption.lineHeight + 4);
   const OUTLINE_MINIMIZED_LABEL_Y_OFFSET = -(16 * 0.5 + 4);
-  const MAXIMIZED_LABEL_FONT_SIZE = textStyles?.fontSize || typography.subtitle1.fontSize;
-  const MINIMIZED_LABEL_FONT_SIZE = labelSize ? labelSize : typography.caption.fontSize;
+  const MAXIMIZED_LABEL_FONT_SIZE =
+    textStyles?.fontSize || typography.subtitle1.fontSize;
+  const MINIMIZED_LABEL_FONT_SIZE = labelSize
+    ? labelSize
+    : typography.caption.fontSize;
 
   const hasActiveOutline = focused;
 

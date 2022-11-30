@@ -22,10 +22,10 @@ const SEED_DATA_PROPS = {
     group: GROUPS.data,
   },
   labelSize: createNumberProp({
-    label: "Label Size"
+    label: "Label Size",
   }),
   labelColor: createColorProp({
-    label: "Label Color"
+    label: "Label Color",
   }),
   mode: {
     label: "Mode",
@@ -39,10 +39,10 @@ const SEED_DATA_PROPS = {
     group: GROUPS.basic,
   },
   borderColor: createColorProp({
-    label: "Border Color"
+    label: "Border Color",
   }),
   borderColorActive: createColorProp({
-    label: "Border Color"
+    label: "Border Color",
   }),
   format: {
     label: "Format",

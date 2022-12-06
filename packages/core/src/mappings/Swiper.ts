@@ -17,9 +17,7 @@ export const SEED_DATA = {
     height: 300,
     width: "100%",
   },
-  triggers: [
-    Triggers.OnIndexChanged,
-  ],
+  triggers: [Triggers.OnIndexChanged],
   props: {
     from: createNumberProp({
       group: GROUPS.basic,

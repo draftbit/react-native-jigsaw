@@ -72,6 +72,7 @@ jobs:
             --no-verify-access
 
       - name: Release to Snack
+        if: github.event_name != 'pull_request'
         run: |
           export version=$(jq -r .version package.json);
           sleep 10

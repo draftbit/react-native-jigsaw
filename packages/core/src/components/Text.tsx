@@ -10,8 +10,12 @@ type Props = {
 class Text extends React.Component<Props> {
   _root: any;
 
+  state: any = {
+    nativeProps: {},
+  };
+
   setNativeProps(args: TextProps) {
-    return this._root && this._root.setNativeProps(args);
+    this.state.nativeProps = args || {};
   }
 
   render() {
@@ -21,6 +25,7 @@ class Text extends React.Component<Props> {
     return (
       <NativeText
         {...rest}
+        {...this.state.nativeProps}
         ref={(c) => {
           this._root = c;
         }}

@@ -70,8 +70,8 @@ jobs:
             --ignore-scripts \
             --yes \
             --no-verify-access
-            
-      - name: Release to Snack (Production)
+
+      - name: Release to Snack - Main
         if: github.event_name != 'pull_request'
         run: |
           export version=$(jq -r .version package.json);
@@ -81,7 +81,7 @@ jobs:
           curl "https://snackager.expo.io/bundle/@draftbit/maps@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
         working-directory: packages/ui
 
-        - name: Release to Snack (Testing)
+        - name: Release to Snack - PRs
         if: github.event_name == 'pull_request'
         run: |
           expo version=$(npm view @draftbit/ui dist-tags.next);
@@ -99,7 +99,6 @@ jobs:
           curl "https://snackager.expo.io/bundle/@draftbit/maps@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
           sleep 5
         working-directory: packages/ui
-
 
       - name: Add comment to pull request
         if: github.event_name == 'pull_request'

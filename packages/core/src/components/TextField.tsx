@@ -52,6 +52,7 @@ export type Props = {
   IconSlot;
 
 interface State {
+  nativeProps: any;
   labeled: Animated.Value;
   focused?: boolean;
   placeholder?: string | undefined;
@@ -73,6 +74,7 @@ class TextField extends React.Component<Props, State> {
   }
 
   state: State = {
+    nativeProps: {},
     labeled: new Animated.Value(this.props.value || this.props.error ? 0 : 1),
     focused: false,
     placeholder: this.props.error ? this.props.placeholder : "",
@@ -207,7 +209,10 @@ class TextField extends React.Component<Props, State> {
    * @internal
    */
   setNativeProps(args: Props) {
-    return this._root && this._root.setNativeProps(args);
+    this.setState((state) => ({
+      ...state,
+      nativeState: args || {},
+    }));
   }
 
   isFocused() {
@@ -566,6 +571,7 @@ class TextField extends React.Component<Props, State> {
             underlineColorAndroid: "transparent",
             style: inputStyles,
             ...rest,
+            ...this.state.nativeProps,
             value: this.state.value,
           })}
         </View>

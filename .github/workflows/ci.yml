@@ -58,7 +58,7 @@ jobs:
           yarn lerna publish from-git \
             --ignore-scripts \
             --yes \
-            --no-verify-access
+            --no-verify-access \
       - name: Release to Snack - Main
         if: github.event_name != 'pull_request'
         run: |

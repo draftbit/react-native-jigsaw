@@ -74,10 +74,15 @@ jobs:
       - name: Release to Snack (PRs)
         if: github.event_name == 'pull_request'
         run: |
+          # Release to snack so available to test
+          # This hits Snack twice because it commonly times out the first time
           export newversion=$(npm view @draftbit/ui dist-tags.next);
           sleep 10
           curl "https://snackager.expo.io/bundle/@draftbit/ui@"$newversion"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
+          curl "https://snackager.expo.io/bundle/@draftbit/ui@"$newversion"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
           curl "https://snackager.expo.io/bundle/@draftbit/core@"$newversion"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
+          curl "https://snackager.expo.io/bundle/@draftbit/core@"$newversion"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
+          curl "https://snackager.expo.io/bundle/@draftbit/maps@"$newversion"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
           curl "https://snackager.expo.io/bundle/@draftbit/maps@"$newversion"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
         working-directory: packages/ui
 
@@ -85,10 +90,15 @@ jobs:
       - name: Release to Snack
         if: github.event_name != 'pull_request'
         run: |
+          # Release to snack
+          # This hits Snack twice because it commonly times out the first time
           export version=$(jq -r .version package.json);
           sleep 10
           curl "https://snackager.expo.io/bundle/@draftbit/ui@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
+          curl "https://snackager.expo.io/bundle/@draftbit/ui@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
           curl "https://snackager.expo.io/bundle/@draftbit/core@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
+          curl "https://snackager.expo.io/bundle/@draftbit/core@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
+          curl "https://snackager.expo.io/bundle/@draftbit/maps@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
           curl "https://snackager.expo.io/bundle/@draftbit/maps@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
         working-directory: packages/ui
 

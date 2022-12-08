@@ -121,7 +121,7 @@ export const SEED_DATA = [
           "Can automatically capitalize sentences, words, and characters (Default: none).",
         editable: true,
         required: false,
-        defaultValue: null,
+        defaultValue: "none",
         options: ["none", "sentences", "words", "characters"],
         formType: FORM_TYPES.flatArray,
         propType: PROP_TYPES.STRING,

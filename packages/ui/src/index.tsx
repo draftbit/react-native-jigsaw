@@ -38,6 +38,7 @@ export {
 import {
   injectIcon,
   Button as BaseButton,
+  Banner as BaseBanner,
   Link as BaseLink,
   Checkbox as BaseCheckbox,
   CheckboxRow as BaseCheckboxRow,
@@ -54,6 +55,7 @@ import {
   AccordionItem as BaseAccordionItem,
 } from "@draftbit/core";
 
+export const Banner = injectIcon(BaseBanner, Icon);
 export const Button = injectIcon(BaseButton, Icon);
 export const Checkbox = injectIcon(BaseCheckbox, Icon);
 export const CheckboxRow = injectIcon(BaseCheckboxRow, Icon);

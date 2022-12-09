@@ -5,6 +5,7 @@ export { default as DefaultTheme } from "./styles/DefaultTheme";
 
 // BASIC
 export { default as ScreenContainer } from "./components/ScreenContainer";
+export { default as Banner } from "./components/Banner";
 
 // BUTTONS
 export { Button } from "./components/Button";

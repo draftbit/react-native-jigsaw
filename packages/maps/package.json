@@ -50,6 +50,9 @@
     "targets": [
       "commonjs",
       "module",
+      {
+        "sourceMaps": false
+      },
       [
         "typescript",
         {

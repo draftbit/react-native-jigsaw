@@ -8,7 +8,6 @@ export { default as Banner } from "./components/Banner";
 export { Button, ButtonSolid, ButtonOutline } from "./components/Button";
 export { default as Avatar } from "./components/CircleImage";
 export { default as AvatarEdit } from "./components/AvatarEdit";
-export { default as Card } from "./components/Card";
 export { default as Carousel } from "./components/Carousel";
 export { Checkbox, CheckboxGroup, CheckboxRow } from "./components/Checkbox";
 export { default as CircleImage } from "./components/CircleImage";
@@ -51,11 +50,6 @@ export {
   RadioButtonFieldGroup,
 } from "./components/RadioButton/index";
 
-/* Deprecated: Fix or Delete!  */
-export { default as CardBlock } from "./components/CardBlock";
-export { default as CardContainer } from "./components/CardContainer";
-export { default as CardContainerRating } from "./components/CardContainerRating";
-export { default as CardInline } from "./components/CardInline";
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
 export { default as HeaderLarge } from "./components/HeaderLarge";
 export { default as HeaderMedium } from "./components/HeaderMedium";
@@ -63,9 +57,6 @@ export { default as HeaderOverline } from "./components/HeaderOverline";
 export { default as Picker } from "./components/Picker/Picker";
 export { default as ProgressBar } from "./components/ProgressBar";
 export { default as ProgressCircle } from "./components/ProgressCircle";
-export { default as RowBodyIcon } from "./components/RowBodyIcon";
-export { default as RowHeadlineImageCaption } from "./components/RowHeadlineImageCaption";
-export { default as RowHeadlineImageIcon } from "./components/RowHeadlineImageIcon";
 export { default as Slider } from "./components/Slider";
 export { default as Stepper } from "./components/Stepper";
 export { useAuthState } from "./components/useAuthState";

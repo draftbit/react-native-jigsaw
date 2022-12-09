@@ -111,7 +111,7 @@ function Carousel({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#eee",
+    backgroundColor: "#eeeeee",
   },
   pager: {
     position: "absolute",
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 20,
-    backgroundColor: "#000",
+    backgroundColor: "#000000",
   },
 });
 

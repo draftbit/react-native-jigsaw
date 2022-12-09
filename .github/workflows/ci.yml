@@ -21,15 +21,15 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       # With lerna/workspaces, the cache is at the monorepo level.
-      - name: Restore node_modules cache
-        uses: actions/cache@v3
-        id: yarn-cache # use this to check for `cache-hit`
-        with:
-          path: "node_modules"
-          key: node_modules-${{ hashFiles('yarn.lock') }}
+      #- name: Restore node_modules cache
+      #  uses: actions/cache@v3
+      #  id: yarn-cache # use this to check for `cache-hit`
+      #  with:
+      #    path: "node_modules"
+      #    key: node_modules-${{ hashFiles('yarn.lock') }}
 
       - name: Install Dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+      #  if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile
 
       - name: Type Check

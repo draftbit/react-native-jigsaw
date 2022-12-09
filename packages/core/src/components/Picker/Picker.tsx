@@ -180,14 +180,14 @@ const Picker: React.FC<PickerProps> = ({
     ...{
       ...(type === "solid"
         ? {
-          borderTopLeftRadius: 5,
-          borderTopRightRadius: 5,
-          borderBottomRightRadius: 5,
-          borderBottomLeftRadius: 5,
-          borderTopWidth: 1,
-          borderRightWidth: 1,
-          borderLeftWidth: 1,
-        }
+            borderTopLeftRadius: 5,
+            borderTopRightRadius: 5,
+            borderBottomRightRadius: 5,
+            borderBottomLeftRadius: 5,
+            borderTopWidth: 1,
+            borderRightWidth: 1,
+            borderLeftWidth: 1,
+          }
         : {}),
       borderBottomWidth: 1,
       borderColor: unstyledColor,

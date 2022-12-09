@@ -14,6 +14,7 @@ export {
   Spacer,
   Square,
   Stack,
+  Surface,
   SVG,
   Switch,
   SwitchRow,

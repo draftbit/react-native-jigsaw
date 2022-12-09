@@ -50,6 +50,7 @@ export { Swiper, SwiperItem } from "./components/Swiper";
 
 // CONTAINERS
 export { AccordionGroup, AccordionItem } from "./components/Accordion";
+export { default as Surface } from "./components/Surface";
 
 // ACTIONSHEET
 export {

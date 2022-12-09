@@ -180,14 +180,14 @@ const Picker: React.FC<PickerProps> = ({
     ...{
       ...(type === "solid"
         ? {
-            borderTopLeftRadius: 5,
-            borderTopRightRadius: 5,
-            borderBottomRightRadius: 5,
-            borderBottomLeftRadius: 5,
-            borderTopWidth: 1,
-            borderRightWidth: 1,
-            borderLeftWidth: 1,
-          }
+          borderTopLeftRadius: 5,
+          borderTopRightRadius: 5,
+          borderBottomRightRadius: 5,
+          borderBottomLeftRadius: 5,
+          borderTopWidth: 1,
+          borderRightWidth: 1,
+          borderLeftWidth: 1,
+        }
         : {}),
       borderBottomWidth: 1,
       borderColor: unstyledColor,
@@ -406,8 +406,6 @@ const Picker: React.FC<PickerProps> = ({
   );
 };
 
-export default withTheme(Picker);
-
 const styles = StyleSheet.create({
   marginsContainer: {
     alignSelf: "stretch",
@@ -478,3 +476,5 @@ const styles = StyleSheet.create({
     maxHeight: deviceHeight,
   },
 });
+
+export default withTheme(Picker);

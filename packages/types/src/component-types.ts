@@ -257,16 +257,16 @@ export const COMPONENT_TYPES = {
   header: "header",
   deprecated: "deprecated",
   /* NativeBase */
-  NBDataDisplay: "Data Display (NB)",
-  NBDisclosure: "Disclosure (NB)",
-  NBFeedback: "Feedback (NB)",
-  NBForms: "Forms (NB)",
-  NBLayout: "Layout (NB)",
-  NBMedia: "Media (NB)",
-  NBOther: "Other (NB)",
-  NBPrimitives: "Primitives (NB)",
-  NBTransition: "Transition (NB)",
-  NBTypography: "Typography (NB)",
+  NBDataDisplay: "NBDataDisplay",
+  NBDisclosure: "NBDisclosure",
+  NBFeedback: "NBFeedback",
+  NBForms: "NBForms",
+  NBLayout: "NBLayout",
+  NBMedia: "NBMedia",
+  NBOther: "NBOther",
+  NBPrimitives: "NBPrimitives",
+  NBTransition: "NBTransition",
+  NBTypography: "NBTypography",
 };
 
 const ELEVATION_TYPE = {

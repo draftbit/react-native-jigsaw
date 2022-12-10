@@ -8,4 +8,10 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.NBLayout,
   stylesPanelSections: NB_LAYOUT_STYLES_SECTIONS,
   packageName: "native-base",
+  layout: {},
+  props: {
+    bgColor: createColorProp({
+      label: "Open text color",
+    }),
+  },
 };

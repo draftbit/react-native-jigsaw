@@ -45,7 +45,7 @@ import {
   CheckboxRow as BaseCheckboxRow,
   DatePicker as BaseDatePicker,
   IconButton as BaseIconButton,
-  Picker as BasePicker,
+  // Picker as BasePicker,
   StarRating as BaseStarRating,
   TextField as BaseTextField,
   RadioButton as BaseRadioButton,
@@ -63,7 +63,7 @@ export const CheckboxRow = injectIcon(BaseCheckboxRow, Icon);
 export const DatePicker = injectIcon(BaseDatePicker, Icon);
 export const IconButton = injectIcon(BaseIconButton, Icon);
 export const Link = injectIcon(BaseLink, Icon);
-export const Picker = injectIcon(BasePicker, Icon);
+// export const Picker = injectIcon(BasePicker, Icon);
 export const RadioButton = injectIcon(BaseRadioButton, Icon);
 export const RadioButtonRow = injectIcon(BaseRadioButtonRow, Icon);
 export const StarRating = injectIcon(BaseStarRating, Icon);

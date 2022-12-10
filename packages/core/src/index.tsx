@@ -17,7 +17,9 @@ export { default as Touchable } from "./components/Touchable";
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
 export { default as NumberInput } from "./components/NumberInput";
 export { default as TextField } from "./components/TextField";
+/* Temporarily Taking Out Picker
 export { default as Picker } from "./components/Picker/Picker";
+*/
 
 // CONTROLS
 export { Checkbox, CheckboxGroup, CheckboxRow } from "./components/Checkbox";

@@ -13,7 +13,7 @@ type Props = {
   max: number;
   value?: number;
   defaultValue?: number;
-  style?: StyleProp<ViewStyle|TextStyle>;
+  style?: StyleProp<ViewStyle | TextStyle>;
   iconSize: number;
   iconColor?: string;
   onChange?: (value: number) => void;
@@ -79,7 +79,7 @@ const Stepper: FC<Props> = ({
             color: colors.medium,
             marginHorizontal: 8,
           },
-          textStyles
+          textStyles,
         ]}
       >
         {value}

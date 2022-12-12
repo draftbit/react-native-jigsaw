@@ -37,6 +37,7 @@ function StepperExample({ theme }) {
           onChange={(v) => setValue3(v)}
           min={0}
           max={10}
+          style={{fontSize: 24, color: theme.colors.primary}}
         />
       </Section>
     </Container>

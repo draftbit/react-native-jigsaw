@@ -48,6 +48,7 @@ export const BLOCK_STYLES_SECTIONS = [
   StylesPanelSections.Margins,
   StylesPanelSections.Position,
   StylesPanelSections.Effects,
+  StylesPanelSections.Typography
 ];
 
 export const PROP_TYPES = {

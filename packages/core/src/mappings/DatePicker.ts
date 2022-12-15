@@ -52,7 +52,7 @@ const SEED_DATA_PROPS = {
     formType: FORM_TYPES.string,
     propType: PROP_TYPES.STRING,
     defaultValue: null,
-    group: GROUPS.basic,
+    group: GROUPS.data,
   },
   assistiveText: {
     label: "Assistive text",
@@ -62,7 +62,7 @@ const SEED_DATA_PROPS = {
     defaultValue: null,
     editable: true,
     required: false,
-    group: GROUPS.basic,
+    group: GROUPS.data,
   },
   // locale: {
   //   label: "Locale",
@@ -105,7 +105,7 @@ const SEED_DATA_PROPS = {
     defaultValue: false,
     editable: true,
     required: false,
-    group: GROUPS.basic,
+    group: GROUPS.data,
   },
   // error: {
   //   label: "Error",
@@ -166,12 +166,12 @@ export const SEED_DATA = [
     layout: null,
     triggers: [Triggers.OnDateChange],
     StylesPanelSections: [
+      StylesPanelSections.Typography,
       StylesPanelSections.Background,
       StylesPanelSections.Borders,
       StylesPanelSections.MarginsAndPaddings,
       StylesPanelSections.Position,
       StylesPanelSections.Size,
-      StylesPanelSections.Typography,
     ],
     props: {
       ...SEED_DATA_PROPS,

@@ -273,6 +273,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
       borderTopRightRadius: roundness,
       paddingBottom: 12,
       marginTop: 16,
+      backgroundColor,
     };
   } else {
     containerStyle = {
@@ -375,13 +376,11 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     <View style={[styles.container, style]}>
       <Touchable disabled={disabled} onPress={toggleVisibility}>
         <View pointerEvents="none">
-          <View style={[styles.container, style]}>
+          <View style={[styles.container]}>
             {leftIconName && leftIconMode === "outset" ? (
               <Icon {...leftIconProps} style={leftIconStyle} />
             ) : null}
-            <View
-              style={[containerStyle, style ? { height: style.height } : {}]}
-            >
+            <View style={[containerStyle, style]}>
               {type === "underline" ? (
                 // When type === 'flat', render an underline
                 <Animated.View

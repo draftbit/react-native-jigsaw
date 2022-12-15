@@ -12,7 +12,6 @@ export { default as Card } from "./components/Card";
 export { default as Carousel } from "./components/Carousel";
 export { Checkbox, CheckboxGroup, CheckboxRow } from "./components/Checkbox";
 export { default as CircleImage } from "./components/CircleImage";
-export { default as Container } from "./components/Container";
 export { default as Divider } from "./components/Divider";
 export { default as FAB } from "./components/FAB";
 export { default as FieldSearchBarFull } from "./components/FieldSearchBarFull";

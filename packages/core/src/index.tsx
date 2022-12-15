@@ -50,8 +50,6 @@ export {
   RadioButtonFieldGroup,
 } from "./components/RadioButton/index";
 
-export * from "@expo/html-elements";
-
 /* Deprecated: Fix or Delete!  */
 export { default as CardBlock } from "./components/CardBlock";
 export { default as CardContainer } from "./components/CardContainer";

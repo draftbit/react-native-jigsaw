@@ -22,7 +22,11 @@ const SEED_DATA_PROPS = {
     group: GROUPS.data,
   },
   labelSize: createNumberProp({
-    label: "Label Size",
+    label: "Label Font Size",
+    group: GROUPS.basic,
+    description: "Label font size",
+    editable: true,
+    defaultValue: null,
   }),
   labelColor: createColorProp({
     label: "Label Color",

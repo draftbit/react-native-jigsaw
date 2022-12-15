@@ -39,10 +39,10 @@ const SEED_DATA_PROPS = {
     group: GROUPS.basic,
   },
   borderColor: createColorProp({
-    label: "Border Color",
+    label: "Default Border Color",
   }),
   borderColorActive: createColorProp({
-    label: "Border Color",
+    label: "Active Border Color",
   }),
   format: {
     label: "Format",

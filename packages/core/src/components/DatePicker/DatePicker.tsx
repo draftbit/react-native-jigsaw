@@ -23,6 +23,7 @@ import DateTimePicker from "./DatePickerComponent";
 
 import type { Theme } from "../../styles/DefaultTheme";
 import type { IconSlot } from "../../interfaces/Icon";
+import { extractStyles } from "../../utilities";
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
 
@@ -47,10 +48,14 @@ type Props = {
   mode?: "date" | "time" | "datetime";
   type?: "solid" | "underline";
   label?: string;
+  labelSize?: number;
+  labelColor: string;
   placeholder?: string;
   leftIconName?: string;
   leftIconMode?: "outset" | "inset";
   rightIconName?: string;
+  borderColor?: string;
+  borderColorActive?: string;
 } & IconSlot &
   TextInputProps;
 
@@ -84,7 +89,11 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   rightIconName,
   leftIconMode = "inset",
   label,
+  labelSize,
+  labelColor,
   placeholder,
+  borderColor: inputBorderColor,
+  borderColorActive: inputBorderColorActive,
   ...props
 }) => {
   const [value, setValue] = React.useState<any>(date || defaultValue);
@@ -105,6 +114,8 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     measured: Boolean;
     width: number;
   }>({ measured: false, width: 0 });
+
+  const { textStyles } = extractStyles(style);
 
   const getValidDate = (): Date => {
     if (!value) {
@@ -211,8 +222,11 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
 
   const MINIMIZED_LABEL_Y_OFFSET = -(typography.caption.lineHeight + 4);
   const OUTLINE_MINIMIZED_LABEL_Y_OFFSET = -(16 * 0.5 + 4);
-  const MAXIMIZED_LABEL_FONT_SIZE = typography.subtitle1.fontSize;
-  const MINIMIZED_LABEL_FONT_SIZE = typography.caption.fontSize;
+  const MAXIMIZED_LABEL_FONT_SIZE =
+    textStyles?.fontSize || typography.subtitle1.fontSize;
+  const MINIMIZED_LABEL_FONT_SIZE = labelSize
+    ? labelSize
+    : typography.caption.fontSize;
 
   const hasActiveOutline = focused;
 
@@ -233,9 +247,9 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     underlineColor = "transparent";
     backgroundColor = colors.divider;
   } else {
-    activeColor = colors.primary;
-    placeholderColor = borderColor = colors.light;
-    underlineColor = colors.light;
+    activeColor = inputBorderColorActive || colors.primary;
+    placeholderColor = borderColor = inputBorderColor || colors.light;
+    underlineColor = inputBorderColor || colors.light;
     backgroundColor = colors.background;
   }
 
@@ -306,6 +320,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   const labelStyle = {
     ...typography.subtitle1,
     top: type === "solid" ? 16 : 0,
+    fontFamily: textStyles?.fontFamily,
     left:
       leftIconName && leftIconMode === "inset"
         ? ICON_SIZE + (type === "solid" ? 16 : 12)
@@ -351,6 +366,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     styles.input,
     inputStyle,
     type === "solid" ? { marginHorizontal: 12 } : {},
+    textStyles,
   ];
 
   // const render = (props) => <NativeTextInput {...props} />;
@@ -406,7 +422,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
                       type === "solid" ? { paddingHorizontal: 12 } : {},
                       labelStyle,
                       {
-                        color: colors.light,
+                        color: labelColor || colors.light,
                         opacity: labeled.interpolate({
                           inputRange: [0, 1],
                           outputRange: [hasActiveOutline ? 1 : 0, 0],
@@ -423,7 +439,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
                       type === "solid" ? { paddingHorizontal: 12 } : {},
                       labelStyle,
                       {
-                        color: placeholderColor,
+                        color: labelColor || placeholder,
                         opacity: hasActiveOutline ? labeled : 1,
                       },
                     ]}

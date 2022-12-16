@@ -86,6 +86,19 @@ export const SEED_DATA = [
     ...NB_LAYOUT_PROPS,
   },
   {
+    name: "Flex",
+    tag: "Flex",
+    description: "A Box with Flexbox properties. ",
+    ...NB_LAYOUT_PROPS,
+  },
+  {
+    name: "Spacer",
+    tag: "Spacer",
+    description:
+      "An adjustable, empty space that can be used to tune the spacing between child elements within Flex",
+    ...NB_LAYOUT_PROPS,
+  },
+  {
     name: "Row",
     tag: "Row",
     description: "Column aligns items horizontally",

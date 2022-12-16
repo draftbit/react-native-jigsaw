@@ -5,6 +5,7 @@ import {
   PROP_TYPES,
   FIELD_NAME,
   Triggers,
+  createDisabledProp,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -69,6 +70,17 @@ export const SEED_DATA = {
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
     },
+    blurOnSubmit: {
+      group: GROUPS.advanced,
+      label: "Blur On Submit",
+      description: "If true, the text field will blur when submitted. ",
+      editable: true,
+      required: false,
+      defaultValue: null,
+      formType: FORM_TYPES.boolean,
+      propType: PROP_TYPES.BOOLEAN,
+    },
+    disabled: createDisabledProp(),
     caretHidden: {
       group: GROUPS.advanced,
       label: "Hide Caret",
@@ -91,12 +103,12 @@ export const SEED_DATA = {
       propType: PROP_TYPES.BOOLEAN,
     },
     editable: {
-      group: GROUPS.advanced,
-      label: "Editable",
+      group: GROUPS.data,
+      label: "Editable?",
       description: "If false, the text is not editable",
       editable: true,
       required: false,
-      defaultValue: true,
+      defaultValue: null,
       formType: FORM_TYPES.boolean,
       propType: PROP_TYPES.BOOLEAN,
     },

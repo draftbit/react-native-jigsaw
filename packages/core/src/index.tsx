@@ -12,7 +12,6 @@ export { Button, ButtonSolid, ButtonOutline } from "./components/Button";
 export { Link } from "./components/Text";
 export { default as IconButton } from "./components/IconButton";
 export { default as Touchable } from "./components/Touchable";
-export { default as FAB } from "./components/FAB";
 
 // INPUTS
 export { default as DatePicker } from "./components/DatePicker/DatePicker";

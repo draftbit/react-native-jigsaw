@@ -40,8 +40,18 @@
     "source": "src",
     "output": "lib",
     "targets": [
-      "commonjs",
-      "module",
+      [
+        "commonjs",
+        {
+          "sourceMaps": false
+        }
+      ],
+      [
+        "module",
+        {
+          "sourceMaps": false
+        }
+      ],
       [
         "typescript",
         {

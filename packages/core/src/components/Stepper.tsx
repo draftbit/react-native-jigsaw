@@ -6,14 +6,14 @@ import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
 import IconButton from "./IconButton";
+import { extractStyles } from "../utilities";
 
 type Props = {
   min: number;
   max: number;
   value?: number;
   defaultValue?: number;
-  style?: StyleProp<ViewStyle>;
-  typeStyle?: StyleProp<TextStyle>;
+  style?: StyleProp<ViewStyle | TextStyle>;
   iconSize: number;
   iconColor?: string;
   onChange?: (value: number) => void;
@@ -26,13 +26,13 @@ const Stepper: FC<Props> = ({
   value: valueProp,
   defaultValue,
   style,
-  typeStyle,
   iconSize = 24,
   iconColor,
   onChange,
   theme: { colors, typography },
   Icon,
 }) => {
+  const { viewStyles, textStyles } = extractStyles(style);
   const [value, setValue] = useState(defaultValue ?? 0);
 
   const isValidValue = (valueArg: number) => valueArg >= min && valueArg <= max;
@@ -59,7 +59,7 @@ const Stepper: FC<Props> = ({
   }, [valueProp]);
 
   return (
-    <View style={[{ flexDirection: "row" }, style]}>
+    <View style={[{ flexDirection: "row" }, viewStyles]}>
       <IconButton
         Icon={Icon}
         icon="MaterialIcons/remove"
@@ -79,7 +79,7 @@ const Stepper: FC<Props> = ({
             color: colors.medium,
             marginHorizontal: 8,
           },
-          typeStyle,
+          textStyles,
         ]}
       >
         {value}

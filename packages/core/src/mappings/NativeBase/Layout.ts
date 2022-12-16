@@ -1,4 +1,8 @@
-import { COMPONENT_TYPES, StylesPanelSections } from "@draftbit/types";
+import {
+  COMPONENT_TYPES,
+  StylesPanelSections,
+  createTextEnumProp,
+} from "@draftbit/types";
 const NB_LAYOUT_PROPS = {
   category: COMPONENT_TYPES.NBLayout,
   packageName: "native-base",
@@ -17,11 +21,6 @@ const NB_LAYOUT_PROPS = {
   ],
   layout: {},
   triggers: {},
-  props: {
-    bgColor: createColorProp({
-      label: "Open text color",
-    }),
-  },
 };
 
 export const SEED_DATA = [
@@ -31,6 +30,22 @@ export const SEED_DATA = [
     description:
       "AspectRatio controls the size of the undefined dimension of a node or child component.",
     ...NB_LAYOUT_PROPS,
+    ratio: createTextEnumProp({
+      label: "Ratio",
+      description: "The aspect ratio of the container",
+      options: [
+        "1 / 1",
+        "4 / 3",
+        "3 / 2",
+        "16 / 9",
+        "2 / 1",
+        "3 / 4",
+        "2 / 3",
+        "9 / 16",
+        "1 / 2",
+      ],
+      defaultValue: "4/3",
+    }),
   },
   {
     name: "Box",

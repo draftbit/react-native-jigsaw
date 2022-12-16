@@ -6,6 +6,7 @@ import {
   FIELD_NAME,
   Triggers,
   StylesPanelSections,
+  createDisabledProp,
 } from "@draftbit/types";
 
 export const SEED_DATA_PROPS = {

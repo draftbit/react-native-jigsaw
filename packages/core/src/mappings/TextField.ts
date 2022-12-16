@@ -89,11 +89,11 @@ const SEED_DATA_PROPS = {
   },
   editable: {
     group: GROUPS.data,
-    label: "Editable",
+    label: "Editable?",
     description: "If false, the text is not editable",
     editable: true,
     required: false,
-    defaultValue: true,
+    defaultValue: null,
     formType: FORM_TYPES.boolean,
     propType: PROP_TYPES.BOOLEAN,
   },

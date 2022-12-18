@@ -15,6 +15,7 @@ const DatePickerComponent: React.FC<Props & { theme: typeof Theme }> = ({
   value,
   onChange,
   mode,
+  style,
   toggleVisibility,
   isVisible,
   theme,
@@ -49,6 +50,7 @@ const DatePickerComponent: React.FC<Props & { theme: typeof Theme }> = ({
           }}
           onClose={() => toggleVisibility()}
           variant="dialog"
+          style={style}
           TextFieldComponent={() => null}
         />
       </ThemeProvider>

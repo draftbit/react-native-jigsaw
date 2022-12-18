@@ -7,6 +7,7 @@ import { DatePickerComponentProps as Props } from "./DatePickerComponentType";
 const DatePickerComponent: React.FC<React.PropsWithChildren<Props>> = ({
   value,
   onChange,
+  style,
   mode,
   toggleVisibility,
 }) => {
@@ -26,6 +27,7 @@ const DatePickerComponent: React.FC<React.PropsWithChildren<Props>> = ({
     />
   ) : (
     <DateTimePicker
+      style={style}
       value={value}
       mode={mode}
       onChange={onChange}

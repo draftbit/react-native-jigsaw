@@ -368,6 +368,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     inputStyle,
     type === "solid" ? { marginHorizontal: 12 } : {},
     textStyles,
+    style,
   ];
 
   // const render = (props) => <NativeTextInput {...props} />;

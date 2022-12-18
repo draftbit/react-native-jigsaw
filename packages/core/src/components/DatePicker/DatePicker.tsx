@@ -32,7 +32,7 @@ const BLUR_ANIMATION_DURATION = 180;
 const ICON_SIZE = 24;
 
 type Props = {
-  style?: StyleProp<ViewStyle> & { height?: number; backgroundColor?: string };
+  style?: StyleProp<ViewStyle> & { height?: number };
   theme: Theme;
   // initialDate?: string;
   // locale?: string;

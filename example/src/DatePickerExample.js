@@ -20,7 +20,6 @@ function DatePickerExample({ theme }) {
           leftIconMode={"inset"}
           leftIconName={"add"}
           onDateChange={setDate}
-          style={{ backgroundColor: theme.colors.primary }}
         />
 
         <DatePicker
@@ -51,7 +50,6 @@ function DatePickerExample({ theme }) {
           leftIconMode={"outset"}
           date={date}
           onDateChange={setDate}
-          style={{ backgroundColor: theme.colors.medium }}
         />
 
         <DatePicker

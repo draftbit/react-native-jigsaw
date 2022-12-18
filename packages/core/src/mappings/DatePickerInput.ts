@@ -44,10 +44,10 @@ const SEED_DATA_PROPS = {
     description: "Choose between date, time and datetime",
     defaultValue: "date",
     editable: true,
-    required: true,
+    required: false,
     formType: FORM_TYPES.flatArray,
     propType: PROP_TYPES.STRING,
-    options: ["date", "time", "datetime"],
+    options: ["outlined", "flat"],
     group: GROUPS.basic,
   },
   disabled: {
@@ -63,15 +63,15 @@ const SEED_DATA_PROPS = {
   },
   fieldName: {
     ...FIELD_NAME,
-    handlerPropName: "onDateChange",
-    valuePropName: "date",
+    handlerPropName: "onChange",
+    valuePropName: "value",
     defaultValue: "date",
   },
 };
 
 export const SEED_DATA = [
   {
-    name: "Date Picker",
+    name: "Date Picker Input",
     tag: "DatePickerInput",
     packageName: "react-native-paper-dates",
     description: "A component used to select a date from a visual calendar",

@@ -265,6 +265,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     paddingRight: rightIconName ? ICON_SIZE + 16 + 4 : 12,
     ...subtitle1,
     height: lineHeight,
+    ...textStyles,
   };
 
   if (type === "underline") {
@@ -380,7 +381,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
             {leftIconName && leftIconMode === "outset" ? (
               <Icon {...leftIconProps} style={leftIconStyle} />
             ) : null}
-            <View style={[containerStyle, style]}>
+            <View style={[containerStyle]}>
               {type === "underline" ? (
                 // When type === 'flat', render an underline
                 <Animated.View
@@ -468,7 +469,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
                 onFocus={_handleFocus}
                 onBlur={_handleBlur}
                 underlineColorAndroid={"transparent"}
-                style={[inputStyles, style]}
+                style={[inputStyles, textStyles]}
                 {...props}
               />
             </View>

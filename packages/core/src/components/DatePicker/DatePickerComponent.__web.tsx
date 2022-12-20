@@ -50,6 +50,7 @@ const DatePickerComponent: React.FC<Props & { theme: typeof Theme }> = ({
           }}
           onClose={() => toggleVisibility()}
           variant="dialog"
+          inputVariant="outlined"
           style={style}
           TextFieldComponent={() => null}
         />

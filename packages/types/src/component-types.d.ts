@@ -66,6 +66,7 @@ export declare const COMPONENT_TYPES: {
   deprecated: string;
   screen: string;
   codeComponent: string;
+  text: string;
 };
 export declare const createElevationType: (defaultValue: any) => {
   defaultValue: any;

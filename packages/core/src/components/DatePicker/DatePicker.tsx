@@ -23,7 +23,7 @@ import DateTimePicker from "./DatePickerComponent";
 
 import type { Theme } from "../../styles/DefaultTheme";
 import type { IconSlot } from "../../interfaces/Icon";
-import { extractStyles } from "../../utilities";
+import { applyStyles, extractStyles } from "../../utilities";
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
 
@@ -32,7 +32,7 @@ const BLUR_ANIMATION_DURATION = 180;
 const ICON_SIZE = 24;
 
 type Props = {
-  style?: StyleProp<ViewStyle> & { height?: number };
+  style?: StyleProp<ViewStyle | TextStyle>;
   theme: Theme;
   // initialDate?: string;
   // locale?: string;
@@ -265,7 +265,6 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     paddingRight: rightIconName ? ICON_SIZE + 16 + 4 : 12,
     ...subtitle1,
     height: lineHeight,
-    ...textStyles,
   };
 
   if (type === "underline") {
@@ -364,12 +363,14 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     ],
   };
 
-  const inputStyles = [
-    styles.input,
-    inputStyle,
-    type === "solid" ? { marginHorizontal: 12 } : {},
-    textStyles,
-  ];
+  const inputStyles = applyStyles(
+    [
+      styles.input,
+      inputStyle,
+      type === "solid" ? { marginHorizontal: 12 } : {},
+    ],
+    textStyles
+  );
 
   // const render = (props) => <NativeTextInput {...props} />;
 
@@ -469,7 +470,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
                 onFocus={_handleFocus}
                 onBlur={_handleBlur}
                 underlineColorAndroid={"transparent"}
-                style={[inputStyles, textStyles]}
+                style={inputStyles}
                 {...props}
               />
             </View>

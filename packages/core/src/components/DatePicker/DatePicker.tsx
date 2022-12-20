@@ -368,13 +368,12 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     inputStyle,
     type === "solid" ? { marginHorizontal: 12 } : {},
     textStyles,
-    style,
   ];
 
   // const render = (props) => <NativeTextInput {...props} />;
 
   return (
-    <View style={[styles.container, style]}>
+    <View style={[styles.container]}>
       <Touchable disabled={disabled} onPress={toggleVisibility}>
         <View pointerEvents="none">
           <View style={[styles.container]}>
@@ -469,7 +468,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
                 onFocus={_handleFocus}
                 onBlur={_handleBlur}
                 underlineColorAndroid={"transparent"}
-                style={inputStyles}
+                style={[inputStyles, style]}
                 {...props}
               />
             </View>

@@ -16,12 +16,13 @@
   },
   "dependencies": {
     "@draftbit/maps": "^46.4.3",
-    "@draftbit/ui": "^46.4.3",
+    "@draftbit/ui": "46.4.4-f71daf.2",
+    "@expo/dev-server": "0.1.120",
     "@expo/webpack-config": "^0.17.0",
     "@react-navigation/drawer": "^5.7.7",
     "@react-navigation/native": "^5.4.2",
     "@shopify/flash-list": "1.2.0",
-    "expo": "~46.0.7",
+    "expo": "^46.0.7",
     "expo-app-loading": "~2.1.0",
     "expo-font": "~10.2.0",
     "expo-status-bar": "~1.4.0",
@@ -35,7 +36,7 @@
     "react-native-web": "~0.18.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
+    "@babel/core": "^7.20.5",
     "@types/react": "18.0.0",
     "@types/react-native": "0.69.5"
   }

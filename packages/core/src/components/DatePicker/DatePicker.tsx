@@ -23,7 +23,7 @@ import DateTimePicker from "./DatePickerComponent";
 
 import type { Theme } from "../../styles/DefaultTheme";
 import type { IconSlot } from "../../interfaces/Icon";
-import type { extractStyles } from "../../utilities";
+import { extractStyles } from "../../utilities";
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
 

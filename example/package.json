@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@draftbit/maps": "^46.4.3",
-    "@draftbit/ui": "46.4.4-f71daf.2",
+    "@draftbit/ui": "^46.4.3",
     "@expo/dev-server": "0.1.120",
     "@expo/webpack-config": "^0.17.0",
     "@react-navigation/drawer": "^5.7.7",

@@ -471,7 +471,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
                 onFocus={_handleFocus}
                 onBlur={_handleBlur}
                 underlineColorAndroid={"transparent"}
-                style={[inputStyles, textStyles]}
+                style={[inputStyles, textStyles, viewStyles]}
                 {...props}
               />
             </View>

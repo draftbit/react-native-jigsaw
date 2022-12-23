@@ -5,11 +5,11 @@ import {
   TouchableHighlightProps,
   StyleProp,
   ViewStyle,
+  Pressable,
 } from "react-native";
 import { useTheme } from "../../theming";
 import type { IconSlot } from "../../interfaces/Icon";
 
-import Touchable from "../Touchable";
 import { usePrevious } from "../../hooks";
 
 export interface CheckboxProps {
@@ -87,7 +87,7 @@ const Checkbox: React.FC<
   };
 
   return (
-    <Touchable
+    <Pressable
       {...rest}
       onPress={handlePress}
       disabled={disabled}
@@ -111,7 +111,7 @@ const Checkbox: React.FC<
           ]}
         />
       </View>
-    </Touchable>
+    </Pressable>
   );
 };
 

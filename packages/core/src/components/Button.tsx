@@ -1,11 +1,14 @@
-import * as React from "react";
+import React, { useCallback } from "react";
 import {
   Text,
   Pressable,
+  PressableProps,
+  PressableStateCallbackType,
   Platform,
   StyleSheet,
+  StyleProp,
   TextStyle,
-  PressableProps,
+  ViewStyle,
   ActivityIndicator,
 } from "react-native";
 
@@ -27,6 +30,12 @@ type BaseProps = {
   loading: boolean;
   style?: TextStyle;
   onPress: () => void;
+  onLongPress?: () => void;
+  activeOpacity?: number;
+  disabledOpacity?: number;
+  delayLongPress?: number;
+  hitSlop?: number;
+  pressRetentionOffset?: number;
   icon?: string;
 } & PressableProps &
   IconSlot;
@@ -37,16 +46,29 @@ type Props = {
   loading: boolean;
   style?: TextStyle;
   onPress: () => void;
+  onLongPress?: () => void;
+  activeOpacity?: number;
+  disabledOpacity?: number;
+  delayLongPress?: number;
+  hitSlop?: number;
+  pressRetentionOffset?: number;
   icon?: string;
   theme: Theme;
 } & PressableProps &
   IconSlot;
+
+export type StyleType = (
+  state: PressableStateCallbackType
+) => StyleProp<ViewStyle>;
 
 function Base({
   Icon,
   icon,
   title,
   onPress,
+  onLongPress,
+  activeOpacity,
+  disabledOpacity,
   loading,
   disabled,
   style,
@@ -89,19 +111,31 @@ function Base({
     buttonStyles.justifyContent = "flex-end";
   }
 
+  const getOpacity = useCallback(
+    (pressed: boolean) => {
+      if (disabled) {
+        return disabledOpacity;
+      } else {
+        if (pressed) return activeOpacity;
+        else return 1;
+      }
+    },
+    [activeOpacity, disabled, disabledOpacity]
+  );
+  const _style = useCallback<StyleType>(
+    ({ pressed }) => [
+      buttonStyles as ViewStyle,
+      { opacity: getOpacity(pressed) },
+    ],
+    [getOpacity, buttonStyles]
+  );
+
   return (
     <Pressable
       onPress={onPress}
+      onLongPress={onLongPress}
       disabled={disabled || loading}
-      style={({ pressed }) => {
-        return [
-          styles.base,
-          {
-            opacity: pressed || disabled ? 0.75 : 1,
-          },
-          buttonStyles,
-        ];
-      }}
+      style={(styles.base, _style)}
       {...props}
     >
       {loading ? (

@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import {
-  Pressable,
+  Pressable as NativePressable,
   PressableProps,
   PressableStateCallbackType,
   StyleProp,
@@ -24,7 +24,7 @@ export type StyleType = (
   state: PressableStateCallbackType
 ) => StyleProp<ViewStyle>;
 
-export default function Touchable({
+export default function Pressable({
   children,
   disabled,
   onPress,
@@ -52,7 +52,7 @@ export default function Touchable({
     [getOpacity, style]
   );
   return (
-    <Pressable
+    <NativePressable
       onPress={onPress}
       onLongPress={onLongPress}
       disabled={disabled}
@@ -62,6 +62,6 @@ export default function Touchable({
       {...props}
     >
       {children}
-    </Pressable>
+    </NativePressable>
   );
 }

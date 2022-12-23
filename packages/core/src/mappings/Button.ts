@@ -7,11 +7,13 @@ import {
   createActionProp,
   Triggers,
   StylesPanelSections,
+  createNumberProp,
 } from "@draftbit/types";
 
-const SEED_DATA_TRIGGERS = [Triggers.OnPress];
+const SEED_DATA_TRIGGERS = [Triggers.OnPress, Triggers.OnLongPress];
 const SEED_DATA_PROPS = {
   onPress: createActionProp(),
+  onLongPress: createActionProp(),
   icon: createIconProp({
     defaultValue: null,
     required: false,
@@ -23,12 +25,10 @@ const SEED_DATA_PROPS = {
   }),
   disabled: createDisabledProp(),
   loading: createLoadingProp(),
-};
-
-const LAYOUT = {
-  backgroundColor: "transparent",
-  borderRadius: 8,
-  fontFamily: "system-700",
+  activeOpacity: createNumberProp(),
+  disabledOpacity: createNumberProp(),
+  delayLongPress: createNumberProp(),
+  hitSlop: createNumberProp(),
 };
 
 export const SEED_DATA = [
@@ -46,8 +46,9 @@ export const SEED_DATA = [
       StylesPanelSections.Effects,
     ],
     layout: {
-      ...LAYOUT,
       backgroundColor: "transparent",
+      borderRadius: 8,
+      fontFamily: "system-700",
       borderWidth: 1,
       textAlign: "center",
     },
@@ -68,7 +69,8 @@ export const SEED_DATA = [
       StylesPanelSections.Effects,
     ],
     layout: {
-      ...LAYOUT,
+      borderRadius: 8,
+      fontFamily: "system-700",
       backgroundColor: "primary",
       textAlign: "center",
     },
@@ -89,7 +91,8 @@ export const SEED_DATA = [
       StylesPanelSections.Effects,
     ],
     layout: {
-      ...LAYOUT,
+      borderRadius: 8,
+      fontFamily: "system-700",
       backgroundColor: "primary",
       textAlign: "center",
     },

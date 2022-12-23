@@ -1,7 +1,6 @@
 import React from "react";
 import { withTheme } from "../theming";
-import Touchable from "./Touchable";
-import { StyleProp, ViewStyle } from "react-native";
+import { StyleProp, ViewStyle, Pressable } from "react-native";
 import theme from "../styles/DefaultTheme";
 
 type Props = {
@@ -32,14 +31,14 @@ const Card: React.FC<React.PropsWithChildren<Props>> = ({
 }) => {
   const width = getWidth(numColumns);
   return (
-    <Touchable
+    <Pressable
       disabled={!onPress}
       onPress={onPress}
       style={[style, { width }]}
       {...rest}
     >
       {children}
-    </Touchable>
+    </Pressable>
   );
 };
 

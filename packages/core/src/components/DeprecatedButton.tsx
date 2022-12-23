@@ -4,14 +4,14 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableHighlightProps,
   StyleProp,
   ViewStyle,
   TextStyle,
+  Pressable,
+  PressableProps,
 } from "react-native";
 import color from "color";
 import Config from "./Config";
-import Touchable from "./Touchable";
 import Elevation from "./Elevation";
 import { withTheme } from "../theming";
 
@@ -63,7 +63,7 @@ type Props = {
   elevation?: number;
   style?: StyleProp<ViewStyle>;
   theme: Theme;
-} & TouchableHighlightProps &
+} & PressableProps &
   IconSlot;
 
 const Button: React.FC<React.PropsWithChildren<Props>> = ({
@@ -162,7 +162,7 @@ const Button: React.FC<React.PropsWithChildren<Props>> = ({
 
   return (
     <Elevation style={{ elevation, alignSelf: "stretch", ...margins }}>
-      <Touchable
+      <Pressable
         {...rest}
         onPress={onPress}
         accessibilityState={{ disabled }}
@@ -191,7 +191,7 @@ const Button: React.FC<React.PropsWithChildren<Props>> = ({
             {children}
           </Text>
         </View>
-      </Touchable>
+      </Pressable>
     </Elevation>
   );
 };

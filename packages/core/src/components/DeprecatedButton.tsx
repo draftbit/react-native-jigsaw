@@ -5,7 +5,6 @@ import {
   Text,
   StyleSheet,
   StyleProp,
-  ViewStyle,
   TextStyle,
   Pressable,
   PressableProps,
@@ -61,7 +60,7 @@ type Props = {
   children?: React.ReactNode;
   onPress: () => void;
   elevation?: number;
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<Props>;
   theme: Theme;
 } & PressableProps &
   IconSlot;

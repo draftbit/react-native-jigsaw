@@ -7,6 +7,7 @@ import {
   ViewStyle,
   StyleProp,
   Dimensions,
+  Pressable,
 } from "react-native";
 import { omit, pickBy, identity, isObject } from "lodash";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -14,8 +15,7 @@ import { Picker as NativePicker } from "@react-native-picker/picker";
 
 import { withTheme } from "../../theming";
 import Portal from "../Portal/Portal";
-import Button from "../DeprecatedButton";
-import Touchable from "../Touchable";
+import { Button } from "../Button";
 import type { Theme } from "../../styles/DefaultTheme";
 import type { IconSlot } from "../../interfaces/Icon";
 import {
@@ -306,7 +306,7 @@ const Picker: React.FC<PickerProps> = ({
     /* marginsContainer */
     <View style={[styles.marginsContainer, marginStyles]}>
       {/* touchableContainer */}
-      <Touchable
+      <Pressable
         disabled={disabled}
         onPress={togglePickerVisible}
         style={styles.touchableContainer}
@@ -342,7 +342,7 @@ const Picker: React.FC<PickerProps> = ({
           </View>
         </View>
         {assistiveTextLabel}
-      </Touchable>
+      </Pressable>
 
       {/* iosPicker */}
       {isIos && pickerVisible ? (

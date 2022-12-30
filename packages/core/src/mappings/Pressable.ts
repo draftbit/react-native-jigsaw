@@ -4,6 +4,7 @@ import {
   Triggers,
   createNumberProp,
   StylesPanelSections,
+  GROUPS,
 } from "@draftbit/types";
 
 const SEED_DATA_PROPS = {

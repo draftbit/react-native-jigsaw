@@ -1,7 +1,6 @@
 import { Asset } from "expo-asset";
 import Constants from "expo-constants";
 import * as SplashScreen from "expo-splash-screen";
-import * as Updates from "expo-updates";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   Animated,
@@ -194,7 +193,7 @@ function AnimatedSplashScreen({ children, image }) {
         useNativeDriver: true,
       }).start(() => setAnimationComplete(true));
     }
-  }, [isAppReady]);
+  }, [isAppReady, animation]);
 
   const onImageLoaded = useCallback(async () => {
     try {

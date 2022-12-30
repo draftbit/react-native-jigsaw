@@ -1165,6 +1165,54 @@
   dependencies:
     "@date-io/core" "^1.3.13"
 
+"@draftbit/core@^46.5.2-b02f9e.2+b02f9ef":
+  version "46.5.2-b02f9e.2"
+  resolved "https://registry.yarnpkg.com/@draftbit/core/-/core-46.5.2-b02f9e.2.tgz#67449d768b112657880390ae351c88f2dd203662"
+  integrity sha512-AZ6JnDc7mIPrUJopRUiyv/nk4wCeZHMW5XGne8x9dJxjGchs96iwA0MNpHgPsu3RhLSmKvgv9ApvHXYaaXrCDg==
+  dependencies:
+    "@date-io/date-fns" "^1.3.13"
+    "@draftbit/react-theme-provider" "^2.1.1"
+    "@draftbit/types" "^46.5.2-b02f9e.2+b02f9ef"
+    "@material-ui/core" "^4.11.0"
+    "@material-ui/pickers" "^3.2.10"
+    "@react-native-community/slider" "4.2.4"
+    "@react-native-picker/picker" "2.4.8"
+    "@shopify/flash-list" "1.3.1"
+    color "^3.1.2"
+    date-fns "^2.16.1"
+    dateformat "^3.0.3"
+    lodash.isnumber "^3.0.3"
+    lodash.omit "^4.5.0"
+    lodash.tonumber "^4.0.3"
+    react-native-modal-datetime-picker "^13.0.0"
+    react-native-svg "13.4.0"
+    react-native-typography "^1.4.1"
+    react-native-web-swiper "^2.2.3"
+
+"@draftbit/maps@46.5.2-b02f9e.2":
+  version "46.5.2-b02f9e.2"
+  resolved "https://registry.yarnpkg.com/@draftbit/maps/-/maps-46.5.2-b02f9e.2.tgz#014ab4b3e6870f8898af78581ac209bbc6c98f28"
+  integrity sha512-1jY/VJ/E/aW1erJRcSL5O3t7jgMfRp9Cmewc2YHRZ21k5mjJRJMZqcOYWPUXNH4EFbZkWXZQrwpza9qSMspq0g==
+  dependencies:
+    "@draftbit/types" "^46.5.2-b02f9e.2+b02f9ef"
+    "@draftbit/web-maps" "^46.5.2-b02f9e.2+b02f9ef"
+    react-native-maps "1.3.2"
+
+"@draftbit/native@^46.5.2-b02f9e.2+b02f9ef":
+  version "46.5.2-b02f9e.2"
+  resolved "https://registry.yarnpkg.com/@draftbit/native/-/native-46.5.2-b02f9e.2.tgz#8823380aa816773c0825394eae1b620a6967be46"
+  integrity sha512-IxtXhuDdRHT4Mi00dkvAUPrlQ3Z0rhxKN8eVwNnyNaRJ3EInM7xTW1l6BUskW3Qtb5+OQgXU40P1wDsbHixMhg==
+  dependencies:
+    "@draftbit/types" "^46.5.2-b02f9e.2+b02f9ef"
+    "@expo/vector-icons" "^13.0.0"
+    "@react-native-community/datetimepicker" "6.5.2"
+    "@react-native-community/slider" "4.2.4"
+    expo-av "~13.0.2"
+    expo-camera "~13.1.0"
+    expo-linear-gradient "~12.0.1"
+    react-native-svg "13.4.0"
+    react-native-webview "11.23.1"
+
 "@draftbit/react-theme-provider@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@draftbit/react-theme-provider/-/react-theme-provider-2.1.1.tgz#8ae9d097d1d3c8a08fe04c583d4f020764e24f72"
@@ -1172,6 +1220,27 @@
   dependencies:
     deepmerge "^3.2.0"
     hoist-non-react-statics "^3.3.0"
+
+"@draftbit/types@^46.5.2-b02f9e.2+b02f9ef":
+  version "46.5.2-b02f9e.2"
+  resolved "https://registry.yarnpkg.com/@draftbit/types/-/types-46.5.2-b02f9e.2.tgz#a9ed6296f34657293d9fd100cf866f17442ef47a"
+  integrity sha512-C7h0m5u8aejwk5ZPzcIEtVwYRpH8NcbPQah+3Qb1PAoD1vToeze3TO5TiUQRNHO8ZUnWLw+mGCRdsVghPZ5STQ==
+
+"@draftbit/ui@46.5.2-b02f9e.2":
+  version "46.5.2-b02f9e.2"
+  resolved "https://registry.yarnpkg.com/@draftbit/ui/-/ui-46.5.2-b02f9e.2.tgz#35f47b7d00ad245f17f1b3c355e4d1d87809b9c4"
+  integrity sha512-UtbSPmG8BpGnLIoNwa5hicPBdj27U8euqJPPQ6NGuNMK2bSDiDxp3hdasqr+cLEt95YLClB4RkgvjJrMK7vg/Q==
+  dependencies:
+    "@draftbit/core" "^46.5.2-b02f9e.2+b02f9ef"
+    "@draftbit/native" "^46.5.2-b02f9e.2+b02f9ef"
+
+"@draftbit/web-maps@^46.5.2-b02f9e.2+b02f9ef":
+  version "46.5.2-b02f9e.2"
+  resolved "https://registry.yarnpkg.com/@draftbit/web-maps/-/web-maps-46.5.2-b02f9e.2.tgz#d820c151fc66da7cd1f9616cee8c17fbfddfa186"
+  integrity sha512-bCrEK7r1JBRU30OB6rPmneyzINbtV7KDDe3pmHz6tJ27pYtdfVZiL1ceTvcVJzx9/bcnGv6uwVg2ueVCmlkuoA==
+  dependencies:
+    "@draftbit/types" "^46.5.2-b02f9e.2+b02f9ef"
+    "@react-google-maps/api" "^2.10.2"
 
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
@@ -7571,7 +7640,7 @@ expo-pwa@0.0.123:
     commander "2.20.0"
     update-check "1.5.3"
 
-expo-splash-screen@~0.17.0:
+expo-splash-screen@~0.17.0, expo-splash-screen@~0.17.5:
   version "0.17.5"
   resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-0.17.5.tgz#a18dc59c1cc28ebbedbf0a7529a419d18ab0b311"
   integrity sha512-ejSO78hwHXz8T9u8kh8t4r6CR4h70iBvA65gX8GK+dYxZl6/IANPbIb2VnUpND9vqfW+JnkDw+ZFst+gDnkpcQ==

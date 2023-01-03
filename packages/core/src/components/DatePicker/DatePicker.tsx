@@ -515,6 +515,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
               <DateTimePicker
                 value={getValidDate()}
                 mode={mode}
+                displayMode="default"
                 isVisible={pickerVisible}
                 toggleVisibility={toggleVisibility}
                 onChange={(_event: any, data: any) => {

@@ -6,6 +6,14 @@ export interface DatePickerComponentProps {
   mode: "date" | "time" | "datetime";
   toggleVisibility: () => void;
   isVisible?: boolean;
-  display: string;
+  displayMode?:
+    | "default"
+    | "compact"
+    | "inline"
+    | "spinner"
+    | "clock"
+    | "calendar"
+    | undefined;
+  variant?: "dialog" | "inline" | undefined;
   theme?: typeof theme;
 }

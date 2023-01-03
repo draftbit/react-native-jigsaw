@@ -10,7 +10,6 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import dateFormat from "dateformat";
-import { withTheme } from "../../theming";
 import Portal from "../Portal/Portal";
 import Touchable from "../Touchable";
 import DateTimePicker from "./DatePickerComponent";
@@ -23,9 +22,9 @@ type Props = {
   defaultValue?: Date;
   disabled?: boolean;
   mode?: "date" | "time" | "datetime";
-  androidDisplay?: "default" | "spinner" | "calendar" | "clock";
-  iosDisplay?: "default" | "spinner" | "compact" | "inline";
-  webDisplay?: "dialog" | "inline";
+  androidDisplay: "default" | "spinner" | "calendar" | "clock";
+  iosDisplay: "default" | "spinner" | "compact" | "inline";
+  webDisplay: "dialog" | "inline";
   placeholder?: string;
 } & TextInputProps;
 
@@ -44,7 +43,7 @@ const MONTHS = [
   "December",
 ];
 
-const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
+const DatePickerInput: React.FC<React.PropsWithChildren<Props>> = ({
   style,
   date,
   onDateChange = () => {},
@@ -121,12 +120,6 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     setFocused(false);
   };
 
-  const display = Platform.select({
-    ios: iosDisplay,
-    android: androidDisplay,
-    web: webDisplay,
-  });
-
   return (
     <View>
       <Touchable disabled={disabled} onPress={toggleVisibility}>
@@ -150,18 +143,48 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
               paddingRight: insets.right,
             }}
           >
-            <DateTimePicker
-              value={getValidDate()}
-              mode={mode}
-              display={display}
-              isVisible={pickerVisible}
-              toggleVisibility={toggleVisibility}
-              onChange={(_event: any, data: any) => {
-                toggleVisibility();
-                setValue(data);
-                onDateChange(data);
-              }}
-            />
+            {Platform.OS === "web" && (
+              <DateTimePicker
+                value={getValidDate()}
+                mode={mode}
+                isVisible={pickerVisible}
+                toggleVisibility={toggleVisibility}
+                onChange={(_event: any, data: any) => {
+                  toggleVisibility();
+                  setValue(data);
+                  onDateChange(data);
+                }}
+              />
+            )}
+            {Platform.OS === "ios" && (
+              <DateTimePicker
+                value={getValidDate()}
+                mode={mode}
+                displayMode={iosDisplay}
+                isVisible={pickerVisible}
+                toggleVisibility={toggleVisibility}
+                onChange={(_event: any, data: any) => {
+                  toggleVisibility();
+                  setValue(data);
+                  onDateChange(data);
+                }}
+              />
+            )}
+            {Platform.OS === "android" && (
+              <DateTimePicker
+                value={getValidDate()}
+                mode={mode}
+                variant={webDisplay}
+                displayMode={androidDisplay}
+                isVisible={pickerVisible}
+                toggleVisibility={toggleVisibility}
+                onChange={(_event: any, data: any) => {
+                  toggleVisibility();
+                  setValue(data);
+                  onDateChange(data);
+                }}
+              />
+            )}
           </View>
         </Portal>
       )}
@@ -169,4 +192,4 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   );
 };
 
-export default withTheme(DatePicker);
+export default DatePickerInput;

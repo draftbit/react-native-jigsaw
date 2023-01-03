@@ -5,7 +5,7 @@ import { DatePickerComponentProps as Props } from "./DatePickerComponentType";
 const DatePickerComponent: React.FC<React.PropsWithChildren<Props>> = ({
   value,
   onChange,
-  display,
+  displayMode = "default",
   mode,
   toggleVisibility,
 }) => {
@@ -14,7 +14,7 @@ const DatePickerComponent: React.FC<React.PropsWithChildren<Props>> = ({
       date={value}
       mode={mode}
       isVisible={true}
-      display={display}
+      display={displayMode}
       onCancel={() => {
         console.log("Picker cancelled before selecting anything.");
         toggleVisibility();

@@ -1,21 +1,20 @@
 import React from "react";
-import { Platform } from "react-native";
-import DateTimePicker from "@react-native-community/datetimepicker";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { DatePickerComponentProps as Props } from "./DatePickerComponentType";
 
 const DatePickerComponent: React.FC<React.PropsWithChildren<Props>> = ({
   value,
   onChange,
+  display,
   mode,
   toggleVisibility,
 }) => {
-  return Platform.OS === "ios" || Platform.OS === "android" ? (
+  return (
     <DateTimePickerModal
       date={value}
       mode={mode}
       isVisible={true}
-      display={Platform.OS === "ios" ? "spinner" : "default"}
+      display={display}
       onCancel={() => {
         console.log("Picker cancelled before selecting anything.");
         toggleVisibility();
@@ -23,13 +22,6 @@ const DatePickerComponent: React.FC<React.PropsWithChildren<Props>> = ({
       onConfirm={(data) => {
         onChange(null, data);
       }}
-    />
-  ) : (
-    <DateTimePicker
-      value={value}
-      mode={mode}
-      onChange={onChange}
-      display={"default"}
     />
   );
 };

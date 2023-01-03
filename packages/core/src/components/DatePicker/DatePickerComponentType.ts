@@ -6,5 +6,6 @@ export interface DatePickerComponentProps {
   mode: "date" | "time" | "datetime";
   toggleVisibility: () => void;
   isVisible?: boolean;
+  display: string;
   theme?: typeof theme;
 }

@@ -13,6 +13,8 @@ export const Triggers = {
   OnCheck: "ON_CHECK",
   OnUncheck: "ON_UNCHECK",
   OnPressIcon: "ON_PRESS_ICON",
+  OnDismiss: "ON_DISMISS",
+  OnConfirm: "ON_CONFIRM",
 };
 
 export const StylesPanelSections = {
@@ -240,6 +242,18 @@ export const createAspectRatioProp = (overrides = {}) => ({
   editable: true,
   required: false,
   group: GROUPS.basic,
+  ...overrides,
+});
+
+export const createArrayProp = (overrides = {}) => ({
+  label: "Array of objects",
+  description: "An array of objects.",
+  formType: FORM_TYPES.array,
+  propType: PROP_TYPES.OBJECT,
+  defaultValue: false,
+  editable: true,
+  required: false,
+  group: GROUPS.data,
   ...overrides,
 });
 

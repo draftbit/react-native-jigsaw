@@ -92,6 +92,7 @@ export const SEED_DATA = [
     ],
     layout: {
       borderRadius: 8,
+      height: 42,
       fontFamily: "system-700",
       backgroundColor: "primary",
       textAlign: "center",

@@ -12,6 +12,7 @@ import {
 } from "@draftbit/types";
 
 export const SHARED_SEED_DATA = {
+  packageName: "react-native-paper-dates",
   triggers: [Triggers.OnDismiss, Triggers.OnConfirm, Triggers.OnChange],
   category: COMPONENT_TYPES.input,
   StylesPanelSections: [
@@ -65,8 +66,8 @@ export const SHARED_SEED_DATA_PROPS = {
 
 export const SEED_DATA = [
   {
-    name: "Single Date Picker Modal",
-    tag: "SingleDatePickerModal",
+    name: "Date Picker Modal",
+    tag: "DatePickerModal",
     description: "A modal allowing date selection.",
     ...SHARED_SEED_DATA,
     props: {

@@ -4,6 +4,10 @@ import {
   createStaticBoolProp,
   createTextEnumProp,
   StylesPanelSections,
+  Triggers,
+  createStaticNumberProp,
+  createDisabledProp,
+  createTextProp,
 } from "@draftbit/types";
 
 const SHARED_SEED_DATA = {
@@ -89,7 +93,7 @@ export const SEED_DATA = [
     ...SHARED_SEED_DATA,
     props: {
       isDisabled: createDisabledProp(),
-      textValue: createStringProp({
+      textValue: createTextProp({
         label: "Text Value",
         description: "The text value available for the typeahead menu feature.",
       }),
@@ -101,7 +105,7 @@ export const SEED_DATA = [
     description: "A wrapper to group related menu items.",
     ...SHARED_SEED_DATA,
     props: {
-      title: createStringProp({
+      title: createTextProp({
         label: "Title",
         description: "The title of the menu group.",
       }),
@@ -130,7 +134,7 @@ export const SEED_DATA = [
     ...SHARED_SEED_DATA,
     props: {
       isDisabled: createDisabledProp(),
-      textValue: createStringProp({
+      textValue: createTextProp({
         label: "Text Value",
         description: "The text value available for the typeahead menu feature.",
       }),

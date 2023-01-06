@@ -32,7 +32,6 @@ type BaseProps = {
   disabledOpacity?: number;
   delayLongPress?: number;
   hitSlop?: number;
-  pressRetentionOffset?: number;
   icon?: string;
 } & PressableProps &
   IconSlot;
@@ -48,7 +47,6 @@ type Props = {
   disabledOpacity?: number;
   delayLongPress?: number;
   hitSlop?: number;
-  pressRetentionOffset?: number;
   icon?: string;
   theme: Theme;
 } & PressableProps &

@@ -4,14 +4,14 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableHighlightProps,
   StyleProp,
   ViewStyle,
   TextStyle,
+  Pressable,
+  PressableProps,
 } from "react-native";
 import color from "color";
 import Config from "./Config";
-import Touchable from "./Touchable";
 import Elevation from "./Elevation";
 import { withTheme } from "../theming";
 
@@ -63,7 +63,7 @@ type Props = {
   elevation?: number;
   style?: StyleProp<ViewStyle>;
   theme: Theme;
-} & TouchableHighlightProps &
+} & PressableProps &
   IconSlot;
 
 const Button: React.FC<React.PropsWithChildren<Props>> = ({
@@ -77,7 +77,6 @@ const Button: React.FC<React.PropsWithChildren<Props>> = ({
   children,
   onPress,
   elevation = 0,
-  style,
   theme: { colors, disabledOpacity, roundness, typography },
   ...rest
 }) => {
@@ -137,38 +136,15 @@ const Button: React.FC<React.PropsWithChildren<Props>> = ({
     },
   ];
 
-  const {
-    margin,
-    marginEnd,
-    marginTop,
-    marginLeft,
-    marginRight,
-    marginBottom,
-    marginHorizontal,
-    marginVertical,
-    ...innerStyles
-  } = StyleSheet.flatten(style || {});
-
-  const margins = {
-    margin,
-    marginEnd,
-    marginTop,
-    marginLeft,
-    marginRight,
-    marginBottom,
-    marginHorizontal,
-    marginVertical,
-  };
-
   return (
-    <Elevation style={{ elevation, alignSelf: "stretch", ...margins }}>
-      <Touchable
+    <Elevation style={{ elevation, alignSelf: "stretch" }}>
+      <Pressable
         {...rest}
         onPress={onPress}
         accessibilityState={{ disabled }}
         accessibilityRole="button"
         disabled={disabled || loading}
-        style={[styles.button, buttonStyle, innerStyles]}
+        style={[styles.button, buttonStyle]}
       >
         <View style={styles.content}>
           {icon && loading !== true ? (
@@ -191,7 +167,7 @@ const Button: React.FC<React.PropsWithChildren<Props>> = ({
             {children}
           </Text>
         </View>
-      </Touchable>
+      </Pressable>
     </Elevation>
   );
 };

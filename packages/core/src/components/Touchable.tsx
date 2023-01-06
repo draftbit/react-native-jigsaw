@@ -9,7 +9,6 @@ type Props = {
   onLongPress?: () => void;
   delayLongPress?: number;
   hitSlop?: number;
-  pressRetentionOffset?: number;
   activeOpacity?: number;
   disabledOpacity?: number;
 } & PressableProps;
@@ -17,6 +16,7 @@ type Props = {
 export default function Touchable({
   children,
   disabled,
+  onPress,
   activeOpacity,
   disabledOpacity,
   delayLongPress,
@@ -27,6 +27,7 @@ export default function Touchable({
   return (
     <Pressable
       disabled={disabled}
+      onPress={onPress}
       delayLongPress={delayLongPress ? delayLongPress : 500}
       hitSlop={hitSlop ? hitSlop : 8}
       style={({ pressed }) => {

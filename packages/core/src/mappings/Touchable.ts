@@ -2,9 +2,8 @@ import {
   COMPONENT_TYPES,
   createActionProp,
   Triggers,
-  createNumberProp,
+  createStaticNumberProp,
   StylesPanelSections,
-  GROUPS,
 } from "@draftbit/types";
 
 const SEED_DATA_PROPS = {
@@ -18,29 +17,37 @@ const SEED_DATA_PROPS = {
   props: {
     onPress: createActionProp(),
     onLongPress: createActionProp(),
-    activeOpacity: createNumberProp({
+    activeOpacity: createStaticNumberProp({
       label: "Active Opacity",
       description: "The opacity when the button is pressed.",
       defaultValue: 0.8,
-      group: GROUPS.basic,
+      min: 0,
+      max: 1,
+      step: 0.01,
+      precision: 2,
+      required: false,
     }),
-    disabledOpacity: createNumberProp({
+    disabledOpacity: createStaticNumberProp({
       label: "Disabled Opacity",
       description: "The opacity when the button is disabled.",
       defaultValue: 0.8,
-      group: GROUPS.basic,
+      min: 0,
+      max: 1,
+      step: 0.01,
+      precision: 2,
+      required: false,
     }),
-    delayLongPress: createNumberProp({
+    delayLongPress: createStaticNumberProp({
       label: "Delay Long Press",
       description:
         "Duration (in milliseconds) from onPressIn before onLongPress is called.",
-      group: GROUPS.basic,
+      required: false,
     }),
-    hitSlop: createNumberProp({
+    hitSlop: createStaticNumberProp({
       label: "Hit Slop",
       description:
         "Sets additional distance outside of element in which a press can be detected.",
-      group: GROUPS.basic,
+      required: false,
     }),
   },
 };

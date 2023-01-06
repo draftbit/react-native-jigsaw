@@ -10,9 +10,10 @@ import {
   createStaticNumberProp,
 } from "@draftbit/types";
 
-const SEED_DATA_TRIGGERS = [Triggers.OnPress];
+const SEED_DATA_TRIGGERS = [Triggers.OnPress, Triggers.OnLongPress];
 const SEED_DATA_PROPS = {
   onPress: createActionProp(),
+  onLongPress: createActionProp(),
   icon: createIconProp({
     defaultValue: null,
     required: false,
@@ -27,11 +28,21 @@ const SEED_DATA_PROPS = {
   activeOpacity: createStaticNumberProp({
     label: "Active Opacity",
     description: "Opacity of the button when active.",
+    defaultValue: 0.8,
+    min: 0,
+    max: 1,
+    step: 0.01,
+    precision: 2,
     required: false,
   }),
   disabledOpacity: createStaticNumberProp({
     label: "Disabled Opacity",
     description: "Opacity of the button when disabled.",
+    defaultValue: 0.8,
+    min: 0,
+    max: 1,
+    step: 0.01,
+    precision: 2,
     required: false,
   }),
   delayLongPress: createStaticNumberProp({

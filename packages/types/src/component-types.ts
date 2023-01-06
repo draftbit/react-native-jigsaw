@@ -13,6 +13,8 @@ export const Triggers = {
   OnCheck: "ON_CHECK",
   OnUncheck: "ON_UNCHECK",
   OnPressIcon: "ON_PRESS_ICON",
+  OnOpen: "ON_OPEN",
+  OnClose: "ON_CLOSE",
 };
 
 export const StylesPanelSections = {
@@ -135,6 +137,10 @@ export const COMPONENT_TYPES = {
   NBLayout: "NBLayout",
   NBMedia: "NBMedia",
   NBOther: "NBOther",
+  NBAlert: "NBAlert",
+  NBMenu: "NBAlert",
+  NBModal: "NBModal",
+  NBPopover: "NBPopover",
   NBPrimitives: "NBPrimitives",
   NBTransition: "NBTransition",
   NBTypography: "NBTypography",

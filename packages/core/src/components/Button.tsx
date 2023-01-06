@@ -202,8 +202,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    minHeight: CONSTANTS.baseHeight,
-    paddingHorizontal: 12,
+    paddingTop: CONSTANTS.padding,
+    paddingLeft: CONSTANTS.padding,
+    paddingRight: CONSTANTS.padding,
+    paddingBottom: CONSTANTS.padding,
     fontFamily: "System",
     fontWeight: "700",
     ...Platform.select({
@@ -216,11 +218,6 @@ const styles = StyleSheet.create({
   outline: {
     backgroundColor: "transparent",
     borderWidth: 1,
-  },
-  bare: {
-    backgroundColor: "transparent",
-    padding: 0,
-    minHeight: undefined,
   },
   loading: {
     marginRight: 6,

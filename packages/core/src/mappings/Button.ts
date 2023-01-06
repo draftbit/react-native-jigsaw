@@ -7,7 +7,7 @@ import {
   createActionProp,
   Triggers,
   StylesPanelSections,
-  createNumberProp,
+  createStaticNumberProp,
 } from "@draftbit/types";
 
 const SEED_DATA_TRIGGERS = [Triggers.OnPress, Triggers.OnLongPress];
@@ -25,10 +25,18 @@ const SEED_DATA_PROPS = {
   }),
   disabled: createDisabledProp(),
   loading: createLoadingProp(),
-  activeOpacity: createNumberProp(),
-  disabledOpacity: createNumberProp(),
-  delayLongPress: createNumberProp(),
-  hitSlop: createNumberProp(),
+  activeOpacity: createStaticNumberProp({
+    required: false,
+  }),
+  disabledOpacity: createStaticNumberProp({
+    required: false,
+  }),
+  delayLongPress: createStaticNumberProp({
+    required: false,
+  }),
+  hitSlop: createStaticNumberProp({
+    required: false,
+  }),
 };
 
 export const SEED_DATA = [
@@ -92,7 +100,6 @@ export const SEED_DATA = [
     ],
     layout: {
       borderRadius: 8,
-      height: 42,
       fontFamily: "system-700",
       backgroundColor: "primary",
       textAlign: "center",

@@ -3,13 +3,12 @@ import {
   StylesPanelSections,
   createTextEnumProp,
   createBoolProp,
+  createIconProp,
 } from "@draftbit/types";
 
-const NB_LAYOUT_PROPS = {
-  category: COMPONENT_TYPES.NBLayout,
+const NB_FORMS_PROPS = {
+  category: COMPONENT_TYPES.NBForms,
   packageName: "native-base",
-  doc_link: "https://www.npmjs.com/package/@expo/html-elements",
-  code_link: "https://github.com/expo/expo/tree/master/packages/html-elements",
   stylesPanelSections: [
     StylesPanelSections.LayoutFlexItems,
     StylesPanelSections.LayoutSelectedItem,
@@ -28,27 +27,53 @@ const NB_LAYOUT_PROPS = {
 
 export const SEED_DATA = [
   {
-    name: "Aspect Ratio",
-    tag: "AspectRatio",
+    name: "Button",
+    tag: "Button",
     description:
-      "AspectRatio controls the size of the undefined dimension of a node or child component.",
-    ...NB_LAYOUT_PROPS,
+      "The Button component triggers an event or an action. Examples can be submitting forms and deleting a data point.",
+    ...NB_FORMS_PROPS,
     props: {
-      ratio: createTextEnumProp({
-        label: "Ratio",
-        description: "The aspect ratio of the container",
-        options: [
-          "1 / 1",
-          "4 / 3",
-          "3 / 2",
-          "16 / 9",
-          "2 / 1",
-          "3 / 4",
-          "2 / 3",
-          "9 / 16",
-          "1 / 2",
-        ],
-        defaultValue: "4 / 3",
+      isLoading: createBoolProp({
+        label: "Loading",
+        description: "If true, the button will show a spinner.",
+      }),
+      isDisabled: createBoolProp({
+        label: "Disabled",
+        description: "If true, the button will be disabled.",
+      }),
+      leftIcon: createIconProp({
+        label: "Left Icon",
+        description: "The icon to display on the left side of the button",
+      }),
+      rightIcon: createIconProp({
+        label: "Right Icon",
+        description: "The icon to display on the right side of the button",
+      }),
+      spinnerPlacement: createTextEnumProp({
+        label: "Spinner Placement",
+        description: "The placement of the spinner",
+        options: ["start", "end"],
+        defaultValue: "start",
+      }),
+    },
+  },
+  {
+    name: "Button Group",
+    tag: "ButtonGroup",
+    description:
+      "Used to group buttons whose actions are related, with an option to flush them together.",
+    ...NB_FORMS_PROPS,
+    allowChildren: true,
+    props: {
+      direction: createTextEnumProp({
+        label: "Direction",
+        description: "The direction of the button group",
+        options: ["row", "column"],
+        defaultValue: "row",
+      }),
+      isAttached: createBoolProp({
+        label: "Attached",
+        description: "If true, the buttons will be attached",
       }),
     },
   },

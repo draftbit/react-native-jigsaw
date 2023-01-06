@@ -26,15 +26,25 @@ const SEED_DATA_PROPS = {
   disabled: createDisabledProp(),
   loading: createLoadingProp(),
   activeOpacity: createStaticNumberProp({
+    label: "Active Opacity",
+    description: "Opacity of the button when active.",
     required: false,
   }),
   disabledOpacity: createStaticNumberProp({
+    label: "Disabled Opacity",
+    description: "Opacity of the button when disabled.",
     required: false,
   }),
   delayLongPress: createStaticNumberProp({
+    label: "Delay Long Press",
+    description:
+      "Duration (in milliseconds) from onPressIn before onLongPress is called.",
     required: false,
   }),
   hitSlop: createStaticNumberProp({
+    label: "Hit Slop",
+    description:
+      "Sets additional distance outside of element in which a press can be detected",
     required: false,
   }),
 };

@@ -27,6 +27,7 @@ export { default as Switch, SwitchRow } from "./components/Switch";
 export { default as TextField } from "./components/TextField";
 export { default as ToggleButton } from "./components/ToggleButton";
 export { default as Touchable } from "./components/Touchable";
+export { default as Pressable } from "./components/Pressable";
 export { AccordionGroup, AccordionItem } from "./components/Accordion";
 export {
   ActionSheet,

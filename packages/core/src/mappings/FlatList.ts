@@ -3,6 +3,8 @@ import {
   createNumColumnsType,
   createStaticBoolProp,
   CONTAINER_COMPONENT_STYLES_SECTIONS,
+  Triggers,
+  createActionProp,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -14,7 +16,17 @@ export const SEED_DATA = {
   layout: {
     flex: 1,
   },
+  triggers: [
+    Triggers.OnRefresh,
+    Triggers.OnEndReached,
+    Triggers.OnEndReachedThreshold,
+    Triggers.OnViewableItemsChanged,
+  ],
   props: {
+    onRefresh: createActionProp(),
+    onEndReached: createActionProp(),
+    onEndReachedThreshold: createActionProp(),
+    onViewableItemsChanged: createActionProp(),
     horizontal: createStaticBoolProp({
       label: "Horizontal",
       description: "Render list horizontally",
@@ -25,6 +37,10 @@ export const SEED_DATA = {
     }),
     numColumns: createNumColumnsType({
       editable: true,
+    }),
+    initialNumToRender: createStaticBoolProp({
+      label: "Initial Num To Render",
+      descriprion: "How many items to render in the initial batch",
     }),
   },
 };

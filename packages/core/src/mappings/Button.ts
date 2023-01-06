@@ -7,6 +7,7 @@ import {
   createActionProp,
   Triggers,
   StylesPanelSections,
+  createStaticNumberProp,
 } from "@draftbit/types";
 
 const SEED_DATA_TRIGGERS = [Triggers.OnPress];
@@ -23,12 +24,28 @@ const SEED_DATA_PROPS = {
   }),
   disabled: createDisabledProp(),
   loading: createLoadingProp(),
-};
-
-const LAYOUT = {
-  backgroundColor: "transparent",
-  borderRadius: 8,
-  fontFamily: "system-700",
+  activeOpacity: createStaticNumberProp({
+    label: "Active Opacity",
+    description: "Opacity of the button when active.",
+    required: false,
+  }),
+  disabledOpacity: createStaticNumberProp({
+    label: "Disabled Opacity",
+    description: "Opacity of the button when disabled.",
+    required: false,
+  }),
+  delayLongPress: createStaticNumberProp({
+    label: "Delay Long Press",
+    description:
+      "Duration (in milliseconds) from onPressIn before onLongPress is called.",
+    required: false,
+  }),
+  hitSlop: createStaticNumberProp({
+    label: "Hit Slop",
+    description:
+      "Sets additional distance outside of element in which a press can be detected",
+    required: false,
+  }),
 };
 
 export const SEED_DATA = [
@@ -46,7 +63,8 @@ export const SEED_DATA = [
       StylesPanelSections.Effects,
     ],
     layout: {
-      ...LAYOUT,
+      borderRadius: 8,
+      fontFamily: "system-700",
       backgroundColor: "transparent",
       borderWidth: 1,
       textAlign: "center",
@@ -68,7 +86,8 @@ export const SEED_DATA = [
       StylesPanelSections.Effects,
     ],
     layout: {
-      ...LAYOUT,
+      borderRadius: 8,
+      fontFamily: "system-700",
       backgroundColor: "primary",
       textAlign: "center",
     },
@@ -89,7 +108,8 @@ export const SEED_DATA = [
       StylesPanelSections.Effects,
     ],
     layout: {
-      ...LAYOUT,
+      borderRadius: 8,
+      fontFamily: "system-700",
       backgroundColor: "primary",
       textAlign: "center",
     },

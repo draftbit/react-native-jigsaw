@@ -1,3 +1,6 @@
+/* Temporarily Commented Out
+
+
 import {
   COMPONENT_TYPES,
   StylesPanelSections,
@@ -77,3 +80,4 @@ export const SEED_DATA = [
     },
   },
 ];
+ */

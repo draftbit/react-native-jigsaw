@@ -2,23 +2,22 @@ import { Icon } from "@draftbit/native";
 export { AudioPlayer, Icon, LinearGradient, WebView } from "@draftbit/native";
 
 export {
-  Avatar,
   Carousel,
-  Center,
-  Circle,
+  // Center,
+  // Circle,
   CircleImage,
-  Container,
+  // Container,
   CheckboxGroup,
   DefaultTheme,
   Divider,
   Provider,
   RadioButtonFieldGroup,
   RadioButtonGroup,
-  Row,
+  // Row,
   ScreenContainer,
-  Spacer,
-  Square,
-  Stack,
+  // Spacer,
+  // Square,
+  // Stack,
   Surface,
   SVG,
   Switch,
@@ -42,6 +41,71 @@ export {
 } from "@draftbit/core";
 
 /**
+ * NativeBase Components Jan 2023
+ *
+ * ALERT
+ * - AlertDialog
+ * - AlertDialog.Header
+ * - AlertDialog.Body
+ * - AlertDialog.Footer
+ * - AlertDialog.Content
+ * - AlertDialog.CloseButton
+ *
+ * FORMS
+ * - Button -- COMMENTED OUT
+ * - Button.Group -- COMMENTED OUT
+ * - Fab
+ *
+ * DATA DISPLAY
+ * - Badge
+ * - Divider
+ *
+ * FEEDBACK
+ * - Alert
+ * - Alert.Icon
+ * - Progress
+ *
+ * LAYOUT
+ * - AspectRatio
+ * - Box
+ * - Center
+ * - Square
+ * - Circle
+ * - Column
+ * - Container
+ * - Flex
+ * - Spacer
+ * - Row
+ * - Stack
+ * - ZStack
+ *
+ * MEDIA
+ * - Avatar
+ * - Avatar.Badge
+ * - Avatar.Group
+ *
+ * MENU
+ * - Menu
+ * - Menu.Item
+ * - Menu.Group
+ * - Menu.OptionGroup
+ * - Menu.ItemOption
+ * - Menu.Trigger
+ *
+ * MODAL
+ * - Modal
+ * - Modal.Content
+ * - Modal.Header
+ * - Modal.Footer
+ * - Modal.Body
+ * - Modal.CloseButton
+ *
+ * OTHER
+ * - Tooltip
+ *
+ * */
+
+/**
  * Components with Injected Dependencies
  *
  * Inject a native module from `@draftbit/native` into these components for use
@@ -50,7 +114,7 @@ export {
 
 import {
   injectIcon,
-  AvatarEdit as BaseAvatarEdit,
+  //AvatarEdit as BaseAvatarEdit,
   Banner as BaseBanner,
   Button as BaseDeprecatedButton,
   ButtonSolid as BaseButtonSolid,
@@ -62,7 +126,6 @@ import {
   Checkbox as BaseCheckbox,
   CheckboxRow as BaseCheckboxRow,
   DatePicker as BaseDatePicker,
-  FAB as BaseFab,
   FieldSearchBarFull as BaseFieldSearchBarFull,
   IconButton as BaseIconButton,
   Picker as BasePicker,
@@ -82,7 +145,7 @@ import {
   AccordionItem as BaseAccordionItem,
 } from "@draftbit/core";
 
-export const AvatarEdit = injectIcon(BaseAvatarEdit, Icon);
+//export const AvatarEdit = injectIcon(BaseAvatarEdit, Icon);
 export const Banner = injectIcon(BaseBanner, Icon);
 export const Button = injectIcon(BaseDeprecatedButton, Icon);
 export const ButtonOutline = injectIcon(BaseButtonOutline, Icon);
@@ -93,7 +156,6 @@ export const CardContainerRating = injectIcon(BaseCardContainerRating, Icon);
 export const Checkbox = injectIcon(BaseCheckbox, Icon);
 export const CheckboxRow = injectIcon(BaseCheckboxRow, Icon);
 export const DatePicker = injectIcon(BaseDatePicker, Icon);
-export const FAB = injectIcon(BaseFab, Icon);
 export const FieldSearchBarFull = injectIcon(BaseFieldSearchBarFull, Icon);
 export const HeaderLarge = injectIcon(BaseHeaderLarge, Icon);
 export const HeaderMedium = injectIcon(BaseHeaderMedium, Icon);

@@ -96,7 +96,7 @@ export const SEED_DATA = [
   },
   {
     name: "Alert Footer",
-    tag: "AlertDialog.Body",
+    tag: "AlertDialog.Footer",
     description: "Contains the actions of the dialog.",
     ...SHARED_SEED_DATA,
     props: {},
@@ -109,7 +109,7 @@ export const SEED_DATA = [
     props: {},
   },
   {
-    name: "Alert Content",
+    name: "Alert Close Button",
     tag: "AlertDialog.CloseButton",
     description: "The button that closes the dialog",
     ...SHARED_SEED_DATA,

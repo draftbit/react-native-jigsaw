@@ -35,8 +35,8 @@ export { default as Switch, SwitchRow } from "./components/Switch";
 
 // MEDIA
 export { default as SVG } from "./components/SVG";
-export { default as Avatar } from "./components/CircleImage";
-export { default as AvatarEdit } from "./components/AvatarEdit";
+// export { default as Avatar } from "./components/CircleImage"; Replaced by NativeBase
+// export { default as AvatarEdit } from "./components/AvatarEdit"; Replaced by NativeBase
 export { default as CircleImage } from "./components/CircleImage";
 
 // SWIPER
@@ -71,27 +71,67 @@ export { default as CardContainerRating } from "./components/CardContainerRating
 export { default as CardInline } from "./components/CardInline";
 export { useAuthState } from "./components/useAuthState";
 
-/* NativeBase Componented Dec 2022
-
-LAYOUT
-  AspectRatio,
-  Box,
-  Center,
-  Square,
-  Circle,
-  Column,
-  Container,
-  Flex
-  Spacer
-  Row,
-  Stack,
-  ZStack,
-
-MEDIA
-  Avatar
-  Avatar Badge
-  Avatar Group
-
-FORMS
-
-*/
+/**
+ * NativeBase Components Jan 2023
+ *
+ * ALERT
+ * - AlertDialog
+ * - AlertDialog.Header
+ * - AlertDialog.Body
+ * - AlertDialog.Footer
+ * - AlertDialog.Content
+ * - AlertDialog.CloseButton
+ *
+ * FORMS
+ * - Button -- COMMENTED OUT
+ * - Button.Group -- COMMENTED OUT
+ * - Fab
+ *
+ * DATA DISPLAY
+ * - Badge
+ * - Divider
+ *
+ * FEEDBACK
+ * - Alert
+ * - Alert.Icon
+ * - Progress
+ *
+ * LAYOUT
+ * - AspectRatio
+ * - Box
+ * - Center
+ * - Square
+ * - Circle
+ * - Column
+ * - Container
+ * - Flex
+ * - Spacer
+ * - Row
+ * - Stack
+ * - ZStack
+ *
+ * MEDIA
+ * - Avatar
+ * - Avatar.Badge
+ * - Avatar.Group
+ *
+ * MENU
+ * - Menu
+ * - Menu.Item
+ * - Menu.Group
+ * - Menu.OptionGroup
+ * - Menu.ItemOption
+ * - Menu.Trigger
+ *
+ * MODAL
+ * - Modal
+ * - Modal.Content
+ * - Modal.Header
+ * - Modal.Footer
+ * - Modal.Body
+ * - Modal.CloseButton
+ *
+ * OTHER
+ * - Tooltip
+ *
+ * */

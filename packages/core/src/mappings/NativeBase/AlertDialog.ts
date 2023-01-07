@@ -6,6 +6,7 @@ import {
   createStaticBoolProp,
   createTextEnumProp,
   createActionProp,
+  createStaticNumberProp,
 } from "@draftbit/types";
 
 const SHARED_SEED_DATA = {
@@ -32,8 +33,9 @@ export const SEED_DATA = [
     description:
       "AlertDialog is used when a user needs to be interrupted with a mandatory confirmation or call-to-action. AlertDialog composes Modal so you can use all its props.",
     ...SHARED_SEED_DATA,
-    triggers: [Triggers.OnClose, Triggers.OnOpen],
+    triggers: [Triggers.OnClose],
     props: {
+      /* https://github.com/GeekyAnts/NativeBase/blob/master/src/components/composites/AlertDialog/types.tsx */
       isOpen: createBoolProp({
         label: "Is Open",
         description:
@@ -42,6 +44,10 @@ export const SEED_DATA = [
       defaultIsOpen: createStaticBoolProp({
         label: "Default Is Open",
         description: "If true, the modal will be opened by default.",
+      }),
+      size: createStaticNumberProp({
+        label: "Size",
+        description: "The size of the AlertDialog",
       }),
       avoidKeyboard: createStaticBoolProp({
         label: "Avoid Keyboard",
@@ -61,6 +67,11 @@ export const SEED_DATA = [
           "If true, the modal will close when the keyboard is dismissed.",
         defaultValue: true,
       }),
+      overlayVisible: createStaticBoolProp({
+        label: "Overlay Visible",
+        description: "If true, the overlay element is visible.",
+        defaultValue: true,
+      }),
       backdropVisible: createStaticBoolProp({
         label: "Backdrop Visible",
         description: "If true, the backdrop element is visible.",
@@ -76,7 +87,6 @@ export const SEED_DATA = [
         label: "Use RN Modal",
         description: "If true, the modal will use the RN Modal component.",
       }),
-      onOpen: createActionProp(),
       onClose: createActionProp(),
     },
   },

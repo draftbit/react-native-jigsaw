@@ -5,6 +5,7 @@ export const Triggers = {
   OnValueChange: "ON_VALUE_CHANGE",
   OnDateChange: "ON_DATE_CHANGE",
   OnChange: "ON_CHANGE",
+  OnChangeEnd: "ON_CHANGE_END",
   OnChangeText: "ON_CHANGE_TEXT",
   OnRefresh: "ON_REFRESH",
   OnBlur: "ON_BLUR",
@@ -308,6 +309,7 @@ export const createNumberProp = (overrides = {}) => ({
 export const createStaticNumberProp = (overrides = {}) =>
   createNumberProp({
     group: GROUPS.basic,
+    required: false,
     ...overrides,
   });
 

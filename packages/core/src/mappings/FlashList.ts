@@ -7,6 +7,7 @@ import {
   GROUPS,
   Triggers,
   createActionProp,
+  createStaticNumberProp,
 } from "@draftbit/types";
 
 export const SEED_DATA = [
@@ -20,17 +21,10 @@ export const SEED_DATA = [
     layout: {
       flex: 1,
     },
-    triggers: [
-      Triggers.OnRefresh,
-      Triggers.OnEndReached,
-      Triggers.OnEndReachedThreshold,
-      Triggers.OnViewableItemsChanged,
-    ],
+    triggers: [Triggers.OnRefresh, Triggers.OnEndReached],
     props: {
       onRefresh: createActionProp(),
       onEndReached: createActionProp(),
-      onEndReachedThreshold: createActionProp(),
-      onViewableItemsChanged: createActionProp(),
       numColumns: createNumColumnsType({
         editable: true,
       }),
@@ -47,6 +41,12 @@ export const SEED_DATA = [
         description:
           "If enabled, MasonryFlashList will try to reduce difference in column height by modifying item order. If true, specifying overrideItemLayout is required. Default value is false.",
       }),
+      onEndReachedThreshold: createStaticNumberProp({
+        label: "End Reached Threshold",
+        description:
+          "How far from the end (in units of visible length of the list) the bottom edge of the list must be from the end of the content to trigger the onEndReached callback. Thus a value of 0.5 will trigger onEndReached when the end of the content is within half the visible length of the list.",
+        defaultValue: 0.5,
+      }),
     },
   },
   {
@@ -59,11 +59,10 @@ export const SEED_DATA = [
     layout: {
       flex: 1,
     },
+    triggers: [Triggers.OnRefresh, Triggers.OnEndReached],
     props: {
       onRefresh: createActionProp(),
       onEndReached: createActionProp(),
-      onEndReachedThreshold: createActionProp(),
-      onViewableItemsChanged: createActionProp(),
       estimatedItemSize: createNumberProp({
         group: GROUPS.basic,
         label: "Est. Item Size",
@@ -82,6 +81,12 @@ export const SEED_DATA = [
       }),
       numColumns: createNumColumnsType({
         editable: true,
+      }),
+      onEndReachedThreshold: createStaticNumberProp({
+        label: "End Reached Threshold",
+        description:
+          "How far from the end (in units of visible length of the list) the bottom edge of the list must be from the end of the content to trigger the onEndReached callback. Thus a value of 0.5 will trigger onEndReached when the end of the content is within half the visible length of the list.",
+        defaultValue: 0.5,
       }),
     },
   },

@@ -57,7 +57,7 @@ export const SEED_DATA = [
     name: "Touchable",
     tag: "Touchable",
     description: "An interactive view with no styles",
-    category: COMPONENT_TYPES.deprecated,
+    category: COMPONENT_TYPES.button,
     ...SEED_DATA_PROPS,
   },
   {

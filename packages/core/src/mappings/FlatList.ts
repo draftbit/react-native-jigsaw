@@ -5,6 +5,7 @@ import {
   CONTAINER_COMPONENT_STYLES_SECTIONS,
   Triggers,
   createActionProp,
+  createStaticNumberProp,
 } from "@draftbit/types";
 
 export const SEED_DATA = {

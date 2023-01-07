@@ -3,6 +3,20 @@ export { withTheme, ThemeProvider } from "./theming";
 export { default as Provider } from "./Provider";
 export { default as DefaultTheme } from "./styles/DefaultTheme";
 
+/** Replaced By NativeBase
+ * export { default as Avatar } from "./components/CircleImage";
+ * export { default as Container } from "./components/Container";
+ * export { default as FAB } from "./components/FAB";
+ * export {
+  Center,
+  Circle,
+  Square,
+  Row,
+  Stack,
+  Spacer,
+} from "./components/Layout";
+ */
+
 // BASIC
 export { default as ScreenContainer } from "./components/ScreenContainer";
 export { default as Banner } from "./components/Banner";
@@ -12,6 +26,7 @@ export { Button, ButtonSolid, ButtonOutline } from "./components/Button";
 export { Link } from "./components/Text";
 export { default as IconButton } from "./components/IconButton";
 export { default as Touchable } from "./components/Touchable";
+export { default as ToggleButton } from "./components/ToggleButton";
 
 // INPUTS
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
@@ -35,8 +50,9 @@ export { default as Switch, SwitchRow } from "./components/Switch";
 
 // MEDIA
 export { default as SVG } from "./components/SVG";
+export { default as Image } from "./components/Image";
 // export { default as Avatar } from "./components/CircleImage"; Replaced by NativeBase
-// export { default as AvatarEdit } from "./components/AvatarEdit"; Replaced by NativeBase
+export { default as AvatarEdit } from "./components/AvatarEdit";
 export { default as CircleImage } from "./components/CircleImage";
 
 // SWIPER

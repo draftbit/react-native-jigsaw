@@ -15,7 +15,6 @@ export const Triggers = {
   OnPressIcon: "ON_PRESS_ICON",
   OnEndReached: "ON_END_REACHED",
   OnEndReachedThreshold: "ON_END_REACHED_THRESHOLD",
-  OnViewableItemsChanged: "ON_VIEWABLE_ITEMS_CHANGED",
 };
 
 export const StylesPanelSections = {

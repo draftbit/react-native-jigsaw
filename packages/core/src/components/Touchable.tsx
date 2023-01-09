@@ -2,13 +2,7 @@ import React from "react";
 import { Pressable, PressableProps, ViewStyle } from "react-native";
 
 type Props = {
-  disabled?: boolean;
-  children: React.ReactNode;
   style?: ViewStyle;
-  onPress?: () => void;
-  onLongPress?: () => void;
-  delayLongPress?: number;
-  hitSlop?: number;
   activeOpacity?: number;
   disabledOpacity?: number;
 } & PressableProps;

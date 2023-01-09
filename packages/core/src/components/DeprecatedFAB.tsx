@@ -3,15 +3,15 @@ import {
   ActivityIndicator,
   View,
   StyleSheet,
-  TouchableHighlightProps,
   StyleProp,
   ViewStyle,
   TextStyle,
+  Pressable,
+  PressableProps,
 } from "react-native";
 import color from "color";
 import Config from "./Config";
 import Text from "./Text";
-import Touchable from "./Touchable";
 import Elevation from "./Elevation";
 import { withTheme } from "../theming";
 
@@ -65,7 +65,7 @@ type Props = {
   elevation?: number;
   theme: Theme;
   style?: StyleProp<ViewStyle>;
-} & TouchableHighlightProps &
+} & PressableProps &
   IconSlot;
 
 const FAB: React.FC<React.PropsWithChildren<Props>> = ({
@@ -169,7 +169,7 @@ const FAB: React.FC<React.PropsWithChildren<Props>> = ({
 
   return (
     <Elevation style={[{ elevation }, style]}>
-      <Touchable
+      <Pressable
         {...rest}
         onPress={onPress}
         accessibilityState={{ disabled }}
@@ -200,7 +200,7 @@ const FAB: React.FC<React.PropsWithChildren<Props>> = ({
             </Text>
           ) : null}
         </View>
-      </Touchable>
+      </Pressable>
     </Elevation>
   );
 };

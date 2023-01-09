@@ -13,7 +13,7 @@ export const Triggers = {
   OnCheck: "ON_CHECK",
   OnUncheck: "ON_UNCHECK",
   OnPressIcon: "ON_PRESS_ICON",
-  OnIndexChanged: "ON_Index_Changed",
+  OnIndexChanged: "ON_INDEX_CHANGED",
 };
 
 export const StylesPanelSections = {

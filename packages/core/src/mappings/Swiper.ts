@@ -6,6 +6,7 @@ import {
   createColorProp,
   GROUPS,
   Triggers,
+  createActionProp,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -19,6 +20,7 @@ export const SEED_DATA = {
   },
   triggers: [Triggers.OnIndexChanged],
   props: {
+    onIndexChanged: createActionProp(),
     from: createNumberProp({
       group: GROUPS.basic,
       label: "Initial Slide",

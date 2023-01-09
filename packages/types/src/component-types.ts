@@ -14,6 +14,7 @@ export const Triggers = {
   OnCheck: "ON_CHECK",
   OnUncheck: "ON_UNCHECK",
   OnPressIcon: "ON_PRESS_ICON",
+  OnEndReached: "ON_END_REACHED",
 };
 
 export const StylesPanelSections = {

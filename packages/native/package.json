@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/native",
-  "version": "46.4.3",
+  "version": "47.0.0",
   "description": "Draftbit UI Components that Depend on Native Components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -36,23 +36,33 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/types": "^46.4.3",
+    "@draftbit/types": "^47.0.0",
     "@expo/vector-icons": "^13.0.0",
-    "@react-native-community/datetimepicker": "6.2.0",
-    "@react-native-community/slider": "4.2.3",
-    "expo-av": "~12.0.4",
-    "expo-camera": "~12.3.0",
-    "expo-linear-gradient": "~11.4.0",
-    "react-native-svg": "12.3.0",
-    "react-native-webview": "11.23.0"
+    "@react-native-community/datetimepicker": "6.5.2",
+    "@react-native-community/slider": "4.2.4",
+    "expo-av": "~13.0.2",
+    "expo-camera": "~13.1.0",
+    "expo-linear-gradient": "~12.0.1",
+    "react-native-svg": "13.4.0",
+    "react-native-webview": "11.23.1"
   },
   "react-native-builder-bob": {
     "declarationMap": false,
     "source": "src",
     "output": "lib",
     "targets": [
-      "commonjs",
-      "module",
+      [
+        "commonjs",
+        {
+          "sourceMaps": false
+        }
+      ],
+      [
+        "module",
+        {
+          "sourceMaps": false
+        }
+      ],
       [
         "typescript",
         {

@@ -406,8 +406,6 @@ const Picker: React.FC<PickerProps> = ({
   );
 };
 
-export default withTheme(Picker);
-
 const styles = StyleSheet.create({
   marginsContainer: {
     alignSelf: "stretch",
@@ -478,3 +476,5 @@ const styles = StyleSheet.create({
     maxHeight: deviceHeight,
   },
 });
+
+export default withTheme(Picker);

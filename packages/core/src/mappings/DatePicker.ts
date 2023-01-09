@@ -5,19 +5,12 @@ import {
   FIELD_NAME,
   GROUPS,
   Triggers,
+  StylesPanelSections,
+  createNumberProp,
+  createColorProp,
 } from "@draftbit/types";
 
 const SEED_DATA_PROPS = {
-  label: {
-    label: "Label",
-    description: "The label to be displayed on the picker",
-    formType: FORM_TYPES.string,
-    propType: PROP_TYPES.STRING,
-    defaultValue: "Date",
-    editable: true,
-    required: true,
-    group: GROUPS.data,
-  },
   mode: {
     label: "Mode",
     description: "Choose between date, time and datetime",
@@ -29,6 +22,28 @@ const SEED_DATA_PROPS = {
     options: ["date", "time", "datetime"],
     group: GROUPS.basic,
   },
+  label: {
+    label: "Label",
+    description: "The label to be displayed on the picker",
+    formType: FORM_TYPES.string,
+    propType: PROP_TYPES.STRING,
+    defaultValue: "Date",
+    editable: true,
+    required: true,
+    group: GROUPS.data,
+  },
+  labelSize: createNumberProp({
+    label: "Label Size",
+  }),
+  labelColor: createColorProp({
+    label: "Label Color",
+  }),
+  borderColor: createColorProp({
+    label: "Border Color",
+  }),
+  borderColorActive: createColorProp({
+    label: "Border Color",
+  }),
   format: {
     label: "Format",
     description: "Create an output format for the date.",
@@ -150,6 +165,13 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.input,
     layout: null,
     triggers: [Triggers.OnDateChange],
+    StylesPanelSections: [
+      StylesPanelSections.Typography,
+      StylesPanelSections.Background,
+      StylesPanelSections.Size,
+      StylesPanelSections.MarginsAndPaddings,
+      StylesPanelSections.Position,
+    ],
     props: {
       ...SEED_DATA_PROPS,
       type: {

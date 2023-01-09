@@ -1,16 +1,3 @@
-import { Asset } from "expo-asset";
-import Constants from "expo-constants";
-import * as SplashScreen from "expo-splash-screen";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  Animated,
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
-
 import {
   NavigationContainer,
   useNavigation,
@@ -18,13 +5,14 @@ import {
 } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import "react-native-gesture-handler";
-
+import * as React from "react";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { Provider, DefaultTheme, ScreenContainer } from "@draftbit/ui";
 import {
   SafeAreaProvider,
   initialWindowMetrics,
 } from "react-native-safe-area-context";
-
+import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 
 import AudioPlayerExample from "./AudioPlayerExample";
@@ -140,108 +128,6 @@ const Drawer = createDrawerNavigator();
 
 type ExampleProps = { title: string; children: React.ReactNode };
 
-SplashScreen.preventAutoHideAsync().catch(() => {});
-
-export default function App() {
-  return (
-    <SplashScreenProvider image={{ uri: Constants.manifest.splash.image }}>
-      <Provider theme={DefaultTheme}>
-        <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-          <Examples />
-        </SafeAreaProvider>
-      </Provider>
-    </SplashScreenProvider>
-  );
-}
-
-function SplashScreenProvider({ children, image }) {
-  const [isSplashReady, setSplashReady] = useState(false);
-
-  useEffect(() => {
-    async function prepare() {
-      try {
-        // Pre-load fonts, make any api calls you need to do here
-        await Font.loadAsync(customFonts);
-        await Asset.fromURI(image.uri).downloadAsync();
-      } catch (e) {
-        console.warn(e);
-      } finally {
-        setSplashReady(true);
-      }
-    }
-
-    prepare();
-  }, [image]);
-
-  if (!isSplashReady) {
-    return null;
-  }
-
-  return <AnimatedSplashScreen image={image}>{children}</AnimatedSplashScreen>;
-}
-
-function AnimatedSplashScreen({ children, image }) {
-  const animation = useMemo(() => new Animated.Value(1), []);
-  const [isAppReady, setAppReady] = useState(false);
-  const [isSplashAnimationComplete, setAnimationComplete] = useState(false);
-
-  useEffect(() => {
-    if (isAppReady) {
-      Animated.timing(animation, {
-        toValue: 0,
-        duration: 1000,
-        useNativeDriver: true,
-      }).start(() => setAnimationComplete(true));
-    }
-  }, [isAppReady, animation]);
-
-  const onImageLoaded = useCallback(async () => {
-    try {
-      await SplashScreen.hideAsync();
-      // Load stuff
-      await Promise.all([]);
-    } catch (e) {
-      // handle errors
-    } finally {
-      setAppReady(true);
-    }
-  }, []);
-
-  return (
-    <View style={{ flex: 1 }}>
-      {isAppReady && children}
-      {!isSplashAnimationComplete && (
-        <Animated.View
-          pointerEvents="none"
-          style={[
-            StyleSheet.absoluteFill,
-            {
-              backgroundColor: Constants.manifest.splash.backgroundColor,
-              opacity: animation,
-            },
-          ]}
-        >
-          <Animated.Image
-            style={{
-              width: "100%",
-              height: "100%",
-              resizeMode: Constants.manifest.splash.resizeMode || "contain",
-              transform: [
-                {
-                  scale: animation,
-                },
-              ],
-            }}
-            source={image}
-            onLoadEnd={onImageLoaded}
-            fadeDuration={0}
-          />
-        </Animated.View>
-      )}
-    </View>
-  );
-}
-
 function Example({ title, children }: ExampleProps) {
   const navigation = useNavigation();
 
@@ -294,6 +180,22 @@ function Examples() {
         })}
       </Drawer.Navigator>
     </NavigationContainer>
+  );
+}
+
+export default function App() {
+  const [loaded] = Font.useFonts(customFonts);
+
+  if (!loaded) {
+    return <AppLoading />;
+  }
+
+  return (
+    <Provider theme={DefaultTheme}>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <Examples />
+      </SafeAreaProvider>
+    </Provider>
   );
 }
 

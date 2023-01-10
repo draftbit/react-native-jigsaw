@@ -19,6 +19,7 @@ export interface SwiperProps<T> {
   keyExtractor: (item: T, index: number) => string;
   renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
   style?: StyleProp<ViewStyle>;
+  onIndexChanged?: (index: number) => void;
 }
 
 const Swiper = ({
@@ -37,6 +38,7 @@ const Swiper = ({
   keyExtractor,
   renderItem,
   children,
+  onIndexChanged,
   style,
 }: SwiperProps<any>) => (
   <View style={style}>
@@ -46,6 +48,7 @@ const Swiper = ({
       loop={loop}
       timeout={timeout}
       vertical={vertical}
+      onIndexChanged={onIndexChanged}
       controlsProps={{
         prevTitle,
         nextTitle,

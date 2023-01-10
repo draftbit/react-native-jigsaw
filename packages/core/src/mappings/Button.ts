@@ -7,11 +7,13 @@ import {
   createActionProp,
   Triggers,
   StylesPanelSections,
+  createStaticNumberProp,
 } from "@draftbit/types";
 
-const SEED_DATA_TRIGGERS = [Triggers.OnPress];
+const SEED_DATA_TRIGGERS = [Triggers.OnPress, Triggers.OnLongPress];
 const SEED_DATA_PROPS = {
   onPress: createActionProp(),
+  onLongPress: createActionProp(),
   icon: createIconProp({
     defaultValue: null,
     required: false,
@@ -23,12 +25,38 @@ const SEED_DATA_PROPS = {
   }),
   disabled: createDisabledProp(),
   loading: createLoadingProp(),
-};
-
-const LAYOUT = {
-  backgroundColor: "transparent",
-  borderRadius: 8,
-  fontFamily: "system-700",
+  activeOpacity: createStaticNumberProp({
+    label: "Active Opacity",
+    description: "Opacity of the button when active.",
+    defaultValue: 0.8,
+    min: 0,
+    max: 1,
+    step: 0.01,
+    precision: 2,
+    required: false,
+  }),
+  disabledOpacity: createStaticNumberProp({
+    label: "Disabled Opacity",
+    description: "Opacity of the button when disabled.",
+    defaultValue: 0.8,
+    min: 0,
+    max: 1,
+    step: 0.01,
+    precision: 2,
+    required: false,
+  }),
+  delayLongPress: createStaticNumberProp({
+    label: "Delay Long Press",
+    description:
+      "Duration (in milliseconds) from onPressIn before onLongPress is called.",
+    required: false,
+  }),
+  hitSlop: createStaticNumberProp({
+    label: "Hit Slop",
+    description:
+      "Sets additional distance outside of element in which a press can be detected",
+    required: false,
+  }),
 };
 
 export const SEED_DATA = [
@@ -46,7 +74,8 @@ export const SEED_DATA = [
       StylesPanelSections.Effects,
     ],
     layout: {
-      ...LAYOUT,
+      borderRadius: 8,
+      fontFamily: "system-700",
       backgroundColor: "transparent",
       borderWidth: 1,
       textAlign: "center",
@@ -68,7 +97,8 @@ export const SEED_DATA = [
       StylesPanelSections.Effects,
     ],
     layout: {
-      ...LAYOUT,
+      borderRadius: 8,
+      fontFamily: "system-700",
       backgroundColor: "primary",
       textAlign: "center",
     },
@@ -89,7 +119,8 @@ export const SEED_DATA = [
       StylesPanelSections.Effects,
     ],
     layout: {
-      ...LAYOUT,
+      borderRadius: 8,
+      fontFamily: "system-700",
       backgroundColor: "primary",
       textAlign: "center",
     },

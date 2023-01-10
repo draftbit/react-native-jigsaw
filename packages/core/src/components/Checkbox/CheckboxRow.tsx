@@ -6,6 +6,7 @@ import {
   TextStyle,
   View,
   Platform,
+  Pressable,
 } from "react-native";
 import { isString } from "lodash";
 
@@ -13,7 +14,6 @@ import type { IconSlot } from "../../interfaces/Icon";
 import { extractStyles } from "../../utilities";
 import { usePrevious } from "../../hooks";
 import Text from "../Text";
-import Touchable from "../Touchable";
 import Checkbox, { CheckboxProps } from "./Checkbox";
 
 export enum Direction {
@@ -100,7 +100,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   const { textStyles, viewStyles } = extractStyles(style);
 
   return (
-    <Touchable
+    <Pressable
       onPress={handlePress}
       style={[viewStyles, styles.mainParent, { flexDirection: direction }]}
       disabled={disabled}
@@ -130,7 +130,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
         uncheckedIcon={uncheckedIcon}
         size={size}
       />
-    </Touchable>
+    </Pressable>
   );
 };
 

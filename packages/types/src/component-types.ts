@@ -2,6 +2,7 @@
 // Make sure enum exists @draftbit
 export const Triggers = {
   OnPress: "ON_PRESS",
+  OnLongPress: "ON_LONG_PRESS",
   OnValueChange: "ON_VALUE_CHANGE",
   OnDateChange: "ON_DATE_CHANGE",
   OnChange: "ON_CHANGE",
@@ -13,6 +14,8 @@ export const Triggers = {
   OnCheck: "ON_CHECK",
   OnUncheck: "ON_UNCHECK",
   OnPressIcon: "ON_PRESS_ICON",
+  OnIndexChanged: "ON_INDEX_CHANGED",
+  OnEndReached: "ON_END_REACHED",
 };
 
 export const StylesPanelSections = {

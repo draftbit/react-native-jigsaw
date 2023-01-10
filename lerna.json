@@ -1,12 +1,18 @@
 {
-  "version": "46.6.7",
+  "version": "46.6.8",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": ["packages/*", "example"],
+  "packages": [
+    "packages/*",
+    "example"
+  ],
   "command": {
     "publish": {
       "npmClient": "npm",
-      "ignoreChanges": ["**/example/**", "**/*.md"],
+      "ignoreChanges": [
+        "**/example/**",
+        "**/*.md"
+      ],
       "message:": "chore: publish"
     }
   }

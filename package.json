@@ -46,7 +46,7 @@
     "husky": ">=6",
     "jest": "^26.6.3",
     "json-server": "^0.16.3",
-    "lerna": "~6.4.0",
+    "lerna": "~5.6.2",
     "lint-staged": ">=13",
     "node-fetch": "^2.6.1",
     "patch-package": "^6.4.7",

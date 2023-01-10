@@ -6,13 +6,13 @@ import {
   TextStyle,
   View,
   Platform,
+  Pressable,
 } from "react-native";
 import Checkbox, { CheckboxProps } from "./Checkbox";
 import Text from "../Text";
 import { useCheckboxGroupContext } from "./context";
 import type { IconSlot } from "../../interfaces/Icon";
 import { Direction as GroupDirection } from "./context";
-import Touchable from "../Touchable";
 import { extractStyles } from "../../utilities";
 
 export enum Direction {
@@ -92,7 +92,7 @@ const CheckboxGroupRow: React.FC<CheckboxGroupRowProps & IconSlot> = ({
   const { textStyles, viewStyles } = extractStyles(style);
 
   return (
-    <Touchable
+    <Pressable
       onPress={handlePress}
       style={[styles.mainParent, { flexDirection: direction }, viewStyles]}
       disabled={disabled}
@@ -125,7 +125,7 @@ const CheckboxGroupRow: React.FC<CheckboxGroupRowProps & IconSlot> = ({
           uncheckedColor={uncheckedColor}
         />
       </View>
-    </Touchable>
+    </Pressable>
   );
 };
 

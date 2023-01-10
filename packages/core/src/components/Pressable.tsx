@@ -1,5 +1,9 @@
 import React from "react";
-import { Pressable, PressableProps, ViewStyle } from "react-native";
+import {
+  Pressable as NativePressable,
+  PressableProps,
+  ViewStyle,
+} from "react-native";
 
 type Props = {
   style?: ViewStyle;
@@ -7,7 +11,7 @@ type Props = {
   disabledOpacity?: number;
 } & PressableProps;
 
-export default function Touchable({
+export default function Pressable({
   children,
   disabled,
   onPress,
@@ -19,9 +23,9 @@ export default function Touchable({
   ...props
 }: Props) {
   return (
-    <Pressable
-      disabled={disabled}
+    <NativePressable
       onPress={onPress}
+      disabled={disabled}
       delayLongPress={delayLongPress ? delayLongPress : 500}
       hitSlop={hitSlop ? hitSlop : 8}
       style={({ pressed }) => {
@@ -35,6 +39,6 @@ export default function Touchable({
       {...props}
     >
       {children}
-    </Pressable>
+    </NativePressable>
   );
 }

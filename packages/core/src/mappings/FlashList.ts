@@ -41,6 +41,11 @@ export const SEED_DATA = [
         description:
           "If enabled, MasonryFlashList will try to reduce difference in column height by modifying item order. If true, specifying overrideItemLayout is required. Default value is false.",
       }),
+      initialNumToRender: createStaticNumberProp({
+        label: "Initial Num To Render",
+        description: "How many items to render in the initial batch",
+        defaultValue: null,
+      }),
       onEndReachedThreshold: createStaticNumberProp({
         label: "End Reached Threshold",
         description:
@@ -81,6 +86,11 @@ export const SEED_DATA = [
       }),
       numColumns: createNumColumnsType({
         editable: true,
+      }),
+      initialNumToRender: createStaticNumberProp({
+        label: "Initial Num To Render",
+        description: "How many items to render in the initial batch",
+        defaultValue: null,
       }),
       onEndReachedThreshold: createStaticNumberProp({
         label: "End Reached Threshold",

@@ -32,9 +32,10 @@ export const SEED_DATA = {
     numColumns: createNumColumnsType({
       editable: true,
     }),
-    initialNumToRender: createStaticBoolProp({
+    initialNumToRender: createStaticNumberProp({
       label: "Initial Num To Render",
-      descriprion: "How many items to render in the initial batch",
+      description: "How many items to render in the initial batch",
+      defaultValue: null,
     }),
     onEndReachedThreshold: createStaticNumberProp({
       label: "End Reached Threshold",

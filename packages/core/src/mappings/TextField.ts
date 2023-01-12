@@ -328,7 +328,7 @@ export const SEED_DATA = [
       ...SEED_DATA_PROPS,
       type: {
         label: "Appearance",
-        description: "Type of Datepicker",
+        description: "Type of Field",
         formType: FORM_TYPES.flatArray,
         propType: PROP_TYPES.STRING,
         defaultValue: "solid",
@@ -380,7 +380,7 @@ export const SEED_DATA = [
       ...SEED_DATA_PROPS,
       type: {
         label: "Appearance",
-        description: "Type of Datepicker",
+        description: "Type of Field",
         formType: FORM_TYPES.flatArray,
         propType: PROP_TYPES.STRING,
         defaultValue: "solid",

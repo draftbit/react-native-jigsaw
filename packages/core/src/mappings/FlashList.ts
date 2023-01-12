@@ -36,11 +36,6 @@ export const SEED_DATA = [
         step: 1,
         precision: 0,
       }),
-      optimizeItemArrangement: createStaticBoolProp({
-        label: "Optimize Item Arrangement",
-        description:
-          "If enabled, MasonryFlashList will try to reduce difference in column height by modifying item order. If true, specifying overrideItemLayout is required. Default value is false.",
-      }),
       initialNumToRender: createStaticNumberProp({
         label: "Initial Num To Render",
         description: "How many items to render in the initial batch",

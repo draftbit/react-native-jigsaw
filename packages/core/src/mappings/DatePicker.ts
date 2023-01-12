@@ -165,7 +165,7 @@ export const SEED_DATA = [
     category: COMPONENT_TYPES.input,
     layout: null,
     triggers: [Triggers.OnDateChange],
-    StylesPanelSections: [
+    stylesPanelSections: [
       StylesPanelSections.Typography,
       StylesPanelSections.Background,
       StylesPanelSections.Size,

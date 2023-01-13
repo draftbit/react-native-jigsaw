@@ -2,6 +2,8 @@ import {
   COMPONENT_TYPES,
   createStaticBoolProp,
   CONTAINER_COMPONENT_STYLES_SECTIONS,
+  Triggers,
+  createActionProp,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -11,7 +13,9 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.view,
   stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   layout: {},
+  triggers: [Triggers.OnRefresh],
   props: {
+    onRefresh: createActionProp(),
     horizontal: createStaticBoolProp({
       label: "Horizontal",
       description: "Render your list horizontally",

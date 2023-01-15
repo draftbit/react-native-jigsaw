@@ -2,23 +2,14 @@ import { Icon } from "@draftbit/native";
 export { AudioPlayer, Icon, LinearGradient, WebView } from "@draftbit/native";
 
 export {
-  Avatar,
-  Carousel,
-  Center,
-  Circle,
   CircleImage,
-  Container,
   CheckboxGroup,
   DefaultTheme,
   Divider,
   Provider,
   RadioButtonFieldGroup,
   RadioButtonGroup,
-  Row,
   ScreenContainer,
-  Spacer,
-  Square,
-  Stack,
   Surface,
   SVG,
   Switch,
@@ -26,15 +17,10 @@ export {
   NumberInput,
   ThemeProvider,
   Touchable,
-  Pressable,
   withTheme,
   useAuthState,
-  /* Deprecated, needs fixing */
-  CardBlock,
-  CardInline,
   ProgressBar,
   ProgressCircle,
-  RowHeadlineImageCaption,
   ActionSheet,
   ActionSheetItem,
   ActionSheetCancel,
@@ -56,14 +42,10 @@ import {
   Button as BaseDeprecatedButton,
   ButtonSolid as BaseButtonSolid,
   ButtonOutline as BaseButtonOutline,
-  Card as BaseCard,
   Link as BaseLink,
-  CardContainer as BaseCardContainer,
-  CardContainerRating as BaseCardContainerRating,
   Checkbox as BaseCheckbox,
   CheckboxRow as BaseCheckboxRow,
   DatePicker as BaseDatePicker,
-  FAB as BaseFab,
   FieldSearchBarFull as BaseFieldSearchBarFull,
   IconButton as BaseIconButton,
   Picker as BasePicker,
@@ -73,11 +55,6 @@ import {
   RadioButtonRow as BaseRadioButtonRow,
   Stepper as BaseStepper,
   ToggleButton as BaseToggleButton,
-  HeaderLarge as BaseHeaderLarge,
-  HeaderMedium as BaseHeaderMedium,
-  HeaderOverline as BaseHeaderOverline,
-  RowBodyIcon as BaseRowBodyIcon,
-  RowHeadlineImageIcon as BaseRowHeadlineImageIcon,
   Slider as BaseSlider,
   AccordionGroup as BaseAccordionGroup,
   AccordionItem as BaseAccordionItem,
@@ -88,24 +65,15 @@ export const Banner = injectIcon(BaseBanner, Icon);
 export const Button = injectIcon(BaseDeprecatedButton, Icon);
 export const ButtonOutline = injectIcon(BaseButtonOutline, Icon);
 export const ButtonSolid = injectIcon(BaseButtonSolid, Icon);
-export const Card = injectIcon(BaseCard, Icon);
-export const CardContainer = injectIcon(BaseCardContainer, Icon);
-export const CardContainerRating = injectIcon(BaseCardContainerRating, Icon);
 export const Checkbox = injectIcon(BaseCheckbox, Icon);
 export const CheckboxRow = injectIcon(BaseCheckboxRow, Icon);
 export const DatePicker = injectIcon(BaseDatePicker, Icon);
-export const FAB = injectIcon(BaseFab, Icon);
 export const FieldSearchBarFull = injectIcon(BaseFieldSearchBarFull, Icon);
-export const HeaderLarge = injectIcon(BaseHeaderLarge, Icon);
-export const HeaderMedium = injectIcon(BaseHeaderMedium, Icon);
-export const HeaderOverline = injectIcon(BaseHeaderOverline, Icon);
 export const IconButton = injectIcon(BaseIconButton, Icon);
 export const Link = injectIcon(BaseLink, Icon);
 export const Picker = injectIcon(BasePicker, Icon);
 export const RadioButton = injectIcon(BaseRadioButton, Icon);
 export const RadioButtonRow = injectIcon(BaseRadioButtonRow, Icon);
-export const RowBodyIcon = injectIcon(BaseRowBodyIcon, Icon);
-export const RowHeadlineImageIcon = injectIcon(BaseRowHeadlineImageIcon, Icon);
 export const StarRating = injectIcon(BaseStarRating, Icon);
 export const Stepper = injectIcon(BaseStepper, Icon);
 export const TextField = injectIcon(BaseTextField, Icon);

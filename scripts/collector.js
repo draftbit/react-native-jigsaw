@@ -76,7 +76,7 @@ function getUrl() {
   const STAGING_API_URL = "https://api.stagingbit.com";
   const PRODUCTION_API_URL = "https://api.draftbit.com";
 
-  const target = process.env.target || "";
+  const target = process.env.target || process.env.TARGET || "";
   switch (target) {
     case "staging":
       return STAGING_API_URL;
@@ -100,9 +100,10 @@ async function uploadComponent(component) {
       "Content-Type": "application/json",
       "Authorization": process.env.COLLECTOR_SCRIPT_TOKEN,
     },
-  }).then((res) => {
+  }).then(async (res) => {
     if (!res.ok) {
-      throw new Error(res.status);
+      const text = await res.text();
+      throw new Error(`${res.status} ${text}`);
     }
   });
 }

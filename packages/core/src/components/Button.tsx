@@ -2,10 +2,10 @@ import * as React from "react";
 import {
   Text,
   Pressable,
+  PressableProps,
   Platform,
   StyleSheet,
   TextStyle,
-  PressableProps,
   ActivityIndicator,
 } from "react-native";
 
@@ -27,6 +27,11 @@ type BaseProps = {
   loading: boolean;
   style?: TextStyle;
   onPress: () => void;
+  onLongPress?: () => void;
+  activeOpacity?: number;
+  disabledOpacity?: number;
+  delayLongPress?: number;
+  hitSlop?: number;
   icon?: string;
 } & PressableProps &
   IconSlot;
@@ -37,6 +42,11 @@ type Props = {
   loading: boolean;
   style?: TextStyle;
   onPress: () => void;
+  onLongPress?: () => void;
+  activeOpacity?: number;
+  disabledOpacity?: number;
+  delayLongPress?: number;
+  hitSlop?: number;
   icon?: string;
   theme: Theme;
 } & PressableProps &
@@ -46,10 +56,11 @@ function Base({
   Icon,
   icon,
   title,
-  onPress,
   loading,
   disabled,
   style,
+  activeOpacity,
+  disabledOpacity,
   ...props
 }: BaseProps): JSX.Element {
   const {
@@ -91,13 +102,12 @@ function Base({
 
   return (
     <Pressable
-      onPress={onPress}
       disabled={disabled || loading}
       style={({ pressed }) => {
         return [
           styles.base,
           {
-            opacity: pressed || disabled ? 0.75 : 1,
+            opacity: pressed ? activeOpacity : disabled ? disabledOpacity : 1,
           },
           buttonStyles,
         ];

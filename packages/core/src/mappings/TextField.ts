@@ -77,7 +77,7 @@ const SEED_DATA_PROPS = {
     propType: PROP_TYPES.BOOLEAN,
   },
   disabled: {
-    group: GROUPS.basic,
+    group: GROUPS.data,
     label: "Disabled",
     description:
       "Whether the input should be disabled. Will prevent input and show a greyed out state.",
@@ -88,12 +88,22 @@ const SEED_DATA_PROPS = {
     required: false,
   },
   editable: {
-    group: GROUPS.advanced,
-    label: "Editable",
+    group: GROUPS.data,
+    label: "Editable?",
     description: "If false, the text is not editable",
     editable: true,
     required: false,
-    defaultValue: true,
+    defaultValue: null,
+    formType: FORM_TYPES.boolean,
+    propType: PROP_TYPES.BOOLEAN,
+  },
+  blurOnSubmit: {
+    group: GROUPS.advanced,
+    label: "Blur On Submit",
+    description: "If true, the text field will blur when submitted. ",
+    editable: true,
+    required: false,
+    defaultValue: null,
     formType: FORM_TYPES.boolean,
     propType: PROP_TYPES.BOOLEAN,
   },
@@ -318,7 +328,7 @@ export const SEED_DATA = [
       ...SEED_DATA_PROPS,
       type: {
         label: "Appearance",
-        description: "Type of Datepicker",
+        description: "Type of Field",
         formType: FORM_TYPES.flatArray,
         propType: PROP_TYPES.STRING,
         defaultValue: "solid",
@@ -370,7 +380,7 @@ export const SEED_DATA = [
       ...SEED_DATA_PROPS,
       type: {
         label: "Appearance",
-        description: "Type of Datepicker",
+        description: "Type of Field",
         formType: FORM_TYPES.flatArray,
         propType: PROP_TYPES.STRING,
         defaultValue: "solid",

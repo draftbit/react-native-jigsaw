@@ -6,6 +6,7 @@ import {
   FIELD_NAME,
   Triggers,
   StylesPanelSections,
+  createDisabledProp,
 } from "@draftbit/types";
 
 export const SEED_DATA_PROPS = {
@@ -168,12 +169,12 @@ export const SEED_DATA = [
         propType: PROP_TYPES.BOOLEAN,
       },
       editable: {
-        group: GROUPS.advanced,
-        label: "Editable",
+        group: GROUPS.data,
+        label: "Editable?",
         description: "If false, the text is not editable",
         editable: true,
         required: false,
-        defaultValue: true,
+        defaultValue: null,
         formType: FORM_TYPES.boolean,
         propType: PROP_TYPES.BOOLEAN,
       },
@@ -258,6 +259,16 @@ export const SEED_DATA = [
         formType: FORM_TYPES.string,
         propType: PROP_TYPES.STRING,
       },
+      blurOnSubmit: {
+        group: GROUPS.advanced,
+        label: "Blur On Submit",
+        description: "If true, the text field will blur when submitted. ",
+        editable: true,
+        required: false,
+        defaultValue: null,
+        formType: FORM_TYPES.boolean,
+        propType: PROP_TYPES.BOOLEAN,
+      },
       returnKeyType: {
         group: GROUPS.advanced,
         label: "Return Key Type",
@@ -341,6 +352,7 @@ export const SEED_DATA = [
         formType: FORM_TYPES.number,
         propType: PROP_TYPES.NUMBER,
       },
+      disabled: createDisabledProp(),
       scrollEnabled: {
         group: GROUPS.basic,
         label: "Scroll Enabled",

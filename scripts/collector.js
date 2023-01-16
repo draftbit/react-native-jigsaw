@@ -15,6 +15,12 @@ const IGNORED_FILES = [
 const ERROR_FILES = [];
 const COMPLETED_FILES = [];
 
+if (process.env.target && !process.env.GOOGLE_MAPS_API_KEY) {
+  throw new Error(
+    "GOOGLE_MAPS_API_KEY environment variable must be set when not uploading locally. See mappings/MapView.ts"
+  );
+}
+
 async function main(list = []) {
   console.log("Running on", getUrl());
 

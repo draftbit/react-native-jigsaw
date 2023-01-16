@@ -26,6 +26,7 @@ export {
   NumberInput,
   ThemeProvider,
   Touchable,
+  Pressable,
   withTheme,
   useAuthState,
   /* Deprecated, needs fixing */

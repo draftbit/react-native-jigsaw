@@ -74,13 +74,9 @@ export const PLATFORMS = {
 
 export const GROUPS = {
   accessibility: "accessibility",
-  action: "action",
   advanced: "advanced",
   basic: "basic",
-  core: "core",
   data: "data",
-  layout: "layout",
-  misc: "misc",
   style: "style",
   uncategorized: "uncategorized",
 };

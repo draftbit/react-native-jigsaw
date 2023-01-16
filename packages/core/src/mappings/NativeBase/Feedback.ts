@@ -96,5 +96,4 @@ export const SEED_DATA = [
       }),
     },
   },
-  {},
 ];

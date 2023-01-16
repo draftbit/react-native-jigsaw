@@ -5,7 +5,7 @@ import {
   createBoolProp,
 } from "@draftbit/types";
 
-const NB_LAYOUT_PROPS = {
+const SHARED_SEED_DATA = {
   category: COMPONENT_TYPES.NBLayout,
   packageName: "native-base",
   doc_link: "https://www.npmjs.com/package/@expo/html-elements",
@@ -32,7 +32,7 @@ export const SEED_DATA = [
     tag: "AspectRatio",
     description:
       "AspectRatio controls the size of the undefined dimension of a node or child component.",
-    ...NB_LAYOUT_PROPS,
+    ...SHARED_SEED_DATA,
     props: {
       ratio: createTextEnumProp({
         label: "Ratio",
@@ -57,65 +57,64 @@ export const SEED_DATA = [
     tag: "Box",
     description:
       "This is a generic component for low level layout needs. It is similar to a div in HTML",
-    ...NB_LAYOUT_PROPS,
+    ...SHARED_SEED_DATA,
   },
   {
     name: "Center",
     tag: "Center",
     description: "Centers its child",
-    ...NB_LAYOUT_PROPS,
+    ...SHARED_SEED_DATA,
   },
   {
     name: "Square",
     tag: "Square",
     description: "Centers its child inside a square",
-    ...NB_LAYOUT_PROPS,
+    ...SHARED_SEED_DATA,
   },
   {
     name: "Circle",
     tag: "Circle",
     description: "Centers its child inside a circle",
-    ...NB_LAYOUT_PROPS,
+    ...SHARED_SEED_DATA,
   },
   {
     name: "Column",
     tag: "Column",
     description: "Column aligns items vertically",
-    ...NB_LAYOUT_PROPS,
+    ...SHARED_SEED_DATA,
   },
   {
     name: "Container",
     tag: "Container",
     description:
       "The Container restricts a content's width according to current breakpoint, while keeping the size fluid.",
-    ...NB_LAYOUT_PROPS,
+    ...SHARED_SEED_DATA,
   },
   {
     name: "Flex",
     tag: "Flex",
     description: "A Box with Flexbox properties. ",
-    ...NB_LAYOUT_PROPS,
+    ...SHARED_SEED_DATA,
   },
   {
     name: "Spacer",
     tag: "Spacer",
     description:
       "An adjustable, empty space that can be used to tune the spacing between child elements within Flex",
-    ...NB_LAYOUT_PROPS,
+    ...SHARED_SEED_DATA,
   },
   {
     name: "Row",
     tag: "Row",
     description: "Column aligns items horizontally",
-    ...NB_LAYOUT_PROPS,
-    props: {},
+    ...SHARED_SEED_DATA,
   },
   {
     name: "Stack",
     tag: "Stack",
     description:
       "Stack aligns items vertically or horizontally based on the direction prop.",
-    ...NB_LAYOUT_PROPS,
+    ...SHARED_SEED_DATA,
     props: {
       direction: createTextEnumProp({
         label: "Direction",
@@ -141,7 +140,7 @@ export const SEED_DATA = [
     name: "ZStack",
     tag: "ZStack",
     description: "ZStack aligns items to the z-axis.",
-    ...NB_LAYOUT_PROPS,
+    ...SHARED_SEED_DATA,
     props: {
       reversed: createBoolProp({
         label: "Reversed",

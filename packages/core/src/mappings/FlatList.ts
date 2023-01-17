@@ -51,8 +51,8 @@ export const SEED_DATA = {
     showsHorizontalScrollIndicator: createStaticBoolProp({
       label: "Show Horizontal Scroll Indicator",
       description:
-        "When true, shows a horizontal scroll indicator. The default value is false.",
-      defaultValue: false,
+        "When true, shows a horizontal scroll indicator. The default value is true.",
+      defaultValue: true,
     }),
     showsVerticalScrollIndicator: createStaticBoolProp({
       label: "Show Vertical Scroll Indicator",

@@ -52,6 +52,18 @@ export const SEED_DATA = [
         label: "Refreshing Color",
         description: "Color of the refresh indicator",
       }),
+      showsHorizontalScrollIndicator: createStaticBoolProp({
+        label: "Show Horizontal Scroll Indicator",
+        description:
+          "When true, shows a horizontal scroll indicator. The default value is true.",
+        defaultValue: false,
+      }),
+      showsVerticalScrollIndicator: createStaticBoolProp({
+        label: "Show Vertical Scroll Indicator",
+        description:
+          "When true, shows a vertical scroll indicator. The default value is true.",
+        defaultValue: true,
+      }),
     },
   },
   {
@@ -101,6 +113,18 @@ export const SEED_DATA = [
       refreshColor: createColorProp({
         label: "Refreshing Color",
         description: "Color of the refresh indicator",
+      }),
+      showsHorizontalScrollIndicator: createStaticBoolProp({
+        label: "Show Horizontal Scroll Indicator",
+        description:
+          "When true, shows a horizontal scroll indicator. The default value is true.",
+        defaultValue: false,
+      }),
+      showsVerticalScrollIndicator: createStaticBoolProp({
+        label: "Show Vertical Scroll Indicator",
+        description:
+          "When true, shows a vertical scroll indicator. The default value is true.",
+        defaultValue: true,
       }),
     },
   },

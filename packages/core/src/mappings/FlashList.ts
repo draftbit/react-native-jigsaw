@@ -8,6 +8,7 @@ import {
   Triggers,
   createActionProp,
   createStaticNumberProp,
+  createColorProp,
 } from "@draftbit/types";
 
 export const SEED_DATA = [
@@ -46,6 +47,10 @@ export const SEED_DATA = [
         description:
           "How far from the end (in units of visible length of the list) the bottom edge of the list must be from the end of the content to trigger the onEndReached callback. Thus a value of 0.5 will trigger onEndReached when the end of the content is within half the visible length of the list.",
         defaultValue: 0.5,
+      }),
+      refreshColor: createColorProp({
+        label: "Refreshing Color",
+        description: "Color of the refresh indicator",
       }),
     },
   },
@@ -92,6 +97,10 @@ export const SEED_DATA = [
         description:
           "How far from the end (in units of visible length of the list) the bottom edge of the list must be from the end of the content to trigger the onEndReached callback. Thus a value of 0.5 will trigger onEndReached when the end of the content is within half the visible length of the list.",
         defaultValue: 0.5,
+      }),
+      refreshColor: createColorProp({
+        label: "Refreshing Color",
+        description: "Color of the refresh indicator",
       }),
     },
   },

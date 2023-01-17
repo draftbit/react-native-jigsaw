@@ -4,6 +4,7 @@ import {
   CONTAINER_COMPONENT_STYLES_SECTIONS,
   Triggers,
   createActionProp,
+  createColorProp,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -25,7 +26,7 @@ export const SEED_DATA = {
       label: "Show Horizontal Scroll Indicator",
       description:
         "When true, shows a horizontal scroll indicator. The default value is true.",
-      defaultValue: false,
+      defaultValue: true,
     }),
     showsVerticalScrollIndicator: createStaticBoolProp({
       label: "Show Vertical Scroll Indicator",
@@ -38,6 +39,10 @@ export const SEED_DATA = {
       description:
         "When true, the scroll view bounces when it reaches the end of the content if the content is larger then the scroll view along the axis of the scroll direction.",
       defaultValue: true,
+    }),
+    refreshColor: createColorProp({
+      label: "Refreshing Color",
+      description: "Color of the refresh indicator",
     }),
   },
 };

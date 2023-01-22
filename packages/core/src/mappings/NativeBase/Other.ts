@@ -18,25 +18,24 @@ export const SEED_DATA = [
     tag: "Fab",
     description:
       "A floating action button (FAB) is a circular icon button that hovers over content to execute a primary action in the application.",
-    category: COMPONENT_TYPES.NBForms,
+    category: COMPONENT_TYPES.NBOther,
     packageName: "native-base",
-    doc_link: "https://www.npmjs.com/package/@expo/html-elements",
-    code_link:
-      "https://github.com/expo/expo/tree/master/packages/html-elements",
     stylesPanelSections: [
-      StylesPanelSections.LayoutFlexItems,
-      StylesPanelSections.LayoutSelectedItem,
-      StylesPanelSections.LayoutContent,
       StylesPanelSections.Background,
       StylesPanelSections.Size,
       StylesPanelSections.MarginsAndPaddings,
       StylesPanelSections.Position,
       StylesPanelSections.Borders,
       StylesPanelSections.Effects,
+      StylesPanelSections.Typography,
     ],
     layout: {},
-    triggers: {},
+    triggers: [Triggers.OnPress, Triggers.OnLongPress],
+    allowChildren: true,
     props: {
+      disabled: createDisabledProp(),
+      onPress: createActionProp(),
+      onLongPress: createActionProp(),
       placement: createTextEnumProp({
         label: "Placement",
         description: "The placement of the Fab relative to the device.",
@@ -46,10 +45,17 @@ export const SEED_DATA = [
       label: createTextProp({
         label: "Label",
         description: "The Text to be displayed in Fab.",
+        defaultValue: null,
       }),
       icon: createIconProp({
         label: "Icon",
-        description: "Icon to be displayed in Fab.  ",
+        description: "Icon to be displayed in Fab.",
+        defaultValue: "add",
+      }),
+      renderInPortal: createStaticBoolProp({
+        label: "Render In Portal",
+        description: "Whether the Fab should be rendered in a portal.",
+        defaultValue: true,
       }),
     },
   },

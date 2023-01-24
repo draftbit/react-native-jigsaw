@@ -16,6 +16,8 @@ export const Triggers = {
   OnPressIcon: "ON_PRESS_ICON",
   OnIndexChanged: "ON_INDEX_CHANGED",
   OnEndReached: "ON_END_REACHED",
+  OnLoad: "ON_LOAD",
+  OnError: "ON_ERROR",
 };
 
 export const StylesPanelSections = {
@@ -78,6 +80,9 @@ export const GROUPS = {
   uncategorized: "uncategorized",
   action: "action",
   style: "style",
+  ios: "ios",
+  android: "android",
+  web: "web",
 };
 
 export const FORM_TYPES = {

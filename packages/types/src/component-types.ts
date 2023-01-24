@@ -78,6 +78,9 @@ export const GROUPS = {
   uncategorized: "uncategorized",
   action: "action",
   style: "style",
+  ios: "ios",
+  android: "android",
+  web: "web",
 };
 
 export const FORM_TYPES = {
@@ -123,6 +126,7 @@ export const COMPONENT_TYPES = {
   swiper: "swiper",
   map: "map",
   view: "view",
+  text: "text",
   /* Deprecated */
   row: "row",
   card: "card",

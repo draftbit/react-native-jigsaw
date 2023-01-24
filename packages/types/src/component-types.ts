@@ -292,6 +292,7 @@ export const createNumberProp = (overrides = {}) => ({
 export const createStaticNumberProp = (overrides = {}) =>
   createNumberProp({
     group: GROUPS.basic,
+    required: false,
     ...overrides,
   });
 

@@ -17,6 +17,8 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.map,
   layout: {
     flex: 1,
+    width: "100%",
+    height: "100%",
   },
   props: {
     provider: {

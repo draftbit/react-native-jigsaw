@@ -59,8 +59,8 @@ function Base({
   loading,
   disabled,
   style,
-  activeOpacity,
-  disabledOpacity,
+  activeOpacity = 0.8,
+  disabledOpacity = 0.8,
   ...props
 }: BaseProps): JSX.Element {
   const {

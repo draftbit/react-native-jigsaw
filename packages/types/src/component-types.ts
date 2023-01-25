@@ -78,6 +78,9 @@ export const GROUPS = {
   uncategorized: "uncategorized",
   action: "action",
   style: "style",
+  android: "android",
+  ios: "ios",
+  web: "web",
 };
 
 export const FORM_TYPES = {

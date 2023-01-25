@@ -4,10 +4,10 @@ import {
   createIconProp,
   createColorProp,
   createNumberProp,
-  createBoolProp,
   createActionProp,
   Triggers,
   StylesPanelSections,
+  createDisabledProp,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -15,7 +15,7 @@ export const SEED_DATA = {
   tag: "IconButton",
   category: COMPONENT_TYPES.button,
   layout: {},
-  triggers: [Triggers.OnPress],
+  triggers: [Triggers.OnPress, Triggers.OnLongPress],
   stylesPanelSections: [
     StylesPanelSections.Margins,
     StylesPanelSections.Effects,
@@ -23,13 +23,11 @@ export const SEED_DATA = {
   ],
   props: {
     onPress: createActionProp(),
+    onLongPress: createActionProp(),
+    disabled: createDisabledProp(),
     icon: createIconProp(),
     color: createColorProp({
       label: "Color",
-      group: GROUPS.basic,
-    }),
-    disabled: createBoolProp({
-      label: "Disabled",
       group: GROUPS.basic,
     }),
     size: createNumberProp({
@@ -38,7 +36,7 @@ export const SEED_DATA = {
       description: "Width and height of your icon",
       defaultValue: 32,
       min: 16,
-      max: 128,
+      max: 256,
       step: 1,
       precision: 0,
     }),

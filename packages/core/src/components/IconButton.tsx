@@ -22,6 +22,8 @@ type Props = {
   onPress: () => void;
   theme: Theme;
   style?: StyleProp<ViewStyle>;
+  activeOpacity?: number;
+  disabledOpacity?: number;
 } & PressableProps &
   IconSlot;
 
@@ -30,11 +32,13 @@ const IconButton: React.FC<React.PropsWithChildren<Props>> = ({
   icon,
   color: customColor,
   size = 32,
-  disabled = false,
+  disabled,
   loading = false,
   onPress,
   theme,
   style,
+  activeOpacity = 0.8,
+  disabledOpacity = 0.8,
   ...props
 }) => {
   const iconColor = customColor || theme.colors.primary;
@@ -47,7 +51,7 @@ const IconButton: React.FC<React.PropsWithChildren<Props>> = ({
         return [
           styles.container,
           {
-            opacity: pressed || disabled ? 0.75 : 1,
+            opacity: pressed ? activeOpacity : disabled ? disabledOpacity : 1,
             width: size,
             height: size,
             alignItems: "center",

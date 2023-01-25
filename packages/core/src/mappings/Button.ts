@@ -28,7 +28,7 @@ const SEED_DATA_PROPS = {
   activeOpacity: createStaticNumberProp({
     label: "Active Opacity",
     description: "Opacity of the button when active.",
-    defaultValue: 0.8,
+    defaultValue: null,
     min: 0,
     max: 1,
     step: 0.01,
@@ -38,7 +38,7 @@ const SEED_DATA_PROPS = {
   disabledOpacity: createStaticNumberProp({
     label: "Disabled Opacity",
     description: "Opacity of the button when disabled.",
-    defaultValue: 0.8,
+    defaultValue: null,
     min: 0,
     max: 1,
     step: 0.01,

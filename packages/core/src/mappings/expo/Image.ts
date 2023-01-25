@@ -13,9 +13,9 @@ import {
 } from "@draftbit/types";
 
 export const SEED_DATA = {
-  name: "Image",
+  name: "Expo Image",
   tag: "Image",
-  package: "expo-image",
+  packageName: "expo-image",
   collection: "Expo",
   prefixCollectionOnImport: true,
   description: "A responsive Image component",

@@ -14,7 +14,7 @@ const NumberInput: FC<Props> = ({
   defaultValue,
   ...props
 }) => {
-  const [currentStringNumberValue, setCurrentStringNumberValue] = useState("0");
+  const [currentStringNumberValue, setCurrentStringNumberValue] = useState("");
 
   const formatValueToStringNumber = (valueToFormat?: number | string) => {
     if (valueToFormat != null) {

@@ -3345,14 +3345,6 @@
     component-type "^1.2.1"
     join-component "^1.1.0"
 
-"@shopify/flash-list@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@shopify/flash-list/-/flash-list-1.2.0.tgz#981b1a9fc92b16aeb835fc17423c9e3d5cb36565"
-  integrity sha512-P5YzT91InI3t+Cw651bFXl1au2FxPuuPPDs1ijaUDUCOCJVliZOLdVD58CXElsNVcLppEqWDah4TB1JyC54Pqg==
-  dependencies:
-    recyclerlistview "4.1.1"
-    tslib "2.4.0"
-
 "@shopify/flash-list@1.3.1":
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/@shopify/flash-list/-/flash-list-1.3.1.tgz#0bf5816028049a26fec09117ad70b761a8258a99"
@@ -14071,15 +14063,6 @@ recursive-readdir@2.2.2:
   integrity sha512-nRCcW9Sj7NuZwa2XvH9co8NPeXUBhZP7CRKJtU+cS6PW9FpCIFoI5ib0NT1ZrbNuPoRy0ylyCaUL8Gih4LSyFg==
   dependencies:
     minimatch "3.0.4"
-
-recyclerlistview@4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/recyclerlistview/-/recyclerlistview-4.1.1.tgz#b8f5f99a0be4dde7ceb4984f1949105f384d53b8"
-  integrity sha512-5BaAFSaSXDF9/mjv5WplX9mbZsKgYgn7N10uYjpqjW33UGVPZcz2omUOkXv0Bs6syP4qWVg3vz+NvBTjHwAOyg==
-  dependencies:
-    lodash.debounce "4.0.8"
-    prop-types "15.8.1"
-    ts-object-utils "0.0.5"
 
 recyclerlistview@4.1.2:
   version "4.1.2"

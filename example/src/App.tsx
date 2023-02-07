@@ -1,6 +1,8 @@
 import { Asset } from "expo-asset";
 import Constants from "expo-constants";
 import * as SplashScreen from "expo-splash-screen";
+//@ts-ignore
+import splashImage from "./assets/images/splash.png";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   Animated,
@@ -83,6 +85,8 @@ import LinearGradientExample from "./LinearGradientExample";
 
 import SurfaceExample from "./SurfaceExample";
 
+import DeckSwiperExample from "./DeckSwiperExample";
+
 const ROUTES = {
   AudioPlayer: AudioPlayerExample,
   Layout: LayoutExample,
@@ -127,6 +131,7 @@ const ROUTES = {
   TextInput: TextInputExample,
   NumberInput: NumberInputExample,
   WebView: WebViewExample,
+  DeckSwiper: DeckSwiperExample,
 };
 
 let customFonts = {
@@ -144,7 +149,9 @@ SplashScreen.preventAutoHideAsync().catch(() => {});
 
 export default function App() {
   return (
-    <SplashScreenProvider image={{ uri: Constants.manifest.splash.image }}>
+    <SplashScreenProvider
+      image={{ uri: Image.resolveAssetSource(splashImage).uri }}
+    >
       <Provider theme={DefaultTheme}>
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
           <Examples />

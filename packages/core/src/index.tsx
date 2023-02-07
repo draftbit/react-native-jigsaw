@@ -52,6 +52,8 @@ export {
   RadioButtonFieldGroup,
 } from "./components/RadioButton/index";
 
+export { DeckSwiper, DeckSwiperCard } from "./components/DeckSwiper";
+
 /* Deprecated: Fix or Delete!  */
 export { default as CardBlock } from "./components/CardBlock";
 export { default as CardContainer } from "./components/CardContainer";

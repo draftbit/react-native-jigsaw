@@ -53,6 +53,7 @@
     "lodash.isnumber": "^3.0.3",
     "lodash.omit": "^4.5.0",
     "lodash.tonumber": "^4.0.3",
+    "react-native-deck-swiper": "^2.0.12",
     "react-native-modal-datetime-picker": "^13.0.0",
     "react-native-svg": "13.4.0",
     "react-native-typography": "^1.4.1",

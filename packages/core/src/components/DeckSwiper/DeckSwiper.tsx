@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleProp, ViewStyle, StyleSheet } from "react-native";
+import { StyleProp, ViewStyle, StyleSheet, View } from "react-native";
 import DeckSwiperComponent from "react-native-deck-swiper";
 
 export interface DeckSwiperProps {
@@ -35,25 +35,43 @@ const DeckSwiper: React.FC<React.PropsWithChildren<DeckSwiperProps>> = ({
     [childrenArray]
   );
 
+  /**
+   * By default react-native-deck-swiper positions everything with absolute position
+   * To overcome this, it is wrapped in a View to be able to add the component in any layout structure
+   *
+   * Since all children of that View are absolutley positioned, the View does not have a height and still looks and behaves weird
+   * To fix/mitage this without setting a static height, the first card is rendered in invisible state to take up space.
+   * This effectivley makes the default height of the container be the height of the first card
+   */
+
   return (
-    <DeckSwiperComponent
-      cards={cardsFillerData}
-      renderCard={(_, i) => <>{childrenArray[i]}</>}
-      keyExtractor={(card) => card?.toString()}
-      containerStyle={
-        StyleSheet.flatten([styles.cardsContainer, style]) as object | undefined
-      }
-      cardStyle={styles.card as object | undefined}
-      onSwiped={onIndexChanged}
-      onSwipedAll={onEndReached}
-      cardIndex={startCardIndex}
-      infinite={infiniteSwiping}
-      verticalSwipe={verticalEnabled}
-      horizontalSwipe={horizontalEnabled}
-      showSecondCard={visibleCardCount > 1}
-      stackSize={visibleCardCount}
-      backgroundColor="transparent"
-    />
+    <View>
+      <View style={styles.containerHeightFiller}>
+        {childrenArray.length && childrenArray[0]}
+      </View>
+      <DeckSwiperComponent
+        cards={cardsFillerData}
+        renderCard={(_, i) => <>{childrenArray[i]}</>}
+        keyExtractor={(card) => card?.toString()}
+        containerStyle={
+          StyleSheet.flatten([styles.cardsContainer, style]) as
+            | object
+            | undefined
+        }
+        cardStyle={styles.card as object | undefined}
+        onSwiped={onIndexChanged}
+        onSwipedAll={onEndReached}
+        cardIndex={startCardIndex}
+        infinite={infiniteSwiping}
+        verticalSwipe={verticalEnabled}
+        horizontalSwipe={horizontalEnabled}
+        showSecondCard={visibleCardCount > 1}
+        stackSize={visibleCardCount}
+        backgroundColor="transparent"
+        cardVerticalMargin={0}
+        cardHorizontalMargin={0}
+      />
+    </View>
   );
 };
 
@@ -66,6 +84,9 @@ const styles = StyleSheet.create({
     right: 0,
     width: "auto",
     height: "auto",
+  },
+  containerHeightFiller: {
+    opacity: 0.0,
   },
 });
 

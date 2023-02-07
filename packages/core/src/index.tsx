@@ -51,6 +51,8 @@ export {
   RadioButtonFieldGroup,
 } from "./components/RadioButton/index";
 
+export { DeckSwiper, DeckSwiperCard } from "./components/DeckSwiper";
+
 /* Deprecated: Fix or Delete!  */
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
 export { default as Picker } from "./components/Picker/Picker";

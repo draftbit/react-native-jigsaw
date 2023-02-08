@@ -98,7 +98,6 @@ const Picker: React.FC<PickerProps> = ({
   placeholder,
   value,
   disabled = false,
-  theme,
   assistiveText,
   label,
   iconColor = unstyledColor,
@@ -144,8 +143,6 @@ const Picker: React.FC<PickerProps> = ({
   const pickerOptions = placeholder
     ? [{ value: placeholder, label: placeholder }, ...normalizedOptions]
     : normalizedOptions;
-
-  const { colors } = theme;
 
   const { viewStyles, textStyles } = extractStyles(style);
 
@@ -347,15 +344,8 @@ const Picker: React.FC<PickerProps> = ({
       {/* iosPicker */}
       {isIos && pickerVisible ? (
         <Portal>
-          <View
-            style={[
-              styles.iosPicker,
-              {
-                backgroundColor: colors.divider,
-              },
-            ]}
-          >
-            <SafeAreaView style={styles.iosSafeArea}>
+          <SafeAreaView style={styles.iosPicker}>
+            <View style={styles.iosPickerContent}>
               <Button
                 Icon={Icon}
                 type="text"
@@ -378,8 +368,8 @@ const Picker: React.FC<PickerProps> = ({
                   />
                 ))}
               </NativePicker>
-            </SafeAreaView>
-          </View>
+            </View>
+          </SafeAreaView>
         </Portal>
       ) : null}
 
@@ -451,9 +441,9 @@ const styles = StyleSheet.create({
     width: "100%",
     maxWidth: deviceWidth,
     maxHeight: deviceHeight,
-  },
-  iosSafeArea: {
     backgroundColor: "white",
+  },
+  iosPickerContent: {
     flexDirection: "column",
     width: "100%",
     maxWidth: deviceWidth,

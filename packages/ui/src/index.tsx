@@ -37,6 +37,7 @@ export {
   ActionSheetCancel,
   Swiper,
   SwiperItem,
+  Shadow,
 } from "@draftbit/core";
 
 /**

@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 import Section, { Container } from "./Section";
 import { Shadow } from "@draftbit/ui";
 
-const DeckSwiperExample: React.FC = () => {
+const ShadowExample: React.FC = () => {
   return (
     <Container style={{}}>
       <Section title="Simple shadow" style={{ alignItems: "center" }}>
@@ -30,4 +30,4 @@ const DeckSwiperExample: React.FC = () => {
   );
 };
 
-export default DeckSwiperExample;
+export default ShadowExample;

@@ -28,6 +28,8 @@ export {
   Pressable,
   withTheme,
   useAuthState,
+  DeckSwiper,
+  DeckSwiperCard,
   /* Deprecated, needs fixing */
   ProgressBar,
   ProgressCircle,
@@ -37,8 +39,6 @@ export {
   ActionSheetCancel,
   Swiper,
   SwiperItem,
-  DeckSwiper,
-  DeckSwiperCard,
 } from "@draftbit/core";
 
 /**

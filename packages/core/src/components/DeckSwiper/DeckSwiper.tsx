@@ -36,12 +36,13 @@ const DeckSwiper: React.FC<React.PropsWithChildren<DeckSwiperProps>> = ({
   );
 
   /**
-   * By default react-native-deck-swiper positions everything with absolute position
-   * To overcome this, it is wrapped in a View to be able to add the component in any layout structure
+   * By default react-native-deck-swiper positions everything with absolute position.
+   * To overcome this, it is wrapped in a View to be able to add the component in any layout structure.
    *
-   * Since all children of that View are absolutley positioned, the View does not have a height and still looks and behaves weird
-   * To fix/mitage this without setting a static height, the first card is rendered in invisible state to take up space
-   * This effectivley makes the default height of the container be the height of the first card
+   *
+   * Since all children of that View are absolutley positioned, the View does not have a height and still looks and behaves weird.
+   * To fix/mitage this without setting a static height, the first card is rendered in invisible state to take up space.
+   * This effectivley makes the default height of the container be the height of the first card.
    */
 
   return (

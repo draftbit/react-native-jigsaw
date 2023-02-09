@@ -19,7 +19,6 @@ const DeckSwiperCard: React.FC<DeckSwiperCardProps> = ({
       styles.card,
       {
         backgroundColor: theme.colors.background,
-        borderRadius: theme.borderRadius?.global,
         borderColor: theme.colors.divider,
       },
       style,

@@ -71,6 +71,8 @@ import LinearGradientExample from "./LinearGradientExample";
 
 import SurfaceExample from "./SurfaceExample";
 
+import ShadowExample from "./ShadowExample";
+
 const ROUTES = {
   AudioPlayer: AudioPlayerExample,
   Layout: LayoutExample,
@@ -115,6 +117,7 @@ const ROUTES = {
   TextInput: TextInputExample,
   NumberInput: NumberInputExample,
   WebView: WebViewExample,
+  Shadow: ShadowExample,
 };
 
 let customFonts = {

@@ -22,7 +22,7 @@ interface ShadowProps {
   style?: StyleProp<ViewStyle>;
 }
 
-const Shadow: React.FC<ShadowProps> = ({
+const Shadow: React.FC<React.PropsWithChildren<ShadowProps>> = ({
   offsetX = 0,
   offsetY = 0,
   showShadowSideStart = true,

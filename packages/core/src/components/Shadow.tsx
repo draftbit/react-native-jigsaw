@@ -3,22 +3,22 @@ import { StyleProp, ViewStyle } from "react-native";
 import { Shadow as ShadowComponent } from "react-native-shadow-2";
 
 interface ShadowProps {
-  disabled: boolean;
-  startColor: string;
-  endColor: string;
-  distance: number;
-  paintInside: boolean;
-  stretch: boolean;
-  offsetX: number;
-  offsetY: number;
-  showShadowSideStart: boolean;
-  showShadowSideEnd: boolean;
-  showShadowSideTop: boolean;
-  showShadowSideBottom: boolean;
-  showShadowCornerTopStart: boolean;
-  showShadowCornerTopEnd: boolean;
-  showShadowCornerBottomStart: boolean;
-  showShadowCornerBottomEnd: boolean;
+  disabled?: boolean;
+  startColor?: string;
+  endColor?: string;
+  distance?: number;
+  paintInside?: boolean;
+  stretch?: boolean;
+  offsetX?: number;
+  offsetY?: number;
+  showShadowSideStart?: boolean;
+  showShadowSideEnd?: boolean;
+  showShadowSideTop?: boolean;
+  showShadowSideBottom?: boolean;
+  showShadowCornerTopStart?: boolean;
+  showShadowCornerTopEnd?: boolean;
+  showShadowCornerBottomStart?: boolean;
+  showShadowCornerBottomEnd?: boolean;
   style?: StyleProp<ViewStyle>;
 }
 

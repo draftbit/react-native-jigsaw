@@ -1,4 +1,7 @@
-import { COMPONENT_TYPES, StylesPanelSections } from "@draftbit/types";
+import {
+  COMPONENT_TYPES,
+  CONTAINER_COMPONENT_STYLES_SECTIONS,
+} from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "Swiper Item",
@@ -6,15 +9,5 @@ export const SEED_DATA = {
   description: "Swiper item",
   category: COMPONENT_TYPES.swiper,
   props: {},
-  stylesPanelSections: [
-    StylesPanelSections.LayoutFlexItems,
-    StylesPanelSections.LayoutSelectedItem,
-    StylesPanelSections.LayoutContent,
-    StylesPanelSections.Background,
-    StylesPanelSections.Size,
-    StylesPanelSections.MarginsAndPaddings,
-    StylesPanelSections.Position,
-    StylesPanelSections.Borders,
-    StylesPanelSections.Effects,
-  ],
+  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
 };

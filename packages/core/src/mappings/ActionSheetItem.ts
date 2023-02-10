@@ -5,6 +5,7 @@ import {
   createTextProp,
   GROUPS,
   Triggers,
+  CONTAINER_COMPONENT_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -12,6 +13,7 @@ export const SEED_DATA = {
   tag: "ActionSheetItem",
   description: "Action Sheet item",
   category: COMPONENT_TYPES.actionsheet,
+  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   triggers: [Triggers.OnPress],
   layout: {
     textAlign: "center",

@@ -42,7 +42,8 @@ const SEED_DATA_PROPS = {
     label: "Border Color",
   }),
   borderColorActive: createColorProp({
-    label: "Border Color",
+    label: "Active Border Color",
+    description: "Color of border when date picker is active",
   }),
   format: {
     label: "Format",

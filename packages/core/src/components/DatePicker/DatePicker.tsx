@@ -232,7 +232,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   let inputTextColor,
     activeColor,
     underlineColor,
-    borderColor,
+    borderColor = inputBorderColor,
     placeholderColor,
     containerStyle: StyleProp<ViewStyle>,
     backgroundColor,

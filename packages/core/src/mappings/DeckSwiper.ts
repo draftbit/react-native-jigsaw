@@ -13,6 +13,9 @@ export const SEED_DATA = {
   description: "Deck swiper container",
   category: COMPONENT_TYPES.swiper,
   stylesPanelSections: BLOCK_STYLES_SECTIONS,
+  layout: {
+    width: "100%",
+  },
   triggers: [Triggers.OnIndexChanged, Triggers.OnEndReached],
   props: {
     onIndexChanged: createActionProp({

@@ -84,6 +84,8 @@ function normalizeOptions(options: PickerProps["options"]): PickerOption[] {
 
 const { width: deviceWidth, height: deviceHeight } = Dimensions.get("screen");
 const isIos = Platform.OS === "ios";
+const isWeb = Platform.OS === "web";
+
 const unstyledColor = "rgba(165, 173, 183, 1)";
 const disabledColor = "rgb(240, 240, 240)";
 const errorColor = "rgba(255, 69, 100, 1)";
@@ -374,9 +376,10 @@ const Picker: React.FC<PickerProps> = ({
       ) : null}
 
       {/* nonIosPicker */}
-      {!isIos && pickerVisible ? (
+      {/* Web version is collapsed by default, always show to allow direct expand */}
+      {!isIos && (pickerVisible || isWeb) ? (
         <NativePicker
-          enabled={pickerVisible}
+          enabled={!disabled}
           selectedValue={internalValue}
           onValueChange={handleValueChange}
           style={styles.nonIosPicker}

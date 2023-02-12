@@ -116,6 +116,7 @@ const Picker: React.FC<PickerProps> = ({
   const [internalValue, setInternalValue] = React.useState<string | undefined>(
     value || defaultValue
   );
+
   const [pickerVisible, setPickerVisible] = React.useState(false);
 
   const togglePickerVisible = () => {

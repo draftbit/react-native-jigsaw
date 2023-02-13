@@ -127,6 +127,7 @@ export const COMPONENT_TYPES = {
   map: "map",
   view: "view",
   text: "text",
+  webelement: "webelement",
   /* Deprecated */
   row: "row",
   card: "card",

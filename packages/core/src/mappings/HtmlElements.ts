@@ -23,11 +23,12 @@ const ELEMENT_SEED_DATA = {
     margin: 0,
   },
   triggers: SEED_DATA_TRIGGERS,
+  category: COMPONENT_TYPES.webelement,
 };
 
 const HEADING_SEED_DATA = {
-  category: COMPONENT_TYPES.text,
   ...ELEMENT_SEED_DATA,
+  category: COMPONENT_TYPES.text,
   props: {
     accessibilityLabel: {
       group: GROUPS.accessibility,
@@ -67,8 +68,8 @@ const HEADING_SEED_DATA = {
 };
 
 const TEXT_SEED_DATA = {
-  category: COMPONENT_TYPES.text,
   ...ELEMENT_SEED_DATA,
+  category: COMPONENT_TYPES.text,
   props: {
     children: {
       group: GROUPS.data,
@@ -161,55 +162,46 @@ export const SEED_DATA = [
   {
     name: "Code",
     tag: "Code",
-    category: COMPONENT_TYPES.text,
-    ...ELEMENT_SEED_DATA,
+    ...TEXT_SEED_DATA,
   },
   {
     name: "Pre",
     tag: "Pre",
-    category: COMPONENT_TYPES.text,
-    ...ELEMENT_SEED_DATA,
+    ...TEXT_SEED_DATA,
   },
   {
     name: "Mark",
     tag: "Mark",
-    category: COMPONENT_TYPES.text,
-    ...ELEMENT_SEED_DATA,
+    ...TEXT_SEED_DATA,
   },
   {
     name: "BR",
     tag: "BR",
-    category: COMPONENT_TYPES.text,
-    ...ELEMENT_SEED_DATA,
+    ...TEXT_SEED_DATA,
   },
   {
     name: "BlockQuote",
     tag: "BlockQuote",
-    category: COMPONENT_TYPES.text,
-    ...ELEMENT_SEED_DATA,
+    ...TEXT_SEED_DATA,
+  },
+  {
+    name: "HR",
+    tag: "HR",
+    ...TEXT_SEED_DATA,
   },
   {
     name: "Time",
     tag: "Time",
-    category: COMPONENT_TYPES.text,
     ...ELEMENT_SEED_DATA,
   },
   {
     name: "UL",
     tag: "UL",
-    category: COMPONENT_TYPES.text,
     ...ELEMENT_SEED_DATA,
   },
   {
     name: "LI",
     tag: "LI",
-    category: COMPONENT_TYPES.text,
-    ...ELEMENT_SEED_DATA,
-  },
-  {
-    name: "HR",
-    tag: "HR",
-    category: COMPONENT_TYPES.text,
     ...ELEMENT_SEED_DATA,
   },
 ];

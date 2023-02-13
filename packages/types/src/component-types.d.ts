@@ -67,6 +67,7 @@ export declare const COMPONENT_TYPES: {
   screen: string;
   codeComponent: string;
   text: string;
+  webelement: string;
 };
 export declare const createElevationType: (defaultValue: any) => {
   defaultValue: any;

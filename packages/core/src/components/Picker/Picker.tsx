@@ -7,6 +7,7 @@ import {
   ViewStyle,
   StyleProp,
   Dimensions,
+  Keyboard,
 } from "react-native";
 import { omit, pickBy, identity, isObject } from "lodash";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -48,6 +49,7 @@ export type PickerProps = {
   placeholderTextColor?: string;
   rightIconName?: string;
   type?: "solid" | "underline";
+  autoDismissKeyboard?: boolean;
   theme: Theme;
   Icon: IconSlot["Icon"];
 };
@@ -109,6 +111,7 @@ const Picker: React.FC<PickerProps> = ({
   placeholderTextColor = unstyledColor,
   rightIconName,
   type = "solid",
+  autoDismissKeyboard = true,
 }) => {
   const androidPickerRef = React.useRef<any | undefined>(undefined);
 
@@ -139,6 +142,12 @@ const Picker: React.FC<PickerProps> = ({
       androidPickerRef?.current?.focus();
     }
   }, [pickerVisible, androidPickerRef]);
+
+  React.useEffect(() => {
+    if (pickerVisible && autoDismissKeyboard) {
+      Keyboard.dismiss();
+    }
+  }, [pickerVisible, autoDismissKeyboard]);
 
   const normalizedOptions = normalizeOptions(options);
 

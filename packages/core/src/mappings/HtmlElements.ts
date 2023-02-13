@@ -9,7 +9,7 @@ import {
 } from "@draftbit/types";
 const SEED_DATA_TRIGGERS = [Triggers.OnValueChange];
 
-const ELEMENT_PROPS = {
+const ELEMENT_SEED_DATA = {
   doc_link: "https://www.npmjs.com/package/@expo/html-elements",
   code_link: "https://github.com/expo/expo/tree/master/packages/html-elements",
   packageName: "@expo/html-elements",
@@ -25,9 +25,9 @@ const ELEMENT_PROPS = {
   triggers: SEED_DATA_TRIGGERS,
 };
 
-const HEADING_PROPS = {
+const HEADING_SEED_DATA = {
   category: COMPONENT_TYPES.text,
-  ...ELEMENT_PROPS,
+  ...ELEMENT_SEED_DATA,
   props: {
     accessibilityLabel: {
       group: GROUPS.accessibility,
@@ -66,9 +66,9 @@ const HEADING_PROPS = {
   },
 };
 
-const TEXT_PROPS = {
+const TEXT_SEED_DATA = {
   category: COMPONENT_TYPES.text,
-  ...ELEMENT_PROPS,
+  ...ELEMENT_SEED_DATA,
   props: {
     children: {
       group: GROUPS.data,
@@ -87,37 +87,37 @@ export const SEED_DATA = [
   {
     name: "H1",
     tag: "H1",
-    ...HEADING_PROPS,
+    ...HEADING_SEED_DATA,
   },
   {
     name: "H2",
     tag: "H2",
-    ...HEADING_PROPS,
+    ...HEADING_SEED_DATA,
   },
   {
     name: "H3",
     tag: "H3",
-    ...HEADING_PROPS,
+    ...HEADING_SEED_DATA,
   },
   {
     name: "H4",
     tag: "H4",
-    ...HEADING_PROPS,
+    ...HEADING_SEED_DATA,
   },
   {
     name: "H5",
     tag: "H5",
-    ...HEADING_PROPS,
+    ...HEADING_SEED_DATA,
   },
   {
     name: "H6",
     tag: "H6",
-    ...HEADING_PROPS,
+    ...HEADING_SEED_DATA,
   },
   {
     name: "Anchor",
     tag: "A",
-    ...TEXT_PROPS,
+    ...TEXT_SEED_DATA,
     props: {
       href: createTextProp({
         label: "href",
@@ -137,7 +137,7 @@ export const SEED_DATA = [
   {
     name: "Paragraph",
     tag: "P",
-    ...TEXT_PROPS,
+    ...TEXT_SEED_DATA,
     props: {
       // NOTE - Keeping the props commented until we figure out a way to use this props from draftbit side.
       // strong: createBoolProp({
@@ -162,54 +162,54 @@ export const SEED_DATA = [
     name: "Code",
     tag: "Code",
     category: COMPONENT_TYPES.text,
-    ...ELEMENT_PROPS,
+    ...ELEMENT_SEED_DATA,
   },
   {
     name: "Pre",
     tag: "Pre",
     category: COMPONENT_TYPES.text,
-    ...ELEMENT_PROPS,
+    ...ELEMENT_SEED_DATA,
   },
   {
     name: "Mark",
     tag: "Mark",
     category: COMPONENT_TYPES.text,
-    ...ELEMENT_PROPS,
+    ...ELEMENT_SEED_DATA,
   },
   {
     name: "BR",
     tag: "BR",
     category: COMPONENT_TYPES.text,
-    ...ELEMENT_PROPS,
+    ...ELEMENT_SEED_DATA,
   },
   {
     name: "BlockQuote",
     tag: "BlockQuote",
     category: COMPONENT_TYPES.text,
-    ...ELEMENT_PROPS,
+    ...ELEMENT_SEED_DATA,
   },
   {
     name: "Time",
     tag: "Time",
     category: COMPONENT_TYPES.text,
-    ...ELEMENT_PROPS,
+    ...ELEMENT_SEED_DATA,
   },
   {
     name: "UL",
     tag: "UL",
     category: COMPONENT_TYPES.text,
-    ...ELEMENT_PROPS,
+    ...ELEMENT_SEED_DATA,
   },
   {
     name: "LI",
     tag: "LI",
     category: COMPONENT_TYPES.text,
-    ...ELEMENT_PROPS,
+    ...ELEMENT_SEED_DATA,
   },
   {
     name: "HR",
     tag: "HR",
     category: COMPONENT_TYPES.text,
-    ...ELEMENT_PROPS,
+    ...ELEMENT_SEED_DATA,
   },
 ];

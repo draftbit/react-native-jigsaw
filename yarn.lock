@@ -5606,7 +5606,7 @@ color-support@^1.1.3:
   resolved "https://registry.yarnpkg.com/color-support/-/color-support-1.1.3.tgz#93834379a1cc9a0c61f82f52f0d04322251bd5a2"
   integrity sha512-qiBjkpbMLO/HL68y+lh4q0/O1MZFj2RX6X/KmMa3+gJD3z+WwI1ZzDHysvqHGS3mP6mznPckpXmw1nI9cJjyRg==
 
-color@^3.0.0, color@^3.1.2, color@^3.1.3:
+color@^3.0.0, color@^3.1.2, color@^3.1.3, color@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/color/-/color-3.2.1.tgz#3544dc198caf4490c3ecc9a790b54fe9ff45e164"
   integrity sha512-aBl7dZI9ENN6fUGC7mWpMTPNHmWUSNan9tuWN6ahh5ZLNk9baLJOnSMlrQkHcrfFgz2/RigjUVAjdx36VcemKA==
@@ -13790,6 +13790,13 @@ react-native-modal-datetime-picker@^13.0.0:
   integrity sha512-PZDkuY7HayRX1KE2X2dm29CvCLzwj/vn6B6QdPbjZea/GEKvHBMOLGdhFCcA9+gD64Y41+VqfytUh2fdvUvQ1g==
   dependencies:
     prop-types "^15.7.2"
+
+react-native-paper-dates@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/react-native-paper-dates/-/react-native-paper-dates-0.12.0.tgz#8007d67bb7a2ccb06856a6331f59b9e741112240"
+  integrity sha512-oT4YgtADFx4YFBSYzJrqmRgs7l9Bc4mnVVd08W9ccTnLELEFCTjMnf5SuFKAdjRDJf96pDnWFwQXiRwOJIMytQ==
+  dependencies:
+    color "^3.2.1"
 
 react-native-reanimated@~2.9.1:
   version "2.9.1"

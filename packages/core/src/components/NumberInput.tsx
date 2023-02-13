@@ -31,18 +31,8 @@ const NumberInput: FC<Props> = ({
       }
     }
 
-    return "0";
+    return "";
   };
-
-  // set currentStringNumberValue as defaultValue prop if there is a differnce on first render only
-  useEffect(() => {
-    const defaultStringNumberValue = formatValueToStringNumber(defaultValue);
-
-    if (currentStringNumberValue !== defaultStringNumberValue) {
-      setCurrentStringNumberValue(defaultStringNumberValue);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handleChangeText = (newValue: string) => {
     const newStringNumberValue = formatValueToStringNumber(newValue);
@@ -61,6 +51,16 @@ const NumberInput: FC<Props> = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
+
+  // set currentStringNumberValue as defaultValue prop if there is a differnce on first render only
+  useEffect(() => {
+    const defaultStringNumberValue = formatValueToStringNumber(defaultValue);
+
+    if (currentStringNumberValue !== defaultStringNumberValue) {
+      setCurrentStringNumberValue(defaultStringNumberValue);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <TextInput

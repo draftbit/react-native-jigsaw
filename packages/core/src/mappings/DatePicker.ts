@@ -8,6 +8,7 @@ import {
   StylesPanelSections,
   createNumberProp,
   createColorProp,
+  createStaticBoolProp,
 } from "@draftbit/types";
 
 const SEED_DATA_PROPS = {
@@ -42,7 +43,8 @@ const SEED_DATA_PROPS = {
     label: "Border Color",
   }),
   borderColorActive: createColorProp({
-    label: "Border Color",
+    label: "Active Border Color",
+    description: "Color of border when date picker is active",
   }),
   format: {
     label: "Format",
@@ -185,6 +187,11 @@ export const SEED_DATA = [
         required: true,
         group: GROUPS.basic,
       },
+      autoDismissKeyboard: createStaticBoolProp({
+        label: "Auto dismiss keyboard",
+        description: "Automatically dismiss keyboard when DatePicker is opened",
+        defaultValue: true,
+      }),
     },
   },
 ];

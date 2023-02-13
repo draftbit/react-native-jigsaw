@@ -7,6 +7,7 @@ import {
   ViewStyle,
   StyleProp,
   Dimensions,
+  Keyboard,
 } from "react-native";
 import { omit, pickBy, identity, isObject } from "lodash";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -48,6 +49,7 @@ export type PickerProps = {
   placeholderTextColor?: string;
   rightIconName?: string;
   type?: "solid" | "underline";
+  autoDismissKeyboard?: boolean;
   theme: Theme;
   Icon: IconSlot["Icon"];
 };
@@ -84,6 +86,8 @@ function normalizeOptions(options: PickerProps["options"]): PickerOption[] {
 
 const { width: deviceWidth, height: deviceHeight } = Dimensions.get("screen");
 const isIos = Platform.OS === "ios";
+const isWeb = Platform.OS === "web";
+
 const unstyledColor = "rgba(165, 173, 183, 1)";
 const disabledColor = "rgb(240, 240, 240)";
 const errorColor = "rgba(255, 69, 100, 1)";
@@ -107,6 +111,7 @@ const Picker: React.FC<PickerProps> = ({
   placeholderTextColor = unstyledColor,
   rightIconName,
   type = "solid",
+  autoDismissKeyboard = true,
 }) => {
   const androidPickerRef = React.useRef<any | undefined>(undefined);
 
@@ -137,6 +142,12 @@ const Picker: React.FC<PickerProps> = ({
       androidPickerRef?.current?.focus();
     }
   }, [pickerVisible, androidPickerRef]);
+
+  React.useEffect(() => {
+    if (pickerVisible && autoDismissKeyboard) {
+      Keyboard.dismiss();
+    }
+  }, [pickerVisible, autoDismissKeyboard]);
 
   const normalizedOptions = normalizeOptions(options);
 
@@ -374,9 +385,10 @@ const Picker: React.FC<PickerProps> = ({
       ) : null}
 
       {/* nonIosPicker */}
-      {!isIos && pickerVisible ? (
+      {/* Web version is collapsed by default, always show to allow direct expand */}
+      {!isIos && (pickerVisible || isWeb) ? (
         <NativePicker
-          enabled={pickerVisible}
+          enabled={!disabled}
           selectedValue={internalValue}
           onValueChange={handleValueChange}
           style={styles.nonIosPicker}

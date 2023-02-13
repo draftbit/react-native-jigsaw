@@ -8,6 +8,7 @@ import {
   StylesPanelSections,
   createNumberProp,
   createColorProp,
+  createStaticBoolProp,
 } from "@draftbit/types";
 
 const SEED_DATA_PROPS = {
@@ -185,6 +186,11 @@ export const SEED_DATA = [
         required: true,
         group: GROUPS.basic,
       },
+      autoDismissKeyboard: createStaticBoolProp({
+        label: "Auto dismiss keyboard",
+        description: "Automatically dismiss keyboard when DatePicker is opened",
+        defaultValue: true,
+      }),
     },
   },
 ];

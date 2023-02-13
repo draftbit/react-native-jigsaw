@@ -16,6 +16,8 @@ export const Triggers = {
   OnPressIcon: "ON_PRESS_ICON",
   OnIndexChanged: "ON_INDEX_CHANGED",
   OnEndReached: "ON_END_REACHED",
+  OnDismiss: "ON_DISMISS",
+  OnConfirm: "ON_CONFIRM",
 };
 
 export const StylesPanelSections = {

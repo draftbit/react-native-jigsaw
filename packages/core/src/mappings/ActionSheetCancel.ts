@@ -5,14 +5,14 @@ import {
   createTextProp,
   GROUPS,
   Triggers,
-  CONTAINER_COMPONENT_STYLES_SECTIONS,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "Action Sheet Cancel",
   tag: "ActionSheetCancel",
   description: "Action Sheet cancel",
-  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
+  stylesPanelSections: [StylesPanelSections.Size, StylesPanelSections.Margins],
   category: COMPONENT_TYPES.actionsheet,
   triggers: [Triggers.OnPress],
   props: {

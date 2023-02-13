@@ -2,7 +2,7 @@ import {
   COMPONENT_TYPES,
   createStaticBoolProp,
   GROUPS,
-  CONTAINER_COMPONENT_STYLES_SECTIONS,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -10,7 +10,7 @@ export const SEED_DATA = {
   tag: "ActionSheet",
   description: "Action Sheet container",
   category: COMPONENT_TYPES.actionsheet,
-  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
+  stylesPanelSections: [StylesPanelSections.Size, StylesPanelSections.Margins],
   props: {
     visible: createStaticBoolProp({
       group: GROUPS.data,

@@ -7,7 +7,7 @@ import {
   GROUPS,
   Triggers,
   createActionProp,
-  CONTAINER_COMPONENT_STYLES_SECTIONS,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -15,7 +15,15 @@ export const SEED_DATA = {
   tag: "Swiper",
   description: "Swiper container",
   category: COMPONENT_TYPES.swiper,
-  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
+  stylesPanelSections: [
+    StylesPanelSections.LayoutSelectedItem,
+    StylesPanelSections.Background,
+    StylesPanelSections.Size,
+    StylesPanelSections.MarginsAndPaddings,
+    StylesPanelSections.Position,
+    StylesPanelSections.Borders,
+    StylesPanelSections.Effects,
+  ],
   layout: {
     height: 300,
     width: "100%",

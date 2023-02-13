@@ -5,7 +5,7 @@ import {
   createTextProp,
   createStaticBoolProp,
   createColorProp,
-  CONTAINER_COMPONENT_STYLES_SECTIONS,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -13,7 +13,15 @@ export const SEED_DATA = {
   tag: "AccordionGroup",
   description: "An expandable container containing components",
   category: COMPONENT_TYPES.container,
-  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
+  stylesPanelSections: [
+    StylesPanelSections.LayoutSelectedItem,
+    StylesPanelSections.Background,
+    StylesPanelSections.Size,
+    StylesPanelSections.MarginsAndPaddings,
+    StylesPanelSections.Position,
+    StylesPanelSections.Borders,
+    StylesPanelSections.Effects,
+  ],
   layout: {
     paddingTop: 8,
     paddingRight: 8,

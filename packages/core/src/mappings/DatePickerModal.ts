@@ -10,6 +10,7 @@ import {
   createStaticNumberProp,
   createFieldNameProp,
   createActionProp,
+  GROUPS,
 } from "@draftbit/types";
 
 /**
@@ -43,6 +44,7 @@ const SHARED_SEED_DATA_PROPS = {
       "A locale can be composed of both a base language, the country (territory) of use, and possibly codeset (which is usually assumed). For example, German is de",
     defaultValue: "en",
     required: true,
+    group: GROUPS.basic,
   }),
   visible: createBoolProp({
     label: "Visible",
@@ -53,11 +55,13 @@ const SHARED_SEED_DATA_PROPS = {
     label: "Label",
     description: "The label used as the header in the component",
     defaultValue: "Select date",
+    group: GROUPS.basic,
   }),
   saveLabel: createTextProp({
     label: "Save Label",
     description: "Label used to confirm a date selection",
     defaultValue: "Save",
+    group: GROUPS.basic,
   }),
   saveLabelDisabled: createStaticBoolProp({
     label: "Disable Save Label",
@@ -145,18 +149,21 @@ export const SEED_DATA = [
         description:
           "The label used display when multiple dates have been selected in the component",
         defaultValue: "More",
+        group: GROUPS.basic,
       }),
       startLabel: createTextProp({
         label: "Start Label",
         description:
           "The label used as the prefix to the starting date in the component",
         defaultValue: "Start",
+        group: GROUPS.basic,
       }),
       endLabel: createTextProp({
         label: "End Label",
         description:
           "The label used as the suffix to the ending date in the component",
         defaultValue: "End",
+        group: GROUPS.basic,
       }),
       fieldName: createFieldNameProp({
         defaultValue: "dates",

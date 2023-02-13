@@ -12,6 +12,7 @@ import {
   I18nManager,
   LayoutChangeEvent,
   TextInput as NativeTextInput,
+  Keyboard,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -55,6 +56,7 @@ type Props = {
   rightIconName?: string;
   borderColor?: string;
   borderColorActive?: string;
+  autoDismissKeyboard?: boolean;
 } & IconSlot &
   TextInputProps;
 
@@ -93,6 +95,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   placeholder,
   borderColor: inputBorderColor,
   borderColorActive: inputBorderColorActive,
+  autoDismissKeyboard = true,
   ...props
 }) => {
   const [value, setValue] = React.useState<any>(date || defaultValue);
@@ -203,6 +206,12 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
       clearTimeout(_showPlaceholder());
     };
   }, [focused, label, placeholder]);
+
+  React.useEffect(() => {
+    if (pickerVisible && autoDismissKeyboard) {
+      Keyboard.dismiss();
+    }
+  }, [pickerVisible, autoDismissKeyboard]);
 
   const _handleFocus = () => {
     if (disabled) {

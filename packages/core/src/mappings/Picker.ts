@@ -8,6 +8,7 @@ import {
   createIconSizeProp,
   createColorProp,
   StylesPanelSections,
+  createStaticBoolProp,
 } from "@draftbit/types";
 
 const SEED_DATA_PROPS = {
@@ -157,6 +158,11 @@ export const SEED_DATA = [
       },
       iconSize: createIconSizeProp({ defaultValue: 24 }),
       iconColor: createColorProp({ label: "Icon Color" }),
+      autoDismissKeyboard: createStaticBoolProp({
+        label: "Auto dismiss keyboard",
+        description: "Automatically dismiss keyboard when Picker is opened",
+        defaultValue: true,
+      }),
     },
     layout: {},
   },

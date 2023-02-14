@@ -59,7 +59,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
 
   //Populate routes and scenes based on children
   React.useEffect(() => {
-    const newRoutes: any = [];
+    const newRoutes: Route[] = [];
     const scenes: any = {};
 
     React.Children.toArray(children)
@@ -69,8 +69,10 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
       .forEach((item: any, idx) => {
         const child = item as React.ReactElement;
         newRoutes.push({
-          key: idx,
-          ...child.props,
+          key: idx.toString(),
+          title: child.props.title,
+          icon: child.props.icon,
+          accessibilityLabel: child.props.accessibilityLabel,
         });
         scenes[idx] = () => child;
       });
@@ -93,7 +95,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
         {...props}
         activeColor={activeColor || theme.colors.primary}
         inactiveColor={inactiveColor || theme.colors.divider}
-        pressColor={pressColor}
+        pressColor={pressColor || theme.colors.primary}
         scrollEnabled={scrollEnabled}
         indicatorStyle={{
           backgroundColor: indicatorColor || theme.colors.primary,
@@ -107,7 +109,6 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
           { backgroundColor: tabsBackgroundColor || theme.colors.background },
           style,
         ]}
-        onTabPress={({ route }) => setIndex(routes.indexOf(route))}
       />
     );
   };

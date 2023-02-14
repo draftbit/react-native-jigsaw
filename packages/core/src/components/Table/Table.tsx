@@ -14,12 +14,12 @@ export interface TableProps extends TableBorderProps {
 
 const Table: React.FC<React.PropsWithChildren<TableProps>> = ({
   theme,
-  borderWidth = 2,
+  borderWidth = 1,
   borderColor = theme.colors.divider,
   drawTopBorder = true,
-  drawBottomBorder = true,
-  drawStartBorder = true,
-  drawEndBorder = true,
+  drawBottomBorder = false,
+  drawStartBorder = false,
+  drawEndBorder = false,
   cellVerticalPadding = 10,
   callHorizontalPadding = 10,
   children,
@@ -30,13 +30,17 @@ const Table: React.FC<React.PropsWithChildren<TableProps>> = ({
     () =>
       React.Children.map(children, (child) => {
         if (React.isValidElement(child) && child.type === TableRow) {
-          const rowProps = child.props as TableRowProps;
-          rowProps.cellVerticalPadding ??= cellVerticalPadding;
-          rowProps.callHorizontalPadding ??= callHorizontalPadding;
-          rowProps.borderWidth ??= borderWidth;
-          rowProps.borderColor ??= borderColor;
+          const oldProps = { ...(child.props as TableRowProps) };
+          const newProps: TableRowProps = {
+            cellVerticalPadding:
+              oldProps.cellVerticalPadding || cellVerticalPadding,
+            callHorizontalPadding:
+              oldProps.callHorizontalPadding || callHorizontalPadding,
+            borderWidth: oldProps.borderWidth || borderWidth,
+            borderColor: oldProps.borderColor || borderColor,
+          };
 
-          return React.cloneElement(child, rowProps);
+          return React.cloneElement(child, newProps);
         }
         return child;
       }),

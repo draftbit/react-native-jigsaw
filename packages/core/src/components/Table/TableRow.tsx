@@ -1,8 +1,7 @@
-import { TableCell } from "@material-ui/core";
 import React from "react";
 import { View, StyleProp, ViewStyle, StyleSheet } from "react-native";
 import { generateBorderStyles, TableBorderProps } from "./TableCommon";
-import { TableCellProps } from "./TableCell";
+import TableCell, { TableCellProps } from "./TableCell";
 
 export interface TableRowProps extends TableBorderProps {
   cellVerticalPadding?: number;
@@ -15,7 +14,7 @@ const TableRow: React.FC<React.PropsWithChildren<TableRowProps>> = ({
   borderColor,
   drawTopBorder = false,
   drawBottomBorder = true,
-  drawStartBorder = false,
+  drawStartBorder = true,
   drawEndBorder = false,
   cellVerticalPadding,
   callHorizontalPadding,
@@ -27,13 +26,16 @@ const TableRow: React.FC<React.PropsWithChildren<TableRowProps>> = ({
     () =>
       React.Children.map(children, (child) => {
         if (React.isValidElement(child) && child.type === TableCell) {
-          const cellProps = child.props as TableCellProps;
-          cellProps.verticalPadding ??= cellVerticalPadding;
-          cellProps.horizontalPadding ??= callHorizontalPadding;
-          cellProps.borderWidth ??= borderWidth;
-          cellProps.borderColor ??= borderColor;
+          const oldProps = { ...(child.props as TableCellProps) };
+          const newProps: TableCellProps = {
+            verticalPadding: oldProps.verticalPadding || cellVerticalPadding,
+            horizontalPadding:
+              oldProps.horizontalPadding || callHorizontalPadding,
+            borderWidth: oldProps.borderWidth || borderWidth,
+            borderColor: oldProps.borderColor || borderColor,
+          };
 
-          return React.cloneElement(child, cellProps);
+          return React.cloneElement(child, newProps);
         }
         return child;
       }),

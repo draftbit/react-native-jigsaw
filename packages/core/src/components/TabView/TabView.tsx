@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleProp, TextStyle, ViewStyle } from "react-native";
+import { StyleProp, ViewStyle } from "react-native";
 import {
   TabView,
   TabBar,
@@ -32,7 +32,7 @@ type TabViewProps = {
   pressColor?: string;
   indicatorColor?: string;
   tabsBackgroundColor?: string;
-  style?: StyleProp<TextStyle | ViewStyle>;
+  style?: StyleProp<ViewStyle>;
   theme: Theme;
 } & IconSlot;
 

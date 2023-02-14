@@ -30,6 +30,7 @@ export {
   useAuthState,
   DeckSwiper,
   DeckSwiperCard,
+  YoutubePlayer,
   /* Deprecated, needs fixing */
   ProgressBar,
   ProgressCircle,

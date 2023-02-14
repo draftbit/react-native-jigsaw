@@ -30,6 +30,9 @@ export {
   useAuthState,
   DeckSwiper,
   DeckSwiperCard,
+  Table,
+  TableRow,
+  TableCell,
   /* Deprecated, needs fixing */
   ProgressBar,
   ProgressCircle,

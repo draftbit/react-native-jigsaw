@@ -6,6 +6,7 @@ import {
   SceneMap,
   SceneRendererProps,
   NavigationState,
+  Route,
 } from "react-native-tab-view";
 
 import TabViewItem from "./TabViewItem";
@@ -30,6 +31,7 @@ type TabViewProps = {
   inactiveColor?: string;
   pressColor?: string;
   indicatorColor?: string;
+  tabsBackgroundColor?: string;
   style?: StyleProp<TextStyle | ViewStyle>;
   theme: Theme;
 } & IconSlot;
@@ -46,12 +48,13 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
   inactiveColor,
   pressColor,
   indicatorColor,
+  tabsBackgroundColor,
   style,
   theme,
   children,
 }) => {
   const [index, setIndex] = React.useState(0);
-  const [routes, setRoutes] = React.useState([]);
+  const [routes, setRoutes] = React.useState<Route[]>([]);
   const [tabScenes, setTabScenes] = React.useState({});
 
   //Populate routes and scenes based on children
@@ -63,13 +66,13 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
       .filter(
         (child) => React.isValidElement(child) && child.type === TabViewItem
       )
-      .forEach((item: any, index) => {
+      .forEach((item: any, idx) => {
         const child = item as React.ReactElement;
         newRoutes.push({
-          key: index,
+          key: idx,
           ...child.props,
         });
-        scenes[index] = () => child;
+        scenes[idx] = () => child;
       });
 
     setRoutes(newRoutes);
@@ -100,7 +103,11 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
             <Icon name={route.icon} color={color} size={36} />
           ) : null
         }
-        style={style}
+        style={[
+          { backgroundColor: tabsBackgroundColor || theme.colors.background },
+          style,
+        ]}
+        onTabPress={({ route }) => setIndex(routes.indexOf(route))}
       />
     );
   };

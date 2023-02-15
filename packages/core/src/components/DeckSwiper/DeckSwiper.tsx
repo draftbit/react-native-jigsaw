@@ -75,7 +75,7 @@ const DeckSwiper = <T extends object>({
     if (keyExtractor) {
       return keyExtractor(card);
     } else {
-      return card.toString();
+      return card?.toString();
     }
   };
 

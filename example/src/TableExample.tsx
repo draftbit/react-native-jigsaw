@@ -49,6 +49,7 @@ const TableExample: React.FC = () => {
               drawTopBorder
               drawStartBorder
               borderWidth={3}
+              borderStyle="dashed"
             >
               <Text>Customized Cell</Text>
             </TableCell>

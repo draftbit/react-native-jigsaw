@@ -11,6 +11,7 @@ export interface TableCellProps extends TableBorderProps {
 const TableCell: React.FC<React.PropsWithChildren<TableCellProps>> = ({
   borderWidth,
   borderColor,
+  borderStyle,
   drawTopBorder = false,
   drawBottomBorder = false,
   drawStartBorder = false,
@@ -20,9 +21,10 @@ const TableCell: React.FC<React.PropsWithChildren<TableCellProps>> = ({
   children,
   style,
 }) => {
-  const borderStyle = generateBorderStyles({
+  const borderViewStyle = generateBorderStyles({
     borderColor,
     borderWidth,
+    borderStyle,
     drawTopBorder,
     drawBottomBorder,
     drawStartBorder,
@@ -32,7 +34,7 @@ const TableCell: React.FC<React.PropsWithChildren<TableCellProps>> = ({
     <View
       style={[
         styles.cellContainer,
-        borderStyle,
+        borderViewStyle,
         {
           paddingVertical: verticalPadding,
           paddingHorizontal: horizontalPadding,

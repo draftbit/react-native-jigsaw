@@ -16,6 +16,7 @@ const Table: React.FC<React.PropsWithChildren<TableProps>> = ({
   theme,
   borderWidth = 1,
   borderColor = theme.colors.divider,
+  borderStyle = "solid",
   drawTopBorder = true,
   drawBottomBorder = false,
   drawStartBorder = false,
@@ -38,6 +39,7 @@ const Table: React.FC<React.PropsWithChildren<TableProps>> = ({
               oldProps.callHorizontalPadding || callHorizontalPadding,
             borderWidth: oldProps.borderWidth || borderWidth,
             borderColor: oldProps.borderColor || borderColor,
+            borderStyle: oldProps.borderStyle || borderStyle,
           };
 
           return React.cloneElement(child, newProps);
@@ -48,14 +50,16 @@ const Table: React.FC<React.PropsWithChildren<TableProps>> = ({
       children,
       borderColor,
       borderWidth,
+      borderStyle,
       cellVerticalPadding,
       callHorizontalPadding,
     ]
   );
 
-  const borderStyle = generateBorderStyles({
+  const borderViewStyle = generateBorderStyles({
     borderColor,
     borderWidth,
+    borderStyle,
     drawTopBorder,
     drawBottomBorder,
     drawStartBorder,
@@ -63,7 +67,7 @@ const Table: React.FC<React.PropsWithChildren<TableProps>> = ({
   });
 
   return (
-    <View style={[styles.container, borderStyle, style]}>
+    <View style={[styles.container, borderViewStyle, style]}>
       {populatedTableRows}
     </View>
   );

@@ -12,6 +12,7 @@ export interface TableRowProps extends TableBorderProps {
 const TableRow: React.FC<React.PropsWithChildren<TableRowProps>> = ({
   borderWidth,
   borderColor,
+  borderStyle,
   drawTopBorder = false,
   drawBottomBorder = true,
   drawStartBorder = true,
@@ -33,6 +34,7 @@ const TableRow: React.FC<React.PropsWithChildren<TableRowProps>> = ({
               oldProps.horizontalPadding || callHorizontalPadding,
             borderWidth: oldProps.borderWidth || borderWidth,
             borderColor: oldProps.borderColor || borderColor,
+            borderStyle: oldProps.borderStyle || borderStyle,
           };
 
           return React.cloneElement(child, newProps);
@@ -43,22 +45,24 @@ const TableRow: React.FC<React.PropsWithChildren<TableRowProps>> = ({
       children,
       borderColor,
       borderWidth,
+      borderStyle,
       cellVerticalPadding,
       callHorizontalPadding,
     ]
   );
 
-  const borderStyle = generateBorderStyles({
+  const borderViewStyle = generateBorderStyles({
     borderColor,
     borderWidth,
+    borderStyle,
     drawTopBorder,
     drawBottomBorder,
     drawStartBorder,
     drawEndBorder,
   });
   return (
-    <View style={[borderStyle, style]}>
-      <View style={styles.cellsContainer}>{populatedTableCells}</View>
+    <View style={[borderViewStyle, style, styles.cellsContainer]}>
+      {populatedTableCells}
     </View>
   );
 };

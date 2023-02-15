@@ -78,6 +78,20 @@ export const SEED_DATA = [
         ...SHARED_SEED_DATA_PROPS.drawTopBorder,
         defaultValue: true,
       },
+      cellVerticalPadding: createStaticNumberProp({
+        label: "Cell Vertical Padding",
+        description:
+          "Specifies the vertical padding of the cell. Passed down to child Table Row components unless overridden",
+        required: false,
+        defaultValue: 10,
+      }),
+      callHorizontalPadding: createStaticNumberProp({
+        label: "Cell Horizontal Padding",
+        description:
+          "Specifies the horizontal padding of the cell. Passed down to child Table Row components unless overridden",
+        required: false,
+        defaultValue: 10,
+      }),
     },
   },
   {
@@ -96,6 +110,20 @@ export const SEED_DATA = [
         ...SHARED_SEED_DATA_PROPS.drawBottomBorder,
         defaultValue: true,
       },
+      cellVerticalPadding: createStaticNumberProp({
+        label: "Cell Vertical Padding",
+        description:
+          "Specifies the vertical padding of the cell. Passed down to child Table Cell components unless overridden",
+        required: false,
+        defaultValue: null,
+      }),
+      callHorizontalPadding: createStaticNumberProp({
+        label: "Cell Horizontal Padding",
+        description:
+          "Specifies the horizontal padding of the cell. Passed down to child Table Cell components unless overridden",
+        required: false,
+        defaultValue: null,
+      }),
     },
   },
   {
@@ -106,12 +134,28 @@ export const SEED_DATA = [
     stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS.filter(
       (item) => item !== StylesPanelSections.Borders
     ),
+    layout: {
+      flex: 1,
+      flexDirection: "row",
+    },
     props: {
       ...SHARED_SEED_DATA_PROPS,
       drawEndBorder: {
         ...SHARED_SEED_DATA_PROPS.drawEndBorder,
         defaultValue: true,
       },
+      verticalPadding: createStaticNumberProp({
+        label: "Vertical Padding",
+        description: "Specifies the vertical padding of the cell",
+        required: false,
+        defaultValue: null,
+      }),
+      horizontalPadding: createStaticNumberProp({
+        label: "Horizontal Padding",
+        description: "Specifies the horizontal padding of the cell",
+        required: false,
+        defaultValue: null,
+      }),
     },
   },
 ];

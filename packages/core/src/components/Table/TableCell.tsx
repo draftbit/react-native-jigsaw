@@ -50,7 +50,6 @@ const TableCell: React.FC<React.PropsWithChildren<TableCellProps>> = ({
 const styles = StyleSheet.create({
   cellContainer: {
     flex: 1,
-    display: "flex",
     flexDirection: "row",
   },
 });

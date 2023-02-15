@@ -2,7 +2,7 @@ import React from "react";
 import { StyleProp, ViewStyle, StyleSheet, View } from "react-native";
 import DeckSwiperComponent from "react-native-deck-swiper";
 
-export interface DeckSwiperProps {
+export interface DeckSwiperProps<T> {
   onIndexChanged?: (index: number) => void;
   onEndReached?: () => void;
   startCardIndex?: number;
@@ -10,10 +10,13 @@ export interface DeckSwiperProps {
   verticalEnabled?: boolean;
   horizontalEnabled?: boolean;
   visibleCardCount?: number;
+  data?: Array<T>;
+  keyExtractor?: (item: T) => string;
+  renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
   style?: StyleProp<ViewStyle>;
 }
 
-const DeckSwiper: React.FC<React.PropsWithChildren<DeckSwiperProps>> = ({
+const DeckSwiper = <T extends object>({
   onIndexChanged,
   onEndReached,
   startCardIndex = 0,
@@ -21,9 +24,25 @@ const DeckSwiper: React.FC<React.PropsWithChildren<DeckSwiperProps>> = ({
   verticalEnabled = true,
   horizontalEnabled = true,
   visibleCardCount = 1,
+  data,
+  keyExtractor,
+  renderItem,
   style,
   children,
-}) => {
+}: React.PropsWithChildren<DeckSwiperProps<T>>) => {
+  //Both 'renderItem' and 'data' are optional to allow direct children. But if one is included, both need to be included
+  if ((data && !renderItem) || (renderItem && !data)) {
+    throw new Error(
+      "'renderItem' and 'data' need to both be provided to lazily render. Either remove them entirley or include both"
+    );
+  }
+
+  if (data && renderItem && children) {
+    console.warn(
+      "'children' of DeckSwiper ignored due to usage of 'data' and 'renderItem'"
+    );
+  }
+
   const childrenArray = React.useMemo(
     () => React.Children.toArray(children),
     [children]
@@ -34,6 +53,31 @@ const DeckSwiper: React.FC<React.PropsWithChildren<DeckSwiperProps>> = ({
     () => Array.from(Array(childrenArray.length).keys()),
     [childrenArray]
   );
+
+  const cardsData = data || cardsFillerData;
+
+  const renderCard = (card: any, index: number): JSX.Element => {
+    if (renderItem) {
+      return renderItem({ item: card, index });
+    } else {
+      return <>{childrenArray[index]}</>;
+    }
+  };
+
+  const renderFirstCard = (): JSX.Element | undefined => {
+    if (cardsData.length) {
+      return renderCard(cardsData[0], 0);
+    }
+    return undefined;
+  };
+
+  const cardKeyExtractor = (card: any) => {
+    if (keyExtractor) {
+      return keyExtractor(card);
+    } else {
+      return card.toString();
+    }
+  };
 
   /**
    * By default react-native-deck-swiper positions everything with absolute position.
@@ -47,13 +91,11 @@ const DeckSwiper: React.FC<React.PropsWithChildren<DeckSwiperProps>> = ({
 
   return (
     <View>
-      <View style={styles.containerHeightFiller}>
-        {childrenArray.length && childrenArray[0]}
-      </View>
+      <View style={styles.containerHeightFiller}>{renderFirstCard()}</View>
       <DeckSwiperComponent
-        cards={cardsFillerData}
-        renderCard={(_, i) => <>{childrenArray[i]}</>}
-        keyExtractor={(card) => card?.toString()}
+        cards={cardsData as any[]}
+        renderCard={renderCard}
+        keyExtractor={cardKeyExtractor}
         containerStyle={
           StyleSheet.flatten([styles.cardsContainer, style]) as
             | object

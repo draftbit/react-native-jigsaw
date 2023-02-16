@@ -39,7 +39,7 @@ export const SEED_DATA = {
     stretch: createStaticBoolProp({
       label: "Stretch",
       description: "Force children to occupy all available horizontal space.",
-      defaultValue: false,
+      defaultValue: null,
     }),
     offsetX: createStaticNumberProp({
       label: "Offset X",

@@ -16,6 +16,7 @@ export const Triggers = {
   OnPressIcon: "ON_PRESS_ICON",
   OnIndexChanged: "ON_INDEX_CHANGED",
   OnEndReached: "ON_END_REACHED",
+  OnSettle: "ON_SETTLE",
 };
 
 export const StylesPanelSections = {
@@ -126,6 +127,7 @@ export const COMPONENT_TYPES = {
   swiper: "swiper",
   map: "map",
   view: "view",
+  bottomsheet: "bottomsheet",
   /* Deprecated */
   row: "row",
   card: "card",
@@ -380,6 +382,25 @@ export const createBorderRadiusProp = (overrides = {}) => ({
   required: true,
   ...overrides,
 });
+
+export const createArrayProp = (overrides = {}) => ({
+  group: GROUPS.data,
+  label: "Options",
+  description: "Array of options.",
+  editable: true,
+  required: false,
+  formType: FORM_TYPES.array,
+  propType: PROP_TYPES.OBJECT,
+  options: [],
+  defaultValue: null,
+  ...overrides,
+});
+
+export const createStaticArrayProp = (overrides = {}) =>
+  createArrayProp({
+    group: GROUPS.basic,
+    ...overrides,
+  });
 
 export const FIELD_NAME = {
   group: GROUPS.basic,

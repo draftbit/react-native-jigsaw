@@ -34,7 +34,7 @@ export const SEED_DATA = {
     paintInside: createStaticBoolProp({
       label: "Paint Inside",
       description: "Apply the shadow below/inside the content.",
-      defaultValue: null,
+      defaultValue: false,
     }),
     stretch: createStaticBoolProp({
       label: "Stretch",

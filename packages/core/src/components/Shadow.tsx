@@ -33,6 +33,7 @@ const Shadow: React.FC<React.PropsWithChildren<ShadowProps>> = ({
   showShadowCornerTopEnd = true,
   showShadowCornerBottomStart = true,
   showShadowCornerBottomEnd = true,
+  paintInside = false,
   style,
   ...rest
 }) => {
@@ -52,6 +53,7 @@ const Shadow: React.FC<React.PropsWithChildren<ShadowProps>> = ({
         bottomEnd: showShadowCornerBottomEnd,
       }}
       containerStyle={style}
+      paintInside={paintInside}
       {...rest}
     />
   );

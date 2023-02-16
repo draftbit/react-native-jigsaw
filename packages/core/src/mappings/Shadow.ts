@@ -9,7 +9,7 @@ import {
 
 export const SEED_DATA = {
   name: "Shadow",
-  tag: "Shadow View",
+  tag: "Shadow",
   description: "A cross-platform, universal shadow.",
   category: COMPONENT_TYPES.view,
   stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,

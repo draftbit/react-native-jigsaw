@@ -28,6 +28,8 @@ export {
   Pressable,
   withTheme,
   useAuthState,
+  DeckSwiper,
+  DeckSwiperCard,
   /* Deprecated, needs fixing */
   ProgressBar,
   ProgressCircle,

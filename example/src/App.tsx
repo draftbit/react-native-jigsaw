@@ -73,6 +73,8 @@ import SurfaceExample from "./SurfaceExample";
 
 import ShadowExample from "./ShadowExample";
 
+import DeckSwiperExample from "./DeckSwiperExample";
+
 const ROUTES = {
   AudioPlayer: AudioPlayerExample,
   Layout: LayoutExample,
@@ -118,6 +120,7 @@ const ROUTES = {
   NumberInput: NumberInputExample,
   WebView: WebViewExample,
   Shadow: ShadowExample,
+  DeckSwiper: DeckSwiperExample,
 };
 
 let customFonts = {

@@ -30,6 +30,7 @@ export {
   useAuthState,
   DeckSwiper,
   DeckSwiperCard,
+  Shadow,
   /* Deprecated, needs fixing */
   ProgressBar,
   ProgressCircle,
@@ -39,7 +40,6 @@ export {
   ActionSheetCancel,
   Swiper,
   SwiperItem,
-  Shadow,
 } from "@draftbit/core";
 
 /**

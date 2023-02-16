@@ -43,12 +43,12 @@ export const SEED_DATA = {
     }),
     offsetX: createStaticNumberProp({
       label: "Offset X",
-      description: "Moved the shadow in the x direction",
+      description: "Moves the shadow in the x direction",
       defeaultValue: 0,
     }),
     offsetY: createStaticNumberProp({
       label: "Offset Y",
-      description: "Moved the shadow in the y direction",
+      description: "Moves the shadow in the y direction",
       defeaultValue: 0,
     }),
     showShadowSideStart: createStaticBoolProp({

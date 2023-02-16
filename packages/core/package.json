@@ -55,7 +55,6 @@
     "lodash.tonumber": "^4.0.3",
     "react-native-deck-swiper": "^2.0.12",
     "react-native-modal-datetime-picker": "^13.0.0",
-    "react-native-scroll-bottom-sheet": "^0.7.0",
     "react-native-svg": "12.3.0",
     "react-native-typography": "^1.4.1",
     "react-native-web-swiper": "^2.2.3"

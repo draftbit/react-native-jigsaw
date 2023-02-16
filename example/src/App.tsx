@@ -71,6 +71,8 @@ import LinearGradientExample from "./LinearGradientExample";
 
 import SurfaceExample from "./SurfaceExample";
 
+import DeckSwiperExample from "./DeckSwiperExample";
+
 const ROUTES = {
   AudioPlayer: AudioPlayerExample,
   Layout: LayoutExample,
@@ -115,6 +117,7 @@ const ROUTES = {
   TextInput: TextInputExample,
   NumberInput: NumberInputExample,
   WebView: WebViewExample,
+  DeckSwiper: DeckSwiperExample,
 };
 
 let customFonts = {

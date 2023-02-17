@@ -7,6 +7,7 @@ import {
   GROUPS,
   FORM_TYPES,
   PROP_TYPES,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -15,6 +16,7 @@ export const SEED_DATA = {
   packageName: "@draftbit/maps",
   description: "A map view",
   category: COMPONENT_TYPES.map,
+  stylesPanelSections: [StylesPanelSections.Size, StylesPanelSections.Margins],
   layout: {
     flex: 1,
     width: "100%",

@@ -142,16 +142,7 @@ export const SEED_DATA = [
     tag: "Q",
     ...TEXT_SEED_DATA,
   },
-  {
-    name: "Line Break",
-    tag: "BR",
-    ...TEXT_SEED_DATA,
-  },
-  {
-    name: "Horizontal Rule",
-    tag: "HR",
-    ...TEXT_SEED_DATA,
-  },
+
   {
     name: "Time",
     tag: "Time",
@@ -167,6 +158,16 @@ export const SEED_DATA = [
     tag: "LI",
     ...TEXT_SEED_DATA,
     category: COMPONENT_TYPES.webelement,
+  },
+  {
+    name: "Line Break",
+    tag: "BR",
+    ...ELEMENT_SEED_DATA,
+  },
+  {
+    name: "Horizontal Rule",
+    tag: "HR",
+    ...ELEMENT_SEED_DATA,
   },
   {
     name: "Anchor",

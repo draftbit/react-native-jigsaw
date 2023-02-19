@@ -324,6 +324,15 @@ export const SEED_DATA = [
     preview_image_url: "{CLOUDINARY_URL}/Textfield.png",
     supports_list_render: false,
     triggers: SEED_DATA_TRIGGERS,
+    stylesPanelSections: [
+      StylesPanelSections.Typography,
+      StylesPanelSections.Background,
+      StylesPanelSections.Size,
+      StylesPanelSections.MarginsAndPaddings,
+      StylesPanelSections.Position,
+      StylesPanelSections.Borders,
+      StylesPanelSections.Effects,
+    ],
     props: {
       ...SEED_DATA_PROPS,
       type: {

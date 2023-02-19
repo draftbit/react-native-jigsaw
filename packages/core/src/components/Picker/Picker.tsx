@@ -92,6 +92,8 @@ const unstyledColor = "rgba(165, 173, 183, 1)";
 const disabledColor = "rgb(240, 240, 240)";
 const errorColor = "rgba(255, 69, 100, 1)";
 
+//Empty string for 'value' is treated as a non-value
+//reason: Draftbit uses empty string as initial value for string state*/
 const Picker: React.FC<PickerProps> = ({
   error,
   options = [],
@@ -126,13 +128,13 @@ const Picker: React.FC<PickerProps> = ({
   };
 
   React.useEffect(() => {
-    if (value != null) {
+    if (value != null && value !== "") {
       setInternalValue(value);
     }
   }, [value]);
 
   React.useEffect(() => {
-    if (defaultValue != null) {
+    if (defaultValue != null && defaultValue !== "") {
       setInternalValue(defaultValue);
     }
   }, [defaultValue]);
@@ -149,11 +151,7 @@ const Picker: React.FC<PickerProps> = ({
     }
   }, [pickerVisible, autoDismissKeyboard]);
 
-  const normalizedOptions = normalizeOptions(options);
-
-  const pickerOptions = placeholder
-    ? [{ value: placeholder, label: placeholder }, ...normalizedOptions]
-    : normalizedOptions;
+  const pickerOptions = normalizeOptions(options);
 
   const { viewStyles, textStyles } = extractStyles(style);
 
@@ -304,10 +302,10 @@ const Picker: React.FC<PickerProps> = ({
   };
 
   const handleValueChange = (newValue: string, itemIndex: number) => {
-    if (!placeholder || itemIndex > 0) {
+    if (newValue !== "") {
       onValueChange?.(newValue, itemIndex);
+      setInternalValue(newValue);
     }
-    setInternalValue(newValue);
   };
 
   return (

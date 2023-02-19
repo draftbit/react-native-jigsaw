@@ -5,9 +5,7 @@ import {
   PROP_TYPES,
   GROUPS,
   StylesPanelSections,
-  Triggers,
 } from "@draftbit/types";
-const SEED_DATA_TRIGGERS = [Triggers.OnValueChange];
 
 const ELEMENT_SEED_DATA = {
   doc_link: "https://www.npmjs.com/package/@expo/html-elements",
@@ -22,7 +20,6 @@ const ELEMENT_SEED_DATA = {
   layout: {
     margin: 0,
   },
-  triggers: SEED_DATA_TRIGGERS,
   category: COMPONENT_TYPES.webelement,
 };
 

@@ -30,6 +30,7 @@ export {
   useAuthState,
   DeckSwiper,
   DeckSwiperCard,
+  Shadow,
   TabViewItem,
   Markdown,
   /* Deprecated, needs fixing */

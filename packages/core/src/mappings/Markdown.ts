@@ -10,7 +10,7 @@ export const SEED_DATA = {
   name: "Markdown",
   tag: "Markdown",
   description: "A component that renders markdown",
-  category: COMPONENT_TYPES.basic,
+  category: COMPONENT_TYPES.text,
   stylesPanelSections: [
     StylesPanelSections.Typography,
     StylesPanelSections.LayoutSelectedItem,

@@ -26,7 +26,7 @@ export const SEED_DATA = {
       required: true,
       formType: FORM_TYPES.string,
       propType: PROP_TYPES.STRING,
-      defaultValue: "## Double click me to edit 👀",
+      defaultValue: "### Markdown",
     },
   },
 };

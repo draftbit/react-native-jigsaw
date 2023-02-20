@@ -5,15 +5,12 @@ import { withTheme } from "../../theming";
 
 export interface DeckSwiperCardProps {
   style?: StyleProp<ViewStyle>;
-  children: React.ReactNode;
   theme: Theme;
 }
 
-const DeckSwiperCard: React.FC<DeckSwiperCardProps> = ({
-  style,
-  children,
-  theme,
-}) => (
+const DeckSwiperCard: React.FC<
+  React.PropsWithChildren<DeckSwiperCardProps>
+> = ({ style, children, theme }) => (
   <View
     style={[
       styles.card,

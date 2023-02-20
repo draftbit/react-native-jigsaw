@@ -20,7 +20,7 @@ export const SEED_DATA = {
     title: createTextProp({
       label: "Title",
       description: "Title of tab item",
-      defaultValue: null,
+      defaultValue: "Title",
       required: true,
       group: GROUPS.basic,
     }),

@@ -52,7 +52,7 @@ export const SEED_DATA = {
       defaultValue: true,
     }),
     scrollEnabled: createStaticBoolProp({
-      label: "Scroll Enabled",
+      label: "Tab Scroll Enabled",
       description: "Whether scrolling of tabs is enabled or not",
       defaultValue: false,
     }),

@@ -1,7 +1,30 @@
 import React from "react";
 import { Image, Text } from "react-native";
 import Section, { Container } from "./Section";
-import { DeckSwiper, DeckSwiperCard } from "@draftbit/core";
+import { DeckSwiper, DeckSwiperCard } from "@draftbit/ui";
+
+const sampleData = [
+  {
+    id: 1,
+    fullName: "Susan Williamson",
+  },
+  {
+    id: 2,
+    fullName: "Henrietta Wagner",
+  },
+  {
+    id: 3,
+    fullName: "Lydia Snyder",
+  },
+  {
+    id: 4,
+    fullName: "Harold Herrera",
+  },
+  {
+    id: 5,
+    fullName: "Richard Garrett",
+  },
+];
 
 const DeckSwiperExample: React.FC = () => {
   return (
@@ -44,6 +67,20 @@ const DeckSwiperExample: React.FC = () => {
             />
           </DeckSwiperCard>
         </DeckSwiper>
+      </Section>
+
+      <Section title="Lazy Rendering (renderItem)" style={{}}>
+        <DeckSwiper
+          infiniteSwiping
+          visibleCardCount={2}
+          data={sampleData}
+          renderItem={({ item }) => (
+            <DeckSwiperCard>
+              <Text>{item.fullName}</Text>
+            </DeckSwiperCard>
+          )}
+          keyExtractor={(item) => item.id.toString()}
+        />
       </Section>
     </Container>
   );

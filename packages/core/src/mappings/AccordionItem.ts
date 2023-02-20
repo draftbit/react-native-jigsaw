@@ -3,6 +3,7 @@ import {
   createIconProp,
   createTextProp,
   createColorProp,
+  CONTAINER_COMPONENT_STYLES_SECTIONS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -10,6 +11,7 @@ export const SEED_DATA = {
   tag: "AccordionItem",
   description: "Item to be used in Accordion",
   category: COMPONENT_TYPES.deprecated,
+  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
   props: {
     icon: createIconProp(),
     label: createTextProp({

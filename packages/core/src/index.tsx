@@ -53,6 +53,8 @@ export {
 
 export { DeckSwiper, DeckSwiperCard } from "./components/DeckSwiper";
 
+export { default as Markdown } from "./components/Markdown";
+
 /* Deprecated: Fix or Delete!  */
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
 export { default as Picker } from "./components/Picker/Picker";

@@ -23,7 +23,6 @@ export const SEED_DATA = {
     StylesPanelSections.Background,
     StylesPanelSections.Typography,
   ],
-  layout: { flex: 1 },
   triggers: [Triggers.OnIndexChanged, Triggers.OnEndReached],
   props: {
     onIndexChanged: createActionProp({

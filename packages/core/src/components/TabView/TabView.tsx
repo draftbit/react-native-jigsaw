@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleProp, ViewStyle, StyleSheet } from "react-native";
+import { StyleProp, ViewStyle } from "react-native";
 import {
   TabView,
   TabBar,
@@ -132,7 +132,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
 
   return (
     <TabView
-      style={[styles.tabView, viewStyles]}
+      style={[viewStyles]}
       navigationState={{ index, routes }}
       renderScene={SceneMap(tabScenes)}
       renderTabBar={renderTabBar}
@@ -143,9 +143,5 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
     />
   );
 };
-
-const styles = StyleSheet.create({
-  tabView: { flex: 1 },
-});
 
 export default withTheme(TabViewComponent);

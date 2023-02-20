@@ -7,6 +7,7 @@ import {
   Triggers,
   createActionProp,
   createStaticBoolProp,
+  GROUPS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -62,8 +63,9 @@ export const SEED_DATA = {
     }),
     pressColor: createColorProp({
       label: "Press Color",
-      description: "Color of ripple when pressed (android only)",
+      description: "Color of ripple when pressed",
       defaultValue: "primary",
+      group: GROUPS.android,
     }),
     indicatorColor: createColorProp({
       label: "Indicator Color",

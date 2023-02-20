@@ -22,6 +22,7 @@ export const SEED_DATA = {
       description: "Title of tab item",
       defaultValue: null,
       required: true,
+      group: GROUPS.basic,
     }),
     icon: createIconProp({
       defaultValue: null,

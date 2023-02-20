@@ -115,12 +115,18 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
         labelStyle={textStyles}
         renderIcon={({ route, color }) =>
           route?.icon ? (
-            <Icon name={route.icon} color={color} size={16} />
+            <Icon
+              style={styles.icon}
+              name={route.icon}
+              color={color}
+              size={16}
+            />
           ) : null
         }
         style={{
           backgroundColor: tabsBackgroundColor || theme.colors.background,
         }}
+        contentContainerStyle={styles.tabBarContainer}
       />
     );
   };
@@ -146,6 +152,10 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
 
 const styles = StyleSheet.create({
   tabView: { flex: 1 },
+
+  //Prevent height of bar from filling container
+  tabBarContainer: { flex: undefined },
+  icon: { width: 16, height: 16 },
 });
 
 export default withTheme(TabViewComponent);

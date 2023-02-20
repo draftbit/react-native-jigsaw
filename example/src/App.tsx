@@ -74,6 +74,7 @@ import SurfaceExample from "./SurfaceExample";
 import DeckSwiperExample from "./DeckSwiperExample";
 
 import TabViewExample from "./TabViewExample";
+import MarkdownExample from "./MarkdownExample";
 
 const ROUTES = {
   AudioPlayer: AudioPlayerExample,
@@ -121,6 +122,7 @@ const ROUTES = {
   WebView: WebViewExample,
   DeckSwiper: DeckSwiperExample,
   TabView: TabViewExample,
+  Markdown: MarkdownExample,
 };
 
 let customFonts = {

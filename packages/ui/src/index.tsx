@@ -31,6 +31,7 @@ export {
   DeckSwiper,
   DeckSwiperCard,
   TabViewItem,
+  Markdown,
   /* Deprecated, needs fixing */
   ProgressBar,
   ProgressCircle,

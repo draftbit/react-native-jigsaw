@@ -73,6 +73,7 @@ import SurfaceExample from "./SurfaceExample";
 
 import DeckSwiperExample from "./DeckSwiperExample";
 
+import TabViewExample from "./TabViewExample";
 import MarkdownExample from "./MarkdownExample";
 
 const ROUTES = {
@@ -120,6 +121,7 @@ const ROUTES = {
   NumberInput: NumberInputExample,
   WebView: WebViewExample,
   DeckSwiper: DeckSwiperExample,
+  TabView: TabViewExample,
   Markdown: MarkdownExample,
 };
 

@@ -53,6 +53,7 @@ export {
 
 export { DeckSwiper, DeckSwiperCard } from "./components/DeckSwiper";
 
+export { TabView, TabViewItem } from "./components/TabView";
 export { default as Markdown } from "./components/Markdown";
 
 /* Deprecated: Fix or Delete!  */

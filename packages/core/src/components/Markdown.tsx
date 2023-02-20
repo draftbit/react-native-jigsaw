@@ -11,7 +11,7 @@ const Markdown: React.FC<React.PropsWithChildren<MarkdownProps>> = ({
   style,
 }) => {
   return (
-    //'body' style used for main parent container
+    //'body' style applies to all markdown components
     //@ts-ignore TS does not like the type of this named style for some reason
     <MarkdownComponent style={{ body: StyleSheet.flatten(style) }}>
       {children}

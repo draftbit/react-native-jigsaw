@@ -1,9 +1,9 @@
 import {
-  BLOCK_STYLES_SECTIONS,
   COMPONENT_TYPES,
   FORM_TYPES,
   GROUPS,
   PROP_TYPES,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -11,12 +11,17 @@ export const SEED_DATA = {
   tag: "Markdown",
   description: "A component that renders markdown",
   category: COMPONENT_TYPES.basic,
-  stylesPanelSections: BLOCK_STYLES_SECTIONS,
+  stylesPanelSections: [
+    StylesPanelSections.Typography,
+    StylesPanelSections.LayoutSelectedItem,
+    StylesPanelSections.MarginsAndPaddings,
+    StylesPanelSections.Effects,
+  ],
   props: {
     children: {
       group: GROUPS.data,
       label: "Markdown Text",
-      description: "Markdownt text to be rendered ",
+      description: "Markdown text to be rendered ",
       editable: true,
       required: true,
       formType: FORM_TYPES.string,

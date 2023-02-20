@@ -106,7 +106,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
         labelStyle={textStyles}
         renderIcon={({ route, color }) =>
           route?.icon ? (
-            <Icon name={route.icon} color={color} size={36} />
+            <Icon name={route.icon} color={color} size={16} />
           ) : null
         }
         style={{

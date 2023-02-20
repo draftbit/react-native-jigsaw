@@ -3,6 +3,7 @@ import {
   createTextProp,
   createIconProp,
   CONTAINER_COMPONENT_STYLES_SECTIONS,
+  GROUPS,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -30,6 +31,7 @@ export const SEED_DATA = {
       label: "Accessibility Label",
       description: "Accessibility Label",
       defaultValue: null,
+      group: GROUPS.accessibility,
     }),
   },
 };

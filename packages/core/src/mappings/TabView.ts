@@ -2,7 +2,6 @@ import {
   COMPONENT_TYPES,
   createTextEnumProp,
   createColorProp,
-  BLOCK_STYLES_SECTIONS,
   StylesPanelSections,
   Triggers,
   createActionProp,
@@ -16,9 +15,15 @@ export const SEED_DATA = {
   description: "Tab view container",
   category: COMPONENT_TYPES.swiper,
   stylesPanelSections: [
-    ...BLOCK_STYLES_SECTIONS,
+    StylesPanelSections.Size,
+    StylesPanelSections.MarginsAndPaddings,
+    StylesPanelSections.Position,
+    StylesPanelSections.Effects,
+    StylesPanelSections.LayoutSelectedItem,
     StylesPanelSections.Background,
+    StylesPanelSections.Typography,
   ],
+  layout: { flex: 1 },
   triggers: [Triggers.OnIndexChanged, Triggers.OnEndReached],
   props: {
     onIndexChanged: createActionProp({

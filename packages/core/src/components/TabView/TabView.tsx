@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleProp, ViewStyle } from "react-native";
+import { StyleProp, ViewStyle, StyleSheet } from "react-native";
 import {
   TabView,
   TabBar,
@@ -13,6 +13,7 @@ import TabViewItem from "./TabViewItem";
 import type { IconSlot } from "../../interfaces/Icon";
 import { withTheme } from "../../theming";
 import type { Theme } from "../../styles/DefaultTheme";
+import { extractStyles } from "../../utilities";
 
 type TabBarProps = SceneRendererProps & {
   navigationState: NavigationState<any>;
@@ -57,6 +58,8 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
   const [routes, setRoutes] = React.useState<Route[]>([]);
   const [tabScenes, setTabScenes] = React.useState({});
 
+  const { textStyles, viewStyles } = extractStyles(style);
+
   //Populate routes and scenes based on children
   React.useEffect(() => {
     const newRoutes: Route[] = [];
@@ -100,21 +103,22 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
         indicatorStyle={{
           backgroundColor: indicatorColor || theme.colors.primary,
         }}
+        labelStyle={textStyles}
         renderIcon={({ route, color }) =>
           route?.icon ? (
             <Icon name={route.icon} color={color} size={36} />
           ) : null
         }
-        style={[
-          { backgroundColor: tabsBackgroundColor || theme.colors.background },
-          style,
-        ]}
+        style={{
+          backgroundColor: tabsBackgroundColor || theme.colors.background,
+        }}
       />
     );
   };
 
   return (
     <TabView
+      style={[styles.tabView, viewStyles]}
       navigationState={{ index, routes }}
       renderScene={SceneMap(tabScenes)}
       renderTabBar={renderTabBar}
@@ -125,5 +129,9 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
     />
   );
 };
+
+const styles = StyleSheet.create({
+  tabView: { flex: 1 },
+});
 
 export default withTheme(TabViewComponent);

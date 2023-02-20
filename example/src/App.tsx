@@ -75,6 +75,9 @@ import ShadowExample from "./ShadowExample";
 
 import DeckSwiperExample from "./DeckSwiperExample";
 
+import TabViewExample from "./TabViewExample";
+import MarkdownExample from "./MarkdownExample";
+
 const ROUTES = {
   AudioPlayer: AudioPlayerExample,
   Layout: LayoutExample,
@@ -121,6 +124,8 @@ const ROUTES = {
   WebView: WebViewExample,
   Shadow: ShadowExample,
   DeckSwiper: DeckSwiperExample,
+  TabView: TabViewExample,
+  Markdown: MarkdownExample,
 };
 
 let customFonts = {

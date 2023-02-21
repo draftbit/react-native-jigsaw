@@ -25,7 +25,7 @@ export const SEED_DATA = {
     playlist: createTextProp({
       label: "Playlist",
       description: "Playlist of the Youtube videos.",
-      defaultValue: "PLUa6TiXzjIrwowt6P-uGCJm8ovm-9S1Ks",
+      defaultValue: null,
     }),
     mute: createStaticBoolProp({
       label: "Mute Audio",

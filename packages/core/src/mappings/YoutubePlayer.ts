@@ -20,7 +20,7 @@ export const SEED_DATA = {
     videoId: createTextProp({
       label: "Video ID",
       description: "VideoId of the Youtube video.",
-      defaultValue: "nwMUpDESXrI",
+      defaultValue: null,
     }),
     playlist: createTextProp({
       label: "Playlist",

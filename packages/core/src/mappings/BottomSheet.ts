@@ -37,7 +37,7 @@ export const SEED_DATA = {
     }),
     showHandle: createStaticBoolProp({
       label: "Show handle",
-      description: "Whether to show the top handle or not",
+      description: "Whether to show the sheet handle or not",
       defaultValue: true,
     }),
     handleColor: createColorProp({

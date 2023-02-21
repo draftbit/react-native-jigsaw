@@ -20,13 +20,14 @@ const YoutubePlayer: React.FC<YoutubePlayerProps> = ({
 }) => {
   const { viewStyles } = extractStyles(style);
   const { height, width } = viewStyles;
+  const defaultVideoId = "nwMUpDESXrI";
 
   return (
     <YoutubePlayerComponent
       height={height}
       width={width}
       play={autoplay}
-      videoId={videoId}
+      videoId={!videoId && !playlist ? defaultVideoId : videoId}
       playList={playlist}
       mute={mute}
       webViewStyle={style}

@@ -30,6 +30,9 @@ export {
   useAuthState,
   DeckSwiper,
   DeckSwiperCard,
+  Shadow,
+  TabViewItem,
+  Markdown,
   /* Deprecated, needs fixing */
   ProgressBar,
   ProgressCircle,
@@ -75,6 +78,7 @@ import {
   Slider as BaseSlider,
   AccordionGroup as BaseAccordionGroup,
   AccordionItem as BaseAccordionItem,
+  TabView as BaseTabView,
 } from "@draftbit/core";
 
 export const AvatarEdit = injectIcon(BaseAvatarEdit, Icon);
@@ -102,3 +106,4 @@ export const ToggleButton = injectIcon(BaseToggleButton, Icon);
 export const Slider = injectIcon(BaseSlider, Icon);
 export const AccordionGroup = injectIcon(BaseAccordionGroup, Icon);
 export const AccordionItem = injectIcon(BaseAccordionItem, Icon);
+export const TabView = injectIcon(BaseTabView, Icon);

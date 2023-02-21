@@ -58,6 +58,7 @@
     "react-native-markdown-display": "^7.0.0-alpha.2",
     "react-native-modal-datetime-picker": "^13.0.0",
     "react-native-pager-view": "5.4.24",
+    "react-native-reanimated": "~2.9.1",
     "react-native-shadow-2": "^7.0.6",
     "react-native-svg": "12.3.0",
     "react-native-tab-view": "^3.4.0",

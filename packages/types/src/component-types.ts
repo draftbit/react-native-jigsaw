@@ -397,12 +397,6 @@ export const createArrayProp = (overrides = {}) => ({
   ...overrides,
 });
 
-export const createStaticArrayProp = (overrides = {}) =>
-  createArrayProp({
-    group: GROUPS.basic,
-    ...overrides,
-  });
-
 export const FIELD_NAME = {
   group: GROUPS.basic,
   label: "Field name",

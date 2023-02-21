@@ -5,8 +5,8 @@ import {
   Triggers,
   createActionProp,
   createColorProp,
-  createStaticArrayProp,
   createStaticNumberProp,
+  createArrayProp,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -23,7 +23,7 @@ export const SEED_DATA = {
       label: "On settle",
       description: "Action to execute when sheet settles on a snap point",
     }),
-    snapPoints: createStaticArrayProp({
+    snapPoints: createArrayProp({
       label: "Snap points",
       description:
         "An array of numerical values (that represent distance from the top) where bottom sheet can snap to place. Accepts numbers and percentages (minimum 2 snap points)",

@@ -33,6 +33,7 @@ export {
   Shadow,
   TabViewItem,
   Markdown,
+  BottomSheet,
   YoutubePlayer,
   /* Deprecated, needs fixing */
   ProgressBar,

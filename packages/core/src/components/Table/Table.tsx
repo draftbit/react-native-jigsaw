@@ -5,6 +5,7 @@ import {
   ViewStyle,
   View,
   StyleSheet,
+  ScrollViewProps,
 } from "react-native";
 import { Theme } from "../../styles/DefaultTheme";
 import { withTheme } from "../../theming";
@@ -15,7 +16,7 @@ import {
   TableStyleProps,
 } from "./TableCommon";
 
-export interface Props<T> extends TableProps {
+export interface Props<T> extends TableProps, ScrollViewProps {
   data?: Array<T>;
   keyExtractor?: (item: T, index: number) => string;
   renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
@@ -39,6 +40,7 @@ const Table = <T extends object>({
   renderItem,
   children: childrenProp,
   style,
+  ...rest
 }: React.PropsWithChildren<Props<T>>) => {
   //Both 'renderItem' and 'data' are optional to allow direct children. But if one is included, both need to be included
   if ((data && !renderItem) || (renderItem && !data)) {
@@ -153,7 +155,7 @@ const Table = <T extends object>({
     <TableStyleContext.Provider value={contextValue}>
       <View style={[styles.container, borderViewStyle, style]}>
         <>{header}</>
-        <ScrollView>{childrenWithoutHeader}</ScrollView>
+        <ScrollView {...rest}>{childrenWithoutHeader}</ScrollView>
       </View>
     </TableStyleContext.Provider>
   );

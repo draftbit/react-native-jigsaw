@@ -61,7 +61,6 @@ class MapView extends React.Component<
       (prevProps.latitude !== this.props.latitude ||
         prevProps.longitude !== this.props.longitude)
     ) {
-      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         lat: this.props.latitude,
         lng: this.props.longitude,
@@ -114,8 +113,13 @@ class MapView extends React.Component<
       return <NoApiKey />;
     }
 
+    //Follows how source library checks for loaded script (https://github.com/JustFly1984/react-google-maps-api/blob/develop/packages/react-google-maps-api/src/LoadScript.tsx)
+    const isScriptLoaded = !!(window.google && window.google.maps);
+
+    const TopLevelContainer = isScriptLoaded ? React.Fragment : LoadScript;
+
     return (
-      <LoadScript googleMapsApiKey={apiKey}>
+      <TopLevelContainer googleMapsApiKey={apiKey}>
         <GoogleMap
           mapContainerStyle={StyleSheet.flatten(style) as React.CSSProperties}
           center={{
@@ -161,7 +165,7 @@ class MapView extends React.Component<
               })
             : children}
         </GoogleMap>
-      </LoadScript>
+      </TopLevelContainer>
     );
   }
 }

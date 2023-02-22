@@ -78,6 +78,8 @@ import DeckSwiperExample from "./DeckSwiperExample";
 import TabViewExample from "./TabViewExample";
 import MarkdownExample from "./MarkdownExample";
 
+import BottomSheetExample from "./BottomSheetExample";
+
 const ROUTES = {
   AudioPlayer: AudioPlayerExample,
   Layout: LayoutExample,
@@ -126,6 +128,7 @@ const ROUTES = {
   DeckSwiper: DeckSwiperExample,
   TabView: TabViewExample,
   Markdown: MarkdownExample,
+  BottomSheet: BottomSheetExample,
 };
 
 let customFonts = {

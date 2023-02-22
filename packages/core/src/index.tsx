@@ -58,6 +58,8 @@ export { DeckSwiper, DeckSwiperCard } from "./components/DeckSwiper";
 export { TabView, TabViewItem } from "./components/TabView";
 export { default as Markdown } from "./components/Markdown";
 
+export { BottomSheet } from "./components/BottomSheet";
+
 /* Deprecated: Fix or Delete!  */
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
 export { default as Picker } from "./components/Picker/Picker";

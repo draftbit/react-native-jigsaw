@@ -33,6 +33,7 @@ export {
   Shadow,
   TabViewItem,
   Markdown,
+  BottomSheet,
   /* Deprecated, needs fixing */
   ProgressBar,
   ProgressCircle,

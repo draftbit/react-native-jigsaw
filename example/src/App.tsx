@@ -80,6 +80,8 @@ import MarkdownExample from "./MarkdownExample";
 
 import BottomSheetExample from "./BottomSheetExample";
 
+import YoutubeExample from "./YoutubeExample";
+
 import TableExample from "./TableExample";
 
 const ROUTES = {
@@ -131,6 +133,7 @@ const ROUTES = {
   TabView: TabViewExample,
   Markdown: MarkdownExample,
   BottomSheet: BottomSheetExample,
+  Youtube: YoutubeExample,
   Table: TableExample,
 };
 

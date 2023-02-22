@@ -34,6 +34,7 @@ export {
   TabViewItem,
   Markdown,
   BottomSheet,
+  YoutubePlayer,
   Table,
   TableRow,
   TableCell,

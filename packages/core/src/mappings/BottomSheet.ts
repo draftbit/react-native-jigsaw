@@ -16,7 +16,6 @@ export const SEED_DATA = {
     "A draggable Bottom sheet that snaps to specific points. Renders children in ScrollView",
   category: COMPONENT_TYPES.bottomsheet,
   stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
-  layout: { paddingHorizontal: 16, paddingVertical: 10 },
   triggers: [Triggers.OnSettle],
   props: {
     onSettle: createActionProp({

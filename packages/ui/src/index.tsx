@@ -34,6 +34,7 @@ export {
   TabViewItem,
   Markdown,
   BottomSheet,
+  YoutubePlayer,
   /* Deprecated, needs fixing */
   ProgressBar,
   ProgressCircle,

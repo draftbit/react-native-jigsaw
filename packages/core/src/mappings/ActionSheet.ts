@@ -10,7 +10,10 @@ export const SEED_DATA = {
   tag: "ActionSheet",
   description: "Action Sheet container",
   category: COMPONENT_TYPES.actionsheet,
-  stylesPanelSections: [StylesPanelSections.Size, StylesPanelSections.Margins],
+  stylesPanelSections: [
+    StylesPanelSections.Margins,
+    StylesPanelSections.Effects,
+  ],
   props: {
     visible: createStaticBoolProp({
       group: GROUPS.data,

@@ -4,14 +4,18 @@ import {
   createBoolProp,
   GROUPS,
   Triggers,
-  CONTAINER_COMPONENT_STYLES_SECTIONS,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
   name: "Map Callout",
   tag: "MapCallout",
   packageName: "@draftbit/maps",
-  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
+  stylesPanelSections: [
+    StylesPanelSections.Size,
+    StylesPanelSections.Margins,
+    StylesPanelSections.Effects,
+  ],
   description:
     "An info window to display on top of a marker when it is clicked",
   category: COMPONENT_TYPES.map,

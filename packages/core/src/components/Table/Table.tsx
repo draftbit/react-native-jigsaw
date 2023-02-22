@@ -90,14 +90,30 @@ const Table = <T extends object>({
   );
 
   const childrenWithoutHeader = React.useMemo(
-    () => validChildren.filter((item) => !isTableHeader(item.props)),
+    () =>
+      validChildren.filter(
+        (item) =>
+          !isTableHeader(item.props) &&
+          //Check first child props, Row can be inside React.Fragment when using renderItem
+          (!item?.props?.children?.length ||
+            !isTableHeader(item.props.children[0].props))
+      ),
     [validChildren, isTableHeader]
   );
 
-  const headers = React.useMemo(
-    () => validChildren.filter((item) => isTableHeader(item.props)),
-    [validChildren, isTableHeader]
-  );
+  const header = React.useMemo(() => {
+    const allHeaders = validChildren.filter(
+      (item) =>
+        isTableHeader(item.props) ||
+        //Check first child props, Row can be inside React.Fragment when using renderItem
+        (item?.props?.children?.length &&
+          isTableHeader(item.props.children[0].props))
+    );
+    if (allHeaders.length) {
+      return allHeaders[0]; //Only 1 header taken
+    }
+    return null;
+  }, [validChildren, isTableHeader]);
 
   const contextValue: TableStyleProps = {
     borderColor,
@@ -120,7 +136,7 @@ const Table = <T extends object>({
   return (
     <TableStyleContext.Provider value={contextValue}>
       <View style={[styles.container, borderViewStyle, style]}>
-        <>{headers}</>
+        <>{header}</>
         <ScrollView>{childrenWithoutHeader}</ScrollView>
       </View>
     </TableStyleContext.Provider>

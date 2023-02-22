@@ -12,7 +12,10 @@ export const SEED_DATA = {
   name: "Action Sheet Cancel",
   tag: "ActionSheetCancel",
   description: "Action Sheet cancel",
-  stylesPanelSections: [StylesPanelSections.Size, StylesPanelSections.Margins],
+  stylesPanelSections: [
+    StylesPanelSections.Margins,
+    StylesPanelSections.Effects,
+  ],
   category: COMPONENT_TYPES.actionsheet,
   triggers: [Triggers.OnPress],
   props: {

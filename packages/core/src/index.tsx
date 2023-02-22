@@ -58,6 +58,8 @@ export { DeckSwiper, DeckSwiperCard } from "./components/DeckSwiper";
 export { TabView, TabViewItem } from "./components/TabView";
 export { default as Markdown } from "./components/Markdown";
 
+export { BottomSheet } from "./components/BottomSheet";
+
 export { Table, TableRow, TableCell } from "./components/Table";
 
 /* Deprecated: Fix or Delete!  */

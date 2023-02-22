@@ -78,6 +78,8 @@ import DeckSwiperExample from "./DeckSwiperExample";
 import TabViewExample from "./TabViewExample";
 import MarkdownExample from "./MarkdownExample";
 
+import BottomSheetExample from "./BottomSheetExample";
+
 import TableExample from "./TableExample";
 
 const ROUTES = {
@@ -128,6 +130,7 @@ const ROUTES = {
   DeckSwiper: DeckSwiperExample,
   TabView: TabViewExample,
   Markdown: MarkdownExample,
+  BottomSheet: BottomSheetExample,
   Table: TableExample,
 };
 

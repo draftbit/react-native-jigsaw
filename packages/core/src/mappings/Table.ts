@@ -57,14 +57,14 @@ const SHARED_SEED_DATA_PROPS = {
     description:
       "Specifies the vertical padding of the cell. Passed down to TableCell components unless overridden",
     required: false,
-    defaultValue: 10,
+    defaultValue: null,
   }),
   cellHorizontalPadding: createStaticNumberProp({
     label: "Cell Horizontal Padding",
     description:
       "Specifies the horizontal padding of the cell. Passed down to TableCell components unless overridden",
     required: false,
-    defaultValue: 10,
+    defaultValue: null,
   }),
 };
 
@@ -99,6 +99,14 @@ export const SEED_DATA = [
       drawTopBorder: {
         ...SHARED_SEED_DATA_PROPS.drawTopBorder,
         defaultValue: true,
+      },
+      cellVerticalPadding: {
+        ...SHARED_SEED_DATA_PROPS.cellVerticalPadding,
+        defaultValue: 10,
+      },
+      cellHorizontalPadding: {
+        ...SHARED_SEED_DATA_PROPS.cellHorizontalPadding,
+        defaultValue: 10,
       },
     },
   },

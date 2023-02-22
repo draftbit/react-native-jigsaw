@@ -13,7 +13,10 @@ export const SEED_DATA = {
   tag: "ActionSheetItem",
   description: "Action Sheet item",
   category: COMPONENT_TYPES.actionsheet,
-  stylesPanelSections: [StylesPanelSections.Size, StylesPanelSections.Margins],
+  stylesPanelSections: [
+    StylesPanelSections.Margins,
+    StylesPanelSections.Effects,
+  ],
   triggers: [Triggers.OnPress],
   layout: {
     textAlign: "center",

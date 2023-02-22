@@ -5,7 +5,7 @@ import {
   createNumberProp,
   createTextProp,
   GROUPS,
-  CONTAINER_COMPONENT_STYLES_SECTIONS,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -14,7 +14,11 @@ export const SEED_DATA = {
   packageName: "@draftbit/maps",
   description: "A marker to show inside map view",
   category: COMPONENT_TYPES.map,
-  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
+  stylesPanelSections: [
+    StylesPanelSections.Size,
+    StylesPanelSections.Margins,
+    StylesPanelSections.Effects,
+  ],
   layout: {},
   props: {
     latitude: createNumberProp({

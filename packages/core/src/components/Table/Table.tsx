@@ -93,14 +93,17 @@ const Table = <T extends object>({
 
   const childrenWithoutHeader = React.useMemo(() => {
     const flattenedWithoutNestedHeaders = validChildren.map((item) => {
+      const nestedChildren = React.Children.toArray(
+        item.props.children
+      ) as any[];
       //Header can be nested in React.Fragment when in renderItem
-      const nestedHeaders = item.props.children?.filter((child: any) =>
+      const nestedHeaders = nestedChildren.filter((child: any) =>
         isTableHeader(child.props)
       );
       if (nestedHeaders?.length) {
         //New element excluding header children
         return React.cloneElement(item, {
-          children: item.props.children?.filter(
+          children: nestedChildren.filter(
             (child: any) => !isTableHeader(child.props)
           ),
         });
@@ -115,8 +118,11 @@ const Table = <T extends object>({
 
   const header = React.useMemo(() => {
     const flattenedPossibleHeaders = validChildren.map((item) => {
+      const nestedChildren = React.Children.toArray(
+        item.props.children
+      ) as any[];
       //Header can be nested in React.Fragment when in renderItem
-      const nestedHeaders = item.props.children?.filter((child: any) =>
+      const nestedHeaders = nestedChildren.filter((child: any) =>
         isTableHeader(child.props)
       );
       if (nestedHeaders?.length) {

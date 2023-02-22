@@ -89,25 +89,41 @@ const Table = <T extends object>({
     [children]
   );
 
-  const childrenWithoutHeader = React.useMemo(
-    () =>
-      validChildren.filter(
-        (item) =>
-          !isTableHeader(item.props) &&
-          //Check first child props, Row can be inside React.Fragment when using renderItem
-          (!item?.props?.children?.length ||
-            !isTableHeader(item.props.children[0].props))
-      ),
-    [validChildren, isTableHeader]
-  );
+  const childrenWithoutHeader = React.useMemo(() => {
+    const flattenedWithoutNestedHeaders = validChildren.map((item) => {
+      //Header can be nested in React.Fragment when in renderItem
+      const nestedHeaders = item.props.children?.filter((child: any) =>
+        isTableHeader(child.props)
+      );
+      if (nestedHeaders?.length) {
+        //New element excluding header children
+        return React.cloneElement(item, {
+          children: item.props.children?.filter(
+            (child: any) => !isTableHeader(child.props)
+          ),
+        });
+      }
+      return item;
+    });
+
+    return flattenedWithoutNestedHeaders.filter(
+      (item) => !isTableHeader(item.props)
+    );
+  }, [validChildren, isTableHeader]);
 
   const header = React.useMemo(() => {
-    const allHeaders = validChildren.filter(
-      (item) =>
-        isTableHeader(item.props) ||
-        //Check first child props, Row can be inside React.Fragment when using renderItem
-        (item?.props?.children?.length &&
-          isTableHeader(item.props.children[0].props))
+    const flattenedPossibleHeaders = validChildren.map((item) => {
+      //Header can be nested in React.Fragment when in renderItem
+      const nestedHeaders = item.props.children?.filter((child: any) =>
+        isTableHeader(child.props)
+      );
+      if (nestedHeaders?.length) {
+        return nestedHeaders[0];
+      }
+      return item;
+    });
+    const allHeaders = flattenedPossibleHeaders.filter((item) =>
+      isTableHeader(item.props)
     );
     if (allHeaders.length) {
       return allHeaders[0]; //Only 1 header taken

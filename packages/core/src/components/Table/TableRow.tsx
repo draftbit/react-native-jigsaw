@@ -1,15 +1,17 @@
 import React from "react";
 import { View, StyleProp, ViewStyle, StyleSheet } from "react-native";
-import { generateBorderStyles, TableBorderProps } from "./TableCommon";
-import TableCell, { TableCellProps } from "./TableCell";
+import {
+  generateBorderStyles,
+  TableProps,
+  TableStyleContext,
+  TableStyleProps,
+} from "./TableCommon";
 
-export interface TableRowProps extends TableBorderProps {
-  cellVerticalPadding?: number;
-  callHorizontalPadding?: number;
+export interface Props extends TableProps {
   style?: StyleProp<ViewStyle>;
 }
 
-const TableRow: React.FC<React.PropsWithChildren<TableRowProps>> = ({
+const TableRow: React.FC<React.PropsWithChildren<Props>> = ({
   borderWidth,
   borderColor,
   borderStyle,
@@ -18,52 +20,38 @@ const TableRow: React.FC<React.PropsWithChildren<TableRowProps>> = ({
   drawStartBorder = true,
   drawEndBorder = false,
   cellVerticalPadding,
-  callHorizontalPadding,
+  cellHorizontalPadding,
   children,
   style,
 }) => {
-  //Populate each TableCell props with default values provided here
-  const populatedTableCells = React.useMemo(
-    () =>
-      React.Children.map(children, (child) => {
-        if (React.isValidElement(child) && child.type === TableCell) {
-          const oldProps = { ...(child.props as TableCellProps) };
-          const newProps: TableCellProps = {
-            verticalPadding: oldProps.verticalPadding || cellVerticalPadding,
-            horizontalPadding:
-              oldProps.horizontalPadding || callHorizontalPadding,
-            borderWidth: oldProps.borderWidth || borderWidth,
-            borderColor: oldProps.borderColor || borderColor,
-            borderStyle: oldProps.borderStyle || borderStyle,
-          };
+  const parentContextValue = React.useContext(TableStyleContext);
 
-          return React.cloneElement(child, newProps);
-        }
-        return child;
-      }),
-    [
-      children,
-      borderColor,
-      borderWidth,
-      borderStyle,
-      cellVerticalPadding,
-      callHorizontalPadding,
-    ]
-  );
+  //Create context to use and pass to children based on own props or fall back to parent provided context
+  const contextValue: TableStyleProps = {
+    borderColor: borderColor || parentContextValue.borderColor,
+    borderStyle: borderStyle || parentContextValue.borderStyle,
+    borderWidth: borderWidth || parentContextValue.borderWidth,
+    cellHorizontalPadding:
+      cellHorizontalPadding || parentContextValue.cellHorizontalPadding,
+    cellVerticalPadding:
+      cellVerticalPadding || parentContextValue.cellVerticalPadding,
+  };
 
   const borderViewStyle = generateBorderStyles({
-    borderColor,
-    borderWidth,
-    borderStyle,
+    borderColor: contextValue.borderColor,
+    borderWidth: contextValue.borderWidth,
+    borderStyle: contextValue.borderStyle,
     drawTopBorder,
     drawBottomBorder,
     drawStartBorder,
     drawEndBorder,
   });
   return (
-    <View style={[borderViewStyle, style, styles.cellsContainer]}>
-      {populatedTableCells}
-    </View>
+    <TableStyleContext.Provider value={contextValue}>
+      <View style={[borderViewStyle, style, styles.cellsContainer]}>
+        {children}
+      </View>
+    </TableStyleContext.Provider>
   );
 };
 

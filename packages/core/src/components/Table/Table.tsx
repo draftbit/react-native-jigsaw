@@ -1,18 +1,20 @@
 import React from "react";
-import { View, StyleProp, ViewStyle, StyleSheet } from "react-native";
+import { ScrollView, StyleProp, ViewStyle } from "react-native";
 import { Theme } from "../../styles/DefaultTheme";
 import { withTheme } from "../../theming";
-import { generateBorderStyles, TableBorderProps } from "./TableCommon";
-import TableRow, { TableRowProps } from "./TableRow";
+import {
+  generateBorderStyles,
+  TableProps,
+  TableStyleContext,
+  TableStyleProps,
+} from "./TableCommon";
 
-export interface TableProps extends TableBorderProps {
-  cellVerticalPadding?: number;
-  callHorizontalPadding?: number;
+export interface Props extends TableProps {
   style?: StyleProp<ViewStyle>;
   theme: Theme;
 }
 
-const Table: React.FC<React.PropsWithChildren<TableProps>> = ({
+const Table: React.FC<React.PropsWithChildren<Props>> = ({
   theme,
   borderWidth = 1,
   borderColor = theme.colors.divider,
@@ -22,39 +24,17 @@ const Table: React.FC<React.PropsWithChildren<TableProps>> = ({
   drawStartBorder = false,
   drawEndBorder = false,
   cellVerticalPadding = 10,
-  callHorizontalPadding = 10,
+  cellHorizontalPadding = 10,
   children,
   style,
 }) => {
-  //Populate each TableRow props with default values provided here
-  const populatedTableRows = React.useMemo(
-    () =>
-      React.Children.map(children, (child) => {
-        if (React.isValidElement(child) && child.type === TableRow) {
-          const oldProps = { ...(child.props as TableRowProps) };
-          const newProps: TableRowProps = {
-            cellVerticalPadding:
-              oldProps.cellVerticalPadding || cellVerticalPadding,
-            callHorizontalPadding:
-              oldProps.callHorizontalPadding || callHorizontalPadding,
-            borderWidth: oldProps.borderWidth || borderWidth,
-            borderColor: oldProps.borderColor || borderColor,
-            borderStyle: oldProps.borderStyle || borderStyle,
-          };
-
-          return React.cloneElement(child, newProps);
-        }
-        return child;
-      }),
-    [
-      children,
-      borderColor,
-      borderWidth,
-      borderStyle,
-      cellVerticalPadding,
-      callHorizontalPadding,
-    ]
-  );
+  const contextValue: TableStyleProps = {
+    borderColor,
+    borderStyle,
+    borderWidth,
+    cellHorizontalPadding,
+    cellVerticalPadding,
+  };
 
   const borderViewStyle = generateBorderStyles({
     borderColor,
@@ -67,17 +47,10 @@ const Table: React.FC<React.PropsWithChildren<TableProps>> = ({
   });
 
   return (
-    <View style={[styles.container, borderViewStyle, style]}>
-      {populatedTableRows}
-    </View>
+    <TableStyleContext.Provider value={contextValue}>
+      <ScrollView style={[borderViewStyle, style]}>{children}</ScrollView>
+    </TableStyleContext.Provider>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-  },
-});
 
 export default withTheme(Table);

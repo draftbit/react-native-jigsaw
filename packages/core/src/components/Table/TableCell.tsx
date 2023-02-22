@@ -1,14 +1,16 @@
 import React from "react";
 import { View, StyleProp, ViewStyle, StyleSheet } from "react-native";
-import { generateBorderStyles, TableBorderProps } from "./TableCommon";
+import {
+  generateBorderStyles,
+  TableProps,
+  TableStyleContext,
+} from "./TableCommon";
 
-export interface TableCellProps extends TableBorderProps {
-  verticalPadding?: number;
-  horizontalPadding?: number;
+export interface Props extends TableProps {
   style?: StyleProp<ViewStyle>;
 }
 
-const TableCell: React.FC<React.PropsWithChildren<TableCellProps>> = ({
+const TableCell: React.FC<React.PropsWithChildren<Props>> = ({
   borderWidth,
   borderColor,
   borderStyle,
@@ -16,15 +18,17 @@ const TableCell: React.FC<React.PropsWithChildren<TableCellProps>> = ({
   drawBottomBorder = false,
   drawStartBorder = false,
   drawEndBorder = true,
-  verticalPadding,
-  horizontalPadding,
+  cellVerticalPadding,
+  cellHorizontalPadding,
   children,
   style,
 }) => {
+  const parentContextValue = React.useContext(TableStyleContext);
+
   const borderViewStyle = generateBorderStyles({
-    borderColor,
-    borderWidth,
-    borderStyle,
+    borderColor: borderColor || parentContextValue.borderColor,
+    borderWidth: borderWidth || parentContextValue.borderWidth,
+    borderStyle: borderStyle || parentContextValue.borderStyle,
     drawTopBorder,
     drawBottomBorder,
     drawStartBorder,
@@ -36,8 +40,10 @@ const TableCell: React.FC<React.PropsWithChildren<TableCellProps>> = ({
         styles.cellContainer,
         borderViewStyle,
         {
-          paddingVertical: verticalPadding,
-          paddingHorizontal: horizontalPadding,
+          paddingVertical:
+            cellVerticalPadding || parentContextValue.cellVerticalPadding,
+          paddingHorizontal:
+            cellHorizontalPadding || parentContextValue.cellHorizontalPadding,
         },
         style,
       ]}

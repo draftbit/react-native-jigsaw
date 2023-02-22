@@ -1,11 +1,19 @@
+import React from "react";
 import { ViewStyle } from "react-native";
 
 type BorderStyle = "solid" | "dotted" | "dashed";
 
-export interface TableBorderProps {
+export const TableStyleContext = React.createContext<TableStyleProps>({});
+
+export interface TableStyleProps {
   borderWidth?: number;
   borderColor?: string;
   borderStyle?: BorderStyle;
+  cellVerticalPadding?: number;
+  cellHorizontalPadding?: number;
+}
+
+export interface TableProps extends TableStyleProps {
   drawTopBorder?: boolean;
   drawBottomBorder?: boolean;
   drawStartBorder?: boolean;
@@ -20,7 +28,7 @@ export function generateBorderStyles({
   drawBottomBorder,
   drawStartBorder,
   drawEndBorder,
-}: TableBorderProps): ViewStyle {
+}: TableProps): ViewStyle {
   return {
     borderColor,
     borderStyle,

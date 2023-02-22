@@ -85,7 +85,7 @@ export const SEED_DATA = [
         required: false,
         defaultValue: 10,
       }),
-      callHorizontalPadding: createStaticNumberProp({
+      cellHorizontalPadding: createStaticNumberProp({
         label: "Cell Horizontal Padding",
         description:
           "Specifies the horizontal padding of the cell. Passed down to child Table Row components unless overridden",
@@ -117,7 +117,7 @@ export const SEED_DATA = [
         required: false,
         defaultValue: null,
       }),
-      callHorizontalPadding: createStaticNumberProp({
+      cellHorizontalPadding: createStaticNumberProp({
         label: "Cell Horizontal Padding",
         description:
           "Specifies the horizontal padding of the cell. Passed down to child Table Cell components unless overridden",
@@ -144,13 +144,13 @@ export const SEED_DATA = [
         ...SHARED_SEED_DATA_PROPS.drawEndBorder,
         defaultValue: true,
       },
-      verticalPadding: createStaticNumberProp({
+      cellVerticalPadding: createStaticNumberProp({
         label: "Vertical Padding",
         description: "Specifies the vertical padding of the cell",
         required: false,
         defaultValue: null,
       }),
-      horizontalPadding: createStaticNumberProp({
+      cellHorizontalPadding: createStaticNumberProp({
         label: "Horizontal Padding",
         description: "Specifies the horizontal padding of the cell",
         required: false,

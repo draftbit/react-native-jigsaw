@@ -126,6 +126,7 @@ export const COMPONENT_TYPES = {
   swiper: "swiper",
   map: "map",
   view: "view",
+  text: "text",
   table: "table",
   /* Deprecated */
   row: "row",

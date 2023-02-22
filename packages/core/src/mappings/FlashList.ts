@@ -3,12 +3,12 @@ import {
   createNumColumnsType,
   createStaticBoolProp,
   createNumberProp,
-  CONTAINER_COMPONENT_STYLES_SECTIONS,
   GROUPS,
   Triggers,
   createActionProp,
   createStaticNumberProp,
   createColorProp,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = [
@@ -18,10 +18,10 @@ export const SEED_DATA = [
     description: "Masonry Flashlist by Shopify",
     packageName: "@shopify/flash-list",
     category: COMPONENT_TYPES.data,
-    stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
-    layout: {
-      flex: 1,
-    },
+    stylesPanelSections: [
+      StylesPanelSections.Background,
+      StylesPanelSections.MarginsAndPaddings,
+    ],
     triggers: [Triggers.OnRefresh, Triggers.OnEndReached],
     props: {
       onRefresh: createActionProp(),
@@ -72,10 +72,10 @@ export const SEED_DATA = [
     description: "Flashlist by Shopify",
     packageName: "@shopify/flash-list",
     category: COMPONENT_TYPES.data,
-    stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
-    layout: {
-      flex: 1,
-    },
+    stylesPanelSections: [
+      StylesPanelSections.Background,
+      StylesPanelSections.MarginsAndPaddings,
+    ],
     triggers: [Triggers.OnRefresh, Triggers.OnEndReached],
     props: {
       onRefresh: createActionProp(),

@@ -51,7 +51,12 @@ export {
   RadioButtonFieldGroup,
 } from "./components/RadioButton/index";
 
+export { default as Shadow } from "./components/Shadow";
+
 export { DeckSwiper, DeckSwiperCard } from "./components/DeckSwiper";
+
+export { TabView, TabViewItem } from "./components/TabView";
+export { default as Markdown } from "./components/Markdown";
 
 export { Table, TableRow, TableCell } from "./components/Table";
 

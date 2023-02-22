@@ -3,6 +3,29 @@ import Section, { Container } from "./Section";
 import { Table, TableRow, TableCell } from "@draftbit/ui";
 import { Text, Image } from "react-native";
 
+const sampleData = [
+  {
+    id: 1,
+    fullName: "Susan Williamson",
+  },
+  {
+    id: 2,
+    fullName: "Henrietta Wagner",
+  },
+  {
+    id: 3,
+    fullName: "Lydia Snyder",
+  },
+  {
+    id: 4,
+    fullName: "Harold Herrera",
+  },
+  {
+    id: 5,
+    fullName: "Richard Garrett",
+  },
+];
+
 const TableExample: React.FC = () => {
   return (
     <Container style={{}}>
@@ -78,6 +101,22 @@ const TableExample: React.FC = () => {
             </TableCell>
           </TableRow>
         </Table>
+      </Section>
+      <Section title="Table using renderItem" style={{}}>
+        <Table
+          data={sampleData}
+          renderItem={({ item }) => (
+            <TableRow>
+              <TableCell>
+                <Text>{item.id}</Text>
+              </TableCell>
+              <TableCell>
+                <Text>{item.fullName}</Text>
+              </TableCell>
+            </TableRow>
+          )}
+          keyExtractor={(item) => item.id.toString()}
+        />
       </Section>
     </Container>
   );

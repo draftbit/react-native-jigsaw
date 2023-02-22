@@ -108,6 +108,12 @@ export const SEED_DATA = [
         ...SHARED_SEED_DATA_PROPS.cellHorizontalPadding,
         defaultValue: 10,
       },
+      showsVerticalScrollIndicator: createStaticBoolProp({
+        label: "Show Vertical Scroll Indicator",
+        description:
+          "When true, shows a vertical scroll indicator. The default value is true.",
+        defaultValue: true,
+      }),
     },
   },
   {

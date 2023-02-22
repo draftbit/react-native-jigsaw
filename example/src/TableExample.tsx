@@ -55,9 +55,9 @@ const TableExample: React.FC = () => {
           </TableRow>
         </Table>
       </Section>
-      <Section title="Customized Table" style={{}}>
-        <Table>
-          <TableRow style={{ backgroundColor: "rgba(90, 69, 255, 1)" }}>
+      <Section title="Customized Table with header and scrolling" style={{}}>
+        <Table style={{ height: 200 }}>
+          <TableRow isTableHeader>
             <TableCell drawEndBorder={false}>
               <Text style={{ color: "white" }}>Header Item</Text>
             </TableCell>

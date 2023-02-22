@@ -6,9 +6,13 @@ import {
   TableStyleContext,
   TableStyleProps,
 } from "./TableCommon";
+import { Theme } from "../../styles/DefaultTheme";
+import { withTheme } from "../../theming";
 
 export interface Props extends TableProps {
+  isTableHeader?: boolean;
   style?: StyleProp<ViewStyle>;
+  theme: Theme;
 }
 
 const TableRow: React.FC<React.PropsWithChildren<Props>> = ({
@@ -21,8 +25,10 @@ const TableRow: React.FC<React.PropsWithChildren<Props>> = ({
   drawEndBorder = false,
   cellVerticalPadding,
   cellHorizontalPadding,
+  isTableHeader = false,
   children,
   style,
+  theme,
 }) => {
   const parentContextValue = React.useContext(TableStyleContext);
 
@@ -48,7 +54,14 @@ const TableRow: React.FC<React.PropsWithChildren<Props>> = ({
   });
   return (
     <TableStyleContext.Provider value={contextValue}>
-      <View style={[borderViewStyle, style, styles.cellsContainer]}>
+      <View
+        style={[
+          borderViewStyle,
+          isTableHeader ? { backgroundColor: theme.colors.primary } : {},
+          style,
+          styles.cellsContainer,
+        ]}
+      >
         {children}
       </View>
     </TableStyleContext.Provider>
@@ -57,9 +70,8 @@ const TableRow: React.FC<React.PropsWithChildren<Props>> = ({
 
 const styles = StyleSheet.create({
   cellsContainer: {
-    flex: 1,
     flexDirection: "row",
   },
 });
 
-export default TableRow;
+export default withTheme(TableRow);

@@ -43,8 +43,8 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/core": "^46.9.1",
-    "@draftbit/native": "^46.9.1"
+    "@draftbit/core": "~46.9.1",
+    "@draftbit/native": "~46.9.1"
   },
   "react-native-builder-bob": {
     "declarationMap": false,

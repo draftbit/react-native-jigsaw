@@ -15,8 +15,8 @@
     "clean:modules": "rimraf node_modules"
   },
   "dependencies": {
-    "@draftbit/maps": "^46.9.1",
-    "@draftbit/ui": "^46.9.1",
+    "@draftbit/maps": "~46.9.1",
+    "@draftbit/ui": "~46.9.1",
     "@expo/dev-server": "0.1.120",
     "@expo/webpack-config": "^0.17.0",
     "@react-navigation/drawer": "^5.7.7",

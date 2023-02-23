@@ -1165,7 +1165,7 @@
   dependencies:
     "@date-io/core" "^1.3.13"
 
-"@draftbit/react-theme-provider@^2.1.1":
+"@draftbit/react-theme-provider@~2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@draftbit/react-theme-provider/-/react-theme-provider-2.1.1.tgz#8ae9d097d1d3c8a08fe04c583d4f020764e24f72"
   integrity sha512-3LZeOaNik9QHox4bhqyMGZFYsuGP7ErTh075uuh5uwWfLgS1S19kqCL5vi/LcxdBEVcX8MOwn9GktYFD7Y6QYQ==

@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "46.9.0",
+  "version": "46.10.0",
   "description": "Draftbit UI Library",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -43,8 +43,8 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/core": "^46.9.0",
-    "@draftbit/native": "^46.9.0"
+    "@draftbit/core": "^46.10.0",
+    "@draftbit/native": "^46.10.0"
   },
   "react-native-builder-bob": {
     "declarationMap": false,

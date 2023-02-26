@@ -48,7 +48,6 @@ import PickerExample from "./PickerExample";
 
 // import ProgressIndicatorExample from "./ProgressIndicatorExample.js";
 // import ProgressExample from "./ProgressExample";
-// import RowExample from "./RowExample";
 
 import SliderExample from "./SliderExample";
 import SwitchExample from "./SwitchExample";
@@ -112,8 +111,6 @@ const ROUTES = {
   Picker: PickerExample,
   // ProgressBar: ProgressExample,
   // ProgressIndicator: ProgressIndicatorExample,
-  // TODO fix Row (spacing problem)
-  // Row: RowExample,
   // TODO (componentWillReceieveProps insider slider component)
   Slider: SliderExample,
   Switch: SwitchExample,

@@ -18,7 +18,7 @@ export const SEED_DATA = [
     name: "Aspect Ratio",
     tag: "AspectRatio",
     description:
-      "AspectRatio controls the size of the undefined dimension of a node or child component.",
+      "Controls the size of the undefined dimension of a node or child component using an aspect ration",
     ...SHARED_SEED_DATA,
     props: {
       ratio: createTextProp({
@@ -53,7 +53,7 @@ export const SEED_DATA = [
     name: "Container",
     tag: "Container",
     description:
-      "The Container restricts a content's width according to current breakpoint, while keeping the size fluid.",
+      "The Container restricts a content's width according to current breakpoint, while keeping the size fluid",
     ...SHARED_SEED_DATA,
   },
   {
@@ -79,7 +79,7 @@ export const SEED_DATA = [
     name: "Stack",
     tag: "Stack",
     description:
-      "Stack aligns items vertically or horizontally based on the direction prop.",
+      "Stack aligns items vertically or horizontally based on the direction prop",
     ...SHARED_SEED_DATA,
     props: {
       direction: createTextEnumProp({
@@ -90,27 +90,27 @@ export const SEED_DATA = [
       }),
       reversed: createBoolProp({
         label: "Reversed",
-        description: "Determines whether to reverse the direction of items.",
+        description: "Determines whether to reverse the direction of items",
       }),
       isDisabled: createBoolProp({
         label: "Disabled",
-        description: "If true, the Stack will be disabled.",
+        description: "If true, the Stack will be disabled",
       }),
       isInvalid: createBoolProp({
         label: "Invalid",
-        description: "If true, the Stack will be invalid.",
+        description: "If true, the Stack will be invalid",
       }),
     },
   },
   {
     name: "ZStack",
     tag: "ZStack",
-    description: "ZStack aligns items to the z-axis.",
+    description: "ZStack aligns items to the z-axis",
     ...SHARED_SEED_DATA,
     props: {
       reversed: createBoolProp({
         label: "Reversed",
-        description: "Determines whether to reverse the direction of items.",
+        description: "Determines whether to reverse the direction of items",
       }),
     },
   },

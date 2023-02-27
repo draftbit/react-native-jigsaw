@@ -60,7 +60,7 @@ export { default as Markdown } from "./components/Markdown";
 
 export { BottomSheet } from "./components/BottomSheet";
 
-export { default as YoutubePlayer } from "./components/YotubePlayer";
+export { YoutubePlayer } from "./components/YoutubePlayer";
 
 /* Deprecated: Fix or Delete!  */
 export { default as DatePicker } from "./components/DatePicker/DatePicker";

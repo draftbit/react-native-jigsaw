@@ -29,7 +29,8 @@ export const SEED_DATA = {
     }),
     mute: createStaticBoolProp({
       label: "Mute Audio",
-      description: "Mute the audio of the video.",
+      description:
+        "Mute the audio of the video (only works on Android and IOS)",
       defaultValue: false,
       required: false,
     }),

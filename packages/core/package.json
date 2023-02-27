@@ -64,6 +64,7 @@
     "react-native-tab-view": "^3.4.0",
     "react-native-typography": "^1.4.1",
     "react-native-web-swiper": "^2.2.3",
+    "react-native-web-webview": "^1.0.2",
     "react-native-youtube-iframe": "^2.2.2"
   },
   "devDependencies": {

@@ -1,1 +1,1 @@
-export { default as YoutubePlayer } from "./YotubePlayer";
+export { default as YoutubePlayer } from "./YoutubePlayer";

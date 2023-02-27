@@ -6,7 +6,6 @@ import { YoutubePlayerProps } from "./YoutubePlayerProps";
 const YoutubePlayer: React.FC<YoutubePlayerProps> = ({
   videoId,
   playlist,
-  mute = false,
   autoplay = false,
   style,
 }) => {
@@ -20,7 +19,6 @@ const YoutubePlayer: React.FC<YoutubePlayerProps> = ({
       play={autoplay}
       videoId={!videoId && !playlist ? defaultVideoId : videoId}
       playList={playlist}
-      mute={mute}
       webViewStyle={viewStyles}
     />
   );

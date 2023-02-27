@@ -18,7 +18,8 @@ const YoutubePlayer: React.FC<YoutubePlayerProps> = ({
     height: viewStyles.height,
     playerVars: {
       autoplay: autoplay ? 1 : 0,
-      playlist,
+      list: playlist,
+      listType: "playlist",
     },
   };
 

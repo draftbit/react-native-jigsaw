@@ -27,12 +27,6 @@ export const SEED_DATA = {
       description: "Playlist of the Youtube videos.",
       defaultValue: null,
     }),
-    mute: createStaticBoolProp({
-      label: "Mute Audio",
-      description: "Mute the audio of the video.",
-      defaultValue: false,
-      required: false,
-    }),
     autoplay: createStaticBoolProp({
       label: "Auto Play",
       description: "Autoplay the video on load.",

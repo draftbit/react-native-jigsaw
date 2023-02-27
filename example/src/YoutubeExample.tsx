@@ -16,7 +16,6 @@ const YoutubeExample: React.FC = () => {
         <YoutubePlayer
           playlist="PLUa6TiXzjIrwowt6P-uGCJm8ovm-9S1Ks"
           style={{ height: 250 }}
-          mute={true}
           autoplay={true}
         />
       </Section>

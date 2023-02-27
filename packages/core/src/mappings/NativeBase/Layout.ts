@@ -4,6 +4,7 @@ import {
   createBoolProp,
   CONTAINER_COMPONENT_STYLES_SECTIONS,
   createStaticNumberProp,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 const SHARED_SEED_DATA = {
@@ -11,6 +12,13 @@ const SHARED_SEED_DATA = {
   packageName: "native-base",
   stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
 };
+
+const CONTAINER_COMPONENT_STYLES_WITHOUT_FLEX =
+  CONTAINER_COMPONENT_STYLES_SECTIONS.filter(
+    (item) =>
+      item !== StylesPanelSections.LayoutFlexItems &&
+      item !== StylesPanelSections.LayoutContent
+  );
 
 export const SEED_DATA = [
   {
@@ -40,6 +48,7 @@ export const SEED_DATA = [
     tag: "Center",
     description: "Center aligns its contents to the center within itself",
     ...SHARED_SEED_DATA,
+    stylesPanelSections: CONTAINER_COMPONENT_STYLES_WITHOUT_FLEX,
   },
   {
     name: "Circle",
@@ -47,6 +56,7 @@ export const SEED_DATA = [
     description:
       "Center aligns its contents to the center within itself with a round border radius",
     ...SHARED_SEED_DATA,
+    stylesPanelSections: CONTAINER_COMPONENT_STYLES_WITHOUT_FLEX,
   },
   {
     name: "Container",
@@ -59,12 +69,18 @@ export const SEED_DATA = [
     name: "Column",
     tag: "Column",
     description: "Column aligns items vertically",
+    layout: {
+      flexDirection: "column",
+    },
     ...SHARED_SEED_DATA,
   },
   {
     name: "Row",
     tag: "Row",
     description: "Column aligns items horizontally",
+    layout: {
+      flexDirection: "row",
+    },
     ...SHARED_SEED_DATA,
   },
   {
@@ -73,6 +89,7 @@ export const SEED_DATA = [
     description:
       "An adjustable, empty space that can be used to tune the spacing between child elements within Flex",
     ...SHARED_SEED_DATA,
+    stylesPanelSections: CONTAINER_COMPONENT_STYLES_WITHOUT_FLEX,
   },
   {
     name: "Stack",

@@ -3,8 +3,7 @@ import {
   createTextEnumProp,
   createBoolProp,
   CONTAINER_COMPONENT_STYLES_SECTIONS,
-  createTextProp,
-  GROUPS,
+  createStaticNumberProp,
 } from "@draftbit/types";
 
 const SHARED_SEED_DATA = {
@@ -18,14 +17,14 @@ export const SEED_DATA = [
     name: "Aspect Ratio",
     tag: "AspectRatio",
     description:
-      "Controls the size of the undefined dimension of a node or child component using an aspect ration",
+      "Controls the size of the undefined dimension of a node or child component using an aspect ratio",
     ...SHARED_SEED_DATA,
     props: {
-      ratio: createTextProp({
+      ratio: createStaticNumberProp({
         label: "Ratio",
-        description: "The aspect ratio of the container",
-        defaultValue: "4/3",
-        group: GROUPS.basic,
+        description:
+          "The aspect ratio of the container in decimal format (ex: 3/4 -> 1.33)",
+        defaultValue: 1.33,
       }),
     },
   },

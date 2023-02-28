@@ -6,7 +6,6 @@ export {
   Center,
   Circle,
   CircleImage,
-  Container,
   CheckboxGroup,
   DefaultTheme,
   Divider,
@@ -41,7 +40,6 @@ export {
   /* Deprecated, needs fixing */
   ProgressBar,
   ProgressCircle,
-  RowHeadlineImageCaption,
   ActionSheet,
   ActionSheetItem,
   ActionSheetCancel,
@@ -78,8 +76,6 @@ import {
   RadioButtonRow as BaseRadioButtonRow,
   Stepper as BaseStepper,
   ToggleButton as BaseToggleButton,
-  RowBodyIcon as BaseRowBodyIcon,
-  RowHeadlineImageIcon as BaseRowHeadlineImageIcon,
   Slider as BaseSlider,
   AccordionGroup as BaseAccordionGroup,
   AccordionItem as BaseAccordionItem,
@@ -102,8 +98,6 @@ export const Link = injectIcon(BaseLink, Icon);
 export const Picker = injectIcon(BasePicker, Icon);
 export const RadioButton = injectIcon(BaseRadioButton, Icon);
 export const RadioButtonRow = injectIcon(BaseRadioButtonRow, Icon);
-export const RowBodyIcon = injectIcon(BaseRowBodyIcon, Icon);
-export const RowHeadlineImageIcon = injectIcon(BaseRowHeadlineImageIcon, Icon);
 export const StarRating = injectIcon(BaseStarRating, Icon);
 export const Stepper = injectIcon(BaseStepper, Icon);
 export const TextField = injectIcon(BaseTextField, Icon);

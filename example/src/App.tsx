@@ -30,7 +30,6 @@ import CardContainerExample from "./CardContainerExample";
 import CardContainerRatingExample from "./CardContainerRatingExample";
 
 import CarouselExample from "./CarouselExample";
-import ContainerExample from "./ContainerExample";
 // import ControllerExample from "./ControllerExample";
 
 import DatePickerExample from "./DatePickerExample";
@@ -48,7 +47,6 @@ import PickerExample from "./PickerExample";
 
 // import ProgressIndicatorExample from "./ProgressIndicatorExample.js";
 // import ProgressExample from "./ProgressExample";
-// import RowExample from "./RowExample";
 
 import SliderExample from "./SliderExample";
 import SwitchExample from "./SwitchExample";
@@ -101,7 +99,6 @@ const ROUTES = {
   CardContainer: CardContainerExample,
   CardContainerRating: CardContainerRatingExample,
   Carousel: CarouselExample,
-  Container: ContainerExample,
   CircleImage: CircleImageExample,
   // Controllers: ControllerExample,
   DatePicker: DatePickerExample,
@@ -114,8 +111,6 @@ const ROUTES = {
   Picker: PickerExample,
   // ProgressBar: ProgressExample,
   // ProgressIndicator: ProgressIndicatorExample,
-  // TODO fix Row (spacing problem)
-  // Row: RowExample,
   // TODO (componentWillReceieveProps insider slider component)
   Slider: SliderExample,
   Switch: SwitchExample,

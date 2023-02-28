@@ -35,6 +35,14 @@ export const SEED_DATA = [
         defaultValue: 1.33,
       }),
     },
+    stylesPanelSections: [
+      StylesPanelSections.Background,
+      StylesPanelSections.Size,
+      StylesPanelSections.Margins,
+      StylesPanelSections.Position,
+      StylesPanelSections.Borders,
+      StylesPanelSections.Effects,
+    ],
   },
   {
     name: "Box",

@@ -35,7 +35,9 @@ export {
   Markdown,
   BottomSheet,
   YoutubePlayer,
-
+  Table,
+  TableRow,
+  TableCell,
   /* Deprecated, needs fixing */
   ProgressBar,
   ProgressCircle,

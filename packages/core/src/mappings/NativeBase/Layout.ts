@@ -1,6 +1,5 @@
 import {
   COMPONENT_TYPES,
-  createTextEnumProp,
   createBoolProp,
   CONTAINER_COMPONENT_STYLES_SECTIONS,
   createStaticNumberProp,
@@ -113,16 +112,6 @@ export const SEED_DATA = [
       "Stack aligns items vertically or horizontally based on the direction prop",
     ...SHARED_SEED_DATA,
     props: {
-      direction: createTextEnumProp({
-        label: "Direction",
-        description: "The direction of the Stack",
-        options: ["row", "column"],
-        defaultValue: "column",
-      }),
-      reversed: createBoolProp({
-        label: "Reversed",
-        description: "Determines whether to reverse the direction of items",
-      }),
       isDisabled: createBoolProp({
         label: "Disabled",
         description: "If true, the Stack will be disabled",

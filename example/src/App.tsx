@@ -80,6 +80,8 @@ import BottomSheetExample from "./BottomSheetExample";
 
 import YoutubeExample from "./YoutubeExample";
 
+import TableExample from "./TableExample";
+
 const ROUTES = {
   AudioPlayer: AudioPlayerExample,
   Layout: LayoutExample,
@@ -127,6 +129,7 @@ const ROUTES = {
   Markdown: MarkdownExample,
   BottomSheet: BottomSheetExample,
   Youtube: YoutubeExample,
+  Table: TableExample,
 };
 
 let customFonts = {

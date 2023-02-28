@@ -61,6 +61,8 @@ export { BottomSheet } from "./components/BottomSheet";
 
 export { YoutubePlayer } from "./components/YoutubePlayer";
 
+export { Table, TableRow, TableCell } from "./components/Table";
+
 /* Deprecated: Fix or Delete!  */
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
 export { default as Picker } from "./components/Picker/Picker";

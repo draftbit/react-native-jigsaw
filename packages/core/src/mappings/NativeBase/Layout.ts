@@ -96,8 +96,15 @@ export const SEED_DATA = [
     tag: "Spacer",
     description:
       "An adjustable, empty space that can be used to tune the spacing between child elements within Flex",
+    layout: {
+      flex: 1,
+    },
     ...SHARED_SEED_DATA,
-    stylesPanelSections: CONTAINER_COMPONENT_STYLES_WITHOUT_FLEX,
+    stylesPanelSections: [
+      StylesPanelSections.LayoutSelectedItem,
+      StylesPanelSections.Background,
+      StylesPanelSections.Margins,
+    ],
   },
   {
     name: "Stack",

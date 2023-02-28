@@ -63,6 +63,12 @@ export const SEED_DATA = [
     tag: "Container",
     description:
       "The Container restricts a content's width according to current breakpoint, while keeping the size fluid",
+    props: {
+      centerContent: createBoolProp({
+        label: "Center content",
+        description: "Center child elements based on their content width",
+      }),
+    },
     ...SHARED_SEED_DATA,
   },
   {

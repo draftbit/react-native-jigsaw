@@ -129,6 +129,7 @@ export const COMPONENT_TYPES = {
   view: "view",
   text: "text",
   bottomsheet: "bottomsheet",
+  table: "table",
   /* Deprecated */
   row: "row",
   card: "card",

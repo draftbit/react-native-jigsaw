@@ -7,6 +7,8 @@ import {
   StyleSheet,
   ScrollViewProps,
 } from "react-native";
+import { Theme } from "../../styles/DefaultTheme";
+import { withTheme } from "../../theming";
 import {
   generateBorderStyles,
   TableProps,
@@ -19,11 +21,13 @@ export interface Props<T> extends TableProps, ScrollViewProps {
   keyExtractor?: (item: T, index: number) => string;
   renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
   style?: StyleProp<ViewStyle>;
+  theme: Theme;
 }
 
 const Table = <T extends object>({
+  theme,
   borderWidth = 1,
-  borderColor = "rgba(200, 200, 200, 1)",
+  borderColor = theme.colors.divider,
   borderStyle = "solid",
   drawTopBorder = true,
   drawBottomBorder = false,
@@ -169,4 +173,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Table;
+export default withTheme(Table);

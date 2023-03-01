@@ -14,7 +14,7 @@ import {
   TableProps,
   TableStyleContext,
   TableStyleProps,
-} from "./TableCommon";
+} from "./index";
 
 export interface Props<T> extends TableProps, ScrollViewProps {
   data?: Array<T>;

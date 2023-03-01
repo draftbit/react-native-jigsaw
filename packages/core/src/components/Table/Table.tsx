@@ -21,7 +21,7 @@ export interface Props<T> extends TableProps, ScrollViewProps {
   style?: StyleProp<ViewStyle>;
 }
 
-export const Table = <T extends object>({
+const Table = <T extends object>({
   borderWidth = 1,
   borderColor = "rgba(200, 200, 200, 1)",
   borderStyle = "solid",
@@ -168,3 +168,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+export default Table;

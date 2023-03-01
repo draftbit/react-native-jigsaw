@@ -45,9 +45,6 @@ import MapViewDataDrivenExample from "./MapViewDataDrivenExample";
 
 import PickerExample from "./PickerExample";
 
-// import ProgressIndicatorExample from "./ProgressIndicatorExample.js";
-// import ProgressExample from "./ProgressExample";
-
 import SliderExample from "./SliderExample";
 import SwitchExample from "./SwitchExample";
 import StepperExample from "./StepperExample";
@@ -110,7 +107,6 @@ const ROUTES = {
   // Header: HeaderExample,
   Picker: PickerExample,
   // ProgressBar: ProgressExample,
-  // ProgressIndicator: ProgressIndicatorExample,
   // TODO (componentWillReceieveProps insider slider component)
   Slider: SliderExample,
   Switch: SwitchExample,

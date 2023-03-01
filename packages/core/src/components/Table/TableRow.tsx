@@ -5,7 +5,7 @@ import {
   TableProps,
   TableStyleContext,
   TableStyleProps,
-} from "./index";
+} from "./TableCommon";
 import { Theme } from "../../styles/DefaultTheme";
 import { withTheme } from "../../theming";
 

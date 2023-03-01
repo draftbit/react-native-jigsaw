@@ -1,6 +1,10 @@
 import React from "react";
 import { View, StyleProp, ViewStyle, StyleSheet } from "react-native";
-import { generateBorderStyles, TableProps, TableStyleContext } from "./index";
+import {
+  generateBorderStyles,
+  TableProps,
+  TableStyleContext,
+} from "./TableCommon";
 
 export interface Props extends TableProps {
   style?: StyleProp<ViewStyle>;

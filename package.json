@@ -16,7 +16,7 @@
     "crosslink": "lerna link",
     "format": "prettier --write .",
     "lint": "eslint \"**/*.{ts,tsx}\"",
-    "build": "lerna run prepare --concurrency 1",
+    "build": "lerna run prepare",
     "release": "lerna publish",
     "example:snack": "ts-node --transpile-only scripts/upload-to-snack.ts",
     "clean": "lerna run clean",

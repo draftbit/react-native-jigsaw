@@ -5,6 +5,7 @@ interface MapScriptLoaderProps {
   apiKey: string;
 }
 
+//Simple wrapper to loader Maps script using hook
 const MapScriptLoader: React.FC<
   React.PropsWithChildren<MapScriptLoaderProps>
 > = ({ children, apiKey }) => {

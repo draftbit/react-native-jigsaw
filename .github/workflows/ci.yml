@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
         with:
@@ -91,7 +91,6 @@ jobs:
           curl "https://snackager.expo.io/bundle/@draftbit/maps@"$newversion"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
           curl "https://snackager.expo.io/bundle/@draftbit/maps@"$newversion"?version_snackager=true&platforms=ios,android,web&bypassCache=true";
         working-directory: packages/ui
-
 
       - name: Release to Snack
         if: github.event_name != 'pull_request'

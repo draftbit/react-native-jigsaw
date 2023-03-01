@@ -24,8 +24,6 @@ export interface Props<T> extends TableProps, ScrollViewProps {
   theme: Theme;
 }
 
-//Comment
-//
 const Table = <T extends object>({
   theme,
   borderWidth = 1,
@@ -175,6 +173,4 @@ const styles = StyleSheet.create({
   },
 });
 
-//Comment
-//
 export default withTheme(Table);

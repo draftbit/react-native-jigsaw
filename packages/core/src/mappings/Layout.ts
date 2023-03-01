@@ -1,207 +1,145 @@
 import {
-  GROUPS,
-  FORM_TYPES,
-  PROP_TYPES,
   COMPONENT_TYPES,
+  createBoolProp,
+  CONTAINER_COMPONENT_STYLES_SECTIONS,
+  createStaticNumberProp,
   StylesPanelSections,
+  createStaticBoolProp,
 } from "@draftbit/types";
+
+const SHARED_SEED_DATA = {
+  category: COMPONENT_TYPES.layout,
+  packageName: "native-base",
+  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
+};
+
+const CONTAINER_COMPONENT_STYLES_WITHOUT_FLEX =
+  CONTAINER_COMPONENT_STYLES_SECTIONS.filter(
+    (item) =>
+      item !== StylesPanelSections.LayoutFlexItems &&
+      item !== StylesPanelSections.LayoutContent
+  );
 
 export const SEED_DATA = [
   {
-    name: "Row",
-    tag: "Row",
-    category: COMPONENT_TYPES.deprecated,
-    stylesPanelSections: [StylesPanelSections.NoStyles],
+    name: "Aspect Ratio",
+    tag: "AspectRatio",
+    description:
+      "Controls the size of the undefined dimension of a node or child component using an aspect ratio",
+    ...SHARED_SEED_DATA,
     props: {
-      justifyContent: {
-        label: "Align Horizontally",
-        group: GROUPS.style,
-        description: "Align Items Horizontally (on the X Axis)",
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "flex-start",
-        editable: true,
-        required: false,
-      },
-      alignItems: {
-        label: "Align Vertically",
-        group: GROUPS.style,
-        description: "Align Items Vertically (on the Y Axis)",
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "flex-start",
-        editable: true,
-        required: false,
-      },
+      ratio: createStaticNumberProp({
+        label: "Ratio",
+        description:
+          "The aspect ratio of the container in decimal format (ex: 3/4 -> 1.33)",
+        defaultValue: 1.33,
+      }),
     },
+    stylesPanelSections: [
+      StylesPanelSections.Background,
+      StylesPanelSections.Size,
+      StylesPanelSections.Margins,
+      StylesPanelSections.Position,
+      StylesPanelSections.Borders,
+      StylesPanelSections.Effects,
+    ],
   },
   {
-    name: "Spacer",
-    tag: "Spacer",
-    category: COMPONENT_TYPES.layout,
-    props: {
-      top: {
-        label: "Top",
-        description: "Top",
-        formType: FORM_TYPES.number,
-        propType: PROP_TYPES.NUMBER,
-        group: GROUPS.style,
-        defaultValue: 8,
-        editable: true,
-        required: false,
-      },
-      right: {
-        label: "Right",
-        description: "Right",
-        formType: FORM_TYPES.number,
-        propType: PROP_TYPES.NUMBER,
-        group: GROUPS.style,
-        defaultValue: 8,
-        editable: true,
-        required: false,
-      },
-      bottom: {
-        label: "Bottom",
-        description: "Bottom",
-        formType: FORM_TYPES.number,
-        propType: PROP_TYPES.NUMBER,
-        group: GROUPS.style,
-        defaultValue: 8,
-        editable: true,
-        required: false,
-      },
-      left: {
-        label: "Left",
-        description: "Left",
-        formType: FORM_TYPES.number,
-        propType: PROP_TYPES.NUMBER,
-        group: GROUPS.style,
-        defaultValue: 8,
-        editable: true,
-        required: false,
-      },
-    },
-  },
-  {
-    name: "Stack",
-    tag: "Stack",
-    category: COMPONENT_TYPES.deprecated,
-    stylesPanelSections: [StylesPanelSections.NoStyles],
-    props: {
-      justifyContent: {
-        group: GROUPS.style,
-        label: "Justify",
-        description: "Justify horizontally",
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "flex-start",
-        editable: true,
-        required: false,
-      },
-      alignItems: {
-        group: GROUPS.style,
-        label: "Align",
-        description: "Vertical align",
-        formType: FORM_TYPES.string,
-        propType: PROP_TYPES.STRING,
-        defaultValue: "flex-start",
-        editable: true,
-        required: false,
-      },
-    },
+    name: "Box",
+    tag: "Box",
+    description:
+      "This is a generic component for low level layout needs. It is similar to a div in HTML",
+    ...SHARED_SEED_DATA,
   },
   {
     name: "Center",
     tag: "Center",
-    category: COMPONENT_TYPES.layout,
-    stylesPanelSections: [StylesPanelSections.NoStyles],
-    props: {
-      width: {
-        label: "Width",
-        description: "Width",
-        formType: FORM_TYPES.number,
-        propType: PROP_TYPES.NUMBER,
-        group: GROUPS.style,
-        defaultValue: 240,
-        editable: true,
-        required: false,
-      },
-      height: {
-        label: "Height",
-        description: "Height",
-        formType: FORM_TYPES.number,
-        propType: PROP_TYPES.NUMBER,
-        group: GROUPS.style,
-        defaultValue: 200,
-        editable: true,
-        required: false,
-      },
-      bgColor: {
-        label: "Background Color",
-        description: "Background color",
-        formType: FORM_TYPES.color,
-        propType: PROP_TYPES.THEME,
-        editable: true,
-        required: false,
-        defaultValue: "light",
-        group: GROUPS.style,
-      },
-    },
+    description: "Center aligns its contents to the center within itself",
+    ...SHARED_SEED_DATA,
+    stylesPanelSections: CONTAINER_COMPONENT_STYLES_WITHOUT_FLEX,
   },
   {
     name: "Circle",
     tag: "Circle",
-    category: COMPONENT_TYPES.layout,
-    stylesPanelSections: [StylesPanelSections.NoStyles],
+    description:
+      "Center aligns its contents to the center within itself with a round border radius",
+    ...SHARED_SEED_DATA,
+    stylesPanelSections: CONTAINER_COMPONENT_STYLES_WITHOUT_FLEX,
+  },
+  {
+    name: "Container",
+    tag: "Container",
+    description:
+      "The Container restricts a content's width according to current breakpoint, while keeping the size fluid",
     props: {
-      size: {
-        label: "Size",
-        description: "Size",
-        formType: FORM_TYPES.number,
-        propType: PROP_TYPES.NUMBER,
-        group: GROUPS.style,
-        defaultValue: 50,
-        editable: true,
-        required: false,
-      },
-      bgColor: {
-        label: "Background Color",
-        description: "Background color",
-        formType: FORM_TYPES.color,
-        propType: PROP_TYPES.THEME,
-        editable: true,
-        required: false,
-        defaultValue: "light",
-        group: GROUPS.style,
-      },
+      centerContent: createStaticBoolProp({
+        label: "Center content",
+        description: "Center child elements based on their content width",
+        defaultValue: true,
+      }),
+    },
+    ...SHARED_SEED_DATA,
+  },
+  {
+    name: "Column",
+    tag: "Column",
+    description: "Column aligns items vertically",
+    layout: {
+      flexDirection: "column",
+    },
+    ...SHARED_SEED_DATA,
+  },
+  {
+    name: "Row",
+    tag: "Row",
+    description: "Column aligns items horizontally",
+    layout: {
+      flexDirection: "row",
+    },
+    ...SHARED_SEED_DATA,
+  },
+  {
+    name: "Spacer",
+    tag: "Spacer",
+    description:
+      "An adjustable, empty space that can be used to tune the spacing between child elements within Flex",
+    layout: {
+      flex: 1,
+    },
+    ...SHARED_SEED_DATA,
+    stylesPanelSections: [
+      StylesPanelSections.LayoutSelectedItem,
+      StylesPanelSections.Background,
+      StylesPanelSections.Margins,
+    ],
+  },
+  {
+    name: "Stack",
+    tag: "Stack",
+    description:
+      "Stack aligns items vertically or horizontally based on the direction prop",
+    ...SHARED_SEED_DATA,
+    props: {
+      isDisabled: createBoolProp({
+        label: "Disabled",
+        description: "If true, the Stack will be disabled",
+      }),
+      isInvalid: createBoolProp({
+        label: "Invalid",
+        description: "If true, the Stack will be invalid",
+      }),
     },
   },
   {
-    name: "Square",
-    tag: "Square",
-    category: COMPONENT_TYPES.layout,
-    stylesPanelSections: [StylesPanelSections.NoStyles],
+    name: "ZStack",
+    tag: "ZStack",
+    description: "ZStack aligns items to the z-axis",
+    ...SHARED_SEED_DATA,
     props: {
-      size: {
-        label: "Size",
-        description: "Size",
-        formType: FORM_TYPES.number,
-        propType: PROP_TYPES.NUMBER,
-        group: GROUPS.style,
-        defaultValue: 50,
-        editable: true,
-        required: false,
-      },
-      bgColor: {
-        label: "Background Color",
-        description: "Background color",
-        formType: FORM_TYPES.color,
-        propType: PROP_TYPES.THEME,
-        editable: true,
-        required: false,
-        defaultValue: "light",
-        group: GROUPS.style,
-      },
+      reversed: createBoolProp({
+        label: "Reversed",
+        description: "Determines whether to reverse the direction of items",
+      }),
     },
   },
 ];

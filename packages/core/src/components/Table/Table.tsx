@@ -134,7 +134,7 @@ const Table = <T extends object>({
       isTableHeader(item.props)
     );
     if (allHeaders.length) {
-      return allHeaders[0]; //Only 1 header rendered
+      return allHeaders[0]; //Only 1 header taken
     }
     return null;
   }, [validChildren, isTableHeader]);

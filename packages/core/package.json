@@ -2,10 +2,10 @@
   "name": "@draftbit/core",
   "version": "46.10.2",
   "description": "Core (non-native) Components",
-  "main": "lib/commonjs/index.js",
-  "module": "lib/module/index.js",
-  "types": "lib/typescript/src/index.d.ts",
-  "react-native": "src/index.tsx",
+  "main": "lib\\commonjs\\index.js",
+  "module": "lib\\module\\index.js",
+  "types": "lib\\typescript\\src\\index.d.ts",
+  "react-native": "src\\index.tsx",
   "source": "src/index.tsx",
   "files": [
     "src",
@@ -17,7 +17,8 @@
   "scripts": {
     "prepare": "bob build",
     "clean": "rimraf lib",
-    "clean:modules": "rimraf node_modules"
+    "clean:modules": "rimraf node_modules",
+    "prepack": "bob build"
   },
   "keywords": [
     "react-native",
@@ -72,32 +73,20 @@
     "@types/dateformat": "^3.0.1",
     "@types/lodash.isnumber": "^3.0.6",
     "@types/lodash.omit": "^4.5.6",
-    "@types/lodash.tonumber": "^4.0.6"
+    "@types/lodash.tonumber": "^4.0.6",
+    "react-native-builder-bob": "^0.20.4"
   },
   "react-native-builder-bob": {
-    "declarationMap": false,
     "source": "src",
     "output": "lib",
     "targets": [
-      [
-        "commonjs",
-        {
-          "sourceMaps": false
-        }
-      ],
-      [
-        "module",
-        {
-          "sourceMaps": false
-        }
-      ],
-      [
-        "typescript",
-        {
-          "project": "tsconfig.build.json",
-          "tsc": "../../node_modules/typescript/bin/tsc"
-        }
-      ]
+      "commonjs",
+      "module",
+      "typescript"
     ]
-  }
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ]
 }

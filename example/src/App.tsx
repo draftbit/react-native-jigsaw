@@ -30,6 +30,7 @@ import CardContainerExample from "./CardContainerExample";
 import CardContainerRatingExample from "./CardContainerRatingExample";
 
 import CarouselExample from "./CarouselExample";
+import ContainerExample from "./ContainerExample";
 // import ControllerExample from "./ControllerExample";
 
 import DatePickerExample from "./DatePickerExample";
@@ -100,6 +101,7 @@ const ROUTES = {
   CardContainer: CardContainerExample,
   CardContainerRating: CardContainerRatingExample,
   Carousel: CarouselExample,
+  Container: ContainerExample,
   CircleImage: CircleImageExample,
   // Controllers: ControllerExample,
   DatePicker: DatePickerExample,

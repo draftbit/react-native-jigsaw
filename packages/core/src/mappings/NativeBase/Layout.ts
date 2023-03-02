@@ -4,7 +4,6 @@ import {
   CONTAINER_COMPONENT_STYLES_SECTIONS,
   createStaticNumberProp,
   StylesPanelSections,
-  createStaticBoolProp,
 } from "@draftbit/types";
 
 const SHARED_SEED_DATA = {
@@ -72,10 +71,9 @@ export const SEED_DATA = [
     description:
       "The Container restricts a content's width according to current breakpoint, while keeping the size fluid",
     props: {
-      centerContent: createStaticBoolProp({
+      centerContent: createBoolProp({
         label: "Center content",
         description: "Center child elements based on their content width",
-        defaultValue: true,
       }),
     },
     ...SHARED_SEED_DATA,

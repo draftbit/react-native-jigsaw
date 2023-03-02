@@ -6,6 +6,7 @@ export {
   Center,
   Circle,
   CircleImage,
+  Container,
   CheckboxGroup,
   DefaultTheme,
   Divider,

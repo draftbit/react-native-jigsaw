@@ -80,9 +80,25 @@
     "source": "src",
     "output": "lib",
     "targets": [
-      "commonjs",
-      "module",
-      "typescript"
+      [
+        "commonjs",
+        {
+          "sourceMaps": false
+        }
+      ],
+      [
+        "module",
+        {
+          "sourceMaps": false
+        }
+      ],
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json",
+          "tsc": "../../node_modules/typescript/bin/tsc"
+        }
+      ]
     ]
   },
   "eslintIgnore": [

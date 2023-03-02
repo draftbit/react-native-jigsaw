@@ -78,15 +78,8 @@
     "source": "src",
     "output": "lib",
     "targets": [
-      [
-        "commonjs",
-        {
-          "sourceMaps": false
-        }
-      ],
-      [
-        "module"
-      ],
+      "commonjs",
+      "module",
       [
         "typescript",
         {

@@ -38,7 +38,7 @@ export const SEED_DATA = [
   {
     name: "Spacer",
     tag: "Spacer",
-    category: COMPONENT_TYPES.layout,
+    category: COMPONENT_TYPES.deprecated,
     props: {
       top: {
         label: "Top",
@@ -113,7 +113,7 @@ export const SEED_DATA = [
   {
     name: "Center",
     tag: "Center",
-    category: COMPONENT_TYPES.layout,
+    category: COMPONENT_TYPES.deprecated,
     stylesPanelSections: [StylesPanelSections.NoStyles],
     props: {
       width: {
@@ -151,7 +151,7 @@ export const SEED_DATA = [
   {
     name: "Circle",
     tag: "Circle",
-    category: COMPONENT_TYPES.layout,
+    category: COMPONENT_TYPES.deprecated,
     stylesPanelSections: [StylesPanelSections.NoStyles],
     props: {
       size: {
@@ -179,7 +179,7 @@ export const SEED_DATA = [
   {
     name: "Square",
     tag: "Square",
-    category: COMPONENT_TYPES.layout,
+    category: COMPONENT_TYPES.deprecated,
     stylesPanelSections: [StylesPanelSections.NoStyles],
     props: {
       size: {

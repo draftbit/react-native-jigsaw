@@ -4,7 +4,6 @@ import {
   CONTAINER_COMPONENT_STYLES_SECTIONS,
   createStaticNumberProp,
   StylesPanelSections,
-  createStaticBoolProp,
 } from "@draftbit/types";
 
 const SHARED_SEED_DATA = {
@@ -65,20 +64,6 @@ export const SEED_DATA = [
       "Center aligns its contents to the center within itself with a round border radius",
     ...SHARED_SEED_DATA,
     stylesPanelSections: CONTAINER_COMPONENT_STYLES_WITHOUT_FLEX,
-  },
-  {
-    name: "Container",
-    tag: "Container",
-    description:
-      "The Container restricts a content's width according to current breakpoint, while keeping the size fluid",
-    props: {
-      centerContent: createStaticBoolProp({
-        label: "Center content",
-        description: "Center child elements based on their content width",
-        defaultValue: true,
-      }),
-    },
-    ...SHARED_SEED_DATA,
   },
   {
     name: "Column",

@@ -15,9 +15,9 @@
     "!**/__mocks__"
   ],
   "scripts": {
-    "prepare": "bob build",
     "clean": "rimraf lib",
-    "clean:modules": "rimraf node_modules"
+    "clean:modules": "rimraf node_modules",
+    "prepack": "bob build"
   },
   "keywords": [
     "react-native",
@@ -66,5 +66,9 @@
         }
       ]
     ]
-  }
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ]
 }

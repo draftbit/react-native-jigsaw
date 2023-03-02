@@ -1,6 +1,7 @@
 import * as React from "react";
-import { GoogleMap, Marker, LoadScript } from "./ReactGoogleMaps";
+import { GoogleMap, Marker } from "./ReactGoogleMaps";
 import NoApiKey from "./NoApiKey";
+import MapScriptLoader from "./MapScriptLoader";
 import { MapViewProps } from "@draftbit/types";
 import { StyleSheet } from "react-native";
 
@@ -105,7 +106,7 @@ class MapView extends React.Component<
 
     const { lat, lng, userLocation, zoom } = this.state;
 
-    if (!LoadScript || !GoogleMap || !Marker) {
+    if (!GoogleMap || !Marker) {
       return null;
     }
 
@@ -113,13 +114,8 @@ class MapView extends React.Component<
       return <NoApiKey />;
     }
 
-    //Follows how source library checks for loaded script (https://github.com/JustFly1984/react-google-maps-api/blob/develop/packages/react-google-maps-api/src/LoadScript.tsx)
-    const isScriptLoaded = !!(window.google && window.google.maps);
-
-    const TopLevelContainer = isScriptLoaded ? React.Fragment : LoadScript;
-
     return (
-      <TopLevelContainer googleMapsApiKey={apiKey}>
+      <MapScriptLoader apiKey={apiKey}>
         <GoogleMap
           mapContainerStyle={StyleSheet.flatten(style) as React.CSSProperties}
           center={{
@@ -165,7 +161,7 @@ class MapView extends React.Component<
               })
             : children}
         </GoogleMap>
-      </TopLevelContainer>
+      </MapScriptLoader>
     );
   }
 }

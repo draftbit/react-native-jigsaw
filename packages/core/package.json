@@ -15,9 +15,9 @@
     "!**/__mocks__"
   ],
   "scripts": {
-    "prepare": "bob build",
     "clean": "rimraf lib",
-    "clean:modules": "rimraf node_modules"
+    "clean:modules": "rimraf node_modules",
+    "prepack": "bob build"
   },
   "keywords": [
     "react-native",
@@ -75,22 +75,11 @@
     "@types/lodash.tonumber": "^4.0.6"
   },
   "react-native-builder-bob": {
-    "declarationMap": false,
     "source": "src",
     "output": "lib",
     "targets": [
-      [
-        "commonjs",
-        {
-          "sourceMaps": false
-        }
-      ],
-      [
-        "module",
-        {
-          "sourceMaps": false
-        }
-      ],
+      "commonjs",
+      "module",
       [
         "typescript",
         {
@@ -99,5 +88,9 @@
         }
       ]
     ]
-  }
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ]
 }

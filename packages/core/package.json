@@ -15,7 +15,6 @@
     "!**/__mocks__"
   ],
   "scripts": {
-    "prepare": "bob build",
     "clean": "rimraf lib",
     "clean:modules": "rimraf node_modules",
     "prepack": "bob build"

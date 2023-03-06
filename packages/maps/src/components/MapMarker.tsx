@@ -8,6 +8,7 @@ const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
   title,
   description,
   pinColor,
+  pinIcon,
   flat,
   style,
   children,
@@ -27,6 +28,7 @@ const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
       flat={flat}
       pinColor={pinColor}
       style={style}
+      icon={pinIcon}
     >
       {children}
     </Marker>

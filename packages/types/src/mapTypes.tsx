@@ -1,4 +1,4 @@
-import { StyleProp, ViewStyle } from "react-native";
+import { StyleProp, ViewStyle, ImageSourcePropType } from "react-native";
 
 type MapTypes =
   | "standard"
@@ -14,6 +14,7 @@ export interface MapMarkerProps {
   title?: string;
   description?: string;
   pinColor?: string;
+  pinIcon?: string | ImageSourcePropType;
   flat?: boolean;
   style?: StyleProp<ViewStyle>;
 }

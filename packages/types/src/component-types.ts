@@ -130,6 +130,7 @@ export const COMPONENT_TYPES = {
   text: "text",
   bottomsheet: "bottomsheet",
   table: "table",
+  testing: "testing",
   /* Deprecated */
   row: "row",
   card: "card",

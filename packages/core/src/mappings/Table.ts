@@ -73,7 +73,7 @@ export const SEED_DATA = [
     name: "Table",
     tag: "Table",
     description: "Top level table container",
-    category: COMPONENT_TYPES.table,
+    category: COMPONENT_TYPES.testing /*.table*/,
     stylesPanelSections: [
       StylesPanelSections.Size,
       StylesPanelSections.Margins,
@@ -120,7 +120,7 @@ export const SEED_DATA = [
     name: "Table Row",
     tag: "TableRow",
     description: "Table Row container",
-    category: COMPONENT_TYPES.table,
+    category: COMPONENT_TYPES.testing /*.table*/,
     stylesPanelSections: [StylesPanelSections.Background],
     props: {
       ...SHARED_SEED_DATA_PROPS,
@@ -144,7 +144,7 @@ export const SEED_DATA = [
     name: "Table Cell",
     tag: "TableCell",
     description: "Table Cell container",
-    category: COMPONENT_TYPES.table,
+    category: COMPONENT_TYPES.testing /*.table*/,
     stylesPanelSections: [
       StylesPanelSections.LayoutFlexItems,
       StylesPanelSections.LayoutSelectedItem,

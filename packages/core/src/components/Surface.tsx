@@ -34,7 +34,7 @@ const Surface: React.FC<React.PropsWithChildren<Props>> = ({
 
   const { dark: isDarkTheme, mode, colors } = theme;
 
-  const elevation = propElevation || styleElevation;
+  const elevation = propElevation ?? styleElevation;
 
   const evalationStyles = elevation ? shadow(elevation) : {};
 

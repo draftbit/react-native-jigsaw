@@ -7,7 +7,7 @@ import {
 } from "@draftbit/types";
 
 const SHARED_SEED_DATA = {
-  category: COMPONENT_TYPES.layout,
+  category: COMPONENT_TYPES.testing /*.layout*/,
   packageName: "native-base",
   stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
 };

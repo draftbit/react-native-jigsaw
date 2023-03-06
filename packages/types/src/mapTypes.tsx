@@ -47,6 +47,7 @@ export interface MapViewProps<TMarkerData> {
     item: TMarkerData;
     index: number;
   }) => JSX.Element;
+  onRegionChange?: (latitude: number, longitude: number) => void;
 }
 
 export interface MapCalloutProps {

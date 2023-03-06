@@ -18,6 +18,7 @@ type State = {
     heading: number | null;
     speed: number | null;
   };
+  map: any;
 };
 
 class MapView extends React.Component<
@@ -30,6 +31,7 @@ class MapView extends React.Component<
       lat: props.latitude || 0,
       lng: props.longitude || 0,
       zoom: props.zoom,
+      map: null,
     };
   }
 
@@ -101,6 +103,7 @@ class MapView extends React.Component<
       markersData,
       renderItem,
       keyExtractor,
+      onRegionChange,
       children,
     } = this.props;
 
@@ -122,11 +125,20 @@ class MapView extends React.Component<
             lat,
             lng,
           }}
+          onLoad={(mapInstance: any) => {
+            this.setState({ map: mapInstance });
+          }}
           mapTypeId={mapType}
           zoom={zoom}
           options={{
             scrollwheel: scrollEnabled,
             rotateControl: rotateEnabled,
+          }}
+          onDragEnd={() => {
+            const center = this.state.map?.getBounds()?.getCenter();
+            if (center) {
+              onRegionChange?.(center.lat(), center.lng());
+            }
           }}
         >
           {userLocation ? (

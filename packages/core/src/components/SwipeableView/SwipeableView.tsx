@@ -35,8 +35,6 @@ export interface SwipeableViewProps extends IconSlot {
   directionalDistanceChangeThreshold?: number;
   friction?: number;
   tension?: number;
-  restSpeedThreshold?: number;
-  restDisplacementThreshold?: number;
   disableLeftSwipe?: boolean;
   disableRightSwipe?: boolean;
   swipeToOpenVelocityContribution?: number;

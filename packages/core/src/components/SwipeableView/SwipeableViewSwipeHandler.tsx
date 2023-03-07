@@ -5,6 +5,7 @@ export interface SwipeableViewSwipeHandlerProps {
   side: "left" | "right";
   onSwipe: (() => void) | null; //Not optional in order to always exist in props
   icon?: string;
+  iconSize?: number;
   backgroundColor?: string;
   color?: string;
 }

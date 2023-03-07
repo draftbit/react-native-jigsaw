@@ -13,6 +13,7 @@ import {
   extractEffectStyles,
   extractFlexItemStyles,
   extractPositionStyles,
+  extractSizeStyles,
   extractStyles,
 } from "../../utilities";
 import { SwipeRow } from "react-native-swipe-list-view";
@@ -56,6 +57,7 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
     extractFlexItemStyles(viewStyles),
     extractPositionStyles(viewStyles),
     extractEffectStyles(viewStyles),
+    extractSizeStyles(viewStyles),
   ]);
 
   //Remove styles already consumed from viewStyles
@@ -126,8 +128,8 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
   }
 
   if (
-    (leftButtons && leftSwipeHandlers) ||
-    (rightButtons && rightSwipeHandlers)
+    (leftButtons.length && leftSwipeHandlers.length) ||
+    (rightButtons.length && rightSwipeHandlers.length)
   ) {
     throw Error("Cannot combine swiper handler and buttons on the same side");
   }
@@ -137,9 +139,11 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
 
   //Renders a single button/item. Used for both buttons and swipe handler
   const renderBehindItem = (
-    props: SwipeableViewSwipeHandlerProps | SwipeableViewButtonProps
+    props: SwipeableViewSwipeHandlerProps | SwipeableViewButtonProps,
+    index: number
   ) => (
     <Pressable
+      key={index.toString()}
       onPress={(props as any).onPress}
       style={[
         styles.buttonContainer,
@@ -148,13 +152,16 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
     >
       {props.icon && (
         <Icon
-          style={styles.buttonIcon}
           name={props.icon}
-          size={16}
-          color={props.color}
+          size={props.iconSize || 25}
+          color={props.color || theme.colors.surface}
         />
       )}
-      <Text style={[textStyles, { color: props.color }]}>{props.title}</Text>
+      <Text
+        style={[textStyles, { color: props.color || theme.colors.surface }]}
+      >
+        {props.title}
+      </Text>
     </Pressable>
   );
 
@@ -176,21 +183,31 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
         <View
           style={[
             styles.behindContainer,
-            { backgroundColor: theme.colors.primary },
+            {
+              backgroundColor: theme.colors.primary,
+            },
           ]}
         >
           <View style={styles.behindContainerItem}>
             {(isLeftSwipeHandler ? leftSwipeHandlers : leftButtons).map(
-              (item) => renderBehindItem(item.props)
+              (item, index) => renderBehindItem(item.props, index)
             )}
           </View>
           <View style={styles.behindContainerItem}>
             {(isRightSwipeHandler ? rightSwipeHandlers : rightButtons).map(
-              (item) => renderBehindItem(item.props)
+              (item, index) => renderBehindItem(item.props, index)
             )}
           </View>
         </View>
-        <View style={[styles.surfaceContainer, surfaceContainerStyles]}>
+        <View
+          style={[
+            styles.surfaceContainer,
+            {
+              backgroundColor: theme.colors.background,
+            },
+            surfaceContainerStyles,
+          ]}
+        >
           {remainingChildren}
         </View>
       </SwipeRow>
@@ -201,22 +218,31 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
 const styles = StyleSheet.create({
   parentContainer: {
     overflow: "hidden",
+    minHeight: 50,
   },
   behindContainer: {
     flex: 1,
+    width: "100%",
+    height: "100%",
+    flexDirection: "row",
   },
   behindContainerItem: {
     flex: 1,
+    flexDirection: "row",
   },
   buttonContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
-  buttonIcon: {
-    marginBottom: 10,
+  surfaceContainer: {
+    flexDirection: "row",
+    width: "100%",
+    height: "100%",
+    padding: 10,
+    alignItems: "center",
+    overflow: "hidden",
   },
-  surfaceContainer: {},
 });
 
 export default withTheme(SwipeableView);

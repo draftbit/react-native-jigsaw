@@ -169,6 +169,25 @@ export function extractEffectStyles(
   return effectStyles;
 }
 
+export const sizeStyleNames = ["width", "height"];
+
+export function extractSizeStyles(
+  style: StyleProp<any>,
+  additionalSizeStyles?: string[]
+) {
+  const flatStyle = StyleSheet.flatten(style || {});
+
+  const sizeStyles = pickBy(
+    pick(flatStyle, [
+      ...sizeStyleNames,
+      ...(additionalSizeStyles ? additionalSizeStyles : []),
+    ]),
+    identity
+  );
+
+  return sizeStyles;
+}
+
 /**
  * Merges a style object on top of another style object. In React Native,
  * keys with undefined values in a style object will still override styles

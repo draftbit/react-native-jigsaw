@@ -33,7 +33,6 @@ export {
   Shadow,
   TabViewItem,
   Markdown,
-  BottomSheet,
   YoutubePlayer,
   Table,
   TableRow,

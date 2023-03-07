@@ -98,6 +98,77 @@ export function extractBorderAndMarginStyles(
   return { borderStyles, marginStyles };
 }
 
+export const flexItemStyleNames = [
+  "alignSelf",
+  "flexBasis",
+  "flexShrink",
+  "flexGrow",
+  "flex",
+];
+
+export function extractFlexItemStyles(
+  style: StyleProp<any>,
+  additionalFlexItemStyles?: string[]
+) {
+  const flatStyle = StyleSheet.flatten(style || {});
+
+  const flexItemStyles = pickBy(
+    pick(flatStyle, [
+      ...flexItemStyleNames,
+      ...(additionalFlexItemStyles ? additionalFlexItemStyles : []),
+    ]),
+    identity
+  );
+
+  return flexItemStyles;
+}
+
+export const positionStyleNames = [
+  "position",
+  "left",
+  "right",
+  "top",
+  "bottom",
+  "zIndex",
+  "overflow",
+];
+
+export function extractPositionStyles(
+  style: StyleProp<any>,
+  additionalPositionStyles?: string[]
+) {
+  const flatStyle = StyleSheet.flatten(style || {});
+
+  const positionStyles = pickBy(
+    pick(flatStyle, [
+      ...positionStyleNames,
+      ...(additionalPositionStyles ? additionalPositionStyles : []),
+    ]),
+    identity
+  );
+
+  return positionStyles;
+}
+
+export const effectsStyleNames = ["opacity", "elevation"];
+
+export function extractEffectStyles(
+  style: StyleProp<any>,
+  additionalEffectStyles?: string[]
+) {
+  const flatStyle = StyleSheet.flatten(style || {});
+
+  const effectStyles = pickBy(
+    pick(flatStyle, [
+      ...effectsStyleNames,
+      ...(additionalEffectStyles ? additionalEffectStyles : []),
+    ]),
+    identity
+  );
+
+  return effectStyles;
+}
+
 /**
  * Merges a style object on top of another style object. In React Native,
  * keys with undefined values in a style object will still override styles

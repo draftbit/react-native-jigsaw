@@ -59,7 +59,6 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
   swipeActivationPercentage = 80,
   stopLeftSwipe,
   stopRightSwipe,
-  swipeToOpenPercent = 30,
   friction = 20,
   ...rest
 }) => {
@@ -238,7 +237,6 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
             : undefined
         }
         closeOnRowPress={closeOnPress}
-        swipeToOpenPercent={swipeToOpenPercent}
         friction={friction}
         {...rest}
       >

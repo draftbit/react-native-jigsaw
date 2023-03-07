@@ -24,6 +24,24 @@ import { SwipeableViewButtonProps } from "./SwipeableViewButton";
 import { SwipeableViewSwipeHandlerProps } from "./SwipeableViewSwipeHandler";
 
 export interface SwipeableViewProps extends IconSlot {
+  closeOnPress?: boolean;
+  leftOpenValue?: number;
+  rightOpenValue?: number;
+  leftActivationValue?: number;
+  rightActivationValue?: number;
+  swipeActivationPercentage?: number;
+  stopLeftSwipe?: number;
+  stopRightSwipe?: number;
+  directionalDistanceChangeThreshold?: number;
+  friction?: number;
+  tension?: number;
+  restSpeedThreshold?: number;
+  restDisplacementThreshold?: number;
+  disableLeftSwipe?: boolean;
+  disableRightSwipe?: boolean;
+  swipeToOpenVelocityContribution?: number;
+  swipeToOpenPercent?: number;
+  swipeToClosePercent?: number;
   style?: StyleProp<ViewStyle | TextStyle>;
   theme: Theme;
 }
@@ -33,6 +51,17 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
   style,
   children,
   Icon,
+  closeOnPress,
+  leftOpenValue,
+  rightOpenValue,
+  leftActivationValue,
+  rightActivationValue,
+  swipeActivationPercentage = 80,
+  stopLeftSwipe,
+  stopRightSwipe,
+  swipeToOpenPercent = 30,
+  friction = 20,
+  ...rest
 }) => {
   const instanceOfSwipeableViewButtonProps = (
     object: any
@@ -64,6 +93,9 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
   Object.keys(parentContainerStyles).forEach((key) => delete viewStyles[key]);
   const surfaceContainerStyles = viewStyles;
 
+  const [componentWidth, setComponentWidth] = React.useState<number | null>(
+    null
+  );
   const leftButtons = React.useMemo(
     () =>
       React.Children.toArray(children).filter(
@@ -147,7 +179,7 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
       onPress={(props as any).onPress}
       style={[
         styles.buttonContainer,
-        { backgroundColor: props.backgroundColor },
+        { backgroundColor: props.backgroundColor || theme.colors.primary },
       ]}
     >
       {props.icon && (
@@ -165,10 +197,36 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
     </Pressable>
   );
 
+  const defaultLeftOpenValue = componentWidth ? componentWidth / 2 : 0;
+  const defaultRightOpenValue = componentWidth ? -componentWidth / 2 : 0;
+
   return (
-    <View style={[styles.parentContainer, parentContainerStyles]}>
+    <View
+      onLayout={(event) => {
+        setComponentWidth(event.nativeEvent.layout.width);
+      }}
+      style={[styles.parentContainer, parentContainerStyles]}
+    >
       {/*@ts-ignore*/}
       <SwipeRow
+        leftOpenValue={
+          isLeftSwipeHandler ? 0 : leftOpenValue || defaultLeftOpenValue //If in swiping mode, don't keep open
+        }
+        rightOpenValue={
+          isRightSwipeHandler ? 0 : rightOpenValue || defaultRightOpenValue
+        }
+        leftActivationValue={
+          leftActivationValue || isLeftSwipeHandler
+            ? defaultLeftOpenValue * (swipeActivationPercentage / 100) //When swipe passes activation percentage then it should be considered activated (call onSwipe)
+            : defaultLeftOpenValue
+        }
+        rightActivationValue={
+          rightActivationValue || isRightSwipeHandler
+            ? defaultRightOpenValue * (swipeActivationPercentage / 100)
+            : defaultRightOpenValue
+        }
+        stopLeftSwipe={stopLeftSwipe || defaultLeftOpenValue}
+        stopRightSwipe={stopRightSwipe || defaultRightOpenValue}
         onLeftAction={
           isLeftSwipeHandler
             ? () => leftSwipeHandlers[0].props.onSwipe?.()
@@ -179,15 +237,12 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
             ? () => rightSwipeHandlers[0].props.onSwipe?.()
             : undefined
         }
+        closeOnRowPress={closeOnPress}
+        swipeToOpenPercent={swipeToOpenPercent}
+        friction={friction}
+        {...rest}
       >
-        <View
-          style={[
-            styles.behindContainer,
-            {
-              backgroundColor: theme.colors.primary,
-            },
-          ]}
-        >
+        <View style={styles.behindContainer}>
           <View style={styles.behindContainerItem}>
             {(isLeftSwipeHandler ? leftSwipeHandlers : leftButtons).map(
               (item, index) => renderBehindItem(item.props, index)

@@ -193,7 +193,7 @@ export const SEED_DATA = [
   },
   {
     name: "Swipeable View Swipe Handler",
-    tag: "SwipeableViewButton",
+    tag: "SwipeableViewSwipeHandler",
     description: "Component that renders and handles swipe of Swipeable View",
     category: COMPONENT_TYPES.view,
     stylesPanelSections: [],

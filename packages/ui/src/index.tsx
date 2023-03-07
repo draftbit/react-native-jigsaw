@@ -38,6 +38,8 @@ export {
   Table,
   TableRow,
   TableCell,
+  SwipeableViewButton,
+  SwipeableViewSwipeHandler,
   /* Deprecated, needs fixing */
   ProgressBar,
   ProgressCircle,
@@ -84,6 +86,7 @@ import {
   AccordionGroup as BaseAccordionGroup,
   AccordionItem as BaseAccordionItem,
   TabView as BaseTabView,
+  SwipeableView as BaseSwipeableView,
 } from "@draftbit/core";
 
 export const AvatarEdit = injectIcon(BaseAvatarEdit, Icon);
@@ -112,3 +115,4 @@ export const Slider = injectIcon(BaseSlider, Icon);
 export const AccordionGroup = injectIcon(BaseAccordionGroup, Icon);
 export const AccordionItem = injectIcon(BaseAccordionItem, Icon);
 export const TabView = injectIcon(BaseTabView, Icon);
+export const SwipeableView = injectIcon(BaseSwipeableView, Icon);

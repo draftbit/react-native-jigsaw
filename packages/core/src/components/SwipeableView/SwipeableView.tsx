@@ -166,9 +166,6 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
     throw Error("Cannot combine swiper handler and buttons on the same side");
   }
 
-  const isLeftSwipeHandler = !!leftSwipeHandlers.length;
-  const isRightSwipeHandler = !!rightSwipeHandlers.length;
-
   //Renders a single button/item. Used for both buttons and swipe handler
   const renderBehindItem = (
     props: SwipeableViewSwipeHandlerProps | SwipeableViewButtonProps,
@@ -196,6 +193,9 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
       </Text>
     </Pressable>
   );
+
+  const isLeftSwipeHandler = !!leftSwipeHandlers.length;
+  const isRightSwipeHandler = !!rightSwipeHandlers.length;
 
   const defaultLeftOpenValue = componentWidth ? componentWidth / 2 : 0;
   const defaultRightOpenValue = componentWidth ? -componentWidth / 2 : 0;

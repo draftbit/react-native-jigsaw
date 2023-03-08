@@ -169,15 +169,15 @@ const Picker: React.FC<PickerProps> = ({
   );
 
   //When no placeholder is provided then first item should be marked selected to reflect underlying Picker internal state
-  React.useEffect(() => {
-    if (!placeholder && pickerOptions.length) {
-      onValueChange?.(pickerOptions[0].value, 0);
-      setInternalValue(pickerOptions[0].value);
-    }
-
-    // onValueChange cannot be dependency due to possibility of being an anonymous function
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [placeholder, pickerOptions]);
+  if (
+    !placeholder &&
+    pickerOptions.length &&
+    !internalValue &&
+    internalValue !== pickerOptions[0].value //Prevent infinite state changes incase first value is falsy
+  ) {
+    onValueChange?.(pickerOptions[0].value, 0);
+    setInternalValue(pickerOptions[0].value);
+  }
 
   const { viewStyles, textStyles } = extractStyles(style);
 

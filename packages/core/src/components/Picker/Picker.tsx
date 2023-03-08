@@ -174,7 +174,7 @@ const Picker: React.FC<PickerProps> = ({
       onValueChange?.(pickerOptions[0].value, 0);
       setInternalValue(pickerOptions[0].value);
     }
-  }, [placeholder, onValueChange, pickerOptions]);
+  }, [placeholder, pickerOptions]);
 
   const { viewStyles, textStyles } = extractStyles(style);
 

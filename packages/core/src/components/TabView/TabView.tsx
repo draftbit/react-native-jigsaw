@@ -106,7 +106,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
       <TabBar
         {...props}
         activeColor={activeColor || theme.colors.primary}
-        inactiveColor={inactiveColor || theme.colors.divider}
+        inactiveColor={inactiveColor || "rgb(200,200,200)"}
         pressColor={pressColor || theme.colors.primary}
         scrollEnabled={scrollEnabled}
         indicatorStyle={{

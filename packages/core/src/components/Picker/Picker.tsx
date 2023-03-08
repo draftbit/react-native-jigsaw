@@ -174,6 +174,9 @@ const Picker: React.FC<PickerProps> = ({
       onValueChange?.(pickerOptions[0].value, 0);
       setInternalValue(pickerOptions[0].value);
     }
+
+    // onValueChange cannot be dependency due to possibility of being an anonymous function
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [placeholder, pickerOptions]);
 
   const { viewStyles, textStyles } = extractStyles(style);

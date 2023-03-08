@@ -101,7 +101,7 @@ const Picker: React.FC<PickerProps> = ({
   defaultValue,
   Icon,
   style,
-  placeholder = "Select an option",
+  placeholder,
   value,
   disabled = false,
   assistiveText,
@@ -130,6 +130,8 @@ const Picker: React.FC<PickerProps> = ({
   React.useEffect(() => {
     if (value != null && value !== "") {
       setInternalValue(value);
+    } else if (value === "") {
+      setInternalValue(undefined);
     }
   }, [value]);
 
@@ -151,13 +153,28 @@ const Picker: React.FC<PickerProps> = ({
     }
   }, [pickerVisible, autoDismissKeyboard]);
 
-  const normalizedOptions = normalizeOptions(options);
+  const normalizedOptions = React.useMemo(
+    () => normalizeOptions(options),
+    [options]
+  );
 
   //Underlying Picker component defaults selection to first element when value is not provided (or undefined)
   //Placholder must be the 1st option in order to allow selection of the 'actual' 1st option
-  const pickerOptions = placeholder
-    ? [{ label: placeholder, value: placeholder }, ...normalizedOptions]
-    : normalizedOptions;
+  const pickerOptions = React.useMemo(
+    () =>
+      placeholder
+        ? [{ label: placeholder, value: placeholder }, ...normalizedOptions]
+        : normalizedOptions,
+    [placeholder, normalizedOptions]
+  );
+
+  //When no placeholder is provided then first item should be marked selected to reflect underlying Picker internal state
+  React.useEffect(() => {
+    if (!placeholder && pickerOptions.length) {
+      onValueChange?.(pickerOptions[0].value, 0);
+      setInternalValue(pickerOptions[0].value);
+    }
+  }, [placeholder, onValueChange, pickerOptions]);
 
   const { viewStyles, textStyles } = extractStyles(style);
 

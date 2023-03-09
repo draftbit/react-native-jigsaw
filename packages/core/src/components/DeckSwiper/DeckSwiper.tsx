@@ -120,7 +120,7 @@ const DeckSwiper = <T extends object>({
 
 const styles = StyleSheet.create({
   cardsContainer: {
-    width: "100%",
+    flex: 1,
   },
   card: {
     left: 0,

@@ -4,7 +4,7 @@ import {
   createActionProp,
   createStaticNumberProp,
   createStaticBoolProp,
-  BLOCK_STYLES_SECTIONS,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -12,9 +12,13 @@ export const SEED_DATA = {
   tag: "DeckSwiper",
   description: "Deck swiper container",
   category: COMPONENT_TYPES.swiper,
-  stylesPanelSections: BLOCK_STYLES_SECTIONS,
+  stylesPanelSections: [
+    StylesPanelSections.Size,
+    StylesPanelSections.Margins,
+    StylesPanelSections.Effects,
+  ],
   layout: {
-    width: "100%",
+    flex: 1,
   },
   triggers: [Triggers.OnIndexChanged, Triggers.OnEndReached],
   props: {

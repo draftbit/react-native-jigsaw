@@ -14,7 +14,6 @@ export const SEED_DATA = {
   description: "A cross-platform, universal shadow.",
   category: COMPONENT_TYPES.view,
   stylesPanelSections: [
-    StylesPanelSections.LayoutSelectedItem,
     StylesPanelSections.Size,
     StylesPanelSections.Margins,
     StylesPanelSections.Position,

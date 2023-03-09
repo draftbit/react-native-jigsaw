@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleProp, ViewStyle, StyleSheet } from "react-native";
 import { Shadow as ShadowComponent } from "react-native-shadow-2";
-import { extractBorderAndMarginStyles } from "../utilities";
+import { extractBorderAndMarginStyles, extractSizeStyles } from "../utilities";
 
 interface ShadowProps {
   disabled?: boolean;
@@ -40,8 +40,13 @@ const Shadow: React.FC<React.PropsWithChildren<ShadowProps>> = ({
 }) => {
   const { borderStyles } = extractBorderAndMarginStyles(style);
 
+  const shadowStyles = StyleSheet.flatten([
+    borderStyles,
+    extractSizeStyles(style),
+  ]);
+
   const containerStyle = StyleSheet.flatten(style) as StyleProp<any>;
-  Object.keys(borderStyles).forEach((key) => delete containerStyle[key]);
+  Object.keys(shadowStyles).forEach((key) => delete containerStyle[key]);
 
   return (
     <ShadowComponent
@@ -58,7 +63,7 @@ const Shadow: React.FC<React.PropsWithChildren<ShadowProps>> = ({
         bottomStart: showShadowCornerBottomStart,
         bottomEnd: showShadowCornerBottomEnd,
       }}
-      style={borderStyles}
+      style={shadowStyles}
       containerStyle={containerStyle}
       paintInside={paintInside}
       {...rest}

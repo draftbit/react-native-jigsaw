@@ -27,7 +27,6 @@ const DeckSwiperCard: React.FC<
 
 const styles = StyleSheet.create({
   card: {
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 20,

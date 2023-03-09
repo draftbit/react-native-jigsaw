@@ -43,6 +43,9 @@ const DeckSwiper = <T extends object>({
     );
   }
 
+  const [isRenderingCardFillerHeight, setIsRenderingCardFillerHeight] =
+    React.useState<boolean>(false);
+
   const childrenArray = React.useMemo(
     () => React.Children.toArray(children),
     [children]
@@ -89,9 +92,26 @@ const DeckSwiper = <T extends object>({
    * This effectivley makes the default height of the container be the height of the first card.
    */
 
+  /**
+   * isRenderingCardFillerHeight:
+   * Only render first card filler when component height is 0.
+   * Draftbit draft view already fills height appropriatley and does not need to render first card to compensate
+   * This check prevents double height and only fills height when it needs to
+   */
+
   return (
-    <View>
-      <View style={styles.containerHeightFiller}>{renderFirstCard()}</View>
+    <View
+      onLayout={(event) => {
+        const height = event.nativeEvent.layout.height;
+        if (height === 0 && !isRenderingCardFillerHeight) {
+          setIsRenderingCardFillerHeight(true);
+        }
+      }}
+    >
+      {isRenderingCardFillerHeight ? (
+        <View style={styles.containerHeightFiller}>{renderFirstCard()}</View>
+      ) : undefined}
+
       <DeckSwiperComponent
         cards={cardsData as any[]}
         renderCard={renderCard}

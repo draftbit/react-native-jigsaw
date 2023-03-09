@@ -14,6 +14,7 @@ export const SEED_DATA = {
   category: COMPONENT_TYPES.swiper,
   stylesPanelSections: [
     StylesPanelSections.Size,
+    StylesPanelSections.LayoutSelectedItem,
     StylesPanelSections.Margins,
     StylesPanelSections.Effects,
   ],

@@ -19,6 +19,7 @@ export const SEED_DATA = {
   ],
   layout: {
     flex: 1,
+    position: "absolute",
   },
   triggers: [Triggers.OnIndexChanged, Triggers.OnEndReached],
   props: {

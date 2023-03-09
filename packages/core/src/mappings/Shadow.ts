@@ -1,11 +1,11 @@
 import {
   COMPONENT_TYPES,
-  CONTAINER_COMPONENT_STYLES_SECTIONS,
   createColorProp,
   createStaticNumberProp,
   createStaticBoolProp,
   createDisabledProp,
   GROUPS,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -13,7 +13,14 @@ export const SEED_DATA = {
   tag: "Shadow",
   description: "A cross-platform, universal shadow.",
   category: COMPONENT_TYPES.view,
-  stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
+  stylesPanelSections: [
+    StylesPanelSections.LayoutSelectedItem,
+    StylesPanelSections.Size,
+    StylesPanelSections.Margins,
+    StylesPanelSections.Position,
+    StylesPanelSections.Borders,
+    StylesPanelSections.Effects,
+  ],
   props: {
     disabled: createDisabledProp({
       description: "Disables the shadow.",
@@ -35,7 +42,7 @@ export const SEED_DATA = {
     paintInside: createStaticBoolProp({
       label: "Paint Inside",
       description: "Apply the shadow below/inside the content.",
-      defaultValue: false,
+      defaultValue: true,
     }),
     stretch: createStaticBoolProp({
       label: "Stretch",

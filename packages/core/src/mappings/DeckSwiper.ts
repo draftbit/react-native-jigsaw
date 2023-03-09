@@ -18,7 +18,6 @@ export const SEED_DATA = {
     StylesPanelSections.Effects,
   ],
   layout: {
-    flex: 1,
     position: "absolute",
   },
   triggers: [Triggers.OnIndexChanged, Triggers.OnEndReached],

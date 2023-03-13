@@ -2,11 +2,10 @@ import {
   COMPONENT_TYPES,
   createBoolProp,
   createColorProp,
+  createImageProp,
   createNumberProp,
   createTextProp,
-  FORM_TYPES,
   GROUPS,
-  PROP_TYPES,
   StylesPanelSections,
 } from "@draftbit/types";
 
@@ -60,14 +59,12 @@ export const SEED_DATA = {
       label: "Pin Color",
       description: "Sets the color of the marker",
     }),
-    pinImage: {
+    pinImage: createImageProp({
       group: GROUPS.data,
       label: "Pin image",
       description: "Image to be used instead of the default pin",
       editable: true,
       required: false,
-      formType: FORM_TYPES.image,
-      propType: PROP_TYPES.ASSET,
-    },
+    }),
   },
 };

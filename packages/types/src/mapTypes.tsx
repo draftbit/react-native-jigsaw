@@ -14,6 +14,9 @@ export interface MapMarkerProps {
   title?: string;
   description?: string;
   pinColor?: string;
+  pinImageUrl?: string;
+  pinImageSize?: number;
+  onPress?: () => void;
   flat?: boolean;
   style?: StyleProp<ViewStyle>;
 }
@@ -47,6 +50,7 @@ export interface MapViewProps<TMarkerData> {
     item: TMarkerData;
     index: number;
   }) => JSX.Element;
+  onRegionChange?: (latitude: number, longitude: number) => void;
 }
 
 export interface MapCalloutProps {

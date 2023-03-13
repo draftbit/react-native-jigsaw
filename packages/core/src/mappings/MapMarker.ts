@@ -4,6 +4,7 @@ import {
   createColorProp,
   createImageProp,
   createNumberProp,
+  createStaticNumberProp,
   createTextProp,
   GROUPS,
   StylesPanelSections,
@@ -59,12 +60,19 @@ export const SEED_DATA = {
       label: "Pin Color",
       description: "Sets the color of the marker",
     }),
-    pinImage: createImageProp({
-      group: GROUPS.data,
+    pinImageUrl: createImageProp({
       label: "Pin image",
       description: "Image to be used instead of the default pin",
       editable: true,
       required: false,
+      defaultValue: null,
+    }),
+    pinImageSize: createStaticNumberProp({
+      label: "Pin image size",
+      description:
+        "The size of pin image. Only applies when using custom pin image",
+      required: false,
+      defaultValue: 50,
     }),
   },
 };

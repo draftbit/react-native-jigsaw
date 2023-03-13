@@ -24,7 +24,8 @@ export const markerContext = React.createContext<IMarkerContext>({
 });
 
 const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
-  pinIcon,
+  pinImageUrl,
+  pinImageSize = 50,
   pinColor,
   latitude,
   longitude,
@@ -84,7 +85,14 @@ const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
         }}
         onClick={handleMarkerClick}
         onLoad={handleOnLoad}
-        icon={(pinIcon as any)?.uri || pinIcon} //Accepts url directly, extraxt out of object when uri is defined
+        icon={
+          pinImageUrl
+            ? {
+                url: pinImageUrl,
+                scaledSize: new google.maps.Size(pinImageSize, pinImageSize),
+              }
+            : undefined
+        }
       >
         {mappedChildren}
       </WebMarker>

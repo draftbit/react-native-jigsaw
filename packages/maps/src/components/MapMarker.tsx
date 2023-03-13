@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Image } from "react-native";
 import { Marker } from "./ReactNativeMaps";
 import { MapMarkerProps } from "@draftbit/types";
 
@@ -8,7 +9,8 @@ const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
   title,
   description,
   pinColor,
-  pinIcon,
+  pinImageUrl,
+  pinImageSize = 50,
   flat,
   style,
   children,
@@ -28,8 +30,17 @@ const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
       flat={flat}
       pinColor={pinColor}
       style={style}
-      icon={pinIcon}
     >
+      {pinImageUrl && (
+        <Image
+          source={{ uri: pinImageUrl }}
+          style={{
+            height: pinImageSize,
+            width: pinImageSize,
+            resizeMode: "contain",
+          }}
+        />
+      )}
       {children}
     </Marker>
   );

@@ -26,6 +26,7 @@ export const markerContext = React.createContext<IMarkerContext>({
 const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
   pinImageUrl,
   pinImageSize = 50,
+  onPress,
   pinColor,
   latitude,
   longitude,
@@ -83,7 +84,10 @@ const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
           lat: latitude,
           lng: longitude,
         }}
-        onClick={handleMarkerClick}
+        onClick={() => {
+          onPress?.();
+          handleMarkerClick();
+        }}
         onLoad={handleOnLoad}
         icon={
           pinImageUrl

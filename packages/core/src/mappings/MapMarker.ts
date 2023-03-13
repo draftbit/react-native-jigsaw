@@ -1,5 +1,6 @@
 import {
   COMPONENT_TYPES,
+  createActionProp,
   createBoolProp,
   createColorProp,
   createImageProp,
@@ -8,6 +9,7 @@ import {
   createTextProp,
   GROUPS,
   StylesPanelSections,
+  Triggers,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -22,7 +24,9 @@ export const SEED_DATA = {
     StylesPanelSections.Effects,
   ],
   layout: {},
+  triggers: [Triggers.OnPress],
   props: {
+    onPress: createActionProp(),
     latitude: createNumberProp({
       label: "Latitude",
       description: "The latitude in which the marker is located",

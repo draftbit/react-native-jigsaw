@@ -11,6 +11,7 @@ const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
   pinColor,
   pinImageUrl,
   pinImageSize = 50,
+  onPress,
   flat,
   style,
   children,
@@ -29,6 +30,7 @@ const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
       description={description != null ? String(description) : undefined}
       flat={flat}
       pinColor={pinColor}
+      onPress={onPress}
       style={style}
     >
       {pinImageUrl && (

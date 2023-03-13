@@ -16,6 +16,7 @@ export interface MapMarkerProps {
   pinColor?: string;
   pinImageUrl?: string;
   pinImageSize?: number;
+  onPress?: () => void;
   flat?: boolean;
   style?: StyleProp<ViewStyle>;
 }

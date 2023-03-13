@@ -28,7 +28,8 @@ export const SEED_DATA = {
   props: {
     onRegionChange: createActionProp({
       label: "On region changed",
-      description: "Action to execute map panning stop and region changes",
+      description:
+        "Action to execute when map panning stops and region changes",
     }),
     provider: {
       formType: FORM_TYPES.flatArray,

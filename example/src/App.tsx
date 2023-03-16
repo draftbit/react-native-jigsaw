@@ -1,4 +1,3 @@
-import { Asset } from "expo-asset";
 import Constants from "expo-constants";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
@@ -9,6 +8,7 @@ import {
   Image,
   TouchableOpacity,
   StyleSheet,
+  ImageSourcePropType,
 } from "react-native";
 
 import {
@@ -156,15 +156,18 @@ let customFonts = {
     "https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12",
 };
 
+const splashImage = require("./assets/images/splash.png");
+
 const Drawer = createDrawerNavigator();
 
 type ExampleProps = { title: string; children: React.ReactNode };
+type SplashScreenProviderProps = { image: ImageSourcePropType };
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
 export default function App() {
   return (
-    <SplashScreenProvider image={{ uri: Constants.manifest.splash.image }}>
+    <SplashScreenProvider image={splashImage}>
       <Provider theme={DefaultTheme}>
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
           <Examples />
@@ -174,15 +177,15 @@ export default function App() {
   );
 }
 
-function SplashScreenProvider({ children, image }) {
+const SplashScreenProvider: React.FC<
+  React.PropsWithChildren<SplashScreenProviderProps>
+> = ({ children, image }) => {
   const [isSplashReady, setSplashReady] = useState(false);
 
   useEffect(() => {
     async function prepare() {
       try {
-        // Pre-load fonts, make any api calls you need to do here
         await Font.loadAsync(customFonts);
-        await Asset.fromURI(image.uri).downloadAsync();
       } catch (e) {
         console.warn(e);
       } finally {
@@ -198,9 +201,11 @@ function SplashScreenProvider({ children, image }) {
   }
 
   return <AnimatedSplashScreen image={image}>{children}</AnimatedSplashScreen>;
-}
+};
 
-function AnimatedSplashScreen({ children, image }) {
+const AnimatedSplashScreen: React.FC<
+  React.PropsWithChildren<SplashScreenProviderProps>
+> = ({ children, image }) => {
   const animation = useMemo(() => new Animated.Value(1), []);
   const [isAppReady, setAppReady] = useState(false);
   const [isSplashAnimationComplete, setAnimationComplete] = useState(false);
@@ -222,6 +227,7 @@ function AnimatedSplashScreen({ children, image }) {
       await Promise.all([]);
     } catch (e) {
       // handle errors
+      console.warn(e);
     } finally {
       setAppReady(true);
     }
@@ -236,7 +242,9 @@ function AnimatedSplashScreen({ children, image }) {
           style={[
             StyleSheet.absoluteFill,
             {
-              backgroundColor: Constants.manifest.splash.backgroundColor,
+              backgroundColor:
+                Constants?.manifest?.splash?.backgroundColor ||
+                "rgba(90, 69, 255, 1)",
               opacity: animation,
             },
           ]}
@@ -245,7 +253,7 @@ function AnimatedSplashScreen({ children, image }) {
             style={{
               width: "100%",
               height: "100%",
-              resizeMode: Constants.manifest.splash.resizeMode || "contain",
+              resizeMode: Constants?.manifest?.splash?.resizeMode || "contain",
               transform: [
                 {
                   scale: animation,
@@ -260,7 +268,7 @@ function AnimatedSplashScreen({ children, image }) {
       )}
     </View>
   );
-}
+};
 
 function Example({ title, children }: ExampleProps) {
   const navigation = useNavigation();

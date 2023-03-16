@@ -24,7 +24,7 @@ export const markerContext = React.createContext<IMarkerContext>({
 });
 
 const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
-  pinImageUrl,
+  pinImage,
   pinImageSize = 50,
   onPress,
   pinColor,
@@ -90,9 +90,10 @@ const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
         }}
         onLoad={handleOnLoad}
         icon={
-          pinImageUrl
+          pinImage
             ? {
-                url: pinImageUrl,
+                url:
+                  typeof pinImage === "string" ? pinImage : { uri: pinImage },
                 scaledSize: new google.maps.Size(pinImageSize, pinImageSize),
               }
             : undefined

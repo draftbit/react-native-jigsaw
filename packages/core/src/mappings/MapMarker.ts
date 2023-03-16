@@ -64,7 +64,7 @@ export const SEED_DATA = {
       label: "Pin Color",
       description: "Sets the color of the marker",
     }),
-    pinImageUrl: createImageProp({
+    pinImage: createImageProp({
       label: "Pin image",
       description: "Image to be used instead of the default pin",
       editable: true,

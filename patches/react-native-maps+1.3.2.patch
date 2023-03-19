@@ -1,3 +1,10 @@
+RN Maps is imported into Jigsaw but is not supported on web. 
+Since all 'require' statements are parsed/analysed this creates an issue due to missing native packages that are imported
+This patches RN Maps to include an 'empty' web version that removes reliance on imports not available on web
+
+Fix as sugegsted here: https://github.com/react-native-maps/react-native-maps/issues/4641
+Bigger, general expo issue: https://github.com/expo/expo/issues/16513
+
 diff --git a/node_modules/react-native-maps/lib/index.web.d.ts b/node_modules/react-native-maps/lib/index.web.d.ts
 new file mode 100644
 index 0000000..6ff26b8

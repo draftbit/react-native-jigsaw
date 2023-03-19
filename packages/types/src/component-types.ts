@@ -111,6 +111,7 @@ export const FORM_TYPES = {
   borderRadiusMode: "borderRadiusMode",
   fieldName: "fieldName",
   action: "action",
+  numeric: "numeric" /* Percentage or number (% or pt) */,
 };
 
 export const COMPONENT_TYPES = {

@@ -1,11 +1,15 @@
 import {
   COMPONENT_TYPES,
+  createActionProp,
   createBoolProp,
   createColorProp,
+  createImageProp,
   createNumberProp,
+  createStaticNumberProp,
   createTextProp,
   GROUPS,
   StylesPanelSections,
+  Triggers,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -20,7 +24,9 @@ export const SEED_DATA = {
     StylesPanelSections.Effects,
   ],
   layout: {},
+  triggers: [Triggers.OnPress],
   props: {
+    onPress: createActionProp(),
     latitude: createNumberProp({
       label: "Latitude",
       description: "The latitude in which the marker is located",
@@ -57,6 +63,20 @@ export const SEED_DATA = {
     pinColor: createColorProp({
       label: "Pin Color",
       description: "Sets the color of the marker",
+    }),
+    pinImage: createImageProp({
+      label: "Pin image",
+      description: "Image to be used instead of the default pin",
+      editable: true,
+      required: false,
+      defaultValue: null,
+    }),
+    pinImageSize: createStaticNumberProp({
+      label: "Pin image size",
+      description:
+        "The size of pin image. Only applies when using custom pin image",
+      required: false,
+      defaultValue: 50,
     }),
   },
 };

@@ -35,13 +35,7 @@ import ButtonExample from "./ButtonExample";
 import RadioButtonExample from "./RadioButtonExample";
 
 import CardExample from "./CardExample";
-import CardBlockExample from "./CardBlockExample";
-import CardInlineExample from "./CardInlineExample";
-// import CardContainerShortImageExample from "./CardContainerShortImageExample";
-import CardContainerExample from "./CardContainerExample";
-import CardContainerRatingExample from "./CardContainerRatingExample";
 
-import CarouselExample from "./CarouselExample";
 import ContainerExample from "./ContainerExample";
 // import ControllerExample from "./ControllerExample";
 
@@ -108,11 +102,6 @@ const ROUTES = {
   Checkbox: CheckboxExample,
   Card: CardExample,
   Accordion: AccordionExample,
-  CardBlock: CardBlockExample,
-  CardInline: CardInlineExample,
-  CardContainer: CardContainerExample,
-  CardContainerRating: CardContainerRatingExample,
-  Carousel: CarouselExample,
   Container: ContainerExample,
   CircleImage: CircleImageExample,
   // Controllers: ControllerExample,

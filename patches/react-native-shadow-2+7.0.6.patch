@@ -1,0 +1,24 @@
+Address bug where x offset was not applied on IOS.
+Fixed in PR https://github.com/SrBrahma/react-native-shadow-2/pull/68
+Use this patch until merged into a new version of react-native-shadow-2
+
+
+diff --git a/node_modules/react-native-shadow-2/lib/index.js b/node_modules/react-native-shadow-2/lib/index.js
+index cc12d1f..a2e7c01 100644
+--- a/node_modules/react-native-shadow-2/lib/index.js
++++ b/node_modules/react-native-shadow-2/lib/index.js
+@@ -271,7 +271,13 @@ function getResult({ shadow, stretch, setChildLayoutWidth, setChildLayoutHeight,
+     // pointerEvents: https://github.com/SrBrahma/react-native-shadow-2/issues/24
+     <View style={containerStyle} pointerEvents='box-none' {...containerViewProps}>
+       <View pointerEvents='none' {...shadowViewProps} style={[
+-            StyleSheet.absoluteFillObject,
++             {
++            position: "absolute",
++            start: 0,
++            end: 0,
++            top: 0,
++            bottom: 0,
++            },
+             shadowViewProps === null || shadowViewProps === void 0 ? void 0 : shadowViewProps.style,
+             { start: offset[0], top: offset[1] },
+         ]}>

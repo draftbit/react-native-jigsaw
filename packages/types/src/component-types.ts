@@ -395,7 +395,7 @@ export const createArrayProp = (overrides = {}) => ({
   editable: true,
   required: false,
   formType: FORM_TYPES.array,
-  propType: PROP_TYPES.OBJECT,
+  propType: PROP_TYPES.ARRAY,
   options: [],
   defaultValue: null,
   ...overrides,

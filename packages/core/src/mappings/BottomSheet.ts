@@ -95,11 +95,10 @@ export const SEED_DATA = {
       defaultValue: true,
     }),
     snapPoints: createArrayProp({
-      label: "Snap points",
+      label: "Custom Snap points",
       description:
         "An array of numerical values (that represent distance from the top) where bottom sheet can snap to. Accepts numbers and percentages (minimum 2 snap points). Overrides snap position props",
       defaultValue: null,
-      group: GROUPS.advanced,
     }),
     initialSnapIndex: createStaticNumberProp({
       label: "Initial snap index",

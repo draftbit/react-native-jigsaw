@@ -59,7 +59,7 @@ export const SEED_DATA = [
       "https://github.com/jemise111/react-native-swipe-list-view/blob/master/docs/SwipeRow.md",
     description:
       "A swipeable view that is able to show hidden buttons and/or handle swipe events",
-    category: COMPONENT_TYPES.view,
+    category: COMPONENT_TYPES.testing /*.view*/,
     stylesPanelSections: [
       ...CONTAINER_COMPONENT_STYLES_SECTIONS,
       StylesPanelSections.Typography,

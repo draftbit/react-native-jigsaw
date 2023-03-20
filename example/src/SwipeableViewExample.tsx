@@ -7,7 +7,7 @@ import React from "react";
 import { Text } from "react-native";
 import Section, { Container } from "./Section";
 
-const DeckSwiperExample: React.FC = () => {
+const SwipeableViewExample: React.FC = () => {
   return (
     <Container style={{ flex: 1 }}>
       <Section title="Swipeable View" style={{ flex: 1 }}>
@@ -39,4 +39,4 @@ const DeckSwiperExample: React.FC = () => {
   );
 };
 
-export default DeckSwiperExample;
+export default SwipeableViewExample;

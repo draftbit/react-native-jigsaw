@@ -11,9 +11,14 @@ import BottomSheetComponent from "./BottomSheetComponent";
 import type { Theme } from "../../styles/DefaultTheme";
 import { withTheme } from "../../theming";
 
+type SnapPosition = "top" | "middle" | "bottom";
 export interface BottomSheetProps extends ScrollViewProps {
-  snapPoints?: (string | number)[];
+  topSnapPosition?: string | number;
+  middleSnapPosition?: string | number;
+  bottomSnapPosition?: string | number;
+  snapPoints: (string | number)[];
   initialSnapIndex?: number;
+  initialSnapPosition: SnapPosition;
   showHandle?: boolean;
   handleColor?: string;
   topBorderRadius?: number;
@@ -26,8 +31,12 @@ export interface BottomSheetProps extends ScrollViewProps {
 
 const BottomSheet: React.FC<React.PropsWithChildren<BottomSheetProps>> = ({
   theme,
-  snapPoints = ["10%", "50%", "80%"],
-  initialSnapIndex = 0,
+  snapPoints: snapPointsProp,
+  topSnapPosition = "10%",
+  middleSnapPosition = "50%",
+  bottomSnapPosition = "80%",
+  initialSnapIndex,
+  initialSnapPosition = "bottom",
   showHandle = true,
   handleColor = theme.colors.divider,
   topBorderRadius = 20,
@@ -41,12 +50,31 @@ const BottomSheet: React.FC<React.PropsWithChildren<BottomSheetProps>> = ({
   const backgroundColor =
     (style as ViewStyle)?.backgroundColor || theme.colors.background;
 
+  const snapPoints = snapPointsProp || [
+    topSnapPosition,
+    middleSnapPosition,
+    bottomSnapPosition,
+  ];
+
+  const getSnapIndexFromPosition = (position: SnapPosition) => {
+    switch (position) {
+      case "top":
+        return 0;
+      case "middle":
+        return 1;
+      case "bottom":
+        return 2;
+    }
+  };
+
   return (
     <View style={styles.parentContainer} pointerEvents="box-none">
       <BottomSheetComponent
         componentType="ScrollView"
         snapPoints={snapPoints}
-        initialSnapIndex={initialSnapIndex}
+        initialSnapIndex={
+          initialSnapIndex ?? getSnapIndexFromPosition(initialSnapPosition)
+        }
         renderHandle={() => (
           <>
             {showHandle && (

@@ -8,6 +8,8 @@ import {
   FORM_TYPES,
   PROP_TYPES,
   StylesPanelSections,
+  Triggers,
+  createActionProp,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -22,7 +24,13 @@ export const SEED_DATA = {
     width: "100%",
     height: "100%",
   },
+  triggers: [Triggers.OnRegionChange],
   props: {
+    onRegionChange: createActionProp({
+      label: "On region changed",
+      description:
+        "Action to execute when map panning stops and region changes",
+    }),
     provider: {
       formType: FORM_TYPES.flatArray,
       propType: PROP_TYPES.STRING,

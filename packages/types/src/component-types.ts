@@ -17,6 +17,7 @@ export const Triggers = {
   OnIndexChanged: "ON_INDEX_CHANGED",
   OnEndReached: "ON_END_REACHED",
   OnSettle: "ON_SETTLE",
+  OnRegionChange: "ON_REGION_CHANGE",
 };
 
 export const StylesPanelSections = {

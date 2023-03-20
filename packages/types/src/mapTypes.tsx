@@ -1,4 +1,4 @@
-import { StyleProp, ViewStyle } from "react-native";
+import { StyleProp, ViewStyle, ImageSourcePropType } from "react-native";
 
 type MapTypes =
   | "standard"
@@ -14,6 +14,9 @@ export interface MapMarkerProps {
   title?: string;
   description?: string;
   pinColor?: string;
+  pinImage?: string | ImageSourcePropType;
+  pinImageSize?: number;
+  onPress?: () => void;
   flat?: boolean;
   style?: StyleProp<ViewStyle>;
 }
@@ -47,6 +50,7 @@ export interface MapViewProps<TMarkerData> {
     item: TMarkerData;
     index: number;
   }) => JSX.Element;
+  onRegionChange?: (latitude: number, longitude: number) => void;
 }
 
 export interface MapCalloutProps {

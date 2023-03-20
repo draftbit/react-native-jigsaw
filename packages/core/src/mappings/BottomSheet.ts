@@ -9,6 +9,7 @@ import {
   createArrayProp,
   GROUPS,
   createTextEnumProp,
+  FORM_TYPES,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -30,6 +31,7 @@ export const SEED_DATA = {
         "Top most postion where bottom sheet can snap to. A numerical value that represents distance from the top",
       defaultValue: "10%",
       required: false,
+      formType: FORM_TYPES.numeric,
     }),
     middleSnapPosition: createStaticNumberProp({
       label: "Middle snap position",
@@ -37,6 +39,7 @@ export const SEED_DATA = {
         "Middle postion where bottom sheet can snap to. A numerical value that represents distance from the top",
       defaultValue: "10%",
       required: false,
+      formType: FORM_TYPES.numeric,
     }),
     bottomSnapPosition: createStaticNumberProp({
       label: "Bottom snap position",
@@ -44,6 +47,7 @@ export const SEED_DATA = {
         "Bottom most postion where bottom sheet can snap to. A numerical value that represents distance from the top",
       defaultValue: "10%",
       required: false,
+      formType: FORM_TYPES.numeric,
     }),
     initialSnapPosition: createTextEnumProp({
       label: "Initial snap position",

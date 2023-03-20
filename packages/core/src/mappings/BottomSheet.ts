@@ -37,7 +37,7 @@ export const SEED_DATA = {
       label: "Middle snap position",
       description:
         "Middle postion where bottom sheet can snap to. A numerical value that represents distance from the top",
-      defaultValue: "10%",
+      defaultValue: "50%",
       required: false,
       formType: FORM_TYPES.numeric,
     }),
@@ -45,7 +45,7 @@ export const SEED_DATA = {
       label: "Bottom snap position",
       description:
         "Bottom most postion where bottom sheet can snap to. A numerical value that represents distance from the top",
-      defaultValue: "10%",
+      defaultValue: "80%",
       required: false,
       formType: FORM_TYPES.numeric,
     }),

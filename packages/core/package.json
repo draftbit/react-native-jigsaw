@@ -61,6 +61,7 @@
     "react-native-reanimated": "~2.9.1",
     "react-native-shadow-2": "^7.0.6",
     "react-native-svg": "12.3.0",
+    "react-native-swipe-list-view": "^3.2.9",
     "react-native-tab-view": "^3.4.0",
     "react-native-typography": "^1.4.1",
     "react-native-web-swiper": "^2.2.3",

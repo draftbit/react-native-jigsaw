@@ -7,6 +7,9 @@ import {
   createColorProp,
   createStaticNumberProp,
   createArrayProp,
+  GROUPS,
+  createTextEnumProp,
+  FORM_TYPES,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -22,17 +25,35 @@ export const SEED_DATA = {
       label: "On settle",
       description: "Action to execute when sheet settles on a snap point",
     }),
-    snapPoints: createArrayProp({
-      label: "Snap points",
+    topSnapPosition: createStaticNumberProp({
+      label: "Top snap position",
       description:
-        "An array of numerical values (that represent distance from the top) where bottom sheet can snap to place. Accepts numbers and percentages (minimum 2 snap points)",
-      defaultValue: ["10%", "50%", "80%"],
-    }),
-    initialSnapIndex: createStaticNumberProp({
-      label: "Initial snap index",
-      description: "Index of the snap point to be used as the initial point",
-      defaultValue: 0,
+        "Top most postion where bottom sheet can snap to. A numerical value that represents distance from the top",
+      defaultValue: "10%",
       required: false,
+      formType: FORM_TYPES.numeric,
+    }),
+    middleSnapPosition: createStaticNumberProp({
+      label: "Middle snap position",
+      description:
+        "Middle postion where bottom sheet can snap to. A numerical value that represents distance from the top",
+      defaultValue: "50%",
+      required: false,
+      formType: FORM_TYPES.numeric,
+    }),
+    bottomSnapPosition: createStaticNumberProp({
+      label: "Bottom snap position",
+      description:
+        "Bottom most postion where bottom sheet can snap to. A numerical value that represents distance from the top",
+      defaultValue: "80%",
+      required: false,
+      formType: FORM_TYPES.numeric,
+    }),
+    initialSnapPosition: createTextEnumProp({
+      label: "Initial snap position",
+      description: "Initial snap position that bottom sheet will snap to",
+      options: ["top", "middle", "bottom"],
+      defaultValue: "bottom",
     }),
     showHandle: createStaticBoolProp({
       label: "Show handle",
@@ -72,6 +93,20 @@ export const SEED_DATA = {
       description:
         "When true, the scroll view bounces when it reaches the end of the content if the content is larger then the scroll view along the axis of the scroll direction.",
       defaultValue: true,
+    }),
+    snapPoints: createArrayProp({
+      label: "Custom Snap points",
+      description:
+        "An array of numerical values (that represent distance from the top) where bottom sheet can snap to. Accepts numbers and percentages (minimum 2 snap points). Overrides snap position props",
+      defaultValue: null,
+    }),
+    initialSnapIndex: createStaticNumberProp({
+      label: "Initial snap index",
+      description:
+        "Index of the snap point to be used as the initial point. Overrides initial snap position",
+      defaultValue: null,
+      required: false,
+      group: GROUPS.advanced,
     }),
   },
 };

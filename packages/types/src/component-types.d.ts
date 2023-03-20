@@ -47,6 +47,7 @@ export declare const FORM_TYPES: {
   borderRadiusMode: string;
   fieldName: string;
   action: string;
+  numeric: string;
 };
 export declare const COMPONENT_TYPES: {
   basic: string;

@@ -14,7 +14,7 @@ import {
   createActionProp,
 } from "@draftbit/types";
 
-const SHARED_SWIPEABLE_CHILDREN_PROPS = {
+export const SHARED_SEED_DATA_PROPS = {
   title: createTextProp({
     label: "Title",
     description: "Title of button/swipeable",
@@ -187,7 +187,7 @@ export const SEED_DATA = [
     stylesPanelSections: [],
     triggers: [Triggers.OnPress],
     props: {
-      ...SHARED_SWIPEABLE_CHILDREN_PROPS,
+      ...SHARED_SEED_DATA_PROPS,
       onPress: createActionProp(),
     },
   },
@@ -199,7 +199,7 @@ export const SEED_DATA = [
     stylesPanelSections: [],
     triggers: [Triggers.OnSwipe],
     props: {
-      ...SHARED_SWIPEABLE_CHILDREN_PROPS,
+      ...SHARED_SEED_DATA_PROPS,
       onSwipe: createActionProp({
         label: "On swipe",
         description:

@@ -183,7 +183,7 @@ export const SEED_DATA = [
     name: "Swipeable View Button",
     tag: "SwipeableViewButton",
     description: "Button to be rendered under a Swipeable View",
-    category: COMPONENT_TYPES.view,
+    category: COMPONENT_TYPES.testing /*.view*/,
     stylesPanelSections: [],
     triggers: [Triggers.OnPress],
     props: {
@@ -195,7 +195,7 @@ export const SEED_DATA = [
     name: "Swipeable View Swipe Handler",
     tag: "SwipeableViewSwipeHandler",
     description: "Component that renders and handles swipe of Swipeable View",
-    category: COMPONENT_TYPES.view,
+    category: COMPONENT_TYPES.testing /*.view*/,
     stylesPanelSections: [],
     triggers: [Triggers.OnSwipe],
     props: {

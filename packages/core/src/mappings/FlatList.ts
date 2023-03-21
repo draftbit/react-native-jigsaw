@@ -15,9 +15,6 @@ export const SEED_DATA = {
   description: "A basic List component",
   category: COMPONENT_TYPES.data,
   stylesPanelSections: CONTAINER_COMPONENT_STYLES_SECTIONS,
-  layout: {
-    flex: 1,
-  },
   triggers: [Triggers.OnRefresh, Triggers.OnEndReached],
   props: {
     onRefresh: createActionProp(),

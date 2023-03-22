@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/native",
-  "version": "47.1.0",
+  "version": "47.2.0",
   "description": "Draftbit UI Components that Depend on Native Components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -9,12 +9,15 @@
   "source": "src/index.tsx",
   "files": [
     "src",
-    "lib"
+    "lib",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
   ],
   "scripts": {
-    "prepare": "bob build",
     "clean": "rimraf lib",
-    "clean:modules": "rimraf node_modules"
+    "clean:modules": "rimraf node_modules",
+    "prepack": "bob build"
   },
   "keywords": [
     "react-native",
@@ -36,18 +39,17 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/types": "^47.1.0",
+    "@draftbit/types": "47.2.0",
     "@expo/vector-icons": "^13.0.0",
     "@react-native-community/datetimepicker": "6.5.2",
     "@react-native-community/slider": "4.2.4",
-    "expo-av": "~13.0.2",
+    "expo-av": "~13.0.3",
     "expo-camera": "~13.1.0",
     "expo-linear-gradient": "~12.0.1",
     "react-native-svg": "13.4.0",
     "react-native-webview": "11.23.1"
   },
   "react-native-builder-bob": {
-    "declarationMap": false,
     "source": "src",
     "output": "lib",
     "targets": [
@@ -71,5 +73,9 @@
         }
       ]
     ]
-  }
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ]
 }

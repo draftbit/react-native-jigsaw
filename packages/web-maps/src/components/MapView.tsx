@@ -1,6 +1,7 @@
 import * as React from "react";
-import { GoogleMap, Marker, LoadScript } from "./ReactGoogleMaps";
+import { GoogleMap, Marker } from "./ReactGoogleMaps";
 import NoApiKey from "./NoApiKey";
+import MapScriptLoader from "./MapScriptLoader";
 import { MapViewProps } from "@draftbit/types";
 import { StyleSheet } from "react-native";
 
@@ -17,6 +18,7 @@ type State = {
     heading: number | null;
     speed: number | null;
   };
+  map: any;
 };
 
 class MapView extends React.Component<
@@ -29,6 +31,7 @@ class MapView extends React.Component<
       lat: props.latitude || 0,
       lng: props.longitude || 0,
       zoom: props.zoom,
+      map: null,
     };
   }
 
@@ -61,7 +64,6 @@ class MapView extends React.Component<
       (prevProps.latitude !== this.props.latitude ||
         prevProps.longitude !== this.props.longitude)
     ) {
-      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         lat: this.props.latitude,
         lng: this.props.longitude,
@@ -101,12 +103,13 @@ class MapView extends React.Component<
       markersData,
       renderItem,
       keyExtractor,
+      onRegionChange,
       children,
     } = this.props;
 
     const { lat, lng, userLocation, zoom } = this.state;
 
-    if (!LoadScript || !GoogleMap || !Marker) {
+    if (!GoogleMap || !Marker) {
       return null;
     }
 
@@ -115,18 +118,27 @@ class MapView extends React.Component<
     }
 
     return (
-      <LoadScript googleMapsApiKey={apiKey}>
+      <MapScriptLoader apiKey={apiKey}>
         <GoogleMap
           mapContainerStyle={StyleSheet.flatten(style) as React.CSSProperties}
           center={{
             lat,
             lng,
           }}
+          onLoad={(mapInstance: any) => {
+            this.setState({ map: mapInstance });
+          }}
           mapTypeId={mapType}
           zoom={zoom}
           options={{
             scrollwheel: scrollEnabled,
             rotateControl: rotateEnabled,
+          }}
+          onDragEnd={() => {
+            const center = this.state.map?.getBounds()?.getCenter();
+            if (center) {
+              onRegionChange?.(center.lat(), center.lng());
+            }
           }}
         >
           {userLocation ? (
@@ -161,7 +173,7 @@ class MapView extends React.Component<
               })
             : children}
         </GoogleMap>
-      </LoadScript>
+      </MapScriptLoader>
     );
   }
 }

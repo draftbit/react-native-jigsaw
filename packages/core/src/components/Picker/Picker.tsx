@@ -7,6 +7,7 @@ import {
   ViewStyle,
   StyleProp,
   Dimensions,
+  Keyboard,
 } from "react-native";
 import { omit, pickBy, identity, isObject } from "lodash";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -48,6 +49,7 @@ export type PickerProps = {
   placeholderTextColor?: string;
   rightIconName?: string;
   type?: "solid" | "underline";
+  autoDismissKeyboard?: boolean;
   theme: Theme;
   Icon: IconSlot["Icon"];
 };
@@ -84,10 +86,14 @@ function normalizeOptions(options: PickerProps["options"]): PickerOption[] {
 
 const { width: deviceWidth, height: deviceHeight } = Dimensions.get("screen");
 const isIos = Platform.OS === "ios";
+const isWeb = Platform.OS === "web";
+
 const unstyledColor = "rgba(165, 173, 183, 1)";
 const disabledColor = "rgb(240, 240, 240)";
 const errorColor = "rgba(255, 69, 100, 1)";
 
+//Empty string for 'value' is treated as a non-value
+//reason: Draftbit uses empty string as initial value for string state*/
 const Picker: React.FC<PickerProps> = ({
   error,
   options = [],
@@ -98,7 +104,6 @@ const Picker: React.FC<PickerProps> = ({
   placeholder,
   value,
   disabled = false,
-  theme,
   assistiveText,
   label,
   iconColor = unstyledColor,
@@ -108,6 +113,7 @@ const Picker: React.FC<PickerProps> = ({
   placeholderTextColor = unstyledColor,
   rightIconName,
   type = "solid",
+  autoDismissKeyboard = true,
 }) => {
   const androidPickerRef = React.useRef<any | undefined>(undefined);
 
@@ -122,13 +128,15 @@ const Picker: React.FC<PickerProps> = ({
   };
 
   React.useEffect(() => {
-    if (value != null) {
+    if (value != null && value !== "") {
       setInternalValue(value);
+    } else if (value === "") {
+      setInternalValue(undefined);
     }
   }, [value]);
 
   React.useEffect(() => {
-    if (defaultValue != null) {
+    if (defaultValue != null && defaultValue !== "") {
       setInternalValue(defaultValue);
     }
   }, [defaultValue]);
@@ -139,13 +147,37 @@ const Picker: React.FC<PickerProps> = ({
     }
   }, [pickerVisible, androidPickerRef]);
 
-  const normalizedOptions = normalizeOptions(options);
+  React.useEffect(() => {
+    if (pickerVisible && autoDismissKeyboard) {
+      Keyboard.dismiss();
+    }
+  }, [pickerVisible, autoDismissKeyboard]);
 
-  const pickerOptions = placeholder
-    ? [{ value: placeholder, label: placeholder }, ...normalizedOptions]
-    : normalizedOptions;
+  const normalizedOptions = React.useMemo(
+    () => normalizeOptions(options),
+    [options]
+  );
 
-  const { colors } = theme;
+  //Underlying Picker component defaults selection to first element when value is not provided (or undefined)
+  //Placholder must be the 1st option in order to allow selection of the 'actual' 1st option
+  const pickerOptions = React.useMemo(
+    () =>
+      placeholder
+        ? [{ label: placeholder, value: placeholder }, ...normalizedOptions]
+        : normalizedOptions,
+    [placeholder, normalizedOptions]
+  );
+
+  //When no placeholder is provided then first item should be marked selected to reflect underlying Picker internal state
+  if (
+    !placeholder &&
+    pickerOptions.length &&
+    !internalValue &&
+    internalValue !== pickerOptions[0].value //Prevent infinite state changes incase first value is falsy
+  ) {
+    onValueChange?.(pickerOptions[0].value, 0);
+    setInternalValue(pickerOptions[0].value);
+  }
 
   const { viewStyles, textStyles } = extractStyles(style);
 
@@ -296,10 +328,13 @@ const Picker: React.FC<PickerProps> = ({
   };
 
   const handleValueChange = (newValue: string, itemIndex: number) => {
-    if (!placeholder || itemIndex > 0) {
+    if (newValue !== "" && newValue !== placeholder) {
       onValueChange?.(newValue, itemIndex);
+      setInternalValue(newValue);
+    } else if (newValue === placeholder) {
+      onValueChange?.("", 0);
+      setInternalValue(undefined);
     }
-    setInternalValue(newValue);
   };
 
   return (
@@ -347,15 +382,8 @@ const Picker: React.FC<PickerProps> = ({
       {/* iosPicker */}
       {isIos && pickerVisible ? (
         <Portal>
-          <View
-            style={[
-              styles.iosPicker,
-              {
-                backgroundColor: colors.divider,
-              },
-            ]}
-          >
-            <SafeAreaView style={styles.iosSafeArea}>
+          <SafeAreaView style={styles.iosPicker}>
+            <View style={styles.iosPickerContent}>
               <Button
                 Icon={Icon}
                 type="text"
@@ -378,15 +406,16 @@ const Picker: React.FC<PickerProps> = ({
                   />
                 ))}
               </NativePicker>
-            </SafeAreaView>
-          </View>
+            </View>
+          </SafeAreaView>
         </Portal>
       ) : null}
 
       {/* nonIosPicker */}
-      {!isIos && pickerVisible ? (
+      {/* Web version is collapsed by default, always show to allow direct expand */}
+      {!isIos && (pickerVisible || isWeb) ? (
         <NativePicker
-          enabled={pickerVisible}
+          enabled={!disabled}
           selectedValue={internalValue}
           onValueChange={handleValueChange}
           style={styles.nonIosPicker}
@@ -451,9 +480,9 @@ const styles = StyleSheet.create({
     width: "100%",
     maxWidth: deviceWidth,
     maxHeight: deviceHeight,
-  },
-  iosSafeArea: {
     backgroundColor: "white",
+  },
+  iosPickerContent: {
     flexDirection: "column",
     width: "100%",
     maxWidth: deviceWidth,

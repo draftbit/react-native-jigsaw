@@ -9,7 +9,6 @@ export { Button, ButtonSolid, ButtonOutline } from "./components/Button";
 export { default as Avatar } from "./components/CircleImage";
 export { default as AvatarEdit } from "./components/AvatarEdit";
 export { default as Card } from "./components/Card";
-export { default as Carousel } from "./components/Carousel";
 export { Checkbox, CheckboxGroup, CheckboxRow } from "./components/Checkbox";
 export { default as CircleImage } from "./components/CircleImage";
 export { default as Container } from "./components/Container";
@@ -52,15 +51,27 @@ export {
   RadioButtonFieldGroup,
 } from "./components/RadioButton/index";
 
+export { default as Shadow } from "./components/Shadow";
+
+export { DeckSwiper, DeckSwiperCard } from "./components/DeckSwiper";
+
+export { TabView, TabViewItem } from "./components/TabView";
+export { default as Markdown } from "./components/Markdown";
+
+export { BottomSheet } from "./components/BottomSheet";
+
+export { YoutubePlayer } from "./components/YoutubePlayer";
+
+export { Table, TableRow, TableCell } from "./components/Table";
+
+export {
+  SwipeableView,
+  SwipeableViewButton,
+  SwipeableViewSwipeHandler,
+} from "./components/SwipeableView";
+
 /* Deprecated: Fix or Delete!  */
-export { default as CardBlock } from "./components/CardBlock";
-export { default as CardContainer } from "./components/CardContainer";
-export { default as CardContainerRating } from "./components/CardContainerRating";
-export { default as CardInline } from "./components/CardInline";
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
-export { default as HeaderLarge } from "./components/HeaderLarge";
-export { default as HeaderMedium } from "./components/HeaderMedium";
-export { default as HeaderOverline } from "./components/HeaderOverline";
 export { default as Picker } from "./components/Picker/Picker";
 export { default as ProgressBar } from "./components/ProgressBar";
 export { default as ProgressCircle } from "./components/ProgressCircle";

@@ -6,6 +6,7 @@ import {
   FIELD_NAME,
   Triggers,
   createDisabledProp,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -13,6 +14,15 @@ export const SEED_DATA = {
   tag: "TextInput",
   description: "An input field that allows for multiple lines.",
   category: COMPONENT_TYPES.input,
+  stylesPanelSections: [
+    StylesPanelSections.Typography,
+    StylesPanelSections.Background,
+    StylesPanelSections.Size,
+    StylesPanelSections.MarginsAndPaddings,
+    StylesPanelSections.Position,
+    StylesPanelSections.Borders,
+    StylesPanelSections.Effects,
+  ],
   layout: {
     borderLeftWidth: 1,
     borderRightWidth: 1,

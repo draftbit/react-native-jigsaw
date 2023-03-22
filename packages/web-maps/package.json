@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/web-maps",
-  "version": "47.1.0",
+  "version": "47.2.0",
   "description": "Web Map Components",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -15,9 +15,9 @@
     "!**/__mocks__"
   ],
   "scripts": {
-    "prepare": "bob build",
     "clean": "rimraf lib",
-    "clean:modules": "rimraf node_modules"
+    "clean:modules": "rimraf node_modules",
+    "prepack": "bob build"
   },
   "keywords": [
     "react-native",
@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/types": "^47.1.0",
+    "@draftbit/types": "47.2.0",
     "@react-google-maps/api": "^2.10.2"
   },
   "react-native-builder-bob": {
@@ -66,5 +66,9 @@
         }
       ]
     ]
-  }
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ]
 }

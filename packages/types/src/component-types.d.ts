@@ -47,6 +47,7 @@ export declare const FORM_TYPES: {
   borderRadiusMode: string;
   fieldName: string;
   action: string;
+  numeric: string;
 };
 export declare const COMPONENT_TYPES: {
   basic: string;
@@ -66,6 +67,7 @@ export declare const COMPONENT_TYPES: {
   deprecated: string;
   screen: string;
   codeComponent: string;
+  text: string;
 };
 export declare const createElevationType: (defaultValue: any) => {
   defaultValue: any;

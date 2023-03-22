@@ -16,7 +16,7 @@
     "crosslink": "lerna link",
     "format": "prettier --write .",
     "lint": "eslint \"**/*.{ts,tsx}\"",
-    "build": "lerna run prepare",
+    "build": "lerna run prepack",
     "release": "lerna publish",
     "example:snack": "ts-node --transpile-only scripts/upload-to-snack.ts",
     "clean": "lerna run clean",
@@ -25,8 +25,8 @@
     "upload:run": "node ./scripts/collector.js",
     "upload:test": "bash ./scripts/test-collector.bash",
     "version:expo": "lerna version major --no-push",
-    "version:major": "lerna version minor --no-push",
-    "version:minor": "lerna version patch --no-push",
+    "version:major": "lerna version minor --no-push --exact",
+    "version:minor": "lerna version patch --no-push --exact",
     "version:patch": "echo \"No patch versions: See root README.md\"",
     "prepare": "husky install",
     "tsc": "echo 'You are trying to run \"tsc\" in the workspace root. Run it from an individual package instead.' && exit 1"
@@ -36,7 +36,7 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@react-native-community/eslint-config": "^3.1.0",
+    "@react-native-community/eslint-config": "^3.2.0",
     "@types/jest": "^26.0.23",
     "babel-jest": "^26.6.3",
     "dotenv": "^9.0.2",
@@ -52,7 +52,7 @@
     "patch-package": "^6.4.7",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.7.1",
-    "react-native-builder-bob": "^0.20.3",
+    "react-native-builder-bob": "^0.20.4",
     "rimraf": "^3.0.2",
     "ts-node": "^10.0.0",
     "typescript": "~4.7.4",

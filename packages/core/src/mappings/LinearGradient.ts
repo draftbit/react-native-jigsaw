@@ -3,6 +3,7 @@ import {
   FORM_TYPES,
   GROUPS,
   PROP_TYPES,
+  StylesPanelSections,
 } from "@draftbit/types";
 
 export const SEED_DATA = {
@@ -10,6 +11,11 @@ export const SEED_DATA = {
   tag: "LinearGradient",
   description: "Linear Gradient Component",
   layout: { width: "100%", height: "100%" },
+  stylesPanelSections: [
+    StylesPanelSections.MarginsAndPaddings,
+    StylesPanelSections.Borders,
+    StylesPanelSections.Effects,
+  ],
   props: {
     endY: {
       group: GROUPS.basic,

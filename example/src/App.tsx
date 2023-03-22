@@ -1,4 +1,3 @@
-import { Asset } from "expo-asset";
 import Constants from "expo-constants";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
@@ -9,6 +8,7 @@ import {
   Image,
   TouchableOpacity,
   StyleSheet,
+  ImageSourcePropType,
 } from "react-native";
 
 import {
@@ -35,13 +35,7 @@ import ButtonExample from "./ButtonExample";
 import RadioButtonExample from "./RadioButtonExample";
 
 import CardExample from "./CardExample";
-import CardBlockExample from "./CardBlockExample";
-import CardInlineExample from "./CardInlineExample";
-// import CardContainerShortImageExample from "./CardContainerShortImageExample";
-import CardContainerExample from "./CardContainerExample";
-import CardContainerRatingExample from "./CardContainerRatingExample";
 
-import CarouselExample from "./CarouselExample";
 import ContainerExample from "./ContainerExample";
 // import ControllerExample from "./ControllerExample";
 
@@ -83,6 +77,21 @@ import LinearGradientExample from "./LinearGradientExample";
 
 import SurfaceExample from "./SurfaceExample";
 
+import ShadowExample from "./ShadowExample";
+
+import DeckSwiperExample from "./DeckSwiperExample";
+
+import TabViewExample from "./TabViewExample";
+import MarkdownExample from "./MarkdownExample";
+
+import BottomSheetExample from "./BottomSheetExample";
+
+import YoutubeExample from "./YoutubeExample";
+
+import TableExample from "./TableExample";
+
+import SwipeableViewExample from "./SwipeableViewExample";
+
 const ROUTES = {
   AudioPlayer: AudioPlayerExample,
   Layout: LayoutExample,
@@ -95,11 +104,6 @@ const ROUTES = {
   Checkbox: CheckboxExample,
   Card: CardExample,
   Accordion: AccordionExample,
-  CardBlock: CardBlockExample,
-  CardInline: CardInlineExample,
-  CardContainer: CardContainerExample,
-  CardContainerRating: CardContainerRatingExample,
-  Carousel: CarouselExample,
   Container: ContainerExample,
   CircleImage: CircleImageExample,
   // Controllers: ControllerExample,
@@ -127,6 +131,14 @@ const ROUTES = {
   TextInput: TextInputExample,
   NumberInput: NumberInputExample,
   WebView: WebViewExample,
+  Shadow: ShadowExample,
+  DeckSwiper: DeckSwiperExample,
+  TabView: TabViewExample,
+  Markdown: MarkdownExample,
+  BottomSheet: BottomSheetExample,
+  Youtube: YoutubeExample,
+  Table: TableExample,
+  SwipeableView: SwipeableViewExample,
 };
 
 let customFonts = {
@@ -136,15 +148,18 @@ let customFonts = {
     "https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12",
 };
 
+const splashImage = require("./assets/images/splash.png");
+
 const Drawer = createDrawerNavigator();
 
 type ExampleProps = { title: string; children: React.ReactNode };
+type SplashScreenProviderProps = { image: ImageSourcePropType };
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
 export default function App() {
   return (
-    <SplashScreenProvider image={{ uri: Constants.manifest.splash.image }}>
+    <SplashScreenProvider image={splashImage}>
       <Provider theme={DefaultTheme}>
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
           <Examples />
@@ -154,15 +169,15 @@ export default function App() {
   );
 }
 
-function SplashScreenProvider({ children, image }) {
+const SplashScreenProvider: React.FC<
+  React.PropsWithChildren<SplashScreenProviderProps>
+> = ({ children, image }) => {
   const [isSplashReady, setSplashReady] = useState(false);
 
   useEffect(() => {
     async function prepare() {
       try {
-        // Pre-load fonts, make any api calls you need to do here
         await Font.loadAsync(customFonts);
-        await Asset.fromURI(image.uri).downloadAsync();
       } catch (e) {
         console.warn(e);
       } finally {
@@ -178,9 +193,11 @@ function SplashScreenProvider({ children, image }) {
   }
 
   return <AnimatedSplashScreen image={image}>{children}</AnimatedSplashScreen>;
-}
+};
 
-function AnimatedSplashScreen({ children, image }) {
+const AnimatedSplashScreen: React.FC<
+  React.PropsWithChildren<SplashScreenProviderProps>
+> = ({ children, image }) => {
   const animation = useMemo(() => new Animated.Value(1), []);
   const [isAppReady, setAppReady] = useState(false);
   const [isSplashAnimationComplete, setAnimationComplete] = useState(false);
@@ -202,6 +219,7 @@ function AnimatedSplashScreen({ children, image }) {
       await Promise.all([]);
     } catch (e) {
       // handle errors
+      console.warn(e);
     } finally {
       setAppReady(true);
     }
@@ -216,7 +234,9 @@ function AnimatedSplashScreen({ children, image }) {
           style={[
             StyleSheet.absoluteFill,
             {
-              backgroundColor: Constants.manifest.splash.backgroundColor,
+              backgroundColor:
+                Constants?.manifest?.splash?.backgroundColor ||
+                "rgba(90, 69, 255, 1)",
               opacity: animation,
             },
           ]}
@@ -225,7 +245,7 @@ function AnimatedSplashScreen({ children, image }) {
             style={{
               width: "100%",
               height: "100%",
-              resizeMode: Constants.manifest.splash.resizeMode || "contain",
+              resizeMode: Constants?.manifest?.splash?.resizeMode || "contain",
               transform: [
                 {
                   scale: animation,
@@ -240,7 +260,7 @@ function AnimatedSplashScreen({ children, image }) {
       )}
     </View>
   );
-}
+};
 
 function Example({ title, children }: ExampleProps) {
   const navigation = useNavigation();

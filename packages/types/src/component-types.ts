@@ -16,6 +16,8 @@ export const Triggers = {
   OnPressIcon: "ON_PRESS_ICON",
   OnIndexChanged: "ON_INDEX_CHANGED",
   OnEndReached: "ON_END_REACHED",
+  OnSettle: "ON_SETTLE",
+  OnRegionChange: "ON_REGION_CHANGE",
 };
 
 export const StylesPanelSections = {
@@ -109,6 +111,7 @@ export const FORM_TYPES = {
   borderRadiusMode: "borderRadiusMode",
   fieldName: "fieldName",
   action: "action",
+  numeric: "numeric" /* Percentage or number (% or pt) */,
 };
 
 export const COMPONENT_TYPES = {
@@ -126,6 +129,10 @@ export const COMPONENT_TYPES = {
   swiper: "swiper",
   map: "map",
   view: "view",
+  text: "text",
+  bottomsheet: "bottomsheet",
+  table: "table",
+  testing: "testing",
   /* Deprecated */
   row: "row",
   card: "card",
@@ -378,6 +385,19 @@ export const createBorderRadiusProp = (overrides = {}) => ({
   defaultValue: null,
   editable: true,
   required: true,
+  ...overrides,
+});
+
+export const createArrayProp = (overrides = {}) => ({
+  group: GROUPS.data,
+  label: "Options",
+  description: "Array of options.",
+  editable: true,
+  required: false,
+  formType: FORM_TYPES.array,
+  propType: PROP_TYPES.ARRAY,
+  options: [],
+  defaultValue: null,
   ...overrides,
 });
 

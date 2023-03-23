@@ -17,18 +17,12 @@ function zoomToAltitude(zoom: number) {
   return C * Math.pow((A - D) / (zoom - D) - 1, 1 / B);
 }
 
-type State = {
-  isFirstRegionChange: boolean;
-};
-
 class MapView extends React.Component<
-  React.PropsWithChildren<MapViewProps<any>>,
-  State
+  React.PropsWithChildren<MapViewProps<any>>
 > {
   private mapRef: React.RefObject<any>;
   constructor(props: React.PropsWithChildren<MapViewProps<any>>) {
     super(props);
-    this.state = { isFirstRegionChange: true };
     this.mapRef = React.createRef();
   }
 
@@ -133,12 +127,9 @@ class MapView extends React.Component<
         showsPointsOfInterest={showsPointsOfInterest}
         loadingBackgroundColor={loadingBackgroundColor}
         loadingIndicatorColor={loadingIndicatorColor}
-        onRegionChangeComplete={(region: any) => {
-          if (this.state.isFirstRegionChange) {
-            //Skip first region change to match behavior of web maps
-            this.setState({ isFirstRegionChange: false });
-          } else {
-            onRegionChange?.(region.latitude, region.longitude);
+        onRegionChangeComplete={(region: any, { isGesture }: any) => {
+          if (isGesture) {
+            onRegionChange?.(region);
           }
         }}
         style={style}

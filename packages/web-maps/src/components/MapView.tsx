@@ -150,8 +150,8 @@ class MapView extends React.Component<
 
     const updateRegion = () => {
       const region = this.getCurrentRegion();
-      if (region) {
-        onRegionChange?.(region);
+      if (region && onRegionChange) {
+        onRegionChange(region);
       }
     };
 
@@ -164,10 +164,11 @@ class MapView extends React.Component<
             lng,
           }}
           onLoad={(mapInstance: any) => {
+            const div = mapInstance.getDiv();
             this.setState({
               map: mapInstance,
-              mapWidth: mapInstance.getDiv().offsetWidth,
-              mapHeight: mapInstance.getDiv().offsetHeight,
+              mapWidth: div.offsetWidth,
+              mapHeight: div.offsetHeight,
             });
           }}
           mapTypeId={mapType}

@@ -3,7 +3,7 @@ import React from "react";
 export interface SwipeableViewButtonProps {
   title: string;
   side: "left" | "right";
-  onPress: (() => void) | null; //Not optional in order to always exist in props
+  onPress?: () => void;
   icon?: string;
   iconSize?: number;
   backgroundColor?: string;

@@ -169,7 +169,7 @@ export function extractEffectStyles(
   return effectStyles;
 }
 
-export const sizeStyleNames = ["width", "height"];
+export const sizeStyleNames = ["width", "height", "minWidth", "minHeight"];
 
 export function extractSizeStyles(
   style: StyleProp<any>,

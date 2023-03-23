@@ -15,19 +15,19 @@ const SwipeableViewExample: React.FC = () => {
           <Text>Some Content</Text>
 
           <SwipeableViewButton
-            onPress={null}
+            onPress={() => {}}
             side="left"
             title="Button"
             icon="add"
           />
           <SwipeableViewButton
-            onPress={null}
+            onPress={() => {}}
             side="left"
             title="Button"
             icon="add"
           />
           <SwipeableViewSwipeHandler
-            onSwipe={null}
+            onSwipe={() => {}}
             side="right"
             title="Swipe"
             icon="add"

@@ -84,8 +84,9 @@ const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
           lat: latitude,
           lng: longitude,
         }}
-        onClick={() => {
-          onPress?.();
+        onClick={(event: any) => {
+          const latLng = event.latLng;
+          onPress?.(latLng.lat(), latLng.lng());
           handleMarkerClick();
         }}
         onLoad={handleOnLoad}

@@ -30,7 +30,10 @@ const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
       description={description != null ? String(description) : undefined}
       flat={flat}
       pinColor={pinColor}
-      onPress={onPress}
+      onPress={(event: any) => {
+        const coordinate = event.nativeEvent.coordinate;
+        onPress?.(coordinate.latitude, coordinate.longitude);
+      }}
       style={style}
     >
       {pinImage && (

@@ -2,7 +2,7 @@ import * as React from "react";
 import { GoogleMap, Marker } from "./ReactGoogleMaps";
 import NoApiKey from "./NoApiKey";
 import MapScriptLoader from "./MapScriptLoader";
-import { MapViewProps } from "@draftbit/types";
+import { MapViewProps, MapRegion } from "@draftbit/types";
 import { StyleSheet } from "react-native";
 
 type State = {
@@ -19,6 +19,8 @@ type State = {
     speed: number | null;
   };
   map: any;
+  mapWidth?: number;
+  mapHeight?: number;
 };
 
 class MapView extends React.Component<
@@ -93,6 +95,35 @@ class MapView extends React.Component<
     this.setState(args);
   }
 
+  //latitudeDelta and longitudeDelta match implementation of react-native-maps
+  //Calculation based on https://stackoverflow.com/a/53868257
+  private getCurrentRegion(): MapRegion | null {
+    if (!this.state.mapWidth || !this.state.mapHeight || !this.state.map) {
+      return null;
+    }
+
+    const aspectRatio = this.state.mapWidth / this.state.mapHeight;
+
+    const bounds = this.state.map.getBounds();
+    const center = bounds.getCenter();
+    const northEast = bounds.getNorthEast();
+    const southWest = bounds.getSouthWest();
+
+    const lat = center.lat();
+    const lng = center.lng();
+    const northeastLat = northEast.lat();
+    const southwestLat = southWest.lat();
+    const latDelta = northeastLat - southwestLat;
+    const lngDelta = latDelta * aspectRatio;
+
+    return {
+      latitude: lat,
+      longitude: lng,
+      latitudeDelta: latDelta,
+      longitudeDelta: lngDelta,
+    };
+  }
+
   render() {
     const {
       apiKey,
@@ -117,6 +148,13 @@ class MapView extends React.Component<
       return <NoApiKey />;
     }
 
+    const updateRegion = () => {
+      const region = this.getCurrentRegion();
+      if (region) {
+        onRegionChange?.(region);
+      }
+    };
+
     return (
       <MapScriptLoader apiKey={apiKey}>
         <GoogleMap
@@ -126,7 +164,11 @@ class MapView extends React.Component<
             lng,
           }}
           onLoad={(mapInstance: any) => {
-            this.setState({ map: mapInstance });
+            this.setState({
+              map: mapInstance,
+              mapWidth: mapInstance.getDiv().offsetWidth,
+              mapHeight: mapInstance.getDiv().offsetHeight,
+            });
           }}
           mapTypeId={mapType}
           zoom={zoom}
@@ -134,12 +176,8 @@ class MapView extends React.Component<
             scrollwheel: scrollEnabled,
             rotateControl: rotateEnabled,
           }}
-          onDragEnd={() => {
-            const center = this.state.map?.getBounds()?.getCenter();
-            if (center) {
-              onRegionChange?.(center.lat(), center.lng());
-            }
-          }}
+          onDragEnd={updateRegion}
+          onZoomChanged={updateRegion}
         >
           {userLocation ? (
             <Marker

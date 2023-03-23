@@ -8,6 +8,13 @@ type MapTypes =
   | "none"
   | "mutedStandard";
 
+export type MapRegion = {
+  latitude: number;
+  longitude: number;
+  latitudeDelta: number;
+  longitudeDelta: number;
+};
+
 export interface MapMarkerProps {
   latitude: number;
   longitude: number;
@@ -16,7 +23,7 @@ export interface MapMarkerProps {
   pinColor?: string;
   pinImage?: string | ImageSourcePropType;
   pinImageSize?: number;
-  onPress?: () => void;
+  onPress?: (latitude: number, longitude: number) => void;
   flat?: boolean;
   style?: StyleProp<ViewStyle>;
 }
@@ -50,7 +57,7 @@ export interface MapViewProps<TMarkerData> {
     item: TMarkerData;
     index: number;
   }) => JSX.Element;
-  onRegionChange?: (latitude: number, longitude: number) => void;
+  onRegionChange?: (region: MapRegion) => void;
 }
 
 export interface MapCalloutProps {

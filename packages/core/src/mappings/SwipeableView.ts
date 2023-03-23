@@ -86,12 +86,12 @@ export const SEED_DATA = [
       disableLeftSwipe: createBoolProp({
         label: "Disable left swipe",
         description: "Whether left swipe is enabled or not",
-        defaultValue: true,
+        defaultValue: false,
       }),
       disableRightSwipe: createBoolProp({
         label: "Disable right swipe",
         description: "Whether right swipe is enabled or not",
-        defaultValue: true,
+        defaultValue: false,
       }),
       leftOpenValue: createStaticNumberProp({
         label: "Left open value",

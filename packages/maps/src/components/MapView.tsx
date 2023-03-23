@@ -28,7 +28,6 @@ class MapView extends React.Component<
   private mapRef: React.RefObject<any>;
   constructor(props: React.PropsWithChildren<MapViewProps<any>>) {
     super(props);
-    this.state = { isFirstRegionChange: true };
     this.mapRef = React.createRef();
   }
 
@@ -133,12 +132,9 @@ class MapView extends React.Component<
         showsPointsOfInterest={showsPointsOfInterest}
         loadingBackgroundColor={loadingBackgroundColor}
         loadingIndicatorColor={loadingIndicatorColor}
-        onRegionChangeComplete={(region: any) => {
-          if (this.state.isFirstRegionChange) {
-            //Skip first region change to match behavior of web maps
-            this.setState({ isFirstRegionChange: false });
-          } else {
-            onRegionChange?.(region.latitude, region.longitude);
+        onRegionChangeComplete={(region: any, { isGesture }: any) => {
+          if (isGesture) {
+            onRegionChange?.(region);
           }
         }}
         style={style}

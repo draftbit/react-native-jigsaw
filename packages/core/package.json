@@ -81,6 +81,8 @@
     "targets": [
       "commonjs",
       "module",
+      "commonjs",
+      "module",
       [
         "typescript",
         {

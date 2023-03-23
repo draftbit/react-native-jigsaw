@@ -77,18 +77,23 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
   const { borderStyles, marginStyles } =
     extractBorderAndMarginStyles(viewStyles);
 
+  const sizeStyles = extractSizeStyles(viewStyles);
+
   const parentContainerStyles = StyleSheet.flatten([
     borderStyles,
     marginStyles,
     extractFlexItemStyles(viewStyles),
     extractPositionStyles(viewStyles),
     extractEffectStyles(viewStyles),
-    extractSizeStyles(viewStyles),
+    sizeStyles,
   ]);
 
   //Remove styles already consumed from viewStyles
   Object.keys(parentContainerStyles).forEach((key) => delete viewStyles[key]);
-  const surfaceContainerStyles = viewStyles;
+  const surfaceContainerStyles = StyleSheet.flatten([
+    viewStyles,
+    sizeStyles /* Size styles needs to be readded to surface container due to inconsistencies on web */,
+  ]);
 
   const [componentWidth, setComponentWidth] = React.useState<number | null>(
     null
@@ -289,7 +294,7 @@ const styles = StyleSheet.create({
   surfaceContainer: {
     flexDirection: "row",
     width: "100%",
-    height: "100%",
+    minHeight: 50,
     padding: 10,
     alignItems: "center",
     overflow: "hidden",

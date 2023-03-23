@@ -17,13 +17,8 @@ function zoomToAltitude(zoom: number) {
   return C * Math.pow((A - D) / (zoom - D) - 1, 1 / B);
 }
 
-type State = {
-  isFirstRegionChange: boolean;
-};
-
 class MapView extends React.Component<
-  React.PropsWithChildren<MapViewProps<any>>,
-  State
+  React.PropsWithChildren<MapViewProps<any>>
 > {
   private mapRef: React.RefObject<any>;
   constructor(props: React.PropsWithChildren<MapViewProps<any>>) {

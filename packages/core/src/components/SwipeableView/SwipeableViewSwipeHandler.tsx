@@ -3,7 +3,7 @@ import React from "react";
 export interface SwipeableViewSwipeHandlerProps {
   title: string;
   side: "left" | "right";
-  onSwipe: (() => void) | null; //Not optional in order to always exist in props
+  onSwipe?: () => void;
   icon?: string;
   iconSize?: number;
   backgroundColor?: string;

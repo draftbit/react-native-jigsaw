@@ -22,8 +22,6 @@
     "clean": "lerna run clean",
     "clean:modules": "lerna run clean:modules && rm -rf node_modules",
     "typescript": "tsc --composite false",
-    "upload:run": "node ./scripts/collector.js",
-    "upload:test": "bash ./scripts/test-collector.bash",
     "version:expo": "lerna version major --no-push",
     "version:major": "lerna version minor --no-push --exact",
     "version:minor": "lerna version patch --no-push --exact",

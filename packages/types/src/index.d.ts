@@ -1,5 +1,4 @@
 import type { ComponentType, ComponentPropsWithoutRef } from "react";
-export * from "./component-types";
 export declare type Font = {
   fontFamily: string;
   fontWeight?:

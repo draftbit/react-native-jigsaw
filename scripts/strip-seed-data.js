@@ -1,5 +1,9 @@
 const { promises: fs } = require("fs");
 
+/**
+ * component-types.ts has been moved to the draftbit repo. Consider modifying this script and moving it as well.
+ * or delete if not needed
+ */
 const CLOUDINARY_URL =
   "https://res.cloudinary.com/altos/image/upload/draftbit/library/jigsaw-1.0/reps";
 

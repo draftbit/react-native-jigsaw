@@ -30,9 +30,6 @@ jobs:
       - name: Lint
         run: yarn lint
 
-      - name: Test Collector
-        run: yarn upload:test
-
       - name: Build
         run: yarn build
 

@@ -40,9 +40,9 @@ This is a lerna/monorepo setup that is split up into types, native, core and ui 
 
 ### SEED_DATA
 
-You'll notice that most components will have `SEED_DATA` at the bottom of their files. This is how we incorporate components and props into Draftbit's property panel.
+Most components will have a `SEED_DATA` object. This is how we incorporate components and props into Draftbit's property panel.
 
-The object at the bottom maps one to one to what the UI will look like in the panel. Here's an example of the "View" component:
+This object maps one to one to what the UI will look like in the panel. Here's an example of the "View" component:
 
 ![Draftbit Properties Panel](./images/view-properties-panel.png)
 
@@ -68,7 +68,9 @@ Here's an example of what the SEED_DATA prop would look like:
 
 Our legacy implementation included an object, like you see `pointerEvents` above. Moving forward, everything should be a function, like `createImageProp()`. The reason is that its easier to maintain and update across the board when features change inside the builder.
 
-If you're having doubts, use a function. If that function doesn't exist, create it! All the functions live inside [packages/types/src/component-types](https://github.com/draftbit/react-native-jigsaw/blob/master/packages/types/src/component-types.ts)
+If you're having doubts, use a function. If that function doesn't exist, create it!
+
+All the functions and SEED_DATA live inside the [draftbit repo](https://github.com/draftbit/draftbit/blob/master/component-mappings). The jigsaw repo currently only holds the components, the mapping logic is maintained within the draftbit repo.
 
 ## Linking
 

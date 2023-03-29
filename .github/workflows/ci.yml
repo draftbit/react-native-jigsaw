@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16.18
-          cache: "yarn"
+          cache: 'yarn'
           registry-url: https://registry.npmjs.org/
 
       - name: Install Dependencies
@@ -40,7 +40,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         run: |
           # Publishes pre-release versions of any changed packages
-          yarn lerna publish from-package \
+          yarn lerna publish \
             --dist-tag next \
             --ignore-scripts \
             --canary \

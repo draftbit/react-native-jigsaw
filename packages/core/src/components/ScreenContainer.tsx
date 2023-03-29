@@ -12,10 +12,10 @@ import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 
 type ScreenContainerProps = {
-  scrollable: boolean;
-  hasSafeArea: boolean;
-  hasTopSafeArea: boolean;
-  hasBottomSafeArea: boolean;
+  scrollable?: boolean;
+  hasSafeArea?: boolean;
+  hasTopSafeArea?: boolean;
+  hasBottomSafeArea?: boolean;
   theme: Theme;
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;

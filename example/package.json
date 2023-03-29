@@ -1,7 +1,7 @@
 {
   "name": "@draftbit/example",
   "description": "Example app for @draftbit/ui",
-  "version": "47.2.4",
+  "version": "47.2.5",
   "private": true,
   "main": "__generated__/AppEntry.js",
   "scripts": {
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@draftbit/maps": "47.2.4",
-    "@draftbit/ui": "47.2.4",
+    "@draftbit/ui": "47.2.5",
     "@expo/dev-server": "0.1.123",
     "@expo/webpack-config": "^0.17.2",
     "@react-navigation/drawer": "^5.12.9",

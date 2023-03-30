@@ -292,11 +292,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   surfaceContainer: {
-    flexDirection: "row",
     width: "100%",
     minHeight: 50,
-    padding: 10,
-    alignItems: "center",
     overflow: "hidden",
   },
 });

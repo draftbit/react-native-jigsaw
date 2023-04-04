@@ -71,7 +71,7 @@ function SwiperExample({ theme }) {
           </SwiperItem>
         </Swiper>
       </Section>
-      {/* <Section title="Data-Driven Example">
+      <Section title="Data-Driven Example">
         <Swiper
           vertical={false}
           loop={true}
@@ -97,7 +97,7 @@ function SwiperExample({ theme }) {
             </SwiperItem>
           )}
         />
-      </Section> */}
+      </Section>
     </Container>
   );
 }

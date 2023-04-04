@@ -3,6 +3,10 @@ import { StyleProp, ViewStyle, StyleSheet, View } from "react-native";
 import DeckSwiperComponent from "react-native-deck-swiper";
 
 export interface DeckSwiperProps<T> {
+  onSwipedLeft?: (index: number) => void;
+  onSwipedRight?: (index: number) => void;
+  onSwipedUp?: (index: number) => void;
+  onSwipedDown?: (index: number) => void;
   onIndexChanged?: (index: number) => void;
   onEndReached?: () => void;
   startCardIndex?: number;
@@ -17,6 +21,10 @@ export interface DeckSwiperProps<T> {
 }
 
 const DeckSwiper = <T extends object>({
+  onSwipedLeft,
+  onSwipedRight,
+  onSwipedUp,
+  onSwipedDown,
   onIndexChanged,
   onEndReached,
   startCardIndex = 0,
@@ -113,6 +121,10 @@ const DeckSwiper = <T extends object>({
         backgroundColor="transparent"
         cardVerticalMargin={0}
         cardHorizontalMargin={0}
+        onSwipedLeft={onSwipedLeft}
+        onSwipedRight={onSwipedRight}
+        onSwipedTop={onSwipedUp}
+        onSwipedBottom={onSwipedDown}
       />
     </View>
   );

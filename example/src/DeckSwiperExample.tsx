@@ -45,7 +45,23 @@ const DeckSwiperExample: React.FC = () => {
           </DeckSwiperCard>
         </DeckSwiper>
       </Section>
-
+      <Section title="Lazy Rendering (renderItem)" style={{}}>
+        <DeckSwiper
+          infiniteSwiping
+          visibleCardCount={2}
+          data={sampleData}
+          onSwipedDown={(index) => console.log("Swiped down", index)}
+          onSwipedUp={(index) => console.log("Swiped up", index)}
+          onSwipedLeft={(index) => console.log("Swiped left", index)}
+          onSwipedRight={(index) => console.log("Swiped right", index)}
+          renderItem={({ item }) => (
+            <DeckSwiperCard>
+              <Text>{item.fullName}</Text>
+            </DeckSwiperCard>
+          )}
+          keyExtractor={(item) => item.id.toString()}
+        />
+      </Section>
       <Section title="Infinite swiper with images" style={{}}>
         <DeckSwiper infiniteSwiping visibleCardCount={2}>
           <DeckSwiperCard>
@@ -67,20 +83,6 @@ const DeckSwiperExample: React.FC = () => {
             />
           </DeckSwiperCard>
         </DeckSwiper>
-      </Section>
-
-      <Section title="Lazy Rendering (renderItem)" style={{}}>
-        <DeckSwiper
-          infiniteSwiping
-          visibleCardCount={2}
-          data={sampleData}
-          renderItem={({ item }) => (
-            <DeckSwiperCard>
-              <Text>{item.fullName}</Text>
-            </DeckSwiperCard>
-          )}
-          keyExtractor={(item) => item.id.toString()}
-        />
       </Section>
     </Container>
   );

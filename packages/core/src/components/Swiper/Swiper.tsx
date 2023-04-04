@@ -3,10 +3,8 @@ import { View, StyleProp, ViewStyle } from "react-native";
 import SwiperComponent from "react-native-web-swiper";
 
 export interface SwiperProps<T> {
-  onSwipedLeft?: (index: number) => void;
-  onSwipedRight?: (index: number) => void;
-  onSwipedUp?: (index: number) => void;
-  onSwipedDown?: (index: number) => void;
+  onSwipedNext?: (index: number) => void;
+  onSwipedPrevious?: (index: number) => void;
   vertical?: boolean;
   loop?: boolean;
   from?: number;
@@ -43,10 +41,8 @@ const Swiper = ({
   renderItem,
   children,
   onIndexChanged: onIndexChangedProp,
-  onSwipedLeft,
-  onSwipedRight,
-  onSwipedUp,
-  onSwipedDown,
+  onSwipedNext,
+  onSwipedPrevious,
   style,
 }: SwiperProps<any>) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
@@ -61,30 +57,14 @@ const Swiper = ({
 
     if (previous === numberOfItems - 1 && current === 0) {
       //Last -> first swipe
-      if (vertical) {
-        onSwipedUp?.(previous);
-      } else {
-        onSwipedLeft?.(previous);
-      }
+      onSwipedNext?.(previous);
     } else if (previous === 0 && current === numberOfItems - 1) {
       //First -> last swipe
-      if (vertical) {
-        onSwipedDown?.(previous);
-      } else {
-        onSwipedRight?.(previous);
-      }
+      onSwipedPrevious?.(previous);
     } else if (current > previous) {
-      if (vertical) {
-        onSwipedUp?.(previous);
-      } else {
-        onSwipedLeft?.(previous);
-      }
+      onSwipedNext?.(previous);
     } else if (current < previous) {
-      if (vertical) {
-        onSwipedDown?.(previous);
-      } else {
-        onSwipedRight?.(previous);
-      }
+      onSwipedPrevious?.(previous);
     }
   };
 

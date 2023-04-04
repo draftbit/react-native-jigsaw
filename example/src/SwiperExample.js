@@ -36,8 +36,8 @@ function SwiperExample({ theme }) {
           style={{ width: "100%", height: 300 }}
           dotColor="green"
           dotActiveColor="red"
-          onSwipedLeft={(index) => console.log("Swiped left", index)}
-          onSwipedRight={(index) => console.log("Swiped right", index)}
+          onSwipedNext={(index) => console.log("Swiped next", index)}
+          onSwipedPrevious={(index) => console.log("Swiped previous", index)}
           onIndexChanged={(index) => console.log("onIndexChanged: ", index)}
         >
           <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
@@ -57,8 +57,6 @@ function SwiperExample({ theme }) {
           style={{ width: "100%", height: 300 }}
           dotColor="#86939e"
           dotActiveColor="#2089dc"
-          onSwipedDown={(index) => console.log("Swiped down", index)}
-          onSwipedUp={(index) => console.log("Swiped up", index)}
         >
           <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
             <Text>Test Slide 1</Text>

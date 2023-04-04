@@ -36,7 +36,9 @@ function SwiperExample({ theme }) {
           style={{ width: "100%", height: 300 }}
           dotColor="green"
           dotActiveColor="red"
-          onIndexChanged={index => console.log("onIndexChanged: ", index)}
+          onSwipedLeft={(index) => console.log("Swiped left", index)}
+          onSwipedRight={(index) => console.log("Swiped right", index)}
+          onIndexChanged={(index) => console.log("onIndexChanged: ", index)}
         >
           <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
             <Text>Test Slide 1</Text>
@@ -55,6 +57,8 @@ function SwiperExample({ theme }) {
           style={{ width: "100%", height: 300 }}
           dotColor="#86939e"
           dotActiveColor="#2089dc"
+          onSwipedDown={(index) => console.log("Swiped down", index)}
+          onSwipedUp={(index) => console.log("Swiped up", index)}
         >
           <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
             <Text>Test Slide 1</Text>
@@ -67,7 +71,7 @@ function SwiperExample({ theme }) {
           </SwiperItem>
         </Swiper>
       </Section>
-      <Section title="Data-Driven Example">
+      {/* <Section title="Data-Driven Example">
         <Swiper
           vertical={false}
           loop={true}
@@ -93,7 +97,7 @@ function SwiperExample({ theme }) {
             </SwiperItem>
           )}
         />
-      </Section>
+      </Section> */}
     </Container>
   );
 }

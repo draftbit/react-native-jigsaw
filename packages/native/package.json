@@ -41,7 +41,7 @@
   "dependencies": {
     "@draftbit/types": "47.2.6",
     "@expo/vector-icons": "^13.0.0",
-    "@react-native-community/datetimepicker": "6.5.2",
+    "@react-native-community/datetimepicker": "6.3.5",
     "@react-native-community/slider": "4.2.4",
     "expo-av": "~13.0.3",
     "expo-camera": "~13.1.0",

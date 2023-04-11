@@ -315,6 +315,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
 
   const leftIconStyle: ImageStyle = {
     position: "absolute",
+    top: 0,
     marginTop:
       type === "solid"
         ? leftIconMode === "inset"

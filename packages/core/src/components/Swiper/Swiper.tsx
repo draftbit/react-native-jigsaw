@@ -3,6 +3,7 @@ import { View, StyleProp, ViewStyle } from "react-native";
 import SwiperComponent from "react-native-web-swiper";
 
 export interface SwiperProps<T> {
+  onSwipe?: (index: number) => void;
   onSwipedNext?: (index: number) => void;
   onSwipedPrevious?: (index: number) => void;
   vertical?: boolean;
@@ -41,6 +42,7 @@ const Swiper = ({
   renderItem,
   children,
   onIndexChanged: onIndexChangedProp,
+  onSwipe,
   onSwipedNext,
   onSwipedPrevious,
   style,
@@ -66,6 +68,7 @@ const Swiper = ({
     } else if (current < previous) {
       onSwipedPrevious?.(previous);
     }
+    onSwipe?.(previous);
   };
 
   return (

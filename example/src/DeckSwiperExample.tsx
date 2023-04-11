@@ -50,6 +50,7 @@ const DeckSwiperExample: React.FC = () => {
           infiniteSwiping
           visibleCardCount={2}
           data={sampleData}
+          onSwipe={(index) => console.log("Swiped", index)}
           onSwipedDown={(index) => console.log("Swiped down", index)}
           onSwipedUp={(index) => console.log("Swiped up", index)}
           onSwipedLeft={(index) => console.log("Swiped left", index)}

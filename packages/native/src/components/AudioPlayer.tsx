@@ -66,8 +66,8 @@ export default function AudioPlayer({
   playColor = "black",
 }: Props) {
   const [sound, setSound] = React.useState<Sound>();
-  const [playing, setPlay] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
   const [durationMillis, setDurationMillis] = React.useState<
     number | undefined
   >(1);
@@ -130,7 +130,7 @@ export default function AudioPlayer({
 
       if (status.didJustFinish) {
         setSound(undefined);
-        setPlay(false);
+        setIsPlaying(false);
         setSliderPositionMillis(0);
 
         if (sound) {
@@ -155,11 +155,11 @@ export default function AudioPlayer({
   }, [sound]);
 
   async function loadAudio() {
-    setLoading(true);
+    setIsLoading(true);
 
     const { sound: s, status } = await Audio.Sound.createAsync(source);
     setSound(s);
-    setLoading(false);
+    setIsLoading(false);
     setOnPlaybackStatusUpdate();
 
     if (status.isLoaded && status.durationMillis) {
@@ -169,22 +169,22 @@ export default function AudioPlayer({
     s.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
 
     await s.playAsync();
-    setPlay(true);
+    setIsPlaying(true);
   }
 
-  async function playSound() {
+  async function togglePlayback() {
     //Has to be called everytime a player is played to reconfigure the global Audio config based on each player's configuration
     await initAudioMode();
 
-    if (sound && playing) {
+    if (sound && isPlaying) {
       await sound.pauseAsync();
-      setPlay(false);
+      setIsPlaying(false);
       return;
     }
 
-    if (sound && !playing) {
+    if (sound && !isPlaying) {
       await sound.playAsync();
-      setPlay(true);
+      setIsPlaying(true);
       return;
     }
 
@@ -210,11 +210,15 @@ export default function AudioPlayer({
     }
   };
 
-  const iconName = loading ? "loading1" : !sound || !playing ? "play" : "pause";
+  const iconName = isLoading
+    ? "loading1"
+    : !sound || !isPlaying
+    ? "play"
+    : "pause";
 
   return (
     <View style={[styles.container, viewStyles]}>
-      <TouchableHighlight onPress={playSound} style={{ marginRight: 8 }}>
+      <TouchableHighlight onPress={togglePlayback} style={{ marginRight: 8 }}>
         <AntDesign name={iconName} size={playSize} color={playColor} />
       </TouchableHighlight>
       <Text style={{ marginRight: 8, ...textStyles }}>

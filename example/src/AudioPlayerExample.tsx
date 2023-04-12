@@ -24,6 +24,8 @@ export default function AudioPlayerExample() {
         completedTrackColor="white"
         remainingTrackColor="#999999"
         playSize={18}
+        playsInBackground
+        interruptionMode="stop"
       />
       <AudioPlayer
         style={{

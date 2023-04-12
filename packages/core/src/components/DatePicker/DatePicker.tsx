@@ -57,6 +57,8 @@ type Props = {
   borderColor?: string;
   borderColorActive?: string;
   autoDismissKeyboard?: boolean;
+  minimumDate?: Date;
+  maximumDate?: Date;
 } & IconSlot &
   TextInputProps;
 
@@ -96,6 +98,8 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   borderColor: inputBorderColor,
   borderColorActive: inputBorderColorActive,
   autoDismissKeyboard = true,
+  minimumDate,
+  maximumDate,
   ...props
 }) => {
   const [value, setValue] = React.useState<any>(date || defaultValue);
@@ -527,6 +531,8 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
                 mode={mode}
                 isVisible={pickerVisible}
                 toggleVisibility={toggleVisibility}
+                minimumDate={minimumDate}
+                maximumDate={maximumDate}
                 onChange={(_event: any, data: any) => {
                   toggleVisibility();
                   setValue(data);

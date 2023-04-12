@@ -108,14 +108,22 @@ function DatePickerExample({ theme }) {
           onDateChange={setDate3}
           defaultValue={new Date(DATE_STRING)}
         />
+
+        <DatePicker
+          label="Date with minimum and maximum"
+          placeholder="Select a date..."
+          type="solid"
+          minimumDate={new Date("April 10, 2023")}
+          maximumDate={new Date("May 10, 2023")}
+        />
       </Section>
       <Section title="Styled">
         <DatePicker
-          label={'Date'}
-          mode={'date'}
+          label={"Date"}
+          mode={"date"}
           style={{
-            backgroundColor: 'red',
-            fontFamily: 'AbrilFatface_400Regular',
+            backgroundColor: "red",
+            fontFamily: "AbrilFatface_400Regular",
             fontSize: 22,
             paddingBottom: 16,
             paddingTop: 16,
@@ -123,15 +131,15 @@ function DatePickerExample({ theme }) {
           date={date2}
           onDateChange={setDate2}
           defaultValue={new Date(DATE_STRING)}
-          leftIconMode={'inset'}
-          type={'solid'}
+          leftIconMode={"inset"}
+          type={"solid"}
         />
         <DatePicker
-          label={'Date'}
-          mode={'time'}
+          label={"Date"}
+          mode={"time"}
           style={{
-            backgroundColor: 'black',
-            fontFamily: 'AbrilFatface_400Regular',
+            backgroundColor: "black",
+            fontFamily: "AbrilFatface_400Regular",
             fontSize: 26,
             color: `white`,
             paddingBottom: 16,
@@ -141,12 +149,12 @@ function DatePickerExample({ theme }) {
           onDateChange={setDate3}
           defaultValue={new Date(DATE_STRING)}
           labelSize={26}
-          labelColor={'blue'}
-          borderColor={'blue'}
-          borderColorActive={'green'}
-          leftIconMode={'inset'}
-          type={'underline'}
-      />
+          labelColor={"blue"}
+          borderColor={"blue"}
+          borderColorActive={"green"}
+          leftIconMode={"inset"}
+          type={"underline"}
+        />
       </Section>
     </Container>
   );

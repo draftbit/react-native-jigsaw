@@ -6,14 +6,26 @@ import {
   StyleProp,
   StyleSheet,
 } from "react-native";
-import { Audio, AVPlaybackStatus, AVPlaybackSource } from "expo-av";
+import {
+  Audio,
+  AVPlaybackStatus,
+  AVPlaybackSource,
+  InterruptionModeIOS,
+  InterruptionModeAndroid,
+} from "expo-av";
 import { AntDesign } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
 
 import type { Sound } from "expo-av/build/Audio/Sound";
 
+type AudioInterruptionMode = "lower volume" | "stop";
+
 interface Props {
   source: AVPlaybackSource;
+  interruptionMode?: AudioInterruptionMode;
+  playsInBackground?: boolean;
+  playsInSilentModeIOS?: boolean;
+  playThroughEarpieceAndroid?: boolean;
   style?: StyleProp<any>;
   sliderColor?: string;
   completedTrackColor?: string;
@@ -42,6 +54,10 @@ function formatDuration(duration: number) {
 
 export default function AudioPlayer({
   source,
+  interruptionMode = "lower volume",
+  playsInBackground = false,
+  playsInSilentModeIOS = false,
+  playThroughEarpieceAndroid = false,
   style = {},
   sliderColor = "black",
   completedTrackColor = "black",
@@ -85,6 +101,22 @@ export default function AudioPlayer({
     textDecorationLine,
     textDecorationColor,
     textDecorationStyle,
+  };
+
+  const initAudioMode = async () => {
+    await Audio.setAudioModeAsync({
+      staysActiveInBackground: playsInBackground,
+      interruptionModeIOS:
+        interruptionMode === "lower volume"
+          ? InterruptionModeIOS.DuckOthers
+          : InterruptionModeIOS.DoNotMix,
+      interruptionModeAndroid:
+        interruptionMode === "lower volume"
+          ? InterruptionModeAndroid.DuckOthers
+          : InterruptionModeAndroid.DoNotMix,
+      playsInSilentModeIOS,
+      playThroughEarpieceAndroid,
+    });
   };
 
   const onPlaybackStatusUpdate = async (status: AVPlaybackStatus) => {
@@ -141,6 +173,9 @@ export default function AudioPlayer({
   }
 
   async function playSound() {
+    //Has to be called everytime a player is played to reconfigure the global Audio config based on each player's configuration
+    await initAudioMode();
+
     if (sound && playing) {
       await sound.pauseAsync();
       setPlay(false);

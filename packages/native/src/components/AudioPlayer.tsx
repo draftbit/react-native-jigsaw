@@ -6,14 +6,26 @@ import {
   StyleProp,
   StyleSheet,
 } from "react-native";
-import { Audio, AVPlaybackStatus, AVPlaybackSource } from "expo-av";
+import {
+  Audio,
+  AVPlaybackStatus,
+  AVPlaybackSource,
+  InterruptionModeIOS,
+  InterruptionModeAndroid,
+} from "expo-av";
 import { AntDesign } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
 
 import type { Sound } from "expo-av/build/Audio/Sound";
 
+type AudioInterruptionMode = "lower volume" | "stop";
+
 interface Props {
   source: AVPlaybackSource;
+  interruptionMode?: AudioInterruptionMode;
+  playsInBackground?: boolean;
+  playsInSilentModeIOS?: boolean;
+  playThroughEarpieceAndroid?: boolean;
   style?: StyleProp<any>;
   sliderColor?: string;
   completedTrackColor?: string;
@@ -42,6 +54,10 @@ function formatDuration(duration: number) {
 
 export default function AudioPlayer({
   source,
+  interruptionMode = "lower volume",
+  playsInBackground = false,
+  playsInSilentModeIOS = false,
+  playThroughEarpieceAndroid = false,
   style = {},
   sliderColor = "black",
   completedTrackColor = "black",
@@ -50,8 +66,8 @@ export default function AudioPlayer({
   playColor = "black",
 }: Props) {
   const [sound, setSound] = React.useState<Sound>();
-  const [playing, setPlay] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
   const [durationMillis, setDurationMillis] = React.useState<
     number | undefined
   >(1);
@@ -87,6 +103,22 @@ export default function AudioPlayer({
     textDecorationStyle,
   };
 
+  const updateAudioMode = async () => {
+    await Audio.setAudioModeAsync({
+      staysActiveInBackground: playsInBackground,
+      interruptionModeIOS:
+        interruptionMode === "lower volume"
+          ? InterruptionModeIOS.DuckOthers
+          : InterruptionModeIOS.DoNotMix,
+      interruptionModeAndroid:
+        interruptionMode === "lower volume"
+          ? InterruptionModeAndroid.DuckOthers
+          : InterruptionModeAndroid.DoNotMix,
+      playsInSilentModeIOS,
+      playThroughEarpieceAndroid,
+    });
+  };
+
   const onPlaybackStatusUpdate = async (status: AVPlaybackStatus) => {
     if (status.isLoaded) {
       if (durationMillis !== status?.durationMillis) {
@@ -98,7 +130,7 @@ export default function AudioPlayer({
 
       if (status.didJustFinish) {
         setSound(undefined);
-        setPlay(false);
+        setIsPlaying(false);
         setSliderPositionMillis(0);
 
         if (sound) {
@@ -123,11 +155,11 @@ export default function AudioPlayer({
   }, [sound]);
 
   async function loadAudio() {
-    setLoading(true);
+    setIsLoading(true);
 
     const { sound: s, status } = await Audio.Sound.createAsync(source);
     setSound(s);
-    setLoading(false);
+    setIsLoading(false);
     setOnPlaybackStatusUpdate();
 
     if (status.isLoaded && status.durationMillis) {
@@ -137,19 +169,22 @@ export default function AudioPlayer({
     s.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
 
     await s.playAsync();
-    setPlay(true);
+    setIsPlaying(true);
   }
 
-  async function playSound() {
-    if (sound && playing) {
+  async function togglePlayback() {
+    //Has to be called everytime a player is played to reconfigure the global Audio config based on each player's configuration
+    await updateAudioMode();
+
+    if (sound && isPlaying) {
       await sound.pauseAsync();
-      setPlay(false);
+      setIsPlaying(false);
       return;
     }
 
-    if (sound && !playing) {
+    if (sound && !isPlaying) {
       await sound.playAsync();
-      setPlay(true);
+      setIsPlaying(true);
       return;
     }
 
@@ -175,11 +210,15 @@ export default function AudioPlayer({
     }
   };
 
-  const iconName = loading ? "loading1" : !sound || !playing ? "play" : "pause";
+  const iconName = isLoading
+    ? "loading1"
+    : !sound || !isPlaying
+    ? "play"
+    : "pause";
 
   return (
     <View style={[styles.container, viewStyles]}>
-      <TouchableHighlight onPress={playSound} style={{ marginRight: 8 }}>
+      <TouchableHighlight onPress={togglePlayback} style={{ marginRight: 8 }}>
         <AntDesign name={iconName} size={playSize} color={playColor} />
       </TouchableHighlight>
       <Text style={{ marginRight: 8, ...textStyles }}>

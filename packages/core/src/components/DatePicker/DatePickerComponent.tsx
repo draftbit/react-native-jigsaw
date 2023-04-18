@@ -8,6 +8,8 @@ const DatePickerComponent: React.FC<React.PropsWithChildren<Props>> = ({
   value,
   onChange,
   mode,
+  minimumDate,
+  maximumDate,
   toggleVisibility,
 }) => {
   return Platform.OS === "ios" || Platform.OS === "android" ? (
@@ -16,6 +18,8 @@ const DatePickerComponent: React.FC<React.PropsWithChildren<Props>> = ({
       mode={mode}
       isVisible={true}
       display={Platform.OS === "ios" ? "spinner" : "default"}
+      minimumDate={minimumDate}
+      maximumDate={maximumDate}
       onCancel={() => {
         console.log("Picker cancelled before selecting anything.");
         toggleVisibility();
@@ -30,6 +34,8 @@ const DatePickerComponent: React.FC<React.PropsWithChildren<Props>> = ({
       mode={mode}
       onChange={onChange}
       display={"default"}
+      minimumDate={minimumDate}
+      maximumDate={maximumDate}
     />
   );
 };

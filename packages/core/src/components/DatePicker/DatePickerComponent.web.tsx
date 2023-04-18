@@ -17,6 +17,8 @@ const DatePickerComponent: React.FC<Props & { theme: typeof Theme }> = ({
   mode,
   toggleVisibility,
   isVisible,
+  minimumDate,
+  maximumDate,
   theme,
 }) => {
   const internalTheme = createMuiTheme({
@@ -50,6 +52,8 @@ const DatePickerComponent: React.FC<Props & { theme: typeof Theme }> = ({
           onClose={() => toggleVisibility()}
           variant="dialog"
           TextFieldComponent={() => null}
+          minDate={minimumDate}
+          maxDate={maximumDate}
         />
       </ThemeProvider>
     </MuiPickersUtilsProvider>

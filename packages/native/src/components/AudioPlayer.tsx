@@ -103,7 +103,7 @@ export default function AudioPlayer({
     textDecorationStyle,
   };
 
-  const initAudioMode = async () => {
+  const updateAudioMode = async () => {
     await Audio.setAudioModeAsync({
       staysActiveInBackground: playsInBackground,
       interruptionModeIOS:
@@ -174,7 +174,7 @@ export default function AudioPlayer({
 
   async function togglePlayback() {
     //Has to be called everytime a player is played to reconfigure the global Audio config based on each player's configuration
-    await initAudioMode();
+    await updateAudioMode();
 
     if (sound && isPlaying) {
       await sound.pauseAsync();

@@ -4,6 +4,7 @@
   "description": "Map Components",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
+  "react-native": "src/index.tsx",
   "files": [
     "src",
     "lib",

@@ -2,11 +2,9 @@
   "name": "@draftbit/maps",
   "version": "46.12.7",
   "description": "Map Components",
-  "main": "lib/commonjs/index.js",
-  "module": "lib/module/index.js",
-  "types": "lib/typescript/src/index.d.ts",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
   "react-native": "src/index.tsx",
-  "source": "src/index.tsx",
   "files": [
     "src",
     "lib",
@@ -17,7 +15,7 @@
   "scripts": {
     "clean": "rimraf lib",
     "clean:modules": "rimraf node_modules",
-    "prepack": "bob build"
+    "build": "yarn clean && yarn tsc"
   },
   "keywords": [
     "react-native",
@@ -42,31 +40,6 @@
     "@draftbit/types": "46.12.7",
     "@draftbit/web-maps": "46.12.7",
     "react-native-maps": "0.31.1"
-  },
-  "react-native-builder-bob": {
-    "source": "src",
-    "output": "lib",
-    "targets": [
-      [
-        "commonjs",
-        {
-          "sourceMaps": false
-        }
-      ],
-      [
-        "module",
-        {
-          "sourceMaps": false
-        }
-      ],
-      [
-        "typescript",
-        {
-          "project": "tsconfig.build.json",
-          "tsc": "../../node_modules/typescript/bin/tsc"
-        }
-      ]
-    ]
   },
   "eslintIgnore": [
     "node_modules/",

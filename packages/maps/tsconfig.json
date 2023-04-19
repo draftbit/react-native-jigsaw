@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
-  "references": [{ "path": "../types" }],
+  "references": [{ "path": "../types" }, { "path": "../web-maps" }],
   "compilerOptions": {
-    "outDir": "./lib/typescript"
+    "outDir": "./lib/"
   }
 }

@@ -2,11 +2,8 @@
   "name": "@draftbit/native",
   "version": "46.12.7",
   "description": "Draftbit UI Components that Depend on Native Components",
-  "main": "lib/commonjs/index.js",
-  "module": "lib/module/index.js",
-  "types": "lib/typescript/src/index.d.ts",
-  "react-native": "src/index.tsx",
-  "source": "src/index.tsx",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
   "files": [
     "src",
     "lib",
@@ -17,7 +14,7 @@
   "scripts": {
     "clean": "rimraf lib",
     "clean:modules": "rimraf node_modules",
-    "prepack": "bob build"
+    "build": "yarn clean && yarn tsc"
   },
   "keywords": [
     "react-native",
@@ -48,31 +45,6 @@
     "expo-linear-gradient": "~11.4.0",
     "react-native-svg": "12.3.0",
     "react-native-webview": "11.23.0"
-  },
-  "react-native-builder-bob": {
-    "source": "src",
-    "output": "lib",
-    "targets": [
-      [
-        "commonjs",
-        {
-          "sourceMaps": false
-        }
-      ],
-      [
-        "module",
-        {
-          "sourceMaps": false
-        }
-      ],
-      [
-        "typescript",
-        {
-          "project": "tsconfig.build.json",
-          "tsc": "../../node_modules/typescript/bin/tsc"
-        }
-      ]
-    ]
   },
   "eslintIgnore": [
     "node_modules/",

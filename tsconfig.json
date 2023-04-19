@@ -5,7 +5,7 @@
     "paths": {
       "@draftbit/*": ["packages/*/src"]
     },
-    "sourceMap": false,
+    "sourceMap": true,
     "inlineSources": false,
     "inlineSourceMap": false,
     "composite": true,

@@ -2,11 +2,9 @@
   "name": "@draftbit/ui",
   "version": "47.2.12",
   "description": "Draftbit UI Library",
-  "main": "lib/commonjs/index.js",
-  "module": "lib/module/index.js",
-  "types": "lib/typescript/src/index.d.ts",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
   "react-native": "src/index.tsx",
-  "source": "src/index.tsx",
   "files": [
     "src",
     "lib",
@@ -21,7 +19,7 @@
   "scripts": {
     "clean": "rimraf lib",
     "clean:modules": "rimraf node_modules",
-    "prepack": "bob build"
+    "build": "yarn clean && yarn tsc"
   },
   "keywords": [
     "react-native",
@@ -45,31 +43,6 @@
   "dependencies": {
     "@draftbit/core": "47.2.12",
     "@draftbit/native": "47.2.12"
-  },
-  "react-native-builder-bob": {
-    "source": "src",
-    "output": "lib",
-    "targets": [
-      [
-        "commonjs",
-        {
-          "sourceMaps": false
-        }
-      ],
-      [
-        "module",
-        {
-          "sourceMaps": false
-        }
-      ],
-      [
-        "typescript",
-        {
-          "project": "tsconfig.build.json",
-          "tsc": "../../node_modules/typescript/bin/tsc"
-        }
-      ]
-    ]
   },
   "eslintIgnore": [
     "node_modules/",

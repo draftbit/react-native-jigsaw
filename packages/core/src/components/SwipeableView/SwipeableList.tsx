@@ -28,10 +28,11 @@ type SwipeableListContextType = {
   onStopSwiping: () => void;
 };
 
-const SwipeableListContext = React.createContext<SwipeableListContextType>({
-  onStartSwiping: () => {},
-  onStopSwiping: () => {},
-});
+export const SwipeableListContext =
+  React.createContext<SwipeableListContextType>({
+    onStartSwiping: () => {},
+    onStopSwiping: () => {},
+  });
 
 const SwipeableList = <T extends object>({
   disableScrollWhenSwiping = true,

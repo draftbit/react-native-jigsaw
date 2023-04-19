@@ -22,6 +22,7 @@ import type { Theme } from "../../styles/DefaultTheme";
 import { withTheme } from "../../theming";
 import { SwipeableViewButtonProps } from "./SwipeableViewButton";
 import { SwipeableViewSwipeHandlerProps } from "./SwipeableViewSwipeHandler";
+import { SwipeableListContext } from "./SwipeableList";
 
 export interface SwipeableViewProps extends IconSlot {
   closeOnPress?: boolean;
@@ -71,6 +72,9 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
   ): object is SwipeableViewSwipeHandlerProps => {
     return "title" in object && "side" in object && "onSwipe" in object;
   };
+
+  const { onStartSwiping, onStopSwiping } =
+    React.useContext(SwipeableListContext);
 
   const { viewStyles, textStyles } = extractStyles(style);
 
@@ -239,6 +243,8 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
             ? () => rightSwipeHandlers[0].props.onSwipe?.()
             : undefined
         }
+        swipeGestureBegan={onStartSwiping}
+        swipeGestureEnded={onStopSwiping}
         closeOnRowPress={closeOnPress}
         friction={friction}
         {...rest}

@@ -10,7 +10,7 @@ import CircularProgress, {
   Props as CircularProgressProps,
 } from "./CircularProgress";
 const AnimatedProgress = Animated.createAnimatedComponent(CircularProgress);
-
+//Change to trigger rebuild
 type Props = {
   duration?: number;
   easing?: EasingFunction;

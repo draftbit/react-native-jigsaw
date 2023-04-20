@@ -1,3 +1,5 @@
+import { pick } from "lodash";
+
 export interface SwipeableItemBehindItem {
   title: string;
   side: "left" | "right";
@@ -10,8 +12,8 @@ export interface SwipeableItemBehindItem {
 }
 
 export interface RightSwipeProps {
-  onSwipeRight?: () => void;
-  rightSwipeTitle: string;
+  onRightSwipe?: () => void;
+  rightSwipeTitle?: string;
   rightSwipeIcon?: string;
   rightSwipeIconSize?: number;
   rightSwipeBackgroundColor?: string;
@@ -19,21 +21,43 @@ export interface RightSwipeProps {
 }
 
 export interface LeftSwipeProps {
-  onSwipeLeft?: () => void;
-  leftSwipeTitle: string;
+  onLeftSwipe?: () => void;
+  leftSwipeTitle?: string;
   leftSwipeIcon?: string;
   leftSwipeIconSize?: number;
   leftSwipeBackgroundColor?: string;
   leftSwipeColor?: string;
 }
 
+export function extractRightSwipeProps(object: object): RightSwipeProps {
+  return pick(object, [
+    "onRightSwipe",
+    "rightSwipeTitle",
+    "rightSwipeIcon",
+    "rightSwipeIconSize",
+    "rightSwipeBackgroundColor",
+    "rightSwipeColor",
+  ]);
+}
+
+export function extractLeftSwipeProps(object: object): LeftSwipeProps {
+  return pick(object, [
+    "onLeftSwipe",
+    "leftSwipeTitle",
+    "leftSwipeIcon",
+    "leftSwipeIconSize",
+    "leftSwipeBackgroundColor",
+    "leftSwipeColor",
+  ]);
+}
+
 export function rightSwipeToSwipeableItemBehindItem(
   swipe: RightSwipeProps
 ): Omit<SwipeableItemBehindItem, "onPress"> {
   return {
-    title: swipe.rightSwipeTitle,
-    side: "left",
-    onSwipe: swipe.onSwipeRight,
+    title: swipe.rightSwipeTitle || "",
+    side: "right",
+    onSwipe: swipe.onRightSwipe,
     icon: swipe.rightSwipeIcon,
     iconSize: swipe.rightSwipeIconSize,
     backgroundColor: swipe.rightSwipeBackgroundColor,
@@ -45,9 +69,9 @@ export function leftSwipeToSwipeableItemBehindItem(
   swipe: LeftSwipeProps
 ): Omit<SwipeableItemBehindItem, "onPress"> {
   return {
-    title: swipe.leftSwipeTitle,
-    side: "right",
-    onSwipe: swipe.onSwipeLeft,
+    title: swipe.leftSwipeTitle || "",
+    side: "left",
+    onSwipe: swipe.onLeftSwipe,
     icon: swipe.leftSwipeIcon,
     iconSize: swipe.leftSwipeIconSize,
     backgroundColor: swipe.leftSwipeBackgroundColor,

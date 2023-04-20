@@ -1,13 +1,8 @@
 import React from "react";
 import { FlashListProps, FlashList } from "@shopify/flash-list";
-import {
-  FlatListProps,
-  ScrollViewProps,
-  FlatList,
-  ScrollView,
-} from "react-native";
+import { FlatListProps, FlatList } from "react-native";
 
-type ListComponentType = "FlatList" | "FlashList" | "ScrollView";
+type ListComponentType = "FlatList" | "FlashList";
 
 interface AdditionalSwipeableListProps {
   disableScrollWhenSwiping?: boolean;
@@ -18,9 +13,6 @@ type FlatListSwipeableListProps<T> = FlatListProps<T> &
   AdditionalSwipeableListProps;
 
 type FlashListSwipeableListProps<T> = FlashListProps<T> &
-  AdditionalSwipeableListProps;
-
-type ScrollViewSwipeableListProps = ScrollViewProps &
   AdditionalSwipeableListProps;
 
 type SwipeableListContextType = {
@@ -38,10 +30,7 @@ const SwipeableList = <T extends object>({
   disableScrollWhenSwiping = true,
   listComponent = "FlatList",
   ...rest
-}:
-  | FlashListSwipeableListProps<T>
-  | FlatListSwipeableListProps<T>
-  | ScrollViewSwipeableListProps) => {
+}: FlashListSwipeableListProps<T> | FlatListSwipeableListProps<T>) => {
   const [isSwiping, setIsSwiping] = React.useState(false);
 
   const onStartSwiping = () => {
@@ -63,8 +52,6 @@ const SwipeableList = <T extends object>({
               return <FlatList {...(rest as FlatListProps<T>)} />;
             case "FlashList":
               return <FlashList {...(rest as FlashListProps<T>)} />;
-            case "ScrollView":
-              return <ScrollView {...(rest as ScrollViewProps)} />;
           }
         }}
       </>

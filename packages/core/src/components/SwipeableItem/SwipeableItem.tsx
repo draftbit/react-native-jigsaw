@@ -20,11 +20,17 @@ import { SwipeRow } from "react-native-swipe-list-view";
 import { IconSlot } from "../../interfaces/Icon";
 import type { Theme } from "../../styles/DefaultTheme";
 import { withTheme } from "../../theming";
-import { SwipeableViewButtonProps } from "./SwipeableViewButton";
-import { SwipeableViewSwipeHandlerProps } from "./SwipeableViewSwipeHandler";
+import { SwipeableItemButtonProps } from "./SwipeableItemButton";
 import { SwipeableListContext } from "./SwipeableList";
+import {
+  RightSwipeProps,
+  LeftSwipeProps,
+  SwipeableItemBehindItem,
+  leftSwipeToSwipeableItemBehindItem,
+  rightSwipeToSwipeableItemBehindItem,
+} from "./SwipeableItemCommon";
 
-export interface SwipeableViewProps extends IconSlot {
+export interface SwipeableItemProps extends IconSlot {
   closeOnPress?: boolean;
   leftOpenValue?: number;
   rightOpenValue?: number;
@@ -45,7 +51,9 @@ export interface SwipeableViewProps extends IconSlot {
   theme: Theme;
 }
 
-const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
+type Props = SwipeableItemProps & RightSwipeProps & LeftSwipeProps;
+
+const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
   theme,
   style,
   children,
@@ -61,16 +69,14 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
   friction = 20,
   ...rest
 }) => {
-  const instanceOfSwipeableViewButtonProps = (
+  const instanceOfSwipeableItemButtonProps = (
     object: any
-  ): object is SwipeableViewButtonProps => {
-    return "title" in object && "side" in object && "onPress" in object;
+  ): object is SwipeableItemButtonProps => {
+    return "title" in object && "side" in object;
   };
 
-  const instanceOfSwipeableViewSwipeHandlerProps = (
-    object: any
-  ): object is SwipeableViewSwipeHandlerProps => {
-    return "title" in object && "side" in object && "onSwipe" in object;
+  const isEmptyObject = (object: object) => {
+    return Object.keys(object).length === 0;
   };
 
   const { onStartSwiping, onStopSwiping } =
@@ -107,9 +113,9 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
       React.Children.toArray(children).filter(
         (child) =>
           React.isValidElement(child) &&
-          instanceOfSwipeableViewButtonProps(child.props) &&
+          instanceOfSwipeableItemButtonProps(child.props) &&
           child.props.side === "left"
-      ) as React.ReactElement<SwipeableViewButtonProps>[],
+      ) as React.ReactElement<SwipeableItemButtonProps>[],
     [children]
   );
 
@@ -118,31 +124,9 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
       React.Children.toArray(children).filter(
         (child) =>
           React.isValidElement(child) &&
-          instanceOfSwipeableViewButtonProps(child.props) &&
+          instanceOfSwipeableItemButtonProps(child.props) &&
           child.props.side === "right"
-      ) as React.ReactElement<SwipeableViewButtonProps>[],
-    [children]
-  );
-
-  const leftSwipeHandlers = React.useMemo(
-    () =>
-      React.Children.toArray(children).filter(
-        (child) =>
-          React.isValidElement(child) &&
-          instanceOfSwipeableViewSwipeHandlerProps(child.props) &&
-          child.props.side === "left"
-      ) as React.ReactElement<SwipeableViewSwipeHandlerProps>[],
-    [children]
-  );
-
-  const rightSwipeHandlers = React.useMemo(
-    () =>
-      React.Children.toArray(children).filter(
-        (child) =>
-          React.isValidElement(child) &&
-          instanceOfSwipeableViewSwipeHandlerProps(child.props) &&
-          child.props.side === "right"
-      ) as React.ReactElement<SwipeableViewSwipeHandlerProps>[],
+      ) as React.ReactElement<SwipeableItemButtonProps>[],
     [children]
   );
 
@@ -151,57 +135,52 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
       React.Children.toArray(children).filter(
         (child) =>
           React.isValidElement(child) &&
-          !instanceOfSwipeableViewSwipeHandlerProps(child.props) &&
-          !instanceOfSwipeableViewButtonProps(child.props)
+          !instanceOfSwipeableItemButtonProps(child.props)
       ),
     [children]
   );
 
-  if (leftButtons.length > 2 || rightButtons.length > 2) {
-    throw Error("Cannot have more than 2 buttons per side");
-  }
+  const leftSwipe: LeftSwipeProps = rest;
+  const rightSwipe: RightSwipeProps = rest;
 
-  if (leftSwipeHandlers.length > 1 || rightSwipeHandlers.length > 1) {
-    throw Error("Cannot have more than 1 swiper handler per side");
+  const isLeftSwipeHandled = !isEmptyObject(leftSwipe);
+  const isRightSwipeHandled = !isEmptyObject(rightSwipe);
+
+  if (leftButtons.length > 2 || rightButtons.length > 2) {
+    throw Error("Cannot have more than 2 SwipeableItemButton(s) per side");
   }
 
   if (
-    (leftButtons.length && leftSwipeHandlers.length) ||
-    (rightButtons.length && rightSwipeHandlers.length)
+    (leftButtons.length && isLeftSwipeHandled) ||
+    (rightButtons.length && isRightSwipeHandled)
   ) {
-    throw Error("Cannot combine swiper handler and buttons on the same side");
+    throw Error(
+      "Colliding configuration in SwipeableItem. You cannot have SwipeableItemButton(s) on the side where swipe handling is configured. Either reset swipe configuration or remove the button(s)."
+    );
   }
 
-  //Renders a single button/item. Used for both buttons and swipe handler
-  const renderBehindItem = (
-    props: SwipeableViewSwipeHandlerProps | SwipeableViewButtonProps,
-    index: number
-  ) => (
+  //Renders a single 'behind' item. Used for both buttons and swipe handler
+  const renderBehindItem = (item: SwipeableItemBehindItem, index: number) => (
     <Pressable
       key={index.toString()}
-      onPress={(props as any).onPress}
+      onPress={(item as any).onPress}
       style={[
         styles.buttonContainer,
-        { backgroundColor: props.backgroundColor || theme.colors.primary },
+        { backgroundColor: item.backgroundColor || theme.colors.primary },
       ]}
     >
-      {props.icon && (
+      {item.icon && (
         <Icon
-          name={props.icon}
-          size={props.iconSize || 25}
-          color={props.color || theme.colors.surface}
+          name={item.icon}
+          size={item.iconSize || 25}
+          color={item.color || theme.colors.surface}
         />
       )}
-      <Text
-        style={[textStyles, { color: props.color || theme.colors.surface }]}
-      >
-        {props.title}
+      <Text style={[textStyles, { color: item.color || theme.colors.surface }]}>
+        {item.title}
       </Text>
     </Pressable>
   );
-
-  const isLeftSwipeHandler = !!leftSwipeHandlers.length;
-  const isRightSwipeHandler = !!rightSwipeHandlers.length;
 
   const defaultLeftOpenValue = componentWidth ? componentWidth / 2 : 0;
   const defaultRightOpenValue = componentWidth ? -componentWidth / 2 : 0;
@@ -216,32 +195,28 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
       {/*@ts-ignore*/}
       <SwipeRow
         leftOpenValue={
-          isLeftSwipeHandler ? 0 : leftOpenValue || defaultLeftOpenValue //If in swiping mode, don't keep open
+          isLeftSwipeHandled ? 0 : leftOpenValue || defaultLeftOpenValue //If in swiping mode, don't keep open
         }
         rightOpenValue={
-          isRightSwipeHandler ? 0 : rightOpenValue || defaultRightOpenValue
+          isRightSwipeHandled ? 0 : rightOpenValue || defaultRightOpenValue
         }
         leftActivationValue={
-          leftActivationValue || isLeftSwipeHandler
+          leftActivationValue || isLeftSwipeHandled
             ? defaultLeftOpenValue * (swipeActivationPercentage / 100) //When swipe passes activation percentage then it should be considered activated (call onSwipe)
             : defaultLeftOpenValue
         }
         rightActivationValue={
-          rightActivationValue || isRightSwipeHandler
+          rightActivationValue || isRightSwipeHandled
             ? defaultRightOpenValue * (swipeActivationPercentage / 100)
             : defaultRightOpenValue
         }
         stopLeftSwipe={stopLeftSwipe || defaultLeftOpenValue}
         stopRightSwipe={stopRightSwipe || defaultRightOpenValue}
         onLeftAction={
-          isLeftSwipeHandler
-            ? () => leftSwipeHandlers[0].props.onSwipe?.()
-            : undefined
+          isLeftSwipeHandled ? () => leftSwipe.onSwipeLeft?.() : undefined
         }
         onRightAction={
-          isRightSwipeHandler
-            ? () => rightSwipeHandlers[0].props.onSwipe?.()
-            : undefined
+          isRightSwipeHandled ? () => rightSwipe.onSwipeRight?.() : undefined
         }
         swipeGestureBegan={onStartSwiping}
         swipeGestureEnded={onStopSwiping}
@@ -251,14 +226,24 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
       >
         <View style={styles.behindContainer}>
           <View style={styles.behindContainerItem}>
-            {(isLeftSwipeHandler ? leftSwipeHandlers : leftButtons).map(
-              (item, index) => renderBehindItem(item.props, index)
-            )}
+            {isLeftSwipeHandled
+              ? renderBehindItem(
+                  leftSwipeToSwipeableItemBehindItem(leftSwipe),
+                  0
+                )
+              : leftButtons.map((item, index) =>
+                  renderBehindItem(item.props, index)
+                )}
           </View>
           <View style={styles.behindContainerItem}>
-            {(isRightSwipeHandler ? rightSwipeHandlers : rightButtons).map(
-              (item, index) => renderBehindItem(item.props, index)
-            )}
+            {isRightSwipeHandled
+              ? renderBehindItem(
+                  rightSwipeToSwipeableItemBehindItem(rightSwipe),
+                  0
+                )
+              : rightButtons.map((item, index) =>
+                  renderBehindItem(item.props, index)
+                )}
           </View>
         </View>
         <View
@@ -304,4 +289,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(SwipeableView);
+export default withTheme(SwipeableItem);

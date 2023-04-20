@@ -42,9 +42,9 @@ const SwipeableViewExample: React.FC = () => {
           data={sampleData}
           renderItem={({ item }: { item: User }) => (
             <SwipeableItem
-              rightSwipeTitle="Swipe Me"
+              rightSwipeTitle="Swipe Me Right"
               rightSwipeIcon="check"
-              onRightSwipe={() => {
+              onSwipeRight={() => {
                 console.log("Swiped");
               }}
             >
@@ -53,9 +53,9 @@ const SwipeableViewExample: React.FC = () => {
                 onPress={() => {
                   console.log("Pressed");
                 }}
-                title="Click Me"
+                title="Click Me (Left Swipe)"
                 icon="check"
-                side="left"
+                revealSwipeDirection="left"
               />
             </SwipeableItem>
           )}
@@ -71,14 +71,14 @@ const SwipeableViewExample: React.FC = () => {
               <SwipeableItem>
                 <Text>{item.fullName}</Text>
                 <SwipeableItemButton
-                  title="Click Me"
+                  title="Click Me (Left Swipe)"
                   icon="check"
-                  side="left"
+                  revealSwipeDirection="left"
                 />
                 <SwipeableItemButton
-                  title="Click Me"
+                  title="Click Me (Right Swipe)"
                   icon="check"
-                  side="right"
+                  revealSwipeDirection="right"
                 />
               </SwipeableItem>
             )}
@@ -87,14 +87,14 @@ const SwipeableViewExample: React.FC = () => {
       </Section>
       <Section style={{}} title="Swipeable Item without List">
         <SwipeableItem
-          rightSwipeTitle="Swipe Me"
+          rightSwipeTitle="Swipe Me Right"
           rightSwipeIcon="check"
-          onRightSwipe={() => {
+          onSwipeRight={() => {
             console.log("Swiped");
           }}
-          leftSwipeTitle="Swipe Me"
+          leftSwipeTitle="Swipe Me Left"
           leftSwipeIcon="check"
-          onLeftSwipe={() => {
+          onSwipeLeft={() => {
             console.log("Swiped");
           }}
         >

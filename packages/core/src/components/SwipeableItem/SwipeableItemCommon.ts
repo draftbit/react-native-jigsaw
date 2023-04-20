@@ -2,7 +2,7 @@ import { pick } from "lodash";
 
 export interface SwipeableItemBehindItem {
   title: string;
-  side: "left" | "right";
+  revealSwipeDirection: "left" | "right";
   onPress?: () => void;
   onSwipe?: () => void;
   icon?: string;
@@ -12,7 +12,7 @@ export interface SwipeableItemBehindItem {
 }
 
 export interface RightSwipeProps {
-  onRightSwipe?: () => void;
+  onSwipeRight?: () => void;
   rightSwipeTitle?: string;
   rightSwipeIcon?: string;
   rightSwipeIconSize?: number;
@@ -21,7 +21,7 @@ export interface RightSwipeProps {
 }
 
 export interface LeftSwipeProps {
-  onLeftSwipe?: () => void;
+  onSwipeLeft?: () => void;
   leftSwipeTitle?: string;
   leftSwipeIcon?: string;
   leftSwipeIconSize?: number;
@@ -31,7 +31,7 @@ export interface LeftSwipeProps {
 
 export function extractRightSwipeProps(object: object): RightSwipeProps {
   return pick(object, [
-    "onRightSwipe",
+    "onSwipeRight",
     "rightSwipeTitle",
     "rightSwipeIcon",
     "rightSwipeIconSize",
@@ -42,7 +42,7 @@ export function extractRightSwipeProps(object: object): RightSwipeProps {
 
 export function extractLeftSwipeProps(object: object): LeftSwipeProps {
   return pick(object, [
-    "onLeftSwipe",
+    "onSwipeLeft",
     "leftSwipeTitle",
     "leftSwipeIcon",
     "leftSwipeIconSize",
@@ -56,8 +56,8 @@ export function rightSwipeToSwipeableItemBehindItem(
 ): Omit<SwipeableItemBehindItem, "onPress"> {
   return {
     title: swipe.rightSwipeTitle || "",
-    side: "right",
-    onSwipe: swipe.onRightSwipe,
+    revealSwipeDirection: "right",
+    onSwipe: swipe.onSwipeRight,
     icon: swipe.rightSwipeIcon,
     iconSize: swipe.rightSwipeIconSize,
     backgroundColor: swipe.rightSwipeBackgroundColor,
@@ -70,8 +70,8 @@ export function leftSwipeToSwipeableItemBehindItem(
 ): Omit<SwipeableItemBehindItem, "onPress"> {
   return {
     title: swipe.leftSwipeTitle || "",
-    side: "left",
-    onSwipe: swipe.onLeftSwipe,
+    revealSwipeDirection: "left",
+    onSwipe: swipe.onSwipeLeft,
     icon: swipe.leftSwipeIcon,
     iconSize: swipe.leftSwipeIconSize,
     backgroundColor: swipe.leftSwipeBackgroundColor,

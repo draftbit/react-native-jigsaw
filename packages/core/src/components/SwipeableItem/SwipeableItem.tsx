@@ -28,6 +28,8 @@ import {
   SwipeableItemBehindItem,
   leftSwipeToSwipeableItemBehindItem,
   rightSwipeToSwipeableItemBehindItem,
+  extractLeftSwipeProps,
+  extractRightSwipeProps,
 } from "./SwipeableItemCommon";
 
 export interface SwipeableItemProps extends IconSlot {
@@ -140,8 +142,8 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
     [children]
   );
 
-  const leftSwipe: LeftSwipeProps = rest;
-  const rightSwipe: RightSwipeProps = rest;
+  const leftSwipe = extractLeftSwipeProps(rest);
+  const rightSwipe = extractRightSwipeProps(rest);
 
   const isLeftSwipeHandled = !isEmptyObject(leftSwipe);
   const isRightSwipeHandled = !isEmptyObject(rightSwipe);
@@ -213,10 +215,10 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
         stopLeftSwipe={stopLeftSwipe || defaultLeftOpenValue}
         stopRightSwipe={stopRightSwipe || defaultRightOpenValue}
         onLeftAction={
-          isLeftSwipeHandled ? () => leftSwipe.onSwipeLeft?.() : undefined
+          isLeftSwipeHandled ? () => leftSwipe.onLeftSwipe?.() : undefined
         }
         onRightAction={
-          isRightSwipeHandled ? () => rightSwipe.onSwipeRight?.() : undefined
+          isRightSwipeHandled ? () => rightSwipe.onRightSwipe?.() : undefined
         }
         swipeGestureBegan={onStartSwiping}
         swipeGestureEnded={onStopSwiping}

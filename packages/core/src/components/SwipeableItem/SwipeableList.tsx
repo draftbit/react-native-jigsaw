@@ -43,18 +43,18 @@ const SwipeableList = <T extends object>({
 
   rest.scrollEnabled = disableScrollWhenSwiping ? !isSwiping : true;
 
+  const renderListComponent = () => {
+    switch (listComponent) {
+      case "FlatList":
+        return <FlatList {...(rest as FlatListProps<T>)} />;
+      case "FlashList":
+        return <FlashList {...(rest as FlashListProps<T>)} />;
+    }
+  };
+
   return (
     <SwipeableListContext.Provider value={{ onStartSwiping, onStopSwiping }}>
-      <>
-        {() => {
-          switch (listComponent) {
-            case "FlatList":
-              return <FlatList {...(rest as FlatListProps<T>)} />;
-            case "FlashList":
-              return <FlashList {...(rest as FlashListProps<T>)} />;
-          }
-        }}
-      </>
+      <>{renderListComponent()}</>
     </SwipeableListContext.Provider>
   );
 };

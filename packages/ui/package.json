@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "47.2.13",
+  "version": "47.3.0",
   "description": "Draftbit UI Library",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
@@ -41,8 +41,8 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/core": "47.2.13",
-    "@draftbit/native": "47.2.13"
+    "@draftbit/core": "47.3.0",
+    "@draftbit/native": "47.3.0"
   },
   "eslintIgnore": [
     "node_modules/",

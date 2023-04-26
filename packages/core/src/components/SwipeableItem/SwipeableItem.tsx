@@ -192,9 +192,13 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
           color={item.color || theme.colors.surface}
         />
       )}
-      <Text style={[textStyles, { color: item.color || theme.colors.surface }]}>
-        {item.title}
-      </Text>
+      {item.title && (
+        <Text
+          style={[textStyles, { color: item.color || theme.colors.surface }]}
+        >
+          {item.title}
+        </Text>
+      )}
     </Pressable>
   );
 

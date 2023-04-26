@@ -20,10 +20,33 @@ import { SwipeRow } from "react-native-swipe-list-view";
 import { IconSlot } from "../../interfaces/Icon";
 import type { Theme } from "../../styles/DefaultTheme";
 import { withTheme } from "../../theming";
-import { SwipeableViewButtonProps } from "./SwipeableViewButton";
-import { SwipeableViewSwipeHandlerProps } from "./SwipeableViewSwipeHandler";
+import { SwipeableItemButtonProps } from "./SwipeableItemButton";
+import { SwipeableListContext } from "./SwipeableList";
+import {
+  RightSwipeProps,
+  LeftSwipeProps,
+  SwipeableItemBehindItem,
+  leftSwipeToSwipeableItemBehindItem,
+  rightSwipeToSwipeableItemBehindItem,
+  extractLeftSwipeProps,
+  extractRightSwipeProps,
+} from "./SwipeableItemCommon";
 
-export interface SwipeableViewProps extends IconSlot {
+/**
+ * Clarification Regarding left/right directions and what they mean in the context of this component
+ * ------------------------------------------------------------------------------------------------------------
+ * Swipe Left / Left Swipe = Swiping to the left (i.e. Swiping from the right)
+ * Swipe Right / Right Swipe = Swiping to the right (i.e. Swiping from the left)
+ *
+ * This is only applies in the context of swipes, and not anywhere where a direction is refernced.
+ * For example 'rightOpenValue' referes to the open value on the right side.
+ * While 'stopRightSwipe' refers to the stop value of the swipe from left to right, which is on the left side.
+ * This is because one refers to a swipe and one does not, so the word 'right' has different meanings.
+ *
+ * This component is built around this concept to avoid confusion
+ */
+
+export interface SwipeableItemProps extends IconSlot {
   closeOnPress?: boolean;
   leftOpenValue?: number;
   rightOpenValue?: number;
@@ -44,7 +67,9 @@ export interface SwipeableViewProps extends IconSlot {
   theme: Theme;
 }
 
-const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
+type Props = SwipeableItemProps & RightSwipeProps & LeftSwipeProps;
+
+const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
   theme,
   style,
   children,
@@ -60,17 +85,18 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
   friction = 20,
   ...rest
 }) => {
-  const instanceOfSwipeableViewButtonProps = (
+  const instanceOfSwipeableItemButtonProps = (
     object: any
-  ): object is SwipeableViewButtonProps => {
-    return "title" in object && "side" in object && "onPress" in object;
+  ): object is SwipeableItemButtonProps => {
+    return "title" in object && "revealSwipeDirection" in object;
   };
 
-  const instanceOfSwipeableViewSwipeHandlerProps = (
-    object: any
-  ): object is SwipeableViewSwipeHandlerProps => {
-    return "title" in object && "side" in object && "onSwipe" in object;
+  const isEmptyObject = (object: object) => {
+    return Object.keys(object).length === 0;
   };
+
+  const { onStartSwiping, onStopSwiping } =
+    React.useContext(SwipeableListContext);
 
   const { viewStyles, textStyles } = extractStyles(style);
 
@@ -98,47 +124,25 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
   const [componentWidth, setComponentWidth] = React.useState<number | null>(
     null
   );
-  const leftButtons = React.useMemo(
+  const leftSwipeButtons = React.useMemo(
     () =>
       React.Children.toArray(children).filter(
         (child) =>
           React.isValidElement(child) &&
-          instanceOfSwipeableViewButtonProps(child.props) &&
-          child.props.side === "left"
-      ) as React.ReactElement<SwipeableViewButtonProps>[],
+          instanceOfSwipeableItemButtonProps(child.props) &&
+          child.props.revealSwipeDirection === "left"
+      ) as React.ReactElement<SwipeableItemButtonProps>[],
     [children]
   );
 
-  const rightButtons = React.useMemo(
+  const rightSwipeButtons = React.useMemo(
     () =>
       React.Children.toArray(children).filter(
         (child) =>
           React.isValidElement(child) &&
-          instanceOfSwipeableViewButtonProps(child.props) &&
-          child.props.side === "right"
-      ) as React.ReactElement<SwipeableViewButtonProps>[],
-    [children]
-  );
-
-  const leftSwipeHandlers = React.useMemo(
-    () =>
-      React.Children.toArray(children).filter(
-        (child) =>
-          React.isValidElement(child) &&
-          instanceOfSwipeableViewSwipeHandlerProps(child.props) &&
-          child.props.side === "left"
-      ) as React.ReactElement<SwipeableViewSwipeHandlerProps>[],
-    [children]
-  );
-
-  const rightSwipeHandlers = React.useMemo(
-    () =>
-      React.Children.toArray(children).filter(
-        (child) =>
-          React.isValidElement(child) &&
-          instanceOfSwipeableViewSwipeHandlerProps(child.props) &&
-          child.props.side === "right"
-      ) as React.ReactElement<SwipeableViewSwipeHandlerProps>[],
+          instanceOfSwipeableItemButtonProps(child.props) &&
+          child.props.revealSwipeDirection === "right"
+      ) as React.ReactElement<SwipeableItemButtonProps>[],
     [children]
   );
 
@@ -147,57 +151,56 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
       React.Children.toArray(children).filter(
         (child) =>
           React.isValidElement(child) &&
-          !instanceOfSwipeableViewSwipeHandlerProps(child.props) &&
-          !instanceOfSwipeableViewButtonProps(child.props)
+          !instanceOfSwipeableItemButtonProps(child.props)
       ),
     [children]
   );
 
-  if (leftButtons.length > 2 || rightButtons.length > 2) {
-    throw Error("Cannot have more than 2 buttons per side");
-  }
+  const leftSwipe = extractLeftSwipeProps(rest);
+  const rightSwipe = extractRightSwipeProps(rest);
 
-  if (leftSwipeHandlers.length > 1 || rightSwipeHandlers.length > 1) {
-    throw Error("Cannot have more than 1 swiper handler per side");
+  const isLeftSwipeHandled = !isEmptyObject(leftSwipe);
+  const isRightSwipeHandled = !isEmptyObject(rightSwipe);
+
+  if (leftSwipeButtons.length > 2 || rightSwipeButtons.length > 2) {
+    throw Error("Cannot have more than 2 SwipeableItemButton(s) per side");
   }
 
   if (
-    (leftButtons.length && leftSwipeHandlers.length) ||
-    (rightButtons.length && rightSwipeHandlers.length)
+    (leftSwipeButtons.length && isLeftSwipeHandled) ||
+    (rightSwipeButtons.length && isRightSwipeHandled)
   ) {
-    throw Error("Cannot combine swiper handler and buttons on the same side");
+    throw Error(
+      "Colliding configuration in SwipeableItem. You cannot have SwipeableItemButton(s) on the swipe direction where swipe handling is configured. Either reset swipe configuration or remove the button(s)."
+    );
   }
 
-  //Renders a single button/item. Used for both buttons and swipe handler
-  const renderBehindItem = (
-    props: SwipeableViewSwipeHandlerProps | SwipeableViewButtonProps,
-    index: number
-  ) => (
+  //Renders a single 'behind' item. Used for both buttons and swipe handler
+  const renderBehindItem = (item: SwipeableItemBehindItem, index: number) => (
     <Pressable
       key={index.toString()}
-      onPress={(props as any).onPress}
+      onPress={(item as any).onPress}
       style={[
         styles.buttonContainer,
-        { backgroundColor: props.backgroundColor || theme.colors.primary },
+        { backgroundColor: item.backgroundColor || theme.colors.primary },
       ]}
     >
-      {props.icon && (
+      {item.icon && (
         <Icon
-          name={props.icon}
-          size={props.iconSize || 25}
-          color={props.color || theme.colors.surface}
+          name={item.icon}
+          size={item.iconSize || 25}
+          color={item.color || theme.colors.surface}
         />
       )}
-      <Text
-        style={[textStyles, { color: props.color || theme.colors.surface }]}
-      >
-        {props.title}
-      </Text>
+      {item.title && (
+        <Text
+          style={[textStyles, { color: item.color || theme.colors.surface }]}
+        >
+          {item.title}
+        </Text>
+      )}
     </Pressable>
   );
-
-  const isLeftSwipeHandler = !!leftSwipeHandlers.length;
-  const isRightSwipeHandler = !!rightSwipeHandlers.length;
 
   const defaultLeftOpenValue = componentWidth ? componentWidth / 2 : 0;
   const defaultRightOpenValue = componentWidth ? -componentWidth / 2 : 0;
@@ -212,47 +215,55 @@ const SwipeableView: React.FC<React.PropsWithChildren<SwipeableViewProps>> = ({
       {/*@ts-ignore*/}
       <SwipeRow
         leftOpenValue={
-          isLeftSwipeHandler ? 0 : leftOpenValue || defaultLeftOpenValue //If in swiping mode, don't keep open
+          isRightSwipeHandled ? 0 : leftOpenValue || defaultLeftOpenValue //If in swiping mode, don't keep open
         }
         rightOpenValue={
-          isRightSwipeHandler ? 0 : rightOpenValue || defaultRightOpenValue
+          isLeftSwipeHandled ? 0 : rightOpenValue || defaultRightOpenValue
         }
         leftActivationValue={
-          leftActivationValue || isLeftSwipeHandler
+          leftActivationValue || isRightSwipeHandled
             ? defaultLeftOpenValue * (swipeActivationPercentage / 100) //When swipe passes activation percentage then it should be considered activated (call onSwipe)
             : defaultLeftOpenValue
         }
         rightActivationValue={
-          rightActivationValue || isRightSwipeHandler
+          rightActivationValue || isLeftSwipeHandled
             ? defaultRightOpenValue * (swipeActivationPercentage / 100)
             : defaultRightOpenValue
         }
-        stopLeftSwipe={stopLeftSwipe || defaultLeftOpenValue}
-        stopRightSwipe={stopRightSwipe || defaultRightOpenValue}
+        stopLeftSwipe={stopRightSwipe || defaultLeftOpenValue}
+        stopRightSwipe={stopLeftSwipe || defaultRightOpenValue}
         onLeftAction={
-          isLeftSwipeHandler
-            ? () => leftSwipeHandlers[0].props.onSwipe?.()
-            : undefined
+          isRightSwipeHandled ? () => rightSwipe.onSwipedRight?.() : undefined
         }
         onRightAction={
-          isRightSwipeHandler
-            ? () => rightSwipeHandlers[0].props.onSwipe?.()
-            : undefined
+          isLeftSwipeHandled ? () => leftSwipe.onSwipedLeft?.() : undefined
         }
+        swipeGestureBegan={onStartSwiping}
+        swipeGestureEnded={onStopSwiping}
         closeOnRowPress={closeOnPress}
         friction={friction}
         {...rest}
       >
         <View style={styles.behindContainer}>
           <View style={styles.behindContainerItem}>
-            {(isLeftSwipeHandler ? leftSwipeHandlers : leftButtons).map(
-              (item, index) => renderBehindItem(item.props, index)
-            )}
+            {isRightSwipeHandled
+              ? renderBehindItem(
+                  rightSwipeToSwipeableItemBehindItem(rightSwipe),
+                  0
+                )
+              : rightSwipeButtons.map((item, index) =>
+                  renderBehindItem(item.props, index)
+                )}
           </View>
           <View style={styles.behindContainerItem}>
-            {(isRightSwipeHandler ? rightSwipeHandlers : rightButtons).map(
-              (item, index) => renderBehindItem(item.props, index)
-            )}
+            {isLeftSwipeHandled
+              ? renderBehindItem(
+                  leftSwipeToSwipeableItemBehindItem(leftSwipe),
+                  0
+                )
+              : leftSwipeButtons.map((item, index) =>
+                  renderBehindItem(item.props, index)
+                )}
           </View>
         </View>
         <View
@@ -298,4 +309,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(SwipeableView);
+export default withTheme(SwipeableItem);

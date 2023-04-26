@@ -171,7 +171,7 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
     (rightSwipeButtons.length && isRightSwipeHandled)
   ) {
     throw Error(
-      "Colliding configuration in SwipeableItem. You cannot have SwipeableItemButton(s) on the side where swipe handling is configured. Either reset swipe configuration or remove the button(s)."
+      "Colliding configuration in SwipeableItem. You cannot have SwipeableItemButton(s) on the swipe direction where swipe handling is configured. Either reset swipe configuration or remove the button(s)."
     );
   }
 

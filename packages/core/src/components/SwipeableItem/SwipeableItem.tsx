@@ -229,10 +229,10 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
         stopLeftSwipe={stopRightSwipe || defaultLeftOpenValue}
         stopRightSwipe={stopLeftSwipe || defaultRightOpenValue}
         onLeftAction={
-          isRightSwipeHandled ? () => rightSwipe.onSwipeRight?.() : undefined
+          isRightSwipeHandled ? () => rightSwipe.onSwipedRight?.() : undefined
         }
         onRightAction={
-          isLeftSwipeHandled ? () => leftSwipe.onSwipeLeft?.() : undefined
+          isLeftSwipeHandled ? () => leftSwipe.onSwipedLeft?.() : undefined
         }
         swipeGestureBegan={onStartSwiping}
         swipeGestureEnded={onStopSwiping}

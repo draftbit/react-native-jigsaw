@@ -44,7 +44,7 @@ const SwipeableViewExample: React.FC = () => {
             <SwipeableItem
               rightSwipeTitle="Swipe Me Right"
               rightSwipeIcon="check"
-              onSwipeRight={() => {
+              onSwipedRight={() => {
                 console.log("Swiped");
               }}
             >
@@ -89,12 +89,12 @@ const SwipeableViewExample: React.FC = () => {
         <SwipeableItem
           rightSwipeTitle="Swipe Me Right"
           rightSwipeIcon="check"
-          onSwipeRight={() => {
+          onSwipedRight={() => {
             console.log("Swiped");
           }}
           leftSwipeTitle="Swipe Me Left"
           leftSwipeIcon="check"
-          onSwipeLeft={() => {
+          onSwipedLeft={() => {
             console.log("Swiped");
           }}
         >

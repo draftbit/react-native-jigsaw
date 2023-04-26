@@ -12,7 +12,7 @@ export interface SwipeableItemBehindItem {
 }
 
 export interface RightSwipeProps {
-  onSwipeRight?: () => void;
+  onSwipedRight?: () => void;
   rightSwipeTitle?: string;
   rightSwipeIcon?: string;
   rightSwipeIconSize?: number;
@@ -21,7 +21,7 @@ export interface RightSwipeProps {
 }
 
 export interface LeftSwipeProps {
-  onSwipeLeft?: () => void;
+  onSwipedLeft?: () => void;
   leftSwipeTitle?: string;
   leftSwipeIcon?: string;
   leftSwipeIconSize?: number;
@@ -31,7 +31,7 @@ export interface LeftSwipeProps {
 
 export function extractRightSwipeProps(object: object): RightSwipeProps {
   return pick(object, [
-    "onSwipeRight",
+    "onSwipedRight",
     "rightSwipeTitle",
     "rightSwipeIcon",
     "rightSwipeIconSize",
@@ -42,7 +42,7 @@ export function extractRightSwipeProps(object: object): RightSwipeProps {
 
 export function extractLeftSwipeProps(object: object): LeftSwipeProps {
   return pick(object, [
-    "onSwipeLeft",
+    "onSwipedLeft",
     "leftSwipeTitle",
     "leftSwipeIcon",
     "leftSwipeIconSize",
@@ -57,7 +57,7 @@ export function rightSwipeToSwipeableItemBehindItem(
   return {
     title: swipe.rightSwipeTitle || "",
     revealSwipeDirection: "right",
-    onSwipe: swipe.onSwipeRight,
+    onSwipe: swipe.onSwipedRight,
     icon: swipe.rightSwipeIcon,
     iconSize: swipe.rightSwipeIconSize,
     backgroundColor: swipe.rightSwipeBackgroundColor,
@@ -71,7 +71,7 @@ export function leftSwipeToSwipeableItemBehindItem(
   return {
     title: swipe.leftSwipeTitle || "",
     revealSwipeDirection: "left",
-    onSwipe: swipe.onSwipeLeft,
+    onSwipe: swipe.onSwipedLeft,
     icon: swipe.leftSwipeIcon,
     iconSize: swipe.leftSwipeIconSize,
     backgroundColor: swipe.leftSwipeBackgroundColor,

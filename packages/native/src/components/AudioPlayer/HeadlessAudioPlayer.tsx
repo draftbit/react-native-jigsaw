@@ -54,41 +54,38 @@ const HeadlessAudioPlayer = React.forwardRef<
       playThroughEarpieceAndroid,
     ]);
 
-    const onPlaybackStatusUpdate = React.useCallback(
-      (status: AVPlaybackStatus) => {
-        if (status.isLoaded) {
-          onPlaybackStatusUpdateProp?.({
-            isPlaying: status.isPlaying,
-            isLoading: false,
-            isBuffering: status.isBuffering,
-            currentPositionMillis: status.positionMillis || 0,
-            durationMillis: status.durationMillis || 0,
-            bufferedDurationMillis: status.playableDurationMillis || 0,
-            isError: false,
-          });
+    const onPlaybackStatusUpdate = (status: AVPlaybackStatus) => {
+      if (status.isLoaded) {
+        onPlaybackStatusUpdateProp?.({
+          isPlaying: status.isPlaying,
+          isLoading: false,
+          isBuffering: status.isBuffering,
+          currentPositionMillis: status.positionMillis || 0,
+          durationMillis: status.durationMillis || 0,
+          bufferedDurationMillis: status.playableDurationMillis || 0,
+          isError: false,
+        });
 
-          if (status.didJustFinish) {
-            onPlaybackFinish?.();
-          }
-
-          setIsPlaying(status.isPlaying);
-        } else if (status.error) {
-          onPlaybackStatusUpdateProp?.({
-            isPlaying: false,
-            isLoading: false,
-            isBuffering: false,
-            currentPositionMillis: 0,
-            durationMillis: 0,
-            bufferedDurationMillis: 0,
-            isError: true,
-            error: status.error,
-          });
+        if (status.didJustFinish) {
+          onPlaybackFinish?.();
         }
-      },
-      [onPlaybackStatusUpdateProp, onPlaybackFinish]
-    );
 
-    const loadAudio = React.useCallback(async () => {
+        setIsPlaying(status.isPlaying);
+      } else if (status.error) {
+        onPlaybackStatusUpdateProp?.({
+          isPlaying: false,
+          isLoading: false,
+          isBuffering: false,
+          currentPositionMillis: 0,
+          durationMillis: 0,
+          bufferedDurationMillis: 0,
+          isError: true,
+          error: status.error,
+        });
+      }
+    };
+
+    const loadAudio = async () => {
       onPlaybackStatusUpdateProp?.({
         isPlaying: false,
         isLoading: true,
@@ -102,7 +99,7 @@ const HeadlessAudioPlayer = React.forwardRef<
       const { sound } = await Audio.Sound.createAsync(source);
       setCurrentSound(sound);
       sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
-    }, [onPlaybackStatusUpdateProp, onPlaybackStatusUpdate, source]);
+    };
 
     const togglePlayback = React.useCallback(async () => {
       //Has to be called everytime a player is played to reconfigure the global Audio config based on each player's configuration
@@ -122,29 +119,11 @@ const HeadlessAudioPlayer = React.forwardRef<
       [currentSound]
     );
 
-    const isUriBasedSource = (object: any): boolean => {
-      return !!(object as any).uri;
-    };
+    useSourceDeepCompareEffect(() => {
+      loadAudio();
 
-    // 2 useEffects with the same purpose
-    // First one used in the case that the source is an object with 'uri', and has 'uri' as the dependenancy
-    // Second is used in any other case. For example if source is in the format require('X'). And uses the source itself as the dependenancy
-    //
-    // This prevents useEffect from infinite calls caused when a 'uri' based source is created in an inline object that results in a new source object everytime
-    React.useEffect(() => {
-      if (isUriBasedSource(source)) {
-        loadAudio();
-      }
-
-      // Intentionally leaving out source
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [(source as any).uri, loadAudio]);
-
-    React.useEffect(() => {
-      if (!isUriBasedSource(source)) {
-        loadAudio();
-      }
-    }, [source, loadAudio]);
+      // Ignore dependency of loadAudio
+    }, [source]);
 
     React.useEffect(() => {
       return currentSound
@@ -168,5 +147,34 @@ const HeadlessAudioPlayer = React.forwardRef<
     return null;
   }
 );
+
+// The source provided into the AudioPlayer can be of type {uri: "some uri"}
+// In the case that this object is created inline, each rerender provides a new source object because a new object is initialized everytime
+// This creates an issue with being a useEffect dependency
+//
+// This creates variants of useEffect that checks deep equality of 'uri' to determine if dependency changed or not
+// Follows: https://stackoverflow.com/a/54096391
+function sourceDeepCompareEquals(a: any, b: any) {
+  if (a?.uri && b?.uri) {
+    return a.uri === b.uri;
+  }
+  return a === b;
+}
+
+function useSourceDeepCompareMemoize(value: any) {
+  const ref = React.useRef();
+  if (!sourceDeepCompareEquals(value, ref.current)) {
+    ref.current = value;
+  }
+  return ref.current;
+}
+
+function useSourceDeepCompareEffect(
+  callback: React.EffectCallback,
+  dependencies: React.DependencyList
+) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  React.useEffect(callback, dependencies.map(useSourceDeepCompareMemoize));
+}
 
 export default HeadlessAudioPlayer;

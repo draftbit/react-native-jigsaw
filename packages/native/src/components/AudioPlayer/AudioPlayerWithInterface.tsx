@@ -10,24 +10,6 @@ import {
   HeadlessAudioPlayerRef,
 } from "./AudioPlayerCommon";
 
-function formatDuration(duration: number) {
-  if (duration === 0 || duration === 1) return "00:00";
-
-  const seconds = Math.floor((duration / 1000) % 60);
-  const minutes = Math.floor((duration / (1000 * 60)) % 60);
-  const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
-
-  const renderedHours = hours < 10 ? "0" + hours : hours;
-  const renderedMinutes = minutes < 10 ? "0" + minutes : minutes;
-  const renderedSeconds = seconds < 10 ? "0" + seconds : seconds;
-
-  if (hours > 0) {
-    return renderedHours + ":" + renderedMinutes + ":" + renderedSeconds;
-  }
-
-  return renderedMinutes + ":" + renderedSeconds;
-}
-
 /**
  * Built on top of HeadlessAudioPlayer to provide a simple interface for playing audio
  */
@@ -166,5 +148,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+function formatDuration(duration: number) {
+  if (duration === 0 || duration === 1) return "00:00";
+
+  const seconds = Math.floor((duration / 1000) % 60);
+  const minutes = Math.floor((duration / (1000 * 60)) % 60);
+  const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+  const renderedHours = hours < 10 ? "0" + hours : hours;
+  const renderedMinutes = minutes < 10 ? "0" + minutes : minutes;
+  const renderedSeconds = seconds < 10 ? "0" + seconds : seconds;
+
+  if (hours > 0) {
+    return renderedHours + ":" + renderedMinutes + ":" + renderedSeconds;
+  }
+
+  return renderedMinutes + ":" + renderedSeconds;
+}
 
 export default AudioPlayerWithInterface;

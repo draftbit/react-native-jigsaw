@@ -139,7 +139,7 @@ const AudioPlayerWithInterface = React.forwardRef<
           {!hidePlaybackIcon && (
             <TouchableHighlight
               onPress={() => headlessAudioPlayerRef.current?.togglePlayback()}
-              style={{ marginRight: 8 }}
+              style={styles.spacingEnd}
             >
               <AntDesign
                 name={iconName as any}
@@ -152,7 +152,8 @@ const AudioPlayerWithInterface = React.forwardRef<
             <Text
               style={[
                 { color: theme.colors.strong },
-                { marginRight: 8, ...textStyles },
+                styles.spacingEnd,
+                { ...textStyles },
               ]}
             >
               {formatDuration(sliderPositionMillis ?? 0)} /{" "}
@@ -161,7 +162,7 @@ const AudioPlayerWithInterface = React.forwardRef<
           )}
           {!hideSlider && (
             <Slider
-              style={{ flex: 1 }}
+              style={styles.slider}
               minimumTrackTintColor={completedTrackColor}
               maximumTrackTintColor={remainingTrackColor}
               thumbTintColor={sliderColor}
@@ -185,6 +186,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 8,
     borderWidth: 1,
+  },
+  spacingEnd: {
+    marginEnd: 8,
+  },
+  slider: {
+    flex: 1,
   },
 });
 

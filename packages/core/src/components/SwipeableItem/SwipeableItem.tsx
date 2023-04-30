@@ -83,6 +83,8 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
   stopLeftSwipe,
   stopRightSwipe,
   friction = 20,
+  disableLeftSwipe,
+  disableRightSwipe,
   ...rest
 }) => {
   const instanceOfSwipeableItemButtonProps = (
@@ -242,6 +244,8 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
         swipeGestureEnded={onStopSwiping}
         closeOnRowPress={closeOnPress}
         friction={friction}
+        disableLeftSwipe={disableRightSwipe}
+        disableRightSwipe={disableLeftSwipe}
         {...rest}
       >
         <View style={styles.behindContainer}>

@@ -10,16 +10,19 @@ export default function AudioPlayerExample() {
 
   return (
     <Container style={{}}>
-      <Section title="Local asset value">
+      <Section style={{}} title="Default styling">
+        <AudioPlayer
+          source={require("./assets/loop.wav")}
+          playsInBackground
+          interruptionMode="stop"
+        />
+      </Section>
+      <Section style={{}} title="Custom styling">
         <AudioPlayer
           style={{
             backgroundColor: "#eee",
-            paddingLeft: 8,
-            paddingRight: 8,
-            paddingTop: 8,
-            paddingBottom: 8,
             borderRadius: 24,
-            marginBottom: 20,
+            borderWidth: 0,
             fontWeight: "bold",
             height: 40,
             width: "80%",
@@ -28,7 +31,8 @@ export default function AudioPlayerExample() {
           sliderColor="red"
           completedTrackColor="white"
           remainingTrackColor="#999999"
-          playSize={18}
+          togglePlaybackIconSize={18}
+          togglePlaybackIconColor="green"
           playsInBackground
           interruptionMode="stop"
         />
@@ -36,35 +40,49 @@ export default function AudioPlayerExample() {
           style={{
             backgroundColor: "#333",
             padding: 8,
-            margin: 8,
-            marginBottom: 20,
+            borderWidth: 0,
             borderRadius: 4,
             color: "#fff",
+            marginTop: 10,
           }}
           source={require("./assets/loop.wav")}
           sliderColor="white"
           completedTrackColor="white"
           remainingTrackColor="#dedede"
-          playSize={18}
-          playColor="#fff"
+          togglePlaybackIconSize={18}
+          togglePlaybackIconColor="#fff"
+        />
+        <AudioPlayer
+          style={{ width: 50, marginTop: 10 }}
+          source={require("./assets/loop.wav")}
+          playsInBackground
+          interruptionMode="stop"
+          hideDuration
+          hideSlider
+        />
+        <AudioPlayer
+          style={{ width: 150, marginTop: 10 }}
+          source={require("./assets/loop.wav")}
+          playsInBackground
+          interruptionMode="stop"
+          hideSlider
         />
       </Section>
-      <Section title="Remote value">
+      <Section style={{}} title="Local asset value">
         <AudioPlayer
-          style={{
-            paddingLeft: 20,
-            paddingRight: 20,
-            paddingTop: 8,
-            paddingBottom: 8,
-            color: "red",
-            fontSize: 14,
-          }}
+          source={require("./assets/loop.wav")}
+          playsInBackground
+          interruptionMode="stop"
+        />
+      </Section>
+      <Section style={{}} title="Remote value">
+        <AudioPlayer
           source={{
             uri: "https://static.draftbit.com/audio/intro-to-draftbit-audio.mp3",
           }}
         />
       </Section>
-      <Section title="Headless">
+      <Section style={{}} title="Headless">
         <AudioPlayer
           ref={audioPlayerRef}
           source={{

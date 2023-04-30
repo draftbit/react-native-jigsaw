@@ -1,5 +1,6 @@
 import { AVPlaybackSource } from "expo-av";
 import { StyleProp, ViewStyle, TextStyle } from "react-native";
+import type { Theme } from "../../styles/DefaultTheme";
 
 export type AudioInterruptionMode = "lower volume" | "stop";
 
@@ -34,6 +35,10 @@ export interface AudioPlayerInterfaceProps {
   sliderColor?: string;
   completedTrackColor?: string;
   remainingTrackColor?: string;
-  playSize?: number;
-  playColor?: string;
+  togglePlaybackIconSize?: number;
+  togglePlaybackIconColor?: string;
+  hidePlaybackIcon?: boolean;
+  hideDuration?: boolean;
+  hideSlider?: boolean;
+  theme: Theme;
 }

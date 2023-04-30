@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Text, View, TouchableHighlight, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { withTheme } from "../../theming";
 import Slider from "@react-native-community/slider";
 import HeadlessAudioPlayer from "./HeadlessAudioPlayer";
 import {
@@ -20,13 +21,17 @@ const AudioPlayerWithInterface = React.forwardRef<
   (
     {
       style,
-      sliderColor = "black",
-      completedTrackColor = "black",
-      remainingTrackColor = "black",
-      playSize = 24,
-      playColor = "black",
+      theme,
+      sliderColor = theme.colors.primary,
+      completedTrackColor = theme.colors.primary,
+      remainingTrackColor = theme.colors.disabled,
+      togglePlaybackIconSize = 24,
+      togglePlaybackIconColor = theme.colors.primary,
       onPlaybackStatusUpdate: onPlaybackStatusUpdateProp,
       onPlaybackFinish: onPlaybackFinishProp,
+      hidePlaybackIcon = false,
+      hideDuration = false,
+      hideSlider = false,
       ...rest
     },
     ref
@@ -121,32 +126,52 @@ const AudioPlayerWithInterface = React.forwardRef<
           onPlaybackStatusUpdate={onPlaybackStatusUpdate}
           onPlaybackFinish={onPlaybackFinish}
         />
-        <View style={[styles.container, viewStyles]}>
-          <TouchableHighlight
-            onPress={() => headlessAudioPlayerRef.current?.togglePlayback()}
-            style={{ marginRight: 8 }}
-          >
-            <AntDesign
-              name={iconName as any}
-              size={playSize}
-              color={playColor}
+        <View
+          style={[
+            {
+              backgroundColor: theme.colors.background,
+              borderColor: theme.colors.disabled,
+            },
+            styles.container,
+            viewStyles,
+          ]}
+        >
+          {!hidePlaybackIcon && (
+            <TouchableHighlight
+              onPress={() => headlessAudioPlayerRef.current?.togglePlayback()}
+              style={{ marginRight: 8 }}
+            >
+              <AntDesign
+                name={iconName as any}
+                size={togglePlaybackIconSize}
+                color={togglePlaybackIconColor}
+              />
+            </TouchableHighlight>
+          )}
+          {!hideDuration && (
+            <Text
+              style={[
+                { color: theme.colors.strong },
+                { marginRight: 8, ...textStyles },
+              ]}
+            >
+              {formatDuration(sliderPositionMillis ?? 0)} /{" "}
+              {formatDuration(durationMillis || 0)}
+            </Text>
+          )}
+          {!hideSlider && (
+            <Slider
+              style={{ flex: 1 }}
+              minimumTrackTintColor={completedTrackColor}
+              maximumTrackTintColor={remainingTrackColor}
+              thumbTintColor={sliderColor}
+              minimumValue={0}
+              value={sliderPositionMillis}
+              maximumValue={durationMillis}
+              onValueChange={onSliderChange}
+              onSlidingComplete={onSlidingComplete}
             />
-          </TouchableHighlight>
-          <Text style={{ marginRight: 8, ...textStyles }}>
-            {formatDuration(sliderPositionMillis ?? 0)} /{" "}
-            {formatDuration(durationMillis || 0)}
-          </Text>
-          <Slider
-            style={{ flex: 1 }}
-            minimumTrackTintColor={completedTrackColor}
-            maximumTrackTintColor={remainingTrackColor}
-            thumbTintColor={sliderColor}
-            minimumValue={0}
-            value={sliderPositionMillis}
-            maximumValue={durationMillis}
-            onValueChange={onSliderChange}
-            onSlidingComplete={onSlidingComplete}
-          />
+          )}
         </View>
       </>
     );
@@ -155,8 +180,11 @@ const AudioPlayerWithInterface = React.forwardRef<
 
 const styles = StyleSheet.create({
   container: {
+    padding: 8,
     flexDirection: "row",
     alignItems: "center",
+    borderRadius: 8,
+    borderWidth: 1,
   },
 });
 
@@ -178,4 +206,4 @@ function formatDuration(duration: number) {
   return renderedMinutes + ":" + renderedSeconds;
 }
 
-export default AudioPlayerWithInterface;
+export default withTheme(AudioPlayerWithInterface);

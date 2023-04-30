@@ -104,7 +104,14 @@ const AudioPlayerWithInterface = React.forwardRef<
       }
     };
 
-    const iconName = isLoading ? "loading1" : !isPlaying ? "play" : "pause";
+    let iconName;
+    if (isLoading) {
+      iconName = "loading1";
+    } else if (isPlaying) {
+      iconName = "pause";
+    } else {
+      iconName = "play";
+    }
 
     return (
       <>
@@ -119,7 +126,11 @@ const AudioPlayerWithInterface = React.forwardRef<
             onPress={() => headlessAudioPlayerRef.current?.togglePlayback()}
             style={{ marginRight: 8 }}
           >
-            <AntDesign name={iconName} size={playSize} color={playColor} />
+            <AntDesign
+              name={iconName as any}
+              size={playSize}
+              color={playColor}
+            />
           </TouchableHighlight>
           <Text style={{ marginRight: 8, ...textStyles }}>
             {formatDuration(sliderPositionMillis ?? 0)} /{" "}
@@ -150,7 +161,7 @@ const styles = StyleSheet.create({
 });
 
 function formatDuration(duration: number) {
-  if (duration === 0 || duration === 1) return "00:00";
+  if (duration === 0) return "00:00";
 
   const seconds = Math.floor((duration / 1000) % 60);
   const minutes = Math.floor((duration / (1000 * 60)) % 60);

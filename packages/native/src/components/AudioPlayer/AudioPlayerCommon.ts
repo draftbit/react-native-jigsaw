@@ -1,5 +1,5 @@
 import { AVPlaybackSource } from "expo-av";
-import { StyleProp } from "react-native";
+import { StyleProp, ViewStyle, TextStyle } from "react-native";
 
 export type AudioInterruptionMode = "lower volume" | "stop";
 
@@ -30,7 +30,7 @@ export interface HeadlessAudioPlayerProps {
 }
 
 export interface AudioPlayerInterfaceProps {
-  style?: StyleProp<any>;
+  style?: StyleProp<ViewStyle & TextStyle>;
   sliderColor?: string;
   completedTrackColor?: string;
   remainingTrackColor?: string;

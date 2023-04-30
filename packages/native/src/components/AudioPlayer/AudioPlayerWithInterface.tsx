@@ -19,7 +19,7 @@ const AudioPlayerWithInterface = React.forwardRef<
 >(
   (
     {
-      style = {},
+      style,
       sliderColor = "black",
       completedTrackColor = "black",
       remainingTrackColor = "black",

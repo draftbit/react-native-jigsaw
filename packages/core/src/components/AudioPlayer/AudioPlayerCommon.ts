@@ -32,7 +32,7 @@ export interface HeadlessAudioPlayerProps {
 
 export interface AudioPlayerInterfaceProps {
   style?: StyleProp<ViewStyle & TextStyle>;
-  sliderColor?: string;
+  thumbColor?: string;
   completedTrackColor?: string;
   remainingTrackColor?: string;
   togglePlaybackIconSize?: number;

@@ -22,7 +22,7 @@ const AudioPlayerWithInterface = React.forwardRef<
     {
       style,
       theme,
-      sliderColor = theme.colors.primary,
+      thumbColor = theme.colors.primary,
       completedTrackColor = theme.colors.primary,
       remainingTrackColor = theme.colors.disabled,
       togglePlaybackIconSize = 24,
@@ -165,7 +165,7 @@ const AudioPlayerWithInterface = React.forwardRef<
               style={styles.slider}
               minimumTrackTintColor={completedTrackColor}
               maximumTrackTintColor={remainingTrackColor}
-              thumbTintColor={sliderColor}
+              thumbTintColor={thumbColor}
               minimumValue={0}
               value={sliderPositionMillis}
               maximumValue={durationMillis}

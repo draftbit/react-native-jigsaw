@@ -70,6 +70,11 @@ export {
   SwipeableList,
 } from "./components/SwipeableItem";
 
+export {
+  default as AudioPlayer,
+  AudioPlayerRef,
+} from "./components/AudioPlayer";
+
 /* Deprecated: Fix or Delete!  */
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
 export { default as Picker } from "./components/Picker/Picker";

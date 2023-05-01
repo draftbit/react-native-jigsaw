@@ -34,19 +34,26 @@ const HeadlessAudioPlayer = React.forwardRef<
     const [isPlaying, setIsPlaying] = React.useState(false);
 
     const updateAudioMode = React.useCallback(async () => {
-      await Audio.setAudioModeAsync({
-        staysActiveInBackground: playsInBackground,
-        interruptionModeIOS:
-          interruptionMode === "lower volume"
-            ? InterruptionModeIOS.DuckOthers
-            : InterruptionModeIOS.DoNotMix,
-        interruptionModeAndroid:
-          interruptionMode === "lower volume"
-            ? InterruptionModeAndroid.DuckOthers
-            : InterruptionModeAndroid.DoNotMix,
-        playsInSilentModeIOS,
-        playThroughEarpieceAndroid,
-      });
+      try {
+        await Audio.setAudioModeAsync({
+          staysActiveInBackground: playsInBackground,
+          interruptionModeIOS:
+            interruptionMode === "lower volume"
+              ? InterruptionModeIOS.DuckOthers
+              : InterruptionModeIOS.DoNotMix,
+          interruptionModeAndroid:
+            interruptionMode === "lower volume"
+              ? InterruptionModeAndroid.DuckOthers
+              : InterruptionModeAndroid.DoNotMix,
+          playsInSilentModeIOS,
+          playThroughEarpieceAndroid,
+        });
+      } catch (e) {
+        console.error(
+          "Failed to set audio mode. interruptionMode, playsInBackground, playsInSilentModeIOS, playThroughEarpieceAndroid might not be set. Failed with",
+          e
+        );
+      }
     }, [
       interruptionMode,
       playsInBackground,

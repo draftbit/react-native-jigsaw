@@ -65,10 +65,15 @@ export { YoutubePlayer } from "./components/YoutubePlayer";
 export { Table, TableRow, TableCell } from "./components/Table";
 
 export {
-  SwipeableView,
-  SwipeableViewButton,
-  SwipeableViewSwipeHandler,
-} from "./components/SwipeableView";
+  SwipeableItem,
+  SwipeableItemButton,
+  SwipeableList,
+} from "./components/SwipeableItem";
+
+export {
+  default as AudioPlayer,
+  AudioPlayerRef,
+} from "./components/AudioPlayer";
 
 /* Deprecated: Fix or Delete!  */
 export { default as DatePicker } from "./components/DatePicker/DatePicker";

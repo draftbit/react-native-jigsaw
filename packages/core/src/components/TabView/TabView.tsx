@@ -3,7 +3,6 @@ import { StyleProp, ViewStyle } from "react-native";
 import {
   TabView,
   TabBar,
-  SceneMap,
   SceneRendererProps,
   NavigationState,
   Route,
@@ -15,6 +14,9 @@ import { withTheme } from "../../theming";
 import type { Theme } from "../../styles/DefaultTheme";
 import { extractStyles } from "../../utilities";
 
+type SceneProps = SceneRendererProps & {
+  route: Route;
+};
 type TabBarProps = SceneRendererProps & {
   navigationState: NavigationState<any>;
 };
@@ -56,7 +58,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
 }) => {
   const [index, setIndex] = React.useState(0);
   const [routes, setRoutes] = React.useState<Route[]>([]);
-  const [tabScenes, setTabScenes] = React.useState({});
+  const [tabScenes, setTabScenes] = React.useState<{ [key: string]: any }>({});
 
   const { textStyles, viewStyles } = extractStyles(style);
 
@@ -71,7 +73,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
   //Populate routes and scenes based on children
   React.useEffect(() => {
     const newRoutes: Route[] = [];
-    const scenes: any = {};
+    const scenes: { [key: string]: React.ReactElement } = {};
 
     React.Children.toArray(children)
       .filter(
@@ -86,7 +88,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
           icon: child.props.icon,
           accessibilityLabel: child.props.accessibilityLabel,
         });
-        scenes[idx] = () => child;
+        scenes[idx] = child;
       });
 
     setRoutes(newRoutes);
@@ -125,6 +127,10 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
     );
   };
 
+  const renderScene = ({ route }: SceneProps) => {
+    return tabScenes[route.key];
+  };
+
   //Cannot render TabView without at least one tab
   if (!routes.length) {
     return <></>;
@@ -132,9 +138,9 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
 
   return (
     <TabView
-      style={[viewStyles]}
+      style={viewStyles}
       navigationState={{ index, routes }}
-      renderScene={SceneMap(tabScenes)}
+      renderScene={renderScene}
       renderTabBar={renderTabBar}
       onIndexChange={indexChangeHandler}
       tabBarPosition={tabBarPosition}

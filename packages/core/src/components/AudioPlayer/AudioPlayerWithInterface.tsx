@@ -24,7 +24,7 @@ const AudioPlayerWithInterface = React.forwardRef<
       theme,
       thumbColor = theme.colors.primary,
       completedTrackColor = theme.colors.primary,
-      remainingTrackColor = theme.colors.disabled,
+      remainingTrackColor = theme.colors.divider,
       togglePlaybackIconSize = 24,
       togglePlaybackIconColor = theme.colors.primary,
       onPlaybackStatusUpdate: onPlaybackStatusUpdateProp,
@@ -130,7 +130,7 @@ const AudioPlayerWithInterface = React.forwardRef<
           style={[
             {
               backgroundColor: theme.colors.background,
-              borderColor: theme.colors.disabled,
+              borderColor: theme.colors.divider,
             },
             styles.container,
             viewStyles,

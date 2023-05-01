@@ -8,6 +8,7 @@ import {
   Route,
 } from "react-native-tab-view";
 
+//Trigger rebuild
 import { TabViewItemProps } from "./TabViewItem";
 import type { IconSlot } from "../../interfaces/Icon";
 import { withTheme } from "../../theming";

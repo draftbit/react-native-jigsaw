@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View, TouchableHighlight, StyleSheet } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { withTheme } from "../../theming";
 import Slider from "@react-native-community/slider";
@@ -10,6 +10,7 @@ import {
   HeadlessAudioPlayerProps,
   HeadlessAudioPlayerRef,
 } from "./AudioPlayerCommon";
+import Pressable from "../Pressable";
 
 /**
  * Built on top of HeadlessAudioPlayer to provide a simple interface for playing audio
@@ -137,7 +138,7 @@ const AudioPlayerWithInterface = React.forwardRef<
           ]}
         >
           {!hidePlaybackIcon && (
-            <TouchableHighlight
+            <Pressable
               onPress={() => headlessAudioPlayerRef.current?.togglePlayback()}
               style={styles.spacingEnd}
             >
@@ -146,7 +147,7 @@ const AudioPlayerWithInterface = React.forwardRef<
                 size={togglePlaybackIconSize}
                 color={togglePlaybackIconColor}
               />
-            </TouchableHighlight>
+            </Pressable>
           )}
           {!hideDuration && (
             <Text

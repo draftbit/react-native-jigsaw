@@ -2,7 +2,7 @@ import * as React from "react";
 import { withTheme } from "../theming";
 import { colorTypes } from "@draftbit/types";
 import { StyleProp, StyleSheet, ViewStyle } from "react-native";
-import IconButton from "./IconButton";
+import IconButton from "../components/IconButton";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
 

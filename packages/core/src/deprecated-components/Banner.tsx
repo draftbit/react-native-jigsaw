@@ -8,7 +8,7 @@ import {
   StyleProp,
   Animated,
 } from "react-native";
-import Surface from "./Surface";
+import Surface from "../components/Surface";
 import type { IconSlot } from "../interfaces/Icon";
 import shadow from "../styles/shadow";
 import { withTheme } from "../theming";

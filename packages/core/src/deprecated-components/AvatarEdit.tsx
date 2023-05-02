@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
-import Touchable from "./Touchable";
+import Touchable from "../components/Touchable";
 import CircleImage from "./CircleImage";
 import { withTheme } from "../theming";
 

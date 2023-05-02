@@ -1,8 +1,10 @@
 import React from "react";
 import { View, StyleProp, TextStyle, ViewStyle } from "react-native";
-import Text from "../Text";
-import { withTheme } from "../../theming";
-import RadioButtonGroup, { RadioButtonGroupProps } from "./RadioButtonGroup";
+import Text from "../components/Text";
+import { withTheme } from "../theming";
+import RadioButtonGroup, {
+  RadioButtonGroupProps,
+} from "../components/RadioButton/RadioButtonGroup";
 
 interface Props extends RadioButtonGroupProps {
   label?: string;

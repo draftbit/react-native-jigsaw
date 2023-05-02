@@ -5,7 +5,7 @@ import {
   StyleProp,
   ImageStyle,
 } from "react-native";
-import Config from "./Config";
+import Config from "../components/Config";
 interface Props {
   source?: string | ImageSourcePropType;
   size?: number;

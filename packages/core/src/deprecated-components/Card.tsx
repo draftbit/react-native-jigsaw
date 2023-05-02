@@ -8,12 +8,12 @@ import {
   TextStyle,
   Pressable,
 } from "react-native";
-import Image from "./Image";
-import Surface from "./Surface";
-import { Title, Subtitle, Caption } from "./Typography";
+import Image from "../components/Image";
+import Surface from "../components/Surface";
+import { Title, Subtitle, Caption } from "../components/Typography";
 
 import { withTheme } from "../theming";
-import Config from "./Config";
+import Config from "../components/Config";
 
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";

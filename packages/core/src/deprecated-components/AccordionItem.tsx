@@ -7,11 +7,11 @@ import {
   ViewStyle,
 } from "react-native";
 
-import Text from "../Text";
-import type { IconSlot } from "../../interfaces/Icon";
-import { extractStyles } from "../../utilities";
-import { withTheme } from "../../theming";
-import type { Theme } from "../../styles/DefaultTheme";
+import Text from "../components/Text";
+import type { IconSlot } from "../interfaces/Icon";
+import { extractStyles } from "../utilities";
+import { withTheme } from "../theming";
+import type { Theme } from "../styles/DefaultTheme";
 
 type Props = {
   icon?: string;

@@ -21,6 +21,9 @@ type Props = {
   theme: Theme;
 } & IconSlot;
 
+/**
+ * @deprecated DEPRECATED: Use direct children with AccordianGroup
+ */
 const AccordionItem = ({
   Icon,
   icon,

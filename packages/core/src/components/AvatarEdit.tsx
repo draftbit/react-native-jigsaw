@@ -15,6 +15,9 @@ type Props = {
   theme: Theme;
 } & IconSlot;
 
+/**
+ * @deprecated DEPRECATED
+ */
 const AvatarEdit: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   image,

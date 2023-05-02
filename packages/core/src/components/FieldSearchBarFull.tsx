@@ -25,6 +25,9 @@ type Props = {
   defaultValue?: string;
 } & IconSlot;
 
+/**
+ * @deprecated DEPRECATED
+ */
 const FieldSearchBarFull: React.FC<React.PropsWithChildren<Props>> = ({
   showIcon,
   Icon,

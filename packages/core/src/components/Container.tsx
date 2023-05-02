@@ -26,6 +26,9 @@ type Props = {
   children?: React.ReactNode;
 };
 
+/**
+ * @deprecated DEPRECATED
+ */
 const Container: React.FC<React.PropsWithChildren<Props>> = ({
   useThemeGutterPadding,
   borderColor,

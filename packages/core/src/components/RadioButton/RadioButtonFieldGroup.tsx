@@ -10,6 +10,9 @@ interface Props extends RadioButtonGroupProps {
   style?: StyleProp<ViewStyle>;
 }
 
+/**
+ * @deprecated DEPRECATED
+ */
 const RadioButtonFieldGroup: React.FC<React.PropsWithChildren<Props>> = ({
   label,
   children,

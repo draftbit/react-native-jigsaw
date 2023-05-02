@@ -18,6 +18,9 @@ type Props = {
   theme: typeof themeT;
 };
 
+/**
+ * @deprecated DEPRECATED
+ */
 const ProgressCircle: React.FC<React.PropsWithChildren<Props>> = ({
   progress = 0.5,
   style,

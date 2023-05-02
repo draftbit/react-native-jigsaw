@@ -88,6 +88,9 @@ type Props = {
   children?: React.ReactNode;
 } & IconSlot;
 
+/**
+ * @deprecated DEPRECATED
+ */
 const Card: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   image = Config.cardImageUrl,

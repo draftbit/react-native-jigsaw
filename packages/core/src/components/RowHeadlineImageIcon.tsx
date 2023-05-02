@@ -17,6 +17,9 @@ type Props = {
   theme: Theme;
 } & IconSlot;
 
+/**
+ * @deprecated DEPRECATED
+ */
 const RowHeadlineImageIcon: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   icon,

@@ -39,6 +39,9 @@ interface State {
   animationValue: Animated.Value;
 }
 
+/**
+ * @deprecated DEPRECATED
+ */
 export default class ProgressBar extends Component<Props, State> {
   constructor(props: Props) {
     super(props);

@@ -1,5 +1,8 @@
 import * as React from "react";
 
+/**
+ * @deprecated DEPRECATED
+ */
 export const useAuthState = (auth: any) => {
   const [error, setError] = React.useState();
   const [value, setValue] = React.useState(auth.currentUser);

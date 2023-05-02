@@ -14,6 +14,9 @@ export interface CheckboxGroupProps {
 
 const { Provider } = checkboxGroupContext;
 
+/**
+ * @deprecated DEPRECATED
+ */
 const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   direction = Direction.Vertical,
   values,

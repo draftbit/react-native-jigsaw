@@ -13,6 +13,9 @@ type Props = {
   theme: typeof theme;
 };
 
+/**
+ * @deprecated DEPRECATED
+ */
 const RowHeadlineImageCaption: React.FC<React.PropsWithChildren<Props>> = ({
   title,
   subtitle,

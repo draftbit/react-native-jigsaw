@@ -12,6 +12,9 @@ interface Props {
   style?: StyleProp<ImageStyle>;
 }
 
+/**
+ * @deprecated DEPRECATED
+ */
 const CircleImage: React.FC<React.PropsWithChildren<Props>> = ({
   source = Config.placeholderImageURL,
   size = 60,

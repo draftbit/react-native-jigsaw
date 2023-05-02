@@ -22,6 +22,9 @@ type Props = {
   theme: Theme;
 } & IconSlot;
 
+/**
+ * @deprecated DEPRECATED
+ */
 const ToggleButton: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   icon,

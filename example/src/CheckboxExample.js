@@ -2,7 +2,6 @@ import {
   Checkbox,
   CheckboxRow,
   Switch,
-  Row,
   withTheme,
   ScreenContainer,
 } from "@draftbit/ui";
@@ -36,7 +35,7 @@ const CheckboxExample = ({ theme }) => {
   return (
     <ScreenContainer hasSafeArea={false} scrollable={true}>
       <Section title="Single Checkbox">
-        <Row>
+        <View style={{ flexDirection: "row" }}>
           <SingleCheckboxWrapper label="Common">
             <Checkbox status={checked} onPress={handlePress} />
           </SingleCheckboxWrapper>
@@ -65,11 +64,11 @@ const CheckboxExample = ({ theme }) => {
           <SingleCheckboxWrapper label="Initial value">
             <Checkbox defaultValue={false} />
           </SingleCheckboxWrapper>
-        </Row>
+        </View>
       </Section>
 
       <Section title="Checkbox and Switch with Airtable-like API (false is undefined)">
-        <Row>
+        <View style={{ flexDirection: "row" }}>
           <Checkbox
             defaultValue={airtableChecked}
             onPress={handleAirtablePress}
@@ -86,7 +85,7 @@ const CheckboxExample = ({ theme }) => {
             defaultValue={airtableChecked}
             onValueChange={handleAirtablePress}
           />
-        </Row>
+        </View>
       </Section>
 
       <Section title="CheckboxRow">

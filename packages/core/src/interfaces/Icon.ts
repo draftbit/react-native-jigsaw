@@ -7,8 +7,6 @@
 import React from "react";
 import { ViewProps, StyleProp, ImageStyle } from "react-native";
 
-import { Subtract } from "utility-types";
-
 type Props = {
   name: string;
   color?: string;
@@ -22,7 +20,12 @@ export interface IconSlot {
   Icon: IconI;
 }
 
+type $Without<T, K> = Pick<T, Exclude<keyof T, K>>;
+
 export const injectIcon =
-  <P extends IconSlot>(Component: React.ComponentType<P>, Icon: IconI) =>
-  (props: Subtract<P, IconSlot>) =>
+  <P extends IconSlot>(
+    Component: React.ComponentType<P>,
+    Icon: IconI
+  ): React.FC<$Without<P, "Icon">> =>
+  (props) =>
     React.createElement(Component, { ...(props as P), Icon });

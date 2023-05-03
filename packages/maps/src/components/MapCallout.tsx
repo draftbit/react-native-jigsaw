@@ -1,21 +1,17 @@
 import * as React from "react";
-import { Callout } from "./ReactNativeMaps";
-import { MapCalloutProps } from "@draftbit/types";
+import { Callout as MapCalloutComponent } from "./ReactNativeMaps";
+import type { MapCalloutProps as MapCalloutComponentProps } from "react-native-maps";
+
+export interface MapCalloutProps
+  extends Omit<MapCalloutComponentProps, "tooltip"> {
+  showTooltip?: boolean;
+}
 
 const MapCallout: React.FC<React.PropsWithChildren<MapCalloutProps>> = ({
-  onPress,
   showTooltip,
-  children,
+  ...rest
 }) => {
-  if (!Callout) {
-    return null;
-  }
-
-  return (
-    <Callout tooltip={!showTooltip} onPress={onPress}>
-      {children}
-    </Callout>
-  );
+  return <MapCalloutComponent tooltip={!showTooltip} {...rest} />;
 };
 
 export default MapCallout;

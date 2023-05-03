@@ -1,40 +1,37 @@
 import * as React from "react";
-import { Image } from "react-native";
-import { Marker } from "./ReactNativeMaps";
-import { MapMarkerProps } from "@draftbit/types";
+import { Image, ImageSourcePropType } from "react-native";
+import { Marker as MapMarkerComponent } from "./ReactNativeMaps";
+import type { MapMarkerProps as MapMarkerComponentProps } from "react-native-maps";
+
+export interface MapMarkerProps
+  extends Omit<MapMarkerComponentProps, "onPress" | "coordinate"> {
+  latitude: number;
+  longitude: number;
+  pinImage?: string | ImageSourcePropType;
+  pinImageSize?: number;
+  onPress?: (latitude: number, longitude: number) => void;
+}
 
 const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
   latitude,
   longitude,
-  title,
-  description,
-  pinColor,
   pinImage,
   pinImageSize = 50,
   onPress,
-  flat,
-  style,
   children,
+  ...rest
 }) => {
-  if (!Marker) {
-    return null;
-  }
-
   return (
-    <Marker
+    <MapMarkerComponent
       coordinate={{
         latitude,
         longitude,
       }}
-      title={title != null ? String(title) : undefined}
-      description={description != null ? String(description) : undefined}
-      flat={flat}
-      pinColor={pinColor}
-      onPress={(event: any) => {
+      onPress={(event) => {
         const coordinate = event.nativeEvent.coordinate;
         onPress?.(coordinate.latitude, coordinate.longitude);
       }}
-      style={style}
+      {...rest}
     >
       {pinImage && (
         <Image
@@ -47,7 +44,7 @@ const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
         />
       )}
       {children}
-    </Marker>
+    </MapMarkerComponent>
   );
 };
 

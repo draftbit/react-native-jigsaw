@@ -6,7 +6,7 @@
   "command": {
     "publish": {
       "npmClient": "npm",
-      "ignoreChanges": ["**/example/**", "**/*.md"],
+      "ignoreChanges": ["**/example/**", "packages/web-maps/**", "**/*.md"],
       "message:": "chore: publish"
     }
   }

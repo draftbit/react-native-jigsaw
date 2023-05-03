@@ -1,4 +1,18 @@
-import { Platform } from "react-native";
+import rn, { Platform } from "react-native";
+
+const orignalGetViewManagerConfig = rn.UIManager.getViewManagerConfig;
+
+rn.UIManager.getViewManagerConfig = function (name: string) {
+  if (
+    orignalGetViewManagerConfig &&
+    typeof orignalGetViewManagerConfig === "function"
+  ) {
+    return orignalGetViewManagerConfig(name);
+  } else {
+    return { Commands: {} };
+  }
+};
+
 import type {
   MapViewProps,
   MapCalloutProps,

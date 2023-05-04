@@ -1,7 +1,10 @@
 import * as React from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
-import type { Theme } from "../../styles/DefaultTheme";
-import { checkboxGroupContext, Direction } from "./context";
+import type { Theme } from "../styles/DefaultTheme";
+import {
+  checkboxGroupContext,
+  Direction,
+} from "../components/Checkbox/context";
 
 export interface CheckboxGroupProps {
   direction?: Direction;
@@ -14,6 +17,9 @@ export interface CheckboxGroupProps {
 
 const { Provider } = checkboxGroupContext;
 
+/**
+ * @deprecated DEPRECATED
+ */
 const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   direction = Direction.Vertical,
   values,

@@ -8,7 +8,7 @@ import {
   StyleProp,
   Animated,
 } from "react-native";
-import Surface from "./Surface";
+import Surface from "../components/Surface";
 import type { IconSlot } from "../interfaces/Icon";
 import shadow from "../styles/shadow";
 import { withTheme } from "../theming";
@@ -43,6 +43,9 @@ type NativeEvent = {
   };
 };
 
+/**
+ * @deprecated DEPRECATED
+ */
 const Banner: React.FC<React.PropsWithChildren<Props>> = ({
   initiallyVisible = true,
   dismissable = true,

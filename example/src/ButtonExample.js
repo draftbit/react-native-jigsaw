@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IconButton, ButtonSolid, ButtonOutline, Link } from "@draftbit/ui";
+import { IconButton, Button, ButtonOutline, Link } from "@draftbit/ui";
 import Section, { Container, styles } from "./Section";
 
 export default function ButtonExample() {
@@ -19,34 +19,19 @@ export default function ButtonExample() {
         />
       </Section>
 
-      <Section title="Button (solid)" style={styles.row}>
-        <ButtonSolid style={buttonStyle} title="Solid Button" />
-        <ButtonSolid
-          style={buttonStyle}
-          title="Solid Button"
-          icon="file-download"
-        />
-        <ButtonSolid style={buttonStyle} title="Solid Button" loading={true} />
-        <ButtonSolid style={buttonStyle} title="Solid Button" disabled={true} />
+      <Section title="Button" style={styles.row}>
+        <Button style={buttonStyle} title="Button" />
+        <Button style={buttonStyle} title="Button" icon="file-download" />
+        <Button style={buttonStyle} title="Button" loading={true} />
+        <Button style={buttonStyle} title="Button" disabled={true} />
       </Section>
-      <ButtonSolid
+      <Button
         title="Custom button options"
         style={{
           textAlign: "left",
           backgroundColor: "orange",
         }}
       />
-
-      <Section title="Button (outline)" style={styles.row}>
-        <ButtonOutline style={buttonStyle} title="Outline Button" />
-        <ButtonOutline
-          style={buttonStyle}
-          title="Outline Button"
-          icon="file-download"
-        />
-        <ButtonOutline style={buttonStyle} title="Outline Button" loading />
-        <ButtonOutline style={buttonStyle} title="Outline Button" disabled />
-      </Section>
 
       <Section title="Link" style={styles.row}>
         <Link title="Link" />

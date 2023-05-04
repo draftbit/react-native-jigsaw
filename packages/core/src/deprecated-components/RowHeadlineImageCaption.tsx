@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
 import { withTheme } from "../theming";
-import Row from "./Row";
+import Row from "../components/Row";
 import theme from "../styles/DefaultTheme";
 
 type Props = {
@@ -13,6 +13,9 @@ type Props = {
   theme: typeof theme;
 };
 
+/**
+ * @deprecated DEPRECATED
+ */
 const RowHeadlineImageCaption: React.FC<React.PropsWithChildren<Props>> = ({
   title,
   subtitle,

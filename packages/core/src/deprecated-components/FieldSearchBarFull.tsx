@@ -11,7 +11,7 @@ import {
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
-import Config from "./Config";
+import Config from "../components/Config";
 
 type Props = {
   showIcon: boolean;
@@ -25,6 +25,9 @@ type Props = {
   defaultValue?: string;
 } & IconSlot;
 
+/**
+ * @deprecated DEPRECATED
+ */
 const FieldSearchBarFull: React.FC<React.PropsWithChildren<Props>> = ({
   showIcon,
   Icon,

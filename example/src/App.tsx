@@ -28,98 +28,52 @@ import {
 import * as Font from "expo-font";
 
 import AudioPlayerExample from "./AudioPlayerExample";
-import CircleImageExample from "./CircleImageExample";
 import IconExample from "./IconExample";
-import BannerExample from "./BannerExample";
 import ButtonExample from "./ButtonExample";
 import RadioButtonExample from "./RadioButtonExample";
-
-import CardExample from "./CardExample";
-
-import ContainerExample from "./ContainerExample";
-// import ControllerExample from "./ControllerExample";
-
 import DatePickerExample from "./DatePickerExample";
-
-import FABExample from "./FABExample";
-import FieldSearchBarFullExample from "./FieldSearchBarFullExample";
-
-// import HeaderExample from "./HeaderExample";
 import LayoutExample from "./LayoutExample";
-
 import MapViewExample from "./MapViewExample";
 import MapViewDataDrivenExample from "./MapViewDataDrivenExample";
-
 import PickerExample from "./PickerExample";
-
-// import ProgressIndicatorExample from "./ProgressIndicatorExample.js";
-// import ProgressExample from "./ProgressExample";
-// import RowExample from "./RowExample";
-
 import SliderExample from "./SliderExample";
 import SwitchExample from "./SwitchExample";
 import StepperExample from "./StepperExample";
-
 import TextFieldExample from "./TextFieldExample";
 import TextInputExample from "./TextInputExample";
 import NumberInputExample from "./NumberInputExample";
 import CheckboxExample from "./CheckboxExample";
 import WebViewExample from "./WebViewExample";
 import AccordionExample from "./AccordionExample";
-
 import ActionSheetExample from "./ActionSheetExample";
 import StarRatingExample from "./StarRatingExample";
-
 import SwiperExample from "./SwiperExample";
 import SVGExample from "./SVGExample";
-
 import LinearGradientExample from "./LinearGradientExample";
-
 import SurfaceExample from "./SurfaceExample";
-
 import ShadowExample from "./ShadowExample";
-
 import DeckSwiperExample from "./DeckSwiperExample";
-
 import TabViewExample from "./TabViewExample";
 import MarkdownExample from "./MarkdownExample";
-
 import BottomSheetExample from "./BottomSheetExample";
-
 import YoutubeExample from "./YoutubeExample";
-
 import TableExample from "./TableExample";
-
 import SwipeableItemExample from "./SwipeableItemExample";
 
 const ROUTES = {
   AudioPlayer: AudioPlayerExample,
   Layout: LayoutExample,
   Icon: IconExample,
-  Banner: BannerExample,
   Button: ButtonExample,
-  FAB: FABExample,
   RadioButton: RadioButtonExample,
   ActionSheet: ActionSheetExample,
   Checkbox: CheckboxExample,
-  Card: CardExample,
   Accordion: AccordionExample,
-  Container: ContainerExample,
-  CircleImage: CircleImageExample,
-  // Controllers: ControllerExample,
   DatePicker: DatePickerExample,
-  FieldSearchBarFull: FieldSearchBarFullExample,
   LinearGradient: LinearGradientExample,
   MapView: MapViewExample,
   MapViewDataDriven: MapViewDataDrivenExample,
-  // TODO fix Header (spacing problem, textOverflow ellipses doesn't work on web)
-  // Header: HeaderExample,
   Picker: PickerExample,
-  // ProgressBar: ProgressExample,
-  // ProgressIndicator: ProgressIndicatorExample,
-  // TODO fix Row (spacing problem)
-  // Row: RowExample,
-  // TODO (componentWillReceieveProps insider slider component)
   Slider: SliderExample,
   Switch: SwitchExample,
   Stepper: StepperExample,
@@ -215,10 +169,7 @@ const AnimatedSplashScreen: React.FC<
   const onImageLoaded = useCallback(async () => {
     try {
       await SplashScreen.hideAsync();
-      // Load stuff
-      await Promise.all([]);
     } catch (e) {
-      // handle errors
       console.warn(e);
     } finally {
       setAppReady(true);

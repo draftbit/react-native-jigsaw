@@ -1,8 +1,10 @@
 import React from "react";
 import { View, StyleProp, TextStyle, ViewStyle } from "react-native";
-import Text from "../Text";
-import { withTheme } from "../../theming";
-import RadioButtonGroup, { RadioButtonGroupProps } from "./RadioButtonGroup";
+import Text from "../components/Text";
+import { withTheme } from "../theming";
+import RadioButtonGroup, {
+  RadioButtonGroupProps,
+} from "../components/RadioButton/RadioButtonGroup";
 
 interface Props extends RadioButtonGroupProps {
   label?: string;
@@ -10,6 +12,9 @@ interface Props extends RadioButtonGroupProps {
   style?: StyleProp<ViewStyle>;
 }
 
+/**
+ * @deprecated DEPRECATED
+ */
 const RadioButtonFieldGroup: React.FC<React.PropsWithChildren<Props>> = ({
   label,
   children,

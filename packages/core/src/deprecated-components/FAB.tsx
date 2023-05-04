@@ -26,6 +26,9 @@ type Props = {
 } & PressableProps &
   IconSlot;
 
+/**
+ * @deprecated DEPRECATED
+ */
 const FAB: React.FC<React.PropsWithChildren<Props>> = ({
   onPress,
   disabled,

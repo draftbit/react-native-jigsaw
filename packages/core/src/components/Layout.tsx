@@ -90,6 +90,9 @@ export function Square({
   );
 }
 
+/**
+ * @deprecated DEPRECATED
+ */
 export function Row({
   justifyContent,
   alignItems,
@@ -153,6 +156,9 @@ export function Spacer({
   );
 }
 
+/**
+ * @deprecated DEPRECATED
+ */
 export function Stack({
   children,
   justifyContent = "flex-start",

@@ -146,6 +146,9 @@ const Solid = ({ style, theme, ...props }: Props): JSX.Element => {
   );
 };
 
+/**
+ * @deprecated DEPRECATED: Use Button
+ */
 const ButtonSolid: any = withTheme(Solid);
 export { ButtonSolid };
 
@@ -169,6 +172,9 @@ const Outline = ({ style, theme, ...props }: Props): JSX.Element => {
   );
 };
 
+/**
+ * @deprecated DEPRECATED: Use Button
+ */
 const ButtonOutline: any = withTheme(Outline);
 export { ButtonOutline };
 

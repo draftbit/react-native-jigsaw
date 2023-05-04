@@ -4,7 +4,6 @@ import {
   RadioButton,
   RadioButtonRow,
   RadioButtonGroup,
-  RadioButtonFieldGroup,
   withTheme,
   ScreenContainer,
 } from "@draftbit/ui";
@@ -131,18 +130,6 @@ const RadioButtonGroupExample = ({ theme }) => {
             value="3"
           />
         </RadioButtonGroup>
-      </Section>
-
-      <Section title="RadioButtonFieldGroup">
-        <RadioButtonFieldGroup
-          label="Select a value"
-          onValueChange={handleSelect}
-          value={selected}
-        >
-          <RadioButtonRow size={35} label="First" value="1" />
-          <RadioButtonRow size={35} label="Second" value="2" />
-          <RadioButtonRow size={35} label="Third" value="3" />
-        </RadioButtonFieldGroup>
       </Section>
 
       <Section title="Single Radio Buttons with initial value">

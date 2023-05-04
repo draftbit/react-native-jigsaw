@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Text, StyleProp, ViewStyle, TextStyle } from "react-native";
-import AnimatedCircularProgress from "./AnimatedCircularProgress";
+import AnimatedCircularProgress from "../components/AnimatedCircularProgress";
 import { withTheme } from "../theming";
 import themeT from "../styles/DefaultTheme";
 import { colorTypes } from "@draftbit/types";
@@ -18,6 +18,9 @@ type Props = {
   theme: typeof themeT;
 };
 
+/**
+ * @deprecated DEPRECATED
+ */
 const ProgressCircle: React.FC<React.PropsWithChildren<Props>> = ({
   progress = 0.5,
   style,

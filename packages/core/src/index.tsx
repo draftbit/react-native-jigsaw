@@ -2,19 +2,10 @@ export { injectIcon } from "./interfaces/Icon";
 export { withTheme, ThemeProvider } from "./theming";
 export { default as Provider } from "./Provider";
 export { default as DefaultTheme } from "./styles/DefaultTheme";
-
 export { Link } from "./components/Text";
-export { default as Banner } from "./components/Banner";
-export { Button, ButtonSolid, ButtonOutline } from "./components/Button";
-export { default as Avatar } from "./components/CircleImage";
-export { default as AvatarEdit } from "./components/AvatarEdit";
-export { default as Card } from "./components/Card";
-export { Checkbox, CheckboxGroup, CheckboxRow } from "./components/Checkbox";
-export { default as CircleImage } from "./components/CircleImage";
-export { default as Container } from "./components/Container";
+export { Button } from "./components/Button";
+export { Checkbox, CheckboxRow } from "./components/Checkbox";
 export { default as Divider } from "./components/Divider";
-export { default as FAB } from "./components/FAB";
-export { default as FieldSearchBarFull } from "./components/FieldSearchBarFull";
 export { default as IconButton } from "./components/IconButton";
 export { default as Image } from "./components/Image";
 export { default as SVG } from "./components/SVG";
@@ -24,67 +15,60 @@ export { default as StarRating } from "./components/StarRating";
 export { default as Surface } from "./components/Surface";
 export { default as Switch, SwitchRow } from "./components/Switch";
 export { default as TextField } from "./components/TextField";
-export { default as ToggleButton } from "./components/ToggleButton";
 export { default as Touchable } from "./components/Touchable";
 export { default as Pressable } from "./components/Pressable";
-export { AccordionGroup, AccordionItem } from "./components/Accordion";
+export { default as AccordionGroup } from "./components/AccordionGroup";
 export {
   ActionSheet,
   ActionSheetItem,
   ActionSheetCancel,
 } from "./components/ActionSheet";
 export { Swiper, SwiperItem } from "./components/Swiper";
-
-export {
-  Center,
-  Circle,
-  Square,
-  Row,
-  Stack,
-  Spacer,
-} from "./components/Layout";
-
+export { Center, Circle, Square, Spacer } from "./components/Layout";
 export {
   RadioButton,
   RadioButtonGroup,
   RadioButtonRow,
-  RadioButtonFieldGroup,
 } from "./components/RadioButton/index";
-
 export { default as Shadow } from "./components/Shadow";
-
 export { DeckSwiper, DeckSwiperCard } from "./components/DeckSwiper";
-
 export { TabView, TabViewItem } from "./components/TabView";
 export { default as Markdown } from "./components/Markdown";
-
 export { BottomSheet } from "./components/BottomSheet";
-
 export { YoutubePlayer } from "./components/YoutubePlayer";
-
 export { Table, TableRow, TableCell } from "./components/Table";
-
 export {
   SwipeableItem,
   SwipeableItemButton,
   SwipeableList,
 } from "./components/SwipeableItem";
-
 export {
   default as AudioPlayer,
   AudioPlayerRef,
 } from "./components/AudioPlayer";
-
-/* Deprecated: Fix or Delete!  */
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
 export { default as Picker } from "./components/Picker/Picker";
-export { default as ProgressBar } from "./components/ProgressBar";
-export { default as ProgressCircle } from "./components/ProgressCircle";
-export { default as RowBodyIcon } from "./components/RowBodyIcon";
-export { default as RowHeadlineImageCaption } from "./components/RowHeadlineImageCaption";
-export { default as RowHeadlineImageIcon } from "./components/RowHeadlineImageIcon";
 export { default as Slider } from "./components/Slider";
 export { default as Stepper } from "./components/Stepper";
-export { useAuthState } from "./components/useAuthState";
 
-// a comment to fix sourcemap comment issue
+/* Deprecated: Fix or Delete!  */
+export { default as AccordionItem } from "./deprecated-components/AccordionItem";
+export { default as AvatarEdit } from "./deprecated-components/AvatarEdit";
+export { default as Avatar } from "./deprecated-components/CircleImage";
+export { default as Banner } from "./deprecated-components/Banner";
+export { ButtonSolid, ButtonOutline } from "./components/Button";
+export { default as Card } from "./deprecated-components/Card";
+export { default as CheckboxGroup } from "./deprecated-components/CheckboxGroup";
+export { default as CircleImage } from "./deprecated-components/CircleImage";
+export { default as Container } from "./deprecated-components/Container";
+export { default as FAB } from "./deprecated-components/FAB";
+export { default as FieldSearchBarFull } from "./deprecated-components/FieldSearchBarFull";
+export { Row, Stack } from "./components/Layout";
+export { default as ToggleButton } from "./deprecated-components/ToggleButton";
+export { default as ProgressBar } from "./deprecated-components/ProgressBar";
+export { default as ProgressCircle } from "./deprecated-components/ProgressCircle";
+export { default as RadioButtonFieldGroup } from "./deprecated-components/RadioButtonFieldGroup";
+export { default as RowBodyIcon } from "./deprecated-components/RowBodyIcon";
+export { default as RowHeadlineImageCaption } from "./deprecated-components/RowHeadlineImageCaption";
+export { default as RowHeadlineImageIcon } from "./deprecated-components/RowHeadlineImageIcon";
+export { useAuthState } from "./components/useAuthState";

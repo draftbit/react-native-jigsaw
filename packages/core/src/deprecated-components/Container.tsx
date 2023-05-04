@@ -9,9 +9,9 @@ import {
 } from "react-native";
 import { withTheme } from "../theming";
 
-import Elevation from "./Elevation";
+import Elevation from "../components/Elevation";
 import type { Theme } from "../styles/DefaultTheme";
-import { ResizeModeType } from "./ResizeMode";
+import { ResizeModeType } from "../components/ResizeMode";
 
 type Props = {
   theme: Theme;
@@ -26,6 +26,9 @@ type Props = {
   children?: React.ReactNode;
 };
 
+/**
+ * @deprecated DEPRECATED
+ */
 const Container: React.FC<React.PropsWithChildren<Props>> = ({
   useThemeGutterPadding,
   borderColor,

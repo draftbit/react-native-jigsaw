@@ -6,11 +6,11 @@ import {
   TextStyle,
   Pressable,
 } from "react-native";
-import Text from "../Text";
-import { withTheme } from "../../theming";
-import type { IconSlot } from "../../interfaces/Icon";
-import type { Theme } from "../../styles/DefaultTheme";
-import { extractStyles } from "../../utilities";
+import Text from "./Text";
+import { withTheme } from "../theming";
+import type { IconSlot } from "../interfaces/Icon";
+import type { Theme } from "../styles/DefaultTheme";
+import { extractStyles } from "../utilities";
 
 type AccordionGroupProps = {
   label?: string;

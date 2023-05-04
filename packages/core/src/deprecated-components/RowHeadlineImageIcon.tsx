@@ -3,8 +3,8 @@ import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
 
-import Row from "./Row";
-import Config from "./Config";
+import Row from "../components/Row";
+import Config from "../components/Config";
 import { ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
 
 type Props = {
@@ -17,6 +17,9 @@ type Props = {
   theme: Theme;
 } & IconSlot;
 
+/**
+ * @deprecated DEPRECATED
+ */
 const RowHeadlineImageIcon: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   icon,

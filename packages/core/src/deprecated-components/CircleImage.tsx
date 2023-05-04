@@ -5,13 +5,16 @@ import {
   StyleProp,
   ImageStyle,
 } from "react-native";
-import Config from "./Config";
+import Config from "../components/Config";
 interface Props {
   source?: string | ImageSourcePropType;
   size?: number;
   style?: StyleProp<ImageStyle>;
 }
 
+/**
+ * @deprecated DEPRECATED
+ */
 const CircleImage: React.FC<React.PropsWithChildren<Props>> = ({
   source = Config.placeholderImageURL,
   size = 60,

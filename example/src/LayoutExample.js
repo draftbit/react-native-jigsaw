@@ -5,8 +5,6 @@ import {
   Surface,
   ScreenContainer,
   Divider,
-  Stack,
-  Row,
   Center,
   Circle,
   withTheme,
@@ -31,13 +29,6 @@ function LayoutExample({ theme }) {
           style={{ backgroundColor: "orange", margin: 12 }}
         />
       </Section>
-      <Section title="Row">
-        <Row>
-          <Box />
-          <Box />
-          <Box />
-        </Row>
-      </Section>
       <Divider />
       <Section title="Center">
         <Center>
@@ -47,13 +38,6 @@ function LayoutExample({ theme }) {
         </Center>
       </Section>
       <Divider />
-      <Section title="Stack">
-        <Stack>
-          <Box />
-          <Box />
-          <Box />
-        </Stack>
-      </Section>
       <Divider />
       <Surface>
         <Section title="Circle">

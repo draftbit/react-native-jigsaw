@@ -42,7 +42,6 @@ export {
   TableCell,
   SwipeableItemButton,
   SwipeableList,
-  /* Deprecated, needs fixing */
   ProgressBar,
   ProgressCircle,
   RowHeadlineImageCaption,

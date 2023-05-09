@@ -53,6 +53,8 @@ const DeckSwiper = <T extends object>({
     );
   }
 
+  const deckSwiperRef = React.useRef<DeckSwiperComponent<T>>(null);
+
   const childrenArray = React.useMemo(
     () => React.Children.toArray(children),
     [children]
@@ -89,6 +91,14 @@ const DeckSwiper = <T extends object>({
     }
   };
 
+  /* 
+  react-native-deck-swiper does not re-render cards when parent state changes
+  This forces an update on every re-render to reflect any parent state changes
+  */
+  React.useEffect(() => {
+    deckSwiperRef.current?.forceUpdate();
+  });
+
   /**
    * By default react-native-deck-swiper positions everything with absolute position.
    * To overcome this, it is wrapped in a View to be able to add the component in any layout structure.
@@ -103,6 +113,7 @@ const DeckSwiper = <T extends object>({
     <View>
       <View style={styles.containerHeightFiller}>{renderFirstCard()}</View>
       <DeckSwiperComponent
+        ref={deckSwiperRef}
         cards={cardsData as any[]}
         renderCard={renderCard}
         keyExtractor={cardKeyExtractor}

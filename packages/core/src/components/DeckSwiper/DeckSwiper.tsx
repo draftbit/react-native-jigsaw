@@ -96,7 +96,7 @@ const DeckSwiper = <T extends object>({
   This forces an update on every re-render to reflect any parent state changes
   */
   React.useEffect(() => {
-    deckSwiperRef?.current?.forceUpdate();
+    deckSwiperRef.current?.forceUpdate();
   });
 
   /**

@@ -22,10 +22,10 @@ export interface IconSlot {
 
 type $Without<T, K> = Pick<T, Exclude<keyof T, K>>;
 
-export const injectIcon =
-  <P extends IconSlot>(
-    Component: React.ComponentType<P>,
-    Icon: IconI
-  ): React.FC<$Without<P, "Icon">> =>
-  (props) =>
-    React.createElement(Component, { ...(props as P), Icon });
+export const injectIcon = <P extends IconSlot>(
+  Component: React.ComponentType<P>,
+  Icon: IconI
+) =>
+  React.forwardRef<any, $Without<P, "Icon">>((props, ref) =>
+    React.createElement(Component, { ...(props as P), Icon, ref })
+  );

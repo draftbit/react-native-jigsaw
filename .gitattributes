@@ -9,3 +9,7 @@ templates/expo-template-bare-minimum/ios/HelloWorld.xcodeproj/project.pbxproj me
 packages/*/build/** -diff linguist-generated
 packages/*/plugin/build/** -diff linguist-generated
 packages/@*/*/build/** -diff linguist-generated
+
+# use custom merge driver for skipping package.json + yarn.lock (see readme)
+package.json merge=expo-version-merge-driver
+yarn.lock merge=expo-version-merge-driver

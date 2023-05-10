@@ -135,6 +135,18 @@ Release Process:
 
 Run `node scripts/upgrade-expo-sdk-packages.js expo-sdk-version`. Where expo-sdk-version comes from Expo. Expo hosts a file called `bundledNativeModules.json`. You must use the correct version via the url: `https://github.com/expo/expo/blob/sdk-46/packages/expo/bundledNativeModules.json`
 
+## Adding the Git Merge Driver
+
+Jigsaw is maintained with 2 expo versions at a time. You can expect master branch to be the latest expo version, with an additional branch for the prior version. `master` and `47` branches for example are for expo 48 and 47 respectivley. Exact version will vary as new versions come out.
+
+The `package.json`(s) and `yarn.lock` files are expected to be out of sync between the branches due to expo version changes and Jigsaw package versions. A custom merge driver can be used to make the process of merging `master` into the 'previous version' branch easier. This will skip any merge conflicts in all `package.json` files and in the `yarn.lock` automatically. If changes in these files are required, then they should be done manually after the merge according the the current expo version of the branch.
+
+### Adding the merge driver
+
+```bash
+git config merge.expo-version-merge-driver.driver "node ./scripts/expo-version-merge-driver.js %A %O %B %P"
+```
+
 ## Plug
 
 Sound cool? [We're hiring!](https://draftbit.com/jobs).

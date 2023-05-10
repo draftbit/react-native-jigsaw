@@ -90,7 +90,6 @@ export default function TextFieldExample() {
             style={{
               fontSize: 30,
               color: "red",
-              fontFamily: "Courier New",
             }}
           />
           <TextField

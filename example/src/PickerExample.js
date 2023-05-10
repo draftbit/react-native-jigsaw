@@ -155,7 +155,6 @@ function PickerExample({ theme }) {
           style={{
             fontSize: 30,
             color: "red",
-            fontFamily: "Courier New",
           }}
           leftIconName={"AntDesign/caretleft"}
         />

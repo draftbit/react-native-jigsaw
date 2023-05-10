@@ -22,7 +22,7 @@
     "clean": "lerna run clean",
     "clean:modules": "lerna run clean:modules && rm -rf node_modules",
     "typescript": "tsc --composite false",
-    "version:expo": "lerna version major --no-push",
+    "version:expo": "lerna version major --no-push --exact",
     "version:major": "lerna version minor --no-push --exact",
     "version:minor": "lerna version patch --no-push --exact",
     "version:patch": "echo \"No patch versions: See root README.md\"",
@@ -84,10 +84,10 @@
           "bracketSpacing": true
         }
       ]
+    },
+    "parserOptions": {
+      "requireConfigFile": false
     }
-  },
-  "resolutions": {
-    "@expo/webpack-config": "^0.17.2"
   },
   "eslintIgnore": [
     "scripts",
@@ -103,7 +103,8 @@
     "tabWidth": 2,
     "trailingComma": "es5",
     "useTabs": false,
-    "bracketSpacing": true
+    "bracketSpacing": true,
+    "endOfLine": "auto"
   },
   "lint-staged": {
     "*.{js,ts,tsx,jsx}": "eslint --cache --fix",
@@ -122,8 +123,5 @@
   },
   "engines": {
     "node": "16.x"
-  },
-  "dependencies": {
-    "@expo/webpack-config": "^0.17.2"
   }
 }

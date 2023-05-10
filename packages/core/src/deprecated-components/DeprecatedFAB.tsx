@@ -10,9 +10,9 @@ import {
   PressableProps,
 } from "react-native";
 import color from "color";
-import Config from "./Config";
-import Text from "./Text";
-import Elevation from "./Elevation";
+import Config from "../components/Config";
+import Text from "../components/Text";
+import Elevation from "../components/Elevation";
 import { withTheme } from "../theming";
 
 import type { Theme } from "../styles/DefaultTheme";
@@ -68,6 +68,9 @@ type Props = {
 } & PressableProps &
   IconSlot;
 
+/**
+ * @deprecated DEPRECATED
+ */
 const FAB: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   icon,

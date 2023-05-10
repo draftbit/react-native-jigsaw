@@ -1,6 +1,6 @@
 import React from "react";
 import { withTheme } from "../theming";
-import Touchable from "./Touchable";
+import Touchable from "../components/Touchable";
 import { StyleProp, ViewStyle } from "react-native";
 import theme from "../styles/DefaultTheme";
 
@@ -23,6 +23,9 @@ const getWidth = (numColumns: number) => {
   }
 };
 
+/**
+ * @deprecated DEPRECATED
+ */
 const Card: React.FC<React.PropsWithChildren<Props>> = ({
   numColumns = 3,
   children,

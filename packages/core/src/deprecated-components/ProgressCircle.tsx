@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Text, StyleProp, ViewStyle, TextStyle } from "react-native";
-import AnimatedCircularProgress from "../components/AnimatedCircularProgress";
+import AnimatedCircularProgress from "./AnimatedCircularProgress";
 import { withTheme } from "../theming";
 import themeT from "../styles/DefaultTheme";
 import { colorTypes } from "@draftbit/types";

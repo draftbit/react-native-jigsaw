@@ -84,6 +84,9 @@
           "bracketSpacing": true
         }
       ]
+    },
+    "parserOptions": {
+      "requireConfigFile": false
     }
   },
   "resolutions": {
@@ -103,7 +106,8 @@
     "tabWidth": 2,
     "trailingComma": "es5",
     "useTabs": false,
-    "bracketSpacing": true
+    "bracketSpacing": true,
+    "endOfLine": "auto"
   },
   "lint-staged": {
     "*.{js,ts,tsx,jsx}": "eslint --cache --fix",

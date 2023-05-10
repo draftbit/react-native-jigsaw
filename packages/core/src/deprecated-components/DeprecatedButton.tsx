@@ -11,8 +11,8 @@ import {
   PressableProps,
 } from "react-native";
 import color from "color";
-import Config from "./Config";
-import Elevation from "./Elevation";
+import Config from "../components/Config";
+import Elevation from "../components/Elevation";
 import { withTheme } from "../theming";
 
 import type { Theme } from "../styles/DefaultTheme";
@@ -66,6 +66,9 @@ type Props = {
 } & PressableProps &
   IconSlot;
 
+/**
+ * @deprecated DEPRECATED
+ */
 const Button: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   icon,

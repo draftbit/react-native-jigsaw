@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/types",
-  "version": "47.3.1",
+  "version": "47.3.2",
   "description": "Shared constants and types between native and core components",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",

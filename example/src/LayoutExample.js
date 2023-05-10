@@ -39,11 +39,9 @@ function LayoutExample({ theme }) {
       </Section>
       <Divider />
       <Divider />
-      <Surface>
-        <Section title="Circle">
-          <Circle />
-        </Section>
-      </Surface>
+      <Section title="Circle">
+        <Circle bgColor="black" />
+      </Section>
     </ScreenContainer>
   );
 }

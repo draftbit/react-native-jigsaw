@@ -11,7 +11,14 @@ import { withTheme } from "../theming";
 
 import Elevation from "../components/Elevation";
 import type { Theme } from "../styles/DefaultTheme";
-import { ResizeModeType } from "../components/ResizeMode";
+
+type ResizeModeType =
+  | "cover"
+  | "contain"
+  | "stretch"
+  | "repeat"
+  | "center"
+  | undefined;
 
 type Props = {
   theme: Theme;

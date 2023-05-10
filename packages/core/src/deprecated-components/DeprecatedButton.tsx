@@ -2,6 +2,7 @@ import * as React from "react";
 import {
   ActivityIndicator,
   View,
+  Text,
   StyleSheet,
   StyleProp,
   ViewStyle,
@@ -10,45 +11,41 @@ import {
   PressableProps,
 } from "react-native";
 import color from "color";
-import Config from "./Config";
-import Text from "./Text";
-import Elevation from "./Elevation";
+import Config from "../components/Config";
+import Elevation from "../components/Elevation";
 import { withTheme } from "../theming";
 
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
 
 /**
- * A floating action button represents the primary action in an application.
+ * A button is component that the user can press to trigger an action.
  *
  * <div class="screenshots">
- *   <img src="screenshots/fab-1.png" />
- *   <img src="screenshots/fab-2.png" />
+ *   <figure>
+ *     <img src="screenshots/button-1.png" />
+ *     <figcaption>Text button</figcaption>
+ *   </figure>
+ *   <figure>
+ *     <img src="screenshots/button-2.png" />
+ *     <figcaption>Outlined button</figcaption>
+ *   </figure>
+ *   <figure>
+ *     <img src="screenshots/button-3.png" />
+ *     <figcaption>Contained button</figcaption>
+ *   </figure>
  * </div>
  *
  * ## Usage
  * ```js
  * import * as React from 'react';
- * import { StyleSheet } from 'react-native';
- * import { FAB } from '@draftbit/ui';
+ * import { Button } from '@draftbit/ui';
  *
  * const MyComponent = () => (
- *   <FAB
- *     style={styles.fab}
- *     type="outline"
- *     icon="add"
- *     onPress={() => console.log('Pressed')}
- *   />
+ *   <Button icon="add-a-photo" type="solid" onPress={() => console.log('Pressed')}>
+ *     Press me
+ *   </Button>
  * );
- *
- * const styles = StyleSheet.create({
- *   fab: {
- *     position: 'absolute',
- *     margin: 16,
- *     right: 0,
- *     bottom: 0,
- *   },
- * })
  *
  * export default MyComponent;
  * ```
@@ -56,42 +53,46 @@ import type { IconSlot } from "../interfaces/Icon";
 
 type Props = {
   disabled?: boolean;
-  type?: "solid" | "extended" | "outline" | "fixed" | "standard";
+  type?: "solid" | "outline" | "text";
   loading?: boolean;
   icon?: string;
+  labelColor?: string;
   color?: string;
-  label?: string;
+  children?: React.ReactNode;
   onPress: () => void;
   elevation?: number;
-  theme: Theme;
   style?: StyleProp<ViewStyle>;
+  theme: Theme;
 } & PressableProps &
   IconSlot;
 
-const FAB: React.FC<React.PropsWithChildren<Props>> = ({
+/**
+ * @deprecated DEPRECATED
+ */
+const Button: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   icon,
   disabled = false,
   type = "solid",
   loading = false,
+  labelColor,
   color: colorOverride,
-  label,
+  children,
   onPress,
   elevation = 0,
-  style,
   theme: { colors, disabledOpacity, roundness, typography },
   ...rest
 }) => {
   let backgroundColor, borderColor, textColor, borderWidth;
   const buttonColor = colorOverride || colors.primary;
 
-  if (type === "standard" || type === "extended" || type === "fixed") {
+  if (type === "solid") {
     backgroundColor = buttonColor;
 
     if (disabled) {
       textColor = color(colors.surface).alpha(disabledOpacity).rgb().string();
     } else {
-      textColor = colors.surface;
+      textColor = labelColor || colors.surface;
     }
   } else {
     backgroundColor = "transparent";
@@ -99,7 +100,7 @@ const FAB: React.FC<React.PropsWithChildren<Props>> = ({
     if (disabled) {
       textColor = color(buttonColor).alpha(disabledOpacity).rgb().string();
     } else {
-      textColor = buttonColor;
+      textColor = labelColor || buttonColor;
     }
   }
 
@@ -115,67 +116,38 @@ const FAB: React.FC<React.PropsWithChildren<Props>> = ({
     borderWidth = 0;
   }
 
-  const buttonStyle: StyleProp<ViewStyle> = {
+  const buttonStyle = {
     backgroundColor,
     borderColor,
     borderWidth,
     borderRadius: roundness,
-    alignItems: "center",
-    justifyContent: "center",
   };
-
-  const buttonStyles: StyleProp<ViewStyle>[] = [styles.button, buttonStyle];
-
-  const contentStyle: StyleProp<ViewStyle>[] = [styles.content];
 
   const textStyle: StyleProp<TextStyle> = {
     textAlign: "center",
     color: textColor,
+    marginVertical: 16,
+    marginHorizontal: 16,
   };
 
-  const iconStyle: StyleProp<ViewStyle>[] = [
+  const iconStyle = [
     styles.icon,
     {
+      marginLeft: 16,
+      marginRight: -8,
       width: Config.buttonIconSize,
     },
   ];
 
-  if (type === "standard" || type === "outline") {
-    buttonStyle.width = Config.FABSize;
-    buttonStyle.height = Config.FABSize;
-    buttonStyle.borderRadius = Config.FABBorderRadius;
-
-    contentStyle.push({
-      width: Config.FABSize,
-      height: Config.FABSize,
-    });
-  }
-
-  if (type === "extended" || type === "fixed") {
-    iconStyle.push({
-      marginLeft: 16,
-      marginRight: -8,
-    });
-
-    textStyle.margin = 16;
-  }
-
-  if (type === "fixed") {
-    buttonStyles.push({
-      height: Config.FABFixedHeight,
-      alignSelf: "stretch",
-    });
-  }
-
   return (
-    <Elevation style={[{ elevation }, style]}>
+    <Elevation style={{ elevation, alignSelf: "stretch" }}>
       <Pressable
         {...rest}
         onPress={onPress}
         accessibilityState={{ disabled }}
         accessibilityRole="button"
         disabled={disabled || loading}
-        style={buttonStyles}
+        style={[styles.button, buttonStyle]}
       >
         <View style={styles.content}>
           {icon && loading !== true ? (
@@ -194,11 +166,9 @@ const FAB: React.FC<React.PropsWithChildren<Props>> = ({
               style={iconStyle}
             />
           ) : null}
-          {label ? (
-            <Text numberOfLines={1} style={[textStyle, typography.button]}>
-              {label}
-            </Text>
-          ) : null}
+          <Text numberOfLines={1} style={[textStyle, typography.button]}>
+            {children}
+          </Text>
         </View>
       </Pressable>
     </Elevation>
@@ -207,6 +177,7 @@ const FAB: React.FC<React.PropsWithChildren<Props>> = ({
 
 const styles = StyleSheet.create({
   button: {
+    minWidth: 64,
     borderStyle: "solid",
   },
   content: {
@@ -215,17 +186,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   icon: {
-    alignItems: "center",
-    justifyContent: "center",
     width: Config.buttonIconSize,
-  },
-  fixed: {
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: 64,
-    borderRadius: 0,
   },
 });
 
-export default withTheme(FAB);
+export default withTheme(Button);

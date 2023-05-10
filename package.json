@@ -84,6 +84,9 @@
           "bracketSpacing": true
         }
       ]
+    },
+    "parserOptions": {
+      "requireConfigFile": false
     }
   },
   "eslintIgnore": [

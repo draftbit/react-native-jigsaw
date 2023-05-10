@@ -86,9 +86,6 @@
       ]
     }
   },
-  "resolutions": {
-    "@expo/webpack-config": "^0.17.2"
-  },
   "eslintIgnore": [
     "scripts",
     "example/web-build",
@@ -122,8 +119,5 @@
   },
   "engines": {
     "node": "16.x"
-  },
-  "dependencies": {
-    "@expo/webpack-config": "^0.17.2"
   }
 }

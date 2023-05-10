@@ -22,6 +22,9 @@ export type Props = {
   dashedTint?: { width: number; gap: number };
 };
 
+/**
+ * @deprecated DEPRECATED
+ */
 class CircularProgress extends React.Component<Props> {
   polarToCartesian = (
     centerX: number,

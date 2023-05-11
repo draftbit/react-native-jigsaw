@@ -1,32 +1,34 @@
 import * as React from "react";
-import NativeMapView, { Marker } from "./ReactNativeMaps";
-import { MapViewProps } from "@draftbit/types";
+import { StyleSheet, Platform } from "react-native";
+import MapViewComponent from "./react-native-maps";
+import type {
+  Camera,
+  LatLng,
+  Region,
+  MapViewProps as MapViewComponentProps,
+} from "react-native-maps";
 
-// Dynamically import from ./ReactNativeMaps so that we don't
-// require react-native-maps unless we're in native.
-
-// Approximates a conversion of zoom level to altitude,
-// since different platforms require different values.
-// https://stackoverflow.com/a/37142662
-function zoomToAltitude(zoom: number) {
-  const A = 40487.57;
-  const B = 0.00007096758;
-  const C = 91610.74;
-  const D = -40467.74;
-
-  return C * Math.pow((A - D) / (zoom - D) - 1, 1 / B);
+export interface MapViewProps<T> extends MapViewComponentProps {
+  apiKey: string;
+  zoom?: number;
+  latitude?: number;
+  longitude?: number;
+  markersData?: T[];
+  keyExtractor: (item: T, index: number) => string;
+  renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
+  onRegionChange?: (region: Region) => void;
 }
 
-class MapView extends React.Component<
-  React.PropsWithChildren<MapViewProps<any>>
+class MapView<T> extends React.Component<
+  React.PropsWithChildren<MapViewProps<T>>
 > {
   private mapRef: React.RefObject<any>;
-  constructor(props: React.PropsWithChildren<MapViewProps<any>>) {
+  constructor(props: React.PropsWithChildren<MapViewProps<T>>) {
     super(props);
     this.mapRef = React.createRef();
   }
 
-  componentDidUpdate(prevProps: React.PropsWithChildren<MapViewProps<any>>) {
+  componentDidUpdate(prevProps: React.PropsWithChildren<MapViewProps<T>>) {
     if (
       prevProps.latitude != null &&
       prevProps.longitude != null &&
@@ -47,16 +49,12 @@ class MapView extends React.Component<
     latitude,
     longitude,
     zoom,
-  }: {
-    latitude: number;
-    longitude: number;
+  }: LatLng & {
     zoom?: number;
   }) {
-    const args: {
-      center: { latitude: number; longitude: number };
-      altitude?: number;
-      zoom?: number;
-    } = {
+    const camera: Camera = {
+      heading: 0,
+      pitch: 0,
       center: {
         latitude,
         longitude,
@@ -64,75 +62,55 @@ class MapView extends React.Component<
     };
 
     if (zoom) {
-      args.altitude = zoomToAltitude(zoom || 1);
-      args.zoom = zoom;
+      camera.altitude = zoomToAltitude(zoom || 1);
+      camera.zoom = zoom;
     }
 
-    this.mapRef.current.animateCamera(args);
+    this.mapRef.current.animateCamera(camera);
   }
 
   render() {
     const {
-      provider,
+      apiKey,
+      provider = Platform.OS === "web" ? "google" : undefined,
       latitude,
       longitude,
       zoom,
       showsCompass = false,
-      rotateEnabled = true,
-      zoomEnabled = true,
       loadingEnabled = true,
-      scrollEnabled = true,
-      loadingBackgroundColor,
-      loadingIndicatorColor,
-      mapType = "standard",
-      showsUserLocation,
-      followsUserLocation,
-      showsPointsOfInterest,
-      style,
       markersData,
       renderItem,
       keyExtractor,
       onRegionChange,
+      style,
       children,
+      ...rest
     } = this.props;
 
-    if (!NativeMapView || !Marker) {
-      return null;
-    }
-
-    const camera = {
+    const camera: Camera = {
       altitude: zoomToAltitude(zoom || 1),
       heading: 0,
       pitch: 0,
       zoom,
       center: {
-        latitude,
-        longitude,
+        latitude: latitude || 0,
+        longitude: longitude || 0,
       },
     };
 
     return (
-      <NativeMapView
+      <MapViewComponent
         ref={this.mapRef}
         provider={provider}
-        mapType={mapType}
+        googleMapsApiKey={apiKey}
         showsCompass={showsCompass}
-        rotateEnabled={rotateEnabled}
-        zoomEnabled={zoomEnabled}
-        camera={camera}
+        initialCamera={camera}
         loadingEnabled={loadingEnabled}
-        scrollEnabled={scrollEnabled}
-        showsUserLocation={showsUserLocation}
-        followsUserLocation={followsUserLocation}
-        showsPointsOfInterest={showsPointsOfInterest}
-        loadingBackgroundColor={loadingBackgroundColor}
-        loadingIndicatorColor={loadingIndicatorColor}
-        onRegionChangeComplete={(region: any, { isGesture }: any) => {
-          if (isGesture) {
-            onRegionChange?.(region);
-          }
+        onRegionChangeComplete={(region) => {
+          onRegionChange?.(region);
         }}
-        style={style}
+        style={[styles.map, style]}
+        {...rest}
       >
         {markersData && renderItem
           ? markersData.map((item, index) => {
@@ -148,9 +126,29 @@ class MapView extends React.Component<
               });
             })
           : children}
-      </NativeMapView>
+      </MapViewComponent>
     );
   }
+}
+
+const styles = StyleSheet.create({
+  map: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+  },
+});
+
+// Approximates a conversion of zoom level to altitude,
+// since different platforms require different values.
+// https://stackoverflow.com/a/37142662
+function zoomToAltitude(zoom: number) {
+  const A = 40487.57;
+  const B = 0.00007096758;
+  const C = 91610.74;
+  const D = -40467.74;
+
+  return C * Math.pow((A - D) / (zoom - D) - 1, 1 / B);
 }
 
 export default MapView;

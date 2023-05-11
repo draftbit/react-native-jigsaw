@@ -2,7 +2,7 @@ import * as React from "react";
 import { GoogleMap, Marker } from "./ReactGoogleMaps";
 import NoApiKey from "./NoApiKey";
 import MapScriptLoader from "./MapScriptLoader";
-import { MapViewProps, MapRegion } from "@draftbit/types";
+import { MapViewProps, MapRegion } from "../mapTypes";
 import { StyleSheet } from "react-native";
 
 type State = {
@@ -23,6 +23,9 @@ type State = {
   mapHeight?: number;
 };
 
+/**
+ * @deprecated DEPRECATED: Use @draftbit/maps
+ */
 class MapView extends React.Component<
   React.PropsWithChildren<MapViewProps<any>>,
   State

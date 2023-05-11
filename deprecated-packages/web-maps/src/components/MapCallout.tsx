@@ -2,8 +2,11 @@ import * as React from "react";
 import { TouchableOpacity } from "react-native";
 import { InfoWindow } from "./ReactGoogleMaps";
 import { markerContext } from "./MapMarker";
-import { MapCalloutProps } from "@draftbit/types";
+import { MapCalloutProps } from "../mapTypes";
 
+/**
+ * @deprecated DEPRECATED: Use @draftbit/maps
+ */
 const MapCallout: React.FC<React.PropsWithChildren<MapCalloutProps>> = ({
   anchor,
   onPress = () => {},

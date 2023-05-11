@@ -3331,7 +3331,7 @@
   dependencies:
     esquery "^1.0.1"
 
-"@react-google-maps/api@^2.10.2", "@react-google-maps/api@^2.12.0":
+"@react-google-maps/api@^2.12.0":
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/@react-google-maps/api/-/api-2.18.1.tgz#140bb134f50c98939b6eb440d01dbb7df562090c"
   integrity sha512-KVlUO/Shh+0g/3egWaKmY0sz6+0QOnYkBGvrBMJbz23519LauA+iJFc4NDCmWNHqD5Vhb/Bkg0kSJgq0Stz3Iw==

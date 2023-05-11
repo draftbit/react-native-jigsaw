@@ -1,1 +1,1 @@
-export { Callout } from "@teovilla/react-native-web-maps/dist/typescript/index.web";
+export { Callout } from "@teovilla/react-native-web-maps";

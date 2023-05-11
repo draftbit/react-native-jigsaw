@@ -104,7 +104,7 @@ class MapView<T> extends React.Component<
         provider={provider}
         googleMapsApiKey={apiKey}
         showsCompass={showsCompass}
-        camera={camera}
+        initialCamera={camera}
         loadingEnabled={loadingEnabled}
         onRegionChangeComplete={(region) => {
           onRegionChange?.(region);

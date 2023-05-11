@@ -7,11 +7,11 @@ export interface MapCalloutProps
   showTooltip?: boolean;
 }
 
-const MapCallout: React.FC<React.PropsWithChildren<MapCalloutProps>> = ({
+// Has to be a function named 'Callout' to be matched as a Callout component and not a custom view for marker
+// See: https://github.com/teovillanueva/react-native-web-maps/blob/81278079c6f26a707d915d69de9a00080c305957/packages/react-native-web-maps/src/components/marker.web.tsx#L79
+export function Callout({
   showTooltip,
   ...rest
-}) => {
+}: React.PropsWithChildren<MapCalloutProps>) {
   return <MapCalloutComponent tooltip={!showTooltip} {...rest} />;
-};
-
-export default MapCallout;
+}

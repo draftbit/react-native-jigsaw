@@ -1,4 +1,3 @@
-export { MapView, MapMarker } from "./components";
-
-// Has to be exported directly, otherwise can be considered a custom marker and not a callout
-export { Callout as MapCallout } from "./components/react-native-maps";
+export { default as MapView } from "./components/MapView";
+export { default as MapMarker } from "./components/MapMarker";
+export { Callout as MapCallout } from "./components/MapCallout";

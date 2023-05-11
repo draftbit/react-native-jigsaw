@@ -37,8 +37,7 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/types": "47.3.2",
-    "@draftbit/web-maps": "47.3.2",
+    "@teovilla/react-native-web-maps": "^0.9.0",
     "react-native-maps": "1.3.2"
   },
   "eslintIgnore": [

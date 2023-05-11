@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { MapMarkerProps } from "@draftbit/types";
+import { MapMarkerProps } from "../mapTypes";
 import { Marker as WebMarker } from "./ReactGoogleMaps";
 import MapCallout from "./MapCallout";
 
@@ -23,6 +23,9 @@ export const markerContext = React.createContext<IMarkerContext>({
   toggleCallout: () => {},
 });
 
+/**
+ * @deprecated DEPRECATED: Use @draftbit/maps
+ */
 const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
   pinImage,
   pinImageSize = 50,

@@ -1,6 +1,5 @@
 {
   "extends": "../../tsconfig.json",
-  "references": [{ "path": "../types" }, { "path": "../web-maps" }],
   "compilerOptions": {
     "outDir": "./lib/"
   }

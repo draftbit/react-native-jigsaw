@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16.18
-          cache: 'yarn'
+          cache: "yarn"
           registry-url: https://registry.npmjs.org/
 
       - name: Install Dependencies
@@ -66,20 +66,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         run: |
-          yarn lerna publish from-package \
-            --ignore-scripts \
-            --yes \
-            --no-verify-access
-
-      - name: Release packages (47)
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/47'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
-        run: |
-          # Only publishes when finding a new `lerna version` was pushed to
-          # the branch. But for purposes of _this_ action, that means master.
-          # You have to manually run lerna version locally and get that PR
-          # merged before this does anything.
           yarn lerna publish from-package \
             --ignore-scripts \
             --yes \

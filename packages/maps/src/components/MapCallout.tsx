@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Callout as MapCalloutComponent } from "./ReactNativeMaps";
+import { Callout as MapCalloutComponent } from "./react-native-maps";
 import type { MapCalloutProps as MapCalloutComponentProps } from "react-native-maps";
 
 export interface MapCalloutProps

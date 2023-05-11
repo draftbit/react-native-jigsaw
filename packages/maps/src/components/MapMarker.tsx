@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Image, ImageSourcePropType } from "react-native";
-import { Marker as MapMarkerComponent } from "./ReactNativeMaps";
+import { Marker as MapMarkerComponent } from "./react-native-maps";
 import type { MapMarkerProps as MapMarkerComponentProps } from "react-native-maps";
 
 export interface MapMarkerProps

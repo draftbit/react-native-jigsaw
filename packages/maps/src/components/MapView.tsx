@@ -1,6 +1,6 @@
 import * as React from "react";
 import { StyleSheet, Platform } from "react-native";
-import MapViewComponent from "./ReactNativeMaps";
+import MapViewComponent from "./react-native-maps";
 import type {
   Camera,
   LatLng,
@@ -100,7 +100,6 @@ class MapView<T> extends React.Component<
 
     return (
       <MapViewComponent
-        //@ts-ignore Ref type is lost due to how web/native import is done
         ref={this.mapRef}
         provider={provider}
         googleMapsApiKey={apiKey}

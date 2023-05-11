@@ -123,7 +123,6 @@ function DatePickerExample({ theme }) {
           mode={"date"}
           style={{
             backgroundColor: "red",
-            fontFamily: "AbrilFatface_400Regular",
             fontSize: 22,
             paddingBottom: 16,
             paddingTop: 16,
@@ -139,7 +138,6 @@ function DatePickerExample({ theme }) {
           mode={"time"}
           style={{
             backgroundColor: "black",
-            fontFamily: "AbrilFatface_400Regular",
             fontSize: 26,
             color: `white`,
             paddingBottom: 16,

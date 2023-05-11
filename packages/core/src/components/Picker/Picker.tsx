@@ -15,7 +15,7 @@ import { Picker as NativePicker } from "@react-native-picker/picker";
 
 import { withTheme } from "../../theming";
 import Portal from "../Portal/Portal";
-import Button from "../DeprecatedButton";
+import Button from "../../deprecated-components/DeprecatedButton";
 import Touchable from "../Touchable";
 import type { Theme } from "../../styles/DefaultTheme";
 import type { IconSlot } from "../../interfaces/Icon";

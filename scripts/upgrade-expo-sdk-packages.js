@@ -48,7 +48,6 @@ const main = async () => {
     "packages/native",
     "packages/types",
     "packages/ui",
-    "packages/web-maps",
   ];
 
   for (const folder of folders) {

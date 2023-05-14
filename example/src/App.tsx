@@ -59,6 +59,7 @@ import BottomSheetExample from "./BottomSheetExample";
 import YoutubeExample from "./YoutubeExample";
 import TableExample from "./TableExample";
 import SwipeableItemExample from "./SwipeableItemExample";
+import SectionListExample from "./SectionListExample";
 
 const ROUTES = {
   AudioPlayer: AudioPlayerExample,
@@ -93,6 +94,7 @@ const ROUTES = {
   Youtube: YoutubeExample,
   Table: TableExample,
   SwipeableView: SwipeableItemExample,
+  SectionList: SectionListExample,
 };
 
 let customFonts = {

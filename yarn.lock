@@ -3527,10 +3527,10 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@teovilla/react-native-web-maps@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@teovilla/react-native-web-maps/-/react-native-web-maps-0.9.0.tgz#9c08f5a3c32db243209b88d01b0e96398a8130bf"
-  integrity sha512-svG9eQxoKqf3btXvTG4LB8Oa7ot9P2uENJWX9EJv0A+N1XIQCBCCR/DVS6R7GbMMhh9C7JKvzL+QgKz8gqMdiw==
+"@teovilla/react-native-web-maps@^0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@teovilla/react-native-web-maps/-/react-native-web-maps-0.9.1.tgz#0f83d563a6513db4352ecf25c5f906a9d7a3a1ae"
+  integrity sha512-cv0cLiR7P/tAxUsySpaWO+OuRoOIH6ggHxviMX3QOfUoJUyfKHzhZyVPH54e8s/202QUtlB0ab7goSYKSS3ycA==
   dependencies:
     "@react-google-maps/api" "^2.12.0"
     expo-location "~15.1.1"

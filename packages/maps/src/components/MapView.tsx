@@ -7,6 +7,7 @@ import type {
   Region,
   MapViewProps as MapViewComponentProps,
 } from "react-native-maps";
+import MapMarker, { renderMarker } from "./MapMarker";
 
 export interface MapViewProps<T> extends MapViewComponentProps {
   apiKey: string;
@@ -69,6 +70,32 @@ class MapView<T> extends React.Component<
     this.mapRef.current.animateCamera(camera);
   }
 
+  getMarkers(): React.ReactElement[] {
+    const { markersData, renderItem, keyExtractor, children } = this.props;
+
+    if (markersData && renderItem) {
+      const markers: React.ReactElement[] = [];
+
+      markersData.forEach((item, index) => {
+        const component = renderItem?.({ item, index });
+
+        if (component && component.type === MapMarker) {
+          const key = keyExtractor ? keyExtractor(item, index) : index;
+          markers.push(
+            React.cloneElement(component, {
+              key,
+            })
+          );
+        }
+      });
+      return markers;
+    } else {
+      return React.Children.toArray(children).filter(
+        (child) => (child as React.ReactElement).type === MapMarker
+      ) as React.ReactElement[];
+    }
+  }
+
   render() {
     const {
       apiKey,
@@ -78,12 +105,8 @@ class MapView<T> extends React.Component<
       zoom,
       showsCompass = false,
       loadingEnabled = true,
-      markersData,
-      renderItem,
-      keyExtractor,
       onRegionChange,
       style,
-      children,
       ...rest
     } = this.props;
 
@@ -112,20 +135,9 @@ class MapView<T> extends React.Component<
         style={[styles.map, style]}
         {...rest}
       >
-        {markersData && renderItem
-          ? markersData.map((item, index) => {
-              const component = renderItem({ item, index });
-
-              if (!component) {
-                return null;
-              }
-
-              const key = keyExtractor ? keyExtractor(item, index) : index;
-              return React.cloneElement(component, {
-                key,
-              });
-            })
-          : children}
+        {this.getMarkers().map((marker, index) =>
+          renderMarker(marker.props, index)
+        )}
       </MapViewComponent>
     );
   }

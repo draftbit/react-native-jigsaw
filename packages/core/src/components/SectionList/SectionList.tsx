@@ -67,7 +67,8 @@ const SectionList = <T extends { [key: string]: any }>({
   }, [data, sectionKey]);
 
   const extractSectionHeader = (element: JSX.Element): JSX.Element | null => {
-    const children = React.Children.toArray(element.props?.children).map(
+    const props = element?.props || {};
+    const children = React.Children.toArray(props.children).map(
       (child) => child as React.ReactElement
     );
     if (element.type === SectionHeader) {
@@ -85,7 +86,8 @@ const SectionList = <T extends { [key: string]: any }>({
   const extractRemainingNonSectionHeader = (
     element: JSX.Element
   ): JSX.Element | null => {
-    const children = React.Children.toArray(element.props?.children).map(
+    const props = element?.props || {};
+    const children = React.Children.toArray(props.children).map(
       (child) => child as React.ReactElement
     );
     if (element.type === SectionHeader) {
@@ -98,7 +100,7 @@ const SectionList = <T extends { [key: string]: any }>({
         }
       }
       return React.cloneElement(element, {
-        ...element.props,
+        ...props,
         children: newChildren,
       });
     }

@@ -67,6 +67,7 @@ const SwipeableViewExample: React.FC = () => {
             listComponent="FlashList"
             data={sampleData}
             sectionKey="category"
+            estimatedItemSize={40}
             renderItem={({ item }) => (
               <View>
                 <Text>{item?.id}</Text>

@@ -3,16 +3,13 @@ import { View, StyleProp, ViewStyle, Text } from "react-native";
 import { withTheme } from "../../theming";
 import type { Theme } from "../../styles/DefaultTheme";
 
-export interface SectionHeaderProps {
+interface SectionHeaderProps {
   style?: StyleProp<ViewStyle>;
-  isSectionHeader?: true; //Indicates to the parent SectionList that this is the section header component
 }
 
 const SectionHeader: React.FC<React.PropsWithChildren<SectionHeaderProps>> = ({
   style,
   children,
-  // @ts-ignore Used by parent component only, ignore warning
-  isSectionHeader = true, // eslint-disable-line @typescript-eslint/no-unused-vars
 }) => <View style={[style]}>{children}</View>;
 
 interface DefaultSectionHeaderProps {

@@ -1,10 +1,7 @@
 import React from "react";
 import { FlashListProps, FlashList } from "@shopify/flash-list";
 import { FlatListProps, FlatList } from "react-native";
-import SectionHeader, {
-  DefaultSectionHeader,
-  SectionHeaderProps,
-} from "./SectionHeader";
+import SectionHeader, { DefaultSectionHeader } from "./SectionHeader";
 
 type ListComponentType = "FlatList" | "FlashList";
 
@@ -45,13 +42,6 @@ const SectionList = <T extends { [key: string]: any }>({
 }: FlatListSectionListProps<T> | FlashListSectionListProps<T>) => {
   const data = React.useMemo(() => (dataProp || []) as T[], [dataProp]);
 
-  const instanceOfSectionHeaderProps = (
-    element: React.ReactElement,
-    object: any
-  ): object is SectionHeaderProps => {
-    return element.type === SectionHeader || "isSectionHeader" in object;
-  };
-
   const dataWithSections = React.useMemo(() => {
     const result: SectionListItem<T>[] = [];
     const sectionDataItems: { [key: string]: T[] } = {};
@@ -80,11 +70,11 @@ const SectionList = <T extends { [key: string]: any }>({
     const children = React.Children.toArray(element.props?.children).map(
       (child) => child as React.ReactElement
     );
-    if (instanceOfSectionHeaderProps(element, element.props)) {
+    if (element.type === SectionHeader) {
       return element;
     } else {
       for (const child of children) {
-        if (instanceOfSectionHeaderProps(child, child.props)) {
+        if (child.type === SectionHeader) {
           return child;
         }
       }
@@ -98,12 +88,12 @@ const SectionList = <T extends { [key: string]: any }>({
     const children = React.Children.toArray(element.props?.children).map(
       (child) => child as React.ReactElement
     );
-    if (instanceOfSectionHeaderProps(element, element.props)) {
+    if (element.type === SectionHeader) {
       return null;
     } else {
       const newChildren = [];
       for (const child of children) {
-        if (!instanceOfSectionHeaderProps(child, child.props)) {
+        if (child.type !== SectionHeader) {
           newChildren.push(child);
         }
       }

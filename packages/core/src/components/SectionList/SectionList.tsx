@@ -33,6 +33,8 @@ interface SectionListSectionItem {
 
 type SectionListItem<T> = SectionListDataItem<T> | SectionListSectionItem;
 
+const DEFAULT_SECTION = "Uncategorized";
+
 const SectionList = <T extends { [key: string]: any }>({
   sectionKey,
   listComponent = "FlatList",
@@ -47,7 +49,7 @@ const SectionList = <T extends { [key: string]: any }>({
     const sectionDataItems: { [key: string]: T[] } = {};
 
     for (const item of data) {
-      const section = item[sectionKey]?.toString() || "Uncategorized";
+      const section = item[sectionKey]?.toString() || DEFAULT_SECTION;
       if (sectionDataItems[section]) {
         sectionDataItems[section].push(item);
       } else {
@@ -66,8 +68,14 @@ const SectionList = <T extends { [key: string]: any }>({
     return result;
   }, [data, sectionKey]);
 
-  const extractSectionHeader = (element: JSX.Element): JSX.Element | null => {
-    const props = element?.props || {};
+  const extractSectionHeader = (
+    element: JSX.Element | null
+  ): JSX.Element | null => {
+    if (!element) {
+      return null;
+    }
+
+    const props = element.props || {};
     const children = React.Children.toArray(props.children).map(
       (child) => child as React.ReactElement
     );
@@ -84,9 +92,13 @@ const SectionList = <T extends { [key: string]: any }>({
   };
 
   const extractRemainingNonSectionHeader = (
-    element: JSX.Element
+    element: JSX.Element | null
   ): JSX.Element | null => {
-    const props = element?.props || {};
+    if (!element) {
+      return null;
+    }
+
+    const props = element.props || {};
     const children = React.Children.toArray(props.children).map(
       (child) => child as React.ReactElement
     );
@@ -129,7 +141,7 @@ const SectionList = <T extends { [key: string]: any }>({
         const renderedItem = renderItemProp({
           item: item.data,
           index,
-          section: item.data[sectionKey],
+          section: item.data[sectionKey] || DEFAULT_SECTION,
         });
         return extractRemainingNonSectionHeader(renderedItem);
       }

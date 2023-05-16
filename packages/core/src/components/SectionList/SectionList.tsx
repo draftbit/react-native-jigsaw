@@ -33,7 +33,7 @@ interface SectionListSectionItem {
 
 type SectionListItem<T> = SectionListDataItem<T> | SectionListSectionItem;
 
-const DEFAULT_SECTION = "Uncategorized";
+export const DEFAULT_SECTION = "Uncategorized";
 
 const SectionList = <T extends { [key: string]: any }>({
   sectionKey,

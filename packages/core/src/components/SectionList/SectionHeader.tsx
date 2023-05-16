@@ -20,6 +20,7 @@ export const DefaultSectionHeader = withTheme(
   ({ title, theme }: DefaultSectionHeaderProps) => {
     return (
       <Text
+        testID="default-section-header"
         style={{
           color: theme.colors.background,
           backgroundColor: theme.colors.primary,

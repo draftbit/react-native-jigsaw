@@ -10,6 +10,7 @@
     "web": "expo start --web",
     "start": "expo start",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "postinstall": "expo-yarn-workspaces postinstall",
     "example": "yarn --cwd example",
     "clean:modules": "rimraf node_modules"

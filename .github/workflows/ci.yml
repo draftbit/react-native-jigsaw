@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16.18
-          cache: 'yarn'
+          cache: "yarn"
           registry-url: https://registry.npmjs.org/
 
       - name: Install Dependencies
@@ -30,6 +30,9 @@ jobs:
 
       - name: Lint
         run: yarn lint
+
+      - name: Test
+        run: yarn test
 
       - name: Build
         run: yarn build

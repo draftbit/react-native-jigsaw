@@ -15,7 +15,9 @@
   "scripts": {
     "clean": "rimraf lib",
     "clean:modules": "rimraf node_modules",
-    "build": "yarn clean && yarn tsc"
+    "build": "yarn clean && yarn tsc",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [
     "react-native",
@@ -49,5 +51,15 @@
   "eslintIgnore": [
     "node_modules/",
     "lib/"
-  ]
+  ],
+  "jest": {
+    "preset": "react-native",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
+    "testPathIgnorePatterns": [
+      "lib",
+      "__mocks__"
+    ]
+  }
 }

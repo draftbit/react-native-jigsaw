@@ -5,8 +5,10 @@ import {
   TableProps,
   TableStyleContext,
 } from "./TableCommon";
+import Pressable from "../Pressable";
 
 export interface Props extends TableProps {
+  onPress?: () => void;
   style?: StyleProp<ViewStyle>;
 }
 
@@ -21,6 +23,7 @@ const TableCell: React.FC<React.PropsWithChildren<Props>> = ({
   cellVerticalPadding,
   cellHorizontalPadding,
   children,
+  onPress,
   style,
 }) => {
   const parentContextValue = React.useContext(TableStyleContext);
@@ -34,8 +37,11 @@ const TableCell: React.FC<React.PropsWithChildren<Props>> = ({
     drawStartBorder,
     drawEndBorder,
   });
+
+  const ContainerComponent = onPress ? Pressable : View;
   return (
-    <View
+    <ContainerComponent
+      onPress={onPress}
       style={[
         styles.cellContainer,
         borderViewStyle,
@@ -49,7 +55,7 @@ const TableCell: React.FC<React.PropsWithChildren<Props>> = ({
       ]}
     >
       {children}
-    </View>
+    </ContainerComponent>
   );
 };
 

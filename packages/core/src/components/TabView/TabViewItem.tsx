@@ -1,8 +1,7 @@
 import React from "react";
 import { StyleProp, ViewStyle, StyleSheet, View } from "react-native";
 
-//Props used by parent (TabView) to create tabs
-export interface TabViewItemProps {
+interface TabViewItemProps {
   title: string;
   icon?: string;
   accessibilityLabel?: string;

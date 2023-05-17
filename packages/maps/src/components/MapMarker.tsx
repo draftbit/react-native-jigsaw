@@ -57,9 +57,11 @@ export function renderMarker(
   if (calloutChildren.length === 0 && (title || description)) {
     calloutChildren.push(
       <MapCallout showTooltip>
-        <View>
-          {title && <Text style={style.title}>{title}</Text>}
-          {description && <Text style={style.description}>{description}</Text>}
+        <View style={styles.defaultCalloutContainer}>
+          {title && <Text style={styles.defaultCalloutTitle}>{title}</Text>}
+          {description && (
+            <Text style={styles.defaultCalloutDescription}>{description}</Text>
+          )}
         </View>
       </MapCallout>
     );
@@ -98,13 +100,17 @@ export function renderMarker(
   );
 }
 
-const style = StyleSheet.create({
-  title: {
+const styles = StyleSheet.create({
+  defaultCalloutContainer: {
+    flex: 1,
+  },
+  defaultCalloutTitle: {
     fontWeight: "600",
     textAlign: "center",
+    maxWidth: 250,
   },
-  description: {
-    textAlign: "center",
+  defaultCalloutDescription: {
+    maxWidth: 250,
   },
 });
 

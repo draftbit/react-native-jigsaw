@@ -8,7 +8,7 @@ import {
   Route,
 } from "react-native-tab-view";
 
-import { TabViewItemProps } from "./TabViewItem";
+import TabViewItem from "./TabViewItem";
 import type { IconSlot } from "../../interfaces/Icon";
 import { withTheme } from "../../theming";
 import type { Theme } from "../../styles/DefaultTheme";
@@ -62,14 +62,6 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
 
   const { textStyles, viewStyles } = extractStyles(style);
 
-  //Check type of child using props
-  //Regular '.type' cannot work because Draftbit strips the type in Draft view
-  const instanceOfTabViewItemProps = (
-    object: any
-  ): object is TabViewItemProps => {
-    return "title" in object;
-  };
-
   //Populate routes and scenes based on children
   React.useEffect(() => {
     const newRoutes: Route[] = [];
@@ -77,8 +69,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
 
     React.Children.toArray(children)
       .filter(
-        (child) =>
-          React.isValidElement(child) && instanceOfTabViewItemProps(child.props)
+        (child) => React.isValidElement(child) && child.type === TabViewItem
       )
       .forEach((item: any, idx) => {
         const child = item as React.ReactElement;

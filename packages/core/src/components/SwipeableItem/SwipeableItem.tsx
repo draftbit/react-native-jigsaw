@@ -20,7 +20,9 @@ import { SwipeRow } from "react-native-swipe-list-view";
 import { IconSlot } from "../../interfaces/Icon";
 import type { Theme } from "../../styles/DefaultTheme";
 import { withTheme } from "../../theming";
-import { SwipeableItemButtonProps } from "./SwipeableItemButton";
+import SwipeableItemButton, {
+  SwipeableItemButtonProps,
+} from "./SwipeableItemButton";
 import { SwipeableListContext } from "./SwipeableList";
 import {
   RightSwipeProps,
@@ -87,12 +89,6 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
   disableRightSwipe,
   ...rest
 }) => {
-  const instanceOfSwipeableItemButtonProps = (
-    object: any
-  ): object is SwipeableItemButtonProps => {
-    return "title" in object && "revealSwipeDirection" in object;
-  };
-
   const isEmptyObject = (object: object) => {
     return Object.keys(object).length === 0;
   };
@@ -131,7 +127,7 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
       React.Children.toArray(children).filter(
         (child) =>
           React.isValidElement(child) &&
-          instanceOfSwipeableItemButtonProps(child.props) &&
+          child.type === SwipeableItemButton &&
           child.props.revealSwipeDirection === "left"
       ) as React.ReactElement<SwipeableItemButtonProps>[],
     [children]
@@ -142,7 +138,7 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
       React.Children.toArray(children).filter(
         (child) =>
           React.isValidElement(child) &&
-          instanceOfSwipeableItemButtonProps(child.props) &&
+          child.type === SwipeableItemButton &&
           child.props.revealSwipeDirection === "right"
       ) as React.ReactElement<SwipeableItemButtonProps>[],
     [children]
@@ -152,8 +148,7 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
     () =>
       React.Children.toArray(children).filter(
         (child) =>
-          React.isValidElement(child) &&
-          !instanceOfSwipeableItemButtonProps(child.props)
+          React.isValidElement(child) && child.type !== SwipeableItemButton
       ),
     [children]
   );

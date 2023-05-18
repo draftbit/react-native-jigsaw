@@ -8,8 +8,10 @@ import {
 } from "./TableCommon";
 import { Theme } from "../../styles/DefaultTheme";
 import { withTheme } from "../../theming";
+import Pressable from "../Pressable";
 
 export interface Props extends TableProps {
+  onPress?: () => void;
   isTableHeader?: boolean;
   style?: StyleProp<ViewStyle>;
   theme: Theme;
@@ -27,6 +29,7 @@ const TableRow: React.FC<React.PropsWithChildren<Props>> = ({
   cellHorizontalPadding,
   isTableHeader = false,
   children,
+  onPress,
   style,
   theme,
 }) => {
@@ -52,9 +55,12 @@ const TableRow: React.FC<React.PropsWithChildren<Props>> = ({
     drawStartBorder,
     drawEndBorder,
   });
+
+  const ContainerComponent = onPress ? Pressable : View;
   return (
     <TableStyleContext.Provider value={contextValue}>
-      <View
+      <ContainerComponent
+        onPress={onPress}
         style={[
           borderViewStyle,
           isTableHeader ? { backgroundColor: theme.colors.primary } : {},
@@ -63,7 +69,7 @@ const TableRow: React.FC<React.PropsWithChildren<Props>> = ({
         ]}
       >
         {children}
-      </View>
+      </ContainerComponent>
     </TableStyleContext.Provider>
   );
 };

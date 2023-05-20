@@ -50,6 +50,7 @@ export {
   ActionSheetCancel,
   Swiper,
   SwiperItem,
+  LinearProgress,
 } from "@draftbit/core";
 
 /**

@@ -3,6 +3,8 @@ import { Theme } from "../../styles/DefaultTheme";
 
 type LineCap = "round" | "square";
 
+export const DEFAULT_ANIMATION_DURATION = 500;
+
 export interface BaseProgressProps {
   thickness?: number;
   trackThickness?: number;
@@ -22,6 +24,7 @@ export interface BaseProgressProps {
   trackDashOffset?: string | number;
   customDashArray?: string;
   trackCustomDashArray?: string;
+  onWidth?: (width: number) => void;
   style?: StyleProp<ViewStyle>;
   theme: Theme;
 }

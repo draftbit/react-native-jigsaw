@@ -9,13 +9,7 @@ const ProgressExample: React.FC = () => {
   return (
     <Container style={{}}>
       <Section title="Linear Progress (Default)" style={{}}>
-        <LinearProgress
-          dashOffset={0}
-          dashGap={200}
-          dashWidth={200}
-          animationDuration={500}
-          indeterminate
-        />
+        <LinearProgress value={value} />
       </Section>
 
       <Section title="Linear Progress (Different Styles)" style={{}}>
@@ -43,6 +37,9 @@ const ProgressExample: React.FC = () => {
           trackThickness={20}
           value={value}
         />
+      </Section>
+      <Section title="Linear Progress (Indeterminate)" style={{}}>
+        <LinearProgress indeterminate />
       </Section>
       <Text>Current: {value}</Text>
       <Button

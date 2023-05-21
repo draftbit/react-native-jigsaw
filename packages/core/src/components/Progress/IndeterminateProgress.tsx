@@ -1,56 +1,69 @@
 import React from "react";
 import {
-  AnimateProps,
-  useAnimatedProps,
+  runOnJS,
+  useAnimatedReaction,
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import { BaseProgressProps, ValueProgressProps } from "./ProgressCommon";
+import {
+  BaseProgressProps,
+  DEFAULT_ANIMATION_DURATION,
+  ValueProgressProps,
+} from "./ProgressCommon";
 
 interface IndeterminateProgressProps extends BaseProgressProps {
-  AnimatedProgressComponent: React.ComponentClass<
-    AnimateProps<ValueProgressProps>
-  >;
+  ProgressComponent: React.FunctionComponent<ValueProgressProps>;
 }
 
 const IndeterminateProgress: React.FC<IndeterminateProgressProps> = ({
-  AnimatedProgressComponent,
+  ProgressComponent,
   ...rest
 }) => {
+  const [componentWidth, setComponentWidth] = React.useState(0);
   const [value, setValue] = React.useState(0);
-  const animationDuration = rest.animationDuration;
+  const [dashOffset, setDashOffset] = React.useState(0);
+  const animationDuration =
+    rest.animationDuration || DEFAULT_ANIMATION_DURATION;
 
   const currentOffset = useSharedValue(0);
 
-  const animatedProgressComponentProps = useAnimatedProps<ValueProgressProps>(
-    () => {
-      return {
-        dashOffset: currentOffset.value,
-      };
-    }
+  // dashOffset animation done through state due to it not being a 'native' prop that reanimated can animate on the native thread
+  useAnimatedReaction(
+    () => currentOffset.value,
+    (result) => runOnJS(setDashOffset)(result)
   );
+
+  const repeatIndeterminateAnimation = React.useCallback(() => {
+    if (value === 0) {
+      setValue(100);
+      currentOffset.value = withTiming(componentWidth, {
+        duration: animationDuration,
+      });
+    } else {
+      setValue(0);
+      currentOffset.value = withTiming(0, {
+        duration: animationDuration,
+      });
+    }
+  }, [currentOffset, value, animationDuration, componentWidth]);
 
   React.useEffect(() => {
     const timeout = setTimeout(() => {
-      if (value === 0) {
-        setValue(100);
-        currentOffset.value = withTiming(200, { duration: animationDuration });
-      } else {
-        setValue(0);
-        currentOffset.value = withTiming(0, {
-          duration: animationDuration,
-        });
-      }
+      repeatIndeterminateAnimation();
     }, animationDuration);
     return () => clearTimeout(timeout);
-  }, [value, animationDuration, currentOffset]);
+  }, [animationDuration, repeatIndeterminateAnimation]);
 
   return (
-    <AnimatedProgressComponent
+    <ProgressComponent
       {...rest}
-      animatedProps={animatedProgressComponentProps}
-      dashGap={200}
-      dashWidth={200}
+      onWidth={(width) => {
+        setComponentWidth(width);
+        rest.onWidth?.(width);
+      }}
+      dashOffset={dashOffset}
+      dashGap={componentWidth / 2}
+      dashWidth={componentWidth / 2}
       animationDuration={animationDuration}
       value={100}
     />

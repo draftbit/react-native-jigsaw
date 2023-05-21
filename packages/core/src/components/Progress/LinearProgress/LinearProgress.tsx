@@ -5,7 +5,10 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import { ValueProgressProps } from "../ProgressCommon";
+import {
+  DEFAULT_ANIMATION_DURATION,
+  ValueProgressProps,
+} from "../ProgressCommon";
 
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 
@@ -21,7 +24,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
   trackColor = theme.colors.divider,
   trackOpacity = 1,
   showTrack = true,
-  animationDuration = 500,
+  animationDuration = DEFAULT_ANIMATION_DURATION,
   isAnimated = true,
   lineCap = "round",
   trackLineCap = lineCap,
@@ -33,6 +36,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
   trackDashOffset,
   customDashArray,
   trackCustomDashArray,
+  onWidth,
   style,
 }) => {
   const [svgContainerWidth, setSvgContainerWidth] = React.useState(0);
@@ -81,7 +85,11 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
 
   return (
     <Svg
-      onLayout={(event) => setSvgContainerWidth(event.nativeEvent.layout.width)}
+      onLayout={(event) => {
+        const width = event.nativeEvent.layout.width;
+        setSvgContainerWidth(width);
+        onWidth?.(width);
+      }}
       style={[
         {
           height: maxThickness,

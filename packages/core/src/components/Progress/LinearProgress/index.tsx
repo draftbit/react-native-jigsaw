@@ -5,18 +5,7 @@ import {
   ValueProgressProps,
 } from "../ProgressCommon";
 import { LinearProgress as LinearProgressComponent } from "./LinearProgress";
-import Animated from "react-native-reanimated";
 import { withTheme } from "../../../theming";
-
-class LinearProgressClassWrapper extends React.Component<ValueProgressProps> {
-  render(): React.ReactNode {
-    return <LinearProgressComponent {...this.props} />;
-  }
-}
-
-const AnimatedLinearProgress = Animated.createAnimatedComponent(
-  LinearProgressClassWrapper
-);
 
 const LinearProgress: React.FC<
   ValueProgressProps & IndeterminateProgressProps
@@ -24,7 +13,7 @@ const LinearProgress: React.FC<
   if (props.indeterminate) {
     return (
       <IndeterminateProgress
-        AnimatedProgressComponent={AnimatedLinearProgress}
+        ProgressComponent={LinearProgressComponent}
         {...props}
       />
     );

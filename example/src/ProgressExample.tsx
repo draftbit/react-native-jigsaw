@@ -1,13 +1,21 @@
 import React from "react";
 import Section, { Container } from "./Section";
 import { LinearProgress, Button } from "@draftbit/ui";
+import { Text } from "react-native";
 
 const ProgressExample: React.FC = () => {
   const [value, setValue] = React.useState(50);
+
   return (
     <Container style={{}}>
       <Section title="Linear Progress (Default)" style={{}}>
-        <LinearProgress value={value} />
+        <LinearProgress
+          dashOffset={0}
+          dashGap={200}
+          dashWidth={200}
+          animationDuration={500}
+          indeterminate
+        />
       </Section>
 
       <Section title="Linear Progress (Different Styles)" style={{}}>
@@ -36,6 +44,7 @@ const ProgressExample: React.FC = () => {
           value={value}
         />
       </Section>
+      <Text>Current: {value}</Text>
       <Button
         //@ts-ignore
         title="Randomize Progress"

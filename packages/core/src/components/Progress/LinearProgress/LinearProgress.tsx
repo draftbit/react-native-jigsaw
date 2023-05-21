@@ -1,50 +1,19 @@
 import React from "react";
-import { StyleProp, ViewStyle } from "react-native";
 import Svg, { Line, LineProps } from "react-native-svg";
-import { withTheme } from "../../theming";
-import { Theme } from "../../styles/DefaultTheme";
 import Animated, {
   useAnimatedProps,
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-
-type LineCap = "round" | "square";
-
-interface LinearProgressProps {
-  value: number;
-  minimumValue?: number;
-  maximumValue?: number;
-  initialValueToAnimateFrom?: number;
-  thickness?: number;
-  trackThickness?: number;
-  color?: string;
-  trackColor?: string;
-  trackOpacity?: number;
-  showTrack?: boolean;
-  animationDuration?: number;
-  isAnimated?: boolean;
-  lineCap?: LineCap;
-  trackLineCap?: LineCap;
-  dashWidth?: string | number;
-  trackDashWidth?: string | number;
-  dashGap?: string | number;
-  trackDashGap?: string | number;
-  dashOffset?: string | number;
-  trackDashOffset?: string | number;
-  customDashArray?: string;
-  trackCustomDashArray?: string;
-  style?: StyleProp<ViewStyle>;
-  theme: Theme;
-}
+import { ValueProgressProps } from "../ProgressCommon";
 
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 
-const LinearProgress: React.FC<LinearProgressProps> = ({
+export const LinearProgress: React.FC<ValueProgressProps> = ({
   theme,
-  value,
   minimumValue = 0,
   maximumValue = 100,
+  value = minimumValue,
   initialValueToAnimateFrom = minimumValue,
   thickness = 10,
   trackThickness = thickness,
@@ -148,5 +117,3 @@ const LinearProgress: React.FC<LinearProgressProps> = ({
     </Svg>
   );
 };
-
-export default withTheme(LinearProgress);

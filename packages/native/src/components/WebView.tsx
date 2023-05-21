@@ -39,7 +39,8 @@ const injectFirst = `
 `;
 
 interface WebViewProps {
-  source: WebViewSourceUri | WebViewSourceHtml;
+  source?: WebViewSourceUri | WebViewSourceHtml;
+  html?: string;
   style?: ViewStyle;
   optimizeVideoChat?: boolean;
   // Advancted Builder Config Props
@@ -80,7 +81,7 @@ interface WebViewProps {
 }
 
 const NativeWebView = React.forwardRef<any, WebViewProps>(
-  ({ source, style, optimizeVideoChat, ...otherWebViewProps }, ref) => {
+  ({ source, html, style, optimizeVideoChat, ...otherWebViewProps }, ref) => {
     const [height, setHeight] = useState(0);
 
     const [cameraPermissions, setCameraPermissions] =
@@ -149,6 +150,12 @@ const NativeWebView = React.forwardRef<any, WebViewProps>(
       }
     };
 
+    if (!source && !html) {
+      throw new Error(
+        "'source' or 'html' props need to be provided to render WebView"
+      );
+    }
+
     const selectComponent = () => {
       if (
         !optimizeVideoChat ||
@@ -157,7 +164,7 @@ const NativeWebView = React.forwardRef<any, WebViewProps>(
         return (
           <WebView
             ref={ref}
-            source={source}
+            source={source || { html: html!! }}
             style={{ ...style, width: getFinalWidth() }}
             injectedJavaScript={injectFirst}
             onMessage={onMessage}

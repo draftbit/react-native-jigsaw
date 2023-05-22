@@ -24,7 +24,7 @@ export interface BaseProgressProps {
   trackDashOffset?: string | number;
   customDashArray?: string;
   trackCustomDashArray?: string;
-  onWidth?: (width: number) => void;
+  onFullPathWidth?: (width: number) => void;
   style?: StyleProp<ViewStyle>;
   theme: Theme;
 }
@@ -32,9 +32,12 @@ export interface ValueProgressProps extends BaseProgressProps {
   value?: number;
   minimumValue?: number;
   maximumValue?: number;
-  initialValueToAnimateFrom?: number;
 }
 
 export interface IndeterminateProgressProps extends BaseProgressProps {
   indeterminate?: boolean;
+}
+
+export interface CircularProgressProps {
+  startPosition?: "left" | "top" | "right" | "bottom";
 }

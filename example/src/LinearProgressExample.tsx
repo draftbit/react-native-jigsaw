@@ -38,9 +38,11 @@ const ProgressExample: React.FC = () => {
           value={value}
         />
       </Section>
+
       <Section title="Linear Progress (Indeterminate)" style={{}}>
         <LinearProgress indeterminate />
       </Section>
+
       <Text>Current: {value}</Text>
       <Button
         //@ts-ignore

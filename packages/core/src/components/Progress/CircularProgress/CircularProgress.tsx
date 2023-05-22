@@ -81,7 +81,7 @@ export const CircularProgress: React.FC<
   const currentAngle = useSharedValue(startAngle + currentFillPercentage * 360);
 
   const progressPathAnimatedProps = useAnimatedProps<PathProps>(() => {
-    const isMinAngle = currentAngle.value <= startAngle;
+    const isBelowMinAngle = currentAngle.value <= startAngle;
     return {
       d: circlePath(
         radius,
@@ -90,7 +90,7 @@ export const CircularProgress: React.FC<
         startAngle,
         Math.min(currentAngle.value, startAngle + 360) //Prevents going beyond the max angle
       ),
-      strokeOpacity: isMinAngle ? 0.0 : 1.0,
+      strokeOpacity: isBelowMinAngle ? 0.0 : 1.0,
     };
   });
 

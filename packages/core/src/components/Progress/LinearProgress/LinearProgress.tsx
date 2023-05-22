@@ -17,7 +17,6 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
   minimumValue = 0,
   maximumValue = 100,
   value = minimumValue,
-  initialValueToAnimateFrom = minimumValue,
   thickness = 10,
   trackThickness = thickness,
   color = theme.colors.primary,
@@ -36,7 +35,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
   trackDashOffset,
   customDashArray,
   trackCustomDashArray,
-  onWidth,
+  onFullPathWidth,
   style,
 }) => {
   const [svgContainerWidth, setSvgContainerWidth] = React.useState(0);
@@ -56,7 +55,10 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
   const progressLineWidth = svgContainerWidth - thicknessOffset;
   const trackProgressLineWidth = svgContainerWidth - thicknessOffset;
 
-  const currentProgressLineWidth = useSharedValue(initialValueToAnimateFrom);
+  const currentFillPercentage = value / (maximumValue + minimumValue);
+  const currentProgressLineWidth = useSharedValue(
+    currentFillPercentage * progressLineWidth
+  );
 
   const progressLineAnimatedProps = useAnimatedProps<LineProps>(() => {
     const isBelowMinWidth = currentProgressLineWidth.value <= thicknessOffset;
@@ -68,7 +70,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
 
   React.useEffect(() => {
     currentProgressLineWidth.value = withTiming(
-      progressLineWidth * (value / (maximumValue + minimumValue)),
+      progressLineWidth * currentFillPercentage,
       {
         duration: isAnimated ? animationDuration : 0,
       }
@@ -76,6 +78,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
   }, [
     value,
     progressLineWidth,
+    currentFillPercentage,
     animationDuration,
     currentProgressLineWidth,
     maximumValue,
@@ -88,7 +91,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
       onLayout={(event) => {
         const width = event.nativeEvent.layout.width;
         setSvgContainerWidth(width);
-        onWidth?.(width);
+        onFullPathWidth?.(width);
       }}
       style={[
         {

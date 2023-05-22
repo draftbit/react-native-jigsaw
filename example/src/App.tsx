@@ -59,7 +59,8 @@ import BottomSheetExample from "./BottomSheetExample";
 import YoutubeExample from "./YoutubeExample";
 import TableExample from "./TableExample";
 import SwipeableItemExample from "./SwipeableItemExample";
-import ProgressExample from "./ProgressExample";
+import LinearProgressExample from "./LinearProgressExample";
+import CircularProgressExample from "./CircularProgressExample";
 import SectionListExample from "./SectionListExample";
 
 const ROUTES = {
@@ -95,7 +96,8 @@ const ROUTES = {
   Youtube: YoutubeExample,
   Table: TableExample,
   SwipeableView: SwipeableItemExample,
-  Progress: ProgressExample,
+  LinearProgress: LinearProgressExample,
+  CircularProgress: CircularProgressExample,
   SectionList: SectionListExample,
 };
 

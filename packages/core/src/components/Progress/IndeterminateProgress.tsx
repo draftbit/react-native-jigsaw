@@ -19,7 +19,7 @@ const IndeterminateProgress: React.FC<IndeterminateProgressProps> = ({
   ProgressComponent,
   ...rest
 }) => {
-  const [componentWidth, setComponentWidth] = React.useState(0);
+  const [pathWidth, setPathWidth] = React.useState(0);
   const [value, setValue] = React.useState(0);
   const [dashOffset, setDashOffset] = React.useState(0);
   const animationDuration =
@@ -36,7 +36,7 @@ const IndeterminateProgress: React.FC<IndeterminateProgressProps> = ({
   const repeatIndeterminateAnimation = React.useCallback(() => {
     if (value === 0) {
       setValue(100);
-      currentOffset.value = withTiming(componentWidth, {
+      currentOffset.value = withTiming(pathWidth, {
         duration: animationDuration,
       });
     } else {
@@ -45,7 +45,7 @@ const IndeterminateProgress: React.FC<IndeterminateProgressProps> = ({
         duration: animationDuration,
       });
     }
-  }, [currentOffset, value, animationDuration, componentWidth]);
+  }, [currentOffset, value, animationDuration, pathWidth]);
 
   React.useEffect(() => {
     const timeout = setTimeout(() => {
@@ -57,13 +57,13 @@ const IndeterminateProgress: React.FC<IndeterminateProgressProps> = ({
   return (
     <ProgressComponent
       {...rest}
-      onWidth={(width) => {
-        setComponentWidth(width);
-        rest.onWidth?.(width);
+      onFullPathWidth={(width) => {
+        setPathWidth(width);
+        rest.onFullPathWidth?.(width);
       }}
       dashOffset={dashOffset}
-      dashGap={componentWidth / 2}
-      dashWidth={componentWidth / 2}
+      dashGap={pathWidth / 2}
+      dashWidth={pathWidth / 2}
       animationDuration={animationDuration}
       value={100}
     />

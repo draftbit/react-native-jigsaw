@@ -67,3 +67,5 @@ components.json
 
 js.map
 .eslintcache
+
+**/coverage/**

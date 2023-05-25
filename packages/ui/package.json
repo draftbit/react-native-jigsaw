@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "48.0.2",
+  "version": "48.1.0",
   "description": "Draftbit UI Library",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
@@ -19,7 +19,9 @@
   "scripts": {
     "clean": "rimraf lib",
     "clean:modules": "rimraf node_modules",
-    "build": "yarn clean && yarn tsc"
+    "build": "yarn clean && yarn tsc",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [
     "react-native",
@@ -41,11 +43,21 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/core": "48.0.2",
-    "@draftbit/native": "48.0.2"
+    "@draftbit/core": "48.1.0",
+    "@draftbit/native": "48.1.0"
   },
   "eslintIgnore": [
     "node_modules/",
     "lib/"
-  ]
+  ],
+  "jest": {
+    "preset": "react-native",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
+    "testPathIgnorePatterns": [
+      "lib",
+      "__mocks__"
+    ]
+  }
 }

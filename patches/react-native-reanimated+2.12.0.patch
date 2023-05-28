@@ -1,0 +1,38 @@
+diff --git a/node_modules/react-native-reanimated/lib/reanimated2/jestUtils.js b/node_modules/react-native-reanimated/lib/reanimated2/jestUtils.js
+index d8befd8..9f00121 100644
+--- a/node_modules/react-native-reanimated/lib/reanimated2/jestUtils.js
++++ b/node_modules/react-native-reanimated/lib/reanimated2/jestUtils.js
+@@ -145,23 +145,28 @@ export const advanceAnimationByFrame = (count) => {
+     jest.advanceTimersByTime(frameTime);
+ };
+ export const setUpTests = (userConfig = {}) => {
++    require('setimmediate');
++    frameTime = Math.round(1000 / config.fps);
++    config = Object.assign(Object.assign({}, config), userConfig);
+     let expect;
+     try {
+         expect = require('expect');
++        expect.extend({
++        toHaveAnimatedStyle(received, expectedStyle, config = {}) {
++            return compareStyle(received, expectedStyle, config);
++        },
++    });
+     }
+     catch (_) {
+         // for Jest in version 28+
+         const { expect: expectModule } = require('@jest/globals');
+         expect = expectModule;
+-    }
+-    require('setimmediate');
+-    frameTime = Math.round(1000 / config.fps);
+-    config = Object.assign(Object.assign({}, config), userConfig);
+-    expect.extend({
++        expect.extend({
+         toHaveAnimatedStyle(received, expectedStyle, config = {}) {
+             return compareStyle(received, expectedStyle, config);
+         },
+     });
++    }
+ };
+ export const getAnimatedStyle = (received) => {
+     return getCurrentStyle(received);

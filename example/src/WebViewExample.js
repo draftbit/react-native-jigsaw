@@ -14,12 +14,7 @@ const WebViewExample = () => (
       />
     </Section>
     <Section title="With custom HTML">
-      <WebView
-        style={style.webView}
-        source={{
-          html: "<div> Hello! </div>",
-        }}
-      />
+      <WebView style={style.webView} html="<div> Hello! </div>" />
     </Section>
   </Container>
 );

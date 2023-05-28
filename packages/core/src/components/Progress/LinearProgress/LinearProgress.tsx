@@ -10,7 +10,7 @@ import {
   ValueProgressProps,
 } from "../ProgressCommon";
 
-const AnimatedLine = Animated.createAnimatedComponent(Line);
+export const AnimatedLine = Animated.createAnimatedComponent(Line);
 
 export const LinearProgress: React.FC<ValueProgressProps> = ({
   theme,
@@ -89,7 +89,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
 
   return (
     <Svg
-      testID={testID}
+      testID={testID ?? "linear-progress-component"}
       onLayout={(event) => {
         const width = event.nativeEvent.layout.width;
         setSvgContainerWidth(width);

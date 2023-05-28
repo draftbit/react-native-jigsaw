@@ -1,15 +1,15 @@
 import React from "react";
 import { render, screen } from "@testing-library/react-native";
-import { default as LinearProgress } from "../../components/Progress/LinearProgress";
+import { default as CircularProgrss } from "../../components/Progress/CircularProgress";
 import Theme from "../../styles/DefaultTheme";
-import { AnimatedLine } from "../../components/Progress/LinearProgress/LinearProgress";
+import { AnimatedPath } from "../../components/Progress/CircularProgress/CircularProgress";
 import { DEFAULT_ANIMATION_DURATION } from "../../components/Progress/ProgressCommon";
 
 jest.useFakeTimers();
 
-describe("LinearProgress tests", () => {
+describe("CircularProgress tests", () => {
   test("should render indeterminate progress bar when prop set to true", () => {
-    render(<LinearProgress theme={Theme as any} indeterminate={true} />);
+    render(<CircularProgrss theme={Theme as any} indeterminate={true} />);
 
     const indeterminateProgress = screen.queryByTestId(
       "indeterminate-progress"
@@ -18,7 +18,7 @@ describe("LinearProgress tests", () => {
   });
 
   test("should not render indeterminate progress bar when prop set to false", () => {
-    render(<LinearProgress theme={Theme as any} indeterminate={false} />);
+    render(<CircularProgrss theme={Theme as any} indeterminate={false} />);
 
     const indeterminateProgress = screen.queryByTestId(
       "indeterminate-progress"
@@ -27,10 +27,10 @@ describe("LinearProgress tests", () => {
   });
 
   test.each([5, 10, 50, 70, 100])(
-    "should progress line be visible when at %p%",
+    "should progress path be visible when at %p%",
     (value) => {
       render(
-        <LinearProgress
+        <CircularProgrss
           value={value}
           theme={Theme as any}
           indeterminate={false}
@@ -41,10 +41,10 @@ describe("LinearProgress tests", () => {
 
       jest.advanceTimersByTime(DEFAULT_ANIMATION_DURATION);
 
-      const svgContainer = screen.getByTestId("linear-progress-component");
-      const progressLine = svgContainer.findByType(AnimatedLine);
+      const svgContainer = screen.getByTestId("circular-progress-component");
+      const progressPath = svgContainer.findByType(AnimatedPath);
 
-      expect(progressLine).toBeVisible();
+      expect(progressPath).toBeVisible();
     }
   );
 });

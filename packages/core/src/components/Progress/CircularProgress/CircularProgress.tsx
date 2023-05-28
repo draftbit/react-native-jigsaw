@@ -11,7 +11,7 @@ import {
   CircularProgressProps,
 } from "../ProgressCommon";
 
-const AnimatedPath = Animated.createAnimatedComponent(Path);
+export const AnimatedPath = Animated.createAnimatedComponent(Path);
 
 export const CircularProgress: React.FC<
   ValueProgressProps & CircularProgressProps
@@ -116,7 +116,7 @@ export const CircularProgress: React.FC<
 
   return (
     <Svg
-      testID={testID}
+      testID={testID ?? "circular-progress-component"}
       onLayout={(event) => {
         const width = event.nativeEvent.layout.width;
         setSvgContainerWidth(width);

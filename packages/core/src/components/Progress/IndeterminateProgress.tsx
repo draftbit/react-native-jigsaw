@@ -57,6 +57,7 @@ const IndeterminateProgress: React.FC<IndeterminateProgressProps> = ({
   return (
     <ProgressComponent
       {...rest}
+      testID={rest.testID || "indeterminate-progress"}
       onFullPathWidth={(width) => {
         setPathWidth(width);
         rest.onFullPathWidth?.(width);

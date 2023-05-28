@@ -41,6 +41,7 @@ export const CircularProgress: React.FC<
   onFullPathWidth,
   startPosition = "top",
   style,
+  testID,
 }) => {
   const [svgContainerWidth, setSvgContainerWidth] = React.useState(0);
   const [circumfrence, setCircumefrence] = React.useState(0);
@@ -115,6 +116,7 @@ export const CircularProgress: React.FC<
 
   return (
     <Svg
+      testID={testID}
       onLayout={(event) => {
         const width = event.nativeEvent.layout.width;
         setSvgContainerWidth(width);

@@ -37,6 +37,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
   trackCustomDashArray,
   onFullPathWidth,
   style,
+  testID,
 }) => {
   const [svgContainerWidth, setSvgContainerWidth] = React.useState(0);
 
@@ -88,6 +89,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
 
   return (
     <Svg
+      testID={testID}
       onLayout={(event) => {
         const width = event.nativeEvent.layout.width;
         setSvgContainerWidth(width);

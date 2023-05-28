@@ -27,6 +27,7 @@ export interface BaseProgressProps {
   onFullPathWidth?: (width: number) => void;
   style?: StyleProp<ViewStyle>;
   theme: Theme;
+  testID?: string;
 }
 export interface ValueProgressProps extends BaseProgressProps {
   value?: number;

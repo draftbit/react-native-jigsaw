@@ -52,6 +52,8 @@ export {
   SwiperItem,
   SectionList,
   SectionHeader,
+  VideoPlayer,
+  VideoPlayerRef,
 } from "@draftbit/core";
 
 /**

@@ -1,22 +1,21 @@
 import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { withTheme } from "../../theming";
+import { withTheme } from "../../../theming";
 import Slider from "@react-native-community/slider";
 import HeadlessAudioPlayer from "./HeadlessAudioPlayer";
 import {
   AudioPlayerInterfaceProps,
-  AudioPlayerStatus,
   HeadlessAudioPlayerProps,
-  HeadlessAudioPlayerRef,
 } from "./AudioPlayerCommon";
-import Pressable from "../Pressable";
+import Pressable from "../../Pressable";
+import { MediaPlayerRef, MediaPlayerStatus } from "../MediaPlayerCommon";
 
 /**
  * Built on top of HeadlessAudioPlayer to provide a simple interface for playing audio
  */
 const AudioPlayerWithInterface = React.forwardRef<
-  HeadlessAudioPlayerRef,
+  MediaPlayerRef,
   AudioPlayerInterfaceProps & HeadlessAudioPlayerProps
 >(
   (
@@ -44,12 +43,11 @@ const AudioPlayerWithInterface = React.forwardRef<
     >(1);
     const [isDraggingSlider, setIsDraggingSlider] = React.useState(false);
     const [sliderPositionMillis, setSliderPositionMillis] = React.useState(0);
-    const newHeadlessAudioPlayerRef =
-      React.useRef<HeadlessAudioPlayerRef>(null);
+    const newHeadlessAudioPlayerRef = React.useRef<MediaPlayerRef>(null);
 
     // Use the provided ref or default to new ref when not provided
     const headlessAudioPlayerRef = ref
-      ? (ref as React.RefObject<HeadlessAudioPlayerRef>)
+      ? (ref as React.RefObject<MediaPlayerRef>)
       : newHeadlessAudioPlayerRef;
 
     const {
@@ -81,7 +79,7 @@ const AudioPlayerWithInterface = React.forwardRef<
       textDecorationStyle,
     };
 
-    const onPlaybackStatusUpdate = (status: AudioPlayerStatus) => {
+    const onPlaybackStatusUpdate = (status: MediaPlayerStatus) => {
       setIsLoading(status.isLoading);
       setDurationMillis(status.durationMillis);
       setSliderPositionMillis(status.currentPositionMillis);

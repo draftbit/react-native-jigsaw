@@ -45,12 +45,16 @@ export {
 export {
   default as AudioPlayer,
   AudioPlayerRef,
-} from "./components/AudioPlayer";
+} from "./components/MediaPlayer/AudioPlayer";
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
 export { default as Picker } from "./components/Picker/Picker";
 export { default as Slider } from "./components/Slider";
 export { default as Stepper } from "./components/Stepper";
 export { SectionList, SectionHeader } from "./components/SectionList";
+export {
+  default as VideoPlayer,
+  VideoPlayerRef,
+} from "./components/MediaPlayer/VideoPlayer";
 
 /* Deprecated: Fix or Delete!  */
 export { default as AccordionItem } from "./deprecated-components/AccordionItem";

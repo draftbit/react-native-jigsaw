@@ -118,6 +118,7 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
         ref={mediaPlaybackWrapperRef}
       >
         <VideoPlayerComponent
+          // https://docs.expo.dev/versions/latest/sdk/av/#example-video to see why ref is handled this way
           ref={(component) => setVideoMediaObject(component)}
           style={style}
           videoStyle={sizeStyles}

@@ -51,6 +51,8 @@ export { default as Picker } from "./components/Picker/Picker";
 export { default as Slider } from "./components/Slider";
 export { default as Stepper } from "./components/Stepper";
 export { SectionList, SectionHeader } from "./components/SectionList";
+export { default as LinearProgress } from "./components/Progress/LinearProgress";
+export { default as CircularProgress } from "./components/Progress/CircularProgress";
 
 /* Deprecated: Fix or Delete!  */
 export { default as AccordionItem } from "./deprecated-components/AccordionItem";

@@ -126,6 +126,7 @@ const AudioPlayerWithInterface = React.forwardRef<
           onPlaybackFinish={onPlaybackFinish}
         />
         <View
+          testID="audio-player-interface"
           style={[
             {
               backgroundColor: theme.colors.background,
@@ -137,6 +138,7 @@ const AudioPlayerWithInterface = React.forwardRef<
         >
           {!hidePlaybackIcon && (
             <Pressable
+              testID="audio-player-playback-icon"
               onPress={() => headlessAudioPlayerRef.current?.togglePlayback()}
               style={styles.spacingEnd}
             >
@@ -149,6 +151,7 @@ const AudioPlayerWithInterface = React.forwardRef<
           )}
           {!hideDuration && (
             <Text
+              testID="audio-player-duration"
               style={[
                 { color: theme.colors.strong },
                 styles.spacingEnd,
@@ -161,6 +164,7 @@ const AudioPlayerWithInterface = React.forwardRef<
           )}
           {!hideSlider && (
             <Slider
+              testID="audio-player-slider"
               style={styles.slider}
               minimumTrackTintColor={completedTrackColor}
               maximumTrackTintColor={remainingTrackColor}

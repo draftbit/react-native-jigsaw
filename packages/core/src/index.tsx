@@ -50,6 +50,8 @@ export { default as DatePicker } from "./components/DatePicker/DatePicker";
 export { default as Picker } from "./components/Picker/Picker";
 export { default as Slider } from "./components/Slider";
 export { default as Stepper } from "./components/Stepper";
+export { default as LinearProgress } from "./components/Progress/LinearProgress";
+export { default as CircularProgress } from "./components/Progress/CircularProgress";
 export { SectionList, SectionHeader } from "./components/SectionList";
 
 /* Deprecated: Fix or Delete!  */

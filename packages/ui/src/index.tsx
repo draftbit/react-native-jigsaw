@@ -50,6 +50,8 @@ export {
   ActionSheetCancel,
   Swiper,
   SwiperItem,
+  LinearProgress,
+  CircularProgress,
   SectionList,
   SectionHeader,
 } from "@draftbit/core";

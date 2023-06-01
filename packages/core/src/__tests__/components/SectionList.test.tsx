@@ -116,7 +116,7 @@ describe("SectionList tests", () => {
     );
 
     const foodWithoutCategoryText = screen.getByTestId("food-no-category");
-    expect(foodWithoutCategoryText.props.children[0]).toEqual(DEFAULT_SECTION);
+    expect(foodWithoutCategoryText).toHaveTextContent(DEFAULT_SECTION);
   });
 });
 

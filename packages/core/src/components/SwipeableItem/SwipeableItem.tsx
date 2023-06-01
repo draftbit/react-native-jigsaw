@@ -180,7 +180,7 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
       key={index.toString()}
       onPress={() => {
         item.onPress?.();
-        if (item.closeOnPress ?? true) {
+        if (item.closeOnPress !== false) {
           swipeableRef.current?.closeRow();
         }
       }}

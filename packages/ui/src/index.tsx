@@ -52,6 +52,8 @@ export {
   SwiperItem,
   SectionList,
   SectionHeader,
+  LinearProgress,
+  CircularProgress,
 } from "@draftbit/core";
 
 /**

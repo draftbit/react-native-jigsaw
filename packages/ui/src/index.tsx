@@ -54,6 +54,7 @@ export {
   SectionHeader,
   LinearProgress,
   CircularProgress,
+  TextInput,
 } from "@draftbit/core";
 
 /**

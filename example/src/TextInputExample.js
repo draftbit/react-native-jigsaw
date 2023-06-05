@@ -1,7 +1,7 @@
 import * as React from "react";
-import { TextInput, KeyboardAvoidingView } from "react-native";
-import { ButtonSolid } from "@draftbit/ui";
-import Section, { Container, styles } from "./Section";
+import { KeyboardAvoidingView } from "react-native";
+import { TextInput } from "@draftbit/ui";
+import Section, { Container } from "./Section";
 
 export default function TextInputExample() {
   const [value, setText] = React.useState("Change me!");
@@ -28,6 +28,12 @@ export default function TextInputExample() {
             value={value2}
             onChangeText={(text) => setText2(text)}
             defaultValue="I'm an initial value!"
+          />
+          <TextInput
+            placeholder="Input that logs with delayed callback"
+            value={value2}
+            onChangeText={(text) => setText2(text)}
+            onChangeTextDelayed={(text) => console.log(text)}
           />
         </Section>
       </Container>

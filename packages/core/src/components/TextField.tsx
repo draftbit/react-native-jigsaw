@@ -7,7 +7,6 @@ import {
   Text,
   I18nManager,
   StyleProp,
-  TextInputProps,
   NativeSyntheticEvent,
   TextInputChangeEventData,
   ViewStyle,
@@ -19,6 +18,7 @@ import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
 import type { IconSlot } from "../interfaces/Icon";
 import { applyStyles, extractStyles } from "../utilities";
+import TextInput, { TextInputProps } from "./TextInput";
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
 
@@ -248,7 +248,7 @@ class TextField extends React.Component<Props, State> {
       numberOfLines = 4,
       style,
       theme: { colors, typography, roundness, disabledOpacity },
-      render = (props) => <NativeTextInput {...props} />,
+      render = (props) => <TextInput {...props} />,
       ...rest
     } = this.props;
 

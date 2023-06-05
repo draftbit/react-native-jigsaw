@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { TextInput as NativeTextInput } from "react-native";
 import { isString, isNumber, isNaN } from "lodash";
-import TextInput, { TextInputProps } from "./TextInput";
+import { TextInputProps } from "./TextInput";
 import { useDebounce } from "../hooks";
 
 interface Props
@@ -88,7 +88,8 @@ const NumberInput = React.forwardRef<NativeTextInput, Props>(
     }, [delayedValue]);
 
     return (
-      <TextInput
+      <NativeTextInput
+        testID="native-text-input"
         ref={ref}
         keyboardType="numeric"
         value={currentStringNumberValue}

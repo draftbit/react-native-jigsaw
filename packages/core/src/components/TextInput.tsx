@@ -21,7 +21,14 @@ const TextInput = React.forwardRef<NativeTextInput, TextInputProps>(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [delayedValue]);
 
-    return <NativeTextInput ref={ref} value={value} {...rest} />;
+    return (
+      <NativeTextInput
+        testID="native-text-input"
+        ref={ref}
+        value={value}
+        {...rest}
+      />
+    );
   }
 );
 

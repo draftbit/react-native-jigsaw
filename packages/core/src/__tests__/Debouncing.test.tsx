@@ -15,7 +15,7 @@ beforeEach(() => jest.clearAllMocks());
 describe("Text Input debouncing test", () => {
   test.each([200, 500, 1000])(
     "should onChangeTextDelayed be called once with %s delay in TextInput",
-    async (delay) => {
+    (delay) => {
       const Wrapper: React.FC = () => {
         const [value, setValue] = React.useState("");
         return (
@@ -29,13 +29,13 @@ describe("Text Input debouncing test", () => {
       };
 
       render(<Wrapper />);
-      await testDebounce("first", "second", "", delay);
+      testDebounce("first", "second", "", delay);
     }
   );
 
   test.each([200, 500, 1000])(
     "should onChangeTextDelayed be called once with %s delay in TextField",
-    async (delay) => {
+    (delay) => {
       const Wrapper: React.FC = () => {
         const [value, setValue] = React.useState("");
         return (
@@ -52,13 +52,13 @@ describe("Text Input debouncing test", () => {
       };
 
       render(<Wrapper />);
-      await testDebounce("first", "second", "", delay);
+      testDebounce("first", "second", "", delay);
     }
   );
 
   test.each([200, 500, 1000])(
     "should onChangeTextDelayed be called once with %s delay in NumberInput",
-    async (delay) => {
+    (delay) => {
       const Wrapper: React.FC = () => {
         const [value, setValue] = React.useState<number | undefined>(0);
         return (
@@ -72,18 +72,18 @@ describe("Text Input debouncing test", () => {
       };
 
       render(<Wrapper />);
-      await testDebounce(1, 23, 0, delay);
+      testDebounce(1, 23, 0, delay);
     }
   );
 });
 
-async function testDebounce(
+function testDebounce(
   valueOne: string | number,
   valueTwo: string | number,
   initialValue: string | number,
   delay: number
 ) {
-  const textInput = await screen.findByTestId("native-text-input");
+  const textInput = screen.getByTestId("native-text-input");
 
   act(() => fireEvent.changeText(textInput, valueOne));
   act(() => fireEvent.changeText(textInput, valueTwo));

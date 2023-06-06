@@ -54,6 +54,7 @@ export {
   SectionHeader,
   LinearProgress,
   CircularProgress,
+  TextInput,
   VideoPlayer,
   VideoPlayerRef,
 } from "@draftbit/core";

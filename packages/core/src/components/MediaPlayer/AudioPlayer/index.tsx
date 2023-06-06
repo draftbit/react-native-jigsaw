@@ -1,19 +1,19 @@
 import * as React from "react";
-import { withTheme } from "../../theming";
+import { withTheme } from "../../../theming";
 import {
   AudioPlayerInterfaceProps,
   HeadlessAudioPlayerProps,
-  HeadlessAudioPlayerRef,
 } from "./AudioPlayerCommon";
 import HeadlessAudioPlayer from "./HeadlessAudioPlayer";
 import AudioPlayerWithInterface from "./AudioPlayerWithInterface";
+import { MediaPlayerRef } from "../MediaPlayerCommon";
 
 interface AudioPlayerProps {
   mode?: "interface" | "headless";
 }
 
 const AudioPlayer = React.forwardRef<
-  HeadlessAudioPlayerRef,
+  MediaPlayerRef,
   AudioPlayerProps & AudioPlayerInterfaceProps & HeadlessAudioPlayerProps
 >(({ mode = "interface", ...rest }, ref) => {
   switch (mode) {
@@ -27,4 +27,4 @@ const AudioPlayer = React.forwardRef<
 
 export default withTheme(AudioPlayer);
 
-export { HeadlessAudioPlayerRef as AudioPlayerRef } from "./AudioPlayerCommon";
+export { MediaPlayerRef as AudioPlayerRef } from "../MediaPlayerCommon";

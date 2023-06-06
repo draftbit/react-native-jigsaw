@@ -111,6 +111,14 @@ export default function TextFieldExample() {
             onChangeText={(text) => setText2(text)}
             defaultValue="Hello world!!!!!"
           />
+          <TextField
+            type="solid"
+            label="Solid input that logs with delayed callback"
+            value={value}
+            onChangeText={handleChange}
+            activeBorderColor={"orange"}
+            onChangeTextDelayed={(text) => console.log(text)}
+          />
         </Section>
 
         <Section title="Underline">

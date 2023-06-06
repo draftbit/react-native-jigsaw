@@ -5,17 +5,16 @@ import {
   InterruptionModeIOS,
   InterruptionModeAndroid,
 } from "expo-av";
-import {
-  HeadlessAudioPlayerProps,
-  HeadlessAudioPlayerRef,
-} from "./AudioPlayerCommon";
+import { HeadlessAudioPlayerProps } from "./AudioPlayerCommon";
+import { MediaPlayerRef, mapToMediaPlayerStatus } from "../MediaPlayerCommon";
+import MediaPlaybackWrapper from "../MediaPlaybackWrapper";
 
 /**
  * Audio Player component without an interface (UI).
  * Only handles playing of the audio and provides callbacks and ref functions
  */
 const HeadlessAudioPlayer = React.forwardRef<
-  HeadlessAudioPlayerRef,
+  MediaPlayerRef,
   HeadlessAudioPlayerProps
 >(
   (
@@ -62,34 +61,20 @@ const HeadlessAudioPlayer = React.forwardRef<
     ]);
 
     const onPlaybackStatusUpdate = (status: AVPlaybackStatus) => {
-      if (status.isLoaded) {
-        onPlaybackStatusUpdateProp?.({
-          isPlaying: status.isPlaying,
-          isLoading: false,
-          isBuffering: status.isBuffering,
-          currentPositionMillis: status.positionMillis || 0,
-          durationMillis: status.durationMillis || 0,
-          bufferedDurationMillis: status.playableDurationMillis || 0,
-          isError: false,
-        });
+      const mappedStatus = mapToMediaPlayerStatus(status);
+      onPlaybackStatusUpdateProp?.(mappedStatus);
 
+      if (status.isLoaded) {
         if (status.didJustFinish) {
           onPlaybackFinish?.();
         }
-
         setIsPlaying(status.isPlaying);
-      } else if (status.error) {
-        onPlaybackStatusUpdateProp?.({
-          isPlaying: false,
-          isLoading: false,
-          isBuffering: false,
-          currentPositionMillis: 0,
-          durationMillis: 0,
-          bufferedDurationMillis: 0,
-          isError: true,
-          error: status.error,
-        });
       }
+    };
+
+    const onTogglePlayback = () => {
+      //Has to be called everytime a player is played to reconfigure the global Audio config based on each player's configuration
+      updateAudioMode();
     };
 
     const loadAudio = async () => {
@@ -108,50 +93,20 @@ const HeadlessAudioPlayer = React.forwardRef<
       sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
     };
 
-    const togglePlayback = React.useCallback(async () => {
-      //Has to be called everytime a player is played to reconfigure the global Audio config based on each player's configuration
-      await updateAudioMode();
-
-      if (isPlaying) {
-        await currentSound?.pauseAsync();
-      } else {
-        await currentSound?.playAsync();
-      }
-    }, [currentSound, updateAudioMode, isPlaying]);
-
-    const seekToPosition = React.useCallback(
-      async (positionMillis: number) => {
-        await currentSound?.setPositionAsync(positionMillis);
-      },
-      [currentSound]
-    );
-
     useSourceDeepCompareEffect(() => {
       loadAudio();
 
       // Ignore dependency of loadAudio
     }, [source]);
 
-    React.useEffect(() => {
-      return currentSound
-        ? () => {
-            currentSound.unloadAsync();
-          }
-        : undefined;
-    }, [currentSound]);
-
-    React.useImperativeHandle(
-      ref,
-      () => {
-        return {
-          seekToPosition,
-          togglePlayback,
-        };
-      },
-      [seekToPosition, togglePlayback]
+    return (
+      <MediaPlaybackWrapper
+        ref={ref}
+        isPlaying={isPlaying}
+        media={currentSound}
+        onTogglePlayback={onTogglePlayback}
+      />
     );
-
-    return null;
   }
 );
 

@@ -96,6 +96,8 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
   const { onStartSwiping, onStopSwiping } =
     React.useContext(SwipeableListContext);
 
+  const swipeableRef = React.useRef<any>(null);
+
   const { viewStyles, textStyles } = extractStyles(style);
 
   const { borderStyles, marginStyles } =
@@ -176,7 +178,12 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
   const renderBehindItem = (item: SwipeableItemBehindItem, index: number) => (
     <Pressable
       key={index.toString()}
-      onPress={(item as any).onPress}
+      onPress={() => {
+        item.onPress?.();
+        if (item.closeOnPress !== false) {
+          swipeableRef.current?.closeRow();
+        }
+      }}
       style={[
         styles.buttonContainer,
         { backgroundColor: item.backgroundColor || theme.colors.primary },
@@ -211,6 +218,7 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
     >
       {/*@ts-ignore*/}
       <SwipeRow
+        ref={swipeableRef}
         leftOpenValue={
           isRightSwipeHandled ? 0 : leftOpenValue || defaultLeftOpenValue //If in swiping mode, don't keep open
         }

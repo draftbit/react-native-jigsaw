@@ -5,6 +5,7 @@ export interface SwipeableItemBehindItem {
   revealSwipeDirection: "left" | "right";
   onPress?: () => void;
   onSwipe?: () => void;
+  closeOnPress?: boolean;
   icon?: string;
   iconSize?: number;
   backgroundColor?: string;
@@ -53,7 +54,7 @@ export function extractLeftSwipeProps(object: object): LeftSwipeProps {
 
 export function rightSwipeToSwipeableItemBehindItem(
   swipe: RightSwipeProps
-): Omit<SwipeableItemBehindItem, "onPress"> {
+): Omit<SwipeableItemBehindItem, "onPress" | "closeOnPress"> {
   return {
     title: swipe.rightSwipeTitle || "",
     revealSwipeDirection: "right",
@@ -67,7 +68,7 @@ export function rightSwipeToSwipeableItemBehindItem(
 
 export function leftSwipeToSwipeableItemBehindItem(
   swipe: LeftSwipeProps
-): Omit<SwipeableItemBehindItem, "onPress"> {
+): Omit<SwipeableItemBehindItem, "onPress" | "closeOnPress"> {
   return {
     title: swipe.leftSwipeTitle || "",
     revealSwipeDirection: "left",

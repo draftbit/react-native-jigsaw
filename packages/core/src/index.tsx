@@ -45,7 +45,7 @@ export {
 export {
   default as AudioPlayer,
   AudioPlayerRef,
-} from "./components/AudioPlayer";
+} from "./components/MediaPlayer/AudioPlayer";
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
 export { default as Picker } from "./components/Picker/Picker";
 export { default as Slider } from "./components/Slider";
@@ -54,6 +54,10 @@ export { SectionList, SectionHeader } from "./components/SectionList";
 export { default as LinearProgress } from "./components/Progress/LinearProgress";
 export { default as CircularProgress } from "./components/Progress/CircularProgress";
 export { default as TextInput } from "./components/TextInput";
+export {
+  default as VideoPlayer,
+  VideoPlayerRef,
+} from "./components/MediaPlayer/VideoPlayer";
 
 /* Deprecated: Fix or Delete!  */
 export { default as AccordionItem } from "./deprecated-components/AccordionItem";

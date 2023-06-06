@@ -1,22 +1,21 @@
 import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { withTheme } from "../../theming";
+import { withTheme } from "../../../theming";
 import Slider from "@react-native-community/slider";
 import HeadlessAudioPlayer from "./HeadlessAudioPlayer";
 import {
   AudioPlayerInterfaceProps,
-  AudioPlayerStatus,
   HeadlessAudioPlayerProps,
-  HeadlessAudioPlayerRef,
 } from "./AudioPlayerCommon";
-import Pressable from "../Pressable";
+import Pressable from "../../Pressable";
+import { MediaPlayerRef, MediaPlayerStatus } from "../MediaPlayerCommon";
 
 /**
  * Built on top of HeadlessAudioPlayer to provide a simple interface for playing audio
  */
 const AudioPlayerWithInterface = React.forwardRef<
-  HeadlessAudioPlayerRef,
+  MediaPlayerRef,
   AudioPlayerInterfaceProps & HeadlessAudioPlayerProps
 >(
   (
@@ -44,12 +43,11 @@ const AudioPlayerWithInterface = React.forwardRef<
     >(1);
     const [isDraggingSlider, setIsDraggingSlider] = React.useState(false);
     const [sliderPositionMillis, setSliderPositionMillis] = React.useState(0);
-    const newHeadlessAudioPlayerRef =
-      React.useRef<HeadlessAudioPlayerRef>(null);
+    const newHeadlessAudioPlayerRef = React.useRef<MediaPlayerRef>(null);
 
     // Use the provided ref or default to new ref when not provided
     const headlessAudioPlayerRef = ref
-      ? (ref as React.RefObject<HeadlessAudioPlayerRef>)
+      ? (ref as React.RefObject<MediaPlayerRef>)
       : newHeadlessAudioPlayerRef;
 
     const {
@@ -81,7 +79,7 @@ const AudioPlayerWithInterface = React.forwardRef<
       textDecorationStyle,
     };
 
-    const onPlaybackStatusUpdate = (status: AudioPlayerStatus) => {
+    const onPlaybackStatusUpdate = (status: MediaPlayerStatus) => {
       setIsLoading(status.isLoading);
       setDurationMillis(status.durationMillis);
       setSliderPositionMillis(status.currentPositionMillis);
@@ -128,6 +126,7 @@ const AudioPlayerWithInterface = React.forwardRef<
           onPlaybackFinish={onPlaybackFinish}
         />
         <View
+          testID="audio-player-interface"
           style={[
             {
               backgroundColor: theme.colors.background,
@@ -139,6 +138,7 @@ const AudioPlayerWithInterface = React.forwardRef<
         >
           {!hidePlaybackIcon && (
             <Pressable
+              testID="audio-player-playback-icon"
               onPress={() => headlessAudioPlayerRef.current?.togglePlayback()}
               style={styles.spacingEnd}
             >
@@ -151,6 +151,7 @@ const AudioPlayerWithInterface = React.forwardRef<
           )}
           {!hideDuration && (
             <Text
+              testID="audio-player-duration"
               style={[
                 { color: theme.colors.strong },
                 styles.spacingEnd,
@@ -163,6 +164,7 @@ const AudioPlayerWithInterface = React.forwardRef<
           )}
           {!hideSlider && (
             <Slider
+              testID="audio-player-slider"
               style={styles.slider}
               minimumTrackTintColor={completedTrackColor}
               maximumTrackTintColor={remainingTrackColor}

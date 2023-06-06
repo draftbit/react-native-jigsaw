@@ -55,6 +55,8 @@ export {
   LinearProgress,
   CircularProgress,
   TextInput,
+  VideoPlayer,
+  VideoPlayerRef,
 } from "@draftbit/core";
 
 /**

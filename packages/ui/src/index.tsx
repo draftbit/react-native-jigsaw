@@ -50,8 +50,13 @@ export {
   ActionSheetCancel,
   Swiper,
   SwiperItem,
+  LinearProgress,
+  CircularProgress,
+  TextInput,
   SectionList,
   SectionHeader,
+  VideoPlayer,
+  VideoPlayerRef,
 } from "@draftbit/core";
 
 /**

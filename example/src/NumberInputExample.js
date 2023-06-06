@@ -32,6 +32,12 @@ export default function TextInputExample() {
             editable={false}
           />
 
+          <NumberInput
+            placeholder="Number input that logs with delayed callback"
+            value={number}
+            onChangeText={(num) => setNumber(num)}
+            onChangeTextDelayed={(num) => console.log(num)}
+          />
           <ButtonSolid
             style={[styles.button]}
             title="Reset Number"

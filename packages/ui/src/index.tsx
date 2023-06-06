@@ -52,6 +52,7 @@ export {
   SwiperItem,
   LinearProgress,
   CircularProgress,
+  TextInput,
   SectionList,
   SectionHeader,
   VideoPlayer,

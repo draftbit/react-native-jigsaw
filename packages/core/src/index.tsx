@@ -52,6 +52,7 @@ export { default as Slider } from "./components/Slider";
 export { default as Stepper } from "./components/Stepper";
 export { default as LinearProgress } from "./components/Progress/LinearProgress";
 export { default as CircularProgress } from "./components/Progress/CircularProgress";
+export { default as TextInput } from "./components/TextInput";
 export { SectionList, SectionHeader } from "./components/SectionList";
 export {
   default as VideoPlayer,

@@ -53,6 +53,7 @@ export { default as Stepper } from "./components/Stepper";
 export { SectionList, SectionHeader } from "./components/SectionList";
 export { default as LinearProgress } from "./components/Progress/LinearProgress";
 export { default as CircularProgress } from "./components/Progress/CircularProgress";
+export { default as TextInput } from "./components/TextInput";
 
 /* Deprecated: Fix or Delete!  */
 export { default as AccordionItem } from "./deprecated-components/AccordionItem";

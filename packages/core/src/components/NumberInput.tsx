@@ -1,17 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { TextInput } from "react-native";
+import { TextInput as NativeTextInput } from "react-native";
 import { isString, isNumber, isNaN } from "lodash";
+import { TextInputProps } from "./TextInput";
+import { useDebounce } from "../hooks";
 
-interface Props {
+interface Props
+  extends Omit<
+    TextInputProps,
+    "value" | "onChangeText" | "defaultValue" | "onChangeTextDelayed"
+  > {
   value?: number | string;
   defaultValue?: number | string;
   onChangeText?: (value?: number) => void;
+  onChangeTextDelayed?: (value?: number) => void;
 }
 
-const NumberInput = React.forwardRef<TextInput, Props>(
-  ({ onChangeText, value, defaultValue, ...props }, ref) => {
+const NumberInput = React.forwardRef<NativeTextInput, Props>(
+  (
+    {
+      onChangeText,
+      onChangeTextDelayed,
+      changeTextDelay = 500,
+      value,
+      defaultValue,
+      ...props
+    },
+    ref
+  ) => {
     const [currentStringNumberValue, setCurrentStringNumberValue] =
       useState("");
+
+    const delayedValue = useDebounce(value, changeTextDelay);
 
     const formatValueToStringNumber = (valueToFormat?: number | string) => {
       if (valueToFormat != null) {
@@ -59,8 +78,18 @@ const NumberInput = React.forwardRef<TextInput, Props>(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    useEffect(() => {
+      if (delayedValue !== undefined) {
+        const newStringNumberValue = formatValueToStringNumber(delayedValue);
+        const number = parseFloat(newStringNumberValue);
+        onChangeTextDelayed?.(number);
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [delayedValue]);
+
     return (
-      <TextInput
+      <NativeTextInput
+        testID="native-text-input"
         ref={ref}
         keyboardType="numeric"
         value={currentStringNumberValue}

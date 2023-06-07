@@ -1,5 +1,6 @@
 import React from "react";
 import Svg, { Path, PathProps } from "react-native-svg";
+import { View } from "react-native";
 import Animated, {
   useAnimatedProps,
   useSharedValue,
@@ -115,8 +116,7 @@ export const CircularProgress: React.FC<
   }, [circumfrence, onFullPathWidth]);
 
   return (
-    <Svg
-      testID={testID ?? "circular-progress-component"}
+    <View
       onLayout={(event) => {
         const width = event.nativeEvent.layout.width;
         setSvgContainerWidth(width);
@@ -128,32 +128,34 @@ export const CircularProgress: React.FC<
         style,
       ]}
     >
-      {showTrack && (
-        <Path
-          d={circlePath(
-            radius,
-            radius,
-            radius - thicknessOffset,
-            startAngle,
-            startAngle + 360
-          )}
-          stroke={trackColor}
-          strokeWidth={trackThickness}
-          strokeOpacity={trackOpacity}
-          strokeLinecap={trackLineCap}
-          strokeDasharray={trackCustomDashArray || trackDashArray}
-          strokeDashoffset={trackDashOffset}
+      <Svg testID={testID ?? "circular-progress-component"} style={{ flex: 1 }}>
+        {showTrack && (
+          <Path
+            d={circlePath(
+              radius,
+              radius,
+              radius - thicknessOffset,
+              startAngle,
+              startAngle + 360
+            )}
+            stroke={trackColor}
+            strokeWidth={trackThickness}
+            strokeOpacity={trackOpacity}
+            strokeLinecap={trackLineCap}
+            strokeDasharray={trackCustomDashArray || trackDashArray}
+            strokeDashoffset={trackDashOffset}
+          />
+        )}
+        <AnimatedPath
+          animatedProps={progressPathAnimatedProps}
+          stroke={color}
+          strokeWidth={thickness}
+          strokeLinecap={lineCap}
+          strokeDasharray={customDashArray || dashArray}
+          strokeDashoffset={dashOffset}
         />
-      )}
-      <AnimatedPath
-        animatedProps={progressPathAnimatedProps}
-        stroke={color}
-        strokeWidth={thickness}
-        strokeLinecap={lineCap}
-        strokeDasharray={customDashArray || dashArray}
-        strokeDashoffset={dashOffset}
-      />
-    </Svg>
+      </Svg>
+    </View>
   );
 };
 

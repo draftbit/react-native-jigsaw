@@ -55,18 +55,15 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
   const thicknessOffset = maxThickness / 2; // This offset guarantees nothing is cut off by view bounds
 
   const progressLineWidth = svgContainerWidth - thicknessOffset;
-  console.log("LINE WIDTH", progressLineWidth);
   const trackProgressLineWidth = svgContainerWidth - thicknessOffset;
 
   const currentFillPercentage = value / (maximumValue + minimumValue);
-  console.log("PERC", currentFillPercentage);
   const currentProgressLineWidth = useSharedValue(
     currentFillPercentage * progressLineWidth
   );
 
   const progressLineAnimatedProps = useAnimatedProps<LineProps>(() => {
     const isBelowMinWidth = currentProgressLineWidth.value <= thicknessOffset;
-    console.log("RECEIVED", currentProgressLineWidth.value);
     return {
       x2: Math.min(progressLineWidth, currentProgressLineWidth.value), //Prevents going beyond the max width
       strokeOpacity: isBelowMinWidth ? 0.0 : 1.0,
@@ -74,7 +71,6 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
   });
 
   React.useEffect(() => {
-    console.log("UPDATING TO", progressLineWidth * currentFillPercentage);
     currentProgressLineWidth.value = withTiming(
       progressLineWidth * currentFillPercentage,
       {

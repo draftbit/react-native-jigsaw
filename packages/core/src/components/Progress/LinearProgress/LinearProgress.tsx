@@ -55,7 +55,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
   const thicknessOffset = maxThickness / 2; // This offset guarantees nothing is cut off by view bounds
 
   const progressLineWidth = svgContainerWidth - thicknessOffset;
-  console.log("LINE WIDTH", progressLineWidth);
+  console.log("LINE WIDTH ", progressLineWidth);
   const trackProgressLineWidth = svgContainerWidth - thicknessOffset;
 
   const currentFillPercentage = value / (maximumValue + minimumValue);

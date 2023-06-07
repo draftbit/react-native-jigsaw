@@ -127,6 +127,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
           strokeLinecap={lineCap}
           strokeDasharray={customDashArray || dashArray}
           strokeDashoffset={dashOffset}
+          onPress={() => {}} //Addresses reanimated issue with SVG (https://github.com/software-mansion/react-native-reanimated/issues/3321#issuecomment-1256983430)
         />
       </Svg>
     </View>

@@ -1,5 +1,6 @@
 import React from "react";
 import Svg, { Line, LineProps } from "react-native-svg";
+import { View } from "react-native";
 import Animated, {
   useAnimatedProps,
   useSharedValue,
@@ -88,8 +89,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
   ]);
 
   return (
-    <Svg
-      testID={testID ?? "linear-progress-component"}
+    <View
       onLayout={(event) => {
         const width = event.nativeEvent.layout.width;
         setSvgContainerWidth(width);
@@ -102,31 +102,34 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
         style,
       ]}
     >
-      {showTrack && (
-        <Line
+      <Svg testID={testID ?? "linear-progress-component"} style={{ flex: 1 }}>
+        {showTrack && (
+          <Line
+            x1={thicknessOffset}
+            y1={thicknessOffset}
+            x2={trackProgressLineWidth}
+            y2={thicknessOffset}
+            stroke={trackColor}
+            strokeWidth={trackThickness}
+            strokeOpacity={trackOpacity}
+            strokeLinecap={trackLineCap}
+            strokeDasharray={trackCustomDashArray || trackDashArray}
+            strokeDashoffset={trackDashOffset}
+          />
+        )}
+        <AnimatedLine
+          animatedProps={progressLineAnimatedProps}
           x1={thicknessOffset}
           y1={thicknessOffset}
-          x2={trackProgressLineWidth}
           y2={thicknessOffset}
-          stroke={trackColor}
-          strokeWidth={trackThickness}
-          strokeOpacity={trackOpacity}
-          strokeLinecap={trackLineCap}
-          strokeDasharray={trackCustomDashArray || trackDashArray}
-          strokeDashoffset={trackDashOffset}
+          stroke={color}
+          strokeWidth={thickness}
+          strokeLinecap={lineCap}
+          strokeDasharray={customDashArray || dashArray}
+          strokeDashoffset={dashOffset}
+          onPress={() => {}} //Addresses reanimated issue with SVG (https://github.com/software-mansion/react-native-reanimated/issues/3321#issuecomment-1256983430)
         />
-      )}
-      <AnimatedLine
-        animatedProps={progressLineAnimatedProps}
-        x1={thicknessOffset}
-        y1={thicknessOffset}
-        y2={thicknessOffset}
-        stroke={color}
-        strokeWidth={thickness}
-        strokeLinecap={lineCap}
-        strokeDasharray={customDashArray || dashArray}
-        strokeDashoffset={dashOffset}
-      />
-    </Svg>
+      </Svg>
+    </View>
   );
 };

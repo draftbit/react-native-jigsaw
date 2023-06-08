@@ -1,5 +1,5 @@
 import React from "react";
-import Svg, { Line, LineProps } from "react-native-svg";
+import Svg, { Line } from "react-native-svg";
 import { View } from "react-native";
 import Animated, {
   useAnimatedProps,
@@ -55,7 +55,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
   const thicknessOffset = maxThickness / 2; // This offset guarantees nothing is cut off by view bounds
 
   const progressLineWidth = svgContainerWidth - thicknessOffset;
-  console.log("LINE WIDTH ", progressLineWidth);
+  console.log("LINE WIDTH", progressLineWidth);
   const trackProgressLineWidth = svgContainerWidth - thicknessOffset;
 
   const currentFillPercentage = value / (maximumValue + minimumValue);
@@ -64,7 +64,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
     currentFillPercentage * progressLineWidth
   );
 
-  const progressLineAnimatedProps = useAnimatedProps<LineProps>(() => {
+  const progressLineAnimatedProps = useAnimatedProps(() => {
     const isBelowMinWidth = currentProgressLineWidth.value <= thicknessOffset;
     console.log("RECEIVED", currentProgressLineWidth.value);
     return {

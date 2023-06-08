@@ -71,7 +71,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
       x2: Math.min(progressLineWidth, currentProgressLineWidth.value), //Prevents going beyond the max width
       strokeOpacity: isBelowMinWidth ? 0.0 : 1.0,
     };
-  });
+  }, [currentProgressLineWidth, progressLineWidth]);
 
   React.useEffect(() => {
     console.log("UPDATING TO", progressLineWidth * currentFillPercentage);

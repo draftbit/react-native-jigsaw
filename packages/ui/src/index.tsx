@@ -1,3 +1,4 @@
+import "react-native-reanimated"; //Prevents 'r.g.__reanimatedWorkletInit is not a function' issue on snack
 import { Icon } from "@draftbit/native";
 export { Icon, LinearGradient, WebView } from "@draftbit/native";
 

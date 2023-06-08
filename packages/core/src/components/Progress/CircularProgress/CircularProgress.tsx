@@ -131,7 +131,6 @@ export const CircularProgress: React.FC<
       <Svg testID={testID ?? "circular-progress-component"} style={{ flex: 1 }}>
         {showTrack && (
           <Path
-            fill="rgba(0,0,0,0)" //To prevent default black background
             d={circlePath(
               radius,
               radius,
@@ -154,6 +153,7 @@ export const CircularProgress: React.FC<
           strokeLinecap={lineCap}
           strokeDasharray={customDashArray || dashArray}
           strokeDashoffset={dashOffset}
+          fillOpacity={0}
           onPress={() => {}} //Addresses reanimated issue with SVG (https://github.com/software-mansion/react-native-reanimated/issues/3321#issuecomment-1256983430)
         />
       </Svg>

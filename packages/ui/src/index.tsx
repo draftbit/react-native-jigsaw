@@ -1,4 +1,10 @@
-import "react-native-reanimated"; //Prevents 'r.g.__reanimatedWorkletInit is not a function' issue on snack
+//Prevents 'r.g.__reanimatedWorkletInit is not a function' issue on snack (https://forums.expo.dev/t/react-native-reanimated-error-r-g-reanimatedworkletinit-is-not-a-function/68222)
+//@ts-ignore
+if (!global.__reanimatedWorkletInit) {
+  //@ts-ignore
+  global.__reanimatedWorkletInit = function () {};
+}
+
 import { Icon } from "@draftbit/native";
 export { Icon, LinearGradient, WebView } from "@draftbit/native";
 

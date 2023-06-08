@@ -68,19 +68,19 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
     const isBelowMinWidth = currentProgressLineWidth.value <= thicknessOffset;
     console.log("RECEIVED", currentProgressLineWidth.value);
     return {
-      x2: Math.min(progressLineWidth, currentProgressLineWidth.value), //Prevents going beyond the max width
+      x2: withTiming(
+        Math.min(progressLineWidth, currentProgressLineWidth.value), //Prevents going beyond the max width,
+        {
+          duration: isAnimated ? animationDuration : 0,
+        }
+      ),
       strokeOpacity: isBelowMinWidth ? 0.0 : 1.0,
     };
   });
 
   React.useEffect(() => {
     console.log("UPDATING TO", progressLineWidth * currentFillPercentage);
-    currentProgressLineWidth.value = withTiming(
-      progressLineWidth * currentFillPercentage,
-      {
-        duration: isAnimated ? animationDuration : 0,
-      }
-    );
+    currentProgressLineWidth.value = progressLineWidth * currentFillPercentage;
   }, [
     value,
     progressLineWidth,

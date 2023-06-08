@@ -80,7 +80,7 @@ export const CircularProgress: React.FC<
   }, [startPosition]);
 
   const currentFillPercentage = value / (maximumValue + minimumValue);
-  const currentAngle = useSharedValue(startAngle + currentFillPercentage * 360);
+  const currentAngle = useSharedValue(startAngle);
 
   const progressPathAnimatedProps = useAnimatedProps<PathProps>(() => {
     const isBelowMinAngle = currentAngle.value <= startAngle;
@@ -131,6 +131,7 @@ export const CircularProgress: React.FC<
       <Svg testID={testID ?? "circular-progress-component"} style={{ flex: 1 }}>
         {showTrack && (
           <Path
+            fillOpacity={0}
             d={circlePath(
               radius,
               radius,

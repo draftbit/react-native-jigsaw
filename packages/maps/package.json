@@ -2,9 +2,8 @@
   "name": "@draftbit/maps",
   "version": "47.5.1",
   "description": "Map Components",
-  "main": "lib/src/index.js",
-  "types": "lib/src/index.d.ts",
-  "react-native": "src/index.tsx",
+  "main": "lib/commonjs/index.js",
+  "types": "lib/typescript/src/index.d.ts",
   "files": [
     "src",
     "lib",
@@ -15,7 +14,8 @@
   "scripts": {
     "clean": "rimraf lib",
     "clean:modules": "rimraf node_modules",
-    "build": "yarn clean && yarn tsc",
+    "build:commonjs": "../../node_modules/.bin/babel src --out-dir lib/commonjs --extensions .tsx,.ts,.js,.jsx",
+    "build": "yarn clean && yarn build:commonjs  && yarn tsc",
     "test": "jest",
     "test:coverage": "jest --coverage"
   },

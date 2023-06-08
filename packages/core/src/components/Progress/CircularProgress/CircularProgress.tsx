@@ -131,7 +131,7 @@ export const CircularProgress: React.FC<
       <Svg testID={testID ?? "circular-progress-component"} style={{ flex: 1 }}>
         {showTrack && (
           <Path
-            fillOpacity={0}
+            fill="rgba(0,0,0,0)" //To prevent default black background
             d={circlePath(
               radius,
               radius,

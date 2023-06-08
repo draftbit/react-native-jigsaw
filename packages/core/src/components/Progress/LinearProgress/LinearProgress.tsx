@@ -79,9 +79,6 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
       progressLineWidth * currentFillPercentage,
       {
         duration: isAnimated ? animationDuration : 0,
-      },
-      (finished, current) => {
-        console.log("STATUS", "CURRENT:", current, "FINISHED", finished);
       }
     );
   }, [

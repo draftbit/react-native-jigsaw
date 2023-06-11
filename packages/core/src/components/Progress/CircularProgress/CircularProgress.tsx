@@ -144,6 +144,7 @@ export const CircularProgress: React.FC<
             strokeLinecap={trackLineCap}
             strokeDasharray={trackCustomDashArray || trackDashArray}
             strokeDashoffset={trackDashOffset}
+            fill={"rgba(0,0,0,0)"} //Prevent default black fill
           />
         )}
         <AnimatedPath

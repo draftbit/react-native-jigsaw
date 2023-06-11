@@ -1,11 +1,10 @@
-import "react-native-reanimated";
 import React from "react";
+import IndeterminateProgress from "../IndeterminateProgress";
 import {
   CircularProgressProps,
   IndeterminateProgressProps,
   ValueProgressProps,
 } from "../ProgressCommon";
-import IndeterminateProgress from "../IndeterminateProgress";
 import { CircularProgress as CircularProgressComponent } from "./CircularProgress";
 import { withTheme } from "../../../theming";
 

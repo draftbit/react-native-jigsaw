@@ -117,7 +117,6 @@ export const CircularProgress: React.FC<
 
   return (
     <View
-      testID={testID ?? "circular-progress-component"}
       onLayout={(event) => {
         const width = event.nativeEvent.layout.width;
         setSvgContainerWidth(width);

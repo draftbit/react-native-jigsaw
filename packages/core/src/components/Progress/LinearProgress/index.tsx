@@ -1,10 +1,3 @@
-//Prevents 'r.g.__reanimatedWorkletInit is not a function' issue on snack (https://forums.expo.dev/t/react-native-reanimated-error-r-g-reanimatedworkletinit-is-not-a-function/68222)
-//@ts-ignore
-if (!global.__reanimatedWorkletInit) {
-  //@ts-ignore
-  global.__reanimatedWorkletInit = function () {};
-}
-
 import React from "react";
 import IndeterminateProgress from "../IndeterminateProgress";
 import {

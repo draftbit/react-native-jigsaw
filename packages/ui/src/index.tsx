@@ -1,7 +1,4 @@
-import "react-native-reanimated";
-//@ts-ignore
-// eslint-disable-next-line
-import * as Animated from "react-native-reanimated";
+export { default as Animated } from "react-native-reanimated";
 import { Icon } from "@draftbit/native";
 export { Icon, LinearGradient, WebView } from "@draftbit/native";
 

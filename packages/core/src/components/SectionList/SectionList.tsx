@@ -7,6 +7,7 @@ type ListComponentType = "FlatList" | "FlashList";
 
 interface AdditionalSectionListProps<T> {
   sectionKey: string;
+  stickyHeader?: boolean;
   renderItem: (itemInfo: {
     item?: T;
     index: number;
@@ -37,6 +38,7 @@ export const DEFAULT_SECTION = "Uncategorized";
 
 const SectionList = <T extends { [key: string]: any }>({
   sectionKey,
+  stickyHeader = false,
   listComponent = "FlatList",
   data: dataProp,
   renderItem: renderItemProp,
@@ -67,6 +69,16 @@ const SectionList = <T extends { [key: string]: any }>({
 
     return result;
   }, [data, sectionKey]);
+
+  const sectionHeaderIndicies = React.useMemo(
+    () =>
+      stickyHeader
+        ? dataWithSections
+            .filter((item) => item.type === "SECTION_ITEM")
+            .map((item) => dataWithSections.indexOf(item))
+        : undefined,
+    [dataWithSections, stickyHeader]
+  );
 
   const extractSectionHeader = (
     element: JSX.Element | null
@@ -152,6 +164,7 @@ const SectionList = <T extends { [key: string]: any }>({
     case "FlatList":
       return (
         <FlatList
+          stickyHeaderIndices={sectionHeaderIndicies}
           {...(rest as FlatListProps<SectionListItem<T>>)}
           data={dataWithSections}
           renderItem={renderItem}
@@ -160,6 +173,7 @@ const SectionList = <T extends { [key: string]: any }>({
     case "FlashList":
       return (
         <FlashList
+          stickyHeaderIndices={sectionHeaderIndicies}
           {...(rest as FlashListProps<SectionListItem<T>>)}
           data={dataWithSections}
           renderItem={renderItem}

@@ -25,6 +25,7 @@ export const DefaultCodeInputCell = withTheme(
   ({ cellValue, isFocused, theme }: DefaultCodeInputCellProps) => {
     return (
       <View
+        testID="default-code-input-cell"
         style={[
           styles.cell,
           styles.defaultCellContainer,

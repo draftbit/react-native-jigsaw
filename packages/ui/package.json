@@ -1,10 +1,9 @@
 {
   "name": "@draftbit/ui",
-  "version": "48.2.1",
+  "version": "48.2.2",
   "description": "Draftbit UI Library",
-  "main": "lib/src/index.js",
-  "types": "lib/src/index.d.ts",
-  "react-native": "src/index.tsx",
+  "main": "lib/commonjs/index.js",
+  "types": "lib/typescript/src/index.d.ts",
   "files": [
     "src",
     "lib",
@@ -19,7 +18,8 @@
   "scripts": {
     "clean": "rimraf lib",
     "clean:modules": "rimraf node_modules",
-    "build": "yarn clean && yarn tsc",
+    "build:commonjs": "../../node_modules/.bin/babel src --out-dir lib/commonjs --extensions .tsx,.ts,.js,.jsx",
+    "build": "yarn clean && yarn build:commonjs  && yarn tsc",
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
@@ -43,8 +43,9 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/core": "48.2.1",
-    "@draftbit/native": "48.2.1"
+    "@draftbit/core": "48.2.2",
+    "@draftbit/native": "48.2.2",
+    "react-native-reanimated": "~2.12.0"
   },
   "eslintIgnore": [
     "node_modules/",

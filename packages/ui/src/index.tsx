@@ -57,6 +57,9 @@ export {
   SectionHeader,
   VideoPlayer,
   VideoPlayerRef,
+  CodeInput,
+  CodeInputCell,
+  CodeInputText,
 } from "@draftbit/core";
 
 /**

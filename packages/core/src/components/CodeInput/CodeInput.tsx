@@ -19,6 +19,7 @@ interface CellItem {
 }
 
 interface CodeInputProps extends TextInputProps {
+  onInputFull?: (value: string) => void;
   cellCount?: number;
   clearOnCellFocus?: boolean;
   blurOnFull?: boolean;
@@ -29,6 +30,7 @@ interface CodeInputProps extends TextInputProps {
 const CodeInput = React.forwardRef<NativeTextInput, CodeInputProps>(
   (
     {
+      onInputFull,
       cellCount = 4,
       clearOnCellFocus = true,
       blurOnFull = true,
@@ -54,15 +56,19 @@ const CodeInput = React.forwardRef<NativeTextInput, CodeInputProps>(
     });
 
     React.useEffect(() => {
-      if (blurOnFull && value?.length === cellCount) {
-        codeInputRef.current?.blur();
+      if (value?.length === cellCount) {
+        if (blurOnFull) {
+          codeInputRef.current?.blur();
+        }
+        onInputFull?.(value);
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value, cellCount, blurOnFull, codeInputRef]);
 
     return (
       <CodeField
+        ref={codeInputRef}
         {...(clearOnCellFocus ? codeFieldProps : {})}
-        ref={ref}
         value={value}
         onChangeText={onChangeText}
         rootStyle={style}

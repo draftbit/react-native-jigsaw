@@ -5,7 +5,7 @@ import { withTheme } from "../../theming";
 import CodeInputText from "./CodeInputText";
 
 interface CodeInputCellProps {
-  style: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
 }
 
 const CodeInputCell: React.FC<React.PropsWithChildren<CodeInputCellProps>> = ({
@@ -27,22 +27,22 @@ export const DefaultCodeInputCell = withTheme(
       <View
         style={[
           styles.cell,
+          styles.defaultCellContainer,
           {
-            padding: 10,
-            backgroundColor: isFocused ? "transparent" : theme.colors.disabled,
-            borderWidth: isFocused ? 2 : 0,
-            borderColor: theme.colors.primary,
-            borderRadius: 5,
-            alignContent: "center",
-            alignItems: "center",
+            borderWidth: isFocused ? 2 : 1,
+            borderColor: isFocused
+              ? theme.colors.primary
+              : theme.colors.disabled,
           },
         ]}
       >
         <CodeInputText
-          style={{
-            color: theme.colors.strong,
-            fontSize: 30,
-          }}
+          style={[
+            styles.defaultCellText,
+            {
+              color: theme.colors.strong,
+            },
+          ]}
           isFocused={isFocused}
         >
           {cellValue}
@@ -54,6 +54,17 @@ export const DefaultCodeInputCell = withTheme(
 
 const styles = StyleSheet.create({
   cell: { marginStart: 5, marginEnd: 5 },
+  defaultCellContainer: {
+    padding: 5,
+    backgroundColor: "transparent",
+    borderRadius: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    aspectRatio: 1,
+  },
+  defaultCellText: {
+    fontSize: 25,
+  },
 });
 
 export default CodeInputCell;

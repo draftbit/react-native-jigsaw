@@ -3,6 +3,8 @@ import { StyleProp, ViewStyle, StyleSheet, View } from "react-native";
 import DeckSwiperComponent from "react-native-deck-swiper";
 
 export interface DeckSwiperProps<T> {
+  onStartSwipe?: () => void;
+  onEndSwipe?: () => void;
   onSwipe?: (index: number) => void;
   onSwipedLeft?: (index: number) => void;
   onSwipedRight?: (index: number) => void;
@@ -22,6 +24,8 @@ export interface DeckSwiperProps<T> {
 }
 
 const DeckSwiper = <T extends object>({
+  onStartSwipe,
+  onEndSwipe,
   onSwipe,
   onSwipedLeft,
   onSwipedRight,
@@ -150,6 +154,10 @@ const DeckSwiper = <T extends object>({
           onSwipedDown?.(index);
           onSwipe?.(index);
         }}
+        //@ts-ignore Not typed, but is implemented and works
+        dragStart={onStartSwipe}
+        //@ts-ignore
+        dragEnd={onEndSwipe}
       />
     </View>
   );

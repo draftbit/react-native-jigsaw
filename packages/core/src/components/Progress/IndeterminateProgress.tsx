@@ -66,6 +66,8 @@ const IndeterminateProgress: React.FC<IndeterminateProgressProps> = ({
       dashGap={pathWidth / 2}
       dashWidth={pathWidth / 2}
       animationDuration={animationDuration}
+      minimumValue={0}
+      maximumValue={100}
       value={100}
     />
   );

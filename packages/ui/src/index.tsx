@@ -1,3 +1,4 @@
+export { default as Animated } from "react-native-reanimated"; // Ensures reanimated is imported properly into snack. Otherwise gives 'r.g.__reanimatedWorkletInit is not a function' error
 import { Icon } from "@draftbit/native";
 export { Icon, LinearGradient, WebView } from "@draftbit/native";
 

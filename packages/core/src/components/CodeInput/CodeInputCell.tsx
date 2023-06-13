@@ -62,6 +62,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     aspectRatio: 1,
+    maxWidth: 70,
+    maxHeight: 70,
   },
   defaultCellText: {
     fontSize: 25,

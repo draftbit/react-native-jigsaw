@@ -80,7 +80,7 @@ export const CircularProgress: React.FC<
   }, [startPosition]);
 
   const currentFillPercentage = value / (maximumValue + minimumValue);
-  const currentAngle = useSharedValue(startAngle + currentFillPercentage * 360);
+  const currentAngle = useSharedValue(startAngle);
 
   const progressPathAnimatedProps = useAnimatedProps<PathProps>(() => {
     const isBelowMinAngle = currentAngle.value <= startAngle;
@@ -144,6 +144,7 @@ export const CircularProgress: React.FC<
             strokeLinecap={trackLineCap}
             strokeDasharray={trackCustomDashArray || trackDashArray}
             strokeDashoffset={trackDashOffset}
+            fill={"rgba(0,0,0,0)"} //Prevents default black fill
           />
         )}
         <AnimatedPath
@@ -153,6 +154,7 @@ export const CircularProgress: React.FC<
           strokeLinecap={lineCap}
           strokeDasharray={customDashArray || dashArray}
           strokeDashoffset={dashOffset}
+          fill={"rgba(0,0,0,0)"}
           onPress={() => {}} //Addresses reanimated issue with SVG (https://github.com/software-mansion/react-native-reanimated/issues/3321#issuecomment-1256983430)
         />
       </Svg>

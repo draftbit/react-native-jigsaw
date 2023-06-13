@@ -52,7 +52,7 @@ export const DefaultCodeInputCell = withTheme(
     );
   }
 );
-//
+
 const styles = StyleSheet.create({
   cell: { marginStart: 5, marginEnd: 5 },
   defaultCellContainer: {

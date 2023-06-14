@@ -153,6 +153,30 @@ describe("AudioPlayer tests", () => {
     expect(mockPauseAsync).toBeCalled();
   });
 
+  test("should play() play the audio", async () => {
+    const ref = React.createRef<AudioPlayerRef>();
+
+    render(<AudioPlayer ref={ref} source={mockAudioSource} />);
+
+    await act(async () => {
+      await waitForSoundToLoad();
+      ref.current?.play();
+    });
+    expect(mockPlayAsync).toBeCalled();
+  });
+
+  test("should pause() pause the audio", async () => {
+    const ref = React.createRef<AudioPlayerRef>();
+
+    render(<AudioPlayer ref={ref} source={mockAudioSource} />);
+
+    await act(async () => {
+      await waitForSoundToLoad();
+      ref.current?.pause();
+    });
+    expect(mockPauseAsync).toBeCalled();
+  });
+
   test("should audio be cleaned up/unloaded when unmounting", async () => {
     render(<AudioPlayer source={mockAudioSource} />);
 

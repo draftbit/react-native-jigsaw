@@ -230,6 +230,8 @@ export function getValueForRadioButton(value: string | number) {
   }
 }
 
+// This is done to ensure that operations that depend on a particular child type still work even when wrapped in a react fragment (ex: .type checks or prop extraction of child)
+// Wrapping in a fragment can happen in Draftbit when a component is wrapped in a conditional for example or inside a Fetch component
 export function extractIfNestedInFragment(
   component: React.ReactElement
 ): React.ReactElement {

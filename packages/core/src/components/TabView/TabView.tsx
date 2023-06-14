@@ -26,6 +26,7 @@ type KeyboardDismissMode = "none" | "auto" | "on-drag";
 type TabViewProps = {
   onIndexChanged?: (index: number) => void;
   onEndReached?: () => void;
+  initialTabIndex?: number;
   tabBarPosition?: TabBarPosition;
   keyboardDismissMode?: KeyboardDismissMode;
   swipeEnabled?: boolean;
@@ -43,6 +44,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
   Icon,
   onIndexChanged,
   onEndReached,
+  initialTabIndex = 0,
   tabBarPosition,
   keyboardDismissMode,
   swipeEnabled,
@@ -56,7 +58,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
   theme,
   children: childrenProp,
 }) => {
-  const [index, setIndex] = React.useState(0);
+  const [index, setIndex] = React.useState(initialTabIndex);
   const [routes, setRoutes] = React.useState<Route[]>([]);
   const [tabScenes, setTabScenes] = React.useState<{ [key: string]: any }>({});
 

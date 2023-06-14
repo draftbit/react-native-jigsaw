@@ -14,6 +14,8 @@ export interface MediaPlayerStatus {
 export interface MediaPlayerRef {
   seekToPosition: (positionMillis: number) => void;
   togglePlayback: () => void;
+  pause: () => void;
+  play: () => void;
 }
 
 export interface MediaPlayerProps {

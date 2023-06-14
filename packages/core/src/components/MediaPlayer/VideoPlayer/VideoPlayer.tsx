@@ -105,6 +105,8 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
           mediaPlaybackWrapperRef.current?.seekToPosition || (() => {}),
         togglePlayback:
           mediaPlaybackWrapperRef.current?.togglePlayback || (() => {}),
+        pause: mediaPlaybackWrapperRef.current?.pause || (() => {}),
+        play: mediaPlaybackWrapperRef.current?.play || (() => {}),
       }),
       // Include 'isPlaying' as dependency because 'togglePlayback' changes when it changes
       // eslint-disable-next-line react-hooks/exhaustive-deps

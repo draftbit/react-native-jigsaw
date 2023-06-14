@@ -12,7 +12,7 @@ import TabViewItem from "./TabViewItem";
 import type { IconSlot } from "../../interfaces/Icon";
 import { withTheme } from "../../theming";
 import type { Theme } from "../../styles/DefaultTheme";
-import { extractStyles } from "../../utilities";
+import { extractIfNestedInFragment, extractStyles } from "../../utilities";
 
 type SceneProps = SceneRendererProps & {
   route: Route;
@@ -54,7 +54,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
   tabsBackgroundColor,
   style,
   theme,
-  children,
+  children: childrenProp,
 }) => {
   const [index, setIndex] = React.useState(0);
   const [routes, setRoutes] = React.useState<Route[]>([]);
@@ -62,12 +62,20 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
 
   const { textStyles, viewStyles } = extractStyles(style);
 
+  const children: React.ReactNode[] = React.useMemo(
+    () =>
+      React.Children.toArray(childrenProp).map((child) =>
+        extractIfNestedInFragment(child as React.ReactElement)
+      ),
+    [childrenProp]
+  );
+
   //Populate routes and scenes based on children
   React.useEffect(() => {
     const newRoutes: Route[] = [];
     const scenes: { [key: string]: React.ReactElement } = {};
 
-    React.Children.toArray(children)
+    children
       .filter(
         (child) => React.isValidElement(child) && child.type === TabViewItem
       )

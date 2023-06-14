@@ -12,6 +12,7 @@ import {
   extractBorderAndMarginStyles,
   extractEffectStyles,
   extractFlexItemStyles,
+  extractIfNestedInFragment,
   extractPositionStyles,
   extractSizeStyles,
   extractStyles,
@@ -74,7 +75,7 @@ type Props = SwipeableItemProps & RightSwipeProps & LeftSwipeProps;
 const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
   theme,
   style,
-  children,
+  children: childrenProp,
   Icon,
   closeOnPress,
   leftOpenValue,
@@ -124,9 +125,18 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
   const [componentWidth, setComponentWidth] = React.useState<number | null>(
     null
   );
+
+  const children: React.ReactNode[] = React.useMemo(
+    () =>
+      React.Children.toArray(childrenProp).map((child) =>
+        extractIfNestedInFragment(child as React.ReactElement)
+      ),
+    [childrenProp]
+  );
+
   const leftSwipeButtons = React.useMemo(
     () =>
-      React.Children.toArray(children).filter(
+      children.filter(
         (child) =>
           React.isValidElement(child) &&
           child.type === SwipeableItemButton &&
@@ -137,7 +147,7 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
 
   const rightSwipeButtons = React.useMemo(
     () =>
-      React.Children.toArray(children).filter(
+      children.filter(
         (child) =>
           React.isValidElement(child) &&
           child.type === SwipeableItemButton &&

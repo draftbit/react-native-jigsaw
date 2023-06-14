@@ -1,3 +1,4 @@
+import React from "react";
 import { StyleSheet, StyleProp, TextStyle } from "react-native";
 import { isString, isNumber, pick, pickBy, identity } from "lodash";
 
@@ -227,4 +228,20 @@ export function getValueForRadioButton(value: string | number) {
   } else {
     throw new Error(`Invalid value: ${value}`);
   }
+}
+
+export function extractIfNestedInFragment(
+  component: React.ReactElement
+): React.ReactElement {
+  if (component.type === React.Fragment) {
+    const children = React.Children.toArray(
+      (component.props as any)?.children
+    ) as React.ReactElement[];
+
+    if (children.length === 1) {
+      return children[0];
+    }
+  }
+
+  return component;
 }

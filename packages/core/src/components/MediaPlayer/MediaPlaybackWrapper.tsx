@@ -26,6 +26,16 @@ const MediaPlaybackWrapper = React.forwardRef<
     }
   }, [media, isPlaying, onTogglePlayback]);
 
+  const pause = React.useCallback(async () => {
+    onTogglePlayback?.();
+    await media?.pauseAsync();
+  }, [media, onTogglePlayback]);
+
+  const play = React.useCallback(async () => {
+    onTogglePlayback?.();
+    await media?.playAsync();
+  }, [media, onTogglePlayback]);
+
   const seekToPosition = React.useCallback(
     async (positionMillis: number) => {
       await media?.setPositionAsync(positionMillis);
@@ -46,8 +56,10 @@ const MediaPlaybackWrapper = React.forwardRef<
     () => ({
       seekToPosition,
       togglePlayback,
+      pause,
+      play,
     }),
-    [seekToPosition, togglePlayback]
+    [seekToPosition, togglePlayback, pause, play]
   );
 
   return <>{children}</>;

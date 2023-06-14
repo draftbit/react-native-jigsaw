@@ -70,6 +70,42 @@ describe("VideoPlayer tests", () => {
     expect(mockPauseAsync).toBeCalled();
   });
 
+  test("should play() play the video", async () => {
+    const ref = React.createRef<VideoPlayerRef>();
+
+    render(
+      <VideoPlayer
+        ref={ref}
+        source={{
+          uri: "video-uri",
+        }}
+      />
+    );
+
+    act(() => {
+      ref.current?.play();
+    });
+    expect(mockPlayAsync).toBeCalled();
+  });
+
+  test("should pause() pause the video", async () => {
+    const ref = React.createRef<VideoPlayerRef>();
+
+    render(
+      <VideoPlayer
+        ref={ref}
+        source={{
+          uri: "video-uri",
+        }}
+      />
+    );
+
+    act(() => {
+      ref.current?.pause();
+    });
+    expect(mockPauseAsync).toBeCalled();
+  });
+
   test("should video be cleaned up/unloaded when unmounting", async () => {
     render(
       <VideoPlayer

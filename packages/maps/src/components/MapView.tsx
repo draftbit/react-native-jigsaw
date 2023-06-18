@@ -3,29 +3,40 @@ import { StyleSheet, Platform } from "react-native";
 import MapViewComponent from "./react-native-maps";
 import type {
   Camera,
-  LatLng,
   Region,
   MapViewProps as MapViewComponentProps,
 } from "react-native-maps";
-import MapMarker, { renderMarker } from "./MapMarker";
+import MapMarker, { MapMarkerProps, renderMarker } from "./MapMarker";
+import MapMarkerCluster from "./marker-cluster/MapMarkerCluster";
+import { MapViewContext, ZoomLocation } from "./MapViewCommon";
+import { MapMarkerClusterView } from "./marker-cluster";
 
-export interface MapViewProps<T> extends MapViewComponentProps {
+export interface MapViewProps<T>
+  extends Omit<MapViewComponentProps, "onRegionChangeComplete"> {
   apiKey: string;
   zoom?: number;
   latitude?: number;
   longitude?: number;
+  autoClusterMarkers?: boolean;
+  autoClusterMarkersDistanceMeters?: number;
   markersData?: T[];
   keyExtractor: (item: T, index: number) => string;
   renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
   onRegionChange?: (region: Region) => void;
 }
 
+interface MapViewState {
+  region: Region | null;
+}
+
 class MapView<T> extends React.Component<
-  React.PropsWithChildren<MapViewProps<T>>
+  React.PropsWithChildren<MapViewProps<T>>,
+  MapViewState
 > {
   private mapRef: React.RefObject<any>;
   constructor(props: React.PropsWithChildren<MapViewProps<T>>) {
     super(props);
+    this.state = { region: null };
     this.mapRef = React.createRef();
   }
 
@@ -46,13 +57,7 @@ class MapView<T> extends React.Component<
     }
   }
 
-  animateToLocation({
-    latitude,
-    longitude,
-    zoom,
-  }: LatLng & {
-    zoom?: number;
-  }) {
+  animateToLocation({ latitude, longitude, zoom }: ZoomLocation) {
     const camera: Camera = {
       heading: 0,
       pitch: 0,
@@ -70,7 +75,7 @@ class MapView<T> extends React.Component<
     this.mapRef.current.animateCamera(camera);
   }
 
-  getMarkers(): React.ReactElement[] {
+  private getChildrenForType(type: React.ElementType): React.ReactElement[] {
     const { markersData, renderItem, keyExtractor, children } = this.props;
 
     if (markersData && renderItem) {
@@ -79,7 +84,7 @@ class MapView<T> extends React.Component<
       markersData.forEach((item, index) => {
         const component = renderItem?.({ item, index });
 
-        if (component && component.type === MapMarker) {
+        if (component && component.type === type) {
           const key = keyExtractor ? keyExtractor(item, index) : index;
           markers.push(
             React.cloneElement(component, {
@@ -91,9 +96,67 @@ class MapView<T> extends React.Component<
       return markers;
     } else {
       return React.Children.toArray(children).filter(
-        (child) => (child as React.ReactElement).type === MapMarker
+        (child) => (child as React.ReactElement).type === type
       ) as React.ReactElement[];
     }
+  }
+
+  private clusterMarkers(
+    markers: React.ReactElement[],
+    clusters: React.ReactElement[],
+    distanceMeters: number,
+    clusterView: React.ReactElement | null
+  ) {
+    for (const marker of markers) {
+      const { latitude, longitude } = marker.props as MapMarkerProps;
+
+      const nearbyMarkers = this.getNearbyMarkers(
+        latitude,
+        longitude,
+        markers,
+        distanceMeters
+      );
+
+      if (nearbyMarkers.length > 1) {
+        for (const nearbyMarker of nearbyMarkers) {
+          markers.splice(markers.indexOf(nearbyMarker), 1);
+        }
+        clusters.push(
+          <MapMarkerCluster>
+            {clusterView}
+            {nearbyMarkers}
+          </MapMarkerCluster>
+        );
+      }
+    }
+  }
+
+  private getNearbyMarkers(
+    lat: number,
+    long: number,
+    markers: React.ReactElement[],
+    distanceMeters: number
+  ): React.ReactElement[] {
+    const nearbyMarkers: React.ReactElement[] = [];
+
+    for (let i = 0; i < markers.length; i++) {
+      const marker = markers[i];
+      const { latitude: lat2, longitude: long2 } =
+        marker.props as MapMarkerProps;
+
+      const distance = calculateDistanceBetween2PointsMeters(
+        lat,
+        long,
+        lat2,
+        long2
+      );
+
+      if (distance <= distanceMeters) {
+        nearbyMarkers.push(marker);
+      }
+    }
+
+    return nearbyMarkers;
   }
 
   render() {
@@ -105,6 +168,8 @@ class MapView<T> extends React.Component<
       zoom,
       showsCompass = false,
       loadingEnabled = true,
+      autoClusterMarkers = false,
+      autoClusterMarkersDistanceMeters = 1000,
       onRegionChange,
       style,
       ...rest
@@ -121,24 +186,57 @@ class MapView<T> extends React.Component<
       },
     };
 
+    const markers = this.getChildrenForType(MapMarker);
+    const clusters = this.getChildrenForType(MapMarkerCluster);
+
+    const clusterViews = this.getChildrenForType(MapMarkerClusterView);
+    const clusterView = clusterViews.length ? clusterViews[0] : null; //Only take the first, ignore any others
+
+    if (autoClusterMarkers) {
+      this.clusterMarkers(
+        markers,
+        clusters,
+        autoClusterMarkersDistanceMeters,
+        clusterView
+      );
+    }
+
     return (
-      <MapViewComponent
-        ref={this.mapRef}
-        provider={provider}
-        googleMapsApiKey={apiKey}
-        showsCompass={showsCompass}
-        initialCamera={camera}
-        loadingEnabled={loadingEnabled}
-        onRegionChangeComplete={(region) => {
-          onRegionChange?.(region);
+      <MapViewContext.Provider
+        value={{
+          animateToLocation: (location) => this.animateToLocation(location),
+          region: this.state.region,
         }}
-        style={[styles.map, style]}
-        {...rest}
       >
-        {this.getMarkers().map((marker, index) =>
-          renderMarker(marker.props, index)
-        )}
-      </MapViewComponent>
+        <MapViewComponent
+          ref={this.mapRef}
+          onMapReady={() =>
+            // This initial animateToLocation ensures that 'region' state is initially set
+            this.animateToLocation({
+              latitude: camera.center.latitude,
+              longitude: camera.center.longitude,
+              zoom: camera.zoom,
+            })
+          }
+          provider={provider}
+          googleMapsApiKey={apiKey}
+          showsCompass={showsCompass}
+          initialCamera={camera}
+          loadingEnabled={loadingEnabled}
+          onRegionChangeComplete={(region) => {
+            onRegionChange?.(region);
+          }}
+          onRegionChange={(region) => this.setState({ region })}
+          style={[styles.map, style]}
+          {...rest}
+        >
+          {markers.map((marker, index) => renderMarker(marker.props, index))}
+
+          {clusters.map((cluster, index) => (
+            <React.Fragment key={index}>{cluster}</React.Fragment>
+          ))}
+        </MapViewComponent>
+      </MapViewContext.Provider>
     );
   }
 }
@@ -161,6 +259,32 @@ function zoomToAltitude(zoom: number) {
   const D = -40467.74;
 
   return C * Math.pow((A - D) / (zoom - D) - 1, 1 / B);
+}
+
+// Uses Haversie formula (https://en.wikipedia.org/wiki/Haversine_formula) to calculate distance between 2 coordinates on earth
+// https://stackoverflow.com/a/27943
+function calculateDistanceBetween2PointsMeters(
+  lat1: number,
+  long1: number,
+  lat2: number,
+  long2: number
+) {
+  var earthRadiusKM = 6371;
+  var deltaLat = degreeToRadian(lat2 - lat1);
+  var deltaLong = degreeToRadian(long2 - long1);
+  var a =
+    Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
+    Math.cos(degreeToRadian(lat1)) *
+      Math.cos(degreeToRadian(lat2)) *
+      Math.sin(deltaLong / 2) *
+      Math.sin(deltaLong / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var distanceKM = earthRadiusKM * c;
+  return distanceKM * 1000;
+}
+
+function degreeToRadian(deg: number) {
+  return deg * (Math.PI / 180);
 }
 
 export default MapView;

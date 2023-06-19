@@ -24,6 +24,7 @@ export interface MapMarkerProps
  * Rendering exposed as function to avoid having an intermediary component that changes the type
  *
  * This is done because the underlying package has logic dependant on the type of child
+ * See: https://github.com/teovillanueva/react-native-web-maps/blob/5f3d0ec7c24f789c3df30c1d6d7223e638ff5868/packages/react-native-web-maps/src/components/marker-clusterer/marker-clusterer.tsx#L18
  */
 const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = () => {
   return null;
@@ -41,7 +42,7 @@ export function renderMarker(
     description,
     ...rest
   }: MapMarkerProps,
-  key: React.Key
+  key?: React.Key
 ) {
   const childrenArray = React.Children.toArray(children);
 
@@ -84,6 +85,7 @@ export function renderMarker(
 
       {pinImage && (
         <Image
+          testID="map-marker-pin-image"
           source={typeof pinImage === "string" ? { uri: pinImage } : pinImage}
           style={{
             height: pinImageSize,

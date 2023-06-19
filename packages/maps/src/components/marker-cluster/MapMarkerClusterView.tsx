@@ -32,6 +32,7 @@ export const DefaultMapMarkerClusterView = withTheme(({ theme }) => {
     <MapMarkerClusterView
       renderItem={({ markerCount }) => (
         <View
+          testID="default-map-marker-cluster-view"
           style={{
             backgroundColor: theme.colors.primary,
             borderColor: theme.colors.background,

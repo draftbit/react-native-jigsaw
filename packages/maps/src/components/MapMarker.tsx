@@ -85,6 +85,7 @@ export function renderMarker(
 
       {pinImage && (
         <Image
+          testID="map-marker-pin-image"
           source={typeof pinImage === "string" ? { uri: pinImage } : pinImage}
           style={{
             height: pinImageSize,

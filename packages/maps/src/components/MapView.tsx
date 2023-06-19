@@ -20,7 +20,7 @@ export interface MapViewProps<T>
   autoClusterMarkers?: boolean;
   autoClusterMarkersDistanceMeters?: number;
   markersData?: T[];
-  keyExtractor: (item: T, index: number) => string;
+  keyExtractor?: (item: T, index: number) => string;
   renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
   onRegionChange?: (region: Region) => void;
 }

@@ -31,9 +31,6 @@ jobs:
       - name: Lint
         run: yarn lint
 
-      - name: Bootstrap
-        run: yarn bootstrap
-
       - name: Test
         run: yarn test
 

@@ -105,7 +105,7 @@ class MapView<T> extends React.Component<
     markers: React.ReactElement[],
     clusters: React.ReactElement[],
     distanceMeters: number,
-    clusterView: React.ReactElement | null
+    clusterView?: React.ReactElement
   ) {
     for (const marker of markers) {
       const { latitude, longitude } = marker.props as MapMarkerProps;
@@ -139,8 +139,7 @@ class MapView<T> extends React.Component<
   ): React.ReactElement[] {
     const nearbyMarkers: React.ReactElement[] = [];
 
-    for (let i = 0; i < markers.length; i++) {
-      const marker = markers[i];
+    for (const marker of markers) {
       const { latitude: lat2, longitude: long2 } =
         marker.props as MapMarkerProps;
 
@@ -188,9 +187,7 @@ class MapView<T> extends React.Component<
 
     const markers = this.getChildrenForType(MapMarker);
     const clusters = this.getChildrenForType(MapMarkerCluster);
-
-    const clusterViews = this.getChildrenForType(MapMarkerClusterView);
-    const clusterView = clusterViews.length ? clusterViews[0] : null; //Only take the first, ignore any others
+    const clusterView = this.getChildrenForType(MapMarkerClusterView).at(0); //Only take the first, ignore any others
 
     if (autoClusterMarkers) {
       this.clusterMarkers(

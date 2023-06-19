@@ -1,7 +1,14 @@
 import React from "react";
-import { MapView, MapMarker, MapCallout } from "@draftbit/maps";
+import {
+  MapView,
+  MapMarker,
+  MapCallout,
+  MapMarkerCluster,
+  MapMarkerView,
+} from "@draftbit/maps";
 import { ButtonSolid, withTheme } from "@draftbit/ui";
 import { StyleSheet, Text, View } from "react-native";
+import { MapMarkerClusterView } from "@draftbit/maps";
 
 const MapViewExample = ({ theme }) => {
   const mapRef = React.createRef();
@@ -12,7 +19,8 @@ const MapViewExample = ({ theme }) => {
         ref={mapRef}
         showsCompass={true}
         style={styles.map}
-        latitude={40.741895}
+        latitude={43.741895}
+        autoClusterMarkers
         longitude={-73.989308}
         zoom={16}
       >
@@ -25,6 +33,23 @@ const MapViewExample = ({ theme }) => {
         />
         <MapMarker
           latitude={40.741895}
+          longitude={-73.979308}
+          pinColor={theme.colors.secondary}
+        >
+          <MapCallout showTooltip>
+            <Text>With Callout</Text>
+          </MapCallout>
+        </MapMarker>
+
+        <MapMarker
+          latitude={43.741895}
+          longitude={-73.989308}
+          pinColor={theme.colors.primary}
+          title="Draftbit"
+          description="A simple MapView example"
+        />
+        <MapMarker
+          latitude={43.741895}
           longitude={-73.979308}
           pinColor={theme.colors.secondary}
         >

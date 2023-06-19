@@ -63,6 +63,7 @@ import SectionListExample from "./SectionListExample";
 import LinearProgressExample from "./LinearProgressExample";
 import CircularProgressExample from "./CircularProgressExample";
 import VideoPlayerExample from "./VideoPlayerExample";
+import CodeInputExample from "./CodeInputExample";
 
 const ROUTES = {
   AudioPlayer: AudioPlayerExample,
@@ -101,6 +102,7 @@ const ROUTES = {
   LinearProgress: LinearProgressExample,
   CircularProgress: CircularProgressExample,
   VideoPlayer: VideoPlayerExample,
+  CodeInput: CodeInputExample,
 };
 
 let customFonts = {

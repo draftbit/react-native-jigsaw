@@ -3,6 +3,7 @@ import { render, screen, fireEvent, act } from "@testing-library/react-native";
 import TextInput from "../components/TextInput";
 import TextField from "../components/TextField";
 import NumberInput from "../components/NumberInput";
+import { CodeInput } from "../components/CodeInput";
 import DefaultTheme, { Theme } from "../styles/DefaultTheme";
 import { IconI } from "../interfaces/Icon";
 
@@ -39,8 +40,8 @@ describe("Text Input debouncing test", () => {
       const Wrapper: React.FC = () => {
         const [value, setValue] = React.useState("");
         return (
+          //@ts-ignore
           <TextField
-            //@ts-ignore
             theme={DefaultTheme as Theme}
             Icon={React.Fragment as IconI}
             value={value}
@@ -73,6 +74,26 @@ describe("Text Input debouncing test", () => {
 
       render(<Wrapper />);
       testDebounce(1, 23, 0, delay);
+    }
+  );
+
+  test.each([200, 500, 1000])(
+    "should onChangeTextDelayed be called once with %s delay in CodeInput",
+    (delay) => {
+      const Wrapper: React.FC = () => {
+        const [value, setValue] = React.useState("");
+        return (
+          <CodeInput
+            value={value}
+            onChangeText={(text) => setValue(text)}
+            changeTextDelay={delay}
+            onChangeTextDelayed={onChangeTextDelayed}
+          />
+        );
+      };
+
+      render(<Wrapper />);
+      testDebounce("first", "second", "", delay);
     }
   );
 });

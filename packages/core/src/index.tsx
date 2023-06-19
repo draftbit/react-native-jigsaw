@@ -58,6 +58,11 @@ export {
   default as VideoPlayer,
   VideoPlayerRef,
 } from "./components/MediaPlayer/VideoPlayer";
+export {
+  CodeInput,
+  CodeInputCell,
+  CodeInputText,
+} from "./components/CodeInput";
 
 /* Deprecated: Fix or Delete!  */
 export { default as AccordionItem } from "./deprecated-components/AccordionItem";

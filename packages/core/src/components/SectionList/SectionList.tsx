@@ -45,7 +45,10 @@ const SectionList = <T extends { [key: string]: any }>({
   renderItem: renderItemProp,
   ...rest
 }: FlatListSectionListProps<T> | FlashListSectionListProps<T>) => {
-  const data = React.useMemo(() => (dataProp || []) as T[], [dataProp]);
+  const data = React.useMemo(
+    () => (Array.isArray(dataProp) ? dataProp : []) as T[],
+    [dataProp]
+  );
 
   const dataWithSections = React.useMemo(() => {
     const result: SectionListItem<T>[] = [];

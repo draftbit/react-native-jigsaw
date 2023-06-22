@@ -70,7 +70,7 @@ const DeckSwiper = <T extends object>({
     [childrenArray]
   );
 
-  const cardsData = data || cardsFillerData;
+  const cardsData = Array.isArray(data) ? data : cardsFillerData;
 
   const renderCard = (card: any, index: number): JSX.Element => {
     if (renderItem) {

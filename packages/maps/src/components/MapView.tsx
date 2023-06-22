@@ -78,7 +78,7 @@ class MapView<T> extends React.Component<
   private getChildrenForType(type: React.ElementType): React.ReactElement[] {
     const { markersData, renderItem, keyExtractor, children } = this.props;
 
-    if (markersData && renderItem) {
+    if (Array.isArray(markersData) && renderItem) {
       const markers: React.ReactElement[] = [];
 
       markersData.forEach((item, index) => {

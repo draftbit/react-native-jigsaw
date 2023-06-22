@@ -74,7 +74,7 @@ const Swiper = ({
 
   const children: React.ReactNode = React.useMemo(
     () =>
-      data && renderItem
+      Array.isArray(data) && renderItem
         ? data.map((item, index) => {
             const component = renderItem({ item, index });
 

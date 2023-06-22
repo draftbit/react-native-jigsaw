@@ -59,7 +59,7 @@ const Table = <T extends object>({
     return object.isTableHeader;
   }, []);
 
-  const isRenderItem = data && renderItem;
+  const isRenderItem = Array.isArray(data) && renderItem;
 
   //Uses 'renderItem' and 'data' to create an array of children
   const dataAsChildren = React.useMemo(() => {

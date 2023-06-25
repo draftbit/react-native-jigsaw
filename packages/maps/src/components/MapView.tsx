@@ -101,7 +101,7 @@ class MapView<T> extends React.Component<
     } else {
       return flattenReactFragments(
         React.Children.toArray(children) as React.ReactElement[]
-      ).filter((child) => (child as React.ReactElement).type === type);
+      ).filter((child) => child.type === type);
     }
   }
 

@@ -9,6 +9,7 @@ import {
 import { Marker as MapMarkerComponent } from "./react-native-maps";
 import type { MapMarkerProps as MapMarkerComponentProps } from "react-native-maps";
 import MapCallout, { renderCallout } from "./MapCallout";
+import { flattenReactFragments } from "@draftbit/ui";
 
 export interface MapMarkerProps
   extends Omit<MapMarkerComponentProps, "onPress" | "coordinate"> {
@@ -44,14 +45,16 @@ export function renderMarker(
   }: MapMarkerProps,
   key?: React.Key
 ) {
-  const childrenArray = React.Children.toArray(children);
+  const childrenArray = flattenReactFragments(
+    React.Children.toArray(children) as React.ReactElement[]
+  );
 
   const calloutChildren = childrenArray.filter(
-    (child) => (child as React.ReactElement).type === MapCallout
+    (child) => child.type === MapCallout
   );
 
   const nonCalloutChildren = childrenArray.filter(
-    (child) => (child as React.ReactElement).type !== MapCallout
+    (child) => child.type !== MapCallout
   );
 
   // Add default callout for title/description

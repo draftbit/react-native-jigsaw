@@ -6,6 +6,7 @@ import MapMarkerClusterView, {
 } from "./MapMarkerClusterView";
 import { MapMarkerClusterContext } from "./MapMarkerClusterContext";
 import { MapViewContext } from "../MapViewCommon";
+import { flattenReactFragments } from "@draftbit/ui";
 
 /**
  * Component that clusters all markers provided in as children to a single point when zoomed out, and shows the markers themselves when zoomed in
@@ -13,22 +14,29 @@ import { MapViewContext } from "../MapViewCommon";
  *
  * Also accepts MapMarkerClusterView to override the rendered cluster component
  */
-const MapMarkerCluster: React.FC<React.PropsWithChildren> = ({ children }) => {
+const MapMarkerCluster: React.FC<React.PropsWithChildren> = ({
+  children: childrenProp,
+}) => {
   const { region, animateToLocation } = React.useContext(MapViewContext);
 
-  const markers = React.useMemo(
+  const children = React.useMemo(
     () =>
-      React.Children.toArray(children).filter(
-        (child) => (child as React.ReactElement).type === MapMarker
-      ) as React.ReactElement[],
+      flattenReactFragments(
+        React.Children.toArray(childrenProp) as React.ReactElement[]
+      ),
+    [childrenProp]
+  );
+
+  const markers = React.useMemo(
+    () => children.filter((child) => child.type === MapMarker),
     [children]
   );
 
   const clusterView = React.useMemo(
     () =>
-      (React.Children.toArray(children).find(
-        (child) => (child as React.ReactElement).type === MapMarkerClusterView
-      ) || <DefaultMapMarkerClusterView />) as React.ReactElement,
+      children.find((child) => child.type === MapMarkerClusterView) || (
+        <DefaultMapMarkerClusterView />
+      ),
     [children]
   );
 

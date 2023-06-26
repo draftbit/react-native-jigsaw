@@ -279,4 +279,69 @@ describe("MapView tests", () => {
       ]
     `);
   });
+
+  test("should MapMarker render when wrapped in fragment", () => {
+    render(
+      <MapView apiKey="">
+        <>
+          <MapMarker latitude={40.741895} longitude={-73.989308} />
+        </>
+      </MapView>
+    );
+
+    const renderedMarkers = screen
+      .UNSAFE_queryAllByType(MapMarkerComponent)
+      .map((marker) => marker.props.coordinate);
+
+    expect(renderedMarkers).toMatchInlineSnapshot(`
+      [
+        {
+          "latitude": 40.741895,
+          "longitude": -73.989308,
+        },
+      ]
+    `);
+  });
+
+  test("should MapMarkerCluster render when wrapped in fragment", () => {
+    render(
+      <MapView apiKey="">
+        <>
+          <MapMarkerCluster>
+            <MapMarker latitude={41.741895} longitude={-73.989308} />
+            <MapMarker latitude={42.741895} longitude={-73.989308} />
+          </MapMarkerCluster>
+        </>
+      </MapView>
+    );
+
+    const renderedClusters = screen
+      .UNSAFE_queryAllByType(MarkerClusterer)
+      .map((marker) => marker.props.children);
+
+    expect(renderedClusters).toMatchInlineSnapshot(`
+      [
+        [
+          <Marker
+            coordinate={
+              {
+                "latitude": 41.741895,
+                "longitude": -73.989308,
+              }
+            }
+            onPress={[Function]}
+          />,
+          <Marker
+            coordinate={
+              {
+                "latitude": 42.741895,
+                "longitude": -73.989308,
+              }
+            }
+            onPress={[Function]}
+          />,
+        ],
+      ]
+    `);
+  });
 });

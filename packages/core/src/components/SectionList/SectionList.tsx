@@ -2,7 +2,7 @@ import React from "react";
 import { FlashListProps, FlashList } from "@shopify/flash-list";
 import { FlatListProps, FlatList } from "react-native";
 import SectionHeader, { DefaultSectionHeader } from "./SectionHeader";
-import { extractIfNestedInFragment } from "../../utilities";
+import { flattenReactFragments } from "../../utilities";
 
 type ListComponentType = "FlatList" | "FlashList";
 
@@ -92,8 +92,8 @@ const SectionList = <T extends { [key: string]: any }>({
     }
 
     const props = element.props || {};
-    const children = React.Children.toArray(props.children).map((child) =>
-      extractIfNestedInFragment(child as React.ReactElement)
+    const children = flattenReactFragments(
+      React.Children.toArray(props.children) as React.ReactElement[]
     );
 
     if (element.type === SectionHeader) {
@@ -116,8 +116,8 @@ const SectionList = <T extends { [key: string]: any }>({
     }
 
     const props = element.props || {};
-    const children = React.Children.toArray(props.children).map(
-      (child) => child as React.ReactElement
+    const children = flattenReactFragments(
+      React.Children.toArray(props.children) as React.ReactElement[]
     );
     if (element.type === SectionHeader) {
       return null;

@@ -12,10 +12,10 @@ import {
   extractBorderAndMarginStyles,
   extractEffectStyles,
   extractFlexItemStyles,
-  extractIfNestedInFragment,
   extractPositionStyles,
   extractSizeStyles,
   extractStyles,
+  flattenReactFragments,
 } from "../../utilities";
 import { SwipeRow } from "react-native-swipe-list-view";
 import { IconSlot } from "../../interfaces/Icon";
@@ -128,8 +128,8 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
 
   const children: React.ReactNode[] = React.useMemo(
     () =>
-      React.Children.toArray(childrenProp).map((child) =>
-        extractIfNestedInFragment(child as React.ReactElement)
+      flattenReactFragments(
+        React.Children.toArray(childrenProp) as React.ReactElement[]
       ),
     [childrenProp]
   );
@@ -187,6 +187,7 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
   //Renders a single 'behind' item. Used for both buttons and swipe handler
   const renderBehindItem = (item: SwipeableItemBehindItem, index: number) => (
     <Pressable
+      testID="swipeable-behind-item"
       key={index.toString()}
       onPress={() => {
         item.onPress?.();

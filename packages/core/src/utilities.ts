@@ -230,20 +230,25 @@ export function getValueForRadioButton(value: string | number) {
   }
 }
 
-// This is done to ensure that operations that depend on a particular child type still work even when wrapped in a react fragment (ex: .type checks or prop extraction of child)
-// Wrapping in a fragment can happen in Draftbit when a component is wrapped in a conditional for example or inside a Fetch component
-export function extractIfNestedInFragment(
-  component: React.ReactElement
-): React.ReactElement {
-  if (component.type === React.Fragment) {
-    const children = React.Children.toArray(
-      (component.props as any)?.children
-    ) as React.ReactElement[];
+/**
+ * Flattens array of components to remove any top level React.Fragment's (<> </>) and returns the fragment's children in its place
+ * This is useful for operations that depend on a particular child type that would otherwise not match when wrapped in a fragment
+ */
+export function flattenReactFragments(
+  components: React.ReactElement[]
+): React.ReactElement[] {
+  const flattened = [];
+  for (const component of components) {
+    if (component.type === React.Fragment) {
+      const children = React.Children.toArray(
+        component.props?.children
+      ) as React.ReactElement[];
 
-    if (children.length === 1) {
-      return children[0];
+      flattened.push(...children);
+    } else {
+      flattened.push(component);
     }
   }
 
-  return component;
+  return flattened;
 }

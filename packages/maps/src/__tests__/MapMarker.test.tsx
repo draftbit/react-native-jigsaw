@@ -111,4 +111,21 @@ describe("MapMarker tests", () => {
 
     expect(markerPinImage).toBeTruthy();
   });
+
+  test("should MapCallout render when wrapped in fragment", () => {
+    render(
+      <MapView apiKey="">
+        <MapMarker latitude={43.741895} longitude={-73.989308}>
+          <>
+            <MapCallout>
+              <View testID="callout-view" />
+            </MapCallout>
+          </>
+        </MapMarker>
+      </MapView>
+    );
+
+    const calloutView = screen.queryByTestId("callout-view");
+    expect(calloutView).toBeTruthy();
+  });
 });

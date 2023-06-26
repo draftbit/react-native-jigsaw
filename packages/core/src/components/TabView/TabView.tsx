@@ -12,7 +12,7 @@ import TabViewItem from "./TabViewItem";
 import type { IconSlot } from "../../interfaces/Icon";
 import { withTheme } from "../../theming";
 import type { Theme } from "../../styles/DefaultTheme";
-import { extractIfNestedInFragment, extractStyles } from "../../utilities";
+import { flattenReactFragments, extractStyles } from "../../utilities";
 
 type SceneProps = SceneRendererProps & {
   route: Route;
@@ -66,8 +66,8 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
 
   const children: React.ReactNode[] = React.useMemo(
     () =>
-      React.Children.toArray(childrenProp).map((child) =>
-        extractIfNestedInFragment(child as React.ReactElement)
+      flattenReactFragments(
+        React.Children.toArray(childrenProp) as React.ReactElement[]
       ),
     [childrenProp]
   );

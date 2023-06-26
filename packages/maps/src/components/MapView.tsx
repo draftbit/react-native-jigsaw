@@ -10,6 +10,7 @@ import MapMarker, { MapMarkerProps, renderMarker } from "./MapMarker";
 import MapMarkerCluster from "./marker-cluster/MapMarkerCluster";
 import { MapViewContext, ZoomLocation } from "./MapViewCommon";
 import { MapMarkerClusterView } from "./marker-cluster";
+import { flattenReactFragments } from "@draftbit/ui";
 
 export interface MapViewProps<T>
   extends Omit<MapViewComponentProps, "onRegionChangeComplete"> {
@@ -83,21 +84,24 @@ class MapView<T> extends React.Component<
 
       markersData.forEach((item, index) => {
         const component = renderItem?.({ item, index });
+        const flattened = flattenReactFragments([component]);
 
-        if (component && component.type === type) {
-          const key = keyExtractor ? keyExtractor(item, index) : index;
-          markers.push(
-            React.cloneElement(component, {
-              key,
-            })
-          );
-        }
+        flattened.forEach((child) => {
+          if (child && child.type === type) {
+            const key = keyExtractor ? keyExtractor(item, index) : index;
+            markers.push(
+              React.cloneElement(child, {
+                key,
+              })
+            );
+          }
+        });
       });
       return markers;
     } else {
-      return React.Children.toArray(children).filter(
-        (child) => (child as React.ReactElement).type === type
-      ) as React.ReactElement[];
+      return flattenReactFragments(
+        React.Children.toArray(children) as React.ReactElement[]
+      ).filter((child) => child.type === type);
     }
   }
 

@@ -16,9 +16,12 @@ export interface BottomSheetProps extends ScrollViewProps {
   topSnapPosition?: string | number;
   middleSnapPosition?: string | number;
   bottomSnapPosition?: string | number;
-  snapPoints: (string | number)[];
+  snapPoints?: (string | number)[];
   initialSnapIndex?: number;
-  initialSnapPosition: SnapPosition;
+  initialSnapPosition?: SnapPosition;
+  enableOverScroll?: boolean;
+  friction?: number;
+  topInset?: number;
   showHandle?: boolean;
   handleColor?: string;
   topBorderRadius?: number;

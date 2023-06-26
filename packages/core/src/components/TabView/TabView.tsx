@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleProp, ViewStyle } from "react-native";
+import { StyleProp, ViewStyle, TextStyle } from "react-native";
 import {
   TabView,
   TabBar,
@@ -36,7 +36,8 @@ type TabViewProps = {
   pressColor?: string;
   indicatorColor?: string;
   tabsBackgroundColor?: string;
-  style?: StyleProp<ViewStyle>;
+  iconSize?: number;
+  style?: StyleProp<ViewStyle | TextStyle>;
   theme: Theme;
 } & IconSlot;
 
@@ -54,6 +55,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
   pressColor,
   indicatorColor,
   tabsBackgroundColor,
+  iconSize = 16,
   style,
   theme,
   children: childrenProp,
@@ -118,7 +120,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
         labelStyle={textStyles}
         renderIcon={({ route, color }) =>
           route?.icon ? (
-            <Icon name={route.icon} color={color} size={16} />
+            <Icon name={route.icon} color={color} size={iconSize} />
           ) : null
         }
         style={{

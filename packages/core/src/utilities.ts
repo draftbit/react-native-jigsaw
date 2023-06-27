@@ -231,7 +231,7 @@ export function getValueForRadioButton(value: string | number) {
 }
 
 /**
- * Flattens array of components to remove any top level React.Fragment's (<> </>) and returns the fragment's children in its place
+ * Flattens array of components to remove any React.Fragment's (<> </>) and returns the fragment's children in its place
  * This is useful for operations that depend on a particular child type that would otherwise not match when wrapped in a fragment
  */
 export function flattenReactFragments(
@@ -244,7 +244,9 @@ export function flattenReactFragments(
         component.props?.children
       ) as React.ReactElement[];
 
-      flattened.push(...children);
+      for (const child of children) {
+        flattened.push(...flattenReactFragments([child]));
+      }
     } else {
       flattened.push(component);
     }

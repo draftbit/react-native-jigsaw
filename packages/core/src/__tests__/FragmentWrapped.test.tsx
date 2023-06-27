@@ -74,6 +74,19 @@ describe("Type checked components wrapped in a fragment tests", () => {
           <View testID="5" />
           <View testID="6" />
         </>,
+        <>
+          <>
+            <View testID="7" />
+          </>
+        </>,
+        <>
+          <>
+            <>
+              <View testID="8" />
+            </>
+            <View testID="9" />
+          </>
+        </>,
       ];
 
       const result = flattenReactFragments(components);
@@ -96,6 +109,15 @@ describe("Type checked components wrapped in a fragment tests", () => {
           />,
           <View
             testID="6"
+          />,
+          <View
+            testID="7"
+          />,
+          <View
+            testID="8"
+          />,
+          <View
+            testID="9"
           />,
         ]
       `);

@@ -11,6 +11,19 @@ import MapMarkerCluster from "./marker-cluster/MapMarkerCluster";
 import { MapViewContext, ZoomLocation } from "./MapViewCommon";
 import { MapMarkerClusterView } from "./marker-cluster";
 import { flattenReactFragments } from "@draftbit/ui";
+import type { MapMarker as MapMarkerRefType } from "react-native-maps";
+
+export interface MapMarkerContextType {
+  onMarkerPress: (marker: MapMarkerProps) => void;
+  getMarkerRef: (
+    marker: MapMarkerProps
+  ) => React.Ref<MapMarkerRefType> | undefined;
+}
+
+export const MapMarkerContext = React.createContext<MapMarkerContextType>({
+  onMarkerPress: () => {},
+  getMarkerRef: () => undefined,
+});
 
 export interface MapViewProps<T>
   extends Omit<MapViewComponentProps, "onRegionChangeComplete"> {
@@ -35,10 +48,13 @@ class MapView<T> extends React.Component<
   MapViewState
 > {
   private mapRef: React.RefObject<any>;
+  private markerRefs: Map<string, React.RefObject<MapMarkerRefType>>;
+
   constructor(props: React.PropsWithChildren<MapViewProps<T>>) {
     super(props);
     this.state = { region: null };
     this.mapRef = React.createRef();
+    this.markerRefs = new Map();
   }
 
   componentDidUpdate(prevProps: React.PropsWithChildren<MapViewProps<T>>) {
@@ -162,6 +178,23 @@ class MapView<T> extends React.Component<
     return nearbyMarkers;
   }
 
+  // Dismiss all other callouts whenever except the one just pressed. Maintains that only one is opened at a time
+  private onMarkerPress(markerIdentifier: string) {
+    for (const [idenfitifer, markerRef] of this.markerRefs) {
+      if (idenfitifer !== markerIdentifier) markerRef.current?.hideCallout();
+    }
+  }
+
+  private getMarkerRef(markerIdentifier: string) {
+    if (this.markerRefs.has(markerIdentifier)) {
+      return this.markerRefs.get(markerIdentifier);
+    } else {
+      const ref = React.createRef<MapMarkerRefType>();
+      this.markerRefs.set(markerIdentifier, ref);
+      return ref;
+    }
+  }
+
   render() {
     const {
       apiKey,
@@ -231,11 +264,31 @@ class MapView<T> extends React.Component<
           style={[styles.map, style]}
           {...rest}
         >
-          {markers.map((marker, index) => renderMarker(marker.props, index))}
+          {markers.map((marker, index) =>
+            renderMarker(
+              marker.props,
+              index,
+              this.getMarkerRef(getMarkerIdentifier(marker.props)),
+              () => this.onMarkerPress(getMarkerIdentifier(marker.props))
+            )
+          )}
 
-          {clusters.map((cluster, index) => (
-            <React.Fragment key={index}>{cluster}</React.Fragment>
-          ))}
+          {/* 
+            Markers within clusters also need to able to assign refs and propogate press.
+            This is done through context to prevent exposing these internal config options as props of the cluster component
+          */}
+          <MapMarkerContext.Provider
+            value={{
+              getMarkerRef: (marker) =>
+                this.getMarkerRef(getMarkerIdentifier(marker)),
+              onMarkerPress: (marker) =>
+                this.onMarkerPress(getMarkerIdentifier(marker)),
+            }}
+          >
+            {clusters.map((cluster, index) => (
+              <React.Fragment key={index}>{cluster}</React.Fragment>
+            ))}
+          </MapMarkerContext.Provider>
         </MapViewComponent>
       </MapViewContext.Provider>
     );
@@ -286,6 +339,10 @@ function calculateDistanceBetween2PointsMeters(
 
 function degreeToRadian(deg: number) {
   return deg * (Math.PI / 180);
+}
+
+function getMarkerIdentifier(marker: MapMarkerProps) {
+  return `marker-${marker.latitude}-${marker.longitude}`;
 }
 
 export default MapView;

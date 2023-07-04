@@ -178,7 +178,7 @@ class MapView<T> extends React.Component<
     return nearbyMarkers;
   }
 
-  // Dismiss all other callouts whenever except the one just pressed. Maintains that only one is opened at a time
+  // Dismiss all other callouts except the one just pressed. Maintains that only one is opened at a time
   private onMarkerPress(markerIdentifier: string) {
     for (const [idenfitifer, markerRef] of this.markerRefs) {
       if (idenfitifer !== markerIdentifier) markerRef.current?.hideCallout();

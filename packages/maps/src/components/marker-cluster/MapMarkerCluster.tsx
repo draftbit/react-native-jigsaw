@@ -7,6 +7,7 @@ import MapMarkerClusterView, {
 import { MapMarkerClusterContext } from "./MapMarkerClusterContext";
 import { MapViewContext } from "../MapViewCommon";
 import { flattenReactFragments } from "@draftbit/ui";
+import { MapMarkerContext } from "../MapView";
 
 /**
  * Component that clusters all markers provided in as children to a single point when zoomed out, and shows the markers themselves when zoomed in
@@ -41,44 +42,52 @@ const MapMarkerCluster: React.FC<React.PropsWithChildren> = ({
   );
 
   return (
-    <MarkerClusterer
-      region={region}
-      renderCluster={({ pointCount, coordinate, expansionZoom }) => {
-        const { latitude, longitude } = coordinate;
+    <MapMarkerContext.Consumer>
+      {({ getMarkerRef, onMarkerPress }) => (
+        <MarkerClusterer
+          region={region}
+          renderCluster={({ pointCount, coordinate, expansionZoom }) => {
+            const { latitude, longitude } = coordinate;
 
-        // onPress needs to be lifted out and passed to Marker directly because Marker intercepts all touch events
-        const clusterViewOnPress = clusterView.props?.onPress;
-        const zoomOnPress = clusterView.props?.zoomOnPress ?? true;
+            // onPress needs to be lifted out and passed to Marker directly because Marker intercepts all touch events
+            const clusterViewOnPress = clusterView.props?.onPress;
+            const zoomOnPress = clusterView.props?.zoomOnPress ?? true;
 
-        const onPress = () => {
-          clusterViewOnPress?.(latitude, longitude);
-          if (zoomOnPress) {
-            animateToLocation({
-              latitude,
-              longitude,
-              zoom: expansionZoom + 3,
-            });
-          }
-        };
+            const onPress = () => {
+              clusterViewOnPress?.(latitude, longitude);
+              if (zoomOnPress) {
+                animateToLocation({
+                  latitude,
+                  longitude,
+                  zoom: expansionZoom + 3,
+                });
+              }
+            };
 
-        return (
-          <MapMarkerClusterContext.Provider
-            value={{
-              markerCount: pointCount,
-            }}
-          >
-            {renderMarker({
-              latitude,
-              longitude,
-              children: clusterView,
-              onPress,
-            })}
-          </MapMarkerClusterContext.Provider>
-        );
-      }}
-    >
-      {markers.map((marker, index) => renderMarker(marker.props, index))}
-    </MarkerClusterer>
+            return (
+              <MapMarkerClusterContext.Provider
+                value={{
+                  markerCount: pointCount,
+                }}
+              >
+                {renderMarker({
+                  latitude,
+                  longitude,
+                  children: clusterView,
+                  onPress,
+                })}
+              </MapMarkerClusterContext.Provider>
+            );
+          }}
+        >
+          {markers.map((marker, index) =>
+            renderMarker(marker.props, index, getMarkerRef(marker.props), () =>
+              onMarkerPress(marker.props)
+            )
+          )}
+        </MarkerClusterer>
+      )}
+    </MapMarkerContext.Consumer>
   );
 };
 

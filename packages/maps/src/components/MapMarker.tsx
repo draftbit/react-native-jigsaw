@@ -35,12 +35,7 @@ const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = () => {
 };
 
 export function renderMarker(
-  props: MapMarkerProps,
-  key?: React.Key,
-  ref?: React.Ref<MapMarkerRefType>,
-  onMarkerPress?: () => void
-) {
-  const {
+  {
     latitude,
     longitude,
     pinImage,
@@ -50,8 +45,11 @@ export function renderMarker(
     title,
     description,
     ...rest
-  } = props;
-
+  }: MapMarkerProps,
+  key?: React.Key,
+  ref?: React.Ref<MapMarkerRefType>,
+  onMarkerPress?: () => void
+) {
   const childrenArray = flattenReactFragments(
     React.Children.toArray(children) as React.ReactElement[]
   );

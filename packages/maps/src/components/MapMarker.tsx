@@ -7,7 +7,10 @@ import {
   Text,
 } from "react-native";
 import { Marker as MapMarkerComponent } from "./react-native-maps";
-import type { MapMarkerProps as MapMarkerComponentProps } from "react-native-maps";
+import type {
+  MapMarkerProps as MapMarkerComponentProps,
+  MapMarker as MapMarkerRefType,
+} from "react-native-maps";
 import MapCallout, { renderCallout } from "./MapCallout";
 import { flattenReactFragments } from "@draftbit/ui";
 
@@ -43,7 +46,9 @@ export function renderMarker(
     description,
     ...rest
   }: MapMarkerProps,
-  key?: React.Key
+  key?: React.Key,
+  ref?: React.Ref<MapMarkerRefType>,
+  onMarkerPress?: () => void
 ) {
   const childrenArray = flattenReactFragments(
     React.Children.toArray(children) as React.ReactElement[]
@@ -73,12 +78,14 @@ export function renderMarker(
 
   return (
     <MapMarkerComponent
+      ref={ref}
       key={key}
       coordinate={{
         latitude,
         longitude,
       }}
       onPress={(event) => {
+        onMarkerPress?.();
         const coordinate = event.nativeEvent.coordinate;
         onPress?.(coordinate.latitude, coordinate.longitude);
       }}

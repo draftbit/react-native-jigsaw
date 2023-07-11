@@ -72,6 +72,7 @@ const CodeInput = React.forwardRef<NativeTextInput, CodeInputProps>(
         value={value}
         onChangeText={onChangeText}
         rootStyle={style}
+        textInputStyle={{ height: "100%" }} // addresses issue on firefox where the hidden input did not fill the height
         InputComponent={TextInput}
         cellCount={cellCount}
         renderCell={({ symbol, index, isFocused }) => (

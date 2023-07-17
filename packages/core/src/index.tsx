@@ -63,6 +63,7 @@ export {
   CodeInputCell,
   CodeInputText,
 } from "./components/CodeInput";
+export { Center, Circle, Square } from "./components/Layout";
 
 /* Deprecated: Fix or Delete!  */
 export { default as AccordionItem } from "./deprecated-components/AccordionItem";
@@ -77,9 +78,9 @@ export { default as Container } from "./deprecated-components/Container";
 export { default as FAB } from "./deprecated-components/FAB";
 export { default as FieldSearchBarFull } from "./deprecated-components/FieldSearchBarFull";
 export {
-  Center,
-  Circle,
-  Square,
+  Center as DeprecatedCenter,
+  Circle as DeprecatedCircle,
+  Square as DeprecatedSquare,
   Spacer,
   Row,
   Stack,

@@ -63,7 +63,15 @@ export {
   CodeInputCell,
   CodeInputText,
 } from "./components/CodeInput";
-export { Center, Circle, Square } from "./components/Layout";
+export {
+  AspectRatio,
+  Circle,
+  Center,
+  HStack,
+  VStack,
+  ZStack,
+  Square,
+} from "./components/Layout";
 
 /* Deprecated: Fix or Delete!  */
 export { default as AccordionItem } from "./deprecated-components/AccordionItem";

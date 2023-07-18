@@ -70,6 +70,7 @@ export {
   HStack,
   VStack,
   ZStack,
+  Spacer,
   Square,
 } from "./components/Layout";
 
@@ -89,7 +90,6 @@ export {
   Center as DeprecatedCenter,
   Circle as DeprecatedCircle,
   Square as DeprecatedSquare,
-  Spacer,
   Row,
   Stack,
 } from "./deprecated-components/Layout";

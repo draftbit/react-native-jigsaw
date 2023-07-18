@@ -180,10 +180,17 @@ class MapView<T> extends React.Component<
   }
 
   // Dismiss all other callouts except the one just pressed. Maintains that only one is opened at a time
-  private onMarkerPress(markerIdentifier: string) {
-    for (const [idenfitifer, markerRef] of this.markerRefs) {
-      if (idenfitifer !== markerIdentifier) markerRef.current?.hideCallout();
+  // Web specfic, this is the default on native
+  private dismissAllOtherCallouts(markerIdentifier: string) {
+    if (Platform.OS === "web") {
+      for (const [idenfitifer, markerRef] of this.markerRefs) {
+        if (idenfitifer !== markerIdentifier) markerRef.current?.hideCallout();
+      }
     }
+  }
+
+  private onMarkerPress(markerIdentifier: string) {
+    this.dismissAllOtherCallouts(markerIdentifier);
   }
 
   private getMarkerRef(markerIdentifier: string) {

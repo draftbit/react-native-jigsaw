@@ -10,7 +10,7 @@ import {
   CodeField,
   useClearByFocusCell,
 } from "react-native-confirmation-code-field";
-import { DefaultCodeInputCell } from "./CodeInputCell";
+import { DefaultPinInputCell } from "./PinInputCell";
 
 interface CellItem {
   cellValue: string;
@@ -18,7 +18,7 @@ interface CellItem {
   isFocused: boolean;
 }
 
-interface CodeInputProps extends TextInputProps {
+interface PinInputProps extends TextInputProps {
   onInputFull?: (value: string) => void;
   cellCount?: number;
   clearOnCellFocus?: boolean;
@@ -27,7 +27,7 @@ interface CodeInputProps extends TextInputProps {
   style?: StyleProp<ViewStyle>;
 }
 
-const CodeInput = React.forwardRef<NativeTextInput, CodeInputProps>(
+const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
   (
     {
       onInputFull,
@@ -42,12 +42,12 @@ const CodeInput = React.forwardRef<NativeTextInput, CodeInputProps>(
     },
     ref
   ) => {
-    const newCodeInputRef = React.useRef<NativeTextInput>(null);
+    const newPinInputRef = React.useRef<NativeTextInput>(null);
 
     // Use the provided ref or default to new ref when not provided
-    const codeInputRef = ref
+    const PinInputRef = ref
       ? (ref as React.RefObject<NativeTextInput>)
-      : newCodeInputRef;
+      : newPinInputRef;
 
     // Clears input of a cell when focused, configured as explained here (https://github.com/retyui/react-native-confirmation-code-field/blob/master/API.md#useclearbyfocuscellvalue-string-setvalue-text-string--void)
     const [codeFieldProps, getCellOnLayout] = useClearByFocusCell({
@@ -58,16 +58,16 @@ const CodeInput = React.forwardRef<NativeTextInput, CodeInputProps>(
     React.useEffect(() => {
       if (value?.length === cellCount) {
         if (blurOnFull) {
-          codeInputRef.current?.blur();
+          PinInputRef.current?.blur();
         }
         onInputFull?.(value);
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [value, cellCount, blurOnFull, codeInputRef]);
+    }, [value, cellCount, blurOnFull, PinInputRef]);
 
     return (
       <CodeField
-        ref={codeInputRef}
+        ref={PinInputRef}
         {...(clearOnCellFocus ? codeFieldProps : {})}
         value={value}
         onChangeText={onChangeText}
@@ -82,7 +82,7 @@ const CodeInput = React.forwardRef<NativeTextInput, CodeInputProps>(
             style={{ flex: 1 }}
           >
             {renderItem?.({ cellValue: symbol, index, isFocused }) || (
-              <DefaultCodeInputCell cellValue={symbol} isFocused={isFocused} />
+              <DefaultPinInputCell cellValue={symbol} isFocused={isFocused} />
             )}
           </View>
         )}
@@ -92,4 +92,4 @@ const CodeInput = React.forwardRef<NativeTextInput, CodeInputProps>(
   }
 );
 
-export default CodeInput;
+export default PinInput;

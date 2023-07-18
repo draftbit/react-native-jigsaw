@@ -2,27 +2,27 @@ import React from "react";
 import { StyleProp, ViewStyle, View, StyleSheet } from "react-native";
 import type { Theme } from "../../styles/DefaultTheme";
 import { withTheme } from "../../theming";
-import CodeInputText from "./CodeInputText";
+import PinInputText from "./PinInputText";
 
-interface CodeInputCellProps {
+interface PinInputCellProps {
   style?: StyleProp<ViewStyle>;
 }
 
-const CodeInputCell: React.FC<React.PropsWithChildren<CodeInputCellProps>> = ({
+const PinInputCell: React.FC<React.PropsWithChildren<PinInputCellProps>> = ({
   style,
   children,
 }) => {
   return <View style={[styles.cell, style]} children={children} />;
 };
 
-interface DefaultCodeInputCellProps {
+interface DefaultPinInputCellProps {
   cellValue: string;
   isFocused: boolean;
   theme: Theme;
 }
 
-export const DefaultCodeInputCell = withTheme(
-  ({ cellValue, isFocused, theme }: DefaultCodeInputCellProps) => {
+export const DefaultPinInputCell = withTheme(
+  ({ cellValue, isFocused, theme }: DefaultPinInputCellProps) => {
     return (
       <View
         testID="default-code-input-cell"
@@ -37,7 +37,7 @@ export const DefaultCodeInputCell = withTheme(
           },
         ]}
       >
-        <CodeInputText
+        <PinInputText
           style={[
             styles.defaultCellText,
             {
@@ -47,7 +47,7 @@ export const DefaultCodeInputCell = withTheme(
           isFocused={isFocused}
         >
           {cellValue}
-        </CodeInputText>
+        </PinInputText>
       </View>
     );
   }
@@ -70,4 +70,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CodeInputCell;
+export default PinInputCell;

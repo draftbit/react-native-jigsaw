@@ -3,7 +3,7 @@ import { render, screen, fireEvent, act } from "@testing-library/react-native";
 import TextInput from "../components/TextInput";
 import TextField from "../components/TextField";
 import NumberInput from "../components/NumberInput";
-import { CodeInput } from "../components/CodeInput";
+import { PinInput } from "../components/PinInput";
 import DefaultTheme, { Theme } from "../styles/DefaultTheme";
 import { IconI } from "../interfaces/Icon";
 
@@ -78,12 +78,12 @@ describe("Text Input debouncing test", () => {
   );
 
   test.each([200, 500, 1000])(
-    "should onChangeTextDelayed be called once with %s delay in CodeInput",
+    "should onChangeTextDelayed be called once with %s delay in PinInput",
     (delay) => {
       const Wrapper: React.FC = () => {
         const [value, setValue] = React.useState("");
         return (
-          <CodeInput
+          <PinInput
             value={value}
             onChangeText={(text) => setValue(text)}
             changeTextDelay={delay}

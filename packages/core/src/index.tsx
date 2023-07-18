@@ -58,11 +58,7 @@ export {
   default as VideoPlayer,
   VideoPlayerRef,
 } from "./components/MediaPlayer/VideoPlayer";
-export {
-  CodeInput,
-  CodeInputCell,
-  CodeInputText,
-} from "./components/CodeInput";
+export { PinInput, PinInputCell, PinInputText } from "./components/PinInput";
 export {
   AspectRatio,
   Circle,

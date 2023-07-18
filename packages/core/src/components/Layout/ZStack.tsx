@@ -15,11 +15,14 @@ const ZStack: React.FC<ZStackProps> = ({ reversed, children, ...rest }) => {
       childrenArray = childrenArray.reverse();
     }
 
-    return childrenArray.map((child) => {
+    return childrenArray.map((child, index) => {
       const props = child.props || {};
       return React.cloneElement(
         child,
-        { ...props, style: { position: "absolute", ...props.style } },
+        {
+          ...props,
+          style: { position: "absolute", zIndex: index + 1, ...props.style },
+        },
         props.children
       );
     });

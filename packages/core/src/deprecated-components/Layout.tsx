@@ -3,6 +3,9 @@ import { View, StyleProp, ViewStyle } from "react-native";
 // @ts-ignore
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 
+/**
+ * @deprecated DEPRECATED
+ */
 export function Center({
   width = 240,
   height = 200,
@@ -36,6 +39,9 @@ export function Center({
   );
 }
 
+/**
+ * @deprecated DEPRECATED
+ */
 export function Circle({
   size = 50,
   bgColor,
@@ -65,6 +71,9 @@ export function Circle({
   );
 }
 
+/**
+ * @deprecated DEPRECATED
+ */
 export function Square({
   size = 50,
   bgColor,
@@ -122,6 +131,9 @@ export function Row({
   );
 }
 
+/**
+ * @deprecated DEPRECATED
+ */
 export function Spacer({
   top = 8,
   right = 8,

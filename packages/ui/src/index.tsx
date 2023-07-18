@@ -62,6 +62,10 @@ export {
   CodeInput,
   CodeInputCell,
   CodeInputText,
+  AspectRatio,
+  HStack,
+  VStack,
+  ZStack,
 } from "@draftbit/core";
 
 /**

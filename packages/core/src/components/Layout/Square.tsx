@@ -19,8 +19,8 @@ const Square: React.FC<SquareProps> = ({ size, style, onLayout, ...rest }) => {
       {...rest}
       style={[
         style,
-        size ? { width: size, height: size } : {},
-        calculatedSize
+        size != undefined ? { width: size, height: size } : {},
+        calculatedSize > 0
           ? {
               width: calculatedSize,
               height: calculatedSize,

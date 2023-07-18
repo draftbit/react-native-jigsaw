@@ -25,7 +25,6 @@ export {
   ActionSheetCancel,
 } from "./components/ActionSheet";
 export { Swiper, SwiperItem } from "./components/Swiper";
-export { Center, Circle, Square, Spacer } from "./components/Layout";
 export {
   RadioButton,
   RadioButtonGroup,
@@ -64,6 +63,15 @@ export {
   CodeInputCell,
   CodeInputText,
 } from "./components/CodeInput";
+export {
+  AspectRatio,
+  Circle,
+  Center,
+  HStack,
+  VStack,
+  ZStack,
+  Square,
+} from "./components/Layout";
 
 /* Deprecated: Fix or Delete!  */
 export { default as AccordionItem } from "./deprecated-components/AccordionItem";
@@ -77,7 +85,14 @@ export { default as CircleImage } from "./deprecated-components/CircleImage";
 export { default as Container } from "./deprecated-components/Container";
 export { default as FAB } from "./deprecated-components/FAB";
 export { default as FieldSearchBarFull } from "./deprecated-components/FieldSearchBarFull";
-export { Row, Stack } from "./components/Layout";
+export {
+  Center as DeprecatedCenter,
+  Circle as DeprecatedCircle,
+  Square as DeprecatedSquare,
+  Spacer,
+  Row,
+  Stack,
+} from "./deprecated-components/Layout";
 export { default as ToggleButton } from "./deprecated-components/ToggleButton";
 export { default as ProgressBar } from "./deprecated-components/ProgressBar";
 export { default as ProgressCircle } from "./deprecated-components/ProgressCircle";

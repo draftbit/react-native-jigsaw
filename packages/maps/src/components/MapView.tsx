@@ -26,7 +26,7 @@ export const MapMarkerContext = React.createContext<MapMarkerContextType>({
 });
 
 export interface MapViewProps<T>
-  extends Omit<MapViewComponentProps, "onRegionChangeComplete"> {
+  extends Omit<MapViewComponentProps, "onRegionChangeComplete" | "onPress"> {
   apiKey: string;
   zoom?: number;
   latitude?: number;
@@ -37,6 +37,7 @@ export interface MapViewProps<T>
   keyExtractor?: (item: T, index: number) => string;
   renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
   onRegionChange?: (region: Region) => void;
+  onPress?: (latitude: number, longitude: number) => void;
 }
 
 interface MapViewState {
@@ -215,6 +216,7 @@ class MapView<T> extends React.Component<
       autoClusterMarkers = false,
       autoClusterMarkersDistanceMeters = 1000,
       onRegionChange,
+      onPress,
       style,
       ...rest
     } = this.props;
@@ -271,6 +273,10 @@ class MapView<T> extends React.Component<
             onRegionChange?.(region);
           }}
           onRegionChange={(region) => this.setState({ region })}
+          onPress={(event) => {
+            const coordinate = event.nativeEvent.coordinate;
+            onPress?.(coordinate.latitude, coordinate.longitude);
+          }}
           style={[styles.map, style]}
           {...rest}
         >

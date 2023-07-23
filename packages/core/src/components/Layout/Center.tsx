@@ -1,8 +1,12 @@
 import React from "react";
 import { View, ViewProps, StyleSheet } from "react-native";
+import { convertBackwardCompatiblePropsToStyle } from "./LayoutCommon";
 
 const Center: React.FC<ViewProps> = ({ style, ...rest }) => {
-  return <View {...rest} style={[styles.center, style]} />;
+  const backwardsCompatibleStyle = convertBackwardCompatiblePropsToStyle(rest);
+  return (
+    <View {...rest} style={[styles.center, backwardsCompatibleStyle, style]} />
+  );
 };
 
 const styles = StyleSheet.create({

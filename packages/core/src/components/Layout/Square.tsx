@@ -1,6 +1,8 @@
 import React from "react";
 import { ViewProps } from "react-native";
 import Center from "./Center";
+import { pick } from "lodash";
+import { convertBackwardCompatiblePropsToStyle } from "./LayoutCommon";
 
 interface SquareProps extends ViewProps {
   size?: number;
@@ -8,6 +10,10 @@ interface SquareProps extends ViewProps {
 
 const Square: React.FC<SquareProps> = ({ size, style, onLayout, ...rest }) => {
   const [calculatedSize, setCalculatedSize] = React.useState(0);
+  const backwardsCompatibleStyle = pick(
+    convertBackwardCompatiblePropsToStyle(rest),
+    "backgroundColor"
+  );
 
   return (
     <Center
@@ -18,6 +24,7 @@ const Square: React.FC<SquareProps> = ({ size, style, onLayout, ...rest }) => {
       }}
       {...rest}
       style={[
+        backwardsCompatibleStyle,
         style,
         size != undefined ? { width: size, height: size } : {},
         calculatedSize > 0

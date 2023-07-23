@@ -1,13 +1,26 @@
 import React from "react";
 import { ViewProps, StyleSheet } from "react-native";
 import Square from "./Square";
+import { pick } from "lodash";
+import { convertBackwardCompatiblePropsToStyle } from "./LayoutCommon";
 
 interface CircleProps extends ViewProps {
   size?: number;
 }
 
 const Circle: React.FC<CircleProps> = ({ size, style, ...rest }) => {
-  return <Square {...rest} size={size} style={[style, styles.circle]} />;
+  const backwardsCompatibleStyle = pick(
+    convertBackwardCompatiblePropsToStyle(rest),
+    "backgroundColor"
+  );
+
+  return (
+    <Square
+      {...rest}
+      size={size}
+      style={[backwardsCompatibleStyle, style, styles.circle]}
+    />
+  );
 };
 
 const styles = StyleSheet.create({

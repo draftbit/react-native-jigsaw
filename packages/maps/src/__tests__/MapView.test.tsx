@@ -19,9 +19,11 @@ jest.mock("../components/react-native-maps", () => {
     animateCamera = mockAnimateCamera;
   }
 
-  const Marker = (props: any) => {
-    return <>{props.children}</>;
-  };
+  class Marker extends React.Component {
+    render(): React.ReactNode {
+      return <>{this.props.children}</>;
+    }
+  }
 
   return {
     __esModule: true,

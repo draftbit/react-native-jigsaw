@@ -12,6 +12,7 @@ import { MapViewContext, ZoomLocation } from "./MapViewCommon";
 import { MapMarkerClusterView } from "./marker-cluster";
 import { flattenReactFragments } from "@draftbit/ui";
 import type { MapMarker as MapMarkerRefType } from "react-native-maps";
+import { useDeepCompareMemo } from "./useDeepCompareMemo";
 
 export interface MapMarkerContextType {
   onMarkerPress: (marker: MapMarkerProps) => void;
@@ -26,7 +27,7 @@ export const MapMarkerContext = React.createContext<MapMarkerContextType>({
 });
 
 export interface MapViewProps<T>
-  extends Omit<MapViewComponentProps, "onRegionChangeComplete"> {
+  extends Omit<MapViewComponentProps, "onRegionChangeComplete" | "onPress"> {
   apiKey: string;
   zoom?: number;
   latitude?: number;
@@ -37,44 +38,301 @@ export interface MapViewProps<T>
   keyExtractor?: (item: T, index: number) => string;
   renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
   onRegionChange?: (region: Region) => void;
+  onPress?: (latitude: number, longitude: number) => void;
 }
 
-interface MapViewState {
-  region: Region | null;
-}
+const MapViewF = <T extends object>({
+  apiKey,
+  provider = Platform.OS === "web" ? "google" : undefined,
+  latitude,
+  longitude,
+  zoom,
+  showsCompass = false,
+  loadingEnabled = true,
+  autoClusterMarkers = false,
+  autoClusterMarkersDistanceMeters = 1000,
+  markersData,
+  keyExtractor,
+  renderItem,
+  children,
+  onRegionChange,
+  onPress,
+  style,
+  animateToLocation,
+  mapRef,
+  ...rest
+}: MapViewProps<T> & {
+  animateToLocation: (location: ZoomLocation) => void;
+  mapRef: React.RefObject<MapViewComponent>;
+}) => {
+  const [currentRegion, setCurrentRegion] = React.useState<Region | null>(null);
 
-class MapView<T> extends React.Component<
-  React.PropsWithChildren<MapViewProps<T>>,
-  MapViewState
-> {
-  private mapRef: React.RefObject<any>;
-  private markerRefs: Map<string, React.RefObject<MapMarkerRefType>>;
+  const markerRefs = React.useMemo<
+    Map<string, React.RefObject<MapMarkerRefType>>
+  >(() => new Map(), []);
 
-  constructor(props: React.PropsWithChildren<MapViewProps<T>>) {
-    super(props);
-    this.state = { region: null };
-    this.mapRef = React.createRef();
-    this.markerRefs = new Map();
-  }
+  const camera: Camera = React.useMemo(
+    () => ({
+      altitude: zoomToAltitude(zoom || 1),
+      heading: 0,
+      pitch: 0,
+      zoom,
+      center: {
+        latitude: latitude || 0,
+        longitude: longitude || 0,
+      },
+    }),
+    [latitude, longitude, zoom]
+  );
 
-  componentDidUpdate(prevProps: React.PropsWithChildren<MapViewProps<T>>) {
-    if (
-      prevProps.latitude != null &&
-      prevProps.longitude != null &&
-      this.props.latitude != null &&
-      this.props.longitude != null &&
-      (prevProps.latitude !== this.props.latitude ||
-        prevProps.longitude !== this.props.longitude)
-    ) {
-      this.animateToLocation({
-        latitude: this.props.latitude,
-        longitude: this.props.longitude,
-        zoom: this.props.zoom,
+  const getChildrenForType = React.useCallback(
+    (type: React.ElementType): React.ReactElement[] => {
+      if (Array.isArray(markersData) && renderItem) {
+        const markers: React.ReactElement[] = [];
+
+        markersData.forEach((item, index) => {
+          const component = renderItem?.({ item, index });
+          const flattened = flattenReactFragments([component]);
+
+          flattened.forEach((child) => {
+            if (child && child.type === type) {
+              const key = keyExtractor ? keyExtractor(item, index) : index;
+              markers.push(
+                React.cloneElement(child, {
+                  key,
+                })
+              );
+            }
+          });
+        });
+        return markers;
+      } else {
+        return flattenReactFragments(
+          React.Children.toArray(children) as React.ReactElement[]
+        ).filter((child) => child.type === type);
+      }
+    },
+    [markersData, renderItem, keyExtractor, children]
+  );
+
+  // Dismiss all other callouts except the one just pressed. Maintains that only one is opened at a time
+  // Web specfic, this is the default on native
+  const dismissAllOtherCallouts = React.useCallback(
+    (markerIdentifier: string) => {
+      if (Platform.OS === "web") {
+        for (const [idenfitifer, markerRef] of markerRefs) {
+          if (idenfitifer !== markerIdentifier)
+            markerRef.current?.hideCallout();
+        }
+      }
+    },
+    [markerRefs]
+  );
+
+  const getMarkerRef = React.useCallback(
+    (markerIdentifier: string) => {
+      if (markerRefs.has(markerIdentifier)) {
+        return markerRefs.get(markerIdentifier);
+      } else {
+        const ref = React.createRef<MapMarkerRefType>();
+        markerRefs.set(markerIdentifier, ref);
+        return ref;
+      }
+    },
+    [markerRefs]
+  );
+
+  const getNearbyMarkers = React.useCallback(
+    (
+      lat: number,
+      long: number,
+      markers: React.ReactElement[],
+      distanceMeters: number
+    ): React.ReactElement[] => {
+      const nearbyMarkers: React.ReactElement[] = [];
+
+      for (const marker of markers) {
+        const { latitude: lat2, longitude: long2 } =
+          marker.props as MapMarkerProps;
+
+        const distance = calculateDistanceBetween2PointsMeters(
+          lat,
+          long,
+          lat2,
+          long2
+        );
+
+        if (distance <= distanceMeters) {
+          nearbyMarkers.push(marker);
+        }
+      }
+
+      return nearbyMarkers;
+    },
+    []
+  );
+
+  const clusterMarkers = React.useCallback(
+    (
+      markers: React.ReactElement[],
+      clusters: React.ReactElement[],
+      distanceMeters: number,
+      clusterView?: React.ReactElement
+    ) => {
+      for (const marker of markers) {
+        const { latitude: lat, longitude: long } =
+          marker.props as MapMarkerProps;
+
+        const nearbyMarkers = getNearbyMarkers(
+          lat,
+          long,
+          markers,
+          distanceMeters
+        );
+
+        if (nearbyMarkers.length > 1) {
+          for (const nearbyMarker of nearbyMarkers) {
+            markers.splice(markers.indexOf(nearbyMarker), 1);
+          }
+          clusters.push(
+            <MapMarkerCluster>
+              {clusterView}
+              {nearbyMarkers}
+            </MapMarkerCluster>
+          );
+        }
+      }
+    },
+    [getNearbyMarkers]
+  );
+
+  React.useEffect(() => {
+    if (latitude && longitude) {
+      animateToLocation({
+        latitude,
+        longitude,
+        zoom,
       });
     }
+  }, [latitude, longitude, zoom, animateToLocation]);
+
+  const markers = React.useMemo(
+    () => getChildrenForType(MapMarker),
+    [getChildrenForType]
+  );
+  const clusters = React.useMemo(
+    () => getChildrenForType(MapMarkerCluster),
+    [getChildrenForType]
+  );
+  const clusterView = React.useMemo(
+    () => getChildrenForType(MapMarkerClusterView).at(0),
+    [getChildrenForType]
+  ); //Only take the first, ignore any others
+
+  if (autoClusterMarkers) {
+    clusterMarkers(
+      markers,
+      clusters,
+      autoClusterMarkersDistanceMeters,
+      clusterView
+    );
   }
 
-  animateToLocation({ latitude, longitude, zoom }: ZoomLocation) {
+  const memoizedMapView = useDeepCompareMemo(
+    () => (
+      <MapViewComponent
+        ref={mapRef}
+        onMapReady={() => {
+          // This initial animateToLocation ensures that 'region' state is initially set
+          animateToLocation({
+            latitude: latitude || 0,
+            longitude: longitude || 0,
+            zoom,
+          });
+        }}
+        provider={provider}
+        googleMapsApiKey={apiKey}
+        showsCompass={showsCompass}
+        initialCamera={camera}
+        loadingEnabled={loadingEnabled}
+        onRegionChangeComplete={(region) => {
+          onRegionChange?.(region);
+        }}
+        onRegionChange={setCurrentRegion}
+        onPress={(event) => {
+          const coordinate = event.nativeEvent.coordinate;
+          onPress?.(coordinate.latitude, coordinate.longitude);
+        }}
+        style={[styles.map, style]}
+        {...rest}
+      >
+        {markers.map((marker, index) =>
+          renderMarker(
+            marker.props,
+            index,
+            getMarkerRef(getMarkerIdentifier(marker.props)),
+            () => dismissAllOtherCallouts(getMarkerIdentifier(marker.props))
+          )
+        )}
+
+        {/* 
+            Markers within clusters also need to able to assign refs and propogate press.
+            This is done through context to prevent exposing these internal config options as props of the cluster component
+          */}
+        <MapMarkerContext.Provider
+          value={{
+            getMarkerRef: (marker) => getMarkerRef(getMarkerIdentifier(marker)),
+            onMarkerPress: (marker) =>
+              dismissAllOtherCallouts(getMarkerIdentifier(marker)),
+          }}
+        >
+          {clusters.map((cluster, index) => (
+            <React.Fragment key={index}>{cluster}</React.Fragment>
+          ))}
+        </MapMarkerContext.Provider>
+      </MapViewComponent>
+    ),
+    [
+      animateToLocation,
+      apiKey,
+      camera,
+      clusters,
+      dismissAllOtherCallouts,
+      getMarkerRef,
+      latitude,
+      loadingEnabled,
+      longitude,
+      mapRef,
+      markers,
+      onPress,
+      onRegionChange,
+      provider,
+      rest,
+      setCurrentRegion,
+      showsCompass,
+      style,
+      zoom,
+    ]
+  );
+
+  return (
+    <MapViewContext.Provider
+      value={{
+        animateToLocation: (location) => animateToLocation(location),
+        region: currentRegion,
+      }}
+    >
+      {memoizedMapView}
+    </MapViewContext.Provider>
+  );
+};
+
+class MapView<T extends object> extends React.Component<
+  React.PropsWithChildren<MapViewProps<T>>
+> {
+  private mapRef: React.RefObject<any> = React.createRef();
+
+  animateToLocation = ({ latitude, longitude, zoom }: ZoomLocation) => {
     const camera: Camera = {
       heading: 0,
       pitch: 0,
@@ -89,208 +347,16 @@ class MapView<T> extends React.Component<
       camera.zoom = zoom;
     }
 
-    this.mapRef.current.animateCamera(camera);
-  }
-
-  private getChildrenForType(type: React.ElementType): React.ReactElement[] {
-    const { markersData, renderItem, keyExtractor, children } = this.props;
-
-    if (Array.isArray(markersData) && renderItem) {
-      const markers: React.ReactElement[] = [];
-
-      markersData.forEach((item, index) => {
-        const component = renderItem?.({ item, index });
-        const flattened = flattenReactFragments([component]);
-
-        flattened.forEach((child) => {
-          if (child && child.type === type) {
-            const key = keyExtractor ? keyExtractor(item, index) : index;
-            markers.push(
-              React.cloneElement(child, {
-                key,
-              })
-            );
-          }
-        });
-      });
-      return markers;
-    } else {
-      return flattenReactFragments(
-        React.Children.toArray(children) as React.ReactElement[]
-      ).filter((child) => child.type === type);
-    }
-  }
-
-  private clusterMarkers(
-    markers: React.ReactElement[],
-    clusters: React.ReactElement[],
-    distanceMeters: number,
-    clusterView?: React.ReactElement
-  ) {
-    for (const marker of markers) {
-      const { latitude, longitude } = marker.props as MapMarkerProps;
-
-      const nearbyMarkers = this.getNearbyMarkers(
-        latitude,
-        longitude,
-        markers,
-        distanceMeters
-      );
-
-      if (nearbyMarkers.length > 1) {
-        for (const nearbyMarker of nearbyMarkers) {
-          markers.splice(markers.indexOf(nearbyMarker), 1);
-        }
-        clusters.push(
-          <MapMarkerCluster>
-            {clusterView}
-            {nearbyMarkers}
-          </MapMarkerCluster>
-        );
-      }
-    }
-  }
-
-  private getNearbyMarkers(
-    lat: number,
-    long: number,
-    markers: React.ReactElement[],
-    distanceMeters: number
-  ): React.ReactElement[] {
-    const nearbyMarkers: React.ReactElement[] = [];
-
-    for (const marker of markers) {
-      const { latitude: lat2, longitude: long2 } =
-        marker.props as MapMarkerProps;
-
-      const distance = calculateDistanceBetween2PointsMeters(
-        lat,
-        long,
-        lat2,
-        long2
-      );
-
-      if (distance <= distanceMeters) {
-        nearbyMarkers.push(marker);
-      }
-    }
-
-    return nearbyMarkers;
-  }
-
-  // Dismiss all other callouts except the one just pressed. Maintains that only one is opened at a time
-  private onMarkerPress(markerIdentifier: string) {
-    for (const [idenfitifer, markerRef] of this.markerRefs) {
-      if (idenfitifer !== markerIdentifier) markerRef.current?.hideCallout();
-    }
-  }
-
-  private getMarkerRef(markerIdentifier: string) {
-    if (this.markerRefs.has(markerIdentifier)) {
-      return this.markerRefs.get(markerIdentifier);
-    } else {
-      const ref = React.createRef<MapMarkerRefType>();
-      this.markerRefs.set(markerIdentifier, ref);
-      return ref;
-    }
-  }
+    this.mapRef?.current?.animateCamera(camera);
+  };
 
   render() {
-    const {
-      apiKey,
-      provider = Platform.OS === "web" ? "google" : undefined,
-      latitude,
-      longitude,
-      zoom,
-      showsCompass = false,
-      loadingEnabled = true,
-      autoClusterMarkers = false,
-      autoClusterMarkersDistanceMeters = 1000,
-      onRegionChange,
-      style,
-      ...rest
-    } = this.props;
-
-    const camera: Camera = {
-      altitude: zoomToAltitude(zoom || 1),
-      heading: 0,
-      pitch: 0,
-      zoom,
-      center: {
-        latitude: latitude || 0,
-        longitude: longitude || 0,
-      },
-    };
-
-    const markers = this.getChildrenForType(MapMarker);
-    const clusters = this.getChildrenForType(MapMarkerCluster);
-    const clusterView = this.getChildrenForType(MapMarkerClusterView).at(0); //Only take the first, ignore any others
-
-    if (autoClusterMarkers) {
-      this.clusterMarkers(
-        markers,
-        clusters,
-        autoClusterMarkersDistanceMeters,
-        clusterView
-      );
-    }
-
     return (
-      <MapViewContext.Provider
-        value={{
-          animateToLocation: (location) => this.animateToLocation(location),
-          region: this.state.region,
-        }}
-      >
-        <MapViewComponent
-          ref={this.mapRef}
-          onMapReady={() =>
-            // This initial animateToLocation ensures that 'region' state is initially set
-            this.animateToLocation({
-              latitude: camera.center.latitude,
-              longitude: camera.center.longitude,
-              zoom: camera.zoom,
-            })
-          }
-          provider={provider}
-          googleMapsApiKey={apiKey}
-          showsCompass={showsCompass}
-          initialCamera={camera}
-          loadingEnabled={loadingEnabled}
-          onRegionChangeComplete={(region) => {
-            onRegionChange?.(region);
-          }}
-          onRegionChange={(region) => this.setState({ region })}
-          style={[styles.map, style]}
-          {...rest}
-        >
-          {markers.map((marker, index) =>
-            renderMarker(
-              marker.props,
-              index,
-              this.getMarkerRef(getMarkerIdentifier(marker.props)),
-              () => this.onMarkerPress(getMarkerIdentifier(marker.props))
-            )
-          )}
-
-          {/* 
-            Markers within clusters also need to able to assign refs and propogate press.
-            This is done through context to prevent exposing these internal config options as props of the cluster component
-          */}
-          <MapMarkerContext.Provider
-            value={{
-              getMarkerRef: (marker) =>
-                this.getMarkerRef(getMarkerIdentifier(marker)),
-              onMarkerPress: (marker) =>
-                this.onMarkerPress(getMarkerIdentifier(marker)),
-            }}
-          >
-            {clusters.map((cluster, index) => (
-              <React.Fragment key={index}>{cluster}</React.Fragment>
-            ))}
-          </MapMarkerContext.Provider>
-        </MapViewComponent>
-      </MapViewContext.Provider>
+      <MapViewF
+        {...this.props}
+        animateToLocation={this.animateToLocation}
+        mapRef={this.mapRef}
+      />
     );
   }
 }

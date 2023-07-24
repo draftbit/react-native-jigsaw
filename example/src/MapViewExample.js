@@ -17,6 +17,7 @@ const MapViewExample = ({ theme }) => {
     <View style={styles.container}>
       <MapView
         ref={mapRef}
+        apiKey="AIzaSyBSM2NJ9iJkilKzWcZcCHklTSfZNewGIl4"
         showsCompass={true}
         style={styles.map}
         latitude={43.741895}

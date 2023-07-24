@@ -41,6 +41,7 @@
   "dependencies": {
     "@draftbit/ui": "48.4.2",
     "@teovilla/react-native-web-maps": "^0.9.1",
+    "lodash.isequal": "^4.5.0",
     "react-native-maps": "1.3.2"
   },
   "eslintIgnore": [
@@ -60,5 +61,8 @@
       "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
     ],
     "testEnvironment": "node"
+  },
+  "devDependencies": {
+    "@types/lodash.isequal": "^4.5.6"
   }
 }

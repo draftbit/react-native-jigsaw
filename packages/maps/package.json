@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/maps",
-  "version": "48.4.2",
+  "version": "48.4.3",
   "description": "Map Components",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/src/index.d.ts",

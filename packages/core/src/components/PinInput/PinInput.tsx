@@ -4,13 +4,16 @@ import {
   ViewStyle,
   TextInput as NativeTextInput,
   View,
+  StyleSheet,
 } from "react-native";
 import TextInput, { TextInputProps } from "../TextInput";
 import {
   CodeField,
   useClearByFocusCell,
 } from "react-native-confirmation-code-field";
-import { DefaultPinInputCell } from "./PinInputCell";
+import type { Theme } from "../../styles/DefaultTheme";
+import { withTheme } from "../../theming";
+import PinInputText from "./PinInputText";
 
 interface CellItem {
   cellValue: string;
@@ -25,8 +28,10 @@ interface PinInputProps extends TextInputProps {
   blurOnFull?: boolean;
   renderItem?: ({ cellValue, index, isFocused }: CellItem) => JSX.Element;
   style?: StyleProp<ViewStyle>;
+  theme: Theme;
 }
 
+//TODO: Pass down styles to the default cell
 const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
   (
     {
@@ -38,6 +43,7 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
       value,
       onChangeText,
       style,
+      theme,
       ...rest
     },
     ref
@@ -75,14 +81,38 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
         textInputStyle={{ height: "100%" }} // addresses issue on firefox where the hidden input did not fill the height
         InputComponent={TextInput}
         cellCount={cellCount}
-        renderCell={({ symbol, index, isFocused }) => (
+        renderCell={({ symbol: cellValue, index, isFocused }) => (
           <View
             key={index}
             onLayout={clearOnCellFocus ? getCellOnLayout(index) : undefined}
             style={{ flex: 1 }}
           >
-            {renderItem?.({ cellValue: symbol, index, isFocused }) || (
-              <DefaultPinInputCell cellValue={symbol} isFocused={isFocused} />
+            {renderItem?.({ cellValue, index, isFocused }) || (
+              <View
+                testID="default-code-input-cell"
+                style={[
+                  styles.cell,
+                  styles.defaultCellContainer,
+                  {
+                    borderWidth: isFocused ? 2 : 1,
+                    borderColor: isFocused
+                      ? theme.colors.primary
+                      : theme.colors.disabled,
+                  },
+                ]}
+              >
+                <PinInputText
+                  style={[
+                    styles.defaultCellText,
+                    {
+                      color: theme.colors.strong,
+                    },
+                  ]}
+                  isFocused={isFocused}
+                >
+                  {cellValue}
+                </PinInputText>
+              </View>
             )}
           </View>
         )}
@@ -92,4 +122,21 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
   }
 );
 
-export default PinInput;
+const styles = StyleSheet.create({
+  cell: { marginStart: 5, marginEnd: 5 },
+  defaultCellContainer: {
+    padding: 5,
+    backgroundColor: "transparent",
+    borderRadius: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    aspectRatio: 1,
+    maxWidth: 70,
+    maxHeight: 70,
+  },
+  defaultCellText: {
+    fontSize: 25,
+  },
+});
+
+export default withTheme(PinInput);

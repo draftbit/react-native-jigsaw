@@ -1,6 +1,6 @@
 import React from "react";
 import Section, { Container } from "./Section";
-import { PinInput, PinInputCell, PinInputText } from "@draftbit/ui";
+import { PinInput, CustomPinInputCell, CustomPinInputText } from "@draftbit/ui";
 
 const PinInputExample: React.FC = () => {
   const [value1, setValue1] = React.useState("");
@@ -11,6 +11,19 @@ const PinInputExample: React.FC = () => {
       <Section title="PinInput (default cell)" style={{}}>
         <PinInput value={value1} onChangeText={setValue1} />
       </Section>
+      <Section title="PinInput (default cell, customized)" style={{}}>
+        <PinInput
+          value={value1}
+          onChangeText={setValue1}
+          focusedBorderColor="green"
+          unFocusedBorderColor="gray"
+          focusedBackgroundColor="rgba(0,1,0,0.2)"
+          focusedBorderWidth={5}
+          unFocusedBorderWidth={3}
+          focusedTextColor="green"
+          style={{ borderRadius: 35, fontWeight: 800 }}
+        />
+      </Section>
       <Section title="PinInput (custom cell)" style={{}}>
         <PinInput
           value={value1}
@@ -18,7 +31,7 @@ const PinInputExample: React.FC = () => {
           onInputFull={(value) => console.log("Input full", value)}
           renderItem={({ cellValue, isFocused }) => {
             return (
-              <PinInputCell
+              <CustomPinInputCell
                 style={{
                   width: 70,
                   height: 70,
@@ -35,13 +48,13 @@ const PinInputExample: React.FC = () => {
                   justifyContent: "center",
                 }}
               >
-                <PinInputText
+                <CustomPinInputText
                   style={{ color: isFocused ? "green" : "black", fontSize: 20 }}
                   isFocused={isFocused}
                 >
                   {cellValue}
-                </PinInputText>
-              </PinInputCell>
+                </CustomPinInputText>
+              </CustomPinInputCell>
             );
           }}
         />

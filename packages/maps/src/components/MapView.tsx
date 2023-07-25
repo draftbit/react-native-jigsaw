@@ -224,10 +224,10 @@ const MapViewF = <T extends object>({
     () => getChildrenForType(MapMarkerCluster),
     [getChildrenForType]
   );
-  const clusterView = React.useMemo(
-    () => getChildrenForType(MapMarkerClusterView).at(0),
-    [getChildrenForType]
-  ); //Only take the first, ignore any others
+  const clusterView = React.useMemo(() => {
+    const clusterViews = getChildrenForType(MapMarkerClusterView);
+    return clusterViews.length ? clusterViews[0] : undefined; //Only take the first, ignore any others
+  }, [getChildrenForType]);
 
   if (autoClusterMarkers) {
     clusterMarkers(

@@ -217,17 +217,17 @@ const MapViewF = <T extends object>({
   }, [latitude, longitude, zoom, animateToLocation]);
 
   const markers = React.useMemo(
-    () => getChildrenForType(MapMarker),
+    () => getChildrenForType?.(MapMarker),
     [getChildrenForType]
   );
   const clusters = React.useMemo(
-    () => getChildrenForType(MapMarkerCluster),
+    () => getChildrenForType?.(MapMarkerCluster),
     [getChildrenForType]
   );
   const clusterView = React.useMemo(
-    () => getChildrenForType(MapMarkerClusterView).at(0),
+    () => getChildrenForType?.(MapMarkerClusterView).at(0), //Only take the first, ignore any others
     [getChildrenForType]
-  ); //Only take the first, ignore any others
+  );
 
   if (autoClusterMarkers) {
     clusterMarkers(

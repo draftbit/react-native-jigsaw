@@ -32,91 +32,100 @@ export interface BottomSheetProps extends ScrollViewProps {
   theme: Theme;
 }
 
-const BottomSheet: React.FC<React.PropsWithChildren<BottomSheetProps>> = ({
-  theme,
-  snapPoints: snapPointsProp,
-  topSnapPosition = "10%",
-  middleSnapPosition = "50%",
-  bottomSnapPosition = "80%",
-  initialSnapIndex,
-  initialSnapPosition = "bottom",
-  showHandle = true,
-  handleColor = theme.colors.divider,
-  topBorderRadius = 20,
-  borderWidth = 1,
-  borderColor = theme.colors.divider,
-  onSettle,
-  style,
-  children,
-  ...rest
-}) => {
-  const backgroundColor =
-    (style as ViewStyle)?.backgroundColor || theme.colors.background;
+const BottomSheet = React.forwardRef<
+  BottomSheetComponent<any>,
+  BottomSheetProps
+>(
+  (
+    {
+      theme,
+      snapPoints: snapPointsProp,
+      topSnapPosition = "10%",
+      middleSnapPosition = "50%",
+      bottomSnapPosition = "80%",
+      initialSnapIndex,
+      initialSnapPosition = "bottom",
+      showHandle = true,
+      handleColor = theme.colors.divider,
+      topBorderRadius = 20,
+      borderWidth = 1,
+      borderColor = theme.colors.divider,
+      onSettle,
+      style,
+      children,
+      ...rest
+    },
+    ref
+  ) => {
+    const backgroundColor =
+      (style as ViewStyle)?.backgroundColor || theme.colors.background;
 
-  const snapPoints = snapPointsProp || [
-    topSnapPosition,
-    middleSnapPosition,
-    bottomSnapPosition,
-  ];
+    const snapPoints = snapPointsProp || [
+      topSnapPosition,
+      middleSnapPosition,
+      bottomSnapPosition,
+    ];
 
-  const getSnapIndexFromPosition = (position: SnapPosition) => {
-    switch (position) {
-      case "top":
-        return 0;
-      case "middle":
-        return 1;
-      case "bottom":
-        return 2;
-    }
-  };
+    const getSnapIndexFromPosition = (position: SnapPosition) => {
+      switch (position) {
+        case "top":
+          return 0;
+        case "middle":
+          return 1;
+        case "bottom":
+          return 2;
+      }
+    };
 
-  return (
-    <View style={styles.parentContainer} pointerEvents="box-none">
-      <BottomSheetComponent
-        componentType="ScrollView"
-        snapPoints={snapPoints}
-        initialSnapIndex={
-          initialSnapIndex ?? getSnapIndexFromPosition(initialSnapPosition)
-        }
-        renderHandle={() => (
-          <>
-            {showHandle && (
-              <View
-                style={[
-                  styles.handleContainer,
-                  {
-                    backgroundColor,
-                    borderTopLeftRadius: topBorderRadius,
-                    borderTopRightRadius: topBorderRadius,
-                  },
-                ]}
-              >
+    return (
+      <View style={styles.parentContainer} pointerEvents="box-none">
+        <BottomSheetComponent
+          ref={ref}
+          componentType="ScrollView"
+          snapPoints={snapPoints}
+          initialSnapIndex={
+            initialSnapIndex ?? getSnapIndexFromPosition(initialSnapPosition)
+          }
+          renderHandle={() => (
+            <>
+              {showHandle && (
                 <View
-                  style={[styles.handle, { backgroundColor: handleColor }]}
-                />
-              </View>
-            )}
-          </>
-        )}
-        contentContainerStyle={[styles.contentContainerStyle, style]}
-        containerStyle={StyleSheet.flatten([
-          styles.containerStyle,
-          {
-            backgroundColor,
-            borderTopLeftRadius: topBorderRadius,
-            borderTopRightRadius: topBorderRadius,
-            borderWidth,
-            borderColor,
-          },
-        ])}
-        onSettle={onSettle}
-        {...rest}
-      >
-        {children}
-      </BottomSheetComponent>
-    </View>
-  );
-};
+                  style={[
+                    styles.handleContainer,
+                    {
+                      backgroundColor,
+                      borderTopLeftRadius: topBorderRadius,
+                      borderTopRightRadius: topBorderRadius,
+                    },
+                  ]}
+                >
+                  <View
+                    style={[styles.handle, { backgroundColor: handleColor }]}
+                  />
+                </View>
+              )}
+            </>
+          )}
+          contentContainerStyle={[styles.contentContainerStyle, style]}
+          containerStyle={StyleSheet.flatten([
+            styles.containerStyle,
+            {
+              backgroundColor,
+              borderTopLeftRadius: topBorderRadius,
+              borderTopRightRadius: topBorderRadius,
+              borderWidth,
+              borderColor,
+            },
+          ])}
+          onSettle={onSettle}
+          {...rest}
+        >
+          {children}
+        </BottomSheetComponent>
+      </View>
+    );
+  }
+);
 
 const styles = StyleSheet.create({
   //Render on top of everything

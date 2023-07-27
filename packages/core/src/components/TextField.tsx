@@ -444,7 +444,7 @@ class TextField extends React.Component<Props, State> {
       borderLeftWidth,
       borderColor: borderCol,
       ...styleProp
-    } = StyleSheet.flatten(style) as ViewStyle;
+    } = StyleSheet.flatten(style || {}) as ViewStyle;
 
     return (
       <View style={[styles.container, styleProp]}>

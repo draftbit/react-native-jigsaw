@@ -52,8 +52,6 @@ const IconButton: React.FC<React.PropsWithChildren<Props>> = ({
           styles.container,
           {
             opacity: pressed ? activeOpacity : disabled ? disabledOpacity : 1,
-            width: size,
-            height: size,
             alignItems: "center",
             justifyContent: "center",
           },

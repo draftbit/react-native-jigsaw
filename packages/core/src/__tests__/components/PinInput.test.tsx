@@ -1,10 +1,10 @@
 import React from "react";
 import { render, screen, fireEvent, act } from "@testing-library/react-native";
 import { View } from "react-native";
-import { CodeInput, CodeInputText } from "../../components/CodeInput";
+import { PinInput, PinInputText } from "../../components/PinInput";
 import { Cursor } from "react-native-confirmation-code-field";
 
-describe("CodeInput tests", () => {
+describe("PinInput tests", () => {
   test("should onInputFull be called when input is full", () => {
     const cellCount = 6;
     const text = "0".repeat(cellCount);
@@ -13,7 +13,7 @@ describe("CodeInput tests", () => {
     const Wrapper: React.FC = () => {
       const [value, setValue] = React.useState("");
       return (
-        <CodeInput
+        <PinInput
           value={value}
           onChangeText={(text) => setValue(text)}
           cellCount={cellCount}
@@ -35,7 +35,7 @@ describe("CodeInput tests", () => {
     "should render %s custom input cells",
     (cellCount) => {
       render(
-        <CodeInput
+        <PinInput
           renderItem={() => <View testID="test-input-cell" />}
           cellCount={cellCount}
         />
@@ -49,16 +49,16 @@ describe("CodeInput tests", () => {
   test.each([2, 4, 6, 7, 8])(
     "should render %s default input cells when renderItem not provided",
     (cellCount) => {
-      render(<CodeInput cellCount={cellCount} />);
+      render(<PinInput cellCount={cellCount} />);
 
       const cells = screen.queryAllByTestId("default-code-input-cell");
       expect(cells).toHaveLength(cellCount);
     }
   );
 
-  describe("CodeInputText tests", () => {
+  describe("PinInputText tests", () => {
     test("should render cursor when focused and does not have a value", () => {
-      render(<CodeInputText isFocused />);
+      render(<PinInputText isFocused />);
 
       const cursor = screen.UNSAFE_queryByType(Cursor);
       expect(cursor).toBeTruthy();
@@ -66,7 +66,7 @@ describe("CodeInput tests", () => {
 
     test("should render text value when focused and has a value", () => {
       const text = "sample text";
-      render(<CodeInputText isFocused>{text}</CodeInputText>);
+      render(<PinInputText isFocused>{text}</PinInputText>);
 
       const cursor = screen.UNSAFE_queryByType(Cursor);
       const componentWithText = screen.queryByText(text);
@@ -76,7 +76,7 @@ describe("CodeInput tests", () => {
 
     test("should render text value when not focused and has a value", () => {
       const text = "sample text";
-      render(<CodeInputText isFocused={false}>{text}</CodeInputText>);
+      render(<PinInputText isFocused={false}>{text}</PinInputText>);
 
       const cursor = screen.UNSAFE_queryByType(Cursor);
       const componentWithText = screen.queryByText(text);

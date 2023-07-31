@@ -59,10 +59,10 @@ export {
   VideoPlayerRef,
 } from "./components/MediaPlayer/VideoPlayer";
 export {
-  CodeInput,
-  CodeInputCell,
-  CodeInputText,
-} from "./components/CodeInput";
+  PinInput,
+  CustomPinInputCell,
+  PinInputText as CustomPinInputText,
+} from "./components/PinInput";
 export {
   AspectRatio,
   Circle,

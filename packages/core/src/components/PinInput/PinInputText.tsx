@@ -4,7 +4,7 @@ import type { Theme } from "../../styles/DefaultTheme";
 import { withTheme } from "../../theming";
 import { Cursor } from "react-native-confirmation-code-field";
 
-interface CodeInputTextProps extends TextProps {
+interface CustomPinInputTextProps extends TextProps {
   cursorBlinkDuration?: number;
   cursorText?: string;
   isFocused?: boolean;
@@ -13,9 +13,9 @@ interface CodeInputTextProps extends TextProps {
 
 /**
  * Text component that can conditionally render a blinking cursor when focused and empty
- * Meant to be used within a CodeInputCell component
+ * Meant to be used within a CustomPinInputCell component
  */
-const CodeInputText: React.FC<CodeInputTextProps> = ({
+const CustomPinInputText: React.FC<CustomPinInputTextProps> = ({
   isFocused,
   cursorBlinkDuration,
   cursorText,
@@ -34,4 +34,4 @@ const CodeInputText: React.FC<CodeInputTextProps> = ({
   );
 };
 
-export default withTheme(CodeInputText);
+export default withTheme(CustomPinInputText);

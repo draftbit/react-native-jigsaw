@@ -1,5 +1,12 @@
 import * as React from "react";
-import { ViewProps, StyleProp, ImageStyle, Platform } from "react-native";
+import {
+  View,
+  StyleSheet,
+  ViewProps,
+  StyleProp,
+  ImageStyle,
+  Platform,
+} from "react-native";
 
 // This must use require to work in both web as a published project and in Snack
 const VectorIcons = require("@expo/vector-icons");
@@ -28,25 +35,24 @@ const Icon: React.FC<React.PropsWithChildren<Props>> = ({
   const IconSet = VectorIcons[iconSet];
 
   return (
-    <IconSet
-      {...rest}
-      name={name}
-      color={color}
-      size={size}
-      style={[
-        {
-          ...Platform.select({
-            web: {
-              cursor: "pointer",
-              userSelect: "none",
-            },
-          }),
-        },
-        ,
-        style,
-      ]}
-    />
+    <View style={[styles.container, { width: size, height: size }, style]}>
+      <IconSet {...rest} name={name} color={color} size={size} />
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden",
+    ...Platform.select({
+      web: {
+        cursor: "pointer",
+        userSelect: "none",
+      },
+    }),
+  },
+});
 
 export default Icon;

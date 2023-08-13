@@ -38,13 +38,15 @@
     "url": "https://github.com/draftbit/react-native-jigsaw/issues"
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
+  "resolutions": {
+    "@react-google-maps/api": "2.18.1"
+  },
   "dependencies": {
     "@draftbit/ui": "48.4.7",
+    "@teovilla/react-native-web-maps": "^0.9.1",
     "lodash.isequal": "^4.5.0",
-    "react-native-maps": "1.3.2"
-  },
-  "peerDependencies": {
-    "@teovilla/react-native-web-maps": "^0.9.1"
+    "react-native-maps": "1.3.2",
+    "@react-google-maps/api": "2.18.1"
   },
   "eslintIgnore": [
     "node_modules/",

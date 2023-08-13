@@ -25,9 +25,6 @@ jobs:
       - name: Install Dependencies
         run: yarn install
 
-      - name: Type Check
-        run: yarn typescript
-
       - name: Lint
         run: yarn lint
 

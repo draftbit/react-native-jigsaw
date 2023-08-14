@@ -2,6 +2,7 @@ import React from "react";
 import {
   StyleProp,
   ViewStyle,
+  TextStyle,
   TextInput as NativeTextInput,
   View,
   StyleSheet,
@@ -29,14 +30,10 @@ interface PinInputProps extends TextInputProps {
   blurOnFull?: boolean;
   renderItem?: ({ cellValue, index, isFocused }: CellItem) => JSX.Element;
   focusedBorderColor?: string;
-  unFocusedBorderColor?: string;
   focusedBackgroundColor?: string;
-  unFocusedBackgroundColor?: string;
   focusedBorderWidth?: number;
-  unFocusedBorderWidth?: number;
   focusedTextColor?: string;
-  unFocusedTextColor?: string;
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle | TextStyle>;
   theme: Theme;
 }
 
@@ -51,14 +48,10 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
       renderItem,
       value,
       onChangeText,
-      focusedBorderColor = theme.colors.primary,
-      unFocusedBorderColor = theme.colors.disabled,
+      focusedBorderColor,
       focusedBackgroundColor,
-      unFocusedBackgroundColor,
-      focusedBorderWidth = 2,
-      unFocusedBorderWidth = 1,
-      focusedTextColor = theme.colors.strong,
-      unFocusedTextColor = focusedTextColor,
+      focusedBorderWidth,
+      focusedTextColor,
       style,
       ...rest
     },
@@ -109,27 +102,27 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
                 testID="default-code-input-cell"
                 style={[
                   styles.cell,
-                  {
-                    borderWidth: isFocused
-                      ? focusedBorderWidth
-                      : unFocusedBorderWidth,
-                    borderColor: isFocused
-                      ? focusedBorderColor
-                      : unFocusedBorderColor,
-                    backgroundColor: isFocused
-                      ? focusedBackgroundColor
-                      : unFocusedBackgroundColor,
-                  },
+                  { borderColor: theme.colors.disabled },
                   viewStyles,
+                  isFocused && focusedBorderWidth
+                    ? { borderWidth: focusedBorderWidth }
+                    : undefined,
+                  isFocused && focusedBorderColor
+                    ? { borderColor: focusedBorderColor }
+                    : undefined,
+                  isFocused && focusedBackgroundColor
+                    ? { backgroundColor: focusedBackgroundColor }
+                    : undefined,
                 ]}
               >
                 <PinInputText
                   style={[
                     styles.cellText,
-                    {
-                      color: isFocused ? focusedTextColor : unFocusedTextColor,
-                    },
+                    { color: theme.colors.strong },
                     textStyles,
+                    isFocused && focusedTextColor
+                      ? { color: focusedTextColor }
+                      : undefined,
                   ]}
                   isFocused={isFocused}
                 >
@@ -156,6 +149,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     maxWidth: 70,
     maxHeight: 70,
+    borderWidth: 1,
   },
   cellText: {
     fontSize: 25,

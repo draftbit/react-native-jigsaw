@@ -16,12 +16,15 @@ const PinInputExample: React.FC = () => {
           value={value1}
           onChangeText={setValue1}
           focusedBorderColor="green"
-          unFocusedBorderColor="gray"
           focusedBackgroundColor="rgba(0,1,0,0.2)"
           focusedBorderWidth={5}
-          unFocusedBorderWidth={3}
           focusedTextColor="green"
-          style={{ borderRadius: 35, fontWeight: 800 }}
+          style={{
+            borderRadius: 35,
+            fontWeight: "800",
+            backgroundColor: "gray",
+            borderWidth: 3,
+          }}
         />
       </Section>
       <Section title="PinInput (custom cell)" style={{}}>

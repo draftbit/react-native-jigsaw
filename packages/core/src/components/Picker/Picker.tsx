@@ -19,6 +19,7 @@ import {
   extractSizeStyles,
   extractFlexItemStyles,
   extractPositionStyles,
+  useDeepCompareMemo,
 } from "../../utilities";
 import TextField from "../TextField";
 import omit from "lodash.omit";
@@ -66,7 +67,7 @@ const Picker: React.FC<PickerProps> = ({
 
   const [pickerVisible, setPickerVisible] = React.useState(false);
 
-  const options = React.useMemo(() => {
+  const options = useDeepCompareMemo(() => {
     const normalizedOptions = normalizeToPickerOptions(optionsProp);
 
     // Underlying Picker component defaults selection to first element when value is not provided (or undefined)
@@ -113,7 +114,7 @@ const Picker: React.FC<PickerProps> = ({
       ]}
       onBlur={() => setPickerVisible(false)}
     >
-      {(options as unknown as PickerOption[]).map((option) => (
+      {options.map((option) => (
         <NativePicker.Item
           label={option.label}
           value={option.value}

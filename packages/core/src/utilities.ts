@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, StyleProp, TextStyle } from "react-native";
-import { isString, isNumber, pick, pickBy, identity } from "lodash";
+import { isString, isNumber, pick, pickBy, identity, isEqual } from "lodash";
 
 export function extractStyles(style: StyleProp<any>) {
   const {
@@ -260,4 +260,25 @@ export function flattenReactFragments(
   }
 
   return flattened;
+}
+
+function useDeepCompareMemoize(value: any) {
+  const ref = React.useRef();
+
+  if (!isEqual(value, ref.current)) {
+    ref.current = value;
+  }
+
+  return ref.current;
+}
+
+/**
+ * useMemo counterpart that does a deep compare on the dependency list
+ */
+export function useDeepCompareMemo<T>(
+  factory: () => T,
+  deps: React.DependencyList | undefined
+): T {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  return React.useMemo(factory, deps?.map(useDeepCompareMemoize));
 }

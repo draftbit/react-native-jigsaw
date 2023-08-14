@@ -14,6 +14,7 @@ interface AdditionalSectionListProps<T> {
     index: number;
     section: string;
   }) => JSX.Element;
+  keyExtractor?: (item: T, index: number) => string;
   listComponent?: ListComponentType;
 }
 
@@ -43,6 +44,7 @@ const SectionList = <T extends { [key: string]: any }>({
   listComponent = "FlatList",
   data: dataProp,
   renderItem: renderItemProp,
+  keyExtractor: keyExtractorProp,
   ...rest
 }: FlatListSectionListProps<T> | FlashListSectionListProps<T>) => {
   const data = React.useMemo(
@@ -165,6 +167,17 @@ const SectionList = <T extends { [key: string]: any }>({
     }
   };
 
+  const keyExtractor = (item: SectionListItem<T>, index: number) => {
+    switch (item.type) {
+      case "SECTION_ITEM": {
+        return `section_${index.toString()}`;
+      }
+      case "DATA_ITEM": {
+        return keyExtractorProp?.(item.data, index) || index.toString();
+      }
+    }
+  };
+
   switch (listComponent) {
     case "FlatList":
       return (
@@ -173,6 +186,7 @@ const SectionList = <T extends { [key: string]: any }>({
           {...(rest as FlatListProps<SectionListItem<T>>)}
           data={dataWithSections}
           renderItem={renderItem}
+          keyExtractor={keyExtractor}
         />
       );
     case "FlashList":
@@ -182,6 +196,7 @@ const SectionList = <T extends { [key: string]: any }>({
           {...(rest as FlashListProps<SectionListItem<T>>)}
           data={dataWithSections}
           renderItem={renderItem}
+          keyExtractor={keyExtractor}
         />
       );
   }

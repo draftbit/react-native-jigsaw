@@ -52,6 +52,7 @@ const SwipeableViewExample: React.FC = () => {
             listComponent="FlatList"
             data={sampleData}
             sectionKey="category"
+            keyExtractor={(item) => item.id?.toString()}
             renderItem={({ item }) => (
               <View>
                 <Text>{item?.id}</Text>
@@ -68,6 +69,7 @@ const SwipeableViewExample: React.FC = () => {
             data={sampleData}
             sectionKey="category"
             estimatedItemSize={40}
+            keyExtractor={(item) => item.id?.toString()}
             renderItem={({ item }) => (
               <View>
                 <Text>{item?.id}</Text>

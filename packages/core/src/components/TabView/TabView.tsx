@@ -7,6 +7,7 @@ import {
   NavigationState,
   Route,
 } from "react-native-tab-view";
+import PagerView from "react-native-pager-view";
 
 import TabViewItem from "./TabViewItem";
 import type { IconSlot } from "../../interfaces/Icon";
@@ -140,16 +141,19 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
   }
 
   return (
-    <TabView
-      style={viewStyles}
-      navigationState={{ index, routes }}
-      renderScene={renderScene}
-      renderTabBar={renderTabBar}
-      onIndexChange={indexChangeHandler}
-      tabBarPosition={tabBarPosition}
-      keyboardDismissMode={keyboardDismissMode}
-      swipeEnabled={swipeEnabled}
-    />
+    <>
+      <PagerView style={{ display: "none" }} />
+      <TabView
+        style={viewStyles}
+        navigationState={{ index, routes }}
+        renderScene={renderScene}
+        renderTabBar={renderTabBar}
+        onIndexChange={indexChangeHandler}
+        tabBarPosition={tabBarPosition}
+        keyboardDismissMode={keyboardDismissMode}
+        swipeEnabled={swipeEnabled}
+      />
+    </>
   );
 };
 

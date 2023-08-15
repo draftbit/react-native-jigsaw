@@ -282,3 +282,14 @@ export function useDeepCompareMemo<T>(
   // eslint-disable-next-line react-hooks/exhaustive-deps
   return React.useMemo(factory, deps?.map(useDeepCompareMemoize));
 }
+
+/**
+ * useMemo counterpart that does a deep compare on the dependency list
+ */
+export function useDeepCompareEffect(
+  effect: React.EffectCallback,
+  deps: React.DependencyList | undefined
+) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  return React.useEffect(effect, deps?.map(useDeepCompareMemoize));
+}

@@ -1,18 +1,17 @@
 import * as React from "react";
 import { View, StyleSheet, Platform, Keyboard } from "react-native";
-import { isObject } from "lodash";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Picker as NativePicker } from "@react-native-picker/picker";
+import { Picker as NativePickerComponent } from "@react-native-picker/picker";
 import Portal from "../Portal/Portal";
 import { Button } from "../Button";
 import { useDeepCompareMemo } from "../../utilities";
-import { PickerOption, PickerProps } from "./PickerCommon";
+import { CommonPickerProps, normalizeToPickerOptions } from "./PickerCommon";
 import PickerInputContainer from "./PickerInputContainer";
 
 const isIos = Platform.OS === "ios";
 const isWeb = Platform.OS === "web";
 
-const Picker: React.FC<PickerProps> = ({
+const NativePicker: React.FC<CommonPickerProps> = ({
   options: optionsProp = [],
   onValueChange,
   Icon,
@@ -21,7 +20,7 @@ const Picker: React.FC<PickerProps> = ({
   autoDismissKeyboard = true,
   ...rest
 }) => {
-  const pickerRef = React.useRef<NativePicker<string | number>>(null);
+  const pickerRef = React.useRef<NativePickerComponent<string | number>>(null);
 
   const [pickerVisible, setPickerVisible] = React.useState(false);
 
@@ -43,7 +42,7 @@ const Picker: React.FC<PickerProps> = ({
   }
 
   const renderNativePicker = () => (
-    <NativePicker
+    <NativePickerComponent
       ref={pickerRef}
       selectedValue={value}
       onValueChange={(newValue) => {
@@ -60,13 +59,13 @@ const Picker: React.FC<PickerProps> = ({
       onBlur={() => setPickerVisible(false)}
     >
       {options.map((option) => (
-        <NativePicker.Item
+        <NativePickerComponent.Item
           label={option.label.toString()}
           value={option.value}
           key={option.value}
         />
       ))}
-    </NativePicker>
+    </NativePickerComponent>
   );
 
   const renderPicker = () => {
@@ -146,34 +145,4 @@ const styles = StyleSheet.create({
   },
 });
 
-function normalizeToPickerOptions(
-  options: PickerOption[] | string[] | number[]
-): PickerOption[] {
-  if (options.length === 0) {
-    return [];
-  }
-
-  const firstOption = options[0];
-
-  if (typeof firstOption === ("string" || "number")) {
-    return options.map((option) => ({
-      label: option as string | number,
-      value: option as string | number,
-    }));
-  }
-
-  if (isObject(firstOption) && firstOption.value && firstOption.label) {
-    return (options as PickerOption[]).map((option) => {
-      return {
-        label: option.label,
-        value: option.value,
-      };
-    });
-  }
-
-  throw new Error(
-    'Picker options must be either an array of strings, numbers, or an array of { "label": string | number; "value": string | number; } objects.'
-  );
-}
-
-export default Picker;
+export default NativePicker;

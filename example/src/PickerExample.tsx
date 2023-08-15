@@ -9,56 +9,57 @@ const OPTIONS = [
   { value: "DodgeValue", label: "Dodge" },
 ];
 
-function PickerExample({ theme }) {
-  const [value, setValue] = React.useState("Audi");
+function PickerExample() {
+  const [value1, setValue] = React.useState("Audi");
   const [value2, setValue2] = React.useState("Audi");
   const [value3, setValue3] = React.useState(1);
 
   return (
-    <Container style={{ backgroundColor: theme.colors.background }}>
-      <Section title="Picker - Underline">
+    <Container style={{}}>
+      <Section style={{}} title="Picker - Underline">
         <Picker
           label="Make"
           placeholder="Select a make..."
           options={OPTIONS}
-          value={value}
-          onValueChange={setValue}
+          value={value1}
+          mode="dropdown"
+          onValueChange={(value) => setValue(value.toString())}
           rightIconName={"AntDesign/caretright"}
           leftIconName={"AntDesign/caretleft"}
           leftIconMode="outset"
         />
       </Section>
 
-      <Section title="Picker - Underline (Disabled)">
+      <Section style={{}} title="Picker - Underline (Disabled)">
         <Picker
           label="Make"
           placeholder="Select a make..."
           options={OPTIONS}
           disabled
           value={value}
-          onValueChange={setValue}
+          onValueChange={(value) => setValue(value.toString())}
         />
       </Section>
 
-      <Section title="Picker - Underline (Error)">
+      <Section style={{}} title="Picker - Underline (Error)">
         <Picker
           label="Make"
           placeholder="Select a make..."
           options={OPTIONS}
           error
-          value={value}
-          onValueChange={setValue}
+          value={value1}
+          onValueChange={(value) => setValue(value.toString())}
         />
       </Section>
 
-      <Section title="Picker - Underline (custom styles)">
+      <Section style={{}} title="Picker - Underline (custom styles)">
         <Picker
           label="Make"
           placeholder="Select a make..."
           options={OPTIONS}
           disabled
-          value={value}
-          onValueChange={setValue}
+          value={value1}
+          onValueChange={(value) => setValue(value.toString())}
           style={{
             backgroundColor: "red",
             padding: 16,
@@ -66,72 +67,61 @@ function PickerExample({ theme }) {
         />
       </Section>
 
-      <Section title="Picker - Underline with string options">
+      <Section style={{}} title="Picker - Underline with string options">
         <Picker
           label="Make"
           placeholder="Select a make..."
           options={["Audi", "BMW", "Cadillac", "Dodge"]}
           value={value2}
-          onValueChange={setValue2}
+          onValueChange={(value) => setValue2(value.toString())}
         />
       </Section>
 
-      <Section title="Picker - Underline with initial value">
-        <Picker
-          label="Make"
-          placeholder="Select a make..."
-          options={OPTIONS}
-          value={value}
-          onValueChange={setValue}
-          defaultValue="Dodge"
-        />
-      </Section>
-
-      <Section title="Picker - Solid">
+      <Section style={{}} title="Picker - Solid">
         <Picker
           label="Make"
           placeholder="Select a make..."
           type="solid"
           options={OPTIONS}
-          value={value}
-          onValueChange={setValue}
+          value={value1}
+          onValueChange={(value) => setValue(value.toString())}
           leftIconName={"AntDesign/caretleft"}
           leftIconMode="outset"
         />
       </Section>
 
-      <Section title="Picker - Solid (Disabled)">
+      <Section style={{}} title="Picker - Solid (Disabled)">
         <Picker
           label="Make"
           placeholder="Select a make..."
           type="solid"
           options={OPTIONS}
           disabled
-          value={value}
-          onValueChange={setValue}
+          value={value1}
+          onValueChange={(value) => setValue(value.toString())}
         />
       </Section>
 
-      <Section title="Picker - Solid (Error)">
+      <Section style={{}} title="Picker - Solid (Error)">
         <Picker
           label="Make"
           placeholder="Select a make..."
           type="solid"
           options={OPTIONS}
           error
-          value={value}
-          onValueChange={setValue}
+          value={value1}
+          onValueChange={(value) => setValue(value.toString())}
         />
       </Section>
 
-      <Section title="Picker - Solid (custom styles)">
+      <Section style={{}} title="Picker - Solid (custom styles)">
         <Picker
           label="Make"
           placeholder="Select a make..."
           type="solid"
           options={OPTIONS}
-          value={value}
-          onValueChange={setValue}
+          value={value1}
+          onValueChange={(value) => setValue(value.toString())}
           style={{
             backgroundColor: "red",
             borderTopWidth: 2,
@@ -143,14 +133,14 @@ function PickerExample({ theme }) {
         />
       </Section>
 
-      <Section title="Picker - Solid (custom font)">
+      <Section style={{}} title="Picker - Solid (custom font)">
         <Picker
           label="Make"
           placeholder="Select a make..."
           type="solid"
           options={OPTIONS}
-          value={value}
-          onValueChange={setValue}
+          value={value1}
+          onValueChange={(value) => setValue(value.toString())}
           placeholderTextColor="green"
           style={{
             fontSize: 30,
@@ -160,14 +150,14 @@ function PickerExample({ theme }) {
         />
       </Section>
 
-      <Section title="Picker - Solid (custom padding)">
+      <Section style={{}} title="Picker - Solid (custom padding)">
         <Picker
           label="Make"
           placeholder="Select a make..."
           type="solid"
           options={OPTIONS}
-          value={value}
-          onValueChange={setValue}
+          value={value1}
+          onValueChange={(value) => setValue(value.toString())}
           style={{
             paddingTop: 25,
             paddingRight: 25,
@@ -177,14 +167,14 @@ function PickerExample({ theme }) {
         />
       </Section>
 
-      <Section title="Picker - Solid (custom margin)">
+      <Section style={{}} title="Picker - Solid (custom margin)">
         <Picker
           label="Make"
           placeholder="Select a make..."
           type="solid"
           options={OPTIONS}
-          value={value}
-          onValueChange={setValue}
+          value={value1}
+          onValueChange={(value) => setValue(value.toString())}
           style={{
             marginTop: 25,
             marginRight: 25,
@@ -194,18 +184,18 @@ function PickerExample({ theme }) {
         />
       </Section>
 
-      <Section title="Picker - Solid with string options">
+      <Section style={{}} title="Picker - Solid with string options">
         <Picker
           label="Make"
           placeholder="Select a make..."
           type="solid"
           options={["Audi", "BMW", "Cadillac", "Dodge"]}
           value={value2}
-          onValueChange={setValue2}
+          onValueChange={(value) => setValue2(value.toString())}
         />
       </Section>
 
-      <Section title="Picker - Solid with numeric values">
+      <Section style={{}} title="Picker - Solid with numeric values">
         <Picker
           label="Number"
           placeholder="Select a make..."
@@ -215,7 +205,7 @@ function PickerExample({ theme }) {
             { value: 2, label: "Two" },
           ]}
           value={value3}
-          onValueChange={setValue3}
+          onValueChange={(value) => setValue3(value as number)}
         />
       </Section>
     </Container>

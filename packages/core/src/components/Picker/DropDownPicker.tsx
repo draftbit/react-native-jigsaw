@@ -4,14 +4,25 @@ import { useDeepCompareEffect, useDeepCompareMemo } from "../../utilities";
 import { CommonPickerProps, normalizeToPickerOptions } from "./PickerCommon";
 import PickerInputContainer from "./PickerInputContainer";
 import DropDownPickerComponent from "react-native-dropdown-picker";
+import { withTheme } from "../../theming";
+import { Theme } from "../../styles/DefaultTheme";
 
-const DropDownPicker: React.FC<CommonPickerProps> = ({
+interface DropDownPickerProps extends CommonPickerProps {
+  selectedIconName?: string;
+  selectedIconColor?: string;
+  theme: Theme;
+}
+
+const DropDownPicker: React.FC<DropDownPickerProps> = ({
+  theme,
   options: optionsProp = [],
   onValueChange,
   Icon,
   placeholder,
   value,
   autoDismissKeyboard = true,
+  selectedIconColor = theme.colors.strong,
+  selectedIconName = "Feather/check",
   ...rest
 }) => {
   const [pickerVisible, setPickerVisible] = React.useState(false);
@@ -54,8 +65,15 @@ const DropDownPicker: React.FC<CommonPickerProps> = ({
         items={options}
         placeholder={placeholder}
         listMode="SCROLLVIEW"
-        style={{ display: "none" }} // This is the style of the input container
-        dropDownContainerStyle={{}}
+        style={{ display: "none" }} // To not render the default input container
+        dropDownContainerStyle={{
+          borderColor: theme.colors.divider,
+          backgroundColor: theme.colors.background,
+        }}
+        textStyle={{ color: theme.colors.strong }}
+        TickIconComponent={() => (
+          <Icon name={selectedIconName} size={20} color={selectedIconColor} />
+        )}
       />
     </PickerInputContainer>
   );
@@ -63,4 +81,4 @@ const DropDownPicker: React.FC<CommonPickerProps> = ({
 
 // const styles = StyleSheet.create({});
 
-export default DropDownPicker;
+export default withTheme(DropDownPicker);

@@ -17,6 +17,7 @@ import {
 interface PickerInputContainerProps extends ExposedPickerInputContainerProps {
   selectedValue?: string | number;
   options: PickerOption[];
+  zIndex?: number;
   onPress?: () => void;
 }
 
@@ -30,6 +31,7 @@ const PickerInputContainer: React.FC<
   placeholder,
   selectedValue,
   disabled = false,
+  zIndex,
   children,
   ...rest
 }) => {
@@ -53,7 +55,7 @@ const PickerInputContainer: React.FC<
     placeholder;
 
   return (
-    <View style={containerStyle}>
+    <View style={[containerStyle, { zIndex }]}>
       <Touchable disabled={disabled} onPress={onPress}>
         <TextField
           Icon={Icon}

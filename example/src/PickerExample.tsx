@@ -17,18 +17,19 @@ function PickerExample() {
   return (
     <Container style={{}}>
       <Section style={{}} title="Picker - Underline">
-        <Picker
-          label="Make"
-          placeholder="Select a make..."
-          options={OPTIONS}
-          value={value1}
-          mode="dropdown"
-          onValueChange={(value) => setValue(value.toString())}
-          rightIconName={"AntDesign/caretright"}
-          leftIconName={"AntDesign/caretleft"}
-          leftIconMode="outset"
-        />
+        <></>
       </Section>
+      <Picker
+        label="Make"
+        placeholder="Select a make..."
+        options={OPTIONS}
+        value={value1}
+        mode="dropdown"
+        onValueChange={(value) => setValue(value.toString())}
+        rightIconName={"AntDesign/caretright"}
+        leftIconName={"AntDesign/caretleft"}
+        leftIconMode="outset"
+      />
 
       <Section style={{}} title="Picker - Underline (Disabled)">
         <Picker
@@ -36,7 +37,7 @@ function PickerExample() {
           placeholder="Select a make..."
           options={OPTIONS}
           disabled
-          value={value}
+          value={value1}
           onValueChange={(value) => setValue(value.toString())}
         />
       </Section>

@@ -43,6 +43,7 @@ const DropDownPicker: React.FC<CommonPickerProps> = ({
       selectedValue={value}
       options={options}
       onPress={() => setPickerVisible(!pickerVisible)}
+      zIndex={pickerVisible ? 100 : undefined} // Guarantees drop down is rendered above all sibling components
       {...rest}
     >
       <DropDownPickerComponent
@@ -53,6 +54,8 @@ const DropDownPicker: React.FC<CommonPickerProps> = ({
         items={options}
         placeholder={placeholder}
         listMode="SCROLLVIEW"
+        style={{ display: "none" }} // This is the style of the input container
+        dropDownContainerStyle={{}}
       />
     </PickerInputContainer>
   );

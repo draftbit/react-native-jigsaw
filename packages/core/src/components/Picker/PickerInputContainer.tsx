@@ -15,7 +15,7 @@ import {
 } from "./PickerCommon";
 
 interface PickerInputContainerProps extends ExposedPickerInputContainerProps {
-  selectedValue?: string | number;
+  selectedValue?: string | number | (string | number)[];
   options: PickerOption[];
   zIndex?: number;
   onPress?: () => void;
@@ -47,12 +47,21 @@ const PickerInputContainer: React.FC<
     Object.keys(containerStyle)
   );
 
-  const selectedLabel =
-    options
-      .find((option) => option.value === selectedValue)
-      ?.label.toString() ||
-    selectedValue ||
-    placeholder;
+  let selectedLabel: string | number | undefined = "";
+  if (Array.isArray(selectedValue)) {
+    selectedLabel = selectedValue
+      .map(
+        (value) =>
+          options.find((option) => option.value === value)?.label.toString() ||
+          value
+      )
+      .join(", ");
+  } else {
+    selectedLabel =
+      options
+        .find((option) => option.value === selectedValue)
+        ?.label.toString() || selectedValue;
+  }
 
   return (
     <View style={[containerStyle, { zIndex }]}>
@@ -61,7 +70,7 @@ const PickerInputContainer: React.FC<
           Icon={Icon}
           numberOfLines={1}
           onChangeText={() => {}}
-          value={selectedLabel?.toString()}
+          value={selectedLabel?.toString() || placeholder}
           editable={false}
           disabled={disabled}
           style={textFieldStyle}

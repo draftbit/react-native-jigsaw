@@ -1,19 +1,22 @@
 import React from "react";
-import { CommonPickerProps } from "./PickerCommon";
+import { CommonDropDownPickerProps, SinglePickerProps } from "./PickerCommon";
 import NativePicker from "./NativePicker";
-import DropDownPicker from "./DropDownPicker";
+import DropDownPicker from "./dropdown/DropDownPicker";
+import { withTheme } from "../../theming";
 
-interface PickerProps extends CommonPickerProps {
+interface PickerProps extends CommonDropDownPickerProps, SinglePickerProps {
   mode?: "native" | "dropdown";
 }
 
-const Picker: React.FC<PickerProps> = ({ mode = "native", ...rest }) => {
+const SinglePicker: React.FC<PickerProps> = ({ mode = "native", ...rest }) => {
   switch (mode) {
     case "native":
       return <NativePicker {...rest} />;
     case "dropdown":
+      //@ts-ignore Ignore theme type issues
       return <DropDownPicker {...rest} />;
   }
 };
 
-export default Picker;
+export const Picker = withTheme(SinglePicker);
+export { default as MultiSelectPicker } from "./dropdown/MultiSelectPicker";

@@ -47,7 +47,7 @@ export {
   AudioPlayerRef,
 } from "./components/MediaPlayer/AudioPlayer";
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
-export { default as Picker } from "./components/Picker";
+export { Picker, MultiSelectPicker } from "./components/Picker";
 export { default as Slider } from "./components/Slider";
 export { default as Stepper } from "./components/Stepper";
 export { SectionList, SectionHeader } from "./components/SectionList";

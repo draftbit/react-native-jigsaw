@@ -5,13 +5,17 @@ import { Picker as NativePickerComponent } from "@react-native-picker/picker";
 import Portal from "../Portal/Portal";
 import { Button } from "../Button";
 import { useDeepCompareMemo } from "../../utilities";
-import { CommonPickerProps, normalizeToPickerOptions } from "./PickerCommon";
+import {
+  CommonPickerProps,
+  SinglePickerProps,
+  normalizeToPickerOptions,
+} from "./PickerCommon";
 import PickerInputContainer from "./PickerInputContainer";
 
 const isIos = Platform.OS === "ios";
 const isWeb = Platform.OS === "web";
 
-const NativePicker: React.FC<CommonPickerProps> = ({
+const NativePicker: React.FC<CommonPickerProps & SinglePickerProps> = ({
   options: optionsProp = [],
   onValueChange,
   Icon,

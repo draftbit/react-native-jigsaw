@@ -1,6 +1,7 @@
 import { StyleProp, ViewStyle, TextStyle } from "react-native";
 import { IconSlot } from "../../interfaces/Icon";
 import { isObject } from "lodash";
+import { Theme } from "../../styles/DefaultTheme";
 
 export interface PickerOption {
   value: string | number;
@@ -24,10 +25,35 @@ export interface PickerInputContainerProps extends IconSlot {
 }
 
 export interface CommonPickerProps extends PickerInputContainerProps {
-  value?: string | number;
   options: PickerOption[] | string[] | number[];
-  onValueChange: (value: string | number) => void;
   autoDismissKeyboard?: boolean;
+}
+
+export interface SinglePickerProps {
+  value?: string | number;
+  onValueChange: (value: string | number) => void;
+}
+
+export interface MultiSelectPickerProps {
+  value?: (string | number)[];
+  onValueChange: (value: (string | number)[]) => void;
+}
+
+export interface CommonDropDownPickerProps extends CommonPickerProps {
+  selectedIconName?: string;
+  selectedIconColor?: string;
+  selectedIconSize?: number;
+  itemTextSize?: number;
+  itemTextColor?: string;
+  itemBackgroundColor?: string;
+  selectedItemTextSize?: number;
+  selectedItemTextColor?: string;
+  selectedItemBackgroundColor?: string;
+  dropDownBackgroundColor?: string;
+  dropDownBorderColor?: string;
+  dropDownBorderWidth?: number;
+  dropDownBorderRadius?: number;
+  theme: Theme;
 }
 
 export function normalizeToPickerOptions(

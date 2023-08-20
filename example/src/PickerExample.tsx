@@ -1,18 +1,24 @@
 import * as React from "react";
-import { Picker, withTheme } from "@draftbit/ui";
+import { Picker, MultiSelectPicker, withTheme } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
 const OPTIONS = [
   { value: "AudiValue", label: "Audi" },
   { value: "BMWValue", label: "BMW" },
-  { value: "CadillacValue", label: "Cadillac" },
+  {
+    value: "CadillacValue",
+    label: "Cadillac",
+  },
   { value: "DodgeValue", label: "Dodge" },
+  { value: "KiaValue", label: "Kia" },
+  { value: "HyundaiValue", label: "Hyundai" },
 ];
 
 function PickerExample() {
   const [value1, setValue] = React.useState("Audi");
   const [value2, setValue2] = React.useState("Audi");
   const [value3, setValue3] = React.useState(1);
+  const [value4, setValue4] = React.useState<(string | number)[]>([]);
 
   return (
     <Container style={{}}>
@@ -29,6 +35,13 @@ function PickerExample() {
         rightIconName={"AntDesign/caretright"}
         leftIconName={"AntDesign/caretleft"}
         leftIconMode="outset"
+      />
+      <MultiSelectPicker
+        label="Make"
+        placeholder="Select multiple makes"
+        options={OPTIONS}
+        value={value4}
+        onValueChange={(value) => setValue4(value)}
       />
 
       <Section style={{}} title="Picker - Underline (Disabled)">

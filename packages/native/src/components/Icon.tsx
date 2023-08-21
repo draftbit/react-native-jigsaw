@@ -6,6 +6,7 @@ import {
   StyleProp,
   ImageStyle,
   Platform,
+  LayoutChangeEvent,
 } from "react-native";
 
 // This must use require to work in both web as a published project and in Snack
@@ -25,6 +26,16 @@ const Icon: React.FC<React.PropsWithChildren<Props>> = ({
   style,
   ...rest
 }) => {
+  const [calculatedIconWidth, setCalculatedIconWidth] =
+    React.useState<number>();
+  const [calculatedIconHeight, setCalculatedIconHeight] =
+    React.useState<number>();
+
+  React.useEffect(() => {
+    setCalculatedIconWidth(undefined);
+    setCalculatedIconHeight(undefined);
+  }, [name]);
+
   if (!name) return null;
 
   let iconSet = "MaterialIcons";
@@ -35,8 +46,26 @@ const Icon: React.FC<React.PropsWithChildren<Props>> = ({
   const IconSet = VectorIcons[iconSet];
 
   return (
-    <View style={[styles.container, { width: size, height: size }, style]}>
-      <IconSet {...rest} name={name} color={color} size={size} />
+    <View
+      style={[
+        styles.container,
+        calculatedIconWidth && calculatedIconHeight
+          ? { width: calculatedIconWidth, height: calculatedIconHeight }
+          : {},
+        style,
+      ]}
+    >
+      <IconSet
+        {...rest}
+        onLayout={(e: LayoutChangeEvent) => {
+          const layout = e.nativeEvent.layout;
+          setCalculatedIconWidth(layout.width);
+          setCalculatedIconHeight(layout.height);
+        }}
+        name={name}
+        color={color}
+        size={size}
+      />
     </View>
   );
 };

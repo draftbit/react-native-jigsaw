@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleProp, ViewStyle, View } from "react-native";
+import { StyleProp, ViewStyle, View, LayoutChangeEvent } from "react-native";
 
 interface CustomPinInputCellProps {
   style?: StyleProp<ViewStyle>;
+  onLayout: (event: LayoutChangeEvent) => void;
 }
 
 /**
@@ -11,8 +12,8 @@ interface CustomPinInputCellProps {
  */
 const CustomPinInputCell: React.FC<
   React.PropsWithChildren<CustomPinInputCellProps>
-> = ({ style, children }) => {
-  return <View style={style} children={children} />;
+> = (props) => {
+  return <View {...props} />;
 };
 
 export default CustomPinInputCell;

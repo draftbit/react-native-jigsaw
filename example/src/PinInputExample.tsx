@@ -46,6 +46,8 @@ const PinInputExample: React.FC = () => {
                   },
                   shadowOpacity: 0.32,
                   shadowRadius: 5.46,
+                  marginStart: 10,
+                  marginEnd: 10,
                   elevation: 9,
                   alignItems: "center",
                   justifyContent: "center",

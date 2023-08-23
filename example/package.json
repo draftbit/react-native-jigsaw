@@ -1,7 +1,7 @@
 {
   "name": "@draftbit/example",
   "description": "Example app for @draftbit/ui",
-  "version": "48.4.10",
+  "version": "48.4.11",
   "private": true,
   "main": "__generated__/AppEntry.js",
   "scripts": {
@@ -16,8 +16,8 @@
     "clean:modules": "rimraf node_modules"
   },
   "dependencies": {
-    "@draftbit/maps": "48.4.10",
-    "@draftbit/ui": "48.4.10",
+    "@draftbit/maps": "48.4.11",
+    "@draftbit/ui": "48.4.11",
     "@expo/dev-server": "0.1.123",
     "@expo/webpack-config": "^18.0.1",
     "@react-navigation/drawer": "^5.12.9",

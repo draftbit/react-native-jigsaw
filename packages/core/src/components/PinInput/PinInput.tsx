@@ -152,8 +152,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   cell: {
-    marginStart: 5,
-    marginEnd: 5,
+    marginLeft: 5,
+    marginRight: 5,
     padding: 5,
     borderRadius: 5,
     justifyContent: "center",

@@ -12,14 +12,11 @@ import {
 } from "./PickerCommon";
 import PickerInputContainer from "./PickerInputContainer";
 import { withTheme } from "../../theming";
-import { Theme } from "../../styles/DefaultTheme";
 
 const isIos = Platform.OS === "ios";
 const isWeb = Platform.OS === "web";
 
-const NativePicker: React.FC<
-  CommonPickerProps & SinglePickerProps & { theme: Theme }
-> = ({
+const NativePicker: React.FC<CommonPickerProps & SinglePickerProps> = ({
   options: optionsProp = [],
   onValueChange,
   Icon,

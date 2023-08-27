@@ -27,6 +27,7 @@ export interface PickerInputContainerProps extends IconSlot {
 export interface CommonPickerProps extends PickerInputContainerProps {
   options: PickerOption[] | string[] | number[];
   autoDismissKeyboard?: boolean;
+  theme: Theme;
 }
 
 export interface SinglePickerProps {
@@ -53,7 +54,6 @@ export interface CommonDropDownPickerProps extends CommonPickerProps {
   dropDownBorderColor?: string;
   dropDownBorderWidth?: number;
   dropDownBorderRadius?: number;
-  theme: Theme;
 }
 
 export function normalizeToPickerOptions(

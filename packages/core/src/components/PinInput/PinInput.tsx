@@ -48,7 +48,7 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
       renderItem,
       value,
       onChangeText,
-      focusedBorderColor,
+      focusedBorderColor = theme.colors.primary,
       focusedBackgroundColor,
       focusedBorderWidth,
       focusedTextColor,
@@ -82,55 +82,64 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value, cellCount, blurOnFull, pinInputRef]);
 
+    const renderCell = (
+      cellValue: string,
+      index: number,
+      isFocused: boolean
+    ) => {
+      const cell = renderItem?.({ cellValue, index, isFocused }) || (
+        <View
+          testID="default-code-input-cell"
+          style={[
+            styles.cell,
+            { borderColor: theme.colors.disabled },
+            viewStyles,
+            isFocused && focusedBorderWidth
+              ? { borderWidth: focusedBorderWidth }
+              : undefined,
+            isFocused && focusedBorderColor
+              ? { borderColor: focusedBorderColor }
+              : undefined,
+            isFocused && focusedBackgroundColor
+              ? { backgroundColor: focusedBackgroundColor }
+              : undefined,
+          ]}
+        >
+          <PinInputText
+            style={[
+              styles.cellText,
+              { color: theme.colors.strong },
+              textStyles,
+              isFocused && focusedTextColor
+                ? { color: focusedTextColor }
+                : undefined,
+            ]}
+            isFocused={isFocused}
+          >
+            {cellValue}
+          </PinInputText>
+        </View>
+      );
+
+      return React.cloneElement(cell, {
+        onLayout: clearOnCellFocus ? getCellOnLayout(index) : undefined,
+      });
+    };
+
     return (
       <CodeField
         ref={pinInputRef}
         {...(clearOnCellFocus ? codeFieldProps : {})}
         value={value}
         onChangeText={onChangeText}
+        rootStyle={styles.rootContainer}
         textInputStyle={{ height: "100%" }} // addresses issue on firefox where the hidden input did not fill the height
         InputComponent={TextInput}
         cellCount={cellCount}
         renderCell={({ symbol: cellValue, index, isFocused }) => (
-          <View
-            key={index}
-            onLayout={clearOnCellFocus ? getCellOnLayout(index) : undefined}
-            style={{ flex: 1 }}
-          >
-            {renderItem?.({ cellValue, index, isFocused }) || (
-              <View
-                testID="default-code-input-cell"
-                style={[
-                  styles.cell,
-                  { borderColor: theme.colors.disabled },
-                  viewStyles,
-                  isFocused && focusedBorderWidth
-                    ? { borderWidth: focusedBorderWidth }
-                    : undefined,
-                  isFocused && focusedBorderColor
-                    ? { borderColor: focusedBorderColor }
-                    : undefined,
-                  isFocused && focusedBackgroundColor
-                    ? { backgroundColor: focusedBackgroundColor }
-                    : undefined,
-                ]}
-              >
-                <PinInputText
-                  style={[
-                    styles.cellText,
-                    { color: theme.colors.strong },
-                    textStyles,
-                    isFocused && focusedTextColor
-                      ? { color: focusedTextColor }
-                      : undefined,
-                  ]}
-                  isFocused={isFocused}
-                >
-                  {cellValue}
-                </PinInputText>
-              </View>
-            )}
-          </View>
+          <React.Fragment key={index}>
+            {renderCell(cellValue, index, isFocused)}
+          </React.Fragment>
         )}
         {...rest}
       />
@@ -139,9 +148,12 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
 );
 
 const styles = StyleSheet.create({
+  rootContainer: {
+    justifyContent: "center",
+  },
   cell: {
-    marginStart: 5,
-    marginEnd: 5,
+    marginLeft: 5,
+    marginRight: 5,
     padding: 5,
     borderRadius: 5,
     justifyContent: "center",
@@ -150,6 +162,7 @@ const styles = StyleSheet.create({
     maxWidth: 70,
     maxHeight: 70,
     borderWidth: 1,
+    flex: 1,
   },
   cellText: {
     fontSize: 25,

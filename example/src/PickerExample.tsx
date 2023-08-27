@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Picker, MultiSelectPicker, withTheme } from "@draftbit/ui";
+import { Picker, MultiSelectPicker, PickerItem, withTheme } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
 const OPTIONS = [
@@ -16,13 +16,13 @@ const OPTIONS = [
 
 function PickerExample() {
   const [value1, setValue] = React.useState("Audi");
-  const [value2, setValue2] = React.useState("Audi");
   const [value3, setValue3] = React.useState(1);
   const [value4, setValue4] = React.useState<(string | number)[]>([]);
 
   return (
     <Container style={{}}>
-      <Section style={{}} title="Picker - Underline">
+      {/* Dropdown and Multiselect placed outside Section to be able to draw over sibling components */}
+      <Section style={{}} title="Picker - Dropdown">
         <></>
       </Section>
       <Picker
@@ -32,17 +32,44 @@ function PickerExample() {
         value={value1}
         mode="dropdown"
         onValueChange={(value) => setValue(value.toString())}
-        rightIconName={"AntDesign/caretright"}
-        leftIconName={"AntDesign/caretleft"}
-        leftIconMode="outset"
-      />
+        style={{ marginBottom: 20, fontFamily: "serif" }}
+      >
+        <PickerItem
+          style={{ color: "red", fontFamily: "serif" }}
+          selectedTextColor="white"
+          selectedBackgroundColor="black"
+          selectedTextSize={22}
+        />
+      </Picker>
+
+      <Section style={{}} title="Multiselect Picker">
+        <></>
+      </Section>
       <MultiSelectPicker
         label="Make"
         placeholder="Select multiple makes"
         options={OPTIONS}
         value={value4}
         onValueChange={(value) => setValue4(value)}
-      />
+        style={{ marginBottom: 20 }}
+      >
+        <PickerItem
+          style={{ color: "red", fontFamily: "serif" }}
+          selectedTextColor="white"
+          selectedBackgroundColor="black"
+          selectedTextSize={22}
+        />
+      </MultiSelectPicker>
+
+      <Section style={{}} title="Picker - Underline">
+        <Picker
+          label="Make"
+          placeholder="Select a make..."
+          options={OPTIONS}
+          value={value1}
+          onValueChange={(value) => setValue(value.toString())}
+        />
+      </Section>
 
       <Section style={{}} title="Picker - Underline (Disabled)">
         <Picker
@@ -63,31 +90,6 @@ function PickerExample() {
           error
           value={value1}
           onValueChange={(value) => setValue(value.toString())}
-        />
-      </Section>
-
-      <Section style={{}} title="Picker - Underline (custom styles)">
-        <Picker
-          label="Make"
-          placeholder="Select a make..."
-          options={OPTIONS}
-          disabled
-          value={value1}
-          onValueChange={(value) => setValue(value.toString())}
-          style={{
-            backgroundColor: "red",
-            padding: 16,
-          }}
-        />
-      </Section>
-
-      <Section style={{}} title="Picker - Underline with string options">
-        <Picker
-          label="Make"
-          placeholder="Select a make..."
-          options={["Audi", "BMW", "Cadillac", "Dodge"]}
-          value={value2}
-          onValueChange={(value) => setValue2(value.toString())}
         />
       </Section>
 
@@ -125,87 +127,6 @@ function PickerExample() {
           error
           value={value1}
           onValueChange={(value) => setValue(value.toString())}
-        />
-      </Section>
-
-      <Section style={{}} title="Picker - Solid (custom styles)">
-        <Picker
-          label="Make"
-          placeholder="Select a make..."
-          type="solid"
-          options={OPTIONS}
-          value={value1}
-          onValueChange={(value) => setValue(value.toString())}
-          style={{
-            backgroundColor: "red",
-            borderTopWidth: 2,
-            borderRightWidth: 2,
-            borderBottomWidth: 2,
-            borderLeftWidth: 2,
-            borderColor: "green",
-          }}
-        />
-      </Section>
-
-      <Section style={{}} title="Picker - Solid (custom font)">
-        <Picker
-          label="Make"
-          placeholder="Select a make..."
-          type="solid"
-          options={OPTIONS}
-          value={value1}
-          onValueChange={(value) => setValue(value.toString())}
-          placeholderTextColor="green"
-          style={{
-            fontSize: 30,
-            color: "red",
-          }}
-          leftIconName={"AntDesign/caretleft"}
-        />
-      </Section>
-
-      <Section style={{}} title="Picker - Solid (custom padding)">
-        <Picker
-          label="Make"
-          placeholder="Select a make..."
-          type="solid"
-          options={OPTIONS}
-          value={value1}
-          onValueChange={(value) => setValue(value.toString())}
-          style={{
-            paddingTop: 25,
-            paddingRight: 25,
-            paddingBottom: 25,
-            paddingLeft: 25,
-          }}
-        />
-      </Section>
-
-      <Section style={{}} title="Picker - Solid (custom margin)">
-        <Picker
-          label="Make"
-          placeholder="Select a make..."
-          type="solid"
-          options={OPTIONS}
-          value={value1}
-          onValueChange={(value) => setValue(value.toString())}
-          style={{
-            marginTop: 25,
-            marginRight: 25,
-            marginBottom: 25,
-            marginLeft: 25,
-          }}
-        />
-      </Section>
-
-      <Section style={{}} title="Picker - Solid with string options">
-        <Picker
-          label="Make"
-          placeholder="Select a make..."
-          type="solid"
-          options={["Audi", "BMW", "Cadillac", "Dodge"]}
-          value={value2}
-          onValueChange={(value) => setValue2(value.toString())}
         />
       </Section>
 

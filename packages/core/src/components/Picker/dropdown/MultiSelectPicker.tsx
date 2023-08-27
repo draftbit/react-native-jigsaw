@@ -7,7 +7,7 @@ import DropDownPicker from "./DropDownPicker";
 import { withTheme } from "../../../theming";
 
 const MultiSelectPicker: React.FC<
-  CommonDropDownPickerProps & MultiSelectPickerProps
+  React.PropsWithChildren<CommonDropDownPickerProps & MultiSelectPickerProps>
 > = ({ value, ...rest }) => {
   //@ts-ignore Ignore theme type issues
   return <DropDownPicker value={value || []} {...rest} />;

@@ -66,6 +66,7 @@ export {
   HStack,
   VStack,
   ZStack,
+  PickerItem,
 } from "@draftbit/core";
 
 /**

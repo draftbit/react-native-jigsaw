@@ -1,6 +1,10 @@
 import * as React from "react";
 import { Keyboard } from "react-native";
-import { extractStyles, useDeepCompareMemo } from "../../../utilities";
+import {
+  extractStyles,
+  flattenReactFragments,
+  useDeepCompareMemo,
+} from "../../../utilities";
 import {
   CommonDropDownPickerProps,
   MultiSelectPickerProps,
@@ -10,9 +14,12 @@ import {
 import PickerInputContainer from "../PickerInputContainer";
 import DropDownPickerComponent from "react-native-dropdown-picker";
 import { withTheme } from "../../../theming";
+import PickerItem, { PickerItemProps } from "./PickerItem";
 
 const DropDownPicker: React.FC<
-  CommonDropDownPickerProps & (SinglePickerProps | MultiSelectPickerProps)
+  React.PropsWithChildren<
+    CommonDropDownPickerProps & (SinglePickerProps | MultiSelectPickerProps)
+  >
 > = ({
   theme,
   options: optionsProp = [],
@@ -21,20 +28,14 @@ const DropDownPicker: React.FC<
   placeholder,
   value,
   autoDismissKeyboard = true,
-  style,
   selectedIconName = "Feather/check",
   selectedIconColor = theme.colors.strong,
   selectedIconSize = 20,
-  itemTextSize = 14,
-  itemTextColor = theme.colors.strong,
-  itemBackgroundColor,
-  selectedItemTextSize = itemTextSize,
-  selectedItemTextColor = itemTextColor,
-  selectedItemBackgroundColor = itemBackgroundColor,
   dropDownBackgroundColor = theme.colors.background,
   dropDownBorderColor = theme.colors.divider,
   dropDownBorderWidth = 1,
   dropDownBorderRadius = 8,
+  children: childrenProp,
   ...rest
 }) => {
   const [pickerVisible, setPickerVisible] = React.useState(false);
@@ -44,6 +45,24 @@ const DropDownPicker: React.FC<
 
   const isMultiSelect = Array.isArray(value);
 
+  const pickerItemProps: PickerItemProps = React.useMemo(() => {
+    const children = flattenReactFragments(
+      React.Children.toArray(childrenProp) as React.ReactElement[]
+    );
+
+    let firstPickerItem; // Only the props of the first PickerItem are used, any others are ignored
+    for (const child of children) {
+      if (child.type === PickerItem) {
+        firstPickerItem = child;
+      }
+    }
+
+    return firstPickerItem?.props || {};
+  }, [childrenProp]);
+
+  const { viewStyles: pickerItemViewStyles, textStyles: pickerItemTextStyles } =
+    extractStyles(pickerItemProps.style);
+
   const options = useDeepCompareMemo(
     () =>
       normalizeToPickerOptions(optionsProp).map((option) => ({
@@ -52,8 +71,6 @@ const DropDownPicker: React.FC<
       })),
     [optionsProp]
   );
-
-  const { textStyles } = extractStyles(style);
 
   React.useEffect(() => {
     onValueChange?.(
@@ -70,7 +87,6 @@ const DropDownPicker: React.FC<
 
   return (
     <PickerInputContainer
-      style={style}
       Icon={Icon}
       placeholder={placeholder}
       selectedValue={value}
@@ -90,17 +106,29 @@ const DropDownPicker: React.FC<
         multiple={isMultiSelect}
         style={{ display: "none" }} // To not render the default input container
         listItemLabelStyle={[
-          textStyles,
-          { color: itemTextColor, fontSize: itemTextSize },
+          { color: theme.colors.strong, fontSize: 14 },
+          pickerItemTextStyles,
         ]}
-        selectedItemLabelStyle={{
-          color: selectedItemTextColor,
-          fontSize: selectedItemTextSize,
-        }}
-        listItemContainerStyle={{ backgroundColor: itemBackgroundColor }}
-        selectedItemContainerStyle={{
-          backgroundColor: selectedItemBackgroundColor,
-        }}
+        selectedItemLabelStyle={[
+          pickerItemProps.selectedTextColor
+            ? {
+                color: pickerItemProps.selectedTextColor,
+              }
+            : {},
+          pickerItemProps.selectedTextSize
+            ? {
+                fontSize: pickerItemProps.selectedTextSize,
+              }
+            : {},
+        ]}
+        listItemContainerStyle={pickerItemViewStyles}
+        selectedItemContainerStyle={
+          pickerItemProps.selectedBackgroundColor
+            ? {
+                backgroundColor: pickerItemProps.selectedBackgroundColor,
+              }
+            : {}
+        }
         dropDownContainerStyle={{
           borderColor: dropDownBorderColor,
           borderWidth: dropDownBorderWidth,

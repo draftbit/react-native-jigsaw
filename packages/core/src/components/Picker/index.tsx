@@ -20,3 +20,4 @@ const SinglePicker: React.FC<PickerProps> = ({ mode = "native", ...rest }) => {
 
 export const Picker = withTheme(SinglePicker);
 export { default as MultiSelectPicker } from "./dropdown/MultiSelectPicker";
+export { default as PickerItem } from "./dropdown/PickerItem";

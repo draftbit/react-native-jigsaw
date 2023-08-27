@@ -14,9 +14,10 @@ const SinglePicker: React.FC<React.PropsWithChildren<PickerProps>> = ({
 }) => {
   switch (mode) {
     case "native":
+      //@ts-ignore Ignore theme type issues
       return <NativePicker {...rest} />;
     case "dropdown":
-      //@ts-ignore Ignore theme type issues
+      //@ts-ignore
       return <DropDownPicker {...rest} />;
   }
 };

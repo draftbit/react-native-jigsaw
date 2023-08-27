@@ -28,7 +28,6 @@ const PickerInputContainer: React.FC<
   onPress,
   Icon,
   style,
-  placeholder,
   selectedValue,
   disabled = false,
   zIndex,
@@ -65,18 +64,21 @@ const PickerInputContainer: React.FC<
 
   return (
     <View style={[containerStyle, { zIndex }]}>
-      <Touchable disabled={disabled} onPress={onPress}>
-        <TextField
-          Icon={Icon}
-          numberOfLines={1}
-          onChangeText={() => {}}
-          value={selectedLabel?.toString() || placeholder}
-          editable={false}
-          disabled={disabled}
-          style={textFieldStyle}
-          {...rest}
-        />
-      </Touchable>
+      <TextField
+        Icon={Icon}
+        numberOfLines={1}
+        onChangeText={() => {}}
+        value={selectedLabel?.toString()}
+        editable={false}
+        disabled={disabled}
+        style={textFieldStyle}
+        {...rest}
+      />
+      <Touchable
+        style={StyleSheet.absoluteFillObject}
+        disabled={disabled}
+        onPress={onPress}
+      />
       {children}
     </View>
   );

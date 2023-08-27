@@ -238,6 +238,7 @@ class TextField extends React.Component<Props, State> {
       Icon,
       type = "underline",
       disabled = false,
+      editable = true,
       label,
       error = false,
       leftIconName,
@@ -568,7 +569,8 @@ class TextField extends React.Component<Props, State> {
               ? this.state.placeholder
               : this.props.placeholder,
             placeholderTextColor: placeholderColor,
-            editable: !disabled,
+            editable: !disabled && editable,
+            disabled: disabled || !editable,
             selectionColor: activeColor,
             multiline,
             numberOfLines,

@@ -133,6 +133,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     backgroundColor: "white",
+    ...Platform.select({
+      web: {
+        height: "100%", //To have the <select/> element fill the height
+      },
+    }),
   },
   iosPickerContent: {
     flexDirection: "column",

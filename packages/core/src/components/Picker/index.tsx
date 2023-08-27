@@ -8,7 +8,10 @@ interface PickerProps extends CommonDropDownPickerProps, SinglePickerProps {
   mode?: "native" | "dropdown";
 }
 
-const SinglePicker: React.FC<PickerProps> = ({ mode = "native", ...rest }) => {
+const SinglePicker: React.FC<React.PropsWithChildren<PickerProps>> = ({
+  mode = "native",
+  ...rest
+}) => {
   switch (mode) {
     case "native":
       return <NativePicker {...rest} />;

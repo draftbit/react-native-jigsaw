@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, StyleSheet, Platform, Keyboard } from "react-native";
+import { StyleSheet, Platform, Keyboard } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Picker as NativePickerComponent } from "@react-native-picker/picker";
 import Portal from "../Portal/Portal";
@@ -78,16 +78,14 @@ const NativePicker: React.FC<
     if (isIos) {
       return (
         <Portal>
-          <SafeAreaView style={styles.nativePicker}>
-            <View style={styles.iosPickerContent}>
-              <Button
-                Icon={Icon}
-                onPress={() => setPickerVisible(!pickerVisible)}
-                style={[styles.iosButton, { color: theme.colors.primary }]}
-                title="Close"
-              />
-              {renderNativePicker()}
-            </View>
+          <SafeAreaView style={styles.iosPickerContent}>
+            <Button
+              Icon={Icon}
+              onPress={() => setPickerVisible(!pickerVisible)}
+              style={[styles.iosButton, { color: theme.colors.primary }]}
+              title="Close"
+            />
+            {renderNativePicker()}
           </SafeAreaView>
         </Portal>
       );
@@ -145,6 +143,9 @@ const styles = StyleSheet.create({
   },
   iosPickerContent: {
     width: "100%",
+    position: "absolute",
+    bottom: 0,
+    backgroundColor: "white",
   },
   iosButton: {
     backgroundColor: "transparent",

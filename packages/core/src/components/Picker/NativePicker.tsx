@@ -27,6 +27,7 @@ const NativePicker: React.FC<
   value,
   autoDismissKeyboard = true,
   theme,
+  disabled,
   ...rest
 }) => {
   const pickerRef = React.useRef<NativePickerComponent<string | number>>(null);
@@ -113,10 +114,11 @@ const NativePicker: React.FC<
       selectedValue={value}
       options={options}
       onPress={() => setPickerVisible(!pickerVisible)}
+      disabled={disabled}
       {...rest}
     >
       {/* Web version is collapsed by default, always show to allow direct expand */}
-      {(pickerVisible || isWeb) && renderPicker()}
+      {(pickerVisible || isWeb) && !disabled && renderPicker()}
     </PickerInputContainer>
   );
 };

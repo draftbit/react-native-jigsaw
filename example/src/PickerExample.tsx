@@ -32,10 +32,10 @@ function PickerExample() {
         value={value1}
         mode="dropdown"
         onValueChange={(value) => setValue(value.toString())}
-        style={{ marginBottom: 20, fontFamily: "serif" }}
+        style={{ marginBottom: 20 }}
       >
         <PickerItem
-          style={{ color: "red", fontFamily: "serif" }}
+          style={{ color: "red" }}
           selectedTextColor="white"
           selectedBackgroundColor="black"
           selectedTextSize={22}
@@ -54,7 +54,7 @@ function PickerExample() {
         style={{ marginBottom: 20 }}
       >
         <PickerItem
-          style={{ color: "red", fontFamily: "serif" }}
+          style={{ color: "red" }}
           selectedTextColor="white"
           selectedBackgroundColor="black"
           selectedTextSize={22}

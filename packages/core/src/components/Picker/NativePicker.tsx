@@ -11,17 +11,22 @@ import {
   normalizeToPickerOptions,
 } from "./PickerCommon";
 import PickerInputContainer from "./PickerInputContainer";
+import { withTheme } from "../../theming";
+import { Theme } from "../../styles/DefaultTheme";
 
 const isIos = Platform.OS === "ios";
 const isWeb = Platform.OS === "web";
 
-const NativePicker: React.FC<CommonPickerProps & SinglePickerProps> = ({
+const NativePicker: React.FC<
+  CommonPickerProps & SinglePickerProps & { theme: Theme }
+> = ({
   options: optionsProp = [],
   onValueChange,
   Icon,
   placeholder,
   value,
   autoDismissKeyboard = true,
+  theme,
   ...rest
 }) => {
   const pickerRef = React.useRef<NativePickerComponent<string | number>>(null);
@@ -56,10 +61,7 @@ const NativePicker: React.FC<CommonPickerProps & SinglePickerProps> = ({
           onValueChange?.("");
         }
       }}
-      style={[
-        styles.nativePicker,
-        isIos ? styles.iosNativePicker : styles.nonIosPicker,
-      ]}
+      style={isIos ? styles.iosNativePicker : styles.nativePicker}
       onBlur={() => setPickerVisible(false)}
     >
       {options.map((option) => (
@@ -80,12 +82,10 @@ const NativePicker: React.FC<CommonPickerProps & SinglePickerProps> = ({
             <View style={styles.iosPickerContent}>
               <Button
                 Icon={Icon}
-                type="text"
                 onPress={() => setPickerVisible(!pickerVisible)}
-                style={styles.iosButton}
-              >
-                {"Close"}
-              </Button>
+                style={[styles.iosButton, { color: theme.colors.primary }]}
+                title="Close"
+              />
               {renderNativePicker()}
             </View>
           </SafeAreaView>
@@ -133,25 +133,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     backgroundColor: "white",
+    opacity: 0,
     ...Platform.select({
       web: {
         height: "100%", //To have the <select/> element fill the height
       },
     }),
   },
-  iosPickerContent: {
-    flexDirection: "column",
-    width: "100%",
-  },
-  iosButton: {
-    alignSelf: "flex-end",
-  },
   iosNativePicker: {
     backgroundColor: "white",
   },
-  nonIosPicker: {
-    opacity: 0,
+  iosPickerContent: {
+    width: "100%",
+  },
+  iosButton: {
+    backgroundColor: "transparent",
+    borderWidth: 0,
   },
 });
 
-export default NativePicker;
+export default withTheme(NativePicker);

@@ -21,7 +21,7 @@ function PickerExample() {
 
   return (
     <Container style={{}}>
-      {/* Dropdown and Multiselect placed outside Section to be able to draw over sibling components */}
+      {/* Dropdown and Multiselect Pickers placed outside Section to be able to draw over sibling components */}
       <Section style={{}} title="Picker - Dropdown">
         <></>
       </Section>
@@ -33,9 +33,23 @@ function PickerExample() {
         mode="dropdown"
         onValueChange={(value) => setValue(value.toString())}
         style={{ marginBottom: 20 }}
+      />
+
+      <Section style={{}} title="Picker - Dropdown (customized item)">
+        <></>
+      </Section>
+      <Picker
+        label="Make"
+        placeholder="Select a make..."
+        options={OPTIONS}
+        value={value1}
+        mode="dropdown"
+        onValueChange={(value) => setValue(value.toString())}
+        style={{ marginBottom: 20 }}
+        selectedIconColor="white"
       >
         <PickerItem
-          style={{ color: "red" }}
+          style={{ color: "red", fontWeight: 600 }}
           selectedTextColor="white"
           selectedBackgroundColor="black"
           selectedTextSize={22}
@@ -52,14 +66,7 @@ function PickerExample() {
         value={value4}
         onValueChange={(value) => setValue4(value)}
         style={{ marginBottom: 20 }}
-      >
-        <PickerItem
-          style={{ color: "red" }}
-          selectedTextColor="white"
-          selectedBackgroundColor="black"
-          selectedTextSize={22}
-        />
-      </MultiSelectPicker>
+      />
 
       <Section style={{}} title="Picker - Underline">
         <Picker

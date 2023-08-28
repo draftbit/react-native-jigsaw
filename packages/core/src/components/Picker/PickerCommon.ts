@@ -9,7 +9,7 @@ export interface PickerOption {
 }
 
 export interface PickerInputContainerProps extends IconSlot {
-  error?: any;
+  error?: boolean;
   placeholder?: string;
   disabled?: boolean;
   style?: StyleProp<ViewStyle> | TextStyle;

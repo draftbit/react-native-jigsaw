@@ -87,6 +87,7 @@ const DropDownPicker: React.FC<
 
   return (
     <PickerInputContainer
+      testID="dropdown-picker"
       Icon={Icon}
       placeholder={placeholder}
       selectedValue={value}

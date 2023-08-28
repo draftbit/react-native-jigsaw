@@ -51,6 +51,7 @@ const NativePicker: React.FC<CommonPickerProps & SinglePickerProps> = ({
   const renderNativePicker = () => (
     <NativePickerComponent
       ref={pickerRef}
+      testID="native-picker-component"
       selectedValue={value}
       onValueChange={(newValue) => {
         if (newValue !== placeholder) {
@@ -64,6 +65,7 @@ const NativePicker: React.FC<CommonPickerProps & SinglePickerProps> = ({
     >
       {options.map((option) => (
         <NativePickerComponent.Item
+          testID="native-picker-item"
           label={option.label.toString()}
           value={option.value}
           key={option.value}
@@ -106,6 +108,7 @@ const NativePicker: React.FC<CommonPickerProps & SinglePickerProps> = ({
 
   return (
     <PickerInputContainer
+      testID="native-picker"
       Icon={Icon}
       placeholder={placeholder}
       selectedValue={value}

@@ -19,6 +19,7 @@ interface PickerInputContainerProps extends ExposedPickerInputContainerProps {
   options: PickerOption[];
   zIndex?: number;
   onPress?: () => void;
+  testID?: string;
 }
 
 const PickerInputContainer: React.FC<
@@ -32,6 +33,7 @@ const PickerInputContainer: React.FC<
   disabled = false,
   zIndex,
   children,
+  testID,
   ...rest
 }) => {
   const containerStyle = StyleSheet.flatten([
@@ -63,7 +65,7 @@ const PickerInputContainer: React.FC<
   }
 
   return (
-    <View style={[containerStyle, { zIndex }]}>
+    <View testID={testID} style={[containerStyle, { zIndex }]}>
       <TextField
         Icon={Icon}
         numberOfLines={1}

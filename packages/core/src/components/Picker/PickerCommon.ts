@@ -44,12 +44,6 @@ export interface CommonDropDownPickerProps extends CommonPickerProps {
   selectedIconName?: string;
   selectedIconColor?: string;
   selectedIconSize?: number;
-  itemTextSize?: number;
-  itemTextColor?: string;
-  itemBackgroundColor?: string;
-  selectedItemTextSize?: number;
-  selectedItemTextColor?: string;
-  selectedItemBackgroundColor?: string;
   dropDownBackgroundColor?: string;
   dropDownBorderColor?: string;
   dropDownBorderWidth?: number;

@@ -54,6 +54,7 @@ const DropDownPicker: React.FC<
     for (const child of children) {
       if (child.type === PickerItem) {
         firstPickerItem = child;
+        break;
       }
     }
 
@@ -76,6 +77,7 @@ const DropDownPicker: React.FC<
     onValueChange?.(
       (isMultiSelect ? internalValue ?? [] : internalValue ?? "") as any // cannot determine if multiselect or not on compile time
     );
+    // onValueChange excluded to prevent running on every re-render when using an anoymous function, which is the common case
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [internalValue]);
 

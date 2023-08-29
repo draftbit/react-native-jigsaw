@@ -12,7 +12,7 @@ import { MapViewContext, ZoomLocation } from "./MapViewCommon";
 import { MapMarkerClusterView } from "./marker-cluster";
 import { flattenReactFragments } from "@draftbit/ui";
 import type { MapMarker as MapMarkerRefType } from "react-native-maps";
-import { useDeepCompareMemo } from "./useDeepCompareMemo";
+import { useDeepCompareMemo, useDebounce } from "../utils";
 
 export interface MapMarkerContextType {
   onMarkerPress: (marker: MapMarkerProps) => void;
@@ -66,6 +66,7 @@ const MapViewF = <T extends object>({
   mapRef: React.RefObject<MapViewComponent>;
 }) => {
   const [currentRegion, setCurrentRegion] = React.useState<Region | null>(null);
+  const delayedRegionValue = useDebounce(currentRegion, 500);
 
   const markerRefs = React.useMemo<
     Map<string, React.RefObject<MapMarkerRefType>>
@@ -216,6 +217,15 @@ const MapViewF = <T extends object>({
     }
   }, [latitude, longitude, zoom, animateToLocation]);
 
+  // Use delayed/debounced value to prevent too many calls when map is being dragged
+  React.useEffect(() => {
+    if (delayedRegionValue) {
+      onRegionChange?.(delayedRegionValue);
+    }
+    // onRegionChange excluded to prevent calling on every rerender when using an anonymous function (which is most common)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [delayedRegionValue]);
+
   const markers = React.useMemo(
     () => getChildrenForType(MapMarker),
     [getChildrenForType]
@@ -255,9 +265,6 @@ const MapViewF = <T extends object>({
         showsCompass={showsCompass}
         initialCamera={camera}
         loadingEnabled={loadingEnabled}
-        onRegionChangeComplete={(region) => {
-          onRegionChange?.(region);
-        }}
         onRegionChange={setCurrentRegion}
         onPress={(event) => {
           const coordinate = event.nativeEvent.coordinate;

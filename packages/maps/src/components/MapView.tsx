@@ -66,7 +66,7 @@ const MapViewF = <T extends object>({
   mapRef: React.RefObject<MapViewComponent>;
 }) => {
   const [currentRegion, setCurrentRegion] = React.useState<Region | null>(null);
-  const delayedRegionValue = useDebounce(currentRegion, 500);
+  const delayedRegionValue = useDebounce(currentRegion, 300);
 
   const markerRefs = React.useMemo<
     Map<string, React.RefObject<MapMarkerRefType>>

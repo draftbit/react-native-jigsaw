@@ -356,8 +356,8 @@ class MapView<T extends object> extends React.Component<
       heading: 0,
       pitch: 0,
       center: {
-        latitude,
-        longitude,
+        latitude: Number(latitude),
+        longitude: Number(longitude),
       },
     };
 

@@ -13,6 +13,7 @@ import { MapMarkerClusterView } from "./marker-cluster";
 import { flattenReactFragments } from "@draftbit/ui";
 import type { MapMarker as MapMarkerRefType } from "react-native-maps";
 import { useDeepCompareMemo, useDebounce } from "../utils";
+import MapCircle from "./MapCircle";
 
 export interface MapMarkerContextType {
   onMarkerPress: (marker: MapMarkerProps) => void;
@@ -242,6 +243,10 @@ const MapViewF = <T extends object>({
     () => getChildrenForType(MapMarker),
     [getChildrenForType]
   );
+  const circles = React.useMemo(
+    () => getChildrenForType(MapCircle),
+    [getChildrenForType]
+  );
   const clusters = React.useMemo(
     () => getChildrenForType(MapMarkerCluster),
     [getChildrenForType]
@@ -309,6 +314,8 @@ const MapViewF = <T extends object>({
             <React.Fragment key={index}>{cluster}</React.Fragment>
           ))}
         </MapMarkerContext.Provider>
+
+        {circles}
       </MapViewComponent>
     ),
     [

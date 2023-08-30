@@ -5,3 +5,4 @@ export {
   MapMarkerClusterView,
 } from "./components/marker-cluster";
 export { default as MapCallout } from "./components/MapCallout";
+export { default as MapCircle } from "./components/MapCircle";

@@ -26,8 +26,15 @@ export const MapMarkerContext = React.createContext<MapMarkerContextType>({
   getMarkerRef: () => undefined,
 });
 
+interface RegionWithZoom extends Region {
+  zoom: number;
+}
+
 export interface MapViewProps<T>
-  extends Omit<MapViewComponentProps, "onRegionChangeComplete" | "onPress"> {
+  extends Omit<
+    MapViewComponentProps,
+    "onRegionChangeComplete" | "onPress" | "onRegionChange"
+  > {
   apiKey: string;
   zoom?: number;
   latitude?: number;
@@ -37,7 +44,7 @@ export interface MapViewProps<T>
   markersData?: T[];
   keyExtractor?: (item: T, index: number) => string;
   renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
-  onRegionChange?: (region: Region) => void;
+  onRegionChange?: (region: RegionWithZoom) => void;
   onPress?: (latitude: number, longitude: number) => void;
 }
 
@@ -219,9 +226,14 @@ const MapViewF = <T extends object>({
 
   // Use delayed/debounced value to prevent too many calls when map is being dragged
   React.useEffect(() => {
-    if (delayedRegionValue) {
-      onRegionChange?.(delayedRegionValue);
-    }
+    const callOnRegionChange = async () => {
+      if (delayedRegionValue) {
+        const camera = await mapRef.current?.getCamera();
+        onRegionChange?.({ ...delayedRegionValue, zoom: camera?.zoom || 1 });
+      }
+    };
+
+    callOnRegionChange();
     // onRegionChange excluded to prevent calling on every rerender when using an anonymous function (which is most common)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [delayedRegionValue]);

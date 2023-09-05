@@ -50,13 +50,8 @@ const DropDownPicker: React.FC<
       React.Children.toArray(childrenProp) as React.ReactElement[]
     );
 
-    let firstPickerItem; // Only the props of the first PickerItem are used, any others are ignored
-    for (const child of children) {
-      if (child.type === PickerItem) {
-        firstPickerItem = child;
-        break;
-      }
-    }
+    // Only the props of the first PickerItem are used, any others are ignored
+    const firstPickerItem = children.find((child) => child.type === PickerItem);
 
     return firstPickerItem?.props || {};
   }, [childrenProp]);

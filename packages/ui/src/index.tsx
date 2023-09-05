@@ -66,6 +66,7 @@ export {
   HStack,
   VStack,
   ZStack,
+  PickerItem,
 } from "@draftbit/core";
 
 /**
@@ -91,6 +92,7 @@ import {
   FieldSearchBarFull as BaseFieldSearchBarFull,
   IconButton as BaseIconButton,
   Picker as BasePicker,
+  MultiSelectPicker as BaseMultiSelectPicker,
   StarRating as BaseStarRating,
   TextField as BaseTextField,
   RadioButton as BaseRadioButton,
@@ -120,6 +122,7 @@ export const FieldSearchBarFull = injectIcon(BaseFieldSearchBarFull, Icon);
 export const IconButton = injectIcon(BaseIconButton, Icon);
 export const Link = injectIcon(BaseLink, Icon);
 export const Picker = injectIcon(BasePicker, Icon);
+export const MultiSelectPicker = injectIcon(BaseMultiSelectPicker, Icon);
 export const RadioButton = injectIcon(BaseRadioButton, Icon);
 export const RadioButtonRow = injectIcon(BaseRadioButtonRow, Icon);
 export const RowBodyIcon = injectIcon(BaseRowBodyIcon, Icon);

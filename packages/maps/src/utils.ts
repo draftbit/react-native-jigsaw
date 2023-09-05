@@ -21,3 +21,19 @@ export function useDeepCompareMemo<T>(
   // eslint-disable-next-line react-hooks/exhaustive-deps
   return React.useMemo(factory, deps?.map(useDeepCompareMemoize));
 }
+
+export function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = React.useState(value);
+
+  React.useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}

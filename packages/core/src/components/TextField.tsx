@@ -38,12 +38,14 @@ export type Props = {
     text: string | NativeSyntheticEvent<TextInputChangeEventData>
   ) => void;
   rightIconName?: string;
+  iconColor?: string;
+  iconSize?: number;
   assistiveText?: string;
   multiline?: boolean;
   numberOfLines: number;
   underlineColor?: string;
   activeBorderColor?: string;
-  style?: StyleProp<ViewStyle> & { height?: number };
+  style?: StyleProp<ViewStyle>;
   theme: Theme;
   render?: (
     props: TextInputProps & { ref: (c: NativeTextInput) => void }
@@ -236,11 +238,14 @@ class TextField extends React.Component<Props, State> {
       Icon,
       type = "underline",
       disabled = false,
+      editable = true,
       label,
       error = false,
       leftIconName,
       leftIconMode,
       rightIconName,
+      iconColor,
+      iconSize,
       assistiveText,
       underlineColor: underlineColorProp,
       activeBorderColor: activeBorderColorProp,
@@ -278,7 +283,7 @@ class TextField extends React.Component<Props, State> {
     } else {
       activeColor = error ? colors.error : activeBorderColorProp;
       placeholderColor = borderColor = colors.light;
-      underlineColor = underlineColorProp;
+      underlineColor = underlineColorProp || colors.light;
       backgroundColor = colors.background;
     }
 
@@ -344,7 +349,9 @@ class TextField extends React.Component<Props, State> {
     }
 
     let leftIconColor;
-    if (error) {
+    if (iconColor) {
+      leftIconColor = iconColor;
+    } else if (error) {
       leftIconColor = colors.error;
     } else if (this.state.focused) {
       leftIconColor = colors.primary;
@@ -353,7 +360,7 @@ class TextField extends React.Component<Props, State> {
     }
 
     const leftIconProps = {
-      size: 24,
+      size: iconSize || 24,
       color: leftIconColor,
       name: leftIconName || "",
     };
@@ -438,7 +445,7 @@ class TextField extends React.Component<Props, State> {
       borderLeftWidth,
       borderColor: borderCol,
       ...styleProp
-    } = StyleSheet.flatten(style || {}) as ViewStyle & { height?: number };
+    } = StyleSheet.flatten(style || {}) as ViewStyle;
 
     return (
       <View style={[styles.container, styleProp]}>
@@ -447,7 +454,7 @@ class TextField extends React.Component<Props, State> {
         ) : null}
         <View
           style={applyStyles([containerStyle], {
-            height: style?.height,
+            height: styleProp.height,
             backgroundColor: bgColor,
             padding,
             paddingTop,
@@ -562,7 +569,8 @@ class TextField extends React.Component<Props, State> {
               ? this.state.placeholder
               : this.props.placeholder,
             placeholderTextColor: placeholderColor,
-            editable: !disabled,
+            editable: !disabled && editable,
+            disabled: disabled || !editable,
             selectionColor: activeColor,
             multiline,
             numberOfLines,
@@ -578,8 +586,8 @@ class TextField extends React.Component<Props, State> {
         {rightIconName ? (
           <Icon
             name={rightIconName}
-            size={ICON_SIZE}
-            color={colors.light}
+            size={iconSize || ICON_SIZE}
+            color={iconColor || colors.light}
             style={{
               position: "absolute",
               right: 16,

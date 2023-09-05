@@ -230,7 +230,7 @@ const MapViewF = <T extends object>({
     const callOnRegionChange = async () => {
       if (delayedRegionValue) {
         const camera = await mapRef.current?.getCamera();
-        onRegionChange?.({ ...delayedRegionValue, zoom: camera?.zoom || 1 });
+        onRegionChange?.({ ...delayedRegionValue, zoom: camera?.zoom ?? 1 });
       }
     };
 

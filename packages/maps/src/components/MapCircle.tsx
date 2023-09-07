@@ -21,11 +21,17 @@ const MapCircle: React.FC<React.PropsWithChildren<MapCircleProps>> = ({
   strokeColor = theme.colors.primary,
   ...rest
 }) => {
-  // Web maps by default uses a lower opacity for the circle, native needs an extra step
-  const fillColor =
-    Platform.OS === "web"
-      ? fillColorProp
-      : Color(fillColorProp).alpha(0.3).rgb().string();
+  const parsedColor = Color(fillColorProp);
+
+  let fillColor;
+  if (parsedColor.alpha() === 0) {
+    fillColor = "transparent";
+  } else if (Platform.OS !== "web") {
+    // Web maps by default uses a lower opacity for the circle, native needs this extra step
+    fillColor = parsedColor.alpha(0.3).rgb().string();
+  } else {
+    fillColor = fillColorProp;
+  }
 
   return (
     <MapCircleComponent

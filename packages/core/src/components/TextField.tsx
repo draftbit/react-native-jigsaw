@@ -12,7 +12,6 @@ import {
   ViewStyle,
   TextStyle,
   LayoutChangeEvent,
-  ImageStyle,
 } from "react-native";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
@@ -235,6 +234,7 @@ class TextField extends React.Component<Props, State> {
 
   render() {
     const {
+      theme: { colors, typography, roundness, disabledOpacity },
       Icon,
       type = "underline",
       disabled = false,
@@ -248,11 +248,10 @@ class TextField extends React.Component<Props, State> {
       iconSize,
       assistiveText,
       underlineColor: underlineColorProp,
-      activeBorderColor: activeBorderColorProp,
+      activeBorderColor: activeBorderColorProp = colors.primary,
       multiline = false,
       numberOfLines = 4,
       style,
-      theme: { colors, typography, roundness, disabledOpacity },
       render = (props) => <TextInput {...props} />,
       ...rest
     } = this.props;
@@ -297,9 +296,7 @@ class TextField extends React.Component<Props, State> {
       paddingVertical: 0,
       color: inputTextColor,
       paddingLeft:
-        leftIconName && leftIconMode === "inset"
-          ? ICON_SIZE + 12 + (type === "solid" ? 16 : 0)
-          : 0,
+        leftIconName && leftIconMode === "inset" ? ICON_SIZE + 12 : 0,
       paddingRight: rightIconName ? ICON_SIZE + 16 + 4 : 12,
       ...subtitle1,
     };
@@ -340,8 +337,6 @@ class TextField extends React.Component<Props, State> {
       } else {
         assistiveTextLeftMargin = 12;
       }
-
-      inputStyle.paddingHorizontal = 12;
     }
 
     if (leftIconName && leftIconMode === "outset") {
@@ -359,30 +354,11 @@ class TextField extends React.Component<Props, State> {
       leftIconColor = colors.light;
     }
 
-    const leftIconProps = {
-      size: iconSize || 24,
-      color: leftIconColor,
-      name: leftIconName || "",
-    };
-
-    const leftIconStyle: ImageStyle = {
-      position: "absolute",
-      marginTop:
-        type === "solid"
-          ? MINIMIZED_LABEL_FONT_SIZE + 4
-          : leftIconMode === "outset"
-          ? 16
-          : 0,
-      marginLeft: leftIconMode === "inset" && type === "solid" ? 16 : 0,
-    };
-
     const labelStyle = {
       ...typography.subtitle1,
+      ...(type === "solid" ? { marginHorizontal: 12 } : {}),
       top: type === "solid" ? 16 : 0,
-      left:
-        leftIconName && leftIconMode === "inset"
-          ? ICON_SIZE + (type === "solid" ? 16 : 12)
-          : 0,
+      left: leftIconName && leftIconMode === "inset" ? ICON_SIZE + 12 : 0,
       transform: [
         {
           // Move label to top
@@ -425,7 +401,7 @@ class TextField extends React.Component<Props, State> {
       [
         styles.input,
         inputStyle,
-        type === "solid" ? { marginHorizontal: 12 } : {},
+        type === "solid" ? { marginHorizontal: 16 } : { marginHorizontal: 6 },
       ],
       textStyles
     );
@@ -449,9 +425,6 @@ class TextField extends React.Component<Props, State> {
 
     return (
       <View style={[styles.container, styleProp]}>
-        {leftIconName && leftIconMode === "outset" ? (
-          <Icon {...leftIconProps} style={leftIconStyle} />
-        ) : null}
         <View
           style={applyStyles([containerStyle], {
             height: styleProp.height,
@@ -519,7 +492,6 @@ class TextField extends React.Component<Props, State> {
                 }
                 style={[
                   styles.placeholder,
-                  type === "solid" ? { paddingHorizontal: 12 } : {},
                   labelStyle,
                   {
                     color: placeholderColor,
@@ -536,7 +508,6 @@ class TextField extends React.Component<Props, State> {
               <AnimatedText
                 style={[
                   styles.placeholder,
-                  type === "solid" ? { paddingHorizontal: 12 } : {},
                   labelStyle,
                   {
                     color: placeholderColor,
@@ -547,16 +518,6 @@ class TextField extends React.Component<Props, State> {
               >
                 {label}
               </AnimatedText>
-            </View>
-          ) : null}
-
-          {leftIconName && leftIconMode === "inset" ? (
-            <View
-              style={{
-                justifyContent: type === "solid" ? "center" : undefined,
-              }}
-            >
-              <Icon {...leftIconProps} style={leftIconStyle} />
             </View>
           ) : null}
 
@@ -583,6 +544,20 @@ class TextField extends React.Component<Props, State> {
             value: this.state.value,
           })}
         </View>
+
+        {leftIconName ? (
+          <Icon
+            size={iconSize || ICON_SIZE}
+            color={leftIconColor || colors.light}
+            name={leftIconName}
+            style={{
+              position: "absolute",
+              left: leftIconMode === "inset" && type === "solid" ? 16 : 0,
+              marginTop: type === "solid" ? MINIMIZED_LABEL_FONT_SIZE + 4 : 16,
+            }}
+          />
+        ) : null}
+
         {rightIconName ? (
           <Icon
             name={rightIconName}

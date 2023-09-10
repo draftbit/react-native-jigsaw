@@ -59,14 +59,18 @@ export function normalizeToPickerOptions(
 
   const firstOption = options[0];
 
-  if (typeof firstOption === ("string" || "number")) {
+  if (typeof firstOption === "string" || typeof firstOption === "number") {
     return options.map((option) => ({
       label: option as string | number,
       value: option as string | number,
     }));
   }
 
-  if (isObject(firstOption) && firstOption.value && firstOption.label) {
+  if (
+    isObject(firstOption) &&
+    firstOption.value !== undefined &&
+    firstOption.label !== undefined
+  ) {
     return (options as PickerOption[]).map((option) => {
       return {
         label: option.label,

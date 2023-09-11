@@ -53,14 +53,15 @@ const PickerInputContainer: React.FC<
     selectedLabel = selectedValue
       .map(
         (value) =>
-          options.find((option) => option.value === value)?.label.toString() ||
-          value
+          options
+            .find((option) => option.value.toString() === value.toString())
+            ?.label.toString() || value
       )
       .join(", ");
   } else {
     selectedLabel =
       options
-        .find((option) => option.value === selectedValue)
+        .find((option) => option.value.toString() === selectedValue?.toString())
         ?.label.toString() || selectedValue;
   }
 

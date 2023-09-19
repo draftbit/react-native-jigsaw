@@ -33,6 +33,7 @@ const DropDownPicker: React.FC<
   selectedIconSize = 20,
   dropDownBackgroundColor = theme.colors.background,
   dropDownBorderColor = theme.colors.divider,
+  dropDownTextColor = theme.colors.strong,
   dropDownBorderWidth = 1,
   dropDownBorderRadius = 8,
   children: childrenProp,
@@ -104,7 +105,7 @@ const DropDownPicker: React.FC<
         multiple={isMultiSelect}
         style={{ display: "none" }} // To not render the default input container
         listItemLabelStyle={[
-          { color: theme.colors.strong, fontSize: 14 },
+          { color: dropDownTextColor, fontSize: 14 },
           pickerItemTextStyles,
         ]}
         selectedItemLabelStyle={[

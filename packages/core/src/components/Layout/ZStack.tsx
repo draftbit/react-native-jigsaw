@@ -1,6 +1,5 @@
 import React from "react";
 import { View, ViewProps, LayoutChangeEvent } from "react-native";
-import { useDeepCompareEffect } from "../../utilities";
 
 interface ZStackProps extends ViewProps {
   reversed?: boolean;
@@ -17,21 +16,33 @@ const ZStack: React.FC<ZStackProps> = ({
   style,
   ...rest
 }) => {
-  const [childSizes, setChildSizes] = React.useState<Map<number, ChildSize>>(
-    new Map()
-  );
+  const childSizes = React.useRef(new Map<number, ChildSize>());
   const [maxChildWidth, setMaxChildWidth] = React.useState<number>();
   const [maxChildHeight, setMaxChildHeight] = React.useState<number>();
 
   const onChildLayout = React.useCallback(
     (index: number, width: number, height: number) => {
-      const size: ChildSize = {
-        width: roundTo3DecimalPoints(width), // rounded to prevent infinte useEffect loop caused by floating point precision issues
-        height: roundTo3DecimalPoints(height),
-      };
-      setChildSizes(new Map(childSizes.set(index, size)));
+      childSizes.current.set(index, {
+        width,
+        height,
+      });
+
+      let maxWidth = 0;
+      let maxHeight = 0;
+
+      for (const { width, height } of childSizes.current.values()) {
+        if (width > maxWidth) {
+          maxWidth = width;
+        }
+        if (height > maxHeight) {
+          maxHeight = height;
+        }
+      }
+
+      setMaxChildWidth(maxWidth);
+      setMaxChildHeight(maxHeight);
     },
-    [childSizes, setChildSizes]
+    [setMaxChildWidth, setMaxChildHeight]
   );
 
   const absoluteChildren = React.useMemo(() => {
@@ -67,27 +78,8 @@ const ZStack: React.FC<ZStackProps> = ({
   }, [children, reversed, onChildLayout]);
 
   React.useEffect(() => {
-    setChildSizes(new Map());
+    childSizes.current.clear();
   }, [absoluteChildren.length]);
-
-  const childSizeValues = Array.from(childSizes.values());
-
-  useDeepCompareEffect(() => {
-    let maxWidth = 0;
-    let maxHeight = 0;
-
-    childSizeValues.forEach(({ width, height }) => {
-      if (width > maxWidth) {
-        maxWidth = width;
-      }
-      if (height > maxHeight) {
-        maxHeight = height;
-      }
-    });
-
-    setMaxChildWidth(maxWidth);
-    setMaxChildHeight(maxHeight);
-  }, [childSizeValues, setMaxChildWidth, setMaxChildHeight]);
 
   return (
     <View
@@ -103,9 +95,5 @@ const ZStack: React.FC<ZStackProps> = ({
     </View>
   );
 };
-
-function roundTo3DecimalPoints(value: number) {
-  return Math.round(value * 1000) / 1000;
-}
 
 export default ZStack;

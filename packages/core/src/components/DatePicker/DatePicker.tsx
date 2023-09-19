@@ -57,8 +57,8 @@ type Props = {
   borderColor?: string;
   borderColorActive?: string;
   autoDismissKeyboard?: boolean;
-  minimumDate?: Date;
-  maximumDate?: Date;
+  minimumDate?: Date | string;
+  maximumDate?: Date | string;
 } & IconSlot &
   TextInputProps;
 
@@ -531,8 +531,8 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
                 mode={mode}
                 isVisible={pickerVisible}
                 toggleVisibility={toggleVisibility}
-                minimumDate={minimumDate}
-                maximumDate={maximumDate}
+                minimumDate={parseDate(minimumDate)}
+                maximumDate={parseDate(maximumDate)}
                 onChange={(_event: any, data: any) => {
                   toggleVisibility();
                   setValue(data);
@@ -582,5 +582,12 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
   },
 });
+
+function parseDate(date?: string | Date) {
+  if (typeof date === "string") {
+    return new Date(date);
+  }
+  return date;
+}
 
 export default withTheme(DatePicker);

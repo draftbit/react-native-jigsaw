@@ -20,6 +20,7 @@ const YoutubePlayer: React.FC<YoutubePlayerProps> = ({
       videoId={!videoId && !playlist ? defaultVideoId : videoId}
       playList={playlist}
       webViewStyle={viewStyles}
+      webViewProps={{ androidLayerType: "software" }} //Addresses a webview bug causing crashes on android: https://stackoverflow.com/a/71642894/8805150
     />
   );
 };

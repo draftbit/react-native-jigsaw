@@ -85,7 +85,9 @@ const DropDownPicker: React.FC<
   }, [pickerVisible, autoDismissKeyboard]);
 
   React.useEffect(() => {
-    setPickerVisible(false);
+    if (disabled) {
+      setPickerVisible(false);
+    }
   }, [disabled]);
 
   return (

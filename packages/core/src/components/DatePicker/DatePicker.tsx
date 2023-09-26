@@ -40,10 +40,10 @@ type Props = {
   // minuteInterval?: number;
   // timeZoneOffsetInMinutes?: number;
   // error?: boolean;
-  date?: Date;
+  date?: Date | string;
   format?: string;
   onDateChange?: (data?: Date) => void;
-  defaultValue?: Date;
+  defaultValue?: Date | string;
   disabled?: boolean;
   mode?: "date" | "time" | "datetime";
   type?: "solid" | "underline";
@@ -102,11 +102,13 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   maximumDate,
   ...props
 }) => {
-  const [value, setValue] = React.useState<any>(date || defaultValue);
+  const [value, setValue] = React.useState<Date | undefined>(
+    parseDate(date) || parseDate(defaultValue)
+  );
 
   React.useEffect(() => {
     if (defaultValue != null) {
-      setValue(defaultValue);
+      setValue(parseDate(defaultValue));
     }
   }, [defaultValue]);
 
@@ -177,7 +179,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   };
 
   React.useEffect(() => {
-    setValue(date);
+    setValue(parseDate(date));
   }, [date]);
 
   React.useEffect(() => {
@@ -585,7 +587,16 @@ const styles = StyleSheet.create({
 
 function parseDate(date?: string | Date) {
   if (typeof date === "string") {
-    return new Date(date);
+    const parsed = Date.parse(date);
+    if (!isNaN(parsed)) {
+      return new Date(parsed);
+    }
+    console.warn(
+      "Invalid date string:",
+      `'${date}'.`,
+      "See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format"
+    );
+    return undefined;
   }
   return date;
 }

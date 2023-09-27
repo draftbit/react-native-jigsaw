@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/maps",
-  "version": "48.5.5",
+  "version": "48.5.6",
   "description": "Map Components",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/src/index.d.ts",
@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/ui": "48.5.5",
+    "@draftbit/ui": "48.5.6",
     "@react-google-maps/api": "~2.18.1",
     "@teovilla/react-native-web-maps": "^0.9.1",
     "color": "^4.2.3",

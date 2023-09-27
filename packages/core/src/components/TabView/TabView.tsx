@@ -62,7 +62,6 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
 }) => {
   const [index, setIndex] = React.useState(initialTabIndex);
   const [routes, setRoutes] = React.useState<Route[]>([]);
-  const [tabScenes, setTabScenes] = React.useState<{ [key: string]: any }>({});
 
   const { textStyles, viewStyles } = extractStyles(style);
 
@@ -70,6 +69,8 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
     () =>
       flattenReactFragments(
         React.Children.toArray(childrenProp) as React.ReactElement[]
+      ).filter(
+        (child) => React.isValidElement(child) && child.type === TabViewItem
       ),
     [childrenProp]
   );
@@ -77,25 +78,18 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
   //Populate routes and scenes based on children
   React.useEffect(() => {
     const newRoutes: Route[] = [];
-    const scenes: { [key: string]: React.ReactElement } = {};
 
-    children
-      .filter(
-        (child) => React.isValidElement(child) && child.type === TabViewItem
-      )
-      .forEach((item: any, idx) => {
-        const child = item as React.ReactElement;
-        newRoutes.push({
-          key: idx.toString(),
-          title: child.props.title,
-          icon: child.props.icon,
-          accessibilityLabel: child.props.accessibilityLabel,
-        });
-        scenes[idx] = child;
+    children.forEach((item: any, idx) => {
+      const child = item as React.ReactElement;
+      newRoutes.push({
+        key: idx.toString(),
+        title: child.props.title,
+        icon: child.props.icon,
+        accessibilityLabel: child.props.accessibilityLabel,
       });
+    });
 
     setRoutes(newRoutes);
-    setTabScenes(scenes);
   }, [children]);
 
   const indexChangeHandler = (i: number) => {
@@ -131,7 +125,8 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
   };
 
   const renderScene = ({ route }: SceneProps) => {
-    return tabScenes[route.key];
+    const index = Number(route.key);
+    return children[index];
   };
 
   //Cannot render TabView without at least one tab

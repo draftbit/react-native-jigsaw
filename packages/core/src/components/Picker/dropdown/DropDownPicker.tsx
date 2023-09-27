@@ -37,6 +37,7 @@ const DropDownPicker: React.FC<
   dropDownBorderWidth = 1,
   dropDownBorderRadius = 8,
   children: childrenProp,
+  disabled,
   ...rest
 }) => {
   const [pickerVisible, setPickerVisible] = React.useState(false);
@@ -83,6 +84,12 @@ const DropDownPicker: React.FC<
     }
   }, [pickerVisible, autoDismissKeyboard]);
 
+  React.useEffect(() => {
+    if (disabled) {
+      setPickerVisible(false);
+    }
+  }, [disabled]);
+
   return (
     <PickerInputContainer
       testID="dropdown-picker"
@@ -92,6 +99,7 @@ const DropDownPicker: React.FC<
       options={options}
       onPress={() => setPickerVisible(!pickerVisible)}
       zIndex={pickerVisible ? 100 : undefined} // Guarantees drop down is rendered above all sibling components
+      disabled={disabled}
       {...rest}
     >
       <DropDownPickerComponent

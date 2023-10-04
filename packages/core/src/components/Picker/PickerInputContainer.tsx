@@ -81,6 +81,7 @@ const PickerInputContainer: React.FC<
         style={StyleSheet.absoluteFillObject}
         disabled={disabled}
         onPress={onPress}
+        onLongPress={onPress}
       />
       {children}
     </View>

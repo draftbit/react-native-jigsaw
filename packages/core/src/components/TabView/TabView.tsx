@@ -111,7 +111,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
         indicatorStyle={{
           backgroundColor: indicatorColor || theme.colors.primary,
         }}
-        labelStyle={textStyles}
+        labelStyle={[{ textTransform: "none" }, textStyles]}
         renderIcon={({ route, color }) =>
           route?.icon ? (
             <Icon name={route.icon} color={color} size={iconSize} />

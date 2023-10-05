@@ -74,7 +74,6 @@ const MapMarkerCluster: React.FC<React.PropsWithChildren> = ({
                   latitude,
                   longitude,
                   children: clusterView,
-                  tracksViewChanges: false,
                   onPress,
                 })}
               </MapMarkerClusterContext.Provider>

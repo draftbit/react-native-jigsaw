@@ -73,6 +73,8 @@ const MapViewF = <T extends object>({
   animateToLocation: (location: ZoomLocation) => void;
   mapRef: React.RefObject<MapViewComponent>;
 }) => {
+  const [markerTracksViewChanges, setMarkerTracksViewChanges] =
+    React.useState(false);
   const [currentRegion, setCurrentRegion] = React.useState<Region | null>(null);
   const delayedRegionValue = useDebounce(currentRegion, 300);
 
@@ -235,6 +237,15 @@ const MapViewF = <T extends object>({
     };
 
     callOnRegionChange();
+
+    setMarkerTracksViewChanges(true);
+    const timeout = setTimeout(() => {
+      setMarkerTracksViewChanges(false);
+    }, 100);
+
+    return () => {
+      clearTimeout(timeout);
+    };
     // onRegionChange excluded to prevent calling on every rerender when using an anonymous function (which is most common)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [delayedRegionValue]);
@@ -292,7 +303,7 @@ const MapViewF = <T extends object>({
       >
         {markers.map((marker, index) =>
           renderMarker(
-            marker.props,
+            { ...marker.props, tracksViewChanges: markerTracksViewChanges },
             index,
             getMarkerRef(getMarkerIdentifier(marker.props)),
             () => dismissAllOtherCallouts(getMarkerIdentifier(marker.props))
@@ -311,7 +322,11 @@ const MapViewF = <T extends object>({
           }}
         >
           {clusters.map((cluster, index) => (
-            <React.Fragment key={index}>{cluster}</React.Fragment>
+            <React.Fragment key={index}>
+              {React.cloneElement(cluster, {
+                tracksViewChanges: markerTracksViewChanges,
+              })}
+            </React.Fragment>
           ))}
         </MapMarkerContext.Provider>
 

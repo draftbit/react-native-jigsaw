@@ -238,7 +238,13 @@ const MapViewF = <T extends object>({
 
     callOnRegionChange();
 
+    // onRegionChange excluded to prevent calling on every rerender when using an anonymous function (which is most common)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [delayedRegionValue]);
+
+  React.useEffect(() => {
     setMarkerTracksViewChanges(true);
+
     const timeout = setTimeout(() => {
       setMarkerTracksViewChanges(false);
     }, 100);
@@ -246,9 +252,7 @@ const MapViewF = <T extends object>({
     return () => {
       clearTimeout(timeout);
     };
-    // onRegionChange excluded to prevent calling on every rerender when using an anonymous function (which is most common)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [delayedRegionValue]);
+  }, [currentRegion]);
 
   const markers = React.useMemo(
     () => getChildrenForType(MapMarker),
@@ -353,6 +357,7 @@ const MapViewF = <T extends object>({
       showsCompass,
       style,
       zoom,
+      markerTracksViewChanges,
     ]
   );
 

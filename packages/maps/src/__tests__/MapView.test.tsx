@@ -186,6 +186,7 @@ describe("MapView tests", () => {
               }
             }
             onPress={[Function]}
+            tracksViewChanges={true}
           />,
           <Marker
             coordinate={
@@ -195,6 +196,7 @@ describe("MapView tests", () => {
               }
             }
             onPress={[Function]}
+            tracksViewChanges={true}
           />,
         ],
         [
@@ -206,6 +208,7 @@ describe("MapView tests", () => {
               }
             }
             onPress={[Function]}
+            tracksViewChanges={true}
           />,
           <Marker
             coordinate={
@@ -215,6 +218,7 @@ describe("MapView tests", () => {
               }
             }
             onPress={[Function]}
+            tracksViewChanges={true}
           />,
         ],
       ]
@@ -247,6 +251,7 @@ describe("MapView tests", () => {
               }
             }
             onPress={[Function]}
+            tracksViewChanges={true}
           />,
           <Marker
             coordinate={
@@ -256,6 +261,7 @@ describe("MapView tests", () => {
               }
             }
             onPress={[Function]}
+            tracksViewChanges={true}
           />,
         ],
         [
@@ -267,6 +273,7 @@ describe("MapView tests", () => {
               }
             }
             onPress={[Function]}
+            tracksViewChanges={true}
           />,
           <Marker
             coordinate={
@@ -276,6 +283,7 @@ describe("MapView tests", () => {
               }
             }
             onPress={[Function]}
+            tracksViewChanges={true}
           />,
         ],
       ]
@@ -332,6 +340,7 @@ describe("MapView tests", () => {
               }
             }
             onPress={[Function]}
+            tracksViewChanges={true}
           />,
           <Marker
             coordinate={
@@ -341,6 +350,7 @@ describe("MapView tests", () => {
               }
             }
             onPress={[Function]}
+            tracksViewChanges={true}
           />,
         ],
       ]

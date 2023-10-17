@@ -42,9 +42,6 @@ export interface MapViewProps<T>
   longitude?: number;
   autoClusterMarkers?: boolean;
   autoClusterMarkersDistanceMeters?: number;
-  // Improves performance when panning by temporarily preventing markers from tracking view changes
-  // See `tracksViewChanges`: https://github.com/react-native-maps/react-native-maps/blob/master/docs/marker.md#props
-  disableTrackViewChangesWhenPanning?: boolean;
   markersData?: T[];
   keyExtractor?: (item: T, index: number) => string;
   renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
@@ -62,7 +59,6 @@ const MapViewF = <T extends object>({
   loadingEnabled = true,
   autoClusterMarkers = false,
   autoClusterMarkersDistanceMeters = 1000,
-  disableTrackViewChangesWhenPanning = true,
   markersData,
   keyExtractor,
   renderItem,
@@ -77,8 +73,6 @@ const MapViewF = <T extends object>({
   animateToLocation: (location: ZoomLocation) => void;
   mapRef: React.RefObject<MapViewComponent>;
 }) => {
-  const [markerTracksViewChanges, setMarkerTracksViewChanges] =
-    React.useState(true);
   const [currentRegion, setCurrentRegion] = React.useState<Region | null>(null);
   const delayedRegionValue = useDebounce(currentRegion, 300);
 
@@ -241,7 +235,6 @@ const MapViewF = <T extends object>({
     };
 
     callOnRegionChange();
-
     // onRegionChange excluded to prevent calling on every rerender when using an anonymous function (which is most common)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [delayedRegionValue]);
@@ -290,16 +283,6 @@ const MapViewF = <T extends object>({
         initialCamera={camera}
         loadingEnabled={loadingEnabled}
         onRegionChange={setCurrentRegion}
-        onTouchStart={() => {
-          if (disableTrackViewChangesWhenPanning) {
-            setMarkerTracksViewChanges(false);
-          }
-        }}
-        onTouchEnd={() => {
-          if (disableTrackViewChangesWhenPanning) {
-            setMarkerTracksViewChanges(true);
-          }
-        }}
         onPress={(event) => {
           const coordinate = event.nativeEvent.coordinate;
           onPress?.(coordinate.latitude, coordinate.longitude);
@@ -309,12 +292,7 @@ const MapViewF = <T extends object>({
       >
         {markers.map((marker, index) =>
           renderMarker(
-            {
-              ...marker.props,
-              tracksViewChanges: disableTrackViewChangesWhenPanning
-                ? markerTracksViewChanges
-                : undefined,
-            },
+            marker.props,
             index,
             getMarkerRef(getMarkerIdentifier(marker.props)),
             () => dismissAllOtherCallouts(getMarkerIdentifier(marker.props))
@@ -333,13 +311,7 @@ const MapViewF = <T extends object>({
           }}
         >
           {clusters.map((cluster, index) => (
-            <React.Fragment key={index}>
-              {React.cloneElement(cluster, {
-                tracksViewChanges: disableTrackViewChangesWhenPanning
-                  ? markerTracksViewChanges
-                  : undefined,
-              })}
-            </React.Fragment>
+            <React.Fragment key={index}>{cluster}</React.Fragment>
           ))}
         </MapMarkerContext.Provider>
 
@@ -366,8 +338,6 @@ const MapViewF = <T extends object>({
       showsCompass,
       style,
       zoom,
-      markerTracksViewChanges,
-      disableTrackViewChangesWhenPanning,
     ]
   );
 

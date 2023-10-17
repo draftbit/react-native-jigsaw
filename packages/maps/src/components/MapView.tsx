@@ -188,9 +188,15 @@ const MapViewF = <T extends object>({
       clusterView?: React.ReactElement
     ) => {
       const clusters = [];
+      const clusteredMarkers: React.ReactElement[] = [];
+
       for (const marker of markers) {
         const { latitude: lat, longitude: long } =
           marker.props as MapMarkerProps;
+
+        if (clusteredMarkers.includes(marker)) {
+          continue;
+        }
 
         const nearbyMarkers = getNearbyMarkers(
           lat,
@@ -201,7 +207,7 @@ const MapViewF = <T extends object>({
 
         if (nearbyMarkers.length > 1) {
           for (const nearbyMarker of nearbyMarkers) {
-            markers.splice(markers.indexOf(nearbyMarker), 1);
+            clusteredMarkers.push(nearbyMarker);
           }
           clusters.push(
             <MapMarkerCluster>
@@ -211,7 +217,12 @@ const MapViewF = <T extends object>({
           );
         }
       }
-      return clusters;
+
+      const unClusteredMarkers = markers.filter(
+        (marker) => !clusteredMarkers.includes(marker)
+      );
+
+      return { clusters, unClusteredMarkers };
     },
     [getNearbyMarkers]
   );
@@ -240,13 +251,13 @@ const MapViewF = <T extends object>({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [delayedRegionValue]);
 
-  const markers = React.useMemo(
-    () => getChildrenForType(MapMarker),
+  const circles = React.useMemo(
+    () => getChildrenForType(MapCircle),
     [getChildrenForType]
   );
 
-  const circles = React.useMemo(
-    () => getChildrenForType(MapCircle),
+  const markers = React.useMemo(
+    () => getChildrenForType(MapMarker),
     [getChildrenForType]
   );
 
@@ -260,15 +271,17 @@ const MapViewF = <T extends object>({
     return clusterViews.length ? clusterViews[0] : undefined; //Only take the first, ignore any others
   }, [getChildrenForType]);
 
-  const clusters = React.useMemo(() => {
+  const { clusters, unClusteredMarkers } = React.useMemo(() => {
     if (autoClusterMarkers) {
-      return clusterMarkers(
+      const { clusters, unClusteredMarkers } = clusterMarkers(
         markers,
         autoClusterMarkersDistanceMeters,
         clusterView
-      ).concat(manualClusters);
+      );
+
+      return { clusters: clusters.concat(manualClusters), unClusteredMarkers };
     } else {
-      return manualClusters;
+      return { clusters: manualClusters, unClusteredMarkers: markers };
     }
   }, [
     autoClusterMarkers,
@@ -304,7 +317,7 @@ const MapViewF = <T extends object>({
         style={[styles.map, style]}
         {...rest}
       >
-        {markers.map((marker, index) =>
+        {unClusteredMarkers.map((marker, index) =>
           renderMarker(
             marker.props,
             index,
@@ -343,7 +356,7 @@ const MapViewF = <T extends object>({
       loadingEnabled,
       longitude,
       mapRef,
-      markers,
+      unClusteredMarkers,
       onPress,
       onRegionChange,
       provider,

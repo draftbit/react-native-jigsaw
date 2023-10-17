@@ -91,4 +91,4 @@ const MapMarkerCluster: React.FC<React.PropsWithChildren> = ({
   );
 };
 
-export default React.memo(MapMarkerCluster);
+export default MapMarkerCluster;

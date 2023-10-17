@@ -184,10 +184,10 @@ const MapViewF = <T extends object>({
   const clusterMarkers = React.useCallback(
     (
       markers: React.ReactElement[],
-      clusters: React.ReactElement[],
       distanceMeters: number,
       clusterView?: React.ReactElement
     ) => {
+      const clusters = [];
       for (const marker of markers) {
         const { latitude: lat, longitude: long } =
           marker.props as MapMarkerProps;
@@ -211,6 +211,7 @@ const MapViewF = <T extends object>({
           );
         }
       }
+      return clusters;
     },
     [getNearbyMarkers]
   );
@@ -243,27 +244,40 @@ const MapViewF = <T extends object>({
     () => getChildrenForType(MapMarker),
     [getChildrenForType]
   );
+
   const circles = React.useMemo(
     () => getChildrenForType(MapCircle),
     [getChildrenForType]
   );
-  const clusters = React.useMemo(
+
+  const manualClusters = React.useMemo(
     () => getChildrenForType(MapMarkerCluster),
     [getChildrenForType]
   );
+
   const clusterView = React.useMemo(() => {
     const clusterViews = getChildrenForType(MapMarkerClusterView);
     return clusterViews.length ? clusterViews[0] : undefined; //Only take the first, ignore any others
   }, [getChildrenForType]);
 
-  if (autoClusterMarkers) {
-    clusterMarkers(
-      markers,
-      clusters,
-      autoClusterMarkersDistanceMeters,
-      clusterView
-    );
-  }
+  const clusters = React.useMemo(() => {
+    if (autoClusterMarkers) {
+      return clusterMarkers(
+        markers,
+        autoClusterMarkersDistanceMeters,
+        clusterView
+      ).concat(manualClusters);
+    } else {
+      return manualClusters;
+    }
+  }, [
+    autoClusterMarkers,
+    autoClusterMarkersDistanceMeters,
+    markers,
+    manualClusters,
+    clusterView,
+    clusterMarkers,
+  ]);
 
   const memoizedMapView = useDeepCompareMemo(
     () => (

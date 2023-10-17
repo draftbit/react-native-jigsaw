@@ -27,8 +27,8 @@ const MapMarkerClusterView: React.FC<MapMarkerClusterViewProps> = ({
   );
 };
 
-export const DefaultMapMarkerClusterView = React.memo(
-  withTheme(({ theme }: { theme: typeof DefaultTheme }) => {
+export const DefaultMapMarkerClusterView = withTheme(
+  ({ theme }: { theme: typeof DefaultTheme }) => {
     return (
       <MapMarkerClusterView
         renderItem={({ markerCount }) => (
@@ -58,7 +58,7 @@ export const DefaultMapMarkerClusterView = React.memo(
         )}
       />
     );
-  })
+  }
 );
 
 export default MapMarkerClusterView;

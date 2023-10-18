@@ -80,7 +80,7 @@ export function renderMarker(
   }
 
   const shouldUseDefaultIconImplemnation =
-    Platform.OS !== "android" || !androidUseDefaultIconImplementation;
+    Platform.OS === "android" && androidUseDefaultIconImplementation;
 
   return (
     <MapMarkerComponent

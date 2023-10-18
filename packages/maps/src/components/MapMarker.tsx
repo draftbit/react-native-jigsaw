@@ -5,6 +5,7 @@ import {
   View,
   StyleSheet,
   Text,
+  Platform,
 } from "react-native";
 import { Marker as MapMarkerComponent } from "./react-native-maps";
 import type {
@@ -20,6 +21,7 @@ export interface MapMarkerProps
   longitude: number;
   pinImage?: string | ImageSourcePropType;
   pinImageSize?: number;
+  androidUseDefaultIconImplementation?: boolean;
   onPress?: (latitude: number, longitude: number) => void;
 }
 
@@ -40,6 +42,7 @@ export function renderMarker(
     longitude,
     pinImage,
     pinImageSize = 50,
+    androidUseDefaultIconImplementation = false,
     onPress,
     children,
     title,
@@ -76,6 +79,9 @@ export function renderMarker(
     );
   }
 
+  const shouldUseDefaultIconImplemnation =
+    Platform.OS !== "android" || !androidUseDefaultIconImplementation;
+
   return (
     <MapMarkerComponent
       ref={ref}
@@ -89,11 +95,18 @@ export function renderMarker(
         const coordinate = event.nativeEvent.coordinate;
         onPress?.(coordinate.latitude, coordinate.longitude);
       }}
+      icon={
+        shouldUseDefaultIconImplemnation
+          ? typeof pinImage === "string"
+            ? { uri: pinImage }
+            : (pinImage as any)
+          : undefined
+      }
       {...rest}
     >
       {nonCalloutChildren}
 
-      {pinImage && (
+      {pinImage && !shouldUseDefaultIconImplemnation && (
         <Image
           testID="map-marker-pin-image"
           source={typeof pinImage === "string" ? { uri: pinImage } : pinImage}

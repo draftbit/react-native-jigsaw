@@ -9,19 +9,15 @@ import { MapViewContext } from "../MapViewCommon";
 import { flattenReactFragments } from "@draftbit/ui";
 import { MapMarkerContext } from "../MapView";
 
-interface MapMarkerClusterProps {
-  tracksViewChanges?: boolean;
-}
-
 /**
  * Component that clusters all markers provided in as children to a single point when zoomed out, and shows the markers themselves when zoomed in
  * Renders a default component that shows the number of components inside cluster
  *
  * Also accepts MapMarkerClusterView to override the rendered cluster component
  */
-const MapMarkerCluster: React.FC<
-  React.PropsWithChildren<MapMarkerClusterProps>
-> = ({ children: childrenProp, tracksViewChanges }) => {
+const MapMarkerCluster: React.FC<React.PropsWithChildren> = ({
+  children: childrenProp,
+}) => {
   const { region, animateToLocation } = React.useContext(MapViewContext);
 
   const children = React.useMemo(
@@ -79,18 +75,18 @@ const MapMarkerCluster: React.FC<
                   longitude,
                   children: clusterView,
                   onPress,
-                  tracksViewChanges,
+                  tracksViewChanges:
+                    clusterView.type === DefaultMapMarkerClusterView
+                      ? false
+                      : clusterView.props.tracksViewChanges,
                 })}
               </MapMarkerClusterContext.Provider>
             );
           }}
         >
           {markers.map((marker, index) =>
-            renderMarker(
-              { ...marker.props, tracksViewChanges },
-              index,
-              getMarkerRef(marker.props),
-              () => onMarkerPress(marker.props)
+            renderMarker(marker.props, index, getMarkerRef(marker.props), () =>
+              onMarkerPress(marker.props)
             )
           )}
         </MarkerClusterer>

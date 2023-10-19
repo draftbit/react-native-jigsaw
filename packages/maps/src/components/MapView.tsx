@@ -42,9 +42,6 @@ export interface MapViewProps<T>
   longitude?: number;
   autoClusterMarkers?: boolean;
   autoClusterMarkersDistanceMeters?: number;
-  // Improves performance when panning by temporarily preventing markers from tracking view changes
-  // See `tracksViewChanges`: https://github.com/react-native-maps/react-native-maps/blob/master/docs/marker.md#props
-  disableTrackViewChangesWhenPanning?: boolean;
   markersData?: T[];
   keyExtractor?: (item: T, index: number) => string;
   renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
@@ -62,7 +59,6 @@ const MapViewF = <T extends object>({
   loadingEnabled = true,
   autoClusterMarkers = false,
   autoClusterMarkersDistanceMeters = 1000,
-  disableTrackViewChangesWhenPanning = true,
   markersData,
   keyExtractor,
   renderItem,
@@ -77,8 +73,6 @@ const MapViewF = <T extends object>({
   animateToLocation: (location: ZoomLocation) => void;
   mapRef: React.RefObject<MapViewComponent>;
 }) => {
-  const [markerTracksViewChanges, setMarkerTracksViewChanges] =
-    React.useState(true);
   const [currentRegion, setCurrentRegion] = React.useState<Region | null>(null);
   const delayedRegionValue = useDebounce(currentRegion, 300);
 
@@ -190,13 +184,19 @@ const MapViewF = <T extends object>({
   const clusterMarkers = React.useCallback(
     (
       markers: React.ReactElement[],
-      clusters: React.ReactElement[],
       distanceMeters: number,
       clusterView?: React.ReactElement
     ) => {
+      const clusters = [];
+      const clusteredMarkers: React.ReactElement[] = [];
+
       for (const marker of markers) {
         const { latitude: lat, longitude: long } =
           marker.props as MapMarkerProps;
+
+        if (clusteredMarkers.includes(marker)) {
+          continue;
+        }
 
         const nearbyMarkers = getNearbyMarkers(
           lat,
@@ -207,7 +207,7 @@ const MapViewF = <T extends object>({
 
         if (nearbyMarkers.length > 1) {
           for (const nearbyMarker of nearbyMarkers) {
-            markers.splice(markers.indexOf(nearbyMarker), 1);
+            clusteredMarkers.push(nearbyMarker);
           }
           clusters.push(
             <MapMarkerCluster>
@@ -217,6 +217,12 @@ const MapViewF = <T extends object>({
           );
         }
       }
+
+      const unClusteredMarkers = markers.filter(
+        (marker) => !clusteredMarkers.includes(marker)
+      );
+
+      return { clusters, unClusteredMarkers };
     },
     [getNearbyMarkers]
   );
@@ -241,36 +247,50 @@ const MapViewF = <T extends object>({
     };
 
     callOnRegionChange();
-
     // onRegionChange excluded to prevent calling on every rerender when using an anonymous function (which is most common)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [delayedRegionValue]);
+
+  const circles = React.useMemo(
+    () => getChildrenForType(MapCircle),
+    [getChildrenForType]
+  );
 
   const markers = React.useMemo(
     () => getChildrenForType(MapMarker),
     [getChildrenForType]
   );
-  const circles = React.useMemo(
-    () => getChildrenForType(MapCircle),
-    [getChildrenForType]
-  );
-  const clusters = React.useMemo(
+
+  const manualClusters = React.useMemo(
     () => getChildrenForType(MapMarkerCluster),
     [getChildrenForType]
   );
+
   const clusterView = React.useMemo(() => {
     const clusterViews = getChildrenForType(MapMarkerClusterView);
     return clusterViews.length ? clusterViews[0] : undefined; //Only take the first, ignore any others
   }, [getChildrenForType]);
 
-  if (autoClusterMarkers) {
-    clusterMarkers(
-      markers,
-      clusters,
-      autoClusterMarkersDistanceMeters,
-      clusterView
-    );
-  }
+  const { clusters, unClusteredMarkers } = React.useMemo(() => {
+    if (autoClusterMarkers) {
+      const { clusters, unClusteredMarkers } = clusterMarkers(
+        markers,
+        autoClusterMarkersDistanceMeters,
+        clusterView
+      );
+
+      return { clusters: clusters.concat(manualClusters), unClusteredMarkers };
+    } else {
+      return { clusters: manualClusters, unClusteredMarkers: markers };
+    }
+  }, [
+    autoClusterMarkers,
+    autoClusterMarkersDistanceMeters,
+    markers,
+    manualClusters,
+    clusterView,
+    clusterMarkers,
+  ]);
 
   const memoizedMapView = useDeepCompareMemo(
     () => (
@@ -290,16 +310,6 @@ const MapViewF = <T extends object>({
         initialCamera={camera}
         loadingEnabled={loadingEnabled}
         onRegionChange={setCurrentRegion}
-        onTouchStart={() => {
-          if (disableTrackViewChangesWhenPanning) {
-            setMarkerTracksViewChanges(false);
-          }
-        }}
-        onTouchEnd={() => {
-          if (disableTrackViewChangesWhenPanning) {
-            setMarkerTracksViewChanges(true);
-          }
-        }}
         onPress={(event) => {
           const coordinate = event.nativeEvent.coordinate;
           onPress?.(coordinate.latitude, coordinate.longitude);
@@ -307,14 +317,9 @@ const MapViewF = <T extends object>({
         style={[styles.map, style]}
         {...rest}
       >
-        {markers.map((marker, index) =>
+        {unClusteredMarkers.map((marker, index) =>
           renderMarker(
-            {
-              ...marker.props,
-              tracksViewChanges: disableTrackViewChangesWhenPanning
-                ? markerTracksViewChanges
-                : undefined,
-            },
+            marker.props,
             index,
             getMarkerRef(getMarkerIdentifier(marker.props)),
             () => dismissAllOtherCallouts(getMarkerIdentifier(marker.props))
@@ -333,13 +338,7 @@ const MapViewF = <T extends object>({
           }}
         >
           {clusters.map((cluster, index) => (
-            <React.Fragment key={index}>
-              {React.cloneElement(cluster, {
-                tracksViewChanges: disableTrackViewChangesWhenPanning
-                  ? markerTracksViewChanges
-                  : undefined,
-              })}
-            </React.Fragment>
+            <React.Fragment key={index}>{cluster}</React.Fragment>
           ))}
         </MapMarkerContext.Provider>
 
@@ -357,7 +356,7 @@ const MapViewF = <T extends object>({
       loadingEnabled,
       longitude,
       mapRef,
-      markers,
+      unClusteredMarkers,
       onPress,
       onRegionChange,
       provider,
@@ -366,8 +365,6 @@ const MapViewF = <T extends object>({
       showsCompass,
       style,
       zoom,
-      markerTracksViewChanges,
-      disableTrackViewChangesWhenPanning,
     ]
   );
 

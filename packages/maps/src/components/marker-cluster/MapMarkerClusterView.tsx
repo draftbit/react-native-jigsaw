@@ -7,6 +7,7 @@ interface MapMarkerClusterViewProps {
   zoomOnPress?: boolean;
   onPress?: (latitude: number, longitude: number) => void;
   renderItem?: ({ markerCount }: { markerCount: number }) => JSX.Element;
+  tracksViewChanges?: boolean;
   style?: StyleProp<ViewStyle>;
 }
 

@@ -75,6 +75,10 @@ const MapMarkerCluster: React.FC<React.PropsWithChildren> = ({
                   longitude,
                   children: clusterView,
                   onPress,
+                  tracksViewChanges:
+                    clusterView.type === DefaultMapMarkerClusterView
+                      ? false
+                      : clusterView.props.tracksViewChanges,
                 })}
               </MapMarkerClusterContext.Provider>
             );

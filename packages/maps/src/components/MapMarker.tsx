@@ -79,7 +79,7 @@ export function renderMarker(
     );
   }
 
-  const shouldUseDefaultIconImplemnation =
+  const shouldUseDefaultIconImplementation =
     Platform.OS === "android" && androidUseDefaultIconImplementation;
 
   return (
@@ -96,7 +96,7 @@ export function renderMarker(
         onPress?.(coordinate.latitude, coordinate.longitude);
       }}
       icon={
-        shouldUseDefaultIconImplemnation
+        shouldUseDefaultIconImplementation
           ? typeof pinImage === "string"
             ? { uri: pinImage }
             : (pinImage as any)
@@ -106,7 +106,7 @@ export function renderMarker(
     >
       {nonCalloutChildren}
 
-      {pinImage && !shouldUseDefaultIconImplemnation && (
+      {pinImage && !shouldUseDefaultIconImplementation && (
         <Image
           testID="map-marker-pin-image"
           source={typeof pinImage === "string" ? { uri: pinImage } : pinImage}

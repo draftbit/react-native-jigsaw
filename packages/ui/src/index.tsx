@@ -67,6 +67,7 @@ export {
   VStack,
   ZStack,
   PickerItem,
+  AvoidKeyboardView,
 } from "@draftbit/core";
 
 /**

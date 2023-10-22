@@ -73,6 +73,7 @@ export {
   Spacer,
   Square,
 } from "./components/Layout";
+export { default as AvoidKeyboardView } from "./components/AvoidKeyboardView";
 
 /* Deprecated: Fix or Delete!  */
 export { default as AccordionItem } from "./deprecated-components/AccordionItem";

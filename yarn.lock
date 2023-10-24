@@ -15343,10 +15343,12 @@ react-native-deck-swiper@^2.0.12:
   dependencies:
     prop-types "15.5.10"
 
-react-native-dropdown-picker@^5.4.6:
-  version "5.4.6"
-  resolved "https://registry.yarnpkg.com/react-native-dropdown-picker/-/react-native-dropdown-picker-5.4.6.tgz#3736fc468de4a295e4df8d1f65ed2eadaf9b445f"
-  integrity sha512-T1XBHbE++M6aRU3wFYw3MvcOuabhWZ29RK/Ivdls2r1ZkZ62iEBZknLUPeVLMX3x6iUxj4Zgr3X2DGlEGXeHsA==
+react-native-dropdown-picker@^5.4.7-beta.1:
+  version "5.4.7-beta.1"
+  resolved "https://registry.yarnpkg.com/react-native-dropdown-picker/-/react-native-dropdown-picker-5.4.7-beta.1.tgz#330ae28a91e470c992ec53f10f9ebe919fe74f39"
+  integrity sha512-M/HvDhdP4d2LhmKtbvAqNBLwlN0AejWYxc7nIWPOdhNhN9iaY02kDSMGtCxndAYKaavLx8AjNip2RVljZBtdjQ==
+  dependencies:
+    react-native-gesture-handler "*"
 
 react-native-fit-image@^1.5.5:
   version "1.5.5"
@@ -15355,7 +15357,7 @@ react-native-fit-image@^1.5.5:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-gesture-handler@~2.9.0:
+react-native-gesture-handler@*, react-native-gesture-handler@~2.9.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.9.0.tgz#2f63812e523c646f25b9ad660fc6f75948e51241"
   integrity sha512-a0BcH3Qb1tgVqUutc6d3VuWQkI1AM3+fJx8dkxzZs9t06qA27QgURYFoklpabuWpsUTzuKRpxleykp25E8m7tg==

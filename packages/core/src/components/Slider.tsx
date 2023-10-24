@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import { View, StyleSheet, StyleProp, ViewStyle, Platform } from "react-native";
 import NativeSlider from "@react-native-community/slider";
 import isNumber from "lodash.isnumber";
 import toNumber from "lodash.tonumber";
@@ -72,6 +72,14 @@ function Slider({
     value || defaultValue
   );
 
+  const [tempThumbViewStyle, setTempThumbViewStyle] = React.useState<ViewStyle>(
+    { width: 0, height: 0 }
+  );
+
+  React.useEffect(() => {
+    setTempThumbViewStyle({ width: undefined, height: undefined });
+  }, []);
+
   React.useEffect(() => {
     if (value != null) {
       setInternalValue(value);
@@ -114,6 +122,8 @@ function Slider({
         thumbTintColor={thumbColor}
         onSlidingComplete={handleSlidingComplete}
         style={styles.slider}
+        //@ts-ignore Not registered in types
+        thumbStyle={Platform.OS === "web" ? tempThumbViewStyle : undefined}
       />
       {rightIcon ? (
         <Icon color={rightIconThemeColor} name={rightIcon} size={24} />

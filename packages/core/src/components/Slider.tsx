@@ -72,12 +72,24 @@ function Slider({
     value || defaultValue
   );
 
-  const [tempThumbViewStyle, setTempThumbViewStyle] = React.useState<ViewStyle>(
-    { width: 0, height: 0 }
-  );
+  /**
+   * Web version of the slider relies on some logic running in the onLayout callback using a given React ref (https://github.com/callstack/react-native-slider/blob/main/package/src/RNCSliderNativeComponent.web.tsx#L320)
+   *
+   * The issue is that the onLayout callback is called before the ref is initialized, which leads to an improperly initiatilzed variable
+   * that determines the x position of the slider
+   *
+   * Similair issue: https://github.com/callstack/react-native-slider/issues/470
+   *
+   * This workaround forces onLayout to be called twice, where the 2nd time around the ref is initialized
+   * Done by updating the style of a child component which forces re layout
+   */
+  const [tempThumbStyle, setTempThumbStyle] = React.useState<ViewStyle>({
+    width: 0,
+    height: 0,
+  });
 
   React.useEffect(() => {
-    setTempThumbViewStyle({ width: undefined, height: undefined });
+    setTempThumbStyle({ width: undefined, height: undefined });
   }, []);
 
   React.useEffect(() => {
@@ -123,7 +135,7 @@ function Slider({
         onSlidingComplete={handleSlidingComplete}
         style={styles.slider}
         //@ts-ignore Not registered in types
-        thumbStyle={Platform.OS === "web" ? tempThumbViewStyle : undefined}
+        thumbStyle={Platform.OS === "web" ? tempThumbStyle : undefined}
       />
       {rightIcon ? (
         <Icon color={rightIconThemeColor} name={rightIcon} size={24} />

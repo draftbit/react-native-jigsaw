@@ -72,8 +72,6 @@ function Slider({
     value || defaultValue
   );
 
-  const sliderRef = React.useRef();
-
   React.useEffect(() => {
     if (value != null) {
       setInternalValue(value);
@@ -106,7 +104,6 @@ function Slider({
         <Icon color={leftIconThemeColor} name={leftIcon} size={24} />
       ) : null}
       <NativeSlider
-        ref={sliderRef as any}
         value={parsedValue}
         step={step}
         minimumValue={minimumValue}

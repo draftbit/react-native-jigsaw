@@ -12,6 +12,7 @@ import {
   ViewStyle,
   TextStyle,
   LayoutChangeEvent,
+  Platform,
 } from "react-native";
 import { withTheme } from "../theming";
 import type { Theme } from "../styles/DefaultTheme";
@@ -53,7 +54,6 @@ export type Props = {
   IconSlot;
 
 interface State {
-  nativeProps: any;
   labeled: Animated.Value;
   focused?: boolean;
   placeholder?: string | undefined;
@@ -75,7 +75,6 @@ class TextField extends React.Component<Props, State> {
   }
 
   state: State = {
-    nativeProps: {},
     labeled: new Animated.Value(this.props.value || this.props.error ? 0 : 1),
     focused: false,
     placeholder: this.props.error ? this.props.placeholder : "",
@@ -158,14 +157,14 @@ class TextField extends React.Component<Props, State> {
     Animated.timing(this.state.labeled, {
       toValue: 1,
       duration: FOCUS_ANIMATION_DURATION,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== "web",
     }).start();
 
   _minmizeLabel = () =>
     Animated.timing(this.state.labeled, {
       toValue: 0,
       duration: BLUR_ANIMATION_DURATION,
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== "web",
     }).start();
 
   _handleFocus = () => {
@@ -206,15 +205,6 @@ class TextField extends React.Component<Props, State> {
   }
 
   _root: NativeTextInput | undefined = undefined;
-  /**
-   * @internal
-   */
-  setNativeProps(args: Props) {
-    this.setState((state) => ({
-      ...state,
-      nativeState: args || {},
-    }));
-  }
 
   isFocused() {
     return this._root && this._root.isFocused();
@@ -531,7 +521,6 @@ class TextField extends React.Component<Props, State> {
               : this.props.placeholder,
             placeholderTextColor: placeholderColor,
             editable: !disabled && editable,
-            disabled: disabled || !editable,
             selectionColor: activeColor,
             multiline,
             numberOfLines,
@@ -540,7 +529,6 @@ class TextField extends React.Component<Props, State> {
             underlineColorAndroid: "transparent",
             style: inputStyles,
             ...rest,
-            ...this.state.nativeProps,
             value: this.state.value,
           })}
         </View>

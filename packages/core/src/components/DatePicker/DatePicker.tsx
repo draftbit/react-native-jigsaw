@@ -13,6 +13,7 @@ import {
   LayoutChangeEvent,
   TextInput as NativeTextInput,
   Keyboard,
+  Platform,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -188,14 +189,14 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
       Animated.timing(labeled, {
         toValue: 0,
         duration: BLUR_ANIMATION_DURATION,
-        useNativeDriver: true,
+        useNativeDriver: Platform.OS !== "web",
       }).start();
     } else {
       // _restoreLabel();
       Animated.timing(labeled, {
         toValue: 1,
         duration: FOCUS_ANIMATION_DURATION,
-        useNativeDriver: true,
+        useNativeDriver: Platform.OS !== "web",
       }).start();
     }
   }, [value, focused, placeholder1, labeled]);

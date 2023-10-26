@@ -2,8 +2,7 @@
  * TODO: Replace with https://github.com/gorhom/react-native-bottom-sheet. (@gorhom/bottom-sheet)
  * @gorhom/bottom-sheet v5 (which is not ready yet) will support web, allowing us to transition to that better supported library
  *
- * This legacy component uses an outdated reanimated v1, under a self published version (@youssefhenna/react-native-reanimated2) since
- * the latest reanimated version removes the v1 APIs
+ * We are unable to upgrade to reanimated v3 until this is removed since it relies on reanimated v1 APIs
  */
 
 /**
@@ -61,7 +60,7 @@ import Animated, {
   spring,
   timing,
   Value,
-} from "@youssefhenna/react-native-reanimated2";
+} from "react-native-reanimated";
 import {
   NativeViewGestureHandler,
   PanGestureHandler,

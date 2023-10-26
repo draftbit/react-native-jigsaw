@@ -1,4 +1,12 @@
 /**
+ * TODO: Replace with https://github.com/gorhom/react-native-bottom-sheet. (@gorhom/bottom-sheet)
+ * @gorhom/bottom-sheet v5 (which is not ready yet) will support web, allowing us to transition to that better supported library
+ *
+ * This legacy component uses an outdated reanimated v1, under a self published version (@youssefhenna/react-native-reanimated2) since
+ * the latest reanimated version removes the v1 APIs
+ */
+
+/**
  * Slightly modfied version as taken from https://github.com/rgommezz/react-native-scroll-bottom-sheet
  * Main previously breaking change:
  * const node = this.props.innerRef.current?.getNode() ==> const node = this.props.innerRef.current as any
@@ -53,7 +61,7 @@ import Animated, {
   spring,
   timing,
   Value,
-} from "react-native-reanimated";
+} from "@youssefhenna/react-native-reanimated2";
 import {
   NativeViewGestureHandler,
   PanGestureHandler,

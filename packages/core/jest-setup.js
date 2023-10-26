@@ -1,5 +1,5 @@
 import "@shopify/flash-list/jestSetup";
-import { setUpTests as setupReaanimatedTests } from "react-native-reanimated/lib/reanimated2/jestUtils";
+import { setUpTests as setupReaanimatedTests } from "react-native-reanimated/src/reanimated2/jestUtils";
 
 setupReaanimatedTests();
 

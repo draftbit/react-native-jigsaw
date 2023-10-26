@@ -4717,10 +4717,10 @@
     js-yaml "^3.10.0"
     tslib "^2.4.0"
 
-"@youssefhenna/react-native-reanimated2@^2.17.0":
-  version "2.17.0"
-  resolved "https://registry.yarnpkg.com/@youssefhenna/react-native-reanimated2/-/react-native-reanimated2-2.17.0.tgz#4046b4fe0ee4c9d6a5e5199747840e12b2eda927"
-  integrity sha512-4YQwx5espdRszSIrEgdsMSIbGQl+qGSXrbo+MC94ICEsR+OdtK8dlX6LFwdz6fZStiVbX8kn4nQPwAyGRjCrig==
+"@youssefhenna/react-native-reanimated2@2.18.0":
+  version "2.18.0"
+  resolved "https://registry.yarnpkg.com/@youssefhenna/react-native-reanimated2/-/react-native-reanimated2-2.18.0.tgz#4e1f60f1034775187dfd9cb3b56a2c9ab091c63c"
+  integrity sha512-z4w3PAcEjYnRXjOw4ZGELHSA0TDQU5KcMHM1rhDUc9ICbaenneNUwOGkGEa0kCH4aCNU75eaBVfRYIHlbkztNQ==
   dependencies:
     "@babel/plugin-transform-object-assign" "^7.16.7"
     "@babel/preset-typescript" "^7.16.7"

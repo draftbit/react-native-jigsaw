@@ -4,6 +4,7 @@ import {
   StyleProp,
   ViewStyle,
   ScrollViewProps,
+  Dimensions,
 } from "react-native";
 
 import BottomSheetComponent, {
@@ -11,12 +12,19 @@ import BottomSheetComponent, {
 } from "@gorhom/bottom-sheet";
 import type { Theme } from "../../styles/DefaultTheme";
 import { withTheme } from "../../theming";
+import { useDeepCompareMemo } from "../../utilities";
 
 type SnapPosition = "top" | "middle" | "bottom";
+
+const windowHeight = Dimensions.get("window").height;
+
 export interface BottomSheetProps extends ScrollViewProps {
   topSnapPosition?: string | number;
   middleSnapPosition?: string | number;
   bottomSnapPosition?: string | number;
+  /**
+   * As distance from top (number or percentage string), sorted from top to bottom
+   */
   snapPoints?: (string | number)[];
   initialSnapIndex?: number;
   initialSnapPosition?: SnapPosition;
@@ -33,6 +41,9 @@ export interface BottomSheetProps extends ScrollViewProps {
   theme: Theme;
 }
 
+// Clarification:
+// Input of snap points is sorted top -> bottom where each value represents distance from top
+// Implementation using `@gorhom/bottom-sheet` is sorted bottom -> top where each value represents distance from bottom
 const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
   (
     {
@@ -64,13 +75,18 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
       bottomSnapPosition,
     ];
 
+    const mappedSnapPoints = useDeepCompareMemo(
+      () => convertSnapPointsForNewImplementation(snapPoints),
+      snapPoints
+    );
+
     const getSnapIndexFromPosition = (position: SnapPosition) => {
       switch (position) {
-        case "top":
+        case "bottom":
           return 0;
         case "middle":
           return 1;
-        case "bottom":
+        case "top":
           return 2;
       }
     };
@@ -78,22 +94,24 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
     return (
       <BottomSheetComponent
         ref={ref}
-        snapPoints={snapPoints}
+        snapPoints={mappedSnapPoints}
         index={
-          initialSnapIndex ?? getSnapIndexFromPosition(initialSnapPosition)
+          initialSnapIndex != undefined
+            ? mappedSnapPoints.length - initialSnapIndex - 1
+            : getSnapIndexFromPosition(initialSnapPosition)
         }
         handleIndicatorStyle={[
           { backgroundColor: handleColor },
           !showHandle ? { display: "none" } : {},
         ]}
-        style={{
+        backgroundStyle={{
           backgroundColor,
           borderTopLeftRadius: topBorderRadius,
           borderTopRightRadius: topBorderRadius,
           borderWidth,
           borderColor,
         }}
-        onChange={onSettle}
+        onChange={(index) => onSettle?.(mappedSnapPoints.length - index - 1)}
       >
         <BottomSheetScrollView
           contentContainerStyle={[styles.contentContainerStyle, style]}
@@ -105,6 +123,41 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
     );
   }
 );
+
+// @gorhom/bottom-sheet has a different format for snap points and requires some manipulation
+function convertSnapPointsForNewImplementation(
+  snapPoints: (string | number)[]
+) {
+  // Older implementation required snap points sorted top -> bottom, new library requires bottom -> top
+  const reversedSnapPoints = [...snapPoints].reverse();
+
+  // Older implementation required snap points as distance from top, new library requires them as distance from bottom
+  return reversedSnapPoints.map((point) => {
+    if (typeof point === "string") {
+      const percentNumber = extractPercentNumber(point);
+      if (percentNumber !== undefined) {
+        return `${100 - percentNumber}%`;
+      }
+      return point;
+    } else if (typeof point === "number") {
+      return windowHeight - point;
+    } else {
+      return point;
+    }
+  });
+}
+
+function extractPercentNumber(percentString: string) {
+  const percentRegex = /(\d+)?%/;
+  const matches = percentString.match(percentRegex);
+  if (matches?.length) {
+    const percentNumber = Number(matches[1]);
+    if (!isNaN(percentNumber)) {
+      return percentNumber;
+    }
+  }
+  return undefined;
+}
 
 const styles = StyleSheet.create({
   contentContainerStyle: {

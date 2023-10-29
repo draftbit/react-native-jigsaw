@@ -196,7 +196,7 @@ const AnimatedSplashScreen: React.FC<
             StyleSheet.absoluteFill,
             {
               backgroundColor:
-                Constants?.manifest?.splash?.backgroundColor ||
+                Constants?.expoConfig?.splash?.backgroundColor ||
                 "rgba(90, 69, 255, 1)",
               opacity: animation,
             },
@@ -206,7 +206,8 @@ const AnimatedSplashScreen: React.FC<
             style={{
               width: "100%",
               height: "100%",
-              resizeMode: Constants?.manifest?.splash?.resizeMode || "contain",
+              resizeMode:
+                Constants?.expoConfig?.splash?.resizeMode || "contain",
               transform: [
                 {
                   scale: animation,
@@ -258,8 +259,9 @@ function Examples() {
     <NavigationContainer>
       <Drawer.Navigator
         initialRouteName="Layout"
-        drawerContentOptions={{
-          activeTintColor: "rgba(90, 69, 255, 1)",
+        screenOptions={{
+          drawerActiveTintColor: "rgba(90, 69, 255, 1)",
+          headerShown: false,
         }}
       >
         {Object.entries(ROUTES).map(([key, Screen]) => {

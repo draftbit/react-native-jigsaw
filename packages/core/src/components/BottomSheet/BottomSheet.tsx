@@ -1,13 +1,14 @@
 import React from "react";
 import {
   StyleSheet,
-  View,
   StyleProp,
   ViewStyle,
   ScrollViewProps,
 } from "react-native";
 
-import BottomSheetComponent from "./BottomSheetComponent";
+import BottomSheetComponent, {
+  BottomSheetScrollView,
+} from "@gorhom/bottom-sheet";
 import type { Theme } from "../../styles/DefaultTheme";
 import { withTheme } from "../../theming";
 
@@ -32,10 +33,7 @@ export interface BottomSheetProps extends ScrollViewProps {
   theme: Theme;
 }
 
-const BottomSheet = React.forwardRef<
-  BottomSheetComponent<any>,
-  BottomSheetProps
->(
+const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
   (
     {
       theme,
@@ -60,7 +58,7 @@ const BottomSheet = React.forwardRef<
     const backgroundColor =
       (style as ViewStyle)?.backgroundColor || theme.colors.background;
 
-    const snapPoints = snapPointsProp || [
+    const snapPoints = snapPointsProp ?? [
       topSnapPosition,
       middleSnapPosition,
       bottomSnapPosition,
@@ -78,82 +76,40 @@ const BottomSheet = React.forwardRef<
     };
 
     return (
-      <View style={styles.parentContainer} pointerEvents="box-none">
-        <BottomSheetComponent
-          ref={ref}
-          componentType="ScrollView"
-          snapPoints={snapPoints}
-          initialSnapIndex={
-            initialSnapIndex ?? getSnapIndexFromPosition(initialSnapPosition)
-          }
-          renderHandle={() => (
-            <>
-              {showHandle && (
-                <View
-                  style={[
-                    styles.handleContainer,
-                    {
-                      backgroundColor,
-                      borderTopLeftRadius: topBorderRadius,
-                      borderTopRightRadius: topBorderRadius,
-                    },
-                  ]}
-                >
-                  <View
-                    style={[styles.handle, { backgroundColor: handleColor }]}
-                  />
-                </View>
-              )}
-            </>
-          )}
+      <BottomSheetComponent
+        ref={ref}
+        snapPoints={snapPoints}
+        index={
+          initialSnapIndex ?? getSnapIndexFromPosition(initialSnapPosition)
+        }
+        handleIndicatorStyle={[
+          { backgroundColor: handleColor },
+          !showHandle ? { display: "none" } : {},
+        ]}
+        style={{
+          backgroundColor,
+          borderTopLeftRadius: topBorderRadius,
+          borderTopRightRadius: topBorderRadius,
+          borderWidth,
+          borderColor,
+        }}
+        onChange={onSettle}
+      >
+        <BottomSheetScrollView
           contentContainerStyle={[styles.contentContainerStyle, style]}
-          containerStyle={StyleSheet.flatten([
-            styles.containerStyle,
-            {
-              backgroundColor,
-              borderTopLeftRadius: topBorderRadius,
-              borderTopRightRadius: topBorderRadius,
-              borderWidth,
-              borderColor,
-            },
-          ])}
-          onSettle={onSettle}
           {...rest}
         >
           {children}
-        </BottomSheetComponent>
-      </View>
+        </BottomSheetScrollView>
+      </BottomSheetComponent>
     );
   }
 );
 
 const styles = StyleSheet.create({
-  //Render on top of everything
-  parentContainer: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    zIndex: 10,
-    overflow: "hidden",
-  },
   contentContainerStyle: {
     paddingHorizontal: 16,
     paddingVertical: 10,
-  },
-  containerStyle: {
-    flex: 1,
-    overflow: "hidden",
-  },
-  handleContainer: {
-    alignItems: "center",
-    paddingVertical: 20,
-  },
-  handle: {
-    width: 40,
-    height: 2,
-    borderRadius: 4,
   },
 });
 

@@ -45,7 +45,7 @@
   "dependencies": {
     "@draftbit/core": "49.0.0",
     "@draftbit/native": "48.4.10",
-    "react-native-reanimated": "~2.17.0"
+    "react-native-reanimated": "~3.3.0"
   },
   "eslintIgnore": [
     "node_modules/",

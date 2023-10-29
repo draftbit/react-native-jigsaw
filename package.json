@@ -10,7 +10,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "postinstall": "yarn-deduplicate && expo-yarn-workspaces check-workspace-dependencies && patch-package",
+    "postinstall": "yarn-deduplicate && patch-package",
     "example": "yarn --cwd example",
     "bootstrap": "lerna bootstrap",
     "crosslink": "lerna link",
@@ -51,7 +51,6 @@
     "dotenv": "^9.0.2",
     "eslint": "^8.18.0",
     "eslint-plugin-prettier": "^4.2.0",
-    "expo-yarn-workspaces": "^2.0.0",
     "husky": ">=6",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",

@@ -44,7 +44,7 @@
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
     "@draftbit/core": "49.0.0",
-    "@draftbit/native": "48.4.10",
+    "@draftbit/native": "49.0.0",
     "react-native-reanimated": "~3.3.0"
   },
   "eslintIgnore": [

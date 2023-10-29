@@ -9299,7 +9299,7 @@ jest-environment-node@^29.2.1, jest-environment-node@^29.5.0:
     jest-mock "^29.5.0"
     jest-util "^29.5.0"
 
-jest-expo@^48.0.0, jest-expo@^48.0.2:
+jest-expo@^48.0.0:
   version "48.0.2"
   resolved "https://registry.yarnpkg.com/jest-expo/-/jest-expo-48.0.2.tgz#eedab424e29e9bec2cf17a2fe1a653096ec82b04"
   integrity sha512-hxppv3I3/WgtswladHpPlcEHCv+5/6OG8nOuR3VqtS0h7ZJYuyQCMpXbsKZiA4R/sT4fHS0BUj9BBsdhrk/zXg==
@@ -9312,6 +9312,22 @@ jest-expo@^48.0.0, jest-expo@^48.0.2:
     jest-watch-select-projects "^2.0.0"
     jest-watch-typeahead "2.2.1"
     json5 "^2.1.0"
+    lodash "^4.17.19"
+    react-test-renderer "18.2.0"
+
+jest-expo@^49.0.0:
+  version "49.0.0"
+  resolved "https://registry.yarnpkg.com/jest-expo/-/jest-expo-49.0.0.tgz#d1c91ddb1303f8666de47d45ba52174bff6fb241"
+  integrity sha512-nglYg6QPYSqCsrsOFiGosQi+m1rrqmYluPbFXNnXNEOrB2MvxMOgQJeWfMHDExHMX1ymLWX+7y8mYo6XVJpBJQ==
+  dependencies:
+    "@expo/config" "~8.1.0"
+    "@jest/create-cache-key-function" "^29.2.1"
+    babel-jest "^29.2.1"
+    find-up "^5.0.0"
+    jest-environment-jsdom "^29.2.1"
+    jest-watch-select-projects "^2.0.0"
+    jest-watch-typeahead "2.2.1"
+    json5 "^2.2.3"
     lodash "^4.17.19"
     react-test-renderer "18.2.0"
 
@@ -9826,7 +9842,7 @@ json5@^1.0.1:
   dependencies:
     minimist "^1.2.0"
 
-json5@^2.1.0, json5@^2.1.1, json5@^2.1.2, json5@^2.2.2:
+json5@^2.1.0, json5@^2.1.1, json5@^2.1.2, json5@^2.2.2, json5@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.3.tgz#78cd6f1a19bdc12b73db5ad0c61efd66c1e29283"
   integrity sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==

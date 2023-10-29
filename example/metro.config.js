@@ -1,6 +1,8 @@
 const { getDefaultConfig } = require("expo/metro-config");
 const path = require("path");
 
+// Follows https://docs.expo.dev/guides/monorepos/
+
 // Find the project and workspace directories
 const projectRoot = __dirname;
 // This can be replaced with `find-yarn-workspace-root`

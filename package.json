@@ -10,7 +10,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "postinstall": "yarn-deduplicate && expo-yarn-workspaces check-workspace-dependencies && patch-package",
+    "postinstall": "yarn-deduplicate && patch-package",
     "example": "yarn --cwd example",
     "bootstrap": "lerna bootstrap",
     "crosslink": "lerna link",
@@ -35,7 +35,7 @@
     "packages/*"
   ],
   "resolutions": {
-    "react-native-gesture-handler": "~2.9.0"
+    "react-native-gesture-handler": "~2.12.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.5",
@@ -51,11 +51,10 @@
     "dotenv": "^9.0.2",
     "eslint": "^8.18.0",
     "eslint-plugin-prettier": "^4.2.0",
-    "expo-yarn-workspaces": "^2.0.0",
     "husky": ">=6",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
-    "jest-expo": "^48.0.2",
+    "jest-expo": "^49.0.0",
     "json-server": "^0.16.3",
     "lerna": "^5.6.2",
     "lint-staged": ">=13",

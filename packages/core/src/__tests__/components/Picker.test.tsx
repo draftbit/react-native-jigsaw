@@ -5,6 +5,8 @@ import Provider from "../../Provider";
 import DefaultTheme from "../../styles/DefaultTheme";
 import { act } from "react-test-renderer";
 
+jest.useFakeTimers();
+
 jest.mock("@react-native-picker/picker", () => {
   const React = require("react");
   const { View } = require("react-native");

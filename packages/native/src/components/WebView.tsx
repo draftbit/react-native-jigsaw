@@ -81,7 +81,10 @@ interface WebViewProps {
 }
 
 const NativeWebView = React.forwardRef<any, WebViewProps>(
-  ({ source, html, style, optimizeVideoChat, ...otherWebViewProps }, ref) => {
+  (
+    { source, html, style, optimizeVideoChat, onScroll, ...otherWebViewProps },
+    ref
+  ) => {
     const [height, setHeight] = useState(0);
 
     const [cameraPermissions, setCameraPermissions] =
@@ -168,6 +171,7 @@ const NativeWebView = React.forwardRef<any, WebViewProps>(
             style={{ ...style, width: getFinalWidth() }}
             injectedJavaScript={injectFirst}
             onMessage={onMessage}
+            onScroll={onScroll as any}
             {...otherWebViewProps}
             {...videoChatProps}
           />

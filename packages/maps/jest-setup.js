@@ -1,2 +1,5 @@
-// Needed to address failing test caused by react-native-avoid-softinput
+// Needed for tests to run, fails otherwise
 jest.mock("react-native/Libraries/EventEmitter/NativeEventEmitter");
+jest.mock("react-native-webview", () => ({
+  default: () => jest.fn(), // or any mocked component instead of native view,
+}));

@@ -5,6 +5,7 @@ import {
   ImageProps,
   StyleSheet,
   ImageSourcePropType,
+  DimensionValue,
 } from "react-native";
 import Config from "./Config";
 
@@ -16,7 +17,15 @@ type ImageStyleProp = {
   aspectRatio?: number;
 };
 
-const generateDimensions = ({ aspectRatio, width, height }: ImageStyleProp) => {
+const generateDimensions = ({
+  aspectRatio,
+  width,
+  height,
+}: ImageStyleProp): {
+  aspectRatio?: number;
+  width?: DimensionValue;
+  height?: DimensionValue;
+} => {
   if (aspectRatio && !width && !height) {
     return {
       aspectRatio,

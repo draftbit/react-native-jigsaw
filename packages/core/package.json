@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/core",
-  "version": "48.6.2",
+  "version": "48.7.0",
   "description": "Core (non-native) Components",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/src/index.d.ts",

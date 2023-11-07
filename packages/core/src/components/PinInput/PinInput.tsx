@@ -6,6 +6,7 @@ import {
   TextInput as NativeTextInput,
   View,
   StyleSheet,
+  Platform,
 } from "react-native";
 import TextInput, { TextInputProps } from "../TextInput";
 import {
@@ -133,7 +134,12 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
         value={value}
         onChangeText={onChangeText}
         rootStyle={styles.rootContainer}
-        textInputStyle={{ height: "100%" }} // addresses issue on firefox where the hidden input did not fill the height
+        textInputStyle={[
+          // addresses issue on firefox where the hidden input did not fill the height
+          { height: "100%" },
+          //@ts-ignore Web specific prop. Removes default blue outline that appears on the hidden TextInput
+          Platform.OS === "web" ? { outlineWidth: 0 } : {},
+        ]}
         InputComponent={TextInput}
         cellCount={cellCount}
         renderCell={({ symbol: cellValue, index, isFocused }) => (

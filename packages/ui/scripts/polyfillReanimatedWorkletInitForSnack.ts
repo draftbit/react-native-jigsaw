@@ -5,10 +5,10 @@ import fs from "fs/promises";
  * The solution is to add a polyfill for the global.__reanimatedWorkletInit function
  * https://forums.expo.dev/t/react-native-reanimated-error-r-g-reanimatedworkletinit-is-not-a-function/68222/3
  *
- * This polyfill needs to be done at the first point of execution, placing at the top of index.tsx does not guarntee that
+ * This polyfill needs to be done at the first point of execution, placing at the top of index.tsx does not guarantee that
  * since the babel build reorders the code around which results in it not being the top most call.
  *
- * This script modified the built code to add the polyfill at the start
+ * This script modifies the built code to add the polyfill at the start
  */
 
 const INDEX_FILE = "./lib/commonjs/index.js";

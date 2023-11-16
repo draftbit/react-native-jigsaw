@@ -3742,14 +3742,13 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@teovilla/react-native-web-maps@^0.9.1":
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/@teovilla/react-native-web-maps/-/react-native-web-maps-0.9.1.tgz#0f83d563a6513db4352ecf25c5f906a9d7a3a1ae"
-  integrity sha512-cv0cLiR7P/tAxUsySpaWO+OuRoOIH6ggHxviMX3QOfUoJUyfKHzhZyVPH54e8s/202QUtlB0ab7goSYKSS3ycA==
+"@teovilla/react-native-web-maps@^0.9.4":
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/@teovilla/react-native-web-maps/-/react-native-web-maps-0.9.4.tgz#ec4aa3622e95899dfcb2490dabebae5b44fffd40"
+  integrity sha512-/Tq69855GhPji5jlJsdheXQAbBJiq092znADOBTUBOhrf6nZr/eMPOwRp7sx5RZ0sg46jB0WQrOXTHaMquRiuw==
   dependencies:
     "@react-google-maps/api" "^2.12.0"
     expo-location "~15.1.1"
-    jest-expo "^48.0.0"
     supercluster "^7.1.5"
 
 "@testing-library/jest-native@^5.4.2":
@@ -10938,7 +10937,7 @@ jest-environment-node@^29.2.1, jest-environment-node@^29.5.0:
     jest-mock "^29.5.0"
     jest-util "^29.5.0"
 
-jest-expo@^48.0.0, jest-expo@^48.0.2:
+jest-expo@^48.0.2:
   version "48.0.2"
   resolved "https://registry.yarnpkg.com/jest-expo/-/jest-expo-48.0.2.tgz#eedab424e29e9bec2cf17a2fe1a653096ec82b04"
   integrity sha512-hxppv3I3/WgtswladHpPlcEHCv+5/6OG8nOuR3VqtS0h7ZJYuyQCMpXbsKZiA4R/sT4fHS0BUj9BBsdhrk/zXg==

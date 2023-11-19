@@ -16,7 +16,7 @@ try {
   AvoidSoftInputView = avoidSoftInputPackage.AvoidSoftInputView;
 } catch (_) {
   console.warn(
-    "`react-native-avoid-softinput` is not installed, falling back to `View`. No keyboard avoiding capabilties will be used."
+    "AvoidKeyboardView: `react-native-avoid-softinput` is not installed, falling back to `View`. No keyboard avoiding capabilties will be used."
   );
 }
 

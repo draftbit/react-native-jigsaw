@@ -1,11 +1,24 @@
 import React from "react";
 import { View } from "react-native";
-//react-native-avoid-softinput is an optional dependency and there is a possibility that it is not installed resulting in undefined references
-import {
-  AvoidSoftInput,
-  AvoidSoftInputView,
+import type {
+  AvoidSoftInput as AvoidSoftInputType,
+  AvoidSoftInputView as AvoidSoftInputViewType,
   AvoidSoftInputViewProps,
 } from "react-native-avoid-softinput";
+
+// `react-native-avoid-softinput` is an optional dependency and there is a possibility that it is not installed resulting in undefined references
+let AvoidSoftInput: typeof AvoidSoftInputType | null = null;
+let AvoidSoftInputView: typeof AvoidSoftInputViewType | null = null;
+
+try {
+  const avoidSoftInputPackage = require("react-native-avoid-softinput");
+  AvoidSoftInput = avoidSoftInputPackage.AvoidSoftInput;
+  AvoidSoftInputView = avoidSoftInputPackage.AvoidSoftInputView;
+} catch (_) {
+  console.warn(
+    "`react-native-avoid-softinput` is not installed, falling back to `View`. No keyboard avoiding capabilties will be used."
+  );
+}
 
 /**
  * Requires additional setup: https://mateusz1913.github.io/react-native-avoid-softinput/docs/guides
@@ -47,9 +60,6 @@ const AvoidKeyboardView: React.FC<AvoidKeyboardViewProps> = ({
       />
     );
   } else {
-    console.warn(
-      "`react-native-avoid-softinput` is not installed, falling back to `View`."
-    );
     return <View {...rest} />;
   }
 };

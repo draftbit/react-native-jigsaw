@@ -35,6 +35,9 @@ interface AvoidKeyboardViewProps
   onKeyboardHidden?: () => void;
 }
 
+/**
+ * @deprecated DEPRECATED
+ */
 const AvoidKeyboardView: React.FC<AvoidKeyboardViewProps> = ({
   onKeyboardHidden,
   onKeyboardShown,

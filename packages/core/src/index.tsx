@@ -73,7 +73,7 @@ export {
   Spacer,
   Square,
 } from "./components/Layout";
-export { default as AvoidKeyboardView } from "./components/AvoidKeyboardView";
+export { default as KeyboardAvoidingView } from "./components/KeyboardAvoidingView";
 
 /* Deprecated: Fix or Delete!  */
 export { default as AccordionItem } from "./deprecated-components/AccordionItem";
@@ -102,3 +102,4 @@ export { default as RowBodyIcon } from "./deprecated-components/RowBodyIcon";
 export { default as RowHeadlineImageCaption } from "./deprecated-components/RowHeadlineImageCaption";
 export { default as RowHeadlineImageIcon } from "./deprecated-components/RowHeadlineImageIcon";
 export { useAuthState } from "./components/useAuthState";
+export { default as AvoidKeyboardView } from "./deprecated-components/AvoidKeyboardView";

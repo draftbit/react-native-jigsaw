@@ -3,7 +3,7 @@ import {
   TextInput as NativeTextInput,
   TextInputProps as NativeTextInputProps,
 } from "react-native";
-import { useDebounce } from "../hooks";
+import { useDebounce, useOnUpdate } from "../hooks";
 
 export interface TextInputProps extends NativeTextInputProps {
   onChangeTextDelayed?: (text: string) => void;
@@ -14,11 +14,10 @@ const TextInput = React.forwardRef<NativeTextInput, TextInputProps>(
   ({ onChangeTextDelayed, changeTextDelay = 500, value, ...rest }, ref) => {
     const delayedValue = useDebounce(value, changeTextDelay);
 
-    React.useEffect(() => {
+    useOnUpdate(() => {
       if (delayedValue !== undefined) {
         onChangeTextDelayed?.(delayedValue);
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [delayedValue]);
 
     return (

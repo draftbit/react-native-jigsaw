@@ -110,11 +110,10 @@ function testDebounce(
   act(() => fireEvent.changeText(textInput, valueTwo));
 
   act(() => jest.advanceTimersByTime(delay / 2));
-  //Only initial call should have called at this point, since delay has not passed
-  expect(onChangeTextDelayed).toHaveBeenCalledTimes(1);
-  expect(onChangeTextDelayed).toHaveBeenCalledWith(initialValue);
+  //Should not have been called at this point, since delay has not passed
+  expect(onChangeTextDelayed).toHaveBeenCalledTimes(0);
 
   act(() => jest.advanceTimersByTime(delay / 2));
-  expect(onChangeTextDelayed).toHaveBeenCalledTimes(2);
+  expect(onChangeTextDelayed).toHaveBeenCalledTimes(1);
   expect(onChangeTextDelayed).toHaveBeenCalledWith(valueTwo);
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { TextInput as NativeTextInput } from "react-native";
 import { isString, isNumber, isNaN } from "lodash";
 import { TextInputProps } from "./TextInput";
-import { useDebounce } from "../hooks";
+import { useDebounce, useOnUpdate } from "../hooks";
 
 interface Props
   extends Omit<
@@ -78,13 +78,12 @@ const NumberInput = React.forwardRef<NativeTextInput, Props>(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    useEffect(() => {
+    useOnUpdate(() => {
       if (delayedValue !== undefined) {
         const newStringNumberValue = formatValueToStringNumber(delayedValue);
         const number = parseFloat(newStringNumberValue);
         onChangeTextDelayed?.(number);
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [delayedValue]);
 
     return (

@@ -29,3 +29,17 @@ export const useDebounce = <T>(value: T, delay: number): T => {
 
   return debouncedValue;
 };
+
+export const useOnUpdate = (
+  onUpdate: () => void,
+  deps: React.DependencyList | undefined
+) => {
+  let mounted = React.useRef(true);
+  React.useEffect(() => {
+    if (!mounted.current) {
+      onUpdate();
+    }
+    mounted.current = false;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
+};

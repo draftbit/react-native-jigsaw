@@ -15,6 +15,7 @@ import PickerInputContainer from "../PickerInputContainer";
 import DropDownPickerComponent from "react-native-dropdown-picker";
 import { withTheme } from "../../../theming";
 import PickerItem, { PickerItemProps } from "./PickerItem";
+import { useOnUpdate } from "../../../hooks";
 
 const DropDownPicker: React.FC<
   React.PropsWithChildren<
@@ -42,8 +43,8 @@ const DropDownPicker: React.FC<
 }) => {
   const [pickerVisible, setPickerVisible] = React.useState(false);
   const [internalValue, setInternalValue] = React.useState<
-    string | number | (string | number)[]
-  >();
+    string | number | (string | number)[] | undefined
+  >(value);
 
   const isMultiSelect = Array.isArray(value);
 
@@ -70,12 +71,11 @@ const DropDownPicker: React.FC<
     [optionsProp]
   );
 
-  React.useEffect(() => {
+  useOnUpdate(() => {
     onValueChange?.(
       (isMultiSelect ? internalValue ?? [] : internalValue ?? "") as any // cannot determine if multiselect or not on compile time
     );
     // onValueChange excluded to prevent running on every re-render when using an anoymous function, which is the common case
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [internalValue]);
 
   React.useEffect(() => {

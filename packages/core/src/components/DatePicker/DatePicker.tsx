@@ -16,6 +16,7 @@ import {
   Platform,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import omit from "lodash.omit";
 
 import dateFormat from "dateformat";
 import { withTheme } from "../../theming";
@@ -25,7 +26,12 @@ import DateTimePicker from "./DatePickerComponent";
 
 import type { Theme } from "../../styles/DefaultTheme";
 import type { IconSlot } from "../../interfaces/Icon";
-import { extractStyles } from "../../utilities";
+import {
+  extractStyles,
+  marginStyleNames,
+  paddingStyleNames,
+  positionStyleNames,
+} from "../../utilities";
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
 
@@ -124,7 +130,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     width: number;
   }>({ measured: false, width: 0 });
 
-  const { viewStyles, textStyles } = extractStyles(style);
+  const { textStyles } = extractStyles(style);
 
   const getValidDate = (): Date => {
     if (!value) {
@@ -384,13 +390,16 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     type === "solid" ? { marginHorizontal: 12 } : {},
   ];
 
-  // const render = (props) => <NativeTextInput {...props} />;
-
   return (
-    <View style={[styles.container, style]}>
+    <>
       <Touchable disabled={disabled} onPress={toggleVisibility}>
         <View pointerEvents="none">
-          <View style={[styles.container, style]}>
+          <View
+            style={[
+              styles.container,
+              omit(style, [...paddingStyleNames, "backgroundColor"]),
+            ]}
+          >
             {leftIconName && leftIconMode === "outset" ? (
               <Icon {...leftIconProps} style={leftIconStyle} />
             ) : null}
@@ -398,7 +407,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
               style={[
                 containerStyle,
                 style ? { height: style.height } : {},
-                viewStyles,
+                omit(style, [...marginStyleNames, ...positionStyleNames]),
               ]}
             >
               {type === "underline" ? (
@@ -546,7 +555,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
           </View>
         </Portal>
       )}
-    </View>
+    </>
   );
 };
 

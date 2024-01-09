@@ -80,6 +80,18 @@ export const marginStyleNames = [
   "marginVertical",
 ];
 
+export const paddingStyleNames = [
+  "padding",
+  "paddingBottom",
+  "paddingEnd",
+  "paddingHorizontal",
+  "paddingLeft",
+  "paddingRight",
+  "paddingStart",
+  "paddingTop",
+  "paddingVertical",
+];
+
 export function extractBorderAndMarginStyles(
   style: StyleProp<any>,
   additionalBorderStyles?: string[],

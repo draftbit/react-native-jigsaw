@@ -395,20 +395,20 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
       <Touchable disabled={disabled} onPress={toggleVisibility}>
         <View pointerEvents="none">
           <View
-            style={[
+            style={StyleSheet.flatten([
               styles.container,
               omit(style, [...paddingStyleNames, "backgroundColor"]),
-            ]}
+            ])}
           >
             {leftIconName && leftIconMode === "outset" ? (
               <Icon {...leftIconProps} style={leftIconStyle} />
             ) : null}
             <View
-              style={[
+              style={StyleSheet.flatten([
                 containerStyle,
                 style ? { height: style.height } : {},
                 omit(style, [...marginStyleNames, ...positionStyleNames]),
-              ]}
+              ])}
             >
               {type === "underline" ? (
                 // When type === 'flat', render an underline

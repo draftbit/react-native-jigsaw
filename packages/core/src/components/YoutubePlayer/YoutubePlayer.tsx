@@ -26,6 +26,7 @@ const YoutubePlayer: React.FC<YoutubePlayerProps> = ({
   return (
     <View style={viewStyles}>
       <YouTube
+        style={{ flex: 1 }}
         videoId={!videoId && !playlist ? defaultVideoId : videoId}
         opts={options}
       />

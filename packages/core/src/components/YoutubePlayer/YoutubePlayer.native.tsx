@@ -33,6 +33,19 @@ const YoutubePlayer: React.FC<YoutubePlayerProps> = ({
           opacity: viewStyles.opacity < 0.99 ? viewStyles.opacity : 0.99,
         },
       ]}
+      /**
+       * Addresses issue where webview is locked by aspect ratio and refuses to
+       * change height according to provided style props.
+       * See:
+       * https://github.com/LonelyCpp/react-native-youtube-iframe/issues/13#issuecomment-611753123
+       */
+      webViewProps={{
+        injectedJavaScript: `
+            var element = document.getElementsByClassName('container')[0];
+            element.style.position = 'unset';
+            true;
+          `,
+      }}
     />
   );
 };

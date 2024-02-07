@@ -39,7 +39,6 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@babel/runtime": "^7.20.0",
     "@draftbit/types": "49.0.4",
     "@expo/vector-icons": "^13.0.0",
     "@react-native-community/datetimepicker": "7.2.0",

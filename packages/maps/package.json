@@ -39,7 +39,6 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@babel/runtime": "^7.20.0",
     "@draftbit/ui": "49.2.5",
     "@react-google-maps/api": "~2.18.1",
     "@teovilla/react-native-web-maps": "^0.9.4",

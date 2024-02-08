@@ -18,7 +18,7 @@
   "scripts": {
     "clean": "rimraf lib",
     "clean:modules": "rimraf node_modules",
-    "build:commonjs": "../../node_modules/.bin/babel src --out-dir lib/commonjs --extensions .tsx,.ts,.js,.jsx && ts-node scripts/polyfillReanimatedWorkletInitForSnack.ts",
+    "build:commonjs": "../../node_modules/.bin/babel src --out-dir lib/commonjs --extensions .tsx,.ts,.js,.jsx",
     "build": "yarn clean && yarn build:commonjs  && yarn tsc",
     "test": "jest",
     "test:coverage": "jest --coverage"

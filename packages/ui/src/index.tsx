@@ -1,3 +1,4 @@
+import "./polyfillReanimatedWorkletInit";
 import { Icon } from "@draftbit/native";
 export { Icon, LinearGradient, WebView } from "@draftbit/native";
 

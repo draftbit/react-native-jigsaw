@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Image, StyleProp, ImageStyle } from "react-native";
+import { View, StyleProp, ImageStyle } from "react-native";
+import { SvgUri } from "react-native-svg";
 
 import Config from "./Config";
 
@@ -12,7 +13,11 @@ const SVG: React.FC<React.PropsWithChildren<SVGComponentProps>> = ({
   source = Config.placeholderSvgURL,
   style,
 }) => {
-  return <Image style={style} source={{ uri: source }} />;
+  return (
+    <View style={style}>
+      <SvgUri width="100%" height="100%" uri={source} />
+    </View>
+  );
 };
 
 export default SVG;

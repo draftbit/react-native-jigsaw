@@ -42,10 +42,8 @@ export {
   SwipeableItemButton,
   SwipeableList,
 } from "./components/SwipeableItem";
-export {
-  default as AudioPlayer,
-  AudioPlayerRef,
-} from "./components/MediaPlayer/AudioPlayer";
+export { default as AudioPlayer } from "./components/MediaPlayer/AudioPlayer";
+export type { AudioPlayerRef } from "./components/MediaPlayer/AudioPlayer";
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
 export { Picker, MultiSelectPicker, PickerItem } from "./components/Picker";
 export { default as Slider } from "./components/Slider";
@@ -54,10 +52,8 @@ export { SectionList, SectionHeader } from "./components/SectionList";
 export { default as LinearProgress } from "./components/Progress/LinearProgress";
 export { default as CircularProgress } from "./components/Progress/CircularProgress";
 export { default as TextInput } from "./components/TextInput";
-export {
-  default as VideoPlayer,
-  VideoPlayerRef,
-} from "./components/MediaPlayer/VideoPlayer";
+export { default as VideoPlayer } from "./components/MediaPlayer/VideoPlayer";
+export type { VideoPlayerRef } from "./components/MediaPlayer/VideoPlayer";
 export {
   PinInput,
   CustomPinInputCell,

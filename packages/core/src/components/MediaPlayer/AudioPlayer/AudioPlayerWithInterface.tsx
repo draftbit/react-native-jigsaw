@@ -9,7 +9,7 @@ import {
   HeadlessAudioPlayerProps,
 } from "./AudioPlayerCommon";
 import Pressable from "../../Pressable";
-import { MediaPlayerRef, MediaPlayerStatus } from "../MediaPlayerCommon";
+import type { MediaPlayerRef, MediaPlayerStatus } from "../MediaPlayerCommon";
 
 /**
  * Built on top of HeadlessAudioPlayer to provide a simple interface for playing audio

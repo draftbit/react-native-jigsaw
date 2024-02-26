@@ -27,4 +27,4 @@ const AudioPlayer = React.forwardRef<
 
 export default withTheme(AudioPlayer);
 
-export type { MediaPlayerRef as AudioPlayerRef } from "../MediaPlayerCommon";
+export { MediaPlayerRef as AudioPlayerRef } from "../MediaPlayerCommon";

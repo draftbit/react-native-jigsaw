@@ -10,8 +10,11 @@ import {
 import { extractSizeStyles } from "../../../utilities";
 import MediaPlaybackWrapper from "../MediaPlaybackWrapper";
 import type { Playback } from "expo-av/src/AV";
-import { mapToMediaPlayerStatus } from "../MediaPlayerCommon";
-import type { MediaPlayerRef, MediaPlayerProps } from "../MediaPlayerCommon";
+import {
+  MediaPlayerProps,
+  MediaPlayerRef,
+  mapToMediaPlayerStatus,
+} from "../MediaPlayerCommon";
 
 type ResizeMode = "contain" | "cover" | "stretch";
 type ExpoVideoPropsOmitted = Omit<

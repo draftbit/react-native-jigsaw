@@ -2,11 +2,10 @@ import "./polyfillReanimatedWorkletInit";
 import { Icon } from "@draftbit/native";
 export { Icon, LinearGradient, WebView } from "@draftbit/native";
 
-export type { AudioPlayerRef, VideoPlayerRef } from "@draftbit/core";
-
 export {
   flattenReactFragments,
   AudioPlayer,
+  AudioPlayerRef,
   Avatar,
   Center,
   Circle,
@@ -59,6 +58,7 @@ export {
   CircularProgress,
   TextInput,
   VideoPlayer,
+  VideoPlayerRef,
   PinInput,
   CustomPinInputCell,
   CustomPinInputText,

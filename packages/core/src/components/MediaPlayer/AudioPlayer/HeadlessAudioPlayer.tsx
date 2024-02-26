@@ -6,8 +6,7 @@ import {
   InterruptionModeAndroid,
 } from "expo-av";
 import { HeadlessAudioPlayerProps } from "./AudioPlayerCommon";
-import { mapToMediaPlayerStatus } from "../MediaPlayerCommon";
-import type { MediaPlayerRef } from "../MediaPlayerCommon";
+import { MediaPlayerRef, mapToMediaPlayerStatus } from "../MediaPlayerCommon";
 import MediaPlaybackWrapper from "../MediaPlaybackWrapper";
 
 /**

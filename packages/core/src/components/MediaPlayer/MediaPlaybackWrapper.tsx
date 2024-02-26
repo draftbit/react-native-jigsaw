@@ -1,7 +1,7 @@
 import * as React from "react";
 import type { Playback } from "expo-av/src/AV";
 
-import type { MediaPlayerRef } from "./MediaPlayerCommon";
+import { MediaPlayerRef } from "./MediaPlayerCommon";
 
 interface MediaPlaybackWrapperProps {
   media?: Playback;

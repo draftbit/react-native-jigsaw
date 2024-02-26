@@ -6,7 +6,7 @@ import {
 } from "./AudioPlayerCommon";
 import HeadlessAudioPlayer from "./HeadlessAudioPlayer";
 import AudioPlayerWithInterface from "./AudioPlayerWithInterface";
-import type { MediaPlayerRef } from "../MediaPlayerCommon";
+import { MediaPlayerRef } from "../MediaPlayerCommon";
 
 interface AudioPlayerProps {
   mode?: "interface" | "headless";

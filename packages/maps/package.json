@@ -44,8 +44,7 @@
     "@teovilla/react-native-web-maps": "^0.9.4",
     "color": "^4.2.3",
     "lodash.isequal": "^4.5.0",
-    "react-native-maps": "1.7.1",
-    "react-native-webview": "11.26.0"
+    "react-native-maps": "1.7.1"
   },
   "eslintIgnore": [
     "node_modules/",

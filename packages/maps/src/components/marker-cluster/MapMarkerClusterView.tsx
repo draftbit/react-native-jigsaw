@@ -1,7 +1,7 @@
 import React from "react";
 import { ViewStyle, StyleProp, Text, View } from "react-native";
 import { MapMarkerClusterContext } from "./MapMarkerClusterContext";
-import { withTheme, DefaultTheme } from "@draftbit/ui";
+import { withTheme, DefaultTheme } from "@draftbit/core";
 
 interface MapMarkerClusterViewProps {
   zoomOnPress?: boolean;

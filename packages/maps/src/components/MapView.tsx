@@ -10,7 +10,7 @@ import MapMarker, { MapMarkerProps, renderMarker } from "./MapMarker";
 import MapMarkerCluster from "./marker-cluster/MapMarkerCluster";
 import { MapViewContext, ZoomLocation } from "./MapViewCommon";
 import { MapMarkerClusterView } from "./marker-cluster";
-import { flattenReactFragments } from "@draftbit/ui";
+import { flattenReactFragments } from "@draftbit/core";
 import type { MapMarker as MapMarkerRefType } from "react-native-maps";
 import { useDeepCompareMemo, useDebounce } from "../utils";
 import MapCircle from "./MapCircle";

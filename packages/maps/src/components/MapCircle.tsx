@@ -2,7 +2,7 @@ import * as React from "react";
 import { Platform } from "react-native";
 import { Circle as MapCircleComponent } from "./react-native-maps";
 import type { MapCircleProps as MapCircleComponentProps } from "react-native-maps";
-import { withTheme, DefaultTheme } from "@draftbit/ui";
+import { withTheme, DefaultTheme } from "@draftbit/core";
 import Color from "color";
 
 export interface MapCircleProps

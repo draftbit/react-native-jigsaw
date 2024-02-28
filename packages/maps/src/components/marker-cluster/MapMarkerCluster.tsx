@@ -6,7 +6,7 @@ import MapMarkerClusterView, {
 } from "./MapMarkerClusterView";
 import { MapMarkerClusterContext } from "./MapMarkerClusterContext";
 import { MapViewContext } from "../MapViewCommon";
-import { flattenReactFragments } from "@draftbit/ui";
+import { flattenReactFragments } from "@draftbit/core";
 import { MapMarkerContext } from "../MapView";
 
 /**

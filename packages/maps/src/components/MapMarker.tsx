@@ -13,7 +13,7 @@ import type {
   MapMarker as MapMarkerRefType,
 } from "react-native-maps";
 import MapCallout, { renderCallout } from "./MapCallout";
-import { flattenReactFragments } from "@draftbit/ui";
+import { flattenReactFragments } from "@draftbit/core";
 
 export interface MapMarkerProps
   extends Omit<MapMarkerComponentProps, "onPress" | "coordinate"> {

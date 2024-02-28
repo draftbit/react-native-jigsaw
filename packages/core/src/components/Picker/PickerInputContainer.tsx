@@ -66,7 +66,10 @@ const PickerInputContainer: React.FC<
   }
 
   return (
-    <View testID={testID} style={[containerStyle, { zIndex }]}>
+    <View
+      testID={testID}
+      style={[containerStyle, { zIndex, height: 300, backgroundColor: "red" }]}
+    >
       <TextField
         Icon={Icon}
         numberOfLines={1}

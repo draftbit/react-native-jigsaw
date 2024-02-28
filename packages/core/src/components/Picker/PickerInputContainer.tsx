@@ -1,6 +1,5 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import omit from "lodash.omit";
 import {
   extractSizeStyles,
   extractPositionStyles,
@@ -43,10 +42,10 @@ const PickerInputContainer: React.FC<
     extractBorderAndMarginStyles(style).marginStyles,
   ]);
 
-  const textFieldStyle = omit(
-    StyleSheet.flatten(style),
-    Object.keys(containerStyle)
-  );
+  // const textFieldStyle = omit(
+  //   StyleSheet.flatten(style),
+  //   Object.keys(containerStyle)
+  // );
 
   let selectedLabel: string | number | undefined = "";
   if (Array.isArray(selectedValue)) {
@@ -74,7 +73,7 @@ const PickerInputContainer: React.FC<
         value={selectedLabel?.toString()}
         editable={false}
         disabled={disabled}
-        style={textFieldStyle}
+        style={{ backgroundColor: "red" }}
         {...rest}
       />
       <Touchable

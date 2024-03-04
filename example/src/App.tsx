@@ -249,7 +249,7 @@ function Example({ title, children }: ExampleProps) {
 
         <Text style={[exampleStyles.headerTextStyle]}>{title}</Text>
       </View>
-      <ScreenContainer scrollable={true} hasSafeArea={false}>
+      <ScreenContainer scrollable={false} hasSafeArea={false}>
         {children}
       </ScreenContainer>
     </ScreenContainer>

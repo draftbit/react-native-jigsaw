@@ -53,6 +53,7 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
       focusedBackgroundColor,
       focusedBorderWidth,
       focusedTextColor,
+      secureTextEntry,
       style,
       ...rest
     },
@@ -88,6 +89,9 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
       index: number,
       isFocused: boolean
     ) => {
+      if (secureTextEntry && cellValue) {
+        cellValue = "•";
+      }
       const cell = renderItem?.({ cellValue, index, isFocused }) || (
         <View
           testID="default-code-input-cell"
@@ -147,6 +151,7 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
             {renderCell(cellValue, index, isFocused)}
           </React.Fragment>
         )}
+        secureTextEntry={secureTextEntry}
         {...rest}
       />
     );

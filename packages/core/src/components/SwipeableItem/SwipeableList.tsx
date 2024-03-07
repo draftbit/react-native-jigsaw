@@ -9,10 +9,10 @@ interface AdditionalSwipeableListProps {
   listComponent?: ListComponentType;
 }
 
-type FlatListSwipeableListProps<T> = FlatListProps<T> &
+export type FlatListSwipeableListProps<T> = FlatListProps<T> &
   AdditionalSwipeableListProps;
 
-type FlashListSwipeableListProps<T> = FlashListProps<T> &
+export type FlashListSwipeableListProps<T> = FlashListProps<T> &
   AdditionalSwipeableListProps;
 
 type SwipeableListContextType = {

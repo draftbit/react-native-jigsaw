@@ -69,6 +69,13 @@ export {
   PickerItem,
   AvoidKeyboardView,
   KeyboardAvoidingView,
+  SimpleStyleFlashList,
+  SimpleStyleFlatList,
+  SimpleStyleKeyboardAwareScrollView,
+  SimpleStyleMasonryFlashList,
+  SimpleStyleScrollView,
+  SimpleStyleSectionList,
+  SimpleStyleSwipeableList,
 } from "@draftbit/core";
 
 /**

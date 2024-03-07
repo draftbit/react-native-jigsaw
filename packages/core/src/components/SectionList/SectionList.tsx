@@ -18,10 +18,13 @@ interface AdditionalSectionListProps<T> {
   listComponent?: ListComponentType;
 }
 
-type FlatListSectionListProps<T> = Omit<FlatListProps<T>, "renderItem"> &
+export type FlatListSectionListProps<T> = Omit<FlatListProps<T>, "renderItem"> &
   AdditionalSectionListProps<T>;
 
-type FlashListSectionListProps<T> = Omit<FlashListProps<T>, "renderItem"> &
+export type FlashListSectionListProps<T> = Omit<
+  FlashListProps<T>,
+  "renderItem"
+> &
   AdditionalSectionListProps<T>;
 
 interface SectionListDataItem<T> {

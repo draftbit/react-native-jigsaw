@@ -70,6 +70,13 @@ export {
   Square,
 } from "./components/Layout";
 export { default as KeyboardAvoidingView } from "./components/KeyboardAvoidingView";
+export { default as SimpleStyleFlashList } from "./components/SimpleStyleScrollables/SimpleStyleFlashList";
+export { default as SimpleStyleFlatList } from "./components/SimpleStyleScrollables/SimpleStyleFlatList";
+export { default as SimpleStyleKeyboardAwareScrollView } from "./components/SimpleStyleScrollables/SimpleStyleKeyboardAwareScrollView";
+export { default as SimpleStyleMasonryFlashList } from "./components/SimpleStyleScrollables/SimpleStyleMasonryFlashList";
+export { default as SimpleStyleScrollView } from "./components/SimpleStyleScrollables/SimpleStyleScrollView";
+export { default as SimpleStyleSectionList } from "./components/SimpleStyleScrollables/SimpleStyleSectionList";
+export { default as SimpleStyleSwipeableList } from "./components/SimpleStyleScrollables/SimpleStyleSwipeableList";
 
 /* Deprecated: Fix or Delete!  */
 export { default as AccordionItem } from "./deprecated-components/AccordionItem";

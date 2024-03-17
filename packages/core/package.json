@@ -74,6 +74,9 @@
     "react-native-youtube-iframe": "^2.2.2",
     "react-youtube": "^10.1.0"
   },
+  "resolutions": {
+    "prop-types": "^15.8.1"
+  },
   "peerDependencies": {
     "react-native-avoid-softinput": "^4.0.1"
   },

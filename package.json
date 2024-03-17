@@ -35,7 +35,8 @@
     "packages/*"
   ],
   "resolutions": {
-    "react-native-gesture-handler": "~2.9.0"
+    "react-native-gesture-handler": "~2.9.0",
+    "prop-types": "^15.8.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.5",
@@ -58,7 +59,7 @@
     "jest-expo": "^48.0.2",
     "json-server": "^0.16.3",
     "lerna": "^5.6.2",
-    "lint-staged": ">=13",
+    "lint-staged": ">=15",
     "node-fetch": "^2.6.1",
     "patch-package": "^6.4.7",
     "postinstall-postinstall": "^2.1.0",
@@ -132,9 +133,9 @@
       "not android <= 4.4",
       "not samsung <= 4"
     ],
-    "node": "16"
+    "node": "18"
   },
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   }
 }

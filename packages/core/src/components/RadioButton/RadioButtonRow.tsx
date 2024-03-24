@@ -129,6 +129,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
 
 const styles = StyleSheet.create({
   mainParent: {
+    flex: 1,
     alignItems: "center",
     justifyContent: "space-around",
     paddingStart: 20,

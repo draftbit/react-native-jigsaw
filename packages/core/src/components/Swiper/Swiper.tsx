@@ -23,6 +23,8 @@ export interface SwiperProps<T> {
   renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
   style?: StyleProp<ViewStyle>;
   onIndexChanged?: (index: number) => void;
+  minDistanceForAction?: number;
+  minDistanceToCapture?: number;
 }
 
 const Swiper = ({
@@ -45,6 +47,8 @@ const Swiper = ({
   onSwipe,
   onSwipedNext,
   onSwipedPrevious,
+  minDistanceForAction,
+  minDistanceToCapture,
   style,
 }: SwiperProps<any>) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
@@ -119,6 +123,8 @@ const Swiper = ({
         timeout={timeout}
         vertical={vertical}
         onIndexChanged={onIndexChanged}
+        minDistanceForAction={minDistanceForAction}
+        minDistanceToCapture={minDistanceToCapture}
         controlsProps={{
           prevTitle,
           nextTitle,

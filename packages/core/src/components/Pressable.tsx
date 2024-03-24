@@ -9,7 +9,11 @@ type Props = {
   style?: ViewStyle;
   activeOpacity?: number;
   disabledOpacity?: number;
-} & PressableProps;
+  androidRippleColor?: string;
+  androidRippleBorderless?: boolean;
+  androidRippleRadius?: number;
+  androidRippleForeground?: boolean;
+} & Omit<PressableProps, "android_ripple ">;
 
 export default function Pressable({
   children,
@@ -19,6 +23,10 @@ export default function Pressable({
   disabledOpacity = 0.8,
   delayLongPress,
   hitSlop,
+  androidRippleColor,
+  androidRippleBorderless,
+  androidRippleRadius,
+  androidRippleForeground,
   style,
   ...props
 }: Props) {
@@ -36,6 +44,19 @@ export default function Pressable({
           style,
         ];
       }}
+      android_ripple={
+        androidRippleColor ||
+        androidRippleBorderless ||
+        androidRippleColor ||
+        androidRippleForeground
+          ? {
+              radius: androidRippleRadius,
+              borderless: androidRippleBorderless,
+              color: androidRippleColor,
+              foreground: androidRippleForeground,
+            }
+          : null
+      }
       {...props}
     >
       {children}

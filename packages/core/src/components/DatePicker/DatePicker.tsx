@@ -66,6 +66,7 @@ type Props = {
   autoDismissKeyboard?: boolean;
   minimumDate?: Date | string;
   maximumDate?: Date | string;
+  hideLabel?: boolean;
 } & IconSlot &
   TextInputProps;
 
@@ -107,6 +108,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   autoDismissKeyboard = true,
   minimumDate,
   maximumDate,
+  hideLabel = false,
   ...props
 }) => {
   const [value, setValue] = React.useState<Date | undefined>(
@@ -300,8 +302,8 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
       borderRadius: roundness,
       borderColor: hasActiveOutline ? activeColor : borderColor,
       borderWidth: 1,
-      paddingTop: labeled ? 16 * 1.5 : 16,
-      paddingBottom: labeled ? 16 * 0.5 : 16,
+      paddingTop: labeled && !hideLabel ? 16 * 1.5 : 16,
+      paddingBottom: labeled && !hideLabel ? 16 * 0.5 : 16,
       opacity: disabled ? disabledOpacity : 1,
       backgroundColor,
     };
@@ -424,7 +426,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
                 />
               ) : null}
 
-              {label ? (
+              {label && !hideLabel ? (
                 // Position colored placeholder and gray placeholder on top of each other and crossfade them
                 // This gives the effect of animating the color, but allows us to use native driver
                 <View
@@ -490,7 +492,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
 
               <NativeTextInput
                 value={formatDate()}
-                placeholder={label ? placeholder1 : placeholder}
+                placeholder={label && !hideLabel ? placeholder1 : placeholder}
                 editable={!disabled}
                 placeholderTextColor={placeholderColor}
                 selectionColor={activeColor}

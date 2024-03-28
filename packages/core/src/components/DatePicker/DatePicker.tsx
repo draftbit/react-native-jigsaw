@@ -132,7 +132,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     width: number;
   }>({ measured: false, width: 0 });
 
-  const { textStyles } = extractStyles(style);
+  const { textStyles, viewStyles } = extractStyles(style);
 
   const getValidDate = (): Date => {
     if (!value) {
@@ -253,10 +253,12 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
 
   const hasActiveOutline = focused;
 
+  const propOrStyleBorderColor = viewStyles.borderColor ?? inputBorderColor;
+
   let inputTextColor,
     activeColor,
     underlineColor,
-    borderColor = inputBorderColor,
+    borderColor = propOrStyleBorderColor,
     placeholderColor,
     containerStyle: StyleProp<ViewStyle>,
     backgroundColor,
@@ -271,8 +273,8 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     backgroundColor = colors.divider;
   } else {
     activeColor = inputBorderColorActive || colors.primary;
-    placeholderColor = inputBorderColor || colors.light;
-    underlineColor = inputBorderColor || colors.light;
+    placeholderColor = colors.light;
+    underlineColor = propOrStyleBorderColor || colors.light;
     backgroundColor = colors.background;
   }
 
@@ -301,7 +303,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     containerStyle = {
       borderRadius: roundness,
       borderColor: hasActiveOutline ? activeColor : borderColor,
-      borderWidth: 1,
+      borderWidth: viewStyles.borderWidth ?? 1,
       paddingTop: labeled && !hideLabel ? 16 * 1.5 : 16,
       paddingBottom: labeled && !hideLabel ? 16 * 0.5 : 16,
       opacity: disabled ? disabledOpacity : 1,
@@ -399,7 +401,11 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
           <View
             style={StyleSheet.flatten([
               styles.container,
-              omit(style, [...paddingStyleNames, "backgroundColor"]),
+              omit(style, [
+                ...paddingStyleNames,
+                "backgroundColor",
+                "borderWidth",
+              ]),
             ])}
           >
             {leftIconName && leftIconMode === "outset" ? (
@@ -409,7 +415,12 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
               style={StyleSheet.flatten([
                 containerStyle,
                 style ? { height: style.height } : {},
-                omit(style, [...marginStyleNames, ...positionStyleNames]),
+                omit(style, [
+                  ...marginStyleNames,
+                  ...positionStyleNames,
+                  "borderColor",
+                  "borderWidth",
+                ]),
               ])}
             >
               {type === "underline" ? (

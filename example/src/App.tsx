@@ -65,6 +65,7 @@ import CircularProgressExample from "./CircularProgressExample";
 import VideoPlayerExample from "./VideoPlayerExample";
 import PinInputExample from "./PinInputExample";
 import KeyboardAvoidingViewExample from "./KeyboardAvoidingViewExample";
+import BadgeExample from "./BadgeExample";
 
 const ROUTES = {
   AudioPlayer: AudioPlayerExample,
@@ -105,6 +106,7 @@ const ROUTES = {
   VideoPlayer: VideoPlayerExample,
   PinInput: PinInputExample,
   KeyboardAvoidingView: KeyboardAvoidingViewExample,
+  Badge: BadgeExample,
 };
 
 let customFonts = {

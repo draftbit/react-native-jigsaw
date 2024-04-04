@@ -77,6 +77,7 @@ export { default as SimpleStyleMasonryFlashList } from "./components/SimpleStyle
 export { default as SimpleStyleScrollView } from "./components/SimpleStyleScrollables/SimpleStyleScrollView";
 export { default as SimpleStyleSectionList } from "./components/SimpleStyleScrollables/SimpleStyleSectionList";
 export { default as SimpleStyleSwipeableList } from "./components/SimpleStyleScrollables/SimpleStyleSwipeableList";
+export { default as Badge } from "./components/Badge";
 
 /* Deprecated: Fix or Delete!  */
 export { default as AccordionItem } from "./deprecated-components/AccordionItem";

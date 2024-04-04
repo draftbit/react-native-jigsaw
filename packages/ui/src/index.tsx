@@ -76,6 +76,7 @@ export {
   SimpleStyleScrollView,
   SimpleStyleSectionList,
   SimpleStyleSwipeableList,
+  Badge,
 } from "@draftbit/core";
 
 /**

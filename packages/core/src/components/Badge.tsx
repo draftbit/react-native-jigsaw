@@ -9,7 +9,7 @@ const CONSTANTS = {
 };
 
 type BaseProps = {
-  title: string;
+  title?: string;
   style?: TextStyle;
   size?: number;
   theme: typeof theme;

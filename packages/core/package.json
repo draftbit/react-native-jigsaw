@@ -43,7 +43,7 @@
     "@draftbit/react-theme-provider": "^2.1.1",
     "@draftbit/types": "49.2.6",
     "@expo/vector-icons": "^13.0.0",
-    "@gorhom/bottom-sheet": "5.0.0-alpha.6",
+    "@gorhom/bottom-sheet": "5.0.0-alpha.5",
     "@material-ui/core": "^4.11.0",
     "@material-ui/pickers": "^3.2.10",
     "@react-native-community/slider": "4.4.2",

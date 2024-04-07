@@ -26,6 +26,8 @@ const nativePackageJson = JSON.parse(nativePackageJsonContents);
 
 delete nativePackageJson.devDependencies["react-native-webview"];
 
+fs.writeFileSync(nativePackageJsonPath, JSON.stringify(nativePackageJson));
+
 const corePackageJsonPath = path.join(
   ROOT_PATH,
   "packages",

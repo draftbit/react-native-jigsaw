@@ -41,3 +41,18 @@ const corePackageJson = JSON.parse(corePackageJsonContents);
 delete corePackageJson.devDependencies["react-native-youtube-iframe"];
 
 fs.writeFileSync(corePackageJsonPath, JSON.stringify(corePackageJson));
+
+const uiPackageJsonPath = path.join(
+  ROOT_PATH,
+  "packages",
+  "ui",
+  "package.json"
+);
+
+const uiPackageJsonContents = fs.readFileSync(uiPackageJsonPath).toString();
+const uiPackageJson = JSON.parse(uiPackageJsonContents);
+
+delete uiPackageJson.devDependencies["@draftbit/core"];
+delete uiPackageJson.devDependencies["@draftbit/native"];
+
+fs.writeFileSync(uiPackageJsonPath, JSON.stringify(uiPackageJson));

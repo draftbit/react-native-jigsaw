@@ -39,6 +39,7 @@ jobs:
 
       # snackager fails whenever react-native-webview is a dependency, so we remove it
       # Removed right before deploy to keep it during development and when running tests, but ommited in final release
+      # Changes need to be committed, otherwise lerna refuses to publish
       - name: Remove `react-native-webview` from dev dependencies
         run: |
           node ./scripts/remove-rn-webview-dependency.js

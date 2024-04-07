@@ -15,7 +15,6 @@ import {
   ActivityIndicator,
   Text,
 } from "react-native";
-//@ts-ignore
 import { WebView } from "react-native-webview";
 import {
   WebViewMessageEvent,
@@ -29,7 +28,6 @@ import {
   WebViewScrollEvent,
   WebViewTerminatedEvent,
   ShouldStartLoadRequest,
-  //@ts-ignore
 } from "react-native-webview/lib/WebViewTypes";
 import { Camera, PermissionResponse } from "expo-camera";
 

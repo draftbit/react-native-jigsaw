@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "49.4.4",
+  "version": "49.4.5",
   "description": "Draftbit UI Library",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/src/index.d.ts",
@@ -50,8 +50,8 @@
     "@draftbit/native": "*"
   },
   "devDependencies": {
-    "@draftbit/core": "49.4.4",
-    "@draftbit/native": "49.4.4"
+    "@draftbit/core": "49.4.5",
+    "@draftbit/native": "49.4.5"
   },
   "eslintIgnore": [
     "node_modules/",

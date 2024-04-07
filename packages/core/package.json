@@ -76,7 +76,8 @@
     "react-youtube": "^10.1.0"
   },
   "peerDependencies": {
-    "react-native-avoid-softinput": "^4.0.1"
+    "react-native-avoid-softinput": "^4.0.1",
+    "react-native-webview": "13.2.2"
   },
   "peerDependenciesMeta": {
     "react-native-avoid-softinput": {

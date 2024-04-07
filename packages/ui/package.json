@@ -43,15 +43,9 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
+    "@draftbit/core": "49.4.4",
+    "@draftbit/native": "49.4.4",
     "react-native-reanimated": "~3.3.0"
-  },
-  "peerDependencies": {
-    "@draftbit/core": "49.4.4",
-    "@draftbit/native": "49.4.4"
-  },
-  "devDependencies": {
-    "@draftbit/core": "49.4.4",
-    "@draftbit/native": "49.4.4"
   },
   "eslintIgnore": [
     "node_modules/",

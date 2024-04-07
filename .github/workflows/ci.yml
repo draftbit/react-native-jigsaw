@@ -97,8 +97,6 @@ jobs:
           curl "https://snackager.expo.io/bundle/@draftbit/core@"$newversion"?version_snackager=true&platforms=ios,android,web&bypassCache=true&sdkVersion=49.0.0";
           curl "https://snackager.expo.io/bundle/@draftbit/maps@"$newversion"?version_snackager=true&platforms=ios,android,web&bypassCache=true&sdkVersion=49.0.0";
           curl "https://snackager.expo.io/bundle/@draftbit/maps@"$newversion"?version_snackager=true&platforms=ios,android,web&bypassCache=true&sdkVersion=49.0.0";
-          curl "https://snackager.expo.io/bundle/@draftbit/native@"$newversion"?version_snackager=true&platforms=ios,android,web&bypassCache=true&sdkVersion=49.0.0";
-          curl "https://snackager.expo.io/bundle/@draftbit/native@"$newversion"?version_snackager=true&platforms=ios,android,web&bypassCache=true&sdkVersion=49.0.0";
         working-directory: packages/ui
 
       - name: Release to Snack
@@ -114,8 +112,6 @@ jobs:
           curl "https://snackager.expo.io/bundle/@draftbit/core@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true&sdkVersion=49.0.0";
           curl "https://snackager.expo.io/bundle/@draftbit/maps@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true&sdkVersion=49.0.0";
           curl "https://snackager.expo.io/bundle/@draftbit/maps@"$version"?version_snackager=true&platforms=ios,android,web&bypassCache=true&sdkVersion=49.0.0";
-          curl "https://snackager.expo.io/bundle/@draftbit/native@"$newversion"?version_snackager=true&platforms=ios,android,web&bypassCache=true&sdkVersion=49.0.0";
-          curl "https://snackager.expo.io/bundle/@draftbit/native@"$newversion"?version_snackager=true&platforms=ios,android,web&bypassCache=true&sdkVersion=49.0.0";
         working-directory: packages/ui
 
       - name: Add comment to pull request

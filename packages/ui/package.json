@@ -46,8 +46,8 @@
     "react-native-reanimated": "~3.3.0"
   },
   "peerDependencies": {
-    "@draftbit/core": "*",
-    "@draftbit/native": "*"
+    "@draftbit/core": "49.4.4",
+    "@draftbit/native": "49.4.4"
   },
   "devDependencies": {
     "@draftbit/core": "49.4.4",

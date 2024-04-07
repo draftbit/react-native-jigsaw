@@ -26,4 +26,16 @@ const nativePackageJson = JSON.parse(nativePackageJsonContents);
 
 delete nativePackageJson.devDependencies["react-native-webview"];
 
-fs.writeFileSync(nativePackageJsonPath, JSON.stringify(nativePackageJson));
+const corePackageJsonPath = path.join(
+  ROOT_PATH,
+  "packages",
+  "core",
+  "package.json"
+);
+
+const corePackageJsonContents = fs.readFileSync(corePackageJsonPath).toString();
+const corePackageJson = JSON.parse(corePackageJsonContents);
+
+delete corePackageJson.devDependencies["react-native-youtube-iframe"];
+
+fs.writeFileSync(corePackageJsonPath, JSON.stringify(corePackageJson));

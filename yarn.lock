@@ -1770,10 +1770,10 @@
     fast-deep-equal "^3.1.3"
     supercluster "^7.1.3"
 
-"@gorhom/bottom-sheet@5.0.0-alpha.5":
-  version "5.0.0-alpha.5"
-  resolved "https://registry.yarnpkg.com/@gorhom/bottom-sheet/-/bottom-sheet-5.0.0-alpha.5.tgz#85335ba67e5dafe9b0952e8c095c39cda3c6800c"
-  integrity sha512-aZfqLB1j+1J3yD7ajhilbG17+quHFN5XL8PR7jrOsMbJB5nib9rVZIgOHRA0Pqhv/yjSGdX5Km7wyN+8owu5UQ==
+"@gorhom/bottom-sheet@5.0.0-alpha.7":
+  version "5.0.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@gorhom/bottom-sheet/-/bottom-sheet-5.0.0-alpha.7.tgz#bf4e89e3f1a7e43e23d30823b60ff36c155babe5"
+  integrity sha512-3Gr97lenMOjhUeExzvo+6zimcxWt5o4dQMWZ+E7b71Huqg9in+v+CrVPHAiR7sjpzjdBXwDhKkxLAH3lFRq2+A==
   dependencies:
     "@gorhom/portal" "1.0.14"
     invariant "^2.2.4"

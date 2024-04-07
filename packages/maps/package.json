@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/maps",
-  "version": "49.4.5",
+  "version": "49.4.6",
   "description": "Map Components",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/src/index.d.ts",
@@ -49,7 +49,7 @@
     "@draftbit/core": "*"
   },
   "devDependencies": {
-    "@draftbit/core": "49.4.5",
+    "@draftbit/core": "49.4.6",
     "@types/lodash.isequal": "^4.5.6"
   },
   "eslintIgnore": [

@@ -1,7 +1,3 @@
-import { NativeModules } from "react-native";
-
-NativeModules.RNCWebView = NativeModules.RNCWebView ?? {};
-
 export { flattenReactFragments } from "./utilities";
 export { injectIcon } from "./interfaces/Icon";
 export { withTheme, ThemeProvider } from "./theming";

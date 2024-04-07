@@ -37,10 +37,10 @@ jobs:
       - name: Test
         run: yarn test
 
-      - name: Remove `react-native-webview` from dependencies
+      - name: Remove `react-native-webview` from dev dependencies
         run: |
-          node ../scripts/remove-rn-webview-dependency.js
-          git commit -m 'Remove react-native-webview dev dependeny'
+          node ./scripts/remove-rn-webview-dependency.js
+          git commit -m 'Remove react-native-webview dev dependency'
 
       - name: Release next packages
         if: github.event_name == 'pull_request'

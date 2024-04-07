@@ -50,9 +50,6 @@
   "peerDependencies": {
     "react-native-webview": "13.2.2"
   },
-  "devDependencies": {
-    "react-native-webview": "13.2.2"
-  },
   "eslintIgnore": [
     "node_modules/",
     "lib/"

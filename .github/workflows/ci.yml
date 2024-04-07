@@ -37,12 +37,14 @@ jobs:
       - name: Test
         run: yarn test
 
+      # snackager fails whenever react-native-webview is a dependency, so we remove it
+      # Removed right before deploy to keep it during development and when running tests, but ommited in final release
       - name: Remove `react-native-webview` from dev dependencies
         run: |
           node ./scripts/remove-rn-webview-dependency.js
           git config --global user.email "youssef@draftbit.com"
           git config --global user.name "Jigsaw CI Deploys"
-          git commit -m 'Remove react-native-webview dev dependency'
+          git commit -a -m 'Remove react-native-webview dev dependency'
 
       - name: Release next packages
         if: github.event_name == 'pull_request'

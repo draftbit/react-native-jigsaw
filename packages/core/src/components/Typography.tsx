@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, TextStyle, StyleProp } from "react-native";
-import { withTheme } from "../theming";
-import Theme from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { Theme } from "@draftbit/theme";
 
 type Props = {
   text: string;
@@ -9,7 +9,7 @@ type Props = {
   /**
    * @optional
    */
-  theme: typeof Theme;
+  theme: Theme;
 };
 
 export const Title = withTheme(({ text, theme, style }: Props) => {

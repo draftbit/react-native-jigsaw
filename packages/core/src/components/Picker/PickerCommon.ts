@@ -1,7 +1,7 @@
 import { StyleProp, ViewStyle, TextStyle } from "react-native";
 import { IconSlot } from "../../interfaces/Icon";
 import { isObject } from "lodash";
-import { Theme } from "../../styles/DefaultTheme";
+import { Theme } from "@draftbit/theme";
 import React from "react";
 import { flattenReactFragments } from "../../utilities";
 import PickerItem, { PickerItemProps } from "./dropdown/PickerItem";

@@ -11,7 +11,7 @@ import {
   normalizeToPickerOptions,
 } from "./PickerCommon";
 import PickerInputContainer from "./PickerInputContainer";
-import { withTheme } from "../../theming";
+import { withTheme } from "@draftbit/theme";
 
 const isIos = Platform.OS === "ios";
 const isWeb = Platform.OS === "web";

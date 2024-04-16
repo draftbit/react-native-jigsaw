@@ -10,7 +10,7 @@ import {
 } from "../PickerCommon";
 import PickerInputContainer from "../PickerInputContainer";
 import DropDownPickerComponent from "react-native-dropdown-picker";
-import { withTheme } from "../../../theming";
+import { withTheme } from "@draftbit/theme";
 import { useOnUpdate } from "../../../hooks";
 
 const DropDownPicker: React.FC<

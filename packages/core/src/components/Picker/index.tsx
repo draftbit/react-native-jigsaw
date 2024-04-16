@@ -7,7 +7,7 @@ import {
 import NativePicker from "./NativePicker";
 import DropDownPicker from "./dropdown/DropDownPicker";
 import DropDownModalPicker from "./dropdown/DropDownModalPicker";
-import { withTheme } from "../../theming";
+import { withTheme } from "@draftbit/theme";
 
 interface PickerProps
   extends CommonDropDownPickerProps,

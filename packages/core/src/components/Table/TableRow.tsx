@@ -6,8 +6,8 @@ import {
   TableStyleContext,
   TableStyleProps,
 } from "./TableCommon";
-import { Theme } from "../../styles/DefaultTheme";
-import { withTheme } from "../../theming";
+import { Theme } from "@draftbit/theme";
+import { withTheme } from "@draftbit/theme";
 import Pressable from "../Pressable";
 
 export interface Props extends TableProps {

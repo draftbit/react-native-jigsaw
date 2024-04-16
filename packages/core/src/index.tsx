@@ -4,9 +4,7 @@ export {
   useDeepCompareMemo,
 } from "./utilities";
 export { injectIcon } from "./interfaces/Icon";
-export { withTheme, ThemeProvider } from "./theming";
 export { default as Provider } from "./Provider";
-export { default as DefaultTheme } from "./styles/DefaultTheme";
 export { Link } from "./components/Text";
 export { Button } from "./components/Button";
 export { Checkbox, CheckboxRow } from "./components/Checkbox";

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { Theme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 
 import Row from "../components/Row";

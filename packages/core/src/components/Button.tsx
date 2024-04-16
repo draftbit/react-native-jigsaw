@@ -9,9 +9,9 @@ import {
   ActivityIndicator,
 } from "react-native";
 
-import { withTheme } from "../theming";
+import { withTheme } from "@draftbit/theme";
 
-import type { Theme } from "../styles/DefaultTheme";
+import type { Theme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 
 const CONSTANTS = {

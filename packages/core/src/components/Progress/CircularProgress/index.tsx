@@ -6,7 +6,7 @@ import {
   ValueProgressProps,
 } from "../ProgressCommon";
 import { CircularProgress as CircularProgressComponent } from "./CircularProgress";
-import { withTheme } from "../../../theming";
+import { withTheme } from "@draftbit/theme";
 
 const CircularProgress: React.FC<
   ValueProgressProps & IndeterminateProgressProps & CircularProgressProps

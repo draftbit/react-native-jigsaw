@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Text, ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
-import { withTheme } from "../theming";
+import { withTheme } from "@draftbit/theme";
 import Row from "../components/Row";
-import theme from "../styles/DefaultTheme";
+import type { Theme } from "@draftbit/theme";
 
 type Props = {
   title?: string;
@@ -10,7 +10,7 @@ type Props = {
   caption?: string;
   image: string | ImageSourcePropType;
   style?: StyleProp<ViewStyle>;
-  theme: typeof theme;
+  theme: Theme;
 };
 
 /**

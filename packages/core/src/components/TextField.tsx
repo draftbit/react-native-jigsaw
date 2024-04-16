@@ -14,8 +14,8 @@ import {
   LayoutChangeEvent,
   Platform,
 } from "react-native";
-import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { Theme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 import { applyStyles, extractStyles } from "../utilities";
 import TextInput, { TextInputProps } from "./TextInput";

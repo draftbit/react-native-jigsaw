@@ -1,5 +1,5 @@
 import * as React from "react";
-import { withTheme } from "../../../theming";
+import { withTheme } from "@draftbit/theme";
 import {
   AudioPlayerInterfaceProps,
   HeadlessAudioPlayerProps,

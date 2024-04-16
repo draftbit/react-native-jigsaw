@@ -13,8 +13,8 @@ import {
   CodeField,
   useClearByFocusCell,
 } from "react-native-confirmation-code-field";
-import type { Theme } from "../../styles/DefaultTheme";
-import { withTheme } from "../../theming";
+import type { Theme } from "@draftbit/theme";
+import { withTheme } from "@draftbit/theme";
 import PinInputText from "./PinInputText";
 import { extractStyles } from "../../utilities";
 

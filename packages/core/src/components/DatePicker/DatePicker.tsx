@@ -19,12 +19,12 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import omit from "lodash.omit";
 
 import dateFormat from "dateformat";
-import { withTheme } from "../../theming";
+import { withTheme } from "@draftbit/theme";
 import Portal from "../Portal/Portal";
 import Touchable from "../Touchable";
 import DateTimePicker from "./DatePickerComponent";
 
-import type { Theme } from "../../styles/DefaultTheme";
+import type { Theme } from "@draftbit/theme";
 import type { IconSlot } from "../../interfaces/Icon";
 import {
   extractStyles,

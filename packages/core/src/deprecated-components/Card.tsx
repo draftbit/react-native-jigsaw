@@ -12,10 +12,10 @@ import Image from "../components/Image";
 import Surface from "../components/Surface";
 import { Title, Subtitle, Caption } from "../components/Typography";
 
-import { withTheme } from "../theming";
+import { withTheme } from "@draftbit/theme";
 import Config from "../components/Config";
 
-import type { Theme } from "../styles/DefaultTheme";
+import type { Theme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 
 const ICON_SIZE = Config.cardIconSize;

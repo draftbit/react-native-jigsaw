@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, TextProps } from "react-native";
-import type { Theme } from "../../styles/DefaultTheme";
-import { withTheme } from "../../theming";
+import type { Theme } from "@draftbit/theme";
+import { withTheme } from "@draftbit/theme";
 import { Cursor } from "react-native-confirmation-code-field";
 
 interface CustomPinInputTextProps extends TextProps {

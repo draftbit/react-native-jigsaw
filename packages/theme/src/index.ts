@@ -42,32 +42,6 @@ export type colorTypes =
   | "mediumInverse"
   | "lightInverse";
 
-export type Theme = any;
-
-// export type Theme = {
-//   dark: boolean;
-//   mode?: "adaptive" | "exact";
-//   roundness: number;
-//   colors: {
-//     primary: string;
-//     background: string;
-//     surface: string;
-//     accent: string;
-//     error: string;
-//     text: string;
-//     onSurface: string;
-//     onBackground: string;
-//     disabled: string;
-//     placeholder: string;
-//     backdrop: string;
-//     notification: string;
-//   };
-//   fonts: Fonts;
-//   animation: {
-//     scale: number;
-//   };
-// };
-
 export type $Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
 export type $RemoveChildren<T extends ComponentType<any>> = $Omit<
   ComponentPropsWithoutRef<T>,
@@ -75,3 +49,10 @@ export type $RemoveChildren<T extends ComponentType<any>> = $Omit<
 >;
 
 export type EllipsizeProp = "head" | "middle" | "tail" | "clip";
+
+export { default as DefaultTheme } from "./styles/DefaultTheme";
+export type { Theme } from "./styles/DefaultTheme";
+export { ThemeProvider, useTheme, withTheme } from "./theming";
+export { default as shadow } from "./styles/shadow";
+export { default as fonts } from "./styles/fonts";
+export { default as overlay } from "./styles/overlay";

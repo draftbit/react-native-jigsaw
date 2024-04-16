@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Text, StyleProp, ViewStyle, StyleSheet } from "react-native";
-import { RowDirection } from "@draftbit/types";
+import { RowDirection } from "@draftbit/theme";
 import { extractStyles } from "../utilities";
 import Touchable from "./Touchable";
 

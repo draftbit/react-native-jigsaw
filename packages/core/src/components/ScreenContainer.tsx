@@ -8,8 +8,8 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import type { Edge } from "react-native-safe-area-context";
-import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { Theme } from "@draftbit/theme";
 
 type ScreenContainerProps = {
   scrollable?: boolean;

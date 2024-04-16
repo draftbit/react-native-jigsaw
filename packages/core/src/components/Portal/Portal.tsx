@@ -1,8 +1,8 @@
 import * as React from "react";
 import PortalConsumer from "./PortalConsumer";
 import PortalHost, { PortalContext, PortalMethods } from "./PortalHost";
-import { ThemeProvider, withTheme } from "../../theming";
-import type { Theme } from "../../styles/DefaultTheme";
+import { ThemeProvider, withTheme } from "@draftbit/theme";
+import type { Theme } from "@draftbit/theme";
 
 type Props = {
   /**

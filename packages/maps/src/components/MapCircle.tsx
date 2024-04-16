@@ -2,14 +2,15 @@ import * as React from "react";
 import { Platform } from "react-native";
 import { Circle as MapCircleComponent } from "./react-native-maps";
 import type { MapCircleProps as MapCircleComponentProps } from "react-native-maps";
-import { withTheme, DefaultTheme } from "@draftbit/core";
+import { withTheme } from "@draftbit/theme";
+import type { Theme } from "@draftbit/theme";
 import Color from "color";
 
 export interface MapCircleProps
   extends Omit<MapCircleComponentProps, "center"> {
   latitude: number;
   longitude: number;
-  theme: typeof DefaultTheme;
+  theme: Theme;
 }
 
 const MapCircle: React.FC<React.PropsWithChildren<MapCircleProps>> = ({

@@ -9,9 +9,9 @@ import {
   TextStyle,
   ViewStyle,
 } from "react-native";
-import { withTheme } from "../theming";
+import { withTheme } from "@draftbit/theme";
 import Config from "./Config";
-import theme from "../styles/DefaultTheme";
+import type { Theme } from "@draftbit/theme";
 
 type Props = {
   titleTypeStyle?: StyleProp<TextStyle>;
@@ -24,7 +24,7 @@ type Props = {
   image?: string | ImageSourcePropType;
   right?: () => React.ReactNode;
   style?: StyleProp<ViewStyle>;
-  theme: typeof theme;
+  theme: Theme;
 };
 
 const Row: React.FC<React.PropsWithChildren<Props>> = ({

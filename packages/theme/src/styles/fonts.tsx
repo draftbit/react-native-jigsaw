@@ -1,6 +1,6 @@
 /* https://github.com/callstack/react-native-paper/blob/main/src/styles/fonts.tsx */
 import { Platform, PlatformOSType } from "react-native";
-import type { Fonts } from "@draftbit/types";
+import type { Fonts } from "../index";
 
 const fontConfig = {
   web: {

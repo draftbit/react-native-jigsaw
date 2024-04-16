@@ -7,10 +7,10 @@ import {
   StyleSheet,
   ViewStyle,
 } from "react-native";
-import { withTheme } from "../theming";
+import { withTheme } from "@draftbit/theme";
 
 import Elevation from "../components/Elevation";
-import type { Theme } from "../styles/DefaultTheme";
+import type { Theme } from "@draftbit/theme";
 
 type ResizeModeType =
   | "cover"

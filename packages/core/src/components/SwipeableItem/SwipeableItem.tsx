@@ -19,8 +19,8 @@ import {
 } from "../../utilities";
 import { SwipeRow } from "react-native-swipe-list-view";
 import { IconSlot } from "../../interfaces/Icon";
-import type { Theme } from "../../styles/DefaultTheme";
-import { withTheme } from "../../theming";
+import type { Theme } from "@draftbit/theme";
+import { withTheme } from "@draftbit/theme";
 import SwipeableItemButton, {
   SwipeableItemButtonProps,
 } from "./SwipeableItemButton";

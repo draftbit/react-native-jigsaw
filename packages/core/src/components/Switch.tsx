@@ -5,10 +5,10 @@ import {
   StyleProp,
   ViewStyle,
 } from "react-native";
-import { withTheme } from "../theming";
+import { withTheme } from "@draftbit/theme";
 import FormRow from "./FormRow";
-import { RowDirection } from "@draftbit/types";
-import type { Theme } from "../styles/DefaultTheme";
+import { RowDirection } from "@draftbit/theme";
+import type { Theme } from "@draftbit/theme";
 import { usePrevious } from "../hooks";
 
 type Props = {

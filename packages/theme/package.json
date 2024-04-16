@@ -1,7 +1,7 @@
 {
-  "name": "@draftbit/types",
-  "version": "50.1.0",
-  "description": "Shared constants and types between native and core components",
+  "name": "@draftbit/theme",
+  "version": "49.4.7",
+  "description": "Draftbit's themeing system",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/src/index.d.ts",
   "files": [
@@ -30,7 +30,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/draftbit/react-native-jigsaw",
-    "directory": "packages/types"
+    "directory": "packages/theme"
   },
   "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
   "license": "MIT",
@@ -38,6 +38,10 @@
     "url": "https://github.com/draftbit/react-native-jigsaw/issues"
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
+  "dependencies": {
+    "react-native-typography": "^1.4.1",
+    "color": "^4.2.3"
+  },
   "eslintIgnore": [
     "node_modules/",
     "lib/"
@@ -46,13 +50,19 @@
     "metro-react-native-babel-preset": "^0.77.0"
   },
   "jest": {
-    "preset": "react-native",
+    "preset": "jest-expo",
     "setupFilesAfterEnv": [
-      "@testing-library/jest-native/extend-expect"
+      "@testing-library/jest-native/extend-expect",
+      "./jest-setup.js"
     ],
     "testPathIgnorePatterns": [
       "lib",
-      "__mocks__"
-    ]
+      "__mocks__",
+      "declarations.d.ts"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+    ],
+    "testEnvironment": "node"
   }
 }

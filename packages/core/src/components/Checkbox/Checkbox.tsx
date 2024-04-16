@@ -7,7 +7,7 @@ import {
   StyleProp,
   ViewStyle,
 } from "react-native";
-import { useTheme } from "../../theming";
+import { useTheme } from "@draftbit/theme";
 import type { IconSlot } from "../../interfaces/Icon";
 
 import { usePrevious } from "../../hooks";

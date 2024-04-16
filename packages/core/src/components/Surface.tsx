@@ -8,10 +8,8 @@ import {
   ViewStyle,
 } from "react-native";
 
-import shadow from "../styles/shadow";
-import overlay from "../styles/overlay";
-import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme, shadow, overlay } from "@draftbit/theme";
+import type { Theme } from "@draftbit/theme";
 
 type Props = {
   elevation?: number;

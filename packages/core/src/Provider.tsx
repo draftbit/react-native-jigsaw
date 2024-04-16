@@ -1,7 +1,6 @@
 import * as React from "react";
-import { ThemeProvider } from "./theming";
 import PortalHost from "./components/Portal/PortalHost";
-import { Theme } from "@draftbit/types";
+import { Theme, ThemeProvider } from "@draftbit/theme";
 
 type Props = {
   children: React.ReactNode;

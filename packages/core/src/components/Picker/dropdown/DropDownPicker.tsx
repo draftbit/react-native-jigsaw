@@ -13,7 +13,7 @@ import {
 } from "../PickerCommon";
 import PickerInputContainer from "../PickerInputContainer";
 import DropDownPickerComponent from "react-native-dropdown-picker";
-import { withTheme } from "../../../theming";
+import { withTheme } from "@draftbit/theme";
 import PickerItem, { PickerItemProps } from "./PickerItem";
 import { useOnUpdate } from "../../../hooks";
 

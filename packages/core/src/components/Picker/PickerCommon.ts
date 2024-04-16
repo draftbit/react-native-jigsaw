@@ -1,7 +1,7 @@
 import { StyleProp, ViewStyle, TextStyle } from "react-native";
 import { IconSlot } from "../../interfaces/Icon";
 import { isObject } from "lodash";
-import { Theme } from "../../styles/DefaultTheme";
+import { Theme } from "@draftbit/theme";
 
 export interface PickerOption {
   value: string | number;

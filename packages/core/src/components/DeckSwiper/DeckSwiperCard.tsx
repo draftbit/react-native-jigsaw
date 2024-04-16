@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
-import type { Theme } from "../../styles/DefaultTheme";
-import { withTheme } from "../../theming";
+import type { Theme } from "@draftbit/theme";
+import { withTheme } from "@draftbit/theme";
 
 export interface DeckSwiperCardProps {
   style?: StyleProp<ViewStyle>;

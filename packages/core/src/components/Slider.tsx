@@ -4,8 +4,8 @@ import NativeSlider from "@react-native-community/slider";
 import isNumber from "lodash.isnumber";
 import toNumber from "lodash.tonumber";
 
-import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { Theme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 
 export type Props = {

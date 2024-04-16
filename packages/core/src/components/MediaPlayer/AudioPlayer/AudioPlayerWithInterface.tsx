@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { withTheme } from "../../../theming";
+import { withTheme } from "@draftbit/theme";
 import Slider from "@react-native-community/slider";
 import HeadlessAudioPlayer from "./HeadlessAudioPlayer";
 import {

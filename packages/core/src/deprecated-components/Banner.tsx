@@ -10,9 +10,8 @@ import {
 } from "react-native";
 import Surface from "../components/Surface";
 import type { IconSlot } from "../interfaces/Icon";
-import shadow from "../styles/shadow";
-import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme, shadow } from "@draftbit/theme";
+import type { Theme } from "@draftbit/theme";
 
 const ELEVATION = 1;
 const DEFAULT_MAX_WIDTH = 960;

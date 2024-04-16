@@ -1,7 +1,8 @@
 import React from "react";
 import { ViewStyle, StyleProp, Text, View } from "react-native";
 import { MapMarkerClusterContext } from "./MapMarkerClusterContext";
-import { withTheme, DefaultTheme } from "@draftbit/core";
+import { withTheme } from "@draftbit/theme";
+import type { Theme } from "@draftbit/theme";
 
 interface MapMarkerClusterViewProps {
   zoomOnPress?: boolean;
@@ -29,7 +30,7 @@ const MapMarkerClusterView: React.FC<MapMarkerClusterViewProps> = ({
 };
 
 export const DefaultMapMarkerClusterView = withTheme(
-  ({ theme }: { theme: typeof DefaultTheme }) => {
+  ({ theme }: { theme: Theme }) => {
     return (
       <MapMarkerClusterView
         renderItem={({ markerCount }) => (

@@ -40,6 +40,7 @@
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
     "@draftbit/core": "49.4.7",
+    "@draftbit/theme": "49.4.7",
     "@react-google-maps/api": "~2.18.1",
     "@teovilla/react-native-web-maps": "^0.9.4",
     "color": "^4.2.3",

@@ -13,9 +13,9 @@ import color from "color";
 import Config from "../components/Config";
 import Text from "../components/Text";
 import Elevation from "../components/Elevation";
-import { withTheme } from "../theming";
+import { withTheme } from "@draftbit/theme";
 
-import type { Theme } from "../styles/DefaultTheme";
+import type { Theme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 
 /**

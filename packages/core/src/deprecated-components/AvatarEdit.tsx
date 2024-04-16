@@ -2,9 +2,9 @@ import * as React from "react";
 import { View, ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
 import Touchable from "../components/Touchable";
 import CircleImage from "./CircleImage";
-import { withTheme } from "../theming";
+import { withTheme } from "@draftbit/theme";
 
-import type { Theme } from "../styles/DefaultTheme";
+import type { Theme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 
 type Props = {

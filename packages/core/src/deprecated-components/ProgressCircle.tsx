@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Text, StyleProp, ViewStyle, TextStyle } from "react-native";
 import AnimatedCircularProgress from "./AnimatedCircularProgress";
-import { withTheme } from "../theming";
-import themeT from "../styles/DefaultTheme";
-import { colorTypes } from "@draftbit/types";
+import { withTheme } from "@draftbit/theme";
+import type { Theme } from "@draftbit/theme";
+import { colorTypes } from "@draftbit/theme";
 
 type Props = {
   progress?: number;
@@ -15,7 +15,7 @@ type Props = {
   strokeCap?: "butt" | "square" | "round" | undefined;
   textStyle?: StyleProp<TextStyle>;
   thickness?: number;
-  theme: typeof themeT;
+  theme: Theme;
 };
 
 /**

@@ -10,8 +10,8 @@ import {
 
 import TabViewItem from "./TabViewItem";
 import type { IconSlot } from "../../interfaces/Icon";
-import { withTheme } from "../../theming";
-import type { Theme } from "../../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { Theme } from "@draftbit/theme";
 import { flattenReactFragments, extractStyles } from "../../utilities";
 
 type SceneProps = SceneRendererProps & {

@@ -2,7 +2,7 @@ import React from "react";
 import { CommonDropDownPickerProps, SinglePickerProps } from "./PickerCommon";
 import NativePicker from "./NativePicker";
 import DropDownPicker from "./dropdown/DropDownPicker";
-import { withTheme } from "../../theming";
+import { withTheme } from "@draftbit/theme";
 
 interface PickerProps extends CommonDropDownPickerProps, SinglePickerProps {
   mode?: "native" | "dropdown";

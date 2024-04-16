@@ -7,9 +7,9 @@ import {
   Pressable,
 } from "react-native";
 import Text from "./Text";
-import { withTheme } from "../theming";
+import { withTheme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
-import type { Theme } from "../styles/DefaultTheme";
+import type { Theme } from "@draftbit/theme";
 import { extractStyles } from "../utilities";
 
 type AccordionGroupProps = {

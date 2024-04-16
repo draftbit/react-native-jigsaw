@@ -7,9 +7,8 @@ import {
   ViewStyle,
   View,
 } from "react-native";
-import shadow from "../styles/shadow";
-import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme, shadow } from "@draftbit/theme";
+import type { Theme } from "@draftbit/theme";
 
 type Props = {
   style?: StyleProp<ViewStyle>;

@@ -2,8 +2,8 @@ import React, { FC, useEffect, useState } from "react";
 import { View, Text, StyleProp, ViewStyle, TextStyle } from "react-native";
 import { isNumber } from "lodash";
 
-import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { Theme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 import IconButton from "./IconButton";
 import { extractStyles } from "../utilities";

@@ -7,8 +7,8 @@ import {
   StyleSheet,
   ScrollViewProps,
 } from "react-native";
-import { Theme } from "../../styles/DefaultTheme";
-import { withTheme } from "../../theming";
+import { Theme } from "@draftbit/theme";
+import { withTheme } from "@draftbit/theme";
 import {
   generateBorderStyles,
   TableProps,

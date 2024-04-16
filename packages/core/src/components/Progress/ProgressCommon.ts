@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from "react-native";
-import { Theme } from "../../styles/DefaultTheme";
+import { Theme } from "@draftbit/theme";
 
 type LineCap = "round" | "square";
 

@@ -13,7 +13,6 @@ export {
   CircleImage,
   Container,
   CheckboxGroup,
-  DefaultTheme,
   Divider,
   Provider,
   RadioButtonFieldGroup,
@@ -28,10 +27,8 @@ export {
   Switch,
   SwitchRow,
   NumberInput,
-  ThemeProvider,
   Touchable,
   Pressable,
-  withTheme,
   useAuthState,
   DeckSwiper,
   DeckSwiperCard,
@@ -77,6 +74,8 @@ export {
   SimpleStyleSectionList,
   SimpleStyleSwipeableList,
 } from "@draftbit/core";
+
+export { DefaultTheme, ThemeProvider, withTheme } from "@draftbit/theme";
 
 /**
  * Components with Injected Dependencies

@@ -37,12 +37,24 @@ export default function useSplitContentContainerStyles(
       contentContainerStyleNames
     );
 
-    // contentContainerStyle should always at least fill the parent to ensure sizing changes reflects properly on component and children
+    const leftBorderWidth =
+      flattenedStyle.borderLeftWidth ?? flattenedStyle.borderWidth ?? 0;
+    const rightBorderWidth =
+      flattenedStyle.borderRightWidth ?? flattenedStyle.borderWidth ?? 0;
+    const topBorderWidth =
+      flattenedStyle.borderTopWidth ?? flattenedStyle.borderWidth ?? 0;
+    const bottomBorderWidth =
+      flattenedStyle.borderBottomWidth ?? flattenedStyle.borderWidth ?? 0;
+
+    // contentContainerStyle should always at least fill the parent to ensure sizing changes reflects properly on component and children.
+    // The measured sizes include borders, so we need to subtract those before applying
     if (measuredWidth) {
-      contentContainerStyle.minWidth = measuredWidth;
+      contentContainerStyle.minWidth =
+        measuredWidth - leftBorderWidth - rightBorderWidth;
     }
     if (measuredHeight) {
-      contentContainerStyle.minHeight = measuredHeight;
+      contentContainerStyle.minHeight =
+        measuredHeight - topBorderWidth - bottomBorderWidth;
     }
 
     let style = omit(flattenedStyle, contentContainerStyleNames);

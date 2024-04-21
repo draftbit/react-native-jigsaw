@@ -6,6 +6,8 @@ export type { AudioPlayerRef, VideoPlayerRef } from "@draftbit/core";
 
 export {
   flattenReactFragments,
+  useDeepCompareEffect,
+  useDeepCompareMemo,
   AudioPlayer,
   Avatar,
   Center,

@@ -45,7 +45,10 @@
   "dependencies": {
     "@draftbit/core": "49.4.8",
     "@draftbit/native": "49.4.8",
-    "react-native-reanimated": "~3.3.0"
+    "react-native-reanimated": "~3.6.2"
+  },
+  "devDependencies": {
+    "metro-react-native-babel-preset": "^0.77.0"
   },
   "eslintIgnore": [
     "node_modules/",

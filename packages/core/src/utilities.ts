@@ -289,7 +289,7 @@ function useDeepCompareMemoize(value: any) {
  */
 export function useDeepCompareMemo<T>(
   factory: () => T,
-  deps: React.DependencyList | undefined
+  deps: React.DependencyList
 ): T {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   return React.useMemo(factory, deps?.map(useDeepCompareMemoize));
@@ -300,7 +300,7 @@ export function useDeepCompareMemo<T>(
  */
 export function useDeepCompareEffect(
   effect: React.EffectCallback,
-  deps: React.DependencyList | undefined
+  deps: React.DependencyList
 ) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   return React.useEffect(effect, deps?.map(useDeepCompareMemoize));

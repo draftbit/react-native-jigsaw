@@ -107,7 +107,8 @@
     "example/web-build",
     "node_modules/",
     "lib/",
-    "__generated__"
+    "__generated__",
+    "jest-setup.js"
   ],
   "prettier": {
     "quoteProps": "consistent",

@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/maps",
-  "version": "49.4.8",
+  "version": "50.0.0",
   "description": "Map Components",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/src/index.d.ts",
@@ -39,13 +39,13 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/core": "49.4.8",
+    "@draftbit/core": "50.0.0",
     "@react-google-maps/api": "~2.18.1",
     "@teovilla/react-native-web-maps": "^0.9.4",
     "color": "^4.2.3",
     "lodash.isequal": "^4.5.0",
-    "react-native-maps": "1.7.1",
-    "react-native-webview": "13.6.3"
+    "react-native-maps": "1.10.0",
+    "react-native-webview": "13.6.4"
   },
   "eslintIgnore": [
     "node_modules/",
@@ -67,6 +67,7 @@
     "testEnvironment": "node"
   },
   "devDependencies": {
-    "@types/lodash.isequal": "^4.5.6"
+    "@types/lodash.isequal": "^4.5.6",
+    "metro-react-native-babel-preset": "^0.77.0"
   }
 }

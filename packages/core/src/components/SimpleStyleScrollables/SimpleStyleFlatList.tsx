@@ -9,6 +9,7 @@ import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
  */
 const SimpleStyleFlatList = <T extends any>({
   style: styleProp,
+  data,
   ...rest
 }: Omit<FlatListProps<T>, "contentContainerStyle">) => {
   const [measuredWidth, setMeasuredWidth] = React.useState<number>();
@@ -17,7 +18,8 @@ const SimpleStyleFlatList = <T extends any>({
   const { style, contentContainerStyle } = useSplitContentContainerStyles(
     styleProp,
     measuredWidth,
-    measuredHeight
+    measuredHeight,
+    [data]
   );
 
   return (
@@ -28,6 +30,7 @@ const SimpleStyleFlatList = <T extends any>({
       }}
       style={style}
       contentContainerStyle={contentContainerStyle}
+      data={data}
       {...rest}
     />
   );

@@ -9,6 +9,7 @@ import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
  */
 const SimpleStyleMasonryFlashList = <T extends any>({
   style: styleProp,
+  data,
   ...rest
 }: Omit<MasonryFlashListProps<T>, "contentContainerStyle">) => {
   const [measuredWidth, setMeasuredWidth] = React.useState<number>();
@@ -17,7 +18,8 @@ const SimpleStyleMasonryFlashList = <T extends any>({
   const { style, contentContainerStyle } = useSplitContentContainerStyles(
     styleProp,
     measuredWidth,
-    measuredHeight
+    measuredHeight,
+    [data]
   );
 
   return (
@@ -28,6 +30,7 @@ const SimpleStyleMasonryFlashList = <T extends any>({
       }}
       style={style}
       contentContainerStyle={contentContainerStyle as ContentStyle}
+      data={data}
       {...rest}
     />
   );

@@ -12,6 +12,7 @@ import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
  */
 const SimpleStyleSectionList = <T extends { [key: string]: any }>({
   style: styleProp,
+  data,
   ...rest
 }: Omit<
   FlatListSectionListProps<T> | FlashListSectionListProps<T>,
@@ -23,7 +24,8 @@ const SimpleStyleSectionList = <T extends { [key: string]: any }>({
   const { style, contentContainerStyle } = useSplitContentContainerStyles(
     styleProp,
     measuredWidth,
-    measuredHeight
+    measuredHeight,
+    [data]
   );
 
   return (
@@ -35,6 +37,7 @@ const SimpleStyleSectionList = <T extends { [key: string]: any }>({
       }}
       style={style}
       contentContainerStyle={contentContainerStyle}
+      data={data}
       {...rest}
     />
   );

@@ -1,3 +1,4 @@
+import React from "react";
 import { StyleProp, ViewStyle, StyleSheet } from "react-native";
 import { pick, omit } from "lodash";
 import { useDeepCompareMemo } from "../../utilities";
@@ -22,13 +23,35 @@ export const contentContainerStyleNames = [
   "alignContent",
   "flexDirection",
   "flexWrap",
+  "gap",
+  "columnGap",
+  "rowGap",
 ];
 
 export default function useSplitContentContainerStyles(
   originalStyle: StyleProp<ViewStyle>,
   measuredWidth?: number,
-  measuredHeight?: number
+  measuredHeight?: number,
+  recalculateSizeDeps: React.DependencyList = []
 ) {
+  // This temporarily removes contentContainerStyle min sizes whenever some
+  // given dependencies change to allow the list to properly recalculate it's measured size
+  const [tempContentContainerStyle, setTempContentContainerStyle] =
+    React.useState<ViewStyle | null>(null);
+
+  React.useEffect(() => {
+    if (tempContentContainerStyle) {
+      setTempContentContainerStyle(null);
+    }
+    // We only want this to run when measured size changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [measuredHeight, measuredWidth]);
+
+  React.useEffect(() => {
+    setTempContentContainerStyle({ minHeight: 0, minWidth: 0 });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, recalculateSizeDeps);
+
   return useDeepCompareMemo<Styles>(() => {
     const flattenedStyle = StyleSheet.flatten(originalStyle);
 
@@ -67,6 +90,12 @@ export default function useSplitContentContainerStyles(
       style = { flexGrow: style.flex, ...style };
     }
 
-    return { style, contentContainerStyle };
-  }, [originalStyle, measuredWidth, measuredHeight]);
+    return {
+      style,
+      contentContainerStyle: StyleSheet.flatten([
+        contentContainerStyle,
+        tempContentContainerStyle,
+      ]),
+    };
+  }, [originalStyle, measuredWidth, measuredHeight, tempContentContainerStyle]);
 }

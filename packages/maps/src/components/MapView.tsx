@@ -74,7 +74,8 @@ const MapViewF = <T extends object>({
   mapRef: React.RefObject<MapViewComponent>;
 }) => {
   const [currentRegion, setCurrentRegion] = React.useState<Region | null>(null);
-  const delayedRegionValue = useDebounce(currentRegion, 100);
+  const delayedRegionValue = useDebounce(currentRegion, 300);
+  const contextDelayedRegionValue = useDebounce(currentRegion, 50);
 
   const markerRefs = React.useMemo<
     Map<string, React.RefObject<MapMarkerRefType>>
@@ -372,7 +373,7 @@ const MapViewF = <T extends object>({
     <MapViewContext.Provider
       value={{
         animateToLocation: (location) => animateToLocation(location),
-        region: currentRegion,
+        region: contextDelayedRegionValue,
       }}
     >
       {memoizedMapView}

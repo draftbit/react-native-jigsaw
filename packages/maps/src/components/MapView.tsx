@@ -296,7 +296,6 @@ const MapViewF = <T extends object>({
     () => (
       <MapViewComponent
         ref={mapRef}
-        googleRenderer="LEGACY"
         onMapReady={() => {
           // This initial animateToLocation ensures that 'region' state is initially set
           animateToLocation({

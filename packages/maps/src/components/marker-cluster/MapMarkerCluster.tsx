@@ -70,16 +70,19 @@ const MapMarkerCluster: React.FC<React.PropsWithChildren> = ({
                   markerCount: pointCount,
                 }}
               >
-                {renderMarker({
-                  latitude,
-                  longitude,
-                  children: clusterView,
-                  onPress,
-                  tracksViewChanges:
-                    clusterView.type === DefaultMapMarkerClusterView
-                      ? false
-                      : clusterView.props.tracksViewChanges,
-                })}
+                {renderMarker(
+                  {
+                    latitude,
+                    longitude,
+                    children: clusterView,
+                    onPress,
+                    tracksViewChanges:
+                      clusterView.type === DefaultMapMarkerClusterView
+                        ? false
+                        : clusterView.props.tracksViewChanges,
+                  },
+                  `${latitude}-${longitude}-${pointCount}`
+                )}
               </MapMarkerClusterContext.Provider>
             );
           }}

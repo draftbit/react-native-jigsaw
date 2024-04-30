@@ -39,8 +39,9 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "react-native-typography": "^1.4.1",
-    "color": "^4.2.3"
+    "color": "^4.2.3",
+    "deepmerge": "^4.3.1",
+    "react-native-typography": "^1.4.1"
   },
   "eslintIgnore": [
     "node_modules/",

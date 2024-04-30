@@ -18,22 +18,15 @@ export function validatePalettes(palettes: ColorPalettes) {
       }
     }
   }
-
-  return palettes;
 }
 
 export function validateBreakpoints(breakpoints: Breakpoints) {
-  for (const key of Object.keys(breakpoints)) {
+  for (const [key, value] of Object.entries(breakpoints)) {
     if (typeof key !== "string") {
-      throw new Error(`Invalid breakpoints object, ${key} is not a string`);
+      throw new Error(`Invalid breakpoint key, ${key} is not a string`);
     }
-    for (const [innerKey, value] of Object.entries(breakpoints[key])) {
-      if (typeof innerKey !== "string") {
-        throw new Error(`Invalid breakpoint key, ${innerKey} is not a string`);
-      }
-      if (typeof value !== "number") {
-        throw new Error(`Invalid breakpoint value, ${value} is not a number`);
-      }
+    if (typeof value !== "number") {
+      throw new Error(`Invalid breakpoint value, ${value} is not a number`);
     }
   }
 }
@@ -43,23 +36,18 @@ export function validateTheme(theme: Theme) {
     if (themeValue === undefined || themeValue === null) {
       return;
     }
-    for (const key of Object.keys(themeValue)) {
+    for (const [key, value] of Object.entries(themeValue)) {
       if (typeof key !== "string") {
         throw new Error(`Invalid theme key, ${key} is not a string`);
       }
-      for (const [innerKey, value] of Object.entries(themeValue[key])) {
-        if (typeof innerKey !== "string") {
-          throw new Error(
-            `Invalid theme value key, ${innerKey} is not a string`
-          );
-        }
-        if (typeof value === "object") {
-          validateThemeValues(value);
-        } else if (typeof value !== "string" && typeof value !== "number") {
-          throw new Error(
-            `Invalid theme value, ${value} is not a string, number, or object`
-          );
-        }
+      if (value === undefined || value === null) {
+        continue;
+      } else if (typeof value === "object") {
+        validateThemeValues(value);
+      } else if (typeof value !== "string" && typeof value !== "number") {
+        throw new Error(
+          `Invalid theme value, ${value} is not a string, number, or object`
+        );
       }
     }
   }

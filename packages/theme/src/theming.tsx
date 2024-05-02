@@ -69,6 +69,8 @@ export function createTheme({
 //TODO: Clean this up to more readable code and functions
 // type checks used a bunch here and in validators, split to util funcitons
 
+//TODO: Tests for checking correct values returned
+
 function createThemeValuesProxy(
   value: ThemeValues | undefined,
   breakpoints: Breakpoints,
@@ -155,6 +157,9 @@ function createThemeValuesProxy(
           return undefined;
         }
       }
+    },
+    set: () => {
+      throw new Error("Theme is read only, cannot be modified at runtime");
     },
   });
 }

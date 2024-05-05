@@ -41,6 +41,7 @@
   "dependencies": {
     "color": "^4.2.3",
     "deepmerge": "^4.3.1",
+    "lodash.isobject": "^3.0.2",
     "react-native-typography": "^1.4.1"
   },
   "eslintIgnore": [

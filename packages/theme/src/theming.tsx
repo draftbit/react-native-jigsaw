@@ -1,6 +1,5 @@
 import { createTheming } from "@draftbit/react-theme-provider";
 import merge from "deepmerge";
-import DefaultTheme from "./DefaultTheme";
 import type { Breakpoints, Theme, ColorPalettes, ThemeValues } from "./types";
 import {
   validateBreakpoints,
@@ -76,14 +75,12 @@ export function createTheme({
 //TODO: Device width should be dynamic, maybe proxies should be created at provider level,
 // not on theme creation level
 
-//TODO: Tests for checking correct values returned
-
 export function createThemeValuesProxy(
   value: ThemeValues | undefined,
   breakpoints: Breakpoints,
   deviceWidth: number,
   devicePlatform: typeof Platform.OS
-) {
+): any /* return type 'any' to allow arbitrary object references (object.example.another.there) */ {
   if (value === undefined || value === null) {
     return undefined;
   }
@@ -146,7 +143,10 @@ function getKeysType(
     (key) => value[key] !== undefined
   );
   const hasUserDefinedKeys = Object.keys(value).some(
-    (key) => !platformKeys.includes(key) && !breakpointKeys.includes(key)
+    (key) =>
+      !platformKeys.includes(key) &&
+      !breakpointKeys.includes(key) &&
+      key !== "default"
   );
 
   if (!onlyOneTrue(hasPlatformKeys, hasBreakpointKeys, hasUserDefinedKeys)) {
@@ -214,5 +214,6 @@ function getBreakpointValue(
   }
 }
 
-export const { ThemeProvider, withTheme, useTheme } =
-  createTheming<Theme>(DefaultTheme);
+export const { ThemeProvider, withTheme, useTheme } = createTheming<Theme>(
+  {} as any
+);

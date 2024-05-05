@@ -10,21 +10,11 @@ import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
 const SimpleStyleScrollView: React.FC<
   Omit<ScrollViewProps, "contentContainerStyle">
 > = ({ style: styleProp, ...rest }) => {
-  const [measuredWidth, setMeasuredWidth] = React.useState<number>();
-  const [measuredHeight, setMeasuredHeight] = React.useState<number>();
-
-  const { style, contentContainerStyle } = useSplitContentContainerStyles(
-    styleProp,
-    measuredWidth,
-    measuredHeight
-  );
+  const { style, contentContainerStyle } =
+    useSplitContentContainerStyles(styleProp);
 
   return (
     <ScrollView
-      onLayout={(event) => {
-        setMeasuredWidth(event.nativeEvent.layout.width);
-        setMeasuredHeight(event.nativeEvent.layout.height);
-      }}
       style={style}
       contentContainerStyle={contentContainerStyle}
       {...rest}

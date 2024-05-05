@@ -16,6 +16,8 @@ type ScreenContainerProps = {
   hasSafeArea?: boolean;
   hasTopSafeArea?: boolean;
   hasBottomSafeArea?: boolean;
+  hasLeftSafeArea?: boolean;
+  hasRightSafeArea?: boolean;
   theme: Theme;
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
@@ -26,6 +28,8 @@ function ScreenContainer({
   hasSafeArea = false,
   hasBottomSafeArea = false,
   hasTopSafeArea = false,
+  hasLeftSafeArea = true,
+  hasRightSafeArea = true,
   theme,
   style,
   children,
@@ -34,13 +38,21 @@ function ScreenContainer({
   const backgroundColor =
     StyleSheet.flatten(style)?.backgroundColor || theme.colors.background;
 
-  const edges: Edge[] = ["left", "right"];
+  const edges: Edge[] = [];
   if (hasSafeArea || hasTopSafeArea) {
     edges.push("top");
   }
 
   if (hasSafeArea || hasBottomSafeArea) {
     edges.push("bottom");
+  }
+
+  if (hasSafeArea || hasLeftSafeArea) {
+    edges.push("left");
+  }
+
+  if (hasSafeArea || hasRightSafeArea) {
+    edges.push("right");
   }
 
   return (

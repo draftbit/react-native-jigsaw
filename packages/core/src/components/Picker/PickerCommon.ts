@@ -1,7 +1,7 @@
 import { StyleProp, ViewStyle, TextStyle } from "react-native";
 import { IconSlot } from "../../interfaces/Icon";
 import { isObject } from "lodash";
-import { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 
 export interface PickerOption {
   value: string | number;
@@ -27,7 +27,7 @@ export interface PickerInputContainerProps extends IconSlot {
 export interface CommonPickerProps extends PickerInputContainerProps {
   options: PickerOption[] | string[] | number[];
   autoDismissKeyboard?: boolean;
-  theme: Theme;
+  theme: ReadTheme;
 }
 
 export interface SinglePickerProps {

@@ -22,11 +22,11 @@ const AudioPlayerWithInterface = React.forwardRef<
     {
       style,
       theme,
-      thumbColor = theme.colors.primary,
-      completedTrackColor = theme.colors.primary,
-      remainingTrackColor = theme.colors.divider,
+      thumbColor = theme.colors.branding.primary,
+      completedTrackColor = theme.colors.branding.primary,
+      remainingTrackColor = theme.colors.border.brand,
       togglePlaybackIconSize = 24,
-      togglePlaybackIconColor = theme.colors.primary,
+      togglePlaybackIconColor = theme.colors.branding.primary,
       onPlaybackStatusUpdate: onPlaybackStatusUpdateProp,
       onPlaybackFinish: onPlaybackFinishProp,
       hidePlaybackIcon = false,
@@ -129,8 +129,8 @@ const AudioPlayerWithInterface = React.forwardRef<
           testID="audio-player-interface"
           style={[
             {
-              backgroundColor: theme.colors.background,
-              borderColor: theme.colors.divider,
+              backgroundColor: theme.colors.background.brand,
+              borderColor: theme.colors.border.brand,
             },
             styles.container,
             viewStyles,
@@ -153,7 +153,7 @@ const AudioPlayerWithInterface = React.forwardRef<
             <Text
               testID="audio-player-duration"
               style={[
-                { color: theme.colors.strong },
+                { color: theme.colors.text.strong },
                 styles.spacingEnd,
                 { ...textStyles },
               ]}

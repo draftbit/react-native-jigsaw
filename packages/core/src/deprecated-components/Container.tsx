@@ -10,7 +10,7 @@ import {
 import { withTheme } from "@draftbit/theme";
 
 import Elevation from "../components/Elevation";
-import type { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 
 type ResizeModeType =
   | "cover"
@@ -21,7 +21,7 @@ type ResizeModeType =
   | undefined;
 
 type Props = {
-  theme: Theme;
+  theme: ReadTheme;
   useThemeGutterPadding: boolean;
   borderColor: string;
   borderWidth: number;

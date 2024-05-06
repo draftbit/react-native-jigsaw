@@ -24,7 +24,7 @@ import Portal from "../Portal/Portal";
 import Touchable from "../Touchable";
 import DateTimePicker from "./DatePickerComponent";
 
-import type { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import type { IconSlot } from "../../interfaces/Icon";
 import {
   extractStyles,
@@ -41,7 +41,7 @@ const ICON_SIZE = 24;
 
 type Props = {
   style?: StyleProp<ViewStyle | TextStyle> & { height?: number };
-  theme: Theme;
+  theme: ReadTheme;
   // initialDate?: string;
   // locale?: string;
   // minuteInterval?: number;
@@ -88,7 +88,7 @@ const MONTHS = [
 const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   style,
-  theme: { colors, typography, roundness, disabledOpacity },
+  theme: { colors, typography },
   date,
   onDateChange = () => {},
   defaultValue,
@@ -264,17 +264,17 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     backgroundColor,
     inputStyle: StyleProp<TextStyle>;
 
-  inputTextColor = colors.strong;
+  inputTextColor = colors.text.strong;
   if (disabled) {
-    activeColor = colors.light;
-    placeholderColor = colors.light;
+    activeColor = colors.foreground.brand;
+    placeholderColor = colors.foreground.brand;
     borderColor = "transparent";
     underlineColor = "transparent";
-    backgroundColor = colors.divider;
+    backgroundColor = colors.border.brand;
   } else {
-    activeColor = inputBorderColorActive || colors.primary;
-    placeholderColor = colors.light;
-    underlineColor = propOrStyleBorderColor || colors.light;
+    activeColor = inputBorderColorActive || colors.branding.primary;
+    placeholderColor = colors.foreground.brand;
+    underlineColor = propOrStyleBorderColor || colors.foreground.brand;
     backgroundColor = colors.background;
   }
 
@@ -294,22 +294,23 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
 
   if (type === "underline") {
     containerStyle = {
-      borderTopLeftRadius: roundness,
-      borderTopRightRadius: roundness,
+      borderTopLeftRadius: 8,
+      borderTopRightRadius: 8,
       paddingBottom: 12,
       marginTop: 16,
     };
   } else {
     containerStyle = {
-      borderRadius: roundness,
+      borderRadius: 8,
       borderColor: hasActiveOutline ? activeColor : borderColor,
       borderWidth: viewStyles.borderWidth ?? 1,
       paddingTop: labeled && !hideLabel ? 16 * 1.5 : 16,
       paddingBottom: labeled && !hideLabel ? 16 * 0.5 : 16,
-      opacity: disabled ? disabledOpacity : 1,
+      opacity: disabled ? 0.5 : 1,
       backgroundColor,
     };
 
+    //@ts-ignore
     inputStyle.paddingHorizontal = 12;
   }
 
@@ -319,9 +320,9 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
 
   let leftIconColor;
   if (focused) {
-    leftIconColor = colors.primary;
+    leftIconColor = colors.branding.primary;
   } else {
-    leftIconColor = colors.light;
+    leftIconColor = colors.foreground.brand;
   }
 
   const leftIconProps = {
@@ -463,7 +464,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
                       type === "solid" ? { paddingHorizontal: 12 } : {},
                       labelStyle,
                       {
-                        color: labelColor || colors.light,
+                        color: labelColor || colors.foreground.brand,
                         opacity: labeled.interpolate({
                           inputRange: [0, 1],
                           outputRange: [hasActiveOutline ? 1 : 0, 0],
@@ -518,7 +519,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
               <Icon
                 name={rightIconName}
                 size={ICON_SIZE}
-                color={colors.light}
+                color={colors.foreground.brand}
                 style={{
                   position: "absolute",
                   right: 16,
@@ -536,7 +537,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
             style={[
               styles.picker,
               {
-                backgroundColor: colors.divider,
+                backgroundColor: colors.border.brand,
               },
             ]}
           >

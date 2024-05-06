@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleProp, ViewStyle, Text } from "react-native";
 import { withTheme } from "@draftbit/theme";
-import type { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 
 interface SectionHeaderProps {
   style?: StyleProp<ViewStyle>;
@@ -14,7 +14,7 @@ const SectionHeader: React.FC<React.PropsWithChildren<SectionHeaderProps>> = ({
 
 interface DefaultSectionHeaderProps {
   title: string;
-  theme: Theme;
+  theme: ReadTheme;
 }
 export const DefaultSectionHeader = withTheme(
   ({ title, theme }: DefaultSectionHeaderProps) => {
@@ -22,8 +22,8 @@ export const DefaultSectionHeader = withTheme(
       <Text
         testID="default-section-header"
         style={{
-          color: theme.colors.background,
-          backgroundColor: theme.colors.primary,
+          color: theme.colors.background.brand,
+          backgroundColor: theme.colors.branding.primary,
           fontSize: 16,
           padding: 10,
         }}

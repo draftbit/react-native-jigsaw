@@ -12,7 +12,7 @@ function DatePickerExample({ theme }) {
   const [date3, setDate3] = React.useState(new Date());
 
   return (
-    <Container style={{ backgroundColor: theme.colors.background }}>
+    <Container style={{ backgroundColor: theme.colors.background.brand }}>
       <Section title="Underline">
         <DatePicker
           label="Date (without date prop)"

@@ -82,7 +82,10 @@ const NativePicker: React.FC<CommonPickerProps & SinglePickerProps> = ({
             <Button
               Icon={Icon}
               onPress={() => setPickerVisible(!pickerVisible)}
-              style={[styles.iosButton, { color: theme.colors.primary }]}
+              style={[
+                styles.iosButton,
+                { color: theme.colors.branding.primary },
+              ]}
               title="Close"
             />
             {renderNativePicker()}

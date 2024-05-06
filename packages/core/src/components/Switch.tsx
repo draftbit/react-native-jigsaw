@@ -7,8 +7,7 @@ import {
 } from "react-native";
 import { withTheme } from "@draftbit/theme";
 import FormRow from "./FormRow";
-import { RowDirection } from "@draftbit/theme";
-import type { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import { usePrevious } from "../hooks";
 
 type Props = {
@@ -16,7 +15,7 @@ type Props = {
   disabled?: boolean;
   onValueChange?: (value: boolean) => void;
   defaultValue?: boolean;
-  theme: Theme;
+  theme: ReadTheme;
   activeTrackColor: string;
   inactiveTrackColor: string;
   activeThumbColor: string;
@@ -36,7 +35,8 @@ function Switch({
   style,
   ...rest
 }: Props) {
-  const activeTrackThemeColor = activeTrackColor || theme.colors.primary;
+  const activeTrackThemeColor =
+    activeTrackColor || theme.colors.branding.primary;
   const inactiveTrackThemeColor = inactiveTrackColor || "#EEE";
 
   const activeThumbThemeColor = activeThumbColor || "#FFF";
@@ -83,13 +83,13 @@ function Switch({
 
 type RowProps = {
   label: string;
-  direction: RowDirection;
+  direction: "row" | "column";
   style?: StyleProp<ViewStyle>;
 };
 
 function Row({
   label = "Label",
-  direction = RowDirection.Row,
+  direction = "row",
   style,
   value,
   defaultValue,

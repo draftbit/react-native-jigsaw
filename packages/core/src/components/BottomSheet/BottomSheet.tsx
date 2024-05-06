@@ -10,7 +10,7 @@ import {
 import BottomSheetComponent, {
   BottomSheetScrollView,
 } from "@gorhom/bottom-sheet";
-import type { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import { withTheme } from "@draftbit/theme";
 import { useDeepCompareMemo } from "../../utilities";
 
@@ -38,7 +38,7 @@ export interface BottomSheetProps extends ScrollViewProps {
   borderColor?: string;
   onSettle?: (index: number) => void;
   style?: StyleProp<ViewStyle>;
-  theme: Theme;
+  theme: ReadTheme;
 }
 
 // Clarification:
@@ -55,10 +55,10 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
       initialSnapIndex,
       initialSnapPosition = "bottom",
       showHandle = true,
-      handleColor = theme.colors.divider,
+      handleColor = theme.colors.border.brand,
       topBorderRadius = 20,
       borderWidth = 1,
-      borderColor = theme.colors.divider,
+      borderColor = theme.colors.border.brand,
       onSettle,
       style,
       children,
@@ -67,7 +67,7 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
     ref
   ) => {
     const backgroundColor =
-      (style as ViewStyle)?.backgroundColor || theme.colors.background;
+      (style as ViewStyle)?.backgroundColor || theme.colors.background.brand;
 
     const snapPoints = snapPointsProp ?? [
       topSnapPosition,
@@ -96,7 +96,7 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
         ref={ref}
         snapPoints={mappedSnapPoints}
         index={
-          initialSnapIndex != undefined
+          initialSnapIndex !== undefined
             ? mappedSnapPoints.length - initialSnapIndex - 1
             : getSnapIndexFromPosition(initialSnapPosition)
         }

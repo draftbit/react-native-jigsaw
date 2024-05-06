@@ -19,7 +19,14 @@ import {
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import "react-native-gesture-handler";
 
-import { Provider, DefaultTheme, ScreenContainer } from "@draftbit/ui";
+import {
+  Provider,
+  DefaultTheme,
+  ScreenContainer,
+  useTheme,
+  createTheme,
+  useChangeTheme,
+} from "@draftbit/ui";
 import {
   SafeAreaProvider,
   initialWindowMetrics,
@@ -123,13 +130,44 @@ type SplashScreenProviderProps = { image: ImageSourcePropType };
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
+const themeBreakpoints = {};
+const DarkTheme = createTheme({
+  breakpoints: themeBreakpoints,
+  palettes: {},
+  theme: {
+    name: "DarkTheme",
+    colors: {
+      background: {
+        brand: "#404040",
+      },
+      text: {
+        normal: "white",
+        strong: "white",
+      },
+    },
+    typography: {},
+  },
+  baseTheme: DefaultTheme,
+});
+
+const LightTheme = createTheme({
+  breakpoints: themeBreakpoints,
+  palettes: {},
+  theme: {
+    name: "LightTheme",
+    colors: {},
+    typography: {},
+  },
+  baseTheme: DefaultTheme,
+});
+
 export default function App() {
   return (
     <SplashScreenProvider image={splashImage}>
       <Provider
-        themes={[DefaultTheme]}
-        breakpoints={{}}
-        initialThemeName={DefaultTheme.name}
+        themes={[LightTheme, DarkTheme]}
+        breakpoints={themeBreakpoints}
+        initialThemeName={"LightTheme"}
       >
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
           <Examples />
@@ -232,6 +270,8 @@ const AnimatedSplashScreen: React.FC<
 
 function Example({ title, children }: ExampleProps) {
   const navigation = useNavigation();
+  const theme = useTheme();
+  const changeTheme = useChangeTheme();
 
   return (
     <ScreenContainer
@@ -239,8 +279,14 @@ function Example({ title, children }: ExampleProps) {
       hasTopSafeArea={true}
       hasBottomSafeArea={true}
       scrollable={false}
+      style={{ backgroundColor: theme.colors.background.brand }}
     >
-      <View style={exampleStyles.headerStyle}>
+      <View
+        style={[
+          exampleStyles.headerStyle,
+          { backgroundColor: theme.colors.branding.primary },
+        ]}
+      >
         <TouchableOpacity
           style={exampleStyles.menuButtonStyle}
           onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
@@ -252,6 +298,21 @@ function Example({ title, children }: ExampleProps) {
         </TouchableOpacity>
 
         <Text style={[exampleStyles.headerTextStyle]}>{title}</Text>
+        <TouchableOpacity
+          style={exampleStyles.menuButtonStyle}
+          onPress={() => {
+            if (theme.name === "LightTheme") {
+              changeTheme("DarkTheme");
+            } else {
+              changeTheme("LightTheme");
+            }
+          }}
+        >
+          <Image
+            style={exampleStyles.menuButtonImageStyle}
+            source={require("./assets/images/theme.png")}
+          />
+        </TouchableOpacity>
       </View>
       <ScreenContainer scrollable={true} hasSafeArea={false}>
         {children}
@@ -294,7 +355,6 @@ const exampleStyles = StyleSheet.create({
   },
   headerStyle: {
     flexDirection: "row",
-    backgroundColor: "rgba(90, 69, 255, 1)",
     alignItems: "center",
     justifyContent: "flex-start",
     height: "10%",

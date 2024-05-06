@@ -1,3 +1,5 @@
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import * as React from "react";
 import {
   View,
@@ -16,6 +18,7 @@ type Props = {
   color?: string;
   size: number;
   style?: StyleProp<ImageStyle>;
+  theme: ReadTheme;
 } & ViewProps;
 
 const Icon: React.FC<React.PropsWithChildren<Props>> = ({
@@ -23,6 +26,7 @@ const Icon: React.FC<React.PropsWithChildren<Props>> = ({
   color,
   size,
   style,
+  theme,
   ...rest
 }) => {
   if (!name) return null;
@@ -36,7 +40,12 @@ const Icon: React.FC<React.PropsWithChildren<Props>> = ({
 
   return (
     <View style={[styles.container, { width: size, height: size }, style]}>
-      <IconSet {...rest} name={name} color={color} size={size} />
+      <IconSet
+        {...rest}
+        name={name}
+        color={color ?? theme.colors.text.normal}
+        size={size}
+      />
     </View>
   );
 };
@@ -55,4 +64,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Icon;
+export default withTheme(Icon);

@@ -12,22 +12,11 @@ const SimpleStyleMasonryFlashList = <T extends any>({
   data,
   ...rest
 }: Omit<MasonryFlashListProps<T>, "contentContainerStyle">) => {
-  const [measuredWidth, setMeasuredWidth] = React.useState<number>();
-  const [measuredHeight, setMeasuredHeight] = React.useState<number>();
-
-  const { style, contentContainerStyle } = useSplitContentContainerStyles(
-    styleProp,
-    measuredWidth,
-    measuredHeight,
-    [data]
-  );
+  const { style, contentContainerStyle } =
+    useSplitContentContainerStyles(styleProp);
 
   return (
     <MasonryFlashList
-      onLayout={(event) => {
-        setMeasuredWidth(event.nativeEvent.layout.width);
-        setMeasuredHeight(event.nativeEvent.layout.height);
-      }}
       style={style}
       contentContainerStyle={contentContainerStyle as ContentStyle}
       data={data}

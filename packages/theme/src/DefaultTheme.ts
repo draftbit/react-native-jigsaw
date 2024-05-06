@@ -1,5 +1,5 @@
 import { systemWeights } from "react-native-typography";
-import { createTheme } from "./theming";
+import createTheme from "./createTheme";
 import { ColorPalettes } from "./types";
 
 const palettes: ColorPalettes = {

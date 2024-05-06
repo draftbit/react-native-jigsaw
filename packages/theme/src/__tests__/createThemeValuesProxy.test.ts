@@ -1,4 +1,4 @@
-import { createThemeValuesProxy } from "../theming";
+import createThemeValuesProxy from "../createThemeValuesProxy";
 
 const breakpoints = {
   small: 100,

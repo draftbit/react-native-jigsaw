@@ -12,22 +12,11 @@ const SimpleStyleFlatList = <T extends any>({
   data,
   ...rest
 }: Omit<FlatListProps<T>, "contentContainerStyle">) => {
-  const [measuredWidth, setMeasuredWidth] = React.useState<number>();
-  const [measuredHeight, setMeasuredHeight] = React.useState<number>();
-
-  const { style, contentContainerStyle } = useSplitContentContainerStyles(
-    styleProp,
-    measuredWidth,
-    measuredHeight,
-    [data]
-  );
+  const { style, contentContainerStyle } =
+    useSplitContentContainerStyles(styleProp);
 
   return (
     <FlatList
-      onLayout={(event) => {
-        setMeasuredWidth(event.nativeEvent.layout.width);
-        setMeasuredHeight(event.nativeEvent.layout.height);
-      }}
       style={style}
       contentContainerStyle={contentContainerStyle}
       data={data}

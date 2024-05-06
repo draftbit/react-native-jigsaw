@@ -18,23 +18,12 @@ const SimpleStyleSectionList = <T extends { [key: string]: any }>({
   FlatListSectionListProps<T> | FlashListSectionListProps<T>,
   "contentContainerStyle"
 >) => {
-  const [measuredWidth, setMeasuredWidth] = React.useState<number>();
-  const [measuredHeight, setMeasuredHeight] = React.useState<number>();
-
-  const { style, contentContainerStyle } = useSplitContentContainerStyles(
-    styleProp,
-    measuredWidth,
-    measuredHeight,
-    [data]
-  );
+  const { style, contentContainerStyle } =
+    useSplitContentContainerStyles(styleProp);
 
   return (
     //@ts-ignore contentContainerStyle has different types for FlashList and FlatList implmentations and confuses TS
     <SectionList
-      onLayout={(event) => {
-        setMeasuredWidth(event.nativeEvent.layout.width);
-        setMeasuredHeight(event.nativeEvent.layout.height);
-      }}
       style={style}
       contentContainerStyle={contentContainerStyle}
       data={data}

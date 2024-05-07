@@ -13,15 +13,13 @@ type ProviderProps = {
 export default class Provider extends React.Component<ProviderProps> {
   render() {
     return (
-      <PortalHost>
-        <ThemeProvider
-          themes={this.props.themes}
-          breakpoints={this.props.breakpoints}
-          initialThemeName={this.props.initialThemeName}
-        >
-          {this.props.children}
-        </ThemeProvider>
-      </PortalHost>
+      <ThemeProvider
+        themes={this.props.themes}
+        breakpoints={this.props.breakpoints}
+        initialThemeName={this.props.initialThemeName}
+      >
+        <PortalHost>{this.props.children}</PortalHost>
+      </ThemeProvider>
     );
   }
 }

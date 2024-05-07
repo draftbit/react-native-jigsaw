@@ -6,7 +6,10 @@ import {
   TimePicker,
   DateTimePicker,
 } from "@material-ui/pickers";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import {
+  createTheme as createMuiTheme,
+  ThemeProvider as MuiThemeProvider,
+} from "@material-ui/core/styles";
 import { DatePickerComponentProps as Props } from "./DatePickerComponentType";
 import { withTheme, DefaultTheme } from "@draftbit/theme";
 import type { ReadTheme } from "@draftbit/theme";
@@ -45,7 +48,7 @@ const DatePickerComponent: React.FC<Props & { theme: ReadTheme }> = ({
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <ThemeProvider theme={internalTheme}>
+      <MuiThemeProvider theme={internalTheme}>
         <Picker
           value={value}
           open={isVisible}
@@ -59,7 +62,7 @@ const DatePickerComponent: React.FC<Props & { theme: ReadTheme }> = ({
           minDate={minimumDate}
           maxDate={maximumDate}
         />
-      </ThemeProvider>
+      </MuiThemeProvider>
     </MuiPickersUtilsProvider>
   );
 };

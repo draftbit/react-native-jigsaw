@@ -275,7 +275,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     activeColor = inputBorderColorActive || colors.branding.primary;
     placeholderColor = colors.foreground.brand;
     underlineColor = propOrStyleBorderColor || colors.foreground.brand;
-    backgroundColor = colors.background;
+    backgroundColor = colors.background.brand;
   }
 
   const { lineHeight, ...subtitle1 } = typography.subtitle1;

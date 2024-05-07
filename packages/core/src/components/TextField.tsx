@@ -533,7 +533,6 @@ class TextField extends React.Component<Props, State> {
             style: inputStyles,
             ...rest,
             value: this.state.value,
-            theme: theme,
           })}
         </View>
 

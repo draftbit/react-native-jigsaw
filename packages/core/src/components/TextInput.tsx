@@ -5,14 +5,13 @@ import {
   Platform,
 } from "react-native";
 import { useDebounce, useOnUpdate } from "../hooks";
-import { ReadTheme, withTheme } from "@draftbit/theme";
+import { useTheme } from "@draftbit/theme";
 
 export interface TextInputProps extends NativeTextInputProps {
   webShowOutline?: boolean;
   onChangeTextDelayed?: (text: string) => void;
   changeTextDelay?: number;
   disabled?: boolean;
-  theme: ReadTheme;
 }
 
 const TextInput = React.forwardRef<NativeTextInput, TextInputProps>(
@@ -25,11 +24,11 @@ const TextInput = React.forwardRef<NativeTextInput, TextInputProps>(
       disabled = false,
       editable = true,
       value,
-      theme,
       ...rest
     },
     ref
   ) => {
+    const theme = useTheme();
     const delayedValue = useDebounce(value, changeTextDelay);
 
     useOnUpdate(() => {
@@ -56,4 +55,4 @@ const TextInput = React.forwardRef<NativeTextInput, TextInputProps>(
   }
 );
 
-export default withTheme(TextInput);
+export default TextInput;

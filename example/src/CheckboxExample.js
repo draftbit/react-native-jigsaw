@@ -8,15 +8,19 @@ import {
 import * as React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Section from "./Section";
+import { useTheme } from "@react-navigation/native";
 
-const SingleCheckboxWrapper = ({ label, children }) => (
-  <View style={styles.checkboxWrapper}>
-    <View style={styles.checkboxLabel}>
-      <Text>{label}</Text>
+const SingleCheckboxWrapper = ({ label, children }) => {
+  const theme = useTheme();
+  return (
+    <View style={styles.checkboxWrapper}>
+      <View style={styles.checkboxLabel}>
+        <Text style={{ color: theme.colors.text.strong }}>{label}</Text>
+      </View>
+      <View>{children}</View>
     </View>
-    <View>{children}</View>
-  </View>
-);
+  );
+};
 
 const CheckboxExample = ({ theme }) => {
   const [checked, setChecked] = React.useState(true);

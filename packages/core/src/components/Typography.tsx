@@ -56,7 +56,7 @@ export const Caption = withTheme(({ text, theme, style }: Props) => {
           fontSize: 12,
           letterSpacing: 0,
           lineHeight: 14,
-          color: theme.colors.foreground.light,
+          color: theme.colors.text.light,
         },
         style,
       ]}

@@ -34,8 +34,6 @@ function SwiperExample({ theme }) {
           prevTitle="Previous"
           nextTitle="Next"
           style={{ width: "100%", height: 300 }}
-          dotColor="green"
-          dotActiveColor="red"
           onSwipe={(index) => console.log("Swiped", index)}
           onSwipedNext={(index) => console.log("Swiped next", index)}
           onSwipedPrevious={(index) => console.log("Swiped previous", index)}

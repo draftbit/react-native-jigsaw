@@ -253,12 +253,11 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
 
   const hasActiveOutline = focused;
 
-  const propOrStyleBorderColor = viewStyles.borderColor ?? inputBorderColor;
-
   let inputTextColor,
     activeColor,
     underlineColor,
-    borderColor = propOrStyleBorderColor,
+    borderColor =
+      viewStyles.borderColor ?? inputBorderColor ?? colors.text.strong,
     placeholderColor,
     containerStyle: StyleProp<ViewStyle>,
     backgroundColor,
@@ -266,15 +265,16 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
 
   inputTextColor = colors.text.strong;
   if (disabled) {
-    activeColor = colors.foreground.brand;
-    placeholderColor = colors.foreground.brand;
+    activeColor = colors.border.brand;
+    placeholderColor = colors.text.light;
     borderColor = "transparent";
     underlineColor = "transparent";
     backgroundColor = colors.border.brand;
   } else {
     activeColor = inputBorderColorActive || colors.branding.primary;
-    placeholderColor = colors.foreground.brand;
-    underlineColor = propOrStyleBorderColor || colors.foreground.brand;
+    placeholderColor = colors.text.light;
+    underlineColor =
+      viewStyles.borderColor ?? inputBorderColor ?? colors.border.brand;
     backgroundColor = colors.background.brand;
   }
 
@@ -322,7 +322,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   if (focused) {
     leftIconColor = colors.branding.primary;
   } else {
-    leftIconColor = colors.foreground.brand;
+    leftIconColor = colors.text.light;
   }
 
   const leftIconProps = {
@@ -464,7 +464,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
                       type === "solid" ? { paddingHorizontal: 12 } : {},
                       labelStyle,
                       {
-                        color: labelColor || colors.foreground.brand,
+                        color: labelColor || colors.text.light,
                         opacity: labeled.interpolate({
                           inputRange: [0, 1],
                           outputRange: [hasActiveOutline ? 1 : 0, 0],
@@ -519,7 +519,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
               <Icon
                 name={rightIconName}
                 size={ICON_SIZE}
-                color={colors.foreground.brand}
+                color={colors.text.light}
                 style={{
                   position: "absolute",
                   right: 16,

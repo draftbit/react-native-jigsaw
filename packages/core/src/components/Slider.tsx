@@ -108,8 +108,8 @@ function Slider({
   const maxTrackColor = maximumTrackTintColor || theme.colors.foreground.light;
   const thumbColor = thumbTintColor || theme.colors.branding.primary;
 
-  const leftIconThemeColor = leftIconColor || theme.colors.foreground.light;
-  const rightIconThemeColor = rightIconColor || theme.colors.foreground.light;
+  const leftIconThemeColor = leftIconColor || theme.colors.text.light;
+  const rightIconThemeColor = rightIconColor || theme.colors.text.light;
 
   const parsedValue = maybeParseValue(internalValue);
 

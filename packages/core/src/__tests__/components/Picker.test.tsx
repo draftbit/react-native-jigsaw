@@ -2,7 +2,7 @@ import * as React from "react";
 import { fireEvent, render, screen } from "@testing-library/react-native";
 import { Picker, PickerItem } from "../../components/Picker";
 import Provider from "../../Provider";
-import DefaultTheme from "../../styles/DefaultTheme";
+import { DefaultTheme } from "@draftbit/theme";
 import { act } from "react-test-renderer";
 
 jest.useFakeTimers();
@@ -85,7 +85,10 @@ describe("Picker tests", () => {
       const placeholder = "test placeholder";
 
       render(
-        <Provider theme={DefaultTheme}>
+        <Provider
+          //@ts-ignore
+          theme={DefaultTheme}
+        >
           <Picker
             {...defaultPickerProps}
             mode="native"

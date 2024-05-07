@@ -83,7 +83,10 @@ function getKeysType(
       key !== "default"
   );
 
-  if (!onlyOneTrue(hasPlatformKeys, hasBreakpointKeys, hasUserDefinedKeys)) {
+  if (
+    !onlyOneTrue(hasPlatformKeys, hasBreakpointKeys, hasUserDefinedKeys) &&
+    !allFalse(hasPlatformKeys, hasBreakpointKeys, hasUserDefinedKeys)
+  ) {
     throw new Error(
       "Cannot mix usage of platform keys, breakpoint keys, and custom defined keys on the same level"
     );
@@ -98,6 +101,10 @@ function getKeysType(
 
 function onlyOneTrue(a: boolean, b: boolean, c: boolean) {
   return [a, b, c].filter((x) => x).length === 1;
+}
+
+function allFalse(a: boolean, b: boolean, c: boolean) {
+  return [a, b, c].filter((x) => x).length === 0;
 }
 
 function getPlatformValue(

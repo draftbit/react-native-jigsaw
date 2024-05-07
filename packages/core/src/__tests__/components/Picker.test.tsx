@@ -49,7 +49,15 @@ const defaultPickerProps = {
 
 describe("Picker tests", () => {
   test("should render native picker when mode is 'native'", () => {
-    render(<Picker {...defaultPickerProps} mode="native" />);
+    render(
+      <Provider
+        themes={[DefaultTheme]}
+        breakpoints={{}}
+        initialThemeName={DefaultTheme.name}
+      >
+        <Picker {...defaultPickerProps} mode="native" />
+      </Provider>
+    );
 
     const nativePicker = screen.queryByTestId("native-picker");
     expect(nativePicker).toBeTruthy();
@@ -68,13 +76,19 @@ describe("Picker tests", () => {
       const mockOnValueChange = jest.fn();
 
       render(
-        <Picker
-          {...defaultPickerProps}
-          mode="native"
-          options={options}
-          onValueChange={mockOnValueChange}
-          placeholder={undefined}
-        />
+        <Provider
+          themes={[DefaultTheme]}
+          breakpoints={{}}
+          initialThemeName={DefaultTheme.name}
+        >
+          <Picker
+            {...defaultPickerProps}
+            mode="native"
+            options={options}
+            onValueChange={mockOnValueChange}
+            placeholder={undefined}
+          />
+        </Provider>
       );
 
       expect(mockOnValueChange).toBeCalledWith(options[0]);
@@ -86,8 +100,9 @@ describe("Picker tests", () => {
 
       render(
         <Provider
-          //@ts-ignore
-          theme={DefaultTheme}
+          themes={[DefaultTheme]}
+          breakpoints={{}}
+          initialThemeName={DefaultTheme.name}
         >
           <Picker
             {...defaultPickerProps}

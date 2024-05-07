@@ -15,6 +15,7 @@ import { extractStyles } from "../../utilities";
 import { usePrevious } from "../../hooks";
 import Text from "../Text";
 import Checkbox, { CheckboxProps } from "./Checkbox";
+import { ReadTheme, withTheme } from "@draftbit/theme";
 
 export enum Direction {
   Row = "row",
@@ -27,6 +28,7 @@ export interface CheckboxRowProps extends CheckboxProps {
   labelContainerStyle: StyleProp<ViewStyle>;
   checkboxStyle?: StyleProp<ViewStyle>;
   direction?: Direction;
+  theme: ReadTheme;
 }
 
 const renderLabel = (
@@ -60,6 +62,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   uncheckedIcon,
   size,
   style,
+  theme,
   ...rest
 }) => {
   const [internalValue, setInternalValue] = React.useState<boolean>(
@@ -115,7 +118,11 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
           labelContainerStyle,
         ]}
       >
-        {renderLabel(label, textStyles, labelStyle)}
+        {renderLabel(
+          label,
+          labelStyle,
+          StyleSheet.flatten([{ color: theme.colors.text.strong }, textStyles])
+        )}
       </View>
 
       <Checkbox
@@ -154,4 +161,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CheckboxRow;
+export default withTheme(CheckboxRow);

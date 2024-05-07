@@ -51,7 +51,7 @@ const AudioPlayerWithInterface = React.forwardRef<
       : newHeadlessAudioPlayerRef;
 
     const {
-      color,
+      color = theme.colors.text.strong,
       fontFamily,
       fontWeight,
       fontSize,
@@ -152,11 +152,7 @@ const AudioPlayerWithInterface = React.forwardRef<
           {!hideDuration && (
             <Text
               testID="audio-player-duration"
-              style={[
-                { color: theme.colors.text.strong },
-                styles.spacingEnd,
-                { ...textStyles },
-              ]}
+              style={[styles.spacingEnd, textStyles]}
             >
               {formatDuration(sliderPositionMillis ?? 0)} /{" "}
               {formatDuration(durationMillis || 0)}

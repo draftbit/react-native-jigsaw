@@ -224,7 +224,7 @@ class TextField extends React.Component<Props, State> {
 
   render() {
     const {
-      theme: { colors, typography },
+      theme,
       Icon,
       type = "underline",
       disabled = false,
@@ -238,13 +238,15 @@ class TextField extends React.Component<Props, State> {
       iconSize,
       assistiveText,
       underlineColor: underlineColorProp,
-      activeBorderColor: activeBorderColorProp = colors.branding.primary,
+      activeBorderColor: activeBorderColorProp = theme.colors.branding.primary,
       multiline = false,
       numberOfLines = 4,
       style,
       render = (props) => <TextInput {...props} />,
       ...rest
     } = this.props;
+
+    const { colors, typography } = theme;
 
     const MINIMIZED_LABEL_Y_OFFSET = -(typography.caption.lineHeight + 4);
     const OUTLINE_MINIMIZED_LABEL_Y_OFFSET = -(16 * 0.5 + 4);
@@ -264,15 +266,15 @@ class TextField extends React.Component<Props, State> {
 
     inputTextColor = colors.text.strong;
     if (disabled) {
-      activeColor = colors.foreground.brand;
-      placeholderColor = colors.foreground.brand;
+      activeColor = colors.text.light;
+      placeholderColor = colors.text.light;
       borderColor = "transparent";
       underlineColor = "transparent";
       backgroundColor = colors.border.brand;
     } else {
       activeColor = error ? colors.text.danger : activeBorderColorProp;
-      placeholderColor = borderColor = colors.foreground.brand;
-      underlineColor = underlineColorProp || colors.foreground.brand;
+      placeholderColor = borderColor = colors.text.light;
+      underlineColor = underlineColorProp || colors.text.light;
       backgroundColor = colors.background;
     }
 
@@ -342,7 +344,7 @@ class TextField extends React.Component<Props, State> {
     } else if (this.state.focused) {
       leftIconColor = colors.branding.primary;
     } else {
-      leftIconColor = colors.foreground.brand;
+      leftIconColor = colors.text.light;
     }
 
     const labelStyle = {
@@ -531,13 +533,14 @@ class TextField extends React.Component<Props, State> {
             style: inputStyles,
             ...rest,
             value: this.state.value,
+            theme: theme,
           })}
         </View>
 
         {leftIconName ? (
           <Icon
             size={iconSize || ICON_SIZE}
-            color={leftIconColor || colors.foreground.brand}
+            color={leftIconColor || colors.text.light}
             name={leftIconName}
             style={{
               position: "absolute",
@@ -551,7 +554,7 @@ class TextField extends React.Component<Props, State> {
           <Icon
             name={rightIconName}
             size={iconSize || ICON_SIZE}
-            color={iconColor || colors.foreground.brand}
+            color={iconColor || colors.text.light}
             style={{
               position: "absolute",
               right: 16,
@@ -564,7 +567,7 @@ class TextField extends React.Component<Props, State> {
           <Text
             style={[
               {
-                color: error ? colors.text.danger : colors.foreground.brand,
+                color: error ? colors.text.danger : colors.text.light,
                 marginTop: 8,
                 marginLeft: assistiveTextLeftMargin,
               },

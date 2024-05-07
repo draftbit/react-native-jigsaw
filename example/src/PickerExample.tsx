@@ -31,7 +31,6 @@ function PickerExample() {
         options={OPTIONS}
         value={value1}
         mode="dropdown"
-        dropDownTextColor="red"
         onValueChange={(value) => setValue(value.toString())}
         style={{ marginBottom: 20 }}
       />

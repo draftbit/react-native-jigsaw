@@ -72,6 +72,7 @@ const Stepper: FC<Props> = ({
 
       <Text
         style={[
+          { color: colors.text.strong },
           typography.body1,
           {
             textAlign: "center",

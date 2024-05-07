@@ -72,8 +72,10 @@ import CircularProgressExample from "./CircularProgressExample";
 import VideoPlayerExample from "./VideoPlayerExample";
 import PinInputExample from "./PinInputExample";
 import KeyboardAvoidingViewExample from "./KeyboardAvoidingViewExample";
+import ThemeExample from "./ThemeExample";
 
 const ROUTES = {
+  Theme: ThemeExample,
   AudioPlayer: AudioPlayerExample,
   Layout: LayoutExample,
   Icon: IconExample,
@@ -130,7 +132,38 @@ type SplashScreenProviderProps = { image: ImageSourcePropType };
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
-const themeBreakpoints = {};
+const themeBreakpoints = {
+  mobile: 0,
+  tablet: 480,
+  laptop: 992,
+  desktop: 1440,
+  bigScreen: 1920,
+};
+
+const BaseTheme = createTheme({
+  breakpoints: themeBreakpoints,
+  palettes: {},
+  theme: {
+    name: "BaseTheme",
+    colors: {
+      background: {
+        platformTest: {
+          default: "purple",
+          ios: "blue",
+          android: "green",
+        },
+        breakpointTest: {
+          default: "purple",
+          tablet: "yellow",
+          laptop: "red",
+        },
+      },
+    },
+    typography: {},
+  },
+  baseTheme: DefaultTheme,
+});
+
 const DarkTheme = createTheme({
   breakpoints: themeBreakpoints,
   palettes: {},
@@ -147,7 +180,7 @@ const DarkTheme = createTheme({
     },
     typography: {},
   },
-  baseTheme: DefaultTheme,
+  baseTheme: BaseTheme,
 });
 
 const LightTheme = createTheme({
@@ -158,14 +191,40 @@ const LightTheme = createTheme({
     colors: {},
     typography: {},
   },
-  baseTheme: DefaultTheme,
+  baseTheme: BaseTheme,
+});
+
+const OtherTheme = createTheme({
+  breakpoints: themeBreakpoints,
+  palettes: {},
+  theme: {
+    name: "OtherTheme",
+    colors: {
+      branding: {
+        primary: "#A91D3A",
+        secondary: "#824D74",
+      },
+      background: {
+        brand: "black",
+      },
+      text: {
+        strong: "white",
+        normal: "white",
+      },
+      border: {
+        brand: "#FDAF7B",
+      },
+    },
+    typography: {},
+  },
+  baseTheme: BaseTheme,
 });
 
 export default function App() {
   return (
     <SplashScreenProvider image={splashImage}>
       <Provider
-        themes={[LightTheme, DarkTheme]}
+        themes={[LightTheme, DarkTheme, OtherTheme]}
         breakpoints={themeBreakpoints}
         initialThemeName={"LightTheme"}
       >
@@ -303,6 +362,8 @@ function Example({ title, children }: ExampleProps) {
           onPress={() => {
             if (theme.name === "LightTheme") {
               changeTheme("DarkTheme");
+            } else if (theme.name === "DarkTheme") {
+              changeTheme("OtherTheme");
             } else {
               changeTheme("LightTheme");
             }
@@ -322,12 +383,13 @@ function Example({ title, children }: ExampleProps) {
 }
 
 function Examples() {
+  const theme = useTheme();
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="Layout"
+        initialRouteName="Theme"
         screenOptions={{
-          drawerActiveTintColor: "rgba(90, 69, 255, 1)",
+          drawerActiveTintColor: theme.colors.branding.primary,
           headerShown: false,
         }}
       >

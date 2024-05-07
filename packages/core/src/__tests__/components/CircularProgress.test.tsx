@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react-native";
 import { default as CircularProgrss } from "../../components/Progress/CircularProgress";
-import Theme from "../../styles/DefaultTheme";
+import { DefaultTheme } from "@draftbit/theme";
 import { AnimatedPath } from "../../components/Progress/CircularProgress/CircularProgress";
 import { DEFAULT_ANIMATION_DURATION } from "../../components/Progress/ProgressCommon";
 
@@ -9,7 +9,13 @@ jest.useFakeTimers();
 
 describe("CircularProgress tests", () => {
   test("should render indeterminate progress bar when prop set to true", () => {
-    render(<CircularProgrss theme={Theme as any} indeterminate={true} />);
+    render(
+      <CircularProgrss
+        //@ts-ignore
+        theme={DefaultTheme}
+        indeterminate={true}
+      />
+    );
 
     const indeterminateProgress = screen.queryByTestId(
       "indeterminate-progress"
@@ -18,7 +24,13 @@ describe("CircularProgress tests", () => {
   });
 
   test("should not render indeterminate progress bar when prop set to false", () => {
-    render(<CircularProgrss theme={Theme as any} indeterminate={false} />);
+    render(
+      <CircularProgrss
+        //@ts-ignore
+        theme={DefaultTheme}
+        indeterminate={false}
+      />
+    );
 
     const indeterminateProgress = screen.queryByTestId(
       "indeterminate-progress"
@@ -32,7 +44,8 @@ describe("CircularProgress tests", () => {
       render(
         <CircularProgrss
           value={value}
-          theme={Theme as any}
+          //@ts-ignore
+          theme={DefaultTheme}
           indeterminate={false}
           minimumValue={0}
           maximumValue={100}

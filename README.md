@@ -34,7 +34,7 @@ This is a lerna/monorepo setup that is split up into types, native, core and ui 
 - packages/ui: pulls in everything from core and native and re-exports it. This is what any user will install to use this Library
 - packages/core: Non-native, javascript components go here. These are components that work perfectly across web, ios and android without any adjustments
 - packages/native: Native components that rely on expo/react-native modules likes `expo-av` and `@expo/vector-icons`. This houses our AudioPlayer and Icon components because the current version requires modifications to work well on Web
-- packages/theme: Draftbit's themeing system
+- packages/theme: Draftbit's theming system
 
 ** Chances are, you'll spend most of your time in `packages/core` **
 

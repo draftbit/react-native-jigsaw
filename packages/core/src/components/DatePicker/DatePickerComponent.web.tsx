@@ -7,7 +7,7 @@ import {
   DateTimePicker,
 } from "@material-ui/pickers";
 import {
-  createTheme as createMuiTheme,
+  createMuiTheme,
   ThemeProvider as MuiThemeProvider,
 } from "@material-ui/core/styles";
 import { DatePickerComponentProps as Props } from "./DatePickerComponentType";

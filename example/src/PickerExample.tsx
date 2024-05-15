@@ -57,6 +57,64 @@ function PickerExample() {
         />
       </Picker>
 
+      <Section style={{}} title="Picker - Modal">
+        <></>
+      </Section>
+      <Picker
+        label="Make"
+        placeholder="Select a make..."
+        options={OPTIONS}
+        value={value1}
+        mode="modal"
+        dropDownTextColor="red"
+        onValueChange={(value) => setValue(value.toString())}
+        style={{ marginBottom: 20 }}
+      />
+
+      <Section style={{}} title="Picker - Dropdown (customized item)">
+        <></>
+      </Section>
+      <Picker
+        label="Make"
+        placeholder="Select a make..."
+        options={OPTIONS}
+        value={value1}
+        mode="modal"
+        onValueChange={(value) => setValue(value.toString())}
+        style={{ marginBottom: 20 }}
+        selectedIconColor="white"
+      >
+        <PickerItem
+          style={{ color: "red", fontWeight: 600 }}
+          selectedTextColor="white"
+          selectedBackgroundColor="black"
+          selectedTextSize={22}
+        />
+      </Picker>
+      <Section
+        style={{}}
+        title="Picker - Dropdown (customize dropdown background)"
+      >
+        <></>
+      </Section>
+      <Picker
+        label="Make"
+        placeholder="Select a make..."
+        options={OPTIONS}
+        value={value1}
+        mode="modal"
+        onValueChange={(value) => setValue(value.toString())}
+        style={{ marginBottom: 20 }}
+        selectedIconColor="white"
+        dropdownOverlayColor="transparent"
+      >
+        <PickerItem
+          style={{ color: "red", fontWeight: 600 }}
+          selectedTextColor="white"
+          selectedBackgroundColor="black"
+          selectedTextSize={22}
+        />
+      </Picker>
       <Section style={{}} title="Multiselect Picker">
         <></>
       </Section>

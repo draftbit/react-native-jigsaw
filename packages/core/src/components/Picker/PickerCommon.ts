@@ -40,6 +40,10 @@ export interface MultiSelectPickerProps {
   onValueChange: (value: (string | number)[]) => void;
 }
 
+export interface ModalPickerProps {
+  dropdownOverlayColor?: string;
+}
+
 export interface CommonDropDownPickerProps extends CommonPickerProps {
   selectedIconName?: string;
   selectedIconColor?: string;

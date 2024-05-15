@@ -93,7 +93,7 @@ function PickerExample() {
       </Picker>
       <Section
         style={{}}
-        title="Picker - Dropdown (customize dropdown background)"
+        title="Picker - Dropdown (custom transparent dropdown overlay)"
       >
         <></>
       </Section>

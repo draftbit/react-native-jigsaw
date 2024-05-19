@@ -65,13 +65,14 @@ function PickerExample() {
         placeholder="Select a make..."
         options={OPTIONS}
         value={value1}
-        mode="modal"
+        mode="dropdown-modal"
+        dropDownBorderColor="blue"
         dropDownTextColor="red"
         onValueChange={(value) => setValue(value.toString())}
         style={{ marginBottom: 20 }}
       />
 
-      <Section style={{}} title="Picker - Dropdown (customized item)">
+      <Section style={{}} title="Picker - Modal (customized item)">
         <></>
       </Section>
       <Picker
@@ -79,7 +80,7 @@ function PickerExample() {
         placeholder="Select a make..."
         options={OPTIONS}
         value={value1}
-        mode="modal"
+        mode="dropdown-modal"
         onValueChange={(value) => setValue(value.toString())}
         style={{ marginBottom: 20 }}
         selectedIconColor="white"
@@ -93,7 +94,7 @@ function PickerExample() {
       </Picker>
       <Section
         style={{}}
-        title="Picker - Dropdown (custom transparent dropdown overlay)"
+        title="Picker - Modal (custom transparent dropdown overlay)"
       >
         <></>
       </Section>
@@ -102,7 +103,7 @@ function PickerExample() {
         placeholder="Select a make..."
         options={OPTIONS}
         value={value1}
-        mode="modal"
+        mode="dropdown-modal"
         onValueChange={(value) => setValue(value.toString())}
         style={{ marginBottom: 20 }}
         selectedIconColor="white"

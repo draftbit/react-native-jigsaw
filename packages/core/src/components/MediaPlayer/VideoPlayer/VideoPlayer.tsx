@@ -6,11 +6,16 @@ import {
   ResizeMode as ExpoResizeMode,
   AVPlaybackStatus,
   VideoFullscreenUpdate,
+  AVPlaybackSource,
 } from "expo-av";
 import { extractSizeStyles } from "../../../utilities";
 import MediaPlaybackWrapper from "../MediaPlaybackWrapper";
 import type { Playback } from "expo-av/src/AV";
-import { mapToMediaPlayerStatus } from "../MediaPlayerCommon";
+import {
+  mapToMediaPlayerStatus,
+  normalizeBase64Source,
+  useSourceDeepCompareEffect,
+} from "../MediaPlayerCommon";
 import type { MediaPlayerRef, MediaPlayerProps } from "../MediaPlayerCommon";
 
 type ResizeMode = "contain" | "cover" | "stretch";
@@ -36,6 +41,7 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
       posterResizeMode = "cover",
       onPlaybackStatusUpdate: onPlaybackStatusUpdateProp,
       onPlaybackFinish,
+      source,
       ...rest
     },
     ref
@@ -44,6 +50,8 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
       React.useState<VideoPlayerComponent | null>();
     const [isPlaying, setIsPlaying] = React.useState(false);
     const [isFullscreen, setIsFullscreen] = React.useState(false);
+    const [currentSource, setCurrentSource] =
+      React.useState<AVPlaybackSource>();
     const mediaPlaybackWrapperRef = React.useRef<MediaPlayerRef>(null);
 
     const sizeStyles = extractSizeStyles(style);
@@ -110,6 +118,14 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
       [toggleFullscreen, isPlaying]
     );
 
+    useSourceDeepCompareEffect(() => {
+      const updateSource = async () => {
+        const finalSource = await normalizeBase64Source(source);
+        setCurrentSource(finalSource);
+      };
+      updateSource();
+    }, [source]);
+
     return (
       <MediaPlaybackWrapper
         media={videoMediaObject as Playback | undefined}
@@ -125,6 +141,7 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
           posterStyle={[sizeStyles, { resizeMode: posterResizeMode }]}
           onPlaybackStatusUpdate={onPlaybackStatusUpdate}
           onFullscreenUpdate={(e) => onFullscreenUpdate(e.fullscreenUpdate)}
+          source={currentSource}
           {...rest}
         />
       </MediaPlaybackWrapper>

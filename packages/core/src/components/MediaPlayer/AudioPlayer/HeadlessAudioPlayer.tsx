@@ -6,7 +6,11 @@ import {
   InterruptionModeAndroid,
 } from "expo-av";
 import { HeadlessAudioPlayerProps } from "./AudioPlayerCommon";
-import { mapToMediaPlayerStatus } from "../MediaPlayerCommon";
+import {
+  mapToMediaPlayerStatus,
+  normalizeBase64Source,
+  useSourceDeepCompareEffect,
+} from "../MediaPlayerCommon";
 import type { MediaPlayerRef } from "../MediaPlayerCommon";
 import MediaPlaybackWrapper from "../MediaPlaybackWrapper";
 
@@ -89,7 +93,9 @@ const HeadlessAudioPlayer = React.forwardRef<
         isError: false,
       });
 
-      const { sound } = await Audio.Sound.createAsync(source);
+      let finalSource = await normalizeBase64Source(source);
+
+      const { sound } = await Audio.Sound.createAsync(finalSource);
       setCurrentSound(sound);
       sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
     };
@@ -110,34 +116,5 @@ const HeadlessAudioPlayer = React.forwardRef<
     );
   }
 );
-
-// The source provided into the AudioPlayer can be of type {uri: "some uri"}
-// In the case that this object is created inline, each rerender provides a new source object because a new object is initialized everytime
-// This creates an issue with being a useEffect dependency
-//
-// This creates variants of useEffect that checks deep equality of 'uri' to determine if dependency changed or not
-// Follows: https://stackoverflow.com/a/54096391
-function sourceDeepCompareEquals(a: any, b: any) {
-  if (a?.uri && b?.uri) {
-    return a.uri === b.uri;
-  }
-  return a === b;
-}
-
-function useSourceDeepCompareMemoize(value: any) {
-  const ref = React.useRef();
-  if (!sourceDeepCompareEquals(value, ref.current)) {
-    ref.current = value;
-  }
-  return ref.current;
-}
-
-function useSourceDeepCompareEffect(
-  callback: React.EffectCallback,
-  dependencies: React.DependencyList
-) {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  React.useEffect(callback, dependencies.map(useSourceDeepCompareMemoize));
-}
 
 export default HeadlessAudioPlayer;

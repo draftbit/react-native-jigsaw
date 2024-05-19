@@ -33,6 +33,8 @@ type BaseProps = {
   delayLongPress?: number;
   hitSlop?: number;
   icon?: string;
+  iconSize?: number;
+  iconPosition?: "left" | "right";
 } & PressableProps &
   IconSlot;
 
@@ -55,6 +57,8 @@ type Props = {
 function Base({
   Icon,
   icon,
+  iconPosition = "left",
+  iconSize = CONSTANTS.icon,
   title,
   loading,
   disabled,
@@ -117,15 +121,23 @@ function Base({
       {loading ? (
         <ActivityIndicator size="small" color={color} style={styles.loading} />
       ) : null}
-      {icon && !loading ? (
+      {iconPosition === "left" && icon && !loading ? (
         <Icon
           name={icon}
           color={color as string}
           style={styles.icon}
-          size={CONSTANTS.icon}
+          size={iconSize}
         />
       ) : null}
       <Text style={titleStyles}>{title}</Text>
+      {iconPosition === "right" && icon && !loading ? (
+        <Icon
+          name={icon}
+          color={color as string}
+          style={styles.icon}
+          size={iconSize}
+        />
+      ) : null}
     </Pressable>
   );
 }

@@ -1,20 +1,16 @@
 import * as React from "react";
 import { Keyboard } from "react-native";
-import {
-  extractStyles,
-  flattenReactFragments,
-  useDeepCompareMemo,
-} from "../../../utilities";
+import { extractStyles, useDeepCompareMemo } from "../../../utilities";
 import {
   CommonDropDownPickerProps,
   MultiSelectPickerProps,
   SinglePickerProps,
   normalizeToPickerOptions,
+  usePickerItemProps,
 } from "../PickerCommon";
 import PickerInputContainer from "../PickerInputContainer";
 import DropDownPickerComponent from "react-native-dropdown-picker";
 import { withTheme } from "../../../theming";
-import PickerItem, { PickerItemProps } from "./PickerItem";
 import { useOnUpdate } from "../../../hooks";
 
 const DropDownPicker: React.FC<
@@ -48,16 +44,7 @@ const DropDownPicker: React.FC<
 
   const isMultiSelect = Array.isArray(value);
 
-  const pickerItemProps: PickerItemProps = React.useMemo(() => {
-    const children = flattenReactFragments(
-      React.Children.toArray(childrenProp) as React.ReactElement[]
-    );
-
-    // Only the props of the first PickerItem are used, any others are ignored
-    const firstPickerItem = children.find((child) => child.type === PickerItem);
-
-    return firstPickerItem?.props || {};
-  }, [childrenProp]);
+  const pickerItemProps = usePickerItemProps(childrenProp);
 
   const { viewStyles: pickerItemViewStyles, textStyles: pickerItemTextStyles } =
     extractStyles(pickerItemProps.style);

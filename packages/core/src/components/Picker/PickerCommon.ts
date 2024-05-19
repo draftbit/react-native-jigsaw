@@ -2,6 +2,9 @@ import { StyleProp, ViewStyle, TextStyle } from "react-native";
 import { IconSlot } from "../../interfaces/Icon";
 import { isObject } from "lodash";
 import { Theme } from "../../styles/DefaultTheme";
+import React from "react";
+import { flattenReactFragments } from "../../utilities";
+import PickerItem, { PickerItemProps } from "./dropdown/PickerItem";
 
 export interface PickerOption {
   value: string | number;
@@ -40,7 +43,7 @@ export interface MultiSelectPickerProps {
   onValueChange: (value: (string | number)[]) => void;
 }
 
-export interface ModalPickerProps {
+export interface DropDownModalPickerProps {
   dropdownOverlayColor?: string;
 }
 
@@ -87,4 +90,19 @@ export function normalizeToPickerOptions(
   throw new Error(
     'Picker options must be either an array of strings, numbers, or an array of { "label": string | number; "value": string | number; } objects.'
   );
+}
+
+export function usePickerItemProps(
+  childrenProp: React.ReactNode
+): PickerItemProps {
+  return React.useMemo(() => {
+    const children = flattenReactFragments(
+      React.Children.toArray(childrenProp) as React.ReactElement[]
+    );
+
+    // Only the props of the first PickerItem are used, any others are ignored
+    const firstPickerItem = children.find((child) => child.type === PickerItem);
+
+    return firstPickerItem?.props || {};
+  }, [childrenProp]);
 }

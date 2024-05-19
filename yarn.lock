@@ -12870,6 +12870,11 @@ react-native-screens@~3.22.0:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
+react-native-select-dropdown@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-select-dropdown/-/react-native-select-dropdown-4.0.1.tgz#5789bdf60742f8ca881391e6f47a5b285ee407d8"
+  integrity sha512-t4se17kALFcPb9wMbxig5dS1BE3pWRC6HPuFlM0J2Y6yhB1GsLqboy6an6R9rML8pRuGIJIxL29cbwEvPQwKxQ==
+
 react-native-shadow-2@^7.0.7:
   version "7.0.7"
   resolved "https://registry.yarnpkg.com/react-native-shadow-2/-/react-native-shadow-2-7.0.7.tgz#f83ac2dda5ac202281d9a06cdb239d9c8829e7d2"

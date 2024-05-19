@@ -1,11 +1,19 @@
 import React from "react";
-import { CommonDropDownPickerProps, SinglePickerProps } from "./PickerCommon";
+import {
+  CommonDropDownPickerProps,
+  DropDownModalPickerProps,
+  SinglePickerProps,
+} from "./PickerCommon";
 import NativePicker from "./NativePicker";
 import DropDownPicker from "./dropdown/DropDownPicker";
+import DropDownModalPicker from "./dropdown/DropDownModalPicker";
 import { withTheme } from "../../theming";
 
-interface PickerProps extends CommonDropDownPickerProps, SinglePickerProps {
-  mode?: "native" | "dropdown";
+interface PickerProps
+  extends CommonDropDownPickerProps,
+    SinglePickerProps,
+    DropDownModalPickerProps {
+  mode?: "native" | "dropdown" | "dropdown-modal";
 }
 
 const SinglePicker: React.FC<React.PropsWithChildren<PickerProps>> = ({
@@ -19,6 +27,9 @@ const SinglePicker: React.FC<React.PropsWithChildren<PickerProps>> = ({
     case "dropdown":
       //@ts-ignore
       return <DropDownPicker {...rest} />;
+    case "dropdown-modal":
+      //@ts-ignore
+      return <DropDownModalPicker {...rest} />;
   }
 };
 

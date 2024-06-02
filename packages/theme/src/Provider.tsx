@@ -43,18 +43,21 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
     };
   });
 
-  const changeTheme = (themeName: string) => {
-    const theme = themes.find((theme) => theme.name === themeName);
-    if (!theme) {
-      console.warn(
-        "Theme with name",
-        themeName,
-        "not found. Make sure it's passed into the top level ThemeProvider"
-      );
-      return;
-    }
-    setCurrentTheme(theme);
-  };
+  const changeTheme = React.useCallback(
+    (themeName: string) => {
+      const theme = themes.find((theme) => theme.name === themeName);
+      if (!theme) {
+        console.warn(
+          "Theme with name",
+          themeName,
+          "not found. Make sure it's passed into the top level ThemeProvider"
+        );
+        return;
+      }
+      setCurrentTheme(theme);
+    },
+    [themes, setCurrentTheme]
+  );
 
   const proxiedTheme: ReadTheme = React.useMemo(
     () => ({

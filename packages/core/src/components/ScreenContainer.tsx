@@ -37,7 +37,7 @@ function ScreenContainer({
 }: ScreenContainerProps) {
   const backgroundColor =
     StyleSheet.flatten(style)?.backgroundColor ||
-    theme.colors.branding.background;
+    theme.colors.branding.background.brand;
 
   const edges: Edge[] = [];
   if (hasSafeArea || hasTopSafeArea) {

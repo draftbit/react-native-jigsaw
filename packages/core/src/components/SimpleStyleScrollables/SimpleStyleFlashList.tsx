@@ -7,22 +7,28 @@ import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
  * A FlashList wrapper that takes a single `style` prop and internally extracts
  * the appropriate style keys into the `contentContainerStyle`
  */
-const SimpleStyleFlashList = <T extends any>({
-  style: styleProp,
-  data,
-  ...rest
-}: Omit<FlashListProps<T>, "contentContainerStyle">) => {
-  const { style, contentContainerStyle } =
-    useSplitContentContainerStyles(styleProp);
+const SimpleStyleFlashList = React.forwardRef(
+  <T extends any>(
+    {
+      style: styleProp,
+      data,
+      ...rest
+    }: Omit<FlashListProps<T>, "contentContainerStyle">,
+    ref: React.Ref<FlashList<any>>
+  ) => {
+    const { style, contentContainerStyle } =
+      useSplitContentContainerStyles(styleProp);
 
-  return (
-    <FlashList
-      style={style}
-      contentContainerStyle={contentContainerStyle as ContentStyle}
-      data={data}
-      {...rest}
-    />
-  );
-};
+    return (
+      <FlashList
+        ref={ref}
+        style={style}
+        contentContainerStyle={contentContainerStyle as ContentStyle}
+        data={data}
+        {...rest}
+      />
+    );
+  }
+);
 
 export default SimpleStyleFlashList;

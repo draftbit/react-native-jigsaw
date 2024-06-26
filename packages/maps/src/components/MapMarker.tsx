@@ -93,7 +93,9 @@ export function renderMarker(
       onPress={(event) => {
         onMarkerPress?.();
         const coordinate = event.nativeEvent.coordinate;
-        onPress?.(coordinate.latitude, coordinate.longitude);
+        if (coordinate) {
+          onPress?.(coordinate.latitude, coordinate.longitude);
+        }
       }}
       icon={
         shouldUseDefaultIconImplementation

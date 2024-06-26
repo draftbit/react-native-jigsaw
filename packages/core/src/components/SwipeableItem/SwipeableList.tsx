@@ -26,37 +26,52 @@ export const SwipeableListContext =
     onStopSwiping: () => {},
   });
 
-const SwipeableList = <T extends object>({
-  disableScrollWhenSwiping = true,
-  listComponent = "FlatList",
-  ...rest
-}: FlashListSwipeableListProps<T> | FlatListSwipeableListProps<T>) => {
-  const [isSwiping, setIsSwiping] = React.useState(false);
+const SwipeableList = React.forwardRef(
+  <T extends object>(
+    {
+      disableScrollWhenSwiping = true,
+      listComponent = "FlatList",
+      ...rest
+    }: FlashListSwipeableListProps<T> | FlatListSwipeableListProps<T>,
+    ref: React.Ref<FlatList | FlashList<any>>
+  ) => {
+    const [isSwiping, setIsSwiping] = React.useState(false);
 
-  const onStartSwiping = () => {
-    setIsSwiping(true);
-  };
+    const onStartSwiping = () => {
+      setIsSwiping(true);
+    };
 
-  const onStopSwiping = () => {
-    setIsSwiping(false);
-  };
+    const onStopSwiping = () => {
+      setIsSwiping(false);
+    };
 
-  rest.scrollEnabled = disableScrollWhenSwiping ? !isSwiping : true;
+    rest.scrollEnabled = disableScrollWhenSwiping ? !isSwiping : true;
 
-  const renderListComponent = () => {
-    switch (listComponent) {
-      case "FlatList":
-        return <FlatList {...(rest as FlatListProps<T>)} />;
-      case "FlashList":
-        return <FlashList {...(rest as FlashListProps<T>)} />;
-    }
-  };
+    const renderListComponent = () => {
+      switch (listComponent) {
+        case "FlatList":
+          return (
+            <FlatList
+              ref={ref as React.Ref<FlatList>}
+              {...(rest as FlatListProps<T>)}
+            />
+          );
+        case "FlashList":
+          return (
+            <FlashList
+              ref={ref as React.Ref<FlashList<T>>}
+              {...(rest as FlashListProps<T>)}
+            />
+          );
+      }
+    };
 
-  return (
-    <SwipeableListContext.Provider value={{ onStartSwiping, onStopSwiping }}>
-      <>{renderListComponent()}</>
-    </SwipeableListContext.Provider>
-  );
-};
+    return (
+      <SwipeableListContext.Provider value={{ onStartSwiping, onStopSwiping }}>
+        <>{renderListComponent()}</>
+      </SwipeableListContext.Provider>
+    );
+  }
+);
 
 export default SwipeableList;

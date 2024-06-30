@@ -74,7 +74,7 @@
     "react-native-web-swiper": "^2.2.3",
     "react-native-youtube-iframe": "^2.2.2",
     "react-youtube": "^10.1.0",
-    "react-native-webview": "13.6.3",
+    "react-native-webview": "13.6.4",
     "uuid": "^9.0.1"
   },
   "peerDependencies": {

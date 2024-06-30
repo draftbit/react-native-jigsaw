@@ -5,12 +5,14 @@ import { extractBorderAndMarginStyles } from "../../utilities";
 
 type Props = {
   visible: boolean;
+  title: string;
   labelStyle?: StyleProp<TextStyle>;
   style?: StyleProp<ViewStyle>;
 };
 
 const Toast: React.FC<React.PropsWithChildren<Props>> = ({
   visible = false,
+  title,
   style,
   labelStyle,
 }) => {
@@ -20,7 +22,7 @@ const Toast: React.FC<React.PropsWithChildren<Props>> = ({
   ]);
   return (
     <View style={containerStyle}>
-      <Text style={[labelStyle]}>Test</Text>
+      <Text style={[labelStyle]}>{title}</Text>
     </View>
   );
 };

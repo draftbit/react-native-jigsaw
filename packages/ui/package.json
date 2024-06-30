@@ -45,7 +45,7 @@
   "dependencies": {
     "@draftbit/core": "50.1.2",
     "@draftbit/native": "50.1.0",
-    "@draftbit/theme": "49.4.7",
+    "@draftbit/theme": "50.1.2",
     "react-native-reanimated": "~3.6.2"
   },
   "devDependencies": {

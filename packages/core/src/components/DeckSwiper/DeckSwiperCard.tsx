@@ -1,11 +1,11 @@
 import React from "react";
 import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
-import type { Theme } from "../../styles/DefaultTheme";
-import { withTheme } from "../../theming";
+import type { ReadTheme } from "@draftbit/theme";
+import { withTheme } from "@draftbit/theme";
 
 export interface DeckSwiperCardProps {
   style?: StyleProp<ViewStyle>;
-  theme: Theme;
+  theme: ReadTheme;
 }
 
 const DeckSwiperCard: React.FC<
@@ -15,8 +15,8 @@ const DeckSwiperCard: React.FC<
     style={[
       styles.card,
       {
-        backgroundColor: theme.colors.background,
-        borderColor: theme.colors.divider,
+        backgroundColor: theme.colors.background.brand,
+        borderColor: theme.colors.border.brand,
       },
       style,
     ]}

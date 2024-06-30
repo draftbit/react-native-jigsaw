@@ -4,8 +4,8 @@ import NativeSlider from "@react-native-community/slider";
 import isNumber from "lodash.isnumber";
 import toNumber from "lodash.tonumber";
 
-import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 
 export type Props = {
@@ -24,7 +24,7 @@ export type Props = {
   maximumValue: number;
   step: number;
   onValueChange?: (value: number) => void;
-  theme: Theme;
+  theme: ReadTheme;
 } & IconSlot;
 
 function maybeParseValue(value: any) {
@@ -104,12 +104,12 @@ function Slider({
     }
   }, [defaultValue]);
 
-  const minTrackColor = minimumTrackTintColor || theme.colors.primary;
-  const maxTrackColor = maximumTrackTintColor || theme.colors.light;
-  const thumbColor = thumbTintColor || theme.colors.primary;
+  const minTrackColor = minimumTrackTintColor || theme.colors.branding.primary;
+  const maxTrackColor = maximumTrackTintColor || theme.colors.foreground.light;
+  const thumbColor = thumbTintColor || theme.colors.branding.primary;
 
-  const leftIconThemeColor = leftIconColor || theme.colors.light;
-  const rightIconThemeColor = rightIconColor || theme.colors.light;
+  const leftIconThemeColor = leftIconColor || theme.colors.text.light;
+  const rightIconThemeColor = rightIconColor || theme.colors.text.light;
 
   const parsedValue = maybeParseValue(internalValue);
 

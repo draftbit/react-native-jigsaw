@@ -35,7 +35,7 @@ const MapViewDataDrivenExample = ({ theme }) => {
           <MapMarker
             latitude={item.latitude}
             longitude={item.longitude}
-            pinColor={theme.colors.secondary}
+            pinColor={theme.colors.branding.secondary}
           >
             <MapCallout showTooltip>
               <Text>With Callout</Text>

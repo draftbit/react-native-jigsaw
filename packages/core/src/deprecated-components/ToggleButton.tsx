@@ -1,9 +1,8 @@
 import * as React from "react";
-import { withTheme } from "../theming";
-import { colorTypes } from "@draftbit/types";
+import { withTheme } from "@draftbit/theme";
 import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import IconButton from "../components/IconButton";
-import type { Theme } from "../styles/DefaultTheme";
+import type { ReadTheme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 
 type Props = {
@@ -12,14 +11,14 @@ type Props = {
   onPress?: (value: boolean) => void;
   defaultValue?: boolean;
   disabled?: boolean;
-  color?: colorTypes;
-  colorSecondary?: colorTypes;
-  borderColor?: colorTypes;
+  color?: string;
+  colorSecondary?: string;
+  borderColor?: string;
   iconSize?: number;
   width?: number;
   height?: number;
   style?: StyleProp<ViewStyle>;
-  theme: Theme;
+  theme: ReadTheme;
 } & IconSlot;
 
 /**
@@ -68,7 +67,9 @@ const ToggleButton: React.FC<React.PropsWithChildren<Props>> = ({
       Icon={Icon}
       icon={icon}
       size={iconSize}
-      color={internalValue ? colors[color] : colors[colorSecondary]}
+      color={
+        internalValue ? colors.branding[color] : colors.branding[colorSecondary]
+      }
       onPress={handlePress}
       disabled={disabled}
       style={[
@@ -77,9 +78,9 @@ const ToggleButton: React.FC<React.PropsWithChildren<Props>> = ({
           width,
           height,
           backgroundColor: internalValue
-            ? colors[colorSecondary]
-            : colors[color],
-          borderColor: colors[borderColor],
+            ? colors.branding[colorSecondary]
+            : colors.branding[color],
+          borderColor: colors.border[borderColor],
         },
         style,
       ]}

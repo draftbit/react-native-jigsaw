@@ -13,8 +13,8 @@ import {
   CodeField,
   useClearByFocusCell,
 } from "react-native-confirmation-code-field";
-import type { Theme } from "../../styles/DefaultTheme";
-import { withTheme } from "../../theming";
+import type { ReadTheme } from "@draftbit/theme";
+import { withTheme } from "@draftbit/theme";
 import PinInputText from "./PinInputText";
 import { extractStyles } from "../../utilities";
 
@@ -35,7 +35,7 @@ interface PinInputProps extends TextInputProps {
   focusedBorderWidth?: number;
   focusedTextColor?: string;
   style?: StyleProp<ViewStyle | TextStyle>;
-  theme: Theme;
+  theme: ReadTheme;
 }
 
 const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
@@ -49,7 +49,7 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
       renderItem,
       value,
       onChangeText,
-      focusedBorderColor = theme.colors.primary,
+      focusedBorderColor = theme.colors.branding.primary,
       focusedBackgroundColor,
       focusedBorderWidth,
       focusedTextColor,
@@ -97,7 +97,7 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
           testID="default-code-input-cell"
           style={[
             styles.cell,
-            { borderColor: theme.colors.disabled },
+            { borderColor: theme.colors.border.brand },
             viewStyles,
             isFocused && focusedBorderWidth
               ? { borderWidth: focusedBorderWidth }
@@ -113,7 +113,7 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
           <PinInputText
             style={[
               styles.cellText,
-              { color: theme.colors.strong },
+              { color: theme.colors.text.strong },
               textStyles,
               isFocused && focusedTextColor
                 ? { color: focusedTextColor }

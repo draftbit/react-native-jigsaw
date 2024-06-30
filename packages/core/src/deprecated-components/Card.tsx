@@ -12,10 +12,10 @@ import Image from "../components/Image";
 import Surface from "../components/Surface";
 import { Title, Subtitle, Caption } from "../components/Typography";
 
-import { withTheme } from "../theming";
+import { withTheme } from "@draftbit/theme";
 import Config from "../components/Config";
 
-import type { Theme } from "../styles/DefaultTheme";
+import type { ReadTheme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 
 const ICON_SIZE = Config.cardIconSize;
@@ -31,7 +31,7 @@ export const TopRightCircleIcon = withTheme(
     onPress,
   }: {
     icon: string;
-    theme: Theme;
+    theme: ReadTheme;
     onPress?: () => void;
   } & IconSlot) => {
     return (
@@ -61,7 +61,11 @@ export const TopRightCircleIcon = withTheme(
             ];
           }}
         >
-          <Icon name={icon} size={ICON_SIZE} color={theme.colors.surface} />
+          <Icon
+            name={icon}
+            size={ICON_SIZE}
+            color={theme.colors.background.brand}
+          />
         </Pressable>
       </Surface>
     );
@@ -78,7 +82,7 @@ type Props = {
   aspectRatio?: number;
   elevation?: number;
   numColumns?: number;
-  theme: Theme;
+  theme: ReadTheme;
   titleStyle?: StyleProp<TextStyle>;
   subtitleStyle?: StyleProp<TextStyle>;
   descriptionStyle?: StyleProp<TextStyle>;
@@ -116,7 +120,7 @@ const Card: React.FC<React.PropsWithChildren<Props>> = ({
     ...styles
   } = StyleSheet.flatten(style || {});
 
-  const backgroundColor = bgColor ? bgColor : theme.colors.surface;
+  const backgroundColor = bgColor ? bgColor : theme.colors.background.brand;
   const innerPadding = padding ? padding : 12;
 
   return (

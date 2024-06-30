@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleProp, TextStyle, ViewStyle } from "react-native";
 import Text from "../components/Text";
-import { withTheme } from "../theming";
+import { withTheme } from "@draftbit/theme";
 import RadioButtonGroup, {
   RadioButtonGroupProps,
 } from "../components/RadioButton/RadioButtonGroup";

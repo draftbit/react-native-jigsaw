@@ -8,8 +8,8 @@ import {
   NativeSyntheticEvent,
   TextInputSubmitEditingEventData,
 } from "react-native";
-import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 import Config from "../components/Config";
 
@@ -18,7 +18,7 @@ type Props = {
   icon?: string;
   placeholder?: string;
   style?: StyleProp<ViewStyle>;
-  theme: Theme;
+  theme: ReadTheme;
   onChange?: (text: string) => void;
   onSubmit?: (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
   value?: string;
@@ -94,7 +94,7 @@ const FieldSearchBarFull: React.FC<React.PropsWithChildren<Props>> = ({
         <Icon
           name={icon}
           size={Config.fieldSearchBarFullIconSize}
-          color={focused ? colors.primary : colors.light}
+          color={focused ? colors.branding.primary : colors.foreground.brand}
         />
       )}
       <View style={{ marginLeft: showIcon ? 12 : 0, flex: 1 }}>
@@ -106,10 +106,10 @@ const FieldSearchBarFull: React.FC<React.PropsWithChildren<Props>> = ({
           onFocus={onFocus}
           onChangeText={handleChangeText}
           onSubmitEditing={onSubmit}
-          placeholderTextColor={colors.light}
+          placeholderTextColor={colors.foreground.brand}
           style={[
             {
-              color: colors.medium,
+              color: colors.text.medium,
             },
             typeStyles,
           ]}

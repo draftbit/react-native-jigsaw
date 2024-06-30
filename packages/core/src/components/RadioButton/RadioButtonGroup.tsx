@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
-import type { Theme } from "../../styles/DefaultTheme";
+import type { ReadTheme } from "@draftbit/theme";
 import { getValueForRadioButton } from "../../utilities";
 import { radioButtonGroupContext, Direction } from "./context";
 export interface RadioButtonGroupProps {
@@ -9,7 +9,7 @@ export interface RadioButtonGroupProps {
   value: string | number;
   onValueChange?: (value: string) => void;
   defaultValue?: string | number;
-  theme: Theme;
+  theme: ReadTheme;
   children: React.ReactNode;
 }
 

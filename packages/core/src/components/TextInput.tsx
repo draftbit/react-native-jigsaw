@@ -5,6 +5,7 @@ import {
   Platform,
 } from "react-native";
 import { useDebounce, useOnUpdate } from "../hooks";
+import { useTheme } from "@draftbit/theme";
 
 export interface TextInputProps extends NativeTextInputProps {
   webShowOutline?: boolean;
@@ -27,6 +28,7 @@ const TextInput = React.forwardRef<NativeTextInput, TextInputProps>(
     },
     ref
   ) => {
+    const theme = useTheme();
     const delayedValue = useDebounce(value, changeTextDelay);
 
     useOnUpdate(() => {
@@ -44,6 +46,7 @@ const TextInput = React.forwardRef<NativeTextInput, TextInputProps>(
         style={[
           //@ts-ignore Web specific prop. Removes default blue outline that appears on the hidden TextInput
           Platform.OS === "web" && !webShowOutline ? { outlineWidth: 0 } : {},
+          { color: theme.colors.text.strong },
           style,
         ]}
         {...rest}

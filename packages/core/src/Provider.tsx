@@ -1,22 +1,25 @@
-import * as React from "react";
-import { ThemeProvider } from "./theming";
+import React from "react";
 import PortalHost from "./components/Portal/PortalHost";
-import { Theme } from "@draftbit/types";
+import type { ValidatedTheme, Breakpoints } from "@draftbit/theme";
+import { ThemeProvider } from "@draftbit/theme";
 
-type Props = {
+type ProviderProps = {
+  themes: ValidatedTheme[];
+  breakpoints: Breakpoints;
+  initialThemeName: string;
   children: React.ReactNode;
-  theme?: Theme;
 };
 
-export default class Provider extends React.Component<Props> {
+export default class Provider extends React.Component<ProviderProps> {
   render() {
     return (
-      <PortalHost>
-        {/* @ts-ignore */}
-        <ThemeProvider theme={this.props.theme}>
-          {this.props.children}
-        </ThemeProvider>
-      </PortalHost>
+      <ThemeProvider
+        themes={this.props.themes}
+        breakpoints={this.props.breakpoints}
+        initialThemeName={this.props.initialThemeName}
+      >
+        <PortalHost>{this.props.children}</PortalHost>
+      </ThemeProvider>
     );
   }
 }

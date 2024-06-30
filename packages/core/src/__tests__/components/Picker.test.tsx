@@ -2,7 +2,7 @@ import * as React from "react";
 import { fireEvent, render, screen } from "@testing-library/react-native";
 import { Picker, PickerItem } from "../../components/Picker";
 import Provider from "../../Provider";
-import DefaultTheme from "../../styles/DefaultTheme";
+import { DefaultTheme } from "@draftbit/theme";
 import { act } from "react-test-renderer";
 
 jest.useFakeTimers();
@@ -49,7 +49,15 @@ const defaultPickerProps = {
 
 describe("Picker tests", () => {
   test("should render native picker when mode is 'native'", () => {
-    render(<Picker {...defaultPickerProps} mode="native" />);
+    render(
+      <Provider
+        themes={[DefaultTheme]}
+        breakpoints={{}}
+        initialThemeName={DefaultTheme.name}
+      >
+        <Picker {...defaultPickerProps} mode="native" />
+      </Provider>
+    );
 
     const nativePicker = screen.queryByTestId("native-picker");
     expect(nativePicker).toBeTruthy();
@@ -68,13 +76,19 @@ describe("Picker tests", () => {
       const mockOnValueChange = jest.fn();
 
       render(
-        <Picker
-          {...defaultPickerProps}
-          mode="native"
-          options={options}
-          onValueChange={mockOnValueChange}
-          placeholder={undefined}
-        />
+        <Provider
+          themes={[DefaultTheme]}
+          breakpoints={{}}
+          initialThemeName={DefaultTheme.name}
+        >
+          <Picker
+            {...defaultPickerProps}
+            mode="native"
+            options={options}
+            onValueChange={mockOnValueChange}
+            placeholder={undefined}
+          />
+        </Provider>
       );
 
       expect(mockOnValueChange).toBeCalledWith(options[0]);
@@ -85,7 +99,11 @@ describe("Picker tests", () => {
       const placeholder = "test placeholder";
 
       render(
-        <Provider theme={DefaultTheme}>
+        <Provider
+          themes={[DefaultTheme]}
+          breakpoints={{}}
+          initialThemeName={DefaultTheme.name}
+        >
           <Picker
             {...defaultPickerProps}
             mode="native"

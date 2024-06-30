@@ -10,8 +10,8 @@ import {
 
 import TabViewItem from "./TabViewItem";
 import type { IconSlot } from "../../interfaces/Icon";
-import { withTheme } from "../../theming";
-import type { Theme } from "../../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import { flattenReactFragments, extractStyles } from "../../utilities";
 
 type SceneProps = SceneRendererProps & {
@@ -40,7 +40,7 @@ type TabViewProps = {
   iconSize?: number;
   iconPosition?: IconPosition;
   style?: StyleProp<ViewStyle | TextStyle>;
-  theme: Theme;
+  theme: ReadTheme;
 } & IconSlot;
 
 const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
@@ -122,12 +122,12 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
     return (
       <TabBar
         {...props}
-        activeColor={activeColor || theme.colors.primary}
+        activeColor={activeColor || theme.colors.branding.primary}
         inactiveColor={inactiveColor || "rgb(200,200,200)"}
-        pressColor={pressColor || theme.colors.primary}
+        pressColor={pressColor || theme.colors.branding.primary}
         scrollEnabled={scrollEnabled}
         indicatorStyle={{
-          backgroundColor: indicatorColor || theme.colors.primary,
+          backgroundColor: indicatorColor || theme.colors.branding.primary,
         }}
         labelStyle={[{ textTransform: "none" }, textStyles]}
         tabStyle={{ flexDirection: tabFlexDirection }}
@@ -137,7 +137,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
           ) : null
         }
         style={{
-          backgroundColor: tabsBackgroundColor || theme.colors.background,
+          backgroundColor: tabsBackgroundColor || theme.colors.background.brand,
         }}
       />
     );

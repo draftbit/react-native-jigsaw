@@ -1,21 +1,20 @@
 import * as React from "react";
 import { Text, StyleProp, ViewStyle, TextStyle } from "react-native";
 import AnimatedCircularProgress from "./AnimatedCircularProgress";
-import { withTheme } from "../theming";
-import themeT from "../styles/DefaultTheme";
-import { colorTypes } from "@draftbit/types";
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 
 type Props = {
   progress?: number;
   style?: StyleProp<ViewStyle>;
-  color?: colorTypes;
+  color?: string;
   size?: number;
   showsText?: boolean;
-  unfilledColor?: colorTypes;
+  unfilledColor?: string;
   strokeCap?: "butt" | "square" | "round" | undefined;
   textStyle?: StyleProp<TextStyle>;
   thickness?: number;
-  theme: typeof themeT;
+  theme: ReadTheme;
 };
 
 /**
@@ -35,8 +34,8 @@ const ProgressCircle: React.FC<React.PropsWithChildren<Props>> = ({
 }) => {
   const progressNum = Math.round(progress * 100);
 
-  const tintColor = color || theme.colors.primary;
-  const backgroundColor = unfilledColor || theme.colors.secondary;
+  const tintColor = color || theme.colors.branding.primary;
+  const backgroundColor = unfilledColor || theme.colors.branding.secondary;
 
   return (
     <AnimatedCircularProgress

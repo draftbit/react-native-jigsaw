@@ -1,12 +1,12 @@
 import * as React from "react";
 import { StyleSheet, View, StyleProp, ViewStyle } from "react-native";
-import { withTheme } from "../theming";
-import theme from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 
 type Props = {
   style?: StyleProp<ViewStyle>;
   color?: string;
-  theme: typeof theme;
+  theme: ReadTheme;
 };
 
 const Divider: React.FC<React.PropsWithChildren<Props>> = ({
@@ -19,7 +19,7 @@ const Divider: React.FC<React.PropsWithChildren<Props>> = ({
     <View
       style={[
         {
-          backgroundColor: color || colors.divider,
+          backgroundColor: color || colors.border.brand,
           height: StyleSheet.hairlineWidth,
         },
         style,

@@ -11,7 +11,7 @@ import {
   normalizeToPickerOptions,
 } from "./PickerCommon";
 import PickerInputContainer from "./PickerInputContainer";
-import { withTheme } from "../../theming";
+import { withTheme } from "@draftbit/theme";
 
 const isIos = Platform.OS === "ios";
 const isWeb = Platform.OS === "web";
@@ -82,7 +82,10 @@ const NativePicker: React.FC<CommonPickerProps & SinglePickerProps> = ({
             <Button
               Icon={Icon}
               onPress={() => setPickerVisible(!pickerVisible)}
-              style={[styles.iosButton, { color: theme.colors.primary }]}
+              style={[
+                styles.iosButton,
+                { color: theme.colors.branding.primary },
+              ]}
               title="Close"
             />
             {renderNativePicker()}

@@ -13,9 +13,9 @@ import color from "color";
 import Config from "../components/Config";
 import Text from "../components/Text";
 import Elevation from "../components/Elevation";
-import { withTheme } from "../theming";
+import { withTheme } from "@draftbit/theme";
 
-import type { Theme } from "../styles/DefaultTheme";
+import type { ReadTheme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 
 /**
@@ -63,7 +63,7 @@ type Props = {
   label?: string;
   onPress: () => void;
   elevation?: number;
-  theme: Theme;
+  theme: ReadTheme;
   style?: StyleProp<ViewStyle>;
 } & PressableProps &
   IconSlot;
@@ -82,25 +82,25 @@ const FAB: React.FC<React.PropsWithChildren<Props>> = ({
   onPress,
   elevation = 0,
   style,
-  theme: { colors, disabledOpacity, roundness, typography },
+  theme: { colors, typography },
   ...rest
 }) => {
   let backgroundColor, borderColor, textColor, borderWidth;
-  const buttonColor = colorOverride || colors.primary;
+  const buttonColor = colorOverride || colors.branding.primary;
 
   if (type === "standard" || type === "extended" || type === "fixed") {
     backgroundColor = buttonColor;
 
     if (disabled) {
-      textColor = color(colors.surface).alpha(disabledOpacity).rgb().string();
+      textColor = color(colors.background.brand).alpha(0.5).rgb().string();
     } else {
-      textColor = colors.surface;
+      textColor = colors.background.brand;
     }
   } else {
     backgroundColor = "transparent";
 
     if (disabled) {
-      textColor = color(buttonColor).alpha(disabledOpacity).rgb().string();
+      textColor = color(buttonColor).alpha(0.5).rgb().string();
     } else {
       textColor = buttonColor;
     }
@@ -108,7 +108,7 @@ const FAB: React.FC<React.PropsWithChildren<Props>> = ({
 
   if (type === "outline") {
     if (disabled) {
-      borderColor = color(buttonColor).alpha(disabledOpacity).rgb().string();
+      borderColor = color(buttonColor).alpha(0.5).rgb().string();
     } else {
       borderColor = buttonColor;
     }
@@ -122,7 +122,7 @@ const FAB: React.FC<React.PropsWithChildren<Props>> = ({
     backgroundColor,
     borderColor,
     borderWidth,
-    borderRadius: roundness,
+    borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
   };

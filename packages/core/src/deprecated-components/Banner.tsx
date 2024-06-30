@@ -10,9 +10,8 @@ import {
 } from "react-native";
 import Surface from "../components/Surface";
 import type { IconSlot } from "../interfaces/Icon";
-import shadow from "../styles/shadow";
-import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 
 const ELEVATION = 1;
 const DEFAULT_MAX_WIDTH = 960;
@@ -29,7 +28,7 @@ type Props = {
   /**
    * @optional
    */
-  theme: Theme;
+  theme: ReadTheme;
 } & IconSlot;
 
 type NativeEvent = {
@@ -115,10 +114,7 @@ const Banner: React.FC<React.PropsWithChildren<Props>> = ({
   );
 
   return (
-    <Surface
-      {...rest}
-      style={[styles.container, shadow(ELEVATION) as ViewStyle, style]}
-    >
+    <Surface {...rest} style={[styles.container, style]}>
       <View style={[styles.wrapper, contentStyle]}>
         <Animated.View style={{ height }} />
         <Animated.View
@@ -146,7 +142,7 @@ const Banner: React.FC<React.PropsWithChildren<Props>> = ({
               </View>
             ) : null}
             <Text
-              style={[styles.message, { color: theme.colors.text }]}
+              style={[styles.message, { color: theme.colors.text.normal }]}
               accessibilityLiveRegion={visible ? "polite" : "none"}
               accessibilityRole="alert"
             >
@@ -156,7 +152,7 @@ const Banner: React.FC<React.PropsWithChildren<Props>> = ({
           {dismissable ? (
             <View style={styles.actions}>
               <Button
-                color={buttonColor || theme.colors.primary}
+                color={buttonColor || theme.colors.branding.primary}
                 title="Close"
                 onPress={() => setVisible(false)}
               />

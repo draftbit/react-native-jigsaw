@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, TextStyle, StyleProp } from "react-native";
-import { withTheme } from "../theming";
-import Theme from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 
 type Props = {
   text: string;
@@ -9,7 +9,7 @@ type Props = {
   /**
    * @optional
    */
-  theme: typeof Theme;
+  theme: ReadTheme;
 };
 
 export const Title = withTheme(({ text, theme, style }: Props) => {
@@ -20,7 +20,7 @@ export const Title = withTheme(({ text, theme, style }: Props) => {
           fontSize: 20,
           letterSpacing: 0,
           lineHeight: 26,
-          color: theme.colors.text,
+          color: theme.colors.text.normal,
         },
         style,
       ]}
@@ -38,7 +38,7 @@ export const Subtitle = withTheme(({ text, theme, style }: Props) => {
           fontSize: 14,
           letterSpacing: 0,
           lineHeight: 16,
-          color: theme.colors.medium,
+          color: theme.colors.text.medium,
         },
         style,
       ]}
@@ -56,7 +56,7 @@ export const Caption = withTheme(({ text, theme, style }: Props) => {
           fontSize: 12,
           letterSpacing: 0,
           lineHeight: 14,
-          color: theme.colors.light,
+          color: theme.colors.text.light,
         },
         style,
       ]}

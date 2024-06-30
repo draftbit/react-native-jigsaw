@@ -4,7 +4,7 @@ import {
   MultiSelectPickerProps,
 } from "../PickerCommon";
 import DropDownPicker from "./DropDownPicker";
-import { withTheme } from "../../../theming";
+import { withTheme } from "@draftbit/theme";
 
 const MultiSelectPicker: React.FC<
   React.PropsWithChildren<CommonDropDownPickerProps & MultiSelectPickerProps>

@@ -10,7 +10,7 @@ import {
 } from "../PickerCommon";
 import PickerInputContainer from "../PickerInputContainer";
 import ModalPickerComponent from "react-native-select-dropdown";
-import { withTheme } from "../../../theming";
+import { withTheme } from "@draftbit/theme";
 import { useOnUpdate } from "../../../hooks";
 
 const ModalPicker: React.FC<
@@ -26,11 +26,11 @@ const ModalPicker: React.FC<
   value,
   autoDismissKeyboard = true,
   selectedIconName = "Feather/check",
-  selectedIconColor = theme.colors.strong,
+  selectedIconColor = theme.colors.text.strong,
   selectedIconSize = 20,
-  dropDownBackgroundColor = theme.colors.background,
-  dropDownBorderColor = theme.colors.divider,
-  dropDownTextColor = theme.colors.strong,
+  dropDownBackgroundColor = theme.colors.background.brand,
+  dropDownBorderColor = theme.colors.border.brand,
+  dropDownTextColor = theme.colors.text.strong,
   dropDownBorderWidth = 1,
   dropDownBorderRadius = 8,
   children: childrenProp,

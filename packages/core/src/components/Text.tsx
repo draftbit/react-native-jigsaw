@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Text as NativeText, I18nManager, TextProps } from "react-native";
-import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 
 type Props = {
-  theme: Theme;
+  theme: ReadTheme;
 } & TextProps;
 
 class Text extends React.Component<Props> {
@@ -41,7 +41,7 @@ export const BaseLink = ({
   return (
     <Text
       hitSlop={8}
-      style={[{ color: theme.colors.primary }, style]}
+      style={[{ color: theme.colors.branding.primary }, style]}
       theme={theme}
       {...props}
     >

@@ -9,15 +9,19 @@ import {
 } from "@draftbit/ui";
 import Section from "./Section";
 import { Text, View, StyleSheet } from "react-native";
+import { useTheme } from "@draftbit/ui";
 
-const SingleRadioButtonWrapper = ({ label, children }) => (
-  <View style={styles.radioButtonWrapper}>
-    <View style={styles.radioButtonLabel}>
-      <Text>{label}</Text>
+const SingleRadioButtonWrapper = ({ label, children }) => {
+  const theme = useTheme();
+  return (
+    <View style={styles.radioButtonWrapper}>
+      <View style={styles.radioButtonLabel}>
+        <Text style={{ color: theme.colors.text.strong }}>{label}</Text>
+      </View>
+      <View>{children}</View>
     </View>
-    <View>{children}</View>
-  </View>
-);
+  );
+};
 
 const RadioButtonGroupExample = ({ theme }) => {
   const [selected, onSelect] = React.useState("0");
@@ -41,7 +45,7 @@ const RadioButtonGroupExample = ({ theme }) => {
             <RadioButton value="3" disabled />
           </SingleRadioButtonWrapper>
           <SingleRadioButtonWrapper label="Custom color">
-            <RadioButton value="4" color={theme.colors.error} />
+            <RadioButton value="4" color={theme.colors.text.danger} />
           </SingleRadioButtonWrapper>
         </RadioButtonGroup>
       </Section>
@@ -149,7 +153,7 @@ const RadioButtonGroupExample = ({ theme }) => {
             <RadioButton value="3" disabled />
           </SingleRadioButtonWrapper>
           <SingleRadioButtonWrapper label="Custom color">
-            <RadioButton value="4" color={theme.colors.error} />
+            <RadioButton value="4" color={theme.colors.text.danger} />
           </SingleRadioButtonWrapper>
         </RadioButtonGroup>
       </Section>

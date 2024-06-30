@@ -14,8 +14,8 @@ import {
   LayoutChangeEvent,
   Platform,
 } from "react-native";
-import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 import { applyStyles, extractStyles } from "../utilities";
 import TextInput, { TextInputProps } from "./TextInput";
@@ -46,7 +46,7 @@ export type Props = {
   underlineColor?: string;
   activeBorderColor?: string;
   style?: StyleProp<ViewStyle>;
-  theme: Theme;
+  theme: ReadTheme;
   render?: (
     props: TextInputProps & { ref: (c: NativeTextInput) => void }
   ) => React.ReactNode;
@@ -224,7 +224,7 @@ class TextField extends React.Component<Props, State> {
 
   render() {
     const {
-      theme: { colors, typography, roundness, disabledOpacity },
+      theme,
       Icon,
       type = "underline",
       disabled = false,
@@ -238,13 +238,15 @@ class TextField extends React.Component<Props, State> {
       iconSize,
       assistiveText,
       underlineColor: underlineColorProp,
-      activeBorderColor: activeBorderColorProp = colors.primary,
+      activeBorderColor: activeBorderColorProp = theme.colors.branding.primary,
       multiline = false,
       numberOfLines = 4,
       style,
       render = (props) => <TextInput {...props} />,
       ...rest
     } = this.props;
+
+    const { colors, typography } = theme;
 
     const MINIMIZED_LABEL_Y_OFFSET = -(typography.caption.lineHeight + 4);
     const OUTLINE_MINIMIZED_LABEL_Y_OFFSET = -(16 * 0.5 + 4);
@@ -262,17 +264,17 @@ class TextField extends React.Component<Props, State> {
       backgroundColor,
       inputStyle: StyleProp<TextStyle>;
 
-    inputTextColor = colors.strong;
+    inputTextColor = colors.text.strong;
     if (disabled) {
-      activeColor = colors.light;
-      placeholderColor = colors.light;
+      activeColor = colors.text.light;
+      placeholderColor = colors.text.light;
       borderColor = "transparent";
       underlineColor = "transparent";
-      backgroundColor = colors.divider;
+      backgroundColor = colors.border.brand;
     } else {
-      activeColor = error ? colors.error : activeBorderColorProp;
-      placeholderColor = borderColor = colors.light;
-      underlineColor = underlineColorProp || colors.light;
+      activeColor = error ? colors.text.danger : activeBorderColorProp;
+      placeholderColor = borderColor = colors.text.light;
+      underlineColor = underlineColorProp || colors.text.light;
       backgroundColor = colors.background;
     }
 
@@ -292,14 +294,15 @@ class TextField extends React.Component<Props, State> {
     };
 
     if (!multiline) {
+      //@ts-ignore
       inputStyle.height = lineHeight;
     }
 
     let assistiveTextLeftMargin;
     if (type === "underline") {
       containerStyle = {
-        borderTopLeftRadius: roundness,
-        borderTopRightRadius: roundness,
+        borderTopLeftRadius: 8,
+        borderTopRightRadius: 8,
         paddingBottom: 12,
         marginTop: 16,
       };
@@ -311,12 +314,12 @@ class TextField extends React.Component<Props, State> {
       }
     } else {
       containerStyle = {
-        borderRadius: roundness,
+        borderRadius: 8,
         borderColor: hasActiveOutline ? activeColor : borderColor,
         borderWidth: 1,
         paddingTop: label ? 16 * 1.5 : 16,
         paddingBottom: label ? 16 * 0.5 : 16,
-        opacity: disabled ? disabledOpacity : 1,
+        opacity: disabled ? 0.5 : 1,
         backgroundColor,
       };
 
@@ -337,11 +340,11 @@ class TextField extends React.Component<Props, State> {
     if (iconColor) {
       leftIconColor = iconColor;
     } else if (error) {
-      leftIconColor = colors.error;
+      leftIconColor = colors.text.danger;
     } else if (this.state.focused) {
-      leftIconColor = colors.primary;
+      leftIconColor = colors.branding.primary;
     } else {
-      leftIconColor = colors.light;
+      leftIconColor = colors.text.light;
     }
 
     const labelStyle = {
@@ -442,7 +445,7 @@ class TextField extends React.Component<Props, State> {
                   backgroundColor:
                     bgColor ||
                     (error
-                      ? colors.error
+                      ? colors.background.danger
                       : this.state.focused
                       ? activeColor
                       : underlineColor),
@@ -536,7 +539,7 @@ class TextField extends React.Component<Props, State> {
         {leftIconName ? (
           <Icon
             size={iconSize || ICON_SIZE}
-            color={leftIconColor || colors.light}
+            color={leftIconColor || colors.text.light}
             name={leftIconName}
             style={{
               position: "absolute",
@@ -550,7 +553,7 @@ class TextField extends React.Component<Props, State> {
           <Icon
             name={rightIconName}
             size={iconSize || ICON_SIZE}
-            color={iconColor || colors.light}
+            color={iconColor || colors.text.light}
             style={{
               position: "absolute",
               right: 16,
@@ -563,7 +566,7 @@ class TextField extends React.Component<Props, State> {
           <Text
             style={[
               {
-                color: error ? colors.error : colors.light,
+                color: error ? colors.text.danger : colors.text.light,
                 marginTop: 8,
                 marginLeft: assistiveTextLeftMargin,
               },

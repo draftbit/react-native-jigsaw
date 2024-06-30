@@ -7,9 +7,9 @@ import {
   Pressable,
 } from "react-native";
 import Text from "./Text";
-import { withTheme } from "../theming";
+import { withTheme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
-import type { Theme } from "../styles/DefaultTheme";
+import type { ReadTheme } from "@draftbit/theme";
 import { extractStyles } from "../utilities";
 
 type AccordionGroupProps = {
@@ -23,7 +23,7 @@ type AccordionGroupProps = {
   iconSize?: number;
   style?: StyleProp<TextStyle>;
   children?: React.ReactNode;
-  theme: Theme;
+  theme: ReadTheme;
 } & IconSlot;
 
 const AccordionGroup = ({
@@ -42,8 +42,8 @@ const AccordionGroup = ({
 }: AccordionGroupProps) => {
   const [expanded, setExpanded] = React.useState<boolean>(expandedProp);
   const { textStyles, viewStyles } = extractStyles(style);
-  const expandedColor = openColor || theme.colors.primary;
-  const collapsedColor = closedColor || theme.colors.primary;
+  const expandedColor = openColor || theme.colors.branding.primary;
+  const collapsedColor = closedColor || theme.colors.branding.primary;
   const labelColor = expanded ? expandedColor : collapsedColor;
   const caretColor = caretColorProp || labelColor;
 

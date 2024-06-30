@@ -1,24 +1,23 @@
 import * as React from "react";
 import StepIndicator from "./StepIndicator";
-import { withTheme } from "../theming";
-import themeT from "../styles/DefaultTheme";
-import { colorTypes } from "@draftbit/types";
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 
 type Props = {
   numberOfSteps: number;
   currentStep: number;
   currentStepStrokeWidth?: number;
-  stepStrokeCurrentColor?: colorTypes;
+  stepStrokeCurrentColor?: string;
   stepIndicatorSize?: number;
   currentStepIndicatorSize?: number;
-  stepIndicatorCurrentColor?: colorTypes;
-  stepIndicatorLabelCurrentColor?: colorTypes;
+  stepIndicatorCurrentColor?: string;
+  stepIndicatorLabelCurrentColor?: string;
   stepIndicatorLabelFontSize?: number;
-  stepNumberFinishedColor?: colorTypes;
-  stepNumberUnfinishedColor?: colorTypes;
-  unfinishedColor?: colorTypes;
-  finishedColor?: colorTypes;
-  theme: typeof themeT;
+  stepNumberFinishedColor?: string;
+  stepNumberUnfinishedColor?: string;
+  unfinishedColor?: string;
+  finishedColor?: string;
+  theme: ReadTheme;
 };
 
 const ProgressIndicator: React.FC<React.PropsWithChildren<Props>> = ({

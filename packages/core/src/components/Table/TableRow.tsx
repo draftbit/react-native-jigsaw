@@ -6,15 +6,15 @@ import {
   TableStyleContext,
   TableStyleProps,
 } from "./TableCommon";
-import { Theme } from "../../styles/DefaultTheme";
-import { withTheme } from "../../theming";
+import type { ReadTheme } from "@draftbit/theme";
+import { withTheme } from "@draftbit/theme";
 import Pressable from "../Pressable";
 
 export interface Props extends TableProps {
   onPress?: () => void;
   isTableHeader?: boolean;
   style?: StyleProp<ViewStyle>;
-  theme: Theme;
+  theme: ReadTheme;
 }
 
 const TableRow: React.FC<React.PropsWithChildren<Props>> = ({
@@ -63,7 +63,9 @@ const TableRow: React.FC<React.PropsWithChildren<Props>> = ({
         onPress={onPress}
         style={[
           borderViewStyle,
-          isTableHeader ? { backgroundColor: theme.colors.primary } : {},
+          isTableHeader
+            ? { backgroundColor: theme.colors.branding.primary }
+            : {},
           style,
           styles.cellsContainer,
         ]}

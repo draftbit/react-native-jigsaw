@@ -9,8 +9,8 @@ import {
   PressableProps,
   Platform,
 } from "react-native";
-import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 
 type Props = {
@@ -21,7 +21,7 @@ type Props = {
   iconColor?: string;
   iconName?: string;
   onPress: () => void;
-  theme: Theme;
+  theme: ReadTheme;
   style?: StyleProp<ViewStyle>;
 } & PressableProps &
   IconSlot;
@@ -42,7 +42,7 @@ const FAB: React.FC<React.PropsWithChildren<Props>> = ({
   Icon,
   ...props
 }) => {
-  const backgroundColor = bgColor || theme.colors.primary;
+  const backgroundColor = bgColor || theme.colors.branding.primary;
   const color = iconColor || "#FFF";
 
   return (

@@ -28,14 +28,14 @@ const MapViewExample = ({ theme }) => {
         <MapMarker
           latitude={40.741895}
           longitude={-73.989308}
-          pinColor={theme.colors.primary}
+          pinColor={theme.colors.branding.primary}
           title="Draftbit"
           description="A simple MapView example"
         />
         <MapMarker
           latitude={40.741895}
           longitude={-73.979308}
-          pinColor={theme.colors.secondary}
+          pinColor={theme.colors.branding.secondary}
         >
           <MapCallout showTooltip>
             <Text>With Callout</Text>
@@ -45,14 +45,14 @@ const MapViewExample = ({ theme }) => {
         <MapMarker
           latitude={43.741895}
           longitude={-73.989308}
-          pinColor={theme.colors.primary}
+          pinColor={theme.colors.branding.primary}
           title="Draftbit"
           description="A simple MapView example"
         />
         <MapMarker
           latitude={43.741895}
           longitude={-73.979308}
-          pinColor={theme.colors.secondary}
+          pinColor={theme.colors.branding.secondary}
         >
           <MapCallout showTooltip>
             <Text>With Callout</Text>

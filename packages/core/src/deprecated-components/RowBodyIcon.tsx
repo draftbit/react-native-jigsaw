@@ -1,6 +1,6 @@
 import * as React from "react";
-import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 
 import Row from "../components/Row";
@@ -12,7 +12,7 @@ type Props = {
   subtitle?: string;
   icon: string;
   style?: StyleProp<ViewStyle>;
-  theme: Theme;
+  theme: ReadTheme;
 } & IconSlot;
 
 /**
@@ -29,16 +29,16 @@ const RowBodyIcon: React.FC<React.PropsWithChildren<Props>> = ({
   return (
     <Row
       titleTypeStyle={typography.body1}
-      titleColor={colors.medium}
+      titleColor={colors.text.medium}
       subtitleTypeStyle={typography.subtitle2}
-      subtitleColor={colors.light}
+      subtitleColor={colors.foreground.brand}
       title={title}
       subtitle={subtitle}
       right={() => (
         <Icon
           name={icon}
           size={Config.rowSingleLineIconSize}
-          color={colors.light}
+          color={colors.foreground.brand}
           style={{ marginLeft: 16 }}
         />
       )}

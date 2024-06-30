@@ -1,6 +1,6 @@
 import * as React from "react";
-import { withTheme } from "../theming";
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 
 import Row from "../components/Row";
@@ -14,7 +14,7 @@ type Props = {
   multilineSubtitle?: boolean;
   icon: string;
   style?: StyleProp<ViewStyle>;
-  theme: Theme;
+  theme: ReadTheme;
 } & IconSlot;
 
 /**
@@ -33,9 +33,9 @@ const RowHeadlineImageIcon: React.FC<React.PropsWithChildren<Props>> = ({
   return (
     <Row
       titleTypeStyle={typography.headline6}
-      titleColor={colors.strong}
+      titleColor={colors.text.strong}
       subtitleTypeStyle={typography.body2}
-      subtitleColor={colors.medium}
+      subtitleColor={colors.text.medium}
       title={title}
       subtitle={subtitle}
       multilineSubtitle={multilineSubtitle}
@@ -48,7 +48,7 @@ const RowHeadlineImageIcon: React.FC<React.PropsWithChildren<Props>> = ({
               ? Config.rowMultiLineIconSize
               : Config.rowSingleLineIconSize
           }
-          color={colors.light}
+          color={colors.text.light}
           style={{
             marginLeft: 16,
             alignSelf: multilineSubtitle ? "flex-start" : "center",

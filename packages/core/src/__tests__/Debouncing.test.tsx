@@ -4,7 +4,7 @@ import TextInput from "../components/TextInput";
 import TextField from "../components/TextField";
 import NumberInput from "../components/NumberInput";
 import { PinInput } from "../components/PinInput";
-import DefaultTheme, { Theme } from "../styles/DefaultTheme";
+import { DefaultTheme } from "@draftbit/theme";
 import { IconI } from "../interfaces/Icon";
 
 jest.useFakeTimers();
@@ -40,9 +40,9 @@ describe("Text Input debouncing test", () => {
       const Wrapper: React.FC = () => {
         const [value, setValue] = React.useState("");
         return (
-          //@ts-ignore
           <TextField
-            theme={DefaultTheme as Theme}
+            //@ts-ignore
+            theme={DefaultTheme}
             Icon={React.Fragment as IconI}
             value={value}
             onChangeText={(text) => setValue(text)}

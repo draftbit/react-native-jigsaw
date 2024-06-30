@@ -1,15 +1,15 @@
 import React from "react";
-import { withTheme } from "../theming";
+import { withTheme } from "@draftbit/theme";
 import Touchable from "../components/Touchable";
 import { StyleProp, ViewStyle } from "react-native";
-import theme from "../styles/DefaultTheme";
+import type { ReadTheme } from "@draftbit/theme";
 
 type Props = {
   numColumns?: number;
   children?: React.ReactNode;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
-  theme: typeof theme;
+  theme: ReadTheme;
 };
 
 const getWidth = (numColumns: number) => {

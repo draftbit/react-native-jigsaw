@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { withTheme } from "../../../theming";
+import { useTheme } from "@draftbit/theme";
 import Slider from "@react-native-community/slider";
 import HeadlessAudioPlayer from "./HeadlessAudioPlayer";
 import {
@@ -21,12 +21,11 @@ const AudioPlayerWithInterface = React.forwardRef<
   (
     {
       style,
-      theme,
-      thumbColor = theme.colors.primary,
-      completedTrackColor = theme.colors.primary,
-      remainingTrackColor = theme.colors.divider,
+      thumbColor,
+      completedTrackColor,
+      remainingTrackColor,
       togglePlaybackIconSize = 24,
-      togglePlaybackIconColor = theme.colors.primary,
+      togglePlaybackIconColor,
       onPlaybackStatusUpdate: onPlaybackStatusUpdateProp,
       onPlaybackFinish: onPlaybackFinishProp,
       hidePlaybackIcon = false,
@@ -44,6 +43,7 @@ const AudioPlayerWithInterface = React.forwardRef<
     const [isDraggingSlider, setIsDraggingSlider] = React.useState(false);
     const [sliderPositionMillis, setSliderPositionMillis] = React.useState(0);
     const newHeadlessAudioPlayerRef = React.useRef<MediaPlayerRef>(null);
+    const theme = useTheme();
 
     // Use the provided ref or default to new ref when not provided
     const headlessAudioPlayerRef = ref
@@ -51,7 +51,7 @@ const AudioPlayerWithInterface = React.forwardRef<
       : newHeadlessAudioPlayerRef;
 
     const {
-      color,
+      color = theme.colors.text.strong,
       fontFamily,
       fontWeight,
       fontSize,
@@ -129,8 +129,8 @@ const AudioPlayerWithInterface = React.forwardRef<
           testID="audio-player-interface"
           style={[
             {
-              backgroundColor: theme.colors.background,
-              borderColor: theme.colors.divider,
+              backgroundColor: theme.colors.background.brand,
+              borderColor: theme.colors.border.brand,
             },
             styles.container,
             viewStyles,
@@ -145,18 +145,14 @@ const AudioPlayerWithInterface = React.forwardRef<
               <AntDesign
                 name={iconName as any}
                 size={togglePlaybackIconSize}
-                color={togglePlaybackIconColor}
+                color={togglePlaybackIconColor ?? theme.colors.branding.primary}
               />
             </Pressable>
           )}
           {!hideDuration && (
             <Text
               testID="audio-player-duration"
-              style={[
-                { color: theme.colors.strong },
-                styles.spacingEnd,
-                { ...textStyles },
-              ]}
+              style={[styles.spacingEnd, textStyles]}
             >
               {formatDuration(sliderPositionMillis ?? 0)} /{" "}
               {formatDuration(durationMillis || 0)}
@@ -166,9 +162,13 @@ const AudioPlayerWithInterface = React.forwardRef<
             <Slider
               testID="audio-player-slider"
               style={styles.slider}
-              minimumTrackTintColor={completedTrackColor}
-              maximumTrackTintColor={remainingTrackColor}
-              thumbTintColor={thumbColor}
+              minimumTrackTintColor={
+                completedTrackColor ?? theme.colors.branding.primary
+              }
+              maximumTrackTintColor={
+                remainingTrackColor ?? theme.colors.border.brand
+              }
+              thumbTintColor={thumbColor ?? theme.colors.branding.primary}
               minimumValue={0}
               value={sliderPositionMillis}
               maximumValue={durationMillis}
@@ -216,4 +216,4 @@ function formatDuration(duration: number) {
   return renderedMinutes + ":" + renderedSeconds;
 }
 
-export default withTheme(AudioPlayerWithInterface);
+export default AudioPlayerWithInterface;

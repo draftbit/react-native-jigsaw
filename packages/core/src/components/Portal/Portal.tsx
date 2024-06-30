@@ -1,18 +1,12 @@
 import * as React from "react";
 import PortalConsumer from "./PortalConsumer";
 import PortalHost, { PortalContext, PortalMethods } from "./PortalHost";
-import { ThemeProvider, withTheme } from "../../theming";
-import type { Theme } from "../../styles/DefaultTheme";
 
 type Props = {
   /**
    * Content of the `Portal`.
    */
   children: React.ReactNode;
-  /**
-   * @optional
-   */
-  theme: Theme;
 };
 
 /**
@@ -41,14 +35,13 @@ class Portal extends React.Component<Props> {
   static Host = PortalHost;
 
   render() {
-    const { children, theme } = this.props;
+    const { children } = this.props;
 
     return (
       <PortalContext.Consumer>
         {(manager) => (
           <PortalConsumer manager={manager as PortalMethods}>
-            {/* @ts-ignore */}
-            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+            {children}
           </PortalConsumer>
         )}
       </PortalContext.Consumer>
@@ -56,4 +49,4 @@ class Portal extends React.Component<Props> {
   }
 }
 
-export default withTheme(Portal);
+export default Portal;

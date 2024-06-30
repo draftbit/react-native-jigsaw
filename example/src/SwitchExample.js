@@ -8,7 +8,7 @@ function SwitchExample({ theme }) {
   const handleChange = (v) => toggle(v);
 
   return (
-    <Container style={{ backgroundColor: theme.colors.background }}>
+    <Container style={{ backgroundColor: theme.colors.background.brand }}>
       <Section title="Enabled">
         <Switch value={value} disabled={false} onValueChange={handleChange} />
       </Section>

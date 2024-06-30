@@ -1,3 +1,4 @@
+import { ReadTheme, withTheme } from "@draftbit/theme";
 import React from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
 import SwiperComponent from "react-native-web-swiper";
@@ -25,9 +26,11 @@ export interface SwiperProps<T> {
   onIndexChanged?: (index: number) => void;
   minDistanceForAction?: number;
   minDistanceToCapture?: number;
+  theme: ReadTheme;
 }
 
 const Swiper = ({
+  theme,
   vertical = false,
   loop = false,
   timeout = 0,
@@ -37,8 +40,8 @@ const Swiper = ({
   prevTitleColor,
   nextTitleColor,
   dotsTouchable = true,
-  dotColor,
-  dotActiveColor,
+  dotColor = theme.colors.foreground.brand,
+  dotActiveColor = theme.colors.branding.primary,
   data,
   keyExtractor,
   renderItem,
@@ -145,4 +148,4 @@ const Swiper = ({
   );
 };
 
-export default Swiper;
+export default withTheme(Swiper);

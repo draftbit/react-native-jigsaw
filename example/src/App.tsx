@@ -19,7 +19,14 @@ import {
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import "react-native-gesture-handler";
 
-import { Provider, DefaultTheme, ScreenContainer } from "@draftbit/ui";
+import {
+  Provider,
+  DefaultTheme,
+  ScreenContainer,
+  useTheme,
+  createTheme,
+  useChangeTheme,
+} from "@draftbit/ui";
 import {
   SafeAreaProvider,
   initialWindowMetrics,
@@ -65,8 +72,10 @@ import CircularProgressExample from "./CircularProgressExample";
 import VideoPlayerExample from "./VideoPlayerExample";
 import PinInputExample from "./PinInputExample";
 import KeyboardAvoidingViewExample from "./KeyboardAvoidingViewExample";
+import ThemeExample from "./ThemeExample";
 
 const ROUTES = {
+  Theme: ThemeExample,
   AudioPlayer: AudioPlayerExample,
   Layout: LayoutExample,
   Icon: IconExample,
@@ -123,10 +132,102 @@ type SplashScreenProviderProps = { image: ImageSourcePropType };
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
+const themeBreakpoints = {
+  mobile: 0,
+  tablet: 480,
+  laptop: 992,
+  desktop: 1440,
+  bigScreen: 1920,
+};
+
+const BaseTheme = createTheme({
+  breakpoints: themeBreakpoints,
+  palettes: {},
+  theme: {
+    name: "BaseTheme",
+    colors: {
+      background: {
+        platformTest: {
+          default: "purple",
+          ios: "blue",
+          android: "green",
+        },
+        breakpointTest: {
+          default: "purple",
+          tablet: "yellow",
+          laptop: "red",
+        },
+      },
+    },
+    typography: {},
+  },
+  baseTheme: DefaultTheme,
+});
+
+const DarkTheme = createTheme({
+  breakpoints: themeBreakpoints,
+  palettes: {},
+  theme: {
+    name: "DarkTheme",
+    colors: {
+      background: {
+        brand: "#404040",
+      },
+      text: {
+        normal: "white",
+        strong: "white",
+      },
+    },
+    typography: {},
+  },
+  baseTheme: BaseTheme,
+});
+
+const LightTheme = createTheme({
+  breakpoints: themeBreakpoints,
+  palettes: {},
+  theme: {
+    name: "LightTheme",
+    colors: {},
+    typography: {},
+  },
+  baseTheme: BaseTheme,
+});
+
+const OtherTheme = createTheme({
+  breakpoints: themeBreakpoints,
+  palettes: {},
+  theme: {
+    name: "OtherTheme",
+    colors: {
+      branding: {
+        primary: "#A91D3A",
+        secondary: "#824D74",
+      },
+      background: {
+        brand: "black",
+      },
+      text: {
+        strong: "white",
+        normal: "white",
+      },
+      border: {
+        brand: "#FDAF7B",
+      },
+    },
+    typography: {},
+  },
+  baseTheme: BaseTheme,
+});
+
 export default function App() {
   return (
     <SplashScreenProvider image={splashImage}>
-      <Provider theme={DefaultTheme}>
+      <Provider
+        themes={[LightTheme, DarkTheme, OtherTheme]}
+        breakpoints={themeBreakpoints}
+        initialThemeName={"LightTheme"}
+      >
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
           <Examples />
         </SafeAreaProvider>
@@ -228,6 +329,8 @@ const AnimatedSplashScreen: React.FC<
 
 function Example({ title, children }: ExampleProps) {
   const navigation = useNavigation();
+  const theme = useTheme();
+  const changeTheme = useChangeTheme();
 
   return (
     <ScreenContainer
@@ -235,8 +338,14 @@ function Example({ title, children }: ExampleProps) {
       hasTopSafeArea={true}
       hasBottomSafeArea={true}
       scrollable={false}
+      style={{ backgroundColor: theme.colors.background.brand }}
     >
-      <View style={exampleStyles.headerStyle}>
+      <View
+        style={[
+          exampleStyles.headerStyle,
+          { backgroundColor: theme.colors.branding.primary },
+        ]}
+      >
         <TouchableOpacity
           style={exampleStyles.menuButtonStyle}
           onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
@@ -248,6 +357,23 @@ function Example({ title, children }: ExampleProps) {
         </TouchableOpacity>
 
         <Text style={[exampleStyles.headerTextStyle]}>{title}</Text>
+        <TouchableOpacity
+          style={exampleStyles.menuButtonStyle}
+          onPress={() => {
+            if (theme.name === "LightTheme") {
+              changeTheme("DarkTheme");
+            } else if (theme.name === "DarkTheme") {
+              changeTheme("OtherTheme");
+            } else {
+              changeTheme("LightTheme");
+            }
+          }}
+        >
+          <Image
+            style={exampleStyles.menuButtonImageStyle}
+            source={require("./assets/images/theme.png")}
+          />
+        </TouchableOpacity>
       </View>
       <ScreenContainer scrollable={true} hasSafeArea={false}>
         {children}
@@ -257,12 +383,13 @@ function Example({ title, children }: ExampleProps) {
 }
 
 function Examples() {
+  const theme = useTheme();
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="Layout"
+        initialRouteName="Theme"
         screenOptions={{
-          drawerActiveTintColor: "rgba(90, 69, 255, 1)",
+          drawerActiveTintColor: theme.colors.branding.primary,
           headerShown: false,
         }}
       >
@@ -290,7 +417,6 @@ const exampleStyles = StyleSheet.create({
   },
   headerStyle: {
     flexDirection: "row",
-    backgroundColor: "rgba(90, 69, 255, 1)",
     alignItems: "center",
     justifyContent: "flex-start",
     height: "10%",

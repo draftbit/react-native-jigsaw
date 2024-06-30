@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.json",
-  "references": [{ "path": "../types" }],
+  "references": [{ "path": "../theme" }],
   "compilerOptions": {
     "outDir": "./lib/typescript"
   }

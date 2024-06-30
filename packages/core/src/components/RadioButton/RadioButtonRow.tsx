@@ -14,6 +14,7 @@ import type { IconSlot } from "../../interfaces/Icon";
 import { Direction as GroupDirection } from "./context";
 import Touchable from "../Touchable";
 import { extractStyles, getValueForRadioButton } from "../../utilities";
+import { ReadTheme, withTheme } from "@draftbit/theme";
 
 export enum Direction {
   Row = "row",
@@ -30,6 +31,7 @@ export interface RadioButtonRowProps extends Omit<RadioButtonProps, "onPress"> {
   labelStyle?: StyleProp<TextStyle>;
   onPress?: (value: string) => void;
   direction?: Direction;
+  theme: ReadTheme;
 }
 
 const getRadioButtonAlignment = (
@@ -71,6 +73,7 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
   selected,
   disabled,
   style,
+  theme,
   ...rest
 }) => {
   const {
@@ -106,7 +109,11 @@ const RadioButtonRow: React.FC<RadioButtonRowProps & IconSlot> = ({
           labelContainerStyle,
         ]}
       >
-        {renderLabel(label, labelStyle, textStyles)}
+        {renderLabel(
+          label,
+          labelStyle,
+          StyleSheet.flatten([{ color: theme.colors.text.strong }, textStyles])
+        )}
       </View>
       <View
         style={{
@@ -148,4 +155,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RadioButtonRow;
+export default withTheme(RadioButtonRow);

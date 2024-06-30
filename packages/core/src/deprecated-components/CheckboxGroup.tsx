@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
-import type { Theme } from "../styles/DefaultTheme";
+import type { ReadTheme } from "@draftbit/theme";
 import {
   checkboxGroupContext,
   Direction,
@@ -11,7 +11,7 @@ export interface CheckboxGroupProps {
   style?: StyleProp<ViewStyle>;
   values: string[];
   onValueChange: (value: string, selected: boolean) => void;
-  theme: Theme;
+  theme: ReadTheme;
   children: React.ReactNode;
 }
 

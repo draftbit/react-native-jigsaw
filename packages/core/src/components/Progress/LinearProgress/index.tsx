@@ -5,7 +5,7 @@ import {
   ValueProgressProps,
 } from "../ProgressCommon";
 import { LinearProgress as LinearProgressComponent } from "./LinearProgress";
-import { withTheme } from "../../../theming";
+import { withTheme } from "@draftbit/theme";
 
 const LinearProgress: React.FC<
   ValueProgressProps & IndeterminateProgressProps

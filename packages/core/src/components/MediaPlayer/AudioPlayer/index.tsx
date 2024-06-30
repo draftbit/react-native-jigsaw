@@ -1,5 +1,4 @@
 import * as React from "react";
-import { withTheme } from "../../../theming";
 import {
   AudioPlayerInterfaceProps,
   HeadlessAudioPlayerProps,
@@ -20,11 +19,10 @@ const AudioPlayer = React.forwardRef<
     case "headless":
       return <HeadlessAudioPlayer ref={ref} {...rest} />;
     case "interface":
-      //@ts-ignore Typescript unable to handle nested passing of theme
       return <AudioPlayerWithInterface ref={ref} {...rest} />;
   }
 });
 
-export default withTheme(AudioPlayer);
+export default AudioPlayer;
 
 export type { MediaPlayerRef as AudioPlayerRef } from "../MediaPlayerCommon";

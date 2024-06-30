@@ -8,10 +8,8 @@ import {
   TextStyle,
   ActivityIndicator,
 } from "react-native";
-
-import { withTheme } from "../theming";
-
-import type { Theme } from "../styles/DefaultTheme";
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 
 const CONSTANTS = {
@@ -50,7 +48,7 @@ type Props = {
   delayLongPress?: number;
   hitSlop?: number;
   icon?: string;
-  theme: Theme;
+  theme: ReadTheme;
 } & PressableProps &
   IconSlot;
 
@@ -147,9 +145,10 @@ const Solid = ({ style, theme, ...props }: Props): JSX.Element => {
     <Base
       style={[
         {
+          //@ts-ignore
           color: "#FFF",
-          borderRadius: theme.roundness,
-          backgroundColor: theme.colors.primary,
+          borderRadius: 8,
+          backgroundColor: theme.colors.branding.primary,
         },
         style,
       ]}
@@ -173,9 +172,10 @@ const Outline = ({ style, theme, ...props }: Props): JSX.Element => {
       style={[
         styles.outline,
         {
-          borderRadius: theme.roundness,
-          borderColor: theme.colors.primary,
-          color: theme.colors.primary,
+          borderRadius: 8,
+          borderColor: theme.colors.branding.primary,
+          //@ts-ignore
+          color: theme.colors.branding.primary,
         },
         style,
       ]}

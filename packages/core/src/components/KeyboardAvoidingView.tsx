@@ -8,7 +8,7 @@ import {
 const isIos = Platform.OS === "ios";
 const isAndroid = Platform.OS === "android";
 
-type KeyboardAvoidingViewBehavior = "height" | "position" | "padding";
+type KeyboardAvoidingViewBehavior = "height" | "position" | "padding" | null;
 
 interface KeyboardAvoidingViewProps extends ViewProps {
   enabled?: boolean;
@@ -51,7 +51,7 @@ const KeyboardAvoidingView: React.FC<KeyboardAvoidingViewProps> = ({
 
   return (
     <KeyboardAvoidingViewComponent
-      behavior={behaviorResult}
+      behavior={behaviorResult ?? undefined}
       keyboardVerticalOffset={keyboardVerticalOffsetResult}
       {...rest}
     />

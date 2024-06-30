@@ -126,7 +126,11 @@ SplashScreen.preventAutoHideAsync().catch(() => {});
 export default function App() {
   return (
     <SplashScreenProvider image={splashImage}>
-      <Provider theme={DefaultTheme}>
+      <Provider
+        themes={[DefaultTheme]}
+        breakpoints={{}}
+        initialThemeName={DefaultTheme.name}
+      >
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
           <Examples />
         </SafeAreaProvider>

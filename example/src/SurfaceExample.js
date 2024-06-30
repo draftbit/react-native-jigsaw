@@ -5,7 +5,7 @@ import Section, { Container } from "./Section";
 
 function SurfaceExample({ theme }) {
   return (
-    <Container style={{ backgroundColor: theme.colors.background }}>
+    <Container style={{ backgroundColor: theme.colors.background.brand }}>
       <Section title="overflow: 'hidden', backgroundColor: 'pink'">
         <Surface
           style={{

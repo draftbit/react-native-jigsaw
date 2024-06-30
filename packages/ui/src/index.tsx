@@ -77,7 +77,16 @@ export {
   SimpleStyleSwipeableList,
 } from "@draftbit/core";
 
-export { DefaultTheme, ThemeProvider, withTheme } from "@draftbit/theme";
+export {
+  DefaultTheme,
+  withTheme,
+  useChangeTheme,
+  useTheme,
+  ReadTheme,
+  Breakpoints,
+  ColorPalettes,
+  createTheme,
+} from "@draftbit/theme";
 
 /**
  * Components with Injected Dependencies

@@ -10,7 +10,7 @@ function StepperExample({ theme }) {
   const handleChange = (v) => setValue(v);
 
   return (
-    <Container style={{ backgroundColor: theme.colors.background }}>
+    <Container style={{ backgroundColor: theme.colors.background.brand }}>
       <Section title="With State">
         <Stepper value={value} onChange={handleChange} />
       </Section>
@@ -37,7 +37,7 @@ function StepperExample({ theme }) {
           onChange={(v) => setValue3(v)}
           min={0}
           max={10}
-          style={{fontSize: 24, color: theme.colors.primary}}
+          style={{ fontSize: 24, color: theme.colors.branding.primary }}
         />
       </Section>
     </Container>

@@ -66,8 +66,8 @@ const Checkbox: React.FC<CheckboxProps & PressableProps & IconSlot> = ({
   const { colors } = useTheme();
 
   const checkboxColor = internalValue
-    ? color || colors.primary
-    : uncheckedColor || colors.primary;
+    ? color || colors.branding.primary
+    : uncheckedColor || colors.branding.primary;
 
   const handlePress = () => {
     const newValue = !internalValue;

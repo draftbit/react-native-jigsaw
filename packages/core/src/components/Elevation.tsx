@@ -7,12 +7,12 @@ import {
   ViewStyle,
   View,
 } from "react-native";
-import { withTheme, shadow } from "@draftbit/theme";
-import type { Theme } from "@draftbit/theme";
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 
 type Props = {
   style?: StyleProp<ViewStyle>;
-  theme: Theme;
+  theme: ReadTheme;
 } & ViewProps;
 
 /* directly copied from https://github.com/callstack/react-native-paper/blob/main/src/components/Surface.tsx#L62 */
@@ -33,9 +33,9 @@ const Elevation: React.FC<React.PropsWithChildren<Props>> = ({
       style={[
         {
           borderRadius,
-          backgroundColor: colors.surface,
+          backgroundColor: colors.background.brand,
         },
-        elevation ? shadow(elevation) : null,
+        elevation ? { elevation } : null,
         style,
       ]}
     >

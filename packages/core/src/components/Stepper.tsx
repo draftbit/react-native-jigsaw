@@ -3,7 +3,7 @@ import { View, Text, StyleProp, ViewStyle, TextStyle } from "react-native";
 import { isNumber } from "lodash";
 
 import { withTheme } from "@draftbit/theme";
-import type { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 import IconButton from "./IconButton";
 import { extractStyles } from "../utilities";
@@ -17,7 +17,7 @@ type Props = {
   iconSize: number;
   iconColor?: string;
   onChange?: (value: number) => void;
-  theme: Theme;
+  theme: ReadTheme;
 } & IconSlot;
 
 const Stepper: FC<Props> = ({
@@ -76,7 +76,7 @@ const Stepper: FC<Props> = ({
           {
             textAlign: "center",
             alignSelf: "center",
-            color: colors.medium,
+            color: colors.text.medium,
             marginHorizontal: 8,
           },
           textStyles,

@@ -1,4 +1,4 @@
-import type { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 export interface DatePickerComponentProps {
   value: Date;
   onChange: (e: any, data?: any) => void;
@@ -7,5 +7,5 @@ export interface DatePickerComponentProps {
   isVisible?: boolean;
   minimumDate?: Date;
   maximumDate?: Date;
-  theme?: Theme;
+  theme?: ReadTheme;
 }

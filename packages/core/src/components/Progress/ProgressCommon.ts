@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from "react-native";
-import { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 
 type LineCap = "round" | "square";
 
@@ -26,7 +26,7 @@ export interface BaseProgressProps {
   trackCustomDashArray?: string;
   onFullPathWidth?: (width: number) => void;
   style?: StyleProp<ViewStyle>;
-  theme: Theme;
+  theme: ReadTheme;
   testID?: string;
 }
 export interface ValueProgressProps extends BaseProgressProps {

@@ -10,7 +10,7 @@ import {
   Platform,
 } from "react-native";
 import { withTheme } from "@draftbit/theme";
-import type { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 
 type Props = {
@@ -20,7 +20,7 @@ type Props = {
   disabled?: boolean;
   loading?: boolean;
   onPress: () => void;
-  theme: Theme;
+  theme: ReadTheme;
   style?: StyleProp<ViewStyle>;
   activeOpacity?: number;
   disabledOpacity?: number;
@@ -41,7 +41,7 @@ const IconButton: React.FC<React.PropsWithChildren<Props>> = ({
   disabledOpacity = 0.8,
   ...props
 }) => {
-  const iconColor = customColor || theme.colors.primary;
+  const iconColor = customColor || theme.colors.branding.primary;
 
   return (
     <Pressable

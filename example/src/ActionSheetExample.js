@@ -20,7 +20,7 @@ function ActionSheetExample({ theme }) {
   }, []);
 
   return (
-    <Container style={{ backgroundColor: theme.colors.background }}>
+    <Container style={{ backgroundColor: theme.colors.background.brand }}>
       <Section title="Action Sheet">
         <ButtonSolid title="Open Action Sheet" onPress={showActionSheet} />
         <ActionSheet visible={visible} onClose={hideActionSheet}>
@@ -30,7 +30,7 @@ function ActionSheetExample({ theme }) {
             you to show some long text message like this."
           />
           <ActionSheetItem
-            style={{ color: theme.colors.error }}
+            style={{ color: theme.colors.text.danger }}
             onPress={hideActionSheet}
             label="Delete Draft"
           />

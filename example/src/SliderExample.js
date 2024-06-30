@@ -9,7 +9,7 @@ function SliderExample({ theme }) {
   const handleChange = (v) => setValue(v);
 
   return (
-    <Container style={{ backgroundColor: theme.colors.background }}>
+    <Container style={{ backgroundColor: theme.colors.background.brand }}>
       <Section title="Uncontrolled">
         <Slider
           onValueChange={console.log}
@@ -20,9 +20,9 @@ function SliderExample({ theme }) {
       <Section title="Controlled">
         <Slider
           step={10}
-          maximumTrackTintColor={theme.colors.light}
-          minimumTrackTintColor={theme.colors.primary}
-          thumbTintColor={theme.colors.primary}
+          maximumTrackTintColor={theme.colors.foreground.brand}
+          minimumTrackTintColor={theme.colors.branding.primary}
+          thumbTintColor={theme.colors.branding.primary}
           value={value}
           minimumValue={0}
           maximumValue={100}
@@ -35,9 +35,9 @@ function SliderExample({ theme }) {
       <Section title="Controlled with initial value">
         <Slider
           step={10}
-          maximumTrackTintColor={theme.colors.light}
-          minimumTrackTintColor={theme.colors.primary}
-          thumbTintColor={theme.colors.primary}
+          maximumTrackTintColor={theme.colors.foreground.brand}
+          minimumTrackTintColor={theme.colors.branding.primary}
+          thumbTintColor={theme.colors.branding.primary}
           value={value2}
           minimumValue={0}
           maximumValue={100}

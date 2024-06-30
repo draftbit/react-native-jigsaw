@@ -19,7 +19,7 @@ import {
 } from "../../utilities";
 import { SwipeRow } from "react-native-swipe-list-view";
 import { IconSlot } from "../../interfaces/Icon";
-import type { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import { withTheme } from "@draftbit/theme";
 import SwipeableItemButton, {
   SwipeableItemButtonProps,
@@ -67,7 +67,7 @@ export interface SwipeableItemProps extends IconSlot {
   swipeToOpenPercent?: number;
   swipeToClosePercent?: number;
   style?: StyleProp<ViewStyle | TextStyle>;
-  theme: Theme;
+  theme: ReadTheme;
 }
 
 type Props = SwipeableItemProps & RightSwipeProps & LeftSwipeProps;
@@ -197,19 +197,25 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
       }}
       style={[
         styles.buttonContainer,
-        { backgroundColor: item.backgroundColor || theme.colors.primary },
+        {
+          backgroundColor:
+            item.backgroundColor || theme.colors.branding.primary,
+        },
       ]}
     >
       {item.icon && (
         <Icon
           name={item.icon}
           size={item.iconSize || 25}
-          color={item.color || theme.colors.surface}
+          color={item.color || theme.colors.background.brand}
         />
       )}
       {item.title && (
         <Text
-          style={[textStyles, { color: item.color || theme.colors.surface }]}
+          style={[
+            textStyles,
+            { color: item.color || theme.colors.background.brand },
+          ]}
         >
           {item.title}
         </Text>
@@ -288,7 +294,7 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
           style={[
             styles.surfaceContainer,
             {
-              backgroundColor: theme.colors.background,
+              backgroundColor: theme.colors.background.brand,
             },
             surfaceContainerStyles,
           ]}

@@ -2,7 +2,7 @@ import * as React from "react";
 import PortalConsumer from "./PortalConsumer";
 import PortalHost, { PortalContext, PortalMethods } from "./PortalHost";
 import { ThemeProvider, withTheme } from "@draftbit/theme";
-import type { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 
 type Props = {
   /**
@@ -12,7 +12,7 @@ type Props = {
   /**
    * @optional
    */
-  theme: Theme;
+  theme: ReadTheme;
 };
 
 /**

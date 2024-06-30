@@ -2,7 +2,7 @@ import * as React from "react";
 import { Text, ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
 import { withTheme } from "@draftbit/theme";
 import Row from "../components/Row";
-import type { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 
 type Props = {
   title?: string;
@@ -10,7 +10,7 @@ type Props = {
   caption?: string;
   image: string | ImageSourcePropType;
   style?: StyleProp<ViewStyle>;
-  theme: Theme;
+  theme: ReadTheme;
 };
 
 /**
@@ -27,9 +27,9 @@ const RowHeadlineImageCaption: React.FC<React.PropsWithChildren<Props>> = ({
   return (
     <Row
       titleTypeStyle={typography.headline6}
-      titleColor={colors.strong}
+      titleColor={colors.text.strong}
       subtitleTypeStyle={typography.body2}
-      subtitleColor={colors.medium}
+      subtitleColor={colors.text.medium}
       title={title}
       subtitle={subtitle}
       image={image}
@@ -37,7 +37,7 @@ const RowHeadlineImageCaption: React.FC<React.PropsWithChildren<Props>> = ({
         <Text
           style={{
             ...typography.caption,
-            color: colors.strong,
+            color: colors.text.strong,
             marginLeft: 16,
           }}
         >

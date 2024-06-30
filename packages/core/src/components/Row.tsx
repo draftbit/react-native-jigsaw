@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { withTheme } from "@draftbit/theme";
 import Config from "./Config";
-import type { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 
 type Props = {
   titleTypeStyle?: StyleProp<TextStyle>;
@@ -24,7 +24,7 @@ type Props = {
   image?: string | ImageSourcePropType;
   right?: () => React.ReactNode;
   style?: StyleProp<ViewStyle>;
-  theme: Theme;
+  theme: ReadTheme;
 };
 
 const Row: React.FC<React.PropsWithChildren<Props>> = ({

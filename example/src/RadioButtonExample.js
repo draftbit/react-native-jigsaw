@@ -41,7 +41,7 @@ const RadioButtonGroupExample = ({ theme }) => {
             <RadioButton value="3" disabled />
           </SingleRadioButtonWrapper>
           <SingleRadioButtonWrapper label="Custom color">
-            <RadioButton value="4" color={theme.colors.error} />
+            <RadioButton value="4" color={theme.colors.text.danger} />
           </SingleRadioButtonWrapper>
         </RadioButtonGroup>
       </Section>
@@ -149,7 +149,7 @@ const RadioButtonGroupExample = ({ theme }) => {
             <RadioButton value="3" disabled />
           </SingleRadioButtonWrapper>
           <SingleRadioButtonWrapper label="Custom color">
-            <RadioButton value="4" color={theme.colors.error} />
+            <RadioButton value="4" color={theme.colors.text.danger} />
           </SingleRadioButtonWrapper>
         </RadioButtonGroup>
       </Section>

@@ -8,13 +8,13 @@ import {
   ViewStyle,
 } from "react-native";
 
-import { withTheme, shadow, overlay } from "@draftbit/theme";
-import type { Theme } from "@draftbit/theme";
+import { withTheme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 
 type Props = {
   elevation?: number;
   style?: StyleProp<ViewStyle>;
-  theme: Theme;
+  theme: ReadTheme;
 } & ViewProps;
 
 const Surface: React.FC<React.PropsWithChildren<Props>> = ({
@@ -30,19 +30,15 @@ const Surface: React.FC<React.PropsWithChildren<Props>> = ({
     ...restStyle
   } = (StyleSheet.flatten(style) || {}) as ViewStyle;
 
-  const { dark: isDarkTheme, mode, colors } = theme;
+  const { colors } = theme;
 
   const elevation = propElevation ?? styleElevation;
-
-  const evalationStyles = elevation ? shadow(elevation) : {};
 
   const getBackgroundColor = () => {
     if (backgroundColor) {
       return backgroundColor;
-    } else if (isDarkTheme && mode === "adaptive") {
-      return overlay(elevation, colors.surface);
     } else {
-      return colors.surface;
+      return colors.background.brand;
     }
   };
 
@@ -53,7 +49,6 @@ const Surface: React.FC<React.PropsWithChildren<Props>> = ({
         {
           backgroundColor: getBackgroundColor(),
           elevation,
-          ...evalationStyles,
           ...restStyle,
         },
       ]}

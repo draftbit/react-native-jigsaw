@@ -1,13 +1,12 @@
 import * as React from "react";
 import { Text, StyleProp, ViewStyle, StyleSheet } from "react-native";
-import { RowDirection } from "@draftbit/theme";
 import { extractStyles } from "../utilities";
 import Touchable from "./Touchable";
 
 type Props = {
   disabled?: boolean;
   label: string;
-  direction: RowDirection;
+  direction: "row" | "column";
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
   onPress: () => void;

@@ -11,14 +11,14 @@ import Text from "../components/Text";
 import type { IconSlot } from "../interfaces/Icon";
 import { extractStyles } from "../utilities";
 import { withTheme } from "@draftbit/theme";
-import type { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 
 type Props = {
   icon?: string;
   label: string;
   iconColor?: string;
   style?: StyleProp<ViewStyle>;
-  theme: Theme;
+  theme: ReadTheme;
 } & IconSlot;
 
 /**
@@ -42,7 +42,7 @@ const AccordionItem = ({
           <Icon
             name={icon}
             size={24}
-            color={iconColor || theme.colors.primary}
+            color={iconColor || theme.colors.branding.primary}
           />
         ) : null}
         <View style={[styles.item, styles.content]}>

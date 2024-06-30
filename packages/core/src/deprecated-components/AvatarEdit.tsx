@@ -4,7 +4,7 @@ import Touchable from "../components/Touchable";
 import CircleImage from "./CircleImage";
 import { withTheme } from "@draftbit/theme";
 
-import type { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import type { IconSlot } from "../interfaces/Icon";
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
   size?: number;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
-  theme: Theme;
+  theme: ReadTheme;
 } & IconSlot;
 
 /**
@@ -28,9 +28,9 @@ const AvatarEdit: React.FC<React.PropsWithChildren<Props>> = ({
   ...rest
 }) => {
   const colorStyles = {
-    editBackgroundColor: theme.colors.primary,
-    editIconColor: theme.colors.surface,
-    editBorderColor: theme.colors.surface,
+    editBackgroundColor: theme.colors.branding.primary,
+    editIconColor: theme.colors.background.brand,
+    editBorderColor: theme.colors.background.brand,
   };
 
   const dimensions = {

@@ -43,8 +43,8 @@ const CheckboxExample = ({ theme }) => {
             <Checkbox
               status={checked}
               onPress={handlePress}
-              color={theme.colors.secondary}
-              uncheckedColor={theme.colors.error}
+              color={theme.colors.branding.secondary}
+              uncheckedColor={theme.colors.text.danger}
             />
           </SingleCheckboxWrapper>
           <SingleCheckboxWrapper label="Custom icons">

@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle, TextStyle } from "react-native";
-import type { Theme } from "@draftbit/theme";
+import type { ReadTheme } from "@draftbit/theme";
 import { MediaPlayerProps } from "../MediaPlayerCommon";
 
 export type AudioInterruptionMode = "lower volume" | "stop";
@@ -21,5 +21,5 @@ export interface AudioPlayerInterfaceProps {
   hidePlaybackIcon?: boolean;
   hideDuration?: boolean;
   hideSlider?: boolean;
-  theme: Theme;
+  theme: ReadTheme;
 }

@@ -11,7 +11,6 @@ import {
   validateTheme,
 } from "./validators";
 
-// rebuild
 export default function createTheme({
   breakpoints,
   palettes,

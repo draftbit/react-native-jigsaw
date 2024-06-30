@@ -1,30 +1,45 @@
 import React from "react";
-import { StyleProp, TextStyle, ViewStyle, StyleSheet } from "react-native";
+import { StyleProp, ViewStyle } from "react-native";
 import { View, Text } from "react-native";
-import { extractBorderAndMarginStyles } from "../../utilities";
+import { extractStyles } from "../../utilities";
+import { ReadTheme, withTheme } from "@draftbit/theme";
 
 type Props = {
   visible: boolean;
   title: string;
-  labelStyle?: StyleProp<TextStyle>;
   style?: StyleProp<ViewStyle>;
+  theme: ReadTheme;
 };
 
 const Toast: React.FC<React.PropsWithChildren<Props>> = ({
   visible = false,
   title,
   style,
-  labelStyle,
+  theme,
 }) => {
   if (!visible) return null;
-  const containerStyle = StyleSheet.flatten([
-    extractBorderAndMarginStyles(style).marginStyles,
-  ]);
+  const { textStyles, viewStyles } = extractStyles(style);
   return (
-    <View style={containerStyle}>
-      <Text style={[labelStyle]}>{title}</Text>
+    <View
+      style={[
+        {
+          backgroundColor: "rgba(0,0,0,0.7)",
+        },
+        viewStyles,
+      ]}
+    >
+      <Text
+        style={[
+          {
+            color: theme.colors.text.strong,
+          },
+          textStyles,
+        ]}
+      >
+        {title}
+      </Text>
     </View>
   );
 };
 
-export default Toast;
+export default withTheme(Toast);

@@ -1,10 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
-import theme from "../../styles/DefaultTheme";
 
-type Props = {
-  theme: typeof theme;
-};
+type Props = {};
 
 const Toast: React.FC<React.PropsWithChildren<Props>> = ({}) => {
   return (

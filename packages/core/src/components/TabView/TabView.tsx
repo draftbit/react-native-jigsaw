@@ -22,6 +22,7 @@ type TabBarProps = SceneRendererProps & {
 };
 type TabBarPosition = "top" | "bottom";
 type KeyboardDismissMode = "none" | "auto" | "on-drag";
+type IconPosition = "top" | "bottom" | "left" | "right";
 
 type TabViewProps = {
   onIndexChanged?: (index: number) => void;
@@ -37,6 +38,7 @@ type TabViewProps = {
   indicatorColor?: string;
   tabsBackgroundColor?: string;
   iconSize?: number;
+  iconPosition?: IconPosition;
   style?: StyleProp<ViewStyle | TextStyle>;
   theme: ReadTheme;
 } & IconSlot;
@@ -56,6 +58,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
   indicatorColor,
   tabsBackgroundColor,
   iconSize = 16,
+  iconPosition = "top",
   style,
   theme,
   children: childrenProp,
@@ -101,6 +104,21 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
   };
 
   const renderTabBar: React.FC<TabBarProps> = (props) => {
+    let tabFlexDirection: "row" | "column" | "row-reverse" | "column-reverse";
+    switch (iconPosition) {
+      case "top":
+        tabFlexDirection = "column";
+        break;
+      case "bottom":
+        tabFlexDirection = "column-reverse";
+        break;
+      case "left":
+        tabFlexDirection = "row";
+        break;
+      case "right":
+        tabFlexDirection = "row-reverse";
+        break;
+    }
     return (
       <TabBar
         {...props}
@@ -112,6 +130,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
           backgroundColor: indicatorColor || theme.colors.branding.primary,
         }}
         labelStyle={[{ textTransform: "none" }, textStyles]}
+        tabStyle={{ flexDirection: tabFlexDirection }}
         renderIcon={({ route, color }) =>
           route?.icon ? (
             <Icon name={route.icon} color={color} size={iconSize} />

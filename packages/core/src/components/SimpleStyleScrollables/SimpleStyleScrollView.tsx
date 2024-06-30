@@ -7,19 +7,26 @@ import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
  * A ScrollView wrapper that takes a single `style` prop and internally extracts
  * the appropriate style keys into the `contentContainerStyle`
  */
-const SimpleStyleScrollView: React.FC<
-  Omit<ScrollViewProps, "contentContainerStyle">
-> = ({ style: styleProp, ...rest }) => {
-  const { style, contentContainerStyle } =
-    useSplitContentContainerStyles(styleProp);
+const SimpleStyleScrollView = React.forwardRef(
+  (
+    {
+      style: styleProp,
+      ...rest
+    }: Omit<ScrollViewProps, "contentContainerStyle">,
+    ref: React.Ref<ScrollView>
+  ) => {
+    const { style, contentContainerStyle } =
+      useSplitContentContainerStyles(styleProp);
 
-  return (
-    <ScrollView
-      style={style}
-      contentContainerStyle={contentContainerStyle}
-      {...rest}
-    />
-  );
-};
+    return (
+      <ScrollView
+        ref={ref}
+        style={style}
+        contentContainerStyle={contentContainerStyle}
+        {...rest}
+      />
+    );
+  }
+);
 
 export default SimpleStyleScrollView;

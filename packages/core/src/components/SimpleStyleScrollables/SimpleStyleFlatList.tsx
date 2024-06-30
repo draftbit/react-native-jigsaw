@@ -7,22 +7,28 @@ import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
  * A FlatList wrapper that takes a single `style` prop and internally extracts
  * the appropriate style keys into the `contentContainerStyle`
  */
-const SimpleStyleFlatList = <T extends any>({
-  style: styleProp,
-  data,
-  ...rest
-}: Omit<FlatListProps<T>, "contentContainerStyle">) => {
-  const { style, contentContainerStyle } =
-    useSplitContentContainerStyles(styleProp);
+const SimpleStyleFlatList = React.forwardRef(
+  <T extends any>(
+    {
+      style: styleProp,
+      data,
+      ...rest
+    }: Omit<FlatListProps<T>, "contentContainerStyle">,
+    ref: React.Ref<FlatList>
+  ) => {
+    const { style, contentContainerStyle } =
+      useSplitContentContainerStyles(styleProp);
 
-  return (
-    <FlatList
-      style={style}
-      contentContainerStyle={contentContainerStyle}
-      data={data}
-      {...rest}
-    />
-  );
-};
+    return (
+      <FlatList
+        ref={ref}
+        style={style}
+        contentContainerStyle={contentContainerStyle}
+        data={data}
+        {...rest}
+      />
+    );
+  }
+);
 
 export default SimpleStyleFlatList;

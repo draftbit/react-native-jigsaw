@@ -105,7 +105,7 @@ const CheckboxRow: React.FC<CheckboxRowProps & IconSlot> = ({
   return (
     <Pressable
       onPress={handlePress}
-      style={[viewStyles, styles.mainParent, { flexDirection: direction }]}
+      style={[styles.mainParent, viewStyles, , { flexDirection: direction }]}
       disabled={disabled}
       {...rest}
     >
@@ -145,9 +145,9 @@ const styles = StyleSheet.create({
   mainParent: {
     alignItems: "center",
     justifyContent: "space-around",
-    paddingStart: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
     minHeight: 50,
-    paddingEnd: 20,
     display: "flex",
     ...Platform.select({
       web: {

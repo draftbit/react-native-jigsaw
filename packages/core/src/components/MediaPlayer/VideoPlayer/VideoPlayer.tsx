@@ -120,7 +120,7 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
 
     useSourceDeepCompareEffect(() => {
       const updateSource = async () => {
-        const finalSource = await normalizeBase64Source(source);
+        const finalSource = await normalizeBase64Source(source, "video");
         setCurrentSource(finalSource);
       };
       updateSource();

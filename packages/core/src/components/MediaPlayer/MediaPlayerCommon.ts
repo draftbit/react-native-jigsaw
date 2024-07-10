@@ -55,23 +55,37 @@ export function mapToMediaPlayerStatus(
   };
 }
 
-// https://stackoverflow.com/a/7874175/8805150
-const BASE_64_REGEX =
-  /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
+const URL_REGEX =
+  /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
 
 /**
  * Base64 strings are not playable on iOS and needs to be saved to a file before playing
  */
 export async function normalizeBase64Source(
-  source: AVPlaybackSource
+  source: AVPlaybackSource,
+  type: "audio" | "video"
 ): Promise<AVPlaybackSource> {
   const uri: string | undefined = (source as any)?.uri;
 
-  if (Platform.OS === "ios" && uri && uri.match(BASE_64_REGEX)) {
-    const fileName = `${FileSystem.cacheDirectory}${uuid()}`;
-    await FileSystem.writeAsStringAsync(fileName, uri, {
-      encoding: FileSystem.EncodingType.Base64,
-    });
+  if (Platform.OS === "ios" && uri && !uri.match(URL_REGEX)) {
+    const defaultMimeType = type === "audio" ? "wav" : "mp4";
+    const mimeType = uri.startsWith(`data:${type}/`)
+      ? uri.substring(`data:${type}/`.length, uri.indexOf(";")) //Ex: extract 'mp4' from 'data:video/mp4;base64,....'
+      : defaultMimeType;
+
+    const fileName = `${
+      FileSystem.cacheDirectory
+    }${uuid()}.${mimeType.toLowerCase()}`;
+
+    await FileSystem.writeAsStringAsync(
+      fileName,
+      uri.includes("base64,")
+        ? uri.substring(uri.indexOf("base64,") + "base64,".length) // skip header portion of base64 string
+        : uri,
+      {
+        encoding: FileSystem.EncodingType.Base64,
+      }
+    );
     return { uri: fileName };
   }
 

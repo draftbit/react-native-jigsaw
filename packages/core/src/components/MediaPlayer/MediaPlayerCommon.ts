@@ -83,7 +83,7 @@ export async function normalizeBase64Source(
         ? uri.substring(uri.indexOf("base64,") + "base64,".length) // skip header portion of base64 string
         : uri,
       {
-        encoding: FileSystem.EncodingType.Base64,
+        encoding: "base64",
       }
     );
     return { uri: fileName };

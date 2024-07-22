@@ -48,7 +48,7 @@ const Surface: React.FC<React.PropsWithChildren<Props>> = ({
       style={[
         {
           backgroundColor: getBackgroundColor(),
-          elevation,
+          ...shadow(elevation),
           ...restStyle,
         },
       ]}
@@ -57,5 +57,40 @@ const Surface: React.FC<React.PropsWithChildren<Props>> = ({
     </Animated.View>
   );
 };
+
+const SHADOW_COLOR = "#000";
+const SHADOW_OPACITY = 0.24;
+
+function shadow(elevation: number) {
+  if (elevation === 0) {
+    return {};
+  }
+
+  let height, radius;
+  switch (elevation) {
+    case 1:
+      height = 0.5;
+      radius = 0.75;
+      break;
+    case 2:
+      height = 0.75;
+      radius = 1.5;
+      break;
+    default:
+      height = elevation - 1;
+      radius = elevation;
+  }
+
+  return {
+    shadowColor: SHADOW_COLOR,
+    shadowOffset: {
+      width: 0,
+      height,
+    },
+    shadowOpacity: SHADOW_OPACITY,
+    shadowRadius: radius,
+    elevation,
+  };
+}
 
 export default withTheme(Surface);

@@ -105,7 +105,7 @@ const ActivityIndicator: React.FC<React.PropsWithChildren<Props>> = ({
           animating={true}
           hidesWhenStopped={true}
           size={"small"}
-          color={theme.colors.branding.primary}
+          color={spinnerColor}
           {...rest}
         />
       </View>
@@ -116,7 +116,7 @@ const ActivityIndicator: React.FC<React.PropsWithChildren<Props>> = ({
       animating={true}
       hidesWhenStopped={true}
       size={size}
-      color={theme.colors.branding.primary}
+      color={spinnerColor}
       {...rest}
     />
   );

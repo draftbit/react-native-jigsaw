@@ -75,7 +75,7 @@ export {
   SimpleStyleScrollView,
   SimpleStyleSectionList,
   SimpleStyleSwipeableList,
-  Loading,
+  ActivityIndicator,
 } from "@draftbit/core";
 
 export {

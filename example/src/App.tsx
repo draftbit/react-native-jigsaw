@@ -73,10 +73,10 @@ import VideoPlayerExample from "./VideoPlayerExample";
 import PinInputExample from "./PinInputExample";
 import KeyboardAvoidingViewExample from "./KeyboardAvoidingViewExample";
 import ThemeExample from "./ThemeExample";
-import LoadingExample from "./LoadingExample";
+import ActivityIndicatorExample from "./ActivityIndicatorExample";
 
 const ROUTES = {
-  Loading: LoadingExample,
+  ActivityIndicator: ActivityIndicatorExample,
   Theme: ThemeExample,
   AudioPlayer: AudioPlayerExample,
   Layout: LayoutExample,

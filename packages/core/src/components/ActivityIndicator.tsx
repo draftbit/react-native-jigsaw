@@ -24,6 +24,7 @@ import {
 } from "react-native-animated-spinkit";
 
 export enum ActivityIndicatorType {
+  default = "default",
   plane = "plane",
   chase = "chase",
   bounce = "bounce",
@@ -77,18 +78,28 @@ const getScaleLevel = (size?: number | "small" | "large"): number => {
 };
 
 const ActivityIndicator: React.FC<React.PropsWithChildren<Props>> = ({
-  color,
   theme,
-  type,
-  size,
+  color = theme.colors.branding.primary,
+  type = ActivityIndicatorType.default,
+  size = "small",
+  style,
   ...rest
 }) => {
   const sizeNumber = getLoadingSizeNumber(size);
   const spinnerColor = color ?? theme.colors.branding.primary;
 
-  if (type && SPINNER_COMPONENTS[type]) {
-    const SpinnerComponent = SPINNER_COMPONENTS[type];
-    return <SpinnerComponent size={sizeNumber} color={spinnerColor} />;
+  // Handle display spinner type
+  if (type !== ActivityIndicatorType.default) {
+    if (type && SPINNER_COMPONENTS[type]) {
+      const SpinnerComponent = SPINNER_COMPONENTS[type];
+      return (
+        <SpinnerComponent
+          size={sizeNumber}
+          color={spinnerColor}
+          style={style}
+        />
+      );
+    }
   }
 
   // This is due to limitations with iOS UIActivityIndicator
@@ -97,9 +108,12 @@ const ActivityIndicator: React.FC<React.PropsWithChildren<Props>> = ({
   if (Platform.OS === "ios") {
     return (
       <View
-        style={{
-          transform: [{ scale: scaleLevel }],
-        }}
+        style={[
+          style,
+          {
+            transform: [{ scale: scaleLevel }],
+          },
+        ]}
       >
         <ActivityIndicatorRN
           animating={true}
@@ -117,6 +131,7 @@ const ActivityIndicator: React.FC<React.PropsWithChildren<Props>> = ({
       hidesWhenStopped={true}
       size={size}
       color={spinnerColor}
+      style={style}
       {...rest}
     />
   );

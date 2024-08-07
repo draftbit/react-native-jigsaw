@@ -115,15 +115,6 @@ const useChangeTheme = (): ((themeName: string) => void) => {
   return changeTheme;
 };
 
-// const withTheme = <Props extends { theme: ReadTheme }>(
-//   Component: React.ComponentType<Props>
-// ): React.ComponentType<Omit<Props, "theme">> => {
-//   return (props: Omit<Props, "theme">) => {
-//     const { theme } = React.useContext(ThemeContext);
-//     return <Component {...(props as Props)} theme={theme} />;
-//   };
-// };
-
 const withTheme = <Props extends { theme: ReadTheme }>(
   Component: React.ComponentType<Props>
 ) => {

@@ -11,7 +11,6 @@ import BottomSheetComponent, {
   BottomSheetScrollView,
 } from "@gorhom/bottom-sheet";
 import type { ReadTheme } from "@draftbit/theme";
-import { withTheme } from "@draftbit/theme";
 import { useDeepCompareMemo } from "../../utilities";
 
 type SnapPosition = "top" | "middle" | "bottom";
@@ -166,4 +165,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(BottomSheet);
+export default BottomSheet;

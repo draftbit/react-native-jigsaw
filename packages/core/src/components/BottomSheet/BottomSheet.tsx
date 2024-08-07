@@ -10,7 +10,7 @@ import {
 import BottomSheetComponent, {
   BottomSheetScrollView,
 } from "@gorhom/bottom-sheet";
-import type { ReadTheme } from "@draftbit/theme";
+import { useTheme } from "@draftbit/theme";
 import { useDeepCompareMemo } from "../../utilities";
 
 type SnapPosition = "top" | "middle" | "bottom";
@@ -37,7 +37,6 @@ export interface BottomSheetProps extends ScrollViewProps {
   borderColor?: string;
   onSettle?: (index: number) => void;
   style?: StyleProp<ViewStyle>;
-  theme: ReadTheme;
 }
 
 // Clarification:
@@ -46,7 +45,6 @@ export interface BottomSheetProps extends ScrollViewProps {
 const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
   (
     {
-      theme,
       snapPoints: snapPointsProp,
       topSnapPosition = "10%",
       middleSnapPosition = "50%",
@@ -54,10 +52,10 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
       initialSnapIndex,
       initialSnapPosition = "bottom",
       showHandle = true,
-      handleColor = theme.colors.border.brand,
+      handleColor,
       topBorderRadius = 20,
       borderWidth = 1,
-      borderColor = theme.colors.border.brand,
+      borderColor,
       onSettle,
       style,
       children,
@@ -65,6 +63,7 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
     },
     ref
   ) => {
+    const theme = useTheme();
     const backgroundColor =
       (style as ViewStyle)?.backgroundColor || theme.colors.background.brand;
 
@@ -100,7 +99,7 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
             : getSnapIndexFromPosition(initialSnapPosition)
         }
         handleIndicatorStyle={[
-          { backgroundColor: handleColor },
+          { backgroundColor: handleColor ?? theme.colors.border.brand },
           !showHandle ? { display: "none" } : {},
         ]}
         backgroundStyle={{
@@ -108,7 +107,7 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
           borderTopLeftRadius: topBorderRadius,
           borderTopRightRadius: topBorderRadius,
           borderWidth,
-          borderColor,
+          borderColor: borderColor ?? theme.colors.border.brand,
         }}
         onChange={(index) => onSettle?.(mappedSnapPoints.length - index - 1)}
       >

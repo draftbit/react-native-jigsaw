@@ -1,8 +1,7 @@
 import React from "react";
 import { FlashList } from "@shopify/flash-list";
 import type { FlashListProps, ContentStyle } from "@shopify/flash-list";
-import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
-import { pick } from "lodash";
+import { useFlashListSplitContentContainerStyles } from "./useSplitContentContainerStyles";
 
 /**
  * A FlashList wrapper that takes a single `style` prop and internally extracts
@@ -18,26 +17,13 @@ const SimpleStyleFlashList = React.forwardRef(
     ref: React.Ref<FlashList<any>>
   ) => {
     const { style, contentContainerStyle } =
-      useSplitContentContainerStyles(styleProp);
-
-    // FlashList only supports a subset of contentContainerStyles
-    // See https://shopify.github.io/flash-list/docs/usage/#contentcontainerstyle
-    const flashListContentContainerStyle = pick(contentContainerStyle, [
-      "backgroundColor",
-      "paddingTop",
-      "paddingLeft",
-      "paddingRight",
-      "paddingBottom",
-      "padding",
-      "paddingVertical",
-      "paddingHorizontal",
-    ]);
+      useFlashListSplitContentContainerStyles(styleProp);
 
     return (
       <FlashList
         ref={ref}
         style={style}
-        contentContainerStyle={flashListContentContainerStyle as ContentStyle}
+        contentContainerStyle={contentContainerStyle as ContentStyle}
         data={data}
         {...rest}
       />

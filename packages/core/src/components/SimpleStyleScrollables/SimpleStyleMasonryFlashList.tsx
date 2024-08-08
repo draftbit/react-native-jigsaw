@@ -5,8 +5,7 @@ import type {
   ContentStyle,
   MasonryFlashListRef,
 } from "@shopify/flash-list";
-import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
-import { pick } from "lodash";
+import { useFlashListSplitContentContainerStyles } from "./useSplitContentContainerStyles";
 
 /**
  * A MasonryFlashList wrapper that takes a single `style` prop and internally extracts
@@ -22,26 +21,13 @@ const SimpleStyleMasonryFlashList = React.forwardRef(
     ref: React.Ref<MasonryFlashListRef<any>>
   ) => {
     const { style, contentContainerStyle } =
-      useSplitContentContainerStyles(styleProp);
-
-    // FlashList only supports a subset of contentContainerStyles
-    // See https://shopify.github.io/flash-list/docs/usage/#contentcontainerstyle
-    const flashListContentContainerStyle = pick(contentContainerStyle, [
-      "backgroundColor",
-      "paddingTop",
-      "paddingLeft",
-      "paddingRight",
-      "paddingBottom",
-      "padding",
-      "paddingVertical",
-      "paddingHorizontal",
-    ]);
+      useFlashListSplitContentContainerStyles(styleProp);
 
     return (
       <MasonryFlashList
         ref={ref as any}
         style={style}
-        contentContainerStyle={flashListContentContainerStyle as ContentStyle}
+        contentContainerStyle={contentContainerStyle as ContentStyle}
         data={data}
         {...rest}
       />

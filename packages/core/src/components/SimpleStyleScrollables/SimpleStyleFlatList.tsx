@@ -1,5 +1,6 @@
 import React from "react";
-import { FlatList } from "react-native";
+import FlatList from "../FlatList";
+import { FlatList as FlatListComponent } from "react-native";
 import type { FlatListProps } from "react-native";
 import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
 
@@ -14,7 +15,7 @@ const SimpleStyleFlatList = React.forwardRef(
       data,
       ...rest
     }: Omit<FlatListProps<T>, "contentContainerStyle">,
-    ref: React.Ref<FlatList>
+    ref: React.Ref<FlatListComponent>
   ) => {
     const { style, contentContainerStyle } =
       useSplitContentContainerStyles(styleProp);

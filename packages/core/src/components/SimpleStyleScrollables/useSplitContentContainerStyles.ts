@@ -3,7 +3,7 @@ import { pick, omit } from "lodash";
 import { extractPercentNumber, useDeepCompareMemo } from "../../utilities";
 
 const DEVICE_WIDTH = Dimensions.get("window").width;
-const DEVICE_HEIGHT = Dimensions.get("window").width;
+const DEVICE_HEIGHT = Dimensions.get("window").height;
 
 interface Styles {
   style?: StyleProp<ViewStyle>;

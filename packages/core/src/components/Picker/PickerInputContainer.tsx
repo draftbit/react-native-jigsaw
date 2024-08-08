@@ -2,7 +2,6 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import omit from "lodash.omit";
 import {
-  extractSizeStyles,
   extractPositionStyles,
   extractFlexItemStyles,
   extractBorderAndMarginStyles,
@@ -37,7 +36,6 @@ const PickerInputContainer: React.FC<
   ...rest
 }) => {
   const containerStyle = StyleSheet.flatten([
-    extractSizeStyles(style),
     extractPositionStyles(style),
     extractFlexItemStyles(style),
     extractBorderAndMarginStyles(style).marginStyles,

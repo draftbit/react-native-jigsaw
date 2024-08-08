@@ -305,3 +305,15 @@ export function useDeepCompareEffect(
   // eslint-disable-next-line react-hooks/exhaustive-deps
   return React.useEffect(effect, deps?.map(useDeepCompareMemoize));
 }
+
+export function extractPercentNumber(percentString: string) {
+  const percentRegex = /(\d+)?%/;
+  const matches = percentString.match(percentRegex);
+  if (matches?.length) {
+    const percentNumber = Number(matches[1]);
+    if (!isNaN(percentNumber)) {
+      return percentNumber;
+    }
+  }
+  return undefined;
+}

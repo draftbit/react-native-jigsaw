@@ -57,3 +57,25 @@ export default function useSplitContentContainerStyles(
     };
   }, [originalStyle]);
 }
+
+export function useFlashListSplitContentContainerStyles(
+  originalStyle: StyleProp<ViewStyle>
+) {
+  const { style, contentContainerStyle } =
+    useSplitContentContainerStyles(originalStyle);
+
+  // FlashList only supports a subset of contentContainerStyles
+  // See https://shopify.github.io/flash-list/docs/usage/#contentcontainerstyle
+  const flashListContentContainerStyle = pick(contentContainerStyle, [
+    "backgroundColor",
+    "paddingTop",
+    "paddingLeft",
+    "paddingRight",
+    "paddingBottom",
+    "padding",
+    "paddingVertical",
+    "paddingHorizontal",
+  ]);
+
+  return { style, contentContainerStyle: flashListContentContainerStyle };
+}

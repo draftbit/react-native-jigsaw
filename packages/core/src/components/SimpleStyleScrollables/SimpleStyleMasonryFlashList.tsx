@@ -5,7 +5,7 @@ import type {
   ContentStyle,
   MasonryFlashListRef,
 } from "@shopify/flash-list";
-import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
+import { useFlashListSplitContentContainerStyles } from "./useSplitContentContainerStyles";
 
 /**
  * A MasonryFlashList wrapper that takes a single `style` prop and internally extracts
@@ -21,7 +21,7 @@ const SimpleStyleMasonryFlashList = React.forwardRef(
     ref: React.Ref<MasonryFlashListRef<any>>
   ) => {
     const { style, contentContainerStyle } =
-      useSplitContentContainerStyles(styleProp);
+      useFlashListSplitContentContainerStyles(styleProp);
 
     return (
       <MasonryFlashList

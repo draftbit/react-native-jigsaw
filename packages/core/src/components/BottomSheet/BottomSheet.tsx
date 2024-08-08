@@ -11,7 +11,7 @@ import BottomSheetComponent, {
   BottomSheetScrollView,
 } from "@gorhom/bottom-sheet";
 import { useTheme } from "@draftbit/theme";
-import { useDeepCompareMemo } from "../../utilities";
+import { extractPercentNumber, useDeepCompareMemo } from "../../utilities";
 
 type SnapPosition = "top" | "middle" | "bottom";
 
@@ -143,18 +143,6 @@ function convertSnapPointsForNewImplementation(
       return point;
     }
   });
-}
-
-function extractPercentNumber(percentString: string) {
-  const percentRegex = /(\d+)?%/;
-  const matches = percentString.match(percentRegex);
-  if (matches?.length) {
-    const percentNumber = Number(matches[1]);
-    if (!isNaN(percentNumber)) {
-      return percentNumber;
-    }
-  }
-  return undefined;
 }
 
 const styles = StyleSheet.create({

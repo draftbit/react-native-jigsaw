@@ -1,6 +1,9 @@
-import { StyleProp, ViewStyle, StyleSheet } from "react-native";
+import { StyleProp, ViewStyle, StyleSheet, Dimensions } from "react-native";
 import { pick, omit } from "lodash";
-import { useDeepCompareMemo } from "../../utilities";
+import { extractPercentNumber, useDeepCompareMemo } from "../../utilities";
+
+const DEVICE_WIDTH = Dimensions.get("window").width;
+const DEVICE_HEIGHT = Dimensions.get("window").width;
 
 interface Styles {
   style?: StyleProp<ViewStyle>;
@@ -60,7 +63,7 @@ export default function useSplitContentContainerStyles(
 
 export function useFlashListSplitContentContainerStyles(
   originalStyle: StyleProp<ViewStyle>
-) {
+): Styles {
   const { style, contentContainerStyle } =
     useSplitContentContainerStyles(originalStyle);
 
@@ -75,7 +78,35 @@ export function useFlashListSplitContentContainerStyles(
     "padding",
     "paddingVertical",
     "paddingHorizontal",
-  ]);
+  ]) as { [key: string]: any };
 
-  return { style, contentContainerStyle: flashListContentContainerStyle };
+  // FlashList percentage paddings cause it to freeze and crash
+  // This converts them to numbers based on device width/height
+  for (const [key, value] of Object.entries(flashListContentContainerStyle)) {
+    if (typeof value === "string" && key.includes("padding")) {
+      const asNumber = extractPercentNumber(value);
+      if (asNumber !== undefined) {
+        switch (key) {
+          case "padding":
+          case "paddingLeft":
+          case "paddingRight":
+          case "paddingHorizontal":
+            flashListContentContainerStyle[key] =
+              DEVICE_WIDTH * (asNumber / 100);
+            break;
+          case "paddingTop":
+          case "paddingBottom":
+          case "paddingVertical":
+            flashListContentContainerStyle[key] =
+              DEVICE_HEIGHT * (asNumber / 100);
+            break;
+        }
+      }
+    }
+  }
+
+  return {
+    style,
+    contentContainerStyle: flashListContentContainerStyle,
+  };
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { FlashListProps, FlashList } from "@shopify/flash-list";
-import { FlatListProps, FlatList } from "react-native";
+import { FlatListProps, FlatList as FlatListComponent } from "react-native";
+import FlatList from "../FlatList";
 
 type ListComponentType = "FlatList" | "FlashList";
 
@@ -33,7 +34,7 @@ const SwipeableList = React.forwardRef(
       listComponent = "FlatList",
       ...rest
     }: FlashListSwipeableListProps<T> | FlatListSwipeableListProps<T>,
-    ref: React.Ref<FlatList | FlashList<any>>
+    ref: React.Ref<FlatListComponent | FlashList<any>>
   ) => {
     const [isSwiping, setIsSwiping] = React.useState(false);
 
@@ -52,7 +53,7 @@ const SwipeableList = React.forwardRef(
         case "FlatList":
           return (
             <FlatList
-              ref={ref as React.Ref<FlatList>}
+              ref={ref as React.Ref<FlatListComponent>}
               {...(rest as FlatListProps<T>)}
             />
           );

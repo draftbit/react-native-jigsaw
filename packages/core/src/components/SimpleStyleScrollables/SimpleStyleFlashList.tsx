@@ -1,7 +1,7 @@
 import React from "react";
 import { FlashList } from "@shopify/flash-list";
 import type { FlashListProps, ContentStyle } from "@shopify/flash-list";
-import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
+import { useFlashListSplitContentContainerStyles } from "./useSplitContentContainerStyles";
 
 /**
  * A FlashList wrapper that takes a single `style` prop and internally extracts
@@ -17,7 +17,7 @@ const SimpleStyleFlashList = React.forwardRef(
     ref: React.Ref<FlashList<any>>
   ) => {
     const { style, contentContainerStyle } =
-      useSplitContentContainerStyles(styleProp);
+      useFlashListSplitContentContainerStyles(styleProp);
 
     return (
       <FlashList

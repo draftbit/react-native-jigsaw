@@ -31,6 +31,7 @@ const HeadlessAudioPlayer = React.forwardRef<
       playThroughEarpieceAndroid = false,
       onPlaybackStatusUpdate: onPlaybackStatusUpdateProp,
       onPlaybackFinish,
+      isLooping = false,
     },
     ref
   ) => {
@@ -71,6 +72,9 @@ const HeadlessAudioPlayer = React.forwardRef<
 
       if (status.isLoaded) {
         if (status.didJustFinish) {
+          if (isLooping) {
+            return;
+          }
           onPlaybackFinish?.();
         }
         setIsPlaying(status.isPlaying);
@@ -97,6 +101,7 @@ const HeadlessAudioPlayer = React.forwardRef<
 
       const { sound } = await Audio.Sound.createAsync(finalSource);
       setCurrentSound(sound);
+      sound.setIsLoopingAsync(isLooping);
       sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
     };
 

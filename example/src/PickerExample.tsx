@@ -209,6 +209,26 @@ function PickerExample() {
           onValueChange={(value) => setValue3(value as number)}
         />
       </Section>
+      {/* Dropdown and Multiselect Pickers placed outside Section to be able to draw over sibling components */}
+      <Section style={{}} title="Picker - Custom smaller size">
+        <Picker
+          type="solid"
+          placeholder="Select a make..."
+          options={OPTIONS}
+          value={value1}
+          mode="dropdown"
+          onValueChange={(value) => setValue(value.toString())}
+          iconSize={20}
+          leftIconMode="inset"
+          leftIconName="add"
+          style={{
+            width: 120,
+            paddingTop: 0,
+            paddingBottom: 0,
+            height: 35,
+          }}
+        />
+      </Section>
     </Container>
   );
 }

@@ -1,8 +1,9 @@
 import React from "react";
 import { FlashListProps, FlashList } from "@shopify/flash-list";
-import { FlatListProps, FlatList } from "react-native";
+import { FlatListProps, FlatList as FlatListComponent } from "react-native";
 import SectionHeader, { DefaultSectionHeader } from "./SectionHeader";
 import { flattenReactFragments } from "../../utilities";
+import FlatList from "../FlatList";
 
 type ListComponentType = "FlatList" | "FlashList";
 
@@ -52,7 +53,7 @@ const SectionList = React.forwardRef(
       keyExtractor: keyExtractorProp,
       ...rest
     }: FlatListSectionListProps<T> | FlashListSectionListProps<T>,
-    ref: React.Ref<FlatList | FlashList<any>>
+    ref: React.Ref<FlatListComponent | FlashList<any>>
   ) => {
     const data = React.useMemo(
       () => (Array.isArray(dataProp) ? dataProp : []) as T[],
@@ -189,7 +190,7 @@ const SectionList = React.forwardRef(
       case "FlatList":
         return (
           <FlatList
-            ref={ref as React.Ref<FlatList>}
+            ref={ref as React.Ref<FlatListComponent>}
             stickyHeaderIndices={sectionHeaderIndicies}
             {...(rest as FlatListProps<SectionListItem<T>>)}
             data={dataWithSections}

@@ -12,6 +12,7 @@ const mockAudioSource = {
 const mockPlayAsync = jest.fn();
 const mockPauseAsync = jest.fn();
 const mockUnloadAsync = jest.fn();
+const mockSetIsLoopAsync = jest.fn();
 
 // To ignore the warning: 'When testing, code that causes React state updates should be wrapped into act'
 // This is caused because state is updated in the useEffect, this is intentional and not an issue, so we can ignore it
@@ -44,6 +45,7 @@ jest.mock("expo-av", () => {
                 positionMillis: position,
               });
             },
+            setIsLoopingAsync: mockSetIsLoopAsync,
           },
         };
       },

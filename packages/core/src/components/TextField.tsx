@@ -232,7 +232,7 @@ class TextField extends React.Component<Props, State> {
       label,
       error = false,
       leftIconName,
-      leftIconMode,
+      leftIconMode = "inset",
       rightIconName,
       iconColor,
       iconSize,
@@ -537,29 +537,28 @@ class TextField extends React.Component<Props, State> {
         </View>
 
         {leftIconName ? (
-          <Icon
-            size={iconSize || ICON_SIZE}
-            color={leftIconColor || colors.text.light}
-            name={leftIconName}
-            style={{
-              position: "absolute",
-              left: leftIconMode === "inset" && type === "solid" ? 16 : 0,
-              marginTop: type === "solid" ? MINIMIZED_LABEL_FONT_SIZE + 4 : 16,
-            }}
-          />
+          <View
+            style={[
+              styles.iconWrapper,
+              { left: leftIconMode === "inset" && type === "solid" ? 16 : 0 },
+            ]}
+          >
+            <Icon
+              size={iconSize || ICON_SIZE}
+              color={leftIconColor || colors.text.light}
+              name={leftIconName}
+            />
+          </View>
         ) : null}
 
         {rightIconName ? (
-          <Icon
-            name={rightIconName}
-            size={iconSize || ICON_SIZE}
-            color={iconColor || colors.text.light}
-            style={{
-              position: "absolute",
-              right: 16,
-              marginTop: type === "solid" ? MINIMIZED_LABEL_FONT_SIZE + 4 : 16,
-            }}
-          />
+          <View style={[styles.iconWrapper, { right: 16 }]}>
+            <Icon
+              name={rightIconName}
+              size={iconSize || ICON_SIZE}
+              color={iconColor || colors.text.light}
+            />
+          </View>
         ) : null}
 
         {assistiveText ? (
@@ -603,5 +602,11 @@ const styles = StyleSheet.create({
     textAlignVertical: "center",
     margin: 0,
     textAlign: I18nManager.isRTL ? "right" : "left",
+  },
+  iconWrapper: {
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
   },
 });

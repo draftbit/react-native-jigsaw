@@ -232,7 +232,7 @@ class TextField extends React.Component<Props, State> {
       label,
       error = false,
       leftIconName,
-      leftIconMode,
+      leftIconMode = "inset",
       rightIconName,
       iconColor,
       iconSize,

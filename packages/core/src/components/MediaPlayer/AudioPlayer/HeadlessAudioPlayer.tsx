@@ -31,11 +31,16 @@ const HeadlessAudioPlayer = React.forwardRef<
       playThroughEarpieceAndroid = false,
       onPlaybackStatusUpdate: onPlaybackStatusUpdateProp,
       onPlaybackFinish,
+      isLooping = false,
     },
     ref
   ) => {
     const [currentSound, setCurrentSound] = React.useState<Audio.Sound>();
     const [isPlaying, setIsPlaying] = React.useState(false);
+
+    React.useEffect(() => {
+      currentSound?.setIsLoopingAsync(isLooping);
+    }, [currentSound, isLooping]);
 
     const updateAudioMode = React.useCallback(async () => {
       try {
@@ -71,6 +76,9 @@ const HeadlessAudioPlayer = React.forwardRef<
 
       if (status.isLoaded) {
         if (status.didJustFinish) {
+          if (isLooping) {
+            return;
+          }
           onPlaybackFinish?.();
         }
         setIsPlaying(status.isPlaying);

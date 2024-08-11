@@ -105,7 +105,6 @@ const HeadlessAudioPlayer = React.forwardRef<
 
       const { sound } = await Audio.Sound.createAsync(finalSource);
       setCurrentSound(sound);
-      sound.setIsLoopingAsync(isLooping);
       sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
     };
 

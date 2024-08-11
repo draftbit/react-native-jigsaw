@@ -31,7 +31,6 @@ const AudioPlayerWithInterface = React.forwardRef<
       hidePlaybackIcon = false,
       hideDuration = false,
       hideSlider = false,
-      isLooping = false,
       ...rest
     },
     ref
@@ -125,7 +124,6 @@ const AudioPlayerWithInterface = React.forwardRef<
           ref={headlessAudioPlayerRef}
           onPlaybackStatusUpdate={onPlaybackStatusUpdate}
           onPlaybackFinish={onPlaybackFinish}
-          isLooping={isLooping}
         />
         <View
           testID="audio-player-interface"

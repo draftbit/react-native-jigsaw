@@ -21,5 +21,4 @@ export interface AudioPlayerInterfaceProps {
   hidePlaybackIcon?: boolean;
   hideDuration?: boolean;
   hideSlider?: boolean;
-  isLooping?: boolean;
 }

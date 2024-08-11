@@ -63,16 +63,8 @@ const LoadingIndicator: React.FC<React.PropsWithChildren<Props>> = ({
   style,
   ...rest
 }) => {
-  const spinnerColor = color ?? theme.colors.branding.primary;
   const SpinnerComponent = SPINNER_COMPONENTS[type];
-  return (
-    <SpinnerComponent
-      size={size}
-      color={spinnerColor}
-      style={style}
-      {...rest}
-    />
-  );
+  return <SpinnerComponent size={size} color={color} style={style} {...rest} />;
 };
 
 export default withTheme(LoadingIndicator);

@@ -1,7 +1,12 @@
 import React from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, RefreshControl } from "react-native";
 import type { ScrollViewProps } from "react-native";
 import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
+
+interface Props extends Omit<ScrollViewProps, "contentContainerStyle"> {
+  onRefresh?: () => void;
+  refreshing?: boolean;
+}
 
 /**
  * A ScrollView wrapper that takes a single `style` prop and internally extracts
@@ -9,10 +14,7 @@ import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
  */
 const SimpleStyleScrollView = React.forwardRef(
   (
-    {
-      style: styleProp,
-      ...rest
-    }: Omit<ScrollViewProps, "contentContainerStyle">,
+    { style: styleProp, onRefresh, refreshing = false, ...rest }: Props,
     ref: React.Ref<ScrollView>
   ) => {
     const { style, contentContainerStyle } =
@@ -23,6 +25,11 @@ const SimpleStyleScrollView = React.forwardRef(
         ref={ref}
         style={style}
         contentContainerStyle={contentContainerStyle}
+        refreshControl={
+          onRefresh ? (
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          ) : undefined
+        }
         {...rest}
       />
     );

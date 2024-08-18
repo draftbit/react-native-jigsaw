@@ -58,7 +58,7 @@ const Timer = forwardRef<TimerHandle, TimerProps>(
             countDirection === "up"
               ? prevTime + updateInterval
               : prevTime - updateInterval;
-          if (newTime < 0 && countDirection === "down") {
+          if (newTime <= 0 && countDirection === "down") {
             clearTimer();
             onTimerEnd?.();
             return 0;

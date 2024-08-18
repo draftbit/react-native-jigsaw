@@ -23,17 +23,10 @@ const LottieAnimationExample: React.FC = () => {
     <Container style={{}}>
       <Section style={{}} title="Lottie Animation">
         <View style={{ flexDirection: "row" }}>
-          <Wrapper label="Default">
+          <Wrapper label="Default with uri">
             <LottieAnimation
               source={{
-                uri: "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/test-edofwk/assets/ysca4wklife9/test.json",
-              }}
-            />
-          </Wrapper>
-          <Wrapper label="Resize width and style">
-            <LottieAnimation
-              source={{
-                uri: "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/test-edofwk/assets/ysca4wklife9/test.json",
+                uri: "https://lottie.host/55656a16-1441-43d6-a052-57b8e02d5c8f/SM1VujecK4.json",
               }}
               style={{
                 width: 200,
@@ -41,13 +34,30 @@ const LottieAnimationExample: React.FC = () => {
               }}
             />
           </Wrapper>
+          <Wrapper label="Static json data">
+            <LottieAnimation
+              source={require("./assets/lottie_animation_example.json")}
+              style={{
+                width: 200,
+                height: 200,
+              }}
+            />
+          </Wrapper>
+          <Wrapper label="Resize and Styling">
+            <LottieAnimation
+              source={require("./assets/lottie_animation_example.json")}
+              style={{
+                width: 350,
+                height: 350,
+                backgroundColor: "black",
+              }}
+            />
+          </Wrapper>
         </View>
         <View style={{ flexDirection: "row" }}>
           <Wrapper label="No loop">
             <LottieAnimation
-              source={{
-                uri: "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/test-edofwk/assets/ysca4wklife9/test.json",
-              }}
+              source={require("./assets/lottie_animation_example.json")}
               loop={false}
               style={{
                 width: 200,
@@ -57,9 +67,7 @@ const LottieAnimationExample: React.FC = () => {
           </Wrapper>
           <Wrapper label="No autoplay">
             <LottieAnimation
-              source={{
-                uri: "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/test-edofwk/assets/ysca4wklife9/test.json",
-              }}
+              source={require("./assets/lottie_animation_example.json")}
               autoPlay={false}
               style={{
                 width: 200,

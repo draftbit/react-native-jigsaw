@@ -74,8 +74,10 @@ import PinInputExample from "./PinInputExample";
 import KeyboardAvoidingViewExample from "./KeyboardAvoidingViewExample";
 import ThemeExample from "./ThemeExample";
 import LoadingIndicatorExample from "./LoadingIndicatorExample";
+import SelectableTextExample from "./SelectableTextExample";
 
 const ROUTES = {
+  SelectableText: SelectableTextExample,
   LoadingIndicator: LoadingIndicatorExample,
   Theme: ThemeExample,
   AudioPlayer: AudioPlayerExample,

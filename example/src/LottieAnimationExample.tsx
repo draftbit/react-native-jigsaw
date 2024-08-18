@@ -43,6 +43,8 @@ const LottieAnimationExample: React.FC = () => {
               }}
             />
           </Wrapper>
+        </View>
+        <View style={{ flexDirection: "row" }}>
           <Wrapper label="Resize and Styling">
             <LottieAnimation
               source={require("./assets/lottie_animation_example.json")}

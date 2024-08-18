@@ -76,6 +76,7 @@ export {
   SimpleStyleSectionList,
   SimpleStyleSwipeableList,
   LoadingIndicator,
+  LottieAnimation,
 } from "@draftbit/core";
 
 export {

@@ -32,7 +32,8 @@ const LottieAnimation = forwardRef<LottieView, Props>(
           autoPlay={autoPlay}
           loop={loop}
           resizeMode={resizeMode}
-          // This due to on mobile size required size on mobile but not required on web
+          // This is because a specific size is required on mobile, but not on web.
+          // This will help keep both platforms consistent during preview.
           style={sizeStyles}
           {...rest}
         />

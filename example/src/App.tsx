@@ -74,8 +74,10 @@ import PinInputExample from "./PinInputExample";
 import KeyboardAvoidingViewExample from "./KeyboardAvoidingViewExample";
 import ThemeExample from "./ThemeExample";
 import LoadingIndicatorExample from "./LoadingIndicatorExample";
+import TimerExample from "./TimerExample";
 
 const ROUTES = {
+  Timer: TimerExample,
   LoadingIndicator: LoadingIndicatorExample,
   Theme: ThemeExample,
   AudioPlayer: AudioPlayerExample,

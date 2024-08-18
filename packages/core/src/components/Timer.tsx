@@ -36,7 +36,7 @@ const Timer = forwardRef<TimerHandle, TimerProps>(
     },
     ref
   ) => {
-    const defaultInitialTime = countDirection === "up" ? 0 : 10000;
+    const defaultInitialTime = countDirection === "up" ? 0 : 100000;
     const [time, setTime] = useState(initialTime ?? defaultInitialTime);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -70,7 +70,9 @@ const Timer = forwardRef<TimerHandle, TimerProps>(
 
     const stopTimer = () => clearTimer();
 
-    const resetTimer = (newTime: number = defaultInitialTime) => {
+    const resetTimer = (
+      newTime: number = initialTime ?? defaultInitialTime
+    ) => {
       clearTimer();
       setTime(newTime);
     };

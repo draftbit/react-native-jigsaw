@@ -6,7 +6,9 @@ import { Button, Timer } from "@draftbit/core";
 
 const LoadingIndicatorExample: React.FC = () => {
   const timerRef = React.useRef<any>(null);
-  const [direction, setDirection] = React.useState<"up" | "down">("up");
+  const [countDirection, setCountDirection] = React.useState<"up" | "down">(
+    "up"
+  );
 
   const handleStart = () => timerRef.current?.start();
   const handleStop = () => timerRef.current?.stop();
@@ -14,7 +16,7 @@ const LoadingIndicatorExample: React.FC = () => {
   const handleResetToCustomTime = () => timerRef.current?.reset(5000);
 
   const handleDirectionToggle = () =>
-    setDirection((prev) => (prev === "up" ? "down" : "up"));
+    setCountDirection((prev) => (prev === "up" ? "down" : "up"));
   return (
     <Container style={{}}>
       <Section style={{}} title="Default">
@@ -29,7 +31,7 @@ const LoadingIndicatorExample: React.FC = () => {
             initialTime={60000}
             updateInterval={1000}
             format="mm:ss"
-            direction={direction}
+            countDirection={countDirection}
             onTimerChange={(value: number) => {
               console.log("onTimerChange : ", value);
             }}
@@ -44,7 +46,7 @@ const LoadingIndicatorExample: React.FC = () => {
             }}
           />
           <Text style={styles.directionText}>
-            Current direction : {direction}
+            Count direction : {countDirection}
           </Text>
           <View style={styles.buttonsContainer}>
             <Button title="Start Timer" onPress={handleStart} />

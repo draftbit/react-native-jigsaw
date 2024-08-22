@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleProp, ViewStyle } from "react-native";
+import { View, StyleProp, ViewStyle } from "react-native";
 import { withTheme } from "@draftbit/theme";
 import type { ReadTheme } from "@draftbit/theme";
 import {
@@ -64,7 +64,16 @@ const LoadingIndicator: React.FC<React.PropsWithChildren<Props>> = ({
   ...rest
 }) => {
   const SpinnerComponent = SPINNER_COMPONENTS[type];
-  return <SpinnerComponent size={size} color={color} style={style} {...rest} />;
+  return (
+    <View
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <SpinnerComponent size={size} color={color} style={style} {...rest} />
+    </View>
+  );
 };
 
 export default withTheme(LoadingIndicator);

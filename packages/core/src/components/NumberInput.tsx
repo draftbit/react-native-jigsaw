@@ -30,7 +30,8 @@ const NumberInput = React.forwardRef<NativeTextInput, Props>(
     const [currentStringNumberValue, setCurrentStringNumberValue] =
       useState("");
 
-    const delayedValue = useDebounce(value, changeTextDelay);
+    const [valueToDebounce, setValueToDebounce] = React.useState(value);
+    const delayedValue = useDebounce(valueToDebounce, changeTextDelay);
 
     const formatValueToStringNumber = (valueToFormat?: number | string) => {
       if (valueToFormat != null) {
@@ -92,7 +93,10 @@ const NumberInput = React.forwardRef<NativeTextInput, Props>(
         ref={ref}
         keyboardType="numeric"
         value={currentStringNumberValue}
-        onChangeText={handleChangeText}
+        onChangeText={(newValue) => {
+          handleChangeText(newValue);
+          setValueToDebounce(newValue);
+        }}
         {...props}
       />
     );

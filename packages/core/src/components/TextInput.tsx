@@ -24,12 +24,14 @@ const TextInput = React.forwardRef<NativeTextInput, TextInputProps>(
       disabled = false,
       editable = true,
       value,
+      onChangeText,
       ...rest
     },
     ref
   ) => {
     const theme = useTheme();
-    const delayedValue = useDebounce(value, changeTextDelay);
+    const [valueToDebounce, setValueToDebounce] = React.useState(value);
+    const delayedValue = useDebounce(valueToDebounce, changeTextDelay);
 
     useOnUpdate(() => {
       if (delayedValue !== undefined) {
@@ -49,6 +51,10 @@ const TextInput = React.forwardRef<NativeTextInput, TextInputProps>(
           { color: theme.colors.text.strong },
           style,
         ]}
+        onChangeText={(newValue) => {
+          onChangeText?.(newValue);
+          setValueToDebounce(newValue);
+        }}
         {...rest}
       />
     );

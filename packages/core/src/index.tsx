@@ -80,6 +80,7 @@ export { default as SimpleStyleScrollView } from "./components/SimpleStyleScroll
 export { default as SimpleStyleSectionList } from "./components/SimpleStyleScrollables/SimpleStyleSectionList";
 export { default as SimpleStyleSwipeableList } from "./components/SimpleStyleScrollables/SimpleStyleSwipeableList";
 export { default as LoadingIndicator } from "./components/LoadingIndicator";
+export { default as SelectableText } from "./components/SelectableText";
 
 /* Deprecated: Fix or Delete!  */
 export { default as AccordionItem } from "./deprecated-components/AccordionItem";

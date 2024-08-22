@@ -76,6 +76,7 @@ export {
   SimpleStyleSectionList,
   SimpleStyleSwipeableList,
   LoadingIndicator,
+  SelectableText,
 } from "@draftbit/core";
 
 export {

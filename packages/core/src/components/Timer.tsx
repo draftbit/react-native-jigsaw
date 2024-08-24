@@ -15,6 +15,7 @@ interface TimerProps {
   onTimerChange?: (time: number) => void;
   onTimerEnd?: () => void;
   countDirection?: "up" | "down";
+  timerEndTime?: number;
 }
 
 export interface TimerHandle {
@@ -33,6 +34,7 @@ const Timer = forwardRef<TimerHandle, TimerProps>(
       onTimerChange,
       onTimerEnd,
       countDirection = "up",
+      timerEndTime,
     },
     ref
   ) => {
@@ -42,7 +44,8 @@ const Timer = forwardRef<TimerHandle, TimerProps>(
 
     useEffect(() => {
       onTimerChange?.(time);
-    }, [time, onTimerChange]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [time]);
 
     useImperativeHandle(ref, () => ({
       start: startTimer,
@@ -58,11 +61,23 @@ const Timer = forwardRef<TimerHandle, TimerProps>(
             countDirection === "up"
               ? prevTime + updateInterval
               : prevTime - updateInterval;
+          // Count down
           if (newTime <= 0 && countDirection === "down") {
             clearTimer();
             onTimerEnd?.();
             return 0;
           }
+          // Count up
+          if (
+            countDirection === "up" &&
+            timerEndTime !== undefined &&
+            newTime >= timerEndTime
+          ) {
+            clearTimer();
+            onTimerEnd?.();
+            return timerEndTime;
+          }
+
           return newTime;
         });
       }, updateInterval);
@@ -84,43 +99,27 @@ const Timer = forwardRef<TimerHandle, TimerProps>(
       }
     };
 
+    useEffect(() => {
+      return () => clearTimer();
+    }, []);
+
     const formatTime = (milliseconds: number): string => {
       const totalSeconds = Math.floor(milliseconds / 1000);
-      const minutes = Math.floor(totalSeconds / 60);
-      const hours = Math.floor(minutes / 60);
-      const seconds = totalSeconds % 60;
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds - hours * 3600) / 60);
+      const seconds = totalSeconds - hours * 3600 - minutes * 60;
       const ms = milliseconds % 1000;
 
-      switch (format) {
-        case "hh:mm:ss":
-          return `${String(hours).padStart(2, "0")}:${String(
-            minutes % 60
-          ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-        case "mm:ss":
-          return `${String(minutes).padStart(2, "0")}:${String(
-            seconds
-          ).padStart(2, "0")}`;
-        case "ss":
-          return `${String(totalSeconds).padStart(2, "0")}`;
-        case "hh:mm:ss:ms":
-          return `${String(hours).padStart(2, "0")}:${String(
-            minutes % 60
-          ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}:${String(
-            ms
-          ).padStart(3, "0")}`;
-        case "mm:ss:ms":
-          return `${String(minutes).padStart(2, "0")}:${String(
-            seconds
-          ).padStart(2, "0")}:${String(ms).padStart(3, "0")}`;
-        case "ss:ms":
-          return `${String(totalSeconds).padStart(2, "0")}:${String(
-            ms
-          ).padStart(3, "0")}`;
-        default:
-          return `${String(minutes).padStart(2, "0")}:${String(
-            seconds
-          ).padStart(2, "0")}`;
-      }
+      const formattedHours = String(hours).padStart(2, "0");
+      const formattedMinutes = String(minutes).padStart(2, "0");
+      const formattedSeconds = String(seconds).padStart(2, "0");
+      const formattedMs = String(ms).padStart(3, "0");
+
+      return format
+        .replace("hh", formattedHours)
+        .replace("mm", formattedMinutes)
+        .replace("ss", formattedSeconds)
+        .replace("ms", formattedMs);
     };
 
     return (

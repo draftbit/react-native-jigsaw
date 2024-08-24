@@ -29,6 +29,7 @@ const LoadingIndicatorExample: React.FC = () => {
           <Timer
             ref={timerRef}
             initialTime={60000}
+            timerEndTime={70000}
             updateInterval={1000}
             format="mm:ss"
             countDirection={countDirection}

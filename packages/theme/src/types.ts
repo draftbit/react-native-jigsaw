@@ -39,3 +39,5 @@ export type ColorPalettes = {
 export type Breakpoints = {
   [key: string]: number;
 };
+
+export type ChangeThemeOptions = { persistent?: boolean };

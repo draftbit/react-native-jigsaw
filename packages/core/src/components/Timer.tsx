@@ -5,10 +5,10 @@ import React, {
   useImperativeHandle,
   forwardRef,
 } from "react";
-import { Text, StyleSheet, TextStyle } from "react-native";
+import { Text, StyleSheet, TextStyle, StyleProp } from "react-native";
 
 interface TimerProps {
-  style?: TextStyle;
+  style?: StyleProp<TextStyle>;
   initialTime?: number;
   updateInterval?: number;
   format?: "ss" | "mm:ss" | "hh:mm:ss" | "ss:ms" | "mm:ss:ms" | "hh:mm:ss:ms";

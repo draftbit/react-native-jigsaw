@@ -4,7 +4,7 @@ import { withTheme } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 import { Button, Timer } from "@draftbit/core";
 
-const LoadingIndicatorExample: React.FC = () => {
+const TimerExample: React.FC = () => {
   const timerRef = React.useRef<any>(null);
   const [countDirection, setCountDirection] = React.useState<"up" | "down">(
     "up"
@@ -82,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(LoadingIndicatorExample);
+export default withTheme(TimerExample);

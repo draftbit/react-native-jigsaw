@@ -1,8 +1,16 @@
 import React from "react";
 import { Dimensions, Platform } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import createThemeValuesProxy from "./createThemeValuesProxy";
 import DefaultTheme from "./DefaultTheme";
-import { Breakpoints, ReadTheme, ValidatedTheme } from "./types";
+import {
+  Breakpoints,
+  ChangeThemeOptions,
+  ReadTheme,
+  ValidatedTheme,
+} from "./types";
+
+const SAVED_SELECTED_THEME_KEY = "saved_selected_theme";
 
 type ThemeContextType = {
   theme: ReadTheme;
@@ -34,18 +42,9 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
     Dimensions.get("window").width
   );
 
-  React.useEffect(() => {
-    const listener = Dimensions.addEventListener("change", ({ window }) =>
-      setDeviceWidth(window.width)
-    );
-    return () => {
-      listener.remove();
-    };
-  });
-
   const changeTheme = React.useCallback(
-    (themeName: string) => {
-      const theme = themes.find((theme) => theme.name === themeName);
+    (themeName: string, options?: ChangeThemeOptions) => {
+      const theme = themes.find((t) => t.name === themeName);
       if (!theme) {
         console.warn(
           "Theme with name",
@@ -55,6 +54,12 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
         return;
       }
       setCurrentTheme(theme);
+
+      if (options?.persistent === true) {
+        AsyncStorage.setItem(SAVED_SELECTED_THEME_KEY, themeName).catch((e) => {
+          console.warn("Failed to persist selected theme", e);
+        });
+      }
     },
     [themes, setCurrentTheme]
   );
@@ -98,6 +103,30 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
     [currentTheme, deviceWidth, breakpoints]
   );
 
+  React.useEffect(() => {
+    const listener = Dimensions.addEventListener("change", ({ window }) =>
+      setDeviceWidth(window.width)
+    );
+    return () => {
+      listener.remove();
+    };
+  });
+
+  React.useEffect(() => {
+    const run = async () => {
+      const savedSelectedThemeName = await AsyncStorage.getItem(
+        SAVED_SELECTED_THEME_KEY
+      );
+      if (savedSelectedThemeName) {
+        changeTheme(savedSelectedThemeName);
+      }
+    };
+    run();
+
+    // This should only run once, ignore deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <ThemeContext.Provider value={{ theme: proxiedTheme, changeTheme }}>
       {children}
@@ -110,7 +139,10 @@ const useTheme = (): ReadTheme => {
   return theme;
 };
 
-const useChangeTheme = (): ((themeName: string) => void) => {
+const useChangeTheme = (): ((
+  themeName: string,
+  options?: ChangeThemeOptions
+) => void) => {
   const { changeTheme } = React.useContext(ThemeContext);
   return changeTheme;
 };

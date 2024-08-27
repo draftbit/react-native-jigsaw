@@ -5,9 +5,15 @@ import React, {
   useImperativeHandle,
   forwardRef,
 } from "react";
-import { Text, StyleSheet, TextStyle, StyleProp } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  TextStyle,
+  StyleProp,
+  TextProps,
+} from "react-native";
 
-interface TimerProps {
+interface TimerProps extends TextProps {
   style?: StyleProp<TextStyle>;
   initialTime?: number;
   updateInterval?: number;
@@ -35,10 +41,11 @@ const Timer = forwardRef<TimerHandle, TimerProps>(
       onTimerEnd,
       countDirection = "up",
       timerEndTime,
+      ...rest
     },
     ref
   ) => {
-    const defaultInitialTime = countDirection === "up" ? 0 : 100000;
+    const defaultInitialTime = 0;
     const [time, setTime] = useState(initialTime ?? defaultInitialTime);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -64,7 +71,10 @@ const Timer = forwardRef<TimerHandle, TimerProps>(
           // Count down
           if (newTime <= 0 && countDirection === "down") {
             clearTimer();
-            onTimerEnd?.();
+            // Delay the onTimerEnd callback to ensure it triggers after the final time update
+            setTimeout(() => {
+              onTimerEnd?.();
+            }, updateInterval);
             return 0;
           }
           // Count up
@@ -74,7 +84,10 @@ const Timer = forwardRef<TimerHandle, TimerProps>(
             newTime >= timerEndTime
           ) {
             clearTimer();
-            onTimerEnd?.();
+            // Delay the onTimerEnd callback to ensure it triggers after the final time update
+            setTimeout(() => {
+              onTimerEnd?.();
+            }, updateInterval);
             return timerEndTime;
           }
 
@@ -123,7 +136,9 @@ const Timer = forwardRef<TimerHandle, TimerProps>(
     };
 
     return (
-      <Text style={[styles.defaultTimerStyle, style]}>{formatTime(time)}</Text>
+      <Text {...rest} style={[styles.defaultTimerStyle, style]}>
+        {formatTime(time)}
+      </Text>
     );
   }
 );
@@ -131,7 +146,7 @@ const Timer = forwardRef<TimerHandle, TimerProps>(
 const styles = StyleSheet.create({
   defaultTimerStyle: {
     fontSize: 24,
-    textAlign: "center",
+    textAlign: "left",
   },
 });
 

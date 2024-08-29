@@ -40,7 +40,7 @@
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
-    "@dotlottie/react-player": "^1.6.1",
+    "@dotlottie/react-player": "1.6.1",
     "@draftbit/react-theme-provider": "^2.1.1",
     "@draftbit/theme": "50.3.1",
     "@expo/vector-icons": "^14.0.0",
@@ -59,7 +59,7 @@
     "lodash.isnumber": "^3.0.3",
     "lodash.omit": "^4.5.0",
     "lodash.tonumber": "^4.0.3",
-    "lottie-react-native": "^6.5.1",
+    "lottie-react-native": "6.5.1",
     "react-native-animated-spinkit": "1.5.2",
     "react-native-confirmation-code-field": "^7.3.1",
     "react-native-deck-swiper": "^2.0.12",

@@ -81,6 +81,7 @@ export { default as SimpleStyleSectionList } from "./components/SimpleStyleScrol
 export { default as SimpleStyleSwipeableList } from "./components/SimpleStyleScrollables/SimpleStyleSwipeableList";
 export { default as LoadingIndicator } from "./components/LoadingIndicator";
 export { default as LottieAnimation } from "./components/LottieAnimation";
+export { default as Timer } from "./components/Timer";
 
 /* Deprecated: Fix or Delete!  */
 export { default as AccordionItem } from "./deprecated-components/AccordionItem";

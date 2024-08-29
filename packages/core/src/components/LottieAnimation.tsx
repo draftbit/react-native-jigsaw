@@ -1,13 +1,13 @@
 import React, { forwardRef } from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
 import LottieView, { AnimationObject } from "lottie-react-native";
-import { extractSizeStyles } from "../utilities";
 
 type Props = {
   style?: StyleProp<ViewStyle>;
   resizeMode?: "cover" | "contain" | "center";
   source: string | AnimationObject | { uri: string };
   autoPlay?: boolean;
+  speed?: number;
   loop?: boolean;
 };
 
@@ -19,11 +19,11 @@ const LottieAnimation = forwardRef<LottieView, Props>(
       autoPlay = true,
       loop = true,
       resizeMode = "cover",
+      speed = 1,
       ...rest
     },
     ref
   ) => {
-    const sizeStyles = extractSizeStyles(style);
     return (
       <View style={style}>
         <LottieView
@@ -32,9 +32,10 @@ const LottieAnimation = forwardRef<LottieView, Props>(
           autoPlay={autoPlay}
           loop={loop}
           resizeMode={resizeMode}
+          speed={speed}
           // A specific size is required on mobile, but not on web.
           // This ensures consistent behavior across platforms during preview.
-          style={sizeStyles}
+          style={{ width: "100%", height: "100%" }}
           {...rest}
         />
       </View>

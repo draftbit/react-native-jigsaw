@@ -68,7 +68,7 @@ const MapViewF = <T extends object>({
   style,
   animateToLocation,
   mapRef,
-  mapType = "standard",
+  mapType: mapTypeProp = "standard",
   ...rest
 }: MapViewProps<T> & {
   animateToLocation: (location: ZoomLocation) => void;
@@ -78,6 +78,7 @@ const MapViewF = <T extends object>({
   const delayedRegionValue = useDebounce(currentRegion, 300);
   const contextDelayedRegionValue = useDebounce(currentRegion, 50);
 
+  let mapType = mapTypeProp;
   if (mapType === "mutedStandard" && Platform.OS === "android") {
     console.warn(
       "Map type 'mutedStandard' is not supported on Android. Defaulting to 'standard'"

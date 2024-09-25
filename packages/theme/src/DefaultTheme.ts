@@ -30,7 +30,7 @@ const DraftbitTheme = createTheme({
         primary: palettes.draftbit.primary,
         secondary: palettes.draftbit.secondary,
         tertiary: palettes.draftbit.tertiary,
-        accent: palettes.draftbit.accent,
+        accent: palettes.draftbit.secondary,
       },
       text: {
         strong: palettes.draftbit.strong,

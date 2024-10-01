@@ -14,7 +14,7 @@ const SAVED_SELECTED_THEME_KEY = "saved_selected_theme";
 
 type ThemeContextType = {
   theme: ReadTheme;
-  changeTheme: (themeName: string) => void;
+  changeTheme: (themeName: string, options?: ChangeThemeOptions) => void;
 };
 
 const ThemeContext = React.createContext<ThemeContextType>({

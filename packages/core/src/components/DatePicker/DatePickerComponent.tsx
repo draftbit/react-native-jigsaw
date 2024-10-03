@@ -1,6 +1,6 @@
 import React from "react";
 import { Platform } from "react-native";
-import DateTimePicker from "@react-native-community/datetimepicker";
+import DateTimePicker from "react-native-date-picker";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { DatePickerComponentProps as Props } from "./DatePickerComponentType";
 
@@ -11,8 +11,21 @@ const DatePickerComponent: React.FC<React.PropsWithChildren<Props>> = ({
   minimumDate,
   maximumDate,
   toggleVisibility,
+  inline,
 }) => {
-  return Platform.OS === "ios" || Platform.OS === "android" ? (
+  if (inline) {
+    return (
+      <DateTimePicker
+        date={value}
+        mode={mode}
+        onDateChange={onChange}
+        minimumDate={minimumDate}
+        maximumDate={maximumDate}
+      />
+    );
+  }
+
+  return (
     <DateTimePickerModal
       date={value}
       mode={mode}
@@ -27,15 +40,6 @@ const DatePickerComponent: React.FC<React.PropsWithChildren<Props>> = ({
       onConfirm={(data) => {
         onChange(null, data);
       }}
-    />
-  ) : (
-    <DateTimePicker
-      value={value}
-      mode={mode}
-      onChange={onChange}
-      display={"default"}
-      minimumDate={minimumDate}
-      maximumDate={maximumDate}
     />
   );
 };

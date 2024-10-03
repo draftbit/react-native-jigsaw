@@ -7,5 +7,6 @@ export interface DatePickerComponentProps {
   isVisible?: boolean;
   minimumDate?: Date;
   maximumDate?: Date;
+  inline?: boolean;
   theme?: ReadTheme;
 }

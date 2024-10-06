@@ -9,6 +9,7 @@ export interface HeadlessAudioPlayerProps extends MediaPlayerProps {
   playsInSilentModeIOS?: boolean;
   playThroughEarpieceAndroid?: boolean;
   isLooping?: boolean;
+  volume?: number;
 }
 
 export interface AudioPlayerInterfaceProps {

@@ -32,6 +32,7 @@ const HeadlessAudioPlayer = React.forwardRef<
       onPlaybackStatusUpdate: onPlaybackStatusUpdateProp,
       onPlaybackFinish,
       isLooping = false,
+      volume = 1.0,
     },
     ref
   ) => {
@@ -46,6 +47,12 @@ const HeadlessAudioPlayer = React.forwardRef<
         currentSound.setIsLoopingAsync(isLooping);
       }
     }, [currentSound, isLooping]);
+
+    React.useEffect(() => {
+      if (currentSound && typeof currentSound?.setVolumeAsync === "function") {
+        currentSound.setVolumeAsync(volume);
+      }
+    }, [currentSound, volume]);
 
     const updateAudioMode = React.useCallback(async () => {
       try {

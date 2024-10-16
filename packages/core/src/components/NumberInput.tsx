@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { TextInput as NativeTextInput } from "react-native";
 import { isString, isNumber, isNaN } from "lodash";
+import { TextInput as TextInputRefType } from "react-native";
+import NativeTextInput from "./TextInput";
 import { TextInputProps } from "./TextInput";
 import { useDebounce, useOnUpdate } from "../hooks";
 
@@ -15,7 +16,7 @@ interface Props
   onChangeTextDelayed?: (value?: number) => void;
 }
 
-const NumberInput = React.forwardRef<NativeTextInput, Props>(
+const NumberInput = React.forwardRef<TextInputRefType, Props>(
   (
     {
       onChangeText,

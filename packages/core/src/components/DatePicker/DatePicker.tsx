@@ -67,6 +67,7 @@ type Props = {
   minimumDate?: Date | string;
   maximumDate?: Date | string;
   hideLabel?: boolean;
+  inline?: boolean;
 } & IconSlot &
   TextInputProps;
 
@@ -109,6 +110,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   minimumDate,
   maximumDate,
   hideLabel = false,
+  inline = false,
   ...props
 }) => {
   const [value, setValue] = React.useState<Date | undefined>(
@@ -395,6 +397,27 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     type === "solid" ? { marginHorizontal: 12 } : {},
   ];
 
+  const Picker = (
+    <DateTimePicker
+      value={getValidDate()}
+      mode={mode}
+      isVisible={inline || pickerVisible}
+      toggleVisibility={toggleVisibility}
+      minimumDate={parseDate(minimumDate)}
+      maximumDate={parseDate(maximumDate)}
+      onChange={(_event: any, data: any) => {
+        toggleVisibility();
+        setValue(data);
+        onDateChange(data);
+      }}
+      inline={inline}
+    />
+  );
+
+  if (inline) {
+    return <View style={style}>{Picker}</View>;
+  }
+
   return (
     <>
       <Touchable disabled={disabled} onPress={toggleVisibility}>
@@ -552,19 +575,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
                 },
               ]}
             >
-              <DateTimePicker
-                value={getValidDate()}
-                mode={mode}
-                isVisible={pickerVisible}
-                toggleVisibility={toggleVisibility}
-                minimumDate={parseDate(minimumDate)}
-                maximumDate={parseDate(maximumDate)}
-                onChange={(_event: any, data: any) => {
-                  toggleVisibility();
-                  setValue(data);
-                  onDateChange(data);
-                }}
-              />
+              {Picker}
             </View>
           </View>
         </Portal>

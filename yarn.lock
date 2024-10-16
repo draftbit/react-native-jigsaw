@@ -12966,10 +12966,10 @@ react-native-date-picker@^5.0.7:
   resolved "https://registry.yarnpkg.com/react-native-date-picker/-/react-native-date-picker-5.0.7.tgz#24161d30c6dca8627afe1aa5a55a389421fdfba4"
   integrity sha512-/RodyCZWjb+f3f4YHqKbWFYczGm+tNngwbVSB6MLGgt5Kl7LQXpv4QE6ybnHW+DM4LteTP8A6lj8LEkQ7+usLQ==
 
-react-native-deck-swiper@^2.0.12:
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/react-native-deck-swiper/-/react-native-deck-swiper-2.0.12.tgz#941ebfdd7e4e0cff316640dbe795a4a13714ddb5"
-  integrity sha512-fphojlLDMkg5ppHqoAh/9ZuDzsdxR/HTKGFhAkEOlNe08r/MRUpyYJHLxKS83CnPQLJvvY7ol9pHvTm9D+DSRg==
+react-native-deck-swiper@^2.0.16:
+  version "2.0.17"
+  resolved "https://registry.yarnpkg.com/react-native-deck-swiper/-/react-native-deck-swiper-2.0.17.tgz#c943133954e1ed0c5c115832b0601874157296fe"
+  integrity sha512-vOGmhBLnrVQL6WtwmgdUqKOyKwoDRmozYjEygRHvFEjHwyFohpd9scDPRNc0t9HlKcXRVNunVsN45B9emqNybw==
   dependencies:
     prop-types "15.5.10"
 

@@ -109,7 +109,7 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
           borderWidth,
           borderColor: borderColor ?? theme.colors.border.brand,
         }}
-        onChange={(index) => onSettle?.(mappedSnapPoints.length - index - 1)}
+        onChange={(index) => onSettle?.(index)}
       >
         <BottomSheetScrollView
           contentContainerStyle={[styles.contentContainerStyle, style]}

@@ -7,7 +7,17 @@ const BottomSheetExample: React.FC = () => {
   const bottomSheetRef = React.useRef<any>();
   return (
     <View style={{ flex: 1 }}>
-      <BottomSheet style={{ alignItems: "center" }} ref={bottomSheetRef}>
+      <BottomSheet
+        style={{ alignItems: "center" }}
+        ref={bottomSheetRef}
+        onSettle={(newIndex: number) => {
+          try {
+            console.log("onSettle", newIndex);
+          } catch (error) {
+            console.error("Error in onSettle:", error);
+          }
+        }}
+      >
         <Text>This is a bottom Sheet</Text>
       </BottomSheet>
       <Button

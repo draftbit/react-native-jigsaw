@@ -126,6 +126,8 @@ const DeckSwiper = React.forwardRef<DeckSwiperRef, DeckSwiperProps<any>>(
           case "bottom":
             deckSwiperRef.current?.swipeBottom();
             break;
+          default:
+            deckSwiperRef.current?.swipeLeft();
         }
       },
     }));

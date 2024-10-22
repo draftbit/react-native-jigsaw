@@ -163,6 +163,10 @@ const BaseTheme = createTheme({
           tablet: "yellow",
           laptop: "red",
         },
+        lightDarkTest: {
+          light: "white",
+          dark: "black",
+        },
       },
     },
     typography: {},

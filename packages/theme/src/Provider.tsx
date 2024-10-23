@@ -1,5 +1,5 @@
 import React from "react";
-import { Dimensions, Platform } from "react-native";
+import { Dimensions, Platform, useColorScheme } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import createThemeValuesProxy from "./createThemeValuesProxy";
 import DefaultTheme from "./DefaultTheme";
@@ -41,6 +41,8 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
   const [deviceWidth, setDeviceWidth] = React.useState(
     Dimensions.get("window").width
   );
+  const colorScheme = useColorScheme();
+  const lightDarkSelection = colorScheme ?? "light";
 
   const changeTheme = React.useCallback(
     (themeName: string, options?: ChangeThemeOptions) => {
@@ -72,35 +74,40 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
           currentTheme.colors.branding,
           breakpoints,
           deviceWidth,
-          Platform.OS
+          Platform.OS,
+          lightDarkSelection
         ),
         text: createThemeValuesProxy(
           currentTheme.colors.text,
           breakpoints,
           deviceWidth,
-          Platform.OS
+          Platform.OS,
+          lightDarkSelection
         ),
         background: createThemeValuesProxy(
           currentTheme.colors.background,
           breakpoints,
           deviceWidth,
-          Platform.OS
+          Platform.OS,
+          lightDarkSelection
         ),
         foreground: createThemeValuesProxy(
           currentTheme.colors.foreground,
           breakpoints,
           deviceWidth,
-          Platform.OS
+          Platform.OS,
+          lightDarkSelection
         ),
         border: createThemeValuesProxy(
           currentTheme.colors.border,
           breakpoints,
           deviceWidth,
-          Platform.OS
+          Platform.OS,
+          lightDarkSelection
         ),
       },
     }),
-    [currentTheme, deviceWidth, breakpoints]
+    [currentTheme, deviceWidth, breakpoints, lightDarkSelection]
   );
 
   React.useEffect(() => {

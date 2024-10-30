@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Image, Text, StyleSheet, View } from "react-native";
-import { Swiper, SwiperItem } from "@draftbit/ui";
+import { Swiper, SwiperItem, Button } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
 const style = StyleSheet.create({
@@ -10,8 +10,9 @@ const style = StyleSheet.create({
   },
 });
 
-function SwiperExample({ theme }) {
+function SwiperExample() {
   const [data, setData] = React.useState();
+  const swiperRef = React.useRef(null);
 
   React.useEffect(() => {
     fetch("https://example-data.draftbit.com/properties?_limit=10")
@@ -22,7 +23,7 @@ function SwiperExample({ theme }) {
   }, []);
 
   if (!data) {
-    return <Text>"Loading..."</Text>;
+    return <Text>Loading...</Text>;
   }
 
   return (
@@ -64,7 +65,7 @@ function SwiperExample({ theme }) {
             <Text>Test Slide 2</Text>
           </SwiperItem>
           <SwiperItem style={[style.item, { backgroundColor: "#c9fdd9" }]}>
-            <Text>Test Slide 2</Text>
+            <Text>Test Slide 3</Text>
           </SwiperItem>
         </Swiper>
       </Section>
@@ -94,6 +95,49 @@ function SwiperExample({ theme }) {
             </SwiperItem>
           )}
         />
+      </Section>
+      <Section title="Interaction Example">
+        <Swiper
+          ref={swiperRef}
+          vertical={false}
+          loop={true}
+          style={{ width: "100%", height: 300 }}
+          onSwipe={(index) => console.log("Swiped", index)}
+          onSwipedNext={(index) => console.log("Swiped next", index)}
+          onSwipedPrevious={(index) => console.log("Swiped previous", index)}
+          onIndexChanged={(index) => console.log("onIndexChanged: ", index)}
+        >
+          <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
+            <Text>Test Slide 1</Text>
+          </SwiperItem>
+          <SwiperItem style={[style.item, { backgroundColor: "#d6d3fd" }]}>
+            <Text>Test Slide 2</Text>
+          </SwiperItem>
+          <SwiperItem style={[style.item, { backgroundColor: "#c9fdd9" }]}>
+            <Text>Test Slide 3</Text>
+          </SwiperItem>
+        </Swiper>
+
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            marginTop: 10,
+          }}
+        >
+          <Button
+            title="Swipe Prev"
+            onPress={() => swiperRef.current?.swipePrev()}
+          />
+          <Button
+            title="Swipe To 1"
+            onPress={() => swiperRef.current?.swipeTo(1)}
+          />
+          <Button
+            title="Swipe Next"
+            onPress={() => swiperRef.current?.swipeNext()}
+          />
+        </View>
       </Section>
     </Container>
   );

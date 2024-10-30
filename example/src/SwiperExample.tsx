@@ -27,18 +27,22 @@ function SwiperExample() {
   }
 
   return (
-    <Container>
-      <Section title="Horizontal Example">
+    <Container style={undefined}>
+      <Section title="Horizontal Example" style={undefined}>
         <Swiper
           vertical={false}
           loop={true}
           prevTitle="Previous"
           nextTitle="Next"
           style={{ width: "100%", height: 300 }}
-          onSwipe={(index) => console.log("Swiped", index)}
-          onSwipedNext={(index) => console.log("Swiped next", index)}
-          onSwipedPrevious={(index) => console.log("Swiped previous", index)}
-          onIndexChanged={(index) => console.log("onIndexChanged: ", index)}
+          onSwipe={(index: number) => console.log("Swiped", index)}
+          onSwipedNext={(index: number) => console.log("Swiped next", index)}
+          onSwipedPrevious={(index: number) =>
+            console.log("Swiped previous", index)
+          }
+          onIndexChanged={(index: number) =>
+            console.log("onIndexChanged: ", index)
+          }
         >
           <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
             <Text>Test Slide 1</Text>
@@ -51,7 +55,7 @@ function SwiperExample() {
           </SwiperItem>
         </Swiper>
       </Section>
-      <Section title="Vertical Example">
+      <Section title="Vertical Example" style={undefined}>
         <Swiper
           vertical={true}
           style={{ width: "100%", height: 300 }}
@@ -69,7 +73,7 @@ function SwiperExample() {
           </SwiperItem>
         </Swiper>
       </Section>
-      <Section title="Data-Driven Example">
+      <Section title="Data-Driven Example" style={undefined}>
         <Swiper
           vertical={false}
           loop={true}
@@ -81,8 +85,8 @@ function SwiperExample() {
           dotActiveColor="black"
           style={{ width: "100%", height: 300 }}
           data={data}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
+          keyExtractor={(item: any) => item.id}
+          renderItem={({ item }: { item: any }) => (
             <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
               <View style={{ alignItems: "center", justifyContent: "center" }}>
                 <Image
@@ -96,16 +100,20 @@ function SwiperExample() {
           )}
         />
       </Section>
-      <Section title="Interaction Example">
+      <Section title="Interaction Example" style={undefined}>
         <Swiper
           ref={swiperRef}
           vertical={false}
           loop={true}
           style={{ width: "100%", height: 300 }}
-          onSwipe={(index) => console.log("Swiped", index)}
-          onSwipedNext={(index) => console.log("Swiped next", index)}
-          onSwipedPrevious={(index) => console.log("Swiped previous", index)}
-          onIndexChanged={(index) => console.log("onIndexChanged: ", index)}
+          onSwipe={(index: number) => console.log("Swiped", index)}
+          onSwipedNext={(index: number) => console.log("Swiped next", index)}
+          onSwipedPrevious={(index: number) =>
+            console.log("Swiped previous", index)
+          }
+          onIndexChanged={(index: number) =>
+            console.log("onIndexChanged: ", index)
+          }
         >
           <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
             <Text>Test Slide 1</Text>

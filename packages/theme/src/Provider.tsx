@@ -1,5 +1,5 @@
 import React from "react";
-import { Dimensions, Platform, useColorScheme } from "react-native";
+import { Dimensions, Platform, useColorScheme, TextStyle } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import createThemeValuesProxy from "./createThemeValuesProxy";
 import DefaultTheme from "./DefaultTheme";
@@ -7,8 +7,10 @@ import {
   Breakpoints,
   ChangeThemeOptions,
   ReadTheme,
+  ThemeValues,
   ValidatedTheme,
 } from "./types";
+import { asThemeValuesObject } from "./validators";
 
 const SAVED_SELECTED_THEME_KEY = "saved_selected_theme";
 
@@ -66,49 +68,71 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
     [themes, setCurrentTheme]
   );
 
-  const proxiedTheme: ReadTheme = React.useMemo(
-    () => ({
+  const proxiedTheme: ReadTheme = React.useMemo(() => {
+    const createProxiedThemeValue = (value: ThemeValues | undefined) =>
+      createThemeValuesProxy(
+        value,
+        breakpoints,
+        deviceWidth,
+        Platform.OS,
+        lightDarkSelection
+      );
+
+    const createProxiedTypographyValue = (
+      value: TextStyle | ThemeValues | undefined
+    ) => {
+      const valueAsThemeValues = asThemeValuesObject(value);
+      if (valueAsThemeValues) {
+        return createProxiedThemeValue(valueAsThemeValues);
+      } else {
+        return value;
+      }
+    };
+
+    return {
       ...currentTheme,
       colors: {
-        branding: createThemeValuesProxy(
-          currentTheme.colors.branding,
-          breakpoints,
-          deviceWidth,
-          Platform.OS,
-          lightDarkSelection
+        branding: createProxiedThemeValue(currentTheme.colors.branding),
+        text: createProxiedThemeValue(currentTheme.colors.text),
+        background: createProxiedThemeValue(currentTheme.colors.background),
+        foreground: createProxiedThemeValue(currentTheme.colors.foreground),
+        border: createProxiedThemeValue(currentTheme.colors.border),
+      },
+      typography: {
+        body1: createProxiedTypographyValue(currentTheme.typography.body1),
+        body2: createProxiedTypographyValue(currentTheme.typography.body2),
+        button: createProxiedTypographyValue(currentTheme.typography.button),
+        caption: createProxiedTypographyValue(currentTheme.typography.caption),
+        headline1: createProxiedTypographyValue(
+          currentTheme.typography.headline1
         ),
-        text: createThemeValuesProxy(
-          currentTheme.colors.text,
-          breakpoints,
-          deviceWidth,
-          Platform.OS,
-          lightDarkSelection
+        headline2: createProxiedTypographyValue(
+          currentTheme.typography.headline2
         ),
-        background: createThemeValuesProxy(
-          currentTheme.colors.background,
-          breakpoints,
-          deviceWidth,
-          Platform.OS,
-          lightDarkSelection
+        headline3: createProxiedTypographyValue(
+          currentTheme.typography.headline3
         ),
-        foreground: createThemeValuesProxy(
-          currentTheme.colors.foreground,
-          breakpoints,
-          deviceWidth,
-          Platform.OS,
-          lightDarkSelection
+        headline4: createProxiedTypographyValue(
+          currentTheme.typography.headline4
         ),
-        border: createThemeValuesProxy(
-          currentTheme.colors.border,
-          breakpoints,
-          deviceWidth,
-          Platform.OS,
-          lightDarkSelection
+        headline5: createProxiedTypographyValue(
+          currentTheme.typography.headline5
+        ),
+        headline6: createProxiedTypographyValue(
+          currentTheme.typography.headline6
+        ),
+        overline: createProxiedTypographyValue(
+          currentTheme.typography.overline
+        ),
+        subtitle1: createProxiedTypographyValue(
+          currentTheme.typography.subtitle1
+        ),
+        subtitle2: createProxiedTypographyValue(
+          currentTheme.typography.subtitle2
         ),
       },
-    }),
-    [currentTheme, deviceWidth, breakpoints, lightDarkSelection]
-  );
+    };
+  }, [currentTheme, deviceWidth, breakpoints, lightDarkSelection]);
 
   React.useEffect(() => {
     const listener = Dimensions.addEventListener("change", ({ window }) =>

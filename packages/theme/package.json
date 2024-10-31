@@ -42,8 +42,8 @@
     "@react-native-async-storage/async-storage": "1.21.0",
     "color": "^4.2.3",
     "deepmerge": "^4.3.1",
-    "lodash.isobject": "^3.0.2",
-    "react-native-typography": "^1.4.1"
+    "react-native-typography": "^1.4.1",
+    "zod": "^3.23.8"
   },
   "eslintIgnore": [
     "node_modules/",

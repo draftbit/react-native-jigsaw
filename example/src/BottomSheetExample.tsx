@@ -35,7 +35,7 @@ const BottomSheetExample: React.FC = () => {
         title="Snap to index 1"
         onPress={() => {
           if (bottomSheetRef && bottomSheetRef?.current) {
-            bottomSheetRef?.current?.snapToIndex(2);
+            bottomSheetRef?.current?.snapToIndex(1);
           }
         }}
       />

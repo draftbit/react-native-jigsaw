@@ -35,6 +35,7 @@ export interface BottomSheetProps extends ScrollViewProps {
   topBorderRadius?: number;
   borderWidth?: number;
   borderColor?: string;
+  enableDynamicSizing?: boolean;
   onSettle?: (index: number) => void;
   style?: StyleProp<ViewStyle>;
 }
@@ -56,6 +57,7 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
       topBorderRadius = 20,
       borderWidth = 1,
       borderColor,
+      enableDynamicSizing = true,
       onSettle,
       style,
       children,
@@ -92,6 +94,7 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
     return (
       <BottomSheetComponent
         ref={ref}
+        enableDynamicSizing={enableDynamicSizing}
         snapPoints={mappedSnapPoints}
         index={
           initialSnapIndex !== undefined
@@ -109,7 +112,13 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
           borderWidth,
           borderColor: borderColor ?? theme.colors.border.brand,
         }}
-        onChange={(index) => onSettle?.(index)}
+        onChange={(index) =>
+          // Convert bottom-sheet index to match our top-to-bottom ordering
+          // When dynamic sizing is enabled, we don't need to subtract 1 since an extra snap point may be added
+          enableDynamicSizing
+            ? onSettle?.(mappedSnapPoints.length - index)
+            : onSettle?.(mappedSnapPoints.length - index - 1)
+        }
       >
         <BottomSheetScrollView
           contentContainerStyle={[styles.contentContainerStyle, style]}

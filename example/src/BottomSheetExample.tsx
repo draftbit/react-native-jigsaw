@@ -5,14 +5,17 @@ import { Button } from "@draftbit/core";
 
 const BottomSheetExample: React.FC = () => {
   const bottomSheetRef = React.useRef<any>();
+  const [snapIndex, setSnapIndex] = React.useState(0);
   return (
     <View style={{ flex: 1 }}>
       <BottomSheet
+        enableDynamicSizing={false}
         style={{ alignItems: "center" }}
         ref={bottomSheetRef}
         onSettle={(newIndex: number) => {
           try {
             console.log("onSettle", newIndex);
+            setSnapIndex(newIndex);
           } catch (error) {
             console.error("Error in onSettle:", error);
           }
@@ -29,10 +32,10 @@ const BottomSheetExample: React.FC = () => {
         }}
       />
       <Button
-        title="Snap to index 2"
+        title="Snap to index 1"
         onPress={() => {
           if (bottomSheetRef && bottomSheetRef?.current) {
-            bottomSheetRef?.current?.snapToIndex(2);
+            bottomSheetRef?.current?.snapToIndex(1);
           }
         }}
       />
@@ -52,6 +55,7 @@ const BottomSheetExample: React.FC = () => {
           }
         }}
       />
+      <Text>Snap index: {snapIndex}</Text>
     </View>
   );
 };

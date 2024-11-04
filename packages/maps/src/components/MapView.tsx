@@ -68,6 +68,7 @@ const MapViewF = <T extends object>({
   style,
   animateToLocation,
   mapRef,
+  mapType: mapTypeProp = "standard",
   ...rest
 }: MapViewProps<T> & {
   animateToLocation: (location: ZoomLocation) => void;
@@ -76,6 +77,14 @@ const MapViewF = <T extends object>({
   const [currentRegion, setCurrentRegion] = React.useState<Region | null>(null);
   const delayedRegionValue = useDebounce(currentRegion, 300);
   const contextDelayedRegionValue = useDebounce(currentRegion, 50);
+
+  let mapType = mapTypeProp;
+  if (mapType === "mutedStandard" && Platform.OS === "android") {
+    console.warn(
+      "Map type 'mutedStandard' is not supported on Android. Defaulting to 'standard'"
+    );
+    mapType = "standard";
+  }
 
   const markerRefs = React.useMemo<
     Map<string, React.RefObject<MapMarkerRefType>>
@@ -316,6 +325,7 @@ const MapViewF = <T extends object>({
           onPress?.(coordinate.latitude, coordinate.longitude);
         }}
         style={[styles.map, style]}
+        mapType={mapType}
         {...rest}
       >
         {unClusteredMarkers.map((marker, index) =>

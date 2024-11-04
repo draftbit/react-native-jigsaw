@@ -47,9 +47,22 @@ const value: any = {
       nested: "nestedMedium",
     },
   },
+  lightDark: {
+    default: "defaultLightDark",
+    light: "lightValue",
+    dark: "darkValue",
+  },
+  lightDarkNested: {
+    light: {
+      nested: "nestedLight",
+    },
+    dark: {
+      nested: "nestedDark",
+    },
+  },
 };
 
-const proxied = createThemeValuesProxy(value, {}, 400, "android")!;
+const proxied = createThemeValuesProxy(value, {}, 400, "android", "light")!;
 
 describe("createThemeValuesProxy tests", () => {
   describe("Value Returned Directly", () => {
@@ -78,29 +91,59 @@ describe("createThemeValuesProxy tests", () => {
 
   describe("Platform Value", () => {
     test("returns android value when platform is android", () => {
-      const androidProxied = createThemeValuesProxy(value, {}, 400, "android")!;
+      const androidProxied = createThemeValuesProxy(
+        value,
+        {},
+        400,
+        "android",
+        "light"
+      )!;
       expect(androidProxied.platform).toEqual(value.platform.android);
     });
 
     test("returns ios value when platform is ios", () => {
-      const iosProxied = createThemeValuesProxy(value, {}, 400, "ios")!;
+      const iosProxied = createThemeValuesProxy(
+        value,
+        {},
+        400,
+        "ios",
+        "light"
+      )!;
       expect(iosProxied.platform).toEqual(value.platform.ios);
     });
 
     test("returns default platform value when platform is not in keys", () => {
-      const windowsProxied = createThemeValuesProxy(value, {}, 400, "windows")!;
+      const windowsProxied = createThemeValuesProxy(
+        value,
+        {},
+        400,
+        "windows",
+        "light"
+      )!;
       expect(windowsProxied.platform).toEqual(value.platform.default);
     });
 
     test("returns nested android value when platform is android", () => {
-      const androidProxied = createThemeValuesProxy(value, {}, 400, "android")!;
+      const androidProxied = createThemeValuesProxy(
+        value,
+        {},
+        400,
+        "android",
+        "light"
+      )!;
       expect(androidProxied.platformNested.nested).toEqual(
         value.platformNested.android.nested
       );
     });
 
     test("returns nested ios value when platform is ios", () => {
-      const iosProxied = createThemeValuesProxy(value, {}, 400, "ios")!;
+      const iosProxied = createThemeValuesProxy(
+        value,
+        {},
+        400,
+        "ios",
+        "light"
+      )!;
       expect(iosProxied.platformNested.nested).toEqual(
         value.platformNested.ios.nested
       );
@@ -113,7 +156,8 @@ describe("createThemeValuesProxy tests", () => {
         value,
         breakpoints,
         breakpoints.small,
-        "android"
+        "android",
+        "light"
       )!;
       expect(smallProxied.breakpoint).toEqual(value.breakpoint.small);
     });
@@ -123,7 +167,8 @@ describe("createThemeValuesProxy tests", () => {
         value,
         breakpoints,
         breakpoints.small + 50,
-        "android"
+        "android",
+        "light"
       )!;
       expect(smallProxied.breakpoint).toEqual(value.breakpoint.small);
     });
@@ -133,7 +178,8 @@ describe("createThemeValuesProxy tests", () => {
         value,
         breakpoints,
         breakpoints.medium,
-        "android"
+        "android",
+        "light"
       )!;
       expect(mediumProxied.breakpoint).toEqual(value.breakpoint.medium);
     });
@@ -143,7 +189,8 @@ describe("createThemeValuesProxy tests", () => {
         value,
         breakpoints,
         breakpoints.medium + 50,
-        "android"
+        "android",
+        "light"
       )!;
       expect(mediumProxied.breakpoint).toEqual(value.breakpoint.medium);
     });
@@ -153,7 +200,8 @@ describe("createThemeValuesProxy tests", () => {
         value,
         breakpoints,
         breakpoints.large,
-        "android"
+        "android",
+        "light"
       )!;
       expect(largeProxied.breakpoint).toEqual(value.breakpoint.large);
     });
@@ -163,7 +211,8 @@ describe("createThemeValuesProxy tests", () => {
         value,
         breakpoints,
         breakpoints.large + 400,
-        "android"
+        "android",
+        "light"
       )!;
       expect(largeProxied.breakpoint).toEqual(value.breakpoint.large);
     });
@@ -173,7 +222,8 @@ describe("createThemeValuesProxy tests", () => {
         value,
         breakpoints,
         50,
-        "android"
+        "android",
+        "light"
       )!;
       expect(verySmallProxied.breakpoint).toEqual(value.breakpoint.default);
     });
@@ -183,7 +233,8 @@ describe("createThemeValuesProxy tests", () => {
         value,
         breakpoints,
         breakpoints.small,
-        "android"
+        "android",
+        "light"
       )!;
       expect(smallProxied.breakpointNested.nested).toEqual(
         value.breakpointNested.small.nested
@@ -195,10 +246,72 @@ describe("createThemeValuesProxy tests", () => {
         value,
         breakpoints,
         breakpoints.medium,
-        "android"
+        "android",
+        "light"
       )!;
       expect(mediumProxied.breakpointNested.nested).toEqual(
         value.breakpointNested.medium.nested
+      );
+    });
+  });
+
+  describe("Light Dark Value", () => {
+    test("returns light value when key is light", () => {
+      const lightProxied = createThemeValuesProxy(
+        value,
+        {},
+        400,
+        "android",
+        "light"
+      )!;
+      expect(lightProxied.lightDark).toEqual(value.lightDark.light);
+    });
+
+    test("returns dark value when key is dark", () => {
+      const darkProxied = createThemeValuesProxy(
+        value,
+        {},
+        400,
+        "android",
+        "dark"
+      )!;
+      expect(darkProxied.lightDark).toEqual(value.lightDark.dark);
+    });
+
+    test("returns default value when key is not light or dark", () => {
+      const otherProxied = createThemeValuesProxy(
+        value,
+        {},
+        400,
+        "android",
+        "other" as any
+      )!;
+      expect(otherProxied.lightDark).toEqual(value.lightDark.default);
+    });
+
+    test("returns nested light value when key is light", () => {
+      const lightProxied = createThemeValuesProxy(
+        value,
+        {},
+        400,
+        "android",
+        "light"
+      )!;
+      expect(lightProxied.lightDarkNested.nested).toEqual(
+        value.lightDarkNested.light.nested
+      );
+    });
+
+    test("returns nested dark value when key is dark", () => {
+      const darkProxied = createThemeValuesProxy(
+        value,
+        {},
+        400,
+        "android",
+        "dark"
+      )!;
+      expect(darkProxied.lightDarkNested.nested).toEqual(
+        value.lightDarkNested.dark.nested
       );
     });
   });

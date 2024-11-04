@@ -25,6 +25,14 @@ export default function AudioPlayerExample() {
           isLooping
         />
       </Section>
+      <Section style={{}} title="Adjust volume">
+        <AudioPlayer
+          source={require("./assets/loop.wav")}
+          playsInBackground
+          interruptionMode="stop"
+          volume={0.3}
+        />
+      </Section>
       <Section style={{}} title="Custom styling">
         <AudioPlayer
           style={{

@@ -22,6 +22,7 @@ const DatePickerComponent: React.FC<Props & { theme: ReadTheme }> = ({
   isVisible,
   minimumDate,
   maximumDate,
+  inline,
   theme,
 }) => {
   const internalTheme = createMuiTheme({
@@ -57,7 +58,7 @@ const DatePickerComponent: React.FC<Props & { theme: ReadTheme }> = ({
             onChange(null, d);
           }}
           onClose={() => toggleVisibility()}
-          variant="dialog"
+          variant={inline ? "static" : "dialog"}
           TextFieldComponent={() => null}
           minDate={minimumDate}
           maxDate={maximumDate}

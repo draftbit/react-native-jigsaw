@@ -14,6 +14,7 @@ type Props = {
   color: string;
   style?: StyleProp<ViewStyle | TextStyle>;
   onPress?: () => void;
+  activeOpacity?: number;
 };
 
 const ActionSheetItem: React.FC<React.PropsWithChildren<Props>> = ({
@@ -21,11 +22,12 @@ const ActionSheetItem: React.FC<React.PropsWithChildren<Props>> = ({
   style,
   color,
   onPress,
+  activeOpacity = 0.7,
 }) => {
   const { textStyles, viewStyles } = extractStyles(style);
   return (
     <TouchableOpacity
-      activeOpacity={0.7}
+      activeOpacity={activeOpacity}
       style={[styles.wrapper, viewStyles]}
       onPress={onPress}
     >

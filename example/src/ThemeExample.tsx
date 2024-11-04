@@ -58,6 +58,16 @@ const VideoPlayerExample: React.FC = () => {
           }}
         />
       </Section>
+      <Section style={{}} title="Light/Dark Color">
+        <View
+          style={{
+            width: 100,
+            height: 100,
+            borderWidth: 1,
+            backgroundColor: theme.colors.background.lightDarkTest,
+          }}
+        />
+      </Section>
     </Container>
   );
 };

@@ -75,8 +75,10 @@ import KeyboardAvoidingViewExample from "./KeyboardAvoidingViewExample";
 import ThemeExample from "./ThemeExample";
 import LoadingIndicatorExample from "./LoadingIndicatorExample";
 import TimerExample from "./TimerExample";
+import LottieAnimationExample from "./LottieAnimationExample";
 
 const ROUTES = {
+  LottieAnimationExample: LottieAnimationExample,
   Timer: TimerExample,
   LoadingIndicator: LoadingIndicatorExample,
   Theme: ThemeExample,
@@ -160,6 +162,10 @@ const BaseTheme = createTheme({
           default: "purple",
           tablet: "yellow",
           laptop: "red",
+        },
+        lightDarkTest: {
+          light: "white",
+          dark: "black",
         },
       },
     },

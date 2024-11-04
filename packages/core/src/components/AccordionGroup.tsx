@@ -47,6 +47,13 @@ const AccordionGroup = ({
   const labelColor = expanded ? expandedColor : collapsedColor;
   const caretColor = caretColorProp || labelColor;
 
+  React.useEffect(() => {
+    if (expandedProp !== expanded) {
+      setExpanded(expandedProp);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [expandedProp]);
+
   const handlePressAction = () => {
     setExpanded(!expanded);
   };

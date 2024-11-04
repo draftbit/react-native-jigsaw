@@ -20,6 +20,24 @@ const TextStyleSchema: z.ZodType<TextStyle> = z.union([
     fontFamily: z.string(),
   }),
   z.object({
+    fontWeight: z.enum([
+      "normal",
+      "bold",
+      "100",
+      "200",
+      "300",
+      "400",
+      "500",
+      "600",
+      "700",
+      "800",
+      "900",
+    ]),
+  }),
+  z.object({
+    fontStyle: z.enum(["normal", "italic"]),
+  }),
+  z.object({
     letterSpacing: z.number(),
   }),
   z.object({
@@ -84,12 +102,15 @@ export function validateTheme(theme: Theme) {
   }
 }
 
+export function isTextStyleObject(value: any): boolean {
+  return TextStyleSchema.safeParse(value).success;
+}
+
 export function asThemeValuesObject(value: any): ThemeValues | null {
   // Text style matches the shape of ThemeValues, but we don't want to treat it as a ThemeValues
-  const isTextStyle = TextStyleSchema.safeParse(value).success;
-  if (isTextStyle) {
+  if (isTextStyleObject(value)) {
     return null;
   }
 
-  return ThemeValuesSchema.safeParse(value).data ?? null;
+  return ThemeValuesSchema.safeParse(value).success ? value : null;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Dimensions, Platform, useColorScheme, TextStyle } from "react-native";
+import { Dimensions, Platform, useColorScheme } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import createThemeValuesProxy from "./createThemeValuesProxy";
 import DefaultTheme from "./DefaultTheme";
@@ -10,7 +10,6 @@ import {
   ThemeValues,
   ValidatedTheme,
 } from "./types";
-import { asThemeValuesObject } from "./validators";
 
 const SAVED_SELECTED_THEME_KEY = "saved_selected_theme";
 
@@ -78,17 +77,6 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
         lightDarkSelection
       );
 
-    const createProxiedTypographyValue = (
-      value: TextStyle | ThemeValues | undefined
-    ) => {
-      const valueAsThemeValues = asThemeValuesObject(value);
-      if (valueAsThemeValues) {
-        return createProxiedThemeValue(valueAsThemeValues);
-      } else {
-        return value;
-      }
-    };
-
     return {
       ...currentTheme,
       colors: {
@@ -98,39 +86,7 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
         foreground: createProxiedThemeValue(currentTheme.colors.foreground),
         border: createProxiedThemeValue(currentTheme.colors.border),
       },
-      typography: {
-        body1: createProxiedTypographyValue(currentTheme.typography.body1),
-        body2: createProxiedTypographyValue(currentTheme.typography.body2),
-        button: createProxiedTypographyValue(currentTheme.typography.button),
-        caption: createProxiedTypographyValue(currentTheme.typography.caption),
-        headline1: createProxiedTypographyValue(
-          currentTheme.typography.headline1
-        ),
-        headline2: createProxiedTypographyValue(
-          currentTheme.typography.headline2
-        ),
-        headline3: createProxiedTypographyValue(
-          currentTheme.typography.headline3
-        ),
-        headline4: createProxiedTypographyValue(
-          currentTheme.typography.headline4
-        ),
-        headline5: createProxiedTypographyValue(
-          currentTheme.typography.headline5
-        ),
-        headline6: createProxiedTypographyValue(
-          currentTheme.typography.headline6
-        ),
-        overline: createProxiedTypographyValue(
-          currentTheme.typography.overline
-        ),
-        subtitle1: createProxiedTypographyValue(
-          currentTheme.typography.subtitle1
-        ),
-        subtitle2: createProxiedTypographyValue(
-          currentTheme.typography.subtitle2
-        ),
-      },
+      typography: createProxiedThemeValue(currentTheme.typography),
     };
   }, [currentTheme, deviceWidth, breakpoints, lightDarkSelection]);
 

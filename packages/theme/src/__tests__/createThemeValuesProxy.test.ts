@@ -60,6 +60,28 @@ const value: any = {
       nested: "nestedDark",
     },
   },
+  typography: {
+    body1: {
+      fontFamily: "body1",
+      fontSize: 18,
+    },
+    bodyNested: {
+      mine: {
+        fontFamily: "nestedMine",
+        fontSize: 14,
+      },
+    },
+    bodyPlatform: {
+      android: {
+        fontFamily: "android",
+        fontSize: 13,
+      },
+      default: {
+        fontFamily: "default",
+        fontSize: 22,
+      },
+    },
+  },
 };
 
 const proxied = createThemeValuesProxy(value, {}, 400, "android", "light")!;
@@ -312,6 +334,52 @@ describe("createThemeValuesProxy tests", () => {
       )!;
       expect(darkProxied.lightDarkNested.nested).toEqual(
         value.lightDarkNested.dark.nested
+      );
+    });
+  });
+
+  describe("Typography Values", () => {
+    test("returns typography object when value is top level", () => {
+      const proxied = createThemeValuesProxy(
+        value,
+        {},
+        400,
+        "android",
+        "light"
+      )!;
+      expect(proxied.typography.body1).toEqual(value.typography.body1);
+    });
+
+    test("returns nested typography object when value is nested", () => {
+      const proxied = createThemeValuesProxy(
+        value,
+        {},
+        400,
+        "android",
+        "light"
+      )!;
+      expect(proxied.typography.bodyNested.mine).toEqual(
+        value.typography.bodyNested.mine
+      );
+    });
+
+    test("returns android platform typography object when device is android", () => {
+      const proxied = createThemeValuesProxy(
+        value,
+        {},
+        400,
+        "android",
+        "light"
+      )!;
+      expect(proxied.typography.bodyPlatform).toEqual(
+        value.typography.bodyPlatform.android
+      );
+    });
+
+    test("returns default platform typography object when device is other", () => {
+      const proxied = createThemeValuesProxy(value, {}, 400, "web", "light")!;
+      expect(proxied.typography.bodyPlatform).toEqual(
+        value.typography.bodyPlatform.default
       );
     });
   });

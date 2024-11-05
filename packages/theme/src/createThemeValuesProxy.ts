@@ -2,6 +2,14 @@ import { ThemeValues, Breakpoints } from "./types";
 import { Platform, TextStyle } from "react-native";
 import { asThemeValuesObject } from "./validators";
 
+interface CreateThemeValuesProxyInput {
+  value: ThemeValues | undefined;
+  breakpoints: Breakpoints;
+  deviceWidth: number;
+  devicePlatform: typeof Platform.OS;
+  currentLightDarkSelection: "light" | "dark";
+}
+
 /**
  * Creates a proxy for theme value objects to select a value whenever
  * multiple values are provided for different platforms, breakpoints, and/or light/dark modes
@@ -9,13 +17,13 @@ import { asThemeValuesObject } from "./validators";
  * Ex: {color: {ios: "blue", android: "red"}}
  *      -> theme.color returns "blue" when the platform is ios and "red" when android
  */
-export default function createThemeValuesProxy(
-  value: ThemeValues | undefined,
-  breakpoints: Breakpoints,
-  deviceWidth: number,
-  devicePlatform: typeof Platform.OS,
-  currentLightDarkSelection: "light" | "dark"
-): any /* return type 'any' to allow arbitrary object references (object.example.another.there) */ {
+export default function createThemeValuesProxy({
+  value,
+  breakpoints,
+  deviceWidth,
+  devicePlatform,
+  currentLightDarkSelection,
+}: CreateThemeValuesProxyInput): any /* return type 'any' to allow arbitrary object references (object.example.another.there) */ {
   if (value === undefined || value === null) {
     return undefined;
   }
@@ -40,38 +48,22 @@ export default function createThemeValuesProxy(
           lightDarkKeys
         );
 
+        const input: CreateThemeValuesProxyInput = {
+          value: valueAsThemeValues,
+          breakpoints,
+          deviceWidth,
+          devicePlatform,
+          currentLightDarkSelection,
+        };
+
         if (keysType === "default") {
-          return createThemeValuesProxy(
-            valueAsThemeValues,
-            breakpoints,
-            deviceWidth,
-            devicePlatform,
-            currentLightDarkSelection
-          );
+          return createThemeValuesProxy(input);
         } else if (keysType === "platform") {
-          return getPlatformValue(
-            valueAsThemeValues,
-            breakpoints,
-            deviceWidth,
-            devicePlatform,
-            currentLightDarkSelection
-          );
+          return getPlatformValue(input);
         } else if (keysType === "breakpoint") {
-          return getBreakpointValue(
-            valueAsThemeValues,
-            breakpoints,
-            deviceWidth,
-            devicePlatform,
-            currentLightDarkSelection
-          );
+          return getBreakpointValue(input);
         } else if (keysType === "lightDark") {
-          return getLightDarkValue(
-            valueAsThemeValues,
-            breakpoints,
-            deviceWidth,
-            devicePlatform,
-            currentLightDarkSelection
-          );
+          return getLightDarkValue(input);
         } else {
           return undefined;
         }
@@ -143,39 +135,25 @@ function allFalse(a: boolean, b: boolean, c: boolean, d: boolean) {
   return [a, b, c, d].filter((x) => x).length === 0;
 }
 
-function getPlatformValue(
-  value: ThemeValues,
-  breakpoints: Breakpoints,
-  deviceWidth: number,
-  devicePlatform: typeof Platform.OS,
-  currentLightDarkSelection: "light" | "dark"
-) {
-  const currentPlatformValue = value[devicePlatform] ?? value.default;
+function getPlatformValue(input: CreateThemeValuesProxyInput) {
+  const { value, devicePlatform } = input;
+
+  const currentPlatformValue = value?.[devicePlatform] ?? value?.default;
   const valueAsThemeValues = asThemeValuesObject(currentPlatformValue);
 
   if (valueAsThemeValues) {
-    return createThemeValuesProxy(
-      valueAsThemeValues,
-      breakpoints,
-      deviceWidth,
-      devicePlatform,
-      currentLightDarkSelection
-    );
+    return createThemeValuesProxy({ ...input, value: valueAsThemeValues });
   } else {
     return currentPlatformValue;
   }
 }
 
-function getBreakpointValue(
-  value: ThemeValues,
-  breakpoints: Breakpoints,
-  deviceWidth: number,
-  devicePlatform: typeof Platform.OS,
-  currentLightDarkSelection: "light" | "dark"
-) {
-  const keysToBreakpointValue: [string, number][] = Object.keys(value).map(
-    (key) => [key, breakpoints[key]]
-  );
+function getBreakpointValue(input: CreateThemeValuesProxyInput) {
+  const { value, breakpoints, deviceWidth } = input;
+
+  const keysToBreakpointValue: [string, number][] = Object.keys(
+    value ?? {}
+  ).map((key) => [key, breakpoints[key]]);
   const orderedBreakpoints = keysToBreakpointValue.sort(([_, val]) => val);
   let currentBreakpointKey = "";
   for (const [breakpointKey, breakpointValue] of orderedBreakpoints) {
@@ -183,41 +161,26 @@ function getBreakpointValue(
       currentBreakpointKey = breakpointKey;
     }
   }
-  const currentBreakpointValue = value[currentBreakpointKey] ?? value.default;
+  const currentBreakpointValue =
+    value?.[currentBreakpointKey] ?? value?.default;
   const valueAsThemeValues = asThemeValuesObject(currentBreakpointValue);
 
   if (valueAsThemeValues) {
-    return createThemeValuesProxy(
-      valueAsThemeValues,
-      breakpoints,
-      deviceWidth,
-      devicePlatform,
-      currentLightDarkSelection
-    );
+    return createThemeValuesProxy({ ...input, value: valueAsThemeValues });
   } else {
     return currentBreakpointValue;
   }
 }
 
-function getLightDarkValue(
-  value: ThemeValues,
-  breakpoints: Breakpoints,
-  deviceWidth: number,
-  devicePlatform: typeof Platform.OS,
-  currentLightDarkSelection: "light" | "dark"
-) {
+function getLightDarkValue(input: CreateThemeValuesProxyInput) {
+  const { value, currentLightDarkSelection } = input;
+
   const currentLightDarkValue =
-    value[currentLightDarkSelection] ?? value.default;
+    value?.[currentLightDarkSelection] ?? value?.default;
   const valueAsThemeValues = asThemeValuesObject(currentLightDarkValue);
 
   if (valueAsThemeValues) {
-    return createThemeValuesProxy(
-      valueAsThemeValues,
-      breakpoints,
-      deviceWidth,
-      devicePlatform,
-      currentLightDarkSelection
-    );
+    return createThemeValuesProxy({ ...input, value: valueAsThemeValues });
   } else {
     return currentLightDarkValue;
   }

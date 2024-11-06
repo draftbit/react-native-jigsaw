@@ -70,10 +70,16 @@ const HeadlessAudioPlayer = React.forwardRef<
           playThroughEarpieceAndroid,
         });
       } catch (e) {
-        console.error(
-          "Failed to set audio mode. interruptionMode, playsInBackground, playsInSilentModeIOS, playThroughEarpieceAndroid might not be set. Failed with",
-          e
-        );
+        if ((e as { code?: string })?.code === "E_AUDIO_AUDIOMODE") {
+          console.warn(
+            "Background audio playback only works in published apps, not in preview mode. For iOS apps, add 'audio' under UI Background Modes in Project Settings > Apple App Store."
+          );
+        } else {
+          console.error(
+            "Failed to set audio mode. interruptionMode, playsInBackground, playsInSilentModeIOS, playThroughEarpieceAndroid might not be set. Failed with",
+            e
+          );
+        }
       }
     }, [
       interruptionMode,

@@ -17,6 +17,14 @@ function SliderExample({ theme }) {
         />
       </Section>
 
+      <Section title="Disabled">
+        <Slider
+          disabled
+          onValueChange={console.log}
+          style={{ marginLeft: 12, marginRight: 12 }}
+        />
+      </Section>
+
       <Section title="Controlled">
         <Slider
           step={10}

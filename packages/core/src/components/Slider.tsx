@@ -25,6 +25,7 @@ export type Props = {
   step: number;
   onValueChange?: (value: number) => void;
   theme: ReadTheme;
+  disabled?: boolean;
 } & IconSlot;
 
 function maybeParseValue(value: any) {
@@ -66,6 +67,7 @@ function Slider({
   onValueChange = () => {},
   style,
   theme,
+  disabled,
   ...rest
 }: Props) {
   const [internalValue, setInternalValue] = React.useState<number | undefined>(
@@ -134,6 +136,7 @@ function Slider({
         thumbTintColor={thumbColor}
         onSlidingComplete={handleSlidingComplete}
         style={styles.slider}
+        disabled={disabled}
         //@ts-ignore Not registered in types
         thumbStyle={Platform.OS === "web" ? tempThumbStyle : undefined}
       />

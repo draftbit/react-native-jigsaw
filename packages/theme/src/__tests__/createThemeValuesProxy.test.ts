@@ -60,9 +60,37 @@ const value: any = {
       nested: "nestedDark",
     },
   },
+  typography: {
+    body1: {
+      fontFamily: "body1",
+      fontSize: 18,
+    },
+    bodyNested: {
+      mine: {
+        fontFamily: "nestedMine",
+        fontSize: 14,
+      },
+    },
+    bodyPlatform: {
+      android: {
+        fontFamily: "android",
+        fontSize: 13,
+      },
+      default: {
+        fontFamily: "default",
+        fontSize: 22,
+      },
+    },
+  },
 };
 
-const proxied = createThemeValuesProxy(value, {}, 400, "android", "light")!;
+const proxied = createThemeValuesProxy({
+  value,
+  breakpoints: {},
+  deviceWidth: 400,
+  devicePlatform: "android",
+  currentLightDarkSelection: "light",
+})!;
 
 describe("createThemeValuesProxy tests", () => {
   describe("Value Returned Directly", () => {
@@ -91,59 +119,59 @@ describe("createThemeValuesProxy tests", () => {
 
   describe("Platform Value", () => {
     test("returns android value when platform is android", () => {
-      const androidProxied = createThemeValuesProxy(
+      const androidProxied = createThemeValuesProxy({
         value,
-        {},
-        400,
-        "android",
-        "light"
-      )!;
+        breakpoints: {},
+        deviceWidth: 400,
+        devicePlatform: "android",
+        currentLightDarkSelection: "light",
+      })!;
       expect(androidProxied.platform).toEqual(value.platform.android);
     });
 
     test("returns ios value when platform is ios", () => {
-      const iosProxied = createThemeValuesProxy(
+      const iosProxied = createThemeValuesProxy({
         value,
-        {},
-        400,
-        "ios",
-        "light"
-      )!;
+        breakpoints: {},
+        deviceWidth: 400,
+        devicePlatform: "ios",
+        currentLightDarkSelection: "light",
+      })!;
       expect(iosProxied.platform).toEqual(value.platform.ios);
     });
 
     test("returns default platform value when platform is not in keys", () => {
-      const windowsProxied = createThemeValuesProxy(
+      const windowsProxied = createThemeValuesProxy({
         value,
-        {},
-        400,
-        "windows",
-        "light"
-      )!;
+        breakpoints: {},
+        deviceWidth: 400,
+        devicePlatform: "windows",
+        currentLightDarkSelection: "light",
+      })!;
       expect(windowsProxied.platform).toEqual(value.platform.default);
     });
 
     test("returns nested android value when platform is android", () => {
-      const androidProxied = createThemeValuesProxy(
+      const androidProxied = createThemeValuesProxy({
         value,
-        {},
-        400,
-        "android",
-        "light"
-      )!;
+        breakpoints: {},
+        deviceWidth: 400,
+        devicePlatform: "android",
+        currentLightDarkSelection: "light",
+      })!;
       expect(androidProxied.platformNested.nested).toEqual(
         value.platformNested.android.nested
       );
     });
 
     test("returns nested ios value when platform is ios", () => {
-      const iosProxied = createThemeValuesProxy(
+      const iosProxied = createThemeValuesProxy({
         value,
-        {},
-        400,
-        "ios",
-        "light"
-      )!;
+        breakpoints: {},
+        deviceWidth: 400,
+        devicePlatform: "ios",
+        currentLightDarkSelection: "light",
+      })!;
       expect(iosProxied.platformNested.nested).toEqual(
         value.platformNested.ios.nested
       );
@@ -152,103 +180,103 @@ describe("createThemeValuesProxy tests", () => {
 
   describe("Breakpoint Value", () => {
     test("returns small breakpoint value when device width matches exactly", () => {
-      const smallProxied = createThemeValuesProxy(
+      const smallProxied = createThemeValuesProxy({
         value,
         breakpoints,
-        breakpoints.small,
-        "android",
-        "light"
-      )!;
+        deviceWidth: breakpoints.small,
+        devicePlatform: "android",
+        currentLightDarkSelection: "light",
+      })!;
       expect(smallProxied.breakpoint).toEqual(value.breakpoint.small);
     });
 
     test("returns small breakpoint value when device width matches", () => {
-      const smallProxied = createThemeValuesProxy(
+      const smallProxied = createThemeValuesProxy({
         value,
         breakpoints,
-        breakpoints.small + 50,
-        "android",
-        "light"
-      )!;
+        deviceWidth: breakpoints.small + 50,
+        devicePlatform: "android",
+        currentLightDarkSelection: "light",
+      })!;
       expect(smallProxied.breakpoint).toEqual(value.breakpoint.small);
     });
 
     test("returns medium breakpoint value when device width matches exactly", () => {
-      const mediumProxied = createThemeValuesProxy(
+      const mediumProxied = createThemeValuesProxy({
         value,
         breakpoints,
-        breakpoints.medium,
-        "android",
-        "light"
-      )!;
+        deviceWidth: breakpoints.medium,
+        devicePlatform: "android",
+        currentLightDarkSelection: "light",
+      })!;
       expect(mediumProxied.breakpoint).toEqual(value.breakpoint.medium);
     });
 
     test("returns medium breakpoint value when device width matches", () => {
-      const mediumProxied = createThemeValuesProxy(
+      const mediumProxied = createThemeValuesProxy({
         value,
         breakpoints,
-        breakpoints.medium + 50,
-        "android",
-        "light"
-      )!;
+        deviceWidth: breakpoints.medium + 50,
+        devicePlatform: "android",
+        currentLightDarkSelection: "light",
+      })!;
       expect(mediumProxied.breakpoint).toEqual(value.breakpoint.medium);
     });
 
     test("returns large breakpoint value when device width matches exactly", () => {
-      const largeProxied = createThemeValuesProxy(
+      const largeProxied = createThemeValuesProxy({
         value,
         breakpoints,
-        breakpoints.large,
-        "android",
-        "light"
-      )!;
+        deviceWidth: breakpoints.large,
+        devicePlatform: "android",
+        currentLightDarkSelection: "light",
+      })!;
       expect(largeProxied.breakpoint).toEqual(value.breakpoint.large);
     });
 
     test("returns large breakpoint value when device width matches is over the largest", () => {
-      const largeProxied = createThemeValuesProxy(
+      const largeProxied = createThemeValuesProxy({
         value,
         breakpoints,
-        breakpoints.large + 400,
-        "android",
-        "light"
-      )!;
+        deviceWidth: breakpoints.large + 400,
+        devicePlatform: "android",
+        currentLightDarkSelection: "light",
+      })!;
       expect(largeProxied.breakpoint).toEqual(value.breakpoint.large);
     });
 
     test("returns default breakpoint value when device width matches is below the smallest", () => {
-      const verySmallProxied = createThemeValuesProxy(
+      const verySmallProxied = createThemeValuesProxy({
         value,
         breakpoints,
-        50,
-        "android",
-        "light"
-      )!;
+        deviceWidth: 50,
+        devicePlatform: "android",
+        currentLightDarkSelection: "light",
+      })!;
       expect(verySmallProxied.breakpoint).toEqual(value.breakpoint.default);
     });
 
     test("returns nested small breakpoint value when device width matches", () => {
-      const smallProxied = createThemeValuesProxy(
+      const smallProxied = createThemeValuesProxy({
         value,
         breakpoints,
-        breakpoints.small,
-        "android",
-        "light"
-      )!;
+        deviceWidth: breakpoints.small,
+        devicePlatform: "android",
+        currentLightDarkSelection: "light",
+      })!;
       expect(smallProxied.breakpointNested.nested).toEqual(
         value.breakpointNested.small.nested
       );
     });
 
     test("returns nested medium breakpoint value when device width matches", () => {
-      const mediumProxied = createThemeValuesProxy(
+      const mediumProxied = createThemeValuesProxy({
         value,
         breakpoints,
-        breakpoints.medium,
-        "android",
-        "light"
-      )!;
+        deviceWidth: breakpoints.medium,
+        devicePlatform: "android",
+        currentLightDarkSelection: "light",
+      })!;
       expect(mediumProxied.breakpointNested.nested).toEqual(
         value.breakpointNested.medium.nested
       );
@@ -257,61 +285,113 @@ describe("createThemeValuesProxy tests", () => {
 
   describe("Light Dark Value", () => {
     test("returns light value when key is light", () => {
-      const lightProxied = createThemeValuesProxy(
+      const lightProxied = createThemeValuesProxy({
         value,
-        {},
-        400,
-        "android",
-        "light"
-      )!;
+        breakpoints: {},
+        deviceWidth: 400,
+        devicePlatform: "android",
+        currentLightDarkSelection: "light",
+      })!;
       expect(lightProxied.lightDark).toEqual(value.lightDark.light);
     });
 
     test("returns dark value when key is dark", () => {
-      const darkProxied = createThemeValuesProxy(
+      const darkProxied = createThemeValuesProxy({
         value,
-        {},
-        400,
-        "android",
-        "dark"
-      )!;
+        breakpoints: {},
+        deviceWidth: 400,
+        devicePlatform: "android",
+        currentLightDarkSelection: "dark",
+      })!;
       expect(darkProxied.lightDark).toEqual(value.lightDark.dark);
     });
 
     test("returns default value when key is not light or dark", () => {
-      const otherProxied = createThemeValuesProxy(
+      const otherProxied = createThemeValuesProxy({
         value,
-        {},
-        400,
-        "android",
-        "other" as any
-      )!;
+        breakpoints: {},
+        deviceWidth: 400,
+        devicePlatform: "android",
+        currentLightDarkSelection: "other" as any,
+      })!;
       expect(otherProxied.lightDark).toEqual(value.lightDark.default);
     });
 
     test("returns nested light value when key is light", () => {
-      const lightProxied = createThemeValuesProxy(
+      const lightProxied = createThemeValuesProxy({
         value,
-        {},
-        400,
-        "android",
-        "light"
-      )!;
+        breakpoints: {},
+        deviceWidth: 400,
+        devicePlatform: "android",
+        currentLightDarkSelection: "light",
+      })!;
       expect(lightProxied.lightDarkNested.nested).toEqual(
         value.lightDarkNested.light.nested
       );
     });
 
     test("returns nested dark value when key is dark", () => {
-      const darkProxied = createThemeValuesProxy(
+      const darkProxied = createThemeValuesProxy({
         value,
-        {},
-        400,
-        "android",
-        "dark"
-      )!;
+        breakpoints: {},
+        deviceWidth: 400,
+        devicePlatform: "android",
+        currentLightDarkSelection: "dark",
+      })!;
       expect(darkProxied.lightDarkNested.nested).toEqual(
         value.lightDarkNested.dark.nested
+      );
+    });
+  });
+
+  describe("Typography Values", () => {
+    test("returns typography object when value is top level", () => {
+      const proxied = createThemeValuesProxy({
+        value,
+        breakpoints: {},
+        deviceWidth: 400,
+        devicePlatform: "android",
+        currentLightDarkSelection: "light",
+      })!;
+      expect(proxied.typography.body1).toEqual(value.typography.body1);
+    });
+
+    test("returns nested typography object when value is nested", () => {
+      const proxied = createThemeValuesProxy({
+        value,
+        breakpoints: {},
+        deviceWidth: 400,
+        devicePlatform: "android",
+        currentLightDarkSelection: "light",
+      })!;
+      expect(proxied.typography.bodyNested.mine).toEqual(
+        value.typography.bodyNested.mine
+      );
+    });
+
+    test("returns android platform typography object when device is android", () => {
+      const proxied = createThemeValuesProxy({
+        value,
+        breakpoints: {},
+        deviceWidth: 400,
+        devicePlatform: "android",
+        currentLightDarkSelection: "light",
+      })!;
+      expect(proxied.typography.bodyPlatform).toEqual(
+        value.typography.bodyPlatform.android
+      );
+    });
+
+    test("returns default platform typography object when device is other", () => {
+      const proxied = createThemeValuesProxy({
+        value,
+        breakpoints: {},
+        deviceWidth: 400,
+        devicePlatform: "web",
+        currentLightDarkSelection: "light",
+      })!;
+      expect(proxied.typography.bodyPlatform).toEqual(
+        value.typography.bodyPlatform.default
       );
     });
   });

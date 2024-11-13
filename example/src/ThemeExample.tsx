@@ -1,6 +1,6 @@
 import React from "react";
 import Section, { Container } from "./Section";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import {
   AudioPlayer,
   Button,
@@ -57,6 +57,13 @@ const VideoPlayerExample: React.FC = () => {
             backgroundColor: theme.colors.background.breakpointTest,
           }}
         />
+      </Section>
+      <Section style={{}} title="Typography">
+        <Text
+          style={[theme.typography.body1, { color: theme.colors.text.strong }]}
+        >
+          This is a test of the typography system.
+        </Text>
       </Section>
       <Section style={{}} title="Light/Dark Color">
         <View

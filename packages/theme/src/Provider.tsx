@@ -7,6 +7,7 @@ import {
   Breakpoints,
   ChangeThemeOptions,
   ReadTheme,
+  ThemeValues,
   ValidatedTheme,
 } from "./types";
 
@@ -66,49 +67,28 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
     [themes, setCurrentTheme]
   );
 
-  const proxiedTheme: ReadTheme = React.useMemo(
-    () => ({
+  const proxiedTheme: ReadTheme = React.useMemo(() => {
+    const createProxiedThemeValue = (value: ThemeValues | undefined) =>
+      createThemeValuesProxy({
+        value,
+        breakpoints,
+        deviceWidth,
+        devicePlatform: Platform.OS,
+        currentLightDarkSelection: lightDarkSelection,
+      });
+
+    return {
       ...currentTheme,
       colors: {
-        branding: createThemeValuesProxy(
-          currentTheme.colors.branding,
-          breakpoints,
-          deviceWidth,
-          Platform.OS,
-          lightDarkSelection
-        ),
-        text: createThemeValuesProxy(
-          currentTheme.colors.text,
-          breakpoints,
-          deviceWidth,
-          Platform.OS,
-          lightDarkSelection
-        ),
-        background: createThemeValuesProxy(
-          currentTheme.colors.background,
-          breakpoints,
-          deviceWidth,
-          Platform.OS,
-          lightDarkSelection
-        ),
-        foreground: createThemeValuesProxy(
-          currentTheme.colors.foreground,
-          breakpoints,
-          deviceWidth,
-          Platform.OS,
-          lightDarkSelection
-        ),
-        border: createThemeValuesProxy(
-          currentTheme.colors.border,
-          breakpoints,
-          deviceWidth,
-          Platform.OS,
-          lightDarkSelection
-        ),
+        branding: createProxiedThemeValue(currentTheme.colors.branding),
+        text: createProxiedThemeValue(currentTheme.colors.text),
+        background: createProxiedThemeValue(currentTheme.colors.background),
+        foreground: createProxiedThemeValue(currentTheme.colors.foreground),
+        border: createProxiedThemeValue(currentTheme.colors.border),
       },
-    }),
-    [currentTheme, deviceWidth, breakpoints, lightDarkSelection]
-  );
+      typography: createProxiedThemeValue(currentTheme.typography),
+    };
+  }, [currentTheme, deviceWidth, breakpoints, lightDarkSelection]);
 
   React.useEffect(() => {
     const listener = Dimensions.addEventListener("change", ({ window }) =>
@@ -124,8 +104,16 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
       const savedSelectedThemeName = await AsyncStorage.getItem(
         SAVED_SELECTED_THEME_KEY
       );
+      const themeExists = themes.some((t) => t.name === savedSelectedThemeName);
+
       if (savedSelectedThemeName) {
-        changeTheme(savedSelectedThemeName);
+        if (themeExists) {
+          changeTheme(savedSelectedThemeName);
+        } else {
+          AsyncStorage.removeItem(SAVED_SELECTED_THEME_KEY).catch((e) => {
+            console.warn("Failed to reset persisted selected theme", e);
+          });
+        }
       }
     };
     run();

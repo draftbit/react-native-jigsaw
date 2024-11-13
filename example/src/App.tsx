@@ -188,7 +188,11 @@ const DarkTheme = createTheme({
         strong: "white",
       },
     },
-    typography: {},
+    typography: {
+      body1: {
+        fontWeight: "bold",
+      },
+    },
   },
   baseTheme: BaseTheme,
 });
@@ -225,7 +229,11 @@ const OtherTheme = createTheme({
         brand: "#FDAF7B",
       },
     },
-    typography: {},
+    typography: {
+      body1: {
+        fontStyle: "italic",
+      },
+    },
   },
   baseTheme: BaseTheme,
 });

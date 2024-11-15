@@ -1,7 +1,7 @@
 import React from "react";
 import Section, { Container } from "./Section";
 import { LinearProgress, Button } from "@draftbit/ui";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 
 const ProgressExample: React.FC = () => {
   const [value, setValue] = React.useState(50);
@@ -49,6 +49,11 @@ const ProgressExample: React.FC = () => {
         title="Randomize Progress"
         onPress={() => setValue(Math.random() * 101)}
       />
+      <Section title="Centerize content" style={{}}>
+        <View style={{ justifyContent: "center", alignItems: "center" }}>
+          <LinearProgress value={value} />
+        </View>
+      </Section>
     </Container>
   );
 };

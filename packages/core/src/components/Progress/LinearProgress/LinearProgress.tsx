@@ -96,6 +96,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
       style={[
         {
           height: maxThickness,
+          width: "100%",
         },
         style,
       ]}

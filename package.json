@@ -12,6 +12,9 @@
   "scripts": {
     "postinstall": "yarn-deduplicate && patch-package",
     "example": "yarn --cwd example",
+    "example:web": "yarn example start -c --web",
+    "example:ios": "yarn example start -c --ios",
+    "example:android": "yarn example start -c --android",
     "bootstrap": "lerna bootstrap",
     "crosslink": "lerna link",
     "format": "prettier --write .",

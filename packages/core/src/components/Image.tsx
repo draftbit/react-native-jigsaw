@@ -79,17 +79,15 @@ const generateDimensions = ({
 
 const resizeModeToContentFit = (
   resizeMode: "cover" | "contain" | "stretch" | "repeat" | "center"
-): ImageContentFit | undefined => {
-  // Convert deprecated resizeMode prop to contentFit prop used in expo-image
-  // Maps RN Image resizeMode values to their equivalent expo-image contentFit values
-  const mapping = {
+): ImageContentFit => {
+  const mapping: Record<typeof resizeMode, ImageContentFit> = {
     cover: "cover",
     contain: "contain",
     stretch: "fill",
     repeat: "none",
     center: "scale-down",
-  };
-  return mapping[resizeMode] || "cover";
+  } as const;
+  return mapping[resizeMode] ?? "cover";
 };
 
 const Image: React.FC<ExtendedImageProps> = ({

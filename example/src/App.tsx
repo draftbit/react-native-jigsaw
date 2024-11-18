@@ -76,6 +76,7 @@ import ThemeExample from "./ThemeExample";
 import LoadingIndicatorExample from "./LoadingIndicatorExample";
 import TimerExample from "./TimerExample";
 import LottieAnimationExample from "./LottieAnimationExample";
+import ImageExample from "./ImageExample";
 
 const ROUTES = {
   LottieAnimationExample: LottieAnimationExample,
@@ -120,6 +121,7 @@ const ROUTES = {
   VideoPlayer: VideoPlayerExample,
   PinInput: PinInputExample,
   KeyboardAvoidingView: KeyboardAvoidingViewExample,
+  Image: ImageExample,
 };
 
 let customFonts = {

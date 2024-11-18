@@ -5,6 +5,7 @@ import {
   Image as ExpoImage,
   ImageContentPosition,
   ImageProps as ExpoImageProps,
+  ImageContentFit,
 } from "expo-image";
 import Config from "./Config";
 import AspectRatio from "./AspectRatio";
@@ -78,7 +79,7 @@ const generateDimensions = ({
 
 const resizeModeToContentFit = (
   resizeMode: "cover" | "contain" | "stretch" | "repeat" | "center"
-) => {
+): ImageContentFit | undefined => {
   // Convert deprecated resizeMode prop to contentFit prop used in expo-image
   // Maps RN Image resizeMode values to their equivalent expo-image contentFit values
   const mapping = {
@@ -114,8 +115,9 @@ const Image: React.FC<ExtendedImageProps> = ({
     styles as ImageStyleProp
   );
 
-  // Use contentFit if provided, otherwise fall back to resizeMode
-  const finalContentFit = contentFit || resizeModeToContentFit(resizeMode);
+  const finalContentFit = resizeMode
+    ? resizeModeToContentFit(resizeMode)
+    : contentFit;
 
   if (aspectRatio) {
     return (

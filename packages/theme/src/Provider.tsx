@@ -86,7 +86,7 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
         foreground: createProxiedThemeValue(currentTheme.colors.foreground),
         border: createProxiedThemeValue(currentTheme.colors.border),
       },
-      typography: createProxiedThemeValue(currentTheme.typography),
+      typography: currentTheme.typography,
     };
   }, [currentTheme, deviceWidth, breakpoints, lightDarkSelection]);
 

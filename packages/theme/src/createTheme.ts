@@ -4,11 +4,7 @@ import type {
   ValidatedTheme,
   ColorPalettes,
 } from "./types";
-import {
-  validateBreakpoints,
-  validatePalettes,
-  validateTheme,
-} from "./validators";
+
 import merge from "deepmerge";
 
 /**
@@ -25,8 +21,6 @@ import merge from "deepmerge";
  */
 
 export default function createTheme({
-  breakpoints,
-  palettes,
   theme,
   baseTheme,
 }: {
@@ -35,14 +29,14 @@ export default function createTheme({
   theme: Theme;
   baseTheme?: Theme;
 }): ValidatedTheme {
-  validateBreakpoints(breakpoints);
-  validatePalettes(palettes);
-  validateTheme(theme);
+  // validateBreakpoints(breakpoints);
+  // validatePalettes(palettes);
+  // validateTheme(theme);
 
   let resultTheme = theme;
 
   if (baseTheme) {
-    validateTheme(baseTheme);
+    //validateTheme(baseTheme);
     resultTheme = merge(baseTheme, theme);
   }
 

@@ -69,13 +69,13 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
 
   const proxiedTheme: ReadTheme = React.useMemo(() => {
     const createProxiedThemeValue = (value: ThemeValues | undefined) =>
-      createThemeValuesProxy({
+      createThemeValuesProxy(
         value,
         breakpoints,
         deviceWidth,
-        devicePlatform: Platform.OS,
-        currentLightDarkSelection: lightDarkSelection,
-      });
+        Platform.OS,
+        lightDarkSelection
+      );
 
     return {
       ...currentTheme,

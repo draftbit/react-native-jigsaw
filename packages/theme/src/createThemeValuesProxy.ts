@@ -1,6 +1,6 @@
 import { ThemeValues, Breakpoints } from "./types";
 import { Platform, TextStyle } from "react-native";
-import { asThemeValuesObject } from "./validators";
+import { isObject } from "lodash";
 
 interface CreateThemeValuesProxyInput {
   value: ThemeValues | undefined;
@@ -34,7 +34,9 @@ export default function createThemeValuesProxy({
     ): string | number | ThemeValues | TextStyle | undefined => {
       const currentValue = target[key];
 
-      const valueAsThemeValues = asThemeValuesObject(currentValue);
+      const valueAsThemeValues = isObject(currentValue)
+        ? (currentValue as ThemeValues)
+        : undefined;
 
       if (valueAsThemeValues) {
         const platformKeys = ["ios", "android", "web", "macos", "windows"];
@@ -139,7 +141,9 @@ function getPlatformValue(input: CreateThemeValuesProxyInput) {
   const { value, devicePlatform } = input;
 
   const currentPlatformValue = value?.[devicePlatform] ?? value?.default;
-  const valueAsThemeValues = asThemeValuesObject(currentPlatformValue);
+  const valueAsThemeValues = isObject(currentPlatformValue)
+    ? (currentPlatformValue as ThemeValues)
+    : undefined;
 
   if (valueAsThemeValues) {
     return createThemeValuesProxy({ ...input, value: valueAsThemeValues });
@@ -163,7 +167,9 @@ function getBreakpointValue(input: CreateThemeValuesProxyInput) {
   }
   const currentBreakpointValue =
     value?.[currentBreakpointKey] ?? value?.default;
-  const valueAsThemeValues = asThemeValuesObject(currentBreakpointValue);
+  const valueAsThemeValues = isObject(currentBreakpointKey)
+    ? (currentBreakpointKey as ThemeValues)
+    : undefined;
 
   if (valueAsThemeValues) {
     return createThemeValuesProxy({ ...input, value: valueAsThemeValues });
@@ -177,7 +183,9 @@ function getLightDarkValue(input: CreateThemeValuesProxyInput) {
 
   const currentLightDarkValue =
     value?.[currentLightDarkSelection] ?? value?.default;
-  const valueAsThemeValues = asThemeValuesObject(currentLightDarkValue);
+  const valueAsThemeValues = isObject(currentLightDarkSelection)
+    ? (currentLightDarkSelection as ThemeValues)
+    : undefined;
 
   if (valueAsThemeValues) {
     return createThemeValuesProxy({ ...input, value: valueAsThemeValues });

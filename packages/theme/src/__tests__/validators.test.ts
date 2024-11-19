@@ -104,7 +104,6 @@ describe("Theme validators tests", () => {
             primary: true,
           },
         },
-        typography: {},
       },
       {
         name: "Draftbit",
@@ -115,36 +114,6 @@ describe("Theme validators tests", () => {
                 nested: true,
               },
             },
-          },
-        },
-        typography: {},
-      },
-      {
-        name: "Draftbit",
-        colors: {
-          branding: {
-            primary: "red",
-          },
-        },
-        typography: {
-          headline4: {
-            fontSize: 24,
-            letterSpacing: 0,
-            lineHeight: 34,
-          },
-          headline6: 20,
-        },
-      },
-      {
-        name: "Draftbit",
-        colors: {
-          branding: {
-            primary: "red",
-          },
-        },
-        typography: {
-          headline4: {
-            sub: false,
           },
         },
       },
@@ -161,44 +130,6 @@ describe("Theme validators tests", () => {
               something: {
                 nested: "rgba(0,0,0,1)",
               },
-            },
-          },
-        },
-        typography: {},
-      },
-      {
-        name: "Draftbit",
-        colors: {
-          branding: {
-            primary: {
-              another: 50,
-              something: {
-                nested: "rgba(0,0,0,1)",
-              },
-            },
-          },
-        },
-        typography: {
-          headline4: {
-            fontSize: 24,
-            letterSpacing: 0,
-            lineHeight: 34,
-          },
-          headline5: {
-            fontSize: 20,
-            letterSpacing: 0,
-            lineHeight: 26,
-          },
-          headline6: {
-            android: {
-              fontSize: 20,
-              letterSpacing: 0,
-              lineHeight: 26,
-            },
-            ios: {
-              fontSize: 16,
-              letterSpacing: 1,
-              lineHeight: 20,
             },
           },
         },

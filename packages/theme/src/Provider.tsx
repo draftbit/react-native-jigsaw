@@ -107,7 +107,15 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
         SAVED_SELECTED_THEME_KEY
       );
       if (savedSelectedThemeName) {
-        changeTheme(savedSelectedThemeName);
+        const themeExists = themes.some(
+          (t) => t.name === savedSelectedThemeName
+        );
+        console.log("RUNNING", savedSelectedThemeName);
+
+        if (themeExists) {
+          changeTheme(savedSelectedThemeName);
+        } else {
+        }
       }
     };
     run();

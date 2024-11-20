@@ -115,6 +115,9 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
         if (themeExists) {
           changeTheme(savedSelectedThemeName);
         } else {
+          AsyncStorage.removeItem(SAVED_SELECTED_THEME_KEY).catch((e) => {
+            console.warn("Failed to reset persisted selected theme", e);
+          });
         }
       }
     };

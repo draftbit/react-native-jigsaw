@@ -7,7 +7,6 @@ import {
   Breakpoints,
   ChangeThemeOptions,
   ReadTheme,
-  ThemeValues,
   ValidatedTheme,
 } from "./types";
 
@@ -67,28 +66,50 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
     [themes, setCurrentTheme]
   );
 
-  const proxiedTheme: ReadTheme = React.useMemo(() => {
-    const createProxiedThemeValue = (value: ThemeValues | undefined) =>
-      createThemeValuesProxy(
-        value,
-        breakpoints,
-        deviceWidth,
-        Platform.OS,
-        lightDarkSelection
-      );
-
-    return {
+  const proxiedTheme: ReadTheme = React.useMemo(
+    () => ({
       ...currentTheme,
       colors: {
-        branding: createProxiedThemeValue(currentTheme.colors.branding),
-        text: createProxiedThemeValue(currentTheme.colors.text),
-        background: createProxiedThemeValue(currentTheme.colors.background),
-        foreground: createProxiedThemeValue(currentTheme.colors.foreground),
-        border: createProxiedThemeValue(currentTheme.colors.border),
+        branding: createThemeValuesProxy(
+          currentTheme.colors.branding,
+          breakpoints,
+          deviceWidth,
+          Platform.OS,
+          lightDarkSelection
+        ),
+        text: createThemeValuesProxy(
+          currentTheme.colors.text,
+          breakpoints,
+          deviceWidth,
+          Platform.OS,
+          lightDarkSelection
+        ),
+        background: createThemeValuesProxy(
+          currentTheme.colors.background,
+          breakpoints,
+          deviceWidth,
+          Platform.OS,
+          lightDarkSelection
+        ),
+        foreground: createThemeValuesProxy(
+          currentTheme.colors.foreground,
+          breakpoints,
+          deviceWidth,
+          Platform.OS,
+          lightDarkSelection
+        ),
+        border: createThemeValuesProxy(
+          currentTheme.colors.border,
+          breakpoints,
+          deviceWidth,
+          Platform.OS,
+          lightDarkSelection
+        ),
       },
       typography: currentTheme.typography,
-    };
-  }, [currentTheme, deviceWidth, breakpoints, lightDarkSelection]);
+    }),
+    [currentTheme, deviceWidth, breakpoints, lightDarkSelection]
+  );
 
   React.useEffect(() => {
     const listener = Dimensions.addEventListener("change", ({ window }) =>

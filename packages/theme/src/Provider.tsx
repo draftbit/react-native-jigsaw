@@ -47,18 +47,16 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
 
   const changeTheme = React.useCallback(
     (themeName: string, options?: ChangeThemeOptions) => {
-      if (currentTheme.name !== themeName) {
-        const theme = themes.find((t) => t.name === themeName);
-        if (!theme) {
-          console.warn(
-            "Theme with name",
-            themeName,
-            "not found. Make sure it's passed into the top level ThemeProvider"
-          );
-          return;
-        }
-        setCurrentTheme(theme);
+      const theme = themes.find((t) => t.name === themeName);
+      if (!theme) {
+        console.warn(
+          "Theme with name",
+          themeName,
+          "not found. Make sure it's passed into the top level ThemeProvider"
+        );
+        return;
       }
+      setCurrentTheme(theme);
 
       if (options?.persistent === true) {
         AsyncStorage.setItem(SAVED_SELECTED_THEME_KEY, themeName).catch((e) => {
@@ -107,7 +105,6 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
         SAVED_SELECTED_THEME_KEY
       );
       const themeExists = themes.some((t) => t.name === savedSelectedThemeName);
-      console.log("RUNNING", savedSelectedThemeName);
 
       if (savedSelectedThemeName) {
         if (themeExists) {

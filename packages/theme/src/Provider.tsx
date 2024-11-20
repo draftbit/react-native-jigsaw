@@ -125,16 +125,9 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
       const savedSelectedThemeName = await AsyncStorage.getItem(
         SAVED_SELECTED_THEME_KEY
       );
-      const themeExists = themes.some((t) => t.name === savedSelectedThemeName);
 
       if (savedSelectedThemeName) {
-        if (themeExists) {
-          changeTheme(savedSelectedThemeName);
-        } else {
-          AsyncStorage.removeItem(SAVED_SELECTED_THEME_KEY).catch((e) => {
-            console.warn("Failed to reset persisted selected theme", e);
-          });
-        }
+        changeTheme(savedSelectedThemeName);
       }
     };
     run();

@@ -66,7 +66,7 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
         });
       }
     },
-    [themes, setCurrentTheme]
+    [themes, currentTheme.name, setCurrentTheme]
   );
 
   const proxiedTheme: ReadTheme = React.useMemo(() => {

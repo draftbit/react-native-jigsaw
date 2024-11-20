@@ -6,11 +6,11 @@ import type {
   ColorPalettes,
 } from "./types";
 import {
-  isTextStyleObject,
   validateBreakpoints,
   validatePalettes,
   validateTheme,
 } from "./validators";
+import { isTextStyleObject } from "./utils";
 
 /**
  * Custom deepmerge function to skip merging of typography/text style objects.

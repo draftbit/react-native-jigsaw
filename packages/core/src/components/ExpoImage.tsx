@@ -1,4 +1,3 @@
-/* README: Internal Image component used for stuff like Card. DO NOT EXPORT! */
 import React from "react";
 import { StyleSheet, ImageSourcePropType, DimensionValue } from "react-native";
 import {

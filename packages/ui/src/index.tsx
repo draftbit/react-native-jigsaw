@@ -79,6 +79,7 @@ export {
   LottieAnimation,
   Timer,
   Image,
+  ExpoImage,
 } from "@draftbit/core";
 
 export {

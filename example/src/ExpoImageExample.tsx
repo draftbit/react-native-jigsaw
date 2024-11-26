@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, StyleSheet, Text } from "react-native";
-import { Image, withTheme } from "@draftbit/ui";
+import { ExpoImage, withTheme } from "@draftbit/ui";
 import Section, { Container } from "./Section";
 
 interface WrapperProps {
@@ -19,13 +19,13 @@ const Wrapper: React.FC<WrapperProps> = ({ label, children }) => {
   );
 };
 
-const ImageExample: React.FC = () => {
+const ExpoImageExample: React.FC = () => {
   return (
     <Container style={{}}>
       <Section title="Image Examples" style={{}}>
         <View style={{ flexDirection: "row" }}>
           <Wrapper label="Basic remote image">
-            <Image
+            <ExpoImage
               source={{
                 uri: "https://picsum.photos/1100",
               }}
@@ -36,7 +36,7 @@ const ImageExample: React.FC = () => {
             />
           </Wrapper>
           <Wrapper label="Local image">
-            <Image
+            <ExpoImage
               source={require("./assets/images/hamburger.png")}
               style={{
                 width: 200,
@@ -47,7 +47,7 @@ const ImageExample: React.FC = () => {
         </View>
         <View style={{ flexDirection: "row" }}>
           <Wrapper label="With aspectRatio">
-            <Image
+            <ExpoImage
               source={{
                 uri: "https://picsum.photos/1200",
               }}
@@ -60,7 +60,7 @@ const ImageExample: React.FC = () => {
         </View>
         <View style={{ flexDirection: "row" }}>
           <Wrapper label="Content fit: contain">
-            <Image
+            <ExpoImage
               source={{
                 uri: "https://picsum.photos/1300",
               }}
@@ -73,7 +73,7 @@ const ImageExample: React.FC = () => {
             />
           </Wrapper>
           <Wrapper label="With blur hash">
-            <Image
+            <ExpoImage
               source={{
                 uri: "https://picsum.photos/1400",
               }}
@@ -91,7 +91,7 @@ const ImageExample: React.FC = () => {
       </Section>
       <Section title="SVG Image" style={styles.wrapper}>
         <Wrapper label="Remote SVG Image">
-          <Image
+          <ExpoImage
             source={{
               uri: "https://upload.wikimedia.org/wikipedia/commons/3/30/Vector-based_example.svg",
             }}
@@ -102,7 +102,7 @@ const ImageExample: React.FC = () => {
           />
         </Wrapper>
         <Wrapper label="Local SVG Image">
-          <Image
+          <ExpoImage
             source={require("./assets/images/example.svg")}
             style={{
               width: 200,
@@ -130,4 +130,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(ImageExample);
+export default withTheme(ExpoImageExample);

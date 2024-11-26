@@ -1,13 +1,14 @@
 /* README: Internal Image component used for stuff like Card. DO NOT EXPORT! */
 import React from "react";
-import { StyleSheet, ImageSourcePropType, DimensionValue } from "react-native";
 import {
-  Image as ExpoImage,
-  ImageContentPosition,
-  ImageProps as ExpoImageProps,
-  ImageContentFit,
-} from "expo-image";
+  Image as NativeImage,
+  ImageProps,
+  StyleSheet,
+  ImageSourcePropType,
+  DimensionValue,
+} from "react-native";
 import Config from "./Config";
+
 import AspectRatio from "./AspectRatio";
 
 type ImageStyleProp = {
@@ -15,32 +16,6 @@ type ImageStyleProp = {
   height?: number;
   aspectRatio?: number;
 };
-
-interface ExtendedImageProps extends ExpoImageProps {
-  placeholder?: {
-    blurhash?: string;
-    thumbhash?: string;
-  };
-  transition?:
-    | number
-    | {
-        duration?: number;
-        effect?:
-          | "cross-dissolve"
-          | "flip-from-top"
-          | "flip-from-right"
-          | "flip-from-bottom"
-          | "flip-from-left"
-          | "curl-up"
-          | "curl-down";
-        timing?: "ease-in-out" | "ease-in" | "ease-out" | "linear";
-      };
-  contentFit?: "cover" | "contain" | "fill" | "none" | "scale-down";
-  contentPosition?: ImageContentPosition;
-  cachePolicy?: "none" | "disk" | "memory" | "memory-disk";
-  allowDownscaling?: boolean;
-  recyclingKey?: string;
-}
 
 const generateDimensions = ({
   aspectRatio,
@@ -77,30 +52,10 @@ const generateDimensions = ({
   return { width, height };
 };
 
-const resizeModeToContentFit = (
-  resizeMode: "cover" | "contain" | "stretch" | "repeat" | "center"
-): ImageContentFit => {
-  const mapping: Record<typeof resizeMode, ImageContentFit> = {
-    cover: "cover",
-    contain: "contain",
-    stretch: "fill",
-    repeat: "none",
-    center: "scale-down",
-  } as const;
-  return mapping[resizeMode] ?? "cover";
-};
-
-const Image: React.FC<ExtendedImageProps> = ({
+const Image: React.FC<ImageProps> = ({
   source,
   resizeMode = "cover",
   style,
-  placeholder,
-  transition = 300,
-  contentFit = "cover",
-  contentPosition = "center",
-  cachePolicy = "memory-disk",
-  allowDownscaling = true,
-  recyclingKey,
   ...props
 }) => {
   let imageSource =
@@ -113,23 +68,13 @@ const Image: React.FC<ExtendedImageProps> = ({
     styles as ImageStyleProp
   );
 
-  const finalContentFit = resizeMode
-    ? resizeModeToContentFit(resizeMode)
-    : contentFit;
-
   if (aspectRatio) {
     return (
       <AspectRatio style={[style, { width, height, aspectRatio }]}>
-        <ExpoImage
+        <NativeImage
           {...props}
           source={imageSource as ImageSourcePropType}
-          contentFit={finalContentFit}
-          placeholder={placeholder}
-          transition={transition}
-          contentPosition={contentPosition}
-          cachePolicy={cachePolicy}
-          allowDownscaling={allowDownscaling}
-          recyclingKey={recyclingKey}
+          resizeMode={resizeMode}
           style={[
             style,
             {
@@ -143,16 +88,10 @@ const Image: React.FC<ExtendedImageProps> = ({
   }
 
   return (
-    <ExpoImage
+    <NativeImage
       {...props}
       source={source as ImageSourcePropType}
-      contentFit={finalContentFit}
-      placeholder={placeholder}
-      transition={transition}
-      contentPosition={contentPosition}
-      cachePolicy={cachePolicy}
-      allowDownscaling={allowDownscaling}
-      recyclingKey={recyclingKey}
+      resizeMode={resizeMode}
       style={style}
     />
   );

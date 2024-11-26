@@ -1,6 +1,6 @@
 import { ThemeValues, Breakpoints } from "./types";
 import { Platform, TextStyle } from "react-native";
-import { asThemeValuesObject } from "./validators";
+import { asThemeValuesObject } from "./utils";
 
 interface CreateThemeValuesProxyInput {
   value: ThemeValues | undefined;

@@ -101,16 +101,3 @@ export function validateTheme(theme: Theme) {
     throw new Error("Invalid theme object: " + result.error.message);
   }
 }
-
-export function isTextStyleObject(value: any): boolean {
-  return TextStyleSchema.safeParse(value).success;
-}
-
-export function asThemeValuesObject(value: any): ThemeValues | null {
-  // Text style matches the shape of ThemeValues, but we don't want to treat it as a ThemeValues
-  if (isTextStyleObject(value)) {
-    return null;
-  }
-
-  return ThemeValuesSchema.safeParse(value).success ? value : null;
-}

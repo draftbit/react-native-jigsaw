@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/theme",
-  "version": "50.6.1",
+  "version": "50.6.3",
   "description": "Draftbit's themeing system",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/src/index.d.ts",
@@ -42,6 +42,7 @@
     "@react-native-async-storage/async-storage": "1.21.0",
     "color": "^4.2.3",
     "deepmerge-ts": "^7.1.3",
+    "lodash.isobject": "^3.0.2",
     "react-native-typography": "^1.4.1",
     "zod": "^3.23.8"
   },

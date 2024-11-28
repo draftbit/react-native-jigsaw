@@ -46,7 +46,7 @@
     "@draftbit/core": "50.6.3",
     "@draftbit/native": "50.6.3",
     "@draftbit/theme": "50.6.3",
-    "react-native-reanimated": "~3.6.2"
+    "react-native-reanimated": "~3.10.1"
   },
   "devDependencies": {
     "metro-react-native-babel-preset": "^0.77.0"

@@ -1,15 +1,19 @@
 import React from "react";
-import DateFnsUtils from "@date-io/date-fns";
 import {
-  MuiPickersUtilsProvider,
-  DatePicker,
-  TimePicker,
-  DateTimePicker,
-} from "@material-ui/pickers";
+  MobileDatePicker,
+  MobileDateTimePicker,
+  MobileTimePicker,
+  StaticDatePicker,
+  StaticDateTimePicker,
+  StaticTimePicker,
+  LocalizationProvider,
+} from "@mui/x-date-pickers";
 import {
-  createMuiTheme,
+  createTheme as createMuiTheme,
   ThemeProvider as MuiThemeProvider,
-} from "@material-ui/core/styles";
+} from "@mui/material";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+
 import { DatePickerComponentProps as Props } from "./DatePickerComponentType";
 import { withTheme, DefaultTheme } from "@draftbit/theme";
 import type { ReadTheme } from "@draftbit/theme";
@@ -40,15 +44,39 @@ const DatePickerComponent: React.FC<Props & { theme: ReadTheme }> = ({
     },
   });
 
-  const Picker =
-    mode === "date"
-      ? DatePicker
-      : mode === "time"
-      ? TimePicker
-      : DateTimePicker;
+  let Picker:
+    | typeof MobileDatePicker
+    | typeof MobileDateTimePicker
+    | typeof MobileTimePicker;
+
+  if (inline) {
+    switch (mode) {
+      case "date":
+        Picker = StaticDatePicker;
+        break;
+      case "time":
+        Picker = StaticTimePicker;
+        break;
+      case "datetime":
+        Picker = StaticDateTimePicker;
+        break;
+    }
+  } else {
+    switch (mode) {
+      case "date":
+        Picker = MobileDatePicker;
+        break;
+      case "time":
+        Picker = MobileTimePicker;
+        break;
+      case "datetime":
+        Picker = MobileDateTimePicker;
+        break;
+    }
+  }
 
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
       <MuiThemeProvider theme={internalTheme}>
         <Picker
           value={value}
@@ -58,13 +86,14 @@ const DatePickerComponent: React.FC<Props & { theme: ReadTheme }> = ({
             onChange(null, d);
           }}
           onClose={() => toggleVisibility()}
-          variant={inline ? "static" : "dialog"}
-          TextFieldComponent={() => null}
+          slots={{
+            textField: () => null,
+          }}
           minDate={minimumDate}
           maxDate={maximumDate}
         />
       </MuiThemeProvider>
-    </MuiPickersUtilsProvider>
+    </LocalizationProvider>
   );
 };
 

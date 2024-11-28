@@ -41,12 +41,12 @@
   "dependencies": {
     "@draftbit/core": "50.6.3",
     "@draftbit/theme": "50.6.3",
-    "@react-google-maps/api": "~2.18.1",
-    "@teovilla/react-native-web-maps": "^0.9.4",
+    "@react-google-maps/api": "~2.20.3",
+    "@teovilla/react-native-web-maps": "^0.9.5",
     "color": "^4.2.3",
     "lodash.isequal": "^4.5.0",
-    "react-native-maps": "1.10.0",
-    "react-native-webview": "13.6.4"
+    "react-native-maps": "1.14.0",
+    "react-native-webview": "13.8.6"
   },
   "eslintIgnore": [
     "node_modules/",

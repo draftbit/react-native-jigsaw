@@ -17,6 +17,7 @@
     "ios": {
       "supportsTablet": true
     },
-    "assetBundlePatterns": ["**/*"]
+    "assetBundlePatterns": ["**/*"],
+    "plugins": ["expo-asset", "expo-font"]
   }
 }

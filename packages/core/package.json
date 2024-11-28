@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/core",
-  "version": "50.6.3",
+  "version": "51.0.0",
   "description": "Core (non-native) Components",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/src/index.d.ts",
@@ -41,7 +41,7 @@
   "dependencies": {
     "@dotlottie/react-player": "1.6.1",
     "@draftbit/react-theme-provider": "^2.1.1",
-    "@draftbit/theme": "50.6.3",
+    "@draftbit/theme": "51.0.0",
     "@expo/vector-icons": "^14.0.3",
     "@gorhom/bottom-sheet": "5.0.6",
     "@lottiefiles/react-lottie-player": "3.5.3",

@@ -1,6 +1,4 @@
 {
-  "name": "@draftbit/ui-example",
-  "displayName": "Ui Example",
   "expo": {
     "name": "@draftbit/ui-example",
     "slug": "draftbit-ui-example",

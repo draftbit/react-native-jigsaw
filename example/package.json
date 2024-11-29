@@ -17,7 +17,7 @@
     "@draftbit/maps": "51.0.0",
     "@draftbit/ui": "51.0.0",
     "@expo/dev-server": "0.1.123",
-    "@expo/webpack-config": "~19.0.1",
+    "@expo/metro-runtime": "~3.2.3",
     "@react-navigation/drawer": "^6.6.3",
     "@react-navigation/native": "^6.1.7",
     "@shopify/flash-list": "1.6.4",

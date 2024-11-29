@@ -9,5 +9,5 @@ const DEFAULT_STATUSBAR_HEIGHT_EXPO = expo?.Constants
 
 export const APPROX_STATUSBAR_HEIGHT = Platform.select({
   android: DEFAULT_STATUSBAR_HEIGHT_EXPO,
-  ios: Platform.Version < 11 ? DEFAULT_STATUSBAR_HEIGHT_EXPO : 0,
+  ios: Number(Platform.Version) < 11 ? DEFAULT_STATUSBAR_HEIGHT_EXPO : 0,
 });

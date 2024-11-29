@@ -122,7 +122,7 @@ const ROUTES = {
   KeyboardAvoidingView: KeyboardAvoidingViewExample,
 };
 
-let customFonts = {
+const customFonts = {
   "FiraCode": require("./assets/fonts/FiraCode-Bold.otf"),
   "Testing": require("./assets/fonts/Sriracha-Regular.ttf"),
   "Inter-SemiBoldItalic":
@@ -374,7 +374,7 @@ function Example({ title, children }: ExampleProps) {
           />
         </TouchableOpacity>
 
-        <Text style={[exampleStyles.headerTextStyle]}>{title}</Text>
+        <Text style={exampleStyles.headerTextStyle}>{title}</Text>
         <TouchableOpacity
           style={exampleStyles.menuButtonStyle}
           onPress={() => {
@@ -428,11 +428,6 @@ function Examples() {
 }
 
 const exampleStyles = StyleSheet.create({
-  mainParent: {
-    width: "100%",
-    height: "100%",
-    backgroundColor: "rgba(251, 252, 253, 1)",
-  },
   headerStyle: {
     flexDirection: "row",
     alignItems: "center",
@@ -468,8 +463,5 @@ const exampleStyles = StyleSheet.create({
     marginStart: "2%",
     marginBottom: 8,
     paddingVertical: 4,
-  },
-  scrollViewStyle: {
-    paddingBottom: 20,
   },
 });

@@ -91,16 +91,16 @@ const ModalPicker: React.FC<
         }}
         renderItem={(item, _, isSelected) => {
           const backgroundColor = isSelected
-            ? pickerItemProps.selectedBackgroundColor ??
-              pickerItemViewStyles.backgroundColor
+            ? (pickerItemProps.selectedBackgroundColor ??
+              pickerItemViewStyles.backgroundColor)
             : pickerItemViewStyles.backgroundColor;
 
           const textColor = isSelected
-            ? pickerItemProps.selectedTextColor ?? dropDownTextColor
+            ? (pickerItemProps.selectedTextColor ?? dropDownTextColor)
             : dropDownTextColor;
 
           const textSize = isSelected
-            ? pickerItemProps.selectedTextSize ?? 14
+            ? (pickerItemProps.selectedTextSize ?? 14)
             : 14;
 
           return (

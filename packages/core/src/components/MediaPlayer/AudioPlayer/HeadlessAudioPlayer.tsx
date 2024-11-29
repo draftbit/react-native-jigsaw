@@ -119,7 +119,7 @@ const HeadlessAudioPlayer = React.forwardRef<
         isError: false,
       });
 
-      let finalSource = await normalizeBase64Source(source, "audio");
+      const finalSource = await normalizeBase64Source(source, "audio");
 
       const { sound } = await Audio.Sound.createAsync(finalSource);
       setCurrentSound(sound);

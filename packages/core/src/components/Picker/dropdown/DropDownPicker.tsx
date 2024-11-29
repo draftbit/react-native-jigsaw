@@ -60,7 +60,7 @@ const DropDownPicker: React.FC<
 
   useOnUpdate(() => {
     onValueChange?.(
-      (isMultiSelect ? internalValue ?? [] : internalValue ?? "") as any // cannot determine if multiselect or not on compile time
+      (isMultiSelect ? (internalValue ?? []) : (internalValue ?? "")) as any // cannot determine if multiselect or not on compile time
     );
     // onValueChange excluded to prevent running on every re-render when using an anoymous function, which is the common case
   }, [internalValue]);

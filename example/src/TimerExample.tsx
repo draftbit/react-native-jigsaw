@@ -38,7 +38,7 @@ const TimerExample: React.FC = () => {
             }}
             onTimerEnd={() => {
               console.log("onTimerEnd");
-              // eslint-disable-next-line no-alert
+
               alert("onTimerEnd");
             }}
             style={{
@@ -66,11 +66,6 @@ const TimerExample: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    padding: 20,
-  },
   buttonsContainer: {
     marginTop: 20,
     gap: 10,

@@ -178,17 +178,17 @@ function circlePath(
     radius: number,
     angleInDegrees: number
   ) {
-    var angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
+    const angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
     return {
       x: centerX + radius * Math.cos(angleInRadians),
       y: centerY + radius * Math.sin(angleInRadians),
     };
   }
 
-  var start = polarToCartesian(x, y, radius, endAngle * 0.9999);
-  var end = polarToCartesian(x, y, radius, startAngle);
-  var largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
-  var d = [
+  const start = polarToCartesian(x, y, radius, endAngle * 0.9999);
+  const end = polarToCartesian(x, y, radius, startAngle);
+  const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+  const d = [
     "M",
     start.x,
     start.y,

@@ -34,7 +34,7 @@ export const useOnUpdate = (
   onUpdate: () => void,
   deps: React.DependencyList | undefined
 ) => {
-  let mounted = React.useRef(true);
+  const mounted = React.useRef(true);
   React.useEffect(() => {
     if (!mounted.current) {
       onUpdate();

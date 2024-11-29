@@ -130,7 +130,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   const [placeholder1, setPlaceholder1] = React.useState("");
   const [focused, setFocused] = React.useState<boolean>(false);
   const [labelLayout, setLabelLayout] = React.useState<{
-    measured: Boolean;
+    measured: boolean;
     width: number;
   }>({ measured: false, width: 0 });
 
@@ -145,7 +145,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
 
   const formatDate = (): string => {
     if (!value) return "";
-    let newDate = getValidDate();
+    const newDate = getValidDate();
 
     if (format) return dateFormat(newDate, format);
 
@@ -342,8 +342,8 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
           ? MINIMIZED_LABEL_FONT_SIZE + 4
           : 16
         : leftIconMode === "outset"
-        ? 16
-        : 0,
+          ? 16
+          : 0,
   };
 
   const labelStyle = {
@@ -615,9 +615,6 @@ const styles = StyleSheet.create({
     left: 0,
   },
   pickerContainer: { flexDirection: "column", width: "100%", zIndex: 100 },
-  closeButton: {
-    alignSelf: "flex-end",
-  },
 });
 
 function parseDate(date?: string | Date) {

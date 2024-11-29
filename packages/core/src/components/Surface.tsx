@@ -45,13 +45,11 @@ const Surface: React.FC<React.PropsWithChildren<Props>> = ({
   return (
     <Animated.View
       {...rest}
-      style={[
-        {
-          backgroundColor: getBackgroundColor(),
-          ...shadow(elevation),
-          ...restStyle,
-        },
-      ]}
+      style={{
+        backgroundColor: getBackgroundColor(),
+        ...shadow(elevation),
+        ...restStyle,
+      }}
     >
       {children}
     </Animated.View>

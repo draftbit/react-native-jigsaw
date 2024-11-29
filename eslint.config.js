@@ -2,8 +2,10 @@ const { fixupPluginRules } = require("@eslint/compat");
 const esLintReactNative = require("eslint-plugin-react-native");
 const eslintPluginPrettierRecommended = require("eslint-plugin-prettier/recommended");
 const hooksPlugin = require("eslint-plugin-react-hooks");
+const tsEslint = require("typescript-eslint");
 
 module.exports = [
+  ...tsEslint.configs.recommended,
   eslintPluginPrettierRecommended,
 
   // Workaround for `eslint-plugin-react-native` not supporting eslint flat configs
@@ -39,5 +41,30 @@ module.exports = [
       "**/__generated__/**",
       "jest-setup.js",
     ],
+  },
+  {
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-unused-expressions": "off",
+      "@typescript-eslint/no-unnecessary-type-constraint": "off",
+      "react-native/no-inline-styles": "off",
+      "react-native/no-color-literals": "off",
+
+      // ignore unused vars that start with underscore
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          args: "all",
+          argsIgnorePattern: "^_",
+          caughtErrors: "all",
+          caughtErrorsIgnorePattern: "^_",
+          destructuredArrayIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          ignoreRestSiblings: true,
+        },
+      ],
+    },
   },
 ];

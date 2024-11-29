@@ -46,7 +46,7 @@ const Container: React.FC<React.PropsWithChildren<Props>> = ({
   elevation,
   style,
   children,
-  theme, // eslint-disable-line @typescript-eslint/no-unused-vars
+  theme,
   ...rest
 }) => {
   const {

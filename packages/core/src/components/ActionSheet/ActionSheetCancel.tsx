@@ -19,7 +19,7 @@ const ActionSheetCancel: React.FC<React.PropsWithChildren<Props>> = ({
     <ActionSheetItem
       label={label}
       color={color || "#FF453A"}
-      style={[style]}
+      style={style}
       onPress={onPress}
     />
   );

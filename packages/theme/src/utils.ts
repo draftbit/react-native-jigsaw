@@ -13,7 +13,7 @@ export function isTextStyleObject(value: any): boolean {
         "letterSpacing",
       ].includes(key)
     );
-  } catch (e) {
+  } catch (_) {
     // If `value` is not an object, the above code will throw an error
     // Catch error and return false is more efficient than a call to `isObject`
     return false;

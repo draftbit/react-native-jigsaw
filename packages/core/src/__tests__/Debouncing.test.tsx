@@ -30,7 +30,7 @@ describe("Text Input debouncing test", () => {
       };
 
       render(<Wrapper />);
-      testDebounce("first", "second", "", delay);
+      testDebounce("first", "second", delay);
     }
   );
 
@@ -53,7 +53,7 @@ describe("Text Input debouncing test", () => {
       };
 
       render(<Wrapper />);
-      testDebounce("first", "second", "", delay);
+      testDebounce("first", "second", delay);
     }
   );
 
@@ -73,7 +73,7 @@ describe("Text Input debouncing test", () => {
       };
 
       render(<Wrapper />);
-      testDebounce(1, 23, 0, delay);
+      testDebounce(1, 23, delay);
     }
   );
 
@@ -93,7 +93,7 @@ describe("Text Input debouncing test", () => {
       };
 
       render(<Wrapper />);
-      testDebounce("first", "second", "", delay);
+      testDebounce("first", "second", delay);
     }
   );
 });
@@ -101,7 +101,6 @@ describe("Text Input debouncing test", () => {
 function testDebounce(
   valueOne: string | number,
   valueTwo: string | number,
-  initialValue: string | number,
   delay: number
 ) {
   const textInput = screen.getByTestId("native-text-input");

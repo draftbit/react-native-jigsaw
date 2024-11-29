@@ -137,7 +137,7 @@ function getSections(
 function generateEmptySectionSplitArrays<T>(sections: string[]): {
   [key: string]: T[];
 } {
-  let sectionSplitArrays: { [key: string]: T[] } = {};
+  const sectionSplitArrays: { [key: string]: T[] } = {};
 
   for (const section of sections) {
     sectionSplitArrays[section] = [];

@@ -12,7 +12,7 @@ import {
   createTheme as createMuiTheme,
   ThemeProvider as MuiThemeProvider,
 } from "@mui/material";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 
 import { DatePickerComponentProps as Props } from "./DatePickerComponentType";
 import { withTheme, DefaultTheme } from "@draftbit/theme";
@@ -81,7 +81,7 @@ const DatePickerComponent: React.FC<Props & { theme: ReadTheme }> = ({
         <Picker
           value={value}
           open={isVisible}
-          onChange={(d) => {
+          onAccept={(d) => {
             toggleVisibility();
             onChange(null, d);
           }}

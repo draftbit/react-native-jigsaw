@@ -48,13 +48,7 @@
     "react-native-svg": "15.2.0",
     "react-native-webview": "13.8.6"
   },
-  "devDependencies": {
-    "metro-react-native-babel-preset": "^0.77.0"
-  },
-  "eslintIgnore": [
-    "node_modules/",
-    "lib/"
-  ],
+  "devDependencies": {},
   "jest": {
     "preset": "react-native",
     "setupFilesAfterEnv": [

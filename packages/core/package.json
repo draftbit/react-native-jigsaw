@@ -99,13 +99,8 @@
     "@types/lodash.omit": "^4.5.6",
     "@types/lodash.tonumber": "^4.0.6",
     "@types/uuid": "^10.0.0",
-    "metro-react-native-babel-preset": "^0.77.0",
     "react-native-avoid-softinput": "^4.0.1"
   },
-  "eslintIgnore": [
-    "node_modules/",
-    "lib/"
-  ],
   "jest": {
     "preset": "jest-expo",
     "setupFilesAfterEnv": [
@@ -118,7 +113,7 @@
       "declarations.d.ts"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg|dateformat)"
     ],
     "testEnvironment": "node"
   }

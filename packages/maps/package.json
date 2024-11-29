@@ -48,10 +48,6 @@
     "react-native-maps": "1.14.0",
     "react-native-webview": "13.8.6"
   },
-  "eslintIgnore": [
-    "node_modules/",
-    "lib/"
-  ],
   "jest": {
     "preset": "jest-expo",
     "setupFilesAfterEnv": [
@@ -63,12 +59,11 @@
       "__mocks__"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg|dateformat)"
     ],
     "testEnvironment": "node"
   },
   "devDependencies": {
-    "@types/lodash.isequal": "^4.5.6",
-    "metro-react-native-babel-preset": "^0.77.0"
+    "@types/lodash.isequal": "^4.5.6"
   }
 }

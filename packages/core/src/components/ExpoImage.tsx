@@ -16,10 +16,6 @@ type ImageStyleProp = {
 };
 
 interface ExtendedImageProps extends ExpoImageProps {
-  placeholder?: {
-    blurhash?: string;
-    thumbhash?: string;
-  };
   transition?:
     | number
     | {
@@ -38,7 +34,8 @@ interface ExtendedImageProps extends ExpoImageProps {
   contentPosition?: ImageContentPosition;
   cachePolicy?: "none" | "disk" | "memory" | "memory-disk";
   allowDownscaling?: boolean;
-  recyclingKey?: string;
+  blurRadius?: number;
+  blurhash?: string;
 }
 
 const generateDimensions = ({
@@ -93,13 +90,13 @@ const ExpoImage: React.FC<ExtendedImageProps> = ({
   source,
   resizeMode = "cover",
   style,
-  placeholder,
   transition = 300,
   contentFit = "cover",
   contentPosition = "center",
   cachePolicy = "memory-disk",
   allowDownscaling = true,
-  recyclingKey,
+  blurRadius,
+  blurhash,
   ...props
 }) => {
   let imageSource =
@@ -123,12 +120,14 @@ const ExpoImage: React.FC<ExtendedImageProps> = ({
           {...props}
           source={imageSource as ImageSourcePropType}
           contentFit={finalContentFit}
-          placeholder={placeholder}
+          placeholder={{
+            blurhash,
+          }}
           transition={transition}
           contentPosition={contentPosition}
           cachePolicy={cachePolicy}
           allowDownscaling={allowDownscaling}
-          recyclingKey={recyclingKey}
+          blurRadius={blurRadius}
           style={[
             style,
             {
@@ -146,12 +145,14 @@ const ExpoImage: React.FC<ExtendedImageProps> = ({
       {...props}
       source={source as ImageSourcePropType}
       contentFit={finalContentFit}
-      placeholder={placeholder}
+      placeholder={{
+        blurhash,
+      }}
       transition={transition}
       contentPosition={contentPosition}
       cachePolicy={cachePolicy}
       allowDownscaling={allowDownscaling}
-      recyclingKey={recyclingKey}
+      blurRadius={blurRadius}
       style={style}
     />
   );

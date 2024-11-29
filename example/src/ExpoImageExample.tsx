@@ -75,12 +75,10 @@ const ExpoImageExample: React.FC = () => {
           <Wrapper label="With blur hash">
             <ExpoImage
               source={{
-                uri: "https://picsum.photos/1400",
+                uri: "https://picsum.photos/seed/696/3000/2000",
               }}
-              placeholder={{
-                blurhash: "L6PZfSi_.AyE_3t7t7R**0o#DgR4",
-              }}
-              transition={1000}
+              blurhash="LEHLk~WB2yk8pyo0adR*.7kCMdnj"
+              transition={5000}
               style={{
                 width: 200,
                 height: 200,

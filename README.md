@@ -5,100 +5,41 @@ Draftbit's specialized component library. Loosely based on React Native Paper, t
 This is a monorepo containing the packages comprising `@draftbit/ui`,
 [Draftbit's](https://draftbit.com) component library used inside our Builder.
 
-See [the `ui` package readme](./packages/ui#readme) for details.
-
 ## Quickstart:
 
 ```sh
 git clone https://github.com/draftbit/react-native-jigsaw && cd react-native-jigsaw
-yarn && yarn bootstrap && yarn build
-yarn example start -c --web
+yarn && yarn build
+yarn example start
 ```
 
 Any changes in the `packages/` typescript files should be automatically picked
-up by the Metro bundler and reflected in the example application.
+up by the Metro bundler and reflected in the example application. In some cases,
+you may need to stop the example app, rebuild, and restart it.
 
 Please read the [contributing guide](CONTRIBUTING.md) before making
 a pull-request and to understand the full development flow
 
-## Uploading Example to Snack:
-
-```
-yarn example:snack
-```
-
 ## Overview
 
-This is a lerna/monorepo setup that is split up into types, native, core and ui packages.
+This is a lerna/monorepo setup that is split up into several packages.
 
-- packages/ui: pulls in everything from core and native and re-exports it. This is what any user will install to use this Library
-- packages/core: Non-native, javascript components go here. These are components that work perfectly across web, ios and android without any adjustments
-- packages/native: Native components that rely on expo/react-native modules likes `expo-av` and `@expo/vector-icons`. This houses our AudioPlayer and Icon components because the current version requires modifications to work well on Web
-- packages/theme: Draftbit's theming system
+- packages/ui: pulls in everything from core, native, and theme and re-exports it. This is what any user will install to use this Library
+- packages/core: This is where all components go, components should work across web, ios, and android. Additionally, all utils and shared files go here.
+- packages/theme: This houses our theming system and all it's related files.
+- packages/native: This was intended to house native components that rely on expo/react-native modules likes `expo-av` and `@expo/vector-icons`. However, currently all our components work with on all platforms (even the ones here) and there is no need to have a separate native package. However, this this is kept for now to avoid breaking changes.
+- packages/maps: This is where the map components go. This package utlizes a native package and a web package to provide a cross platform map component.
+- packages/types: This was intended to expose some additional types to the components. However, we've moved away from this in favor of writing all components in typescript.
 
 ** Chances are, you'll spend most of your time in `packages/core` **
 
-### SEED_DATA
+## Running Example App
 
-Most components will have a `SEED_DATA` object. This is how we incorporate components and props into Draftbit's property panel.
-
-This object maps one to one to what the UI will look like in the panel. Here's an example of the "View" component:
-
-![Draftbit Properties Panel](./images/view-properties-panel.png)
-
-Here's an example of what the SEED_DATA prop would look like:
-
-```js
-  source: createImageProp(),
-  pointerEvents: {
-    group: GROUPS.advanced,
-    name: "pointerEvents",
-    label: "pointerEvents",
-    description: "Pointer events"
-    options: ["auto", "none", "box-none", "box-only"],
-    editable: true,
-    required: false,
-    formType: FORM_TYPES.flatArray,
-    propType: PROP_TYPES.STRING,
-    defaultValue: "auto",
-  },
+```sh
+yarn
+yarn build
+yarn example start
 ```
-
-#### Objects vs. Functions for SEED_DATA
-
-Our legacy implementation included an object, like you see `pointerEvents` above. Moving forward, everything should be a function, like `createImageProp()`. The reason is that its easier to maintain and update across the board when features change inside the builder.
-
-If you're having doubts, use a function. If that function doesn't exist, create it!
-
-All the functions and SEED_DATA live inside the [draftbit repo](https://github.com/draftbit/draftbit/blob/master/component-mappings). The jigsaw repo currently only holds the components, the mapping logic is maintained within the draftbit repo.
-
-## Linking
-
-If you want to dynamically link these packages into a project using `yarn link`,
-make sure to run `yarn watch <packagename>` from the root folder so that lerna
-can properly cross link everything, then `yarn link` from the particular package
-directory (not the root!) you are interested in.
-
-So if using `@draftbit/core` in a create-react-app, this would look like:
-
-```console
-# In react-native-jigsaw/
-$ yarn install
-$ yarn watch core
-
-# In ./packages/core/
-$ yarn link
-
-# In create-react-app project root
-$ <shutdown any running create-react-app dev mode>
-$ yarn add @draftbit/core # only if this is the first time using it
-$ yarn install
-$ yarn link @draftbit/core
-$ yarn start
-```
-
-You should be able to make changes inside `core/`, have nodemon pick them up and
-rebuild, then have create-react-app pick that up and rebuild.
 
 ## Publishing
 
@@ -133,7 +74,10 @@ Release Process:
 
 ## Upgrade Expo SDK Modules
 
-Run `node scripts/upgrade-expo-sdk-packages.js expo-sdk-version`. Where expo-sdk-version comes from Expo. Expo hosts a file called `bundledNativeModules.json`. You must use the correct version via the url: `https://github.com/expo/expo/blob/sdk-46/packages/expo/bundledNativeModules.json`
+- Go through each of the packages and temporarily install the intended version of `expo`
+- Run `npx expo install --fix` to update the packages to the correct version
+- Remove the temporarily installed `expo`
+- Check if there any packages or resolutions that need to be updated in root `package.json`
 
 ## Plug
 
@@ -142,13 +86,3 @@ Sound cool? [We're hiring!](https://draftbit.com/jobs).
 ## License
 
 MIT
-
-## Contributing
-
-- Any color should be passed down via theme prop:
-
-```
-// NOT dotColor="#5a45ff" b/c that isn't theme powered
-// Learn more here https://callstack.github.io/react-native-paper/theming.html
-<Carousel dotColor={theme.colors.strong}>
-```

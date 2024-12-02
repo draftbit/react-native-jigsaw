@@ -167,7 +167,7 @@ const NativeWebView = React.forwardRef<any, WebViewProps>(
         return (
           <WebView
             ref={ref}
-            source={source || { html: html!! }}
+            source={source || { html: html! }}
             style={{ ...style, width: getFinalWidth() }}
             injectedJavaScript={injectFirst}
             onMessage={onMessage}

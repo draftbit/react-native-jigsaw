@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+
 import * as React from "react";
 import {
   View,
@@ -457,8 +459,8 @@ class TextField extends React.Component<Props, State> {
                     (error
                       ? colors.background.danger
                       : this.state.focused
-                      ? activeColor
-                      : underlineColor),
+                        ? activeColor
+                        : underlineColor),
                   // Underlines is thinner when input is not focused
                   transform: [{ scaleY: this.state.focused ? 1 : 0.5 }],
                 },
@@ -573,13 +575,11 @@ class TextField extends React.Component<Props, State> {
 
         {assistiveText ? (
           <Text
-            style={[
-              {
-                color: error ? colors.text.danger : colors.text.light,
-                marginTop: 8,
-                marginLeft: assistiveTextLeftMargin,
-              },
-            ]}
+            style={{
+              color: error ? colors.text.danger : colors.text.light,
+              marginTop: 8,
+              marginLeft: assistiveTextLeftMargin,
+            }}
           >
             {assistiveText}
           </Text>

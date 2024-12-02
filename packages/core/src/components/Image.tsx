@@ -58,7 +58,7 @@ const Image: React.FC<ImageProps> = ({
   style,
   ...props
 }) => {
-  let imageSource =
+  const imageSource =
     source === null || source === undefined
       ? Config.placeholderImageURL
       : source;

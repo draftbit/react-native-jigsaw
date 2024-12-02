@@ -236,7 +236,7 @@ export default class StepIndicator extends Component<Props, State> {
   };
 
   renderStepIndicator = () => {
-    let steps = [];
+    const steps = [];
     const { stepCount, direction } = this.props;
     for (let position = 0; position < stepCount; position++) {
       steps.push(
@@ -285,7 +285,7 @@ export default class StepIndicator extends Component<Props, State> {
 
   renderStepLabels = () => {
     const { labels, direction, currentPosition, renderLabel } = this.props;
-    var labelViews = labels.map((label, index) => {
+    const labelViews = labels.map((label, index) => {
       const selectedStepLabelStyle =
         index === currentPosition
           ? { color: this.state.customStyles.currentStepLabelColor }
@@ -421,7 +421,7 @@ export default class StepIndicator extends Component<Props, State> {
   };
 
   onCurrentPositionChanged = (position) => {
-    let { stepCount } = this.props;
+    const { stepCount } = this.props;
     if (position > stepCount - 1) {
       position = stepCount - 1;
     }

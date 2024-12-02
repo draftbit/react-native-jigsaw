@@ -222,13 +222,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: Config.buttonIconSize,
   },
-  fixed: {
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: 64,
-    borderRadius: 0,
-  },
 });
 
 export default withTheme(FAB);

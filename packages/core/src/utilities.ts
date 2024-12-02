@@ -32,7 +32,7 @@ export function extractStyles(style: StyleProp<any>) {
     textDecorationStyle,
   };
 
-  for (let key in textStyles) {
+  for (const key in textStyles) {
     const styleKey = key as keyof TextStyle;
     if (textStyles[styleKey] === undefined) {
       delete textStyles[styleKey];

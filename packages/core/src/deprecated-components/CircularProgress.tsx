@@ -32,7 +32,7 @@ class CircularProgress extends React.Component<Props> {
     radius: number,
     angleInDegrees: number
   ): { x: number; y: number } => {
-    var angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
+    const angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
     return {
       x: centerX + radius * Math.cos(angleInRadians),
       y: centerY + radius * Math.sin(angleInRadians),
@@ -46,10 +46,10 @@ class CircularProgress extends React.Component<Props> {
     startAngle: number,
     endAngle: number
   ): string => {
-    var start = this.polarToCartesian(x, y, radius, endAngle * 0.9999);
-    var end = this.polarToCartesian(x, y, radius, startAngle);
-    var largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
-    var d = [
+    const start = this.polarToCartesian(x, y, radius, endAngle * 0.9999);
+    const end = this.polarToCartesian(x, y, radius, startAngle);
+    const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+    const d = [
       "M",
       start.x,
       start.y,

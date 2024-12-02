@@ -79,7 +79,7 @@ const FieldSearchBarFull: React.FC<React.PropsWithChildren<Props>> = ({
     submitOverride && submitOverride(e);
   };
 
-  const { lineHeight, ...typeStyles } = typography.body2; // eslint-disable-line @typescript-eslint/no-unused-vars
+  const { lineHeight, ...typeStyles } = typography.body2;
 
   const handleChangeText = (newValue: string) => {
     setInternalValue(newValue);

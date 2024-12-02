@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/core",
-  "version": "50.6.3",
+  "version": "51.0.0",
   "description": "Core (non-native) Components",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/src/index.d.ts",
@@ -39,48 +39,49 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@date-io/date-fns": "^1.3.13",
     "@dotlottie/react-player": "1.6.1",
     "@draftbit/react-theme-provider": "^2.1.1",
-    "@draftbit/theme": "50.6.3",
-    "@expo/vector-icons": "^14.0.0",
-    "@gorhom/bottom-sheet": "5.0.0-alpha.7",
+    "@draftbit/theme": "51.0.0",
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "@expo/vector-icons": "^14.0.3",
+    "@gorhom/bottom-sheet": "5.0.6",
     "@lottiefiles/react-lottie-player": "3.5.3",
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/pickers": "^3.2.10",
-    "@react-native-community/slider": "4.4.2",
-    "@react-native-picker/picker": "2.6.1",
-    "@shopify/flash-list": "1.6.3",
+    "@mui/material": "^6.1.9",
+    "@mui/x-date-pickers": "^7.22.3",
+    "@react-native-community/slider": "4.5.2",
+    "@react-native-picker/picker": "2.7.5",
+    "@shopify/flash-list": "1.6.4",
     "color": "^4.2.3",
-    "date-fns": "^2.16.1",
-    "dateformat": "^3.0.3",
-    "expo-av": "~13.10.6",
+    "date-fns": "^4.1.0",
+    "dateformat": "^5.0.3",
+    "expo-av": "~14.0.7",
     "lodash.isequal": "^4.5.0",
     "lodash.isnumber": "^3.0.3",
     "lodash.omit": "^4.5.0",
     "lodash.tonumber": "^4.0.3",
-    "lottie-react-native": "6.5.1",
+    "lottie-react-native": "6.7.0",
     "react-native-animated-spinkit": "1.5.2",
-    "react-native-confirmation-code-field": "^7.3.1",
+    "react-native-confirmation-code-field": "^7.4.0",
     "react-native-date-picker": "^5.0.7",
-    "react-native-deck-swiper": "^2.0.16",
+    "react-native-deck-swiper": "^2.0.17",
     "react-native-dropdown-picker": "^5.4.7-beta.1",
-    "react-native-gesture-handler": "~2.14.0",
+    "react-native-gesture-handler": "~2.16.1",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
-    "react-native-markdown-display": "^7.0.0-alpha.2",
-    "react-native-modal-datetime-picker": "^13.0.0",
-    "react-native-pager-view": "6.2.3",
-    "react-native-reanimated": "~3.6.2",
+    "react-native-markdown-display": "^7.0.2",
+    "react-native-modal-datetime-picker": "^18.0.0",
+    "react-native-pager-view": "6.3.0",
+    "react-native-reanimated": "~3.10.1",
     "react-native-select-dropdown": "4.0.1",
-    "react-native-shadow-2": "^7.0.7",
-    "react-native-svg": "14.1.0",
+    "react-native-shadow-2": "^7.1.1",
+    "react-native-svg": "15.2.0",
     "react-native-swipe-list-view": "^3.2.9",
     "react-native-tab-view": "^3.4.0",
-    "react-native-web-swiper": "^2.2.3",
-    "react-native-webview": "13.6.4",
-    "react-native-youtube-iframe": "^2.2.2",
+    "react-native-web-swiper": "^2.2.4",
+    "react-native-webview": "13.8.6",
+    "react-native-youtube-iframe": "^2.3.0",
     "react-youtube": "^10.1.0",
-    "uuid": "^9.0.1"
+    "uuid": "^11.0.3"
   },
   "peerDependencies": {
     "react-native-avoid-softinput": "^4.0.1"
@@ -91,21 +92,15 @@
     }
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
-    "@types/color": "^3.0.1",
-    "@types/dateformat": "^3.0.1",
+    "@babel/plugin-transform-export-namespace-from": "^7.25.9",
+    "@types/color": "^4.2.0",
+    "@types/dateformat": "^5.0.2",
     "@types/lodash.isnumber": "^3.0.6",
     "@types/lodash.omit": "^4.5.6",
     "@types/lodash.tonumber": "^4.0.6",
-    "@types/uuid": "^9.0.8",
-    "metro-react-native-babel-preset": "^0.77.0",
+    "@types/uuid": "^10.0.0",
     "react-native-avoid-softinput": "^4.0.1"
   },
-  "eslintIgnore": [
-    "node_modules/",
-    "lib/"
-  ],
   "jest": {
     "preset": "jest-expo",
     "setupFilesAfterEnv": [
@@ -118,7 +113,7 @@
       "declarations.d.ts"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg|dateformat)"
     ],
     "testEnvironment": "node"
   }

@@ -453,17 +453,17 @@ function calculateDistanceBetween2PointsMeters(
   lat2: number,
   long2: number
 ) {
-  var earthRadiusKM = 6371;
-  var deltaLat = degreeToRadian(lat2 - lat1);
-  var deltaLong = degreeToRadian(long2 - long1);
-  var a =
+  const earthRadiusKM = 6371;
+  const deltaLat = degreeToRadian(lat2 - lat1);
+  const deltaLong = degreeToRadian(long2 - long1);
+  const a =
     Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
     Math.cos(degreeToRadian(lat1)) *
       Math.cos(degreeToRadian(lat2)) *
       Math.sin(deltaLong / 2) *
       Math.sin(deltaLong / 2);
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  var distanceKM = earthRadiusKM * c;
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const distanceKM = earthRadiusKM * c;
   return distanceKM * 1000;
 }
 

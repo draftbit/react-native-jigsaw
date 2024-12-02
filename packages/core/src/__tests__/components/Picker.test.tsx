@@ -1,4 +1,5 @@
-import * as React from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react-native";
 import { Picker, PickerItem } from "../../components/Picker";
 import Provider from "../../Provider";

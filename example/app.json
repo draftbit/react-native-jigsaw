@@ -1,6 +1,4 @@
 {
-  "name": "@draftbit/ui-example",
-  "displayName": "Ui Example",
   "expo": {
     "name": "@draftbit/ui-example",
     "slug": "draftbit-ui-example",
@@ -17,6 +15,7 @@
     "ios": {
       "supportsTablet": true
     },
-    "assetBundlePatterns": ["**/*"]
+    "assetBundlePatterns": ["**/*"],
+    "plugins": ["expo-asset", "expo-font"]
   }
 }

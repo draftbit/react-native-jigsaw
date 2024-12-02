@@ -211,11 +211,6 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     borderWidth: 1,
   },
-  bare: {
-    backgroundColor: "transparent",
-    padding: 0,
-    minHeight: undefined,
-  },
   loading: {
     marginRight: 6,
   },

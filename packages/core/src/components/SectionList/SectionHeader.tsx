@@ -10,7 +10,7 @@ interface SectionHeaderProps {
 const SectionHeader: React.FC<React.PropsWithChildren<SectionHeaderProps>> = ({
   style,
   children,
-}) => <View style={[style]}>{children}</View>;
+}) => <View style={style}>{children}</View>;
 
 interface DefaultSectionHeaderProps {
   title: string;

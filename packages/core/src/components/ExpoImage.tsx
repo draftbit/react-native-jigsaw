@@ -16,20 +16,16 @@ type ImageStyleProp = {
 };
 
 interface ExtendedImageProps extends ExpoImageProps {
-  transition?:
-    | number
-    | {
-        duration?: number;
-        effect?:
-          | "cross-dissolve"
-          | "flip-from-top"
-          | "flip-from-right"
-          | "flip-from-bottom"
-          | "flip-from-left"
-          | "curl-up"
-          | "curl-down";
-        timing?: "ease-in-out" | "ease-in" | "ease-out" | "linear";
-      };
+  transitionDuration?: number;
+  transitionEffect?:
+    | "cross-dissolve"
+    | "flip-from-top"
+    | "flip-from-right"
+    | "flip-from-bottom"
+    | "flip-from-left"
+    | "curl-up"
+    | "curl-down";
+  transitionTiming?: "ease-in-out" | "ease-in" | "ease-out" | "linear";
   contentFit?: "cover" | "contain" | "fill" | "none" | "scale-down";
   contentPosition?: ImageContentPosition;
   cachePolicy?: "none" | "disk" | "memory" | "memory-disk";
@@ -90,7 +86,9 @@ const ExpoImage: React.FC<ExtendedImageProps> = ({
   source,
   resizeMode = "cover",
   style,
-  transition = 300,
+  transitionDuration = 300,
+  transitionEffect = "cross-dissolve",
+  transitionTiming = "ease-in-out",
   contentFit = "cover",
   contentPosition = "center",
   cachePolicy = "memory-disk",
@@ -112,6 +110,12 @@ const ExpoImage: React.FC<ExtendedImageProps> = ({
   const finalContentFit = resizeMode
     ? resizeModeToContentFit(resizeMode)
     : contentFit;
+
+  const transition = {
+    duration: transitionDuration,
+    effect: transitionEffect,
+    timing: transitionTiming,
+  };
 
   if (aspectRatio) {
     return (

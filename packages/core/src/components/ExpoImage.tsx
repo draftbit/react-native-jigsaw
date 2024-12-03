@@ -112,9 +112,9 @@ const ExpoImage: React.FC<ExtendedImageProps> = ({
     : contentFit;
 
   const transition = {
+    timing: transitionTiming,
     duration: transitionDuration,
     effect: transitionEffect,
-    timing: transitionTiming,
   };
 
   if (aspectRatio) {

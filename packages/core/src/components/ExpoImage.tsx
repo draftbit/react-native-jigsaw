@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet, ImageSourcePropType, DimensionValue } from "react-native";
 import {
   Image,
   ImageContentPosition,
@@ -7,13 +6,6 @@ import {
   ImageContentFit,
 } from "expo-image";
 import Config from "./Config";
-import AspectRatio from "./AspectRatio";
-
-type ImageStyleProp = {
-  width?: number;
-  height?: number;
-  aspectRatio?: number;
-};
 
 interface ExtendedImageProps extends ExpoImageProps {
   transitionDuration?: number;
@@ -33,41 +25,6 @@ interface ExtendedImageProps extends ExpoImageProps {
   blurRadius?: number;
   blurhash?: string;
 }
-
-const generateDimensions = ({
-  aspectRatio,
-  width,
-  height,
-}: ImageStyleProp): {
-  aspectRatio?: number;
-  width?: DimensionValue;
-  height?: DimensionValue;
-} => {
-  if (aspectRatio && !width && !height) {
-    return {
-      aspectRatio,
-      width: "100%",
-    };
-  }
-
-  if (aspectRatio && height) {
-    return {
-      aspectRatio,
-      height,
-      width: aspectRatio * height,
-    };
-  }
-
-  if (aspectRatio && width) {
-    return {
-      aspectRatio,
-      width,
-      height: width / aspectRatio,
-    };
-  }
-
-  return { width, height };
-};
 
 const resizeModeToContentFit = (
   resizeMode: "cover" | "contain" | "stretch" | "repeat" | "center"
@@ -97,16 +54,7 @@ const ExpoImage: React.FC<ExtendedImageProps> = ({
   blurhash,
   ...props
 }) => {
-  let imageSource =
-    source === null || source === undefined
-      ? Config.placeholderImageURL
-      : source;
-
-  const styles = StyleSheet.flatten(style || {});
-  const { aspectRatio, width, height } = generateDimensions(
-    styles as ImageStyleProp
-  );
-
+  const imageSource = source ?? Config.placeholderImageURL;
   const finalContentFit = resizeMode
     ? resizeModeToContentFit(resizeMode)
     : contentFit;
@@ -117,37 +65,10 @@ const ExpoImage: React.FC<ExtendedImageProps> = ({
     effect: transitionEffect,
   };
 
-  if (aspectRatio) {
-    return (
-      <AspectRatio style={[style, { width, height, aspectRatio }]}>
-        <Image
-          {...props}
-          source={imageSource as ImageSourcePropType}
-          contentFit={finalContentFit}
-          placeholder={{
-            blurhash,
-          }}
-          transition={transition}
-          contentPosition={contentPosition}
-          cachePolicy={cachePolicy}
-          allowDownscaling={allowDownscaling}
-          blurRadius={blurRadius}
-          style={[
-            style,
-            {
-              height: "100%",
-              width: "100%",
-            },
-          ]}
-        />
-      </AspectRatio>
-    );
-  }
-
   return (
     <Image
       {...props}
-      source={source as ImageSourcePropType}
+      source={imageSource}
       contentFit={finalContentFit}
       placeholder={{
         blurhash,

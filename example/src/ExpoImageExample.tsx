@@ -109,6 +109,46 @@ const ExpoImageExample: React.FC = () => {
           />
         </Wrapper>
       </Section>
+      <Section title="Transition Effects" style={{}}>
+        <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+          <Wrapper label="Cross Dissolve - Ease In Out">
+            <ExpoImage
+              source={{ uri: "https://picsum.photos/1400" }}
+              transitionDuration={3000}
+              transitionEffect="cross-dissolve"
+              transitionTiming="ease-in-out"
+              style={{ width: 200, height: 200 }}
+            />
+          </Wrapper>
+          <Wrapper label="Flip from Top - Ease Out">
+            <ExpoImage
+              source={{ uri: "https://picsum.photos/1500" }}
+              transitionDuration={3000}
+              transitionEffect="flip-from-top"
+              transitionTiming="ease-out"
+              style={{ width: 200, height: 200 }}
+            />
+          </Wrapper>
+          <Wrapper label="Curl Up - Linear">
+            <ExpoImage
+              source={{ uri: "https://picsum.photos/1600" }}
+              transitionDuration={3000}
+              transitionEffect="curl-up"
+              transitionTiming="linear"
+              style={{ width: 200, height: 200 }}
+            />
+          </Wrapper>
+          <Wrapper label="Cross Dissolve - Ease In Out">
+            <ExpoImage
+              source={{ uri: "https://picsum.photos/1700" }}
+              transitionDuration={3000}
+              transitionEffect="cross-dissolve"
+              transitionTiming="ease-in-out"
+              style={{ width: 200, height: 200 }}
+            />
+          </Wrapper>
+        </View>
+      </Section>
     </Container>
   );
 };

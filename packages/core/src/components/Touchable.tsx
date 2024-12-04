@@ -1,8 +1,8 @@
 import React from "react";
-import { Pressable, PressableProps, ViewStyle } from "react-native";
+import { Pressable, PressableProps, StyleProp, ViewStyle } from "react-native";
 
 type Props = {
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
   activeOpacity?: number;
   disabledOpacity?: number;
 } & PressableProps;

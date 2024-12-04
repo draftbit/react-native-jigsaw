@@ -427,7 +427,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
           <View
             style={StyleSheet.flatten([
               styles.container,
-              omit(style, [
+              omit(style as ViewStyle, [
                 ...paddingStyleNames,
                 "backgroundColor",
                 "borderWidth",
@@ -441,7 +441,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
               style={StyleSheet.flatten([
                 containerStyle,
                 style ? { height: style.height } : {},
-                omit(style, [
+                omit(style as ViewStyle, [
                   ...marginStyleNames,
                   ...positionStyleNames,
                   "borderColor",

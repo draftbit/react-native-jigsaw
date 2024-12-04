@@ -3,10 +3,11 @@ import {
   Pressable as NativePressable,
   PressableProps,
   ViewStyle,
+  StyleProp,
 } from "react-native";
 
 type Props = {
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
   activeOpacity?: number;
   disabledOpacity?: number;
   androidRippleColor?: string;

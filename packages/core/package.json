@@ -67,7 +67,7 @@
     "react-native-date-picker": "^5.0.7",
     "react-native-deck-swiper": "^2.0.17",
     "react-native-dropdown-picker": "^5.4.7-beta.1",
-    "react-native-gesture-handler": "~2.16.1",
+    "react-native-gesture-handler": "~2.20.2",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-markdown-display": "^7.0.2",
     "react-native-modal-datetime-picker": "^18.0.0",

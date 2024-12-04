@@ -46,19 +46,6 @@ const ExpoImageExample: React.FC = () => {
           </Wrapper>
         </View>
         <View style={{ flexDirection: "row" }}>
-          <Wrapper label="With aspectRatio">
-            <ExpoImage
-              source={{
-                uri: "https://picsum.photos/1200",
-              }}
-              style={{
-                width: 300,
-                aspectRatio: 16 / 9,
-              }}
-            />
-          </Wrapper>
-        </View>
-        <View style={{ flexDirection: "row" }}>
           <Wrapper label="Content fit: contain">
             <ExpoImage
               source={{

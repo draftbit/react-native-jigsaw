@@ -8,6 +8,7 @@ import {
   TextStyle,
   ActivityIndicator,
   ViewStyle,
+  StyleProp,
 } from "react-native";
 import { withTheme } from "@draftbit/theme";
 import type { ReadTheme } from "@draftbit/theme";
@@ -112,7 +113,7 @@ function Base({
           {
             opacity: pressed ? activeOpacity : disabled ? disabledOpacity : 1,
           },
-          buttonStyles as ViewStyle,
+          buttonStyles as StyleProp<ViewStyle>,
         ];
       }}
       {...props}
@@ -151,7 +152,7 @@ const Solid = ({ style, theme, ...props }: Props): JSX.Element => {
           borderRadius: 8,
           backgroundColor: theme.colors.branding.primary,
         },
-        style as ViewStyle,
+        style as StyleProp<ViewStyle>,
       ]}
       {...props}
     />
@@ -178,7 +179,7 @@ const Outline = ({ style, theme, ...props }: Props): JSX.Element => {
           //@ts-ignore
           color: theme.colors.branding.primary,
         },
-        style as ViewStyle,
+        style as StyleProp<ViewStyle>,
       ]}
       {...props}
     />

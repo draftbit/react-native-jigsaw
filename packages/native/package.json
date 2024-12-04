@@ -41,12 +41,12 @@
   "dependencies": {
     "@draftbit/theme": "51.0.0",
     "@expo/vector-icons": "^14.0.3",
-    "@react-native-community/datetimepicker": "8.0.1",
-    "@react-native-community/slider": "4.5.2",
-    "expo-camera": "~15.0.16",
-    "expo-linear-gradient": "~13.0.2",
-    "react-native-svg": "15.2.0",
-    "react-native-webview": "13.8.6"
+    "@react-native-community/datetimepicker": "8.2.0",
+    "@react-native-community/slider": "4.5.5",
+    "expo-camera": "~16.0.8",
+    "expo-linear-gradient": "~14.0.1",
+    "react-native-svg": "15.8.0",
+    "react-native-webview": "13.12.2"
   },
   "devDependencies": {},
   "jest": {

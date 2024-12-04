@@ -55,6 +55,7 @@
     "date-fns": "^2.16.1",
     "dateformat": "^3.0.3",
     "expo-av": "~13.10.6",
+    "expo-image": "1.10.6",
     "lodash.isequal": "^4.5.0",
     "lodash.isnumber": "^3.0.3",
     "lodash.omit": "^4.5.0",

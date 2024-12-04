@@ -78,6 +78,8 @@ export {
   LoadingIndicator,
   LottieAnimation,
   Timer,
+  Image,
+  ExpoImage,
 } from "@draftbit/core";
 
 export {

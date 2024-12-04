@@ -1,5 +1,11 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import {
+  View,
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+  TextStyle,
+} from "react-native";
 import omit from "lodash.omit";
 import {
   extractPositionStyles,
@@ -72,7 +78,7 @@ const PickerInputContainer: React.FC<
         value={selectedLabel?.toString()}
         editable={false}
         disabled={disabled}
-        style={textFieldStyle}
+        style={textFieldStyle as StyleProp<ViewStyle & TextStyle>}
         {...rest}
       />
       <Touchable

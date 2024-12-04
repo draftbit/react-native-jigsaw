@@ -417,7 +417,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   );
 
   if (inline) {
-    return <View style={style}>{Picker}</View>;
+    return <View style={style as StyleProp<ViewStyle>}>{Picker}</View>;
   }
 
   return (
@@ -435,7 +435,10 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
             ])}
           >
             {leftIconName && leftIconMode === "outset" ? (
-              <Icon {...leftIconProps} style={leftIconStyle} />
+              <Icon
+                {...leftIconProps}
+                style={leftIconStyle as ImageStyle & ViewStyle}
+              />
             ) : null}
             <View
               style={StyleSheet.flatten([
@@ -520,10 +523,12 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
               {leftIconName && leftIconMode === "inset" ? (
                 <Icon
                   {...leftIconProps}
-                  style={{
-                    ...leftIconStyle,
-                    marginLeft: type === "solid" ? 16 : 0,
-                  }}
+                  style={
+                    {
+                      ...leftIconStyle,
+                      marginLeft: type === "solid" ? 16 : 0,
+                    } as ImageStyle & ViewStyle
+                  }
                 />
               ) : null}
 

@@ -1,6 +1,5 @@
 import "@shopify/flash-list/jestSetup";
-import { setUpTests as setupReaanimatedTests } from "react-native-reanimated/src/reanimated2/jestUtils";
-setupReaanimatedTests();
+require("react-native-reanimated").setUpTests();
 
 // Fixes reanimated jest bug: https://github.com/software-mansion/react-native-reanimated/issues/3125
 global.ReanimatedDataMock = {

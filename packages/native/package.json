@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/native",
-  "version": "51.0.0",
+  "version": "51.0.1",
   "description": "Draftbit UI Components that Depend on Native Components",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/src/index.d.ts",
@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/theme": "51.0.0",
+    "@draftbit/theme": "51.0.1",
     "@expo/vector-icons": "^14.0.3",
     "@react-native-community/datetimepicker": "8.0.1",
     "@react-native-community/slider": "4.5.2",
@@ -48,7 +48,6 @@
     "react-native-svg": "15.2.0",
     "react-native-webview": "13.8.6"
   },
-  "devDependencies": {},
   "jest": {
     "preset": "react-native",
     "setupFilesAfterEnv": [

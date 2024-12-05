@@ -65,7 +65,6 @@ const ExpoImageExample: React.FC = () => {
                 uri: "https://picsum.photos/seed/696/3000/2000",
               }}
               blurhash="LEHLk~WB2yk8pyo0adR*.7kCMdnj"
-              transition={5000}
               style={{
                 width: 200,
                 height: 200,
@@ -104,7 +103,7 @@ const ExpoImageExample: React.FC = () => {
               transitionDuration={3000}
               transitionEffect="cross-dissolve"
               transitionTiming="ease-in-out"
-              style={{ width: 200, height: 200 }}
+              style={{ width: 150, height: 150 }}
             />
           </Wrapper>
           <Wrapper label="Flip from Top - Ease Out">
@@ -113,16 +112,20 @@ const ExpoImageExample: React.FC = () => {
               transitionDuration={3000}
               transitionEffect="flip-from-top"
               transitionTiming="ease-out"
-              style={{ width: 200, height: 200 }}
+              style={{ width: 150, height: 150 }}
             />
           </Wrapper>
+        </View>
+      </Section>
+      <Section title="Transition Timing" style={{}}>
+        <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
           <Wrapper label="Curl Up - Linear">
             <ExpoImage
               source={{ uri: "https://picsum.photos/1600" }}
               transitionDuration={3000}
               transitionEffect="curl-up"
               transitionTiming="linear"
-              style={{ width: 200, height: 200 }}
+              style={{ width: 150, height: 150 }}
             />
           </Wrapper>
           <Wrapper label="Cross Dissolve - Ease In Out">
@@ -131,7 +134,7 @@ const ExpoImageExample: React.FC = () => {
               transitionDuration={3000}
               transitionEffect="cross-dissolve"
               transitionTiming="ease-in-out"
-              style={{ width: 200, height: 200 }}
+              style={{ width: 150, height: 150 }}
             />
           </Wrapper>
         </View>

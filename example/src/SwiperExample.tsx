@@ -147,6 +147,24 @@ function SwiperExample() {
           />
         </View>
       </Section>
+
+      <Section title="Hide Dots Example" style={undefined}>
+        <Swiper
+          vertical={false}
+          hideDots
+          style={{ width: "100%", height: 300 }}
+        >
+          <SwiperItem style={[style.item, { backgroundColor: "#fdd3d3" }]}>
+            <Text>Test Slide 1</Text>
+          </SwiperItem>
+          <SwiperItem style={[style.item, { backgroundColor: "#d6d3fd" }]}>
+            <Text>Test Slide 2</Text>
+          </SwiperItem>
+          <SwiperItem style={[style.item, { backgroundColor: "#c9fdd9" }]}>
+            <Text>Test Slide 3</Text>
+          </SwiperItem>
+        </Swiper>
+      </Section>
     </Container>
   );
 }

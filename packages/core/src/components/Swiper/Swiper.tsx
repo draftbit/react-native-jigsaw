@@ -33,6 +33,7 @@ export interface SwiperProps<T> {
   minDistanceForAction?: number;
   minDistanceToCapture?: number;
   theme: ReadTheme;
+  hideDots?: boolean;
 }
 
 const Swiper = forwardRef<SwiperRef, SwiperProps<any>>(
@@ -61,6 +62,7 @@ const Swiper = forwardRef<SwiperRef, SwiperProps<any>>(
       minDistanceForAction,
       minDistanceToCapture,
       style,
+      hideDots = false,
     }: SwiperProps<any>,
     ref
   ) => {
@@ -157,10 +159,20 @@ const Swiper = forwardRef<SwiperRef, SwiperProps<any>>(
             nextTitleStyle: { color: nextTitleColor },
             dotsTouchable,
             ...(dotColor
-              ? { dotProps: { badgeStyle: { backgroundColor: dotColor } } }
+              ? {
+                  dotProps: {
+                    badgeStyle: {
+                      backgroundColor: hideDots ? "transparent" : dotColor,
+                    },
+                  },
+                }
               : {}),
             ...(dotActiveColor
-              ? { dotActiveStyle: { backgroundColor: dotActiveColor } }
+              ? {
+                  dotActiveStyle: {
+                    backgroundColor: hideDots ? "transparent" : dotActiveColor,
+                  },
+                }
               : {}),
           }}
         >

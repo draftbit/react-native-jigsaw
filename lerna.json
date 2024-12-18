@@ -1,17 +1,11 @@
 {
-  "version": "51.0.2",
+  "version": "51.1.0",
   "npmClient": "yarn",
-  "packages": [
-    "packages/*",
-    "example"
-  ],
+  "packages": ["packages/*", "example"],
   "command": {
     "publish": {
       "npmClient": "npm",
-      "ignoreChanges": [
-        "**/example/**",
-        "**/*.md"
-      ],
+      "ignoreChanges": ["**/example/**", "**/*.md"],
       "message:": "chore: publish"
     }
   }

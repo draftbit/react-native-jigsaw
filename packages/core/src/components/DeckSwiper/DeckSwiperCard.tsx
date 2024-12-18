@@ -15,8 +15,8 @@ const DeckSwiperCard: React.FC<
     style={[
       styles.card,
       {
-        backgroundColor: theme.colors.background.brand,
-        borderColor: theme.colors.border.brand,
+        backgroundColor: theme.colors.background.base,
+        borderColor: theme.colors.border.base,
       },
       style,
     ]}

@@ -27,7 +27,7 @@ export interface Props<T> extends TableProps, ScrollViewProps {
 const Table = <T extends object>({
   theme,
   borderWidth = 1,
-  borderColor = theme.colors.border.brand,
+  borderColor = theme.colors.border.base,
   borderStyle = "solid",
   drawTopBorder = true,
   drawBottomBorder = false,

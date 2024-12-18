@@ -20,7 +20,7 @@ function ActionSheetExample({ theme }) {
   }, []);
 
   return (
-    <Container style={{ backgroundColor: theme.colors.background.brand }}>
+    <Container style={{ backgroundColor: theme.colors.background.base }}>
       <Section title="Action Sheet">
         <ButtonSolid title="Open Action Sheet" onPress={showActionSheet} />
         <ActionSheet visible={visible} onClose={hideActionSheet}>

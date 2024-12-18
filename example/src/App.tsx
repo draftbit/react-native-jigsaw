@@ -183,7 +183,7 @@ const DarkTheme = createTheme({
     name: "DarkTheme",
     colors: {
       background: {
-        brand: "#404040",
+        base: "#404040",
       },
       text: {
         normal: "white",
@@ -221,14 +221,14 @@ const OtherTheme = createTheme({
         secondary: "#824D74",
       },
       background: {
-        brand: "black",
+        base: "black",
       },
       text: {
         strong: "white",
         normal: "white",
       },
       border: {
-        brand: "#FDAF7B",
+        base: "#FDAF7B",
       },
     },
     typography: {
@@ -358,7 +358,7 @@ function Example({ title, children }: ExampleProps) {
       hasTopSafeArea={true}
       hasBottomSafeArea={true}
       scrollable={false}
-      style={{ backgroundColor: theme.colors.background.brand }}
+      style={{ backgroundColor: theme.colors.background.base }}
     >
       <View
         style={[

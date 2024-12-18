@@ -29,8 +29,8 @@ const AvatarEdit: React.FC<React.PropsWithChildren<Props>> = ({
 }) => {
   const colorStyles = {
     editBackgroundColor: theme.colors.branding.primary,
-    editIconColor: theme.colors.background.brand,
-    editBorderColor: theme.colors.background.brand,
+    editIconColor: theme.colors.background.base,
+    editBorderColor: theme.colors.background.base,
   };
 
   const dimensions = {

@@ -272,7 +272,7 @@ class TextField extends React.Component<Props, State> {
       placeholderColor = colors.text.light;
       borderColor = "transparent";
       underlineColor = "transparent";
-      backgroundColor = colors.border.brand;
+      backgroundColor = colors.border.base;
     } else {
       activeColor = error ? colors.text.danger : activeBorderColorProp;
       placeholderColor = borderColor = colors.text.light;

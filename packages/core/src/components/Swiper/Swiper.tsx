@@ -49,7 +49,7 @@ const Swiper = forwardRef<SwiperRef, SwiperProps<any>>(
       prevTitleColor,
       nextTitleColor,
       dotsTouchable = true,
-      dotColor = theme?.colors.foreground.brand,
+      dotColor = theme?.colors.foreground.base,
       dotActiveColor = theme?.colors.branding.primary,
       data,
       keyExtractor,

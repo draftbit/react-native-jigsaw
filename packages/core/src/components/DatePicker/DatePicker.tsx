@@ -342,8 +342,8 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
           ? MINIMIZED_LABEL_FONT_SIZE + 4
           : 16
         : leftIconMode === "outset"
-          ? 16
-          : 0,
+        ? 16
+        : 0,
   };
 
   const labelStyle = {

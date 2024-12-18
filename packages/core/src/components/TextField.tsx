@@ -457,8 +457,8 @@ class TextField extends React.Component<Props, State> {
                     (error
                       ? colors.background.danger
                       : this.state.focused
-                        ? activeColor
-                        : underlineColor),
+                      ? activeColor
+                      : underlineColor),
                   // Underlines is thinner when input is not focused
                   transform: [{ scaleY: this.state.focused ? 1 : 0.5 }],
                 },

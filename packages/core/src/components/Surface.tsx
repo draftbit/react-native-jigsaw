@@ -38,7 +38,7 @@ const Surface: React.FC<React.PropsWithChildren<Props>> = ({
     if (backgroundColor) {
       return backgroundColor;
     } else {
-      return colors.background.brand;
+      return colors.background.base;
     }
   };
 

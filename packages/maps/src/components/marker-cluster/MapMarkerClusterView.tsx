@@ -38,7 +38,7 @@ export const DefaultMapMarkerClusterView = withTheme(
             testID="default-map-marker-cluster-view"
             style={{
               backgroundColor: theme.colors.branding.primary,
-              borderColor: theme.colors.background.brand,
+              borderColor: theme.colors.background.base,
               borderWidth: 1,
               borderRadius: 15,
               paddingHorizontal: 3,
@@ -50,7 +50,7 @@ export const DefaultMapMarkerClusterView = withTheme(
           >
             <Text
               style={{
-                color: theme.colors.background.brand,
+                color: theme.colors.background.base,
                 textAlign: "center",
               }}
             >

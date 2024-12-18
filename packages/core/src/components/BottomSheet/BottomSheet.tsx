@@ -67,7 +67,7 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
   ) => {
     const theme = useTheme();
     const backgroundColor =
-      (style as ViewStyle)?.backgroundColor || theme.colors.background.brand;
+      (style as ViewStyle)?.backgroundColor || theme.colors.background.base;
 
     const snapPoints = snapPointsProp ?? [
       topSnapPosition,
@@ -102,7 +102,7 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
             : getSnapIndexFromPosition(initialSnapPosition)
         }
         handleIndicatorStyle={[
-          { backgroundColor: handleColor ?? theme.colors.border.brand },
+          { backgroundColor: handleColor ?? theme.colors.border.base },
           !showHandle ? { display: "none" } : {},
         ]}
         backgroundStyle={{
@@ -110,7 +110,7 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
           borderTopLeftRadius: topBorderRadius,
           borderTopRightRadius: topBorderRadius,
           borderWidth,
-          borderColor: borderColor ?? theme.colors.border.brand,
+          borderColor: borderColor ?? theme.colors.border.base,
         }}
         onChange={(index) =>
           // Convert bottom-sheet index to match our top-to-bottom ordering

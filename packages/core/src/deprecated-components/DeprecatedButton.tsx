@@ -90,9 +90,9 @@ const Button: React.FC<React.PropsWithChildren<Props>> = ({
     backgroundColor = buttonColor;
 
     if (disabled) {
-      textColor = color(colors.background.brand).alpha(0.5).rgb().string();
+      textColor = color(colors.background.base).alpha(0.5).rgb().string();
     } else {
-      textColor = labelColor || colors.background.brand;
+      textColor = labelColor || colors.background.base;
     }
   } else {
     backgroundColor = "transparent";

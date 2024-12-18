@@ -137,7 +137,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
           ) : null
         }
         style={{
-          backgroundColor: tabsBackgroundColor || theme.colors.background.brand,
+          backgroundColor: tabsBackgroundColor || theme.colors.background.base,
         }}
       />
     );

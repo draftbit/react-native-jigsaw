@@ -94,7 +94,7 @@ const FieldSearchBarFull: React.FC<React.PropsWithChildren<Props>> = ({
         <Icon
           name={icon}
           size={Config.fieldSearchBarFullIconSize}
-          color={focused ? colors.branding.primary : colors.foreground.brand}
+          color={focused ? colors.branding.primary : colors.foreground.base}
         />
       )}
       <View style={{ marginLeft: showIcon ? 12 : 0, flex: 1 }}>
@@ -106,7 +106,7 @@ const FieldSearchBarFull: React.FC<React.PropsWithChildren<Props>> = ({
           onFocus={onFocus}
           onChangeText={handleChangeText}
           onSubmitEditing={onSubmit}
-          placeholderTextColor={colors.foreground.brand}
+          placeholderTextColor={colors.foreground.base}
           style={[
             {
               color: colors.text.medium,

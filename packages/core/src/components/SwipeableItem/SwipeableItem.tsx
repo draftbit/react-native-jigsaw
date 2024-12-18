@@ -207,14 +207,14 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
         <Icon
           name={item.icon}
           size={item.iconSize || 25}
-          color={item.color || theme.colors.background.brand}
+          color={item.color || theme.colors.background.base}
         />
       )}
       {item.title && (
         <Text
           style={[
             textStyles,
-            { color: item.color || theme.colors.background.brand },
+            { color: item.color || theme.colors.background.base },
           ]}
         >
           {item.title}
@@ -294,7 +294,7 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
           style={[
             styles.surfaceContainer,
             {
-              backgroundColor: theme.colors.background.brand,
+              backgroundColor: theme.colors.background.base,
             },
             surfaceContainerStyles,
           ]}

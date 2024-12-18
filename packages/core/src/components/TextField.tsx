@@ -270,7 +270,7 @@ class TextField extends React.Component<Props, State> {
       placeholderColor = colors.text.light;
       borderColor = "transparent";
       underlineColor = "transparent";
-      backgroundColor = colors.border.brand;
+      backgroundColor = colors.border.base;
     } else {
       activeColor = error ? colors.text.danger : activeBorderColorProp;
       placeholderColor = borderColor = colors.text.light;
@@ -457,8 +457,8 @@ class TextField extends React.Component<Props, State> {
                     (error
                       ? colors.background.danger
                       : this.state.focused
-                      ? activeColor
-                      : underlineColor),
+                        ? activeColor
+                        : underlineColor),
                   // Underlines is thinner when input is not focused
                   transform: [{ scaleY: this.state.focused ? 1 : 0.5 }],
                 },

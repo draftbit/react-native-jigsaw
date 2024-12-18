@@ -28,8 +28,8 @@ const DropDownPicker: React.FC<
   selectedIconName = "Feather/check",
   selectedIconColor = theme.colors.text.strong,
   selectedIconSize = 20,
-  dropDownBackgroundColor = theme.colors.background.brand,
-  dropDownBorderColor = theme.colors.border.brand,
+  dropDownBackgroundColor = theme.colors.background.base,
+  dropDownBorderColor = theme.colors.border.base,
   dropDownTextColor = theme.colors.text.strong,
   dropDownBorderWidth = 1,
   dropDownBorderRadius = 8,
@@ -60,7 +60,7 @@ const DropDownPicker: React.FC<
 
   useOnUpdate(() => {
     onValueChange?.(
-      (isMultiSelect ? internalValue ?? [] : internalValue ?? "") as any // cannot determine if multiselect or not on compile time
+      (isMultiSelect ? (internalValue ?? []) : (internalValue ?? "")) as any // cannot determine if multiselect or not on compile time
     );
     // onValueChange excluded to prevent running on every re-render when using an anoymous function, which is the common case
   }, [internalValue]);

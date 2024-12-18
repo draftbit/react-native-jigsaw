@@ -22,7 +22,7 @@ export const DefaultSectionHeader = withTheme(
       <Text
         testID="default-section-header"
         style={{
-          color: theme.colors.background.brand,
+          color: theme.colors.background.base,
           backgroundColor: theme.colors.branding.primary,
           fontSize: 16,
           padding: 10,

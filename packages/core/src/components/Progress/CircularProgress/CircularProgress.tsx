@@ -24,7 +24,7 @@ export const CircularProgress: React.FC<
   thickness = 10,
   trackThickness = thickness,
   color = theme.colors.branding.primary,
-  trackColor = theme.colors.border.brand,
+  trackColor = theme.colors.border.base,
   trackOpacity = 1,
   showTrack = true,
   animationDuration = DEFAULT_ANIMATION_DURATION,

@@ -28,8 +28,8 @@ const ModalPicker: React.FC<
   selectedIconName = "Feather/check",
   selectedIconColor = theme.colors.text.strong,
   selectedIconSize = 20,
-  dropDownBackgroundColor = theme.colors.background.brand,
-  dropDownBorderColor = theme.colors.border.brand,
+  dropDownBackgroundColor = theme.colors.background.base,
+  dropDownBorderColor = theme.colors.border.base,
   dropDownTextColor = theme.colors.text.strong,
   dropDownBorderWidth = 1,
   dropDownBorderRadius = 8,
@@ -91,16 +91,16 @@ const ModalPicker: React.FC<
         }}
         renderItem={(item, _, isSelected) => {
           const backgroundColor = isSelected
-            ? pickerItemProps.selectedBackgroundColor ??
-              pickerItemViewStyles.backgroundColor
+            ? (pickerItemProps.selectedBackgroundColor ??
+              pickerItemViewStyles.backgroundColor)
             : pickerItemViewStyles.backgroundColor;
 
           const textColor = isSelected
-            ? pickerItemProps.selectedTextColor ?? dropDownTextColor
+            ? (pickerItemProps.selectedTextColor ?? dropDownTextColor)
             : dropDownTextColor;
 
           const textSize = isSelected
-            ? pickerItemProps.selectedTextSize ?? 14
+            ? (pickerItemProps.selectedTextSize ?? 14)
             : 14;
 
           return (

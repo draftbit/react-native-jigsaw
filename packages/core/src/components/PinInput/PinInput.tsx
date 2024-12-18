@@ -97,7 +97,7 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
           testID="default-code-input-cell"
           style={[
             styles.cell,
-            { borderColor: theme.colors.border.brand },
+            { borderColor: theme.colors.border.base },
             viewStyles,
             isFocused && focusedBorderWidth
               ? { borderWidth: focusedBorderWidth }

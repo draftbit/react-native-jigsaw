@@ -358,7 +358,7 @@ function Example({ title, children }: ExampleProps) {
       hasTopSafeArea={true}
       hasBottomSafeArea={true}
       scrollable={false}
-      style={{ backgroundColor: theme.colors.background.brand }}
+      style={{ backgroundColor: theme.colors.background.base }}
     >
       <View
         style={[

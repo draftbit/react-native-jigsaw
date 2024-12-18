@@ -19,7 +19,7 @@ const Divider: React.FC<React.PropsWithChildren<Props>> = ({
     <View
       style={[
         {
-          backgroundColor: color || colors.border.brand,
+          backgroundColor: color || colors.border.base,
           height: StyleSheet.hairlineWidth,
         },
         style,

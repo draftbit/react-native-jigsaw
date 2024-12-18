@@ -269,17 +269,17 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
 
   inputTextColor = colors.text.strong;
   if (disabled) {
-    activeColor = colors.border.brand;
+    activeColor = colors.border.base;
     placeholderColor = colors.text.light;
     borderColor = "transparent";
     underlineColor = "transparent";
-    backgroundColor = colors.border.brand;
+    backgroundColor = colors.border.base;
   } else {
     activeColor = inputBorderColorActive || colors.branding.primary;
     placeholderColor = colors.text.light;
     underlineColor =
-      viewStyles.borderColor ?? inputBorderColor ?? colors.border.brand;
-    backgroundColor = colors.background.brand;
+      viewStyles.borderColor ?? inputBorderColor ?? colors.border.base;
+    backgroundColor = colors.background.base;
   }
 
   const { lineHeight, ...subtitle1 } = typography.subtitle1;
@@ -562,7 +562,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
             style={[
               styles.picker,
               {
-                backgroundColor: colors.border.brand,
+                backgroundColor: colors.border.base,
               },
             ]}
           >

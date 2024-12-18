@@ -31,14 +31,14 @@ const RowBodyIcon: React.FC<React.PropsWithChildren<Props>> = ({
       titleTypeStyle={typography.body1}
       titleColor={colors.text.medium}
       subtitleTypeStyle={typography.subtitle2}
-      subtitleColor={colors.foreground.brand}
+      subtitleColor={colors.foreground.base}
       title={title}
       subtitle={subtitle}
       right={() => (
         <Icon
           name={icon}
           size={Config.rowSingleLineIconSize}
-          color={colors.foreground.brand}
+          color={colors.foreground.base}
           style={{ marginLeft: 16 }}
         />
       )}

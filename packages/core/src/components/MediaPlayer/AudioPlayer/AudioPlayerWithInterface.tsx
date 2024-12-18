@@ -129,8 +129,8 @@ const AudioPlayerWithInterface = React.forwardRef<
           testID="audio-player-interface"
           style={[
             {
-              backgroundColor: theme.colors.background.brand,
-              borderColor: theme.colors.border.brand,
+              backgroundColor: theme.colors.background.base,
+              borderColor: theme.colors.border.base,
             },
             styles.container,
             viewStyles,
@@ -166,7 +166,7 @@ const AudioPlayerWithInterface = React.forwardRef<
                 completedTrackColor ?? theme.colors.branding.primary
               }
               maximumTrackTintColor={
-                remainingTrackColor ?? theme.colors.border.brand
+                remainingTrackColor ?? theme.colors.border.base
               }
               thumbTintColor={thumbColor ?? theme.colors.branding.primary}
               minimumValue={0}

@@ -6,7 +6,7 @@ function StarRatingExample({ theme }) {
   const [rating, setRating] = React.useState(0.5);
 
   return (
-    <Container style={{ backgroundColor: theme.colors.background.brand }}>
+    <Container style={{ backgroundColor: theme.colors.background.base }}>
       <Section title="Star Rating">
         <StarRating rating={3.5} />
       </Section>

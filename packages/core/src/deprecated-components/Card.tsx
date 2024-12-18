@@ -64,7 +64,7 @@ export const TopRightCircleIcon = withTheme(
           <Icon
             name={icon}
             size={ICON_SIZE}
-            color={theme.colors.background.brand}
+            color={theme.colors.background.base}
           />
         </Pressable>
       </Surface>
@@ -120,7 +120,7 @@ const Card: React.FC<React.PropsWithChildren<Props>> = ({
     ...styles
   } = StyleSheet.flatten(style || {});
 
-  const backgroundColor = bgColor ? bgColor : theme.colors.background.brand;
+  const backgroundColor = bgColor ? bgColor : theme.colors.background.base;
   const innerPadding = padding ? padding : 12;
 
   return (

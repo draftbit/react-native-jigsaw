@@ -42,6 +42,7 @@ const DraftbitTheme = createTheme({
         danger: palettes.draftbit.error,
       },
       background: {
+        base: palettes.draftbit.background,
         brand: palettes.draftbit.background,
         info: palettes.draftbit.info,
         success: palettes.draftbit.success,
@@ -49,6 +50,7 @@ const DraftbitTheme = createTheme({
         danger: palettes.draftbit.error,
       },
       foreground: {
+        base: palettes.draftbit.light,
         brand: palettes.draftbit.light,
         info: palettes.draftbit.strong,
         success: palettes.draftbit.light,
@@ -56,6 +58,7 @@ const DraftbitTheme = createTheme({
         danger: palettes.draftbit.light,
       },
       border: {
+        base: palettes.draftbit.divider,
         brand: palettes.draftbit.divider,
         info: palettes.draftbit.divider,
         success: palettes.draftbit.divider,

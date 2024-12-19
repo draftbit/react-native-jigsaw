@@ -79,7 +79,7 @@
     "react-native-swipe-list-view": "^3.2.9",
     "react-native-tab-view": "^3.4.0",
     "react-native-web-swiper": "^2.2.4",
-    "react-native-webview": "13.12.2",
+    "react-native-webview": "13.12.5",
     "react-native-youtube-iframe": "^2.3.0",
     "react-youtube": "^10.1.0",
     "uuid": "^11.0.3"

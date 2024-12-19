@@ -46,7 +46,7 @@
     "color": "^4.2.3",
     "lodash.isequal": "^4.5.0",
     "react-native-maps": "1.18.0",
-    "react-native-webview": "13.12.2"
+    "react-native-webview": "13.12.5"
   },
   "jest": {
     "preset": "jest-expo",

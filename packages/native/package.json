@@ -46,7 +46,7 @@
     "expo-camera": "~16.0.8",
     "expo-linear-gradient": "~14.0.1",
     "react-native-svg": "15.8.0",
-    "react-native-webview": "13.12.2"
+    "react-native-webview": "13.12.5"
   },
   "devDependencies": {},
   "jest": {

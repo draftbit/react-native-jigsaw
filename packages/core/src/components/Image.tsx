@@ -6,6 +6,8 @@ import {
   StyleSheet,
   ImageSourcePropType,
   DimensionValue,
+  StyleProp,
+  ViewStyle,
 } from "react-native";
 import Config from "./Config";
 
@@ -70,7 +72,9 @@ const Image: React.FC<ImageProps> = ({
 
   if (aspectRatio) {
     return (
-      <AspectRatio style={[style, { width, height, aspectRatio }]}>
+      <AspectRatio
+        style={[style, { width, height, aspectRatio }] as StyleProp<ViewStyle>}
+      >
         <NativeImage
           {...props}
           source={imageSource as ImageSourcePropType}

@@ -145,12 +145,10 @@ const useChangeTheme = (): ((
 const withTheme = <Props extends { theme: ReadTheme }>(
   Component: React.ComponentType<Props>
 ) => {
-  return React.forwardRef(
-    (props: Omit<Props, "theme">, ref: React.Ref<any>) => {
-      const { theme } = React.useContext(ThemeContext);
-      return <Component {...(props as Props)} theme={theme} ref={ref} />;
-    }
-  );
+  return React.forwardRef<any, Omit<Props, "theme">>((props, ref) => {
+    const { theme } = React.useContext(ThemeContext);
+    return <Component {...(props as any)} theme={theme} ref={ref} />;
+  });
 };
 
 export { Provider, useTheme, useChangeTheme, withTheme };

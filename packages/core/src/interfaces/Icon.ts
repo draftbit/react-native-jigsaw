@@ -27,5 +27,5 @@ export const injectIcon = <P extends IconSlot>(
   Icon: IconI
 ) =>
   React.forwardRef<any, $Without<P, "Icon">>((props, ref) =>
-    React.createElement(Component, { ...(props as P), Icon, ref })
+    React.createElement(Component, { ...(props as unknown as P), Icon, ref })
   );

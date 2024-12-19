@@ -33,7 +33,7 @@ const Elevation: React.FC<React.PropsWithChildren<Props>> = ({
       style={[
         {
           borderRadius,
-          backgroundColor: colors.background.brand,
+          backgroundColor: colors.background.base,
         },
         elevation ? { elevation } : null,
         style,

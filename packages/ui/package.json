@@ -48,7 +48,6 @@
     "@draftbit/theme": "52.0.0",
     "react-native-reanimated": "~3.16.1"
   },
-  "devDependencies": {},
   "jest": {
     "preset": "react-native",
     "setupFilesAfterEnv": [

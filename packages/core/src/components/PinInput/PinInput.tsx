@@ -24,7 +24,7 @@ interface CellItem {
   isFocused: boolean;
 }
 
-interface PinInputProps extends TextInputProps {
+interface PinInputProps extends Omit<TextInputProps, "style"> {
   onInputFull?: (value: string) => void;
   cellCount?: number;
   clearOnCellFocus?: boolean;

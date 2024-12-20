@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, StyleProp, ImageStyle } from "react-native";
+import { View, StyleProp, ViewStyle, ImageStyle } from "react-native";
 import { SvgUri } from "react-native-svg";
 
 import Config from "./Config";
@@ -14,7 +14,7 @@ const SVG: React.FC<React.PropsWithChildren<SVGComponentProps>> = ({
   style,
 }) => {
   return (
-    <View style={style}>
+    <View style={style as StyleProp<ViewStyle>}>
       <SvgUri width="100%" height="100%" uri={source} />
     </View>
   );

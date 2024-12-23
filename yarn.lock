@@ -1148,11 +1148,6 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@dotlottie/react-player@1.6.1":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@dotlottie/react-player/-/react-player-1.6.1.tgz#37ad746c38983aaffa97e80739d319a1f0dad345"
-  integrity sha512-ngZQYQ5w248ZW0SG4+tOfWU4ed44d94YVrwSWeCQDri1EtwZNG7tsaX34nvN6N+CzN1Et+wsQepsbOmvG85GXg==
-
 "@draftbit/react-theme-provider@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@draftbit/react-theme-provider/-/react-theme-provider-2.1.1.tgz#8ae9d097d1d3c8a08fe04c583d4f020764e24f72"
@@ -2228,6 +2223,18 @@
     write-pkg "4.0.0"
     yargs "17.7.2"
     yargs-parser "21.1.1"
+
+"@lottiefiles/dotlottie-react@^0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@lottiefiles/dotlottie-react/-/dotlottie-react-0.12.0.tgz#2accb771470fbc38771e7872c1f29353c00e7dde"
+  integrity sha512-33Tsd67vlotrm43R8oko30Krwyuqb0YdOLra7L5m2mVfrTvDPEDBt8jfjgiveoLJ0jG/FlTLiCPXi/vCaBSXrg==
+  dependencies:
+    "@lottiefiles/dotlottie-web" "0.38.2"
+
+"@lottiefiles/dotlottie-web@0.38.2":
+  version "0.38.2"
+  resolved "https://registry.yarnpkg.com/@lottiefiles/dotlottie-web/-/dotlottie-web-0.38.2.tgz#fa97288443f695f6bb76f9e632eb83cd255a2874"
+  integrity sha512-01d+UjJ8NG7ZStYQxtb8FPzknzGmauG7gEkcH+wHfSdiSQJY9PoBNVSTB9V6F5hAnmFqOxaocTtd7TIEEnzMnA==
 
 "@lottiefiles/react-lottie-player@3.5.3":
   version "3.5.3"

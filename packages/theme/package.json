@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/theme",
-  "version": "52.0.3",
+  "version": "52.0.4",
   "description": "Draftbit's themeing system",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/src/index.d.ts",

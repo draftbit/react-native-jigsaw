@@ -123,7 +123,7 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
             : onSettle?.(mappedSnapPoints.length - index - 1)
         }
         overrideReduceMotion={
-          ignoreReduceMotion ? ReduceMotion.Always : ReduceMotion.System
+          ignoreReduceMotion ? ReduceMotion.Never : ReduceMotion.System
         }
       >
         <BottomSheetScrollView

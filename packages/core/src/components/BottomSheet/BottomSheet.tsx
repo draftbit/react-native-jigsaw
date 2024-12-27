@@ -12,6 +12,7 @@ import BottomSheetComponent, {
 } from "@gorhom/bottom-sheet";
 import { useTheme } from "@draftbit/theme";
 import { extractPercentNumber, useDeepCompareMemo } from "../../utilities";
+import { ReduceMotion } from "react-native-reanimated";
 
 type SnapPosition = "top" | "middle" | "bottom";
 
@@ -38,6 +39,7 @@ export interface BottomSheetProps extends ScrollViewProps {
   enableDynamicSizing?: boolean;
   onSettle?: (index: number) => void;
   style?: StyleProp<ViewStyle>;
+  ignoreReduceMotion?: boolean;
 }
 
 // Clarification:
@@ -61,6 +63,7 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
       onSettle,
       style,
       children,
+      ignoreReduceMotion = true,
       ...rest
     },
     ref
@@ -118,6 +121,9 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
           enableDynamicSizing
             ? onSettle?.(mappedSnapPoints.length - index)
             : onSettle?.(mappedSnapPoints.length - index - 1)
+        }
+        overrideReduceMotion={
+          ignoreReduceMotion ? ReduceMotion.System : undefined
         }
       >
         <BottomSheetScrollView

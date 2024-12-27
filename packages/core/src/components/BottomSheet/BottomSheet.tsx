@@ -63,7 +63,7 @@ const BottomSheet = React.forwardRef<BottomSheetComponent, BottomSheetProps>(
       onSettle,
       style,
       children,
-      ignoreReduceMotion,
+      ignoreReduceMotion = true,
       ...rest
     },
     ref

@@ -1,6 +1,10 @@
 import React from "react";
 import { FlashListProps, FlashList } from "@shopify/flash-list";
-import { FlatListProps, FlatList as FlatListComponent } from "react-native";
+import { FlatListProps } from "react-native";
+import {
+  FlatList as FlatListComponent,
+  NativeViewGestureHandlerProps,
+} from "react-native-gesture-handler";
 import FlatList from "../FlatList";
 
 type ListComponentType = "FlatList" | "FlashList";
@@ -54,7 +58,7 @@ const SwipeableList = React.forwardRef(
           return (
             <FlatList
               ref={ref as React.Ref<FlatListComponent>}
-              {...(rest as FlatListProps<T>)}
+              {...(rest as FlatListProps<T> & NativeViewGestureHandlerProps)}
             />
           );
         case "FlashList":

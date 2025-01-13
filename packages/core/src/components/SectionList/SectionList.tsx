@@ -1,6 +1,10 @@
 import React from "react";
 import { FlashListProps, FlashList } from "@shopify/flash-list";
-import { FlatListProps, FlatList as FlatListComponent } from "react-native";
+import { FlatListProps } from "react-native";
+import {
+  FlatList as FlatListComponent,
+  NativeViewGestureHandlerProps,
+} from "react-native-gesture-handler";
 import SectionHeader, { DefaultSectionHeader } from "./SectionHeader";
 import { flattenReactFragments } from "../../utilities";
 import FlatList from "../FlatList";
@@ -192,7 +196,8 @@ const SectionList = React.forwardRef(
           <FlatList
             ref={ref as React.Ref<FlatListComponent>}
             stickyHeaderIndices={sectionHeaderIndicies}
-            {...(rest as FlatListProps<SectionListItem<T>>)}
+            {...(rest as FlatListProps<SectionListItem<T>> &
+              NativeViewGestureHandlerProps)}
             data={dataWithSections}
             renderItem={renderItem}
             keyExtractor={keyExtractor}

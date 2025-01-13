@@ -5,7 +5,7 @@ import type {
   FlashListSectionListProps,
 } from "../SectionList";
 import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
-import { FlatList } from "react-native";
+import { FlatList as FlatListComponent } from "react-native-gesture-handler";
 import { FlashList } from "@shopify/flash-list";
 
 /**
@@ -22,7 +22,7 @@ const SimpleStyleSectionList = React.forwardRef(
       FlatListSectionListProps<T> | FlashListSectionListProps<T>,
       "contentContainerStyle"
     >,
-    ref: React.Ref<FlatList | FlashList<any>>
+    ref: React.Ref<FlatListComponent | FlashList<any>>
   ) => {
     const { style, contentContainerStyle } =
       useSplitContentContainerStyles(styleProp);

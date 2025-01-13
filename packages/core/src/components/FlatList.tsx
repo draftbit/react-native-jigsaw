@@ -1,16 +1,10 @@
 import React from "react";
-import {
-  FlatList as FlatListComponent,
-  NativeViewGestureHandlerProps,
-} from "react-native-gesture-handler";
+import { FlatList as FlatListComponent } from "react-native-gesture-handler";
 import type { FlatListProps } from "react-native";
 
-const FlatList = React.forwardRef<
-  FlatListComponent,
-  FlatListProps<any> & NativeViewGestureHandlerProps
->(
+const FlatList = React.forwardRef<FlatListComponent, FlatListProps<any>>(
   <T extends any>(
-    { numColumns, ...rest }: FlatListProps<T> & NativeViewGestureHandlerProps,
+    { numColumns, ...rest }: FlatListProps<T>,
     ref: React.Ref<FlatListComponent>
   ) => {
     return (

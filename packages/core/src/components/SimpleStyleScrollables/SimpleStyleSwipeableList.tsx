@@ -5,7 +5,7 @@ import type {
   FlatListSwipeableListProps,
 } from "../SwipeableItem";
 import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
-import { FlatList } from "react-native";
+import { FlatList as FlatListComponent } from "react-native-gesture-handler";
 import { FlashList } from "@shopify/flash-list";
 
 /**
@@ -22,7 +22,7 @@ const SimpleStyleSwipeableList = React.forwardRef(
       FlashListSwipeableListProps<T> | FlatListSwipeableListProps<T>,
       "contentContainerStyle"
     >,
-    ref: React.Ref<FlatList | FlashList<any>>
+    ref: React.Ref<FlatListComponent | FlashList<any>>
   ) => {
     const { style, contentContainerStyle } =
       useSplitContentContainerStyles(styleProp);

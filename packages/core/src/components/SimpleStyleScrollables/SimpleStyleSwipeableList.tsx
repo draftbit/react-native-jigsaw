@@ -5,7 +5,7 @@ import type {
   FlatListSwipeableListProps,
 } from "../SwipeableItem";
 import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
-import { FlatList } from "react-native";
+import { FlatList } from "react-native-gesture-handler";
 import { FlashList } from "@shopify/flash-list";
 
 /**

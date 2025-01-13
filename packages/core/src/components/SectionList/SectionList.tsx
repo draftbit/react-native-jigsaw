@@ -1,6 +1,7 @@
 import React from "react";
 import { FlashListProps, FlashList } from "@shopify/flash-list";
-import { FlatListProps, FlatList as FlatListComponent } from "react-native";
+import { FlatListProps } from "react-native";
+import { FlatList as FlatListComponent } from "react-native-gesture-handler";
 import SectionHeader, { DefaultSectionHeader } from "./SectionHeader";
 import { flattenReactFragments } from "../../utilities";
 import FlatList from "../FlatList";

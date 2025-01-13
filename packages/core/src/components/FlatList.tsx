@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList as FlatListstComponent } from "react-native";
+import { FlatList as FlatListstComponent } from "react-native-gesture-handler";
 import type { FlatListProps } from "react-native";
 
 const FlatList = React.forwardRef<FlatListstComponent, FlatListProps<any>>(

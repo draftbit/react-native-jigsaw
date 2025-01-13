@@ -1,6 +1,7 @@
 import React from "react";
 import { FlashListProps, FlashList } from "@shopify/flash-list";
-import { FlatListProps, FlatList as FlatListComponent } from "react-native";
+import { FlatListProps } from "react-native";
+import { FlatList as FlatListComponent } from "react-native-gesture-handler";
 import FlatList from "../FlatList";
 
 type ListComponentType = "FlatList" | "FlashList";

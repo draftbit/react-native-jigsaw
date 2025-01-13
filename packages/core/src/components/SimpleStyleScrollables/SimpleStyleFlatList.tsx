@@ -1,6 +1,6 @@
 import React from "react";
 import FlatList from "../FlatList";
-import { FlatList as FlatListComponent } from "react-native";
+import { FlatList as FlatListComponent } from "react-native-gesture-handler";
 import type { FlatListProps } from "react-native";
 import useSplitContentContainerStyles from "./useSplitContentContainerStyles";
 

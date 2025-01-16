@@ -34,6 +34,7 @@ import {
   paddingStyleNames,
   positionStyleNames,
 } from "../../utilities";
+import { parseDate } from "./parseDate";
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
 
@@ -399,6 +400,29 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     type === "solid" ? { marginHorizontal: 12 } : {},
   ];
 
+  React.useEffect(() => {
+    const currentDate = parseDate(value);
+
+    if (!currentDate) return;
+
+    const minDate = parseDate(minimumDate);
+    const maxDate = parseDate(maximumDate);
+
+    let newDate = currentDate;
+
+    if (minDate && currentDate < minDate) {
+      newDate = minDate;
+    }
+    if (maxDate && currentDate > maxDate) {
+      newDate = maxDate;
+    }
+
+    if (newDate !== currentDate) {
+      setValue(newDate);
+      onDateChange(newDate);
+    }
+  }, [value, minimumDate, maximumDate, onDateChange]);
+
   const Picker = (
     <DateTimePicker
       value={getValidDate()}
@@ -623,21 +647,5 @@ const styles = StyleSheet.create({
   },
   pickerContainer: { flexDirection: "column", width: "100%", zIndex: 100 },
 });
-
-function parseDate(date?: string | Date) {
-  if (typeof date === "string") {
-    const parsed = Date.parse(date);
-    if (!isNaN(parsed)) {
-      return new Date(parsed);
-    }
-    console.warn(
-      "Invalid date string:",
-      `'${date}'.`,
-      "See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format"
-    );
-    return undefined;
-  }
-  return date;
-}
 
 export default withTheme(DatePicker);

@@ -54,7 +54,16 @@ const ExpoImage: React.FC<ExtendedImageProps> = ({
   blurhash,
   ...props
 }) => {
-  const imageSource = source ?? Config.placeholderImageURL;
+  let imageSource = source ?? Config.placeholderImageURL;
+  // Prevent crash in Expo 50 when using expo-image with non-http/https URIs
+  if (
+    source &&
+    typeof source === "object" &&
+    "uri" in source &&
+    !/^(http|https):\/\//.test(source.uri || "")
+  ) {
+    imageSource = { uri: "" };
+  }
   const finalContentFit = resizeMode
     ? resizeModeToContentFit(resizeMode)
     : contentFit;

@@ -113,8 +113,8 @@ function DatePickerExample({ theme }) {
           label="Date with minimum and maximum"
           placeholder="Select a date..."
           type="solid"
-          minimumDate={new Date("April 10, 2023")}
-          maximumDate={new Date("May 10, 2023")}
+          minimumDate={new Date("2023-04-10")}
+          maximumDate={new Date("2023-05-10")}
         />
       </Section>
       <Section title="Styled">

@@ -15,15 +15,17 @@ const SectionHeader: React.FC<React.PropsWithChildren<SectionHeaderProps>> = ({
 interface DefaultSectionHeaderProps {
   title: string;
   theme: ReadTheme;
+  backgroundColor?: string;
+  textColor?: string;
 }
 export const DefaultSectionHeader = withTheme(
-  ({ title, theme }: DefaultSectionHeaderProps) => {
+  ({ title, theme, backgroundColor, textColor }: DefaultSectionHeaderProps) => {
     return (
       <Text
         testID="default-section-header"
         style={{
-          color: theme.colors.background.base,
-          backgroundColor: theme.colors.branding.primary,
+          color: textColor ?? theme.colors.background.base,
+          backgroundColor: backgroundColor ?? theme.colors.branding.primary,
           fontSize: 16,
           padding: 10,
         }}

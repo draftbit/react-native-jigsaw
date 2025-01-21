@@ -18,6 +18,8 @@ interface AdditionalSectionListProps<T> {
   }) => JSX.Element;
   keyExtractor?: (item: T, index: number) => string;
   listComponent?: ListComponentType;
+  sectionHeaderBackgroundColor?: string;
+  sectionHeaderTextColor?: string;
 }
 
 export type FlatListSectionListProps<T> = Omit<FlatListProps<T>, "renderItem"> &
@@ -52,6 +54,8 @@ const SectionList = React.forwardRef(
       data: dataProp,
       renderItem: renderItemProp,
       keyExtractor: keyExtractorProp,
+      sectionHeaderBackgroundColor,
+      sectionHeaderTextColor,
       ...rest
     }: FlatListSectionListProps<T> | FlashListSectionListProps<T>,
     ref: React.Ref<FlatListComponent | FlashList<any>>
@@ -161,7 +165,11 @@ const SectionList = React.forwardRef(
           });
           return (
             extractSectionHeader(renderedItem) || (
-              <DefaultSectionHeader title={item.title} />
+              <DefaultSectionHeader
+                title={item.title}
+                backgroundColor={sectionHeaderBackgroundColor}
+                textColor={sectionHeaderTextColor}
+              />
             )
           );
         }

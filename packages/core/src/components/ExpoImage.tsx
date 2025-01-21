@@ -55,12 +55,12 @@ const ExpoImage: React.FC<ExtendedImageProps> = ({
   ...props
 }) => {
   let imageSource = source ?? Config.placeholderImageURL;
-  // Prevent crash in Expo 50 when using expo-image with non-http/https URIs
+  // Prevent crash in Expo 50 when using expo-image with non-http/https/data URIs
   if (
     source &&
     typeof source === "object" &&
     "uri" in source &&
-    !/^(http|https):\/\//.test(source.uri || "")
+    !/^(http|https):\/\/|^data:/.test(source.uri || "")
   ) {
     imageSource = { uri: "" };
   }

@@ -24,15 +24,16 @@ const VideoPlayerExample: React.FC = () => {
           ref={videoPlayerRef}
           style={{ width: 350, height: 250 }}
           source={{
-            uri: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+            uri: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
           }}
           useNativeControls={false}
           posterSource={{
-            uri: "https://fujifilm-x.com/wp-content/uploads/2021/01/gfx100s_sample_04_thum-1.jpg",
+            uri: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
           }}
           usePoster
           onPlaybackStatusUpdate={(status) => setPlayerState(status)}
           onPlaybackFinish={() => console.log("Finished playback")}
+          playsInSilentModeIOS={true}
         />
         <Button
           //@ts-ignore

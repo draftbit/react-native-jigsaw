@@ -7,6 +7,7 @@ import {
   AVPlaybackStatus,
   VideoFullscreenUpdate,
   AVPlaybackSource,
+  Audio,
 } from "expo-av";
 import { extractSizeStyles } from "../../../utilities";
 import MediaPlaybackWrapper from "../MediaPlaybackWrapper";
@@ -27,6 +28,7 @@ type ExpoVideoPropsOmitted = Omit<
 interface VideoPlayerProps extends ExpoVideoPropsOmitted, MediaPlayerProps {
   resizeMode?: ResizeMode;
   posterResizeMode?: ImageResizeMode;
+  playsInSilentModeIOS?: boolean;
 }
 
 export interface VideoPlayerRef extends MediaPlayerRef {
@@ -42,6 +44,7 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
       onPlaybackStatusUpdate: onPlaybackStatusUpdateProp,
       onPlaybackFinish,
       source,
+      playsInSilentModeIOS = false,
       ...rest
     },
     ref
@@ -102,6 +105,20 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
       }
     }, [isFullscreen, videoMediaObject]);
 
+    const updateAudioMode = React.useCallback(async () => {
+      try {
+        await Audio.setAudioModeAsync({
+          playsInSilentModeIOS,
+        });
+      } catch (e) {
+        console.error("Failed to set audio mode. Error details:", e);
+      }
+    }, [playsInSilentModeIOS]);
+
+    React.useEffect(() => {
+      updateAudioMode();
+    }, [updateAudioMode]);
+
     React.useImperativeHandle(
       ref,
       () => ({
@@ -131,6 +148,7 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
         media={videoMediaObject as Playback | undefined}
         isPlaying={isPlaying}
         ref={mediaPlaybackWrapperRef}
+        onTogglePlayback={updateAudioMode}
       >
         <VideoPlayerComponent
           // https://docs.expo.dev/versions/latest/sdk/av/#example-video to see why ref is handled this way

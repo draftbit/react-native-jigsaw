@@ -10,6 +10,7 @@ function DatePickerExample({ theme }) {
   const [date, setDate] = React.useState(new Date());
   const [date2, setDate2] = React.useState(new Date());
   const [date3, setDate3] = React.useState(new Date());
+  const [date4, setDate4] = React.useState(new Date());
 
   return (
     <Container style={{ backgroundColor: theme.colors.background.base }}>
@@ -152,6 +153,23 @@ function DatePickerExample({ theme }) {
           borderColorActive={"green"}
           leftIconMode={"inset"}
           type={"underline"}
+        />
+        <DatePicker
+          autoDismissKeyboard={true}
+          disabled={false}
+          hideLabel={false}
+          inline={false}
+          label={"Date"}
+          leftIconMode={"inset"}
+          onDateChange={(newDate) => {
+            console.log("date4", newDate);
+            setDate4(newDate);
+          }}
+          type={"solid"}
+          date={date4}
+          format={"mmm d, yyyy hh:MM tt"}
+          minimumDate={new Date()}
+          mode={"datetime"}
         />
       </Section>
     </Container>

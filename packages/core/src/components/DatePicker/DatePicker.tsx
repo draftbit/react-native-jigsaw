@@ -1,5 +1,3 @@
-/* eslint-disable prefer-const */
-
 import * as React from "react";
 import {
   View,
@@ -268,6 +266,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     backgroundColor,
     inputStyle: StyleProp<TextStyle>;
 
+  // eslint-disable-next-line
   inputTextColor = colors.text.strong;
   if (disabled) {
     activeColor = colors.border.base;
@@ -285,6 +284,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
 
   const { lineHeight, ...subtitle1 } = typography.subtitle1;
 
+  // eslint-disable-next-line
   inputStyle = {
     paddingVertical: 0,
     color: inputTextColor,
@@ -408,18 +408,15 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     const minDate = parseDate(minimumDate);
     const maxDate = parseDate(maximumDate);
 
-    let newDate = currentDate;
+    const isBeforeMinDate = minDate && currentDate < minDate;
+    const isAfterMaxDate = maxDate && currentDate > maxDate;
 
-    if (minDate && currentDate < minDate) {
-      newDate = minDate;
-    }
-    if (maxDate && currentDate > maxDate) {
-      newDate = maxDate;
-    }
-
-    if (newDate !== currentDate) {
-      setValue(newDate);
-      onDateChange(newDate);
+    if (isBeforeMinDate) {
+      setValue(minDate);
+      onDateChange(minDate);
+    } else if (isAfterMaxDate) {
+      setValue(maxDate);
+      onDateChange(maxDate);
     }
   }, [value, minimumDate, maximumDate, onDateChange]);
 

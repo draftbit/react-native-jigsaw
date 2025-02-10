@@ -402,22 +402,17 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
     const currentDate = parseDate(value);
 
     if (!currentDate) return;
-
     const minDate = parseDate(minimumDate);
     const maxDate = parseDate(maximumDate);
+    const isBeforeMinDate = minDate && currentDate < minDate;
+    const isAfterMaxDate = maxDate && currentDate > maxDate;
 
-    let newDate = currentDate;
-
-    if (minDate && currentDate < minDate) {
-      newDate = minDate;
-    }
-    if (maxDate && currentDate > maxDate) {
-      newDate = maxDate;
-    }
-
-    if (newDate !== currentDate) {
-      setValue(newDate);
-      onDateChange(newDate);
+    if (isBeforeMinDate) {
+      setValue(minDate);
+      onDateChange(minDate);
+    } else if (isAfterMaxDate) {
+      setValue(maxDate);
+      onDateChange(maxDate);
     }
   }, [value, minimumDate, maximumDate, onDateChange]);
 

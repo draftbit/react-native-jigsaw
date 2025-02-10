@@ -161,10 +161,7 @@ function DatePickerExample({ theme }) {
           inline={false}
           label={"Date"}
           leftIconMode={"inset"}
-          onDateChange={(newDate) => {
-            console.log("date4", newDate);
-            setDate4(newDate);
-          }}
+          onDateChange={setDate4}
           type={"solid"}
           date={date4}
           format={"mmm d, yyyy hh:MM tt"}

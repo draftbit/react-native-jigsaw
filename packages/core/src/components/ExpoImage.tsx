@@ -60,7 +60,7 @@ const ExpoImage: React.FC<ExtendedImageProps> = ({
     source &&
     typeof source === "object" &&
     "uri" in source &&
-    !/^(http|https):\/\/|^data:/.test(source.uri || "")
+    !/^(http|https):\/\/|^data:|^\//.test(source.uri || "")
   ) {
     imageSource = { uri: "" };
   }

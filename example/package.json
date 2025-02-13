@@ -1,7 +1,7 @@
 {
   "name": "@draftbit/example",
   "description": "Example app for @draftbit/ui",
-  "version": "50.8.10",
+  "version": "50.8.11",
   "private": true,
   "scripts": {
     "android": "expo start --android",
@@ -14,8 +14,8 @@
     "clean:modules": "rimraf node_modules"
   },
   "dependencies": {
-    "@draftbit/maps": "50.8.10",
-    "@draftbit/ui": "50.8.10",
+    "@draftbit/maps": "50.8.11",
+    "@draftbit/ui": "50.8.11",
     "@expo/dev-server": "0.1.123",
     "@expo/webpack-config": "~19.0.1",
     "@react-navigation/drawer": "^6.6.3",

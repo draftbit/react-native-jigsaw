@@ -1,7 +1,7 @@
 {
   "name": "@draftbit/example",
   "description": "Example app for @draftbit/ui",
-  "version": "52.1.4",
+  "version": "52.1.5",
   "private": true,
   "scripts": {
     "android": "expo start --android",
@@ -14,8 +14,8 @@
     "clean:modules": "rimraf node_modules"
   },
   "dependencies": {
-    "@draftbit/maps": "52.1.4",
-    "@draftbit/ui": "52.1.4",
+    "@draftbit/maps": "52.1.5",
+    "@draftbit/ui": "52.1.5",
     "@expo/dev-server": "0.1.123",
     "@expo/metro-runtime": "~4.0.0",
     "@react-navigation/drawer": "^6.6.3",

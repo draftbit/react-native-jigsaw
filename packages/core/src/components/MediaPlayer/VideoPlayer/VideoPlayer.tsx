@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageResizeMode } from "react-native";
+import { ImageResizeMode, Platform } from "react-native";
 import {
   Video as VideoPlayerComponent,
   VideoProps as ExpoVideoProps,
@@ -34,6 +34,18 @@ interface VideoPlayerProps extends ExpoVideoPropsOmitted, MediaPlayerProps {
 export interface VideoPlayerRef extends MediaPlayerRef {
   toggleFullscreen: () => void;
 }
+
+// Setting playsInSilentModeIOS prop directly on Video component is unreliable,
+// so we need to set the audio mode globally before playing.
+// See:
+// https://github.com/expo/expo/issues/7485
+// https://stackoverflow.com/questions/57371543/how-to-fix-video-play-but-dont-have-sound-on-ios-with-expo
+const triggerAudio = async (ref: React.RefObject<MediaPlayerRef>) => {
+  if (ref && ref?.current && Platform.OS === "ios") {
+    await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
+    ref.current.play();
+  }
+};
 
 const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
   (
@@ -116,8 +128,8 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
     }, [playsInSilentModeIOS]);
 
     React.useEffect(() => {
-      updateAudioMode();
-    }, [playsInSilentModeIOS, updateAudioMode]);
+      if (isPlaying) triggerAudio(mediaPlaybackWrapperRef);
+    }, [mediaPlaybackWrapperRef, isPlaying]);
 
     React.useImperativeHandle(
       ref,

@@ -19,6 +19,17 @@ const VideoPlayerExample: React.FC = () => {
           resizeMode="cover"
         />
       </Section>
+      <Section style={{}} title="VideoPlayer (Silent mode)">
+        <VideoPlayer
+          style={{ width: 350, height: 250 }}
+          source={{
+            uri: "http://static.draftbit.com/videos/intro-to-draftbit.mp4",
+          }}
+          useNativeControls
+          resizeMode="cover"
+          playsInSilentModeIOS={true}
+        />
+      </Section>
       <Section style={{}} title="VideoPlayer (Poster and custom controls)">
         <VideoPlayer
           ref={videoPlayerRef}

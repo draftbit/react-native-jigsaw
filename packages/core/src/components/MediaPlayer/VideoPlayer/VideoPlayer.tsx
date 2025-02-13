@@ -117,7 +117,7 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
 
     React.useEffect(() => {
       updateAudioMode();
-    }, [updateAudioMode]);
+    }, [playsInSilentModeIOS, updateAudioMode]);
 
     React.useImperativeHandle(
       ref,

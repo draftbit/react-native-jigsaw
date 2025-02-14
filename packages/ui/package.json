@@ -46,7 +46,7 @@
     "@draftbit/core": "51.2.5",
     "@draftbit/native": "51.2.5",
     "@draftbit/theme": "51.2.5",
-    "react-native-reanimated": "~3.10.1"
+    "react-native-reanimated": "~3.11.0"
   },
   "jest": {
     "preset": "react-native",

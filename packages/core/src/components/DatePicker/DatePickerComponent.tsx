@@ -18,7 +18,7 @@ const DatePickerComponent: React.FC<React.PropsWithChildren<Props>> = ({
       <DateTimePicker
         date={value}
         mode={mode}
-        onDateChange={onChange}
+        onDateChange={(date) => onChange(null, date)}
         minimumDate={minimumDate}
         maximumDate={maximumDate}
       />

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Array of branch names - you can modify this array as needed
-branches=("50" "master" "52-beta")
+branches=("50" "master" "52")
 
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'

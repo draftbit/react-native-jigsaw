@@ -24,6 +24,7 @@ interface ExtendedImageProps extends ExpoImageProps {
   allowDownscaling?: boolean;
   blurRadius?: number;
   blurhash?: string;
+  cacheKey?: string;
 }
 
 const resizeModeToContentFit = (
@@ -52,9 +53,25 @@ const ExpoImage: React.FC<ExtendedImageProps> = ({
   allowDownscaling = true,
   blurRadius,
   blurhash,
+  cacheKey,
   ...props
 }) => {
-  const imageSource = source ?? Config.placeholderImageURL;
+  let imageSource = source ?? Config.placeholderImageURL;
+
+  if (cacheKey) {
+    if (typeof source === "object" && "uri" in source) {
+      imageSource = {
+        ...source,
+        cacheKey,
+      };
+    } else if (typeof source === "string") {
+      imageSource = {
+        uri: source,
+        cacheKey,
+      };
+    }
+  }
+
   const finalContentFit = resizeMode
     ? resizeModeToContentFit(resizeMode)
     : contentFit;

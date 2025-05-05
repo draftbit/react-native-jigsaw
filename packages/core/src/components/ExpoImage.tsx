@@ -59,7 +59,7 @@ const ExpoImage: React.FC<ExtendedImageProps> = ({
   let imageSource = source ?? Config.placeholderImageURL;
 
   if (cacheKey) {
-    if (typeof source === "object" && "uri" in source) {
+    if (source && typeof source === "object" && "uri" in source) {
       imageSource = {
         ...source,
         cacheKey,

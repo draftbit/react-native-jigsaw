@@ -57,7 +57,8 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
   const progressLineWidth = svgContainerWidth - thicknessOffset;
   const trackProgressLineWidth = svgContainerWidth - thicknessOffset;
 
-  const currentFillPercentage = value / (maximumValue + minimumValue);
+  const currentFillPercentage =
+    (value - minimumValue) / (maximumValue - minimumValue);
   const currentProgressLineWidth = useSharedValue(0);
 
   const progressLineAnimatedProps = useAnimatedProps<LineProps>(() => {

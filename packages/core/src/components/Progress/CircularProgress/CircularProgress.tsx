@@ -79,7 +79,8 @@ export const CircularProgress: React.FC<
     }
   }, [startPosition]);
 
-  const currentFillPercentage = value / (maximumValue + minimumValue);
+  const currentFillPercentage =
+    (value - minimumValue) / (maximumValue - minimumValue);
   const currentAngle = useSharedValue(startAngle);
 
   const progressPathAnimatedProps = useAnimatedProps<PathProps>(() => {

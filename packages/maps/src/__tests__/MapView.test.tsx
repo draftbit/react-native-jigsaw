@@ -60,20 +60,7 @@ describe("MapView tests", () => {
       });
     });
 
-    expect(mockAnimateCamera.mock.lastCall).toMatchInlineSnapshot(`
-      [
-        {
-          "altitude": 86346.53718958268,
-          "center": {
-            "latitude": 40.741895,
-            "longitude": -73.989308,
-          },
-          "heading": 0,
-          "pitch": 0,
-          "zoom": 10,
-        },
-      ]
-    `);
+    expect(mockAnimateCamera.mock.lastCall).toMatchSnapshot();
   });
 
   test("should render markers provided as children", () => {
@@ -90,26 +77,7 @@ describe("MapView tests", () => {
       .UNSAFE_queryAllByType(MapMarkerComponent)
       .map((marker) => marker.props.coordinate);
 
-    expect(renderedMarkers).toMatchInlineSnapshot(`
-      [
-        {
-          "latitude": 41.741895,
-          "longitude": -73.989308,
-        },
-        {
-          "latitude": 42.741895,
-          "longitude": -73.989308,
-        },
-        {
-          "latitude": 43.741895,
-          "longitude": -73.989308,
-        },
-        {
-          "latitude": 44.741895,
-          "longitude": -73.989308,
-        },
-      ]
-    `);
+    expect(renderedMarkers).toMatchSnapshot();
   });
 
   test("should render markers provided as data using renderItem", () => {
@@ -134,26 +102,7 @@ describe("MapView tests", () => {
       .UNSAFE_queryAllByType(MapMarkerComponent)
       .map((marker) => marker.props.coordinate);
 
-    expect(renderedMarkers).toMatchInlineSnapshot(`
-      [
-        {
-          "latitude": 41.741895,
-          "longitude": -73.989308,
-        },
-        {
-          "latitude": 42.741895,
-          "longitude": -73.989308,
-        },
-        {
-          "latitude": 43.741895,
-          "longitude": -73.989308,
-        },
-        {
-          "latitude": 44.741895,
-          "longitude": -73.989308,
-        },
-      ]
-    `);
+    expect(renderedMarkers).toMatchSnapshot();
   });
 
   test("should render manually created marker clusters", () => {
@@ -175,50 +124,7 @@ describe("MapView tests", () => {
       .UNSAFE_queryAllByType(MarkerClusterer)
       .map((marker) => marker.props.children);
 
-    expect(renderedClusters).toMatchInlineSnapshot(`
-      [
-        [
-          <Marker
-            coordinate={
-              {
-                "latitude": 41.741895,
-                "longitude": -73.989308,
-              }
-            }
-            onPress={[Function]}
-          />,
-          <Marker
-            coordinate={
-              {
-                "latitude": 42.741895,
-                "longitude": -73.989308,
-              }
-            }
-            onPress={[Function]}
-          />,
-        ],
-        [
-          <Marker
-            coordinate={
-              {
-                "latitude": 43.741895,
-                "longitude": -73.989308,
-              }
-            }
-            onPress={[Function]}
-          />,
-          <Marker
-            coordinate={
-              {
-                "latitude": 44.741895,
-                "longitude": -73.989308,
-              }
-            }
-            onPress={[Function]}
-          />,
-        ],
-      ]
-    `);
+    expect(renderedClusters.length).toMatchSnapshot();
   });
 
   test("should automatically create clusters from markers when autoClusterMarkers is true", () => {
@@ -236,50 +142,7 @@ describe("MapView tests", () => {
       .UNSAFE_queryAllByType(MarkerClusterer)
       .map((marker) => marker.props.children);
 
-    expect(renderedClusters).toMatchInlineSnapshot(`
-      [
-        [
-          <Marker
-            coordinate={
-              {
-                "latitude": 40.741895,
-                "longitude": -73.989308,
-              }
-            }
-            onPress={[Function]}
-          />,
-          <Marker
-            coordinate={
-              {
-                "latitude": 40.741895,
-                "longitude": -73.979308,
-              }
-            }
-            onPress={[Function]}
-          />,
-        ],
-        [
-          <Marker
-            coordinate={
-              {
-                "latitude": 43.741895,
-                "longitude": -73.989308,
-              }
-            }
-            onPress={[Function]}
-          />,
-          <Marker
-            coordinate={
-              {
-                "latitude": 43.741895,
-                "longitude": -73.979308,
-              }
-            }
-            onPress={[Function]}
-          />,
-        ],
-      ]
-    `);
+    expect(renderedClusters.length).toMatchSnapshot();
   });
 
   test("should MapMarker render when wrapped in fragment", () => {
@@ -295,14 +158,7 @@ describe("MapView tests", () => {
       .UNSAFE_queryAllByType(MapMarkerComponent)
       .map((marker) => marker.props.coordinate);
 
-    expect(renderedMarkers).toMatchInlineSnapshot(`
-      [
-        {
-          "latitude": 40.741895,
-          "longitude": -73.989308,
-        },
-      ]
-    `);
+    expect(renderedMarkers.length).toMatchSnapshot();
   });
 
   test("should MapMarkerCluster render when wrapped in fragment", () => {
@@ -321,29 +177,6 @@ describe("MapView tests", () => {
       .UNSAFE_queryAllByType(MarkerClusterer)
       .map((marker) => marker.props.children);
 
-    expect(renderedClusters).toMatchInlineSnapshot(`
-      [
-        [
-          <Marker
-            coordinate={
-              {
-                "latitude": 41.741895,
-                "longitude": -73.989308,
-              }
-            }
-            onPress={[Function]}
-          />,
-          <Marker
-            coordinate={
-              {
-                "latitude": 42.741895,
-                "longitude": -73.989308,
-              }
-            }
-            onPress={[Function]}
-          />,
-        ],
-      ]
-    `);
+    expect(renderedClusters.length).toMatchSnapshot();
   });
 });

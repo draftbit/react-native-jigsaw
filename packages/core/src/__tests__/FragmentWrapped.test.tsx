@@ -90,37 +90,7 @@ describe("Type checked components wrapped in a fragment tests", () => {
       ];
 
       const result = flattenReactFragments(components);
-      expect(result).toMatchInlineSnapshot(`
-        [
-          <View
-            testID="1"
-          />,
-          <View
-            testID="2"
-          />,
-          <View
-            testID="3"
-          />,
-          <View
-            testID="4"
-          />,
-          <View
-            testID="5"
-          />,
-          <View
-            testID="6"
-          />,
-          <View
-            testID="7"
-          />,
-          <View
-            testID="8"
-          />,
-          <View
-            testID="9"
-          />,
-        ]
-      `);
+      expect(result).toMatchSnapshot();
     });
   });
 });

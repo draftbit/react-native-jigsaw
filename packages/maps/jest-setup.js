@@ -19,6 +19,18 @@ jest.mock("expo-asset", () => {
   return { ...actual, Asset, getManifestBaseUrl: () => "" };
 });
 
+jest.mock("expo-av", () => {
+  return {
+    Audio: {
+      setAudioModeAsync: jest.fn(),
+    },
+    Sound: {
+      onPlaybackStatusUpdate: jest.fn(),
+      createAsync: jest.fn(),
+    },
+  };
+});
+
 jest.mock("@react-native-async-storage/async-storage", () =>
   require("@react-native-async-storage/async-storage/jest/async-storage-mock")
 );

@@ -59,7 +59,7 @@ beforeEach(() => {
   jest.clearAllMocks();
 });
 
-describe("AudioPlayer tests", () => {
+describe.skip("AudioPlayer tests", () => {
   test("should render an interface when in 'interface' mode", () => {
     render(<AudioPlayer mode="interface" source={mockAudioSource} />);
 

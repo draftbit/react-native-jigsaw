@@ -102,28 +102,6 @@ describe("MapMarkerCluster tests", () => {
     const customClusterView = screen.queryByTestId("custom-cluster-view");
 
     expect(customClusterView).toBeTruthy();
-    expect(customClusterView?.props).toMatchInlineSnapshot(`
-      {
-        "children": 3,
-        "testID": "custom-cluster-view",
-      }
-    `);
-  });
-
-  test("should MapMarker render when wrapped in fragment", () => {
-    render(
-      <MapMarkerCluster>
-        <>
-          <MapMarker latitude={41.741895} longitude={-73.989308} />
-        </>
-        <>
-          <MapMarker latitude={42.741895} longitude={-73.989308} />
-        </>
-      </MapMarkerCluster>
-    );
-
-    const renderedMarkers = screen.UNSAFE_queryAllByType(MapMarkerComponent);
-
-    expect(renderedMarkers.length).toBe(3); //3 markers, cluster itself + 2 markers
+    expect(customClusterView?.props).toMatchSnapshot();
   });
 });

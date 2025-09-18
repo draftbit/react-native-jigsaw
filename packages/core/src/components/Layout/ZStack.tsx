@@ -55,7 +55,7 @@ const ZStack: React.FC<ZStackProps> = ({
     }
 
     return childrenArray.map((child, index) => {
-      const props = child.props || {};
+      const props: any = child.props || {};
       return React.cloneElement(
         child,
         {

@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Type checked components wrapped in a fragment tests flattenReactFragments tests should extract components from react fragments 1`] = `
+[
+  {
+    "$$typeof": Symbol(react.transitional.element),
+    "_owner": null,
+    "_store": {},
+    "key": ".0",
+    "props": {
+      "testID": "1",
+    },
+    "type": [Function],
+  },
+  {
+    "$$typeof": Symbol(react.transitional.element),
+    "_owner": null,
+    "_store": {},
+    "key": ".1",
+    "props": {
+      "testID": "2",
+    },
+    "type": [Function],
+  },
+  {
+    "$$typeof": Symbol(react.transitional.element),
+    "_owner": null,
+    "_store": {},
+    "key": ".2",
+    "props": {
+      "testID": "3",
+    },
+    "type": [Function],
+  },
+  {
+    "$$typeof": Symbol(react.transitional.element),
+    "_owner": null,
+    "_store": {},
+    "key": ".0",
+    "props": {
+      "testID": "4",
+    },
+    "type": [Function],
+  },
+  {
+    "$$typeof": Symbol(react.transitional.element),
+    "_owner": null,
+    "_store": {},
+    "key": ".0",
+    "props": {
+      "testID": "5",
+    },
+    "type": [Function],
+  },
+  {
+    "$$typeof": Symbol(react.transitional.element),
+    "_owner": null,
+    "_store": {},
+    "key": ".1",
+    "props": {
+      "testID": "6",
+    },
+    "type": [Function],
+  },
+  {
+    "$$typeof": Symbol(react.transitional.element),
+    "_owner": null,
+    "_store": {},
+    "key": ".0",
+    "props": {
+      "testID": "7",
+    },
+    "type": [Function],
+  },
+  {
+    "$$typeof": Symbol(react.transitional.element),
+    "_owner": null,
+    "_store": {},
+    "key": ".0",
+    "props": {
+      "testID": "8",
+    },
+    "type": [Function],
+  },
+  {
+    "$$typeof": Symbol(react.transitional.element),
+    "_owner": null,
+    "_store": {},
+    "key": ".1",
+    "props": {
+      "testID": "9",
+    },
+    "type": [Function],
+  },
+]
+`;

@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapView tests should MapMarker render when wrapped in fragment 1`] = `1`;
+
+exports[`MapView tests should MapMarkerCluster render when wrapped in fragment 1`] = `1`;
+
+exports[`MapView tests should animateToLocation update map location 1`] = `
+[
+  {
+    "altitude": 86346.53718958268,
+    "center": {
+      "latitude": 40.741895,
+      "longitude": -73.989308,
+    },
+    "heading": 0,
+    "pitch": 0,
+    "zoom": 10,
+  },
+]
+`;
+
+exports[`MapView tests should automatically create clusters from markers when autoClusterMarkers is true 1`] = `2`;
+
+exports[`MapView tests should render manually created marker clusters 1`] = `2`;
+
+exports[`MapView tests should render markers provided as children 1`] = `
+[
+  {
+    "latitude": 41.741895,
+    "longitude": -73.989308,
+  },
+  {
+    "latitude": 42.741895,
+    "longitude": -73.989308,
+  },
+  {
+    "latitude": 43.741895,
+    "longitude": -73.989308,
+  },
+  {
+    "latitude": 44.741895,
+    "longitude": -73.989308,
+  },
+]
+`;
+
+exports[`MapView tests should render markers provided as data using renderItem 1`] = `
+[
+  {
+    "latitude": 41.741895,
+    "longitude": -73.989308,
+  },
+  {
+    "latitude": 42.741895,
+    "longitude": -73.989308,
+  },
+  {
+    "latitude": 43.741895,
+    "longitude": -73.989308,
+  },
+  {
+    "latitude": 44.741895,
+    "longitude": -73.989308,
+  },
+]
+`;

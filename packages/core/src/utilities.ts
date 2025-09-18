@@ -260,7 +260,7 @@ export function flattenReactFragments(
   for (const component of components) {
     if (component.type === React.Fragment) {
       const children = React.Children.toArray(
-        component.props?.children
+        (component as any).props?.children
       ) as React.ReactElement[];
 
       for (const child of children) {
@@ -275,7 +275,7 @@ export function flattenReactFragments(
 }
 
 function useDeepCompareMemoize(value: any) {
-  const ref = React.useRef();
+  const ref = React.useRef<any>(undefined);
 
   if (!isEqual(value, ref.current)) {
     ref.current = value;

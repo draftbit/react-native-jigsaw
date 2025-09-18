@@ -63,7 +63,7 @@ const MapMarker: React.FC<React.PropsWithChildren<MapMarkerProps>> = ({
     }
   } else {
     mappedChildren = React.Children.map(children, (child, index) => {
-      return React.cloneElement(child as React.ReactElement, {
+      return React.cloneElement(child as any, {
         index,
         anchor: marker,
       });

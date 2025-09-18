@@ -40,7 +40,7 @@ export interface VideoPlayerRef extends MediaPlayerRef {
 // See:
 // https://github.com/expo/expo/issues/7485
 // https://stackoverflow.com/questions/57371543/how-to-fix-video-play-but-dont-have-sound-on-ios-with-expo
-const triggerAudio = async (ref: React.RefObject<MediaPlayerRef>) => {
+const triggerAudio = async (ref: React.RefObject<MediaPlayerRef | null>) => {
   if (ref && ref?.current && Platform.OS === "ios") {
     await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
     ref.current.play();

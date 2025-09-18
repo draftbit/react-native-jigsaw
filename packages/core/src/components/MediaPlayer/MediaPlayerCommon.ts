@@ -106,7 +106,7 @@ function sourceDeepCompareEquals(a: any, b: any) {
 }
 
 function useSourceDeepCompareMemoize(value: any) {
-  const ref = React.useRef();
+  const ref = React.useRef<any>(undefined);
   if (!sourceDeepCompareEquals(value, ref.current)) {
     ref.current = value;
   }

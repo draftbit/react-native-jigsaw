@@ -87,7 +87,7 @@ const MapMarkerCluster: React.FC<React.PropsWithChildren> = ({
             );
           }}
         >
-          {markers.map((marker, index) =>
+          {markers.map((marker: any, index) =>
             renderMarker(marker.props, index, getMarkerRef(marker.props), () =>
               onMarkerPress(marker.props)
             )

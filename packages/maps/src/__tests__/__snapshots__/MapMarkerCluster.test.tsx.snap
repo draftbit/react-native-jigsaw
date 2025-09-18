@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapMarkerCluster tests should render custom cluster view when provided 1`] = `
+{
+  "children": 3,
+  "testID": "custom-cluster-view",
+}
+`;

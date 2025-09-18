@@ -1,5 +1,5 @@
 {
-  "version": "52.1.9",
+  "version": "53.0.0",
   "npmClient": "yarn",
   "packages": [
     "packages/*",

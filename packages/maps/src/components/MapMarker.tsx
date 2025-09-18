@@ -121,7 +121,7 @@ export function renderMarker(
       )}
 
       {calloutChildren.map((callout, index) =>
-        renderCallout((callout as React.ReactElement).props, index)
+        renderCallout((callout as any).props, index)
       )}
     </MapMarkerComponent>
   );

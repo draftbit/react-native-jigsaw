@@ -83,7 +83,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
     const newRoutes: Route[] = [];
 
     children.forEach((item: any, idx) => {
-      const child = item as React.ReactElement;
+      const child = item as any;
       newRoutes.push({
         key: idx.toString(),
         title: child.props.title,
@@ -158,7 +158,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
       style={viewStyles}
       navigationState={{ index, routes }}
       renderScene={renderScene}
-      renderTabBar={renderTabBar}
+      renderTabBar={renderTabBar as any}
       onIndexChange={indexChangeHandler}
       tabBarPosition={tabBarPosition}
       keyboardDismissMode={keyboardDismissMode}

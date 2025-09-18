@@ -38,7 +38,7 @@ const ModalPicker: React.FC<
   dropdownOverlayColor,
   ...rest
 }) => {
-  const dropdownRef = React.useRef<ModalPickerComponent>();
+  const dropdownRef = React.useRef<ModalPickerComponent>(undefined);
 
   const [internalValue, setInternalValue] = React.useState<
     string | number | undefined

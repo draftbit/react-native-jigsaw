@@ -87,7 +87,7 @@ const MapViewF = <T extends object>({
   }
 
   const markerRefs = React.useMemo<
-    Map<string, React.RefObject<MapMarkerRefType>>
+    Map<string, React.RefObject<MapMarkerRefType | null>>
   >(() => new Map(), []);
 
   const camera: Camera = React.useMemo(
@@ -328,7 +328,7 @@ const MapViewF = <T extends object>({
         mapType={mapType}
         {...rest}
       >
-        {unClusteredMarkers.map((marker, index) =>
+        {unClusteredMarkers.map((marker: any, index) =>
           renderMarker(
             marker.props,
             index,

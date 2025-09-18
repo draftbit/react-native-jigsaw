@@ -92,7 +92,7 @@ const Table = <T extends object>({
   );
 
   const childrenWithoutHeader = React.useMemo(() => {
-    const flattenedWithoutNestedHeaders = validChildren.map((item) => {
+    const flattenedWithoutNestedHeaders = validChildren.map((item: any) => {
       const nestedChildren = React.Children.toArray(
         item.props.children
       ) as any[];
@@ -117,7 +117,7 @@ const Table = <T extends object>({
   }, [validChildren, isTableHeader]);
 
   const header = React.useMemo(() => {
-    const flattenedPossibleHeaders = validChildren.map((item) => {
+    const flattenedPossibleHeaders = validChildren.map((item: any) => {
       const nestedChildren = React.Children.toArray(
         item.props.children
       ) as any[];

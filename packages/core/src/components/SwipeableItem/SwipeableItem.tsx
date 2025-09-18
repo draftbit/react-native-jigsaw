@@ -140,7 +140,7 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
         (child) =>
           React.isValidElement(child) &&
           child.type === SwipeableItemButton &&
-          child.props.revealSwipeDirection === "left"
+          (child as any).props.revealSwipeDirection === "left"
       ) as React.ReactElement<SwipeableItemButtonProps>[],
     [children]
   );
@@ -151,7 +151,7 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
         (child) =>
           React.isValidElement(child) &&
           child.type === SwipeableItemButton &&
-          child.props.revealSwipeDirection === "right"
+          (child as any).props.revealSwipeDirection === "right"
       ) as React.ReactElement<SwipeableItemButtonProps>[],
     [children]
   );

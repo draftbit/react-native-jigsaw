@@ -24,7 +24,7 @@ export interface SwiperProps<T> {
   dotsTouchable?: boolean;
   dotColor?: string;
   dotActiveColor?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   data?: Array<T>;
   keyExtractor: (item: T, index: number) => string;
   renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;

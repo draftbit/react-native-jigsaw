@@ -14,6 +14,7 @@ import PickerInputContainer from "./PickerInputContainer";
 import { withTheme } from "@draftbit/theme";
 
 const isIos = Platform.OS === "ios";
+const isAndroid = Platform.OS === "android";
 const isWeb = Platform.OS === "web";
 
 const NativePicker: React.FC<CommonPickerProps & SinglePickerProps> = ({
@@ -121,7 +122,8 @@ const NativePicker: React.FC<CommonPickerProps & SinglePickerProps> = ({
       {...rest}
     >
       {/* Web version is collapsed by default, always show to allow direct expand */}
-      {(pickerVisible || isWeb) && !disabled && renderPicker()}
+      {/* Android version needs to always be visible to allow .focus() call to launch the dialog  */}
+      {(pickerVisible || isAndroid || isWeb) && !disabled && renderPicker()}
     </PickerInputContainer>
   );
 };
@@ -140,6 +142,9 @@ const styles = StyleSheet.create({
     ...Platform.select({
       web: {
         height: "100%", //To have the <select/> element fill the height
+      },
+      android: {
+        opacity: 0, // picker is a dialog, we don't want to show the default 'picker button' component
       },
     }),
   },

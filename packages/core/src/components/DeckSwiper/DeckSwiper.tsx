@@ -130,6 +130,9 @@ const DeckSwiper = React.forwardRef<DeckSwiperRef, DeckSwiperProps<any>>(
             deckSwiperRef.current?.swipeLeft();
         }
       },
+      jumpToCardIndex: (index: number) => {
+        deckSwiperRef.current?.jumpToCardIndex(index);
+      },
     }));
 
     /**

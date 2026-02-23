@@ -1,9 +1,6 @@
 import * as React from "react";
 import { StyleSheet, Platform, Keyboard } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { Picker as NativePickerComponent } from "@react-native-picker/picker";
-import Portal from "../Portal/Portal";
-import { Button } from "../Button";
 import { useDeepCompareMemo } from "../../utilities";
 import {
   CommonPickerProps,
@@ -13,7 +10,6 @@ import {
 import PickerInputContainer from "./PickerInputContainer";
 import { withTheme } from "@draftbit/theme";
 
-const isIos = Platform.OS === "ios";
 const isAndroid = Platform.OS === "android";
 const isWeb = Platform.OS === "web";
 
@@ -61,7 +57,7 @@ const NativePicker: React.FC<CommonPickerProps & SinglePickerProps> = ({
           onValueChange?.("");
         }
       }}
-      style={isIos ? styles.iosNativePicker : styles.nativePicker}
+      style={styles.nativePicker}
       onBlur={() => setPickerVisible(false)}
     >
       {options.map((option) => (
@@ -74,29 +70,6 @@ const NativePicker: React.FC<CommonPickerProps & SinglePickerProps> = ({
       ))}
     </NativePickerComponent>
   );
-
-  const renderPicker = () => {
-    if (isIos) {
-      return (
-        <Portal>
-          <SafeAreaView style={styles.iosPickerContent}>
-            <Button
-              Icon={Icon}
-              onPress={() => setPickerVisible(!pickerVisible)}
-              style={[
-                styles.iosButton,
-                { color: theme.colors.branding.primary },
-              ]}
-              title="Close"
-            />
-            {renderNativePicker()}
-          </SafeAreaView>
-        </Portal>
-      );
-    } else {
-      return renderNativePicker();
-    }
-  };
 
   React.useEffect(() => {
     if (pickerVisible && pickerRef.current) {
@@ -123,7 +96,9 @@ const NativePicker: React.FC<CommonPickerProps & SinglePickerProps> = ({
     >
       {/* Web version is collapsed by default, always show to allow direct expand */}
       {/* Android version needs to always be visible to allow .focus() call to launch the dialog  */}
-      {(pickerVisible || isAndroid || isWeb) && !disabled && renderPicker()}
+      {(pickerVisible || isAndroid || isWeb) &&
+        !disabled &&
+        renderNativePicker()}
     </PickerInputContainer>
   );
 };
@@ -141,25 +116,12 @@ const styles = StyleSheet.create({
     opacity: 0,
     ...Platform.select({
       web: {
-        height: "100%", //To have the <select/> element fill the height
+        height: "100%",
       },
       android: {
-        opacity: 0, // picker is a dialog, we don't want to show the default 'picker button' component
+        opacity: 0,
       },
     }),
-  },
-  iosNativePicker: {
-    backgroundColor: "white",
-  },
-  iosPickerContent: {
-    width: "100%",
-    position: "absolute",
-    bottom: 0,
-    backgroundColor: "white",
-  },
-  iosButton: {
-    backgroundColor: "transparent",
-    borderWidth: 0,
   },
 });
 

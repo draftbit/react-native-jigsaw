@@ -12,7 +12,7 @@ import {
   PickerOption,
 } from "./PickerCommon";
 import PickerInputContainer from "./PickerInputContainer";
-import { withTheme } from "@draftbit/theme";
+import { ReadTheme, withTheme } from "@draftbit/theme";
 import { IconSlot } from "../../interfaces/Icon";
 
 /**
@@ -26,7 +26,7 @@ interface PortalPickerContentProps extends IconSlot {
   placeholder?: string;
   onValueChange?: (value: string | number) => void;
   onClose: () => void;
-  theme: any;
+  theme: ReadTheme;
   autoDismissKeyboard?: boolean;
 }
 
@@ -58,7 +58,12 @@ const PortalPickerContent: React.FC<PortalPickerContentProps> = ({
   }, [autoDismissKeyboard]);
 
   return (
-    <SafeAreaView style={styles.iosPickerContent}>
+    <SafeAreaView
+      style={[
+        styles.iosPickerContent,
+        { backgroundColor: theme.colors.background.base },
+      ]}
+    >
       <Button
         Icon={Icon}
         onPress={onClose}
@@ -77,7 +82,10 @@ const PortalPickerContent: React.FC<PortalPickerContentProps> = ({
             onValueChange?.("");
           }
         }}
-        style={styles.iosNativePicker}
+        style={[
+          styles.iosNativePicker,
+          { backgroundColor: theme.colors.background.base },
+        ]}
         onBlur={onClose}
       >
         {options.map((option) => (
@@ -86,6 +94,7 @@ const PortalPickerContent: React.FC<PortalPickerContentProps> = ({
             label={option.label.toString()}
             value={option.value}
             key={option.value}
+            color={theme.colors.text.strong}
           />
         ))}
       </NativePickerComponent>

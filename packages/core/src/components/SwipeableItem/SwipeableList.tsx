@@ -35,7 +35,7 @@ const SwipeableList = React.forwardRef(
       listComponent = "FlatList",
       ...rest
     }: FlashListSwipeableListProps<T> | FlatListSwipeableListProps<T>,
-    ref: React.Ref<FlatListComponent | FlashList<any>>
+    ref: React.Ref<FlatListComponent | typeof FlashList<any>>
   ) => {
     const [isSwiping, setIsSwiping] = React.useState(false);
 
@@ -60,10 +60,7 @@ const SwipeableList = React.forwardRef(
           );
         case "FlashList":
           return (
-            <FlashList
-              ref={ref as React.Ref<FlashList<T>>}
-              {...(rest as FlashListProps<T>)}
-            />
+            <FlashList ref={ref as any} {...(rest as FlashListProps<T>)} />
           );
       }
     };

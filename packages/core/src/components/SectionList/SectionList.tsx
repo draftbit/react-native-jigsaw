@@ -58,7 +58,7 @@ const SectionList = React.forwardRef(
       sectionHeaderTextColor,
       ...rest
     }: FlatListSectionListProps<T> | FlashListSectionListProps<T>,
-    ref: React.Ref<FlatListComponent | FlashList<any>>
+    ref: React.Ref<FlatListComponent | typeof FlashList<any>>
   ) => {
     const data = React.useMemo(
       () => (Array.isArray(dataProp) ? dataProp : []) as T[],
@@ -210,7 +210,7 @@ const SectionList = React.forwardRef(
       case "FlashList":
         return (
           <FlashList
-            ref={ref as React.Ref<FlashList<SectionListItem<T>>>}
+            ref={ref as any}
             stickyHeaderIndices={sectionHeaderIndicies}
             {...(rest as FlashListProps<SectionListItem<T>>)}
             data={dataWithSections}

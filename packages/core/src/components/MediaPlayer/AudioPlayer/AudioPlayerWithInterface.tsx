@@ -110,11 +110,11 @@ const AudioPlayerWithInterface = React.forwardRef<
 
     let iconName;
     if (isLoading) {
-      iconName = "loading1";
+      iconName = "loading";
     } else if (isPlaying) {
       iconName = "pause";
     } else {
-      iconName = "play";
+      iconName = "caret-right";
     }
 
     return (

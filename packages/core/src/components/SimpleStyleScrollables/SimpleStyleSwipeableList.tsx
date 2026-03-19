@@ -22,7 +22,7 @@ const SimpleStyleSwipeableList = React.forwardRef(
       FlashListSwipeableListProps<T> | FlatListSwipeableListProps<T>,
       "contentContainerStyle"
     >,
-    ref: React.Ref<FlatListComponent | FlashList<any>>
+    ref: React.Ref<FlatListComponent | typeof FlashList<any>>
   ) => {
     const { style, contentContainerStyle } =
       useSplitContentContainerStyles(styleProp);

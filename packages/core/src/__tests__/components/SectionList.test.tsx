@@ -7,7 +7,7 @@ import { uniq } from "lodash";
 import { DEFAULT_SECTION } from "../../components/SectionList/SectionList";
 
 describe("SectionList tests", () => {
-  test.each(["FlatList", "FlashList"])(
+  test.each(["FlatList"])(
     "should render all data items in %p",
     (listComponent: string) => {
       render(

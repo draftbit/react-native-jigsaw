@@ -22,7 +22,7 @@ const SimpleStyleSectionList = React.forwardRef(
       FlatListSectionListProps<T> | FlashListSectionListProps<T>,
       "contentContainerStyle"
     >,
-    ref: React.Ref<FlatListComponent | FlashList<any>>
+    ref: React.Ref<FlatListComponent | typeof FlashList<any>>
   ) => {
     const { style, contentContainerStyle } =
       useSplitContentContainerStyles(styleProp);

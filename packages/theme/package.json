@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/theme",
-  "version": "53.0.5",
+  "version": "54.0.0",
   "description": "Draftbit's themeing system",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/src/index.d.ts",
@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@react-native-async-storage/async-storage": "2.1.2",
+    "@react-native-async-storage/async-storage": "2.2.0",
     "color": "^4.2.3",
     "deepmerge-ts": "7.1.5",
     "lodash.isobject": "^3.0.2",

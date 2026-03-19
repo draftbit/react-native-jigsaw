@@ -1,5 +1,5 @@
 import { AVPlaybackSource, AVPlaybackStatus } from "expo-av";
-import * as FileSystem from "expo-file-system";
+import { File, Paths } from "expo-file-system";
 import { v4 as uuid } from "uuid";
 import { Platform } from "react-native";
 import React from "react";
@@ -73,20 +73,14 @@ export async function normalizeBase64Source(
       ? uri.substring(`data:${type}/`.length, uri.indexOf(";")) //Ex: extract 'mp4' from 'data:video/mp4;base64,....'
       : defaultMimeType;
 
-    const fileName = `${
-      FileSystem.cacheDirectory
-    }${uuid()}.${mimeType.toLowerCase()}`;
+    const file = new File(Paths.cache, `${uuid()}.${mimeType.toLowerCase()}`);
 
-    await FileSystem.writeAsStringAsync(
-      fileName,
-      uri.includes("base64,")
-        ? uri.substring(uri.indexOf("base64,") + "base64,".length) // skip header portion of base64 string
-        : uri,
-      {
-        encoding: "base64",
-      }
-    );
-    return { uri: fileName };
+    const base64Content = uri.includes("base64,")
+      ? uri.substring(uri.indexOf("base64,") + "base64,".length) // skip header portion of base64 string
+      : uri;
+
+    file.write(base64Content, { encoding: "base64" });
+    return { uri: file.uri };
   }
 
   return source;

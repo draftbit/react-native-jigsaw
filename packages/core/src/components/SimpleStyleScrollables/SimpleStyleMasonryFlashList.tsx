@@ -1,38 +1,35 @@
 import React from "react";
-import { MasonryFlashList } from "@shopify/flash-list";
-import type {
-  MasonryFlashListProps,
-  ContentStyle,
-  MasonryFlashListRef,
-} from "@shopify/flash-list";
+import { FlashList } from "@shopify/flash-list";
+import type { FlashListProps } from "@shopify/flash-list";
 import { useFlashListSplitContentContainerStyles } from "./useSplitContentContainerStyles";
 
 /**
- * A MasonryFlashList wrapper that takes a single `style` prop and internally extracts
+ * A FlashList wrapper that takes a single `style` prop and internally extracts
  * the appropriate style keys into the `contentContainerStyle`
  */
-const SimpleStyleMasonryFlashList = React.forwardRef(
+const SimpleStyleFlashList = React.forwardRef(
   <T extends any>(
     {
       style: styleProp,
       data,
       ...rest
-    }: Omit<MasonryFlashListProps<T>, "contentContainerStyle">,
-    ref: React.Ref<MasonryFlashListRef<any>>
+    }: Omit<FlashListProps<T>, "contentContainerStyle">,
+    ref: React.Ref<typeof FlashList<any>>
   ) => {
     const { style, contentContainerStyle } =
       useFlashListSplitContentContainerStyles(styleProp);
 
     return (
-      <MasonryFlashList
+      <FlashList
         ref={ref as any}
-        style={style}
-        contentContainerStyle={contentContainerStyle as ContentStyle}
+        style={style as any}
+        contentContainerStyle={contentContainerStyle}
         data={data}
+        masonry
         {...rest}
       />
     );
   }
 );
 
-export default SimpleStyleMasonryFlashList;
+export default SimpleStyleFlashList;

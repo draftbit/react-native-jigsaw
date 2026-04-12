@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      - 53
+      - 54
   pull_request:
     types: [assigned, opened, synchronize, reopened]
 
@@ -64,8 +64,8 @@ jobs:
             --yes \
             --no-verify-access
 
-      - name: Release packages (53)
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/53'
+      - name: Release packages (54)
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/54'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         run: |

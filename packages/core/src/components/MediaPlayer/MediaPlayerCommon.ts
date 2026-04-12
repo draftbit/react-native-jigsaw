@@ -64,11 +64,11 @@ export async function normalizeBase64Source(
   source: AVPlaybackSource,
   type: "audio" | "video"
 ): Promise<AVPlaybackSource> {
-  const { File, Paths } = await import("expo-file-system");
-
   const uri: string | undefined = (source as any)?.uri;
 
   if (Platform.OS === "ios" && uri && !uri.match(URL_REGEX)) {
+    const { File, Paths } = await import("expo-file-system");
+
     const defaultMimeType = type === "audio" ? "wav" : "mp4";
     const mimeType = uri.startsWith(`data:${type}/`)
       ? uri.substring(`data:${type}/`.length, uri.indexOf(";")) //Ex: extract 'mp4' from 'data:video/mp4;base64,....'

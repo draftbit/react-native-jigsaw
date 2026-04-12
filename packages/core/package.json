@@ -86,8 +86,7 @@
     "uuid": "^11.0.3"
   },
   "peerDependencies": {
-    "react-native-avoid-softinput": "^4.0.1",
-    "expo-file-system": "~19.0.21"
+    "react-native-avoid-softinput": "^4.0.1"
   },
   "peerDependenciesMeta": {
     "react-native-avoid-softinput": {

@@ -57,6 +57,7 @@
     "dateformat": "^5.0.3",
     "expo-av": "~16.0.8",
     "expo-image": "~3.0.11",
+    "expo-file-system": "~19.0.21",
     "lodash.isequal": "^4.5.0",
     "lodash.isnumber": "^3.0.3",
     "lodash.omit": "^4.5.0",

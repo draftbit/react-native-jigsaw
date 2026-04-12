@@ -56,7 +56,6 @@
     "date-fns": "^4.1.0",
     "dateformat": "^5.0.3",
     "expo-av": "~16.0.8",
-    "expo-file-system": "~19.0.21",
     "expo-image": "~3.0.11",
     "lodash.isequal": "^4.5.0",
     "lodash.isnumber": "^3.0.3",
@@ -87,7 +86,8 @@
     "uuid": "^11.0.3"
   },
   "peerDependencies": {
-    "react-native-avoid-softinput": "^4.0.1"
+    "react-native-avoid-softinput": "^4.0.1",
+    "expo-file-system": "~19.0.21"
   },
   "peerDependenciesMeta": {
     "react-native-avoid-softinput": {

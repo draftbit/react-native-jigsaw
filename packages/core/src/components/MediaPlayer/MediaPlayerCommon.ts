@@ -1,5 +1,4 @@
 import { AVPlaybackSource, AVPlaybackStatus } from "expo-av";
-import type { File as FileType, Paths as PathsType } from "expo-file-system";
 import { v4 as uuid } from "uuid";
 import { Platform } from "react-native";
 import React from "react";
@@ -65,9 +64,7 @@ export async function normalizeBase64Source(
   source: AVPlaybackSource,
   type: "audio" | "video"
 ): Promise<AVPlaybackSource> {
-  const expoFs = require("expo-file-system");
-  const File: typeof FileType = expoFs.File;
-  const Paths: typeof PathsType = expoFs.Paths;
+  const { File, Paths } = await import("expo-file-system");
 
   const uri: string | undefined = (source as any)?.uri;
 

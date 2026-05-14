@@ -31,7 +31,8 @@ export const contentContainerStyleNames = [
 ];
 
 export default function useSplitContentContainerStyles(
-  originalStyle: StyleProp<ViewStyle>
+  originalStyle: StyleProp<ViewStyle>,
+  options: { isFlashList: boolean }
 ) {
   return useDeepCompareMemo<Styles>(() => {
     const flattenedStyle = StyleSheet.flatten(originalStyle);
@@ -46,12 +47,14 @@ export default function useSplitContentContainerStyles(
 
     let style = omit(flattenedStyle, contentContainerStyleNames);
 
-    // ScrollView's implementation defaults flexGrow to 1, which prevents the ability to set a static size or use a flex larger than 1
-    // See: https://github.com/facebook/react-native/issues/3422
-    if (style.flex === undefined) {
-      style = { flexGrow: 0, ...style };
-    } else if (style.flexGrow === undefined) {
-      style = { flexGrow: style.flex, ...style };
+    if (!options.isFlashList) {
+      // ScrollView's implementation defaults flexGrow to 1, which prevents the ability to set a static size or use a flex larger than 1
+      // See: https://github.com/facebook/react-native/issues/3422
+      if (style.flex === undefined) {
+        style = { flexGrow: 0, ...style };
+      } else if (style.flexGrow === undefined) {
+        style = { flexGrow: style.flex, ...style };
+      }
     }
 
     return {
@@ -64,8 +67,10 @@ export default function useSplitContentContainerStyles(
 export function useFlashListSplitContentContainerStyles(
   originalStyle: StyleProp<ViewStyle>
 ): Styles {
-  const { style, contentContainerStyle } =
-    useSplitContentContainerStyles(originalStyle);
+  const { style, contentContainerStyle } = useSplitContentContainerStyles(
+    originalStyle,
+    { isFlashList: true }
+  );
 
   // FlashList only supports a subset of contentContainerStyles
   // See https://shopify.github.io/flash-list/docs/usage/#contentcontainerstyle

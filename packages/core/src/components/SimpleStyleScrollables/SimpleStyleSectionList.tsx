@@ -24,8 +24,10 @@ const SimpleStyleSectionList = React.forwardRef(
     >,
     ref: React.Ref<FlatListComponent | typeof FlashList<any>>
   ) => {
-    const { style, contentContainerStyle } =
-      useSplitContentContainerStyles(styleProp);
+    const { style, contentContainerStyle } = useSplitContentContainerStyles(
+      styleProp,
+      { isFlashList: rest.listComponent === "FlashList" }
+    );
 
     return (
       //@ts-ignore contentContainerStyle has different types for FlashList and FlatList implmentations and confuses TS

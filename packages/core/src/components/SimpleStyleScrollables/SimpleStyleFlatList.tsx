@@ -17,8 +17,10 @@ const SimpleStyleFlatList = React.forwardRef(
     }: Omit<FlatListProps<T>, "contentContainerStyle">,
     ref: React.Ref<FlatListComponent>
   ) => {
-    const { style, contentContainerStyle } =
-      useSplitContentContainerStyles(styleProp);
+    const { style, contentContainerStyle } = useSplitContentContainerStyles(
+      styleProp,
+      { isFlashList: false }
+    );
 
     return (
       <FlatList

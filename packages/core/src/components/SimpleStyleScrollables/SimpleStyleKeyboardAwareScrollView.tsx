@@ -15,8 +15,10 @@ const SimpleStyleKeyboardAwareScrollView = React.forwardRef(
     }: Omit<KeyboardAwareScrollViewProps, "contentContainerStyle">,
     ref: React.Ref<KeyboardAwareScrollView>
   ) => {
-    const { style, contentContainerStyle } =
-      useSplitContentContainerStyles(styleProp);
+    const { style, contentContainerStyle } = useSplitContentContainerStyles(
+      styleProp,
+      { isFlashList: false }
+    );
 
     return (
       <KeyboardAwareScrollView

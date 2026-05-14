@@ -17,8 +17,10 @@ const SimpleStyleScrollView = React.forwardRef(
     { style: styleProp, onRefresh, refreshing = false, ...rest }: Props,
     ref: React.Ref<ScrollView>
   ) => {
-    const { style, contentContainerStyle } =
-      useSplitContentContainerStyles(styleProp);
+    const { style, contentContainerStyle } = useSplitContentContainerStyles(
+      styleProp,
+      { isFlashList: false }
+    );
 
     return (
       <ScrollView

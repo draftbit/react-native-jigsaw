@@ -1,10 +1,11 @@
 import * as React from "react";
-import type { Playback } from "expo-av/src/AV";
+import type { AudioPlayer } from "expo-audio";
+import type { VideoPlayer } from "expo-video";
 
 import type { MediaPlayerRef } from "./MediaPlayerCommon";
 
 interface MediaPlaybackWrapperProps {
-  media?: Playback;
+  player?: AudioPlayer | VideoPlayer;
   isPlaying?: boolean;
   onTogglePlayback?: () => void;
 }
@@ -15,41 +16,37 @@ interface MediaPlaybackWrapperProps {
 const MediaPlaybackWrapper = React.forwardRef<
   MediaPlayerRef,
   React.PropsWithChildren<MediaPlaybackWrapperProps>
->(({ media, isPlaying, onTogglePlayback, children }, ref) => {
-  const togglePlayback = React.useCallback(async () => {
+>(({ player, isPlaying, onTogglePlayback, children }, ref) => {
+  const togglePlayback = React.useCallback(() => {
     onTogglePlayback?.();
 
     if (isPlaying) {
-      await media?.pauseAsync();
+      player?.pause();
     } else {
-      await media?.playAsync();
+      player?.play();
     }
-  }, [media, isPlaying, onTogglePlayback]);
+  }, [isPlaying, onTogglePlayback]);
 
-  const pause = React.useCallback(async () => {
+  const pause = React.useCallback(() => {
     onTogglePlayback?.();
-    await media?.pauseAsync();
-  }, [media, onTogglePlayback]);
+    player?.pause();
+  }, [player, onTogglePlayback]);
 
-  const play = React.useCallback(async () => {
+  const play = React.useCallback(() => {
     onTogglePlayback?.();
-    await media?.playAsync();
-  }, [media, onTogglePlayback]);
+    player?.play();
+  }, [player, onTogglePlayback]);
 
   const seekToPosition = React.useCallback(
-    async (positionMillis: number) => {
-      await media?.setPositionAsync(positionMillis);
+    (positionMillis: number) => {
+      if (typeof (player as any)?.seekTo === "function") {
+        (player as AudioPlayer).seekTo(positionMillis / 1000);
+      } else if (player) {
+        player.currentTime = positionMillis / 1000;
+      }
     },
-    [media]
+    [player]
   );
-
-  React.useEffect(() => {
-    return media
-      ? () => {
-          media.unloadAsync();
-        }
-      : undefined;
-  }, [media]);
 
   React.useImperativeHandle(
     ref,

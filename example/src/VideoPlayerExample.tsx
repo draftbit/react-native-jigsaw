@@ -19,7 +19,7 @@ const VideoPlayerExample: React.FC = () => {
           resizeMode="cover"
         />
       </Section>
-      <Section style={{}} title="VideoPlayer (Silent mode)">
+      <Section style={{}} title="VideoPlayer (plays silent mode, low volume)">
         <VideoPlayer
           style={{ width: 350, height: 250 }}
           source={{
@@ -27,6 +27,7 @@ const VideoPlayerExample: React.FC = () => {
           }}
           useNativeControls
           resizeMode="cover"
+          volume={0.3}
           playsInSilentModeIOS={true}
         />
       </Section>
@@ -35,11 +36,11 @@ const VideoPlayerExample: React.FC = () => {
           ref={videoPlayerRef}
           style={{ width: 350, height: 250 }}
           source={{
-            uri: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+            uri: "https://ia601903.us.archive.org/32/items/BigBuckBunny_328/BigBuckBunny_512kb.mp4",
           }}
           useNativeControls={false}
           posterSource={{
-            uri: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+            uri: "https://upload.wikimedia.org/wikipedia/commons/7/70/Big.Buck.Bunny.-.Opening.Screen.png",
           }}
           usePoster
           onPlaybackStatusUpdate={(status) => setPlayerState(status)}

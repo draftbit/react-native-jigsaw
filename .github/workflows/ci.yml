@@ -11,6 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: NPM Publish
     steps:
       - uses: actions/checkout@v3
         with:

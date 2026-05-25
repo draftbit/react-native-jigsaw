@@ -50,7 +50,6 @@ jobs:
             --ignore-scripts \
             --canary \
             --preid $(git rev-parse --short=6 HEAD) \
-            --no-verify-access \
             --yes \
 
       - name: Release packages (master)
@@ -63,7 +62,6 @@ jobs:
           yarn lerna publish from-package \
             --ignore-scripts \
             --yes \
-            --no-verify-access
 
       - name: Release packages (54)
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/54'
@@ -71,7 +69,6 @@ jobs:
           yarn lerna publish from-package \
             --ignore-scripts \
             --yes \
-            --no-verify-access
 
       - name: Release to Snack (PRs)
         if: github.event_name == 'pull_request'

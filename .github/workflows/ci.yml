@@ -43,6 +43,8 @@ jobs:
 
       - name: Release next packages
         if: github.event_name == 'pull_request'
+        env:
+          NPM_CONFIG_PROVENANCE: "true"
         run: |
           # Publishes pre-release versions of any changed packages
           ./node_modules/.bin/lerna publish \
@@ -54,6 +56,8 @@ jobs:
 
       - name: Release packages (master)
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+        env:
+          NPM_CONFIG_PROVENANCE: "true"
         run: |
           # Only publishes when finding a new `lerna version` was pushed to
           # the branch. But for purposes of _this_ action, that means master.
@@ -65,6 +69,8 @@ jobs:
 
       - name: Release packages (54)
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/54'
+        env:
+          NPM_CONFIG_PROVENANCE: "true"
         run: |
           ./node_modules/.bin/lerna publish from-package \
             --ignore-scripts \

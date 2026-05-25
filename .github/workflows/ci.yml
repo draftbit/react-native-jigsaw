@@ -50,6 +50,7 @@ jobs:
             --ignore-scripts \
             --canary \
             --preid $(git rev-parse --short=6 HEAD) \
+            --no-verify-access \
             --yes \
 
       - name: Release packages (master)

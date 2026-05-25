@@ -8,6 +8,10 @@ on:
   pull_request:
     types: [assigned, opened, synchronize, reopened]
 
+permissions:
+  id-token: write # Required for OIDC with NPM
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -45,7 +45,7 @@ jobs:
         if: github.event_name == 'pull_request'
         run: |
           # Publishes pre-release versions of any changed packages
-          yarn lerna publish \
+          ./node_modules/.bin/lerna publish \
             --dist-tag next \
             --ignore-scripts \
             --canary \
@@ -59,14 +59,14 @@ jobs:
           # the branch. But for purposes of _this_ action, that means master.
           # You have to manually run lerna version locally and get that PR
           # merged before this does anything.
-          yarn lerna publish from-package \
+          ./node_modules/.bin/lerna publish from-package \
             --ignore-scripts \
             --yes \
 
       - name: Release packages (54)
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/54'
         run: |
-          yarn lerna publish from-package \
+          ./node_modules/.bin/lerna publish from-package \
             --ignore-scripts \
             --yes \
 

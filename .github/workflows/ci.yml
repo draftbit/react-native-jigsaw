@@ -17,15 +17,14 @@ jobs:
     runs-on: ubuntu-latest
     environment: NPM Publish
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 2
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v6
         with:
-          node-version: 20
-          cache: "yarn"
-          registry-url: https://registry.npmjs.org/
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install Dependencies
         run: yarn install
@@ -44,8 +43,6 @@ jobs:
 
       - name: Release next packages
         if: github.event_name == 'pull_request'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         run: |
           # Publishes pre-release versions of any changed packages
           yarn lerna publish \
@@ -57,8 +54,6 @@ jobs:
 
       - name: Release packages (master)
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         run: |
           # Only publishes when finding a new `lerna version` was pushed to
           # the branch. But for purposes of _this_ action, that means master.
@@ -71,8 +66,6 @@ jobs:
 
       - name: Release packages (54)
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/54'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.JIGSAW_AUTH_TOKEN }}
         run: |
           yarn lerna publish from-package \
             --ignore-scripts \

@@ -7,6 +7,7 @@
   "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
   "publishConfig": {
     "access": "public",
+    "provenance": true,
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {

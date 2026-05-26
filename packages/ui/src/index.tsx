@@ -81,7 +81,6 @@ export {
   ExpoImage,
 } from "@draftbit/core";
 
-//
 export {
   DefaultTheme,
   withTheme,

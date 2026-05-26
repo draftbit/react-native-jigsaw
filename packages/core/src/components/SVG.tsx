@@ -6,13 +6,21 @@ import Config from "./Config";
 type SVGComponentProps = {
   source: string;
   style?: StyleProp<ImageStyle>;
+  className?: string;
 };
 
 const SVG: React.FC<React.PropsWithChildren<SVGComponentProps>> = ({
   source = Config.placeholderSvgURL,
   style,
+  className,
 }) => {
-  return <Image style={style} source={{ uri: source }} />;
+  return (
+    <Image
+      style={style}
+      source={{ uri: source }}
+      {...(className ? ({ className } as any) : {})}
+    />
+  );
 };
 
 export default SVG;

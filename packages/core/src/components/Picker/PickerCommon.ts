@@ -12,6 +12,7 @@ export interface PickerOption {
 }
 
 export interface PickerInputContainerProps extends IconSlot {
+  className?: string;
   error?: boolean;
   placeholder?: string;
   disabled?: boolean;

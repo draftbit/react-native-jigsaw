@@ -34,12 +34,12 @@ module.exports = [
   },
   {
     ignores: [
+      "**/*.{js,jsx,cjs,mjs}",
       "scripts",
       "example/web-build",
       "node_modules/",
       "**/lib/**",
       "**/__generated__/**",
-      "jest-setup.js",
     ],
   },
   {

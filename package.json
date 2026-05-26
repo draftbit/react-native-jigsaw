@@ -17,7 +17,7 @@
     "example:ios": "yarn example start -c --ios",
     "example:android": "yarn example start -c --android",
     "format": "prettier --write .",
-    "lint": "eslint \"**/*.{ts,tsx}\"",
+    "lint": "eslint .",
     "build": "lerna run build",
     "test": "lerna run test --stream -- --passWithNoTests",
     "release": "lerna publish",

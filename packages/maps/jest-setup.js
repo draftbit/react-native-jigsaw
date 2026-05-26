@@ -19,18 +19,45 @@ jest.mock("expo-asset", () => {
   return { ...actual, Asset, getManifestBaseUrl: () => "" };
 });
 
-jest.mock("expo-av", () => {
-  return {
-    Audio: {
-      setAudioModeAsync: jest.fn(),
-    },
-    Sound: {
-      onPlaybackStatusUpdate: jest.fn(),
-      createAsync: jest.fn(),
-    },
-  };
-});
-
 jest.mock("@react-native-async-storage/async-storage", () =>
   require("@react-native-async-storage/async-storage/jest/async-storage-mock")
 );
+
+jest.mock("expo-audio", () => ({
+  useAudioPlayer: jest.fn(() => ({
+    loop: false,
+    volume: 1.0,
+    playing: false,
+    paused: true,
+    muted: false,
+    isLoaded: false,
+    isBuffering: false,
+    currentTime: 0,
+    duration: 0,
+    play: jest.fn(),
+    pause: jest.fn(),
+    seekTo: jest.fn(),
+    replace: jest.fn(),
+    addListener: jest.fn(() => ({ remove: jest.fn() })),
+  })),
+  setAudioModeAsync: jest.fn(() => Promise.resolve()),
+}));
+
+jest.mock("expo-video", () => ({
+  useVideoPlayer: jest.fn(() => ({
+    loop: false,
+    muted: false,
+    volume: 1.0,
+    playbackRate: 1.0,
+    playing: false,
+    status: "idle",
+    currentTime: 0,
+    duration: 0,
+    bufferedPosition: 0,
+    play: jest.fn(),
+    pause: jest.fn(),
+    replace: jest.fn(),
+    addListener: jest.fn(() => ({ remove: jest.fn() })),
+  })),
+  VideoView: "VideoView",
+}));

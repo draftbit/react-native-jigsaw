@@ -30,3 +30,42 @@ jest.mock("expo-font", () => ({
   isLoaded: jest.fn(() => true),
   isLoading: jest.fn(() => false),
 }));
+
+jest.mock("expo-audio", () => ({
+  useAudioPlayer: jest.fn(() => ({
+    loop: false,
+    volume: 1.0,
+    playing: false,
+    paused: true,
+    muted: false,
+    isLoaded: false,
+    isBuffering: false,
+    currentTime: 0,
+    duration: 0,
+    play: jest.fn(),
+    pause: jest.fn(),
+    seekTo: jest.fn(),
+    replace: jest.fn(),
+    addListener: jest.fn(() => ({ remove: jest.fn() })),
+  })),
+  setAudioModeAsync: jest.fn(() => Promise.resolve()),
+}));
+
+jest.mock("expo-video", () => ({
+  useVideoPlayer: jest.fn(() => ({
+    loop: false,
+    muted: false,
+    volume: 1.0,
+    playbackRate: 1.0,
+    playing: false,
+    status: "idle",
+    currentTime: 0,
+    duration: 0,
+    bufferedPosition: 0,
+    play: jest.fn(),
+    pause: jest.fn(),
+    replace: jest.fn(),
+    addListener: jest.fn(() => ({ remove: jest.fn() })),
+  })),
+  VideoView: "VideoView",
+}));

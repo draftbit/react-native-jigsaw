@@ -253,7 +253,8 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
       >
         <View
           style={[style, styles.container]}
-          {...(className ? ({ className } as any) : {})}
+          // @ts-ignore
+          className={className}
         >
           <VideoPlayerComponent
             ref={videoPlayerRef}

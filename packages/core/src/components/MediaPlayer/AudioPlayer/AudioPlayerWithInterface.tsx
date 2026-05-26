@@ -128,7 +128,8 @@ const AudioPlayerWithInterface = React.forwardRef<
         />
         <View
           testID="audio-player-interface"
-          {...(className ? ({ className } as any) : {})}
+          // @ts-ignore
+          className={className}
           style={[
             {
               backgroundColor: theme.colors.background.base,

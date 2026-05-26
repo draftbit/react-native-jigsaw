@@ -18,7 +18,8 @@ const SVG: React.FC<React.PropsWithChildren<SVGComponentProps>> = ({
   return (
     <View
       style={style as StyleProp<ViewStyle>}
-      {...(className ? ({ className } as any) : {})}
+      // @ts-ignore
+      className={className}
     >
       <SvgUri width="100%" height="100%" uri={source} />
     </View>

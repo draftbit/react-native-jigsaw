@@ -44,7 +44,8 @@ const TableCell: React.FC<React.PropsWithChildren<Props>> = ({
   return (
     <ContainerComponent
       onPress={onPress}
-      {...(className ? ({ className } as any) : {})}
+      // @ts-ignore
+      className={className}
       style={[
         styles.cellContainer,
         borderViewStyle,

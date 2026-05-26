@@ -148,7 +148,9 @@ const DeckSwiper = React.forwardRef<DeckSwiperRef, DeckSwiperProps<any>>(
      */
 
     return (
-      <View {...(className ? ({ className } as any) : {})}>
+      <View // @ts-ignore
+        className={className}
+      >
         <View style={styles.containerHeightFiller}>{renderFirstCard()}</View>
         <DeckSwiperComponent
           ref={deckSwiperRef}

@@ -102,7 +102,8 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
         },
         style,
       ]}
-      {...(className ? ({ className } as any) : {})}
+      // @ts-ignore
+      className={className}
     >
       <Svg testID={testID ?? "linear-progress-component"} style={{ flex: 1 }}>
         {showTrack && (

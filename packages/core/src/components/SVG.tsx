@@ -18,7 +18,8 @@ const SVG: React.FC<React.PropsWithChildren<SVGComponentProps>> = ({
     <Image
       style={style}
       source={{ uri: source }}
-      {...(className ? ({ className } as any) : {})}
+      // @ts-ignore
+      className={className}
     />
   );
 };

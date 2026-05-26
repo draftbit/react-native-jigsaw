@@ -63,7 +63,8 @@ const TableRow: React.FC<React.PropsWithChildren<Props>> = ({
     <TableStyleContext.Provider value={contextValue}>
       <ContainerComponent
         onPress={onPress}
-        {...(className ? ({ className } as any) : {})}
+        // @ts-ignore
+        className={className}
         style={[
           borderViewStyle,
           isTableHeader

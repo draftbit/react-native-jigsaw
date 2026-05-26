@@ -74,7 +74,8 @@ const PickerInputContainer: React.FC<
     <View
       testID={testID}
       style={[containerStyle, { zIndex }]}
-      {...(className ? ({ className } as any) : {})}
+      // @ts-ignore
+      className={className}
     >
       <TextField
         Icon={Icon}

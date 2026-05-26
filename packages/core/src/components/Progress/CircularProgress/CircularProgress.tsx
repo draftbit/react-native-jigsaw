@@ -129,7 +129,8 @@ export const CircularProgress: React.FC<
         },
         style,
       ]}
-      {...(className ? ({ className } as any) : {})}
+      // @ts-ignore
+      className={className}
     >
       <Svg testID={testID ?? "circular-progress-component"} style={{ flex: 1 }}>
         {showTrack && (

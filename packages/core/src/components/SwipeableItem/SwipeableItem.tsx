@@ -234,7 +234,8 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
         setComponentWidth(event.nativeEvent.layout.width);
       }}
       style={[styles.parentContainer, parentContainerStyles]}
-      {...(className ? ({ className } as any) : {})}
+      // @ts-ignore
+      className={className}
     >
       {/*@ts-ignore*/}
       <SwipeRow

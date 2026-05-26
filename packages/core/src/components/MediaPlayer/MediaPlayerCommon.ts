@@ -1,4 +1,5 @@
-import { AVPlaybackSource, AVPlaybackStatus } from "expo-av";
+import { AudioSource } from "expo-audio";
+import { VideoSource } from "expo-video";
 import { v4 as uuid } from "uuid";
 import { Platform } from "react-native";
 import React from "react";
@@ -24,34 +25,7 @@ export interface MediaPlayerRef {
 export interface MediaPlayerProps {
   onPlaybackStatusUpdate?: (status: MediaPlayerStatus) => void;
   onPlaybackFinish?: () => void;
-  source: AVPlaybackSource;
-}
-
-export function mapToMediaPlayerStatus(
-  status: AVPlaybackStatus
-): MediaPlayerStatus {
-  if (status.isLoaded) {
-    return {
-      isPlaying: status.isPlaying,
-      isLoading: false,
-      isBuffering: status.isBuffering,
-      currentPositionMillis: status.positionMillis || 0,
-      durationMillis: status.durationMillis || 0,
-      bufferedDurationMillis: status.playableDurationMillis || 0,
-      isError: false,
-    };
-  }
-
-  return {
-    isPlaying: false,
-    isLoading: false,
-    isBuffering: false,
-    currentPositionMillis: 0,
-    durationMillis: 0,
-    bufferedDurationMillis: 0,
-    isError: true,
-    error: status.error,
-  };
+  source: AudioSource | VideoSource;
 }
 
 const URL_REGEX =
@@ -60,14 +34,14 @@ const URL_REGEX =
 /**
  * Base64 strings are not playable on iOS and needs to be saved to a file before playing
  */
-export async function normalizeBase64Source(
-  source: AVPlaybackSource,
+export function normalizeBase64Source(
+  source: AudioSource | VideoSource,
   type: "audio" | "video"
-): Promise<AVPlaybackSource> {
+): AudioSource | VideoSource {
   const uri: string | undefined = (source as any)?.uri;
 
   if (Platform.OS === "ios" && uri && !uri.match(URL_REGEX)) {
-    const { File, Paths } = await import("expo-file-system");
+    const { File, Paths } = require("expo-file-system");
 
     const defaultMimeType = type === "audio" ? "wav" : "mp4";
     const mimeType = uri.startsWith(`data:${type}/`)
@@ -100,7 +74,7 @@ function sourceDeepCompareEquals(a: any, b: any) {
   return a === b;
 }
 
-function useSourceDeepCompareMemoize(value: any) {
+export function useSourceDeepCompareMemoize(value: any) {
   const ref = React.useRef<any>(undefined);
   if (!sourceDeepCompareEquals(value, ref.current)) {
     ref.current = value;

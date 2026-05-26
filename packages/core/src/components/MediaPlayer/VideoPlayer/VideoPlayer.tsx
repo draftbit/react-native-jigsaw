@@ -1,51 +1,55 @@
 import React from "react";
-import { ImageResizeMode, Platform } from "react-native";
 import {
-  Video as VideoPlayerComponent,
-  VideoProps as ExpoVideoProps,
-  ResizeMode as ExpoResizeMode,
-  AVPlaybackStatus,
-  VideoFullscreenUpdate,
-  AVPlaybackSource,
-  Audio,
-} from "expo-av";
+  Image,
+  ImageProps,
+  ImageResizeMode,
+  StyleSheet,
+  View,
+} from "react-native";
+import {
+  VideoView as VideoPlayerComponent,
+  VideoViewProps as ExpoVideoProps,
+  VideoContentFit,
+  useVideoPlayer,
+  TimeUpdateEventPayload,
+  VideoPlayer as VideoPlayerType,
+  VideoSource,
+} from "expo-video";
+import { setAudioModeAsync } from "expo-audio";
 import { extractSizeStyles } from "../../../utilities";
 import MediaPlaybackWrapper from "../MediaPlaybackWrapper";
-import type { Playback } from "expo-av/src/AV";
 import {
-  mapToMediaPlayerStatus,
   normalizeBase64Source,
   useSourceDeepCompareEffect,
+  useSourceDeepCompareMemoize,
 } from "../MediaPlayerCommon";
-import type { MediaPlayerRef, MediaPlayerProps } from "../MediaPlayerCommon";
+import type {
+  MediaPlayerRef,
+  MediaPlayerProps,
+  MediaPlayerStatus,
+} from "../MediaPlayerCommon";
 
 type ResizeMode = "contain" | "cover" | "stretch";
-type ExpoVideoPropsOmitted = Omit<
-  ExpoVideoProps,
-  "videoStyle" | "resizeMode" | "onPlaybackStatusUpdate" | "source"
->;
+type ExpoVideoPropsOmitted = Omit<ExpoVideoProps, "player" | "nativeControls">;
 
 interface VideoPlayerProps extends ExpoVideoPropsOmitted, MediaPlayerProps {
   resizeMode?: ResizeMode;
   posterResizeMode?: ImageResizeMode;
+  posterSource?: ImageProps["source"];
+  usePoster?: boolean;
   playsInSilentModeIOS?: boolean;
+  isMuted?: boolean;
+  useNativeControls?: boolean;
+  shouldPlay?: boolean;
+  isLooping?: boolean;
+  positionMillis?: number;
+  rate?: number;
+  volume?: number;
 }
 
 export interface VideoPlayerRef extends MediaPlayerRef {
   toggleFullscreen: () => void;
 }
-
-// Setting playsInSilentModeIOS prop directly on Video component is unreliable,
-// so we need to set the audio mode globally before playing.
-// See:
-// https://github.com/expo/expo/issues/7485
-// https://stackoverflow.com/questions/57371543/how-to-fix-video-play-but-dont-have-sound-on-ios-with-expo
-const triggerAudio = async (ref: React.RefObject<MediaPlayerRef | null>) => {
-  if (ref && ref?.current && Platform.OS === "ios") {
-    await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
-    ref.current.play();
-  }
-};
 
 const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
   (
@@ -53,83 +57,173 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
       style,
       resizeMode = "contain",
       posterResizeMode = "cover",
+      posterSource,
+      usePoster = false,
       onPlaybackStatusUpdate: onPlaybackStatusUpdateProp,
       onPlaybackFinish,
       source,
       playsInSilentModeIOS = false,
+      isMuted = false,
+      useNativeControls = true,
+      shouldPlay = false,
+      isLooping = false,
+      positionMillis,
+      allowsFullscreen = true,
+      rate = 1,
+      volume = 1,
       ...rest
     },
     ref
   ) => {
-    const [videoMediaObject, setVideoMediaObject] =
-      React.useState<VideoPlayerComponent | null>();
+    const stableSource = useSourceDeepCompareMemoize(
+      normalizeBase64Source(source, "video")
+    );
+
+    const player = useVideoPlayer(stableSource, (p) => {
+      p.loop = isLooping;
+      p.muted = isMuted;
+      p.volume = volume;
+      p.playbackRate = rate;
+    });
+
+    const videoPlayerRef = React.useRef<VideoPlayerComponent>(null);
     const [isPlaying, setIsPlaying] = React.useState(false);
     const [isFullscreen, setIsFullscreen] = React.useState(false);
-    const [currentSource, setCurrentSource] =
-      React.useState<AVPlaybackSource>();
+    const [showPoster, setShowPoster] = React.useState(
+      usePoster && !!posterSource
+    );
+
     const mediaPlaybackWrapperRef = React.useRef<MediaPlayerRef>(null);
 
     const sizeStyles = extractSizeStyles(style);
 
-    let mappedResizeMode;
+    React.useEffect(() => {
+      player.muted = isMuted;
+    }, [player, isMuted]);
+
+    React.useEffect(() => {
+      player.loop = isLooping;
+    }, [player, isLooping]);
+
+    React.useEffect(() => {
+      player.volume = volume;
+    }, [player, volume]);
+
+    React.useEffect(() => {
+      player.playbackRate = rate;
+    }, [player, rate]);
+
+    // Refs so statusChange can read latest shouldPlay/positionMillis
+    const shouldPlayRef = React.useRef(shouldPlay);
+    const positionMillisRef = React.useRef(positionMillis);
+    shouldPlayRef.current = shouldPlay;
+    positionMillisRef.current = positionMillis;
+
+    const hasAppliedInitialState = React.useRef(false);
+
+    React.useEffect(() => {
+      const timeUpdateSub = player.addListener("timeUpdate", (status) => {
+        onPlaybackStatusUpdateProp?.(mapToMediaPlayerStatus(status, player));
+      });
+
+      const playingChangeSub = player.addListener(
+        "playingChange",
+        ({ isPlaying: playing }) => {
+          setIsPlaying(playing);
+          onPlaybackStatusUpdateProp?.(mapPlayerToMediaPlayerStatus(player));
+        }
+      );
+
+      const playToEndSub = player.addListener("playToEnd", () => {
+        onPlaybackFinish?.();
+      });
+
+      const statusChangeSub = player.addListener(
+        "statusChange",
+        ({ status, error }) => {
+          if (status === "readyToPlay") {
+            setShowPoster(false);
+            if (!hasAppliedInitialState.current) {
+              hasAppliedInitialState.current = true;
+              if (positionMillisRef.current) {
+                player.currentTime = positionMillisRef.current / 1000;
+              }
+              if (shouldPlayRef.current) {
+                player.play();
+              }
+            }
+          }
+          const mappedStatus = mapPlayerToMediaPlayerStatus(player);
+          onPlaybackStatusUpdateProp?.(
+            status === "error" && error
+              ? { ...mappedStatus, isError: true, error: error.message }
+              : mappedStatus
+          );
+        }
+      );
+
+      return () => {
+        timeUpdateSub.remove();
+        playingChangeSub.remove();
+        playToEndSub.remove();
+        statusChangeSub.remove();
+      };
+    }, []);
+
+    // Replace video source when it changes (deep comparison on URI to avoid unnecessary reloads)
+    const isFirstSourceRender = React.useRef(true);
+    useSourceDeepCompareEffect(() => {
+      if (isFirstSourceRender.current) {
+        isFirstSourceRender.current = false;
+        return;
+      }
+      hasAppliedInitialState.current = false;
+      player.replace(normalizeBase64Source(source, "video") as VideoSource);
+    }, [source]);
+
+    let mappedVideoContentFit: VideoContentFit;
     switch (resizeMode) {
       case "contain":
-        mappedResizeMode = ExpoResizeMode.CONTAIN;
+        mappedVideoContentFit = "contain";
         break;
       case "cover":
-        mappedResizeMode = ExpoResizeMode.COVER;
+        mappedVideoContentFit = "cover";
         break;
       case "stretch":
-        mappedResizeMode = ExpoResizeMode.STRETCH;
+        mappedVideoContentFit = "fill";
         break;
     }
 
-    const onPlaybackStatusUpdate = (status: AVPlaybackStatus) => {
-      const mappedStatus = mapToMediaPlayerStatus(status);
-      onPlaybackStatusUpdateProp?.(mappedStatus);
-
-      if (status.isLoaded) {
-        if (status.didJustFinish) {
-          onPlaybackFinish?.();
-        }
-        setIsPlaying(status.isPlaying);
-      }
-    };
-
-    const onFullscreenUpdate = (fullscreenUpdate: VideoFullscreenUpdate) => {
-      switch (fullscreenUpdate) {
-        case VideoFullscreenUpdate.PLAYER_DID_PRESENT:
-        case VideoFullscreenUpdate.PLAYER_WILL_PRESENT:
+    const onFullscreenUpdate = (type: "entered" | "exited") => {
+      switch (type) {
+        case "entered":
           setIsFullscreen(true);
           break;
-        case VideoFullscreenUpdate.PLAYER_DID_DISMISS:
-        case VideoFullscreenUpdate.PLAYER_WILL_DISMISS:
+        case "exited":
           setIsFullscreen(false);
           break;
       }
     };
 
     const toggleFullscreen = React.useCallback(async () => {
-      if (isFullscreen) {
-        await videoMediaObject?.dismissFullscreenPlayer();
-      } else {
-        await videoMediaObject?.presentFullscreenPlayer();
+      if (videoPlayerRef) {
+        if (isFullscreen) {
+          await videoPlayerRef.current?.exitFullscreen();
+        } else {
+          await videoPlayerRef.current?.enterFullscreen();
+        }
       }
-    }, [isFullscreen, videoMediaObject]);
+    }, [isFullscreen]);
 
     const updateAudioMode = React.useCallback(async () => {
       try {
-        await Audio.setAudioModeAsync({
-          playsInSilentModeIOS,
+        await setAudioModeAsync({
+          playsInSilentMode: playsInSilentModeIOS,
         });
       } catch (e) {
         console.error("Failed to set audio mode. Error details:", e);
       }
     }, [playsInSilentModeIOS]);
-
-    React.useEffect(() => {
-      if (isPlaying) triggerAudio(mediaPlaybackWrapperRef);
-    }, [mediaPlaybackWrapperRef, isPlaying]);
 
     React.useImperativeHandle(
       ref,
@@ -147,36 +241,69 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
       [toggleFullscreen, isPlaying]
     );
 
-    useSourceDeepCompareEffect(() => {
-      const updateSource = async () => {
-        const finalSource = await normalizeBase64Source(source, "video");
-        setCurrentSource(finalSource);
-      };
-      updateSource();
-    }, [source]);
-
     return (
       <MediaPlaybackWrapper
-        media={videoMediaObject as Playback | undefined}
+        player={player}
         isPlaying={isPlaying}
         ref={mediaPlaybackWrapperRef}
         onTogglePlayback={updateAudioMode}
       >
-        <VideoPlayerComponent
-          // https://docs.expo.dev/versions/latest/sdk/av/#example-video to see why ref is handled this way
-          ref={(component) => setVideoMediaObject(component)}
-          style={style}
-          videoStyle={sizeStyles}
-          resizeMode={mappedResizeMode}
-          posterStyle={[sizeStyles, { resizeMode: posterResizeMode }]}
-          onPlaybackStatusUpdate={onPlaybackStatusUpdate}
-          onFullscreenUpdate={(e) => onFullscreenUpdate(e.fullscreenUpdate)}
-          source={currentSource}
-          {...rest}
-        />
+        <View style={[style, styles.container]}>
+          <VideoPlayerComponent
+            ref={videoPlayerRef}
+            player={player}
+            nativeControls={useNativeControls}
+            style={sizeStyles}
+            contentFit={mappedVideoContentFit}
+            onFullscreenEnter={() => onFullscreenUpdate("entered")}
+            onFullscreenExit={() => onFullscreenUpdate("exited")}
+            allowsFullscreen={allowsFullscreen}
+            {...rest}
+          />
+          {showPoster && posterSource && (
+            <View style={StyleSheet.absoluteFill} pointerEvents="none">
+              <Image
+                source={posterSource}
+                resizeMode={posterResizeMode}
+                style={[StyleSheet.absoluteFill, sizeStyles]}
+              />
+            </View>
+          )}
+        </View>
       </MediaPlaybackWrapper>
     );
   }
 );
+
+const styles = StyleSheet.create({
+  container: {
+    overflow: "hidden",
+  },
+});
+
+function mapPlayerToMediaPlayerStatus(
+  player: VideoPlayerType
+): MediaPlayerStatus {
+  return {
+    isPlaying: player.playing,
+    isLoading: player.status === "loading",
+    isBuffering: player.status === "loading",
+    currentPositionMillis: player.currentTime * 1000,
+    durationMillis: player.duration * 1000,
+    bufferedDurationMillis: player.bufferedPosition * 1000,
+    isError: player.status === "error",
+  };
+}
+
+export function mapToMediaPlayerStatus(
+  status: TimeUpdateEventPayload,
+  player: VideoPlayerType
+): MediaPlayerStatus {
+  return {
+    ...mapPlayerToMediaPlayerStatus(player),
+    currentPositionMillis: status.currentTime * 1000,
+    bufferedDurationMillis: status.bufferedPosition * 1000,
+  };
+}
 
 export default VideoPlayer;

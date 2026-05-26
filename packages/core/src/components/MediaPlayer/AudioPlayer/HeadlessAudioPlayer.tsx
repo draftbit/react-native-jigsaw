@@ -1,17 +1,12 @@
 import * as React from "react";
-import {
-  Audio,
-  AVPlaybackStatus,
-  InterruptionModeIOS,
-  InterruptionModeAndroid,
-} from "expo-av";
+import { useAudioPlayer, setAudioModeAsync, AudioStatus } from "expo-audio";
 import { HeadlessAudioPlayerProps } from "./AudioPlayerCommon";
 import {
-  mapToMediaPlayerStatus,
   normalizeBase64Source,
+  useSourceDeepCompareMemoize,
   useSourceDeepCompareEffect,
 } from "../MediaPlayerCommon";
-import type { MediaPlayerRef } from "../MediaPlayerCommon";
+import type { MediaPlayerRef, MediaPlayerStatus } from "../MediaPlayerCommon";
 import MediaPlaybackWrapper from "../MediaPlaybackWrapper";
 
 /**
@@ -36,38 +31,70 @@ const HeadlessAudioPlayer = React.forwardRef<
     },
     ref
   ) => {
-    const [currentSound, setCurrentSound] = React.useState<Audio.Sound>();
+    const stableSource = useSourceDeepCompareMemoize(
+      normalizeBase64Source(source, "audio")
+    );
+    const player = useAudioPlayer(stableSource);
+
     const [isPlaying, setIsPlaying] = React.useState(false);
 
     React.useEffect(() => {
-      if (
-        currentSound &&
-        typeof currentSound?.setIsLoopingAsync === "function"
-      ) {
-        currentSound.setIsLoopingAsync(isLooping);
-      }
-    }, [currentSound, isLooping]);
+      player.loop = isLooping;
+    }, [player, isLooping]);
 
     React.useEffect(() => {
-      if (currentSound && typeof currentSound?.setVolumeAsync === "function") {
-        currentSound.setVolumeAsync(volume);
+      player.volume = volume;
+    }, [player, volume]);
+
+    // Emit loading state immediately
+    React.useEffect(() => {
+      onPlaybackStatusUpdateProp?.({
+        isPlaying: false,
+        isLoading: true,
+        isBuffering: false,
+        currentPositionMillis: 0,
+        durationMillis: 0,
+        bufferedDurationMillis: 0,
+        isError: false,
+      });
+    }, []);
+
+    React.useEffect(() => {
+      const subscription = player.addListener(
+        "playbackStatusUpdate",
+        (status) => {
+          const mappedStatus = mapToMediaPlayerStatus(status);
+          onPlaybackStatusUpdateProp?.(mappedStatus);
+
+          if (status.isLoaded) {
+            if (status.didJustFinish && !isLooping) {
+              onPlaybackFinish?.();
+            }
+            setIsPlaying(status.playing);
+          }
+        }
+      );
+      return () => subscription.remove();
+    }, []);
+
+    // Replace source when it changes (deep comparison on URI to avoid unnecessary reloads)
+    const isFirstSourceRender = React.useRef(true);
+    useSourceDeepCompareEffect(() => {
+      if (isFirstSourceRender.current) {
+        isFirstSourceRender.current = false;
+        return;
       }
-    }, [currentSound, volume]);
+      player.replace(normalizeBase64Source(source, "audio") as any);
+    }, [source]);
 
     const updateAudioMode = React.useCallback(async () => {
       try {
-        await Audio.setAudioModeAsync({
-          staysActiveInBackground: playsInBackground,
-          interruptionModeIOS:
-            interruptionMode === "lower volume"
-              ? InterruptionModeIOS.DuckOthers
-              : InterruptionModeIOS.DoNotMix,
-          interruptionModeAndroid:
-            interruptionMode === "lower volume"
-              ? InterruptionModeAndroid.DuckOthers
-              : InterruptionModeAndroid.DoNotMix,
-          playsInSilentModeIOS,
-          playThroughEarpieceAndroid,
+        await setAudioModeAsync({
+          shouldPlayInBackground: playsInBackground,
+          interruptionMode:
+            interruptionMode === "lower volume" ? "duckOthers" : "doNotMix",
+          playsInSilentMode: playsInSilentModeIOS,
+          shouldRouteThroughEarpiece: playThroughEarpieceAndroid,
         });
       } catch (e) {
         if ((e as { code?: string })?.code === "E_AUDIO_AUDIOMODE") {
@@ -88,59 +115,44 @@ const HeadlessAudioPlayer = React.forwardRef<
       playThroughEarpieceAndroid,
     ]);
 
-    const onPlaybackStatusUpdate = (status: AVPlaybackStatus) => {
-      const mappedStatus = mapToMediaPlayerStatus(status);
-      onPlaybackStatusUpdateProp?.(mappedStatus);
-
-      if (status.isLoaded) {
-        if (status.didJustFinish) {
-          if (isLooping) {
-            return;
-          }
-          onPlaybackFinish?.();
-        }
-        setIsPlaying(status.isPlaying);
-      }
-    };
-
     const onTogglePlayback = () => {
-      //Has to be called everytime a player is played to reconfigure the global Audio config based on each player's configuration
+      // Has to be called everytime a player is played to reconfigure the global Audio config based on each player's configuration
       updateAudioMode();
     };
-
-    const loadAudio = async () => {
-      onPlaybackStatusUpdateProp?.({
-        isPlaying: false,
-        isLoading: true,
-        isBuffering: false,
-        currentPositionMillis: 0,
-        durationMillis: 0,
-        bufferedDurationMillis: 0,
-        isError: false,
-      });
-
-      const finalSource = await normalizeBase64Source(source, "audio");
-
-      const { sound } = await Audio.Sound.createAsync(finalSource);
-      setCurrentSound(sound);
-      sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
-    };
-
-    useSourceDeepCompareEffect(() => {
-      loadAudio();
-
-      // Ignore dependency of loadAudio
-    }, [source]);
 
     return (
       <MediaPlaybackWrapper
         ref={ref}
         isPlaying={isPlaying}
-        media={currentSound}
+        player={player}
         onTogglePlayback={onTogglePlayback}
       />
     );
   }
 );
+
+export function mapToMediaPlayerStatus(status: AudioStatus): MediaPlayerStatus {
+  if (status.isLoaded) {
+    return {
+      isPlaying: status.playing,
+      isLoading: false,
+      isBuffering: status.isBuffering,
+      currentPositionMillis: status.currentTime * 1000,
+      durationMillis: status.duration * 1000,
+      bufferedDurationMillis: status.duration * 1000,
+      isError: false,
+    };
+  }
+
+  return {
+    isPlaying: false,
+    isLoading: true,
+    isBuffering: false,
+    currentPositionMillis: 0,
+    durationMillis: 0,
+    bufferedDurationMillis: 0,
+    isError: false,
+  };
+}
 
 export default HeadlessAudioPlayer;

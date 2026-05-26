@@ -50,6 +50,7 @@ import {
  */
 
 export interface SwipeableItemProps extends IconSlot {
+  className?: string;
   closeOnPress?: boolean;
   leftOpenValue?: number;
   rightOpenValue?: number;
@@ -74,6 +75,7 @@ type Props = SwipeableItemProps & RightSwipeProps & LeftSwipeProps;
 
 const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
   theme,
+  className,
   style,
   children: childrenProp,
   Icon,
@@ -232,6 +234,7 @@ const SwipeableItem: React.FC<React.PropsWithChildren<Props>> = ({
         setComponentWidth(event.nativeEvent.layout.width);
       }}
       style={[styles.parentContainer, parentContainerStyles]}
+      {...(className ? ({ className } as any) : {})}
     >
       {/*@ts-ignore*/}
       <SwipeRow

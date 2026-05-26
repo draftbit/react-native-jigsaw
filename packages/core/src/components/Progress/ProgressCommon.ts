@@ -25,6 +25,7 @@ export interface BaseProgressProps {
   customDashArray?: string;
   trackCustomDashArray?: string;
   onFullPathWidth?: (width: number) => void;
+  className?: string;
   style?: StyleProp<ViewStyle>;
   theme: ReadTheme;
   testID?: string;

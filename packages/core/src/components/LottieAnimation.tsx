@@ -25,7 +25,7 @@ const LottieAnimation = forwardRef<LottieView, Props>(
     ref
   ) => {
     return (
-      <View style={style}>
+      <View style={style} {...rest}>
         <LottieView
           ref={ref}
           source={source}
@@ -36,7 +36,6 @@ const LottieAnimation = forwardRef<LottieView, Props>(
           // A specific size is required on mobile, but not on web.
           // This ensures consistent behavior across platforms during preview.
           style={{ width: "100%", height: "100%" }}
-          {...rest}
         />
       </View>
     );

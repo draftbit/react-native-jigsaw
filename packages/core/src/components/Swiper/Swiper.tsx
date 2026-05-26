@@ -1,6 +1,6 @@
 import { ReadTheme, withTheme } from "@draftbit/theme";
 import React, { forwardRef, useImperativeHandle } from "react";
-import { View, StyleProp, ViewStyle } from "react-native";
+import { View, StyleProp, ViewStyle, ViewProps } from "react-native";
 import SwiperComponent from "react-native-web-swiper";
 
 export interface SwiperRef {
@@ -9,7 +9,7 @@ export interface SwiperRef {
   swipePrev: () => void;
 }
 
-export interface SwiperProps<T> {
+export interface SwiperProps<T> extends Omit<ViewProps, "style" | "children"> {
   onSwipe?: (index: number) => void;
   onSwipedNext?: (index: number) => void;
   onSwipedPrevious?: (index: number) => void;
@@ -63,6 +63,7 @@ const Swiper = forwardRef<SwiperRef, SwiperProps<any>>(
       minDistanceToCapture,
       style,
       hideDots = false,
+      ...rest
     }: SwiperProps<any>,
     ref
   ) => {
@@ -141,7 +142,7 @@ const Swiper = forwardRef<SwiperRef, SwiperProps<any>>(
     }));
 
     return (
-      <View style={style}>
+      <View style={style} {...rest}>
         {/* @ts-ignore */}
         <SwiperComponent
           ref={swiperRef}

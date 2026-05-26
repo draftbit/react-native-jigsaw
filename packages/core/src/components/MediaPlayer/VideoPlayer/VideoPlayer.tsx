@@ -75,6 +75,9 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
     },
     ref
   ) => {
+    // @ts-ignore
+    const { className, ...videoPlayerProps } = rest;
+
     const stableSource = useSourceDeepCompareMemoize(
       normalizeBase64Source(source, "video")
     );
@@ -248,7 +251,10 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
         ref={mediaPlaybackWrapperRef}
         onTogglePlayback={updateAudioMode}
       >
-        <View style={[style, styles.container]}>
+        <View
+          style={[style, styles.container]}
+          {...(className ? ({ className } as any) : {})}
+        >
           <VideoPlayerComponent
             ref={videoPlayerRef}
             player={player}
@@ -258,7 +264,7 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
             onFullscreenEnter={() => onFullscreenUpdate("entered")}
             onFullscreenExit={() => onFullscreenUpdate("exited")}
             allowsFullscreen={allowsFullscreen}
-            {...rest}
+            {...videoPlayerProps}
           />
           {showPoster && posterSource && (
             <View style={StyleSheet.absoluteFill} pointerEvents="none">

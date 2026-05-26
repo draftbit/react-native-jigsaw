@@ -41,6 +41,7 @@ export const CircularProgress: React.FC<
   trackCustomDashArray,
   onFullPathWidth,
   startPosition = "top",
+  className,
   style,
   testID,
 }) => {
@@ -128,6 +129,7 @@ export const CircularProgress: React.FC<
         },
         style,
       ]}
+      {...(className ? ({ className } as any) : {})}
     >
       <Svg testID={testID ?? "circular-progress-component"} style={{ flex: 1 }}>
         {showTrack && (

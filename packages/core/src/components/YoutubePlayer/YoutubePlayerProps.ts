@@ -5,4 +5,5 @@ export interface YoutubePlayerProps {
   playlist?: string;
   autoplay?: boolean;
   style?: StyleProp<ViewStyle>;
+  className?: string;
 }

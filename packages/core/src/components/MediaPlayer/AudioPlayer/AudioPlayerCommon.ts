@@ -13,6 +13,7 @@ export interface HeadlessAudioPlayerProps extends MediaPlayerProps {
 }
 
 export interface AudioPlayerInterfaceProps {
+  className?: string;
   style?: StyleProp<ViewStyle & TextStyle>;
   thumbColor?: string;
   completedTrackColor?: string;

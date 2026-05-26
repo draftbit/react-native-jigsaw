@@ -25,6 +25,7 @@ export interface DeckSwiperProps<T> {
   keyExtractor?: (item: T) => string;
   renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
   style?: StyleProp<ViewStyle>;
+  className?: string;
 }
 
 const DeckSwiper = React.forwardRef<DeckSwiperRef, DeckSwiperProps<any>>(
@@ -48,6 +49,7 @@ const DeckSwiper = React.forwardRef<DeckSwiperRef, DeckSwiperProps<any>>(
       keyExtractor,
       renderItem,
       style,
+      className,
       children,
     }: React.PropsWithChildren<DeckSwiperProps<T>>,
     ref: React.Ref<DeckSwiperRef>
@@ -146,7 +148,7 @@ const DeckSwiper = React.forwardRef<DeckSwiperRef, DeckSwiperProps<any>>(
      */
 
     return (
-      <View>
+      <View {...(className ? ({ className } as any) : {})}>
         <View style={styles.containerHeightFiller}>{renderFirstCard()}</View>
         <DeckSwiperComponent
           ref={deckSwiperRef}

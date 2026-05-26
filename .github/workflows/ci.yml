@@ -11,6 +11,7 @@ on:
 permissions:
   id-token: write # Required for OIDC with NPM
   contents: read
+  pull-requests: write
 
 jobs:
   build:
@@ -23,10 +24,11 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: "24"
           registry-url: "https://registry.npmjs.org"
 
-      - run: npm install -g npm@latest
+      - name: Update npm
+        run: npm install -g npm@latest
 
       - name: Install Dependencies
         run: yarn install

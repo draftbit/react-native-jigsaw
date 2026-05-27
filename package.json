@@ -4,6 +4,7 @@
   "private": true,
   "description": "Root package.json for workspaces",
   "license": "MIT",
+  "packageManager": "yarn@1.22.22",
   "author": "Draftbit <services@draftbit.com> (https://draftbit.com)",
   "publishConfig": {
     "access": "public",

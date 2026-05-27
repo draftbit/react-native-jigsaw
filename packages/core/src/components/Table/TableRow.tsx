@@ -14,6 +14,7 @@ export interface Props extends TableProps {
   onPress?: () => void;
   isTableHeader?: boolean;
   style?: StyleProp<ViewStyle>;
+  className?: string;
   theme: ReadTheme;
 }
 
@@ -30,6 +31,7 @@ const TableRow: React.FC<React.PropsWithChildren<Props>> = ({
   isTableHeader = false,
   children,
   onPress,
+  className,
   style,
   theme,
 }) => {
@@ -61,6 +63,8 @@ const TableRow: React.FC<React.PropsWithChildren<Props>> = ({
     <TableStyleContext.Provider value={contextValue}>
       <ContainerComponent
         onPress={onPress}
+        // @ts-ignore
+        className={className}
         style={[
           borderViewStyle,
           isTableHeader

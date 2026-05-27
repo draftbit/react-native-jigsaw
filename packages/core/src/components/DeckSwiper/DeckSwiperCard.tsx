@@ -1,16 +1,23 @@
 import React from "react";
-import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import {
+  View,
+  ViewProps,
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import type { ReadTheme } from "@draftbit/theme";
 import { withTheme } from "@draftbit/theme";
 
-export interface DeckSwiperCardProps {
+export interface DeckSwiperCardProps
+  extends Omit<ViewProps, "style" | "children"> {
   style?: StyleProp<ViewStyle>;
   theme: ReadTheme;
 }
 
 const DeckSwiperCard: React.FC<
   React.PropsWithChildren<DeckSwiperCardProps>
-> = ({ style, children, theme }) => (
+> = ({ style, children, theme, ...rest }) => (
   <View
     style={[
       styles.card,
@@ -20,6 +27,7 @@ const DeckSwiperCard: React.FC<
       },
       style,
     ]}
+    {...rest}
   >
     {children}
   </View>

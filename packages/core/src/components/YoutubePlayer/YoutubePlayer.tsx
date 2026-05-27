@@ -9,6 +9,7 @@ const YoutubePlayer: React.FC<YoutubePlayerProps> = ({
   playlist,
   autoplay = false,
   style,
+  className,
 }) => {
   const { viewStyles } = extractStyles(style);
   const defaultVideoId = "nwMUpDESXrI";
@@ -24,7 +25,10 @@ const YoutubePlayer: React.FC<YoutubePlayerProps> = ({
   };
 
   return (
-    <View style={viewStyles}>
+    <View
+      style={viewStyles} // @ts-ignore
+      className={className}
+    >
       <YouTube
         style={{ flex: 1 }}
         videoId={!videoId && !playlist ? defaultVideoId : videoId}

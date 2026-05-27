@@ -37,6 +37,7 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
   customDashArray,
   trackCustomDashArray,
   onFullPathWidth,
+  className,
   style,
   testID,
 }) => {
@@ -101,6 +102,8 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
         },
         style,
       ]}
+      // @ts-ignore
+      className={className}
     >
       <Svg testID={testID ?? "linear-progress-component"} style={{ flex: 1 }}>
         {showTrack && (

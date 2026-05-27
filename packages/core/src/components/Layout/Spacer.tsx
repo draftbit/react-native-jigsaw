@@ -1,7 +1,7 @@
 import React from "react";
-import { View, StyleProp, ViewStyle } from "react-native";
+import { View, ViewProps, StyleProp, ViewStyle } from "react-native";
 
-interface SpacerProps {
+interface SpacerProps extends Omit<ViewProps, "style"> {
   top?: number;
   right?: number;
   left?: number;
@@ -15,6 +15,7 @@ const Spacer: React.FC<SpacerProps> = ({
   bottom = 8,
   left = 8,
   style,
+  ...rest
 }) => {
   return (
     <View
@@ -27,6 +28,7 @@ const Spacer: React.FC<SpacerProps> = ({
           paddingBottom: bottom,
         },
       ]}
+      {...rest}
     />
   );
 };

@@ -33,6 +33,7 @@ const PickerInputContainer: React.FC<
   options = [],
   onPress,
   Icon,
+  className,
   style,
   selectedValue,
   disabled = false,
@@ -70,7 +71,12 @@ const PickerInputContainer: React.FC<
   }
 
   return (
-    <View testID={testID} style={[containerStyle, { zIndex }]}>
+    <View
+      testID={testID}
+      style={[containerStyle, { zIndex }]}
+      // @ts-ignore
+      className={className}
+    >
       <TextField
         Icon={Icon}
         numberOfLines={1}

@@ -21,6 +21,7 @@ const AudioPlayerWithInterface = React.forwardRef<
   (
     {
       style,
+      className,
       thumbColor,
       completedTrackColor,
       remainingTrackColor,
@@ -127,6 +128,8 @@ const AudioPlayerWithInterface = React.forwardRef<
         />
         <View
           testID="audio-player-interface"
+          // @ts-ignore
+          className={className}
           style={[
             {
               backgroundColor: theme.colors.background.base,

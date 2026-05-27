@@ -10,6 +10,7 @@ import Pressable from "../Pressable";
 export interface Props extends TableProps {
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
+  className?: string;
 }
 
 const TableCell: React.FC<React.PropsWithChildren<Props>> = ({
@@ -24,6 +25,7 @@ const TableCell: React.FC<React.PropsWithChildren<Props>> = ({
   cellHorizontalPadding,
   children,
   onPress,
+  className,
   style,
 }) => {
   const parentContextValue = React.useContext(TableStyleContext);
@@ -42,6 +44,8 @@ const TableCell: React.FC<React.PropsWithChildren<Props>> = ({
   return (
     <ContainerComponent
       onPress={onPress}
+      // @ts-ignore
+      className={className}
       style={[
         styles.cellContainer,
         borderViewStyle,

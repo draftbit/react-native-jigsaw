@@ -1,16 +1,21 @@
 import React from "react";
-import { View, StyleProp, ViewStyle, Text } from "react-native";
+import { View, ViewProps, StyleProp, ViewStyle, Text } from "react-native";
 import { withTheme } from "@draftbit/theme";
 import type { ReadTheme } from "@draftbit/theme";
 
-interface SectionHeaderProps {
+interface SectionHeaderProps extends Omit<ViewProps, "style" | "children"> {
   style?: StyleProp<ViewStyle>;
 }
 
 const SectionHeader: React.FC<React.PropsWithChildren<SectionHeaderProps>> = ({
   style,
   children,
-}) => <View style={style}>{children}</View>;
+  ...rest
+}) => (
+  <View style={style} {...rest}>
+    {children}
+  </View>
+);
 
 interface DefaultSectionHeaderProps {
   title: string;

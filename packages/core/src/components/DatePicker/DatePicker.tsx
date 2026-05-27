@@ -444,7 +444,7 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
   return (
     <>
       <Touchable disabled={disabled} onPress={toggleVisibility}>
-        <View pointerEvents="none">
+        <View style={{ pointerEvents: "none" }}>
           <View
             style={StyleSheet.flatten([
               styles.container,
@@ -491,10 +491,10 @@ const DatePicker: React.FC<React.PropsWithChildren<Props>> = ({
                 // Position colored placeholder and gray placeholder on top of each other and crossfade them
                 // This gives the effect of animating the color, but allows us to use native driver
                 <View
-                  pointerEvents="none"
                   style={[
                     StyleSheet.absoluteFill,
                     {
+                      pointerEvents: "none",
                       opacity:
                         // Hide the label in minimized state until we measure its width
                         date || focused ? (labelLayout.measured ? 1 : 0) : 1,

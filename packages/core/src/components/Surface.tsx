@@ -56,10 +56,11 @@ const Surface: React.FC<React.PropsWithChildren<Props>> = ({
   );
 };
 
-const SHADOW_COLOR = "#000";
 const SHADOW_OPACITY = 0.24;
 
-function shadow(elevation: number) {
+function shadow(
+  elevation: number
+): { boxShadow: string } | Record<string, never> {
   if (elevation === 0) {
     return {};
   }
@@ -80,14 +81,7 @@ function shadow(elevation: number) {
   }
 
   return {
-    shadowColor: SHADOW_COLOR,
-    shadowOffset: {
-      width: 0,
-      height,
-    },
-    shadowOpacity: SHADOW_OPACITY,
-    shadowRadius: radius,
-    elevation,
+    boxShadow: `0px ${height}px ${radius}px rgba(0, 0, 0, ${SHADOW_OPACITY})`,
   };
 }
 

@@ -14,11 +14,7 @@ try {
   const avoidSoftInputPackage = require("react-native-avoid-softinput");
   AvoidSoftInput = avoidSoftInputPackage.AvoidSoftInput;
   AvoidSoftInputView = avoidSoftInputPackage.AvoidSoftInputView;
-} catch (_) {
-  console.warn(
-    "AvoidKeyboardView: `react-native-avoid-softinput` is not installed, falling back to `View`. No keyboard avoiding capabilties will be used."
-  );
-}
+} catch (_) {}
 
 /**
  * Requires additional setup: https://mateusz1913.github.io/react-native-avoid-softinput/docs/guides

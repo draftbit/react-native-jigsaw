@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/core",
-  "version": "54.0.3",
+  "version": "54.0.4",
   "description": "Core (non-native) Components",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/src/index.d.ts",
@@ -42,7 +42,7 @@
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
     "@draftbit/react-theme-provider": "^2.1.1",
-    "@draftbit/theme": "54.0.3",
+    "@draftbit/theme": "54.0.4",
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
     "@expo/vector-icons": "^15.0.3",
@@ -57,9 +57,9 @@
     "color": "^4.2.3",
     "date-fns": "^4.1.0",
     "dateformat": "^5.0.3",
-    "expo-video": "~3.0.16",
     "expo-audio": "~1.1.1",
     "expo-image": "~3.0.11",
+    "expo-video": "~3.0.16",
     "lodash.isequal": "^4.5.0",
     "lodash.isnumber": "^3.0.3",
     "lodash.omit": "^4.5.0",

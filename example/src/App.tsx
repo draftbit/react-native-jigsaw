@@ -314,10 +314,10 @@ const AnimatedSplashScreen: React.FC<
       {isAppReady && children}
       {!isSplashAnimationComplete && (
         <Animated.View
-          pointerEvents="none"
           style={[
             StyleSheet.absoluteFill,
             {
+              pointerEvents: "none",
               backgroundColor:
                 Constants?.expoConfig?.splash?.backgroundColor ||
                 "rgba(90, 69, 255, 1)",

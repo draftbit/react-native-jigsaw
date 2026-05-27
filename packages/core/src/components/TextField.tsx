@@ -472,10 +472,10 @@ class TextField extends React.Component<Props, State> {
             // Position colored placeholder and gray placeholder on top of each other and crossfade them
             // This gives the effect of animating the color, but allows us to use native driver
             <View
-              pointerEvents="none"
               style={[
                 StyleSheet.absoluteFill,
                 {
+                  pointerEvents: "none",
                   opacity:
                     // Hide the label in minimized state until we measure its width
                     this.state.value || this.state.focused

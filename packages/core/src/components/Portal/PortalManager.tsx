@@ -44,8 +44,7 @@ export default class PortalManager extends React.PureComponent<object, State> {
         collapsable={
           false /* Need collapsable=false here to clip the elevations, otherwise they appear above sibling components */
         }
-        pointerEvents="box-none"
-        style={StyleSheet.absoluteFill}
+        style={[StyleSheet.absoluteFill, { pointerEvents: "none" }]}
       >
         {children}
       </View>

@@ -268,7 +268,7 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
             {...videoPlayerProps}
           />
           {showPoster && posterSource && (
-            <View style={StyleSheet.absoluteFill} pointerEvents="none">
+            <View style={[StyleSheet.absoluteFill, { pointerEvents: "none" }]}>
               <Image
                 source={posterSource}
                 resizeMode={posterResizeMode}

@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "54.0.5",
+  "version": "54.0.6",
   "description": "Draftbit UI Library",
   "main": "lib/commonjs/index.js",
   "types": "lib/typescript/src/index.d.ts",
@@ -45,9 +45,9 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/core": "54.0.5",
-    "@draftbit/native": "54.0.5",
-    "@draftbit/theme": "54.0.5",
+    "@draftbit/core": "54.0.6",
+    "@draftbit/native": "54.0.6",
+    "@draftbit/theme": "54.0.6",
     "react-native-reanimated": "~4.1.1"
   },
   "jest": {

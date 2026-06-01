@@ -77,8 +77,10 @@ import LoadingIndicatorExample from "./LoadingIndicatorExample";
 import TimerExample from "./TimerExample";
 import LottieAnimationExample from "./LottieAnimationExample";
 import ExpoImageExample from "./ExpoImageExample";
+import NativeWindExample from "./NativeWindExample";
 
 const ROUTES = {
+  NativeWind: NativeWindExample,
   LottieAnimationExample: LottieAnimationExample,
   Timer: TimerExample,
   LoadingIndicator: LoadingIndicatorExample,

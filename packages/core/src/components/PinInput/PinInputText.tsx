@@ -8,6 +8,7 @@ interface CustomPinInputTextProps extends TextProps {
   cursorBlinkDuration?: number;
   cursorText?: string;
   isFocused?: boolean;
+  className?: string;
   theme: ReadTheme;
 }
 

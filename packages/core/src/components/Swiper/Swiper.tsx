@@ -9,7 +9,9 @@ export interface SwiperRef {
   swipePrev: () => void;
 }
 
-export interface SwiperProps<T> extends Omit<ViewProps, "style" | "children"> {
+export interface SwiperProps<T>
+  extends Omit<ViewProps, "style" | "children" | "className"> {
+  className?: string;
   onSwipe?: (index: number) => void;
   onSwipedNext?: (index: number) => void;
   onSwipedPrevious?: (index: number) => void;
@@ -62,6 +64,7 @@ const Swiper = forwardRef<SwiperRef, SwiperProps<any>>(
       minDistanceForAction,
       minDistanceToCapture,
       style,
+      className,
       hideDots = false,
       ...rest
     }: SwiperProps<any>,
@@ -142,7 +145,12 @@ const Swiper = forwardRef<SwiperRef, SwiperProps<any>>(
     }));
 
     return (
-      <View style={style} {...rest}>
+      <View
+        style={style}
+        // @ts-ignore
+        className={className}
+        {...rest}
+      >
         {/* @ts-ignore */}
         <SwiperComponent
           ref={swiperRef}

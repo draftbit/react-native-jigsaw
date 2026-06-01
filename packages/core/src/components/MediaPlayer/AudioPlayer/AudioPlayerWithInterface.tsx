@@ -52,7 +52,7 @@ const AudioPlayerWithInterface = React.forwardRef<
       : newHeadlessAudioPlayerRef;
 
     const {
-      color = theme.colors.text.strong,
+      color,
       fontFamily,
       fontWeight,
       fontSize,
@@ -67,7 +67,7 @@ const AudioPlayerWithInterface = React.forwardRef<
     } = StyleSheet.flatten(style || {});
 
     const textStyles = {
-      color,
+      color: color ?? (className ? undefined : theme.colors.text.strong),
       fontFamily,
       fontWeight,
       fontSize,
@@ -131,7 +131,7 @@ const AudioPlayerWithInterface = React.forwardRef<
           // @ts-ignore
           className={className}
           style={[
-            {
+            !className && {
               backgroundColor: theme.colors.background.base,
               borderColor: theme.colors.border.base,
             },

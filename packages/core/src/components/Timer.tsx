@@ -15,6 +15,7 @@ import {
 
 interface TimerProps extends TextProps {
   style?: StyleProp<TextStyle>;
+  className?: string;
   initialTime?: number;
   updateInterval?: number;
   format?: "ss" | "mm:ss" | "hh:mm:ss" | "ss:ms" | "mm:ss:ms" | "hh:mm:ss:ms";
@@ -34,6 +35,7 @@ const Timer = forwardRef<TimerHandle, TimerProps>(
   (
     {
       style,
+      className,
       initialTime,
       updateInterval = 1000,
       format = "mm:ss",
@@ -136,7 +138,12 @@ const Timer = forwardRef<TimerHandle, TimerProps>(
     };
 
     return (
-      <Text {...rest} style={[styles.defaultTimerStyle, style]}>
+      <Text
+        {...rest}
+        style={[!className && styles.defaultTimerStyle, style]}
+        // @ts-ignore
+        className={className}
+      >
         {formatTime(time)}
       </Text>
     );

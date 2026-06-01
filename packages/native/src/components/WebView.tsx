@@ -42,6 +42,7 @@ interface WebViewProps {
   source?: WebViewSourceUri | WebViewSourceHtml;
   html?: string;
   style?: ViewStyle;
+  className?: string;
   optimizeVideoChat?: boolean;
   // Advancted Builder Config Props
   mediaPlaybackRequiresUserAction?: boolean;
@@ -82,7 +83,15 @@ interface WebViewProps {
 
 const NativeWebView = React.forwardRef<any, WebViewProps>(
   (
-    { source, html, style, optimizeVideoChat, onScroll, ...otherWebViewProps },
+    {
+      source,
+      html,
+      style,
+      className,
+      optimizeVideoChat,
+      onScroll,
+      ...otherWebViewProps
+    },
     ref
   ) => {
     const [height, setHeight] = useState(0);
@@ -215,6 +224,8 @@ const NativeWebView = React.forwardRef<any, WebViewProps>(
 
     return (
       <ScrollView
+        // @ts-ignore
+        className={className}
         contentContainerStyle={[
           styles.container,
           {
@@ -229,7 +240,7 @@ const NativeWebView = React.forwardRef<any, WebViewProps>(
 );
 
 const BrowserWebView = React.forwardRef<any, WebViewProps>(
-  ({ source, style, optimizeVideoChat }, ref) => {
+  ({ source, style, className, optimizeVideoChat }, ref) => {
     const videoChatProps = optimizeVideoChat
       ? {
           frameBorder: "0",
@@ -244,6 +255,7 @@ const BrowserWebView = React.forwardRef<any, WebViewProps>(
     const flatStyles = StyleSheet.flatten([videoChatStyles, style]);
     return React.createElement("iframe", {
       ref: ref,
+      className,
       style: flatStyles,
       height: flatStyles?.height,
       width: flatStyles?.width,

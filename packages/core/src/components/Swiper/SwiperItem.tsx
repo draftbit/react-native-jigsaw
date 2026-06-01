@@ -13,13 +13,20 @@ const styles = StyleSheet.create({
   },
 });
 
-export interface SwiperProps extends Omit<ViewProps, "style" | "children"> {
+export interface SwiperProps
+  extends Omit<ViewProps, "style" | "children" | "className"> {
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
+  className?: string;
 }
 
-const SwiperItem = ({ children, style, ...rest }: SwiperProps) => (
-  <View style={[styles.wrapper, style]} {...rest}>
+const SwiperItem = ({ children, style, className, ...rest }: SwiperProps) => (
+  <View
+    style={[styles.wrapper, style]}
+    // @ts-ignore
+    className={className}
+    {...rest}
+  >
     {children}
   </View>
 );

@@ -3,7 +3,8 @@ import { StyleProp, ViewStyle, View, LayoutChangeEvent } from "react-native";
 
 interface CustomPinInputCellProps {
   style?: StyleProp<ViewStyle>;
-  onLayout: (event: LayoutChangeEvent) => void;
+  className?: string;
+  onLayout?: (event: LayoutChangeEvent) => void;
 }
 
 /**

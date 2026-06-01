@@ -18,6 +18,7 @@ interface KeyboardAvoidingViewProps extends ViewProps {
   androidKeyboardVerticalOffset?: number;
   iosBehavior?: KeyboardAvoidingViewBehavior;
   iosKeyboardVerticalOffset?: number;
+  className?: string;
 }
 
 const KeyboardAvoidingView: React.FC<KeyboardAvoidingViewProps> = ({
@@ -27,6 +28,7 @@ const KeyboardAvoidingView: React.FC<KeyboardAvoidingViewProps> = ({
   androidKeyboardVerticalOffset,
   iosBehavior,
   iosKeyboardVerticalOffset,
+  className,
   ...rest
 }) => {
   let behaviorResult: KeyboardAvoidingViewBehavior;
@@ -53,6 +55,8 @@ const KeyboardAvoidingView: React.FC<KeyboardAvoidingViewProps> = ({
     <KeyboardAvoidingViewComponent
       behavior={behaviorResult ?? undefined}
       keyboardVerticalOffset={keyboardVerticalOffsetResult}
+      // @ts-ignore
+      className={className}
       {...rest}
     />
   );

@@ -67,7 +67,7 @@ const TableRow: React.FC<React.PropsWithChildren<Props>> = ({
         className={className}
         style={[
           borderViewStyle,
-          isTableHeader
+          isTableHeader && !className
             ? { backgroundColor: theme.colors.branding.primary }
             : {},
           style,

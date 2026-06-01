@@ -12,21 +12,24 @@ import { withTheme } from "@draftbit/theme";
 export interface DeckSwiperCardProps
   extends Omit<ViewProps, "style" | "children"> {
   style?: StyleProp<ViewStyle>;
+  className?: string;
   theme: ReadTheme;
 }
 
 const DeckSwiperCard: React.FC<
   React.PropsWithChildren<DeckSwiperCardProps>
-> = ({ style, children, theme, ...rest }) => (
+> = ({ style, className, children, theme, ...rest }) => (
   <View
     style={[
       styles.card,
-      {
+      !className && {
         backgroundColor: theme.colors.background.base,
         borderColor: theme.colors.border.base,
       },
       style,
     ]}
+    // @ts-ignore
+    className={className}
     {...rest}
   >
     {children}

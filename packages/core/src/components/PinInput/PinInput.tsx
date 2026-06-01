@@ -35,6 +35,7 @@ interface PinInputProps extends Omit<TextInputProps, "style"> {
   focusedBorderWidth?: number;
   focusedTextColor?: string;
   style?: StyleProp<ViewStyle | TextStyle>;
+  className?: string;
   theme: ReadTheme;
 }
 
@@ -55,6 +56,7 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
       focusedTextColor,
       secureTextEntry,
       style,
+      className,
       ...rest
     },
     ref
@@ -132,28 +134,31 @@ const PinInput = React.forwardRef<NativeTextInput, PinInputProps>(
     };
 
     return (
-      <CodeField
-        ref={pinInputRef}
-        {...(clearOnCellFocus ? codeFieldProps : {})}
-        value={value}
-        onChangeText={onChangeText}
-        rootStyle={styles.rootContainer}
-        textInputStyle={[
-          // addresses issue on firefox where the hidden input did not fill the height
-          { height: "100%" },
-          //@ts-ignore Web specific prop. Removes default blue outline that appears on the hidden TextInput
-          Platform.OS === "web" ? { outlineWidth: 0 } : {},
-        ]}
-        InputComponent={TextInput}
-        cellCount={cellCount}
-        renderCell={({ symbol: cellValue, index, isFocused }) => (
-          <React.Fragment key={index}>
-            {renderCell(cellValue, index, isFocused)}
-          </React.Fragment>
-        )}
-        secureTextEntry={secureTextEntry}
-        {...rest}
-      />
+      // @ts-ignore
+      <View className={className}>
+        <CodeField
+          ref={pinInputRef}
+          {...(clearOnCellFocus ? codeFieldProps : {})}
+          value={value}
+          onChangeText={onChangeText}
+          rootStyle={styles.rootContainer}
+          textInputStyle={[
+            // addresses issue on firefox where the hidden input did not fill the height
+            { height: "100%" },
+            //@ts-ignore Web specific prop. Removes default blue outline that appears on the hidden TextInput
+            Platform.OS === "web" ? { outlineWidth: 0 } : {},
+          ]}
+          InputComponent={TextInput}
+          cellCount={cellCount}
+          renderCell={({ symbol: cellValue, index, isFocused }) => (
+            <React.Fragment key={index}>
+              {renderCell(cellValue, index, isFocused)}
+            </React.Fragment>
+          )}
+          secureTextEntry={secureTextEntry}
+          {...rest}
+        />
+      </View>
     );
   }
 );

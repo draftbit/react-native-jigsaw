@@ -51,6 +51,7 @@ module.exports = [
       "@typescript-eslint/no-unnecessary-type-constraint": "off",
       "react-native/no-inline-styles": "off",
       "react-native/no-color-literals": "off",
+      "react-native/no-raw-text": "off",
 
       // ignore unused vars that start with underscore
       "@typescript-eslint/no-unused-vars": [

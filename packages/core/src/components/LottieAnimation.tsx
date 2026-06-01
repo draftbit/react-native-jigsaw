@@ -4,6 +4,7 @@ import LottieView, { AnimationObject } from "lottie-react-native";
 
 type Props = {
   style?: StyleProp<ViewStyle>;
+  className?: string;
   resizeMode?: "cover" | "contain" | "center";
   source: string | AnimationObject | { uri: string };
   autoPlay?: boolean;
@@ -15,6 +16,7 @@ const LottieAnimation = forwardRef<LottieView, Props>(
   (
     {
       style,
+      className,
       source,
       autoPlay = true,
       loop = true,
@@ -25,7 +27,12 @@ const LottieAnimation = forwardRef<LottieView, Props>(
     ref
   ) => {
     return (
-      <View style={style} {...rest}>
+      <View
+        style={style}
+        // @ts-ignore
+        className={className}
+        {...rest}
+      >
         <LottieView
           ref={ref}
           source={source}

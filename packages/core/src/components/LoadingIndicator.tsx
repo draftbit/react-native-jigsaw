@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleProp, ViewStyle } from "react-native";
+import { View, StyleProp, ViewStyle } from "react-native";
 import { withTheme } from "@draftbit/theme";
 import type { ReadTheme } from "@draftbit/theme";
 import {
@@ -34,6 +34,7 @@ export enum LoadingIndicatorType {
 
 type Props = {
   style?: StyleProp<ViewStyle>;
+  className?: string;
   color?: string;
   theme: ReadTheme;
   type?: LoadingIndicatorType;
@@ -61,10 +62,19 @@ const LoadingIndicator: React.FC<React.PropsWithChildren<Props>> = ({
   type = LoadingIndicatorType.plane,
   size,
   style,
+  className,
   ...rest
 }) => {
   const SpinnerComponent = SPINNER_COMPONENTS[type];
-  return <SpinnerComponent size={size} color={color} style={style} {...rest} />;
+  return (
+    <View
+      style={style}
+      // @ts-ignore
+      className={className}
+    >
+      <SpinnerComponent size={size} color={color} {...rest} />
+    </View>
+  );
 };
 
 export default withTheme(LoadingIndicator);

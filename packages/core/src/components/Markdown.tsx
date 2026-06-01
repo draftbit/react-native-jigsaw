@@ -1,6 +1,7 @@
 import * as React from "react";
 import {
   Text,
+  View,
   StyleProp,
   ViewStyle,
   TextStyle,
@@ -11,6 +12,7 @@ import { extractStyles } from "../utilities";
 
 type MarkdownProps = {
   style?: StyleProp<ViewStyle & TextStyle>;
+  className?: string;
 };
 
 const childToString = (child?: React.ReactNode): string => {
@@ -32,35 +34,42 @@ const childToString = (child?: React.ReactNode): string => {
 const Markdown: React.FC<React.PropsWithChildren<MarkdownProps>> = ({
   children: childrenProp,
   style,
+  className,
 }) => {
   const children = React.Children.toArray(childrenProp);
   const text = children.map(childToString).join("");
 
   const bodyStyle = StyleSheet.flatten(style);
-  const { textStyles } = extractStyles(bodyStyle);
+  const { viewStyles, textStyles } = extractStyles(bodyStyle);
 
   return (
-    //'body' style applies to all markdown components
-    //@ts-ignore TS does not like the type of this named style for some reason
-    <MarkdownComponent
-      style={{ body: bodyStyle }}
-      rules={{
-        // By default, strong does not work with custom fonts on iOS. This addresses the issue
-        strong: (node) => (
-          <Text
-            key={node.key}
-            style={{
-              ...textStyles,
-              fontWeight: "bold",
-            }}
-          >
-            {node.children[0].content}
-          </Text>
-        ),
-      }}
+    <View
+      style={viewStyles}
+      // @ts-ignore
+      className={className}
     >
-      {text}
-    </MarkdownComponent>
+      {/*//'body' style applies to all markdown components*/}
+      {/*@ts-ignore TS does not like the type of this named style for some reason*/}
+      <MarkdownComponent
+        style={{ body: bodyStyle }}
+        rules={{
+          // By default, strong does not work with custom fonts on iOS. This addresses the issue
+          strong: (node) => (
+            <Text
+              key={node.key}
+              style={{
+                ...textStyles,
+                fontWeight: "bold",
+              }}
+            >
+              {node.children[0].content}
+            </Text>
+          ),
+        }}
+      >
+        {text}
+      </MarkdownComponent>
+    </View>
   );
 };
 

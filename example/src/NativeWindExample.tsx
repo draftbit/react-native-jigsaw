@@ -7,20 +7,16 @@ import {
   CustomPinInputText,
   DeckSwiper,
   DeckSwiperCard,
-  KeyboardAvoidingView,
   LinearProgress,
   LoadingIndicator,
   LottieAnimation,
   Markdown,
   PinInput,
-  Shadow,
   Swiper,
   SwiperItem,
   Timer,
   VideoPlayer,
   WebView,
-  YoutubePlayer,
-  TextField,
 } from "@draftbit/ui";
 import { LoadingIndicatorType } from "@draftbit/core/lib/typescript/src/components/LoadingIndicator";
 import Section, { Container } from "./Section";
@@ -35,7 +31,7 @@ const NativeWindExample: React.FC<{ theme?: any }> = () => {
     <Container style={{}}>
       <Section title="AudioPlayer" style={{}}>
         <AudioPlayer
-          className="rounded-2xl bg-gray-100 h-12 border-0"
+          className="rounded-2xl bg-gray-100 h-12 border-0 w-100"
           source={{
             uri: "https://static.draftbit.com/audio/intro-to-draftbit-audio.mp3",
           }}
@@ -43,10 +39,10 @@ const NativeWindExample: React.FC<{ theme?: any }> = () => {
       </Section>
 
       <Section title="CircularProgress" style={{}}>
-        <View className="items-center">
+        <View className="items-center flex-row">
           <CircularProgress className="w-60" value={PROGRESS_VALUE} />
           <CircularProgress
-            className="w-40 mt-20"
+            className="w-40 ml-20"
             color="rgb(99,102,241)"
             trackColor="rgb(224,231,255)"
             value={PROGRESS_VALUE}
@@ -58,7 +54,7 @@ const NativeWindExample: React.FC<{ theme?: any }> = () => {
         title="DeckSwiper + DeckSwiperCard"
         style={{ paddingBottom: 30 }}
       >
-        <DeckSwiper className="w-full" visibleCardCount={2}>
+        <DeckSwiper className="w-100" visibleCardCount={2}>
           <DeckSwiperCard className="bg-red-100 p-10 items-center justify-center rounded-xl">
             <Text className="text-base font-semibold text-red-700">Card 1</Text>
           </DeckSwiperCard>
@@ -75,27 +71,17 @@ const NativeWindExample: React.FC<{ theme?: any }> = () => {
         </DeckSwiper>
       </Section>
 
-      <Section title="KeyboardAvoidingView" style={{}}>
-        <KeyboardAvoidingView className="w-full" behavior="height">
-          <TextField
-            className="w-full"
-            placeholder="Type here (keyboard avoiding)..."
-            type="solid"
-          />
-        </KeyboardAvoidingView>
-      </Section>
-
       <Section title="LinearProgress" style={{}}>
-        <LinearProgress className="w-full" value={PROGRESS_VALUE} />
+        <LinearProgress className="w-100" value={PROGRESS_VALUE} />
         <LinearProgress
-          className="w-full mt-3"
+          className="w-100 mt-3"
           color="rgb(99,102,241)"
           trackColor="rgb(224,231,255)"
           thickness={12}
           value={PROGRESS_VALUE}
         />
         <LinearProgress
-          className="w-full mt-3"
+          className="w-150 mt-10"
           thickness={8}
           trackThickness={8}
           dashWidth={12}
@@ -105,47 +91,31 @@ const NativeWindExample: React.FC<{ theme?: any }> = () => {
       </Section>
 
       <Section title="LoadingIndicator" style={{}}>
-        <View className="flex-row justify-around">
-          <View className="items-center gap-1">
-            <LoadingIndicator
-              className="m-2"
-              type={LoadingIndicatorType.circle}
-            />
-            <Text className="text-xs text-gray-500">circle</Text>
-          </View>
-          <View className="items-center gap-1">
-            <LoadingIndicator
-              className="m-2"
-              type={LoadingIndicatorType.wave}
-            />
-            <Text className="text-xs text-gray-500">wave</Text>
-          </View>
-          <View className="items-center gap-1">
-            <LoadingIndicator
-              className="m-2"
-              type={LoadingIndicatorType.bounce}
-            />
-            <Text className="text-xs text-gray-500">bounce</Text>
-          </View>
-          <View className="items-center gap-1">
-            <LoadingIndicator
-              className="m-2"
-              type={LoadingIndicatorType.pulse}
-            />
-            <Text className="text-xs text-gray-500">pulse</Text>
-          </View>
+        <View className="flex-row">
+          <LoadingIndicator
+            className="m-2 border-2 p-4"
+            type={LoadingIndicatorType.circle}
+          />
+          <LoadingIndicator className="m-2" type={LoadingIndicatorType.wave} />
+
+          <LoadingIndicator
+            className="m-2"
+            type={LoadingIndicatorType.bounce}
+          />
+
+          <LoadingIndicator className="m-2" type={LoadingIndicatorType.pulse} />
         </View>
       </Section>
 
       <Section title="LottieAnimation" style={{}}>
         <LottieAnimation
-          className="w-48 h-48 self-center"
+          className="w-48 h-48 border-2"
           source={require("./assets/lottie_animation_example.json")}
         />
       </Section>
 
       <Section title="Markdown" style={{}}>
-        <Markdown className="w-full">
+        <Markdown className="w-200">
           {
             "## NativeWind\n\nThis is **bold** and _italic_ text styled via `className`.\n\n- Item one\n- Item two\n- Item three"
           }
@@ -154,7 +124,7 @@ const NativeWindExample: React.FC<{ theme?: any }> = () => {
 
       <Section title="PinInput (default)" style={{}}>
         <PinInput
-          className="self-center"
+          className="border-2 w-100"
           value={pinValue}
           onChangeText={setPinValue}
         />
@@ -167,12 +137,11 @@ const NativeWindExample: React.FC<{ theme?: any }> = () => {
         <PinInput
           value={pinValue}
           onChangeText={setPinValue}
+          className="w-100"
           renderItem={({ cellValue, isFocused }) => (
             <CustomPinInputCell
               className={`w-14 h-14 mx-1.5 rounded-xl bg-white items-center justify-center ${
-                isFocused
-                  ? "border-2 border-indigo-500"
-                  : "border border-gray-300"
+                isFocused ? "border-2 border-red-500" : "border border-gray-300"
               }`}
             >
               <CustomPinInputText
@@ -188,18 +157,13 @@ const NativeWindExample: React.FC<{ theme?: any }> = () => {
         />
       </Section>
 
-      <Section title="Shadow" style={{ alignItems: "center" }}>
-        <Shadow>
-          <View className="px-16 py-10 bg-white rounded-xl items-center justify-center">
-            <Text className="text-base font-medium text-gray-700">
-              NativeWind Shadow
-            </Text>
-          </View>
-        </Shadow>
-      </Section>
-
       <Section title="Swiper + SwiperItem" style={{}}>
-        <Swiper className="w-full h-48" vertical={false} loop>
+        <Swiper
+          keyExtractor={(key) => key}
+          className="w-100 h-48"
+          vertical={false}
+          loop
+        >
           <SwiperItem className="items-center justify-center bg-red-100">
             <Text className="text-lg font-semibold text-red-700">Slide 1</Text>
           </SwiperItem>
@@ -217,35 +181,13 @@ const NativeWindExample: React.FC<{ theme?: any }> = () => {
       </Section>
 
       <Section title="Timer" style={{}}>
-        <View className="items-center gap-4">
-          <Timer
-            ref={timerRef}
-            className="text-5xl font-bold text-gray-800"
-            initialTime={0}
-            format="mm:ss"
-            countDirection="up"
-          />
-          <View className="flex-row gap-3">
-            <Text
-              className="px-4 py-2 bg-indigo-500 text-white rounded-lg font-medium"
-              onPress={() => timerRef.current?.start()}
-            >
-              Start
-            </Text>
-            <Text
-              className="px-4 py-2 bg-gray-400 text-white rounded-lg font-medium"
-              onPress={() => timerRef.current?.stop()}
-            >
-              Stop
-            </Text>
-            <Text
-              className="px-4 py-2 bg-red-400 text-white rounded-lg font-medium"
-              onPress={() => timerRef.current?.reset()}
-            >
-              Reset
-            </Text>
-          </View>
-        </View>
+        <Timer
+          ref={timerRef}
+          className="text-5xl text-red-800"
+          initialTime={0}
+          format="mm:ss"
+          countDirection="up"
+        />
       </Section>
 
       <Section title="VideoPlayer" style={{}}>
@@ -261,16 +203,8 @@ const NativeWindExample: React.FC<{ theme?: any }> = () => {
 
       <Section title="WebView" style={{}}>
         <WebView
-          className="w-full h-64 rounded-xl overflow-hidden"
+          className="w-200 h-100 rounded-xl overflow-hidden"
           source={{ uri: "https://docs.expo.io/" }}
-        />
-      </Section>
-
-      <Section title="YoutubePlayer" style={{}}>
-        <YoutubePlayer
-          className="w-full"
-          videoId="nwMUpDESXrI"
-          style={{ height: 220 }}
         />
       </Section>
     </Container>

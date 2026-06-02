@@ -2,8 +2,8 @@
   "name": "@draftbit/core",
   "version": "54.0.7",
   "description": "Core (non-native) Components",
-  "main": "./src/index.ts",
-  "react-native": "./src/index.ts",
+  "main": "./src/index.tsx",
+  "react-native": "./src/index.tsx",
   "types": "lib/typescript/src/index.d.ts",
   "files": [
     "src",

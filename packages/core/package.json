@@ -86,7 +86,7 @@
     "react-native-worklets": "0.5.1",
     "react-native-youtube-iframe": "^2.3.0",
     "react-youtube": "^10.1.0",
-    "uuid": "^11.0.3"
+    "uuid": "^14.0.0"
   },
   "peerDependencies": {
     "react-native-avoid-softinput": "^4.0.1"

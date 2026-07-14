@@ -5966,10 +5966,10 @@ expo-asset@~55.0.17:
     "@expo/image-utils" "^0.8.14"
     expo-constants "~55.0.16"
 
-expo-audio@~55.0.15:
-  version "55.0.15"
-  resolved "https://registry.yarnpkg.com/expo-audio/-/expo-audio-55.0.15.tgz#bd0189b11550a942c8e5dacd59b4eb2fefe966a8"
-  integrity sha512-VS5112dO7sUivJpqLjAJLsP4Cv1c4o92wrMqkUCPA/879f8hy6RUQI7t2NVTnK5qkVzp1MtzkWhArwAtjVuVHg==
+expo-audio@~1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/expo-audio/-/expo-audio-1.1.1.tgz#7b9763118e321c5dfbf2771cd4a5b6790ce4fc8d"
+  integrity sha512-CPCpJ+0AEHdzWROc0f00Zh6e+irLSl2ALos/LPvxEeIcJw1APfBa4DuHPkL4CQCWsVe7EnUjFpdwpqsEUWcP0g==
 
 expo-camera@~55.0.20:
   version "55.0.20"
@@ -5997,12 +5997,10 @@ expo-font@~55.0.8:
   dependencies:
     fontfaceobserver "^2.1.0"
 
-expo-image@~55.0.11:
-  version "55.0.11"
-  resolved "https://registry.yarnpkg.com/expo-image/-/expo-image-55.0.11.tgz#ffed7a38d4a94c7c83a892a51e8fbc5c5a10d3a8"
-  integrity sha512-PVIBYQJW/h1f6Zb9xnoWlgfqyOPVm2yb6eo6ZogaKbvMrhb/Q/fiERbagi4oqmR6IPljWPEpkXXQyFBUh7TjpQ==
-  dependencies:
-    sf-symbols-typescript "^2.2.0"
+expo-image@~3.0.11:
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/expo-image/-/expo-image-3.0.11.tgz#54195565dc710e632c10414c3609deebb7149ac5"
+  integrity sha512-4TudfUCLgYgENv+f48omnU8tjS2S0Pd9EaON5/s1ZUBRwZ7K8acEr4NfvLPSaeXvxW24iLAiyQ7sV7BXQH3RoA==
 
 expo-keep-awake@~55.0.8:
   version "55.0.8"
@@ -6055,10 +6053,10 @@ expo-status-bar@~55.0.6:
   dependencies:
     react-native-is-edge-to-edge "^1.2.1"
 
-expo-video@~55.0.18:
-  version "55.0.18"
-  resolved "https://registry.yarnpkg.com/expo-video/-/expo-video-55.0.18.tgz#fabfb46f193e7e318d54639e2c3738e18d0bfd41"
-  integrity sha512-R4nlrq/OZulAHIdGA71Fpm4okGiW75KdB/xADgqqoQnT6vtuZ5zRKFjXXKItcdhWAgOBJrqRBiL5h7M10qdgbQ==
+expo-video@~3.0.16:
+  version "3.0.16"
+  resolved "https://registry.yarnpkg.com/expo-video/-/expo-video-3.0.16.tgz#8160bd33fe2e898519d3c18a404567a30d81d4f2"
+  integrity sha512-H1HlxcHGomZItqisGfW3YL/G9BHtNBfVSimDJcLuyxyU87wFnV8loO9tCjuhufkfh/aTa2sW5BYAjLjg9DvnBQ==
 
 expo@55:
   version "55.0.27"
@@ -11081,11 +11079,6 @@ setprototypeof@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.2.0.tgz#66c9a24a73f9fc28cbe66b09fed3d33dcaf1b424"
   integrity sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==
-
-sf-symbols-typescript@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/sf-symbols-typescript/-/sf-symbols-typescript-2.2.0.tgz#926d6e0715e3d8784cadf7658431e36581254208"
-  integrity sha512-TPbeg0b7ylrswdGCji8FRGFAKuqbpQlLbL8SOle3j1iHSs5Ob5mhvMAxWN2UItOjgALAB5Zp3fmMfj8mbWvXKw==
 
 sharp-cli@2.1.0:
   version "2.1.0"

@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/theme",
-  "version": "56.0.0",
+  "version": "55.0.1",
   "description": "Draftbit's themeing system",
   "main": "./src/index.ts",
   "react-native": "./src/index.ts",
@@ -50,11 +50,17 @@
   },
   "jest": {
     "preset": "jest-expo",
-    "globalSetup": "<rootDir>/../../jest/global-setup.js",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
     "testPathIgnorePatterns": [
       "lib",
       "__mocks__",
       "declarations.d.ts"
-    ]
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+    ],
+    "testEnvironment": "node"
   }
 }

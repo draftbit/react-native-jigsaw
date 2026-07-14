@@ -15,7 +15,7 @@ interface AdditionalSectionListProps<T> {
     item?: T;
     index: number;
     section: string;
-  }) => React.JSX.Element;
+  }) => JSX.Element;
   keyExtractor?: (item: T, index: number) => string;
   listComponent?: ListComponentType;
   sectionHeaderBackgroundColor?: string;
@@ -100,8 +100,8 @@ const SectionList = React.forwardRef(
     );
 
     const extractSectionHeader = (
-      element: React.JSX.Element | null
-    ): React.JSX.Element | null => {
+      element: JSX.Element | null
+    ): JSX.Element | null => {
       if (!element) {
         return null;
       }
@@ -124,8 +124,8 @@ const SectionList = React.forwardRef(
     };
 
     const extractRemainingNonSectionHeader = (
-      element: React.JSX.Element | null
-    ): React.JSX.Element | null => {
+      element: JSX.Element | null
+    ): JSX.Element | null => {
       if (!element) {
         return null;
       }

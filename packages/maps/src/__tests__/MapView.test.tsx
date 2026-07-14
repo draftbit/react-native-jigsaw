@@ -3,14 +3,13 @@ import { act, render, screen } from "@testing-library/react-native";
 import MapView from "../components/MapView";
 import MapMarker from "../components/MapMarker";
 import { MapMarkerCluster } from "../components/marker-cluster";
+import { Marker as MapMarkerComponent } from "../components/react-native-maps";
+import { MarkerClusterer } from "@teovilla/react-native-web-maps";
 
 const mockAnimateCamera = jest.fn();
 
-// The mocks below render host `View`s carrying their props, so that the
-// rendered markers/clusters can be queried by testID.
 jest.mock("../components/react-native-maps", () => {
   const React = require("react");
-  const { View } = require("react-native");
 
   class MapView extends React.Component {
     render(): React.ReactNode {
@@ -22,7 +21,7 @@ jest.mock("../components/react-native-maps", () => {
 
   class Marker extends React.Component {
     render(): React.ReactNode {
-      return <View {...this.props} testID="map-marker" />;
+      return <>{this.props.children}</>;
     }
   }
 
@@ -34,10 +33,8 @@ jest.mock("../components/react-native-maps", () => {
 });
 
 jest.mock("@teovilla/react-native-web-maps", () => {
-  const { View } = require("react-native");
-
   const MarkerClusterer = (props: any) => {
-    return <View {...props} testID="marker-clusterer" />;
+    return <>{props.children}</>;
   };
 
   return {
@@ -50,12 +47,12 @@ beforeEach(() => {
 });
 
 describe("MapView tests", () => {
-  test("should animateToLocation update map location", async () => {
+  test("should animateToLocation update map location", () => {
     const ref = React.createRef<MapView<any>>();
 
-    await render(<MapView ref={ref} apiKey="" />);
+    render(<MapView ref={ref} apiKey="" />);
 
-    await act(() => {
+    act(() => {
       ref.current?.animateToLocation({
         latitude: 40.741895,
         longitude: -73.989308,
@@ -66,8 +63,8 @@ describe("MapView tests", () => {
     expect(mockAnimateCamera.mock.lastCall).toMatchSnapshot();
   });
 
-  test("should render markers provided as children", async () => {
-    await render(
+  test("should render markers provided as children", () => {
+    render(
       <MapView apiKey="">
         <MapMarker key={1} latitude={41.741895} longitude={-73.989308} />
         <MapMarker key={2} latitude={42.741895} longitude={-73.989308} />
@@ -77,13 +74,13 @@ describe("MapView tests", () => {
     );
 
     const renderedMarkers = screen
-      .queryAllByTestId("map-marker")
+      .UNSAFE_queryAllByType(MapMarkerComponent)
       .map((marker) => marker.props.coordinate);
 
     expect(renderedMarkers).toMatchSnapshot();
   });
 
-  test("should render markers provided as data using renderItem", async () => {
+  test("should render markers provided as data using renderItem", () => {
     const markers = [
       { latitude: 41.741895, longitude: -73.989308 },
       { latitude: 42.741895, longitude: -73.989308 },
@@ -91,7 +88,7 @@ describe("MapView tests", () => {
       { latitude: 44.741895, longitude: -73.989308 },
     ];
 
-    await render(
+    render(
       <MapView
         markersData={markers}
         renderItem={({ item }) => (
@@ -102,14 +99,14 @@ describe("MapView tests", () => {
     );
 
     const renderedMarkers = screen
-      .queryAllByTestId("map-marker")
+      .UNSAFE_queryAllByType(MapMarkerComponent)
       .map((marker) => marker.props.coordinate);
 
     expect(renderedMarkers).toMatchSnapshot();
   });
 
-  test("should render manually created marker clusters", async () => {
-    await render(
+  test("should render manually created marker clusters", () => {
+    render(
       <MapView apiKey="">
         <MapMarkerCluster>
           <MapMarker latitude={41.741895} longitude={-73.989308} />
@@ -123,13 +120,15 @@ describe("MapView tests", () => {
       </MapView>
     );
 
-    const renderedClusters = screen.queryAllByTestId("marker-clusterer");
+    const renderedClusters = screen
+      .UNSAFE_queryAllByType(MarkerClusterer)
+      .map((marker) => marker.props.children);
 
     expect(renderedClusters.length).toMatchSnapshot();
   });
 
-  test("should automatically create clusters from markers when autoClusterMarkers is true", async () => {
-    await render(
+  test("should automatically create clusters from markers when autoClusterMarkers is true", () => {
+    render(
       <MapView apiKey="" autoClusterMarkers>
         <MapMarker latitude={40.741895} longitude={-73.989308} />
         <MapMarker latitude={40.741895} longitude={-73.979308} />
@@ -139,13 +138,15 @@ describe("MapView tests", () => {
       </MapView>
     );
 
-    const renderedClusters = screen.queryAllByTestId("marker-clusterer");
+    const renderedClusters = screen
+      .UNSAFE_queryAllByType(MarkerClusterer)
+      .map((marker) => marker.props.children);
 
     expect(renderedClusters.length).toMatchSnapshot();
   });
 
-  test("should MapMarker render when wrapped in fragment", async () => {
-    await render(
+  test("should MapMarker render when wrapped in fragment", () => {
+    render(
       <MapView apiKey="">
         <>
           <MapMarker latitude={40.741895} longitude={-73.989308} />
@@ -154,14 +155,14 @@ describe("MapView tests", () => {
     );
 
     const renderedMarkers = screen
-      .queryAllByTestId("map-marker")
+      .UNSAFE_queryAllByType(MapMarkerComponent)
       .map((marker) => marker.props.coordinate);
 
     expect(renderedMarkers.length).toMatchSnapshot();
   });
 
-  test("should MapMarkerCluster render when wrapped in fragment", async () => {
-    await render(
+  test("should MapMarkerCluster render when wrapped in fragment", () => {
+    render(
       <MapView apiKey="">
         <>
           <MapMarkerCluster>
@@ -172,7 +173,9 @@ describe("MapView tests", () => {
       </MapView>
     );
 
-    const renderedClusters = screen.queryAllByTestId("marker-clusterer");
+    const renderedClusters = screen
+      .UNSAFE_queryAllByType(MarkerClusterer)
+      .map((marker) => marker.props.children);
 
     expect(renderedClusters.length).toMatchSnapshot();
   });

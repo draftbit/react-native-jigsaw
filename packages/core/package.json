@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/core",
-  "version": "56.0.0",
+  "version": "55.0.1",
   "description": "Core (non-native) Components",
   "main": "./src/index.tsx",
   "react-native": "./src/index.tsx",
@@ -42,7 +42,7 @@
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
     "@draftbit/react-theme-provider": "^2.1.1",
-    "@draftbit/theme": "56.0.0",
+    "@draftbit/theme": "55.0.1",
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
     "@expo/vector-icons": "^15.0.3",
@@ -51,15 +51,15 @@
     "@lottiefiles/react-lottie-player": "3.5.3",
     "@mui/material": "^6.1.9",
     "@mui/x-date-pickers": "^7.22.3",
-    "@react-native-community/slider": "5.2.0",
+    "@react-native-community/slider": "5.1.2",
     "@react-native-picker/picker": "2.11.4",
     "@shopify/flash-list": "2.0.2",
     "color": "^4.2.3",
     "date-fns": "^4.1.0",
     "dateformat": "^5.0.3",
-    "expo-audio": "~56.0.12",
-    "expo-image": "~56.0.11",
-    "expo-video": "~56.1.4",
+    "expo-audio": "~55.0.15",
+    "expo-image": "~55.0.11",
+    "expo-video": "~55.0.18",
     "lodash.isequal": "^4.5.0",
     "lodash.isnumber": "^3.0.3",
     "lodash.omit": "^4.5.0",
@@ -70,20 +70,20 @@
     "react-native-date-picker": "^5.0.7",
     "react-native-deck-swiper": "^2.0.17",
     "react-native-dropdown-picker": "^5.4.7-beta.1",
-    "react-native-gesture-handler": "~2.31.1",
+    "react-native-gesture-handler": "~2.30.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-markdown-display": "^7.0.2",
     "react-native-modal-datetime-picker": "^18.0.0",
-    "react-native-pager-view": "8.0.1",
-    "react-native-reanimated": "4.3.1",
+    "react-native-pager-view": "8.0.0",
+    "react-native-reanimated": "4.2.1",
     "react-native-select-dropdown": "4.0.1",
     "react-native-shadow-2": "^7.1.1",
-    "react-native-svg": "15.15.4",
+    "react-native-svg": "15.15.3",
     "react-native-swipe-list-view": "^3.2.9",
     "react-native-tab-view": "^3.4.0",
     "react-native-web-swiper": "^2.2.4",
-    "react-native-webview": "13.16.1",
-    "react-native-worklets": "0.8.3",
+    "react-native-webview": "13.16.0",
+    "react-native-worklets": "0.7.4",
     "react-native-youtube-iframe": "^2.3.0",
     "react-youtube": "^10.1.0",
     "uuid": "^11.0.3"
@@ -108,8 +108,8 @@
   },
   "jest": {
     "preset": "jest-expo",
-    "globalSetup": "<rootDir>/../../jest/global-setup.js",
     "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect",
       "./jest-setup.js"
     ],
     "testPathIgnorePatterns": [
@@ -119,9 +119,8 @@
       ".*\\.test\\.skip\\.tsx$"
     ],
     "transformIgnorePatterns": [
-      "/node_modules/(?!(.pnpm|react-native|@react-native|@react-native-community|expo|@expo|@expo-google-fonts|react-navigation|@react-navigation|@sentry/react-native|native-base|standard-navigation|dateformat|uuid))",
-      "/node_modules/react-native-reanimated/plugin/",
-      "/node_modules/@react-native/babel-preset/"
-    ]
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg|dateformat)"
+    ],
+    "testEnvironment": "node"
   }
 }

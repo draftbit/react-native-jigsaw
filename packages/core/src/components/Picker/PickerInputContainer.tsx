@@ -88,7 +88,7 @@ const PickerInputContainer: React.FC<
         {...rest}
       />
       <Touchable
-        style={StyleSheet.absoluteFill}
+        style={StyleSheet.absoluteFillObject}
         disabled={disabled}
         onPress={onPress}
         onLongPress={onPress}

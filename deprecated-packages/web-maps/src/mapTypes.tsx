@@ -56,7 +56,7 @@ export interface MapViewProps<TMarkerData> {
   }: {
     item: TMarkerData;
     index: number;
-  }) => React.JSX.Element;
+  }) => JSX.Element;
   onRegionChange?: (region: MapRegion) => void;
 }
 

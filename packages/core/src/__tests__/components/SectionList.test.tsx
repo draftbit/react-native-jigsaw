@@ -9,8 +9,8 @@ import { DEFAULT_SECTION } from "../../components/SectionList/SectionList";
 describe("SectionList tests", () => {
   test.each(["FlatList"])(
     "should render all data items in %p",
-    async (listComponent: string) => {
-      await render(
+    (listComponent: string) => {
+      render(
         <SectionList
           data={mockFoodData}
           renderItem={({ item }) => (
@@ -28,12 +28,12 @@ describe("SectionList tests", () => {
 
   test.each(["category", "priceRange"])(
     "should put data into sections based on key: %p",
-    async (argument: string) => {
+    (argument: string) => {
       const sectionKey = argument as keyof Food;
       const sections = getSections(mockFoodData, sectionKey);
       const sectionFoodItems = generateEmptySectionSplitArrays<Food>(sections);
 
-      await render(
+      render(
         <SectionList
           data={mockFoodData}
           renderItem={({ item, section }) => {
@@ -54,11 +54,11 @@ describe("SectionList tests", () => {
     }
   );
 
-  test("should render default section header when none provided", async () => {
+  test("should render default section header when none provided", () => {
     const sectionKey = "category";
     const sectionsCount = getSectionCount(mockFoodData, sectionKey);
 
-    await render(
+    render(
       <SectionList
         data={mockFoodData}
         renderItem={({ item }) => <Text>{item?.name}</Text>}
@@ -70,11 +70,11 @@ describe("SectionList tests", () => {
     expect(headers).toHaveLength(sectionsCount);
   });
 
-  test("should render custom section header when provided", async () => {
+  test("should render custom section header when provided", () => {
     const sectionKey = "category";
     const sectionsCount = getSectionCount(mockFoodData, sectionKey);
 
-    await render(
+    render(
       <SectionList
         data={mockFoodData}
         renderItem={({ item, section }) => (
@@ -93,7 +93,7 @@ describe("SectionList tests", () => {
     expect(headers).toHaveLength(sectionsCount);
   });
 
-  test("should data be put under default section when section key is not in object", async () => {
+  test("should data be put under default section when section key is not in object", () => {
     const foodWithoutCategory: Omit<Food, "category"> = {
       id: 149,
       name: "Hot Dog",
@@ -101,7 +101,7 @@ describe("SectionList tests", () => {
     };
     const data = [foodWithoutCategory, ...mockFoodData];
 
-    await render(
+    render(
       <SectionList
         style={{ height: 1000 }}
         data={data}

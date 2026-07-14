@@ -121,7 +121,6 @@ export const LinearProgress: React.FC<ValueProgressProps> = ({
           />
         )}
         <AnimatedLine
-          testID="linear-progress-line"
           animatedProps={progressLineAnimatedProps}
           x1={thicknessOffset}
           y1={thicknessOffset}

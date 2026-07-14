@@ -29,7 +29,7 @@ interface PinInputProps extends Omit<TextInputProps, "style"> {
   cellCount?: number;
   clearOnCellFocus?: boolean;
   blurOnFull?: boolean;
-  renderItem?: ({ cellValue, index, isFocused }: CellItem) => React.JSX.Element;
+  renderItem?: ({ cellValue, index, isFocused }: CellItem) => JSX.Element;
   focusedBorderColor?: string;
   focusedBackgroundColor?: string;
   focusedBorderWidth?: number;

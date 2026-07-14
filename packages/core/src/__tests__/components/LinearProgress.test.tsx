@@ -1,14 +1,15 @@
 import React from "react";
-import { act, render, screen } from "@testing-library/react-native";
+import { render, screen } from "@testing-library/react-native";
 import { default as LinearProgress } from "../../components/Progress/LinearProgress";
 import { DefaultTheme } from "@draftbit/theme";
+import { AnimatedLine } from "../../components/Progress/LinearProgress/LinearProgress";
 import { DEFAULT_ANIMATION_DURATION } from "../../components/Progress/ProgressCommon";
 
 jest.useFakeTimers();
 
 describe("LinearProgress tests", () => {
-  test("should render indeterminate progress bar when prop set to true", async () => {
-    await render(
+  test("should render indeterminate progress bar when prop set to true", () => {
+    render(
       <LinearProgress
         //@ts-ignore
         theme={DefaultTheme}
@@ -22,8 +23,8 @@ describe("LinearProgress tests", () => {
     expect(indeterminateProgress).toBeTruthy();
   });
 
-  test("should not render indeterminate progress bar when prop set to false", async () => {
-    await render(
+  test("should not render indeterminate progress bar when prop set to false", () => {
+    render(
       <LinearProgress
         //@ts-ignore
         theme={DefaultTheme}
@@ -39,8 +40,8 @@ describe("LinearProgress tests", () => {
 
   test.each([5, 10, 50, 70, 100])(
     "should progress line be visible when at %p%",
-    async (value) => {
-      await render(
+    (value) => {
+      render(
         <LinearProgress
           value={value}
           //@ts-ignore
@@ -51,11 +52,10 @@ describe("LinearProgress tests", () => {
         />
       );
 
-      await act(() => {
-        jest.advanceTimersByTime(DEFAULT_ANIMATION_DURATION);
-      });
+      jest.advanceTimersByTime(DEFAULT_ANIMATION_DURATION);
 
-      const progressLine = screen.getByTestId("linear-progress-line");
+      const svgContainer = screen.getByTestId("linear-progress-component");
+      const progressLine = svgContainer.findByType(AnimatedLine);
 
       expect(progressLine).toBeVisible();
     }

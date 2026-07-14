@@ -6,12 +6,10 @@ import {
   MapMarkerCluster,
   MapMarkerClusterView,
 } from "../components/marker-cluster";
+import { Marker as MapMarkerComponent } from "../components/react-native-maps";
 
-// The `Marker` mock renders a host `View` so that rendered markers can be
-// queried by testID.
 jest.mock("../components/react-native-maps", () => {
   const React = require("react");
-  const { View } = require("react-native");
 
   class MapView extends React.Component {
     render(): React.ReactNode {
@@ -20,7 +18,7 @@ jest.mock("../components/react-native-maps", () => {
   }
 
   const Marker = (props: any) => {
-    return <View {...props} testID="map-marker" />;
+    return <>{props.children}</>;
   };
 
   return {
@@ -58,8 +56,8 @@ beforeEach(() => {
 });
 
 describe("MapMarkerCluster tests", () => {
-  test("should render markers provided as children", async () => {
-    await render(
+  test("should render markers provided as children", () => {
+    render(
       <MapMarkerCluster>
         <MapMarker latitude={41.741895} longitude={-73.989308} />
         <MapMarker latitude={42.741895} longitude={-73.989308} />
@@ -68,13 +66,13 @@ describe("MapMarkerCluster tests", () => {
       </MapMarkerCluster>
     );
 
-    const renderedMarkers = screen.queryAllByTestId("map-marker");
+    const renderedMarkers = screen.UNSAFE_queryAllByType(MapMarkerComponent);
 
     expect(renderedMarkers.length).toBe(4 + 1); //4 clustered markers, cluster itself is also rendered as it's own marker (reasoning behind the +1)
   });
 
-  test("should render default cluster view when none provided", async () => {
-    await render(
+  test("should render default cluster view when none provided", () => {
+    render(
       <MapMarkerCluster>
         <MapMarker latitude={41.741895} longitude={-73.989308} />
       </MapMarkerCluster>
@@ -87,8 +85,8 @@ describe("MapMarkerCluster tests", () => {
     expect(defaultClusterView).toBeTruthy();
   });
 
-  test("should render custom cluster view when provided", async () => {
-    await render(
+  test("should render custom cluster view when provided", () => {
+    render(
       <MapMarkerCluster>
         <MapMarkerClusterView
           renderItem={({ markerCount }) => (

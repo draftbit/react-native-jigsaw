@@ -7,7 +7,7 @@ import type { ReadTheme } from "@draftbit/theme";
 interface MapMarkerClusterViewProps {
   zoomOnPress?: boolean;
   onPress?: (latitude: number, longitude: number) => void;
-  renderItem?: ({ markerCount }: { markerCount: number }) => React.JSX.Element;
+  renderItem?: ({ markerCount }: { markerCount: number }) => JSX.Element;
   tracksViewChanges?: boolean;
   style?: StyleProp<ViewStyle>;
 }

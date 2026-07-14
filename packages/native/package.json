@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/native",
-  "version": "56.0.0",
+  "version": "55.0.1",
   "description": "Draftbit UI Components that Depend on Native Components",
   "main": "./src/index.tsx",
   "react-native": "./src/index.tsx",
@@ -41,18 +41,20 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/theme": "56.0.0",
+    "@draftbit/theme": "55.0.1",
     "@expo/vector-icons": "^15.0.3",
-    "@react-native-community/datetimepicker": "9.1.0",
-    "@react-native-community/slider": "5.2.0",
-    "expo-camera": "~56.0.8",
-    "expo-linear-gradient": "~56.0.4",
-    "react-native-svg": "15.15.4",
-    "react-native-webview": "13.16.1"
+    "@react-native-community/datetimepicker": "8.6.0",
+    "@react-native-community/slider": "5.1.2",
+    "expo-camera": "~55.0.20",
+    "expo-linear-gradient": "~55.0.15",
+    "react-native-svg": "15.15.3",
+    "react-native-webview": "13.16.0"
   },
   "jest": {
-    "preset": "jest-expo",
-    "globalSetup": "<rootDir>/../../jest/global-setup.js",
+    "preset": "react-native",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
     "testPathIgnorePatterns": [
       "lib",
       "__mocks__"

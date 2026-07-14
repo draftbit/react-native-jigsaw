@@ -37,7 +37,7 @@ export const BaseLink = ({
   theme,
   title,
   ...props
-}: any): React.JSX.Element => {
+}: any): JSX.Element => {
   return (
     <Text
       hitSlop={8}

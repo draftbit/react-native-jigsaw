@@ -66,7 +66,7 @@ function Base({
   activeOpacity = 0.8,
   disabledOpacity = 0.8,
   ...props
-}: BaseProps): JSX.Element {
+}: BaseProps): React.JSX.Element {
   const {
     color,
     fontFamily,
@@ -142,7 +142,7 @@ function Base({
   );
 }
 
-const Solid = ({ style, theme, ...props }: Props): JSX.Element => {
+const Solid = ({ style, theme, ...props }: Props): React.JSX.Element => {
   return (
     <Base
       style={[
@@ -168,7 +168,7 @@ export { ButtonSolid };
 const Button: any = withTheme(Solid);
 export { Button };
 
-const Outline = ({ style, theme, ...props }: Props): JSX.Element => {
+const Outline = ({ style, theme, ...props }: Props): React.JSX.Element => {
   return (
     <Base
       style={[

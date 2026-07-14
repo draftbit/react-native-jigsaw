@@ -4,7 +4,6 @@ import { fireEvent, render, screen } from "@testing-library/react-native";
 import { Picker, PickerItem } from "../../components/Picker";
 import Provider from "../../Provider";
 import { DefaultTheme } from "@draftbit/theme";
-import { act } from "react-test-renderer";
 
 jest.useFakeTimers();
 
@@ -49,8 +48,8 @@ const defaultPickerProps = {
 };
 
 describe("Picker tests", () => {
-  test("should render native picker when mode is 'native'", () => {
-    render(
+  test("should render native picker when mode is 'native'", async () => {
+    await render(
       <Provider
         themes={[DefaultTheme]}
         breakpoints={{}}
@@ -64,19 +63,19 @@ describe("Picker tests", () => {
     expect(nativePicker).toBeTruthy();
   });
 
-  test("should render dropdown picker when mode is 'dropdown'", () => {
-    render(<Picker {...defaultPickerProps} mode="dropdown" />);
+  test("should render dropdown picker when mode is 'dropdown'", async () => {
+    await render(<Picker {...defaultPickerProps} mode="dropdown" />);
 
     const dropdownPicker = screen.queryByTestId("dropdown-picker");
     expect(dropdownPicker).toBeTruthy();
   });
 
   describe("Native Picker tests", () => {
-    test("should first option be selected when no placeholder is provided", () => {
+    test("should first option be selected when no placeholder is provided", async () => {
       const options = ["option1", "option2"];
       const mockOnValueChange = jest.fn();
 
-      render(
+      await render(
         <Provider
           themes={[DefaultTheme]}
           breakpoints={{}}
@@ -99,7 +98,7 @@ describe("Picker tests", () => {
       const options = ["option1", "option2"];
       const placeholder = "test placeholder";
 
-      render(
+      await render(
         <Provider
           themes={[DefaultTheme]}
           breakpoints={{}}
@@ -114,7 +113,7 @@ describe("Picker tests", () => {
         </Provider>
       );
 
-      await act(() => fireEvent.press(screen.getByTestId("native-picker"))); //To show the items
+      await fireEvent.press(screen.getByTestId("native-picker")); //To show the items
 
       const pickerItems = screen.queryAllByTestId("native-picker-item");
 
@@ -122,11 +121,11 @@ describe("Picker tests", () => {
     });
   });
   describe("Dropdown Picker tests", () => {
-    test("should PickerItem styles be passed into picker component style props", () => {
+    test("should PickerItem styles be passed into picker component style props", async () => {
       const textStyles = { color: "blue", fontSize: 20 };
       const viewStyles = { backgroundColor: "red", paddingTop: 20 };
 
-      render(
+      await render(
         <Picker {...defaultPickerProps} mode="dropdown">
           <PickerItem style={{ ...textStyles, ...viewStyles }} />
         </Picker>

@@ -11,8 +11,8 @@ import { flattenReactFragments } from "../utilities";
 
 describe("Type checked components wrapped in a fragment tests", () => {
   describe("Type checked components render when wrapped in a fragment tests", () => {
-    test("should SectionHeader render when wrapped in fragment", () => {
-      render(
+    test("should SectionHeader render when wrapped in fragment", async () => {
+      await render(
         <SectionList
           data={[{ test: "data" }]}
           renderItem={() => (
@@ -30,8 +30,8 @@ describe("Type checked components wrapped in a fragment tests", () => {
       expect(headerView).toBeTruthy();
     });
 
-    test("should TabViewItem render when wrapped in fragment", () => {
-      render(
+    test("should TabViewItem render when wrapped in fragment", async () => {
+      await render(
         <TabView Icon={() => <View />}>
           <>
             <TabViewItem title="Test">
@@ -45,8 +45,8 @@ describe("Type checked components wrapped in a fragment tests", () => {
       expect(tabItem).toBeTruthy();
     });
 
-    test("should SwipeableItemButton render when wrapped in fragment", () => {
-      render(
+    test("should SwipeableItemButton render when wrapped in fragment", async () => {
+      await render(
         <SwipeableItem Icon={() => <View />}>
           <>
             <SwipeableItemButton revealSwipeDirection="left" title="test" />

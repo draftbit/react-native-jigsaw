@@ -23,7 +23,13 @@ export interface DeckSwiperProps<T> {
   visibleCardCount?: number;
   data?: Array<T>;
   keyExtractor?: (item: T) => string;
-  renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
+  renderItem?: ({
+    item,
+    index,
+  }: {
+    item: T;
+    index: number;
+  }) => React.JSX.Element;
   style?: StyleProp<ViewStyle>;
   className?: string;
 }
@@ -82,7 +88,7 @@ const DeckSwiper = React.forwardRef<DeckSwiperRef, DeckSwiperProps<any>>(
 
     const cardsData = Array.isArray(data) ? data : cardsFillerData;
 
-    const renderCard = (card: any, index: number): JSX.Element => {
+    const renderCard = (card: any, index: number): React.JSX.Element => {
       if (renderItem) {
         return renderItem({ item: card, index });
       } else {
@@ -90,7 +96,7 @@ const DeckSwiper = React.forwardRef<DeckSwiperRef, DeckSwiperProps<any>>(
       }
     };
 
-    const renderFirstCard = (): JSX.Element | undefined => {
+    const renderFirstCard = (): React.JSX.Element | undefined => {
       if (cardsData.length) {
         return renderCard(cardsData[0], 0);
       }

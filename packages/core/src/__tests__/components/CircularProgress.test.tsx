@@ -1,15 +1,14 @@
 import React from "react";
-import { render, screen } from "@testing-library/react-native";
+import { act, render, screen } from "@testing-library/react-native";
 import { default as CircularProgress } from "../../components/Progress/CircularProgress";
 import { DefaultTheme } from "@draftbit/theme";
-import { AnimatedPath } from "../../components/Progress/CircularProgress/CircularProgress";
 import { DEFAULT_ANIMATION_DURATION } from "../../components/Progress/ProgressCommon";
 
 jest.useFakeTimers();
 
 describe("CircularProgress tests", () => {
-  test("should render indeterminate progress bar when prop set to true", () => {
-    render(
+  test("should render indeterminate progress bar when prop set to true", async () => {
+    await render(
       <CircularProgress
         //@ts-ignore
         theme={DefaultTheme}
@@ -23,8 +22,8 @@ describe("CircularProgress tests", () => {
     expect(indeterminateProgress).toBeTruthy();
   });
 
-  test("should not render indeterminate progress bar when prop set to false", () => {
-    render(
+  test("should not render indeterminate progress bar when prop set to false", async () => {
+    await render(
       <CircularProgress
         //@ts-ignore
         theme={DefaultTheme}
@@ -40,8 +39,8 @@ describe("CircularProgress tests", () => {
 
   test.each([5, 10, 50, 70, 100])(
     "should progress path be visible when at %p%",
-    (value) => {
-      render(
+    async (value) => {
+      await render(
         <CircularProgress
           value={value}
           //@ts-ignore
@@ -52,10 +51,11 @@ describe("CircularProgress tests", () => {
         />
       );
 
-      jest.advanceTimersByTime(DEFAULT_ANIMATION_DURATION);
+      await act(() => {
+        jest.advanceTimersByTime(DEFAULT_ANIMATION_DURATION);
+      });
 
-      const svgContainer = screen.getByTestId("circular-progress-component");
-      const progressPath = svgContainer.findByType(AnimatedPath);
+      const progressPath = screen.getByTestId("circular-progress-path");
 
       expect(progressPath).toBeVisible();
     }

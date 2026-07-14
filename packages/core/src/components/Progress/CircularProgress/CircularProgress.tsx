@@ -152,6 +152,7 @@ export const CircularProgress: React.FC<
           />
         )}
         <AnimatedPath
+          testID="circular-progress-path"
           animatedProps={progressPathAnimatedProps}
           stroke={color}
           strokeWidth={thickness}

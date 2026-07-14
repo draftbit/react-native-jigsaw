@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/maps",
-  "version": "54.1.0",
+  "version": "55.0.0",
   "description": "Map Components",
   "main": "./src/index.tsx",
   "react-native": "./src/index.tsx",
@@ -41,14 +41,14 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/core": "54.1.0",
-    "@draftbit/theme": "54.1.0",
+    "@draftbit/core": "55.0.0",
+    "@draftbit/theme": "55.0.0",
     "@react-google-maps/api": "~2.20.3",
     "@teovilla/react-native-web-maps": "^0.9.5",
     "color": "^4.2.3",
     "lodash.isequal": "^4.5.0",
-    "react-native-maps": "1.20.1",
-    "react-native-webview": "13.15.0"
+    "react-native-maps": "1.27.2",
+    "react-native-webview": "13.16.0"
   },
   "jest": {
     "preset": "jest-expo",

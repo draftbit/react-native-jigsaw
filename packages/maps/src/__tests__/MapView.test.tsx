@@ -34,7 +34,6 @@ jest.mock("../components/react-native-maps", () => {
 });
 
 jest.mock("@teovilla/react-native-web-maps", () => {
-  const React = require("react");
   const { View } = require("react-native");
 
   const MarkerClusterer = (props: any) => {

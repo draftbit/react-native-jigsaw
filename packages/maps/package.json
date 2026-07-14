@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/maps",
-  "version": "55.0.1",
+  "version": "56.0.0",
   "description": "Map Components",
   "main": "./src/index.tsx",
   "react-native": "./src/index.tsx",
@@ -41,19 +41,19 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/core": "55.0.1",
-    "@draftbit/theme": "55.0.1",
+    "@draftbit/core": "56.0.0",
+    "@draftbit/theme": "56.0.0",
     "@react-google-maps/api": "~2.20.3",
     "@teovilla/react-native-web-maps": "^0.9.5",
     "color": "^4.2.3",
     "lodash.isequal": "^4.5.0",
     "react-native-maps": "1.27.2",
-    "react-native-webview": "13.16.0"
+    "react-native-webview": "13.16.1"
   },
   "jest": {
     "preset": "jest-expo",
+    "globalSetup": "<rootDir>/../../jest/global-setup.js",
     "setupFilesAfterEnv": [
-      "@testing-library/jest-native/extend-expect",
       "./jest-setup.js"
     ],
     "testPathIgnorePatterns": [
@@ -61,9 +61,10 @@
       "__mocks__"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg|dateformat)"
-    ],
-    "testEnvironment": "node"
+      "/node_modules/(?!(.pnpm|react-native|@react-native|@react-native-community|expo|@expo|@expo-google-fonts|react-navigation|@react-navigation|@sentry/react-native|native-base|standard-navigation|dateformat|uuid))",
+      "/node_modules/react-native-reanimated/plugin/",
+      "/node_modules/@react-native/babel-preset/"
+    ]
   },
   "devDependencies": {
     "@types/lodash.isequal": "^4.5.6"

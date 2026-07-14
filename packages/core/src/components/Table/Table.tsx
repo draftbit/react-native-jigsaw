@@ -19,7 +19,13 @@ import {
 export interface Props<T> extends TableProps, ScrollViewProps {
   data?: Array<T>;
   keyExtractor?: (item: T, index: number) => string;
-  renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
+  renderItem?: ({
+    item,
+    index,
+  }: {
+    item: T;
+    index: number;
+  }) => React.JSX.Element;
   style?: StyleProp<ViewStyle>;
   theme: ReadTheme;
 }

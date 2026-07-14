@@ -1,3 +1,5 @@
+import "react-native-gesture-handler/jestSetup";
+
 // Needed for tests to run, fails otherwise
 jest.mock("react-native/Libraries/EventEmitter/NativeEventEmitter");
 jest.mock("react-native-webview", () => ({

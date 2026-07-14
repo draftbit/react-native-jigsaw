@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/ui",
-  "version": "55.0.1",
+  "version": "56.0.0",
   "description": "Draftbit UI Library",
   "main": "./src/index.tsx",
   "react-native": "./src/index.tsx",
@@ -45,16 +45,14 @@
   },
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
-    "@draftbit/core": "55.0.1",
-    "@draftbit/native": "55.0.1",
-    "@draftbit/theme": "55.0.1",
-    "react-native-reanimated": "4.2.1"
+    "@draftbit/core": "56.0.0",
+    "@draftbit/native": "56.0.0",
+    "@draftbit/theme": "56.0.0",
+    "react-native-reanimated": "4.3.1"
   },
   "jest": {
-    "preset": "react-native",
-    "setupFilesAfterEnv": [
-      "@testing-library/jest-native/extend-expect"
-    ],
+    "preset": "jest-expo",
+    "globalSetup": "<rootDir>/../../jest/global-setup.js",
     "testPathIgnorePatterns": [
       "lib",
       "__mocks__"

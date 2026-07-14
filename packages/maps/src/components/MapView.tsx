@@ -41,7 +41,13 @@ export interface MapViewProps<T>
   autoClusterMarkersDistanceMeters?: number;
   markersData?: T[];
   keyExtractor?: (item: T, index: number) => string;
-  renderItem?: ({ item, index }: { item: T; index: number }) => JSX.Element;
+  renderItem?: ({
+    item,
+    index,
+  }: {
+    item: T;
+    index: number;
+  }) => React.JSX.Element;
   onRegionChange?: (region: RegionWithZoom) => void;
   onPress?: (latitude: number, longitude: number) => void;
 }

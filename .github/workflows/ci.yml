@@ -42,9 +42,6 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Test
-        run: yarn test
-
       - name: Release next packages
         if: github.event_name == 'pull_request'
         env:

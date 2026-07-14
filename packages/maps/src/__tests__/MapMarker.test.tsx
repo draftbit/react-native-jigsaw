@@ -6,6 +6,7 @@ import MapMarker from "../components/MapMarker";
 import MapCallout from "../components/MapCallout";
 import { Callout as MapCalloutComponent } from "../components/react-native-maps";
 
+//some change
 jest.mock("../components/react-native-maps", () => {
   const React = require("react");
 

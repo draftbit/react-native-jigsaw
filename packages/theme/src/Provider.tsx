@@ -43,8 +43,7 @@ const Provider: React.FC<React.PropsWithChildren<ProviderProps>> = ({
     Dimensions.get("window").width
   );
   const colorScheme = useColorScheme();
-  const lightDarkSelection =
-    colorScheme === "unspecified" ? "light" : (colorScheme ?? "light");
+  const lightDarkSelection = colorScheme ?? "light";
 
   const changeTheme = React.useCallback(
     (themeName: string, options?: ChangeThemeOptions) => {

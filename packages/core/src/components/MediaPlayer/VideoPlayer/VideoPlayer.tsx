@@ -45,7 +45,6 @@ interface VideoPlayerProps extends ExpoVideoPropsOmitted, MediaPlayerProps {
   positionMillis?: number;
   rate?: number;
   volume?: number;
-  allowsFullscreen?: boolean;
 }
 
 export interface VideoPlayerRef extends MediaPlayerRef {
@@ -265,7 +264,7 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
             contentFit={mappedVideoContentFit}
             onFullscreenEnter={() => onFullscreenUpdate("entered")}
             onFullscreenExit={() => onFullscreenUpdate("exited")}
-            fullscreenOptions={{ enable: allowsFullscreen }}
+            allowsFullscreen={allowsFullscreen}
             {...videoPlayerProps}
           />
           {showPoster && posterSource && (

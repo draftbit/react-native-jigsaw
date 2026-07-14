@@ -1,8 +1,11 @@
 import * as React from "react";
 import { StyleSheet, Platform } from "react-native";
 import MapViewComponent from "./react-native-maps";
-import type { Camera, Region } from "react-native-maps";
-import { MapViewProps as MapViewComponentProps } from "react-native-maps/dist/src/MapView";
+import type {
+  Camera,
+  Region,
+  MapViewProps as MapViewComponentProps,
+} from "react-native-maps";
 import MapMarker, { MapMarkerProps, renderMarker } from "./MapMarker";
 import MapMarkerCluster from "./marker-cluster/MapMarkerCluster";
 import { MapViewContext, ZoomLocation } from "./MapViewCommon";
@@ -312,7 +315,6 @@ const MapViewF = <T extends object>({
           });
         }}
         provider={provider}
-        // @ts-ignore Only available in @teovilla/react-native-web-maps
         googleMapsApiKey={apiKey}
         showsCompass={showsCompass}
         initialCamera={camera}

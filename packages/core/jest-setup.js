@@ -1,9 +1,4 @@
 import "@shopify/flash-list/jestSetup";
-
-jest.mock("react-native-worklets", () =>
-  require("react-native-worklets/lib/module/mock")
-);
-
 require("react-native-reanimated").setUpTests();
 
 // Fixes reanimated jest bug: https://github.com/software-mansion/react-native-reanimated/issues/3125

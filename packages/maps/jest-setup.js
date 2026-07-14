@@ -4,10 +4,6 @@ jest.mock("react-native-webview", () => ({
   default: () => jest.fn(), // or any mocked component instead of native view,
 }));
 
-jest.mock("react-native-worklets", () =>
-  require("react-native-worklets/src/mock")
-);
-
 jest.mock("expo-constants", () => {
   const actual = jest.requireActual("expo-constants");
   return { ...actual, experienceUrl: null };

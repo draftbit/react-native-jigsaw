@@ -48,7 +48,9 @@
     "@draftbit/core": "55.0.0",
     "@draftbit/native": "55.0.0",
     "@draftbit/theme": "55.0.0",
-    "react-native-reanimated": "4.2.1"
+    "react-native-reanimated": "4.2.1",
+    "punycode": "^2.3.1",
+    "@react-native/assets-registry": "0.83.10"
   },
   "jest": {
     "preset": "react-native",

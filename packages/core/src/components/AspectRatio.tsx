@@ -10,7 +10,6 @@ import {
 type Props = {
   children?: React.ReactNode;
   style?: StyleProp<ViewStyle>;
-  someChange: boolean;
 };
 
 const AspectRatio: React.FC<React.PropsWithChildren<Props>> = (props) => {

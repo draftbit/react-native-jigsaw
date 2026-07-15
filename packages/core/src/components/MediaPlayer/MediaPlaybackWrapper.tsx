@@ -8,6 +8,7 @@ interface MediaPlaybackWrapperProps {
   player?: AudioPlayer | VideoPlayer;
   isPlaying?: boolean;
   onTogglePlayback?: () => void;
+  someChange: boolean;
 }
 
 /**

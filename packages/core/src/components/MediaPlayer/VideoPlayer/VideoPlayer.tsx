@@ -13,14 +13,12 @@ import {
   useVideoPlayer,
   TimeUpdateEventPayload,
   VideoPlayer as VideoPlayerType,
-  VideoSource,
 } from "expo-video";
 import { setAudioModeAsync } from "expo-audio";
 import { extractSizeStyles } from "../../../utilities";
 import MediaPlaybackWrapper from "../MediaPlaybackWrapper";
 import {
   normalizeBase64Source,
-  useSourceDeepCompareEffect,
   useSourceDeepCompareMemoize,
 } from "../MediaPlayerCommon";
 import type {
@@ -125,6 +123,11 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
     const hasAppliedInitialState = React.useRef(false);
 
     React.useEffect(() => {
+      // 'useVideoPlayer' builds a new player whenever the source changes, so the
+      // initial state has to be applied again
+      hasAppliedInitialState.current = false;
+      setIsPlaying(player.playing);
+
       const timeUpdateSub = player.addListener("timeUpdate", (status) => {
         onPlaybackStatusUpdateProp?.(mapToMediaPlayerStatus(status, player));
       });
@@ -171,18 +174,7 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
         playToEndSub.remove();
         statusChangeSub.remove();
       };
-    }, []);
-
-    // Replace video source when it changes (deep comparison on URI to avoid unnecessary reloads)
-    const isFirstSourceRender = React.useRef(true);
-    useSourceDeepCompareEffect(() => {
-      if (isFirstSourceRender.current) {
-        isFirstSourceRender.current = false;
-        return;
-      }
-      hasAppliedInitialState.current = false;
-      player.replace(normalizeBase64Source(source, "video") as VideoSource);
-    }, [source]);
+    }, [player]);
 
     let mappedVideoContentFit: VideoContentFit;
     switch (resizeMode) {
@@ -232,16 +224,13 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
       ref,
       () => ({
         toggleFullscreen,
-        seekToPosition:
-          mediaPlaybackWrapperRef.current?.seekToPosition || (() => {}),
-        togglePlayback:
-          mediaPlaybackWrapperRef.current?.togglePlayback || (() => {}),
-        pause: mediaPlaybackWrapperRef.current?.pause || (() => {}),
-        play: mediaPlaybackWrapperRef.current?.play || (() => {}),
+        seekToPosition: (positionMillis: number) =>
+          mediaPlaybackWrapperRef.current?.seekToPosition(positionMillis),
+        togglePlayback: () => mediaPlaybackWrapperRef.current?.togglePlayback(),
+        pause: () => mediaPlaybackWrapperRef.current?.pause(),
+        play: () => mediaPlaybackWrapperRef.current?.play(),
       }),
-      // Include 'isPlaying' as dependency because 'togglePlayback' changes when it changes
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      [toggleFullscreen, isPlaying]
+      [toggleFullscreen]
     );
 
     return (

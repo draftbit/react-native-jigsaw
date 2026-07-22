@@ -25,7 +25,7 @@ const MediaPlaybackWrapper = React.forwardRef<
     } else {
       player?.play();
     }
-  }, [isPlaying, onTogglePlayback]);
+  }, [isPlaying, onTogglePlayback, player]);
 
   const pause = React.useCallback(() => {
     onTogglePlayback?.();

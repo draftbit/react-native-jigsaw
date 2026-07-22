@@ -4,7 +4,6 @@ import { HeadlessAudioPlayerProps } from "./AudioPlayerCommon";
 import {
   normalizeBase64Source,
   useSourceDeepCompareMemoize,
-  useSourceDeepCompareEffect,
 } from "../MediaPlayerCommon";
 import type { MediaPlayerRef, MediaPlayerStatus } from "../MediaPlayerCommon";
 import MediaPlaybackWrapper from "../MediaPlaybackWrapper";
@@ -60,6 +59,10 @@ const HeadlessAudioPlayer = React.forwardRef<
     }, []);
 
     React.useEffect(() => {
+      // 'useAudioPlayer' builds a new player whenever the source changes, so the
+      // mirrored playing state has to be resynced
+      setIsPlaying(player.playing);
+
       const subscription = player.addListener(
         "playbackStatusUpdate",
         (status) => {
@@ -75,17 +78,7 @@ const HeadlessAudioPlayer = React.forwardRef<
         }
       );
       return () => subscription.remove();
-    }, []);
-
-    // Replace source when it changes (deep comparison on URI to avoid unnecessary reloads)
-    const isFirstSourceRender = React.useRef(true);
-    useSourceDeepCompareEffect(() => {
-      if (isFirstSourceRender.current) {
-        isFirstSourceRender.current = false;
-        return;
-      }
-      player.replace(normalizeBase64Source(source, "audio") as any);
-    }, [source]);
+    }, [player]);
 
     const updateAudioMode = React.useCallback(async () => {
       try {

@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/core",
-  "version": "55.0.1",
+  "version": "55.0.2",
   "description": "Core (non-native) Components",
   "main": "./src/index.tsx",
   "react-native": "./src/index.tsx",
@@ -42,7 +42,7 @@
   "homepage": "https://github.com/draftbit/react-native-jigsaw#readme",
   "dependencies": {
     "@draftbit/react-theme-provider": "^2.1.1",
-    "@draftbit/theme": "55.0.1",
+    "@draftbit/theme": "55.0.2",
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
     "@expo/vector-icons": "^15.0.3",

@@ -86,6 +86,7 @@ const VideoPlayer = React.forwardRef<VideoPlayerRef, VideoPlayerProps>(
       p.muted = isMuted;
       p.volume = volume;
       p.playbackRate = rate;
+      p.timeUpdateEventInterval = 0.5;
     });
 
     const videoPlayerRef = React.useRef<VideoPlayerComponent>(null);

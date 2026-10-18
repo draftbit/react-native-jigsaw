@@ -10332,12 +10332,12 @@ react-native-swipe-list-view@^3.2.9:
   resolved "https://registry.yarnpkg.com/react-native-swipe-list-view/-/react-native-swipe-list-view-3.2.9.tgz#d725c7cdf481dd5df12a00dbfe0120013b5f2e59"
   integrity sha512-SjAEuHc/D6ovp+RjDUhfNmw6NYOntdT7+GFhfMGfP/BSLMuMWynpzJy9GKQeyB8sI78T6Lzip21TVbongOg1Mw==
 
-react-native-tab-view@^3.4.0:
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-3.5.2.tgz#2789b8af6148b16835869566bf13dc3b0e6c1b46"
-  integrity sha512-nE5WqjbeEPsWQx4mtz81QGVvgHRhujTNIIZiMCx3Bj6CBFDafbk7XZp9ocmtzXUQaZ4bhtVS43R4FIiR4LboJw==
+react-native-tab-view@4.3.4:
+  version "4.3.4"
+  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-4.3.4.tgz#2e14d7d9d7ae0f496d3e0624eb35556092edb656"
+  integrity sha512-z8eXgVmfLx2aSMeppQkuZPbb2N00H76T7OwtGcZYua5g2h9AYBbkYrYN4rKY0wSl1g0YRQ+NS6LLVkxppGr68g==
   dependencies:
-    use-latest-callback "^0.1.5"
+    use-latest-callback "^0.2.4"
 
 react-native-typography@^1.4.1:
   version "1.4.1"
@@ -11988,11 +11988,6 @@ url-parse@^1.5.3:
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
-
-use-latest-callback@^0.1.5:
-  version "0.1.11"
-  resolved "https://registry.yarnpkg.com/use-latest-callback/-/use-latest-callback-0.1.11.tgz#e073fcbba792cc95ac661d96bc13b6041956cfe1"
-  integrity sha512-8nhb73STSD/z3GTHklvNjL8F9wMOo0bj0AFnulpIYuFTm6aQlT3ZcNbXF2YurKImIY8+kpSFSDHZZyQmurGrhw==
 
 use-latest-callback@^0.2.4:
   version "0.2.4"

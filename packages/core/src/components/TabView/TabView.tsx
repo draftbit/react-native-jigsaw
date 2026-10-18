@@ -6,6 +6,7 @@ import {
   SceneRendererProps,
   NavigationState,
   Route,
+  TabDescriptor,
 } from "react-native-tab-view";
 
 import TabViewItem from "./TabViewItem";
@@ -18,7 +19,8 @@ type SceneProps = SceneRendererProps & {
   route: Route;
 };
 type TabBarProps = SceneRendererProps & {
-  navigationState: NavigationState<any>;
+  navigationState: NavigationState<Route>;
+  options: Record<string, TabDescriptor<Route>> | undefined;
 };
 type TabBarPosition = "top" | "bottom";
 type KeyboardDismissMode = "none" | "auto" | "on-drag";
@@ -103,7 +105,7 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
     }
   };
 
-  const renderTabBar: React.FC<TabBarProps> = (props) => {
+  const renderTabBar = (props: TabBarProps) => {
     let tabFlexDirection: "row" | "column" | "row-reverse" | "column-reverse";
     switch (iconPosition) {
       case "top":
@@ -129,18 +131,20 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
         indicatorStyle={{
           backgroundColor: indicatorColor || theme.colors.branding.primary,
         }}
-        labelStyle={[{ textTransform: "none" }, textStyles]}
         tabStyle={{ flexDirection: tabFlexDirection }}
-        renderIcon={({ route, color }) =>
-          route?.icon ? (
-            <Icon name={route.icon} color={color} size={iconSize} />
-          ) : null
-        }
         style={{
           backgroundColor: tabsBackgroundColor || theme.colors.background.base,
         }}
       />
     );
+  };
+
+  const commonOptions: TabDescriptor<Route> = {
+    labelStyle: [{ textTransform: "none" }, textStyles],
+    icon: ({ route, color }) =>
+      route.icon ? (
+        <Icon name={route.icon} color={color} size={iconSize} />
+      ) : null,
   };
 
   const renderScene = ({ route }: SceneProps) => {
@@ -158,7 +162,8 @@ const TabViewComponent: React.FC<React.PropsWithChildren<TabViewProps>> = ({
       style={viewStyles}
       navigationState={{ index, routes }}
       renderScene={renderScene}
-      renderTabBar={renderTabBar as any}
+      renderTabBar={renderTabBar}
+      commonOptions={commonOptions}
       onIndexChange={indexChangeHandler}
       tabBarPosition={tabBarPosition}
       keyboardDismissMode={keyboardDismissMode}

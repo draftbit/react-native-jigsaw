@@ -45,8 +45,8 @@
     "@expo/vector-icons": "^15.0.3",
     "@react-native-community/datetimepicker": "9.1.0",
     "@react-native-community/slider": "5.2.0",
-    "expo-camera": "~56.0.8",
-    "expo-linear-gradient": "~56.0.4",
+    "expo-camera": "~57.0.6",
+    "expo-linear-gradient": "~57.0.2",
     "react-native-svg": "15.15.4",
     "react-native-webview": "13.16.1"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@draftbit/theme",
-  "version": "56.0.5",
+  "version": "57.0.0",
   "description": "Draftbit's themeing system",
   "main": "./src/index.ts",
   "react-native": "./src/index.ts",
